@@ -50,6 +50,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddStaticWebAppsAuthentication();
 
     collection.AddScoped<PrincipalApi>();
+    collection.AddScoped<LoginApi>();
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<TicketApi>();
     collection.AddScoped<TicketVoteApi>();
