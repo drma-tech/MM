@@ -1,0 +1,86 @@
+﻿@page "/Support/"
+@page "/Support/Index"
+<SeoHeader Title="@SeoTranslations.SupportTitle" Description="@SeoTranslations.SupportDescription" Url="/Support"></SeoHeader>
+@inherits PageNoDataCore<Support.Index>
+@using MM.WEB.Modules.Support.Component
+
+<Alert Color="Color.Secondary" Visible="true">
+    <AlertDescription>
+        <Blazorise.Link To="@("Terms/" + (AppStateStatic.Language == Language.Portuguese ? "pt" : "en"))">@Resources.Translations.LinkTerm</Blazorise.Link> ▪ <Blazorise.Link To="@("Privacy/" + (AppStateStatic.Language == Language.Portuguese ? "pt" : "en"))">@Resources.Translations.LinkPrivacy</Blazorise.Link> ▪ <Blazorise.Link To="Faq">@Resources.Translations.LinkFAQ</Blazorise.Link>
+    </AlertDescription>
+</Alert>
+
+<Div Margin="Margin.Is2.OnY">
+    <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Announcements)" Clicked="(() => ChangeOrder(Tabs.Announcements))">@Resources.Translations.TabAnnouncements</Button>
+    <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Feedback)" Clicked="(() => ChangeOrder(Tabs.Feedback))">@Resources.Translations.TabFeedback</Button>
+    @*<Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Roadmap)" Clicked="(() => ChangeOrder(Tabs.Roadmap))">@Resources.Translations.TabRoadmap</Button>*@
+    <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Downloads)" Clicked="(() => ChangeOrder(Tabs.Downloads))">@Resources.Translations.TabDownloads</Button>
+</Div>
+
+@if (SelectedTab == Tabs.Announcements)
+{
+    <AnnouncementComponent></AnnouncementComponent>
+}
+else if (SelectedTab == Tabs.Feedback)
+{
+    <FeedbackComponent></FeedbackComponent>
+}
+else if (SelectedTab == Tabs.Roadmap)
+{
+    <FeatureUnavailable></FeatureUnavailable>
+    @*<CardDeck>
+        <Card Background="Background.Secondary">
+            <CardHeader TextWeight="TextWeight.Bold">@TicketStatus.UnderConsideration.GetName()</CardHeader>
+            <CardBody>
+                <CardText>
+                    This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </CardText>
+            </CardBody>
+        </Card>
+        <Card Background="Background.Primary">
+            <CardHeader TextWeight="TextWeight.Bold">@TicketStatus.Planned.GetName()</CardHeader>
+            <CardBody>
+                <CardText>
+                    This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </CardText>
+            </CardBody>
+        </Card>
+        <Card Background="Background.Warning">
+            <CardHeader TextWeight="TextWeight.Bold">@TicketStatus.Progress.GetName()</CardHeader>
+            <CardBody>
+                <CardText>
+                    This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </CardText>
+            </CardBody>
+        </Card>
+        <Card Background="Background.Success">
+            <CardHeader TextWeight="TextWeight.Bold">@TicketStatus.Done.GetName()</CardHeader>
+            <CardBody>
+                <CardText>
+                    This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </CardText>
+            </CardBody>
+        </Card>
+    </CardDeck>*@
+}
+else if (SelectedTab == Tabs.Downloads)
+{
+    <DownloadComponent></DownloadComponent>
+}
+
+@code {
+    private enum Tabs
+    {
+        Announcements,
+        Feedback,
+        Roadmap,
+        Downloads
+    }
+
+    private Tabs SelectedTab = Tabs.Announcements;
+
+    private void ChangeOrder(Tabs tab)
+    {
+        SelectedTab = tab;
+    }
+}

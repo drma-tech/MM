@@ -1,0 +1,100 @@
+﻿@using MM.Shared.Models.Support;
+@using MM.WEB.Modules.Support.Core
+@inherits ComponenteNoDataCore<NewTicket>
+@inject TicketApi TicketApi
+
+<ModalHeader>
+    <ModalTitle>@Resources.Translations.NewTicketTitle</ModalTitle>
+    <CloseButton />
+</ModalHeader>
+<ModalBody>
+    <EditForm Model="@Ticket" OnValidSubmit="SubmitForm">
+        <FluentValidationValidator />
+        <div class="form-group">
+            <Select TValue="TicketType" @bind-SelectedValue="@TicketType">
+                @foreach (var item in EnumHelper.GetArray<TicketType>())
+                {
+                    <SelectItem Value="@item">@item.GetName()</SelectItem>
+                }
+            </Select>
+            <ValidationMessage For="@(()=>Ticket.TicketType)"></ValidationMessage>
+        </div>
+        <div class="form-group">
+            <TextEdit @bind-Text="@Ticket.Title" MaxLength="100" Placeholder="@CustomAttributeHelper.GetCustomAttribute(()=>Ticket.Title)?.Prompt"></TextEdit>
+            <ValidationMessage For="@(()=>Ticket.Title)"></ValidationMessage>
+        </div>
+        <div class="form-group">
+            <MemoEdit @bind-Text="@Ticket.Description" Rows="7" MaxLength="512" Placeholder="@CustomAttributeHelper.GetCustomAttribute(()=>Ticket.Description)?.Prompt"></MemoEdit>
+            <ValidationMessage For="@(()=>Ticket.Description)"></ValidationMessage>
+        </div>
+        <Button Type="ButtonType.Submit" Color="Color.Primary" Disabled="!IsUserAuthenticated">@GlobalTranslations.ButtonSave</Button>
+        <Button Clicked="@ModalService.Hide" Color="Color.Secondary">@GlobalTranslations.ButtonCancel</Button>
+        <Button Clicked="@ImportLastError" Color="Color.Danger" Float="Float.End" Disabled="(TicketType == TicketType.Improvement)">@Resources.Translations.ImportLastError</Button>
+    </EditForm>
+</ModalBody>
+
+@code {
+    [Parameter] public TicketType TicketType { get; set; } = TicketType.BugReport;
+
+    public TicketModel Ticket { get; set; } = new();
+    [Parameter] public EventCallback<TicketModel> Inserted { get; set; }
+
+    [Inject] public IModalService ModalService { get; set; } = default!;
+
+    public bool IsUserAuthenticated { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        IsUserAuthenticated = await AppState.IsUserAuthenticated();
+    }
+
+    private void ImportLastError()
+    {
+        if (TicketType == TicketType.BugReport && AppStateStatic.Logs.Any())
+        {
+            var list = AppStateStatic.Logs;
+            var log = list.LastOrDefault();
+
+            if (log != null)
+            {
+                Ticket.Title = log.Message ?? "erro desconhecido";
+                Ticket.Description = System.Text.Json.JsonSerializer.Serialize(log);
+
+                AppStateStatic.Logs.Remove(log);
+            }
+            else
+            {
+                Toast.Warning("No errors found");
+            }
+        }
+        else
+        {
+            Toast.Warning("No errors found");
+        }
+    }
+
+    public async Task SubmitForm()
+    {
+        try
+        {
+            Ticket.TicketType = TicketType;
+            Ticket.TicketStatus = TicketStatus.New;
+            Ticket.Initialize(await AppState.GetIdUser());
+
+            Ticket = await TicketApi.Insert(Ticket) ?? new();
+
+            await Toast.Success("Salvo com sucesso");
+
+            await Inserted.InvokeAsync(Ticket);
+
+            Ticket = new();
+            await ModalService.Hide();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+}

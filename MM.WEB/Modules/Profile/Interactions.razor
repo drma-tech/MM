@@ -1,0 +1,160 @@
+﻿@page "/Profile/Interactions"
+@attribute [Authorize]
+@inherits PageCore<Profile.Interactions>
+
+<Row>
+    <Column>
+        <Card Margin="Margin.Is3.FromBottom">
+            <CardHeader>Matches</CardHeader>
+            <CardBody>
+                @if (OptionsNewMatches.HasCustomVisibility)
+                {
+                    <CustomVisibility Options="OptionsNewMatches"></CustomVisibility>
+                }
+                else
+                {
+                    <Row>
+                        @foreach (var item in NewMatches)
+                        {
+                            <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is4.OnWidescreen.Is6.OnDesktop.Is12.OnMobile">
+                                <Blazorise.Link To="@("/Explore/View/" + item.IdUserInteraction)">
+                                    <Card Margin="Margin.Is3.FromBottom.OnMobile.Is0.OnFullHD">
+                                        <CardImage Source="@item.GetMainPhoto(TypeUser.InteractionUser)" Alt="Photo Image"></CardImage>
+                                        <CardText Color="TextColor.Secondary" Alignment="TextAlignment.Center" Weight="TextWeight.Bold" Style="font-size: 11px;">
+                                            @item.NickNameInteraction
+                                        </CardText>
+                                    </Card>
+                                </Blazorise.Link>
+                            </Column>
+                        }
+                    </Row>
+                }
+            </CardBody>
+        </Card>
+        <Card Margin="Margin.Is3.FromBottom">
+            <CardHeader>Likes</CardHeader>
+            <CardBody>
+                @if (OptionsLikes.HasCustomVisibility)
+                {
+                    <CustomVisibility Options="OptionsLikes"></CustomVisibility>
+                }
+                else
+                {
+                    <Row>
+                        @foreach (var item in Likes)
+                        {
+                            <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is4.OnWidescreen.Is6.OnDesktop.Is12.OnMobile">
+                                <Blazorise.Link To="@("/Explore/View/" + item.IdLoggedUser)">
+                                    <Card Margin="Margin.Is3.FromBottom.OnMobile.Is0.OnFullHD">
+                                        <CardImage Source="@item.GetMainPhoto(TypeUser.LoggedUser)" Alt="Photo Image"></CardImage>
+                                        <CardText Color="TextColor.Secondary" Alignment="TextAlignment.Center" Weight="TextWeight.Bold" Style="font-size: 11px;">
+                                            @item.NickNameLoggedUser
+                                        </CardText>
+                                    </Card>
+                                </Blazorise.Link>
+                            </Column>
+                        }
+                    </Row>
+                }
+            </CardBody>
+        </Card>
+    </Column>
+    <Column>
+        <Card Margin="Margin.Is3.FromBottom">
+            <CardHeader>Mensagens</CardHeader>
+            <CardBody>
+                @if (OptionsMsgMatches.HasCustomVisibility)
+                {
+                    <CustomVisibility Options="OptionsMsgMatches"></CustomVisibility>
+                }
+                else
+                {
+                    <Row>
+                        @foreach (var item in MsgMatches)
+                        {
+                            <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is4.OnWidescreen.Is6.OnDesktop.Is12.OnMobile">
+                                <Blazorise.Link To="@("/Explore/Chat/" + item.IdUserInteraction)">
+                                    <Card Margin="Margin.Is3.FromBottom.OnMobile.Is0.OnFullHD">
+                                        <CardImage Source="@item.GetMainPhoto(TypeUser.InteractionUser)" Alt="Photo Image"></CardImage>
+                                        <CardText Color="TextColor.Secondary" Alignment="TextAlignment.Center" Weight="TextWeight.Bold" Style="font-size: 11px;">
+                                            @item.NickNameInteraction
+                                        </CardText>
+                                    </Card>
+                                </Blazorise.Link>
+                            </Column>
+                        }
+                    </Row>
+                }
+            </CardBody>
+        </Card>
+        <Card Margin="Margin.Is3.FromBottom">
+            <CardHeader>Piscadinhas</CardHeader>
+            <CardBody>
+                @if (OptionsBlinks.HasCustomVisibility)
+                {
+                    <CustomVisibility Options="OptionsBlinks"></CustomVisibility>
+                }
+                else
+                {
+                    <Row>
+                        @foreach (var item in Blinks)
+                        {
+                            <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is4.OnWidescreen.Is6.OnDesktop.Is12.OnMobile">
+                                <Blazorise.Link To="@("/Explore/View/" + item.IdLoggedUser)">
+                                    <Card Margin="Margin.Is3.FromBottom.OnMobile.Is0.OnFullHD">
+                                        <CardImage Source="@item.GetMainPhoto(TypeUser.LoggedUser)" Alt="Photo Image"></CardImage>
+                                        <CardText Color="TextColor.Secondary" Alignment="TextAlignment.Center" Weight="TextWeight.Bold" Style="font-size: 11px;">
+                                            @item.NickNameLoggedUser
+                                        </CardText>
+                                    </Card>
+                                </Blazorise.Link>
+                            </Column>
+                        }
+                    </Row>
+                }
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+
+@code {
+    private List<InteractionQuery> NewMatches { get; set; }
+    private List<InteractionQuery> MsgMatches { get; set; }
+    private List<InteractionQuery> Likes { get; set; }
+    private List<InteractionQuery> Blinks { get; set; }
+
+    private VisibilityOptions OptionsNewMatches => new VisibilityOptions()
+    {
+        Loading = NewMatches == null,
+        NoData = NewMatches == null || !NewMatches.Any()
+    };
+
+    private VisibilityOptions OptionsMsgMatches => new VisibilityOptions()
+    {
+        Loading = MsgMatches == null,
+        NoData = MsgMatches == null || !MsgMatches.Any()
+    };
+
+    private VisibilityOptions OptionsLikes => new VisibilityOptions()
+    {
+        //Premium = true,
+        Loading = Likes == null,
+        NoData = Likes == null || !Likes.Any()
+    };
+
+    private VisibilityOptions OptionsBlinks => new VisibilityOptions()
+    {
+        Loading = Blinks == null,
+        NoData = Blinks == null || !Blinks.Any()
+    };
+
+    protected override async Task LoadData()
+    {
+        //var interactions = await Http.Interation_GetMyMatches(SessionStorage);
+        //NewMatches = interactions.Where(w => !w.StartedChat).ToList();
+        //MsgMatches = interactions.Where(w => w.StartedChat).ToList();
+
+        //Likes = await Http.Interation_GetLikes(SessionStorage);
+        //Blinks = await Http.Interation_GetBlinks(SessionStorage);
+    }
+}

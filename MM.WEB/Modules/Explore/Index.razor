@@ -1,0 +1,110 @@
+﻿@page "/Explore"
+@attribute [Authorize]
+@inherits PageCore<Explore.Index>
+
+<Buttons Margin="Margin.Is3.FromBottom">
+    <Button Color="Color.Secondary" Outline="!(SelectedButton == OrderBy.Suggestion)" Clicked="(() => ChangeOrder(OrderBy.Suggestion))">Sugestões</Button>
+    <Button Color="Color.Secondary" Outline="!(SelectedButton == OrderBy.Online)" Clicked="(() => ChangeOrder(OrderBy.Online))">Online</Button>
+    <Button Color="Color.Secondary" Outline="!(SelectedButton == OrderBy.Distance)" Clicked="(() => ChangeOrder(OrderBy.Distance))">Distância</Button>
+    <Button Color="Color.Secondary" Outline="!(SelectedButton == OrderBy.NowUser)" Clicked="(() => ChangeOrder(OrderBy.NowUser))">Novos Usuários</Button>
+</Buttons>
+
+@if (Options.HasCustomVisibility)
+{
+    <CustomVisibility Options="Options"></CustomVisibility>
+}
+else
+{
+    <Row Gutter="(8,0)">
+        @foreach (var item in listaUsers)
+        {
+            <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3.OnWidescreen.Is4.OnDesktop.Is6.OnMobile" Margin="Margin.Is3.FromBottom">
+                <Card Margin="Margin.Is3.FromBottom.OnMobile.Is0.OnFullHD">
+                    <Blazorise.Link Clicked="@(async()=> await _PopupProfile.ShowModal(item.Id))" Style="cursor: pointer;">
+                        <CardImage Source="@item.GetMainPhoto()" Alt="Photo Image"></CardImage>
+                    </Blazorise.Link>
+                    @*<Badge Color="Color.Success" Style="position: absolute; top: 10px; left: 10px; z-index: 2;">@(GetPercentAffinity(null) + "%")</Badge>
+                        <Badge Color="Color.Dark" Style="position: absolute; top: 10px; right: 10px; z-index: 2;">
+                            <Blazorise.Icon Name="FontAwesomeIcons.Camera"></Blazorise.Icon> @imageDataUriGallery.Count()
+                        </Badge>*@
+                    <Badge Color="Color.Secondary" Style="position: absolute; bottom: 58px; left: 5px;">@item.NickName, @item.Age</Badge>
+                    @if (item.ActivityStatus == ActivityStatus.Today)
+                    {
+                        <Badge Color="Color.Success" Style="position: absolute; top: 5px; left: 5px;" title="logado recentemente">
+                            <Blazorise.Icon Name="FontAwesomeIcons.DotCircle"></Blazorise.Icon>
+                        </Badge>
+                    }
+                    else if (item.ActivityStatus == ActivityStatus.Week)
+                    {
+                        <Badge Color="Color.Warning" Style="position: absolute; top: 5px; left: 5px;" title="logado essa semana">
+                            <Blazorise.Icon Name="FontAwesomeIcons.DotCircle"></Blazorise.Icon>
+                        </Badge>
+                    }
+                    else if (item.ActivityStatus == ActivityStatus.Month)
+                    {
+                        <Badge Color="Color.Danger" Style="position: absolute; top: 5px; left: 5px;" title="logado esse mês">
+                            <Blazorise.Icon Name="FontAwesomeIcons.DotCircle"></Blazorise.Icon>
+                        </Badge>
+                    }
+                    else
+                    {
+                        <Badge Color="Color.Dark" Style="position: absolute; top: 5px; left: 5px;" title="usuário desativado">
+                            <Blazorise.Icon Name="FontAwesomeIcons.DotCircle"></Blazorise.Icon>
+                        </Badge>
+                    }
+                    <CardBody Padding="Padding.Is2" Style="text-align: center;">
+                        <BtnDeslike IdUserView="@item.Id"></BtnDeslike>
+
+                        <BtnLike IdUserView="@item.Id"></BtnLike>
+                    </CardBody>
+                </Card>
+            </Column>
+        }
+    </Row>
+}
+
+<PopupProfile @ref="_PopupProfile" Http="@Http"></PopupProfile>
+
+@code
+{
+    public PopupProfile _PopupProfile { get; set; }
+
+    private ProfileModel profile;
+    //private ProfileGamificationModel gamification;
+    private List<ProfileSearch> listaUsers;
+    //private List<InteractionModel> interactions = new();
+
+    private enum OrderBy
+    {
+        Suggestion,
+        Online,
+        Distance,
+        NowUser
+    }
+
+    private OrderBy SelectedButton = OrderBy.Suggestion;
+
+    private async Task ChangeOrder(OrderBy OrderBy)
+    {
+        SelectedButton = OrderBy;
+    }
+
+    private VisibilityOptions Options => new VisibilityOptions()
+    {
+        Loading = listaUsers == null,// || interactions == null,
+        NoData = listaUsers != null && !listaUsers.Any()
+    };
+
+    protected override async Task LoadData()
+    {
+        profile = await Http.Profile_Get(SessionStorage);
+        //gamification = profile?.Gamification;
+        listaUsers = await Http.Profile_ListSearch(SessionStorage);
+        //interactions = await Http.Interation_GetList();
+    }
+
+    //private InteractionModel getCurrentInteraction(string IdUserInteraction)
+    //{
+    //    return interactions.SingleOrDefault(s => s.IdUserInteraction == IdUserInteraction);
+    //}
+}

@@ -1,0 +1,34 @@
+﻿@using MM.Shared.Models.Support;
+@using MM.WEB.Modules.Support.Core;
+@using MM.WEB.Modules.Support.Core;
+@inherits ComponenteCore<AnnouncementComponent>
+@inject AnnouncementApi AnnouncementApi
+
+<Loading @ref="LoadingAnnouncements">
+    @foreach (var item in announcement?.Items.OrderByDescending(o => o.Date) ?? Enumerable.Empty<AnnouncementItem>())
+    {
+        <Alert Color="Color.Info" Visible="true">
+            <Heading Size="HeadingSize.Is5" TextColor="TextColor.Success">
+                @item.Title
+            </Heading>
+            <Paragraph>
+                @((MarkupString)(item.Description ?? ""))
+            </Paragraph>
+        </Alert>
+    }
+</Loading>
+
+@code {
+    private AnnouncementModel? announcement;
+
+    public Loading? LoadingAnnouncements { get; set; }
+
+    protected override async Task LoadData()
+    {
+        LoadingAnnouncements?.Start();
+
+        announcement = await AnnouncementApi.Get();
+
+        LoadingAnnouncements?.Finish(announcement == null);
+    }
+}

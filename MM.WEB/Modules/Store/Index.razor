@@ -1,0 +1,245 @@
+﻿@page "/Store"
+@attribute [Authorize]
+@inherits PageCore<Store.Index>
+
+<CardDeck Margin="Margin.Is3.FromBottom">
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                4
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt" Style="color: #dc3545;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">10</Badge>
+            </Paragraph>
+            <Button Color="Color.Success" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(1)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Ad"></Blazorise.Icon> Ver Propaganda
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                4
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">1</Badge>
+            </Paragraph>
+            <Button Color="Color.Success" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(2)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Ad"></Blazorise.Icon> Ver Propaganda
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                2
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt" Style="color: #dc3545;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">10</Badge>
+            </Paragraph>
+            <Button Color="Color.Success" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(3)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem"></Blazorise.Icon> 1 Diamante
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                1
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt" Style="color: #dc3545;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">20</Badge>
+            </Paragraph>
+            <Button Color="Color.Success" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(4)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem"></Blazorise.Icon> 2 Diamantes
+            </Button>
+        </CardBody>
+    </Card>
+</CardDeck>
+<CardDeck Margin="Margin.Is3.FromBottom">
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                10
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">1</Badge>
+            </Paragraph>
+            <Button Color="Color.Danger" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(1)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt"></Blazorise.Icon> 10 Maças
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                10
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">2</Badge>
+            </Paragraph>
+            <Button Color="Color.Danger" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(2)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt"></Blazorise.Icon> 20 Maças
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                10
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">3</Badge>
+            </Paragraph>
+            <Button Color="Color.Danger" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(3)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt"></Blazorise.Icon> 30 Maças
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                10
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">4</Badge>
+            </Paragraph>
+            <Button Color="Color.Danger" Block="true" Size="Size.Small" Clicked="() => ExchangeFood(4)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.AppleAlt"></Blazorise.Icon> 40 Maças
+            </Button>
+        </CardBody>
+    </Card>
+</CardDeck>
+<CardDeck Margin="Margin.Is3.FromBottom">
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                Ilimitado
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">10</Badge>
+            </Paragraph>
+            <Button Color="Color.Primary" Block="true" Size="Size.Small" Clicked="() => BuyDiamond(10)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.CreditCard"></Blazorise.Icon> R$ 0.00
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                Ilimitado
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">20</Badge>
+            </Paragraph>
+            <Button Color="Color.Primary" Block="true" Size="Size.Small" Clicked="() => BuyDiamond(20)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.CreditCard"></Blazorise.Icon> R$ 0.00
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                Ilimitado
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">50</Badge>
+            </Paragraph>
+            <Button Color="Color.Primary" Block="true" Size="Size.Small" Clicked="() => BuyDiamond(50)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.CreditCard"></Blazorise.Icon> R$ 0.00
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardHeader Padding="Padding.Is1.FromBottom.Is1.FromTop">
+            Restantes
+            <Text Display="Display.InlineBlock" Float="Float.End">
+                Ilimitado
+            </Text>
+        </CardHeader>
+        <CardBody Padding="Padding.Is2">
+            <Paragraph TextAlignment="TextAlignment.Center">
+                <Blazorise.Icon Name="@FontAwesomeIcons.Gem" Style="color: #5c7cfa;" Class="fa-3x"></Blazorise.Icon>
+                <Badge Color="Color.Secondary">100</Badge>
+            </Paragraph>
+            <Button Color="Color.Primary" Block="true" Size="Size.Small" Clicked="() => BuyDiamond(100)" Disabled="true">
+                <Blazorise.Icon Name="@FontAwesomeIcons.CreditCard"></Blazorise.Icon> R$ 0.00
+            </Button>
+        </CardBody>
+    </Card>
+</CardDeck>
+
+@code {
+    protected override async Task LoadData()
+    {
+        //ignore
+    }
+
+    private async Task BuyDiamond(int qtd)
+    {
+        try
+        {
+            //await Http.Store_AddDiamond(qtd, SessionStorage, Toast);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task ExchangeFood(int qtdDiamond)
+    {
+        try
+        {
+            //await Http.Store_ExchangeFood(qtdDiamond, SessionStorage, Toast);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+}

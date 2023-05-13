@@ -1,0 +1,189 @@
+﻿@page "/Profile/Gallery"
+@attribute [Authorize]
+@inherits PageCore<ProfileGallery>
+
+<Row HorizontalGutter="8" VerticalGutter="0">
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
+        <Card>
+            <CardHeader>
+                @Resources.CardHeader.ProfileGaleryMainPhoto
+                <Button Size="Size.ExtraSmall" Color="Color.Primary" Float="Float.End" Clicked="helpMain.ShowModal" title="Ajuda" Margin="Margin.Is2.FromStart">
+                    <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon>
+                </Button>
+            </CardHeader>
+            <CardBody>
+                <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
+                    <FigureImage Margin="Margin.Is0" Source="@imageDataUri" AlternateText="No User" Style="max-height: 450px !important;" />
+                </Figure>
+                <div class="custom-file">
+                    <InputFile OnChange="@OnInputFileChange" @attributes="@GetAttributes()"></InputFile>
+                    <label for="logo" class="custom-file-label">Escolher arquivo...</label>
+                </div>
+            </CardBody>
+        </Card>
+    </Column>
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is8.OnWidescreen" Margin="Margin.Is3.FromBottom">
+        <Card>
+            <CardHeader>
+                @Resources.CardHeader.ProfileGaleryPhotoGallery
+            </CardHeader>
+            <CardBody>
+                <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" Margin="Margin.Is2.FromBottom">
+                    @foreach (var item in imageDataUriGallery)
+                    {
+                        <CarouselSlide @key="@item" Name="@item" Style="text-align: center; background-color: black;">
+                            <Image Source="@item" Style="height: 450px" />
+                            <Button Color="Color.Danger" Style="position: absolute; right: 10px; top: 10px; z-index:2;" Clicked="DeletePhotoGallery">
+                                <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon>
+                            </Button>
+                        </CarouselSlide>
+                    }
+                </Carousel>
+                <div class="custom-file">
+                    <InputFile OnChange="@OnInputFileGalleryChange" @attributes="@GetAttributes()"></InputFile>
+                    <label for="logo" class="custom-file-label">Escolher arquivo...</label>
+                </div>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+
+<VerusDate.Web.Shared.modal.BasicModal @ref="helpMain" Title="Dicas para foto principal">
+    Uma pesquisa divulgada no jornal da associação Psychological Science  destaca a importância da imagem de perfil e quais as impressões com a foto
+    <ul>
+        <li>Mostre os dentes ao sorrir;</li>
+        <li>Use terno/casacos de cor escura com camisa clara;</li>
+        <li>Deixe que seu maxilar projete alguma sombra no pescoço;</li>
+        <li>Faça uma foto que mostre ombros e rosto ou da cintura até o rosto;</li>
+        <li>Use a técnica “Squinch” – explicada pelo fotógrafo profissional Peter Hurley. Que diz que um retrato frontal fica mais fotogênico ao projetar a cabeça para frente e fechar/cerrar um pouco os olhos;</li>
+        <li>Faça uma composição assimétrica;</li>
+        <li>Evite usar óculos ou acessórios que cubram seus olhos;</li>
+    </ul>
+    A pesquisa ainda diz que é bom tentar tirar as fotos em um fundo iluminado e de frente para a câmera (inclinar um pouco o rosto de lado também pode ser produtivo). Além disso, é preciso evitar chapéus; óculos de sol; cabelo, sombras nos olhos, sorriso muito exagerado ou com muita sensualidade.
+</VerusDate.Web.Shared.modal.BasicModal>
+
+@code
+{
+    private ProfileModel? _profile = new();
+    string? imageDataUri = ImageHelper.GetNoUserPhoto;
+
+    private Shared.modal.BasicModal? helpMain;
+
+    string? selectedImage;
+    string[] imageDataUriGallery = Array.Empty<string>();
+
+    protected override async Task LoadData()
+    {
+        _profile = await Http.Profile_Get(SessionStorage);
+
+        if (_profile != null && _profile.Photo != null)
+        {
+            imageDataUri = _profile.GetMainPhoto();
+            imageDataUriGallery = _profile.GetGalleryPhotos();
+            selectedImage = imageDataUriGallery?.FirstOrDefault();
+        }
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var maxAllowedFiles = 1;
+            var format = "image/jpeg";
+
+            foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
+            {
+                var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
+                var buffer = new byte[resizedImageFile.Size];
+                await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+                imageDataUri = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+
+                if (ImageHelper.ValidImage(buffer))
+                {
+                    await Http.Storage_UploadPhotoFace(buffer, SessionStorage, Toast);
+
+                    _profile = await Http.Profile_Get(SessionStorage);
+                }
+                else
+                {
+                    imageDataUri = null;
+                    await Toast.Error("Foto inválida, favor tentar novamente");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            imageDataUri = null;
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task OnInputFileGalleryChange(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var maxAllowedFiles = 3;
+            var format = "image/jpeg";
+            var buffers = new List<byte[]>();
+
+            foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
+            {
+                var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
+                var buffer = new byte[resizedImageFile.Size];
+                await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+                imageDataUriGallery = imageDataUriGallery.Concat(new string[] { $"data:{format};base64,{Convert.ToBase64String(buffer)}" }).ToArray();
+
+                if (ImageHelper.ValidImage(buffer))
+                {
+                    buffers.Add(buffer);
+                }
+                else
+                {
+                    imageDataUriGallery = Array.Empty<string>();
+                    await Toast.Error("Foto inválida, favor tentar novamente");
+                }
+            }
+
+            if (imageDataUriGallery.Any())
+            {
+                await Http.Storage_UploadPhotoGallery(buffers, SessionStorage, Toast);
+
+                _profile = await Http.Profile_Get(SessionStorage);
+
+                selectedImage = imageDataUriGallery?.LastOrDefault();
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            imageDataUriGallery = Array.Empty<string>();
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task DeletePhotoGallery()
+    {
+        try
+        {
+            var fileName = System.IO.Path.GetFileName(selectedImage);
+            if (string.IsNullOrEmpty(fileName)) throw new InvalidOperationException("invalid fileName");
+
+            await Http.Storage_DeletePhotoGallery(fileName, SessionStorage, Toast);
+
+            imageDataUriGallery = imageDataUriGallery.Where(w => w != selectedImage).ToArray();
+
+            selectedImage = imageDataUriGallery?.FirstOrDefault();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            imageDataUriGallery = Array.Empty<string>();
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    public static Dictionary<string, object> GetAttributes()
+    {
+        return new Dictionary<string, object>() { { "class", "custom-file-input" }, { "accept", "image/*" } };
+    }
+}
