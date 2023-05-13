@@ -11,12 +11,9 @@ namespace MM.WEB.Core
         [Inject] protected ILogger<T> Logger { get; set; } = default!;
         [Inject] protected INotificationService Toast { get; set; } = default!;
         [Inject] protected AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
-
-        //[Inject] protected WatchedListApi WatchedListApi { get; set; } = default!;
-        //[Inject] protected WishListApi WishListApi { get; set; } = default!;
-        //[Inject] protected WatchingListApi WatchingListApi { get; set; } = default!;
         [Inject] protected AppState AppState { get; set; } = default!;
         [Inject] protected IResizeListener listener { get; set; } = default!;
+        [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
 
         protected override void OnAfterRender(bool firstRender)
         {
@@ -28,7 +25,7 @@ namespace MM.WEB.Core
             }
         }
 
-        private async void WindowResized(object obj, BrowserWindowSize window)
+        private async void WindowResized(object? obj, BrowserWindowSize window)
         {
             AppStateStatic.OnMobile = await listener.MatchMedia(Breakpoints.XSmallDown);
             AppStateStatic.OnTablet = await listener.MatchMedia(Breakpoints.SmallUp);
@@ -71,7 +68,6 @@ namespace MM.WEB.Core
     public abstract class PageCore<T> : ComponenteCore<T> where T : class
     {
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
-        [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -85,10 +81,6 @@ namespace MM.WEB.Core
                     {
                         Navigation.NavigateTo("/ProfilePrincipal");
                     }
-
-                    ////AppState.ChangeWatchingList(await WatchingListApi.Get(await AppState.IsUserAuthenticated()));
-                    ////AppState.ChangeWishList(await WishListApi.Get(await AppState.IsUserAuthenticated()));
-                    ////AppState.ChangeWatchedList(await WatchedListApi.Get(await AppState.IsUserAuthenticated()));
                 }
             }
             catch (Exception ex)
@@ -101,7 +93,6 @@ namespace MM.WEB.Core
     public abstract class PageNoDataCore<T> : ComponenteNoDataCore<T> where T : class
     {
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
-        [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -115,10 +106,6 @@ namespace MM.WEB.Core
                     {
                         Navigation.NavigateTo("/ProfilePrincipal");
                     }
-
-                    //AppState.ChangeWatchingList(await WatchingListApi.Get(await AppState.IsUserAuthenticated()));
-                    //AppState.ChangeWishList(await WishListApi.Get(await AppState.IsUserAuthenticated()));
-                    //AppState.ChangeWatchedList(await WatchedListApi.Get(await AppState.IsUserAuthenticated()));
                 }
             }
             catch (Exception ex)

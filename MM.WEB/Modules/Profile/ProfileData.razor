@@ -1,11 +1,12 @@
 ﻿@page "/Profile/Data"
 @using MM.Shared.Models.Profile;
+@using MM.WEB.Modules.Profile.Component
 @using MM.WEB.Modules.Profile.Component.Field
 @using MM.WEB.Shared.Field;
 @attribute [Authorize]
 @inherits PageCore<ProfileData>
 
-<CustomVisibility Loading="ProfileLoading">
+<Loading @ref="LoadingProfile">
     <EditForm Model="@profile" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
         <FluentValidationValidator @ref="_validator" />
         <Div Margin="Margin.Is2.OnY">
@@ -62,19 +63,15 @@
                             CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></CustomDate>
                     <Field Horizontal="true">
                         <FieldBody ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
-                            <Select TValue="int">
-                                <SelectItem Value="0">Western Zodiac</SelectItem>
-                                <SelectItem Value="1" Disabled="true">Chinese Zodiac</SelectItem>
-                                <SelectItem Value="2" Disabled="true">Indian Zodiac</SelectItem>
-                                <SelectItem Value="3" Disabled="true">Tropic Zodiac</SelectItem>
-                                <SelectItem Value="4" Disabled="true">Sidereal Zodiac</SelectItem>
-                                <SelectItem Value="5" Disabled="true">Celtic Zodiac</SelectItem>
-                                <SelectItem Value="6" Disabled="true">Egyptian Zodiac</SelectItem>
-                                <SelectItem Value="7" Disabled="true">Native American Zodiac</SelectItem>
+                            <Select TValue="ZodiacType" @bind-SelectedValue="ZodiacType">
+                                @foreach (var item in EnumHelper.GetList<ZodiacType>())
+                                {
+                                    <SelectItem Value="@item.Value">@item.Name</SelectItem>
+                                }
                             </Select>
                         </FieldBody>
                         <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                            <TextEdit Text="@profile.BirthDate.GetZodiac().GetName()" Disabled="true"></TextEdit>
+                            <TextEdit Text="@profile.BirthDate.GetZodiacName(ZodiacType)" Disabled="true"></TextEdit>
                         </FieldBody>
                         <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
                             <TextEdit Text="@(profile.BirthDate.GetAge() + " Anos")" Disabled="true"></TextEdit>
@@ -186,69 +183,7 @@
         }
         else if (SelectedTab == Tabs.MyRelationship)
         {
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <Alert Visible="true" Color="Color.Secondary">
-                        <AlertDescription>Vínculos existentes</AlertDescription>
-                    </Alert>
-                    <ListGroup>
-                        <CustomVisibility NoData="!profile.Partners.Any()">
-                            @foreach (var item in profile.Partners)
-                            {
-                                <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
-                                    <Badge Color="Color.Secondary">@item.Email</Badge>
-                                    @if (string.IsNullOrEmpty(item.Id))
-                                    {
-                                        <Badge Color="Color.Danger" Pill>Vínculo Inativo</Badge>
-                                    }
-                                    else
-                                    {
-                                        <Badge Color="Color.Success" Pill>Vínculo Ativo</Badge>
-                                    }
-                                    <Button Color="Color.Danger" Clicked="@(()=>{RemovePartner(item.Email);})" Float="Float.End" Size="Size.Small" title="Delete">
-                                        <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon>
-                                    </Button>
-                                </ListGroupItem>
-                            }
-                        </CustomVisibility>
-                    </ListGroup>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <Alert Visible="true" Color="Color.Secondary">
-                        <AlertDescription>Convites</AlertDescription>
-                    </Alert>
-                    <FieldText For="@(() => partner.Email)" @bind-Value="@partner.Email" LabelSize="LabelSize.Normal" ButtomCssIcon="FontAwesomeIcons.PaperPlane"
-                           ButtomClicked="@AddNewPartner"></FieldText>
-                    <Divider DividerType="DividerType.TextContent" Text="ou" />
-                    <ListGroup>
-                        <CustomVisibility Loading="ProfileLoading" NoData="@(Invite == null || !Invite.Invites.Any())" CustomNoData="Não existem convites pendentes">
-                            @foreach (var item in Invite?.Invites ?? new List<Invite>())
-                            {
-                                <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
-                                    <Badge Color="Color.Secondary">@item.DtInvite.GetElapsedTime()</Badge>
-                                    <Badge Color="Color.Secondary">@item.UserEmail</Badge>
-                                    @if (item.Accepted)
-                                    {
-                                        <Badge Color="Color.Success" Pill>Convite aceito</Badge>
-                                    }
-                                    else
-                                    {
-                                        <Badge Color="Color.Danger" Pill>Convite não aceito</Badge>
-                                    }
-                                    <Div Float="Float.End">
-                                        <Button Color="Color.Success" Clicked="@(async()=>{await AcceptInvite(item.UserId);})" Size="Size.Small" title="Aceitar" Disabled="@item.Accepted">
-                                            <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon>
-                                        </Button>
-                                        <Button Color="Color.Danger" Clicked="@(async()=>{})" Size="Size.Small" title="Rejeitar" Disabled="true">
-                                            <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon>
-                                        </Button>
-                                    </Div>
-                                </ListGroupItem>
-                            }
-                        </CustomVisibility>
-                    </ListGroup>
-                </Column>
-            </Row>
+            <MyRelationships profile="profile"></MyRelationships>
         }
 
         <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
@@ -285,14 +220,16 @@
             Esta opção solicitará localização para seu aparelho (precisa estar habilitada esta opção)
         </Paragraph>
     </MM.WEB.Shared.modal.BasicModal>
-</CustomVisibility>
+</Loading>
 
 @code {
     private Shared.modal.BasicModal? privacy;
     private Shared.modal.BasicModal? help;
 
     private FluentValidationValidator? _validator;
-    private bool ProfileLoading;
+    private Loading? LoadingProfile;
+
+    public ZodiacType ZodiacType { get; set; } = ZodiacType.WesternZodiac;
 
     private enum Tabs
     {

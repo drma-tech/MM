@@ -1,0 +1,154 @@
+﻿@using FluentValidation;
+@using MM.Shared.Models.Profile;
+@using MM.WEB.Modules.Profile.Component.Field
+@using MM.WEB.Modules.Profile.Core;
+@using MM.WEB.Shared.Field;
+@using VerusDate.Web.Api;
+@inherits ComponenteCore<MyRelationships>
+
+@inject InviteApi InviteApi
+@inject ProfileApi ProfileApi
+
+<Row>
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+        <Alert Visible="true" Color="Color.Secondary">
+            <AlertDescription>Vínculos existentes</AlertDescription>
+        </Alert>
+        <ListGroup>
+            <Loading @ref="LoadingPartners">
+                @foreach (var item in profile?.Partners ?? new())
+                {
+                    <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
+                        <Badge Color="Color.Secondary">@item.Email</Badge>
+                        @if (string.IsNullOrEmpty(item.Id))
+                        {
+                            <Badge Color="Color.Danger" Pill>Vínculo Inativo</Badge>
+                        }
+                        else
+                        {
+                            <Badge Color="Color.Success" Pill>Vínculo Ativo</Badge>
+                        }
+                        <Button Color="Color.Danger" Clicked="@(()=>{RemovePartner(item.Email);})" Float="Float.End" Size="Size.Small" title="Delete">
+                            <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon>
+                        </Button>
+                    </ListGroupItem>
+                }
+            </Loading>
+        </ListGroup>
+    </Column>
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+        <Alert Visible="true" Color="Color.Secondary">
+            <AlertDescription>Convites</AlertDescription>
+        </Alert>
+        <FieldText For="@(() => partner.Email)" @bind-Value="@partner.Email" LabelSize="LabelSize.Normal" ButtomCssIcon="FontAwesomeIcons.PaperPlane"
+                   ButtomClicked="@AddNewPartner"></FieldText>
+        <Divider DividerType="DividerType.TextContent" Text="ou" />
+        <ListGroup>
+            <Loading @ref="LoadingInvites">
+                @foreach (var item in Invite?.Invites ?? new List<Invite>())
+                {
+                    <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
+                        <Badge Color="Color.Secondary">@item.DtInvite.GetElapsedTime()</Badge>
+                        <Badge Color="Color.Secondary">@item.UserEmail</Badge>
+                        @if (item.Accepted)
+                        {
+                            <Badge Color="Color.Success" Pill>Convite aceito</Badge>
+                        }
+                        else
+                        {
+                            <Badge Color="Color.Danger" Pill>Convite não aceito</Badge>
+                        }
+                        <Div Float="Float.End">
+                            <Button Color="Color.Success" Clicked="@(async()=>{await AcceptInvite(item.UserId);})" Size="Size.Small" title="Aceitar" Disabled="@item.Accepted">
+                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon>
+                            </Button>
+                            <Button Color="Color.Danger" Clicked="@(async()=>{})" Size="Size.Small" title="Rejeitar" Disabled="true">
+                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon>
+                            </Button>
+                        </Div>
+                    </ListGroupItem>
+                }
+            </Loading>
+        </ListGroup>
+    </Column>
+</Row>
+
+@code {
+    [Parameter] public ProfileModel? profile { get; set; } = new();
+
+    private Partner? partner = new();
+    private InviteModel? Invite;
+
+    private Loading? LoadingPartners;
+    private Loading? LoadingInvites;
+    private List<string> NewInvites = new();
+    private List<string> RemovedInvites = new();
+
+    protected override async Task LoadData()
+    {
+        LoadingInvites?.Start();
+        var principal = await PrincipalApi.Get();
+        if (principal != null) Invite = await InviteApi.Invite_Get(principal.Email);
+        var isEmpty = Invite == null || !Invite.Invites.Any();
+        LoadingInvites?.Finish(isEmpty, "Não existem convites pendentes");
+    }
+
+    private void AddNewPartner()
+    {
+        profile?.Partners.Add(partner);
+
+        NewInvites.Add(partner.Email);
+
+        partner = new();
+    }
+
+    private void RemovePartner(string email)
+    {
+        var obj = profile.Partners.FirstOrDefault(x => x.Email == email);
+
+        if (obj != null) profile.Partners.Remove(obj);
+
+        RemovedInvites.Add(partner.Email);
+    }
+
+    private async Task AcceptInvite(string userId)
+    {
+        try
+        {
+            var validator = new ProfileValidation();
+
+            if (validator.Validate(profile, options => options.IncludeRuleSets("BASIC", "BIO", "LIFESTYLE", "PERSONALITY", "INTEREST")).IsValid)
+            {
+                //todo: metodo deve ser uma unica api
+                var invite = Invite?.Invites.FirstOrDefault(w => w.UserId == userId && w.Type == InviteType.Partner);
+
+                if (Invite != null && invite != null)
+                {
+                    invite.Accepted = true;
+                    await InviteApi.Invite_Update(Invite);
+
+                    profile.Partners.Add(new Partner() { Email = invite.UserEmail, Id = userId });
+                    await ProfileApi.Profile_Update(profile);
+
+                    profile = await ProfileApi.Profile_Get(); //TODO update id field
+
+                    var principal = await PrincipalApi.Get();
+                    var emailUser = principal?.Email;
+                    await ProfileApi.Profile_UpdatePartner(userId, emailUser);
+                }
+                else
+                {
+                    await Toast.Warning("Não foi possível identificar o convite");
+                }
+            }
+            else
+            {
+                await Toast.Warning("Favor, preencher seu perfil corretamente");
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+}

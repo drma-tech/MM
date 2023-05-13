@@ -18,17 +18,14 @@ namespace MM.WEB.Modules.Profile
         [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
         private ProfileModel? profile = new();
-        private Partner? partner = new();
-        private List<string> NewInvites = new();
-        private List<string> RemovedInvites = new();
+       
         private GeoLocation? GPS = new();
-        private InviteModel? Invite;
 
         protected override async Task LoadData()
         {
-            ProfileLoading = true;
-
+            LoadingProfile?.Start();
             profile = await ProfileApi.Profile_Get();
+            LoadingProfile?.Finish(profile == null);
 
             profile ??= new()
             {
@@ -37,11 +34,6 @@ namespace MM.WEB.Modules.Profile
                 BirthDate = DateTime.UtcNow.AddYears(-18).AddDays(1).Date,
                 Diet = Diet.Omnivore,
             };
-
-            var principal = await PrincipalApi.Get();
-            if (principal != null) Invite = await InviteApi.Invite_Get(principal.Email);
-
-            ProfileLoading = false;
         }
 
         private async Task SetLocation(ProfileModel profile)
@@ -527,7 +519,7 @@ namespace MM.WEB.Modules.Profile
 
             try
             {
-                profile.Zodiac = profile.BirthDate.GetZodiac();
+                profile.Zodiac = profile.BirthDate.GetWesternZodiac();
 
                 await ProfileApi.Profile_Update(profile);
 
@@ -544,34 +536,34 @@ namespace MM.WEB.Modules.Profile
                 }
                 else
                 {
-                    var invites = NewInvites.Except(RemovedInvites).ToList();
-                    var principal = await PrincipalApi.Get();
-                    var emailUser = principal?.Email;
+                    //var invites = NewInvites.Except(RemovedInvites).ToList();
+                    //var principal = await PrincipalApi.Get();
+                    //var emailUser = principal?.Email;
 
-                    foreach (var email in invites)
-                    {
-                        var invite = await InviteApi.Invite_Get(email);
-                        var newInvite = false;
+                    //foreach (var email in invites)
+                    //{
+                    //    var invite = await InviteApi.Invite_Get(email);
+                    //    var newInvite = false;
 
-                        if (invite == null)
-                        {
-                            invite = new InviteModel();
-                            invite.Initialize(email);
-                            newInvite = true;
-                        }
+                    //    if (invite == null)
+                    //    {
+                    //        invite = new InviteModel();
+                    //        invite.Initialize(email);
+                    //        newInvite = true;
+                    //    }
 
-                        invite.Invites.Add(new Invite(profile.Key, emailUser, InviteType.Partner));
+                    //    invite.Invites.Add(new Invite(profile.Key, emailUser, InviteType.Partner));
 
-                        if (newInvite)
-                            await InviteApi.Invite_Add(invite);
-                        else
-                            await InviteApi.Invite_Update(invite);
-                    }
+                    //    if (newInvite)
+                    //        await InviteApi.Invite_Add(invite);
+                    //    else
+                    //        await InviteApi.Invite_Update(invite);
+                    //}
 
-                    foreach (var item in RemovedInvites)
-                    {
-                        //TODO: remove removed invites
-                    }
+                    //foreach (var item in RemovedInvites)
+                    //{
+                    //    //TODO: remove removed invites
+                    //}
                 }
             }
             catch (Exception ex)
@@ -590,63 +582,6 @@ namespace MM.WEB.Modules.Profile
                 await Toast.Warning(errors.First());
             else
                 await Toast.Warning("Foram detectados erros de validação");
-        }
-
-        private void AddNewPartner()
-        {
-            profile.Partners.Add(partner);
-
-            NewInvites.Add(partner.Email);
-
-            partner = new();
-        }
-
-        private void RemovePartner(string email)
-        {
-            var obj = profile.Partners.FirstOrDefault(x => x.Email == email);
-
-            if (obj != null) profile.Partners.Remove(obj);
-
-            RemovedInvites.Add(partner.Email);
-        }
-
-        private async Task AcceptInvite(string userId)
-        {
-            try
-            {
-                if (_validator?.Validate(options => options.IncludeRuleSets("BASIC", "BIO", "LIFESTYLE", "PERSONALITY", "INTEREST")) ?? false)
-                {
-                    //todo: metodo deve ser uma unica api
-                    var invite = Invite?.Invites.FirstOrDefault(w => w.UserId == userId && w.Type == InviteType.Partner);
-
-                    if (Invite != null && invite != null)
-                    {
-                        invite.Accepted = true;
-                        await InviteApi.Invite_Update(Invite);
-
-                        profile.Partners.Add(new Partner() { Email = invite.UserEmail, Id = userId });
-                        await ProfileApi.Profile_Update(profile);
-
-                        profile = await ProfileApi.Profile_Get(); //TODO update id field
-
-                        var principal = await PrincipalApi.Get();
-                        var emailUser = principal?.Email;
-                        await ProfileApi.Profile_UpdatePartner(userId, emailUser);
-                    }
-                    else
-                    {
-                        await Toast.Warning("Não foi possível identificar o convite");
-                    }
-                }
-                else
-                {
-                    await Toast.Warning("Favor, preencher seu perfil corretamente");
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.ProcessException(Toast, Logger);
-            }
         }
     }
 }
