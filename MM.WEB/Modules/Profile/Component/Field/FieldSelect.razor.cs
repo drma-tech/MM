@@ -29,22 +29,11 @@ namespace MM.WEB.Modules.Profile.Component.Field
         [Parameter] public IReadOnlyList<TEnum>? SelectedValues { get; set; }
         [Parameter] public EventCallback<IReadOnlyList<TEnum>> SelectedValuesChanged { get; set; }
 
-        private string? Description => For.GetCustomAttribute().Description;
+        private string? Description => For.GetCustomAttribute()?.Description;
 
         [Inject] public IModalService ModalService { get; set; } = default!;
 
         [Parameter] public Func<EnumObject, object> Order { get; set; } = o => o.Value;
-
-        protected async Task SetValue(TValue value)
-        {
-            if (Disabled) return;
-
-            if (!Equals(SelectedValue, value))
-            {
-                SelectedValue = value;
-                await SelectedValueChanged.InvokeAsync(value);
-            }
-        }
 
         protected Task UpdateDataHelp(Expression<Func<TValue>> For)
         {

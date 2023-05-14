@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
 using MM.Shared;
 using MM.Shared.Models.Profile;
-using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using VerusDate.Web.Api;
 
@@ -18,7 +17,7 @@ namespace MM.WEB.Modules.Profile
         [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
         private ProfileModel? profile = new();
-       
+
         private GeoLocation? GPS = new();
 
         protected override async Task LoadData()
@@ -92,7 +91,7 @@ namespace MM.WEB.Modules.Profile
             switch (country)
             {
                 case Country.CHN:
-                    profile.Languages = new Language[] { Language.StandardChinese };
+                    profile.Languages = new Language[] { Language.zh };
                     break;
 
                 case Country.IND:
@@ -100,11 +99,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.USA:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.IDN:
-                    profile.Languages = new Language[] { Language.Malay }; //Indonesian = It is a standardized variety of Malay
+                    profile.Languages = new Language[] { Language.ms }; //Indonesian = It is a standardized variety of Malay
                     break;
 
                 case Country.PAK:
@@ -112,11 +111,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.NGA:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.BRA:
-                    profile.Languages = new Language[] { Language.Portuguese };
+                    profile.Languages = new Language[] { Language.pt };
                     break;
 
                 case Country.BGD:
@@ -124,11 +123,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.RUS:
-                    profile.Languages = new Language[] { Language.Russian };
+                    profile.Languages = new Language[] { Language.ru };
                     break;
 
                 case Country.MEX:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.JPN:
@@ -144,7 +143,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.EGY:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.VNM:
@@ -152,11 +151,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.COD:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.IRN:
-                    profile.Languages = new Language[] { Language.Persian };
+                    profile.Languages = new Language[] { Language.fa };
                     break;
 
                 case Country.TUR:
@@ -164,15 +163,15 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.DEU:
-                    profile.Languages = new Language[] { Language.German };
+                    profile.Languages = new Language[] { Language.de };
                     break;
 
                 case Country.FRA:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.GBR:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.THA:
@@ -184,11 +183,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.TZA:
-                    profile.Languages = new Language[] { Language.Swahili, Language.English };
+                    profile.Languages = new Language[] { Language.sw, Language.en };
                     break;
 
                 case Country.ITA:
-                    profile.Languages = new Language[] { Language.Italian };
+                    profile.Languages = new Language[] { Language.it };
                     break;
 
                 case Country.MMR:
@@ -200,35 +199,35 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.COL:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.KEN:
-                    profile.Languages = new Language[] { Language.Swahili, Language.English };
+                    profile.Languages = new Language[] { Language.sw, Language.en };
                     break;
 
                 case Country.ESP:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.ARG:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.DZA:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.SDN:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.UGA:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.IRQ:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.UKR:
@@ -236,7 +235,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.CAN:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.POL:
@@ -244,7 +243,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.MAR:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.UZB:
@@ -252,36 +251,36 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.SAU:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.PER:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.AGO:
-                    profile.Languages = new Language[] { Language.Portuguese };
+                    profile.Languages = new Language[] { Language.pt };
                     break;
 
                 case Country.AFG:
-                    profile.Languages = new Language[] { Language.Persian }; //Dari, which is a variety of and mutually intelligible with Persian
+                    profile.Languages = new Language[] { Language.fa }; //Dari, which is a variety of and mutually intelligible with Persian
                     //Pashto, Dari
                     break;
 
                 case Country.MYS:
-                    profile.Languages = new Language[] { Language.Malay };
+                    profile.Languages = new Language[] { Language.ms };
                     break;
 
                 case Country.MOZ:
-                    profile.Languages = new Language[] { Language.Portuguese };
+                    profile.Languages = new Language[] { Language.pt };
                     break;
 
                 case Country.GHA:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.YEM:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.NPL:
@@ -289,11 +288,11 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.VEN:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.CIV:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.MDG:
@@ -301,7 +300,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.AUS:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.PRK:
@@ -309,15 +308,15 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.CMR:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.NER:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.TWN:
-                    profile.Languages = new Language[] { Language.StandardChinese };
+                    profile.Languages = new Language[] { Language.zh };
                     break;
 
                 case Country.LKA:
@@ -325,19 +324,19 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.BFA:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.MWI:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.MLI:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.CHL:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.KAZ:
@@ -345,35 +344,35 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.ROU:
-                    profile.Languages = new Language[] { Language.Romanian };
+                    profile.Languages = new Language[] { Language.ro };
                     break;
 
                 case Country.ZMB:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.SYR:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.ECU:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.NLD:
-                    profile.Languages = new Language[] { Language.Dutch };
+                    profile.Languages = new Language[] { Language.nl };
                     break;
 
                 case Country.SEN:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.GTM:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.TCD:
-                    profile.Languages = new Language[] { Language.French, Language.Arabic };
+                    profile.Languages = new Language[] { Language.fr, Language.ar };
                     break;
 
                 case Country.SOM:
@@ -389,7 +388,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.SSD:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.RWA:
@@ -397,7 +396,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.GIN:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.BDI:
@@ -405,31 +404,31 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.BEN:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.BOL:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.TUN:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.HTI:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.BEL:
-                    profile.Languages = new Language[] { Language.Dutch };
+                    profile.Languages = new Language[] { Language.nl };
                     break;
 
                 case Country.JOR:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.CUB:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.GRC:
@@ -437,7 +436,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.DOM:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.CZE:
@@ -449,7 +448,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.PRT:
-                    profile.Languages = new Language[] { Language.Portuguese };
+                    profile.Languages = new Language[] { Language.pt };
                     break;
 
                 case Country.AZE:
@@ -461,7 +460,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.HND:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 case Country.ISR:
@@ -469,35 +468,35 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.TJK:
-                    profile.Languages = new Language[] { Language.Russian };
+                    profile.Languages = new Language[] { Language.ru };
                     break;
 
                 case Country.BLR:
-                    profile.Languages = new Language[] { Language.Russian };
+                    profile.Languages = new Language[] { Language.ru };
                     break;
 
                 case Country.ARE:
-                    profile.Languages = new Language[] { Language.Arabic };
+                    profile.Languages = new Language[] { Language.ar };
                     break;
 
                 case Country.PNG:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.AUT:
-                    profile.Languages = new Language[] { Language.German };
+                    profile.Languages = new Language[] { Language.de };
                     break;
 
                 case Country.CHE:
-                    profile.Languages = new Language[] { Language.German };
+                    profile.Languages = new Language[] { Language.de };
                     break;
 
                 case Country.SLE:
-                    profile.Languages = new Language[] { Language.English };
+                    profile.Languages = new Language[] { Language.en };
                     break;
 
                 case Country.TGO:
-                    profile.Languages = new Language[] { Language.French };
+                    profile.Languages = new Language[] { Language.fr };
                     break;
 
                 case Country.HKG:
@@ -505,7 +504,7 @@ namespace MM.WEB.Modules.Profile
                     break;
 
                 case Country.PRY:
-                    profile.Languages = new Language[] { Language.Spanish };
+                    profile.Languages = new Language[] { Language.es };
                     break;
 
                 default:
@@ -519,7 +518,7 @@ namespace MM.WEB.Modules.Profile
 
             try
             {
-                profile.Zodiac = profile.BirthDate.GetWesternZodiac();
+                //profile.Zodiac = profile.BirthDate.GetWesternZodiac();
 
                 await ProfileApi.Profile_Update(profile);
 

@@ -17,20 +17,9 @@ namespace MM.WEB.Modules.Profile.Component.Field
         [Parameter] public object? ButtomCssIcon { get; set; }
         [Parameter] public string? ButtomTitle { get; set; }
 
-        private string Description => For.GetCustomAttribute().Description;
+        private string? Description => For.GetCustomAttribute()?.Description;
 
-        protected async Task SetValue(string value)
-        {
-            if (Disabled) return;
-
-            if (!Equals(Value, value))
-            {
-                Value = value;
-                await ValueChanged.InvokeAsync(value);
-            }
-        }
-
-        protected override Dictionary<string, object> GetAttributes(string customStyle)
+        protected override Dictionary<string, object> GetAttributes(string? customStyle)
         {
             var result = base.GetAttributes(customStyle);
 

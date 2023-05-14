@@ -159,24 +159,6 @@
   <data name="CustomVisibilityNoData" xml:space="preserve">
     <value>Não há dados para mostrar</value>
   </data>
-  <data name="DeliveryModelAds" xml:space="preserve">
-    <value>Anúncios</value>
-  </data>
-  <data name="DeliveryModelBuy" xml:space="preserve">
-    <value>Comprar</value>
-  </data>
-  <data name="DeliveryModelFlatRate" xml:space="preserve">
-    <value>Taxa Fixa</value>
-  </data>
-  <data name="DeliveryModelFlatRateBuy" xml:space="preserve">
-    <value>Taxa Fixa/Comprar</value>
-  </data>
-  <data name="DeliveryModelFree" xml:space="preserve">
-    <value>Grátis</value>
-  </data>
-  <data name="DeliveryModelRent" xml:space="preserve">
-    <value>Alugar</value>
-  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Aguarde novidades...</value>
   </data>
@@ -192,83 +174,14 @@
   <data name="MenuSupport" xml:space="preserve">
     <value>Suporte</value>
   </data>
-  <data name="MoreInformation" xml:space="preserve">
-    <value>Mais informações ou Contribuições</value>
-  </data>
-  <data name="MyMovieWishlist" xml:space="preserve">
-    <value>Minha Lista - Filmes ({0} itens)</value>
-  </data>
-  <data name="MyProviders" xml:space="preserve">
-    <value>Provedores favoritos ({0} itens)</value>
-  </data>
-  <data name="MyShowWishlist" xml:space="preserve">
-    <value>Minha Lista - Séries ({0} itens)</value>
-  </data>
-  <data name="Offering" xml:space="preserve">
-    <value>Oferecimento</value>
-  </data>
-  <data name="ProviderPopupTabAbout" xml:space="preserve">
-    <value>Sobre</value>
-  </data>
-  <data name="ProviderPopupTabCatalog" xml:space="preserve">
-    <value>Catálogo</value>
-  </data>
-  <data name="ProviderPopupTabDetails" xml:space="preserve">
-    <value>Detalhes</value>
-  </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>ATUALIZAR AGORA</value>
   </data>
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Uma nova versão está disponível</value>
   </data>
-  <data name="TitleNotAvailable" xml:space="preserve">
-    <value>Infelizmente este título não está disponível em sua região</value>
-  </data>
-  <data name="MenuSuggestions" xml:space="preserve">
-    <value>Sugestões</value>
-  </data>
-  <data name="MyShowWatching" xml:space="preserve">
-    <value>Assistindo - Séries ({0} itens)</value>
-  </data>
-  <data name="MyMovieWatching" xml:space="preserve">
-    <value>Assistindo - Filmes ({0} itens)</value>
-  </data>
-  <data name="TabAbout" xml:space="preserve">
-    <value>Sobre</value>
-  </data>
-  <data name="TabStreaming" xml:space="preserve">
-    <value>Streaming</value>
-  </data>
-  <data name="TabCollection" xml:space="preserve">
-    <value>Coleção</value>
-  </data>
-  <data name="RemoveCollection" xml:space="preserve">
-    <value>Remover coleção</value>
-  </data>
-  <data name="NewsTitle" xml:space="preserve">
-    <value>Últimas Notícias</value>
-  </data>
   <data name="ButtonReadMore" xml:space="preserve">
     <value>Leia mais</value>
-  </data>
-  <data name="ButtonLoadMore" xml:space="preserve">
-    <value>Carregar mais</value>
-  </data>
-  <data name="SeeAllItems" xml:space="preserve">
-    <value>Ver todos os itens</value>
-  </data>
-  <data name="PickARandom" xml:space="preserve">
-    <value>Escolha um item aleatório para mim</value>
-  </data>
-  <data name="TabCredits" xml:space="preserve">
-    <value>Créditos</value>
-  </data>
-  <data name="Cast" xml:space="preserve">
-    <value>Elenco</value>
-  </data>
-  <data name="Directing" xml:space="preserve">
-    <value>Diretor(a)</value>
   </data>
   <data name="Writing" xml:space="preserve">
     <value>Roteirização</value>
@@ -282,12 +195,6 @@
   <data name="ButtoSearch" xml:space="preserve">
     <value>Procurar</value>
   </data>
-  <data name="TrailersTitle" xml:space="preserve">
-    <value>Últimos Trailers</value>
-  </data>
-  <data name="MenuProviders" xml:space="preserve">
-    <value>Provedores</value>
-  </data>
   <data name="ButtonUpdate" xml:space="preserve">
     <value>Atualizar</value>
   </data>
@@ -299,5 +206,11 @@
   </data>
   <data name="AuthenticationInProgress" xml:space="preserve">
     <value>Autenticação em andamento...</value>
+  </data>
+  <data name="BetaVersion" xml:space="preserve">
+    <value>Versão Beta!</value>
+  </data>
+  <data name="ProductUnderDevelopment" xml:space="preserve">
+    <value>Produto ainda em desenvolvimento, então muita coisa ainda vai melhorar. Se você tiver sugestões a fazer, favor solicitar na seção de suporte do aplicativo.</value>
   </data>
 </root>

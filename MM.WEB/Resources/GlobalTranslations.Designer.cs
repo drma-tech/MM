@@ -70,6 +70,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beta Version!.
+        /// </summary>
+        public static string BetaVersion {
+            get {
+                return ResourceManager.GetString("BetaVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string ButtonAdd {
@@ -93,15 +102,6 @@ namespace MM.WEB.Resources {
         public static string ButtonClose {
             get {
                 return ResourceManager.GetString("ButtonClose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Load More.
-        /// </summary>
-        public static string ButtonLoadMore {
-            get {
-                return ResourceManager.GetString("ButtonLoadMore", resourceCulture);
             }
         }
         
@@ -205,15 +205,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cast.
-        /// </summary>
-        public static string Cast {
-            get {
-                return ResourceManager.GetString("Cast", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
         public static string CustomVisibilityInvalid {
@@ -237,69 +228,6 @@ namespace MM.WEB.Resources {
         public static string CustomVisibilityNoData {
             get {
                 return ResourceManager.GetString("CustomVisibilityNoData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ads.
-        /// </summary>
-        public static string DeliveryModelAds {
-            get {
-                return ResourceManager.GetString("DeliveryModelAds", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Buy.
-        /// </summary>
-        public static string DeliveryModelBuy {
-            get {
-                return ResourceManager.GetString("DeliveryModelBuy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flat Rate.
-        /// </summary>
-        public static string DeliveryModelFlatRate {
-            get {
-                return ResourceManager.GetString("DeliveryModelFlatRate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Flat Rate/Buy.
-        /// </summary>
-        public static string DeliveryModelFlatRateBuy {
-            get {
-                return ResourceManager.GetString("DeliveryModelFlatRateBuy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Free.
-        /// </summary>
-        public static string DeliveryModelFree {
-            get {
-                return ResourceManager.GetString("DeliveryModelFree", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rent.
-        /// </summary>
-        public static string DeliveryModelRent {
-            get {
-                return ResourceManager.GetString("DeliveryModelRent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Directing.
-        /// </summary>
-        public static string Directing {
-            get {
-                return ResourceManager.GetString("Directing", resourceCulture);
             }
         }
         
@@ -340,92 +268,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Providers.
-        /// </summary>
-        public static string MenuProviders {
-            get {
-                return ResourceManager.GetString("MenuProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suggestions.
-        /// </summary>
-        public static string MenuSuggestions {
-            get {
-                return ResourceManager.GetString("MenuSuggestions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
         public static string MenuSupport {
             get {
                 return ResourceManager.GetString("MenuSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More information or Contributions.
-        /// </summary>
-        public static string MoreInformation {
-            get {
-                return ResourceManager.GetString("MoreInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Watching - Movies ({0} items).
-        /// </summary>
-        public static string MyMovieWatching {
-            get {
-                return ResourceManager.GetString("MyMovieWatching", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wishlist - Movies ({0} items).
-        /// </summary>
-        public static string MyMovieWishlist {
-            get {
-                return ResourceManager.GetString("MyMovieWishlist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Favorite Providers ({0} items).
-        /// </summary>
-        public static string MyProviders {
-            get {
-                return ResourceManager.GetString("MyProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Watching - Shows ({0} items).
-        /// </summary>
-        public static string MyShowWatching {
-            get {
-                return ResourceManager.GetString("MyShowWatching", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wishlist - Shows ({0} items).
-        /// </summary>
-        public static string MyShowWishlist {
-            get {
-                return ResourceManager.GetString("MyShowWishlist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last News.
-        /// </summary>
-        public static string NewsTitle {
-            get {
-                return ResourceManager.GetString("NewsTitle", resourceCulture);
             }
         }
         
@@ -439,47 +286,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offering.
+        ///   Looks up a localized string similar to Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app&apos;s support section..
         /// </summary>
-        public static string Offering {
+        public static string ProductUnderDevelopment {
             get {
-                return ResourceManager.GetString("Offering", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pick a random item for me.
-        /// </summary>
-        public static string PickARandom {
-            get {
-                return ResourceManager.GetString("PickARandom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string ProviderPopupTabAbout {
-            get {
-                return ResourceManager.GetString("ProviderPopupTabAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Catalog.
-        /// </summary>
-        public static string ProviderPopupTabCatalog {
-            get {
-                return ResourceManager.GetString("ProviderPopupTabCatalog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Details.
-        /// </summary>
-        public static string ProviderPopupTabDetails {
-            get {
-                return ResourceManager.GetString("ProviderPopupTabDetails", resourceCulture);
+                return ResourceManager.GetString("ProductUnderDevelopment", resourceCulture);
             }
         }
         
@@ -498,78 +309,6 @@ namespace MM.WEB.Resources {
         public static string PWAUpdaterText {
             get {
                 return ResourceManager.GetString("PWAUpdaterText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove Collection.
-        /// </summary>
-        public static string RemoveCollection {
-            get {
-                return ResourceManager.GetString("RemoveCollection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See all items.
-        /// </summary>
-        public static string SeeAllItems {
-            get {
-                return ResourceManager.GetString("SeeAllItems", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string TabAbout {
-            get {
-                return ResourceManager.GetString("TabAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Collection.
-        /// </summary>
-        public static string TabCollection {
-            get {
-                return ResourceManager.GetString("TabCollection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Credits.
-        /// </summary>
-        public static string TabCredits {
-            get {
-                return ResourceManager.GetString("TabCredits", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Streaming.
-        /// </summary>
-        public static string TabStreaming {
-            get {
-                return ResourceManager.GetString("TabStreaming", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unfortunately this title is not available in your region.
-        /// </summary>
-        public static string TitleNotAvailable {
-            get {
-                return ResourceManager.GetString("TitleNotAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last Trailers.
-        /// </summary>
-        public static string TrailersTitle {
-            get {
-                return ResourceManager.GetString("TrailersTitle", resourceCulture);
             }
         }
         

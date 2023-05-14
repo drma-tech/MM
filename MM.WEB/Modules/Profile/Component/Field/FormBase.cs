@@ -18,7 +18,7 @@ namespace MM.WEB.Shared.Field
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public LabelSize LabelSize { get; set; } = LabelSize.Normal;
 
-        protected virtual Dictionary<string, object> GetAttributes(string customStyle)
+        protected virtual Dictionary<string, object> GetAttributes(string? customStyle)
         {
             var dic = new Dictionary<string, object> { { "class", "form-control" } };
 

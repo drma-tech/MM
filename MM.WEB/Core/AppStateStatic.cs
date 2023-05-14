@@ -25,7 +25,7 @@ namespace MM.WEB.Core
             Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
 
             //Region = (Region?)region ?? Region.US;
-            Language = (Language?)language ?? Language.English;
+            Language = (Language?)language ?? Language.en;
         }
 
         //public static void ChangeRegion(Region value)

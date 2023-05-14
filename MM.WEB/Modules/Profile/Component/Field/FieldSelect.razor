@@ -7,7 +7,7 @@
 {
     <Field Horizontal="true">
         <FieldLabel ColumnSize="@GetLabelSize()">
-            <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @For.GetCustomAttribute().Name
+            <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
             @if (Required)
             {
                 <div style="color: red; display: initial;"> *</div>
@@ -32,7 +32,7 @@
                     }
                     else
                     {
-                        <Select TValue="TValue" SelectedValue="@SelectedValue" SelectedValueChanged="@SetValue" Disabled="@Disabled">
+                        <Select TValue="TValue" SelectedValue="@SelectedValue" SelectedValueChanged="SelectedValueChanged" Disabled="@Disabled">
                             @if (ShowGroup)
                             {
                                 <SelectItem></SelectItem>

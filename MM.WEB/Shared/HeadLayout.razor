@@ -92,6 +92,6 @@
 
     protected void LanguageValueChanged(Language value)
     {
-        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetName(false)), forceLoad: true);
+        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.ToString()), forceLoad: true);
     }
 }

@@ -240,9 +240,6 @@
   <data name="ButtonReadMore" xml:space="preserve">
     <value>Leer más</value>
   </data>
-  <data name="ButtonLoadMore" xml:space="preserve">
-    <value>Cargar más</value>
-  </data>
   <data name="SeeAllItems" xml:space="preserve">
     <value>Ver todos los artículos</value>
   </data>

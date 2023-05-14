@@ -7,59 +7,61 @@
     public enum Language
     {
         [Custom(Name = "English", ResourceType = typeof(Resources.Language))]
-        English = 1,
+        en = 1,
 
         [Custom(Name = "French", ResourceType = typeof(Resources.Language))]
-        French = 2,
+        fr = 2,
 
         [Custom(Name = "Arabic", ResourceType = typeof(Resources.Language))]
-        Arabic = 3,
+        ar = 3,
 
         [Custom(Name = "Spanish", ResourceType = typeof(Resources.Language))]
-        Spanish = 4,
+        es = 4,
 
         [Custom(Name = "Portuguese", ResourceType = typeof(Resources.Language))]
-        Portuguese = 5,
+        pt = 5,
 
         [Custom(Name = "German", ResourceType = typeof(Resources.Language))]
-        German = 6,
+        de = 6,
 
         [Custom(Name = "Russian", ResourceType = typeof(Resources.Language))]
-        Russian = 7,
+        ru = 7,
 
         [Custom(Name = "Swahili", ResourceType = typeof(Resources.Language))]
-        Swahili = 8,
+        sw = 8,
 
+        //todo: maybe wrong
         [Custom(Name = "SerboCroatian", ResourceType = typeof(Resources.Language))]
-        SerboCroatian = 9,
+        sh = 9,
 
         [Custom(Name = "Italian", ResourceType = typeof(Resources.Language))]
-        Italian = 10,
+        it = 10,
 
         [Custom(Name = "Malay", ResourceType = typeof(Resources.Language))]
-        Malay = 11,
+        ms = 11,
 
         [Custom(Name = "Tswana", ResourceType = typeof(Resources.Language))]
-        Tswana = 12,
+        tn = 12,
 
         [Custom(Name = "Persian", ResourceType = typeof(Resources.Language))]
-        Persian = 13,
+        fa = 13,
 
         [Custom(Name = "Dutch", ResourceType = typeof(Resources.Language))]
-        Dutch = 14,
+        nl = 14,
 
         [Custom(Name = "Sotho", ResourceType = typeof(Resources.Language))]
-        Sotho = 15,
+        st = 15,
 
         [Custom(Name = "Albanian", ResourceType = typeof(Resources.Language))]
-        Albanian = 16,
+        sq = 16,
 
         [Custom(Name = "StandardChinese", ResourceType = typeof(Resources.Language))]
-        StandardChinese = 17,
+        zh = 17,
 
         [Custom(Name = "Romanian", ResourceType = typeof(Resources.Language))]
-        Romanian = 18,
+        ro = 18,
 
+        //todo: complete the others code iso
         [Custom(Name = "Turkish", ResourceType = typeof(Resources.Language))]
         Turkish = 19,
 
