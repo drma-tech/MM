@@ -52,6 +52,7 @@ namespace MM.WEB.Core
                 if (firstRender)
                 {
                     await LoadData();
+                    StateHasChanged();
                 }
             }
             catch (Exception ex)

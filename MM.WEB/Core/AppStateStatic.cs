@@ -7,11 +7,8 @@ namespace MM.WEB.Core
     {
         public static List<LogContainer> Logs { get; private set; } = new List<LogContainer>();
 
-        //public static Region Region { get; private set; }
         public static Language Language { get; private set; }
         public static Bar? Sidebar { get; set; }
-
-        public static Action? RegionChanged { get; set; }
 
         public static bool OnMobile { get; set; }
         public static bool OnTablet { get; set; }
@@ -21,17 +18,9 @@ namespace MM.WEB.Core
 
         static AppStateStatic()
         {
-            //Enum.TryParse(typeof(Region), RegionInfo.CurrentRegion.Name, out object? region);
             Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
 
-            //Region = (Region?)region ?? Region.US;
             Language = (Language?)language ?? Language.en;
         }
-
-        //public static void ChangeRegion(Region value)
-        //{
-        //    Region = value;
-        //    RegionChanged?.Invoke();
-        //}
     }
 }

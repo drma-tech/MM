@@ -58,7 +58,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddScoped<InviteApi>();
     collection.AddScoped<MapApi>();
 
-    ////collection.AddScoped<ExternalIdApi>();
     collection.AddScoped<CacheApi>();
 
     collection.AddScoped<AppState>();
