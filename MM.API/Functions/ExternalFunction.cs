@@ -23,7 +23,7 @@ namespace VerusDate.Api.Function
             try
             {
                 using var http = new HttpClient();
-                return await http.Get<HereJson>($"https://browse.search.hereapi.com/v1/browse?at={latitude},{longitude}&limit=1&apiKey={HereApiKey}", cancellationToken);
+                return await http.Get<HereJson>($"https://browse.search.hereapi.com/v1/browse?at={latitude},{longitude}&lang=en-US&limit=1&apiKey={HereApiKey}", cancellationToken);
             }
             catch (Exception ex)
             {

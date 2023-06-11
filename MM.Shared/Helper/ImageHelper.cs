@@ -9,7 +9,7 @@
             PhotoValidation
         }
 
-        public static string GetNoUserPhoto => "img/noimage.png";
+        public static string GetNoUserPhoto => "noimage.png";
 
         public static string GetPhotoContainer(PhotoType type)
         {

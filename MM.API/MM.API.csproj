@@ -46,7 +46,7 @@
 	  <Compile Remove="Functions\StoreFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.33.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.34.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.14.1" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.13" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.10.0" />
