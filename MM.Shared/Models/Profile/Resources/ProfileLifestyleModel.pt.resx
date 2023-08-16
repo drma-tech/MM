@@ -163,7 +163,7 @@
     <value>Religião</value>
   </data>
   <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>Diferentemente das outras personalidades, a compatibilidade desta é uma preferência pessoal</value>
+    <value>Diferentemente das outras personalidades, a compatibilidade desta é uma preferência pessoal.</value>
   </data>
   <data name="SexPersonalityPreferences_Name" xml:space="preserve">
     <value>Personalidade Sexual</value>
@@ -175,7 +175,7 @@
     <value>Personalidade Sexual</value>
   </data>
   <data name="SharedSpendingStyle_Name" xml:space="preserve">
-    <value />
+    <value>Estilo de gastos compartilhados</value>
   </data>
   <data name="Smoke_Name" xml:space="preserve">
     <value>Fuma</value>

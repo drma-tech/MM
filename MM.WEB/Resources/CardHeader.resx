@@ -123,27 +123,6 @@
   <data name="EventMyEvents" xml:space="preserve">
     <value>My Events</value>
   </data>
-  <data name="IndexApple" xml:space="preserve">
-    <value>Apple</value>
-  </data>
-  <data name="IndexDiamond" xml:space="preserve">
-    <value>Diamond</value>
-  </data>
-  <data name="IndexHighlights" xml:space="preserve">
-    <value>Highlights of the Week ({0})</value>
-  </data>
-  <data name="IndexPopularity" xml:space="preserve">
-    <value>Popularity</value>
-  </data>
-  <data name="IndexRanking" xml:space="preserve">
-    <value>Ranking</value>
-  </data>
-  <data name="ProfileAccountActions" xml:space="preserve">
-    <value>Actions</value>
-  </data>
-  <data name="ProfileAccountRegistrationData" xml:space="preserve">
-    <value>Registration Data</value>
-  </data>
   <data name="ProfileData" xml:space="preserve">
     <value>Profile</value>
   </data>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdventureTours_Name" xml:space="preserve">
+    <value>Tours de aventura (por ejemplo, rafting)</value>
+  </data>
+  <data name="Agriculture_Name" xml:space="preserve">
+    <value>Agricultura (por ejemplo, estadías rurales)</value>
+  </data>
+  <data name="Animals_Name" xml:space="preserve">
+    <value>Animales (por ejemplo, observación de aves)</value>
+  </data>
+  <data name="ArtTourism_Name" xml:space="preserve">
+    <value>Turismo de Arte</value>
+  </data>
+  <data name="Backpacking_Description" xml:space="preserve">
+    <value>Es la recreación al aire libre de llevar cosas personales en la espalda mientras caminas durante más de un día. A menudo, pero no siempre, es un viaje largo y puede o no implicar acampar al aire libre.</value>
+  </data>
+  <data name="Backpacking_Name" xml:space="preserve">
+    <value>Mochilero</value>
+  </data>
+  <data name="Beach_Name" xml:space="preserve">
+    <value>Playa</value>
+  </data>
+  <data name="BoatTours_Name" xml:space="preserve">
+    <value>Paseos en barco</value>
+  </data>
+  <data name="BusTours_Name" xml:space="preserve">
+    <value>Tours en autobús</value>
+  </data>
+  <data name="CampingGlamping_Name" xml:space="preserve">
+    <value>Camping / Glamping</value>
+  </data>
+  <data name="CityBreak_Description" xml:space="preserve">
+    <value>Una escapada a la ciudad es típicamente un tipo de vacaciones que dura 1-2 días. Como su nombre indica, eliges una ciudad donde viajar (generalmente durante el fin de semana) para ver algunas de sus principales atracciones.</value>
+  </data>
+  <data name="CityBreak_Name" xml:space="preserve">
+    <value>Escapada a la ciudad</value>
+  </data>
+  <data name="Classes_Name" xml:space="preserve">
+    <value>Clases (por ejemplo, clase de cocina)</value>
+  </data>
+  <data name="ClimbingMountaineering_Name" xml:space="preserve">
+    <value>Escalada y Montañismo</value>
+  </data>
+  <data name="Concerts_Name" xml:space="preserve">
+    <value>Conciertos</value>
+  </data>
+  <data name="Conferences_Name" xml:space="preserve">
+    <value>Conferencias</value>
+  </data>
+  <data name="Cottages_Name" xml:space="preserve">
+    <value>Cabañas</value>
+  </data>
+  <data name="CouchSurfing_Description" xml:space="preserve">
+    <value>La práctica de viajar y alojarse con personas que no conoces, que anuncian sus casas en Internet</value>
+  </data>
+  <data name="CouchSurfing_Name" xml:space="preserve">
+    <value>Sofá Surf</value>
+  </data>
+  <data name="CreativeWork_Name" xml:space="preserve">
+    <value>Trabajo creativo (por ejemplo, escritura)</value>
+  </data>
+  <data name="CruiseHolidays_Name" xml:space="preserve">
+    <value>Vacaciones en crucero</value>
+  </data>
+  <data name="CulturalTourism_Name" xml:space="preserve">
+    <value>Turismo cultural</value>
+  </data>
+  <data name="CyclingTour_Name" xml:space="preserve">
+    <value>Tour en bicicleta</value>
+  </data>
+  <data name="DivingSnorkeling_Name" xml:space="preserve">
+    <value>Buceo y Snorkeling</value>
+  </data>
+  <data name="DIYProjects_Name" xml:space="preserve">
+    <value>Proyectos de bricolaje (quédate en casa)</value>
+  </data>
+  <data name="FamilyVisits_Name" xml:space="preserve">
+    <value>Visitas familiares (por ejemplo, padres)</value>
+  </data>
+  <data name="FilmTourism_Name" xml:space="preserve">
+    <value>Turismo cinematográfico (por ejemplo, localizaciones de rodaje)</value>
+  </data>
+  <data name="Fishing_Name" xml:space="preserve">
+    <value>Pesca</value>
+  </data>
+  <data name="FitnessVacations_Name" xml:space="preserve">
+    <value>Vacaciones de fitness (por ejemplo, excursiones para correr)</value>
+  </data>
+  <data name="Golf_Name" xml:space="preserve">
+    <value>Golf</value>
+  </data>
+  <data name="Gourmet_Name" xml:space="preserve">
+    <value>Gourmet (por ejemplo, tours gastronómicos)</value>
+  </data>
+  <data name="HighCulture_Name" xml:space="preserve">
+    <value>Alta cultura (por ejemplo, música clásica)</value>
+  </data>
+  <data name="Hiking_Name" xml:space="preserve">
+    <value>Excursionismo</value>
+  </data>
+  <data name="HistoricalSites_Name" xml:space="preserve">
+    <value>Sitios Históricos</value>
+  </data>
+  <data name="Hobbies_Name" xml:space="preserve">
+    <value>Pasatiempos (por ejemplo, leer)</value>
+  </data>
+  <data name="Homecoming_Description" xml:space="preserve">
+    <value>Homecoming es la tradición de dar la bienvenida a antiguos alumnos y miembros y celebrar la existencia de una organización. Es una tradición en muchas escuelas secundarias, universidades e iglesias en los Estados Unidos y Canadá.</value>
+  </data>
+  <data name="Homecoming_Name" xml:space="preserve">
+    <value>Regreso a casa</value>
+  </data>
+  <data name="HomeImprovement_Name" xml:space="preserve">
+    <value>Mejoras para el hogar (quédese en casa)</value>
+  </data>
+  <data name="HomeSwap_Description" xml:space="preserve">
+    <value>Un acuerdo en el que dos familias cambian de casa de vacaciones</value>
+  </data>
+  <data name="HomeSwap_Name" xml:space="preserve">
+    <value>Intercambio de casas</value>
+  </data>
+  <data name="HorseRiding_Name" xml:space="preserve">
+    <value>Equitación</value>
+  </data>
+  <data name="InternationalTravel_Name" xml:space="preserve">
+    <value>Viajes internacionales</value>
+  </data>
+  <data name="JustStayingHome_Name" xml:space="preserve">
+    <value>Solo quedarse en casa</value>
+  </data>
+  <data name="LuxuryTravel_Description" xml:space="preserve">
+    <value>Los viajes de lujo son un segmento de nicho para las personas dispuestas a gastar dinero para sentirse mimadas. Este tipo de experiencias se ven en todo el mundo, pero no hay tantas como se podría pensar. Por su naturaleza, los viajes de lujo no tienen una restricción de tiempo, ya que puede quedarse de vacaciones siempre que tenga dinero o todo el tiempo que desee.</value>
+  </data>
+  <data name="LuxuryTravel_Name" xml:space="preserve">
+    <value>Viajes de lujo</value>
+  </data>
+  <data name="MotorSports_Name" xml:space="preserve">
+    <value>Deportes de motor</value>
+  </data>
+  <data name="MountainsLakes_Name" xml:space="preserve">
+    <value>Montañas / Lagos</value>
+  </data>
+  <data name="MusicEventsFestivals_Name" xml:space="preserve">
+    <value>Música / Eventos Festivales</value>
+  </data>
+  <data name="NatureNationalParks_Name" xml:space="preserve">
+    <value>Naturaleza / Parques Nacionales</value>
+  </data>
+  <data name="Nightlife_Name" xml:space="preserve">
+    <value>Vida nocturna</value>
+  </data>
+  <data name="Photography_Name" xml:space="preserve">
+    <value>Fotografía</value>
+  </data>
+  <data name="PopCulture_Name" xml:space="preserve">
+    <value>Cultura pop (por ejemplo, eventos de cosplay)</value>
+  </data>
+  <data name="RelaxingWellness_Name" xml:space="preserve">
+    <value>Relajante / Wellness / SPA / Yoga</value>
+  </data>
+  <data name="ReligionSpirituality_Name" xml:space="preserve">
+    <value>Religión y espiritualidad (por ejemplo, peregrinación)</value>
+  </data>
+  <data name="Resorts_Name" xml:space="preserve">
+    <value>Resorts</value>
+  </data>
+  <data name="Retreats_Name" xml:space="preserve">
+    <value>Retiros</value>
+  </data>
+  <data name="Reunions_Name" xml:space="preserve">
+    <value>Reuniones</value>
+  </data>
+  <data name="Romantic_Name" xml:space="preserve">
+    <value>Romántico</value>
+  </data>
+  <data name="RVRoadTrips_Name" xml:space="preserve">
+    <value>RV (Autocaravanas) / Viajes por carretera</value>
+  </data>
+  <data name="Safaris_Name" xml:space="preserve">
+    <value>Safaris</value>
+  </data>
+  <data name="Sailing_Name" xml:space="preserve">
+    <value>Navegación</value>
+  </data>
+  <data name="Science_Name" xml:space="preserve">
+    <value>Ciencia (por ejemplo, museos de ciencias, astronomía)</value>
+  </data>
+  <data name="Shopping_Name" xml:space="preserve">
+    <value>Compras (por ejemplo, capitales de la moda)</value>
+  </data>
+  <data name="SightseeingGuidedTours_Name" xml:space="preserve">
+    <value>Visitas turísticas / Visitas guiadas</value>
+  </data>
+  <data name="SnowboardSki_Name" xml:space="preserve">
+    <value>Snowboard y esquí</value>
+  </data>
+  <data name="SoloTravel_Name" xml:space="preserve">
+    <value>Viaje en solitario</value>
+  </data>
+  <data name="SportsEvents_Name" xml:space="preserve">
+    <value>Eventos Deportivos</value>
+  </data>
+  <data name="Stargazing_Name" xml:space="preserve">
+    <value>Observación de estrellas</value>
+  </data>
+  <data name="ThemeParks_Name" xml:space="preserve">
+    <value>Parques temáticos</value>
+  </data>
+  <data name="TrainTravel_Name" xml:space="preserve">
+    <value>Viajar en tren</value>
+  </data>
+  <data name="Volunteering_Name" xml:space="preserve">
+    <value>Voluntariado</value>
+  </data>
+  <data name="Working_Description" xml:space="preserve">
+    <value>Las vacaciones de trabajo tienden a ser la nueva forma de viajar para aquellos limitados a los ingresos disponibles. Los nómadas digitales son los más interesados en trabajar y viajar al mismo tiempo. Los nómadas digitales trabajan en línea y esto les da la máxima libertad para moverse por el mundo.</value>
+  </data>
+  <data name="Working_Name" xml:space="preserve">
+    <value>Laborable</value>
+  </data>
+</root>

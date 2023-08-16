@@ -1,8 +1,7 @@
 ﻿@using FluentValidation;
 @using MM.Shared.Models.Profile;
-@using MM.WEB.Modules.Profile.Component.Field
 @using MM.WEB.Modules.Profile.Core;
-@using MM.WEB.Shared.Field;
+@using MM.WEB.Modules.Shared.General;
 @using VerusDate.Web.Api;
 @inherits ComponenteCore<MyRelationships>
 
@@ -88,33 +87,38 @@
     {
         LoadingInvites?.Start();
         var principal = await PrincipalApi.Get();
-        if (principal != null) Invite = await InviteApi.Invite_Get(principal.Email);
+        if (principal != null) Invite = await InviteApi.Invite_Get(principal.Email ?? throw new ValidationException("invalid email"));
         var isEmpty = Invite == null || !Invite.Invites.Any();
         LoadingInvites?.Finish(isEmpty, "Não existem convites pendentes");
     }
 
     private void AddNewPartner()
     {
+        if (partner == null) return;
+
         profile?.Partners.Add(partner);
 
-        NewInvites.Add(partner.Email);
+        NewInvites.Add(partner.Email ?? throw new ValidationException("invalid email"));
 
         partner = new();
     }
 
-    private void RemovePartner(string email)
+    private void RemovePartner(string? email)
     {
-        var obj = profile.Partners.FirstOrDefault(x => x.Email == email);
+        if (string.IsNullOrEmpty(email)) return;
 
-        if (obj != null) profile.Partners.Remove(obj);
+        var obj = profile?.Partners.FirstOrDefault(x => x.Email == email);
 
-        RemovedInvites.Add(partner.Email);
+        if (obj != null) profile?.Partners.Remove(obj);
+
+        RemovedInvites.Add(partner?.Email ?? throw new ValidationException("email not found"));
     }
 
     private async Task AcceptInvite(string userId)
     {
         try
         {
+            if (profile == null) return;
             var validator = new ProfileValidation();
 
             if (validator.Validate(profile, options => options.IncludeRuleSets("BASIC", "BIO", "LIFESTYLE", "PERSONALITY", "INTEREST")).IsValid)

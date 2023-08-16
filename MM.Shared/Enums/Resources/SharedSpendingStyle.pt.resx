@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Equitable_Description" xml:space="preserve">
-    <value />
+  <data name="Balanced_Description" xml:space="preserve">
+    <value>Esse estilo de gasto envolve ambos os parceiros contribuindo financeiramente e dividindo as contas proporcionalmente com base na renda ou situação financeira de cada pessoa.</value>
   </data>
-  <data name="Equitable_Name" xml:space="preserve">
-    <value />
+  <data name="Balanced_Name" xml:space="preserve">
+    <value>Balanceado</value>
   </data>
-  <data name="Generous_Description" xml:space="preserve">
-    <value />
+  <data name="Benefactor_Description" xml:space="preserve">
+    <value>Esse estilo de gasto envolve um parceiro pagando por tudo e frequentemente oferecendo presentes ao parceiro.</value>
   </data>
-  <data name="Generous_Name" xml:space="preserve">
-    <value />
+  <data name="Benefactor_Name" xml:space="preserve">
+    <value>Benfeitor</value>
   </data>
-  <data name="GiftOriented_Description" xml:space="preserve">
-    <value />
+  <data name="Contributor_Description" xml:space="preserve">
+    <value>Esse estilo de gasto envolve ambos os parceiros contribuindo financeiramente, mas um parceiro pagando por menos coisas e recebendo presentes ocasionalmente.</value>
   </data>
-  <data name="GiftOriented_Name" xml:space="preserve">
-    <value />
+  <data name="Contributor_Name" xml:space="preserve">
+    <value>Contribuinte</value>
   </data>
-  <data name="NeedsSupport_Description" xml:space="preserve">
-    <value />
+  <data name="Provider_Description" xml:space="preserve">
+    <value>Esse estilo de gasto envolve um parceiro pagando pela maioria das coisas e, ocasionalmente, oferecendo presentes ao parceiro.</value>
   </data>
-  <data name="NeedsSupport_Name" xml:space="preserve">
-    <value />
+  <data name="Provider_Name" xml:space="preserve">
+    <value>Provedor</value>
   </data>
-  <data name="Supportive_Description" xml:space="preserve">
-    <value />
+  <data name="Recipient_Description" xml:space="preserve">
+    <value>Esse estilo de gasto envolve uma pessoa que não contribui financeiramente e recebe presentes frequentemente de seu parceiro.</value>
   </data>
-  <data name="Supportive_Name" xml:space="preserve">
-    <value />
+  <data name="Recipient_Name" xml:space="preserve">
+    <value>Recebedor</value>
   </data>
 </root>

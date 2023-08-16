@@ -15,6 +15,11 @@ namespace MM.WEB.Core
         [Inject] protected IResizeListener listener { get; set; } = default!;
         [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
 
+        /// <summary>
+        /// if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
+        /// </summary>
+        /// <param name="firstRender"></param>
+        /// <returns></returns>
         protected override void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
@@ -38,17 +43,24 @@ namespace MM.WEB.Core
     }
 
     /// <summary>
-    /// if you implement the OnInitializedAsync method, call 'await base.OnInitializedAsync();'
+    /// if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ComponenteCore<T> : ComponenteNoDataCore<T> where T : class
     {
         protected abstract Task LoadData();
 
+        /// <summary>
+        /// if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
+        /// </summary>
+        /// <param name="firstRender"></param>
+        /// <returns></returns>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             try
             {
+                await base.OnAfterRenderAsync(firstRender);
+
                 if (firstRender)
                 {
                     await LoadData();
@@ -70,10 +82,16 @@ namespace MM.WEB.Core
     {
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
 
+        /// <summary>
+        /// if you implement the OnInitializedAsync method, call 'await base.OnInitializedAsync();'
+        /// </summary>
+        /// <returns></returns>
         protected override async Task OnInitializedAsync()
         {
             try
             {
+                await base.OnInitializedAsync();
+
                 if (await AppState.IsUserAuthenticated())
                 {
                     var principal = await PrincipalApi.Get();
@@ -95,10 +113,16 @@ namespace MM.WEB.Core
     {
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
 
+        /// <summary>
+        /// if you implement the OnInitializedAsync method, call 'await base.OnInitializedAsync();'
+        /// </summary>
+        /// <returns></returns>
         protected override async Task OnInitializedAsync()
         {
             try
             {
+                await base.OnInitializedAsync();
+
                 if (await AppState.IsUserAuthenticated())
                 {
                     var principal = await PrincipalApi.Get();

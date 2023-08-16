@@ -1,5 +1,4 @@
-﻿using MM.Shared;
-using MM.Shared.Models.Profile;
+﻿using MM.Shared.Models.Profile;
 
 namespace MM.WEB.Core
 {
@@ -102,16 +101,16 @@ namespace MM.WEB.Core
 
         public static string GetLocation(ProfileModel user)
         {
-            var parts = user.Location.Split(" - ");
+            var parts = user.Location?.Split(" - ") ?? Array.Empty<string>();
 
-            return user.Preference.Region switch
+            return user.Preference?.Region switch
             {
                 Region.City => user.Location, //level 3
                 Region.State => $"{parts[0]} - {parts[1]}", //level 2
                 Region.Country => $"{parts[0]}", //level 1
                 Region.World => "",
                 _ => "",
-            };
+            } ?? "";
         }
 
         public static IReadOnlyList<Language> GetLanguages(ProfileModel user, ProfilePreferenceModel? pref = null)

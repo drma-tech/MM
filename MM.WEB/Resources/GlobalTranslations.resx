@@ -132,6 +132,9 @@
   <data name="ButtonClose" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="ButtonLoadMore" xml:space="preserve">
+    <value>Load More</value>
+  </data>
   <data name="ButtonLogin" xml:space="preserve">
     <value>Login</value>
   </data>

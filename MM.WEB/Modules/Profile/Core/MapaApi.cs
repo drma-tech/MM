@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared;
 using System.Globalization;
 
 namespace MM.WEB.Modules.Profile.Core

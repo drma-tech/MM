@@ -405,7 +405,7 @@ namespace MM.Shared.Models.Profile
     {
         [Required]
         [EmailAddress]
-        [Custom(Name = "Convidar Parceiro", Prompt = "Email do parceiro", Description = "Precisa ser o mesmo e-mail que será usado no cadastro")]
+        [Custom(Name = "Convidar Parceiro", Prompt = "Email do parceiro", Description = "Precisa ser o mesmo e-mail que será usado no cadastro/login")]
         public string? Email { get; set; }
 
         public string? Id { get; set; }

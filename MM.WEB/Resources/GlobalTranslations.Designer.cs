@@ -106,6 +106,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load More.
+        /// </summary>
+        public static string ButtonLoadMore {
+            get {
+                return ResourceManager.GetString("ButtonLoadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string ButtonLogin {

@@ -46,12 +46,12 @@
 	  <Compile Remove="Functions\StoreFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.34.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.14.1" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.13" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.10.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.35.3" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.19.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.14.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.10" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />

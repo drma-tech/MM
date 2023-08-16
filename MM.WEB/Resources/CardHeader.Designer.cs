@@ -79,69 +79,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apple.
-        /// </summary>
-        public static string IndexApple {
-            get {
-                return ResourceManager.GetString("IndexApple", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Diamond.
-        /// </summary>
-        public static string IndexDiamond {
-            get {
-                return ResourceManager.GetString("IndexDiamond", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Highlights of the Week ({0}).
-        /// </summary>
-        public static string IndexHighlights {
-            get {
-                return ResourceManager.GetString("IndexHighlights", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Popularity.
-        /// </summary>
-        public static string IndexPopularity {
-            get {
-                return ResourceManager.GetString("IndexPopularity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ranking.
-        /// </summary>
-        public static string IndexRanking {
-            get {
-                return ResourceManager.GetString("IndexRanking", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actions.
-        /// </summary>
-        public static string ProfileAccountActions {
-            get {
-                return ResourceManager.GetString("ProfileAccountActions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Registration Data.
-        /// </summary>
-        public static string ProfileAccountRegistrationData {
-            get {
-                return ResourceManager.GetString("ProfileAccountRegistrationData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string ProfileData {

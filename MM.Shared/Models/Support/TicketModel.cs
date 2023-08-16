@@ -36,8 +36,10 @@ namespace MM.Shared.Models.Support
             Update();
         }
 
-        public void Initialize(string idUserOwner)
+        public void Initialize(string? idUserOwner)
         {
+            if (string.IsNullOrEmpty(IdUserOwner)) throw new ArgumentNullException(nameof(idUserOwner));
+
             IdUserOwner = idUserOwner;
 
             var id = Guid.NewGuid().ToString();

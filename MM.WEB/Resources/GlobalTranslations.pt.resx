@@ -213,4 +213,7 @@
   <data name="ProductUnderDevelopment" xml:space="preserve">
     <value>Produto ainda em desenvolvimento, então muita coisa ainda vai melhorar. Se você tiver sugestões a fazer, favor solicitar na seção de suporte do aplicativo.</value>
   </data>
+  <data name="ButtonLoadMore" xml:space="preserve">
+    <value>Carregue mais</value>
+  </data>
 </root>

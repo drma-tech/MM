@@ -1,8 +1,7 @@
 ﻿@page "/Profile/Data"
 @using MM.Shared.Models.Profile;
 @using MM.WEB.Modules.Profile.Component
-@using MM.WEB.Modules.Profile.Component.Field
-@using MM.WEB.Shared.Field;
+@using MM.WEB.Modules.Shared.Popup;
 @attribute [Authorize]
 @inherits PageCore<ProfileData>
 
@@ -51,6 +50,9 @@
         }
         else if (SelectedTab == Tabs.Bio)
         {
+            <Alert Visible="true" Color="Color.Info">
+                <AlertDescription>To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly.</AlertDescription>
+            </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                     <FieldSelect For="@(() => profile.RaceCategory)" TValue="RaceCategory?" TEnum="RaceCategory" @bind-SelectedValue="@profile.RaceCategory"
@@ -86,8 +88,8 @@
                     Outros (seção opcional)
                 </CardHeader>
                 <CardBody>
-                    <Alert Visible="true" Color="Color.Warning">
-                        <AlertDescription>Fazemos o possível para manter um ambiente saudável dentro da plataforma, mas não podemos garantir 100%. Então caso tenha dificuldades de interagir ou de identificar más intenções nas pessoas, não sinta vergonha de pedir ajuda a amigos ou familiares. E se sofrer qualquer tipo de assédio e/ou preconceito, denuncie o perfil imediatamente.</AlertDescription>
+                    <Alert Visible="true" Color="Color.Info">
+                        <AlertDescription>If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support.</AlertDescription>
                     </Alert>
                     <Row>
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -132,7 +134,7 @@
         else if (SelectedTab == Tabs.Personality)
         {
             <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>Os campos deste tópico requerem um teste, mas alguns poderão facilmente ser escolhidos apenas lendo a descrição dos itens</AlertDescription>
+                <AlertDescription>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</AlertDescription>
             </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -156,7 +158,7 @@
         else if (SelectedTab == Tabs.Interests)
         {
             <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>Escolha no máximo 3 itens para cada campo</AlertDescription>
+                <AlertDescription>Choose a maximum of 3 items for each field</AlertDescription>
             </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -199,14 +201,14 @@
         </Div>
     </EditForm>
 
-    <MM.WEB.Shared.modal.BasicModal @ref="@privacy" Title="Termos de privacidade">
+    <BasicModal @ref="@privacy" Title="Termos de privacidade">
         <ul style="margin-left: -10px;">
             <li>Pedimos que leia nosso '<a href="/Terms/pt" target="_blank">Termos de Uso</a>' para ficar ciente de como seus dados serão tratados;</li>
             <li>Seja honesto nas respostas dadas neste formulário. Todas as informações aqui contidas estão abertas a denúncias e poderão ser avaliadas;</li>
         </ul>
-    </MM.WEB.Shared.modal.BasicModal>
+    </BasicModal>
 
-    <MM.WEB.Shared.modal.BasicModal @ref="help" Title="Ajuda">
+    <BasicModal @ref="help" Title="Ajuda">
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.Question"></Blazorise.Icon></Button>
             Esta opção terá explicações de cada um dos itens disponíveis para escolha
@@ -219,12 +221,12 @@
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon></Button>
             Esta opção solicitará localização para seu aparelho (precisa estar habilitada esta opção)
         </Paragraph>
-    </MM.WEB.Shared.modal.BasicModal>
+    </BasicModal>
 </Loading>
 
 @code {
-    private Shared.modal.BasicModal? privacy;
-    private Shared.modal.BasicModal? help;
+    private BasicModal? privacy;
+    private BasicModal? help;
 
     private FluentValidationValidator? _validator;
     private Loading? LoadingProfile;
