@@ -225,4 +225,40 @@
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
+  <data name="UnableDetectGps" xml:space="preserve">
+    <value>Não foi possível detectar um sistema GPS no seu dispositivo. Tente novamente ou libere o acesso ao GPS do seu dispositivo.</value>
+  </data>
+  <data name="ValidationErrorsDetected" xml:space="preserve">
+    <value>Foram detectados erros de validação</value>
+  </data>
+  <data name="YourCurrentLocation" xml:space="preserve">
+    <value>Sua localização atual:</value>
+  </data>
+  <data name="ProfileHelpMap" xml:space="preserve">
+    <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
+  </data>
+  <data name="ProfileHelpPlus" xml:space="preserve">
+    <value>Esta opção abrirá um pop-up com várias opções (juntamente com explicações, se houver)</value>
+  </data>
+  <data name="ProfileHelpQuestion" xml:space="preserve">
+    <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
+  </data>
+  <data name="PreferHelpTopic1" xml:space="preserve">
+    <value>Aqui você pode definir o seu tipo de perfil ideal, para que possamos calcular corretamente o seu índice de compatibilidade</value>
+  </data>
+  <data name="PreferHelpTopic2" xml:space="preserve">
+    <value>Quanto mais específico você estiver nos filtros, menos opções de perfil você terá disponíveis</value>
+  </data>
+  <data name="ProfileDataBioTip1" xml:space="preserve">
+    <value>Para garantir uma atmosfera positiva, levamos o assédio e o preconceito a sério. Se você encontrar esse comportamento, denuncie o perfil imediatamente.</value>
+  </data>
+  <data name="ProfileDataBioTip2" xml:space="preserve">
+    <value>Se você achar difícil interagir ou reconhecer intenções prejudiciais, considere entrar em contato com amigos ou familiares para obter apoio.</value>
+  </data>
+  <data name="ProfileDataPersonTip1" xml:space="preserve">
+    <value>Para personalidades mais complexas, explore testes em sites especializados. Algumas podem ser respondidas apenas lendo as descrições dos itens.</value>
+  </data>
+  <data name="ProfilePreferPersonTip1" xml:space="preserve">
+    <value>Esta seção não funciona como um filtro, apenas complementa o cálculo de compatibilidade de perfil.</value>
+  </data>
 </root>

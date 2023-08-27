@@ -117,49 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="NoChange_Description" xml:space="preserve">
+    <value>Se você não está disposto a se mudar. Mesmo assim, você ainda terá sugestões de perfis fora da região selecionada (se essa pessoa estiver disposta a se mudar para sua região)</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="NoChange_Name" xml:space="preserve">
+    <value>Não estou disposto a me mudar</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="OpenToChange_Description" xml:space="preserve">
+    <value>Se você estiver disposto a se mudar se a necessidade surgir (apenas dentro da região selecionada)</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ayuda</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Iniciar sesión</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Cerrar sesión</value>
-  </data>
-  <data name="New" xml:space="preserve">
-    <value>Nuevo</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>De acuerdo</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidad</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salvar</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmar</value>
-  </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
+  <data name="OpenToChange_Name" xml:space="preserve">
+    <value>Estou disposto a me mudar</value>
   </data>
 </root>

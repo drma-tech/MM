@@ -117,49 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="CelticZodiac" xml:space="preserve">
+    <value>Zodíaco celta</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="ChineseZodiac" xml:space="preserve">
+    <value>Zodíaco chino</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="EgyptianZodiac" xml:space="preserve">
+    <value>Zodíaco egipcio</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ayuda</value>
+  <data name="IndianZodiac" xml:space="preserve">
+    <value>Zodíaco indio</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Iniciar sesión</value>
+  <data name="NativeAmericanZodiac" xml:space="preserve">
+    <value>Zodíaco nativo americano</value>
   </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Cerrar sesión</value>
+  <data name="SiderealZodiac" xml:space="preserve">
+    <value>Zodíaco sideral</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Nuevo</value>
+  <data name="TropicZodiac" xml:space="preserve">
+    <value>Zodíaco Trópico</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>De acuerdo</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidad</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salvar</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmar</value>
-  </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
+  <data name="WesternZodiac" xml:space="preserve">
+    <value>Zodíaco Occidental</value>
   </data>
 </root>

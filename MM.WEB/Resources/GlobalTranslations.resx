@@ -144,15 +144,6 @@
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Under development</value>
   </data>
-  <data name="HelpMap" xml:space="preserve">
-    <value>This option will request location for your device (this option must be enabled)</value>
-  </data>
-  <data name="HelpPlus" xml:space="preserve">
-    <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
-  </data>
-  <data name="HelpQuestion" xml:space="preserve">
-    <value>This option will have explanations of each of the items available to choose from.</value>
-  </data>
   <data name="HelpTitle" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -186,6 +177,12 @@
   <data name="or" xml:space="preserve">
     <value>or</value>
   </data>
+  <data name="PreferHelpTopic1" xml:space="preserve">
+    <value>Here you can define your ideal profile type, so that we can properly calculate your compatibility index</value>
+  </data>
+  <data name="PreferHelpTopic2" xml:space="preserve">
+    <value>The more specific you are in the filters, the less profile options you will have available</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
   </data>
@@ -194,6 +191,27 @@
   </data>
   <data name="ProductUnderDevelopment" xml:space="preserve">
     <value>Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app's support section.</value>
+  </data>
+  <data name="ProfileDataBioTip1" xml:space="preserve">
+    <value>To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly.</value>
+  </data>
+  <data name="ProfileDataBioTip2" xml:space="preserve">
+    <value>If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support.</value>
+  </data>
+  <data name="ProfileDataPersonTip1" xml:space="preserve">
+    <value>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</value>
+  </data>
+  <data name="ProfileHelpMap" xml:space="preserve">
+    <value>This option will request location for your device (this option must be enabled)</value>
+  </data>
+  <data name="ProfileHelpPlus" xml:space="preserve">
+    <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
+  </data>
+  <data name="ProfileHelpQuestion" xml:space="preserve">
+    <value>This option will have explanations of each of the items available to choose from.</value>
+  </data>
+  <data name="ProfilePreferPersonTip1" xml:space="preserve">
+    <value>This section does not work as a filter, it only complements the profile compatibility calculation.</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>UPDATE NOW</value>
@@ -213,8 +231,14 @@
   <data name="TypeSomething" xml:space="preserve">
     <value>Type Something</value>
   </data>
+  <data name="UnableDetectGps" xml:space="preserve">
+    <value>We were unable to detect a GPS system on your device. Please try again or release access to your device's GPS.</value>
+  </data>
   <data name="UnauthenticatedUser" xml:space="preserve">
     <value>Unauthenticated User</value>
+  </data>
+  <data name="ValidationErrorsDetected" xml:space="preserve">
+    <value>Validation errors were detected</value>
   </data>
   <data name="Writing" xml:space="preserve">
     <value>Writing</value>
@@ -224,5 +248,8 @@
   </data>
   <data name="YouAreNotAuthorized" xml:space="preserve">
     <value>You are not authorized to access this resource.</value>
+  </data>
+  <data name="YourCurrentLocation" xml:space="preserve">
+    <value>Your current location:</value>
   </data>
 </root>

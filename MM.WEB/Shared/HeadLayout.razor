@@ -12,12 +12,6 @@
             <form class="d-flex">
                 <MediaQuery Media="@Breakpoints.XSmallDown">
                     <Matched>
-                       @* <Select TValue="Region" SelectedValue="@AppStateStatic.Region" SelectedValueChanged="RegionValueChanged" Size="Size.Small" Style="width:auto;" Margin="Margin.Is2.FromEnd">
-                            @foreach (var item in Regions.OrderBy(o => o.Name))
-                            {
-                                <SelectItem Value="@item.ValueObject">@(((Region)item.ValueObject).GetCustomAttribute(false)?.Name)</SelectItem>
-                            }
-                        </Select>*@
                         <Select TValue="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged" Size="Size.Small" Style="width:auto;">
                             @foreach (var item in Languages.OrderBy(o => o.Name))
                             {
@@ -26,12 +20,6 @@
                         </Select>
                     </Matched>
                     <Unmatched>
-                        @*<Select TValue="Region" SelectedValue="@AppStateStatic.Region" SelectedValueChanged="RegionValueChanged" Size="Size.Small" Style="width:auto;" Margin="Margin.Is2.FromEnd">
-                            @foreach (var item in Regions.OrderBy(o => o.Name))
-                            {
-                                <SelectItem Value="@item.ValueObject">@item.Name</SelectItem>
-                            }
-                        </Select>*@
                         <Select TValue="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged" Size="Size.Small" Style="width:auto;">
                             @foreach (var item in Languages.OrderBy(o => o.Name))
                             {
@@ -67,28 +55,13 @@
     {
         base.OnInitialized();
 
-        //Regions = EnumHelper.GetObjArray<Region>();
-        Languages = EnumHelper.GetObjArray<Language>().Where(w => !string.IsNullOrEmpty(w.Name)).ToArray();
-
-        //var region = Navigation?.QueryString("region");
-
-        //if (!string.IsNullOrEmpty(region))
-        //{
-        //    AppStateStatic.ChangeRegion((Region)Enum.Parse(typeof(Region), region));
-        //}
+        Languages = EnumHelper.GetObjArray<Language>().Where(w => !string.IsNullOrEmpty(w.Name) && w.Group == "Website").ToArray();
     }
 
     private void Logout()
     {
         Navigation.NavigateTo("/.auth/logout", forceLoad: true);
     }
-
-    //protected void RegionValueChanged(Region value)
-    //{
-    //    AppStateStatic.ChangeRegion(value);
-
-    //    Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("region", value.GetName(false)));
-    //}
 
     protected void LanguageValueChanged(Language value)
     {

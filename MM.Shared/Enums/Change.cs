@@ -2,10 +2,10 @@
 {
     public enum Change
     {
-        [Custom(Name = "Estou disposto(a) a me mudar", Description = "Caso esteja disposto(a) a se mudar se houver necessidade (apenas dentro da região selecionada)")]
+        [Custom(Name = "OpenToChange_Name", Description = "OpenToChange_Description", ResourceType = typeof(Resources.Change))]
         OpenToChange = 1,
 
-        [Custom(Name = "Não estou disposto(a) a me mudar", Description = "Caso não esteja com disposição para mudanças. Mesmo assim, ainda terá sugestões de perfis fora da sua região selecionada (caso essa pessoa esteja disposta a se mudar para a sua região)")]
+        [Custom(Name = "NoChange_Name", Description = "NoChange_Description", ResourceType = typeof(Resources.Change))]
         NoChange = 2,
     }
 }

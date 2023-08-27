@@ -59,7 +59,7 @@ namespace MM.WEB.Modules.Profile
                     if (here != null && here.items.Any())
                     {
                         var address = here.items[0].address;
-                        profile.Location = address.GetLocation();
+                        profile.Location = address?.GetLocation();
 
                         var country = (Country)Enum.Parse(typeof(Country), address.countryCode);
 
@@ -80,7 +80,7 @@ namespace MM.WEB.Modules.Profile
                 }
                 else
                 {
-                    await Toast.Warning($"We were unable to detect a GPS system on your device. Please try again or release access to your device's GPS.");
+                    await Toast.Warning(GlobalTranslations.UnableDetectGps);
                 }
             }
         }
@@ -151,9 +151,9 @@ namespace MM.WEB.Modules.Profile
             var errors = context.GetValidationMessages().ToList();
 
             if (errors != null && errors.Count == 1)
-                await Toast.Warning(errors.First());
+                await Toast.Warning(errors[0]);
             else
-                await Toast.Warning("Foram detectados erros de validação");
+                await Toast.Warning(GlobalTranslations.ValidationErrorsDetected);
         }
     }
 }

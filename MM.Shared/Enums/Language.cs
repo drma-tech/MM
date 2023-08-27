@@ -6,7 +6,7 @@
     ///
     public enum Language
     {
-        [Custom(Name = "English", ResourceType = typeof(Resources.Language))]
+        [Custom(Name = "English", Group = "Website", ResourceType = typeof(Resources.Language))]
         en = 1,
 
         [Custom(Name = "French", ResourceType = typeof(Resources.Language))]
@@ -15,10 +15,10 @@
         [Custom(Name = "Arabic", ResourceType = typeof(Resources.Language))]
         ar = 3,
 
-        [Custom(Name = "Spanish", ResourceType = typeof(Resources.Language))]
+        [Custom(Name = "Spanish", Group = "Website", ResourceType = typeof(Resources.Language))]
         es = 4,
 
-        [Custom(Name = "Portuguese", ResourceType = typeof(Resources.Language))]
+        [Custom(Name = "Portuguese", Group = "Website", ResourceType = typeof(Resources.Language))]
         pt = 5,
 
         [Custom(Name = "German", ResourceType = typeof(Resources.Language))]

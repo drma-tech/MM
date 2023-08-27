@@ -72,7 +72,7 @@ namespace MM.Shared.Core
 
                 if (!string.IsNullOrEmpty(attr.Name)) attr.Name = rm.GetString(attr.Name) ?? attr.Name + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Description)) attr.Description = rm.GetString(attr.Description) ?? attr.Description + " (incomplete translation)";
-                if (!string.IsNullOrEmpty(attr.Group)) attr.Group = rm.GetString(attr.Group);
+                if (!string.IsNullOrEmpty(attr.Group)) attr.Group = rm.GetString(attr.Group) ?? attr.Group;
                 if (!string.IsNullOrEmpty(attr.Prompt)) attr.Prompt = rm.GetString(attr.Prompt)?.Replace(@"\n", Environment.NewLine);
                 if (!string.IsNullOrEmpty(attr.FieldInfo)) attr.FieldInfo = rm.GetString(attr.FieldInfo)?.Replace(@"\n", Environment.NewLine) ?? attr.FieldInfo.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Tips)) attr.Tips = rm.GetString(attr.Tips) ?? attr.Tips + " (incomplete translation)";

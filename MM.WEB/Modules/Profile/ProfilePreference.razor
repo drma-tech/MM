@@ -11,10 +11,10 @@
     <EditForm Model="@preference" OnValidSubmit="HandleValidSubmit">
         <FluentValidationValidator />
         <Div Margin="Margin.Is2.OnY">
-            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Basic)" Clicked="(() => ChangeOrder(Tabs.Basic))">Básico</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Bio)" Clicked="(() => ChangeOrder(Tabs.Bio))">Bio</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Lifestyle)" Clicked="(() => ChangeOrder(Tabs.Lifestyle))">Lifestyle</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Personality)" Clicked="(() => ChangeOrder(Tabs.Personality))">Personalidades</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Basic)" Clicked="(() => ChangeOrder(Tabs.Basic))">@MM.Shared.Enums.Resources.Section.Basic</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Bio)" Clicked="(() => ChangeOrder(Tabs.Bio))">@MM.Shared.Enums.Resources.Section.Bio</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Lifestyle)" Clicked="(() => ChangeOrder(Tabs.Lifestyle))">@MM.Shared.Enums.Resources.Section.Lifestyle</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Personality)" Clicked="(() => ChangeOrder(Tabs.Personality))">@MM.Shared.Enums.Resources.Section.Personality</Button>
         </Div>
 
         @if (preference != null)
@@ -24,7 +24,7 @@
                 <Row>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                         <FieldSelect For="@(() => preference.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@preference.Region"
-                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt" ShowHelper="false" Required="true" CustomInfo="@($"Sua localização atual: {profile?.Location}")"></FieldSelect>
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {profile?.Location}")"></FieldSelect>
                         <FieldSelect For="@(() => preference.Change)" TValue="Change" TEnum="Change" @bind-SelectedValue="@preference.Change"
                                      CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Truck" Required="true"></FieldSelect>
                         <FieldSelect For="@(() => preference.Languages)" TValue="IReadOnlyList<Language>" TEnum="Language" @bind-SelectedValues="@preference.Languages"
@@ -137,7 +137,7 @@
             else if (SelectedTab == Tabs.Personality)
             {
                 <Alert Visible="true" Color="Color.Info">
-                    <AlertDescription>This section does not work as a filter, it only complements the profile compatibility calculation.</AlertDescription>
+                    <AlertDescription>@Resources.GlobalTranslations.ProfilePreferPersonTip1</AlertDescription>
                 </Alert>
                 <Row>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -152,20 +152,20 @@
         }
 
         <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Save"></Blazorise.Icon> Salvar
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Save"></Blazorise.Icon> @Resources.Buttons.Save
         </Button>
         <Button Color="Color.Success" Clicked="PopulateFields" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Magic"></Blazorise.Icon> Preencher
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Magic"></Blazorise.Icon> @Resources.Buttons.Fill
         </Button>
         <Button Color="Color.Primary" Float="Float.End" Clicked="(()=>help?.ShowModal())" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> Ajuda
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Resources.Buttons.Help
         </Button>
     </EditForm>
 
-    <BasicModal @ref="help" Title="Ajuda">
+    <BasicModal @ref="help" Title="@Resources.GlobalTranslations.HelpTitle">
         <ul style="margin-left: -10px;">
-            <li>Aqui você pode definir seu tipo ideal de perfil, para que possamos calcular adequadamente seu índice de compatibilidade</li>
-            <li>Quanto mais específico você for nos filtros, menos opções de perfis terá disponíveis</li>
+            <li>@Resources.GlobalTranslations.PreferHelpTopic1</li>
+            <li>@Resources.GlobalTranslations.PreferHelpTopic2</li>
         </ul>
     </BasicModal>
 </Loading>

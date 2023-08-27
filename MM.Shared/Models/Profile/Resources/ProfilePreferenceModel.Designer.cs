@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MM.WEB.Resources {
+namespace MM.Shared.Models.Profile.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace MM.WEB.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Buttons {
+    internal class ProfilePreferenceModel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Buttons() {
+        internal ProfilePreferenceModel() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Resources.Buttons", typeof(Buttons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.Shared.Models.Profile.Resources.ProfilePreferenceModel", typeof(ProfilePreferenceModel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace MM.WEB.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,137 +61,146 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
+        ///   Looks up a localized string similar to Biological Sex.
         /// </summary>
-        public static string Add {
+        internal static string BiologicalSex {
             get {
-                return ResourceManager.GetString("Add", resourceCulture);
+                return ResourceManager.GetString("BiologicalSex", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to Body.
         /// </summary>
-        public static string Cancel {
+        internal static string BodyMass {
             get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
+                return ResourceManager.GetString("BodyMass", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to Change.
         /// </summary>
-        public static string Close {
+        internal static string Change {
             get {
-                return ResourceManager.GetString("Close", resourceCulture);
+                return ResourceManager.GetString("Change", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to Current Situation.
         /// </summary>
-        public static string Confirm {
+        internal static string CurrentSituation {
             get {
-                return ResourceManager.GetString("Confirm", resourceCulture);
+                return ResourceManager.GetString("CurrentSituation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fill.
+        ///   Looks up a localized string similar to Disabilities.
         /// </summary>
-        public static string Fill {
+        internal static string Disabilities {
             get {
-                return ResourceManager.GetString("Fill", resourceCulture);
+                return ResourceManager.GetString("Disabilities", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to Gender Identity.
         /// </summary>
-        public static string Help {
+        internal static string GenderIdentity {
             get {
-                return ResourceManager.GetString("Help", resourceCulture);
+                return ResourceManager.GetString("GenderIdentity", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to Languages.
         /// </summary>
-        public static string Login {
+        internal static string Languages {
             get {
-                return ResourceManager.GetString("Login", resourceCulture);
+                return ResourceManager.GetString("Languages", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logout.
+        ///   Looks up a localized string similar to Filter profiles that have at least one of the selected languages.
         /// </summary>
-        public static string Logout {
+        internal static string Languages_Description {
             get {
-                return ResourceManager.GetString("Logout", resourceCulture);
+                return ResourceManager.GetString("Languages_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New.
+        ///   Looks up a localized string similar to Age (Min - Max).
         /// </summary>
-        public static string New {
+        internal static string MaxAge {
             get {
-                return ResourceManager.GetString("New", resourceCulture);
+                return ResourceManager.GetString("MaxAge", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OK.
+        ///   Looks up a localized string similar to Height (Min - Max).
         /// </summary>
-        public static string Ok {
+        internal static string MaxHeight {
             get {
-                return ResourceManager.GetString("Ok", resourceCulture);
+                return ResourceManager.GetString("MaxHeight", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Privacy.
+        ///   Looks up a localized string similar to Age (Min - Max).
         /// </summary>
-        public static string Privacy {
+        internal static string MinimalAge {
             get {
-                return ResourceManager.GetString("Privacy", resourceCulture);
+                return ResourceManager.GetString("MinimalAge", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove.
+        ///   Looks up a localized string similar to Height (Min - Max).
         /// </summary>
-        public static string Remove {
+        internal static string MinimalHeight {
             get {
-                return ResourceManager.GetString("Remove", resourceCulture);
+                return ResourceManager.GetString("MinimalHeight", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Neurodiversity.
         /// </summary>
-        public static string Save {
+        internal static string Neurodiversities {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("Neurodiversities", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search.
+        ///   Looks up a localized string similar to Race.
         /// </summary>
-        public static string Search {
+        internal static string RaceCategory {
             get {
-                return ResourceManager.GetString("Search", resourceCulture);
+                return ResourceManager.GetString("RaceCategory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Region.
         /// </summary>
-        public static string Update {
+        internal static string Region {
             get {
-                return ResourceManager.GetString("Update", resourceCulture);
+                return ResourceManager.GetString("Region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sexual Orientation.
+        /// </summary>
+        internal static string SexualOrientation {
+            get {
+                return ResourceManager.GetString("SexualOrientation", resourceCulture);
             }
         }
     }

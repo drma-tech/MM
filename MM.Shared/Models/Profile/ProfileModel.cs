@@ -415,53 +415,53 @@ namespace MM.Shared.Models.Profile
     {
         #region BASIC
 
-        [Custom(Name = "Região")]
+        [Custom(Name = "Region", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public Region Region { get; set; }
 
-        [Custom(Name = "Mudança")]
+        [Custom(Name = "Change", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public Change Change { get; set; }
 
-        [Custom(Name = "Idiomas", Description = "Filtra perfis que tenham pelo menos um dos idiomas selecionados")]
+        [Custom(Name = "Languages", Description = "Languages_Description", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<Language> Languages { get; set; } = Array.Empty<Language>();
 
-        [Custom(Name = "Situação Atual")]
+        [Custom(Name = "CurrentSituation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<CurrentSituation> CurrentSituation { get; set; } = Array.Empty<CurrentSituation>();
 
-        [Custom(Name = "Sexo Biológico")]
+        [Custom(Name = "BiologicalSex", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<BiologicalSex> BiologicalSex { get; set; } = Array.Empty<BiologicalSex>();
 
-        [Custom(Name = "Identidade de Gênero")]
+        [Custom(Name = "GenderIdentity", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<GenderIdentity> GenderIdentity { get; set; } = Array.Empty<GenderIdentity>();
 
-        [Custom(Name = "Orientação Sexual")]
+        [Custom(Name = "SexualOrientation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<SexualOrientation> SexualOrientation { get; set; } = Array.Empty<SexualOrientation>();
 
         #endregion BASIC
 
         #region BIO
 
-        [Custom(Name = "Raça")]
+        [Custom(Name = "RaceCategory", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<RaceCategory> RaceCategory { get; set; } = Array.Empty<RaceCategory>();
 
-        [Custom(Name = "Corpo")]
+        [Custom(Name = "BodyMass", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<BodyMass> BodyMass { get; set; } = Array.Empty<BodyMass>();
 
-        [Custom(Name = "Idade (Min - Máx)")]
+        [Custom(Name = "MinimalAge", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public int MinimalAge { get; set; }
 
-        [Custom(Name = "Idade (Min - Máx)")]
+        [Custom(Name = "MaxAge", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public int MaxAge { get; set; }
 
-        [Custom(Name = "Altura (Min - Máx)")]
+        [Custom(Name = "MinimalHeight", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public Height? MinimalHeight { get; set; }
 
-        [Custom(Name = "Altura (Min - Máx)")]
+        [Custom(Name = "MaxHeight", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public Height? MaxHeight { get; set; }
 
-        [Custom(Name = "Neurodiversity")]
+        [Custom(Name = "Neurodiversities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<Neurodiversity> Neurodiversities { get; set; } = Array.Empty<Neurodiversity>();
 
-        [Custom(Name = "Disabilities")]
+        [Custom(Name = "Disabilities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public IReadOnlyList<Disability> Disabilities { get; set; } = Array.Empty<Disability>();
 
         #endregion BIO

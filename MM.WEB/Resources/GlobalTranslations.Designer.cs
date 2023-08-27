@@ -142,33 +142,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
-        /// </summary>
-        public static string HelpMap {
-            get {
-                return ResourceManager.GetString("HelpMap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
-        /// </summary>
-        public static string HelpPlus {
-            get {
-                return ResourceManager.GetString("HelpPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
-        /// </summary>
-        public static string HelpQuestion {
-            get {
-                return ResourceManager.GetString("HelpQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string HelpTitle {
@@ -268,6 +241,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here you can define your ideal profile type, so that we can properly calculate your compatibility index.
+        /// </summary>
+        public static string PreferHelpTopic1 {
+            get {
+                return ResourceManager.GetString("PreferHelpTopic1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The more specific you are in the filters, the less profile options you will have available.
+        /// </summary>
+        public static string PreferHelpTopic2 {
+            get {
+                return ResourceManager.GetString("PreferHelpTopic2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Privacy.
         /// </summary>
         public static string Privacy {
@@ -291,6 +282,69 @@ namespace MM.WEB.Resources {
         public static string ProductUnderDevelopment {
             get {
                 return ResourceManager.GetString("ProductUnderDevelopment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly..
+        /// </summary>
+        public static string ProfileDataBioTip1 {
+            get {
+                return ResourceManager.GetString("ProfileDataBioTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support..
+        /// </summary>
+        public static string ProfileDataBioTip2 {
+            get {
+                return ResourceManager.GetString("ProfileDataBioTip2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions..
+        /// </summary>
+        public static string ProfileDataPersonTip1 {
+            get {
+                return ResourceManager.GetString("ProfileDataPersonTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
+        /// </summary>
+        public static string ProfileHelpMap {
+            get {
+                return ResourceManager.GetString("ProfileHelpMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
+        /// </summary>
+        public static string ProfileHelpPlus {
+            get {
+                return ResourceManager.GetString("ProfileHelpPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
+        /// </summary>
+        public static string ProfileHelpQuestion {
+            get {
+                return ResourceManager.GetString("ProfileHelpQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This section does not work as a filter, it only complements the profile compatibility calculation..
+        /// </summary>
+        public static string ProfilePreferPersonTip1 {
+            get {
+                return ResourceManager.GetString("ProfilePreferPersonTip1", resourceCulture);
             }
         }
         
@@ -349,11 +403,29 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We were unable to detect a GPS system on your device. Please try again or release access to your device&apos;s GPS..
+        /// </summary>
+        public static string UnableDetectGps {
+            get {
+                return ResourceManager.GetString("UnableDetectGps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unauthenticated User.
         /// </summary>
         public static string UnauthenticatedUser {
             get {
                 return ResourceManager.GetString("UnauthenticatedUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation errors were detected.
+        /// </summary>
+        public static string ValidationErrorsDetected {
+            get {
+                return ResourceManager.GetString("ValidationErrorsDetected", resourceCulture);
             }
         }
         
@@ -381,6 +453,15 @@ namespace MM.WEB.Resources {
         public static string YouAreNotAuthorized {
             get {
                 return ResourceManager.GetString("YouAreNotAuthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current location:.
+        /// </summary>
+        public static string YourCurrentLocation {
+            get {
+                return ResourceManager.GetString("YourCurrentLocation", resourceCulture);
             }
         }
     }

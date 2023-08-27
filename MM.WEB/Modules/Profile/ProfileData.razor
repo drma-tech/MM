@@ -51,7 +51,7 @@
         else if (SelectedTab == Tabs.Bio)
         {
             <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly.</AlertDescription>
+                <AlertDescription>@Resources.GlobalTranslations.ProfileDataBioTip1</AlertDescription>
             </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -89,7 +89,7 @@
                 </CardHeader>
                 <CardBody>
                     <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support.</AlertDescription>
+                        <AlertDescription>@Resources.GlobalTranslations.ProfileDataBioTip2</AlertDescription>
                     </Alert>
                     <Row>
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -134,7 +134,7 @@
         else if (SelectedTab == Tabs.Personality)
         {
             <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</AlertDescription>
+                <AlertDescription>@Resources.GlobalTranslations.ProfileDataPersonTip1</AlertDescription>
             </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -211,15 +211,15 @@
     <BasicModal @ref="help" Title="@Resources.GlobalTranslations.HelpTitle">
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.Question"></Blazorise.Icon></Button>
-            @Resources.GlobalTranslations.HelpQuestion
+            @Resources.GlobalTranslations.ProfileHelpQuestion
         </Paragraph>
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.Plus"></Blazorise.Icon></Button>
-            @Resources.GlobalTranslations.HelpPlus
+            @Resources.GlobalTranslations.ProfileHelpPlus
         </Paragraph>
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon></Button>
-            @Resources.GlobalTranslations.HelpMap
+            @Resources.GlobalTranslations.ProfileHelpMap
         </Paragraph>
     </BasicModal>
 </Loading>

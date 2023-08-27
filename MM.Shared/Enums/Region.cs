@@ -2,16 +2,16 @@
 {
     public enum Region
     {
-        [Custom(Name = "Toda a Cidade")]
+        [Custom(Name = "City", ResourceType = typeof(Resources.Region))]
         City = 1,
 
-        [Custom(Name = "Todo o Estado")]
+        [Custom(Name = "State", ResourceType = typeof(Resources.Region))]
         State = 2,
 
-        [Custom(Name = "Todo o País")]
+        [Custom(Name = "Country", ResourceType = typeof(Resources.Region))]
         Country = 3,
 
-        [Custom(Name = "Qualquer lugar do mundo")]
+        [Custom(Name = "World", ResourceType = typeof(Resources.Region))]
         World = 4
     }
 }

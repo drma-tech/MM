@@ -2,28 +2,28 @@
 {
     public enum ZodiacType
     {
-        [Custom(Name = "Western Zodiac")]
+        [Custom(Name = "WesternZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         WesternZodiac = 1,
 
-        [Custom(Name = "Chinese Zodiac")]
+        [Custom(Name = "ChineseZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         ChineseZodiac = 2,
 
-        [Custom(Name = "Indian Zodiac")]
+        [Custom(Name = "IndianZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         IndianZodiac = 3,
 
-        [Custom(Name = "Tropic Zodiac")]
+        [Custom(Name = "TropicZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         TropicZodiac = 4,
 
-        [Custom(Name = "Sidereal Zodiac")]
+        [Custom(Name = "SiderealZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         SiderealZodiac = 5,
 
-        [Custom(Name = "Celtic Zodiac")]
+        [Custom(Name = "CelticZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         CelticZodiac = 6,
 
-        [Custom(Name = "Egyptian Zodiac")]
+        [Custom(Name = "EgyptianZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         EgyptianZodiac = 7,
 
-        [Custom(Name = "Native American Zodiac")]
+        [Custom(Name = "NativeAmericanZodiac", ResourceType = typeof(Enums.Resources.ZodiacType))]
         NativeAmericanZodiac = 8
     }
 

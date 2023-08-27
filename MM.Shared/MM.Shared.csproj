@@ -23,10 +23,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Enums\Resources\Change.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Change.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Enums\Resources\Region.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Region.resx</DependentUpon>
+    </Compile>
     <Compile Update="Enums\Resources\Zodiac.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Zodiac.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Enums\Resources\ZodiacType.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ZodiacType.resx</DependentUpon>
     </Compile>
     <Compile Update="Models\Profile\Resources\ProfileBasicModel.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -52,6 +67,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ProfileMyRelationship.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Models\Profile\Resources\ProfilePreferenceModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProfilePreferenceModel.resx</DependentUpon>
     </Compile>
     <Compile Update="Models\Support\Resources\TicketModel.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -251,9 +271,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Enums\Resources\Change.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Change.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Enums\Resources\Region.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Region.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Enums\Resources\Zodiac.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Zodiac.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Enums\Resources\ZodiacType.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ZodiacType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Models\Profile\Resources\ProfileInterestModel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -262,6 +294,10 @@
     <EmbeddedResource Update="Models\Profile\Resources\ProfileMyRelationship.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfileMyRelationship.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Models\Profile\Resources\ProfilePreferenceModel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfilePreferenceModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Models\Support\Resources\TicketModel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

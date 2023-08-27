@@ -117,49 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="BiologicalSex" xml:space="preserve">
+    <value>Sexo biológico</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="CurrentSituation" xml:space="preserve">
+    <value>Situación actual</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="Disabilities" xml:space="preserve">
+    <value>Discapacidades</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ayuda</value>
+  <data name="GenderIdentity" xml:space="preserve">
+    <value>Identidad de género</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Iniciar sesión</value>
+  <data name="Languages" xml:space="preserve">
+    <value>Idiomas</value>
   </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Cerrar sesión</value>
+  <data name="Neurodiversities" xml:space="preserve">
+    <value>Neurodiversidad</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Nuevo</value>
+  <data name="SexualOrientation" xml:space="preserve">
+    <value>Orientación sexual</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>De acuerdo</value>
+  <data name="BodyMass" xml:space="preserve">
+    <value>Cuerpo</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidad</value>
+  <data name="Change" xml:space="preserve">
+    <value>Cambio</value>
   </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Eliminar</value>
+  <data name="Languages_Description" xml:space="preserve">
+    <value>Filtrar perfiles que tengan al menos uno de los idiomas seleccionados</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salvar</value>
+  <data name="MaxAge" xml:space="preserve">
+    <value>Edad (Mín. - Máx.)</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Buscar</value>
+  <data name="MaxHeight" xml:space="preserve">
+    <value>Altura (Mín. - Máx.)</value>
   </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
+  <data name="MinimalAge" xml:space="preserve">
+    <value>Edad (Mín. - Máx.)</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmar</value>
+  <data name="MinimalHeight" xml:space="preserve">
+    <value>Altura (Mín. - Máx.)</value>
   </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
+  <data name="RaceCategory" xml:space="preserve">
+    <value>Raza</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Región</value>
   </data>
 </root>
