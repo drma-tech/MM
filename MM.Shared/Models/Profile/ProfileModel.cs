@@ -180,28 +180,28 @@ namespace MM.Shared.Models.Profile
 
         #region INTEREST
 
-        [Custom(Name = "Comidas")]
+        [Custom(Name = "Food", ResourceType =typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<Food> Food { get; set; } = Array.Empty<Food>();
 
-        [Custom(Name = "Férias")]
+        [Custom(Name = "Vacation", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<Vacation> Vacation { get; set; } = Array.Empty<Vacation>();
 
-        [Custom(Name = "Esportes")]
+        [Custom(Name = "Sports", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<Sports> Sports { get; set; } = Array.Empty<Sports>();
 
-        [Custom(Name = "Lazer")]
+        [Custom(Name = "LeisureActivities", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<LeisureActivities> LeisureActivities { get; set; } = Array.Empty<LeisureActivities>();
 
-        [Custom(Name = "Música")]
+        [Custom(Name = "MusicGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<MusicGenre> MusicGenre { get; set; } = Array.Empty<MusicGenre>();
 
-        [Custom(Name = "Filme")]
+        [Custom(Name = "MovieGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<MovieGenre> MovieGenre { get; set; } = Array.Empty<MovieGenre>();
 
-        [Custom(Name = "TV")]
+        [Custom(Name = "TVGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<TVGenre> TVGenre { get; set; } = Array.Empty<TVGenre>();
 
-        [Custom(Name = "Leitura")]
+        [Custom(Name = "ReadingGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
         public IReadOnlyList<ReadingGenre> ReadingGenre { get; set; } = Array.Empty<ReadingGenre>();
 
         #endregion INTEREST
@@ -405,7 +405,7 @@ namespace MM.Shared.Models.Profile
     {
         [Required]
         [EmailAddress]
-        [Custom(Name = "Convidar Parceiro", Prompt = "Email do parceiro", Description = "Precisa ser o mesmo e-mail que será usado no cadastro/login")]
+        [Custom(Name = "Email_Name", Prompt = "Email_Prompt", Description = "Email_Description", ResourceType = typeof(Resources.ProfileMyRelationship))]
         public string? Email { get; set; }
 
         public string? Id { get; set; }

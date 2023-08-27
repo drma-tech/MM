@@ -22,14 +22,14 @@ namespace MM.WEB.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CardHeader {
+    public class Buttons {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CardHeader() {
+        internal Buttons() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MM.WEB.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Resources.CardHeader", typeof(CardHeader).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Resources.Buttons", typeof(Buttons).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,128 +61,128 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available Events ({0}).
+        ///   Looks up a localized string similar to Add.
         /// </summary>
-        public static string EventAvailableEvents {
+        public static string Add {
             get {
-                return ResourceManager.GetString("EventAvailableEvents", resourceCulture);
+                return ResourceManager.GetString("Add", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Events.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string EventMyEvents {
+        public static string Cancel {
             get {
-                return ResourceManager.GetString("EventMyEvents", resourceCulture);
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invitations.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
-        public static string Invitations {
+        public static string Close {
             get {
-                return ResourceManager.GetString("Invitations", resourceCulture);
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose a maximum of 3 items for each field.
+        ///   Looks up a localized string similar to Confirm.
         /// </summary>
-        public static string Maximum3Items {
+        public static string Confirm {
             get {
-                return ResourceManager.GetString("Maximum3Items", resourceCulture);
+                return ResourceManager.GetString("Confirm", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Connections.
+        ///   Looks up a localized string similar to Help.
         /// </summary>
-        public static string MyConnections {
+        public static string Help {
             get {
-                return ResourceManager.GetString("MyConnections", resourceCulture);
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string ProfileData {
+        public static string Login {
             get {
-                return ResourceManager.GetString("ProfileData", resourceCulture);
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main Photo.
+        ///   Looks up a localized string similar to Logout.
         /// </summary>
-        public static string ProfileGaleryMainPhoto {
+        public static string Logout {
             get {
-                return ResourceManager.GetString("ProfileGaleryMainPhoto", resourceCulture);
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Photo Gallery.
+        ///   Looks up a localized string similar to New.
         /// </summary>
-        public static string ProfileGaleryPhotoGallery {
+        public static string New {
             get {
-                return ResourceManager.GetString("ProfileGaleryPhotoGallery", resourceCulture);
+                return ResourceManager.GetString("New", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Achievements.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
-        public static string ProfileIndexAchievements {
+        public static string Ok {
             get {
-                return ResourceManager.GetString("ProfileIndexAchievements", resourceCulture);
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interactions.
+        ///   Looks up a localized string similar to Privacy.
         /// </summary>
-        public static string ProfileIndexInteractions {
+        public static string Privacy {
             get {
-                return ResourceManager.GetString("ProfileIndexInteractions", resourceCulture);
+                return ResourceManager.GetString("Privacy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other (optional section).
+        ///   Looks up a localized string similar to Remove.
         /// </summary>
-        public static string ProfileOptionalSection {
+        public static string Remove {
             get {
-                return ResourceManager.GetString("ProfileOptionalSection", resourceCulture);
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preferences.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string ProfilePreferences {
+        public static string Save {
             get {
-                return ResourceManager.GetString("ProfilePreferences", resourceCulture);
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Errors.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
-        public static string SupportErrors {
+        public static string Search {
             get {
-                return ResourceManager.GetString("SupportErrors", resourceCulture);
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Improvement Suggestions.
+        ///   Looks up a localized string similar to Update.
         /// </summary>
-        public static string SupportImprovementSuggestions {
+        public static string Update {
             get {
-                return ResourceManager.GetString("SupportImprovementSuggestions", resourceCulture);
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
     }

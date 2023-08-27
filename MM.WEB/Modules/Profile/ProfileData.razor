@@ -9,14 +9,14 @@
     <EditForm Model="@profile" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
         <FluentValidationValidator @ref="_validator" />
         <Div Margin="Margin.Is2.OnY">
-            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Basic)" Outline="!(SelectedTab == Tabs.Basic)" Clicked="(() => ChangeOrder(Tabs.Basic))">Básico</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Bio)" Outline="!(SelectedTab == Tabs.Bio)" Clicked="(() => ChangeOrder(Tabs.Bio))">Bio</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Lifestyle)" Outline="!(SelectedTab == Tabs.Lifestyle)" Clicked="(() => ChangeOrder(Tabs.Lifestyle))">Lifestyle</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Personality)" Outline="!(SelectedTab == Tabs.Personality)" Clicked="(() => ChangeOrder(Tabs.Personality))">Personalidades</Button>
-            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Interests)" Outline="!(SelectedTab == Tabs.Interests)" Clicked="(() => ChangeOrder(Tabs.Interests))">Interesses</Button>
-            @if (profile.Modality == Modality.RelationshipAnalysis)
+            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Basic)" Outline="!(SelectedTab == Tabs.Basic)" Clicked="(() => ChangeOrder(Tabs.Basic))">@MM.Shared.Enums.Resources.Section.Basic</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Bio)" Outline="!(SelectedTab == Tabs.Bio)" Clicked="(() => ChangeOrder(Tabs.Bio))">@MM.Shared.Enums.Resources.Section.Bio</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Lifestyle)" Outline="!(SelectedTab == Tabs.Lifestyle)" Clicked="(() => ChangeOrder(Tabs.Lifestyle))">@MM.Shared.Enums.Resources.Section.Lifestyle</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Personality)" Outline="!(SelectedTab == Tabs.Personality)" Clicked="(() => ChangeOrder(Tabs.Personality))">@MM.Shared.Enums.Resources.Section.Personality</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="GetTabColor(Tabs.Interests)" Outline="!(SelectedTab == Tabs.Interests)" Clicked="(() => ChangeOrder(Tabs.Interests))">@MM.Shared.Enums.Resources.Section.Interest</Button>
+            @if (profile?.Modality == Modality.RelationshipAnalysis)
             {
-                <Button Margin="Margin.Is1.FromBottom.Is1.FromStart" Color="GetTabColor(Tabs.MyRelationship)" Outline="!(SelectedTab == Tabs.MyRelationship)" Clicked="(() => ChangeOrder(Tabs.MyRelationship))">Meu Relacionamento</Button>
+                <Button Margin="Margin.Is1.FromBottom.Is1.FromStart" Color="GetTabColor(Tabs.MyRelationship)" Outline="!(SelectedTab == Tabs.MyRelationship)" Clicked="(() => ChangeOrder(Tabs.MyRelationship))">@Resources.GlobalTranslations.MyRelationship</Button>
             }
         </Div>
 
@@ -61,8 +61,8 @@
                              CssIcon="@FontAwesomeIcons.Weight" Required="true" ShowHelper="false"></FieldSelect>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <CustomDate Type="FieldType.Date" For="@(() => profile.BirthDate)" @bind-Value="@profile.BirthDate"
-                            CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></CustomDate>
+                    <Birthdate Type="FieldType.Date" For="@(() => profile.BirthDate)" @bind-Value="@profile.BirthDate"
+                            CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></Birthdate>
                     <Field Horizontal="true">
                         <FieldBody ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
                             <Select TValue="ZodiacType" @bind-SelectedValue="ZodiacType">
@@ -76,7 +76,7 @@
                             <TextEdit Text="@profile.BirthDate.GetZodiacName(ZodiacType)" Disabled="true"></TextEdit>
                         </FieldBody>
                         <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                            <TextEdit Text="@(profile.BirthDate.GetAge() + " Anos")" Disabled="true"></TextEdit>
+                            <TextEdit Text="@($"{profile.BirthDate.GetAge()} {Resources.GlobalTranslations.Years}")" Disabled="true"></TextEdit>
                         </FieldBody>
                     </Field>
                     <FieldSelect For="@(() => profile.Height)" TValue="MM.Shared.Enums.Height?" TEnum="MM.Shared.Enums.Height" @bind-SelectedValue="@profile.Height"
@@ -85,7 +85,7 @@
             </Row>
             <Card>
                 <CardHeader>
-                    Outros (seção opcional)
+                    @Resources.CardHeader.ProfileOptionalSection
                 </CardHeader>
                 <CardBody>
                     <Alert Visible="true" Color="Color.Info">
@@ -158,7 +158,7 @@
         else if (SelectedTab == Tabs.Interests)
         {
             <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>Choose a maximum of 3 items for each field</AlertDescription>
+                <AlertDescription>@Resources.CardHeader.Maximum3Items</AlertDescription>
             </Alert>
             <Row>
                 <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -189,37 +189,37 @@
         }
 
         <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> Salvar
+            <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @Resources.Buttons.Save
         </Button>
         <Div Float="Float.End" Margin="Margin.Is2.OnY">
             <Button Color="Color.Primary" Clicked="help.ShowModal">
-                <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> Ajuda
+                <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Resources.Buttons.Help
             </Button>
             <Button Color="Color.Danger" Clicked="privacy.ShowModal">
-                <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon> Privacidade
+                <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon> @Resources.Buttons.Privacy
             </Button>
         </Div>
     </EditForm>
 
-    <BasicModal @ref="@privacy" Title="Termos de privacidade">
+    <BasicModal @ref="@privacy" Title="@Resources.GlobalTranslations.Privacy">
         <ul style="margin-left: -10px;">
-            <li>Pedimos que leia nosso '<a href="/Terms/pt" target="_blank">Termos de Uso</a>' para ficar ciente de como seus dados serão tratados;</li>
-            <li>Seja honesto nas respostas dadas neste formulário. Todas as informações aqui contidas estão abertas a denúncias e poderão ser avaliadas;</li>
+            <li>@Resources.GlobalTranslations.TermTopic1</li>
+            <li>@Resources.GlobalTranslations.TermTopic2 '<a href="@($"/Terms/{AppStateStatic.GetLanguageCode()}")" target="_blank">@Resources.GlobalTranslations.TermsOfUse</a>';</li>
         </ul>
     </BasicModal>
 
-    <BasicModal @ref="help" Title="Ajuda">
+    <BasicModal @ref="help" Title="@Resources.GlobalTranslations.HelpTitle">
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.Question"></Blazorise.Icon></Button>
-            Esta opção terá explicações de cada um dos itens disponíveis para escolha
+            @Resources.GlobalTranslations.HelpQuestion
         </Paragraph>
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.Plus"></Blazorise.Icon></Button>
-            Esta opção abrirá um popup com múltiplas escolhas (juntamente com explicações, caso tenha)
+            @Resources.GlobalTranslations.HelpPlus
         </Paragraph>
         <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
             <Button Color="Color.Primary" Outline="true"><Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon></Button>
-            Esta opção solicitará localização para seu aparelho (precisa estar habilitada esta opção)
+            @Resources.GlobalTranslations.HelpMap
         </Paragraph>
     </BasicModal>
 </Loading>

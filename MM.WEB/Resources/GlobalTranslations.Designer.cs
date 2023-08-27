@@ -61,6 +61,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Connection.
+        /// </summary>
+        public static string ActiveConnection {
+            get {
+                return ResourceManager.GetString("ActiveConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authentication in progress....
         /// </summary>
         public static string AuthenticationInProgress {
@@ -79,137 +88,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
+        ///   Looks up a localized string similar to This information will not be shared on your profile (only your age).
         /// </summary>
-        public static string ButtonAdd {
+        public static string BirthdateTip {
             get {
-                return ResourceManager.GetString("ButtonAdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string ButtonCancel {
-            get {
-                return ResourceManager.GetString("ButtonCancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Close.
-        /// </summary>
-        public static string ButtonClose {
-            get {
-                return ResourceManager.GetString("ButtonClose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Load More.
-        /// </summary>
-        public static string ButtonLoadMore {
-            get {
-                return ResourceManager.GetString("ButtonLoadMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Login.
-        /// </summary>
-        public static string ButtonLogin {
-            get {
-                return ResourceManager.GetString("ButtonLogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logout.
-        /// </summary>
-        public static string ButtonLogout {
-            get {
-                return ResourceManager.GetString("ButtonLogout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New.
-        /// </summary>
-        public static string ButtonNew {
-            get {
-                return ResourceManager.GetString("ButtonNew", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Not Watched.
-        /// </summary>
-        public static string ButtonNotWatched {
-            get {
-                return ResourceManager.GetString("ButtonNotWatched", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OK.
-        /// </summary>
-        public static string ButtonOk {
-            get {
-                return ResourceManager.GetString("ButtonOk", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Read More.
-        /// </summary>
-        public static string ButtonReadMore {
-            get {
-                return ResourceManager.GetString("ButtonReadMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove.
-        /// </summary>
-        public static string ButtonRemove {
-            get {
-                return ResourceManager.GetString("ButtonRemove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save.
-        /// </summary>
-        public static string ButtonSave {
-            get {
-                return ResourceManager.GetString("ButtonSave", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update.
-        /// </summary>
-        public static string ButtonUpdate {
-            get {
-                return ResourceManager.GetString("ButtonUpdate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Watched.
-        /// </summary>
-        public static string ButtonWatched {
-            get {
-                return ResourceManager.GetString("ButtonWatched", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string ButtoSearch {
-            get {
-                return ResourceManager.GetString("ButtoSearch", resourceCulture);
+                return ResourceManager.GetString("BirthdateTip", resourceCulture);
             }
         }
         
@@ -259,6 +142,69 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
+        /// </summary>
+        public static string HelpMap {
+            get {
+                return ResourceManager.GetString("HelpMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
+        /// </summary>
+        public static string HelpPlus {
+            get {
+                return ResourceManager.GetString("HelpPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
+        /// </summary>
+        public static string HelpQuestion {
+            get {
+                return ResourceManager.GetString("HelpQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string HelpTitle {
+            get {
+                return ResourceManager.GetString("HelpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inactive Connection.
+        /// </summary>
+        public static string InactiveConnection {
+            get {
+                return ResourceManager.GetString("InactiveConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invitation accepted.
+        /// </summary>
+        public static string InvitationAccepted {
+            get {
+                return ResourceManager.GetString("InvitationAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invitation not accepted.
+        /// </summary>
+        public static string InvitationNotAccepted {
+            get {
+                return ResourceManager.GetString("InvitationNotAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string MenuHome {
@@ -286,11 +232,56 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Relationship.
+        /// </summary>
+        public static string MyRelationship {
+            get {
+                return ResourceManager.GetString("MyRelationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no pending invitations.
+        /// </summary>
+        public static string NoPendingInvitations {
+            get {
+                return ResourceManager.GetString("NoPendingInvitations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, there&apos;s nothing at this address..
         /// </summary>
         public static string NothingThisAddress {
             get {
                 return ResourceManager.GetString("NothingThisAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        public static string or {
+            get {
+                return ResourceManager.GetString("or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string Privacy {
+            get {
+                return ResourceManager.GetString("Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Terms.
+        /// </summary>
+        public static string PrivacyTerms {
+            get {
+                return ResourceManager.GetString("PrivacyTerms", resourceCulture);
             }
         }
         
@@ -322,6 +313,33 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Terms of use.
+        /// </summary>
+        public static string TermsOfUse {
+            get {
+                return ResourceManager.GetString("TermsOfUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;.
+        /// </summary>
+        public static string TermTopic1 {
+            get {
+                return ResourceManager.GetString("TermTopic1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To be aware of how your data will be treated, we ask you to read our.
+        /// </summary>
+        public static string TermTopic2 {
+            get {
+                return ResourceManager.GetString("TermTopic2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type Something.
         /// </summary>
         public static string TypeSomething {
@@ -345,6 +363,15 @@ namespace MM.WEB.Resources {
         public static string Writing {
             get {
                 return ResourceManager.GetString("Writing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Years.
+        /// </summary>
+        public static string Years {
+            get {
+                return ResourceManager.GetString("Years", resourceCulture);
             }
         }
         

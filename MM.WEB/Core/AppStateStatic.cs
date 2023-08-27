@@ -22,5 +22,14 @@ namespace MM.WEB.Core
 
             Language = (Language?)language ?? Language.en;
         }
+
+        public static string GetLanguageCode()
+        {
+            switch (Language)
+            {
+                case Language.pt: return "pt";
+                default: return "en";
+            }
+        }
     }
 }

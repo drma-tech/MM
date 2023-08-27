@@ -46,8 +46,8 @@
     }
 </ModalBody>
 <ModalFooter>
-    <Button Color="Color.Secondary" Clicked="@(async()=>{await ModalService.Hide();})">Cancelar</Button>
-    <Button Color="Color.Primary" Clicked="@Confirmar">Confirmar</Button>
+    <Button Color="Color.Secondary" Clicked="@(async()=>{await ModalService.Hide();})">@Resources.Buttons.Cancel</Button>
+    <Button Color="Color.Primary" Clicked="@Confirmar">@Resources.Buttons.Confirm</Button>
 </ModalFooter>
 
 @code {
@@ -57,7 +57,7 @@
     [Parameter] public IReadOnlyList<TEnum> SelectedValues { get; set; } = Array.Empty<TEnum>();
     [Parameter] public EventCallback<IReadOnlyList<TEnum>> SelectedValuesChanged { get; set; }
 
-    [Parameter] public string Title { get; set; }
+    [Parameter] public string? Title { get; set; }
 
     [Inject] public IModalService ModalService { get; set; } = default!;
 

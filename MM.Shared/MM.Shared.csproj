@@ -23,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Enums\Resources\Zodiac.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Zodiac.resx</DependentUpon>
+    </Compile>
     <Compile Update="Models\Profile\Resources\ProfileBasicModel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -33,10 +38,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ProfileBioModel.resx</DependentUpon>
     </Compile>
+    <Compile Update="Models\Profile\Resources\ProfileInterestModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProfileInterestModel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Models\Profile\Resources\ProfileLifestyleModel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ProfileLifestyleModel.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Models\Profile\Resources\ProfileMyRelationship.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProfileMyRelationship.resx</DependentUpon>
     </Compile>
     <Compile Update="Models\Support\Resources\TicketModel.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -236,6 +251,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Enums\Resources\Zodiac.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Zodiac.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Models\Profile\Resources\ProfileInterestModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileInterestModel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Models\Profile\Resources\ProfileMyRelationship.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileMyRelationship.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Models\Support\Resources\TicketModel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TicketModel.Designer.cs</LastGenOutput>

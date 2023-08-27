@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MM.WEB.Resources {
+namespace MM.Shared.Models.Profile.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MM.WEB.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SeoTranslations {
+    public class ProfileInterestModel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SeoTranslations() {
+        internal ProfileInterestModel() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MM.WEB.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Resources.SeoTranslations", typeof(SeoTranslations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.Shared.Models.Profile.Resources.ProfileInterestModel", typeof(ProfileInterestModel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,74 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage your streams, what you&apos;ve watched, are watching and want to watch. All in one place..
+        ///   Looks up a localized string similar to Food.
         /// </summary>
-        public static string Description {
+        public static string Food {
             get {
-                return ResourceManager.GetString("Description", resourceCulture);
+                return ResourceManager.GetString("Food", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See your favorite streaming providers, wishlists (movies, series and documentaries), what you&apos;re currently watching and much more..
+        ///   Looks up a localized string similar to Leisure.
         /// </summary>
-        public static string ProfileDescription {
+        public static string LeisureActivities {
             get {
-                return ResourceManager.GetString("ProfileDescription", resourceCulture);
+                return ResourceManager.GetString("LeisureActivities", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile.
+        ///   Looks up a localized string similar to Movie.
         /// </summary>
-        public static string ProfileTitle {
+        public static string MovieGenre {
             get {
-                return ResourceManager.GetString("ProfileTitle", resourceCulture);
+                return ResourceManager.GetString("MovieGenre", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See suggestions for movies and series from different awards (Oscar, Golden Globes, Emmys, etc) or specialized websites (IMDB, TMDB, Rotten Tomatoes, etc)..
+        ///   Looks up a localized string similar to Music.
         /// </summary>
-        public static string SuggestionsDescription {
+        public static string MusicGenre {
             get {
-                return ResourceManager.GetString("SuggestionsDescription", resourceCulture);
+                return ResourceManager.GetString("MusicGenre", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suggestions.
+        ///   Looks up a localized string similar to Reading.
         /// </summary>
-        public static string SuggestionsTitle {
+        public static string ReadingGenre {
             get {
-                return ResourceManager.GetString("SuggestionsTitle", resourceCulture);
+                return ResourceManager.GetString("ReadingGenre", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See new announcements, get support with bugs, suggest new features, or learn which platforms to find Streaming Discovery on..
+        ///   Looks up a localized string similar to Sports.
         /// </summary>
-        public static string SupportDescription {
+        public static string Sports {
             get {
-                return ResourceManager.GetString("SupportDescription", resourceCulture);
+                return ResourceManager.GetString("Sports", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Support.
+        ///   Looks up a localized string similar to TV.
         /// </summary>
-        public static string SupportTitle {
+        public static string TVGenre {
             get {
-                return ResourceManager.GetString("SupportTitle", resourceCulture);
+                return ResourceManager.GetString("TVGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation.
+        /// </summary>
+        public static string Vacation {
+            get {
+                return ResourceManager.GetString("Vacation", resourceCulture);
             }
         }
     }

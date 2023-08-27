@@ -27,8 +27,8 @@
             <MemoEdit @bind-Text="@Ticket.Description" Rows="7" MaxLength="512" Placeholder="@CustomAttributeHelper.GetCustomAttribute(()=>Ticket.Description)?.Prompt" Size="Size.Small"></MemoEdit>
             <ValidationMessage For="@(()=>Ticket.Description)"></ValidationMessage>
         </div>
-        <Button Type="ButtonType.Submit" Color="Color.Primary" Disabled="!IsUserAuthenticated" Size="Size.Small">@GlobalTranslations.ButtonSave</Button>
-        <Button Clicked="@ModalService.Hide" Color="Color.Secondary" Size="Size.Small">@GlobalTranslations.ButtonCancel</Button>
+        <Button Type="ButtonType.Submit" Color="Color.Primary" Disabled="!IsUserAuthenticated" Size="Size.Small">@WEB.Resources.Buttons.Save</Button>
+        <Button Clicked="@ModalService.Hide" Color="Color.Secondary" Size="Size.Small">@WEB.Resources.Buttons.Cancel</Button>
         <Button Clicked="@ImportLastError" Color="Color.Danger" Float="Float.End" Disabled="(TicketType == TicketType.Improvement)" Size="Size.Small">@Resources.Translations.ImportLastError</Button>
     </EditForm>
 </ModalBody>

@@ -147,4 +147,16 @@
   <data name="SupportImprovementSuggestions" xml:space="preserve">
     <value>Sugerencias de mejora</value>
   </data>
+  <data name="ProfileOptionalSection" xml:space="preserve">
+    <value>Otros (sección opcional)</value>
+  </data>
+  <data name="Maximum3Items" xml:space="preserve">
+    <value>Elija un máximo de 3 elementos para cada campo</value>
+  </data>
+  <data name="MyConnections" xml:space="preserve">
+    <value>Mis conexiones</value>
+  </data>
+  <data name="Invitations" xml:space="preserve">
+    <value>Invitaciones</value>
+  </data>
 </root>

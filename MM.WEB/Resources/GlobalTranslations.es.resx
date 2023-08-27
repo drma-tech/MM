@@ -117,36 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonAdd" xml:space="preserve">
-    <value>Agregar</value>
-  </data>
-  <data name="ButtonCancel" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="ButtonClose" xml:space="preserve">
-    <value>Cerrar</value>
-  </data>
-  <data name="ButtonLogin" xml:space="preserve">
-    <value>Entrar</value>
-  </data>
-  <data name="ButtonLogout" xml:space="preserve">
-    <value>Salir</value>
-  </data>
-  <data name="ButtonNew" xml:space="preserve">
-    <value>Nuevo</value>
-  </data>
-  <data name="ButtonNotWatched" xml:space="preserve">
-    <value>Sin ayuda</value>
-  </data>
-  <data name="ButtonRemove" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="ButtonSave" xml:space="preserve">
-    <value>Salvar</value>
-  </data>
-  <data name="ButtonWatched" xml:space="preserve">
-    <value>Asistida</value>
-  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operación no válida. Inténtalo de nuevo.</value>
   </data>
@@ -177,12 +147,6 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Una nueva versión está disponible</value>
   </data>
-  <data name="ButtonOk" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="ButtonReadMore" xml:space="preserve">
-    <value>Leer más</value>
-  </data>
   <data name="Writing" xml:space="preserve">
     <value>Guion</value>
   </data>
@@ -192,20 +156,11 @@
   <data name="TypeSomething" xml:space="preserve">
     <value>Escriba algo</value>
   </data>
-  <data name="ButtoSearch" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="ButtonUpdate" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
   <data name="AuthenticationInProgress" xml:space="preserve">
     <value>Autenticación en curso...</value>
   </data>
   <data name="BetaVersion" xml:space="preserve">
     <value>¡Versión beta!</value>
-  </data>
-  <data name="ButtonLoadMore" xml:space="preserve">
-    <value>Cargar más</value>
   </data>
   <data name="NothingThisAddress" xml:space="preserve">
     <value>Lo sentimos, no hay nada en esta dirección.</value>
@@ -215,5 +170,59 @@
   </data>
   <data name="YouAreNotAuthorized" xml:space="preserve">
     <value>No está autorizado a acceder a este recurso.</value>
+  </data>
+  <data name="HelpMap" xml:space="preserve">
+    <value>Esta opción solicitará la ubicación de su dispositivo (esta opción debe estar habilitada)</value>
+  </data>
+  <data name="HelpPlus" xml:space="preserve">
+    <value>Esta opción abrirá una ventana emergente con múltiples opciones (junto con explicaciones, si las hay)</value>
+  </data>
+  <data name="HelpQuestion" xml:space="preserve">
+    <value>Esta opción tendrá explicaciones de cada uno de los elementos disponibles para elegir.</value>
+  </data>
+  <data name="HelpTitle" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="TermTopic1" xml:space="preserve">
+    <value>Sea honesto en las respuestas dadas en este formulario. Toda la información contenida en este documento está abierta a denuncias y puede ser evaluada;</value>
+  </data>
+  <data name="PrivacyTerms" xml:space="preserve">
+    <value>Términos de privacidad</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>Condiciones de uso</value>
+  </data>
+  <data name="TermTopic2" xml:space="preserve">
+    <value>Para conocer cómo se tratarán sus datos, le rogamos que lea nuestro</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacidad</value>
+  </data>
+  <data name="MyRelationship" xml:space="preserve">
+    <value>Mi relación</value>
+  </data>
+  <data name="BirthdateTip" xml:space="preserve">
+    <value>Esta información no se compartirá en su perfil (solo su edad)</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Años</value>
+  </data>
+  <data name="ActiveConnection" xml:space="preserve">
+    <value>Conexión activa</value>
+  </data>
+  <data name="InactiveConnection" xml:space="preserve">
+    <value>Conexión inactiva</value>
+  </data>
+  <data name="InvitationAccepted" xml:space="preserve">
+    <value>Invitación aceptada</value>
+  </data>
+  <data name="InvitationNotAccepted" xml:space="preserve">
+    <value>Invitación no aceptada</value>
+  </data>
+  <data name="NoPendingInvitations" xml:space="preserve">
+    <value>No hay invitaciones pendientes</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>o</value>
   </data>
 </root>

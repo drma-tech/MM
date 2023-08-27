@@ -1,4 +1,4 @@
-﻿@inherits BaseCustomField<DateTime, CustomDate>
+﻿@inherits BaseCustomField<DateTime, Birthdate>
 
 <Field Horizontal="true">
     <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
@@ -39,7 +39,7 @@
         <ValidationMessage For="@For"></ValidationMessage>
     </FieldBody>
     <Column ColumnSize="ColumnSize.IsFull">
-        <FieldHelp Style="color: #17a2b8 !important">Esta informação não será compartilhada no seu perfil, apenas sua idade</FieldHelp>
+        <FieldHelp Style="color: #17a2b8 !important">@Resources.GlobalTranslations.BirthdateTip</FieldHelp>
     </Column>
 </Field>
 
