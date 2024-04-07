@@ -3,20 +3,16 @@ using MM.Shared.Models.Auth;
 
 namespace MM.WEB.Modules.Auth.Core
 {
-    public class LoginApi : ApiServices
+    public class LoginApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ClienteLogin>(factory, memoryCache, "ClienteLogin")
     {
-        public LoginApi(IHttpClientFactory http, IMemoryCache memoryCache) : base(http, memoryCache)
-        {
-        }
-
         private struct Endpoint
         {
-            public const string Add = "Login/Add";
+            public static string Add(string platform) => $"login/add?platform={platform}";
         }
 
-        public async Task Add()
+        public async Task Add(string platform)
         {
-            await PostAsync<ClienteLogin>(Endpoint.Add, false, null, null);
+            await PostAsync<ClienteLogin>(Endpoint.Add(platform), null, null);
         }
     }
 }

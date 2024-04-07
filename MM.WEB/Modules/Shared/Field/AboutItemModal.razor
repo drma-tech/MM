@@ -76,7 +76,7 @@
         {
             if (item is Enum resultE)
             {
-                var desc = @resultE.GetCustomAttribute().Description;
+                var desc = @resultE.GetCustomAttribute()?.Description;
                 var name = @resultE.GetName();
 
                 if (string.IsNullOrEmpty(desc))

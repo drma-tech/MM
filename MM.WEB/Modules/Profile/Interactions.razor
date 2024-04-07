@@ -1,4 +1,5 @@
 ﻿@page "/Profile/Interactions"
+@using MM.Shared.ModelQuery
 @attribute [Authorize]
 @inherits PageCore<Profile.Interactions>
 
@@ -118,10 +119,10 @@
 </Row>
 
 @code {
-    private List<InteractionQuery> NewMatches { get; set; }
-    private List<InteractionQuery> MsgMatches { get; set; }
-    private List<InteractionQuery> Likes { get; set; }
-    private List<InteractionQuery> Blinks { get; set; }
+    private List<InteractionQuery> NewMatches { get; set; } = [];
+    private List<InteractionQuery> MsgMatches { get; set; } = [];
+    private List<InteractionQuery> Likes { get; set; } = [];
+    private List<InteractionQuery> Blinks { get; set; } = [];
 
     private VisibilityOptions OptionsNewMatches => new VisibilityOptions()
     {
@@ -148,7 +149,7 @@
         NoData = Blinks == null || !Blinks.Any()
     };
 
-    protected override async Task LoadData()
+    protected override async Task LoadDataRender()
     {
         //var interactions = await Http.Interation_GetMyMatches(SessionStorage);
         //NewMatches = interactions.Where(w => !w.StartedChat).ToList();

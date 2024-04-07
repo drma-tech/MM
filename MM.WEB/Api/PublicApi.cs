@@ -1,6 +1,6 @@
 ﻿using Blazored.SessionStorage;
-using VerusDate.Shared.ModelQuery;
-using VerusDate.Web.Core;
+using MM.Shared.ModelQuery;
+using MM.WEB.Core;
 
 namespace VerusDate.Web.Api
 {

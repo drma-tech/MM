@@ -1,5 +1,4 @@
-﻿using MM.Shared.Core.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MM.Shared.Models.Support
 {
@@ -38,7 +37,7 @@ namespace MM.Shared.Models.Support
 
         public void Initialize(string? idUserOwner)
         {
-            if (string.IsNullOrEmpty(IdUserOwner)) throw new ArgumentNullException(nameof(idUserOwner));
+            if (string.IsNullOrEmpty(idUserOwner)) throw new ArgumentNullException(nameof(idUserOwner));
 
             IdUserOwner = idUserOwner;
 

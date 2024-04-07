@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
 using MM.Shared.Models.Profile;
+using MM.WEB.Api;
 using MM.WEB.Modules.Profile.Core;
-using VerusDate.Web.Api;
+using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile
 {
@@ -16,14 +17,15 @@ namespace MM.WEB.Modules.Profile
         [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
         private ProfileModel? profile { get; set; }
+        public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
         private GeoLocation? GPS { get; set; }
 
-        protected override async Task LoadData()
+        protected override async Task LoadDataRender()
         {
-            LoadingProfile?.Start();
-            profile = await ProfileApi.Profile_Get();
-            LoadingProfile?.Finish(profile == null);
+            //LoadingProfile?.Start();
+            profile = await ProfileApi.Get(Core);
+            //LoadingProfile?.Finish(profile == null);
 
             profile ??= new()
             {
@@ -38,7 +40,7 @@ namespace MM.WEB.Modules.Profile
         {
             if (profile != null /*&& !profile.Longitude.HasValue*/)
             {
-                var window = await JsRuntime.Window();
+                var window = await JsRuntime.Window(); //todo: remove this component
                 var navigator = await window.Navigator();
                 var position = await navigator.Geolocation.GetCurrentPosition();
 
@@ -93,9 +95,9 @@ namespace MM.WEB.Modules.Profile
             {
                 //profile.Zodiac = profile.BirthDate.GetWesternZodiac();
 
-                await ProfileApi.Profile_Update(profile);
+                await ProfileApi.Update(Core, profile);
 
-                profile = await ProfileApi.Profile_Get(); //TODO update id field
+                profile = await ProfileApi.Get(Core); //TODO update id field
 
                 if (profile.Modality == Modality.Matchmaker)
                 {
@@ -104,7 +106,7 @@ namespace MM.WEB.Modules.Profile
                         //TODO: remove the conections on others users
                     }
 
-                    profile.Partners = new List<Partner>();
+                    profile.Partners = [];
                 }
                 else
                 {
@@ -150,7 +152,7 @@ namespace MM.WEB.Modules.Profile
 
             var errors = context.GetValidationMessages().ToList();
 
-            if (errors != null && errors.Count == 1)
+            if (errors.Count == 1)
                 await Toast.Warning(errors[0]);
             else
                 await Toast.Warning(GlobalTranslations.ValidationErrorsDetected);

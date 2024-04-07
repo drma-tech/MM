@@ -1,57 +1,54 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using MM.Shared.Models.Profile;
+using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core
 {
-    public class ProfileApi : ApiServices
+    public class ProfileApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<ProfileModel>(http, memoryCache, "profile")
     {
-        public ProfileApi(IHttpClientFactory http, IMemoryCache memoryCache) : base(http, memoryCache)
-        {
-        }
-
         public struct ProfileEndpoint
         {
-            public const string Get = "Profile/Get";
-            public const string Update = "Profile/Update";
-            public const string UpdateLooking = "Profile/UpdateLooking";
-            public const string UpdatePartner = "Profile/UpdatePatner";
+            public const string Get = "profile/get";
+            public const string Update = "profile/update";
+            public const string UpdateLooking = "profile/update-preference";
+            //public const string UpdatePartner = "Profile/UpdatePatner";
 
-            public const string ListMatch = "Profile/ListMatch";
-            public const string ListSearch = "Profile/ListSearch";
+            //public const string ListMatch = "Profile/ListMatch";
+            //public const string ListSearch = "Profile/ListSearch";
 
-            public static string GetView(string IdUserView) => $"Profile/GetView?id={IdUserView}";
+            //public static string GetView(string IdUserView) => $"Profile/GetView?id={IdUserView}";
         }
 
-        public async Task<ProfileModel?> Profile_Get()
+        public async Task<ProfileModel?> Get(RenderControlCore<ProfileModel?>? core)
         {
-            return await GetAsync<ProfileModel>(ProfileEndpoint.Get, false);
+            return await GetAsync(ProfileEndpoint.Get, core);
         }
 
-        public async Task<ProfileView?> Profile_GetView(string? IdUserView)
-        {
-            if (IdUserView == null) return default;
+        //public async Task<ProfileView?> Profile_GetView(string? IdUserView)
+        //{
+        //    if (IdUserView == null) return default;
 
-            return await GetAsync<ProfileView>(ProfileEndpoint.GetView(IdUserView), false);
-        }
+        //    return await GetAsync<ProfileView>(ProfileEndpoint.GetView(IdUserView), false);
+        //}
 
         //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()
         //{
         //    return await GetListAsync<ProfileSearch>(ProfileEndpoint.ListSearch, false);
         //}
 
-        public async Task<ProfileModel?> Profile_Update(ProfileModel obj)
+        public async Task<ProfileModel?> Update(RenderControlCore<ProfileModel?>? core, ProfileModel obj)
         {
-            return await PutAsync(ProfileEndpoint.Update, false, obj, ProfileEndpoint.Get);
+            return await PutAsync(ProfileEndpoint.Update, core, obj);
         }
 
-        public async Task<ProfileModel?> Profile_UpdateLooking(ProfileModel? obj, ProfilePreferenceModel? preference)
+        public async Task<ProfileModel?> UpdateLooking(RenderControlCore<ProfileModel?>? core, ProfileModel? obj, ProfilePreferenceModel? preference)
         {
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             if (preference == null) throw new ArgumentNullException(nameof(preference));
 
             obj.Preference = preference;
 
-            return await PutAsync(ProfileEndpoint.UpdateLooking, false, obj, ProfileEndpoint.Get);
+            return await PutAsync(ProfileEndpoint.UpdateLooking, core, obj);
 
             //if (storage != null && response.IsSuccessStatusCode)
             //{
@@ -60,11 +57,11 @@ namespace MM.WEB.Modules.Profile.Core
             //}
         }
 
-        public async Task Profile_UpdatePartner(string id, string? email)
-        {
-            if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email));
+        //public async Task Profile_UpdatePartner(string id, string? email)
+        //{
+        //    if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email));
 
-            await PutAsync(ProfileEndpoint.UpdatePartner, false, new { id, email }, null, null);
-        }
+        //    await PutAsync(ProfileEndpoint.UpdatePartner, false, new { id, email }, null, null);
+        //}
     }
 }

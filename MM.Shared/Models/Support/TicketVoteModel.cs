@@ -1,6 +1,4 @@
-﻿using MM.Shared.Core.Models;
-
-namespace MM.Shared.Models.Support
+﻿namespace MM.Shared.Models.Support
 {
     public class TicketVoteModel : ProtectedMainDocument
     {

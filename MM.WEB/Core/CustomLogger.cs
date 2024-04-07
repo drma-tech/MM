@@ -11,16 +11,12 @@ namespace MM.WEB.Core
         public void Dispose() => _loggers.Clear();
     }
 
-    public class CustomLogger : ILogger
+    public class CustomLogger(string name) : ILogger
     {
-        private readonly string _name;
-
-        public CustomLogger(string name)
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
         {
-            _name = name;
+            return default;
         }
-
-        public IDisposable BeginScope<TState>(TState state) => default!;
 
         public bool IsEnabled(LogLevel logLevel) => logLevel >= LogLevel.Warning;
 
@@ -38,7 +34,7 @@ namespace MM.WEB.Core
 
             AppStateStatic.Logs.Add(new LogContainer()
             {
-                Name = _name,
+                Name = name,
                 State = formatter(state, exception),
                 Message = exception?.Message,
                 StackTrace = exception?.StackTrace

@@ -1,7 +1,6 @@
 ﻿@page "/"
 @page "/Index"
 @using MM.Shared.Models.Profile;
-@using MM.WEB.Modules.Profile.Component
 @using MM.WEB.Modules.Profile.Core;
 @attribute [Authorize]
 @inherits PageCore<Index>
@@ -49,7 +48,7 @@
     </Column>
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is8.OnWidescreen.Is9.OnFullHD">
 
-        <Loading @ref="ProfileLoading">
+        <RenderControl Core="Core" Model="profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
             @if (profile?.Modality == Modality.Matchmaker)
             {
                 @*<Card Margin="Margin.Is2.FromBottom">
@@ -140,7 +139,7 @@
             {
                 <Alert Visible="true" Color="Color.Dark" Shadow="Shadow.Small"><AlertMessage>Seu Parceiro (@(view?.NickName ?? "..."))</AlertMessage></Alert>
 
-                <Loading @ref="ViewLoading" CustomNoData="Perfil indisponível. Aguarde até que o perfil do seu parceiro(a) esteja completamente cadastrado.">
+                <Loading CustomNoData="Perfil indisponível. Aguarde até que o perfil do seu parceiro(a) esteja completamente cadastrado.">
                     <Row HorizontalGutter="8" VerticalGutter="0">
                         <Column ColumnSize="ColumnSize.IsFull.OnDesktop.Is4.OnFullHD">
                             <Card Margin="Margin.Is2.FromBottom">
@@ -166,7 +165,7 @@
                                         @*<Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
                                 <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @view?.GetLocation(ProfileModel.LocationType.City)
                                 </Badge>*@
-                                        @if (view.ActivityStatus == ActivityStatus.Today)
+                                        @* @if (view.ActivityStatus == ActivityStatus.Today)
                                         {
                                             <Badge Color="Color.Success">
                                                 <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado hoje
@@ -189,7 +188,7 @@
                                             <Badge Color="Color.Dark">
                                                 <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> usuário desativado
                                             </Badge>
-                                        }
+                                        } *@
                                         @* @if (view.Reports.Any())
                                 {
                                 <Paragraph Margin="Margin.Is0.FromTop.Is0.FromBottom">
@@ -211,14 +210,16 @@
                     </Row>
                 </Loading>
             }
-        </Loading>
+        </RenderControl>
     </Column>
 </Row>
 
 @code
 {
     private ProfileModel? profile;
-    private ProfileView? view;
+    public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
+
+    private ProfileModel? view;
     private List<AffinityVM> affinities = new();
     //private List<ProfileSearch> lstDestaques = new();
 
@@ -229,28 +230,28 @@
     //private bool ViewLoading = true;
     private bool SuggestionsLoading = true;
 
-    public Loading ProfileLoading { get; set; } = default!;
-    public Loading ViewLoading { get; set; } = default!;
+    // public Loading ProfileLoading { get; set; } = default!;
+    // public Loading ViewLoading { get; set; } = default!;
 
-    protected override async Task LoadData()
+    protected override async Task LoadDataRender()
     {
         try
         {
-            if (await AppState.IsUserAuthenticated())
+            if (IsAuthenticated)
             {
-                ProfileLoading.Start();
-                profile = await ProfileApi.Profile_Get();
-                ProfileLoading.Finish(profile == null, "Perfil não encontrado. Favor, realizar seu cadastro para poder usar todas as funcionalidades");
-                ProfileLoading.Finish(profile?.Preference == null, "Preferências não encontradas. Favor, realizar seu preenchimento para poder usar todas as funcionalidades");
+                // ProfileLoading.Start();
+                profile = await ProfileApi.Get(Core);
+                // ProfileLoading.Finish(profile == null, "Perfil não encontrado. Favor, realizar seu cadastro para poder usar todas as funcionalidades");
+                // ProfileLoading.Finish(profile?.Preference == null, "Preferências não encontradas. Favor, realizar seu preenchimento para poder usar todas as funcionalidades");
 
                 if (profile != null)
                 {
                     if (profile.Modality == Modality.RelationshipAnalysis)
                     {
-                        ViewLoading.Start();
+                        // ViewLoading.Start();
                         var partner = profile.Partners.FirstOrDefault(w => !string.IsNullOrEmpty(w.Id));
-                        view = await ProfileApi.Profile_GetView(partner?.Id);
-                        ViewLoading.Finish(view == null);
+                        // view = await ProfileApi.Profile_GetView(partner?.Id);
+                        // ViewLoading.Finish(view == null);
                     }
                     else
                     {

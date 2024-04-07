@@ -1,0 +1,64 @@
+﻿<PageTitle>
+    @GetTitle()
+</PageTitle>
+<HeadContent>
+    <meta property="og:url" content="@GetCanonicalUrl()">
+    <meta property="og:site_name" content="@ProjectName">
+    <meta Property="og:title" Content="@GetTitle()" />
+    <meta Property="og:image" Content="@Icon" />
+    <meta Property="twitter:title" Content="@GetTitle()" />
+    <meta Property="twitter:site" content="@ProjectName">
+    <meta Property="twitter:image" Content="@Icon" />
+    @if (!string.IsNullOrEmpty(Description))
+    {
+        <meta Property="description" Content="@GetDescription()" />
+        <meta Property="og:description" Content="@GetDescription()" />
+        <meta Property="twitter:description" Content="@GetDescription()" />
+    }
+    <meta Name="keywords" Content="@GetKeywords()" />
+
+    <link rel="canonical" href="@GetCanonicalUrl()" />
+    <link rel="icon" type="image/png" href="@Icon" />
+</HeadContent>
+
+@if (ShowH1)
+{
+    <Heading Size="HeadingSize.Is1" Display="Display.None">@Title</Heading>
+}
+
+@code {
+    private const string ProjectName = "Streaming Discovery";
+    private const string ProjectUrl = "https://www.streamingdiscovery.com";
+
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Description { get; set; }
+    [Parameter] public string? Url { get; set; }
+    [Parameter] public string? Icon { get; set; } = "favicon.png";
+    [Parameter] public IEnumerable<string> Keywords { get; set; } = new List<string>();
+    [Parameter] public bool ShowH1 { get; set; } = true;
+
+    string GetTitle() => Title is null ? ProjectName : $"{ProjectName} | {Title}";
+
+    string GetDescription()
+    {
+        if (string.IsNullOrEmpty(Description))
+            return "";
+        return Description.TrimEnd('.') + ".";
+    }
+
+    string GetKeywords()
+    {
+        var keywords = new List<string>();
+
+        keywords.AddRange(Keywords);
+
+        keywords.Add(ProjectName);
+
+        return string.Join(", ", keywords);
+    }
+
+    string GetCanonicalUrl()
+    {
+        return ProjectUrl + Url;
+    }
+}

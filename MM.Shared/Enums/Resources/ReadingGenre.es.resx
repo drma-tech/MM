@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Biography_Description" xml:space="preserve">
-    <value>Una narrativa de la vida de una persona; Cuando el autor es también el tema principal, esta es una autobiografía o memoria.</value>
+    <value>Una narrativa de la vida de una persona; Cuando el autor es también el tema principal, esta es una autobiografía o memoria</value>
   </data>
   <data name="Biography_Name" xml:space="preserve">
     <value>Biografía</value>

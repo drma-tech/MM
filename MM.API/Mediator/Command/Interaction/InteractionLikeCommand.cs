@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using MM.Shared.Models.Interaction;
+using MM.Shared.Models.Profile;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

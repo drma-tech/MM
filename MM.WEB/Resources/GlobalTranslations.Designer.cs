@@ -61,24 +61,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active Connection.
-        /// </summary>
-        public static string ActiveConnection {
-            get {
-                return ResourceManager.GetString("ActiveConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Authentication in progress....
-        /// </summary>
-        public static string AuthenticationInProgress {
-            get {
-                return ResourceManager.GetString("AuthenticationInProgress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Beta Version!.
         /// </summary>
         public static string BetaVersion {
@@ -142,6 +124,33 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
+        /// </summary>
+        public static string HelpMap {
+            get {
+                return ResourceManager.GetString("HelpMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
+        /// </summary>
+        public static string HelpPlus {
+            get {
+                return ResourceManager.GetString("HelpPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
+        /// </summary>
+        public static string HelpQuestion {
+            get {
+                return ResourceManager.GetString("HelpQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string HelpTitle {
@@ -178,33 +187,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
-        /// </summary>
-        public static string MenuHome {
-            get {
-                return ResourceManager.GetString("MenuHome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        public static string MenuProfile {
-            get {
-                return ResourceManager.GetString("MenuProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Support.
-        /// </summary>
-        public static string MenuSupport {
-            get {
-                return ResourceManager.GetString("MenuSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Relationship.
         /// </summary>
         public static string MyRelationship {
@@ -223,11 +205,20 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, there&apos;s nothing at this address..
+        ///   Looks up a localized string similar to Operation cancelled!.
         /// </summary>
-        public static string NothingThisAddress {
+        public static string OperationCanceled {
             get {
-                return ResourceManager.GetString("NothingThisAddress", resourceCulture);
+                return ResourceManager.GetString("OperationCanceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation completed successfully!.
+        /// </summary>
+        public static string OperationCompleted {
+            get {
+                return ResourceManager.GetString("OperationCompleted", resourceCulture);
             }
         }
         
@@ -259,20 +250,20 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Premium Feature.
+        /// </summary>
+        public static string PremiumFeature {
+            get {
+                return ResourceManager.GetString("PremiumFeature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Privacy.
         /// </summary>
         public static string Privacy {
             get {
                 return ResourceManager.GetString("Privacy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Privacy Terms.
-        /// </summary>
-        public static string PrivacyTerms {
-            get {
-                return ResourceManager.GetString("PrivacyTerms", resourceCulture);
             }
         }
         
@@ -367,6 +358,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        public static string Share {
+            get {
+                return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete your account? This action cannot be undone..
+        /// </summary>
+        public static string SureDeleteAccount {
+            get {
+                return ResourceManager.GetString("SureDeleteAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Terms of use.
         /// </summary>
         public static string TermsOfUse {
@@ -394,29 +403,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type Something.
-        /// </summary>
-        public static string TypeSomething {
-            get {
-                return ResourceManager.GetString("TypeSomething", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to We were unable to detect a GPS system on your device. Please try again or release access to your device&apos;s GPS..
         /// </summary>
         public static string UnableDetectGps {
             get {
                 return ResourceManager.GetString("UnableDetectGps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unauthenticated User.
-        /// </summary>
-        public static string UnauthenticatedUser {
-            get {
-                return ResourceManager.GetString("UnauthenticatedUser", resourceCulture);
             }
         }
         
@@ -430,29 +421,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Writing.
-        /// </summary>
-        public static string Writing {
-            get {
-                return ResourceManager.GetString("Writing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Years.
         /// </summary>
         public static string Years {
             get {
                 return ResourceManager.GetString("Years", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You are not authorized to access this resource..
-        /// </summary>
-        public static string YouAreNotAuthorized {
-            get {
-                return ResourceManager.GetString("YouAreNotAuthorized", resourceCulture);
             }
         }
         

@@ -1,57 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
 		<OutputType>Exe</OutputType>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-        <RootNamespace>MM.API</RootNamespace>
+		<RootNamespace>MM.API</RootNamespace>
 		<UserSecretsId>34ce4f7a-ae5c-4644-b219-86df6469e377</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="Core\Hubs\**" />
-	  <Compile Remove="Mediator\Behavior\**" />
-	  <Compile Remove="Mediator\Command\Event\**" />
-	  <Compile Remove="Mediator\Command\Interaction\**" />
-	  <Compile Remove="Mediator\Command\Profile\**" />
-	  <Compile Remove="Mediator\Command\Store\**" />
-	  <Compile Remove="Mediator\Queries\Event\**" />
-	  <Compile Remove="Mediator\Queries\Interaction\**" />
-	  <Compile Remove="Mediator\Queries\Profile\**" />
+	  <Compile Remove="Mediator\**" />
 	  <EmbeddedResource Remove="Core\Hubs\**" />
-	  <EmbeddedResource Remove="Mediator\Behavior\**" />
-	  <EmbeddedResource Remove="Mediator\Command\Event\**" />
-	  <EmbeddedResource Remove="Mediator\Command\Interaction\**" />
-	  <EmbeddedResource Remove="Mediator\Command\Profile\**" />
-	  <EmbeddedResource Remove="Mediator\Command\Store\**" />
-	  <EmbeddedResource Remove="Mediator\Queries\Event\**" />
-	  <EmbeddedResource Remove="Mediator\Queries\Interaction\**" />
-	  <EmbeddedResource Remove="Mediator\Queries\Profile\**" />
+	  <EmbeddedResource Remove="Mediator\**" />
 	  <None Remove="Core\Hubs\**" />
-	  <None Remove="Mediator\Behavior\**" />
-	  <None Remove="Mediator\Command\Event\**" />
-	  <None Remove="Mediator\Command\Interaction\**" />
-	  <None Remove="Mediator\Command\Profile\**" />
-	  <None Remove="Mediator\Command\Store\**" />
-	  <None Remove="Mediator\Queries\Event\**" />
-	  <None Remove="Mediator\Queries\Interaction\**" />
-	  <None Remove="Mediator\Queries\Profile\**" />
+	  <None Remove="Mediator\**" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="Functions\EventFunction.cs" />
 	  <Compile Remove="Functions\InteractionFunction.cs" />
 	  <Compile Remove="Functions\PublicFunction.cs" />
 	  <Compile Remove="Functions\SignalRFunction.cs" />
 	  <Compile Remove="Functions\StorageFunction.cs" />
-	  <Compile Remove="Functions\StoreFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.35.3" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.19.0" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
+		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.38.1" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.21.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="1.2.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.1.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.14.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.10" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
+		<PackageReference Include="StrongGrid" Version="0.106.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
@@ -67,9 +47,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Mediator\Command\" />
-	  <Folder Include="Mediator\Queries\" />
 	</ItemGroup>
 </Project>

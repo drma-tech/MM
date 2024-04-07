@@ -2,7 +2,6 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Repository.Core;
-using MM.Shared.Core.Models;
 using MM.Shared.Models.Profile;
 
 namespace VerusDate.Api.Function

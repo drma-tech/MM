@@ -1,6 +1,10 @@
 ﻿@page "/Profile/Gallery"
+@using MM.Shared.Models.Profile
+@using MM.WEB.Modules.Profile.Core
 @attribute [Authorize]
 @inherits PageCore<ProfileGallery>
+
+@inject ProfileApi ProfileApi
 
 <Row HorizontalGutter="8" VerticalGutter="0">
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
@@ -48,7 +52,7 @@
     </Column>
 </Row>
 
-<VerusDate.Web.Shared.modal.BasicModal @ref="helpMain" Title="Dicas para foto principal">
+<BasicModal @ref="helpMain" Title="Dicas para foto principal">
     Uma pesquisa divulgada no jornal da associação Psychological Science  destaca a importância da imagem de perfil e quais as impressões com a foto
     <ul>
         <li>Mostre os dentes ao sorrir;</li>
@@ -60,19 +64,19 @@
         <li>Evite usar óculos ou acessórios que cubram seus olhos;</li>
     </ul>
     A pesquisa ainda diz que é bom tentar tirar as fotos em um fundo iluminado e de frente para a câmera (inclinar um pouco o rosto de lado também pode ser produtivo). Além disso, é preciso evitar chapéus; óculos de sol; cabelo, sombras nos olhos, sorriso muito exagerado ou com muita sensualidade.
-</VerusDate.Web.Shared.modal.BasicModal>
+</BasicModal>
 
 @code
 {
     private ProfileModel? _profile = new();
     string? imageDataUri = ImageHelper.GetNoUserPhoto;
 
-    private Shared.modal.BasicModal? helpMain;
+    private BasicModal? helpMain;
 
     string? selectedImage;
     string[] imageDataUriGallery = Array.Empty<string>();
 
-    protected override async Task LoadData()
+    protected override async Task LoadDataRender()
     {
         _profile = await Http.Profile_Get(SessionStorage);
 

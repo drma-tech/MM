@@ -1,22 +1,27 @@
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MM.API.Core.Middleware;
 using MM.API.Repository.Core;
-using Polly;
-using Polly.Extensions.Http;
-using System.Net;
-using System.Reflection;
 
 var host = new HostBuilder()
-    .ConfigureAppConfiguration(builder =>
+     .ConfigureFunctionsWorkerDefaults(worker =>
+     {
+         worker.UseMiddleware<ExceptionHandlingMiddleware>();
+         //https://github.com/Azure/azure-functions-openapi-extension/blob/main/docs/enable-open-api-endpoints-out-of-proc.md
+         //worker.UseNewtonsoftJson();
+     })
+    .ConfigureAppConfiguration((hostContext, config) =>
     {
-        builder.AddJsonFile("appsettings.json", true, true)
-            .AddUserSecrets(Assembly.GetExecutingAssembly(), true);
-    })
-    .ConfigureFunctionsWorkerDefaults(app =>
-    {
-        app.UseMiddleware<ExceptionHandlingMiddleware>();
+        if (hostContext.HostingEnvironment.IsDevelopment())
+        {
+            config.AddJsonFile("local.settings.json");
+            config.AddUserSecrets<Program>();
+        }
+
+        ApiStartup.Startup(config.Build().GetValue<string>("RepositoryOptions_CosmosConnectionString"));
     })
     .ConfigureServices(ConfigureServices)
     .ConfigureLogging(ConfigureLogging)
@@ -26,28 +31,14 @@ host.Run();
 
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
-    services.AddHttpClient("RetryHttpClient")
-        .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
-
-    services.AddSingleton<IRepository>((s) =>
-    {
-        return new CosmosRepository(context.Configuration);
-    });
-
+    services.AddSingleton<IRepository, CosmosRepository>();
     services.AddSingleton<CosmosCacheRepository>();
+    services.AddSingleton<CosmosEmailRepository>();
+    services.AddApplicationInsightsTelemetryWorkerService();
+    services.ConfigureFunctionsApplicationInsights();
 }
 
 static void ConfigureLogging(HostBuilderContext context, ILoggingBuilder builder)
 {
     builder.AddProvider(new CosmosLoggerProvider(new CosmosLogRepository(context.Configuration)));
-}
-
-//https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory
-static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
-{
-    return HttpPolicyExtensions
-        .HandleTransientHttpError() // 408,5xx
-        .OrResult(msg => msg.StatusCode == HttpStatusCode.NotFound) // 404
-        .OrResult(msg => msg.StatusCode == HttpStatusCode.Unauthorized) // 401
-        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Retry 3 times, with wait 1, 2 and 4 seconds.
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Cosmos;
-using MM.Shared.Core.Models;
 using System.Linq.Expressions;
 
 namespace MM.API.Repository.Core
@@ -8,9 +7,9 @@ namespace MM.API.Repository.Core
     {
         Task<T?> Get<T>(string id, PartitionKey key, CancellationToken cancellationToken) where T : CosmosDocument;
 
-        Task<List<T>> Query<T>(Expression<Func<T, bool>>? predicate, PartitionKey? key, DocumentType Type, CancellationToken cancellationToken) where T : MainDocument;
+        Task<List<T>> ListAll<T>(DocumentType Type, CancellationToken cancellationToken) where T : MainDocument;
 
-        Task<List<T>> Query<T>(QueryDefinition query, CancellationToken cancellationToken) where T : MainDocument;
+        Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, PartitionKey? key, DocumentType Type, CancellationToken cancellationToken) where T : MainDocument;
 
         Task<T> Upsert<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument;
 

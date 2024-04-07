@@ -40,6 +40,6 @@
 
     public class HereJson
     {
-        public List<HereRoot> items { get; set; } = new();
+        public List<HereRoot> items { get; set; } = [];
     }
 }

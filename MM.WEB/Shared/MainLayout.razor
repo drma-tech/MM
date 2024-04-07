@@ -1,81 +1,144 @@
-﻿@using MM.Shared.Models.Support;
+﻿@using MM.Shared.Models.Auth
+@using MM.Shared.Models.Support;
+@using MM.WEB.Modules.Support.Component
 @using MM.WEB.Modules.Support.Core;
+@using System.Security.Claims
 @using Toolbelt.Blazor.PWA.Updater
+
 @inherits LayoutComponentBase
+
 @inject NavigationManager Navigation
 @inject ILogger<MainLayout> Logger
 @inject INotificationService Toast
+@inject IJSRuntime JsRuntime
 @inject TicketApi TicketApi
-@inject AppState AppState
+@inject UpdateApi UpdateApi
 
 <MediaQueryList>
-    <Layout Sider="true" Style="height: var(--app-height);">
-        <LayoutSider>
-            <LayoutSiderContent>
-                <NavMenu />
-            </LayoutSiderContent>
-        </LayoutSider>
-        <Layout>
-            <LayoutHeader Fixed="true">
-                <HeadLayout></HeadLayout>
-            </LayoutHeader>
-            <LayoutContent Style="overflow-y: auto; overflow-x: hidden;">
-                <Container Fluid="true" Padding="Padding.Is2">
-                    <ErrorBoundary @ref="boundary">
-                        <ChildContent>
-                            @Body
-                        </ChildContent>
-                        <ErrorContent Context="ex">
-                            @if (AppStateStatic.Language == Language.pt)
-                            {
-                                <Alert Color="Color.Danger" Visible="true">
-                                    <AlertDescription>
-                                        <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> Não foi possível processar essa operação. Para abrir um ticket de suporte, <Blazorise.Link onclick="@(()=>SubmitForm(ex))" style="cursor: pointer;">clique aqui</Blazorise.Link>
-                                    </AlertDescription>
-                                </Alert>
-                            }
-                            else
-                            {
-                                <Alert Color="Color.Danger" Visible="true">
-                                    <AlertDescription>
-                                        <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> This operation could not be processed. To open a support ticket, <Blazorise.Link onclick="@(()=>SubmitForm(ex))" style="cursor: pointer;">click here</Blazorise.Link>
-                                    </AlertDescription>
-                                </Alert>
-                            }
-                        </ErrorContent>
-                    </ErrorBoundary>
-                </Container>
-            </LayoutContent>
-            <LayoutFooter Fixed="true" Display="Display.Block.None.OnWidescreen">
-                <Bar Mode="BarMode.Horizontal" Breakpoint="Breakpoint.Mobile" CollapseMode="BarCollapseMode.Small" Background="Background.Secondary" ThemeContrast="ThemeContrast.Dark"
-                     Padding="Padding.Is0.FromBottom.Is0.FromTop" Style="text-align: center; display: block;">
-                    <BarBrand Class="mr-0">
-                        <Button Color="GetColor(TypeButton.Home)" To="/" Type="ButtonType.Link" title="@GlobalTranslations.MenuHome" Size="Size.Small" Style="line-height: 1.3;">
-                            <Blazorise.Icon Name="FontAwesomeIcons.Home" />
-                            <span style="display: block; font-size: 0.60rem;">@GlobalTranslations.MenuHome</span>
-                        </Button>
-                        <Button Color="GetColor(TypeButton.Profile)" To="/Profile" Type="ButtonType.Link" title="@GlobalTranslations.MenuProfile" Size="Size.Small" Style="line-height: 1.3;">
-                            <BarIcon IconName="FontAwesomeIcons.UserCircle" />
-                            <span style="display: block; font-size: 0.60rem;">@GlobalTranslations.MenuProfile</span>
-                        </Button>
-                        <Button Color="GetColor(TypeButton.Support)" To="/Support" Type="ButtonType.Link" title="@GlobalTranslations.MenuSupport" Size="Size.Small" Style="line-height: 1.3;">
-                            <BarIcon IconName="FontAwesomeIcons.Headset" />
-                            <span style="display: block; font-size: 0.60rem;">@GlobalTranslations.MenuSupport</span>
-                        </Button>
-                    </BarBrand>
-                </Bar>
-            </LayoutFooter>
+    <Div Position="Position.Relative">
+        <Layout Sider="true" Style="height: var(--app-height);">
+            <LayoutSider>
+                <LayoutSiderContent>
+                    <NavMenu />
+                </LayoutSiderContent>
+            </LayoutSider>
+            <Layout>
+                <LayoutHeader Fixed="true">
+                    <HeadLayout></HeadLayout>
+                </LayoutHeader>
+                <LayoutContent Style="overflow-y: auto; overflow-x: hidden;">
+                    <Container Fluid="true" Padding="Padding.Is2">
+                        <ErrorBoundary @ref="boundary">
+                            <ChildContent>
+                                @Body
+                            </ChildContent>
+                            <ErrorContent Context="ex">
+                                @if (AppStateStatic.Language == Language.pt)
+                                {
+                                    <Alert Color="Color.Danger" Visible="true">
+                                        <AlertDescription>
+                                            <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> Não foi possível processar essa operação. Para abrir um ticket de suporte, <Blazorise.Link onclick="@(()=>SubmitForm(ex))" style="cursor: pointer;">clique aqui</Blazorise.Link>
+                                        </AlertDescription>
+                                    </Alert>
+                                }
+                                else
+                                {
+                                    <Alert Color="Color.Danger" Visible="true">
+                                        <AlertDescription>
+                                            <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> This operation could not be processed. To open a support ticket, <Blazorise.Link onclick="@(()=>SubmitForm(ex))" style="cursor: pointer;">click here</Blazorise.Link>
+                                        </AlertDescription>
+                                    </Alert>
+                                }
+                            </ErrorContent>
+                        </ErrorBoundary>
+                    </Container>
+                </LayoutContent>
+                <LayoutFooter Fixed="true" Display="Display.Block.None.OnWidescreen">
+                    <Bar Mode="BarMode.Horizontal" Breakpoint="Breakpoint.Mobile" CollapseMode="BarCollapseMode.Small" Background="Background.Secondary" ThemeContrast="ThemeContrast.Dark"
+                         Padding="Padding.Is0.FromBottom.Is0.FromTop" Style="text-align: center; display: block;">
+                        <BarBrand Class="me-0">
+                            <Button Color="GetColor(TypeButton.Home)" To="/" Type="ButtonType.Link" title="@WEB.Resources.Menu.Home" Size="Size.Small" Style="line-height: 1.3;">
+                                <Blazorise.Icon Name="FontAwesomeIcons.Home" />
+                                <span style="display: block; font-size: 0.60rem;">@WEB.Resources.Menu.Home</span>
+                            </Button>
+                            <Button Color="GetColor(TypeButton.Profile)" To="/profile" Type="ButtonType.Link" title="@WEB.Resources.Menu.Profile" Size="Size.Small" Style="line-height: 1.3;">
+                                <BarIcon IconName="FontAwesomeIcons.UserCircle" />
+                                <span style="display: block; font-size: 0.60rem;">@WEB.Resources.Menu.Profile</span>
+                            </Button>
+                            <AuthorizeView Roles="administrator">
+                                <Authorized>
+                                    <Button Color="GetColor(TypeButton.Administrator)" To="/administrator" Type="ButtonType.Link" title="Administrator" Size="Size.Small" Style="line-height: 1.3;">
+                                        <BarIcon IconName="FontAwesomeIcons.UserTie" />
+                                        <span style="display: block; font-size: 0.60rem;">Administrator</span>
+                                    </Button>
+                                </Authorized>
+                            </AuthorizeView>
+                        </BarBrand>
+                    </Bar>
+                </LayoutFooter>
+            </Layout>
         </Layout>
-    </Layout>
+        <Div Position="Position.Absolute.Bottom.Is0.End.Is0" onclick="@(()=>AppStateStatic.ShowFeedback?.Invoke(true))" Style="z-index: 2;">
+            <Button Position="Position.Relative" Margin="Margin.Is(GetMargin)" Color="Color.Primary" title="Help & Support">
+                <Blazorise.Icon Name="FontAwesomeIcons.Headset" />
+                @*  <Badge Color="Color.Danger" Pill Position="Position.Absolute.Top.Is0.Start.Is100.Translate.Middle">
+                1
+                </Badge> *@
+            </Button>
+        </Div>
+    </Div>
 </MediaQueryList>
 
 <NotificationProvider Location="NotificationLocation.End" DefaultInterval="10000" />
 <PWAUpdater Text="@GlobalTranslations.PWAUpdaterText" ButtonCaption="@GlobalTranslations.PWAUpdaterButton" />
 
+<Offcanvas @ref="offcanvasRef" Placement="Placement.End">
+    <OffcanvasHeader>
+        @MM.WEB.Modules.Support.Resources.Translations.HelpSupport
+        <CloseButton Clicked="@(()=>ShowFeedback(false))" />
+    </OffcanvasHeader>
+    <OffcanvasBody>
+        <Tabs RenderMode="TabsRenderMode.LazyLoad" @bind-SelectedTab="@Tab" Pills="true" FullWidth="true">
+            <Items>
+                <Tab Name="Home">@MM.WEB.Modules.Support.Resources.Translations.Home</Tab>
+                <Tab Name="Updates">
+                    @MM.WEB.Modules.Support.Resources.Translations.Updates
+                    @if (Updates.Any(a => a.IsNew))
+                    {
+                        <Badge Color="Color.Danger">
+                            @Updates.Count(c => c.IsNew)
+                        </Badge>
+                    }
+                </Tab>
+                <Tab Name="Feedback">@MM.WEB.Modules.Support.Resources.Translations.Feedback</Tab>
+            </Items>
+            <Content>
+                <TabPanel Name="Home" Padding="Padding.Is3.FromTop">
+                    <DownloadComponent></DownloadComponent>
+                </TabPanel>
+                <TabPanel Name="Updates" Padding="Padding.Is3.FromTop">
+                    <AnnouncementComponent Updates="Updates" Core="UpdateCore"></AnnouncementComponent>
+                </TabPanel>
+                <TabPanel Name="Feedback" Padding="Padding.Is3.FromTop">
+                    <FeedbackComponent IsAuthenticated="IsAuthenticated" UserId="UserId"></FeedbackComponent>
+                </TabPanel>
+            </Content>
+        </Tabs>
+    </OffcanvasBody>
+</Offcanvas>
+
 @code {
+    [CascadingParameter] protected Task<AuthenticationState> authenticationState { get; set; } = default!;
+
+    public HashSet<UpdateModel> Updates { get; set; } = [];
+    public RenderControlCore<HashSet<UpdateModel>> UpdateCore { get; set; } = new();
+
+    public string? Tab { get; set; } = "Home";
+    public string GetMargin => "me-4 mb-lg-4 mb-6";
+
     private enum TypeButton
     {
-        Home, Profile, Providers, Suggestions, Support
+        Home, Profile, Providers, Suggestions, Support, Administrator
     }
 
     private TypeButton CurrentButton;
@@ -83,10 +146,57 @@
     protected override void OnInitialized()
     {
         Navigation.LocationChanged += OnLocationChanged;
+        AppStateStatic.ShowError = async (msg) => { await Toast.Error(msg); };
+        AppStateStatic.ShowFeedback = (show) => { ShowFeedback(show); };
+        UpdateApi.DataChanged += (UpdateModel? model) =>
+        {
+            var item = Updates.FirstOrDefault(f => f.Id == model?.Id);
+            if (item != null)
+            {
+                item = model;
+            }
+            StateHasChanged();
+        };
 
         ChangeCurrentButton(Navigation.Uri);
 
         StateHasChanged();
+    }
+
+    protected bool IsAuthenticated { get; set; } = false;
+    protected string? UserId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (authenticationState is not null)
+        {
+            var authState = await authenticationState;
+
+            var User = authState?.User;
+            IsAuthenticated = User?.Identity is not null && User.Identity.IsAuthenticated;
+            UserId = User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        Updates = await UpdateApi.Get(UpdateCore);
+
+        try
+        {
+            var date = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "updates-date");
+            foreach (var item in Updates)
+            {
+                if (date.NotEmpty() && long.Parse(date) > item.Date.Ticks)
+                {
+                    item.IsNew = false;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
     }
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs args)
@@ -98,10 +208,11 @@
 
     private void ChangeCurrentButton(string location)
     {
-        if (location.Contains("/Profile")) CurrentButton = TypeButton.Profile;
-        else if (location.Contains("/Providers")) CurrentButton = TypeButton.Providers;
-        else if (location.Contains("/Suggestions")) CurrentButton = TypeButton.Suggestions;
-        else if (location.Contains("/Support")) CurrentButton = TypeButton.Support;
+        if (location.Contains("/profile")) CurrentButton = TypeButton.Profile;
+        else if (location.Contains("/providers")) CurrentButton = TypeButton.Providers;
+        else if (location.Contains("/suggestions")) CurrentButton = TypeButton.Suggestions;
+        else if (location.Contains("/support")) CurrentButton = TypeButton.Support;
+        else if (location.Contains("/administrator")) CurrentButton = TypeButton.Administrator;
         else CurrentButton = TypeButton.Home;
     }
 
@@ -127,17 +238,39 @@
             var Ticket = new TicketModel();
 
             Ticket.TicketType = TicketType.BugReport;
-            Ticket.Initialize(await AppState.GetIdUser());
+            Ticket.Initialize(UserId);
             Ticket.Title = exc.Message ?? "erro desconhecido";
             Ticket.Description = exc.StackTrace;
 
             await TicketApi.Insert(Ticket);
 
-            await Toast.Success("Ticket gerado com sucesso");
+            await Toast.Success(GlobalTranslations.OperationCompleted);
         }
         catch (Exception ex)
         {
             ex.ProcessException(Toast, Logger);
         }
+    }
+
+    [JSInvokable]
+    public static void RegistrationSuccessful(TempClientePaddle client)
+    {
+        AppStateStatic.RegistrationSuccessful?.Invoke(client);
+    }
+
+    [JSInvokable]
+    public static void ShowError(string error)
+    {
+        AppStateStatic.ShowError?.Invoke(error);
+    }
+
+    private Offcanvas? offcanvasRef;
+
+    private void ShowFeedback(bool show)
+    {
+        if (show)
+            offcanvasRef?.Show();
+        else
+            offcanvasRef?.Hide();
     }
 }

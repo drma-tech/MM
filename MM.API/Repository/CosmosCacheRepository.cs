@@ -1,35 +1,34 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
-using MM.Shared.Core.Models;
+using Microsoft.Extensions.Logging;
 
 namespace MM.API.Repository
 {
     public class CosmosCacheRepository
     {
         public Container Container { get; private set; }
+        private readonly ILogger<CosmosCacheRepository> _logger;
 
-        public CosmosCacheRepository(IConfiguration config)
+        public CosmosCacheRepository(IConfiguration config, ILogger<CosmosCacheRepository> logger)
         {
-            var connString = config.GetValue<string>("RepositoryOptions_CosmosConnectionString");
+            _logger = logger;
+
             var databaseId = config.GetValue<string>("RepositoryOptions_DatabaseId");
             var containerId = config.GetValue<string>("RepositoryOptions_ContainerCacheId");
 
-            var _client = new CosmosClient(connString, new CosmosClientOptions()
-            {
-                SerializerOptions = new CosmosSerializationOptions()
-                {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
-            });
-
-            Container = _client.GetContainer(databaseId, containerId);
+            Container = ApiStartup.CosmosClient.GetContainer(databaseId, containerId);
         }
 
         public async Task<CacheDocument<TData>?> Get<TData>(string key, CancellationToken cancellationToken) where TData : class
         {
             try
             {
-                var response = await Container.ReadItemAsync<CacheDocument<TData>>(key, new PartitionKey(key), null, cancellationToken);
+                var response = await Container.ReadItemAsync<CacheDocument<TData>?>(key, new PartitionKey(key), null, cancellationToken);
+
+                if (response.RequestCharge > 1.7)
+                {
+                    _logger.LogWarning("Get - key {0}, RequestCharge {1}", key, response.RequestCharge);
+                }
 
                 return response.Resource;
             }
@@ -42,6 +41,11 @@ namespace MM.API.Repository
         public async Task<CacheDocument<TData>?> Add<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
         {
             var response = await Container.UpsertItemAsync(cache, new PartitionKey(cache.Key), null, cancellationToken);
+
+            if (response.RequestCharge > 12)
+            {
+                _logger.LogWarning("Add - Key {0}, RequestCharge {1}", cache.Key, response.RequestCharge);
+            }
 
             return response.Resource;
         }

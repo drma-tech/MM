@@ -1,34 +1,45 @@
 ﻿@using MM.Shared.Models.Support;
-@using MM.WEB.Modules.Shared.General;
 @using MM.WEB.Modules.Support.Core;
-@inherits ComponenteCore<AnnouncementComponent>
-@inject AnnouncementApi AnnouncementApi
+@inherits ComponentCore<AnnouncementComponent>
 
-<Loading @ref="LoadingAnnouncements">
-    @foreach (var item in announcement?.Items.OrderByDescending(o => o.Date) ?? Enumerable.Empty<AnnouncementItem>())
+@inject IJSRuntime JsRuntime
+@inject UpdateApi UpdateApi
+
+<RenderControl Core="Core" Model="Updates" ExpressionEmpty="@((HashSet<UpdateModel> lst) => lst.Empty())">
+    @foreach (var item in Updates?.OrderByDescending(o => o.Date) ?? Enumerable.Empty<UpdateModel>())
     {
-        <Alert Color="Color.Info" Visible="true">
-            <Heading Size="HeadingSize.Is6" TextColor="TextColor.Success">
+        <Alert Color="Color.Info" Visible="true" Margin="Margin.Is2.FromBottom">
+            <AlertMessage>
                 @item.Title
-            </Heading>
-            <Paragraph Style="font-size: 0.8rem;">
-                @((MarkupString)(item.Description ?? ""))
-            </Paragraph>
+                @if (item.IsNew)
+                {
+                    <Badge Color="Color.Danger" Float="Float.End">
+                        @WEB.Resources.Button.New
+                    </Badge>
+                }
+            </AlertMessage>
         </Alert>
+        <Paragraph Margin="Margin.Is2.OnY" TextAlignment="TextAlignment.Justified">
+            @((MarkupString)(item.Description ?? ""))
+        </Paragraph>
     }
-</Loading>
+</RenderControl>
 
 @code {
-    private AnnouncementModel? announcement;
+    [Parameter] public HashSet<UpdateModel> Updates { get; set; } = [];
+    [Parameter] public RenderControlCore<HashSet<UpdateModel>> Core { get; set; } = new();
 
-    public Loading? LoadingAnnouncements { get; set; }
-
-    protected override async Task LoadData()
+    protected override async Task OnInitializedAsync()
     {
-        LoadingAnnouncements?.Start();
-
-        announcement = await AnnouncementApi.Get();
-
-        LoadingAnnouncements?.Finish(announcement == null);
+        await Task.Delay(2000).ContinueWith(async (task) =>
+        {
+            await JsRuntime.InvokeAsync<string>("SetLocalStorage", "updates-date", DateTime.Now.Ticks);
+            foreach (var item in Updates)
+            {
+                item.IsNew = false;
+                UpdateApi.DataChanged?.Invoke(item);
+            }
+            StateHasChanged();
+        });
     }
 }

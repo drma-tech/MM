@@ -1,10 +1,5 @@
-﻿using MM.Shared.Core.Models;
-using MM.Shared.Helper;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using static MM.Shared.Helper.ImageHelper;
-
-//using static MM.Shared.Helper.ImageHelper;
+﻿using Newtonsoft.Json;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile
 {
@@ -13,9 +8,6 @@ namespace MM.Shared.Models.Profile
         public ProfileModel() : base(DocumentType.Profile)
         {
         }
-
-        //public DateTime? DtTopList { get; set; } = DateTime.UtcNow;
-        public DateTime? DtLastLogin { get; set; } = DateTime.UtcNow;
 
         #region BASIC
 
@@ -32,13 +24,13 @@ namespace MM.Shared.Models.Profile
         public string? Location { get; set; }
 
         [Custom(Name = "Languages_Name", Description = "Languages_Description", FieldInfo = "Dizem que uma boa comunicação é a chave para qualquer relacionamento duradouro e bem-sucedido. É absolutamente essencial que duas pessoas compartilhem seus sentimentos, expressem seus pensamentos e, talvez o mais importante, ouçam atentamente uma à outra. Infelizmente, no mundo acelerado e agitado de hoje, muitos casais não encontram tempo para sentar e ter uma conversa significativa um com o outro. Telefonemas e mensagens de texto substituíram os bate-papos pessoais entre duas pessoas. A falta de comunicação adequada é uma das principais razões pelas quais muitos relacionamentos não duram tanto quanto deveriam. Tendo tudo isso em mente, é realmente uma boa ideia você namorar uma pessoa que não fala a mesma língua que você?", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public IReadOnlyList<Language> Languages { get; set; } = Array.Empty<Language>();
+        public IReadOnlyList<Language> Languages { get; set; } = [];
 
         [Custom(Name = "CurrentSituation_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public CurrentSituation? CurrentSituation { get; set; }
 
         [Custom(Name = "Intentions_Name", Description = "Intentions_Description", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public IReadOnlyList<Intentions> Intentions { get; set; } = Array.Empty<Intentions>();
+        public IReadOnlyList<Intentions> Intentions { get; set; } = [];
 
         [Custom(Name = "BiologicalSex_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public BiologicalSex? BiologicalSex { get; set; }
@@ -86,7 +78,7 @@ namespace MM.Shared.Models.Profile
             FieldInfo = "Todos nós desejamos e merecemos ter relacionamentos significativos onde nos sentimos amados e apreciados. Essa necessidade também é sentida por pessoas com deficiência. Algumas pessoas podem se surpreender com isso porque assumem que pessoas com deficiência não namoram, casam ou desejam relacionamentos íntimos. Mas, isso não é verdade. De fato, não há diferença entre a necessidade e o desejo de pessoas com deficiência por relacionamentos saudáveis e felizes e os de pessoas sem deficiência.",
             Tips = "Compartilhe seus sentimentos e preocupações|Qualquer deficiência pode ter um impacto emocional significativo em uma pessoa. Mas isso pode ser particularmente o caso se o parceiro for fisicamente apto e não puder se relacionar totalmente com o que está passando.|Esteja ciente dos efeitos emocionais em seu parceiro|As responsabilidades adicionais que vêm com viver ou namorar uma pessoa com deficiência podem sobrecarregar seu parceiro às vezes. Isso também é completamente normal.|Fale sobre suas finanças|Além dos efeitos emocionais de uma deficiência, é provável que tenha um impacto em suas finanças. Contas médicas, adaptações em sua casa e equipamentos para deficientes não são baratos.|Seja íntimo de qualquer maneira que puder|Uma deficiência ou condição de saúde pode alterar a forma como você faz sexo ou é íntimo. Também pode significar que você tem preocupações com a imagem corporal ou falta de confiança. Mas nada disso significa que você não pode desfrutar de uma vida sexual, seja lá o que for para você.|Encontre coisas para fazer juntos|Nenhum relacionamento pode sobreviver se você não puder se adaptar a uma situação e um ao outro. Sejamos fisicamente aptos ou deficientes, nossas circunstâncias de vida estão mudando constantemente.|Não desista|Mesmo quando você estiver se sentindo deprimido, deprimido ou com dor, ou quase pronto para desistir de tudo, tenha certeza de que dias melhores virão.",
             ResourceType = typeof(Resources.ProfileBioModel))]
-        public IReadOnlyList<Disability> Disabilities { get; set; } = Array.Empty<Disability>();
+        public IReadOnlyList<Disability> Disabilities { get; set; } = [];
 
         #endregion BIO
 
@@ -180,56 +172,42 @@ namespace MM.Shared.Models.Profile
 
         #region INTEREST
 
-        [Custom(Name = "Food", ResourceType =typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Food> Food { get; set; } = Array.Empty<Food>();
+        [Custom(Name = "Food", ResourceType = typeof(Resources.ProfileInterestModel))]
+        public IReadOnlyList<Food> Food { get; set; } = [];
 
         [Custom(Name = "Vacation", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Vacation> Vacation { get; set; } = Array.Empty<Vacation>();
+        public IReadOnlyList<Vacation> Vacation { get; set; } = [];
 
         [Custom(Name = "Sports", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Sports> Sports { get; set; } = Array.Empty<Sports>();
+        public IReadOnlyList<Sports> Sports { get; set; } = [];
 
         [Custom(Name = "LeisureActivities", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<LeisureActivities> LeisureActivities { get; set; } = Array.Empty<LeisureActivities>();
+        public IReadOnlyList<LeisureActivities> LeisureActivities { get; set; } = [];
 
         [Custom(Name = "MusicGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<MusicGenre> MusicGenre { get; set; } = Array.Empty<MusicGenre>();
+        public IReadOnlyList<MusicGenre> MusicGenre { get; set; } = [];
 
         [Custom(Name = "MovieGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<MovieGenre> MovieGenre { get; set; } = Array.Empty<MovieGenre>();
+        public IReadOnlyList<MovieGenre> MovieGenre { get; set; } = [];
 
         [Custom(Name = "TVGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<TVGenre> TVGenre { get; set; } = Array.Empty<TVGenre>();
+        public IReadOnlyList<TVGenre> TVGenre { get; set; } = [];
 
         [Custom(Name = "ReadingGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<ReadingGenre> ReadingGenre { get; set; } = Array.Empty<ReadingGenre>();
+        public IReadOnlyList<ReadingGenre> ReadingGenre { get; set; } = [];
 
         #endregion INTEREST
 
+        [JsonIgnore]
+        public int Age { get; set; }
+
         public ProfilePreferenceModel? Preference { get; set; }
-
-        //public ProfileGamificationModel Gamification { get; set; }
-        //public ProfileBadgeModel Badge { get; set; }
-
         public ProfilePhotoModel? Photo { get; set; }
-        //public ProfileReportModel[] Reports { get; set; } = Array.Empty<ProfileReportModel>();
+        public ProfileReportModel[] Reports { get; set; } = [];
 
-        //public string[] ActiveInteractions { get; set; } = Array.Empty<string>();
-        //public string[] PassiveInteractions { get; set; } = Array.Empty<string>();
-
-        public List<Partner> Partners { get; set; } = new();
+        public List<Partner> Partners { get; set; } = [];
 
         private readonly string BlobPath = "https://storageverusdate.blob.core.windows.net";
-
-        //public void UpList()
-        //{
-        //    DtTopList = DateTime.UtcNow;
-        //}
-
-        public void Login()
-        {
-            DtLastLogin = DateTime.UtcNow;
-        }
 
         public void UpdateData(ProfileModel profile)
         {
@@ -299,7 +277,7 @@ namespace MM.Shared.Models.Profile
 
         public void UpdatePartner(string userId, string email)
         {
-            var partner = Partners.FirstOrDefault(w => w.Email == email);
+            var partner = Partners.Find(w => w.Email == email);
             if (partner != null)
             {
                 partner.Id = userId;
@@ -307,20 +285,6 @@ namespace MM.Shared.Models.Profile
                 DtUpdate = DateTime.UtcNow;
             }
         }
-
-        //public void UpdateGamification(ProfileGamificationModel obj)
-        //{
-        //    Gamification = obj;
-
-        //    DtUpdate = DateTime.UtcNow;
-        //}
-
-        //public void UpdateBadge(ProfileBadgeModel obj)
-        //{
-        //    Badge = obj;
-
-        //    DtUpdate = DateTime.UtcNow;
-        //}
 
         public void UpdatePhoto(ProfilePhotoModel obj)
         {
@@ -339,17 +303,11 @@ namespace MM.Shared.Models.Profile
 
         public string[] GetGalleryPhotos()
         {
-            if (Photo == null || !Photo.Gallery.Any())
-                return Array.Empty<string>();
+            if (Photo == null || Photo.Gallery.Length == 0)
+                return [];
             else
                 return Photo.Gallery.Select(s => $"{BlobPath}/{GetPhotoContainer(PhotoType.PhotoGallery)}/{s}").ToArray();
         }
-
-        //public override void SetIds(string IdLoggedUser)
-        //{
-        //    this.SetId(IdLoggedUser);
-        //    this.SetPartitionKey(IdLoggedUser);
-        //}
 
         public enum LocationType
         {
@@ -390,366 +348,6 @@ namespace MM.Shared.Models.Profile
         public override bool HasValidData()
         {
             throw new NotImplementedException();
-        }
-    }
-
-    public class ProfileView : ProfileModel
-    {
-        public ActivityStatus ActivityStatus { get; set; }
-
-        [Custom(Name = "Age_Name", ResourceType = typeof(Resources.ProfileBioModel))]
-        public int Age { get; set; }
-    }
-
-    public class Partner
-    {
-        [Required]
-        [EmailAddress]
-        [Custom(Name = "Email_Name", Prompt = "Email_Prompt", Description = "Email_Description", ResourceType = typeof(Resources.ProfileMyRelationship))]
-        public string? Email { get; set; }
-
-        public string? Id { get; set; }
-    }
-
-    public class ProfilePreferenceModel
-    {
-        #region BASIC
-
-        [Custom(Name = "Region", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public Region Region { get; set; }
-
-        [Custom(Name = "Change", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public Change Change { get; set; }
-
-        [Custom(Name = "Languages", Description = "Languages_Description", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Language> Languages { get; set; } = Array.Empty<Language>();
-
-        [Custom(Name = "CurrentSituation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<CurrentSituation> CurrentSituation { get; set; } = Array.Empty<CurrentSituation>();
-
-        [Custom(Name = "BiologicalSex", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<BiologicalSex> BiologicalSex { get; set; } = Array.Empty<BiologicalSex>();
-
-        [Custom(Name = "GenderIdentity", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<GenderIdentity> GenderIdentity { get; set; } = Array.Empty<GenderIdentity>();
-
-        [Custom(Name = "SexualOrientation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<SexualOrientation> SexualOrientation { get; set; } = Array.Empty<SexualOrientation>();
-
-        #endregion BASIC
-
-        #region BIO
-
-        [Custom(Name = "RaceCategory", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<RaceCategory> RaceCategory { get; set; } = Array.Empty<RaceCategory>();
-
-        [Custom(Name = "BodyMass", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<BodyMass> BodyMass { get; set; } = Array.Empty<BodyMass>();
-
-        [Custom(Name = "MinimalAge", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public int MinimalAge { get; set; }
-
-        [Custom(Name = "MaxAge", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public int MaxAge { get; set; }
-
-        [Custom(Name = "MinimalHeight", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public Height? MinimalHeight { get; set; }
-
-        [Custom(Name = "MaxHeight", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public Height? MaxHeight { get; set; }
-
-        [Custom(Name = "Neurodiversities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Neurodiversity> Neurodiversities { get; set; } = Array.Empty<Neurodiversity>();
-
-        [Custom(Name = "Disabilities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Disability> Disabilities { get; set; } = Array.Empty<Disability>();
-
-        #endregion BIO
-
-        #region LIFESTYLE
-
-        [Custom(Name = "Drink_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Drink> Drink { get; set; } = Array.Empty<Drink>();
-
-        [Custom(Name = "Smoke_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Smoke> Smoke { get; set; } = Array.Empty<Smoke>();
-
-        [Custom(Name = "Diet_Name", Description = "Diet_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Diet> Diet { get; set; } = Array.Empty<Diet>();
-
-        [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<HaveChildren> HaveChildren { get; set; } = Array.Empty<HaveChildren>();
-
-        [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<WantChildren> WantChildren { get; set; } = Array.Empty<WantChildren>();
-
-        [Custom(Name = "EducationLevel_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<EducationLevel> EducationLevel { get; set; } = Array.Empty<EducationLevel>();
-
-        [Custom(Name = "CareerCluster_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<CareerCluster> CareerCluster { get; set; } = Array.Empty<CareerCluster>();
-
-        [Custom(Name = "Religion_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Religion> Religion { get; set; } = Array.Empty<Religion>();
-
-        [Custom(Name = "Travel Frequency")]
-        public IReadOnlyList<TravelFrequency> TravelFrequency { get; set; } = Array.Empty<TravelFrequency>();
-
-        #endregion LIFESTYLE
-
-        #region PERSONALITY
-
-        [Custom(Name = "SexPersonalityPreferences_Name", Description = "SexPersonalityPreferences_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<SexPersonality> SexPersonality { get; set; } = Array.Empty<SexPersonality>();
-
-        #endregion PERSONALITY
-
-        public void UpdateData(ProfilePreferenceModel vm)
-        {
-            //BASIC
-            Region = vm.Region;
-            Languages = vm.Languages;
-            CurrentSituation = vm.CurrentSituation;
-            BiologicalSex = vm.BiologicalSex;
-            GenderIdentity = vm.GenderIdentity;
-            SexualOrientation = vm.SexualOrientation;
-            //BIO
-            MinimalAge = vm.MinimalAge;
-            MaxAge = vm.MaxAge;
-            MinimalHeight = vm.MinimalHeight;
-            MaxHeight = vm.MaxHeight;
-            RaceCategory = vm.RaceCategory;
-            BodyMass = vm.BodyMass;
-            Neurodiversities = vm.Neurodiversities;
-            Disabilities = vm.Disabilities;
-            //LIFESTYLE
-            Drink = vm.Drink;
-            Smoke = vm.Smoke;
-            Diet = vm.Diet;
-            HaveChildren = vm.HaveChildren;
-            WantChildren = vm.WantChildren;
-            EducationLevel = vm.EducationLevel;
-            CareerCluster = vm.CareerCluster;
-            Religion = vm.Religion;
-            TravelFrequency = vm.TravelFrequency;
-            //PERSONALITY
-            SexPersonality = vm.SexPersonality;
-        }
-    }
-
-    public class ProfilePhotoModel
-    {
-        public string Main { get; set; }
-        public string[] Gallery { get; set; } = Array.Empty<string>();
-
-        public string Validation { get; set; }
-        public Guid? FaceId { get; set; }
-        public DateTime DtMainUpload { get; set; }
-
-        public double Confidence { get; set; }
-        public double? Age { get; set; }
-        public BiologicalSex? Gender { get; set; }
-
-        public void UpdateMainPhoto(string Main)
-        {
-            this.Main = Main;
-
-            Validation = null;
-            FaceId = null;
-            DtMainUpload = DateTime.UtcNow;
-
-            Confidence = 0;
-            Age = null;
-            Gender = null;
-        }
-
-        public void UpdatePhotoGallery(string[] Gallery)
-        {
-            this.Gallery = Gallery;
-        }
-
-        public void RemovePhotoGallery(string IdPhoto)
-        {
-            Gallery = Gallery.Where(w => w != IdPhoto).ToArray();
-        }
-    }
-
-    public class ProfileBadgeModel
-    {
-        public BadgeType Ranking { get; set; } = new BadgeType(10, "fas fa-crown", "Classificação", "Nível alcançado");
-
-        public BadgeType Seniority { get; set; } = new BadgeType(10, "fas fa-ghost", "Senioridade", "Tempo de existência na plataforma");
-
-        public BadgeType VerifiedProfile { get; set; } = new BadgeType(3, "fas fa-user-check", "Verificado", "Validação de todos os itens da lista de pendências");
-
-        public BadgeType Popular { get; set; } = new BadgeType(1, "far fa-grin-stars", "Popular", "Tem uma relação de 70% ou mais de likes");
-    }
-
-    public class BadgeType
-    {
-        protected BadgeType()
-        {
-        }
-
-        public BadgeType(int MaxLevel, string ClassIcon, string Title, string Description)
-        {
-            this.MaxLevel = MaxLevel;
-            this.ClassIcon = ClassIcon;
-            this.Title = Title;
-            this.Description = Description;
-        }
-
-        public int Level { get; set; }
-
-        [JsonIgnore]
-        public int MaxLevel { get; set; }
-
-        [JsonIgnore]
-        public string ClassIcon { get; set; }
-
-        [JsonIgnore]
-        public string Title { get; set; }
-
-        [JsonIgnore]
-        public string Description { get; set; }
-
-        public void IncreaseLevel()
-        {
-            if (Level == MaxLevel) return;
-
-            Level++;
-        }
-
-        public void DecreaseLevel()
-        {
-            if (Level == 0) return;
-
-            Level--;
-        }
-
-        public bool Completed() => Level == MaxLevel;
-    }
-
-    public class ProfileGamificationModel
-    {
-        private static int MaxRankXP => 100;
-
-        private static int MaxRankFood => 20;
-
-        [Custom(Name = "Ranking")]
-        public int Ranking { get; set; }
-
-        [Custom(Name = "XP")]
-        public int XP { get; set; }
-
-        [Custom(Name = "Food")]
-        public int Food { get; set; }
-
-        [Custom(Name = "Diamond")]
-        public int Diamond { get; set; }
-
-        public int GetMaxFood()
-        {
-            return Ranking == 0 ? MaxRankFood : Ranking * MaxRankFood;
-        }
-
-        public void AddXP(int qtd)
-        {
-            if (XP + qtd >= MaxRankXP) //se passar de 100, sobe um nivel
-            {
-                AddRank();
-                XP = XP + qtd - MaxRankXP;
-            }
-            else
-            {
-                XP += qtd;
-            }
-        }
-
-        public void RemoveXP(int qtd)
-        {
-            var NovoXP = XP - qtd;
-
-            if (Ranking <= 1) //RANK 1
-            {
-                if (NovoXP >= 0)
-                {
-                    XP = NovoXP;
-                }
-                else
-                {
-                    XP = 0;
-                }
-            }
-            else //RANK 2 EM DIANTE
-            {
-                if (NovoXP >= 0)
-                {
-                    XP = NovoXP;
-                }
-                else
-                {
-                    RemoveRank();
-                    XP = MaxRankXP + NovoXP;
-                }
-            }
-        }
-
-        private void AddRank(int qtd = 1)
-        {
-            Ranking += qtd;
-        }
-
-        private void RemoveRank(int qtd = 1)
-        {
-            var NovoLevel = Ranking - qtd;
-
-            if (NovoLevel <= 1)
-            {
-                Ranking = 1;
-            }
-            else
-            {
-                Ranking -= qtd;
-            }
-        }
-
-        public void AddDiamond(int qtd)
-        {
-            Diamond += qtd;
-        }
-
-        public void RemoveDiamond(int qtd = 1)
-        {
-            if (Diamond == 0) throw new NotificationException("Diamantes insuficientes");
-
-            Diamond -= qtd;
-        }
-
-        public void ExchangeFood(int qtdDiamond = 1)
-        {
-            var NewFood = qtdDiamond * 10;
-
-            RemoveDiamond(qtdDiamond);
-
-            if (Food + NewFood > GetMaxFood())
-            {
-                throw new NotificationException("Limite máximo de maças alcançado para seu nível");
-            }
-
-            Food += NewFood;
-        }
-
-        public void ResetFood()
-        {
-            Food = GetMaxFood();
-        }
-
-        public void RemoveFood(int qtd = 1)
-        {
-            if (Food == 0) throw new NotificationException("Maças insuficientes");
-
-            Food -= qtd;
         }
     }
 }

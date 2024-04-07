@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MM.Shared.Models.Profile
+﻿namespace MM.Shared.Models.Profile
 {
     public class ProfileReportModel
     {

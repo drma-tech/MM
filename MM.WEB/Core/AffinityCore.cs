@@ -4,7 +4,7 @@ namespace MM.WEB.Core
 {
     public static class AffinityCore
     {
-        public static List<AffinityVM> GetAffinity(ProfileModel? user, ProfileView? view)
+        public static List<AffinityVM> GetAffinity(ProfileModel? user, ProfileModel? view)
         {
             if (user == null) throw new NotificationException("Não foi possível identificar seu perfil");
             if (view == null) throw new NotificationException("Não foi possível identificar o perfil deste usuário");
@@ -14,50 +14,50 @@ namespace MM.WEB.Core
             {
                 //BASIC - DEFINIÇÕES DE BUSCA
                 //new AffinityVM(Section.Basic, CompatibilityItem.Location, GetLocation(user) == view.Location),
-                new AffinityVM(Section.Basic, CompatibilityItem.Language, GetLanguages(user, user.Preference).IsMatch(view.Languages)),
-                new AffinityVM(Section.Basic, CompatibilityItem.CurrentSituation, GetCurrentSituation(user, user.Preference).IsMatch(view.CurrentSituation.ToArray())),
-                new AffinityVM(Section.Basic, CompatibilityItem.Intentions, GetIntentions(user).IsMatch(view.Intentions)),
-                new AffinityVM(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(user, user.Preference).IsMatch(view.BiologicalSex.ToArray())),
-                new AffinityVM(Section.Basic, CompatibilityItem.GenderIdentity, GetGenderIdentity(user, user.Preference).IsMatch(view.GenderIdentity.ToArray())),
-                new AffinityVM(Section.Basic, CompatibilityItem.SexualOrientation, GetSexualOrientation(user, user.Preference).IsMatch(view.SexualOrientation.ToArray())),
+                new(Section.Basic, CompatibilityItem.Language, GetLanguages(user, user.Preference).IsMatch(view.Languages)),
+                new(Section.Basic, CompatibilityItem.CurrentSituation, GetCurrentSituation(user, user.Preference).IsMatch(view.CurrentSituation.ToArray())),
+                new(Section.Basic, CompatibilityItem.Intentions, GetIntentions(user).IsMatch(view.Intentions)),
+                new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(user, user.Preference).IsMatch(view.BiologicalSex.ToArray())),
+                new(Section.Basic, CompatibilityItem.GenderIdentity, GetGenderIdentity(user, user.Preference).IsMatch(view.GenderIdentity.ToArray())),
+                new(Section.Basic, CompatibilityItem.SexualOrientation, GetSexualOrientation(user, user.Preference).IsMatch(view.SexualOrientation.ToArray())),
 
                 //BIO - DEFINIÇÕES DE BUSCA
-                new AffinityVM(Section.Bio, CompatibilityItem.RaceCategory, GetRaceCategory(user.Preference).IsMatch(view.RaceCategory.ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(user.Preference).IsMatch(view.BodyMass.ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.Age, GetAge(user, user.Preference).IsRangeMatch(view.Age.ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.Zodiac, GetZodiac(user).IsMatch(view.Zodiac.ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.Height, GetHeight(user, user.Preference).Select(s => (int)s).ToArray().IsRangeMatch(((int?)view.Height).ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(user.Preference).IsMatch(view.Neurodiversity.ToArray())),
-                new AffinityVM(Section.Bio, CompatibilityItem.Disabilities, GetDisability(user.Preference).IsMatch(view.Disabilities)),
+                new(Section.Bio, CompatibilityItem.RaceCategory, GetRaceCategory(user.Preference).IsMatch(view.RaceCategory.ToArray())),
+                new(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(user.Preference).IsMatch(view.BodyMass.ToArray())),
+                new(Section.Bio, CompatibilityItem.Age, GetAge(user, user.Preference).IsRangeMatch(view.Age.ToArray())),
+                new(Section.Bio, CompatibilityItem.Zodiac, GetZodiac(user).IsMatch(view.Zodiac.ToArray())),
+                new(Section.Bio, CompatibilityItem.Height, GetHeight(user, user.Preference).Select(s => (int)s).ToArray().IsRangeMatch(((int?)view.Height).ToArray())),
+                new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(user.Preference).IsMatch(view.Neurodiversity.ToArray())),
+                new(Section.Bio, CompatibilityItem.Disabilities, GetDisability(user.Preference).IsMatch(view.Disabilities)),
 
                 //LIFESTYLE - COMPATIBILIDADE DE PERFIL OU DEFINIÇÕES DE BUSCA (SE PREENCHIDO)
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.Drink, GetDrink(user, user.Preference).IsMatch(view.Drink.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(user, user.Preference).IsMatch(view.Smoke.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(user, user.Preference).IsMatch(view.Diet.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(user, user.Preference).IsMatch(view.Religion.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(user, user.Preference).IsMatch(view.HaveChildren.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.WantChildren, GetWantChildren(user, user.Preference).IsMatch(view.WantChildren.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(user, user.Preference).IsMatch(view.EducationLevel.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(user, user.Preference).IsMatch(view.CareerCluster.ToArray())),
-                new AffinityVM(Section.Lifestyle, CompatibilityItem.TravelFrequency, GetTravelFrequency(user, user.Preference).IsMatch(view.TravelFrequency.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Drink, GetDrink(user, user.Preference).IsMatch(view.Drink.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(user, user.Preference).IsMatch(view.Smoke.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(user, user.Preference).IsMatch(view.Diet.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(user, user.Preference).IsMatch(view.Religion.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(user, user.Preference).IsMatch(view.HaveChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.WantChildren, GetWantChildren(user, user.Preference).IsMatch(view.WantChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(user, user.Preference).IsMatch(view.EducationLevel.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(user, user.Preference).IsMatch(view.CareerCluster.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.TravelFrequency, GetTravelFrequency(user, user.Preference).IsMatch(view.TravelFrequency.ToArray())),
 
                 //PERSONALITY - COMPATIBILIDADE DE PERFIL
-                new AffinityVM(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(user).IsMatch(view.MoneyPersonality.ToArray(), true)),
-                new AffinityVM(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(user).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
-                new AffinityVM(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(user).IsMatch(view.RelationshipPersonality.ToArray(), true)),
-                new AffinityVM(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(user).IsMatch(view.MBTI.ToArray(), true)),
-                new AffinityVM(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(user).IsMatch(view.LoveLanguage.ToArray(), true)),
-                new AffinityVM(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(user, user.Preference).IsMatch(view.SexPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(user).IsMatch(view.MoneyPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(user).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(user).IsMatch(view.RelationshipPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(user).IsMatch(view.MBTI.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(user).IsMatch(view.LoveLanguage.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(user, user.Preference).IsMatch(view.SexPersonality.ToArray(), true)),
 
                 //INTEREST - COMPATIBILIDADE DE PERFIL (UMA OPÇAO IGUAL JÁ INDICA COMPATIBILIDADE)
-                new AffinityVM(Section.Interest, CompatibilityItem.Food, GetFood(user).IsMatch(view.Food)),
-                new AffinityVM(Section.Interest, CompatibilityItem.Vacation, GetVacation(user).IsMatch(view.Vacation)),
-                new AffinityVM(Section.Interest, CompatibilityItem.Sports, GetSports(user).IsMatch(view.Sports)),
-                new AffinityVM(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(user).IsMatch(view.LeisureActivities)),
-                new AffinityVM(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(user).IsMatch(view.MusicGenre)),
-                new AffinityVM(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(user).IsMatch(view.MovieGenre)),
-                new AffinityVM(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(user).IsMatch(view.TVGenre)),
-                new AffinityVM(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(user).IsMatch(view.ReadingGenre)),
+                new(Section.Interest, CompatibilityItem.Food, GetFood(user).IsMatch(view.Food)),
+                new(Section.Interest, CompatibilityItem.Vacation, GetVacation(user).IsMatch(view.Vacation)),
+                new(Section.Interest, CompatibilityItem.Sports, GetSports(user).IsMatch(view.Sports)),
+                new(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(user).IsMatch(view.LeisureActivities)),
+                new(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(user).IsMatch(view.MusicGenre)),
+                new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(user).IsMatch(view.MovieGenre)),
+                new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(user).IsMatch(view.TVGenre)),
+                new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(user).IsMatch(view.ReadingGenre)),
             };
 
             return obj;
@@ -65,18 +65,18 @@ namespace MM.WEB.Core
 
         public static string[] ToArray(this string item)
         {
-            return new string[] { item };
+            return [item];
         }
 
         public static T[] ToArray<T>(this T item) where T : struct
         {
-            return new T[] { item };
+            return [item];
         }
 
         public static T[] ToArray<T>(this T? item) where T : struct
         {
             if (item.HasValue) return item.Value.ToArray();
-            else return Array.Empty<T>();
+            else return [];
         }
 
         private static bool IsMatch<T>(this IReadOnlyList<T> preferences, IReadOnlyList<T> view, bool force = false)
@@ -101,7 +101,7 @@ namespace MM.WEB.Core
 
         public static string GetLocation(ProfileModel user)
         {
-            var parts = user.Location?.Split(" - ") ?? Array.Empty<string>();
+            var parts = user.Location?.Split(" - ") ?? [];
 
             return user.Preference?.Region switch
             {
@@ -117,7 +117,7 @@ namespace MM.WEB.Core
         {
             if (pref != null && pref.Languages.Any()) return pref.Languages;
             else if (user.Languages.Any()) return user.Languages;
-            else return Array.Empty<Language>();
+            else return [];
         }
 
         public static IReadOnlyList<CurrentSituation> GetCurrentSituation(ProfileModel user, ProfilePreferenceModel? pref = null)
@@ -125,12 +125,12 @@ namespace MM.WEB.Core
             CurrentSituation[] selected;
             if (pref != null && pref.CurrentSituation.Any()) selected = pref.CurrentSituation.ToArray();
             else if (user.CurrentSituation.HasValue) selected = user.CurrentSituation.ToArray();
-            else selected = Array.Empty<CurrentSituation>();
+            else selected = [];
 
             if (selected.Length == 1 && selected.First() == CurrentSituation.Single)
                 return selected;
             else
-                return Array.Empty<CurrentSituation>();
+                return [];
         }
 
         public static IReadOnlyList<Intentions> GetIntentions(ProfileModel user)
@@ -154,7 +154,7 @@ namespace MM.WEB.Core
                         {
                             BiologicalSex.Male => BiologicalSex.Female.ToArray(),
                             BiologicalSex.Female => BiologicalSex.Male.ToArray(),
-                            _ => Array.Empty<BiologicalSex>()
+                            _ => []
                         };
                     }
                     else if (user.SexualOrientation == SexualOrientation.Homosexual)
@@ -163,17 +163,17 @@ namespace MM.WEB.Core
                         {
                             BiologicalSex.Male => BiologicalSex.Male.ToArray(),
                             BiologicalSex.Female => BiologicalSex.Female.ToArray(),
-                            _ => Array.Empty<BiologicalSex>()
+                            _ => []
                         };
                     }
                     else
                     {
-                        return Array.Empty<BiologicalSex>();
+                        return [];
                     }
                 }
                 else //NON-BINARY
                 {
-                    return Array.Empty<BiologicalSex>();
+                    return [];
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace MM.WEB.Core
                 }
                 else //NON-BINARY
                 {
-                    return Array.Empty<GenderIdentity>();
+                    return [];
                 }
             }
         }
@@ -208,8 +208,8 @@ namespace MM.WEB.Core
                 return user.SexualOrientation switch
                 {
                     SexualOrientation.Heterosexual => new SexualOrientation[] { SexualOrientation.Heterosexual },
-                    SexualOrientation.Homosexual => new SexualOrientation[] { SexualOrientation.Homosexual },
-                    _ => Array.Empty<SexualOrientation>()
+                    SexualOrientation.Homosexual => [SexualOrientation.Homosexual],
+                    _ => []
                 };
             }
         }
@@ -221,13 +221,13 @@ namespace MM.WEB.Core
         public static IReadOnlyList<RaceCategory> GetRaceCategory(ProfilePreferenceModel? pref = null)
         {
             if (pref != null && pref.RaceCategory.Any()) return pref.RaceCategory;
-            else return Array.Empty<RaceCategory>();
+            else return [];
         }
 
         public static IReadOnlyList<BodyMass> GetBodyMass(ProfilePreferenceModel? pref = null)
         {
             if (pref != null && pref.BodyMass.Any()) return pref.BodyMass;
-            else return Array.Empty<BodyMass>();
+            else return [];
         }
 
         public static IReadOnlyList<int> GetAge(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
@@ -251,7 +251,7 @@ namespace MM.WEB.Core
                 if (max > 120) max = 120;
             }
 
-            return new int[] { min, max };
+            return [min, max];
         }
 
         public static IReadOnlyList<Zodiac> GetZodiac(ProfileModel user)
@@ -259,18 +259,18 @@ namespace MM.WEB.Core
             return user.Zodiac switch
             {
                 Zodiac.Aries => new Zodiac[] { Zodiac.Leo, Zodiac.Sagittarius },
-                Zodiac.Taurus => new Zodiac[] { Zodiac.Virgo, Zodiac.Capricorn },
-                Zodiac.Gemini => new Zodiac[] { Zodiac.Libra, Zodiac.Aquarius },
-                Zodiac.Cancer => new Zodiac[] { Zodiac.Scorpio, Zodiac.Pisces },
-                Zodiac.Leo => new Zodiac[] { Zodiac.Aries, Zodiac.Sagittarius },
-                Zodiac.Virgo => new Zodiac[] { Zodiac.Taurus, Zodiac.Capricorn },
-                Zodiac.Libra => new Zodiac[] { Zodiac.Gemini, Zodiac.Aquarius },
-                Zodiac.Scorpio => new Zodiac[] { Zodiac.Cancer, Zodiac.Scorpio, Zodiac.Pisces },
-                Zodiac.Sagittarius => new Zodiac[] { Zodiac.Aries, Zodiac.Leo },
-                Zodiac.Capricorn => new Zodiac[] { Zodiac.Taurus, Zodiac.Virgo },
-                Zodiac.Aquarius => new Zodiac[] { Zodiac.Gemini, Zodiac.Libra },
-                Zodiac.Pisces => new Zodiac[] { Zodiac.Cancer, Zodiac.Scorpio },
-                _ => Array.Empty<Zodiac>()
+                Zodiac.Taurus => [Zodiac.Virgo, Zodiac.Capricorn],
+                Zodiac.Gemini => [Zodiac.Libra, Zodiac.Aquarius],
+                Zodiac.Cancer => [Zodiac.Scorpio, Zodiac.Pisces],
+                Zodiac.Leo => [Zodiac.Aries, Zodiac.Sagittarius],
+                Zodiac.Virgo => [Zodiac.Taurus, Zodiac.Capricorn],
+                Zodiac.Libra => [Zodiac.Gemini, Zodiac.Aquarius],
+                Zodiac.Scorpio => [Zodiac.Cancer, Zodiac.Scorpio, Zodiac.Pisces],
+                Zodiac.Sagittarius => [Zodiac.Aries, Zodiac.Leo],
+                Zodiac.Capricorn => [Zodiac.Taurus, Zodiac.Virgo],
+                Zodiac.Aquarius => [Zodiac.Gemini, Zodiac.Libra],
+                Zodiac.Pisces => [Zodiac.Cancer, Zodiac.Scorpio],
+                _ => []
             };
         }
 
@@ -358,7 +358,7 @@ namespace MM.WEB.Core
                 }
             }
 
-            return new Height[] { min, max };
+            return [min, max];
         }
 
         public static IReadOnlyList<Neurodiversity> GetNeurodiversity(ProfilePreferenceModel? pref = null)
@@ -366,7 +366,7 @@ namespace MM.WEB.Core
             if (pref != null)
                 return pref.Neurodiversities;
             else
-                return Array.Empty<Neurodiversity>();
+                return [];
         }
 
         public static IReadOnlyList<Disability> GetDisability(ProfilePreferenceModel? pref = null)
@@ -374,7 +374,7 @@ namespace MM.WEB.Core
             if (pref != null)
                 return pref.Disabilities;
             else
-                return Array.Empty<Disability>();
+                return [];
         }
 
         #endregion BIO
@@ -392,10 +392,10 @@ namespace MM.WEB.Core
                 return user.Drink switch
                 {
                     Drink.No => new Drink[] { Drink.No, Drink.YesLight },
-                    Drink.YesLight => new Drink[] { Drink.No, Drink.YesLight, Drink.YesModerate },
-                    Drink.YesModerate => new Drink[] { Drink.YesLight, Drink.YesModerate, Drink.YesHeavy },
-                    Drink.YesHeavy => new Drink[] { Drink.YesModerate, Drink.YesHeavy },
-                    _ => Array.Empty<Drink>()
+                    Drink.YesLight => [Drink.No, Drink.YesLight, Drink.YesModerate],
+                    Drink.YesModerate => [Drink.YesLight, Drink.YesModerate, Drink.YesHeavy],
+                    Drink.YesHeavy => [Drink.YesModerate, Drink.YesHeavy],
+                    _ => []
                 };
             }
         }
@@ -411,9 +411,9 @@ namespace MM.WEB.Core
                 return user.Smoke switch
                 {
                     Smoke.No => new Smoke[] { Smoke.No },
-                    Smoke.YesOccasionally => new Smoke[] { Smoke.YesOccasionally, Smoke.YesOften },
-                    Smoke.YesOften => new Smoke[] { Smoke.YesOccasionally, Smoke.YesOften },
-                    _ => Array.Empty<Smoke>()
+                    Smoke.YesOccasionally => [Smoke.YesOccasionally, Smoke.YesOften],
+                    Smoke.YesOften => [Smoke.YesOccasionally, Smoke.YesOften],
+                    _ => []
                 };
             }
         }
@@ -439,8 +439,8 @@ namespace MM.WEB.Core
                     Diet.RawFood => group03,
                     Diet.GlutenFree => group01,
                     Diet.OrganicAllnaturalLocal => group03,
-                    Diet.DetoxWeightLoss => new Diet[] { Diet.DetoxWeightLoss },
-                    _ => Array.Empty<Diet>()
+                    Diet.DetoxWeightLoss => [Diet.DetoxWeightLoss],
+                    _ => []
                 };
             }
         }
@@ -453,7 +453,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                return new Religion[] { user.Religion.Value };
+                return [user.Religion.Value];
             }
         }
 
@@ -468,9 +468,9 @@ namespace MM.WEB.Core
                 return user.HaveChildren switch
                 {
                     HaveChildren.No => new HaveChildren[] { HaveChildren.No, HaveChildren.YesNo },
-                    HaveChildren.YesNo => new HaveChildren[] { HaveChildren.No, HaveChildren.YesNo },
-                    HaveChildren.Yes => new HaveChildren[] { HaveChildren.Yes },
-                    _ => Array.Empty<HaveChildren>()
+                    HaveChildren.YesNo => [HaveChildren.No, HaveChildren.YesNo],
+                    HaveChildren.Yes => [HaveChildren.Yes],
+                    _ => []
                 };
             }
         }
@@ -486,9 +486,9 @@ namespace MM.WEB.Core
                 return user.WantChildren switch
                 {
                     WantChildren.No => new WantChildren[] { WantChildren.No },
-                    WantChildren.Maybe => new WantChildren[] { WantChildren.Maybe, WantChildren.Yes },
-                    WantChildren.Yes => new WantChildren[] { WantChildren.Maybe, WantChildren.Yes },
-                    _ => Array.Empty<WantChildren>()
+                    WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
+                    WantChildren.Yes => [WantChildren.Maybe, WantChildren.Yes],
+                    _ => []
                 };
             }
         }
@@ -501,7 +501,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                return new EducationLevel[] { user.EducationLevel.Value };
+                return [user.EducationLevel.Value];
             }
         }
 
@@ -513,7 +513,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                return new CareerCluster[] { user.CareerCluster.Value };
+                return [user.CareerCluster.Value];
             }
         }
 
@@ -528,9 +528,9 @@ namespace MM.WEB.Core
                 return user.TravelFrequency switch
                 {
                     TravelFrequency.NeverRarely => new TravelFrequency[] { TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently },
-                    TravelFrequency.SometimesFrequently => new TravelFrequency[] { TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad },
-                    TravelFrequency.UsuallyAlwaysNomad => new TravelFrequency[] { TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad },
-                    _ => Array.Empty<TravelFrequency>()
+                    TravelFrequency.SometimesFrequently => [TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
+                    TravelFrequency.UsuallyAlwaysNomad => [TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
+                    _ => []
                 };
             }
         }
@@ -555,7 +555,7 @@ namespace MM.WEB.Core
                 SharedSpendingStyle.Balanced => SharedSpendingStyle.Balanced.ToArray(),
                 SharedSpendingStyle.Provider => SharedSpendingStyle.Contributor.ToArray(),
                 SharedSpendingStyle.Benefactor => SharedSpendingStyle.Recipient.ToArray(),
-                _ => Array.Empty<SharedSpendingStyle>()
+                _ => []
             };
         }
 
@@ -569,7 +569,7 @@ namespace MM.WEB.Core
                 RelationshipPersonality.Directors => RelationshipPersonality.Negotiator.ToArray(),
                 RelationshipPersonality.Builders => RelationshipPersonality.Builders.ToArray(),
                 RelationshipPersonality.Negotiator => RelationshipPersonality.Directors.ToArray(),
-                _ => Array.Empty<RelationshipPersonality>()
+                _ => []
             };
         }
 
@@ -582,25 +582,25 @@ namespace MM.WEB.Core
             return user.MBTI switch
             {
                 MyersBriggsTypeIndicator.INTJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.ENFP },
-                MyersBriggsTypeIndicator.INTP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ENTJ, MyersBriggsTypeIndicator.ENFJ },
-                MyersBriggsTypeIndicator.ENTJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.INTP, MyersBriggsTypeIndicator.INFP },
-                MyersBriggsTypeIndicator.ENTP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.INTJ, MyersBriggsTypeIndicator.INFJ },
+                MyersBriggsTypeIndicator.INTP => [MyersBriggsTypeIndicator.ENTJ, MyersBriggsTypeIndicator.ENFJ],
+                MyersBriggsTypeIndicator.ENTJ => [MyersBriggsTypeIndicator.INTP, MyersBriggsTypeIndicator.INFP],
+                MyersBriggsTypeIndicator.ENTP => [MyersBriggsTypeIndicator.INTJ, MyersBriggsTypeIndicator.INFJ],
 
-                MyersBriggsTypeIndicator.INFJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ENFP, MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.INTJ, MyersBriggsTypeIndicator.INFJ },
-                MyersBriggsTypeIndicator.INFP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ENFJ, MyersBriggsTypeIndicator.ENTJ },
-                MyersBriggsTypeIndicator.ENFJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.INFP, MyersBriggsTypeIndicator.INTP },
-                MyersBriggsTypeIndicator.ENFP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.INFJ, MyersBriggsTypeIndicator.INTJ },
+                MyersBriggsTypeIndicator.INFJ => [MyersBriggsTypeIndicator.ENFP, MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.INTJ, MyersBriggsTypeIndicator.INFJ],
+                MyersBriggsTypeIndicator.INFP => [MyersBriggsTypeIndicator.ENFJ, MyersBriggsTypeIndicator.ENTJ],
+                MyersBriggsTypeIndicator.ENFJ => [MyersBriggsTypeIndicator.INFP, MyersBriggsTypeIndicator.INTP],
+                MyersBriggsTypeIndicator.ENFP => [MyersBriggsTypeIndicator.INFJ, MyersBriggsTypeIndicator.INTJ],
 
-                MyersBriggsTypeIndicator.ISTJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ESTP, MyersBriggsTypeIndicator.ESFP },
-                MyersBriggsTypeIndicator.ISFJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ESFP, MyersBriggsTypeIndicator.ESTP },
-                MyersBriggsTypeIndicator.ESTJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ISTP, MyersBriggsTypeIndicator.ISFP },
-                MyersBriggsTypeIndicator.ESFJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ISFP, MyersBriggsTypeIndicator.ISTP },
+                MyersBriggsTypeIndicator.ISTJ => [MyersBriggsTypeIndicator.ESTP, MyersBriggsTypeIndicator.ESFP],
+                MyersBriggsTypeIndicator.ISFJ => [MyersBriggsTypeIndicator.ESFP, MyersBriggsTypeIndicator.ESTP],
+                MyersBriggsTypeIndicator.ESTJ => [MyersBriggsTypeIndicator.ISTP, MyersBriggsTypeIndicator.ISFP],
+                MyersBriggsTypeIndicator.ESFJ => [MyersBriggsTypeIndicator.ISFP, MyersBriggsTypeIndicator.ISTP],
 
-                MyersBriggsTypeIndicator.ISTP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ESFJ, MyersBriggsTypeIndicator.ESTJ },
-                MyersBriggsTypeIndicator.ISFP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ESTJ, MyersBriggsTypeIndicator.ESFJ },
-                MyersBriggsTypeIndicator.ESTP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ISTJ, MyersBriggsTypeIndicator.ISFJ },
-                MyersBriggsTypeIndicator.ESFP => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ISTJ, MyersBriggsTypeIndicator.ISFJ },
-                _ => Array.Empty<MyersBriggsTypeIndicator>()
+                MyersBriggsTypeIndicator.ISTP => [MyersBriggsTypeIndicator.ESFJ, MyersBriggsTypeIndicator.ESTJ],
+                MyersBriggsTypeIndicator.ISFP => [MyersBriggsTypeIndicator.ESTJ, MyersBriggsTypeIndicator.ESFJ],
+                MyersBriggsTypeIndicator.ESTP => [MyersBriggsTypeIndicator.ISTJ, MyersBriggsTypeIndicator.ISFJ],
+                MyersBriggsTypeIndicator.ESFP => [MyersBriggsTypeIndicator.ISTJ, MyersBriggsTypeIndicator.ISFJ],
+                _ => []
             };
         }
 

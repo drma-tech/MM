@@ -1,0 +1,433 @@
+﻿@using MM.Shared.Models.Auth
+@using MM.Shared.Models.Subscription
+@using MM.WEB.Modules.Auth.Core
+@using MM.WEB.Modules.Profile.Core
+@using MM.WEB.Modules.Subscription.Resources
+@inherits ComponentCore<SubscriptionPopup>
+
+@inject NavigationManager navigation
+@inject IJSRuntime JsRuntime
+@implements IDisposable
+@inject PaddleConfigurationApi ConfigurationApi
+@inject PaddleSubscriptionApi SubscriptionApi
+
+<ModalHeader>
+    <ModalTitle Size="HeadingSize.Is5">
+        @Translations.MySubscription
+    </ModalTitle>
+    <CloseButton />
+</ModalHeader>
+<ModalBody MaxHeight="70">
+    @if (Client?.ClientePaddle == null)
+    {
+        <div class="mt-2" style="text-align: center;">
+            <RadioGroup @bind-CheckedValue="Cycle" Buttons="true" Color="Color.Primary">
+                <Radio Value="AccountCycle.Monthly">
+                    @AccountCycle.Monthly.GetName()
+                </Radio>
+                <Radio Value="AccountCycle.Yearly">
+                    @AccountCycle.Yearly.GetName()
+                    <Badge Color="Color.Success">@("save 17%")</Badge>
+                </Radio>
+            </RadioGroup>
+        </div>
+        <CardDeck Class="mt-2">
+            <Card Background="Background.Secondary" WhiteText="true">
+                <CardBody>
+                    <CardTitle Size="6" TextAlignment="TextAlignment.Center">
+                        @AccountProduct.Basic.GetName()
+                    </CardTitle>
+                    <CardTitle Size="4" TextAlignment="TextAlignment.Center">
+                        @Translations.Free
+                    </CardTitle>
+                    <CardText>
+                        <ListGroup Flush="true">
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Favorite Providers
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Basic.GetRestrictions().FavoriteProviders
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watched
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Basic.GetRestrictions().Watched
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watching
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Basic.GetRestrictions().Watching
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Wishlist
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Basic.GetRestrictions().Wishlist
+                                </Badge>
+                            </ListGroupItem>
+                        </ListGroup>
+                    </CardText>
+                </CardBody>
+            </Card>
+            <Card Background="Background.Secondary" WhiteText="true">
+                <CardBody>
+                    <CardTitle Size="6" TextAlignment="TextAlignment.Center">
+                        @AccountProduct.Standard.GetName()
+                    </CardTitle>
+                    <CardTitle Size="4" TextAlignment="TextAlignment.Center">
+                        @GetSubscription(AccountProduct.Standard)?.Price / @Cycle.GetDescription()
+                    </CardTitle>
+                    <CardText>
+                        <ListGroup Flush="true">
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Favorite Providers
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Standard.GetRestrictions().FavoriteProviders
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watched
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Standard.GetRestrictions().Watched
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watching
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Standard.GetRestrictions().Watching
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Wishlist
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Standard.GetRestrictions().Wishlist
+                                </Badge>
+                            </ListGroupItem>
+                        </ListGroup>
+                    </CardText>
+                    <Button Color="Color.Primary" Block="true" Class="mt-3" Clicked="@(()=>OpenCheckout(GetSubscription(AccountProduct.Standard)?.PriceId))">Choose Plan</Button>
+                </CardBody>
+            </Card>
+            <Card Background="Background.Secondary" WhiteText="true">
+                <CardBody>
+                    <CardTitle Size="6" TextAlignment="TextAlignment.Center">
+                        @AccountProduct.Premium.GetName()
+                    </CardTitle>
+                    <CardTitle Size="4" TextAlignment="TextAlignment.Center">
+                        @GetSubscription(AccountProduct.Premium)?.Price / @Cycle.GetDescription()
+                    </CardTitle>
+                    <CardText>
+                        <ListGroup Flush="true">
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Favorite Providers
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Premium.GetRestrictions().FavoriteProviders
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watched
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Premium.GetRestrictions().Watched
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Watching
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Premium.GetRestrictions().Watching
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                Wishlist
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Premium.GetRestrictions().Wishlist
+                                </Badge>
+                            </ListGroupItem>
+                        </ListGroup>
+                    </CardText>
+                    <Button Color="Color.Primary" Block="true" Class="mt-3" Clicked="@(()=>OpenCheckout(GetSubscription(AccountProduct.Premium)?.PriceId))">Choose Plan</Button>
+                </CardBody>
+            </Card>
+        </CardDeck>
+    }
+    else
+    {
+        @if (Subscription == null)
+        {
+            <Alert Color="Color.Warning" Visible="true">
+                <AlertDescription>
+                    <Blazorise.Icon Class="spinner-border spinner-border-sm"></Blazorise.Icon> @Translations.SubscriptionProcessed
+                </AlertDescription>
+            </Alert>
+        }
+        else
+        {
+            <Card Margin="Margin.Is2.FromBottom">
+                <CardHeader>
+                    @Translations.Details
+                </CardHeader>
+                <CardBody>
+                    <Fields>
+                        <Field ColumnSize="ColumnSize.Is6.OnDesktop" TextSize="TextSize.Small">
+                            <FieldLabel>
+                                @Translations.SubscriptionId
+                            </FieldLabel>
+                            <TextEdit Text="@Subscription?.data?.id" Disabled="true" Size="Size.Small" />
+                        </Field>
+                        <Field ColumnSize="ColumnSize.Is6.OnDesktop" TextSize="TextSize.Small">
+                            <FieldLabel>
+                                @Translations.Status
+                            </FieldLabel>
+                            <TextEdit Text="@Subscription.data?.status" Disabled="true" Size="Size.Small" />
+                        </Field>
+                    </Fields>
+                    <Fields>
+                        <Field ColumnSize="ColumnSize.Is6.OnDesktop" TextSize="TextSize.Small">
+                            <FieldLabel>
+                                @Translations.NextBilled
+                            </FieldLabel>
+                            <TextEdit Text="@Subscription?.data?.next_billed_at?.ToShortDateString()" Disabled="true" Size="Size.Small" />
+                        </Field>
+                        <Field ColumnSize="ColumnSize.Is6.OnDesktop" TextSize="TextSize.Small">
+                            <FieldLabel>
+                                @Translations.Canceled
+                            </FieldLabel>
+                            <TextEdit Text="@Subscription.data?.canceled_at?.ToShortDateString()" Disabled="true" Size="Size.Small" />
+                        </Field>
+                    </Fields>
+                </CardBody>
+            </Card>
+            <Card Margin="Margin.Is2.FromBottom">
+                <CardHeader>
+                    @Translations.Items
+                </CardHeader>
+                <CardBody>
+                    <Table Narrow="true" Bordered="true" Striped="true" Margin="Margin.Is0.FromBottom">
+                        <TableHeader>
+                            <TableRow>
+                                <TableHeaderCell>@Translations.Product</TableHeaderCell>
+                                <TableHeaderCell>@Translations.PreviouslyBilled</TableHeaderCell>
+                                <TableHeaderCell>@Translations.NextBilled</TableHeaderCell>
+                                <TableHeaderCell>@Translations.Status</TableHeaderCell>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            @foreach (var item in Subscription.data?.items ?? [])
+                            {
+                                <TableRow>
+                                    <TableRowCell>
+                                        @Config?.GetAccountProduct(item.price?.product_id).GetCustomAttribute()?.Name
+                                    </TableRowCell>
+                                    <TableRowCell>
+                                        @item.previously_billed_at?.ToShortDateString()
+                                    </TableRowCell>
+                                    <TableRowCell>
+                                        @if (item.next_billed_at.HasValue)
+                                        {
+                                            @item.next_billed_at?.ToShortDateString()
+                                        }
+                                        else
+                                        {
+                                            <Badge Color="Color.Warning">@Translations.InactiveBilling</Badge>
+                                        }
+                                    </TableRowCell>
+                                    <TableRowCell>
+                                        @item.status
+                                    </TableRowCell>
+                                </TableRow>
+                            }
+                        </TableBody>
+                    </Table>
+                </CardBody>
+            </Card>
+            <Card Margin="Margin.Is2.FromBottom">
+                <CardHeader>
+                    @Translations.Management
+                </CardHeader>
+                <CardBody>
+                    @if (Subscription?.data?.IsCanceled ?? true)
+                    {
+                        <Button Color="Color.Primary" Margin="Margin.Is1.FromEnd" Clicked="CreateNewSubscription">
+                            <Blazorise.Icon Name="FontAwesomeIcons.Gem" /> @Translations.CreateNewSubscription
+                        </Button>
+                    }
+                    else
+                    {
+                        <Button Color="Color.Primary" Type="ButtonType.Link" Target="Target.Blank" Margin="Margin.Is1.FromEnd"
+                                To="@Subscription?.data?.management_urls?.update_payment_method">
+                            <Blazorise.Icon Name="FontAwesomeIcons.CreditCard" /> @Translations.UpdatePaymentDetails
+                        </Button>
+                        <Button Color="Color.Danger" Type="ButtonType.Link" Target="Target.Blank"
+                                To="@Subscription?.data?.management_urls?.cancel">
+                            <Blazorise.Icon Name="FontAwesomeIcons.UserAltSlash" /> @Translations.CancelSubscription
+                        </Button>
+                    }
+                </CardBody>
+            </Card>
+        }
+    }
+</ModalBody>
+<ModalFooter>
+    <Container Fluid="true" Margin="Margin.Is0" Padding="Padding.Is0.OnX">
+        <Row HorizontalGutter="4" VerticalGutter="4">
+            <Column>
+                Powered by <a href="https://www.paddle.com/" target="_blank" rel="nofollow"><Image Source="/logo/paddle.avif" Style="height: 30px;"></Image></a>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <Button Color="Color.Secondary" Clicked="@ModalService.Hide" Size="Size.Small">
+                    @WEB.Resources.Button.Close
+                </Button>
+            </Column>
+        </Row>
+    </Container>
+</ModalFooter>
+
+@code {
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+    [Parameter] public ClientePrincipal? Client { get; set; }
+
+    public RootSubscription? Subscription { get; set; }
+    public Configurations? Config { get; set; }
+
+    private AccountCycle Cycle { get; set; } = AccountCycle.Monthly;
+
+    private class Plan
+    {
+        public AccountProduct Product { get; set; }
+        public AccountCycle Cycle { get; set; }
+        public string? Price { get; set; }
+
+        public string? ProductId { get; set; }
+        public string? PriceId { get; set; }
+    }
+
+    private IEnumerable<Plan> Plans { get; set; } = [];
+    private Plan? GetSubscription(AccountProduct product) => Plans.FirstOrDefault(f => f.Product == product && f.Cycle == Cycle);
+
+    private Action<TempClientePaddle> Registration => async (client) => await RegistrationSuccessful(client);
+
+    protected override void OnInitialized()
+    {
+        if (Client == null) throw new NotificationException("Client null");
+
+        AppStateStatic.RegistrationSuccessful += Registration;
+    }
+
+    protected override async Task LoadDataRender()
+    {
+        Config = await ConfigurationApi.GetConfigurations();
+        if (Config == null) throw new NotificationException("server comunication error");
+
+        if (Client?.ClientePaddle == null && string.IsNullOrEmpty(Client?.ClientePaddle?.SubscriptionId))
+        {
+            await JsRuntime.InvokeVoidAsync("startPaddle", Config.Token);
+            Plans = await JsRuntime.InvokeAsync<IEnumerable<Plan>>("getPlans", Config.PriceStandardMonth, Config.PriceStandardYear, Config.PricePremiumMonth, Config.PricePremiumYear);
+        }
+        else if (string.IsNullOrEmpty(Client?.ClientePaddle?.SubscriptionId))
+        {
+            await Toast.Error("We were unable to identify your subscription. Please contact support.");
+        }
+        else
+        {
+            Subscription = await SubscriptionApi.GetSubscription(Client?.ClientePaddle?.SubscriptionId, true);
+        }
+    }
+
+    protected async Task OpenCheckout(string? priceId)
+    {
+        try
+        {
+            var locale = AppStateStatic.Language.ToString()?.Substring(0, 2);
+
+            await JsRuntime.InvokeVoidAsync("openCheckout", priceId, Client?.Email, locale, Client?.ClientePaddle?.CustomerId, Client?.ClientePaddle?.AddressId);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task RegistrationSuccessful(TempClientePaddle client)
+    {
+        try
+        {
+            if (Client == null) throw new NotificationException("Client null");
+
+            if (Plans.Empty()) //for some reason, the list is getting empty (maybe is cause is calling twice)
+            {
+                if (Config == null)
+                {
+                    Config = await ConfigurationApi.GetConfigurations();
+                    if (Config == null) throw new NotificationException("server comunication error");
+                }
+                await JsRuntime.InvokeVoidAsync("startPaddle", Config.Token);
+                Plans = await JsRuntime.InvokeAsync<IEnumerable<Plan>>("getPlans", Config.PriceStandardMonth, Config.PriceStandardYear, Config.PricePremiumMonth, Config.PricePremiumYear);
+            }
+
+            var product = Plans.Single(w => w.ProductId == client.ProductId && w.Cycle == Cycle).Product;
+
+            Client.ClientePaddle = new ClientePaddle
+                {
+                    CustomerId = client.CustomerId,
+                    AddressId = client.AddressId,
+                    Items = new List<PaddleItem>() { new PaddleItem { ProductId = client.ProductId, Product = product } }
+                };
+
+            Client = await PrincipalApi.Paddle(Client);
+
+            StateHasChanged();
+
+            await Toast.Success("Registration successful!");
+
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(1000);
+                var principal = await PrincipalApi.Get(IsAuthenticated, true);
+
+                if (principal?.ClientePaddle != null && principal.ClientePaddle.SubscriptionId.NotEmpty())
+                {
+                    await UpdateData();
+                    break;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task UpdateData()
+    {
+        try
+        {
+            Client = await PrincipalApi.Get(true, true);
+            PrincipalApi.DataChanged?.Invoke(Client);
+            await LoadDataRender();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task CreateNewSubscription()
+    {
+        try
+        {
+            if (Client != null) Client.ClientePaddle = null;
+            Subscription = null;
+            await LoadDataRender();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    void IDisposable.Dispose()
+    {
+        AppStateStatic.RegistrationSuccessful -= Registration;
+    }
+}

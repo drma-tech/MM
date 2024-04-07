@@ -1,17 +1,10 @@
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using VerusDate.Api.Core;
-using VerusDate.Api.Mediator.Queries.Profile;
-using VerusDate.Shared.ModelQuery;
+using MM.Shared.ModelQuery;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using MM.Shared.Core.Models;
+using System.Globalization;
 
 namespace VerusDate.Api.Function
 {
@@ -26,7 +19,7 @@ namespace VerusDate.Api.Function
 
         [FunctionName("PublicListDestaques")]
         public async Task<IActionResult> ListDestaques(
-           [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.GET, Route = "Public/ListDestaques")] HttpRequest req,
+           [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.GET, Route = "Public/ListDestaques")] HttpRequestData req,
            ILogger log, CancellationToken cancellationToken)
         {
             using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);

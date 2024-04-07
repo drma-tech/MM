@@ -123,6 +123,15 @@
   <data name="EventMyEvents" xml:space="preserve">
     <value>Meus Eventos</value>
   </data>
+  <data name="Invitations" xml:space="preserve">
+    <value>Convites</value>
+  </data>
+  <data name="Maximum3Items" xml:space="preserve">
+    <value>Escolha um máximo de 3 itens para cada campo</value>
+  </data>
+  <data name="MyConnections" xml:space="preserve">
+    <value>Minhas conexões</value>
+  </data>
   <data name="ProfileData" xml:space="preserve">
     <value>Perfil</value>
   </data>
@@ -138,6 +147,9 @@
   <data name="ProfileIndexInteractions" xml:space="preserve">
     <value>Interações</value>
   </data>
+  <data name="ProfileOptionalSection" xml:space="preserve">
+    <value>Outro (seção opcional)</value>
+  </data>
   <data name="ProfilePreferences" xml:space="preserve">
     <value>Preferências</value>
   </data>
@@ -146,17 +158,5 @@
   </data>
   <data name="SupportImprovementSuggestions" xml:space="preserve">
     <value>Sugestões de Melhoria</value>
-  </data>
-  <data name="ProfileOptionalSection" xml:space="preserve">
-    <value>Outro (seção opcional)</value>
-  </data>
-  <data name="Maximum3Items" xml:space="preserve">
-    <value>Escolha um máximo de 3 itens para cada campo</value>
-  </data>
-  <data name="MyConnections" xml:space="preserve">
-    <value>Minhas conexões</value>
-  </data>
-  <data name="Invitations" xml:space="preserve">
-    <value>Convites</value>
   </data>
 </root>

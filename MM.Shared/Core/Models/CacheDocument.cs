@@ -1,5 +1,4 @@
-﻿using MM.Shared.Enums;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace MM.Shared.Core.Models
 {

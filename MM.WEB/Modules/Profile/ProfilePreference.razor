@@ -7,7 +7,7 @@
 
 @inject ProfileApi ProfileApi
 
-<Loading @ref=Loading>
+<RenderControl Core="Core" Model="profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null || obj.Preference == null)" PrivateContent="true">
     <EditForm Model="@preference" OnValidSubmit="HandleValidSubmit">
         <FluentValidationValidator />
         <Div Margin="Margin.Is2.OnY">
@@ -137,7 +137,7 @@
             else if (SelectedTab == Tabs.Personality)
             {
                 <Alert Visible="true" Color="Color.Info">
-                    <AlertDescription>@Resources.GlobalTranslations.ProfilePreferPersonTip1</AlertDescription>
+                    <AlertDescription>@WEB.Resources.GlobalTranslations.ProfilePreferPersonTip1</AlertDescription>
                 </Alert>
                 <Row>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
@@ -152,40 +152,41 @@
         }
 
         <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Save"></Blazorise.Icon> @Resources.Buttons.Save
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
         </Button>
         <Button Color="Color.Success" Clicked="PopulateFields" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Magic"></Blazorise.Icon> @Resources.Buttons.Fill
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Magic"></Blazorise.Icon> @WEB.Resources.Button.Fill
         </Button>
         <Button Color="Color.Primary" Float="Float.End" Clicked="(()=>help?.ShowModal())" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Resources.Buttons.Help
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
         </Button>
     </EditForm>
 
-    <BasicModal @ref="help" Title="@Resources.GlobalTranslations.HelpTitle">
+    <BasicModal @ref="help" Title="@WEB.Resources.GlobalTranslations.HelpTitle">
         <ul style="margin-left: -10px;">
-            <li>@Resources.GlobalTranslations.PreferHelpTopic1</li>
-            <li>@Resources.GlobalTranslations.PreferHelpTopic2</li>
+            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic1</li>
+            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic2</li>
         </ul>
     </BasicModal>
-</Loading>
+</RenderControl>
 
 @code {
 
     private ProfileModel? profile { get; set; }
     private ProfilePreferenceModel? preference { get; set; }
+    public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
     private BasicModal? help;
 
-    private Loading? Loading;
+    // private Loading? Loading;
 
     //private Shared.modal.ProfileDataHelp<object> ProfileDataHelp;
 
-    protected override async Task LoadData()
+    protected override async Task LoadDataRender()
     {
-        Loading?.Start();
+        // Loading?.Start();
 
-        profile = await ProfileApi.Profile_Get();
+        profile = await ProfileApi.Get(Core);
 
         if (profile == null)
         {
@@ -202,14 +203,14 @@
             await PopulateFields();
         }
 
-        Loading?.Finish(preference == null);
+        // Loading?.Finish(preference == null);
     }
 
     private async Task HandleValidSubmit()
     {
         try
         {
-            profile = await ProfileApi.Profile_UpdateLooking(profile, preference);
+            profile = await ProfileApi.UpdateLooking(Core, profile, preference);
         }
         catch (Exception ex)
         {
@@ -245,4 +246,4 @@
     {
         SelectedTab = tab;
     }
-}
+    }

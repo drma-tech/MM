@@ -1,27 +1,27 @@
 using AzureStaticWebApps.Blazor.Authentication;
 using Blazorise;
-using Blazorise.Bootstrap;
+using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using BlazorPro.BlazorSize;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MM.WEB;
+using MM.WEB.Api;
+using MM.WEB.Modules.Administrator.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Support.Core;
 using Polly;
 using Polly.Extensions.Http;
 using System.Globalization;
-using System.Net;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
-using VerusDate.Web.Api;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
 
-if (!builder.RootComponents.Any())
+if (builder.RootComponents.Empty())
 {
     builder.RootComponents.Add<App>("#app");
     builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -37,7 +37,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
 {
     collection
         .AddBlazorise(options => options.Immediate = true)
-        .AddBootstrapProviders()
+        .AddBootstrap5Providers()
         .AddFontAwesomeIcons();
 
     collection.AddPWAUpdater();
@@ -48,19 +48,23 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
     collection.AddStaticWebAppsAuthentication();
+    collection.AddCascadingAuthenticationState();
+    collection.AddOptions();
+    collection.AddAuthorizationCore();
 
+    collection.AddScoped<AdministratorApi>();
     collection.AddScoped<PrincipalApi>();
+    collection.AddScoped<GravatarApi>();
     collection.AddScoped<LoginApi>();
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<TicketApi>();
     collection.AddScoped<TicketVoteApi>();
-    collection.AddScoped<AnnouncementApi>();
+    collection.AddScoped<UpdateApi>();
     collection.AddScoped<InviteApi>();
     collection.AddScoped<MapApi>();
 
-    collection.AddScoped<CacheApi>();
-
-    collection.AddScoped<AppState>();
+    collection.AddScoped<PaddleConfigurationApi>();
+    collection.AddScoped<PaddleSubscriptionApi>();
 
     collection.AddResizeListener();
 
@@ -101,7 +105,5 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
     return HttpPolicyExtensions
         .HandleTransientHttpError() // 408,5xx
-        .OrResult(msg => msg.StatusCode == HttpStatusCode.NotFound) // 404
-        .OrResult(msg => msg.StatusCode == HttpStatusCode.Unauthorized) // 401
-        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Retry 3 times, with wait 1, 2 and 4 seconds.
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Retry 2 times, with wait 1, 2 and 4 seconds.
 }

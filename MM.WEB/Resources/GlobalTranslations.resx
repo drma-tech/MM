@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActiveConnection" xml:space="preserve">
-    <value>Active Connection</value>
-  </data>
-  <data name="AuthenticationInProgress" xml:space="preserve">
-    <value>Authentication in progress...</value>
-  </data>
   <data name="BetaVersion" xml:space="preserve">
     <value>Beta Version!</value>
   </data>
@@ -156,23 +150,17 @@
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>invitation not accepted</value>
   </data>
-  <data name="MenuHome" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="MenuProfile" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="MenuSupport" xml:space="preserve">
-    <value>Support</value>
-  </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>My Relationship</value>
   </data>
   <data name="NoPendingInvitations" xml:space="preserve">
     <value>There are no pending invitations</value>
   </data>
-  <data name="NothingThisAddress" xml:space="preserve">
-    <value>Sorry, there's nothing at this address.</value>
+  <data name="OperationCanceled" xml:space="preserve">
+    <value>Operation cancelled!</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>Operation completed successfully!</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>or</value>
@@ -183,11 +171,11 @@
   <data name="PreferHelpTopic2" xml:space="preserve">
     <value>The more specific you are in the filters, the less profile options you will have available</value>
   </data>
+  <data name="PremiumFeature" xml:space="preserve">
+    <value>Premium Feature</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
-  </data>
-  <data name="PrivacyTerms" xml:space="preserve">
-    <value>Privacy Terms</value>
   </data>
   <data name="ProductUnderDevelopment" xml:space="preserve">
     <value>Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app's support section.</value>
@@ -219,6 +207,12 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>A new version is available</value>
   </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="SureDeleteAccount" xml:space="preserve">
+    <value>Are you sure you want to delete your account? This action cannot be undone.</value>
+  </data>
   <data name="TermsOfUse" xml:space="preserve">
     <value>Terms of use</value>
   </data>
@@ -228,28 +222,25 @@
   <data name="TermTopic2" xml:space="preserve">
     <value>To be aware of how your data will be treated, we ask you to read our</value>
   </data>
-  <data name="TypeSomething" xml:space="preserve">
-    <value>Type Something</value>
-  </data>
   <data name="UnableDetectGps" xml:space="preserve">
     <value>We were unable to detect a GPS system on your device. Please try again or release access to your device's GPS.</value>
-  </data>
-  <data name="UnauthenticatedUser" xml:space="preserve">
-    <value>Unauthenticated User</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Validation errors were detected</value>
   </data>
-  <data name="Writing" xml:space="preserve">
-    <value>Writing</value>
-  </data>
   <data name="Years" xml:space="preserve">
     <value>Years</value>
   </data>
-  <data name="YouAreNotAuthorized" xml:space="preserve">
-    <value>You are not authorized to access this resource.</value>
-  </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Your current location:</value>
+  </data>
+  <data name="HelpMap" xml:space="preserve">
+    <value>This option will request location for your device (this option must be enabled)</value>
+  </data>
+  <data name="HelpPlus" xml:space="preserve">
+    <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
+  </data>
+  <data name="HelpQuestion" xml:space="preserve">
+    <value>This option will have explanations of each of the items available to choose from.</value>
   </data>
 </root>

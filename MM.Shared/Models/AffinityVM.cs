@@ -1,16 +1,9 @@
 ﻿namespace MM.Shared.Models
 {
-    public class AffinityVM
+    public class AffinityVM(Section section, CompatibilityItem Item, bool HaveAffinity)
     {
-        public AffinityVM(Section section, CompatibilityItem Item, bool HaveAffinity)
-        {
-            Section = section;
-            this.Item = Item;
-            this.HaveAffinity = HaveAffinity;
-        }
-
-        public Section Section { get; set; }
-        public CompatibilityItem Item { get; set; }
-        public bool HaveAffinity { get; set; }
+        public Section Section { get; set; } = section;
+        public CompatibilityItem Item { get; set; } = Item;
+        public bool HaveAffinity { get; set; } = HaveAffinity;
     }
 }

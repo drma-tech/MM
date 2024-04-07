@@ -42,21 +42,21 @@
     </Column>
 </Row>
 
-<VerusDate.Web.Shared.modal.BasicModal @ref="privacy" Title="Termos de privacidade">
+<BasicModal @ref="privacy" Title="Termos de privacidade">
     <ul>
         <li>A foto tirada por sua câmera será mantida privada (não será acessível dentro da plataforma) para futura verificação, caso seja necessário;</li>
         <li>Os dados resultantes desta validação (atributos do seu rosto) não serão mantidos em nossos servidores e só existirá durante o processo de detecção;</li>
     </ul>
-</VerusDate.Web.Shared.modal.BasicModal>
+</BasicModal>
 
 @code
 {
     private bool ActiveCamera = false;
     private bool TakedPhoto = false;
 
-    private Shared.modal.BasicModal? privacy;
+    private BasicModal? privacy;
 
-    protected override async Task LoadData()
+    protected override async Task LoadDataRender()
     {
         //do nothing
     }

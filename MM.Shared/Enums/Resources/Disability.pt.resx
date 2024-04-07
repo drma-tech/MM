@@ -148,7 +148,7 @@
     <value>Física</value>
   </data>
   <data name="Visual_Description" xml:space="preserve">
-    <value>“Legally Blind” descreve um indivíduo que tem 10% ou menos de visão normal. Apenas 10% das pessoas com deficiência visual são realmente totalmente cegas. Os outros 90% são descritos como tendo uma “deficiência visual”.</value>
+    <value>“Legally Blind” descreve um indivíduo que tem 10% ou menos de visão normal. Apenas 10% das pessoas com deficiência visual são realmente totalmente cegas. Os outros 90% são descritos como tendo uma “deficiência visual”</value>
   </data>
   <data name="Visual_Name" xml:space="preserve">
     <value>Visual</value>

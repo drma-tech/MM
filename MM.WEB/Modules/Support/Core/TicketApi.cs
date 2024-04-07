@@ -1,28 +1,31 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using MM.Shared.Models.Support;
+using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Support.Core
 {
-    public class TicketApi : ApiServices
+    public class TicketApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<TicketModel>(http, memoryCache, "TicketModel")
     {
-        public TicketApi(IHttpClientFactory http, IMemoryCache memoryCache) : base(http, memoryCache)
-        {
-        }
-
         private struct Endpoint
         {
-            public const string GetList = "Public/Ticket/GetList";
+            public const string GetList = "public/ticket/get-list";
+            public const string GetAll = "adm/ticket/get-all";
             public const string Insert = "Ticket/Insert";
         }
 
-        public async Task<HashSet<TicketModel>> GetList()
+        public async Task<HashSet<TicketModel>> GetList(RenderControlCore<HashSet<TicketModel>>? core)
         {
-            return await GetListAsync<TicketModel>(Endpoint.GetList, false);
+            return await GetListAsync(Endpoint.GetList, core);
+        }
+
+        public async Task<HashSet<TicketModel>> GetAll(RenderControlCore<HashSet<TicketModel>>? core)
+        {
+            return await GetListAsync(Endpoint.GetAll, core);
         }
 
         public async Task<TicketModel?> Insert(TicketModel obj)
         {
-            return await PostAsync(Endpoint.Insert, false, obj);
+            return await PostAsync(Endpoint.Insert, null, obj);
         }
     }
 }

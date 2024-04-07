@@ -1,6 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
@@ -22,9 +24,9 @@ namespace VerusDate.Api.Function
             _mediator = mediator;
         }
 
-        [FunctionName("StorageUploadPhotoFace")]
+        [Function("StorageUploadPhotoFace")]
         public async Task<IActionResult> UploadPhotoFace(
-            [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoFace")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "Storage/UploadPhotoFace")] HttpRequestData req,
             ILogger log, CancellationToken cancellationToken)
         {
             using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);
@@ -44,9 +46,9 @@ namespace VerusDate.Api.Function
             }
         }
 
-        [FunctionName("StorageUploadPhotoGallery")]
+        [Function("StorageUploadPhotoGallery")]
         public async Task<IActionResult> UploadPhotoGallery(
-            [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoGallery")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoGallery")] HttpRequestData req,
             ILogger log, CancellationToken cancellationToken)
         {
             using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);
@@ -66,9 +68,9 @@ namespace VerusDate.Api.Function
             }
         }
 
-        [FunctionName("StorageDeletePhotoGallery")]
+        [Function("StorageDeletePhotoGallery")]
         public async Task<IActionResult> DeletePhotoGallery(
-            [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.DELETE, Route = "Storage/DeletePhotoGallery")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.DELETE, Route = "Storage/DeletePhotoGallery")] HttpRequestData req,
             ILogger log, CancellationToken cancellationToken)
         {
             using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);
@@ -88,9 +90,9 @@ namespace VerusDate.Api.Function
             }
         }
 
-        //[FunctionName("StorageUploadPhotoValidation")]
+        //[Function("StorageUploadPhotoValidation")]
         //public async Task<IActionResult> UploadPhotoValidation(
-        //   [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoValidation")] HttpRequest req,
+        //   [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoValidation")] HttpRequestData req,
         //   ILogger log, CancellationToken cancellationToken)
         //{
         //    using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);

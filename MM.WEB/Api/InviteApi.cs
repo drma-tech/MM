@@ -1,14 +1,10 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using MM.Shared.Models.Profile;
 
-namespace VerusDate.Web.Api
+namespace MM.WEB.Api
 {
-    public class InviteApi : ApiServices
+    public class InviteApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<InviteModel>(http, memoryCache, "InviteApi")
     {
-        public InviteApi(IHttpClientFactory http, IMemoryCache memoryCache) : base(http, memoryCache)
-        {
-        }
-
         public struct InviteEndpoint
         {
             public static string Get(string email) => $"Invite/Get?email={email}";
@@ -19,17 +15,17 @@ namespace VerusDate.Web.Api
 
         public async Task<InviteModel?> Invite_Get(string email)
         {
-            return await GetAsync<InviteModel>(InviteEndpoint.Get(email), false);
+            return await GetAsync(InviteEndpoint.Get(email), null);
         }
 
         public async Task<InviteModel?> Invite_Add(InviteModel obj)
         {
-            return await PostAsync(InviteEndpoint.Add, false, obj);
+            return await PostAsync(InviteEndpoint.Add, null, obj);
         }
 
         public async Task<InviteModel?> Invite_Update(InviteModel obj)
         {
-            return await PutAsync(InviteEndpoint.Update, false, obj);
+            return await PutAsync(InviteEndpoint.Update, null, obj);
         }
     }
 }

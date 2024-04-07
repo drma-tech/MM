@@ -1,149 +1,159 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
-
 	<ItemGroup>
-	  <Compile Remove="Modules\Event\**" />
-	  <Compile Remove="Modules\Explore\**" />
-	  <Compile Remove="Modules\Store\**" />
-	  <Content Remove="Modules\Event\**" />
-	  <Content Remove="Modules\Explore\**" />
-	  <Content Remove="Modules\Store\**" />
-	  <EmbeddedResource Remove="Modules\Event\**" />
-	  <EmbeddedResource Remove="Modules\Explore\**" />
-	  <EmbeddedResource Remove="Modules\Store\**" />
-	  <None Remove="Modules\Event\**" />
-	  <None Remove="Modules\Explore\**" />
-	  <None Remove="Modules\Store\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Api\EventApi.cs" />
 	  <Compile Remove="Api\InterationApi.cs" />
 	  <Compile Remove="Api\PublicApi.cs" />
 	  <Compile Remove="Api\StorageApi.cs" />
-	  <Compile Remove="Api\StoreApi.cs" />
 	</ItemGroup>
-
 	<ItemGroup>
+	  <Content Remove="Modules\Explore\Chat.razor" />
+	  <Content Remove="Modules\Explore\Index.razor" />
+	  <Content Remove="Modules\Profile\Components\MyRelationships.razor" />
 	  <Content Remove="Modules\Profile\Interactions.razor" />
 	  <Content Remove="Modules\Profile\PhotoValidation.razor" />
 	  <Content Remove="Modules\Profile\ProfileChatList.razor" />
 	  <Content Remove="Modules\Profile\ProfileGallery.razor" />
 	</ItemGroup>
-
-    <ItemGroup>
+	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
-
 	<ItemGroup>
-        <PackageReference Include="AnthonyChu.AzureStaticWebApps.Blazor.Authentication" Version="0.0.2-preview" />
-		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
-		<PackageReference Include="Blazorise.Bootstrap" Version="1.3.1" />
-		<PackageReference Include="Blazorise.Components" Version="1.3.1" />
-		<PackageReference Include="Blazorise.DataGrid" Version="1.3.1" />
-		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.3.1" />
-		<PackageReference Include="BlazorPro.BlazorSize" Version="6.2.1" />
-		<PackageReference Include="BlazorWasmPreRendering.Build" Version="2.0.0-preview.7" />
+		<PackageReference Include="AnthonyChu.AzureStaticWebApps.Blazor.Authentication" Version="0.0.2-preview" />
+		<PackageReference Include="Blazorise.Bootstrap5" Version="1.5.1" />
+		<PackageReference Include="Blazorise.Components" Version="1.5.1" />
+		<PackageReference Include="Blazorise.DataGrid" Version="1.5.1" />
+		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.5.1" />
+		<PackageReference Include="Blazorise.QRCode" Version="1.5.1" />
+		<PackageReference Include="BlazorPro.BlazorSize" Version="6.2.2" />
+		<PackageReference Include="BlazorWasmPreRendering.Build" Version="3.1.0-preview.4" />
 		<PackageReference Include="BrowserInterop" Version="1.1.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.10" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.10" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.3">
+		  <TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.3" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.3">
+		  <TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.3" />
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <Compile Update="Modules\Auth\Resources\Translations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Translations.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\Support\Resources\Translations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Translations.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Buttons.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Buttons.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\CardHeader.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CardHeader.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\GlobalTranslations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>GlobalTranslations.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\SeoTranslations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>SeoTranslations.resx</DependentUpon>
-	  </Compile>
+		<Compile Update="Modules\Auth\Resources\Translations.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Translations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Profile\Resources\Translations.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Translations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Subscription\Resources\Translations.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Translations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Support\Resources\Translations.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Translations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Button.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Button.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\CardHeader.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CardHeader.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\GlobalTranslations.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>GlobalTranslations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Menu.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Menu.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\SeoTranslations.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>SeoTranslations.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
-
 	<ItemGroup>
-	  <EmbeddedResource Update="Modules\Auth\Resources\Translations.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Translations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\Support\Resources\Translations.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Translations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Buttons.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Buttons.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\CardHeader.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>CardHeader.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\GlobalTranslations.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>GlobalTranslations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\SeoTranslations.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>SeoTranslations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Modules\Auth\Resources\Translations.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Translations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Profile\Resources\Translations.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Translations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Subscription\Resources\Translations.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Translations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Support\Resources\Translations.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Translations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Button.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Button.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\CardHeader.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>CardHeader.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\GlobalTranslations.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>GlobalTranslations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Menu.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\SeoTranslations.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>SeoTranslations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
-
+	<ItemGroup>
+	  <Folder Include="Modules\Explore\" />
+	</ItemGroup>
 	<PropertyGroup>
+		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 		<CurrentDate>$([System.DateTime]::Now.ToString(yyyy.MM.dd))</CurrentDate>
 		<!--workaround to solve a memory problem that occurs in android 8.0 and below - test if in newer versions of blazor, this has already been resolved-->
 		<EmccTotalMemory>16777216</EmccTotalMemory>
 	</PropertyGroup>
-
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="echo $(CurrentDate) &gt; &quot;$(ProjectDir)\Resources\BuildDate.txt&quot;" />
 	</Target>

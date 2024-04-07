@@ -13,7 +13,7 @@ namespace MM.WEB.Modules.Shared.Field
         SelectMultiple
     }
 
-    public class BaseCustomField<TValue, TClass> : ComponenteNoDataCore<TClass> where TClass : class
+    public class BaseCustomField<TValue, TClass> : ComponentCore<TClass> where TClass : class
     {
         [Parameter] public FieldType Type { get; set; }
         [Parameter] public object? CssIcon { get; set; }

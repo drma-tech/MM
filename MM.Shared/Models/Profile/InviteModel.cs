@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MM.Shared.Core;
-using MM.Shared.Core.Models;
-
-namespace MM.Shared.Models.Profile
+﻿namespace MM.Shared.Models.Profile
 {
     public class InviteModel : PrivateMainDocument
     {
@@ -11,18 +6,7 @@ namespace MM.Shared.Models.Profile
         {
         }
 
-        public List<Invite> Invites { get; set; } = new();
-
-        //public void UpdateData()
-        //{
-        //    DtUpdate = DateTime.UtcNow;
-        //}
-
-        //public override void SetIds(string email)
-        //{
-        //    this.SetId(email);
-        //    this.SetPartitionKey(email);
-        //}
+        public List<Invite> Invites { get; set; } = [];
 
         public override bool HasValidData()
         {
@@ -30,19 +14,12 @@ namespace MM.Shared.Models.Profile
         }
     }
 
-    public class Invite
+    public class Invite(string UserId, string UserEmail, InviteType Type)
     {
-        public Invite(string UserId, string UserEmail, InviteType Type)
-        {
-            this.UserId = UserId;
-            this.UserEmail = UserEmail;
-            this.Type = Type;
-        }
-
-        public string UserId { get; set; }
-        public string UserEmail { get; set; }
+        public string UserId { get; set; } = UserId;
+        public string UserEmail { get; set; } = UserEmail;
         public DateTime DtInvite { get; set; } = DateTime.UtcNow;
-        public InviteType Type { get; set; }
+        public InviteType Type { get; set; } = Type;
         public bool Accepted { get; set; }
     }
 

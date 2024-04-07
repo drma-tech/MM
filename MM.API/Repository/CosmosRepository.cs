@@ -1,8 +1,8 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using MM.API.Repository.Core;
-using MM.Shared.Core.Models;
 using System.Linq.Expressions;
 
 namespace MM.API.Repository
@@ -10,47 +10,16 @@ namespace MM.API.Repository
     public class CosmosRepository : IRepository
     {
         public Container Container { get; private set; }
+        private readonly ILogger<CosmosRepository> _logger;
 
-        public CosmosRepository(IConfiguration config)
+        public CosmosRepository(IConfiguration config, ILogger<CosmosRepository> logger)
         {
-            var connString = config.GetValue<string>("RepositoryOptions_CosmosConnectionString");
+            _logger = logger;
+
             var databaseId = config.GetValue<string>("RepositoryOptions_DatabaseId");
             var containerId = config.GetValue<string>("RepositoryOptions_ContainerId");
 
-            var _client = new CosmosClient(connString, new CosmosClientOptions()
-            {
-                SerializerOptions = new CosmosSerializationOptions()
-                {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
-            });
-
-            Container = _client.GetContainer(databaseId, containerId);
-
-            //Database database = await client.CreateDatabaseIfNotExistsAsync("cosmicworks");
-
-            //Container container = await database.CreateContainerIfNotExistsAsync(
-            //    "cosmicworks",
-            //    "/categoryId",
-            //    400
-            //);
-
-            //IndexingPolicy policy = new()
-            //{
-            //    IndexingMode = IndexingMode.Consistent,
-            //    Automatic = true
-            //};
-            //policy.ExcludedPaths.Add(
-            //    new ExcludedPath { Path = "/name/?" }
-            //);
-
-            //ContainerProperties options = new()
-            //{
-            //    Id = "products",
-            //    PartitionKeyPath = "/categoryId",
-            //    IndexingPolicy = policy
-            //};
-            //Container container = await database.CreateContainerIfNotExistsAsync(options, throughput: 400);
+            Container = ApiStartup.CosmosClient.GetContainer(databaseId, containerId);
         }
 
         public async Task<T?> Get<T>(string id, PartitionKey key, CancellationToken cancellationToken) where T : CosmosDocument
@@ -61,6 +30,11 @@ namespace MM.API.Repository
             {
                 var response = await Container.ReadItemAsync<T>(id, key, null, cancellationToken);
 
+                if (response.RequestCharge > 1.8)
+                {
+                    _logger.LogWarning("Get - ID {0}, RequestCharge {1}", id, response.RequestCharge);
+                }
+
                 return response.Resource;
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -69,50 +43,48 @@ namespace MM.API.Repository
             }
         }
 
-        public async Task<List<T>> Query<T>(Expression<Func<T, bool>>? predicate, PartitionKey? key, DocumentType Type, CancellationToken cancellationToken) where T : MainDocument
+        public async Task<List<T>> ListAll<T>(DocumentType Type, CancellationToken cancellationToken) where T : MainDocument
         {
-            IQueryable<T> query;
-
-            if (predicate is null)
-            {
-                query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetDefaultOptions(key))
-                    .Where(item => item.Type == Type);
-            }
-            else
-            {
-                query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetDefaultOptions(key))
-                    .Where(predicate.Compose(item => item.Type == Type, Expression.AndAlso));
-            }
+            var query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetDefaultOptions(null)).Where(item => item.Type == Type);
 
             using var iterator = query.ToFeedIterator();
             var results = new List<T>();
-            double count = 0;
 
+            double charges = 0;
             while (iterator.HasMoreResults)
             {
                 var response = await iterator.ReadNextAsync(cancellationToken);
-
-                count += response.RequestCharge;
-
+                charges += response.RequestCharge;
                 results.AddRange(response.Resource);
+            }
+
+            if (charges > 5)
+            {
+                _logger.LogWarning("ListAll - Type {0}, RequestCharge {1}", Type.ToString(), charges);
             }
 
             return results;
         }
 
-        public async Task<List<T>> Query<T>(QueryDefinition query, CancellationToken cancellationToken) where T : MainDocument
+        public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, PartitionKey? key, DocumentType Type, CancellationToken cancellationToken) where T : MainDocument
         {
-            using var iterator = Container.GetItemQueryIterator<T>(query);
-            var results = new List<T>();
-            double count = 0;
+            var query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetDefaultOptions(key))
+                     .Where(predicate.Compose(item => item.Type == Type, Expression.AndAlso));
 
+            using var iterator = query.ToFeedIterator();
+            var results = new List<T>();
+
+            double charges = 0;
             while (iterator.HasMoreResults)
             {
                 var response = await iterator.ReadNextAsync(cancellationToken);
-
-                count += response.RequestCharge;
-
+                charges += response.RequestCharge;
                 results.AddRange(response.Resource);
+            }
+
+            if (charges > 5)
+            {
+                _logger.LogWarning("Query - Type {0}, RequestCharge {1}", Type.ToString(), charges);
             }
 
             return results;
@@ -122,6 +94,11 @@ namespace MM.API.Repository
         {
             var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Key), null, cancellationToken);
 
+            if (response.RequestCharge > 20)
+            {
+                _logger.LogWarning("Upsert - ID {0}, Key {1}, RequestCharge {2}", item.Id, item.Key, response.RequestCharge);
+            }
+
             return response.Resource;
         }
 
@@ -129,9 +106,12 @@ namespace MM.API.Repository
         {
             //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
 
-            //TODO: update date
-
             var response = await Container.PatchItemAsync<T>(id, key, operations, null, cancellationToken);
+
+            if (response.RequestCharge > 20)
+            {
+                _logger.LogWarning("PatchItem - ID {0}, Key {1}, RequestCharge {2}", id, key, response.RequestCharge);
+            }
 
             return response.Resource;
         }
@@ -139,6 +119,11 @@ namespace MM.API.Repository
         public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
         {
             var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey(item.Key), null, cancellationToken);
+
+            if (response.RequestCharge > 8)
+            {
+                _logger.LogWarning("Delete - ID {0}, Key {1}, RequestCharge {2}", item.Id, item.Key, response.RequestCharge);
+            }
 
             return response.StatusCode == System.Net.HttpStatusCode.OK;
         }

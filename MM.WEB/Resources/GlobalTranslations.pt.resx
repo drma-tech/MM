@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BetaVersion" xml:space="preserve">
+    <value>Versão Beta!</value>
+  </data>
+  <data name="BirthdateTip" xml:space="preserve">
+    <value>Esta informação não será compartilhada no seu perfil (apenas na sua idade)</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
   </data>
@@ -132,45 +138,6 @@
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Em desenvolvimento</value>
   </data>
-  <data name="MenuHome" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="MenuProfile" xml:space="preserve">
-    <value>Perfil</value>
-  </data>
-  <data name="MenuSupport" xml:space="preserve">
-    <value>Suporte</value>
-  </data>
-  <data name="PWAUpdaterButton" xml:space="preserve">
-    <value>ATUALIZAR AGORA</value>
-  </data>
-  <data name="PWAUpdaterText" xml:space="preserve">
-    <value>Uma nova versão está disponível</value>
-  </data>
-  <data name="Writing" xml:space="preserve">
-    <value>Roteirização</value>
-  </data>
-  <data name="UnauthenticatedUser" xml:space="preserve">
-    <value>Usuário não autenticado</value>
-  </data>
-  <data name="TypeSomething" xml:space="preserve">
-    <value>Digite Algo</value>
-  </data>
-  <data name="NothingThisAddress" xml:space="preserve">
-    <value>Desculpe, não há nada neste endereço.</value>
-  </data>
-  <data name="YouAreNotAuthorized" xml:space="preserve">
-    <value>Você não está autorizado a acessar este recurso.</value>
-  </data>
-  <data name="AuthenticationInProgress" xml:space="preserve">
-    <value>Autenticação em andamento...</value>
-  </data>
-  <data name="BetaVersion" xml:space="preserve">
-    <value>Versão Beta!</value>
-  </data>
-  <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>Produto ainda em desenvolvimento, então muita coisa ainda vai melhorar. Se você tiver sugestões a fazer, favor solicitar na seção de suporte do aplicativo.</value>
-  </data>
   <data name="HelpMap" xml:space="preserve">
     <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
   </data>
@@ -183,33 +150,6 @@
   <data name="HelpTitle" xml:space="preserve">
     <value>Ajuda</value>
   </data>
-  <data name="TermTopic1" xml:space="preserve">
-    <value>Seja honesto nas respostas dadas neste formulário. Todas as informações aqui contidas são passíveis de denúncias e podem ser avaliadas;</value>
-  </data>
-  <data name="PrivacyTerms" xml:space="preserve">
-    <value>Termos de Privacidade</value>
-  </data>
-  <data name="TermsOfUse" xml:space="preserve">
-    <value>Termos de uso</value>
-  </data>
-  <data name="TermTopic2" xml:space="preserve">
-    <value>Para estar ciente de como seus dados serão tratados, pedimos que você leia nosso</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidade</value>
-  </data>
-  <data name="MyRelationship" xml:space="preserve">
-    <value>Meu Relacionamento</value>
-  </data>
-  <data name="BirthdateTip" xml:space="preserve">
-    <value>Esta informação não será compartilhada no seu perfil (apenas na sua idade)</value>
-  </data>
-  <data name="Years" xml:space="preserve">
-    <value>Anos</value>
-  </data>
-  <data name="ActiveConnection" xml:space="preserve">
-    <value>Conexão ativa</value>
-  </data>
   <data name="InactiveConnection" xml:space="preserve">
     <value>Conexão inativa</value>
   </data>
@@ -219,35 +159,35 @@
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>Convite não aceito</value>
   </data>
+  <data name="MyRelationship" xml:space="preserve">
+    <value>Meu Relacionamento</value>
+  </data>
   <data name="NoPendingInvitations" xml:space="preserve">
     <value>Não há convites pendentes</value>
   </data>
+  <data name="OperationCanceled" xml:space="preserve">
+    <value>Operação cancelada!</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>Operação concluída com sucesso!</value>
+  </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
-  </data>
-  <data name="UnableDetectGps" xml:space="preserve">
-    <value>Não foi possível detectar um sistema GPS no seu dispositivo. Tente novamente ou libere o acesso ao GPS do seu dispositivo.</value>
-  </data>
-  <data name="ValidationErrorsDetected" xml:space="preserve">
-    <value>Foram detectados erros de validação</value>
-  </data>
-  <data name="YourCurrentLocation" xml:space="preserve">
-    <value>Sua localização atual:</value>
-  </data>
-  <data name="ProfileHelpMap" xml:space="preserve">
-    <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
-  </data>
-  <data name="ProfileHelpPlus" xml:space="preserve">
-    <value>Esta opção abrirá um pop-up com várias opções (juntamente com explicações, se houver)</value>
-  </data>
-  <data name="ProfileHelpQuestion" xml:space="preserve">
-    <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
     <value>Aqui você pode definir o seu tipo de perfil ideal, para que possamos calcular corretamente o seu índice de compatibilidade</value>
   </data>
   <data name="PreferHelpTopic2" xml:space="preserve">
     <value>Quanto mais específico você estiver nos filtros, menos opções de perfil você terá disponíveis</value>
+  </data>
+  <data name="PremiumFeature" xml:space="preserve">
+    <value>Recurso Premium</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacidade</value>
+  </data>
+  <data name="ProductUnderDevelopment" xml:space="preserve">
+    <value>Produto ainda em desenvolvimento, então muita coisa ainda vai melhorar. Se você tiver sugestões a fazer, favor solicitar na seção de suporte do aplicativo.</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>Para garantir uma atmosfera positiva, levamos o assédio e o preconceito a sério. Se você encontrar esse comportamento, denuncie o perfil imediatamente.</value>
@@ -258,7 +198,49 @@
   <data name="ProfileDataPersonTip1" xml:space="preserve">
     <value>Para personalidades mais complexas, explore testes em sites especializados. Algumas podem ser respondidas apenas lendo as descrições dos itens.</value>
   </data>
+  <data name="ProfileHelpMap" xml:space="preserve">
+    <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
+  </data>
+  <data name="ProfileHelpPlus" xml:space="preserve">
+    <value>Esta opção abrirá um pop-up com várias opções (juntamente com explicações, se houver)</value>
+  </data>
+  <data name="ProfileHelpQuestion" xml:space="preserve">
+    <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
+  </data>
   <data name="ProfilePreferPersonTip1" xml:space="preserve">
     <value>Esta seção não funciona como um filtro, apenas complementa o cálculo de compatibilidade de perfil.</value>
+  </data>
+  <data name="PWAUpdaterButton" xml:space="preserve">
+    <value>ATUALIZAR AGORA</value>
+  </data>
+  <data name="PWAUpdaterText" xml:space="preserve">
+    <value>Uma nova versão está disponível</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Compartilhar</value>
+  </data>
+  <data name="SureDeleteAccount" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>Termos de uso</value>
+  </data>
+  <data name="TermTopic1" xml:space="preserve">
+    <value>Seja honesto nas respostas dadas neste formulário. Todas as informações aqui contidas são passíveis de denúncias e podem ser avaliadas;</value>
+  </data>
+  <data name="TermTopic2" xml:space="preserve">
+    <value>Para estar ciente de como seus dados serão tratados, pedimos que você leia nosso</value>
+  </data>
+  <data name="UnableDetectGps" xml:space="preserve">
+    <value>Não foi possível detectar um sistema GPS no seu dispositivo. Tente novamente ou libere o acesso ao GPS do seu dispositivo.</value>
+  </data>
+  <data name="ValidationErrorsDetected" xml:space="preserve">
+    <value>Foram detectados erros de validação</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Anos</value>
+  </data>
+  <data name="YourCurrentLocation" xml:space="preserve">
+    <value>Sua localização atual:</value>
   </data>
 </root>

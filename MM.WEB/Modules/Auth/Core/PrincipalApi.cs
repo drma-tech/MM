@@ -3,28 +3,56 @@ using MM.Shared.Models.Auth;
 
 namespace MM.WEB.Modules.Auth.Core
 {
-    public class PrincipalApi : ApiServices
+    public class PrincipalApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ClientePrincipal>(factory, memoryCache, "ClientePrincipal")
     {
-        public PrincipalApi(IHttpClientFactory http, IMemoryCache memoryCache) : base(http, memoryCache)
-        {
-        }
-
         private struct Endpoint
         {
             public const string Get = "Principal/Get";
+            public const string GetEmail = "Public/Principal/GetEmail";
             public const string Add = "Principal/Add";
+            public const string Paddle = "Principal/Paddle";
+            public const string Remove = "Principal/Remove";
         }
 
-        public async Task<ClientePrincipal?> Get()
+        public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated, bool forceClean = false)
         {
-            return await GetAsync<ClientePrincipal>(Endpoint.Get, false);
+            if (forceClean)
+            {
+                CleanCache();
+            }
+
+            if (IsUserAuthenticated)
+            {
+                return await GetAsync(Endpoint.Get, null);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<string?> GetEmail(string? token)
+        {
+            return await GetValueAsync($"{Endpoint.GetEmail}?token={token}", null);
         }
 
         public async Task<ClientePrincipal?> Add(ClientePrincipal? obj)
         {
-            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            ArgumentNullException.ThrowIfNull(obj);
 
-            return await PostAsync<ClientePrincipal>(Endpoint.Add, false, obj, Endpoint.Get);
+            return await PostAsync(Endpoint.Add, null, obj);
+        }
+
+        public async Task<ClientePrincipal?> Paddle(ClientePrincipal? obj)
+        {
+            ArgumentNullException.ThrowIfNull(obj);
+
+            return await PutAsync(Endpoint.Paddle, null, obj);
+        }
+
+        public async Task Remove()
+        {
+            await DeleteAsync(Endpoint.Remove, null);
         }
     }
 }

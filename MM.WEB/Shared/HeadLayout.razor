@@ -1,5 +1,4 @@
-﻿@inherits ComponenteNoDataCore<HeadLayout>
-@inject NavigationManager Navigation
+﻿@inherits ComponentCore<HeadLayout>
 
 <Bar Mode="BarMode.Horizontal" Background="Background.Secondary" ThemeContrast="ThemeContrast.Dark" Padding="Padding.Is2">
     <Container Fluid="true" Padding="Padding.Is0.OnX">
@@ -15,7 +14,7 @@
                         <Select TValue="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged" Size="Size.Small" Style="width:auto;">
                             @foreach (var item in Languages.OrderBy(o => o.Name))
                             {
-                                <SelectItem Value="@item.Value">@(((Language)item.Value).GetCustomAttribute(false)?.Name)</SelectItem>
+                                <SelectItem Value="@item.Value">@(item.Value.GetCustomAttribute(false)?.Name)</SelectItem>
                             }
                         </Select>
                     </Matched>
@@ -34,12 +33,12 @@
             <AuthorizeView>
                 <Authorized>
                     <Button Color="Color.Danger" Clicked="Logout" title="Logout" Float="Float.End" Size="Size.Small">
-                        <Blazorise.Icon Name="FontAwesomeIcons.SignOutAlt" /> @WEB.Resources.Buttons.Logout
+                        <Blazorise.Icon Name="FontAwesomeIcons.SignOutAlt" /> @WEB.Resources.Button.Logout
                     </Button>
                 </Authorized>
                 <NotAuthorized>
                     <Button Color="Color.Primary" Type="ButtonType.Link" To="/login-providers" title="Login" Float="Float.End" Size="Size.Small">
-                        <Blazorise.Icon Name="FontAwesomeIcons.SignInAlt" /> @WEB.Resources.Buttons.Login
+                        <Blazorise.Icon Name="FontAwesomeIcons.SignInAlt" /> @WEB.Resources.Button.Login
                     </Button>
                 </NotAuthorized>
             </AuthorizeView>

@@ -10,7 +10,7 @@ namespace MM.API.Core
         public string? IdentityProvider { get; set; }
         public string? UserId { get; set; }
         public string? UserDetails { get; set; }
-        public IEnumerable<string> UserRoles { get; set; } = Enumerable.Empty<string>();
+        public IEnumerable<string> UserRoles { get; set; } = [];
     }
 
     public static class StaticWebAppsAuth
@@ -31,6 +31,9 @@ namespace MM.API.Core
             }
         }
 
+        private static readonly string[] roles = ["anonymous"];
+        private static readonly JsonSerializerOptions options = new() { PropertyNameCaseInsensitive = true };
+
         private static ClaimsPrincipal? Parse(this HttpRequestData req)
         {
             var principal = new ClientPrincipal();
@@ -40,12 +43,12 @@ namespace MM.API.Core
                 var data = header.First();
                 var decoded = Convert.FromBase64String(data);
                 var json = Encoding.ASCII.GetString(decoded);
-                principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                principal = JsonSerializer.Deserialize<ClientPrincipal>(json, options);
             }
 
             if (principal != null)
             {
-                principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase) ?? Array.Empty<string>();
+                principal.UserRoles = principal.UserRoles?.Except(roles, StringComparer.CurrentCultureIgnoreCase) ?? [];
 
                 if (!principal.UserRoles?.Any() ?? true)
                 {
