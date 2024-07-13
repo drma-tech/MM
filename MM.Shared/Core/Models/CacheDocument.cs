@@ -8,7 +8,7 @@ namespace MM.Shared.Core.Models
         {
         }
 
-        protected CacheDocument(string key, TData data, ttlCache ttl) : base(key, key)
+        protected CacheDocument(string id, TData data, ttlCache ttl) : base(id)
         {
             Data = data;
             Ttl = (int)ttl;

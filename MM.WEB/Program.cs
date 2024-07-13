@@ -58,7 +58,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddScoped<LoginApi>();
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<TicketApi>();
-    collection.AddScoped<TicketVoteApi>();
     collection.AddScoped<UpdateApi>();
     collection.AddScoped<InviteApi>();
     collection.AddScoped<MapApi>();
@@ -105,5 +104,5 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
     return HttpPolicyExtensions
         .HandleTransientHttpError() // 408,5xx
-        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Retry 2 times, with wait 1, 2 and 4 seconds.
+        .WaitAndRetryAsync(2, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Retry 2 times, with wait 1, 2 and 4 seconds.
 }

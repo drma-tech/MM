@@ -24,16 +24,16 @@ namespace MM.WEB.Modules.Shared.Field
         [Parameter] public TValue? SelectedValue { get; set; }
         [Parameter] public EventCallback<TValue> SelectedValueChanged { get; set; }
 
-        [Parameter] public IReadOnlyList<TEnum>? SelectedValues { get; set; }
-        [Parameter] public EventCallback<IReadOnlyList<TEnum>> SelectedValuesChanged { get; set; }
+        [Parameter] public HashSet<TEnum>? SelectedValues { get; set; }
+        [Parameter] public EventCallback<HashSet<TEnum>> SelectedValuesChanged { get; set; }
 
-        private string? Description => For.GetCustomAttribute()?.Description;
+        private string? Description => For?.GetCustomAttribute()?.Description;
 
         [Parameter] public Func<EnumObject, object> Order { get; set; } = o => o.Value;
 
-        protected Task UpdateDataHelp(Expression<Func<TValue>> For)
+        protected Task UpdateDataHelp(Expression<Func<TValue>>? For)
         {
-            return ModalService.Show<ProfileDataHelp<TValue, TEnum>>(For.GetCustomAttribute()?.Name,
+            return ModalService.Show<ProfileDataHelp<TValue, TEnum>>(For?.GetCustomAttribute()?.Name,
                 x =>
                 {
                     x.Add(x => x.HasGroup, ShowGroup);
@@ -46,7 +46,7 @@ namespace MM.WEB.Modules.Shared.Field
                 });
         }
 
-        protected Task UpdateDataSelect(Expression<Func<TValue>> For)
+        protected Task UpdateDataSelect(Expression<Func<TValue>>? For)
         {
             return ModalService.Show<ProfileDataSelect<TValue, TEnum>>("",
                 x =>
@@ -55,7 +55,7 @@ namespace MM.WEB.Modules.Shared.Field
                     x.Add(x => x.SelectedValues, SelectedValues);
                     x.Add(x => x.SelectedValuesChanged, SelectedValuesChanged);
                     x.Add(x => x.Order, Order);
-                    x.Add(x => x.Title, For.GetCustomAttribute()?.Name);
+                    x.Add(x => x.Title, For?.GetCustomAttribute()?.Name);
                 },
                 new ModalInstanceOptions()
                 {

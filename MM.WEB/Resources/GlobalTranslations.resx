@@ -121,7 +121,7 @@
     <value>Beta Version!</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>This information will not be shared on your profile (only your age)</value>
+    <value>Only your age will be published. (We use the Gregorian calendar)</value>
   </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
@@ -207,6 +207,9 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>A new version is available</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Share" xml:space="preserve">
     <value>Share</value>
   </data>
@@ -242,5 +245,8 @@
   </data>
   <data name="HelpQuestion" xml:space="preserve">
     <value>This option will have explanations of each of the items available to choose from.</value>
+  </data>
+  <data name="ActiveConnection" xml:space="preserve">
+    <value>Active Connection</value>
   </data>
 </root>

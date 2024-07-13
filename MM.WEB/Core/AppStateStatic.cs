@@ -9,6 +9,7 @@ namespace MM.WEB.Core
         public static List<LogContainer> Logs { get; private set; } = [];
 
         public static Language Language { get; private set; }
+
         public static Bar? Sidebar { get; set; }
 
         public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
@@ -25,14 +26,14 @@ namespace MM.WEB.Core
         {
             Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
 
-            Language = (Language?)language ?? Language.en;
+            Language = (Language?)language ?? Language.English;
         }
 
         public static string GetLanguageCode()
         {
             switch (Language)
             {
-                case Language.pt: return "pt";
+                case Language.Portuguese: return "pt";
                 default: return "en";
             }
         }

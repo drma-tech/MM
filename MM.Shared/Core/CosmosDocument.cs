@@ -11,19 +11,15 @@ namespace MM.Shared.Core
             FixedId = false;
         }
 
-        protected CosmosDocument(string id, string key)
+        protected CosmosDocument(string id)
         {
             Id = id;
-            Key = key;
 
             FixedId = true;
         }
 
         [JsonInclude]
         public string Id { get; set; } = string.Empty;
-
-        [JsonInclude]
-        public string Key { get; set; } = string.Empty;
 
         [JsonInclude]
         public DateTimeOffset DtInsert { get; set; } = DateTimeOffset.UtcNow;
@@ -33,12 +29,11 @@ namespace MM.Shared.Core
 
         public abstract bool HasValidData();
 
-        protected void SetIds(string id, string key)
+        protected void SetIds(string id)
         {
             if (FixedId) throw new InvalidOperationException();
 
             Id = id;
-            Key = key;
         }
 
         public virtual void Update()

@@ -13,8 +13,8 @@
 	  <None Remove="Models\Interaction\**" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
-	  <PackageReference Include="StrongGrid" Version="0.106.0" />
+	  <PackageReference Include="Blazored.FluentValidation" Version="2.2.0" />
+	  <PackageReference Include="StrongGrid" Version="0.109.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Enums\Resources\Change.Designer.cs">
@@ -146,11 +146,6 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Intentions.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Enums\Resources\Language.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Language.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Enums\Resources\LeisureActivities.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -355,10 +350,6 @@
 		<EmbeddedResource Update="Enums\Resources\Intentions.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Intentions.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\Language.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Language.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\LeisureActivities.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

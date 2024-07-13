@@ -61,6 +61,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Connection.
+        /// </summary>
+        public static string ActiveConnection {
+            get {
+                return ResourceManager.GetString("ActiveConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beta Version!.
         /// </summary>
         public static string BetaVersion {
@@ -70,7 +79,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This information will not be shared on your profile (only your age).
+        ///   Looks up a localized string similar to Only your age will be published. (We use the Gregorian calendar).
         /// </summary>
         public static string BirthdateTip {
             get {
@@ -354,6 +363,15 @@ namespace MM.WEB.Resources {
         public static string PWAUpdaterText {
             get {
                 return ResourceManager.GetString("PWAUpdaterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         

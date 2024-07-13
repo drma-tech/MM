@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
+using MM.API.Repository.Core;
 
 namespace MM.API.Repository
 {
@@ -8,11 +9,9 @@ namespace MM.API.Repository
         public LogModel()
         {
             Id = Guid.NewGuid().ToString();
-            Key = DateTime.UtcNow.ToShortDateString();
         }
 
         public string? Id { get; set; }
-        public string? Key { get; set; }
         public string? Name { get; set; }
         public string? State { get; set; }
         public string? Message { get; set; }
@@ -34,7 +33,7 @@ namespace MM.API.Repository
 
         public async Task Add(LogModel log)
         {
-            await Container.CreateItemAsync(log, new PartitionKey(log.Key), null);
+            await Container.CreateItemAsync(log, new PartitionKey(log.Id), CosmosRepositoryExtensions.GetItemRequestOptions());
         }
     }
 }

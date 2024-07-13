@@ -11,7 +11,7 @@ namespace MM.WEB.Modules.Profile.Core
             public const string Get = "profile/get";
             public const string Update = "profile/update";
             public const string UpdateLooking = "profile/update-preference";
-            //public const string UpdatePartner = "Profile/UpdatePatner";
+            public static string UpdatePartner(string? id, string? email) => $"profile/update-partner?id={id}&email={email}";
 
             //public const string ListMatch = "Profile/ListMatch";
             //public const string ListSearch = "Profile/ListSearch";
@@ -57,11 +57,11 @@ namespace MM.WEB.Modules.Profile.Core
             //}
         }
 
-        //public async Task Profile_UpdatePartner(string id, string? email)
-        //{
-        //    if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email));
+        public async Task UpdatePartner(string? id, string? email)
+        {
+            if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email));
 
-        //    await PutAsync(ProfileEndpoint.UpdatePartner, false, new { id, email }, null, null);
-        //}
+            await PutAsync<ProfileModel>(ProfileEndpoint.UpdatePartner(id, email), null, null);
+        }
     }
 }

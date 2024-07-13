@@ -19,7 +19,7 @@
             Type = type;
         }
 
-        protected MainDocument(string id, string key, DocumentType type) : base($"{type}:{id}", key)
+        protected MainDocument(string id, DocumentType type) : base($"{type}:{id}")
         {
             Type = type;
         }
@@ -39,14 +39,14 @@
             this.type = type;
         }
 
-        protected ProtectedMainDocument(string id, string key, DocumentType type) : base($"{type}:{id}", key, type)
+        protected ProtectedMainDocument(string id, DocumentType type) : base($"{type}:{id}", type)
         {
             this.type = type;
         }
 
-        public virtual void Initialize(string id, string key)
+        public virtual void Initialize(string id)
         {
-            SetIds($"{type}:{id}", key);
+            SetIds($"{type}:{id}");
         }
     }
 
@@ -64,7 +64,7 @@
 
         public virtual void Initialize(string userId)
         {
-            SetIds($"{type}:{userId}", userId);
+            SetIds($"{type}:{userId}");
         }
     }
 }

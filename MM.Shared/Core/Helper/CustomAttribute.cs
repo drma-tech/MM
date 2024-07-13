@@ -46,7 +46,7 @@ namespace MM.Shared.Core.Helper
             return fieldInfo.GetCustomAttribute(translate);
         }
 
-        public static CustomAttribute? GetCustomAttribute<T>(this Expression<Func<T>> expression, bool translate = true)
+        public static CustomAttribute? GetCustomAttribute<T>(this Expression<Func<T>>? expression, bool translate = true)
         {
             if (expression == null) return null;
 

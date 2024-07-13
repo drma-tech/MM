@@ -26,7 +26,7 @@ namespace MM.WEB.Core
                 new(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(user.Preference).IsMatch(view.BodyMass.ToArray())),
                 new(Section.Bio, CompatibilityItem.Age, GetAge(user, user.Preference).IsRangeMatch(view.Age.ToArray())),
                 new(Section.Bio, CompatibilityItem.Zodiac, GetZodiac(user).IsMatch(view.Zodiac.ToArray())),
-                new(Section.Bio, CompatibilityItem.Height, GetHeight(user, user.Preference).Select(s => (int)s).ToArray().IsRangeMatch(((int?)view.Height).ToArray())),
+                new(Section.Bio, CompatibilityItem.Height, GetHeight(user, user.Preference).Select(s => (int)s).IsRangeMatch(((int?)view.Height).ToArray())),
                 new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(user.Preference).IsMatch(view.Neurodiversity.ToArray())),
                 new(Section.Bio, CompatibilityItem.Disabilities, GetDisability(user.Preference).IsMatch(view.Disabilities)),
 
@@ -47,7 +47,7 @@ namespace MM.WEB.Core
                 new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(user).IsMatch(view.RelationshipPersonality.ToArray(), true)),
                 new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(user).IsMatch(view.MBTI.ToArray(), true)),
                 new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(user).IsMatch(view.LoveLanguage.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(user, user.Preference).IsMatch(view.SexPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(user).IsMatch(view.SexPersonality.ToArray(), true)),
 
                 //INTEREST - COMPATIBILIDADE DE PERFIL (UMA OPÇAO IGUAL JÁ INDICA COMPATIBILIDADE)
                 new(Section.Interest, CompatibilityItem.Food, GetFood(user).IsMatch(view.Food)),
@@ -63,38 +63,38 @@ namespace MM.WEB.Core
             return obj;
         }
 
-        public static string[] ToArray(this string item)
+        public static HashSet<string> ToArray(this string item)
         {
             return [item];
         }
 
-        public static T[] ToArray<T>(this T item) where T : struct
+        public static HashSet<T> ToArray<T>(this T item) where T : struct
         {
             return [item];
         }
 
-        public static T[] ToArray<T>(this T? item) where T : struct
+        public static HashSet<T> ToArray<T>(this T? item) where T : struct
         {
             if (item.HasValue) return item.Value.ToArray();
             else return [];
         }
 
-        private static bool IsMatch<T>(this IReadOnlyList<T> preferences, IReadOnlyList<T> view, bool force = false)
+        private static bool IsMatch<T>(this HashSet<T> preferences, HashSet<T> view, bool force = false)
         {
-            if (force && !preferences.Any()) return false; //if preferences is required
-            if (!preferences.Any()) return true; //if preferences are empty then accept all
-            if (!view.Any()) return false; //if the preference is not empty and the view is empty then it does not accept anything
+            if (force && preferences.Count == 0) return false; //if preferences is required
+            if (preferences.Count == 0) return true; //if preferences are empty then accept all
+            if (view.Count == 0) return false; //if the preference is not empty and the view is empty then it does not accept anything
 
             return preferences.Intersect(view).Any();
         }
 
-        private static bool IsRangeMatch(this IReadOnlyList<int> preferences, IReadOnlyList<int> view)
+        private static bool IsRangeMatch(this IEnumerable<int> preferences, IEnumerable<int> view)
         {
             if (!preferences.Any()) return true; //if preferences are empty then accept all
             if (!view.Any()) return false; //if the preference is not empty and the view is empty then it does not accept anything
-            if (preferences.Count != 2) throw new InvalidOperationException("preferences.Count != 2");
+            if (preferences.Count() != 2) throw new InvalidOperationException("preferences.Count != 2");
 
-            return preferences[0] <= view[0] && view[0] <= preferences[1];
+            return preferences.First() <= view.First() && view.First() <= preferences.Last();
         }
 
         #region BASIC
@@ -113,34 +113,34 @@ namespace MM.WEB.Core
             } ?? "";
         }
 
-        public static IReadOnlyList<Language> GetLanguages(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Language> GetLanguages(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.Languages.Any()) return pref.Languages;
-            else if (user.Languages.Any()) return user.Languages;
+            if (pref != null && pref.Languages.Count != 0) return pref.Languages;
+            else if (user.Languages.Count != 0) return user.Languages;
             else return [];
         }
 
-        public static IReadOnlyList<CurrentSituation> GetCurrentSituation(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<CurrentSituation> GetCurrentSituation(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            CurrentSituation[] selected;
-            if (pref != null && pref.CurrentSituation.Any()) selected = pref.CurrentSituation.ToArray();
+            HashSet<CurrentSituation> selected;
+            if (pref != null && pref.CurrentSituation.Count != 0) selected = pref.CurrentSituation;
             else if (user.CurrentSituation.HasValue) selected = user.CurrentSituation.ToArray();
             else selected = [];
 
-            if (selected.Length == 1 && selected.First() == CurrentSituation.Single)
+            if (selected.Count == 1 && selected.First() == CurrentSituation.Single)
                 return selected;
             else
                 return [];
         }
 
-        public static IReadOnlyList<Intentions> GetIntentions(ProfileModel user)
+        public static HashSet<Intentions> GetIntentions(ProfileModel user)
         {
             return user.Intentions;
         }
 
-        public static IReadOnlyList<BiologicalSex> GetBiologicalSex(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.BiologicalSex.Any())
+            if (pref != null && pref.BiologicalSex.Count != 0)
             {
                 return pref.BiologicalSex;
             }
@@ -178,9 +178,9 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<GenderIdentity> GetGenderIdentity(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<GenderIdentity> GetGenderIdentity(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.GenderIdentity.Any())
+            if (pref != null && pref.GenderIdentity.Count != 0)
             {
                 return pref.GenderIdentity;
             }
@@ -197,9 +197,9 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<SexualOrientation> GetSexualOrientation(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<SexualOrientation> GetSexualOrientation(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.SexualOrientation.Any())
+            if (pref != null && pref.SexualOrientation.Count != 0)
             {
                 return pref.SexualOrientation;
             }
@@ -207,7 +207,7 @@ namespace MM.WEB.Core
             {
                 return user.SexualOrientation switch
                 {
-                    SexualOrientation.Heterosexual => new SexualOrientation[] { SexualOrientation.Heterosexual },
+                    SexualOrientation.Heterosexual => [SexualOrientation.Heterosexual],
                     SexualOrientation.Homosexual => [SexualOrientation.Homosexual],
                     _ => []
                 };
@@ -218,19 +218,19 @@ namespace MM.WEB.Core
 
         #region BIO
 
-        public static IReadOnlyList<RaceCategory> GetRaceCategory(ProfilePreferenceModel? pref = null)
+        public static HashSet<RaceCategory> GetRaceCategory(ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.RaceCategory.Any()) return pref.RaceCategory;
+            if (pref != null && pref.RaceCategory.Count != 0) return pref.RaceCategory;
             else return [];
         }
 
-        public static IReadOnlyList<BodyMass> GetBodyMass(ProfilePreferenceModel? pref = null)
+        public static HashSet<BodyMass> GetBodyMass(ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.BodyMass.Any()) return pref.BodyMass;
+            if (pref != null && pref.BodyMass.Count != 0) return pref.BodyMass;
             else return [];
         }
 
-        public static IReadOnlyList<int> GetAge(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
+        public static int[] GetAge(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
         {
             int min;
             int max;
@@ -254,11 +254,11 @@ namespace MM.WEB.Core
             return [min, max];
         }
 
-        public static IReadOnlyList<Zodiac> GetZodiac(ProfileModel user)
+        public static HashSet<Zodiac> GetZodiac(ProfileModel user)
         {
             return user.Zodiac switch
             {
-                Zodiac.Aries => new Zodiac[] { Zodiac.Leo, Zodiac.Sagittarius },
+                Zodiac.Aries => [Zodiac.Leo, Zodiac.Sagittarius],
                 Zodiac.Taurus => [Zodiac.Virgo, Zodiac.Capricorn],
                 Zodiac.Gemini => [Zodiac.Libra, Zodiac.Aquarius],
                 Zodiac.Cancer => [Zodiac.Scorpio, Zodiac.Pisces],
@@ -274,7 +274,7 @@ namespace MM.WEB.Core
             };
         }
 
-        public static IReadOnlyList<Height> GetHeight(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
+        public static Height[] GetHeight(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
         {
             Height min;
             Height max;
@@ -290,13 +290,14 @@ namespace MM.WEB.Core
                 {
                     int minHeight;
 
-                    if (pref != null && pref.BiologicalSex.Any() && pref.BiologicalSex.Count == 1)
+                    if (pref != null && pref.BiologicalSex.Count != 0 && pref.BiologicalSex.Count == 1)
                     {
-                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex[0] == BiologicalSex.Female)
+                        //TODO: USE CONTAINS?
+                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex.First() == BiologicalSex.Female)
                         {
                             minHeight = (int)Math.Round((int)user.Height.Value / (ratio + 0.04));
                         }
-                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex[0] == BiologicalSex.Male)
+                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex.First() == BiologicalSex.Male)
                         {
                             minHeight = (int)Math.Round((int)user.Height.Value * (ratio - 0.04));
                         }
@@ -329,13 +330,14 @@ namespace MM.WEB.Core
                 {
                     int maxHeight;
 
-                    if (pref != null && pref.BiologicalSex.Any() && pref.BiologicalSex.Count == 1)
+                    if (pref != null && pref.BiologicalSex.Count != 0 && pref.BiologicalSex.Count == 1)
                     {
-                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex[0] == BiologicalSex.Female)
+                        //TODO: USE CONTAINS?
+                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex.First() == BiologicalSex.Female)
                         {
                             maxHeight = (int)Math.Round((int)user.Height.Value / (ratio - 0.04));
                         }
-                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex[0] == BiologicalSex.Male)
+                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex.First() == BiologicalSex.Male)
                         {
                             maxHeight = (int)Math.Round((int)user.Height.Value * (ratio + 0.04));
                         }
@@ -361,7 +363,7 @@ namespace MM.WEB.Core
             return [min, max];
         }
 
-        public static IReadOnlyList<Neurodiversity> GetNeurodiversity(ProfilePreferenceModel? pref = null)
+        public static HashSet<Neurodiversity> GetNeurodiversity(ProfilePreferenceModel? pref = null)
         {
             if (pref != null)
                 return pref.Neurodiversities;
@@ -369,7 +371,7 @@ namespace MM.WEB.Core
                 return [];
         }
 
-        public static IReadOnlyList<Disability> GetDisability(ProfilePreferenceModel? pref = null)
+        public static HashSet<Disability> GetDisability(ProfilePreferenceModel? pref = null)
         {
             if (pref != null)
                 return pref.Disabilities;
@@ -381,9 +383,9 @@ namespace MM.WEB.Core
 
         #region LIFESTYLE
 
-        public static IReadOnlyList<Drink> GetDrink(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Drink> GetDrink(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.Drink.Any())
+            if (pref != null && pref.Drink.Count != 0)
             {
                 return pref.Drink;
             }
@@ -391,7 +393,7 @@ namespace MM.WEB.Core
             {
                 return user.Drink switch
                 {
-                    Drink.No => new Drink[] { Drink.No, Drink.YesLight },
+                    Drink.No => [Drink.No, Drink.YesLight],
                     Drink.YesLight => [Drink.No, Drink.YesLight, Drink.YesModerate],
                     Drink.YesModerate => [Drink.YesLight, Drink.YesModerate, Drink.YesHeavy],
                     Drink.YesHeavy => [Drink.YesModerate, Drink.YesHeavy],
@@ -400,9 +402,9 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<Smoke> GetSmoke(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Smoke> GetSmoke(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.Smoke.Any())
+            if (pref != null && pref.Smoke.Count != 0)
             {
                 return pref.Smoke;
             }
@@ -410,7 +412,7 @@ namespace MM.WEB.Core
             {
                 return user.Smoke switch
                 {
-                    Smoke.No => new Smoke[] { Smoke.No },
+                    Smoke.No => [Smoke.No],
                     Smoke.YesOccasionally => [Smoke.YesOccasionally, Smoke.YesOften],
                     Smoke.YesOften => [Smoke.YesOccasionally, Smoke.YesOften],
                     _ => []
@@ -418,17 +420,17 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<Diet> GetDiet(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Diet> GetDiet(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.Diet.Any())
+            if (pref != null && pref.Diet.Count != 0)
             {
                 return pref.Diet;
             }
             else
             {
-                var group01 = new Diet[] { Diet.Omnivore, Diet.Flexitarian, Diet.GlutenFree };
-                var group02 = new Diet[] { Diet.Vegetarian, Diet.Vegan };
-                var group03 = new Diet[] { Diet.RawFood, Diet.OrganicAllnaturalLocal };
+                var group01 = new HashSet<Diet>([Diet.Omnivore, Diet.Flexitarian, Diet.GlutenFree]);
+                var group02 = new HashSet<Diet>([Diet.Vegetarian, Diet.Vegan]);
+                var group03 = new HashSet<Diet>([Diet.RawFood, Diet.OrganicAllnaturalLocal]);
 
                 return user.Diet switch
                 {
@@ -445,21 +447,21 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<Religion> GetReligion(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Religion> GetReligion(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.Religion.Any())
+            if (pref != null && pref.Religion.Count != 0)
             {
                 return pref.Religion;
             }
             else
             {
-                return [user.Religion.Value];
+                return [user.Religion ?? throw new NotificationException("Religion null")];
             }
         }
 
-        public static IReadOnlyList<HaveChildren> GetHaveChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<HaveChildren> GetHaveChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.HaveChildren.Any())
+            if (pref != null && pref.HaveChildren.Count != 0)
             {
                 return pref.HaveChildren;
             }
@@ -467,7 +469,7 @@ namespace MM.WEB.Core
             {
                 return user.HaveChildren switch
                 {
-                    HaveChildren.No => new HaveChildren[] { HaveChildren.No, HaveChildren.YesNo },
+                    HaveChildren.No => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.YesNo => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.Yes => [HaveChildren.Yes],
                     _ => []
@@ -475,9 +477,9 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<WantChildren> GetWantChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<WantChildren> GetWantChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.WantChildren.Any())
+            if (pref != null && pref.WantChildren.Count != 0)
             {
                 return pref.WantChildren;
             }
@@ -485,7 +487,7 @@ namespace MM.WEB.Core
             {
                 return user.WantChildren switch
                 {
-                    WantChildren.No => new WantChildren[] { WantChildren.No },
+                    WantChildren.No => [WantChildren.No],
                     WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
                     WantChildren.Yes => [WantChildren.Maybe, WantChildren.Yes],
                     _ => []
@@ -493,33 +495,33 @@ namespace MM.WEB.Core
             }
         }
 
-        public static IReadOnlyList<EducationLevel> GetEducationLevel(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<EducationLevel> GetEducationLevel(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.EducationLevel.Any())
+            if (pref != null && pref.EducationLevel.Count != 0)
             {
                 return pref.EducationLevel;
             }
             else
             {
-                return [user.EducationLevel.Value];
+                return [user.EducationLevel ?? throw new NotificationException("EducationLevel null")];
             }
         }
 
-        public static IReadOnlyList<CareerCluster> GetCareerCluster(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<CareerCluster> GetCareerCluster(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.CareerCluster.Any())
+            if (pref != null && pref.CareerCluster.Count != 0)
             {
                 return pref.CareerCluster;
             }
             else
             {
-                return [user.CareerCluster.Value];
+                return [user.CareerCluster ?? throw new NotificationException("CareerCluster null")];
             }
         }
 
-        public static IReadOnlyList<TravelFrequency> GetTravelFrequency(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<TravelFrequency> GetTravelFrequency(ProfileModel user, ProfilePreferenceModel? pref = null)
         {
-            if (pref != null && pref.TravelFrequency.Any())
+            if (pref != null && pref.TravelFrequency.Count != 0)
             {
                 return pref.TravelFrequency;
             }
@@ -527,7 +529,7 @@ namespace MM.WEB.Core
             {
                 return user.TravelFrequency switch
                 {
-                    TravelFrequency.NeverRarely => new TravelFrequency[] { TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently },
+                    TravelFrequency.NeverRarely => [TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently],
                     TravelFrequency.SometimesFrequently => [TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
                     TravelFrequency.UsuallyAlwaysNomad => [TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
                     _ => []
@@ -539,12 +541,12 @@ namespace MM.WEB.Core
 
         #region PERSONALITY
 
-        public static IReadOnlyList<MoneyPersonality> GetMoneyPersonality(ProfileModel user)
+        public static HashSet<MoneyPersonality> GetMoneyPersonality(ProfileModel user)
         {
             return user.MoneyPersonality.ToArray();
         }
 
-        public static IReadOnlyList<SharedSpendingStyle> GetSharedSpendingStyle(ProfileModel user)
+        public static HashSet<SharedSpendingStyle> GetSharedSpendingStyle(ProfileModel user)
         {
             //invented by me (dhiogo)
 
@@ -559,7 +561,7 @@ namespace MM.WEB.Core
             };
         }
 
-        public static IReadOnlyList<RelationshipPersonality> GetRelationshipPersonality(ProfileModel user)
+        public static HashSet<RelationshipPersonality> GetRelationshipPersonality(ProfileModel user)
         {
             //https://helenfisher.com/downloads/articles/Article_%20We%20Have%20Chemistry.pdf
 
@@ -573,7 +575,7 @@ namespace MM.WEB.Core
             };
         }
 
-        public static IReadOnlyList<MyersBriggsTypeIndicator> GetMyersBriggsTypeIndicator(ProfileModel user)
+        public static HashSet<MyersBriggsTypeIndicator> GetMyersBriggsTypeIndicator(ProfileModel user)
         {
             //http://www.personalityrelationships.net/
             //https://web.archive.org/web/20220322143220/http://www.personalityrelationships.net/
@@ -581,7 +583,7 @@ namespace MM.WEB.Core
 
             return user.MBTI switch
             {
-                MyersBriggsTypeIndicator.INTJ => new MyersBriggsTypeIndicator[] { MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.ENFP },
+                MyersBriggsTypeIndicator.INTJ => [MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.ENFP],
                 MyersBriggsTypeIndicator.INTP => [MyersBriggsTypeIndicator.ENTJ, MyersBriggsTypeIndicator.ENFJ],
                 MyersBriggsTypeIndicator.ENTJ => [MyersBriggsTypeIndicator.INTP, MyersBriggsTypeIndicator.INFP],
                 MyersBriggsTypeIndicator.ENTP => [MyersBriggsTypeIndicator.INTJ, MyersBriggsTypeIndicator.INFJ],
@@ -604,16 +606,16 @@ namespace MM.WEB.Core
             };
         }
 
-        public static IReadOnlyList<LoveLanguage> GetLoveLanguage(ProfileModel user)
+        public static HashSet<LoveLanguage> GetLoveLanguage(ProfileModel user)
         {
             return user.LoveLanguage.ToArray();
         }
 
-        public static IReadOnlyList<SexPersonality> GetSexPersonality(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<SexPersonality> GetSexPersonality(ProfileModel user)
         {
-            if (pref != null && pref.SexPersonality.Any())
+            if (user.SexPersonalityPreference.Count != 0)
             {
-                return pref.SexPersonality;
+                return user.SexPersonalityPreference;
             }
             else
             {
@@ -625,44 +627,44 @@ namespace MM.WEB.Core
 
         #region INTEREST
 
-        public static IReadOnlyList<Food> GetFood(ProfileModel user)
+        public static HashSet<Food> GetFood(ProfileModel user)
         {
-            return user.Food.ToArray();
+            return user.Food;
         }
 
-        public static IReadOnlyList<Vacation> GetVacation(ProfileModel user)
+        public static HashSet<Vacation> GetVacation(ProfileModel user)
         {
-            return user.Vacation.ToArray();
+            return user.Vacation;
         }
 
-        public static IReadOnlyList<Sports> GetSports(ProfileModel user)
+        public static HashSet<Sports> GetSports(ProfileModel user)
         {
-            return user.Sports.ToArray();
+            return user.Sports;
         }
 
-        public static IReadOnlyList<LeisureActivities> GetLeisureActivities(ProfileModel user)
+        public static HashSet<LeisureActivities> GetLeisureActivities(ProfileModel user)
         {
-            return user.LeisureActivities.ToArray();
+            return user.LeisureActivities;
         }
 
-        public static IReadOnlyList<MusicGenre> GetMusicGenre(ProfileModel user)
+        public static HashSet<MusicGenre> GetMusicGenre(ProfileModel user)
         {
-            return user.MusicGenre.ToArray();
+            return user.MusicGenre;
         }
 
-        public static IReadOnlyList<MovieGenre> GetMovieGenre(ProfileModel user)
+        public static HashSet<MovieGenre> GetMovieGenre(ProfileModel user)
         {
-            return user.MovieGenre.ToArray();
+            return user.MovieGenre;
         }
 
-        public static IReadOnlyList<TVGenre> GetTVGenre(ProfileModel user)
+        public static HashSet<TVGenre> GetTVGenre(ProfileModel user)
         {
-            return user.TVGenre.ToArray();
+            return user.TVGenre;
         }
 
-        public static IReadOnlyList<ReadingGenre> GetReadingGenre(ProfileModel user)
+        public static HashSet<ReadingGenre> GetReadingGenre(ProfileModel user)
         {
-            return user.ReadingGenre.ToArray();
+            return user.ReadingGenre;
         }
 
         #endregion INTEREST
@@ -688,12 +690,12 @@ namespace MM.WEB.Core
             }
             else
             {
-                double totCheck = Affinities.Count(w => w.Section == category && w.HaveAffinity);
-                double totItens = Affinities.Count(w => w.Section == category);
+                var totCheck = Affinities.Count(w => w.Section == category && w.HaveAffinity);
+                var totItens = Affinities.Count(w => w.Section == category);
 
                 if (totCheck == 0 || totItens == 0) return 0;
 
-                return Convert.ToInt32(Math.Round(totCheck / totItens * 100, 0));
+                return Convert.ToInt32(Math.Round((double)totCheck / totItens * 100, 0));
             }
         }
     }

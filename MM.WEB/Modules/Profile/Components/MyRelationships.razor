@@ -1,7 +1,8 @@
 ﻿@using FluentValidation;
 @using MM.Shared.Models.Profile;
+@using MM.Shared.Models.Profile.Core
 @using MM.WEB.Modules.Profile.Core;
-@using VerusDate.Web.Api;
+@using MM.WEB.Api;
 @inherits ComponentCore<MyRelationships>
 
 @inject InviteApi InviteApi
@@ -10,39 +11,39 @@
 <Row>
     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
         <Alert Visible="true" Color="Color.Secondary">
-            <AlertDescription>@Resources.CardHeader.MyConnections</AlertDescription>
+            <AlertDescription>@WEB.Resources.CardHeader.MyConnections</AlertDescription>
         </Alert>
         <ListGroup>
-            <Loading @ref="LoadingPartners">
+            <RenderControl Core="CorePartner" TModel="Partner" Model="partner" ExpressionEmpty="@((Partner obj)=>obj==null)">
                 @foreach (var item in profile?.Partners ?? new())
                 {
                     <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
                         <Badge Color="Color.Secondary">@item.Email</Badge>
                         @if (string.IsNullOrEmpty(item.Id))
                         {
-                            <Badge Color="Color.Danger" Pill>@Resources.GlobalTranslations.InactiveConnection</Badge>
+                            <Badge Color="Color.Danger" Pill>@WEB.Resources.GlobalTranslations.InactiveConnection</Badge>
                         }
                         else
                         {
-                            <Badge Color="Color.Success" Pill>@Resources.GlobalTranslations.ActiveConnection</Badge>
+                            <Badge Color="Color.Success" Pill>@WEB.Resources.GlobalTranslations.ActiveConnection</Badge>
                         }
                         <Button Color="Color.Danger" Clicked="@(()=>{RemovePartner(item.Email);})" Float="Float.End" Size="Size.Small" title="Delete">
                             <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon>
                         </Button>
                     </ListGroupItem>
                 }
-            </Loading>
+            </RenderControl>
         </ListGroup>
     </Column>
     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
         <Alert Visible="true" Color="Color.Secondary">
-            <AlertDescription>@Resources.CardHeader.Invitations</AlertDescription>
+            <AlertDescription>@WEB.Resources.CardHeader.Invitations</AlertDescription>
         </Alert>
-        <FieldText For="@(() => partner.Email)" @bind-Value="@partner.Email" LabelSize="LabelSize.Normal" ButtomCssIcon="FontAwesomeIcons.PaperPlane"
+        <FieldText For="@(() => partner!.Email)" @bind-Value="@partner!.Email" LabelSize="LabelSize.Normal" ButtomCssIcon="FontAwesomeIcons.PaperPlane"
                    ButtomClicked="@AddNewPartner"></FieldText>
-        <Divider DividerType="DividerType.TextContent" Text="@Resources.GlobalTranslations.or" />
+        <Divider DividerType="DividerType.TextContent" Text="@WEB.Resources.GlobalTranslations.or" />
         <ListGroup>
-            <Loading @ref="LoadingInvites">
+            <RenderControl Core="CoreInvite" Model="Invite" ExpressionEmpty="@((InviteModel? obj)=>obj==null)">
                 @foreach (var item in Invite?.Invites ?? new List<Invite>())
                 {
                     <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center">
@@ -50,11 +51,11 @@
                         <Badge Color="Color.Secondary">@item.UserEmail</Badge>
                         @if (item.Accepted)
                         {
-                            <Badge Color="Color.Success" Pill>@Resources.GlobalTranslations.InvitationAccepted</Badge>
+                            <Badge Color="Color.Success" Pill>@WEB.Resources.GlobalTranslations.InvitationAccepted</Badge>
                         }
                         else
                         {
-                            <Badge Color="Color.Danger" Pill>@Resources.GlobalTranslations.InvitationNotAccepted</Badge>
+                            <Badge Color="Color.Danger" Pill>@WEB.Resources.GlobalTranslations.InvitationNotAccepted</Badge>
                         }
                         <Div Float="Float.End">
                             <Button Color="Color.Success" Clicked="@(async()=>{await AcceptInvite(item.UserId);})" Size="Size.Small" title="Aceitar" Disabled="@item.Accepted">
@@ -66,29 +67,30 @@
                         </Div>
                     </ListGroupItem>
                 }
-            </Loading>
+            </RenderControl>
         </ListGroup>
     </Column>
 </Row>
 
 @code {
     [Parameter] public ProfileModel? profile { get; set; } = new();
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+    [Parameter] public RenderControlCore<InviteModel?> CoreInvite { get; set; } = new();
+    [Parameter] public RenderControlCore<Partner> CorePartner { get; set; } = new();
 
     private Partner? partner = new();
     private InviteModel? Invite;
 
-    // private Loading? LoadingPartners;
-    // private Loading? LoadingInvites;
     private List<string> NewInvites = new();
     private List<string> RemovedInvites = new();
 
     protected override async Task LoadDataRender()
     {
-        LoadingInvites?.Start();
+        // LoadingInvites?.Start();
         var principal = await PrincipalApi.Get(IsAuthenticated);
         if (principal != null) Invite = await InviteApi.Invite_Get(principal.Email ?? throw new ValidationException("invalid email"));
         var isEmpty = Invite == null || !Invite.Invites.Any();
-        LoadingInvites?.Finish(isEmpty, Resources.GlobalTranslations.NoPendingInvitations);
+        // LoadingInvites?.Finish(isEmpty, WEB.Resources.GlobalTranslations.NoPendingInvitations);
     }
 
     private void AddNewPartner()
@@ -131,13 +133,13 @@
                     await InviteApi.Invite_Update(Invite);
 
                     profile.Partners.Add(new Partner() { Email = invite.UserEmail, Id = userId });
-                    await ProfileApi.Profile_Update(profile);
+                    await ProfileApi.Update(null, profile);
 
-                    profile = await ProfileApi.Profile_Get(); //TODO update id field
+                    profile = await ProfileApi.Get(null); //TODO update id field
 
                     var principal = await PrincipalApi.Get(IsAuthenticated);
                     var emailUser = principal?.Email;
-                    await ProfileApi.Profile_UpdatePartner(userId, emailUser);
+                    await ProfileApi.UpdatePartner(userId, emailUser);
                 }
                 else
                 {

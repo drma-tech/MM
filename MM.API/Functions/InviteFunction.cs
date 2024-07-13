@@ -1,16 +1,14 @@
-using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.API.Repository.Core;
 using MM.Shared.Models.Profile;
 
 namespace VerusDate.Api.Function
 {
     public class InviteFunction
     {
-        private readonly IRepository _repo;
+        private readonly CosmosRepository _repo;
 
-        public InviteFunction(IRepository repo)
+        public InviteFunction(CosmosRepository repo)
         {
             _repo = repo;
         }
@@ -23,7 +21,7 @@ namespace VerusDate.Api.Function
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<InviteModel>(DocumentType.Invite + ":" + userId, new PartitionKey(userId), cancellationToken);
+                return await _repo.Get<InviteModel>(DocumentType.Invite, userId, cancellationToken);
             }
             catch (Exception ex)
             {

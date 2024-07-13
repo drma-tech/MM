@@ -11,30 +11,25 @@
     <FieldBody ColumnSize="ColumnSize.IsFull.OnWidescreen.Is8.OnFullHD">
         <Addons>
             <Addon AddonType="AddonType.Body">
-                <InputSelect TValue="int" Value="@day" ValueChanged="@SetDay" ValueExpression="@(()=>day)" @attributes='new Dictionary<string, object>() { { "class", "form-control" } }'>
-                    @for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                <Select SelectedValue="@year" SelectedValueChanged="(int value)=>SetYear(value)" Class="form-control">
+                    @foreach (var item in years)
                     {
-                        <option value="@i">@i</option>
+                        <SelectItem Value="@item">@item</SelectItem>
                     }
-                </InputSelect>
-                <InputSelect TValue="int" Value="@month" ValueChanged="@SetMonth" ValueExpression="@(()=>month)" @attributes='new Dictionary<string, object>() { { "class", "form-control" } }'>
-                    @for (int i = 1; i <= 12; i++)
+                </Select>
+                <Select SelectedValue="@month" SelectedValueChanged="(int value)=>SetMonth(value)" Class="form-control">
+                    @foreach (var item in months)
                     {
-                        <option value="@i">@(new DateTime(year, i, 1).ToString("MMM"))</option>
+                        <SelectItem Value="@item">@(new DateTime(year, item, 1).ToString("MMM"))</SelectItem>
                     }
-                </InputSelect>
-                <InputSelect TValue="int" Value="@year" ValueChanged="@SetYear" ValueExpression="@(()=>year)" @attributes='new Dictionary<string, object>() { { "class", "form-control" } }'>
-                    @for (int i = DateTime.Now.AddYears(-18).Year; i >= DateTime.Now.AddYears(-100).Year; i--)
+                </Select>
+                <Select SelectedValue="@day" SelectedValueChanged="(int value)=>SetDay(value)" Class="form-control">
+                    @foreach (var item in days)
                     {
-                        <option value="@i">@i</option>
+                        <SelectItem Value="@item">@item</SelectItem>
                     }
-                </InputSelect>
+                </Select>
             </Addon>
-            @*<Addon AddonType="AddonType.End">
-            <Button Color="Color.Warning" Outline="true" Clicked="PrivateData" title="Políticas de privacidade">
-            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.EyeSlash"></Blazorise.Icon>
-            </Button>
-            </Addon>*@
         </Addons>
         <ValidationMessage For="@For"></ValidationMessage>
     </FieldBody>
@@ -46,58 +41,53 @@
 @code {
     [Parameter] public DateTime Value { get; set; }
     [Parameter] public EventCallback<DateTime> ValueChanged { get; set; }
-
-    public EventCallback<int> DayChanged { get; set; }
-    public EventCallback<int> MonthChanged { get; set; }
-    public EventCallback<int> YearChanged { get; set; }
-
     [Parameter] public bool Required { get; set; }
 
-    private int day = DateTime.Now.Day;
+    private int year = DateTime.Now.Year;
     private int month = DateTime.Now.Month;
-    private int year = DateTime.Now.AddYears(-18).Year;
+    private int day = DateTime.Now.Day;
+
+    private int[] years => Enumerable.Range(DateTime.Now.AddYears(-100).Year, 100).OrderDescending().ToArray();
+    private int[] months => Enumerable.Range(1, 12).ToArray();
+    private int[] days => Enumerable.Range(1, DateTime.DaysInMonth(year, month)).ToArray();
 
     protected override void OnInitialized()
     {
-        day = Value.Day;
-        month = Value.Month;
         year = Value.Year;
-    }
-
-    private async Task SetDay(int value)
-    {
-        try
-        {
-            day = value;
-            Value = new DateTime(year, month, day);
-            await ValueChanged.InvokeAsync(Value);
-        }
-        catch (Exception)
-        {
-            await Toast.Error("Ocorreu um erro ao processar a data");
-        }
-    }
-
-    private async Task SetMonth(int value)
-    {
-        try
-        {
-            month = value;
-            Value = new DateTime(year, month, day);
-            await ValueChanged.InvokeAsync(Value);
-        }
-        catch (Exception)
-        {
-            await Toast.Error("Ocorreu um erro ao processar a data");
-        }
+        month = Value.Month;
+        day = Value.Day;
     }
 
     private async Task SetYear(int value)
     {
+        year = value;
+        await SetValue();
+    }
+
+    private async Task SetMonth(int value)
+    {
+        month = value;
+        await SetValue();
+    }
+
+    private async Task SetDay(int value)
+    {
+        day = value;
+        await SetValue();
+    }
+
+    private async Task SetValue()
+    {
         try
         {
-            year = value;
-            Value = new DateTime(year, month, day);
+            var date = DateTime.Today;
+
+            if (year != default && month != default && day != default)
+            {
+                date = new DateTime(year, month, day);
+            }
+
+            Value = date;
             await ValueChanged.InvokeAsync(Value);
         }
         catch (Exception)

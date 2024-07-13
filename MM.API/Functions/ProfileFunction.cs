@@ -1,19 +1,13 @@
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.API.Repository.Core;
 using MM.Shared.Models.Profile;
 
 namespace VerusDate.Api.Function
 {
-    public class ProfileFunction
+    public class ProfileFunction(CosmosRepository repo)
     {
-        private readonly IRepository _repo;
-
-        public ProfileFunction(IRepository repo)
-        {
-            _repo = repo;
-        }
+        private readonly CosmosRepository _repo = repo;
 
         [Function("ProfileGet")]
         public async Task<ProfileModel?> Get(
@@ -23,7 +17,7 @@ namespace VerusDate.Api.Function
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<ProfileModel>(DocumentType.Profile + ":" + userId, new PartitionKey(userId), cancellationToken);
+                return await _repo.Get<ProfileModel>(DocumentType.Profile, userId, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -109,7 +103,7 @@ namespace VerusDate.Api.Function
                     PatchOperation.Add("/dtUpdate", DateTime.UtcNow)
                 };
 
-                return await _repo.PatchItem<ProfileModel>(DocumentType.Profile + ":" + userId, new PartitionKey(userId), operations, cancellationToken);
+                return await _repo.PatchItem<ProfileModel>(DocumentType.Profile, userId, operations, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -118,24 +112,34 @@ namespace VerusDate.Api.Function
             }
         }
 
-        //[Function("ProfileViewUpdatePatner")]
-        //public async Task<IActionResult> UpdatePatner(
-        //   [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "Profile/UpdatePatner")] HttpRequestData req, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        var request = await req.BuildRequestCommand<ProfileUpdatePartnerCommand>(source.Token, false);
-        //        request.LoggedUserId = req.GetUserId();
+        [Function("ProfileViewUpdatePatner")]
+        public async Task<ProfileModel?> UpdatePatner(
+           [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-partner")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                //var request = await req.BuildRequestCommand<ProfileUpdatePartnerCommand>(source.Token, false);
+                //request.LoggedUserId = req.GetUserId();
 
-        //        var result = await _mediator.Send(request, source.Token);
+                //var result = await _mediator.Send(request, source.Token);
 
-        //        return new OkObjectResult(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        req.ProcessException(ex);
-        //        throw new UnhandledException(ex.BuildException());
-        //    }
-        //}
+                //return new OkObjectResult(result);
+
+                var id = req.GetQueryParameters()["id"];
+                var email = req.GetQueryParameters()["email"];
+                var userId = req.GetUserId();
+
+                var obj = await _repo.Get<ProfileModel>(DocumentType.Profile, userId, cancellationToken);
+
+                obj?.UpdatePartner(id, email);
+
+                return await _repo.Upsert(obj, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw new UnhandledException(ex.BuildException());
+            }
+        }
     }
 }

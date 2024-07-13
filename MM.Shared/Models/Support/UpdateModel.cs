@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MM.Shared.Models.Support
 {
@@ -7,7 +6,6 @@ namespace MM.Shared.Models.Support
     {
         public UpdateModel() : base(DocumentType.Update)
         {
-            IsNew = Date > DateTime.Now.AddMonths(-3);
         }
 
         [Required]
@@ -20,14 +18,11 @@ namespace MM.Shared.Models.Support
 
         public DateTime Date { get; set; } = DateTime.Now;
 
-        [NotMapped]
-        public bool IsNew { get; set; }
-
         public void Initialize()
         {
             var id = Guid.NewGuid().ToString();
 
-            base.Initialize(id, id);
+            base.Initialize(id);
         }
 
         public override bool HasValidData()

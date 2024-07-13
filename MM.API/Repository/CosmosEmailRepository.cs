@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Configuration;
+using MM.API.Repository.Core;
 using MM.Shared.Models.Support;
 using System.Linq.Expressions;
 
@@ -18,11 +19,11 @@ namespace MM.API.Repository
             Container = ApiStartup.CosmosClient.GetContainer(databaseId, containerId);
         }
 
-        public async Task<EmailDocument?> Get(string key, CancellationToken cancellationToken)
+        public async Task<EmailDocument?> Get(string id, CancellationToken cancellationToken)
         {
             try
             {
-                var response = await Container.ReadItemAsync<EmailDocument?>(key, new PartitionKey(key), null, cancellationToken);
+                var response = await Container.ReadItemAsync<EmailDocument?>(id, new PartitionKey(id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
                 return response.Resource;
             }
@@ -61,9 +62,16 @@ namespace MM.API.Repository
             return results;
         }
 
-        public async Task<EmailDocument?> Upsert(EmailDocument email, CancellationToken cancellationToken)
+        public async Task<EmailDocument?> UpsertItemAsync(EmailDocument email, CancellationToken cancellationToken)
         {
-            var response = await Container.UpsertItemAsync(email, new PartitionKey(email.Key), null, cancellationToken);
+            var response = await Container.UpsertItemAsync(email, new PartitionKey(email.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+
+            return response.Resource;
+        }
+
+        public async Task<EmailDocument?> CreateItemAsync(EmailDocument email, CancellationToken cancellationToken)
+        {
+            var response = await Container.CreateItemAsync(email, new PartitionKey(email.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             return response.Resource;
         }

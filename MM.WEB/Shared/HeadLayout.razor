@@ -7,28 +7,6 @@
                 <BarToggler Bar="@AppStateStatic.Sidebar" Background="Background.Dark" Margin="Margin.Is2.FromEnd" Padding="Padding.Is0" Style="height: 31px; width: 31px;" />
             </Matched>
         </MediaQuery>
-        <BarBrand Padding="Padding.Is0.OnY">
-            <form class="d-flex">
-                <MediaQuery Media="@Breakpoints.XSmallDown">
-                    <Matched>
-                        <Select TValue="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged" Size="Size.Small" Style="width:auto;">
-                            @foreach (var item in Languages.OrderBy(o => o.Name))
-                            {
-                                <SelectItem Value="@item.Value">@(item.Value.GetCustomAttribute(false)?.Name)</SelectItem>
-                            }
-                        </Select>
-                    </Matched>
-                    <Unmatched>
-                        <Select TValue="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged" Size="Size.Small" Style="width:auto;">
-                            @foreach (var item in Languages.OrderBy(o => o.Name))
-                            {
-                                <SelectItem Value="@item.Value">@item.Name</SelectItem>
-                            }
-                        </Select>
-                    </Unmatched>
-                </MediaQuery>
-            </form>
-        </BarBrand>
         <BarMenu Style="flex-basis: unset !important;">
             <AuthorizeView>
                 <Authorized>
@@ -42,28 +20,21 @@
                     </Button>
                 </NotAuthorized>
             </AuthorizeView>
+            <Button Color="Color.Dark" Float="Float.End" Size="Size.Small" Margin="Margin.Is2.FromEnd" Clicked="OpenConfigurations">
+                <Blazorise.Icon Name="FontAwesomeIcons.Globe" />
+            </Button>
         </BarMenu>
     </Container>
 </Bar>
 
 @code {
-    private IReadOnlyList<EnumObject> Regions { get; set; } = Array.Empty<EnumObject>();
-    private IReadOnlyList<EnumObject> Languages { get; set; } = Array.Empty<EnumObject>();
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-
-        Languages = EnumHelper.GetObjArray<Language>().Where(w => !string.IsNullOrEmpty(w.Name) && w.Group == "Website").ToArray();
-    }
-
     private void Logout()
     {
         Navigation.NavigateTo("/.auth/logout", forceLoad: true);
     }
 
-    protected void LanguageValueChanged(Language value)
+    private async Task OpenConfigurations()
     {
-        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.ToString()), forceLoad: true);
+        await ModalService.SettingsPopup();
     }
 }

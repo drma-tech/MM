@@ -15,38 +15,37 @@ namespace MM.API.Functions
 
         //        if (model == null)
         //        {
-        //            using var http = new HttpClient();
-        //            var obj = await http.GetNewsByFlixter<Flixster>(cancellationToken);
+        //            var obj = await ApiStartup.HttpClient.GetNewsByFlixter<Flixster>(cancellationToken);
         //            if (obj == null) return null;
 
-        //            //compact
-
-        //            var compactModels = new NewsModel();
-
-        //            foreach (var item in obj.data?.newsStories.Take(8) ?? Enumerable.Empty<NewsStory>())
-        //            {
-        //                if (item == null) continue;
-        //                compactModels.Items.Add(new Shared.Models.News.Item(item.id, item.title, item.mainImage?.url, item.link));
-        //            }
-
-        //            var compactResult = await cacheRepo.Add(new FlixsterCache(compactModels, "lastnews_compact"), cancellationToken);
-
-        //            //full
-
-        //            var fullModels = new NewsModel();
-
-        //            foreach (var item in obj.data?.newsStories ?? Enumerable.Empty<NewsStory>())
-        //            {
-        //                if (item == null) continue;
-        //                fullModels.Items.Add(new Shared.Models.News.Item(item.id, item.title, item.mainImage?.url, item.link));
-        //            }
-
-        //            var fullResult = await cacheRepo.Add(new FlixsterCache(fullModels, "lastnews_full"), cancellationToken);
-
         //            if (mode == "compact")
+        //            {
+        //                var compactModels = new NewsModel();
+
+        //                foreach (var item in obj.data?.newsStories.Take(8) ?? [])
+        //                {
+        //                    if (item == null) continue;
+        //                    compactModels.Items.Add(new Shared.Models.News.Item(item.id, item.title, item.mainImage?.url, item.link));
+        //                }
+
+        //                var compactResult = await cacheRepo.CreateItemAsync(new FlixsterCache(compactModels, "lastnews_compact"), cancellationToken);
+
         //                return compactResult?.Data;
+        //            }
         //            else
+        //            {
+        //                var fullModels = new NewsModel();
+
+        //                foreach (var item in obj.data?.newsStories ?? Enumerable.Empty<NewsStory>())
+        //                {
+        //                    if (item == null) continue;
+        //                    fullModels.Items.Add(new Shared.Models.News.Item(item.id, item.title, item.mainImage?.url, item.link));
+        //                }
+
+        //                var fullResult = await cacheRepo.CreateItemAsync(new FlixsterCache(fullModels, "lastnews_full"), cancellationToken);
+
         //                return fullResult?.Data;
+        //            }
         //        }
         //        else
         //        {
@@ -73,38 +72,37 @@ namespace MM.API.Functions
 
         //        if (model == null)
         //        {
-        //            using var http = new HttpClient();
-        //            var obj = await http.GetTrailersByYoutubeSearch<Youtube>(cancellationToken);
+        //            var obj = await ApiStartup.HttpClient.GetTrailersByYoutubeSearch<Youtube>(cancellationToken);
         //            if (obj == null) return null;
 
-        //            //compact
-
-        //            var compactModels = new TrailerModel();
-
-        //            foreach (var item in obj.contents.Take(8).Select(s => s.video))
-        //            {
-        //                if (item == null) continue;
-        //                compactModels.Items.Add(new Shared.Models.Trailers.Item(item.videoId, item.title, item.thumbnails[0].url));
-        //            }
-
-        //            var compactResult = await cacheRepo.Add(new YoutubeCache(compactModels, "lasttrailers_compact"), cancellationToken);
-
-        //            //full
-
-        //            var fullModels = new TrailerModel();
-
-        //            foreach (var item in obj.contents.Select(s => s.video))
-        //            {
-        //                if (item == null) continue;
-        //                fullModels.Items.Add(new Shared.Models.Trailers.Item(item.videoId, item.title, item.thumbnails[2].url));
-        //            }
-
-        //            var fullResult = await cacheRepo.Add(new YoutubeCache(fullModels, "lasttrailers_full"), cancellationToken);
-
         //            if (mode == "compact")
+        //            {
+        //                var compactModels = new TrailerModel();
+
+        //                foreach (var item in obj.contents.Take(8).Select(s => s.video))
+        //                {
+        //                    if (item == null) continue;
+        //                    compactModels.Items.Add(new Shared.Models.Trailers.Item(item.videoId, item.title, item.thumbnails[0].url));
+        //                }
+
+        //                var compactResult = await cacheRepo.CreateItemAsync(new YoutubeCache(compactModels, "lasttrailers_compact"), cancellationToken);
+
         //                return compactResult?.Data;
+        //            }
         //            else
+        //            {
+        //                var fullModels = new TrailerModel();
+
+        //                foreach (var item in obj.contents.Select(s => s.video))
+        //                {
+        //                    if (item == null) continue;
+        //                    fullModels.Items.Add(new Shared.Models.Trailers.Item(item.videoId, item.title, item.thumbnails[2].url));
+        //                }
+
+        //                var fullResult = await cacheRepo.CreateItemAsync(new YoutubeCache(fullModels, "lasttrailers_full"), cancellationToken);
+
         //                return fullResult?.Data;
+        //            }
         //        }
         //        else
         //        {
@@ -135,34 +133,34 @@ namespace MM.API.Functions
         //            var obj = scraping.GetMovieData();
         //            if (obj == null) return null;
 
-        //            //compact
-
-        //            var compactModels = new MostPopularData() { ErrorMessage = obj.ErrorMessage };
-
-        //            foreach (var item in obj.Items.Take(10))
-        //            {
-        //                if (item == null) continue;
-        //                compactModels.Items.Add(item);
-        //            }
-
-        //            var compactResult = await cacheRepo.Add(new MostPopularDataCache(compactModels, "popularmovies_compact"), cancellationToken);
-
-        //            //full
-
-        //            var fullModels = new MostPopularData() { ErrorMessage = obj.ErrorMessage };
-
-        //            foreach (var item in obj.Items)
-        //            {
-        //                if (item == null) continue;
-        //                fullModels.Items.Add(item);
-        //            }
-
-        //            var fullResult = await cacheRepo.Add(new MostPopularDataCache(fullModels, "popularmovies_full"), cancellationToken);
-
         //            if (mode == "compact")
+        //            {
+        //                var compactModels = new MostPopularData() { ErrorMessage = obj.ErrorMessage };
+
+        //                foreach (var item in obj.Items.Take(10))
+        //                {
+        //                    if (item == null) continue;
+        //                    compactModels.Items.Add(item);
+        //                }
+
+        //                var compactResult = await cacheRepo.CreateItemAsync(new MostPopularDataCache(compactModels, "popularmovies_compact"), cancellationToken);
+
         //                return compactResult?.Data;
+        //            }
         //            else
+        //            {
+        //                var fullModels = new MostPopularData() { ErrorMessage = obj.ErrorMessage };
+
+        //                foreach (var item in obj.Items)
+        //                {
+        //                    if (item == null) continue;
+        //                    fullModels.Items.Add(item);
+        //                }
+
+        //                var fullResult = await cacheRepo.CreateItemAsync(new MostPopularDataCache(fullModels, "popularmovies_full"), cancellationToken);
+
         //                return fullResult?.Data;
+        //            }
         //        }
         //        else
         //        {
@@ -188,12 +186,11 @@ namespace MM.API.Functions
 
         //        if (model == null)
         //        {
-        //            using var http = new HttpClient();
         //            var scraping = new ScrapingPopular();
         //            var obj = scraping.GetTvData();
         //            if (obj == null) return null;
 
-        //            model = await cacheRepo.Add(new MostPopularDataCache(obj, "populartvs"), cancellationToken);
+        //            model = await cacheRepo.CreateItemAsync(new MostPopularDataCache(obj, "populartvs"), cancellationToken);
         //        }
 
         //        return model?.Data;
@@ -227,25 +224,21 @@ namespace MM.API.Functions
         //            var obj = scraping.GetMovieData(id, tmdb_rating, title, release_date.Year.ToString());
         //            if (obj == null) return null;
 
-        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date)
+        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date) //invalid date
         //            {
-        //                //invalid date
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-1))
+        //            else if (release_date > DateTime.Now.AddDays(-7)) // < 1 week launch
         //            {
-        //                // < 1 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_week), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-6))
+        //            else if (release_date > DateTime.Now.AddMonths(-1)) // < 1 month launch
         //            {
-        //                // < 6 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_month), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_week), cancellationToken);
         //            }
-        //            else
+        //            else // > 1 month launch
         //            {
-        //                // > 6 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_year), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_month), cancellationToken);
         //            }
         //        }
 
@@ -280,25 +273,21 @@ namespace MM.API.Functions
         //            var obj = scraping.GetShowData(id, tmdb_rating, title, release_date.Year.ToString());
         //            if (obj == null) return null;
 
-        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date)
+        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date) //invalid date
         //            {
-        //                //invalid date
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-1))
+        //            else if (release_date > DateTime.Now.AddDays(-7)) // < 1 week launch
         //            {
-        //                // < 1 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_week), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-6))
+        //            else if (release_date > DateTime.Now.AddMonths(-1)) // < 1 month launch
         //            {
-        //                // < 6 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_month), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_week), cancellationToken);
         //            }
-        //            else
+        //            else // > 1 month launch
         //            {
-        //                // > 6 month launch
-        //                model = await cacheRepo.Add(new RatingsCache(id, obj, ttlCache.one_year), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new RatingsCache(id, obj, ttlCache.one_month), cancellationToken);
         //            }
         //        }
 
@@ -327,37 +316,32 @@ namespace MM.API.Functions
 
         //        if (model == null)
         //        {
-        //            using var http = new HttpClient();
-        //            var obj = await http.GetReviewsByImdb8<RootMetacritic>(id, cancellationToken);
+        //            var obj = await ApiStartup.HttpClient.GetReviewsByImdb8<RootMetacritic>(id, cancellationToken);
         //            if (obj == null) return null;
 
         //            var newModel = new ReviewModel();
 
-        //            foreach (var item in obj?.data?.title?.metacritic?.reviews?.edges ?? [])
+        //            foreach (var item in obj.data?.title?.metacritic?.reviews?.edges ?? [])
         //            {
         //                if (item == null) continue;
         //                newModel.Items.Add(new Shared.Models.Reviews.Item(item.node?.site, item.node?.url, item.node?.reviewer, item.node?.score, item.node?.quote?.value));
         //            }
 
-        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date)
+        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date) //invalid date
         //            {
-        //                //invalid date
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-1))
+        //            else if (release_date > DateTime.Now.AddDays(-7)) // < 1 week launch
         //            {
-        //                // < 1 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_week), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-6))
+        //            else if (release_date > DateTime.Now.AddMonths(-1)) // < 1 month launch
         //            {
-        //                // < 6 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_month), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_week), cancellationToken);
         //            }
-        //            else
+        //            else // > 1 month launch
         //            {
-        //                // > 6 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_year), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_month), cancellationToken);
         //            }
         //        }
 
@@ -391,9 +375,8 @@ namespace MM.API.Functions
 
         //        if (model == null)
         //        {
-        //            using var http = new HttpClient();
         //            var url = $"https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/shows-critic-reviews/{title}/web?filter=all&sort=score&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u";
-        //            var obj = await http.Get<MetaCriticScraping>(url, cancellationToken);
+        //            var obj = await ApiStartup.HttpClient.Get<MetaCriticScraping>(url, cancellationToken);
         //            if (obj == null) return null;
         //            if (obj.meta?.title == "undefined critic reviews") return null;
 
@@ -405,25 +388,21 @@ namespace MM.API.Functions
         //                newModel.Items.Add(new Shared.Models.Reviews.Item(item.publicationName, item.url, item.author, item.score, item.quote));
         //            }
 
-        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date)
+        //            if (release_date.Date == DateTime.MinValue.Date || release_date.Date == DateTime.MaxValue.Date) //invalid date
         //            {
-        //                //invalid date
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-1))
+        //            else if (release_date > DateTime.Now.AddDays(-7)) // < 1 week launch
         //            {
-        //                // < 1 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_week), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_day), cancellationToken);
         //            }
-        //            else if (release_date > DateTime.Now.AddMonths(-6))
+        //            else if (release_date > DateTime.Now.AddMonths(-1)) // < 1 month launch
         //            {
-        //                // < 6 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_month), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_week), cancellationToken);
         //            }
-        //            else
+        //            else // > 1 month launch
         //            {
-        //                // > 6 month launch
-        //                model = await cacheRepo.Add(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_year), cancellationToken);
+        //                model = await cacheRepo.CreateItemAsync(new MetaCriticCache(newModel, $"review_{id}", ttlCache.one_month), cancellationToken);
         //            }
         //        }
 

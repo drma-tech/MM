@@ -18,24 +18,19 @@
             {
                 var attr = val.GetCustomAttribute(translate);
 
-                yield return new EnumObject(val, attr?.Name, attr?.Description, attr?.Group);
+                yield return new EnumObject(val, attr?.Name, attr?.Description, attr?.Group, attr?.Prompt, attr?.FieldInfo, attr?.Tips);
             }
         }
     }
 
-    public class EnumObject
+    public class EnumObject(Enum value, string? name, string? description, string? group, string? prompt, string? fieldInfo, string? tips)
     {
-        public EnumObject(Enum value, string? name, string? description, string? group)
-        {
-            Value = value;
-            Name = name;
-            Description = description;
-            Group = group;
-        }
-
-        public Enum Value { get; set; }
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public string? Group { get; set; }
+        public Enum Value { get; set; } = value;
+        public string? Name { get; set; } = name;
+        public string? Description { get; set; } = description;
+        public string? Group { get; set; } = group;
+        public string? Prompt { get; set; } = prompt;
+        public string? FieldInfo { get; set; } = fieldInfo;
+        public string? Tips { get; set; } = tips;
     }
 }

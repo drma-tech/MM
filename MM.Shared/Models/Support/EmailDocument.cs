@@ -8,7 +8,7 @@ namespace MM.Shared.Models.Support
         {
         }
 
-        public EmailDocument(string key) : base(key, key)
+        public EmailDocument(string id) : base(id)
         {
         }
 

@@ -4,6 +4,7 @@ using MM.Shared.Models.Auth;
 using MM.Shared.Models.Support;
 using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Modules.Support.Component;
+using MM.WEB.Shared;
 
 namespace MM.WEB.Core
 {
@@ -11,7 +12,8 @@ namespace MM.WEB.Core
     {
         public static readonly EventCallbackFactory Factory = new();
 
-        //public static async Task CollectionPopup(this IModalService service, WatchedList? watched, WatchingList? watching, WishList? wish, MediaType? type, string? collection_id, bool showPrivateAction)
+        //public static async Task CollectionPopup(this IModalService service, WatchedList? watched, WatchingList? watching, WishList? wish, MediaType? type,
+        //    string? collection_id, bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<CollectionPopup>(null, x =>
         //    {
@@ -24,10 +26,12 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.Large));
         //}
 
-        //public static async Task CompleteListPopup(this IModalService service, string? TitleHead, WatchedList? watched, WatchingList? watching, WishList? wish, HashSet<MediaDetail> Items, bool showPrivateAction)
+        //public static async Task CompleteListPopup(this IModalService service, string? TitleHead, WatchedList? watched, WatchingList? watching, WishList? wish,
+        //    HashSet<MediaDetail> Items, bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<CompleteListPopup>(null, x =>
         //    {
@@ -40,11 +44,13 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.Items, Items);
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
         //public static async Task CompleteListPopup(this IModalService service, string? TitleHead, WatchedList? watched, WatchingList? watching, WishList? wish, HashSet<MediaDetail> Items,
-        //    IMediaListApi? MediaListApi, EnumLists? List, int MaxItens, bool IsIMDB, MediaType? TypeSelected, Dictionary<string, string> StringParameters, bool showPrivateAction)
+        //    IMediaListApi? MediaListApi, EnumLists? List, int MaxItens, bool IsIMDB, MediaType? TypeSelected, Dictionary<string, string> StringParameters,
+        //    bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<CompleteListPopup>(null, x =>
         //    {
@@ -64,10 +70,12 @@ namespace MM.WEB.Core
         //        x.Add(x => x.TypeSelected, TypeSelected);
         //        x.Add(x => x.StringParameters, StringParameters);
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
-        //public static async Task CompleteListProvider(this IModalService service, string? cardHeader, AllProviders? allProviders, WatchedList? watched, WatchingList? watching, WishList? wish, bool showPrivateAction)
+        //public static async Task CompleteListProvider(this IModalService service, string? cardHeader, AllProviders? allProviders, WatchedList? watched,
+        //    WatchingList? watching, WishList? wish, bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<CompleteListProvider>(null, x =>
         //    {
@@ -77,10 +85,12 @@ namespace MM.WEB.Core
         //        x.Add(x => x.Watching, watching);
         //        x.Add(x => x.Wish, wish);
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
-        //public static async Task MediaPopup(this IModalService service, WatchedList? watched, WatchingList? watching, WishList? wish, MediaType? type, string? tmdb_id, bool showPrivateAction)
+        //public static async Task MediaPopup(this IModalService service, WatchedList? watched, WatchingList? watching, WishList? wish, MediaType? type, string? tmdb_id,
+        //    bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<MediaPopup>(null, x =>
         //    {
@@ -93,11 +103,12 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.Large));
         //}
 
-        //public static async Task MySuggestionsPopup(this IModalService service, MM.Shared.Models.MySuggestions? MySuggestions,
-        //    EventCallback<MM.Shared.Models.MySuggestions>? MySuggestionsChanged)
+        //public static async Task MySuggestionsPopup(this IModalService service, SD.Shared.Models.MySuggestions? MySuggestions,
+        //    EventCallback<SD.Shared.Models.MySuggestions>? MySuggestionsChanged)
         //{
         //    await service.Show<MySuggestionsPopup>(null, x =>
         //    {
@@ -106,8 +117,17 @@ namespace MM.WEB.Core
         //    }, Options(ModalSize.Default));
         //}
 
+        public static async Task SettingsPopup(this IModalService service)
+        {
+            await service.Show<SettingsPopup>(null, x =>
+            {
+                //x.Add(x => x.MySuggestions, MySuggestions);
+                //x.Add(x => x.MySuggestionsChanged, MySuggestionsChanged);
+            }, Options(ModalSize.Default));
+        }
+
         //public static async Task MyWatchingListPopup(this IModalService service, RenderControlCore<WatchingList?>? Core, MediaType MediaType,
-        //    WatchedList? watched, WatchingList? watching, WishList? wish, bool showPrivateAction)
+        //    WatchedList? watched, WatchingList? watching, WishList? wish, bool showPrivateAction, bool IsAuthenticated, string? UserId)
         //{
         //    await service.Show<MyWatchingListPopup>(null, x =>
         //    {
@@ -120,11 +140,13 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
+        //        x.Add(x => x.UserId, UserId);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
         //public static async Task MyWishListPopup(this IModalService service, RenderControlCore<WishList?>? Core,
-        //    WatchedList? watched, WatchingList? watching, WishList? wish, MediaType type, bool showPrivateAction)
+        //    WatchedList? watched, WatchingList? watching, WishList? wish, MediaType type, bool showPrivateAction, bool IsAuthenticated, string? UserId)
         //{
         //    await service.Show<MyWishListPopup>(null, x =>
         //    {
@@ -137,6 +159,8 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
+        //        x.Add(x => x.UserId, UserId);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
@@ -156,7 +180,8 @@ namespace MM.WEB.Core
             }, Options(ModalSize.Default));
         }
 
-        //public static async Task ProviderPopup(this IModalService service, ProviderModel? provider, WatchedList? watched, WatchingList? watching, WishList? wish, bool showPrivateAction)
+        //public static async Task ProviderPopup(this IModalService service, ProviderModel? provider, WatchedList? watched, WatchingList? watching, WishList? wish,
+        //    bool showPrivateAction, string? WatchRegion, string? ProviderId, bool IsAuthenticated)
         //{
         //    await service.Show<ProviderPopup>(null, x =>
         //    {
@@ -168,10 +193,14 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.WatchRegion, WatchRegion);
+        //        x.Add(x => x.ProviderId, ProviderId);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
-        //public static async Task SearchPopup(this IModalService service, string? titleHead, string? search, WatchedList? watched, WatchingList? watching, WishList? wish, bool showPrivateAction)
+        //public static async Task SearchPopup(this IModalService service, string? titleHead, string? search, WatchedList? watched, WatchingList? watching, WishList? wish,
+        //    bool showPrivateAction, bool IsAuthenticated)
         //{
         //    await service.Show<SearchPopup>(null, x =>
         //    {
@@ -184,6 +213,7 @@ namespace MM.WEB.Core
         //        x.Add(x => x.WatchingChanged, Factory.Create(new(), (WatchingList? list) => { watching = list; }));
         //        x.Add(x => x.WishChanged, Factory.Create(new(), (WishList? list) => { wish = list; }));
         //        x.Add(x => x.ShowPrivateAction, showPrivateAction);
+        //        x.Add(x => x.IsAuthenticated, IsAuthenticated);
         //    }, Options(ModalSize.ExtraLarge));
         //}
 
@@ -213,6 +243,7 @@ namespace MM.WEB.Core
             await service.Show<SubscriptionPopup>(null, x =>
             {
                 x.Add(x => x.Client, client);
+                x.Add(x => x.IsAuthenticated, IsAuthenticated);
             }, Options(ModalSize.Large));
         }
 

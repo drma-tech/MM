@@ -11,29 +11,29 @@
         public Change Change { get; set; }
 
         [Custom(Name = "Languages", Description = "Languages_Description", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Language> Languages { get; set; } = [];
+        public HashSet<Language> Languages { get; set; } = [];
 
         [Custom(Name = "CurrentSituation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<CurrentSituation> CurrentSituation { get; set; } = [];
+        public HashSet<CurrentSituation> CurrentSituation { get; set; } = [];
 
         [Custom(Name = "BiologicalSex", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<BiologicalSex> BiologicalSex { get; set; } = [];
+        public HashSet<BiologicalSex> BiologicalSex { get; set; } = [];
 
         [Custom(Name = "GenderIdentity", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<GenderIdentity> GenderIdentity { get; set; } = [];
+        public HashSet<GenderIdentity> GenderIdentity { get; set; } = [];
 
         [Custom(Name = "SexualOrientation", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<SexualOrientation> SexualOrientation { get; set; } = [];
+        public HashSet<SexualOrientation> SexualOrientation { get; set; } = [];
 
         #endregion BASIC
 
         #region BIO
 
         [Custom(Name = "RaceCategory", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<RaceCategory> RaceCategory { get; set; } = [];
+        public HashSet<RaceCategory> RaceCategory { get; set; } = [];
 
         [Custom(Name = "BodyMass", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<BodyMass> BodyMass { get; set; } = [];
+        public HashSet<BodyMass> BodyMass { get; set; } = [];
 
         [Custom(Name = "MinimalAge", ResourceType = typeof(Resources.ProfilePreferenceModel))]
         public int MinimalAge { get; set; }
@@ -48,50 +48,43 @@
         public Height? MaxHeight { get; set; }
 
         [Custom(Name = "Neurodiversities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Neurodiversity> Neurodiversities { get; set; } = [];
+        public HashSet<Neurodiversity> Neurodiversities { get; set; } = [];
 
         [Custom(Name = "Disabilities", ResourceType = typeof(Resources.ProfilePreferenceModel))]
-        public IReadOnlyList<Disability> Disabilities { get; set; } = [];
+        public HashSet<Disability> Disabilities { get; set; } = [];
 
         #endregion BIO
 
         #region LIFESTYLE
 
         [Custom(Name = "Drink_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Drink> Drink { get; set; } = [];
+        public HashSet<Drink> Drink { get; set; } = [];
 
         [Custom(Name = "Smoke_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Smoke> Smoke { get; set; } = [];
+        public HashSet<Smoke> Smoke { get; set; } = [];
 
         [Custom(Name = "Diet_Name", Description = "Diet_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Diet> Diet { get; set; } = [];
+        public HashSet<Diet> Diet { get; set; } = [];
 
         [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<HaveChildren> HaveChildren { get; set; } = [];
+        public HashSet<HaveChildren> HaveChildren { get; set; } = [];
 
         [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<WantChildren> WantChildren { get; set; } = [];
+        public HashSet<WantChildren> WantChildren { get; set; } = [];
 
         [Custom(Name = "EducationLevel_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<EducationLevel> EducationLevel { get; set; } = [];
+        public HashSet<EducationLevel> EducationLevel { get; set; } = [];
 
         [Custom(Name = "CareerCluster_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<CareerCluster> CareerCluster { get; set; } = [];
+        public HashSet<CareerCluster> CareerCluster { get; set; } = [];
 
         [Custom(Name = "Religion_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<Religion> Religion { get; set; } = [];
+        public HashSet<Religion> Religion { get; set; } = [];
 
         [Custom(Name = "Travel Frequency")]
-        public IReadOnlyList<TravelFrequency> TravelFrequency { get; set; } = [];
+        public HashSet<TravelFrequency> TravelFrequency { get; set; } = [];
 
         #endregion LIFESTYLE
-
-        #region PERSONALITY
-
-        [Custom(Name = "SexPersonalityPreferences_Name", Description = "SexPersonalityPreferences_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public IReadOnlyList<SexPersonality> SexPersonality { get; set; } = [];
-
-        #endregion PERSONALITY
 
         public void UpdateData(ProfilePreferenceModel vm)
         {
@@ -121,8 +114,6 @@
             CareerCluster = vm.CareerCluster;
             Religion = vm.Religion;
             TravelFrequency = vm.TravelFrequency;
-            //PERSONALITY
-            SexPersonality = vm.SexPersonality;
         }
     }
 }

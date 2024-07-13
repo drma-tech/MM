@@ -223,7 +223,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sexual Personality.
+        ///   Looks up a localized string similar to Sexual Personality (preferences).
         /// </summary>
         public static string SexPersonalityPreferences_Name {
             get {

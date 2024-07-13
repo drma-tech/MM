@@ -8,7 +8,7 @@
     }
 
     /// <summary>
-    /// OBS: O idioma dos textos recuperados é o mesmo da localização
+    /// note: language is the same as the searched location
     /// </summary>
     public class HereAddress
     {
@@ -18,18 +18,12 @@
         public string? county { get; set; }
         public string? city { get; set; }
 
-        /// <summary>
-        /// Recupera a localização contendo as seguintes informaçoes: country, state, county, city
-        /// <para>Caso county e city sejam iguais, só retornará um deles</para>
-        /// </summary>
-        /// <returns></returns>
         public string GetLocation()
         {
-            var locations = new List<string>() { countryName, state };
+            if (countryName.Empty()) throw new NotificationException("country not found");
+            if (city.Empty()) throw new NotificationException("city not found");
 
-            locations.AddRange(new[] { county, city }.Distinct());
-
-            return string.Join(" - ", locations.Where(w => !string.IsNullOrEmpty(w)));
+            return $"{countryName} - {state ?? county ?? countryName} - {city}";
         }
     }
 

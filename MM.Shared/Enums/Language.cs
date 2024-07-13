@@ -1,357 +1,560 @@
 ﻿namespace MM.Shared.Enums
 {
     /// <summary>
-    /// https://en.wikipedia.org/wiki/List_of_languages_by_the_number_of_countries_in_which_they_are_recognized_as_an_official_language
+    /// https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+    /// https://en.wikipedia.org/wiki/List_of_official_languages
+    /// https://en.wikipedia.org/wiki/List_of_official_languages_by_country_and_territory
     /// </summary>
     ///
     public enum Language
     {
-        [Custom(Name = "English", Group = "Website", ResourceType = typeof(Resources.Language))]
-        en = 1,
+        [Custom(Name = "Abkhazian", Tips = "ab")]
+        Abkhazian,
 
-        [Custom(Name = "French", ResourceType = typeof(Resources.Language))]
-        fr = 2,
+        [Custom(Name = "Afar", Tips = "aa")]
+        Afar,
 
-        [Custom(Name = "Arabic", ResourceType = typeof(Resources.Language))]
-        ar = 3,
+        [Custom(Name = "Afrikaans", Tips = "af")]
+        Afrikaans,
 
-        [Custom(Name = "Spanish", Group = "Website", ResourceType = typeof(Resources.Language))]
-        es = 4,
+        [Custom(Name = "Akan", Tips = "ak")]
+        Akan,
 
-        [Custom(Name = "Portuguese", Group = "Website", ResourceType = typeof(Resources.Language))]
-        pt = 5,
+        [Custom(Name = "Albanian", Tips = "sq")]
+        Albanian,
 
-        [Custom(Name = "German", ResourceType = typeof(Resources.Language))]
-        de = 6,
+        [Custom(Name = "Amharic", Tips = "am")]
+        Amharic,
 
-        [Custom(Name = "Russian", ResourceType = typeof(Resources.Language))]
-        ru = 7,
+        [Custom(Name = "Arabic", Tips = "ar")]
+        Arabic,
 
-        [Custom(Name = "Swahili", ResourceType = typeof(Resources.Language))]
-        sw = 8,
+        [Custom(Name = "Aragonese", Tips = "an")]
+        Aragonese,
 
-        //todo: maybe wrong
-        [Custom(Name = "SerboCroatian", ResourceType = typeof(Resources.Language))]
-        sh = 9,
+        [Custom(Name = "Armenian", Tips = "hy")]
+        Armenian,
 
-        [Custom(Name = "Italian", ResourceType = typeof(Resources.Language))]
-        it = 10,
+        [Custom(Name = "Assamese", Tips = "as")]
+        Assamese,
 
-        [Custom(Name = "Malay", ResourceType = typeof(Resources.Language))]
-        ms = 11,
+        [Custom(Name = "Avaric", Tips = "av")]
+        Avaric,
 
-        [Custom(Name = "Tswana", ResourceType = typeof(Resources.Language))]
-        tn = 12,
+        [Custom(Name = "Avestan", Tips = "ae")]
+        Avestan,
 
-        [Custom(Name = "Persian", ResourceType = typeof(Resources.Language))]
-        fa = 13,
+        [Custom(Name = "Aymara", Tips = "ay")]
+        Aymara,
 
-        [Custom(Name = "Dutch", ResourceType = typeof(Resources.Language))]
-        nl = 14,
+        [Custom(Name = "Azerbaijani", Tips = "az")]
+        Azerbaijani,
 
-        [Custom(Name = "Sotho", ResourceType = typeof(Resources.Language))]
-        st = 15,
+        [Custom(Name = "Bambara", Tips = "bm")]
+        Bambara,
 
-        [Custom(Name = "Albanian", ResourceType = typeof(Resources.Language))]
-        sq = 16,
+        [Custom(Name = "Bashkir", Tips = "ba")]
+        Bashkir,
 
-        [Custom(Name = "StandardChinese", ResourceType = typeof(Resources.Language))]
-        zh = 17,
+        [Custom(Name = "Basque", Tips = "eu")]
+        Basque,
 
-        [Custom(Name = "Romanian", ResourceType = typeof(Resources.Language))]
-        ro = 18,
+        [Custom(Name = "Belarusian", Tips = "be")]
+        Belarusian,
 
-        //todo: complete the others code iso
-        [Custom(Name = "Turkish", ResourceType = typeof(Resources.Language))]
-        Turkish = 19,
+        [Custom(Name = "Bengali", Tips = "bn")]
+        Bengali,
 
-        [Custom(Name = "Berber", ResourceType = typeof(Resources.Language))]
-        Berber = 20,
+        [Custom(Name = "Bislama", Tips = "bi")]
+        Bislama,
 
-        [Custom(Name = "Aymara", ResourceType = typeof(Resources.Language))]
-        Aymara = 21,
+        [Custom(Name = "Bosnian", Tips = "bs")]
+        Bosnian,
 
-        [Custom(Name = "Quechua", ResourceType = typeof(Resources.Language))]
-        Quechua = 22,
+        [Custom(Name = "Breton", Tips = "br")]
+        Breton,
 
-        [Custom(Name = "RwandaRundi", ResourceType = typeof(Resources.Language))]
-        RwandaRundi = 23,
+        [Custom(Name = "Bulgarian", Tips = "bg")]
+        Bulgarian,
 
-        [Custom(Name = "Tigrinya", ResourceType = typeof(Resources.Language))]
-        Tigrinya = 24,
+        [Custom(Name = "Burmese", Tips = "my")]
+        Burmese,
 
-        [Custom(Name = "Swati", ResourceType = typeof(Resources.Language))]
-        Swati = 25,
+        [Custom(Name = "Catalan", Tips = "ca")]
+        Catalan,
 
-        [Custom(Name = "Greek", ResourceType = typeof(Resources.Language))]
-        Greek = 26,
+        [Custom(Name = "Chamorro", Tips = "ch")]
+        Chamorro,
 
-        [Custom(Name = "HindiUrdu", ResourceType = typeof(Resources.Language))]
-        HindiUrdu = 27,
+        [Custom(Name = "Chechen", Tips = "ce")]
+        Chechen,
 
-        [Custom(Name = "Chichewa", ResourceType = typeof(Resources.Language))]
-        Chichewa = 28,
+        [Custom(Name = "Chichewa", Tips = "ny")]
+        Chichewa,
 
-        [Custom(Name = "Korean", ResourceType = typeof(Resources.Language))]
-        Korean = 29,
+        [Custom(Name = "Chinese", Tips = "zh")]
+        Chinese,
 
-        [Custom(Name = "Guarani", ResourceType = typeof(Resources.Language))]
-        Guarani = 30,
+        [Custom(Name = "Church Slavonic", Tips = "cu")]
+        ChurchSlavonic,
 
-        [Custom(Name = "Venda", ResourceType = typeof(Resources.Language))]
-        Venda = 31,
+        [Custom(Name = "Chuvash", Tips = "cv")]
+        Chuvash,
 
-        [Custom(Name = "Xhosa", ResourceType = typeof(Resources.Language))]
-        Xhosa = 32,
+        [Custom(Name = "Cornish", Tips = "kw")]
+        Cornish,
 
-        [Custom(Name = "Tamil", ResourceType = typeof(Resources.Language))]
-        Tamil = 33,
+        [Custom(Name = "Corsican", Tips = "co")]
+        Corsican,
 
-        [Custom(Name = "Swedish", ResourceType = typeof(Resources.Language))]
-        Swedish = 34,
+        [Custom(Name = "Cree", Tips = "cr")]
+        Cree,
 
-        [Custom(Name = "Armenian", ResourceType = typeof(Resources.Language))]
-        Armenian = 35,
+        [Custom(Name = "Croatian", Tips = "hr")]
+        Croatian,
 
-        [Custom(Name = "Somali", ResourceType = typeof(Resources.Language))]
-        Somali = 36
-    }
+        [Custom(Name = "Czech", Tips = "cs")]
+        Czech,
 
-    public enum LanguageOld
-    {
-        [Custom(Name = "Chinês Mandarim")]
-        MandarinChinese = 1,
+        [Custom(Name = "Danish", Tips = "da")]
+        Danish,
 
-        [Custom(Name = "Espanhol")]
-        Spanish = 2,
+        [Custom(Name = "Divehi", Tips = "dv")]
+        Divehi,
 
-        [Custom(Name = "Inglês")]
-        English = 3,
+        [Custom(Name = "Dutch", Tips = "nl")]
+        Dutch,
 
-        [Custom(Name = "Hindi")]
-        Hindi = 4,
+        [Custom(Name = "Dzongkha", Tips = "dz")]
+        Dzongkha,
 
-        [Custom(Name = "Português")]
-        Portuguese = 5,
+        [Custom(Name = "English", Tips = "en")]
+        English,
 
-        [Custom(Name = "Bengali")]
-        Bengali = 6,
+        [Custom(Name = "Esperanto", Tips = "eo")]
+        Esperanto,
 
-        [Custom(Name = "Russo")]
-        Russian = 7,
+        [Custom(Name = "Estonian", Tips = "et")]
+        Estonian,
 
-        [Custom(Name = "Japonês")]
-        Japanese = 8,
+        [Custom(Name = "Ewe", Tips = "ee")]
+        Ewe,
 
-        [Custom(Name = "Punjabi")]
-        Punjabi = 9,
+        [Custom(Name = "Faroese", Tips = "fo")]
+        Faroese,
 
-        [Custom(Name = "Yue Chinês")]
-        YueChinese = 10,
+        [Custom(Name = "Fijian", Tips = "fj")]
+        Fijian,
 
-        [Custom(Name = "Vietnamita")]
-        Vietnamese = 11,
+        [Custom(Name = "Finnish", Tips = "fi")]
+        Finnish,
 
-        [Custom(Name = "Marati")]
-        Marathi = 12,
+        [Custom(Name = "French", Tips = "fr")]
+        French,
 
-        [Custom(Name = "Telugu")]
-        Telugu = 13,
+        [Custom(Name = "Western Frisian", Tips = "fy")]
+        WesternFrisian,
 
-        [Custom(Name = "Turco")]
-        Turkish = 14,
+        [Custom(Name = "Fulah", Tips = "ff")]
+        Fulah,
 
-        [Custom(Name = "Wu Chinês")]
-        WuChinese = 15,
+        [Custom(Name = "Gaelic", Tips = "gd")]
+        Gaelic,
 
-        [Custom(Name = "Coreano")]
-        Korean = 16,
+        [Custom(Name = "Galician", Tips = "gl")]
+        Galician,
 
-        [Custom(Name = "Francês")]
-        French = 17,
+        [Custom(Name = "Ganda", Tips = "lg")]
+        Ganda,
 
-        [Custom(Name = "Alemão")]
-        German = 18,
+        [Custom(Name = "Georgian", Tips = "ka")]
+        Georgian,
 
-        [Custom(Name = "Tâmil")]
-        Tamil = 19,
+        [Custom(Name = "German", Tips = "de")]
+        German,
 
-        [Custom(Name = "Urdu")]
-        Urdu = 20,
+        [Custom(Name = "Greek", Tips = "el")]
+        Greek,
 
-        [Custom(Name = "Javanês")]
-        Javanese = 21,
+        [Custom(Name = "Kalaallisut", Tips = "kl")]
+        Kalaallisut,
 
-        [Custom(Name = "Italiano")]
-        Italian = 22,
+        [Custom(Name = "Guarani", Tips = "gn")]
+        Guarani,
 
-        [Custom(Name = "Egyptian Arabic")]
-        EgyptianArabic = 23,
+        [Custom(Name = "Gujarati", Tips = "gu")]
+        Gujarati,
 
-        [Custom(Name = "Gujarati")]
-        Gujarati = 24,
+        [Custom(Name = "Haitian", Tips = "ht")]
+        Haitian,
 
-        [Custom(Name = "Iranian Persian")]
-        IranianPersian = 25,
+        [Custom(Name = "Hausa", Tips = "ha")]
+        Hausa,
 
-        [Custom(Name = "Bhojpuri")]
-        Bhojpuri = 26,
+        [Custom(Name = "Hebrew", Tips = "he")]
+        Hebrew,
 
-        [Custom(Name = "Southern Min")]
-        SouthernMin = 27,
+        [Custom(Name = "Herero", Tips = "hz")]
+        Herero,
 
-        [Custom(Name = "Hakka Chinese")]
-        HakkaChinese = 28,
+        [Custom(Name = "Hindi", Tips = "hi")]
+        Hindi,
 
-        [Custom(Name = "Jin Chinese")]
-        JinChinese = 29,
+        [Custom(Name = "Hiri Motu", Tips = "ho")]
+        HiriMotu,
 
-        [Custom(Name = "Hausa")]
-        Hausa = 30,
+        [Custom(Name = "Hungarian", Tips = "hu")]
+        Hungarian,
 
-        [Custom(Name = "Kannada")]
-        Kannada = 31,
+        [Custom(Name = "Icelandic", Tips = "is")]
+        Icelandic,
 
-        [Custom(Name = "Indonésio")]
-        Indonesian = 32,
+        [Custom(Name = "Ido", Tips = "io")]
+        Ido,
 
-        [Custom(Name = "Yoruba")]
-        Yoruba = 33,
+        [Custom(Name = "Igbo", Tips = "ig")]
+        Igbo,
 
-        [Custom(Name = "Polish")]
-        Polish = 34,
+        [Custom(Name = "Indonesian", Tips = "id")]
+        Indonesian,
 
-        [Custom(Name = "Xiang Chinese")]
-        XiangChinese = 35,
+        [Custom(Name = "Interlingua", Tips = "ia")]
+        Interlingua,
 
-        [Custom(Name = "Malayalam")]
-        Malayalam = 36,
+        [Custom(Name = "Interlingue", Tips = "ie")]
+        Interlingue,
 
-        [Custom(Name = "Odia")]
-        Odia = 37,
+        [Custom(Name = "Inuktitut", Tips = "iu")]
+        Inuktitut,
 
-        [Custom(Name = "Maithili")]
-        Maithili = 38,
+        [Custom(Name = "Inupiaq", Tips = "ik")]
+        Inupiaq,
 
-        [Custom(Name = "Sudanese Arabic")]
-        SudaneseArabic = 39,
+        [Custom(Name = "Irish", Tips = "ga")]
+        Irish,
 
-        [Custom(Name = "Burmese")]
-        Burmese = 40,
+        [Custom(Name = "Italian", Tips = "it")]
+        Italian,
 
-        [Custom(Name = "Eastern Punjabi")]
-        EasternPunjabi = 41,
+        [Custom(Name = "Japanese", Tips = "ja")]
+        Japanese,
 
-        [Custom(Name = "Sunda")]
-        Sunda = 42,
+        [Custom(Name = "Javanese", Tips = "jv")]
+        Javanese,
 
-        [Custom(Name = "Algerian Arabic")]
-        AlgerianArabic = 43,
+        [Custom(Name = "Kannada", Tips = "kn")]
+        Kannada,
 
-        [Custom(Name = "Moroccan Arabic")]
-        MoroccanArabic = 44,
+        [Custom(Name = "Kanuri", Tips = "kr")]
+        Kanuri,
 
-        [Custom(Name = "Ukrainian")]
-        Ukrainian = 45,
+        [Custom(Name = "Kashmiri", Tips = "ks")]
+        Kashmiri,
 
-        [Custom(Name = "Igbo")]
-        Igbo = 46,
+        [Custom(Name = "Kazakh", Tips = "kk")]
+        Kazakh,
 
-        [Custom(Name = "Northern Uzbek")]
-        NorthernUzbek = 47,
+        [Custom(Name = "Central Khmer", Tips = "km")]
+        CentralKhmer,
 
-        [Custom(Name = "Sindhi")]
-        Sindhi = 48,
+        [Custom(Name = "Kikuyu", Tips = "ki")]
+        Kikuyu,
 
-        [Custom(Name = "North Levantine Arabic")]
-        NorthLevantineArabic = 49,
+        [Custom(Name = "Kinyarwanda", Tips = "rw")]
+        Kinyarwanda,
 
-        [Custom(Name = "Romanian")]
-        Romanian = 50,
+        [Custom(Name = "Kirghiz", Tips = "ky")]
+        Kirghiz,
 
-        [Custom(Name = "Tagalog")]
-        Tagalog = 51,
+        [Custom(Name = "Komi", Tips = "kv")]
+        Komi,
 
-        //Dutch 52
+        [Custom(Name = "Kongo", Tips = "kg")]
+        Kongo,
 
-        //Saʽidi Arabic 53
+        [Custom(Name = "Korean", Tips = "ko")]
+        Korean,
 
-        //Gan Chinese 54
+        [Custom(Name = "Kuanyama", Tips = "kj")]
+        Kuanyama,
 
-        [Custom(Name = "Amharic")]
-        Amharic = 55,
+        [Custom(Name = "Kurdish", Tips = "ku")]
+        Kurdish,
 
-        //Northern Pashto 56
+        [Custom(Name = "Lao", Tips = "lo")]
+        Lao,
 
-        //Magahi 57
+        [Custom(Name = "Latin", Tips = "la")]
+        Latin,
 
-        [Custom(Name = "Thai")]
-        Thai = 58,
+        [Custom(Name = "Latvian", Tips = "lv")]
+        Latvian,
 
-        //Saraiki 59
+        [Custom(Name = "Limburgan", Tips = "li")]
+        Limburgan,
 
-        //Khmer 60
+        [Custom(Name = "Lingala", Tips = "ln")]
+        Lingala,
 
-        //Chhattisgarhi 61
+        [Custom(Name = "Lithuanian", Tips = "lt")]
+        Lithuanian,
 
-        //Somali 62
+        [Custom(Name = "Luba-Katanga", Tips = "lu")]
+        LubaKatanga,
 
-        //Malaysian 63
+        [Custom(Name = "Luxembourgish", Tips = "lb")]
+        Luxembourgish,
 
-        //Cebuano 64
+        [Custom(Name = "Macedonian", Tips = "mk")]
+        Macedonian,
 
-        //Nepali 65
+        [Custom(Name = "Malagasy", Tips = "mg")]
+        Malagasy,
 
-        //Mesopotamian Arabic 66
+        [Custom(Name = "Malay", Tips = "ms")]
+        Malay,
 
-        //Assamese 67
+        [Custom(Name = "Malayalam", Tips = "ml")]
+        Malayalam,
 
-        //Sinhalese 68
+        [Custom(Name = "Maltese", Tips = "mt")]
+        Maltese,
 
-        //Northern Kurdish 69
+        [Custom(Name = "Manx", Tips = "gv")]
+        Manx,
 
-        //Hejazi Arabic 70
+        [Custom(Name = "Maori", Tips = "mi")]
+        Maori,
 
-        //Nigerian Fulfulde 71
+        [Custom(Name = "Marathi", Tips = "mr")]
+        Marathi,
 
-        //Bavarian 72
+        [Custom(Name = "Marshallese", Tips = "mh")]
+        Marshallese,
 
-        //South Azerbaijani 73
+        [Custom(Name = "Mongolian", Tips = "mn")]
+        Mongolian,
 
-        //Greek 74
+        [Custom(Name = "Nauru", Tips = "na")]
+        Nauru,
 
-        //Chittagonian 75
+        [Custom(Name = "Navajo", Tips = "nv")]
+        Navajo,
 
-        //Kazakh 76
+        [Custom(Name = "North Ndebele", Tips = "nd")]
+        NorthNdebele,
 
-        //Deccan 77
+        [Custom(Name = "South Ndebele", Tips = "nr")]
+        SouthNdebele,
 
-        //Hungarian 78
+        [Custom(Name = "Ndonga", Tips = "ng")]
+        Ndonga,
 
-        //Kinyarwanda 79
+        [Custom(Name = "Nepali", Tips = "ne")]
+        Nepali,
 
-        //Zulu 80
+        [Custom(Name = "Norwegian", Tips = "no")]
+        Norwegian,
 
-        //South Levantine Arabic 81
+        [Custom(Name = "Norwegian Bokmål", Tips = "nb")]
+        NorwegianBokmål,
 
-        //Tunisian Arabic 82
+        [Custom(Name = "Norwegian Nynorsk", Tips = "nn")]
+        NorwegianNynorsk,
 
-        //Sanaani Spoken Arabic 83
+        [Custom(Name = "Sichuan Yi", Tips = "ii")]
+        SichuanYi,
 
-        //Northern Min 84
+        [Custom(Name = "Occitan", Tips = "oc")]
+        Occitan,
 
-        //Southern Pashto 85
+        [Custom(Name = "Ojibwa", Tips = "oj")]
+        Ojibwa,
 
-        //Rundi 86
+        [Custom(Name = "Oriya", Tips = "or")]
+        Oriya,
 
-        //Czech 87
+        [Custom(Name = "Oromo", Tips = "om")]
+        Oromo,
 
-        //Taʽizzi-Adeni Arabic 88
+        [Custom(Name = "Ossetian", Tips = "os")]
+        Ossetian,
 
-        //Uyghur 89
+        [Custom(Name = "Pali", Tips = "pi")]
+        Pali,
 
-        //Eastern Min 90
+        [Custom(Name = "Pashto", Tips = "ps")]
+        Pashto,
 
-        //Sylheti 91
+        [Custom(Name = "Persian", Tips = "fa")]
+        Persian,
+
+        [Custom(Name = "Polish", Tips = "pl")]
+        Polish,
+
+        [Custom(Name = "Portuguese", Tips = "pt")]
+        Portuguese,
+
+        [Custom(Name = "Punjabi", Tips = "pa")]
+        Punjabi,
+
+        [Custom(Name = "Quechua", Tips = "qu")]
+        Quechua,
+
+        [Custom(Name = "Romanian", Tips = "ro")]
+        Romanian,
+
+        [Custom(Name = "Romansh", Tips = "rm")]
+        Romansh,
+
+        [Custom(Name = "Rundi", Tips = "rn")]
+        Rundi,
+
+        [Custom(Name = "Russian", Tips = "ru")]
+        Russian,
+
+        [Custom(Name = "Northern Sami", Tips = "se")]
+        NorthernSami,
+
+        [Custom(Name = "Samoan", Tips = "sm")]
+        Samoan,
+
+        [Custom(Name = "Sango", Tips = "sg")]
+        Sango,
+
+        [Custom(Name = "Sanskrit", Tips = "sa")]
+        Sanskrit,
+
+        [Custom(Name = "Sardinian", Tips = "sc")]
+        Sardinian,
+
+        [Custom(Name = "Serbian", Tips = "sr")]
+        Serbian,
+
+        [Custom(Name = "Shona", Tips = "sn")]
+        Shona,
+
+        [Custom(Name = "Sindhi", Tips = "sd")]
+        Sindhi,
+
+        [Custom(Name = "Sinhala", Tips = "si")]
+        Sinhala,
+
+        [Custom(Name = "Slovak", Tips = "sk")]
+        Slovak,
+
+        [Custom(Name = "Slovenian", Tips = "sl")]
+        Slovenian,
+
+        [Custom(Name = "Somali", Tips = "so")]
+        Somali,
+
+        [Custom(Name = "Southern Sotho", Tips = "st")]
+        SouthernSotho,
+
+        [Custom(Name = "Spanish", Tips = "es")]
+        Spanish,
+
+        [Custom(Name = "Sundanese", Tips = "su")]
+        Sundanese,
+
+        [Custom(Name = "Swahili", Tips = "sw")]
+        Swahili,
+
+        [Custom(Name = "Swati", Tips = "ss")]
+        Swati,
+
+        [Custom(Name = "Swedish", Tips = "sv")]
+        Swedish,
+
+        [Custom(Name = "Tagalog", Tips = "tl")]
+        Tagalog,
+
+        [Custom(Name = "Tahitian", Tips = "ty")]
+        Tahitian,
+
+        [Custom(Name = "Tajik", Tips = "tg")]
+        Tajik,
+
+        [Custom(Name = "Tamil", Tips = "ta")]
+        Tamil,
+
+        [Custom(Name = "Tatar", Tips = "tt")]
+        Tatar,
+
+        [Custom(Name = "Telugu", Tips = "te")]
+        Telugu,
+
+        [Custom(Name = "Thai", Tips = "th")]
+        Thai,
+
+        [Custom(Name = "Tibetan", Tips = "bo")]
+        Tibetan,
+
+        [Custom(Name = "Tigrinya", Tips = "ti")]
+        Tigrinya,
+
+        [Custom(Name = "Tonga", Tips = "to")]
+        Tonga,
+
+        [Custom(Name = "Tsonga", Tips = "ts")]
+        Tsonga,
+
+        [Custom(Name = "Tswana", Tips = "tn")]
+        Tswana,
+
+        [Custom(Name = "Turkish", Tips = "tr")]
+        Turkish,
+
+        [Custom(Name = "Turkmen", Tips = "tk")]
+        Turkmen,
+
+        [Custom(Name = "Twi", Tips = "tw")]
+        Twi,
+
+        [Custom(Name = "Uighur", Tips = "ug")]
+        Uighur,
+
+        [Custom(Name = "Ukrainian", Tips = "uk")]
+        Ukrainian,
+
+        [Custom(Name = "Urdu", Tips = "ur")]
+        Urdu,
+
+        [Custom(Name = "Uzbek", Tips = "uz")]
+        Uzbek,
+
+        [Custom(Name = "Venda", Tips = "ve")]
+        Venda,
+
+        [Custom(Name = "Vietnamese", Tips = "vi")]
+        Vietnamese,
+
+        [Custom(Name = "Volapük", Tips = "vo")]
+        Volapük,
+
+        [Custom(Name = "Walloon", Tips = "wa")]
+        Walloon,
+
+        [Custom(Name = "Welsh", Tips = "cy")]
+        Welsh,
+
+        [Custom(Name = "Wolof", Tips = "wo")]
+        Wolof,
+
+        [Custom(Name = "Xhosa", Tips = "xh")]
+        Xhosa,
+
+        [Custom(Name = "Yiddish", Tips = "yi")]
+        Yiddish,
+
+        [Custom(Name = "Yoruba", Tips = "yo")]
+        Yoruba,
+
+        [Custom(Name = "Zhuang", Tips = "za")]
+        Zhuang,
+
+        [Custom(Name = "Zulu", Tips = "zu")]
+        Zulu,
     }
 }

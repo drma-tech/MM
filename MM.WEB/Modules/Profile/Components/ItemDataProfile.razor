@@ -23,11 +23,11 @@ else
 @code {
     [Parameter] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
-    [Parameter] public IReadOnlyList<TValue>? Values { get; set; }
+    [Parameter] public IEnumerable<TValue>? Values { get; set; }
     [Parameter] public TValueUser? ValueUser { get; set; }
-    [Parameter] public IReadOnlyList<TValueUser>? ValuesUser { get; set; }
+    [Parameter] public IEnumerable<TValueUser>? ValuesUser { get; set; }
     [Parameter] public string? ClassIcon { get; set; }
-    [Parameter] public List<AffinityVM> Affinities { get; set; } = new();
+    [Parameter] public List<AffinityVM> Affinities { get; set; } = [];
 
     [Parameter] public CompatibilityType Type { get; set; }
     [Parameter] public CompatibilityItem Item { get; set; }
@@ -142,56 +142,56 @@ else
         return result;
     }
 
-    private List<string> GetExpectedValue()
+    private IEnumerable<string?> GetExpectedValue()
     {
-        if (User == null) return new();
+        if (User == null) return [];
 
-        if (!GetPreferenceValues().Any()) return new();
+        if (!GetPreferenceValues().Any()) return [];
 
         return Item switch
         {
             //BASIC
-            CompatibilityItem.Location => AffinityCore.GetLocation(User).ToArray().ToList(),
-            CompatibilityItem.Language => AffinityCore.GetLanguages(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.CurrentSituation => AffinityCore.GetCurrentSituation(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Intentions => AffinityCore.GetIntentions(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.GenderIdentity => AffinityCore.GetGenderIdentity(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.SexualOrientation => AffinityCore.GetSexualOrientation(User, User.Preference).Select(s => s.GetName()).ToList(),
+            CompatibilityItem.Location => AffinityCore.GetLocation(User).ToArray(),
+            CompatibilityItem.Language => AffinityCore.GetLanguages(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.CurrentSituation => AffinityCore.GetCurrentSituation(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Intentions => AffinityCore.GetIntentions(User).Select(s => s.GetName()),
+            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.GenderIdentity => AffinityCore.GetGenderIdentity(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.SexualOrientation => AffinityCore.GetSexualOrientation(User, User.Preference).Select(s => s.GetName()),
             //BIO
-            CompatibilityItem.RaceCategory => AffinityCore.GetRaceCategory(User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.BodyMass => AffinityCore.GetBodyMass(User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Age => AffinityCore.GetAge(User, User.Preference).Select(s => s.ToString()).ToList(),
-            CompatibilityItem.Zodiac => AffinityCore.GetZodiac(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Height => AffinityCore.GetHeight(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Disabilities => AffinityCore.GetDisability(User.Preference).Select(s => s.GetName()).ToList(),
+            CompatibilityItem.RaceCategory => AffinityCore.GetRaceCategory(User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.BodyMass => AffinityCore.GetBodyMass(User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Age => AffinityCore.GetAge(User, User.Preference).Select(s => s.ToString()),
+            CompatibilityItem.Zodiac => AffinityCore.GetZodiac(User).Select(s => s.GetName()),
+            CompatibilityItem.Height => AffinityCore.GetHeight(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Disabilities => AffinityCore.GetDisability(User.Preference).Select(s => s.GetName()),
             //LIFESTYLE
-            CompatibilityItem.Drink => AffinityCore.GetDrink(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Diet => AffinityCore.GetDiet(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Religion => AffinityCore.GetReligion(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, User.Preference).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, User.Preference).Select(s => s.GetName()).ToList(),
+            CompatibilityItem.Drink => AffinityCore.GetDrink(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Diet => AffinityCore.GetDiet(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Religion => AffinityCore.GetReligion(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, User.Preference).Select(s => s.GetName()),
             //PERSONALITY
-            CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.RelationshipPersonality => AffinityCore.GetRelationshipPersonality(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.MyersBriggsTypeIndicator => AffinityCore.GetMyersBriggsTypeIndicator(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.LoveLanguage => AffinityCore.GetLoveLanguage(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.SexPersonality => AffinityCore.GetSexPersonality(User, Pref).Select(s => s.GetName()).ToList(),
+            CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetName()),
+            CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetName()),
+            CompatibilityItem.RelationshipPersonality => AffinityCore.GetRelationshipPersonality(User).Select(s => s.GetName()),
+            CompatibilityItem.MyersBriggsTypeIndicator => AffinityCore.GetMyersBriggsTypeIndicator(User).Select(s => s.GetName()),
+            CompatibilityItem.LoveLanguage => AffinityCore.GetLoveLanguage(User).Select(s => s.GetName()),
+            CompatibilityItem.SexPersonality => AffinityCore.GetSexPersonality(User).Select(s => s.GetName()),
             //INTEREST
-            CompatibilityItem.Food => AffinityCore.GetFood(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Vacation => AffinityCore.GetVacation(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.Sports => AffinityCore.GetSports(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.LeisureActivities => AffinityCore.GetLeisureActivities(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.MusicGenre => AffinityCore.GetMusicGenre(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.MovieGenre => AffinityCore.GetMovieGenre(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.TVGenre => AffinityCore.GetTVGenre(User).Select(s => s.GetName()).ToList(),
-            CompatibilityItem.ReadingGenre => AffinityCore.GetReadingGenre(User).Select(s => s.GetName()).ToList(),
+            CompatibilityItem.Food => AffinityCore.GetFood(User).Select(s => s.GetName()),
+            CompatibilityItem.Vacation => AffinityCore.GetVacation(User).Select(s => s.GetName()),
+            CompatibilityItem.Sports => AffinityCore.GetSports(User).Select(s => s.GetName()),
+            CompatibilityItem.LeisureActivities => AffinityCore.GetLeisureActivities(User).Select(s => s.GetName()),
+            CompatibilityItem.MusicGenre => AffinityCore.GetMusicGenre(User).Select(s => s.GetName()),
+            CompatibilityItem.MovieGenre => AffinityCore.GetMovieGenre(User).Select(s => s.GetName()),
+            CompatibilityItem.TVGenre => AffinityCore.GetTVGenre(User).Select(s => s.GetName()),
+            CompatibilityItem.ReadingGenre => AffinityCore.GetReadingGenre(User).Select(s => s.GetName()),
             _ => throw new InvalidOperationException("invalid CompatibilityItem: " + Item)
         };
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MM.API.Repository.Core;
 
 namespace MM.API.Repository
 {
@@ -19,15 +20,15 @@ namespace MM.API.Repository
             Container = ApiStartup.CosmosClient.GetContainer(databaseId, containerId);
         }
 
-        public async Task<CacheDocument<TData>?> Get<TData>(string key, CancellationToken cancellationToken) where TData : class
+        public async Task<CacheDocument<TData>?> Get<TData>(string id, CancellationToken cancellationToken) where TData : class
         {
             try
             {
-                var response = await Container.ReadItemAsync<CacheDocument<TData>?>(key, new PartitionKey(key), null, cancellationToken);
+                var response = await Container.ReadItemAsync<CacheDocument<TData>?>(id, new PartitionKey(id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-                if (response.RequestCharge > 1.7)
+                if (response.RequestCharge > 1.5)
                 {
-                    _logger.LogWarning("Get - key {0}, RequestCharge {1}", key, response.RequestCharge);
+                    _logger.LogWarning("Get - Id {0}, RequestCharge {1}", id, response.RequestCharge);
                 }
 
                 return response.Resource;
@@ -38,13 +39,13 @@ namespace MM.API.Repository
             }
         }
 
-        public async Task<CacheDocument<TData>?> Add<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
+        public async Task<CacheDocument<TData>?> CreateItemAsync<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
         {
-            var response = await Container.UpsertItemAsync(cache, new PartitionKey(cache.Key), null, cancellationToken);
+            var response = await Container.CreateItemAsync(cache, new PartitionKey(cache.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             if (response.RequestCharge > 12)
             {
-                _logger.LogWarning("Add - Key {0}, RequestCharge {1}", cache.Key, response.RequestCharge);
+                _logger.LogWarning("Add - Id {0}, RequestCharge {1}", cache.Id, response.RequestCharge);
             }
 
             return response.Resource;

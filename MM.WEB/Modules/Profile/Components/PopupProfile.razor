@@ -76,7 +76,7 @@
                                 </Paragraph>
                                 }*@
                                 <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromTop.Is0.FromBottom">
-                                    @view.Description
+                                    @view?.Description
                                 </Paragraph>
                             </CardBody>
                             <CardBody>
@@ -89,7 +89,7 @@
                                 <BtnBlink IdUserView="@IdUserView"></BtnBlink>
                                 }*@
                                 <Dropdown Float="Float.End" Disabled="true">
-                                    <Button Color="Color.Danger" Clicked="report.ShowModal" Disabled="true">
+                                    <Button Color="Color.Danger" Clicked="report!.ShowModal" Disabled="true">
                                         <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Deletar
                                     </Button>
                                     <DropdownToggle Split="true" Color="Color.Danger" />
@@ -133,7 +133,7 @@
             </RenderControl>
         </ModalBody>
         <ModalFooter>
-            <Button Color="Color.Secondary" Clicked="@modal.Hide">Fechar</Button>
+            <Button Color="Color.Secondary" Clicked="@modal!.Hide">Fechar</Button>
         </ModalFooter>
     </ModalContent>
 </Modal>

@@ -54,8 +54,8 @@
     [Parameter] public bool HasGroup { get; set; }
     [Parameter] public Func<EnumObject, object> Order { get; set; } = o => o.Value;
 
-    [Parameter] public IReadOnlyList<TEnum> SelectedValues { get; set; } = Array.Empty<TEnum>();
-    [Parameter] public EventCallback<IReadOnlyList<TEnum>> SelectedValuesChanged { get; set; }
+    [Parameter] public HashSet<TEnum> SelectedValues { get; set; } = [];
+    [Parameter] public EventCallback<HashSet<TEnum>> SelectedValuesChanged { get; set; }
 
     [Parameter] public string? Title { get; set; }
 
@@ -71,14 +71,14 @@
     {
         if (value) //add
         {
-            if (SelectedValues == null) SelectedValues = Array.Empty<TEnum>();
-            SelectedValues = SelectedValues.ToArray().Concat(new TEnum[] { (TEnum)item.Value }).ToList().AsReadOnly();
+            if (SelectedValues == null) SelectedValues = [];
+            SelectedValues = SelectedValues.Concat(new TEnum[] { (TEnum)item.Value }).ToHashSet();
         }
         else //remove
         {
-            var list = SelectedValues.ToList();
+            var list = SelectedValues;
             list.Remove((TEnum)item.Value);
-            SelectedValues = list.AsReadOnly();
+            SelectedValues = list;
         }
     }
 

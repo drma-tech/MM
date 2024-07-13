@@ -11,7 +11,7 @@ namespace MM.WEB.Core.Api
         protected IMemoryCache _cache { get; set; } = memoryCache;
         protected object? cacheKey { get; set; } = cacheKey;
 
-        private string baseEndpoint => _http.BaseAddress?.ToString().Contains("localhost") ?? true ? "http://localhost:7071/api/" : $"{_http.BaseAddress}api/";
+        private string baseEndpoint => _http.BaseAddress?.ToString().Contains("localhost") ?? true ? "http://localhost:7091/api/" : $"{_http.BaseAddress}api/";
 
         protected void CleanCache()
         {

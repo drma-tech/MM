@@ -49,6 +49,12 @@
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @Profile.Resources.Translations.MySuggestions
+                                <Badge Color="Color.Danger">
+                                    @AccountProduct.Basic.GetRestrictions().MySuggestions
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
                                 Watched
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Basic.GetRestrictions().Watched
@@ -84,6 +90,12 @@
                                 Favorite Providers
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Standard.GetRestrictions().FavoriteProviders
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @Profile.Resources.Translations.MySuggestions
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Standard.GetRestrictions().MySuggestions
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
@@ -123,6 +135,12 @@
                                 Favorite Providers
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Premium.GetRestrictions().FavoriteProviders
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @Profile.Resources.Translations.MySuggestions
+                                <Badge Color="Color.Primary">
+                                    @AccountProduct.Premium.GetRestrictions().MySuggestions
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
@@ -381,7 +399,7 @@
 
             for (int i = 0; i < 20; i++)
             {
-                await Task.Delay(1000);
+                await Task.Delay(2000);
                 var principal = await PrincipalApi.Get(IsAuthenticated, true);
 
                 if (principal?.ClientePaddle != null && principal.ClientePaddle.SubscriptionId.NotEmpty())

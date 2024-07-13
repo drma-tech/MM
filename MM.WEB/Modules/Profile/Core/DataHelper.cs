@@ -6,427 +6,974 @@ namespace MM.WEB.Modules.Profile.Core
     {
         public static void AddLanguages(this ProfileModel profile, Country country)
         {
-            //https://en.wikipedia.org/wiki/List_of_official_languages
-            //https://en.wikipedia.org/wiki/List_of_official_languages_by_country_and_territory
             if (profile.Languages.Any()) return;
 
             switch (country)
             {
-                case Country.CHN:
-                    profile.Languages = [Language.zh];
+                case Country.Afghanistan:
+                    profile.Languages = [Language.Persian, Language.Pashto];
                     break;
 
-                case Country.IND:
-                    profile.Languages = [Language.HindiUrdu];
+                case Country.AlandIslands:
                     break;
 
-                case Country.USA:
-                    profile.Languages = [Language.en];
+                case Country.Albania:
+                    profile.Languages = [Language.Albanian, Language.Italian];
                     break;
 
-                case Country.IDN:
-                    profile.Languages = [Language.ms]; //Indonesian = It is a standardized variety of Malay
+                case Country.Algeria:
+                    profile.Languages = [Language.Arabic, Language.French]; //Berber
                     break;
 
-                case Country.PAK:
-                    profile.Languages = [Language.HindiUrdu];
+                case Country.AmericanSamoa:
                     break;
 
-                case Country.NGA:
-                    profile.Languages = [Language.en];
+                case Country.Andorra:
+                    profile.Languages = [Language.Catalan];
                     break;
 
-                case Country.BRA:
-                    profile.Languages = [Language.pt];
+                case Country.Angola:
+                    profile.Languages = [Language.Portuguese];
                     break;
 
-                case Country.BGD:
-                    //profile.Languages = new Language[] { Language.Bengali };
+                case Country.Anguilla:
                     break;
 
-                case Country.RUS:
-                    profile.Languages = [Language.ru];
+                case Country.AntiguaAndBarbuda:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.MEX:
-                    profile.Languages = [Language.es];
+                case Country.Argentina:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.JPN:
-                    //profile.Languages = new Language[] { Language.Japanese };
+                case Country.Armenia:
+                    profile.Languages = [Language.Armenian, Language.Russian];
                     break;
 
-                case Country.ETH:
-                    //Oromo, Amharic
+                case Country.Aruba:
                     break;
 
-                case Country.PHL:
-                    //Filipino (Tagalog)
+                case Country.Australia:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.EGY:
-                    profile.Languages = [Language.ar];
+                case Country.Austria:
+                    profile.Languages = [Language.German, Language.English];
                     break;
 
-                case Country.VNM:
-                    //profile.Languages = new Language[] { Language.Vietnamese };
+                case Country.Azerbaijan:
+                    profile.Languages = [Language.Azerbaijani, Language.Russian];
                     break;
 
-                case Country.COD:
-                    profile.Languages = [Language.fr];
+                case Country.Bahamas:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.IRN:
-                    profile.Languages = [Language.fa];
+                case Country.Bahrain:
+                    profile.Languages = [Language.Arabic];
                     break;
 
-                case Country.TUR:
-                    profile.Languages = [Language.Turkish];
+                case Country.Bangladesh:
+                    profile.Languages = [Language.Bengali];
                     break;
 
-                case Country.DEU:
-                    profile.Languages = [Language.de];
+                case Country.Barbados:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.FRA:
-                    profile.Languages = [Language.fr];
+                case Country.Belarus:
+                    profile.Languages = [Language.Belarusian, Language.Russian];
                     break;
 
-                case Country.GBR:
-                    profile.Languages = [Language.en];
+                case Country.Belgium:
+                    profile.Languages = [Language.Dutch, Language.French, Language.German, Language.English];
                     break;
 
-                case Country.THA:
-                    //Thai
+                case Country.Belize:
+                    profile.Languages = [Language.English, Language.Spanish];
                     break;
 
-                case Country.ZAF:
-                    //Zulu, Xhosa, Afrikaans, English
+                case Country.Benin:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.TZA:
-                    profile.Languages = [Language.sw, Language.en];
+                case Country.Bermuda:
                     break;
 
-                case Country.ITA:
-                    profile.Languages = [Language.it];
+                case Country.Bhutan:
+                    profile.Languages = [Language.Dzongkha];
                     break;
 
-                case Country.MMR:
-                    //Burmese
+                case Country.Bolivia:
+                    profile.Languages = [Language.Spanish]; //many others
                     break;
 
-                case Country.KOR:
-                    profile.Languages = [Language.Korean];
+                case Country.CaribbeanNetherlands:
                     break;
 
-                case Country.COL:
-                    profile.Languages = [Language.es];
+                case Country.BosniaAndHerzegovina:
+                    profile.Languages = [Language.Bosnian, Language.Croatian, Language.Serbian];
                     break;
 
-                case Country.KEN:
-                    profile.Languages = [Language.sw, Language.en];
+                case Country.Botswana:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.ESP:
-                    profile.Languages = [Language.es];
+                case Country.BouvetIsland:
                     break;
 
-                case Country.ARG:
-                    profile.Languages = [Language.es];
+                case Country.Brazil:
+                    profile.Languages = [Language.Portuguese];
                     break;
 
-                case Country.DZA:
-                    profile.Languages = [Language.ar];
+                case Country.BritishIndianOceanTerritory:
                     break;
 
-                case Country.SDN:
-                    profile.Languages = [Language.ar];
+                case Country.BritishVirginIslands:
                     break;
 
-                case Country.UGA:
-                    profile.Languages = [Language.en];
+                case Country.Brunei:
+                    profile.Languages = [Language.Malay];
                     break;
 
-                case Country.IRQ:
-                    profile.Languages = [Language.ar];
+                case Country.Bulgaria:
+                    profile.Languages = [Language.Bulgarian];
                     break;
 
-                case Country.UKR:
-                    //Ukrainian
+                case Country.BurkinaFaso:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.CAN:
-                    profile.Languages = [Language.en];
+                case Country.Burundi:
+                    profile.Languages = [Language.French, Language.English, Language.Swahili]; //Kirundi
                     break;
 
-                case Country.POL:
-                    //Polish
+                case Country.Cambodia:
+                    profile.Languages = [Language.CentralKhmer];
                     break;
 
-                case Country.MAR:
-                    profile.Languages = [Language.ar];
+                case Country.Cameroon:
+                    profile.Languages = [Language.English, Language.French];
                     break;
 
-                case Country.UZB:
-                    //Uzbek
+                case Country.Canada:
+                    profile.Languages = [Language.English, Language.French];
                     break;
 
-                case Country.SAU:
-                    profile.Languages = [Language.ar];
+                case Country.CapeVerde:
+                    profile.Languages = [Language.Portuguese];
                     break;
 
-                case Country.PER:
-                    profile.Languages = [Language.es];
+                case Country.CaymanIslands:
                     break;
 
-                case Country.AGO:
-                    profile.Languages = [Language.pt];
+                case Country.CentralAfricanRepublic:
+                    profile.Languages = [Language.French, Language.Sango];
                     break;
 
-                case Country.AFG:
-                    profile.Languages = [Language.fa]; //Dari, which is a variety of and mutually intelligible with Persian
-                    //Pashto, Dari
+                case Country.Chad:
+                    profile.Languages = [Language.Arabic, Language.French];
                     break;
 
-                case Country.MYS:
-                    profile.Languages = [Language.ms];
+                case Country.Chile:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.MOZ:
-                    profile.Languages = [Language.pt];
+                case Country.China:
+                    profile.Languages = [Language.Chinese];
                     break;
 
-                case Country.GHA:
-                    profile.Languages = [Language.en];
+                case Country.HongKong:
+                    profile.Languages = [Language.Chinese, Language.English];
                     break;
 
-                case Country.YEM:
-                    profile.Languages = [Language.ar];
+                case Country.Macao:
+                    profile.Languages = [Language.Chinese, Language.Portuguese];
                     break;
 
-                case Country.NPL:
-                    //Nepali
+                case Country.ChristmasIsland:
+                    profile.Languages = [Language.English, Language.Chinese, Language.Malay];
                     break;
 
-                case Country.VEN:
-                    profile.Languages = [Language.es];
+                case Country.CocosKeelingIslands:
+                    profile.Languages = [Language.English, Language.Malay];
                     break;
 
-                case Country.CIV:
-                    profile.Languages = [Language.fr];
+                case Country.Colombia:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.MDG:
-                    //Malagasy (official, and national language), French (official).
+                case Country.Comoros:
+                    profile.Languages = [Language.Arabic, Language.French]; //Comorian
                     break;
 
-                case Country.AUS:
-                    profile.Languages = [Language.en];
+                case Country.RepublicOfTheCongo:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.PRK:
-                    profile.Languages = [Language.Korean];
+                case Country.CookIslands:
+                    profile.Languages = [Language.English, Language.Maori];
                     break;
 
-                case Country.CMR:
-                    profile.Languages = [Language.fr];
+                case Country.CostaRica:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.NER:
-                    profile.Languages = [Language.fr];
+                case Country.Croatia:
+                    profile.Languages = [Language.Croatian, Language.English];
                     break;
 
-                case Country.TWN:
-                    profile.Languages = [Language.zh];
+                case Country.Cuba:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.LKA:
-                    //Sinhala
+                case Country.Curacao:
                     break;
 
-                case Country.BFA:
-                    profile.Languages = [Language.fr];
+                case Country.Cyprus:
+                    profile.Languages = [Language.Greek, Language.Turkish, Language.English];
                     break;
 
-                case Country.MWI:
-                    profile.Languages = [Language.en];
+                case Country.Czechia:
+                    profile.Languages = [Language.Czech, Language.Slovak];
                     break;
 
-                case Country.MLI:
-                    profile.Languages = [Language.fr];
+                case Country.DemocraticRepublicOfTheCongo:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.CHL:
-                    profile.Languages = [Language.es];
+                case Country.Denmark:
+                    profile.Languages = [Language.Danish];
                     break;
 
-                case Country.KAZ:
-                    //Kazakh, Russian
+                case Country.Djibouti:
+                    profile.Languages = [Language.Arabic, Language.French];
                     break;
 
-                case Country.ROU:
-                    profile.Languages = [Language.ro];
+                case Country.Dominica:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.ZMB:
-                    profile.Languages = [Language.en];
+                case Country.DominicanRepublic:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.SYR:
-                    profile.Languages = [Language.ar];
+                case Country.EastTimor:
+                    profile.Languages = [Language.Portuguese]; //Tetum
                     break;
 
-                case Country.ECU:
-                    profile.Languages = [Language.es];
+                case Country.Ecuador:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.NLD:
-                    profile.Languages = [Language.nl];
+                case Country.Egypt:
+                    profile.Languages = [Language.Arabic, Language.English];
                     break;
 
-                case Country.SEN:
-                    profile.Languages = [Language.fr];
+                case Country.ElSalvador:
+                    profile.Languages = [Language.Spanish];
                     break;
 
-                case Country.GTM:
-                    profile.Languages = [Language.es];
+                case Country.EquatorialGuinea:
+                    profile.Languages = [Language.French, Language.Portuguese, Language.Spanish];
                     break;
 
-                case Country.TCD:
-                    profile.Languages = [Language.fr, Language.ar];
+                case Country.Eritrea:
+                    profile.Languages = [Language.Tigrinya, Language.Arabic, Language.Italian];
                     break;
 
-                case Country.SOM:
-                    profile.Languages = [Language.Somali];
+                case Country.Estonia:
+                    profile.Languages = [Language.Estonian, Language.Russian];
                     break;
 
-                case Country.ZWE:
-                    //Shona, English
+                case Country.Eswatini:
+                    profile.Languages = [Language.English]; //Swazi
                     break;
 
-                case Country.KHM:
-                    //Khmer
+                case Country.Ethiopia:
+                    profile.Languages = [Language.Afar, Language.Amharic, Language.Oromo, Language.Somali, Language.Tigrinya];
                     break;
 
-                case Country.SSD:
-                    profile.Languages = [Language.en];
+                case Country.FalklandIslands:
                     break;
 
-                case Country.RWA:
-                    //Kinyarwanda
+                case Country.FaroeIslands:
                     break;
 
-                case Country.GIN:
-                    profile.Languages = [Language.fr];
+                case Country.Fiji:
+                    profile.Languages = [Language.English, Language.Fijian, Language.Hindi];
                     break;
 
-                case Country.BDI:
-                    //Kirundi
+                case Country.Finland:
+                    profile.Languages = [Language.Finnish, Language.Swedish, Language.English];
                     break;
 
-                case Country.BEN:
-                    profile.Languages = [Language.fr];
+                case Country.France:
+                    profile.Languages = [Language.French, Language.Occitan];
                     break;
 
-                case Country.BOL:
-                    profile.Languages = [Language.es];
+                case Country.FrenchGuiana:
                     break;
 
-                case Country.TUN:
-                    profile.Languages = [Language.ar];
+                case Country.FrenchPolynesia:
                     break;
 
-                case Country.HTI:
-                    profile.Languages = [Language.fr];
+                case Country.FrenchSouthernAndAntarcticLands:
                     break;
 
-                case Country.BEL:
-                    profile.Languages = [Language.nl];
+                case Country.Gabon:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.JOR:
-                    profile.Languages = [Language.ar];
+                case Country.Gambia:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.CUB:
-                    profile.Languages = [Language.es];
+                case Country.Georgia:
+                    profile.Languages = [Language.Georgian, Language.Russian];
                     break;
 
-                case Country.GRC:
+                case Country.Germany:
+                    profile.Languages = [Language.German, Language.English];
+                    break;
+
+                case Country.Ghana:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Gibraltar:
+                    break;
+
+                case Country.Greece:
                     profile.Languages = [Language.Greek];
                     break;
 
-                case Country.DOM:
-                    profile.Languages = [Language.es];
+                case Country.Greenland:
                     break;
 
-                case Country.CZE:
-                    //Czech
+                case Country.Grenada:
+                    profile.Languages = [Language.English];
                     break;
 
-                case Country.SWE:
+                case Country.Guadeloupe:
+                    break;
+
+                case Country.Guam:
+                    break;
+
+                case Country.Guatemala:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Guernsey:
+                    break;
+
+                case Country.Guinea:
+                    profile.Languages = [Language.French];
+                    break;
+
+                case Country.GuineaBissau:
+                    profile.Languages = [Language.Portuguese];
+                    break;
+
+                case Country.Guyana:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Haiti:
+                    profile.Languages = [Language.French, Language.Haitian];
+                    break;
+
+                case Country.HeardIslandAndMcDonaldIslands:
+                    break;
+
+                case Country.Honduras:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Hungary:
+                    profile.Languages = [Language.Hungarian];
+                    break;
+
+                case Country.Iceland:
+                    profile.Languages = [Language.Icelandic];
+                    break;
+
+                case Country.India:
+                    profile.Languages = [Language.Hindi, Language.English];
+                    break;
+
+                case Country.Indonesia:
+                    profile.Languages = [Language.Indonesian, Language.Malay, Language.Javanese, Language.Sundanese]; //Madurese, Minangkabau
+                    break;
+
+                case Country.Iran:
+                    profile.Languages = [Language.Persian];
+                    break;
+
+                case Country.Iraq:
+                    profile.Languages = [Language.Arabic, Language.Kurdish];
+                    break;
+
+                case Country.Ireland:
+                    profile.Languages = [Language.Irish, Language.English];
+                    break;
+
+                case Country.IsleOfMan:
+                    break;
+
+                case Country.Israel:
+                    profile.Languages = [Language.Hebrew, Language.Russian, Language.English];
+                    break;
+
+                case Country.Italy:
+                    profile.Languages = [Language.Italian];
+                    break;
+
+                case Country.IvoryCoast:
+                    profile.Languages = [Language.French];
+                    break;
+
+                case Country.Jamaica:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Japan:
+                    profile.Languages = [Language.Japanese];
+                    break;
+
+                case Country.Jersey:
+                    break;
+
+                case Country.Jordan:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Kazakhstan:
+                    profile.Languages = [Language.Kazakh, Language.Russian];
+                    break;
+
+                case Country.Kenya:
+                    profile.Languages = [Language.English, Language.Swahili];
+                    break;
+
+                case Country.Kiribati:
+                    profile.Languages = [Language.English]; //Gilbertese
+                    break;
+
+                case Country.Kosovo:
+                    profile.Languages = [Language.Albanian, Language.Serbian];
+                    break;
+
+                case Country.Kuwait:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Kyrgyzstan:
+                    profile.Languages = [Language.Kirghiz, Language.Russian];
+                    break;
+
+                case Country.Laos:
+                    profile.Languages = [Language.Lao];
+                    break;
+
+                case Country.Latvia:
+                    profile.Languages = [Language.Latvian, Language.Russian];
+                    break;
+
+                case Country.Lebanon:
+                    profile.Languages = [Language.Arabic, Language.English, Language.French];
+                    break;
+
+                case Country.Lesotho:
+                    profile.Languages = [Language.SouthernSotho, Language.English];
+                    break;
+
+                case Country.Liberia:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Libya:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Liechtenstein:
+                    profile.Languages = [Language.German];
+                    break;
+
+                case Country.Lithuania:
+                    profile.Languages = [Language.Lithuanian, Language.Russian];
+                    break;
+
+                case Country.Luxembourg:
+                    profile.Languages = [Language.French, Language.German, Language.Luxembourgish, Language.English, Language.Portuguese];
+                    break;
+
+                case Country.Madagascar:
+                    profile.Languages = [Language.French, Language.Malagasy];
+                    break;
+
+                case Country.Malawi:
+                    profile.Languages = [Language.English, Language.Chichewa];
+                    break;
+
+                case Country.Malaysia:
+                    profile.Languages = [Language.Malay, Language.Chinese, Language.Tamil, Language.English]; //Cantonese
+                    break;
+
+                case Country.Maldives:
+                    profile.Languages = [Language.Divehi, Language.English];
+                    break;
+
+                case Country.Mali:
+                    profile.Languages = [Language.Bambara, Language.Fulah]; //Bobo, Bozo, Dogon, Hassaniya, Kassonke, Maninke, Minyanka, Senufo, Songhay languages, Soninke, Tamasheq
+                    break;
+
+                case Country.Malta:
+                    profile.Languages = [Language.Maltese, Language.English];
+                    break;
+
+                //Sovereign Military Order of Malta
+
+                case Country.MarshallIslands:
+                    profile.Languages = [Language.English, Language.Marshallese];
+                    break;
+
+                case Country.Martinique:
+                    break;
+
+                case Country.Mauritania:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Mauritius:
+                    profile.Languages = [Language.English]; //Mauritian Creole (Also known as 'Morisien')
+                    break;
+
+                case Country.Mayotte:
+                    break;
+
+                case Country.Mexico:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Moldova:
+                    profile.Languages = [Language.Romanian];
+                    break;
+
+                case Country.FederatedStatesOfMicronesia:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.PrincipalityOfMonaco:
+                    profile.Languages = [Language.French]; //Monégasque
+                    break;
+
+                case Country.Mongolia:
+                    profile.Languages = [Language.Mongolian];
+                    break;
+
+                case Country.Montenegro:
+                    //Montenegrin
+                    break;
+
+                case Country.Montserrat:
+                    break;
+
+                case Country.Morocco:
+                    profile.Languages = [Language.Arabic]; //Berber
+                    break;
+
+                case Country.Mozambique:
+                    profile.Languages = [Language.Portuguese];
+                    break;
+
+                case Country.Myanmar:
+                    profile.Languages = [Language.Burmese, Language.English];
+                    break;
+
+                case Country.Namibia:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Nauru:
+                    profile.Languages = [Language.English, Language.Nauru];
+                    break;
+
+                case Country.Nepal:
+                    profile.Languages = [Language.Nepali];
+                    break;
+
+                case Country.Netherlands:
+                    profile.Languages = [Language.Dutch, Language.English];
+                    break;
+
+                case Country.NewCaledonia:
+                    break;
+
+                case Country.NewZealand:
+                    profile.Languages = [Language.English, Language.Maori];
+                    break;
+
+                case Country.Nicaragua:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Niger:
+                    profile.Languages = [Language.French];
+                    break;
+
+                case Country.Nigeria:
+                    profile.Languages = [Language.English, Language.Hausa];
+                    break;
+
+                case Country.Niue:
+                    profile.Languages = [Language.English]; //Niuean
+                    break;
+
+                case Country.NorfolkIsland:
+                    profile.Languages = [Language.English]; //Norfuk
+                    break;
+
+                case Country.NorthKorea:
+                    profile.Languages = [Language.Korean];
+                    break;
+
+                case Country.NorthMacedonia:
+                    profile.Languages = [Language.Albanian]; //Macedonian
+                    break;
+
+                //Northern Cyprus
+
+                case Country.NorthernMarianaIslands:
+                    break;
+
+                case Country.Norway:
+                    profile.Languages = [Language.NorwegianBokmål, Language.NorwegianNynorsk, Language.English];
+                    break;
+
+                case Country.Oman:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Pakistan:
+                    profile.Languages = [Language.Urdu, Language.English];
+                    break;
+
+                case Country.Palau:
+                    profile.Languages = [Language.English]; //Palauan
+                    break;
+
+                case Country.Palestine:
+                    profile.Languages = [Language.Arabic, Language.English, Language.Hebrew];
+                    break;
+
+                case Country.Panama:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.PapuaNewGuinea:
+                    profile.Languages = [Language.English, Language.HiriMotu]; //Tok Pisin
+                    break;
+
+                case Country.Paraguay:
+                    profile.Languages = [Language.Spanish, Language.Guarani];
+                    break;
+
+                case Country.Peru:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Philippines:
+                    profile.Languages = [Language.English]; //Filipino
+                    break;
+
+                case Country.PitcairnIslands:
+                    break;
+
+                case Country.Poland:
+                    profile.Languages = [Language.Polish, Language.English];
+                    break;
+
+                case Country.Portugal:
+                    profile.Languages = [Language.Portuguese, Language.English];
+                    break;
+
+                case Country.PuertoRico:
+                    break;
+
+                case Country.Qatar:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.SouthKorea:
+                    profile.Languages = [Language.Korean];
+                    break;
+
+                case Country.Reunion:
+                    break;
+
+                case Country.Romania:
+                    profile.Languages = [Language.Romanian];
+                    break;
+
+                case Country.Russia:
+                    profile.Languages = [Language.Russian];
+                    break;
+
+                case Country.Rwanda:
+                    profile.Languages = [Language.English, Language.French, Language.Kinyarwanda, Language.Swahili];
+                    break;
+
+                //Sahrawi Arab Democratic Republic - Arabic, Spanish
+
+                case Country.SaintBarthelemy:
+                    break;
+
+                case Country.SaintHelenaAscensionAndTristanDaCunha:
+                    break;
+
+                case Country.SaintKittsAndNevis:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.SaintLucia:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.SaintMartin:
+                    break;
+
+                case Country.SaintPierreAndMiquelon:
+                    break;
+
+                case Country.SaintVincentAndTheGrenadines:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Samoa:
+                    profile.Languages = [Language.English, Language.Samoan];
+                    break;
+
+                case Country.SanMarino:
+                    profile.Languages = [Language.Italian];
+                    break;
+
+                case Country.SaoTomeAndPrincipe:
+                    profile.Languages = [Language.Portuguese];
+                    break;
+
+                case Country.Sark:
+                    break;
+
+                case Country.SaudiArabia:
+                    profile.Languages = [Language.Arabic, Language.Bengali]; //Filipino
+                    break;
+
+                case Country.Senegal:
+                    profile.Languages = [Language.French];
+                    break;
+
+                case Country.Serbia:
+                    profile.Languages = [Language.Serbian];
+                    break;
+
+                case Country.Seychelles:
+                    profile.Languages = [Language.English, Language.French]; //Seychellois Creole
+                    break;
+
+                case Country.SierraLeone:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Singapore:
+                    profile.Languages = [Language.English, Language.Malay, Language.Chinese, Language.Tamil];
+                    break;
+
+                case Country.SintMaarten:
+                    break;
+
+                case Country.Slovakia:
+                    profile.Languages = [Language.Slovak];
+                    break;
+
+                case Country.Slovenia:
+                    profile.Languages = [Language.Slovenian];
+                    break;
+
+                case Country.SolomonIslands:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Somalia:
+                    profile.Languages = [Language.Somali, Language.Arabic];
+                    break;
+
+                //Somaliland
+
+                case Country.SouthAfrica:
+                    profile.Languages = [Language.Afrikaans, Language.English]; //many others
+                    break;
+
+                case Country.SouthGeorgiaAndSouthSandwichIslands:
+                    break;
+
+                //South Ossetia
+
+                case Country.SouthSudan:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Spain:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.SriLanka:
+                    profile.Languages = [Language.Sinhala, Language.Tamil, Language.English];
+                    break;
+
+                case Country.Sudan:
+                    profile.Languages = [Language.Arabic, Language.English];
+                    break;
+
+                case Country.Suriname:
+                    profile.Languages = [Language.Dutch];
+                    break;
+
+                case Country.Svalbard:
+                    break;
+
+                case Country.Sweden:
                     profile.Languages = [Language.Swedish];
                     break;
 
-                case Country.PRT:
-                    profile.Languages = [Language.pt];
+                case Country.Switzerland:
+                    profile.Languages = [Language.French, Language.German, Language.Italian, Language.Romansh];
                     break;
 
-                case Country.AZE:
-                    //Azerbaijani
+                case Country.Syria:
+                    profile.Languages = [Language.Arabic];
                     break;
 
-                case Country.HUN:
-                    //Hungarian
+                case Country.Taiwan:
+                    profile.Languages = [Language.Chinese];
                     break;
 
-                case Country.HND:
-                    profile.Languages = [Language.es];
+                case Country.Tajikistan:
+                    profile.Languages = [Language.Tajik, Language.Russian];
                     break;
 
-                case Country.ISR:
-                    //Hebrew
+                case Country.Thailand:
+                    profile.Languages = [Language.Thai, Language.Burmese];
                     break;
 
-                case Country.TJK:
-                    profile.Languages = [Language.ru];
+                case Country.Togo:
+                    profile.Languages = [Language.French];
                     break;
 
-                case Country.BLR:
-                    profile.Languages = [Language.ru];
+                case Country.Tokelau:
+                    profile.Languages = [Language.English]; //Tokelauan
                     break;
 
-                case Country.ARE:
-                    profile.Languages = [Language.ar];
+                case Country.Tonga:
+                    profile.Languages = [Language.English]; //Tongan
                     break;
 
-                case Country.PNG:
-                    profile.Languages = [Language.en];
+                //Transnistria
+
+                case Country.TrinidadAndTobago:
+                    profile.Languages = [Language.English]; //Trinidadian Creole
                     break;
 
-                case Country.AUT:
-                    profile.Languages = [Language.de];
+                case Country.Tunisia:
+                    profile.Languages = [Language.Arabic];
                     break;
 
-                case Country.CHE:
-                    profile.Languages = [Language.de];
+                case Country.Turkey:
+                    profile.Languages = [Language.Turkish];
                     break;
 
-                case Country.SLE:
-                    profile.Languages = [Language.en];
+                case Country.Turkmenistan:
+                    profile.Languages = [Language.Turkmen, Language.Russian];
                     break;
 
-                case Country.TGO:
-                    profile.Languages = [Language.fr];
+                case Country.TurksAndCaicosIslands:
                     break;
 
-                case Country.HKG:
-                    //Cantonese
+                case Country.Tuvalu:
+                    profile.Languages = [Language.English]; //Tuvaluan
                     break;
 
-                case Country.PRY:
-                    profile.Languages = [Language.es];
+                case Country.Uganda:
+                    profile.Languages = [Language.English, Language.Swahili];
+                    break;
+
+                case Country.Ukraine:
+                    profile.Languages = [Language.Ukrainian];
+                    break;
+
+                case Country.UnitedArabEmirates:
+                    profile.Languages = [Language.Arabic, Language.English];
+                    break;
+
+                case Country.UnitedKingdom:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Tanzania:
+                    break;
+
+                case Country.UnitedStatesMinorOutlyingIslands:
+                    break;
+
+                case Country.UnitedStatesOfAmerica:
+                    profile.Languages = [Language.English, Language.Spanish];
+                    break;
+
+                case Country.VirginIslands:
+                    break;
+
+                case Country.Uruguay:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Uzbekistan:
+                    profile.Languages = [Language.Uzbek, Language.Russian];
+                    break;
+
+                case Country.Vanuatu:
+                    profile.Languages = [Language.English, Language.French, Language.Bislama];
+                    break;
+
+                case Country.VaticanCity:
+                    profile.Languages = [Language.Italian, Language.Latin]; //Swiss German
+                    break;
+
+                case Country.Venezuela:
+                    profile.Languages = [Language.Spanish];
+                    break;
+
+                case Country.Vietnam:
+                    profile.Languages = [Language.Vietnamese];
+                    break;
+
+                case Country.WallisAndFutuna:
+                    break;
+
+                case Country.WesternSahara:
+                    break;
+
+                case Country.Yemen:
+                    profile.Languages = [Language.Arabic];
+                    break;
+
+                case Country.Zambia:
+                    profile.Languages = [Language.English];
+                    break;
+
+                case Country.Zimbabwe:
+                    profile.Languages = [Language.English, Language.NorthNdebele, Language.Shona, Language.SouthernSotho, Language.Tonga, Language.Tswana, Language.Venda, Language.Xhosa]; //many others
                     break;
 
                 default:

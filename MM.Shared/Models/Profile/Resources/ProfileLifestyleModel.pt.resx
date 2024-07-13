@@ -165,9 +165,6 @@
   <data name="SexPersonalityPreferences_Description" xml:space="preserve">
     <value>Diferentemente das outras personalidades, a compatibilidade desta é uma preferência pessoal.</value>
   </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Personalidade Sexual</value>
-  </data>
   <data name="SexPersonality_Description" xml:space="preserve">
     <value>Caso tenha dúvidas, poderá fazer um teste no site original (somente em inglês)</value>
   </data>
@@ -185,5 +182,8 @@
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Quer Filho(s)</value>
+  </data>
+  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
+    <value>Personalidade sexual (preferências)</value>
   </data>
 </root>

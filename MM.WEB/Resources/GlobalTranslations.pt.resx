@@ -121,7 +121,7 @@
     <value>Versão Beta!</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>Esta informação não será compartilhada no seu perfil (apenas na sua idade)</value>
+    <value>Apenas sua idade ficará publica. (Utilizamos o calendario gregoriano)</value>
   </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
@@ -242,5 +242,8 @@
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Sua localização atual:</value>
+  </data>
+  <data name="ActiveConnection" xml:space="preserve">
+    <value>Conexão ativa</value>
   </data>
 </root>

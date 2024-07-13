@@ -1,12 +1,10 @@
-using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.API.Repository.Core;
 using MM.Shared.Models.Support;
 
 namespace MM.API.Functions
 {
-    public class SupportFunction(IRepository repo)
+    public class SupportFunction(CosmosRepository repo)
     {
         //[OpenApiOperation("UpdatesGet", "Azure (Cosmos DB)")]
         //[OpenApiResponseWithBody(HttpStatusCode.OK, "application/json", typeof(AnnouncementModel))]
@@ -32,7 +30,7 @@ namespace MM.API.Functions
             try
             {
                 var item = await req.GetPublicBody<UpdateModel>(cancellationToken);
-                var dbItem = await repo.Get<UpdateModel>(DocumentType.Update + ":" + item.Key, new PartitionKey(item.Key), cancellationToken);
+                var dbItem = await repo.Get<UpdateModel>(DocumentType.Update, item.Id, cancellationToken);
 
                 if (dbItem != null)
                 {
@@ -80,7 +78,7 @@ namespace MM.API.Functions
             {
                 var userId = req.GetUserId();
 
-                return await repo.Query<TicketModel>(m => m.TicketStatus != TicketStatus.New || m.IdUserOwner == userId, null, DocumentType.Ticket, cancellationToken);
+                return await repo.Query<TicketModel>(m => m.TicketStatus != TicketStatus.New || m.IdUserOwner == userId, DocumentType.Ticket, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -104,25 +102,6 @@ namespace MM.API.Functions
             }
         }
 
-        //[OpenApiOperation("TicketGetMyVotes", "Azure (Cosmos DB)")]
-        //[OpenApiResponseWithBody(HttpStatusCode.OK, "application/json", typeof(List<TicketVoteModel>))]
-        [Function("TicketGetMyVotes")]
-        public async Task<List<TicketVoteModel>> TicketGetMyVotes(
-            [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "Ticket/GetMyVotes")] HttpRequestData req, CancellationToken cancellationToken)
-        {
-            try
-            {
-                var userId = req.GetUserId();
-
-                return await repo.Query<TicketVoteModel>(x => x.IdVotedUser == userId, null, DocumentType.TicketVote, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
-            }
-        }
-
         //[OpenApiOperation("TicketInsert", "Azure (Cosmos DB)")]
         //[OpenApiResponseWithBody(HttpStatusCode.OK, "application/json", typeof(TicketModel))]
         [Function("TicketInsert")]
@@ -132,32 +111,6 @@ namespace MM.API.Functions
             try
             {
                 var item = await req.GetPublicBody<TicketModel>(cancellationToken);
-
-                return await repo.Upsert(item, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
-            }
-        }
-
-        //[OpenApiOperation("TicketVote", "Azure (Cosmos DB)")]
-        //[OpenApiResponseWithBody(HttpStatusCode.OK, "application/json", typeof(TicketVoteModel))]
-        [Function("TicketVote")]
-        public async Task<TicketVoteModel?> TicketVote(
-            [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "Ticket/Vote")] HttpRequestData req, CancellationToken cancellationToken)
-        {
-            try
-            {
-                var item = await req.GetPublicBody<TicketVoteModel>(cancellationToken);
-
-                if (item.VoteType == VoteType.PlusOne)
-                    await repo.PatchItem<TicketModel>(nameof(DocumentType.Ticket) + ":" + item.Key, new PartitionKey(item.Key), [PatchOperation.Increment("/totalVotes", 1)], cancellationToken);
-                else if (item.VoteType == VoteType.MinusOne)
-                    await repo.PatchItem<TicketModel>(nameof(DocumentType.Ticket) + ":" + item.Key, new PartitionKey(item.Key), [PatchOperation.Increment("/totalVotes", -1)], cancellationToken);
-
-                item.IdVotedUser = req.GetUserId();
 
                 return await repo.Upsert(item, cancellationToken);
             }

@@ -1,0 +1,23 @@
+﻿@using MM.WEB.Modules.Profile
+@inherits ComponentCore<SettingsPopup>
+
+<ModalHeader>
+    <ModalTitle Size="HeadingSize.Is5">@GlobalTranslations.Settings</ModalTitle>
+    <CloseButton />
+</ModalHeader>
+<ModalBody MaxHeight="70">
+    <FieldSelect For="@(() => AppStateStatic.Language)" TValue="Language" TEnum="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged"
+                 CssIcon="@FontAwesomeIcons.Language" Order="(o)=>o.Name"></FieldSelect>
+</ModalBody>
+<ModalFooter>
+    <Button Color="Color.Secondary" Clicked="@(()=>{ModalService.Hide();})" Size="Size.Small">
+        @WEB.Resources.Button.Close
+    </Button>
+</ModalFooter>
+
+@code {
+    protected void LanguageValueChanged(Language value)
+    {
+        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetName(false)), forceLoad: true);
+    }
+}

@@ -27,11 +27,11 @@ var host = new HostBuilder()
     .ConfigureLogging(ConfigureLogging)
     .Build();
 
-host.Run();
+await host.RunAsync();
 
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
-    services.AddSingleton<IRepository, CosmosRepository>();
+    services.AddSingleton<CosmosRepository>();
     services.AddSingleton<CosmosCacheRepository>();
     services.AddSingleton<CosmosEmailRepository>();
     services.AddApplicationInsightsTelemetryWorkerService();

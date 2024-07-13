@@ -24,13 +24,13 @@ namespace MM.Shared.Models.Profile
         public string? Location { get; set; }
 
         [Custom(Name = "Languages_Name", Description = "Languages_Description", FieldInfo = "Dizem que uma boa comunicação é a chave para qualquer relacionamento duradouro e bem-sucedido. É absolutamente essencial que duas pessoas compartilhem seus sentimentos, expressem seus pensamentos e, talvez o mais importante, ouçam atentamente uma à outra. Infelizmente, no mundo acelerado e agitado de hoje, muitos casais não encontram tempo para sentar e ter uma conversa significativa um com o outro. Telefonemas e mensagens de texto substituíram os bate-papos pessoais entre duas pessoas. A falta de comunicação adequada é uma das principais razões pelas quais muitos relacionamentos não duram tanto quanto deveriam. Tendo tudo isso em mente, é realmente uma boa ideia você namorar uma pessoa que não fala a mesma língua que você?", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public IReadOnlyList<Language> Languages { get; set; } = [];
+        public HashSet<Language> Languages { get; set; } = [];
 
         [Custom(Name = "CurrentSituation_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public CurrentSituation? CurrentSituation { get; set; }
 
         [Custom(Name = "Intentions_Name", Description = "Intentions_Description", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public IReadOnlyList<Intentions> Intentions { get; set; } = [];
+        public HashSet<Intentions> Intentions { get; set; } = [];
 
         [Custom(Name = "BiologicalSex_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public BiologicalSex? BiologicalSex { get; set; }
@@ -78,7 +78,7 @@ namespace MM.Shared.Models.Profile
             FieldInfo = "Todos nós desejamos e merecemos ter relacionamentos significativos onde nos sentimos amados e apreciados. Essa necessidade também é sentida por pessoas com deficiência. Algumas pessoas podem se surpreender com isso porque assumem que pessoas com deficiência não namoram, casam ou desejam relacionamentos íntimos. Mas, isso não é verdade. De fato, não há diferença entre a necessidade e o desejo de pessoas com deficiência por relacionamentos saudáveis e felizes e os de pessoas sem deficiência.",
             Tips = "Compartilhe seus sentimentos e preocupações|Qualquer deficiência pode ter um impacto emocional significativo em uma pessoa. Mas isso pode ser particularmente o caso se o parceiro for fisicamente apto e não puder se relacionar totalmente com o que está passando.|Esteja ciente dos efeitos emocionais em seu parceiro|As responsabilidades adicionais que vêm com viver ou namorar uma pessoa com deficiência podem sobrecarregar seu parceiro às vezes. Isso também é completamente normal.|Fale sobre suas finanças|Além dos efeitos emocionais de uma deficiência, é provável que tenha um impacto em suas finanças. Contas médicas, adaptações em sua casa e equipamentos para deficientes não são baratos.|Seja íntimo de qualquer maneira que puder|Uma deficiência ou condição de saúde pode alterar a forma como você faz sexo ou é íntimo. Também pode significar que você tem preocupações com a imagem corporal ou falta de confiança. Mas nada disso significa que você não pode desfrutar de uma vida sexual, seja lá o que for para você.|Encontre coisas para fazer juntos|Nenhum relacionamento pode sobreviver se você não puder se adaptar a uma situação e um ao outro. Sejamos fisicamente aptos ou deficientes, nossas circunstâncias de vida estão mudando constantemente.|Não desista|Mesmo quando você estiver se sentindo deprimido, deprimido ou com dor, ou quase pronto para desistir de tudo, tenha certeza de que dias melhores virão.",
             ResourceType = typeof(Resources.ProfileBioModel))]
-        public IReadOnlyList<Disability> Disabilities { get; set; } = [];
+        public HashSet<Disability> Disabilities { get; set; } = [];
 
         #endregion BIO
 
@@ -168,33 +168,36 @@ namespace MM.Shared.Models.Profile
             ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public SexPersonality? SexPersonality { get; set; }
 
+        [Custom(Name = "SexPersonalityPreferences_Name", Description = "SexPersonalityPreferences_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        public HashSet<SexPersonality> SexPersonalityPreference { get; set; } = [];
+
         #endregion PERSONALITY
 
         #region INTEREST
 
         [Custom(Name = "Food", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Food> Food { get; set; } = [];
+        public HashSet<Food> Food { get; set; } = [];
 
         [Custom(Name = "Vacation", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Vacation> Vacation { get; set; } = [];
+        public HashSet<Vacation> Vacation { get; set; } = [];
 
         [Custom(Name = "Sports", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<Sports> Sports { get; set; } = [];
+        public HashSet<Sports> Sports { get; set; } = [];
 
         [Custom(Name = "LeisureActivities", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<LeisureActivities> LeisureActivities { get; set; } = [];
+        public HashSet<LeisureActivities> LeisureActivities { get; set; } = [];
 
         [Custom(Name = "MusicGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<MusicGenre> MusicGenre { get; set; } = [];
+        public HashSet<MusicGenre> MusicGenre { get; set; } = [];
 
         [Custom(Name = "MovieGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<MovieGenre> MovieGenre { get; set; } = [];
+        public HashSet<MovieGenre> MovieGenre { get; set; } = [];
 
         [Custom(Name = "TVGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<TVGenre> TVGenre { get; set; } = [];
+        public HashSet<TVGenre> TVGenre { get; set; } = [];
 
         [Custom(Name = "ReadingGenre", ResourceType = typeof(Resources.ProfileInterestModel))]
-        public IReadOnlyList<ReadingGenre> ReadingGenre { get; set; } = [];
+        public HashSet<ReadingGenre> ReadingGenre { get; set; } = [];
 
         #endregion INTEREST
 

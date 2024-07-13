@@ -38,52 +38,52 @@ namespace MM.WEB.Modules.Profile
 
         private async Task SetLocation(ProfileModel profile)
         {
-            if (profile != null /*&& !profile.Longitude.HasValue*/)
+            try
             {
-                var window = await JsRuntime.Window(); //todo: remove this component
-                var navigator = await window.Navigator();
-                var position = await navigator.Geolocation.GetCurrentPosition();
-
-                if (position.Error != null)
+                if (profile != null /*&& !profile.Longitude.HasValue*/)
                 {
-                    await Toast.Warning(position.Error.Message);
-                }
-                else if (position.Location != null)
-                {
-                    GPS ??= new();
+                    var window = await JsRuntime.Window(); //todo: remove this component
+                    var navigator = await window.Navigator();
+                    var position = await navigator.Geolocation.GetCurrentPosition();
 
-                    GPS.Latitude = position.Location.Coords.Latitude;
-                    GPS.Longitude = position.Location.Coords.Longitude;
-                    GPS.Accuracy = position.Location.Coords.Accuracy;
-
-                    //TODO: chamar código da api
-                    var here = await MapApi.GetLocation(GPS.Latitude, GPS.Longitude);
-                    if (here != null && here.items.Any())
+                    if (position.Error != null)
                     {
-                        var address = here.items[0].address;
-                        profile.Location = address?.GetLocation();
+                        await Toast.Warning(position.Error.Message);
+                    }
+                    else if (position.Location != null)
+                    {
+                        GPS ??= new();
 
-                        var country = (Country)Enum.Parse(typeof(Country), address.countryCode);
+                        GPS.Latitude = position.Location.Coords.Latitude;
+                        GPS.Longitude = position.Location.Coords.Longitude;
+                        GPS.Accuracy = position.Location.Coords.Accuracy;
 
-                        profile.AddLanguages(country);
+                        //TODO: chamar código da api
+                        var here = await MapApi.GetLocationHere(GPS.Latitude, GPS.Longitude);
+                        if (here != null && here.items.Count != 0)
+                        {
+                            var address = here.items[0].address;
+                            profile.Location = address?.GetLocation();
+
+                            var obj = EnumHelper.GetList<Country>().Single(s => s.Tips == (address?.countryCode ?? "USA"));
+                            var country = (Country)obj.Value;
+
+                            profile.AddLanguages(country);
+                        }
+                        else
+                        {
+                            profile.Location = "Unknown Location";
+                        }
                     }
                     else
                     {
-                        profile.Location = "Unknown Location";
+                        await Toast.Warning(GlobalTranslations.UnableDetectGps);
                     }
-
-                    //profile.Longitude = GPS.Longitude;
-                    //profile.Latitude = GPS.Latitude;
-
-                    //if (GPS.Accuracy > 500)
-                    //{
-                    //    Toast.ShowWarning("", $"A posição do GPS foi recuperada, mas a precisão é de apenas: {Math.Round(GPS.Accuracy / 1000, 1)} km. Tente novamente mais tarde ou use um dispositivo mais preciso.");
-                    //}
                 }
-                else
-                {
-                    await Toast.Warning(GlobalTranslations.UnableDetectGps);
-                }
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Toast, Logger);
             }
         }
 
@@ -99,7 +99,7 @@ namespace MM.WEB.Modules.Profile
 
                 profile = await ProfileApi.Get(Core); //TODO update id field
 
-                if (profile.Modality == Modality.Matchmaker)
+                if (profile?.Modality == Modality.Matchmaker)
                 {
                     foreach (var item in profile.Partners)
                     {
