@@ -246,4 +246,16 @@
   <data name="ActiveConnection" xml:space="preserve">
     <value>Conexión activa</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="WriteReviewMessage" xml:space="preserve">
+    <value>Ayúdanos a llegar a un público más amplio.</value>
+  </data>
+  <data name="WriteReviewTitle" xml:space="preserve">
+    <value>Escribe una reseña</value>
+  </data>
 </root>

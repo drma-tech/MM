@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
 using MM.Shared.Models.Profile;
-using MM.WEB.Api;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Shared;
 
@@ -12,7 +11,6 @@ namespace MM.WEB.Modules.Profile
     public partial class ProfileData : PageCore<ProfileData>
     {
         [Inject] protected ProfileApi ProfileApi { get; set; } = default!;
-        [Inject] protected InviteApi InviteApi { get; set; } = default!;
         [Inject] protected MapApi MapApi { get; set; } = default!;
         [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
@@ -23,9 +21,9 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadDataRender()
         {
-            //LoadingProfile?.Start();
-            profile = await ProfileApi.Get(Core);
-            //LoadingProfile?.Finish(profile == null);
+            Core?.LoadingStarted?.Invoke();
+
+            profile = await ProfileApi.Get(null);
 
             profile ??= new()
             {
@@ -34,6 +32,8 @@ namespace MM.WEB.Modules.Profile
                 BirthDate = DateTime.UtcNow.AddYears(-18).AddDays(1).Date,
                 Diet = Diet.Omnivore,
             };
+
+            Core?.LoadingFinished?.Invoke(profile);
         }
 
         private async Task SetLocation(ProfileModel profile)
@@ -63,7 +63,9 @@ namespace MM.WEB.Modules.Profile
                         if (here != null && here.items.Count != 0)
                         {
                             var address = here.items[0].address;
-                            profile.Location = address?.GetLocation();
+                            profile.Country = address?.GetCountry();
+                            profile.State = address?.GetState();
+                            profile.City = address?.GetCity();
 
                             var obj = EnumHelper.GetList<Country>().Single(s => s.Tips == (address?.countryCode ?? "USA"));
                             var country = (Country)obj.Value;
@@ -72,7 +74,7 @@ namespace MM.WEB.Modules.Profile
                         }
                         else
                         {
-                            profile.Location = "Unknown Location";
+                            //profile.Location = "Unknown Location";
                         }
                     }
                     else
@@ -101,12 +103,12 @@ namespace MM.WEB.Modules.Profile
 
                 if (profile?.Modality == Modality.Matchmaker)
                 {
-                    foreach (var item in profile.Partners)
-                    {
-                        //TODO: remove the conections on others users
-                    }
+                    //foreach (var item in profile.Partners)
+                    //{
+                    //    //TODO: remove the conections on others users
+                    //}
 
-                    profile.Partners = [];
+                    //profile.Partners = [];
                 }
                 else
                 {

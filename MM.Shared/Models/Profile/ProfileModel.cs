@@ -3,12 +3,8 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile
 {
-    public class ProfileModel : PrivateMainDocument
+    public class ProfileModel : CosmosDocument
     {
-        public ProfileModel() : base(DocumentType.Profile)
-        {
-        }
-
         #region BASIC
 
         [Custom(Name = "Modality_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
@@ -20,8 +16,13 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Description_Name", Prompt = "Description_Prompt", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Description { get; set; }
 
+        [JsonIgnore]
         [Custom(Name = "Location_Name", Prompt = "Location_Prompt", Description = "Location_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public string? Location { get; set; }
+        public string? Location => $"{Country} - {State} - {City}";
+
+        public string? Country { get; set; }
+        public string? State { get; set; }
+        public string? City { get; set; }
 
         [Custom(Name = "Languages_Name", Description = "Languages_Description", FieldInfo = "Dizem que uma boa comunicação é a chave para qualquer relacionamento duradouro e bem-sucedido. É absolutamente essencial que duas pessoas compartilhem seus sentimentos, expressem seus pensamentos e, talvez o mais importante, ouçam atentamente uma à outra. Infelizmente, no mundo acelerado e agitado de hoje, muitos casais não encontram tempo para sentar e ter uma conversa significativa um com o outro. Telefonemas e mensagens de texto substituíram os bate-papos pessoais entre duas pessoas. A falta de comunicação adequada é uma das principais razões pelas quais muitos relacionamentos não duram tanto quanto deveriam. Tendo tudo isso em mente, é realmente uma boa ideia você namorar uma pessoa que não fala a mesma língua que você?", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<Language> Languages { get; set; } = [];
@@ -218,7 +219,9 @@ namespace MM.Shared.Models.Profile
             Modality = profile.Modality;
             NickName = profile.NickName;
             Description = profile.Description;
-            Location = profile.Location;
+            Country = profile.Country;
+            State = profile.State;
+            City = profile.City;
             Languages = profile.Languages;
             CurrentSituation = profile.CurrentSituation;
             Intentions = profile.Intentions;

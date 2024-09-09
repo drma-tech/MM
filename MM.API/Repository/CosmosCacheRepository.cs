@@ -26,12 +26,16 @@ namespace MM.API.Repository
             {
                 var response = await Container.ReadItemAsync<CacheDocument<TData>?>(id, new PartitionKey(id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-                if (response.RequestCharge > 1.5)
+                if (response.RequestCharge > 1.7)
                 {
                     _logger.LogWarning("Get - Id {0}, RequestCharge {1}", id, response.RequestCharge);
                 }
 
                 return response.Resource;
+            }
+            catch (CosmosOperationCanceledException)
+            {
+                return null;
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -39,16 +43,23 @@ namespace MM.API.Repository
             }
         }
 
-        public async Task<CacheDocument<TData>?> CreateItemAsync<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
+        public async Task<CacheDocument<TData>?> UpsertItemAsync<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
         {
-            var response = await Container.CreateItemAsync(cache, new PartitionKey(cache.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
-
-            if (response.RequestCharge > 12)
+            try
             {
-                _logger.LogWarning("Add - Id {0}, RequestCharge {1}", cache.Id, response.RequestCharge);
-            }
+                var response = await Container.UpsertItemAsync(cache, new PartitionKey(cache.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-            return response.Resource;
+                if (response.RequestCharge > 12)
+                {
+                    _logger.LogWarning("Add - Id {0}, RequestCharge {1}", cache.Id, response.RequestCharge);
+                }
+
+                return response.Resource;
+            }
+            catch (CosmosOperationCanceledException)
+            {
+                return null;
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
 
 @inject ProfileApi ProfileApi
 
-<RenderControl Core="Core" Model="profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null || obj.Preference == null)" PrivateContent="true">
+<RenderControl Core="Core" Model="profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
     <EditForm Model="@preference" OnValidSubmit="HandleValidSubmit">
         <FluentValidationValidator />
         <Div Margin="Margin.Is2.OnY">
@@ -168,7 +168,7 @@
 
     protected override async Task LoadDataRender()
     {
-        // Loading?.Start();
+        Core?.LoadingStarted?.Invoke();
 
         profile = await ProfileApi.Get(Core);
 
@@ -187,7 +187,7 @@
             await PopulateFields();
         }
 
-        // Loading?.Finish(preference == null);
+        Core?.LoadingFinished?.Invoke(profile);
     }
 
     private async Task HandleValidSubmit()

@@ -7,7 +7,7 @@
 </ModalHeader>
 <ModalBody MaxHeight="70">
     <FieldSelect For="@(() => AppStateStatic.Language)" TValue="Language" TEnum="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged"
-                 CssIcon="@FontAwesomeIcons.Language" Order="(o)=>o.Name"></FieldSelect>
+                 CssIcon="@FontAwesomeIcons.Language" Order="(o)=>o.Name" IsForm="false" ShowHelper="false"></FieldSelect>
 </ModalBody>
 <ModalFooter>
     <Button Color="Color.Secondary" Clicked="@(()=>{ModalService.Hide();})" Size="Size.Small">

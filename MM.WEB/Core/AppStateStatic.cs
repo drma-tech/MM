@@ -8,6 +8,7 @@ namespace MM.WEB.Core
     {
         public static List<LogContainer> Logs { get; private set; } = [];
 
+        [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
         public static Language Language { get; private set; }
 
         public static Bar? Sidebar { get; set; }

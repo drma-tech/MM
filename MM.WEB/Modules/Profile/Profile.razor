@@ -8,9 +8,14 @@
 
 @inject ProfileApi ProfileApi
 
+@if (IsAuthenticated)
+{
+    <ProfileHeader></ProfileHeader>
+}
+
 <Row HorizontalGutter="8" VerticalGutter="0">
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen.Is3.OnFullHD">
-        <Alert Visible="true" Color="Color.Dark" Shadow="Shadow.Small"><AlertMessage>Seu Perfil (@profile?.NickName)</AlertMessage></Alert>
+        <Alert Visible="true" Color="Color.Dark" Shadow="Shadow.Small"><AlertMessage>@(profile?.NickName ?? User?.Identity?.Name)</AlertMessage></Alert>
         <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" ShowControls="imageDataUriGallery.Count() > 1"
                   ShowIndicators="imageDataUriGallery.Count() > 1" Margin="Margin.Is2.FromBottom">
             @foreach (var item in imageDataUriGallery)
@@ -167,29 +172,29 @@
                                 <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @view?.GetLocation(ProfileModel.LocationType.City)
                                 </Badge>*@
                                         @* @if (view.ActivityStatus == ActivityStatus.Today)
-                                        {
-                                            <Badge Color="Color.Success">
-                                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado hoje
-                                            </Badge>
-                                        }
-                                        else if (view.ActivityStatus == ActivityStatus.Week)
-                                        {
-                                            <Badge Color="Color.Warning">
-                                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado esta semana
-                                            </Badge>
-                                        }
-                                        else if (view.ActivityStatus == ActivityStatus.Month)
-                                        {
-                                            <Badge Color="Color.Danger">
-                                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado este mês
-                                            </Badge>
-                                        }
-                                        else
-                                        {
-                                            <Badge Color="Color.Dark">
-                                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> usuário desativado
-                                            </Badge>
-                                        } *@
+                                {
+                                <Badge Color="Color.Success">
+                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado hoje
+                                </Badge>
+                                }
+                                else if (view.ActivityStatus == ActivityStatus.Week)
+                                {
+                                <Badge Color="Color.Warning">
+                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado esta semana
+                                </Badge>
+                                }
+                                else if (view.ActivityStatus == ActivityStatus.Month)
+                                {
+                                <Badge Color="Color.Danger">
+                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado este mês
+                                </Badge>
+                                }
+                                else
+                                {
+                                <Badge Color="Color.Dark">
+                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> usuário desativado
+                                </Badge>
+                                } *@
                                         @* @if (view.Reports.Any())
                                 {
                                 <Paragraph Margin="Margin.Is0.FromTop.Is0.FromBottom">

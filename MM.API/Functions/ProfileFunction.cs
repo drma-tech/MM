@@ -5,9 +5,9 @@ using MM.Shared.Models.Profile;
 
 namespace VerusDate.Api.Function
 {
-    public class ProfileFunction(CosmosRepository repo)
+    public class ProfileFunction(CosmosProfileRepository repo)
     {
-        private readonly CosmosRepository _repo = repo;
+        private readonly CosmosProfileRepository _repo = repo;
 
         [Function("ProfileGet")]
         public async Task<ProfileModel?> Get(
@@ -17,7 +17,7 @@ namespace VerusDate.Api.Function
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<ProfileModel>(DocumentType.Profile, userId, cancellationToken);
+                return await _repo.Get<ProfileModel>(userId, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace VerusDate.Api.Function
                     PatchOperation.Add("/dtUpdate", DateTime.UtcNow)
                 };
 
-                return await _repo.PatchItem<ProfileModel>(DocumentType.Profile, userId, operations, cancellationToken);
+                return await _repo.PatchItem<ProfileModel>(userId, operations, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace VerusDate.Api.Function
                 var email = req.GetQueryParameters()["email"];
                 var userId = req.GetUserId();
 
-                var obj = await _repo.Get<ProfileModel>(DocumentType.Profile, userId, cancellationToken);
+                var obj = await _repo.Get<ProfileModel>(userId, cancellationToken);
 
                 obj?.UpdatePartner(id, email);
 

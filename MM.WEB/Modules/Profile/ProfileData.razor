@@ -46,16 +46,13 @@
                         <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
                     }
                 </Tab>
-                @if (profile?.Modality == Modality.RelationshipAnalysis)
-                {
-                    <Tab Name="MyRelationship">
-                        @WEB.Resources.GlobalTranslations.MyRelationship
-                        @if (!IsValid(Tabs.MyRelationship))
-                        {
-                            <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                        }
-                    </Tab>
-                }
+                <Tab Name="Goals">
+                    Goals
+                    @if (!IsValid(Tabs.Goals))
+                    {
+                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                    }
+                </Tab>
             </Items>
             <Content>
                 <TabPanel Name="Basic" Padding="Padding.Is3.FromTop">
@@ -66,7 +63,7 @@
                             <FieldText For="@(() => profile.NickName)" @bind-Value="@profile.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
                             <FieldText For="@(() => profile.Description)" @bind-Value="@profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
                                        Required="(profile.Modality == Modality.Matchmaker)" Visible="(profile.Modality == Modality.Matchmaker)" Rows="7" LabelSize="LabelSize.Short"></FieldText>
-                            <FieldText For="@(() => profile.Location)" @bind-Value="@profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
+                            <FieldText For="@(() => profile.Location)" Value="@profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
                                        ButtomClicked="async ()=> { await SetLocation(profile); }" ButtomCssIcon="@FontAwesomeIcons.MapMarkedAlt" LabelSize="LabelSize.Short" ButtomTitle="Recuperar posição GPS"></FieldText>
                             <FieldSelect For="@(() => profile.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@profile.Languages"
                                          CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" LabelSize="LabelSize.Short"></FieldSelect>
@@ -155,8 +152,6 @@
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                             <FieldSelect For="@(() => profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@profile!.HaveChildren"
                                          CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => profile.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@profile.WantChildren"
-                                         CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@profile.EducationLevel"
                                          CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="false" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@profile.CareerCluster"
@@ -218,8 +213,9 @@
                         </Column>
                     </Row>
                 </TabPanel>
-                <TabPanel Name="MyRelationship" Padding="Padding.Is3.FromTop">
-                    <MyRelationships profile="profile" IsAuthenticated="IsAuthenticated"></MyRelationships>
+                <TabPanel Name="Goals" Padding="Padding.Is3.FromTop">
+                    <FieldSelect For="@(() => profile.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@profile.WantChildren"
+                                 CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Required="true"></FieldSelect>
                 </TabPanel>
             </Content>
         </Tabs>
@@ -240,7 +236,7 @@
     <BasicModal @ref="@privacy" Title="@WEB.Resources.GlobalTranslations.Privacy">
         <ul style="margin-left: -10px;">
             <li>@WEB.Resources.GlobalTranslations.TermTopic1</li>
-            <li>@WEB.Resources.GlobalTranslations.TermTopic2 '<a href="@($"/Terms/{AppStateStatic.GetLanguageCode()}")" target="_blank">@WEB.Resources.GlobalTranslations.TermsOfUse</a>';</li>
+            <li>@WEB.Resources.GlobalTranslations.TermTopic2 '<a href="@($"/support/terms/{AppStateStatic.GetLanguageCode()}")" target="_blank">@WEB.Resources.GlobalTranslations.TermsOfUse</a>';</li>
         </ul>
     </BasicModal>
 
@@ -277,7 +273,7 @@
         Lifestyle,
         Personality,
         Interests,
-        MyRelationship
+        Goals
     }
 
     private bool IsValid(Tabs tab)
@@ -300,9 +296,6 @@
                 break;
             case Tabs.Interests:
                 valid = _validator?.Validate(options => options.IncludeRuleSets("INTEREST")) ?? false;
-                break;
-            case Tabs.MyRelationship:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("MYRELATIONSHIP")) ?? false;
                 break;
             default:
                 break;

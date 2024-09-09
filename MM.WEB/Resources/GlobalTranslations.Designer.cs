@@ -196,6 +196,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Relationship.
         /// </summary>
         public static string MyRelationship {
@@ -435,6 +444,24 @@ namespace MM.WEB.Resources {
         public static string ValidationErrorsDetected {
             get {
                 return ResourceManager.GetString("ValidationErrorsDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help us reach a larger audience..
+        /// </summary>
+        public static string WriteReviewMessage {
+            get {
+                return ResourceManager.GetString("WriteReviewMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write a review.
+        /// </summary>
+        public static string WriteReviewTitle {
+            get {
+                return ResourceManager.GetString("WriteReviewTitle", resourceCulture);
             }
         }
         

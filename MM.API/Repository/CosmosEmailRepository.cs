@@ -27,6 +27,10 @@ namespace MM.API.Repository
 
                 return response.Resource;
             }
+            catch (CosmosOperationCanceledException)
+            {
+                return null;
+            }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return null;
@@ -65,13 +69,6 @@ namespace MM.API.Repository
         public async Task<EmailDocument?> UpsertItemAsync(EmailDocument email, CancellationToken cancellationToken)
         {
             var response = await Container.UpsertItemAsync(email, new PartitionKey(email.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
-
-            return response.Resource;
-        }
-
-        public async Task<EmailDocument?> CreateItemAsync(EmailDocument email, CancellationToken cancellationToken)
-        {
-            var response = await Container.CreateItemAsync(email, new PartitionKey(email.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             return response.Resource;
         }

@@ -107,7 +107,7 @@
     {
         try
         {
-            if (await MessageService.Confirm(GlobalTranslations.SureDeleteAccount, "Streaming Discovery", (opt) => { opt.ShowMessageIcon = false; }))
+            if (await MessageService.Confirm(GlobalTranslations.SureDeleteAccount, "Modern Matchmaker", (opt) => { opt.ShowMessageIcon = false; }))
             {
                 //remove data from cosmos db
                 await PrincipalApi.Remove();

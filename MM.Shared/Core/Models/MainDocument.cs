@@ -5,7 +5,7 @@
         Principal = 1,
         Ticket = 2,
         TicketVote = 3,
-        Profile = 4,
+        //Profile = 4,
         Invite = 5,
         Announcement = 6,
         Login = 7,

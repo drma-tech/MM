@@ -101,7 +101,10 @@
                 }
             </Addons>
 
-            <ValidationMessage For="@For"></ValidationMessage>
+            @if (IsForm)
+            {
+                <ValidationMessage For="@For"></ValidationMessage>
+            }
         </FieldBody>
         @if (!string.IsNullOrEmpty(Description) && ShowDescription)
         {

@@ -7,12 +7,25 @@ namespace MM.WEB.Modules.Auth.Core
     {
         private struct Endpoint
         {
-            public static string Add(string platform) => $"login/add?platform={platform}";
+            public static string Add(string platform, string? ip) => $"login/add?platform={platform}&ip={ip}";
         }
 
         public async Task Add(string platform)
         {
-            await PostAsync<ClienteLogin>(Endpoint.Add(platform), null, null);
+            var ip = "";
+
+            try
+            {
+                //TODO: TypeError: Failed to fetch
+                var response = await _http.GetAsync(new Uri("https://ipinfo.io/ip"));
+                ip = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                //do nothing;
+            }
+
+            await PostAsync<ClienteLogin>(Endpoint.Add(platform, ip?.Trim()), null, null);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace MM.WEB.Modules.Shared.Field
         [Parameter] public string? HelpLink { get; set; }
         [Parameter] public string? CustomInfo { get; set; }
         [Parameter] public bool Visible { get; set; } = true;
+        [Parameter] public bool IsForm { get; set; } = true;
 
         [Parameter] public EventCallback ButtomClicked { get; set; }
         [Parameter] public object? ButtomCssIcon { get; set; }

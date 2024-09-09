@@ -18,12 +18,23 @@
         public string? county { get; set; }
         public string? city { get; set; }
 
-        public string GetLocation()
+        public string? GetCountry()
         {
             if (countryName.Empty()) throw new NotificationException("country not found");
+
+            return countryName;
+        }
+
+        public string? GetState()
+        {
+            return state ?? county ?? countryName;
+        }
+
+        public string? GetCity()
+        {
             if (city.Empty()) throw new NotificationException("city not found");
 
-            return $"{countryName} - {state ?? county ?? countryName} - {city}";
+            return city;
         }
     }
 
