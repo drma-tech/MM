@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MM.API.Core.Middleware;
-using MM.API.Repository.Core;
 
 var host = new HostBuilder()
      .ConfigureFunctionsWorkerDefaults(worker =>

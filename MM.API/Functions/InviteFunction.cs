@@ -2,7 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
 
-namespace VerusDate.Api.Function
+namespace MM.API.Functions
 {
     public class InviteFunction
     {

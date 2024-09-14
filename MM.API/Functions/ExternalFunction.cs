@@ -2,7 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Configuration;
 
-namespace VerusDate.Api.Function
+namespace MM.API.Functions
 {
     public class ExternalFunction(IConfiguration config)
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using MM.Shared.Models.Subscription;
 
-namespace MM.WEB.Modules.Profile.Core
+namespace MM.WEB.Modules.Subscription.Core
 {
     public class PaddleSubscriptionApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<RootSubscription>(factory, memoryCache, "PaddleSubscriptionApi")
     {

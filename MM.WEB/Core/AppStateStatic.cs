@@ -32,11 +32,11 @@ namespace MM.WEB.Core
 
         public static string GetLanguageCode()
         {
-            switch (Language)
+            return Language switch
             {
-                case Language.Portuguese: return "pt";
-                default: return "en";
-            }
+                Language.Portuguese => "pt",
+                _ => "en",
+            };
         }
     }
 }
