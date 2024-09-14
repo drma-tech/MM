@@ -1,7 +1,11 @@
 ﻿@page "/"
 @page "/index"
 
+@inherits PageCore<Index>
+
 @inject IJSRuntime JsRuntime
+
+<SeoHeader Title="Home" Description="@SeoTranslations.Description" Url="/"></SeoHeader>
 
 <CardDeck Margin="Margin.Is3.FromBottom">
     <Card>
@@ -34,59 +38,10 @@
     </Card>
 </CardDeck>
 
-<HeaderComponent IconName="@FontAwesomeIcons.Star" Title="Highlights">
-</HeaderComponent>
-<Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-    @foreach (var item in Highlights)
-    {
-        <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-        </Column>
-    }
-</Row>
-
-<HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="Suggestions">
-</HeaderComponent>
-<Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-    @foreach (var item in Suggestions)
-    {
-        <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-        </Column>
-    }
-</Row>
-
-<Row HorizontalGutter="8" VerticalGutter="8">
-    <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="Likes">
-        </HeaderComponent>
-        <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-            @foreach (var item in Likes)
-            {
-                <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-                </Column>
-            }
-        </Row>
-    </Column>
-    <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
-        </HeaderComponent>
-        <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-            @foreach (var item in Matches)
-            {
-                <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-                </Column>
-            }
-        </Row>
-    </Column>
-</Row>
 
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "language")] public string? language { get; set; }
     [Parameter][SupplyParameterFromQuery(Name = "platform")] public string? platform { get; set; }
-
-    public List<string> Highlights { get; set; } = [];
-    public List<string> Suggestions { get; set; } = [];
-    public List<string> Likes { get; set; } = [];
-    public List<string> Matches { get; set; } = [];
 
     protected override async Task OnInitializedAsync()
     {

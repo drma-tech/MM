@@ -1,8 +1,8 @@
 {
-  "id": "streamingdiscovery",
-  "name": "Streaming Discovery",
-  "short_name": "Streaming Discovery",
-  "description": "Manage your streaming platforms, what you watched, are watching and want to watch. All in one place.",
+  "id": "modern-matchmaker",
+  "name": "Modern Matchmaker",
+  "short_name": "Modern Matchmaker",
+  "description": "Find your soulmate with the most sophisticated compatibility system in the world.",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
   "start_url": "/",
@@ -34,7 +34,6 @@
     }
   ],
   "categories": [
-    "entertainment",
     "lifestyle",
     "social"
   ],
@@ -111,6 +110,6 @@
     ]
   },
   "scope_extensions": [
-    { "origin": "*.streamingdiscovery.com" }
+    { "origin": "*.modern-matchmaker.com" }
   ]
 }

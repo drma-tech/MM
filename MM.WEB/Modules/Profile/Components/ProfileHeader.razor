@@ -39,7 +39,7 @@
         </Column>
     </Row>
 </Jumbotron>
-@if (Platform.NotEmpty() && Reviewed.Empty() && Client != null && (Client.ClientePaddle == null || !Client.ClientePaddle.IsPaidUser))
+@* @if (Platform.NotEmpty() && Reviewed.Empty() && Client != null && (Client.ClientePaddle == null || !Client.ClientePaddle.IsPaidUser))
 {
     <Alert Visible="true" Color="Color.Info" Class="mb-3">
         <AlertMessage Display="Display.Inline.OnTablet.Block.OnMobile">
@@ -64,13 +64,13 @@
             @if (Platform == "webapp")
             {
                 <Button Color="Color.Secondary" Size="Size.Small" Clicked="SetReviewed"
-                        To="https://www.trustpilot.com/review/streamingdiscovery.com" Type="ButtonType.Link" Target="Target.Blank">
+                        To="https://www.trustpilot.com/review/modern-matchmaker.com" Type="ButtonType.Link" Target="Target.Blank">
                     <Image Source="/logo/trustpilot.png" Width="Width.Px(16)"></Image> Trustpilot
                 </Button>
             }
         </AlertDescription>
     </Alert>
-}
+} *@
 
 @code {
     [SupplyParameterFromQuery][Parameter] public string? _ptxn { get; set; }

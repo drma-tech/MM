@@ -61,20 +61,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage your streams, what you&apos;ve watched, are watching and want to watch. All in one place..
+        ///   Looks up a localized string similar to Find your soulmate with the most sophisticated compatibility system in the world..
         /// </summary>
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See your favorite streaming providers, wishlists (movies, series and documentaries), what you&apos;re currently watching and much more..
-        /// </summary>
-        public static string ProfileDescription {
-            get {
-                return ResourceManager.GetString("ProfileDescription", resourceCulture);
             }
         }
         
@@ -84,42 +75,6 @@ namespace MM.WEB.Resources {
         public static string ProfileTitle {
             get {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See streaming providers for movies, series and documentaries from around the world..
-        /// </summary>
-        public static string ProvidersDescription {
-            get {
-                return ResourceManager.GetString("ProvidersDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Providers.
-        /// </summary>
-        public static string ProvidersTitle {
-            get {
-                return ResourceManager.GetString("ProvidersTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See suggestions for movies and series from different awards (Oscar, Golden Globes, Emmys, etc) or specialized websites (IMDB, TMDB, Rotten Tomatoes, etc)..
-        /// </summary>
-        public static string SuggestionsDescription {
-            get {
-                return ResourceManager.GetString("SuggestionsDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suggestions.
-        /// </summary>
-        public static string SuggestionsTitle {
-            get {
-                return ResourceManager.GetString("SuggestionsTitle", resourceCulture);
             }
         }
         
