@@ -144,9 +144,6 @@
   <data name="Languages_Name" xml:space="preserve">
     <value>Idiomas</value>
   </data>
-  <data name="Location_Description" xml:space="preserve">
-    <value>No almacenamos su ubicación GPS, solo su ciudad. (El acceso a la ubicación del dispositivo debe ser liberado)</value>
-  </data>
   <data name="Location_Name" xml:space="preserve">
     <value>Ubicación</value>
   </data>
@@ -167,5 +164,8 @@
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Orientación sexual</value>
+  </data>
+  <data name="Location_Description" xml:space="preserve">
+    <value>No almacenamos su ubicación GPS, solo su ciudad. (El acceso a la ubicación del dispositivo debe estar habilitado)</value>
   </data>
 </root>

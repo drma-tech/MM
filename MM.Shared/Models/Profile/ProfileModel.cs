@@ -13,6 +13,9 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Description_Name", Prompt = "Description_Prompt", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Description { get; set; }
 
+        [Custom(Name = "Nationality")]
+        public Country? Nationality { get; set; }
+
         [JsonIgnore]
         [Custom(Name = "Location_Name", Prompt = "Location_Prompt", Description = "Location_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Location => Country.NotEmpty() ? $"{Country} - {State} - {City}" : null;
@@ -101,8 +104,14 @@ namespace MM.Shared.Models.Profile
             ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public Religion? Religion { get; set; }
 
+        [Custom(Name = "Family Approval", Description = "There is influence from the family in the choice of partners and/or relationships")]
+        public FamilyApproval? FamilyApproval { get; set; }
+
         [Custom(Name = "TravelFrequency_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public TravelFrequency? TravelFrequency { get; set; }
+
+        [Custom(Name = "Living Situation")]
+        public LivingSituation? LivingSituation { get; set; }
 
         [Custom(Name = "NetWorth_Name", Description = "NetWorth_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public NetWorth? NetWorth { get; set; }

@@ -59,7 +59,7 @@
                             else
                             {
                                 <SelectItem></SelectItem>
-                                @foreach (var item in EnumHelper.GetList<TEnum>())
+                                @foreach (var item in EnumHelper.GetList<TEnum>().OrderBy(Order))
                                 {
                                     <SelectItem Value="@item.Value">@item.Name</SelectItem>
                                 }

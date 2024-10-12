@@ -66,11 +66,6 @@ namespace MM.WEB.Modules.Profile
                             profile.Country = address?.GetCountry();
                             profile.State = address?.GetState();
                             profile.City = address?.GetCity();
-
-                            var obj = EnumHelper.GetList<Country>().Single(s => s.Tips == (address?.countryCode ?? "USA"));
-                            var country = (Country)obj.Value;
-
-                            profile.AddLanguages(country);
                         }
                         else
                         {

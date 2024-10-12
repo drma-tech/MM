@@ -145,7 +145,7 @@
     <value>Languages</value>
   </data>
   <data name="Location_Description" xml:space="preserve">
-    <value>We don't store your GPS location, just your city. (Access to device location must be released)</value>
+    <value>We do not store your GPS location, only your city. (Device location access must be enabled)</value>
   </data>
   <data name="Location_Name" xml:space="preserve">
     <value>Location</value>

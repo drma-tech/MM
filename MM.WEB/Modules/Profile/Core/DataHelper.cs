@@ -4,9 +4,10 @@ namespace MM.WEB.Modules.Profile.Core
 {
     public static class DataHelper
     {
-        public static void AddLanguages(this ProfileModel profile, Country country)
+        public static void AddLanguages(this ProfileModel profile, Country? country)
         {
-            if (profile.Languages.Any()) return;
+            if (profile.Languages.Count != 0) return;
+            if (country == null) return;
 
             switch (country)
             {

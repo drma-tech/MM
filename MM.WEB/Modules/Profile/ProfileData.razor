@@ -1,6 +1,7 @@
 ﻿@page "/profile/data"
 @using MM.Shared.Models.Profile;
 @using MM.WEB.Modules.Profile.Components
+@using MM.WEB.Modules.Profile.Core
 @using MM.WEB.Modules.Shared.Popup;
 @attribute [Authorize]
 @inherits PageCore<ProfileData>
@@ -61,15 +62,16 @@
                             <FieldText For="@(() => Profile.NickName)" @bind-Value="@Profile.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
                             <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
                                        Rows="7" LabelSize="LabelSize.Short"></FieldText>
+                            <FieldSelect For="@(() => Profile.Nationality)" TValue="Country?" TEnum="Country" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
+                                         CssIcon="@FontAwesomeIcons.EarthAmericas" Required="true" LabelSize="LabelSize.Short" Order="@(o=>o.Name)" ShowHelper="false"></FieldSelect>
                             <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
                                        ButtomClicked="async ()=> { await SetLocation(Profile); }" ButtomCssIcon="@FontAwesomeIcons.MapMarkedAlt" LabelSize="LabelSize.Short" ButtomTitle="Recuperar posição GPS"></FieldText>
                         </Column>
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                             <FieldSelect For="@(() => Profile.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile.Languages"
-                                         CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" LabelSize="LabelSize.Short"></FieldSelect>
+                                         CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile!.CurrentSituation)" TValue="CurrentSituation?" TEnum="CurrentSituation" @bind-SelectedValue="@Profile.CurrentSituation"
                                          CssIcon="@FontAwesomeIcons.Heart" Required="true"></FieldSelect>
-
                             <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
                                          CssIcon="@FontAwesomeIcons.PersonHalfDress" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
@@ -134,6 +136,8 @@
                                          CssIcon="@FontAwesomeIcons.Utensils" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
                                          CssIcon="@FontAwesomeIcons.PrayingHands" Required="true"></FieldSelect>
+                            <FieldSelect For="@(() => Profile.FamilyApproval)" TValue="FamilyApproval?" TEnum="FamilyApproval" @bind-SelectedValue="@Profile.FamilyApproval"
+                                         CssIcon="@FontAwesomeIcons.UserGroup" Required="true"></FieldSelect>
                         </Column>
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                             <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
@@ -142,8 +146,10 @@
                                          CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="true" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
                                          CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Required="true"></FieldSelect>
+                            <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
+                                         CssIcon="@FontAwesomeIcons.HomeUser" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
-                                         CssIcon="@FontAwesomeIcons.Plane" ShowGroup="true" Required="true"></FieldSelect>
+                                         CssIcon="@FontAwesomeIcons.Plane" Required="true"></FieldSelect>
                         </Column>
                     </Row>
                     <Card>
@@ -288,6 +294,14 @@
         Personality,
         Interests,
         Goals
+    }
+
+    private void CountryChanged(Country? country)
+    {
+        if (Profile == null) return;
+
+        Profile.Nationality = country;
+        Profile.AddLanguages(country);
     }
 
     private bool IsValid(Tabs tab)

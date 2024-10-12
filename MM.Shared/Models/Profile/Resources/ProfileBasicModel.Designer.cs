@@ -142,7 +142,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We don&apos;t store your GPS location, just your city. (Access to device location must be released).
+        ///   Looks up a localized string similar to We do not store your GPS location, only your city. (Device location access must be enabled).
         /// </summary>
         public static string Location_Description {
             get {
