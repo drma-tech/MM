@@ -89,57 +89,27 @@ namespace MM.API.Functions
             }
         }
 
-        [Function("ProfileUpdateLooking")]
-        public async Task<ProfileModel> UpdateLooking(
-            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-preference")] HttpRequestData req, CancellationToken cancellationToken)
-        {
-            try
-            {
-                var userId = req.GetUserId();
-                var body = await req.GetPublicBody<ProfileModel>(cancellationToken);
+        //[Function("ProfileUpdateLooking")]
+        //public async Task<ProfileModel> UpdateLooking(
+        //    [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-preference")] HttpRequestData req, CancellationToken cancellationToken)
+        //{
+        //    try
+        //    {
+        //        var userId = req.GetUserId();
+        //        var body = await req.GetPublicBody<ProfileModel>(cancellationToken);
 
-                var operations = new List<PatchOperation> {
-                    PatchOperation.Set("/preference", body.Preference),
-                    PatchOperation.Add("/dtUpdate", DateTime.UtcNow)
-                };
+        //        var operations = new List<PatchOperation> {
+        //            PatchOperation.Set("/preference", body.Preference),
+        //            PatchOperation.Add("/dtUpdate", DateTime.UtcNow)
+        //        };
 
-                return await _repo.PatchItem<ProfileModel>(userId, operations, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
-            }
-        }
-
-        [Function("ProfileViewUpdatePatner")]
-        public async Task<ProfileModel?> UpdatePatner(
-           [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-partner")] HttpRequestData req, CancellationToken cancellationToken)
-        {
-            try
-            {
-                //var request = await req.BuildRequestCommand<ProfileUpdatePartnerCommand>(source.Token, false);
-                //request.LoggedUserId = req.GetUserId();
-
-                //var result = await _mediator.Send(request, source.Token);
-
-                //return new OkObjectResult(result);
-
-                var id = req.GetQueryParameters()["id"];
-                var email = req.GetQueryParameters()["email"];
-                var userId = req.GetUserId();
-
-                var obj = await _repo.Get<ProfileModel>(userId, cancellationToken);
-
-                obj?.UpdatePartner(id, email);
-
-                return await _repo.Upsert(obj, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
-            }
-        }
+        //        return await _repo.PatchItem<ProfileModel>(userId, operations, cancellationToken);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        req.ProcessException(ex);
+        //        throw new UnhandledException(ex.BuildException());
+        //    }
+        //}
     }
 }

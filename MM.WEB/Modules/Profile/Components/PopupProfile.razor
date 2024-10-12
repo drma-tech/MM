@@ -156,6 +156,7 @@
     public string? IdUserView { get; set; }
 
     private ProfileModel? user;
+    private FilterModel? filter;
     private ProfileModel? view;
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
@@ -197,7 +198,7 @@
                 imageDataUriGallery = new string[] { view.GetMainPhoto() }.Concat(view.GetGalleryPhotos()).ToArray();
                 selectedImage = imageDataUriGallery.First();
 
-                affinities = AffinityCore.GetAffinity(user, view);
+                affinities = AffinityCore.GetAffinity(user, filter, view);
                 //gamification = view.Gamification;
                 //if (view?.Badge != null) badge = view.Badge;
                 //interaction = await Http.Interation_Get(SessionStorage, IdUserView.ToString());

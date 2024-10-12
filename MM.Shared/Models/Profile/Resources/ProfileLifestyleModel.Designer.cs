@@ -61,6 +61,24 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cumulative amount earned in one year (in US dollars).
+        /// </summary>
+        public static string AnnualIncome_Description {
+            get {
+                return ResourceManager.GetString("AnnualIncome_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Income.
+        /// </summary>
+        public static string AnnualIncome_Name {
+            get {
+                return ResourceManager.GetString("AnnualIncome_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Career.
         /// </summary>
         public static string CareerCluster_Name {
@@ -165,6 +183,24 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string MoneyPersonality_Name {
             get {
                 return ResourceManager.GetString("MoneyPersonality_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total value of all assets minus the total of all liabilities (in US dollars)..
+        /// </summary>
+        public static string NetWorth_Description {
+            get {
+                return ResourceManager.GetString("NetWorth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Worth.
+        /// </summary>
+        public static string NetWorth_Name {
+            get {
+                return ResourceManager.GetString("NetWorth_Name", resourceCulture);
             }
         }
         

@@ -5,80 +5,43 @@
     /// </summary>
     public enum GenderIdentity
     {
-        [Custom(Name = "Agender_Name", Description = "Agender_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Agender", Description = "A person who does not identify with any gender. Often prefers gender-neutral pronouns, such as 'they'.")]
         Agender = 1,
 
-        [Custom(Name = "Androgyne_Name", Description = "Androgyne_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Androgyne", Description = "A person whose gender identity or expression incorporates both masculine and feminine elements.")]
         Androgyne = 2,
 
-        [Custom(Name = "Bigender_Name", Description = "Bigender_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Bigender", Description = "A person who identifies with two genders, either simultaneously or switching between them over time.")]
         Bigender = 3,
 
-        [Custom(Name = "Cisgender_Name", Description = "Cisgender_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Cisgender", Description = "A person whose gender identity aligns with the gender they were assigned at birth.")]
         Cisgender = 4,
 
-        [Custom(Name = "Genderfluid_Name", Description = "Genderfluid_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Genderfluid", Description = "A person whose gender identity is flexible and can change over time, expressing different genders at different moments.")]
         Genderfluid = 5,
 
-        [Custom(Name = "GenderNonconforming_Name", Description = "GenderNonconforming_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Gender-nonconforming", Description = "An umbrella term for people whose gender expression or identity does not align with societal expectations based on their assigned sex at birth.")]
         GenderNonconforming = 6,
 
-        [Custom(Name = "Genderqueer_Name", Description = "Genderqueer_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Genderqueer", Description = "A term used by people who reject traditional gender categories. Often overlaps with \"non-binary\" and can refer to anyone who is not cisgender.")]
         Genderqueer = 7,
 
-        [Custom(Name = "Intergender_Name", Description = "Intergender_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        Intergender = 8,
+        [Custom(Name = "Intersex", Description = "A person born with physical sex characteristics (such as chromosomes or genitals) that do not fit typical definitions of male or female bodies. Often assigned a gender at birth through medical intervention.")]
+        Intersex = 8,
 
-        [Custom(Name = "Intersex_Name", Description = "Intersex_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        Intersex = 9,
+        [Custom(Name = "Non-binary", Description = "A person who does not identify exclusively as male or female. Non-binary people may feel they embody aspects of both genders or neither.")]
+        NonBinary = 9,
 
-        [Custom(Name = "Omnigender_Name", Description = "Omnigender_Description", ResourceType = typeof(Resources.GenderIdentity))]
+        [Custom(Name = "Omnigender / Pangender", Description = "A person who identifies with many or all genders. \"Pangender\" is the more commonly used term today.")]
         Omnigender = 10,
 
-        [Custom(Name = "NonBinary_Name", Description = "NonBinary_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        NonBinary = 11,
+        [Custom(Name = "Questioning", Description = "A person who is exploring or uncertain about their gender identity or expression.")]
+        Questioning = 11,
 
-        [Custom(Name = "Questioning_Name", Description = "Questioning_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        Questioning = 12,
+        [Custom(Name = "Transgender (Trans)", Description = "A person whose gender identity differs from the sex they were assigned at birth. Some transgender people transition physically, while others may not. Often referred to as 'trans' (e.g., trans woman, trans man).")]
+        Transgender = 12,
 
-        [Custom(Name = "Transgender_Name", Description = "Transgender_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        Transgender = 13,
-
-        [Custom(Name = "Transsexual_Name", Description = "Transsexual_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        Transsexual = 14,
-
-        [Custom(Name = "TwoSpirit_Name", Description = "TwoSpirit_Description", ResourceType = typeof(Resources.GenderIdentity))]
-        TwoSpirit = 15,
-    }
-
-    public enum GenderIdentityOld
-    {
-        [Custom(Group = "Binário", Name = "Cisgênero", Description = "Cisgênero é o indivíduo que se identifica com o sexo biológico com o qual nasceu, também conhecido como 'cis'")]
-        Cisgender = 1,
-
-        [Custom(Group = "Não-Binário", Name = "Transgênero", Description = "O (a) transexual pode ser homem ou mulher que se identifica com o sexo biológico oposto, também conhecido como 'trans'")]
-        Transgender = 2,
-
-        [Custom(Group = "Não-Binário", Name = "Transexual", Description = "Semelhante ao transgênero, porém recorre ao uso de cirurgia para troca de sexo")]
-        Transexuais = 3,
-
-        [Custom(Group = "Não-Binário", Name = "Travesti", Description = "Semelhante ao transgênero, e recorre a cirurgias parciais de troca de sexo. ex: prótese de seios")]
-        Travestis = 4,
-
-        [Custom(Group = "Não-Binário", Name = "Intergênero", Description = "não se identifica nem como homem nem como mulher")]
-        Intergenero = 5,
-
-        [Custom(Group = "Não-Binário", Name = "Andrógeno", Description = "se identifica tanto como homem quanto mulher")]
-        Androgenos = 6,
-
-        [Custom(Group = "Não-Binário", Name = "Intersexual", Description = "genitalia indefinida ou com ambos genitais")]
-        Intersexual = 7,
-
-        //bigeneros = que tem duas identidades de genero
-        //demigenero = conexão parcial com um determinado genêro
-        //genero fluido = identificação varia atraves do tempo --GENDER FLUID
-        //agenero = não se identifica como nenhum genero
-        [Custom(Group = "Não-Binário", Name = "Outro", Description = "bigêneros, demigênero, genero fluído, agênero")]
-        Other = 99
+        [Custom(Name = "Two-Spirit", Description = "A term used in some Indigenous North American cultures to describe a person who embodies both masculine and feminine qualities, often seen as a distinct spiritual role within their communities.")]
+        TwoSpirit = 13,
     }
 }

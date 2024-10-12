@@ -115,15 +115,6 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Depending on the selection, you can change the mandatory fields (choose up to 2 options).
-        /// </summary>
-        public static string Intentions_Description {
-            get {
-                return ResourceManager.GetString("Intentions_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Intentions.
         /// </summary>
         public static string Intentions_Name {

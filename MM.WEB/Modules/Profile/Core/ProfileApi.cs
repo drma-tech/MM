@@ -41,14 +41,14 @@ namespace MM.WEB.Modules.Profile.Core
             return await PutAsync(ProfileEndpoint.Update, core, obj);
         }
 
-        public async Task<ProfileModel?> UpdateLooking(RenderControlCore<ProfileModel?>? core, ProfileModel? obj, ProfilePreferenceModel? preference)
+        public async Task<ProfileModel?> UpdateLooking(RenderControlCore<ProfileModel?>? core, ProfileModel? obj, FilterModel? filter)
         {
-            if (obj == null) throw new ArgumentNullException(nameof(obj));
-            if (preference == null) throw new ArgumentNullException(nameof(preference));
+            ArgumentNullException.ThrowIfNull(obj);
+            ArgumentNullException.ThrowIfNull(filter);
 
-            obj.Preference = preference;
+            //obj.Preference = preference;
 
-            return await PutAsync(ProfileEndpoint.UpdateLooking, core, obj);
+            return await PutAsync(ProfileEndpoint.UpdateLooking, core, filter);
 
             //if (storage != null && response.IsSuccessStatusCode)
             //{

@@ -186,4 +186,16 @@
   <data name="SexPersonalityPreferences_Name" xml:space="preserve">
     <value>Personalidade sexual (preferências)</value>
   </data>
+  <data name="NetWorth_Name" xml:space="preserve">
+    <value>Patrimônio líquido</value>
+  </data>
+  <data name="NetWorth_Description" xml:space="preserve">
+    <value>Valor total de todos os ativos menos o total de todos os passivos (em dólares americanos).</value>
+  </data>
+  <data name="AnnualIncome_Name" xml:space="preserve">
+    <value>Renda anual</value>
+  </data>
+  <data name="AnnualIncome_Description" xml:space="preserve">
+    <value>Valor cumulativo ganho em um ano (em dólares americanos)</value>
+  </data>
 </root>

@@ -1,0 +1,234 @@
+﻿@page "/profile/filter"
+@using MM.Shared.Models.Profile;
+@using MM.WEB.Modules.Profile.Core;
+@using MM.WEB.Modules.Shared.Popup;
+@attribute [Authorize]
+@inherits PageCore<ProfileFilter>
+
+@inject ProfileApi ProfileApi
+
+<RenderControl Core="Core" Model="Filter" ExpressionEmpty="((FilterModel? obj)=> obj == null)" PrivateContent="true">
+    <EditForm Model="@Filter" OnValidSubmit="HandleValidSubmit">
+        <FluentValidationValidator />
+        <Div Margin="Margin.Is2.OnY">
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Basic)" Clicked="(() => ChangeOrder(Tabs.Basic))">@MM.Shared.Enums.Resources.Section.Basic</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Bio)" Clicked="(() => ChangeOrder(Tabs.Bio))">@MM.Shared.Enums.Resources.Section.Bio</Button>
+            <Button Margin="Margin.Is1.FromBottom" Color="Color.Secondary" Outline="!(SelectedTab == Tabs.Lifestyle)" Clicked="(() => ChangeOrder(Tabs.Lifestyle))">@MM.Shared.Enums.Resources.Section.Lifestyle</Button>
+        </Div>
+
+        @if (Filter != null)
+        {
+            @if (SelectedTab == Tabs.Basic)
+            {
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@Filter.Region"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation}")"></FieldSelect>
+                       @*  <FieldSelect For="@(() => preference.Change)" TValue="Change" TEnum="Change" @bind-SelectedValue="@preference.Change"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Truck" Required="true"></FieldSelect> *@
+                        <FieldSelect For="@(() => Filter.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Filter.Languages"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Language" Multiple="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.CurrentSituation)" TValue="HashSet<CurrentSituation>" TEnum="CurrentSituation" @bind-SelectedValues="@Filter.CurrentSituation"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Heart" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@Filter.BiologicalSex"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Neuter" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Filter.GenderIdentities"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Neuter" ShowGroup="true" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Filter.SexualOrientations"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Neuter" Multiple="true"></FieldSelect>
+                    </Column>
+                </Row>
+            }
+            else if (SelectedTab == Tabs.Bio)
+            {
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.RaceCategory)" TValue="HashSet<RaceCategory>" TEnum="RaceCategory" @bind-SelectedValues="@Filter.RaceCategory"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Globe" Multiple="true"></FieldSelect>
+
+                        <FieldSelect For="@(() => Filter.BodyMass)" TValue="HashSet<BodyMass>" TEnum="BodyMass" @bind-SelectedValues="@Filter.BodyMass"
+                                     CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Weight" Multiple="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <Field Horizontal="true">
+                            <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
+                                <Blazorise.Icon Name="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.BirthdayCake"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter.MinimalAge)?.Name
+                                <div style="color: red; display: initial;"> *</div>
+                                <FieldHelp Style="color: #17a2b8 !important">@CustomAttributeHelper.GetCustomAttribute(() => Filter.MinimalAge)?.Description</FieldHelp>
+                            </FieldLabel>
+                            <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                                <NumericEdit @bind-Value="@Filter.MinimalAge" Min="18"></NumericEdit>
+                                <ValidationMessage For="@(() => Filter.MinimalAge)"></ValidationMessage>
+                            </FieldBody>
+                            <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                                <NumericEdit @bind-Value="@Filter.MaxAge"></NumericEdit>
+                                <ValidationMessage For="@(() => Filter.MaxAge)"></ValidationMessage>
+                            </FieldBody>
+                        </Field>
+                        <Field Horizontal="true">
+                            <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
+                                <Blazorise.Icon Name="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Ruler"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter.MinimalHeight)?.Name
+                                <div style="color: red; display: initial;"> *</div>
+                            </FieldLabel>
+                            <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                                <InputSelect TValue="MM.Shared.Enums.Height?" @bind-Value="@Filter.MinimalHeight" @attributes="@(new Dictionary<string, object>() { { "class", "form-control" } })">
+                                    <option></option>
+                                    @foreach (var item in EnumHelper.GetArray<MM.Shared.Enums.Height>())
+                                    {
+                                        <option value="@item">@item.GetName()</option>
+                                    }
+                                </InputSelect>
+                                <ValidationMessage For="@(() => Filter.MinimalHeight)"></ValidationMessage>
+                            </FieldBody>
+                            <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                                <InputSelect TValue="MM.Shared.Enums.Height?" @bind-Value="@Filter.MaxHeight" @attributes="@(new Dictionary<string, object>() { { "class", "form-control" } })">
+                                    <option></option>
+                                    @foreach (var item in EnumHelper.GetArray<MM.Shared.Enums.Height>())
+                                    {
+                                        <option value="@item">@item.GetName()</option>
+                                    }
+                                </InputSelect>
+                                <ValidationMessage For="@(() => Filter.MaxHeight)"></ValidationMessage>
+                            </FieldBody>
+                        </Field>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.Neurodiversities)" TValue="HashSet<Neurodiversity>" TEnum="Neurodiversity" @bind-SelectedValues="@Filter.Neurodiversities"
+                                     CssIcon="@FontAwesomeIcons.Brain" Multiple="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Filter.Disabilities"
+                                     CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true"></FieldSelect>
+                    </Column>
+                </Row>
+            }
+            else if (SelectedTab == Tabs.Lifestyle)
+            {
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@Filter.Drink"
+                                     CssIcon="@FontAwesomeIcons.GlassCheers" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.Smoke)" TValue="HashSet<Smoke>" TEnum="Smoke" @bind-SelectedValues="@Filter.Smoke"
+                                     CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.Diet)" TValue="HashSet<Diet>" TEnum="Diet" @bind-SelectedValues="@Filter.Diet"
+                                     CssIcon="@FontAwesomeIcons.Utensils" Multiple="true" ShowDescription="false"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.Religion)" TValue="HashSet<Religion>" TEnum="Religion" @bind-SelectedValues="@Filter.Religion"
+                                     CssIcon="@FontAwesomeIcons.PrayingHands" Multiple="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Filter.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@Filter.HaveChildren"
+                                     CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@Filter.WantChildren"
+                                     CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.EducationLevel)" TValue="HashSet<EducationLevel>" TEnum="EducationLevel" @bind-SelectedValues="@Filter.EducationLevel"
+                                     CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="false" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.CareerCluster)" TValue="HashSet<CareerCluster>" TEnum="CareerCluster" @bind-SelectedValues="@Filter.CareerCluster"
+                                     CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Filter.TravelFrequency)" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@Filter.TravelFrequency"
+                                     CssIcon="@FontAwesomeIcons.Plane" ShowGroup="true" Multiple="true"></FieldSelect>
+                    </Column>
+                </Row>
+            }
+        }
+
+        <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+        </Button>
+        <Button Color="Color.Success" Clicked="PopulateFields" Margin="Margin.Is2.OnY">
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Magic"></Blazorise.Icon> @WEB.Resources.Button.Fill
+        </Button>
+        <Button Color="Color.Primary" Float="Float.End" Clicked="(()=>help?.ShowModal())" Margin="Margin.Is2.OnY">
+            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
+        </Button>
+    </EditForm>
+
+    <BasicModal @ref="help" Title="@WEB.Resources.GlobalTranslations.HelpTitle">
+        <ul style="margin-left: -10px;">
+            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic1</li>
+            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic2</li>
+        </ul>
+    </BasicModal>
+</RenderControl>
+
+@code {
+
+    // private ProfileModel? profile { get; set; }
+    private FilterModel? Filter { get; set; }
+    public RenderControlCore<FilterModel?>? Core { get; set; } = new();
+
+    private BasicModal? help;
+
+    // private Loading? Loading;
+
+    //private Shared.modal.ProfileDataHelp<object> ProfileDataHelp;
+
+    protected override async Task LoadDataRender()
+    {
+        Core?.LoadingStarted?.Invoke();
+
+        // profile = await ProfileApi.Get(Core);
+
+        // if (profile == null)
+        // {
+        //     await Toast.Warning("Favor, atualizar primeiro seu perfil");
+        //     return;
+        // }
+
+        // preference = profile.Preference;
+
+        if (Filter == null)
+        {
+            Filter = new();
+
+            await PopulateFields();
+        }
+
+        Core?.LoadingFinished?.Invoke(Filter);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            // profile = await ProfileApi.UpdateLooking(Core, profile, Filter);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task PopulateFields()
+    {
+        try
+        {
+            var profile = await ProfileApi.Get(null);
+            SmartLookingCore.PopulateFields(profile, Filter);
+
+            await Toast.Warning("Este processo está em constante evolução. Caso queira informar um erro ou melhoria, favor abrir um tiket no nosso suporte.", "Campos populados automaticamente");
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private enum Tabs
+    {
+        Basic,
+        Bio,
+        Lifestyle,
+        Personality
+    }
+
+    private Tabs SelectedTab = Tabs.Basic;
+
+    private void ChangeOrder(Tabs tab)
+    {
+        SelectedTab = tab;
+    }
+    }

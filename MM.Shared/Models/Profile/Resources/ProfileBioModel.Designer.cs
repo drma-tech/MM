@@ -124,20 +124,11 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Race.
+        ///   Looks up a localized string similar to Race/Ethnicity.
         /// </summary>
         public static string RaceCategory_Name {
             get {
                 return ResourceManager.GetString("RaceCategory_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zodiac.
-        /// </summary>
-        public static string Zodiac_Name {
-            get {
-                return ResourceManager.GetString("Zodiac_Name", resourceCulture);
             }
         }
     }

@@ -6,7 +6,7 @@
         Ticket = 2,
         TicketVote = 3,
         //Profile = 4,
-        Invite = 5,
+        //Invite = 5,
         Announcement = 6,
         Login = 7,
         Update = 8

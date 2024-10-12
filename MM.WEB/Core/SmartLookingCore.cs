@@ -4,27 +4,27 @@ namespace MM.WEB.Core
 {
     public static class SmartLookingCore
     {
-        public static void PopulateFields(ProfileModel? profile, ProfilePreferenceModel? preference)
+        public static void PopulateFields(ProfileModel? profile, FilterModel? filter)
         {
             if (profile == null) throw new NotificationException("Preenchimento de cadastro do perfil não encontrado");
-            preference ??= new ProfilePreferenceModel();
+            filter ??= new FilterModel();
 
             //BASIC
-            preference.Region = Region.City;
-            preference.Languages = profile.Languages;
-            preference.CurrentSituation = AffinityCore.GetCurrentSituation(profile);
+            filter.Region = Region.City;
+            filter.Languages = profile.Languages;
+            filter.CurrentSituation = AffinityCore.GetCurrentSituation(profile);
             //looking.Intent = profile.Basic.Intent; //selecionado ao carregar a tela
-            preference.BiologicalSex = AffinityCore.GetBiologicalSex(profile);
+            filter.BiologicalSex = AffinityCore.GetBiologicalSex(profile);
             //looking.GenderIdentity = null;
-            preference.SexualOrientation = AffinityCore.GetSexualOrientation(profile);
+            filter.SexualOrientations = AffinityCore.GetSexualOrientations(profile);
 
             //BIO
-            var ages = AffinityCore.GetAge(profile, preference, true);
-            preference.MinimalAge = ages[0];
-            preference.MaxAge = ages[1];
-            var heights = AffinityCore.GetHeight(profile, preference, true);
-            preference.MinimalHeight = heights[0];
-            preference.MaxHeight = heights[1];
+            var ages = AffinityCore.GetAge(profile, filter, true);
+            filter.MinimalAge = ages[0];
+            filter.MaxAge = ages[1];
+            var heights = AffinityCore.GetHeight(profile, filter, true);
+            filter.MinimalHeight = heights[0];
+            filter.MaxHeight = heights[1];
             //looking.RaceCategory = null;
             //looking.BodyMass = null;
 

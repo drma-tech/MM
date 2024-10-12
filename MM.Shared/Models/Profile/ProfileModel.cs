@@ -7,9 +7,6 @@ namespace MM.Shared.Models.Profile
     {
         #region BASIC
 
-        [Custom(Name = "Modality_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public Modality? Modality { get; set; }
-
         [Custom(Name = "NickName_Name", Prompt = "NickName_Prompt", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? NickName { get; set; }
 
@@ -18,7 +15,7 @@ namespace MM.Shared.Models.Profile
 
         [JsonIgnore]
         [Custom(Name = "Location_Name", Prompt = "Location_Prompt", Description = "Location_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public string? Location => $"{Country} - {State} - {City}";
+        public string? Location => Country.NotEmpty() ? $"{Country} - {State} - {City}" : null;
 
         public string? Country { get; set; }
         public string? State { get; set; }
@@ -30,17 +27,14 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "CurrentSituation_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public CurrentSituation? CurrentSituation { get; set; }
 
-        [Custom(Name = "Intentions_Name", Description = "Intentions_Description", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public HashSet<Intentions> Intentions { get; set; } = [];
-
         [Custom(Name = "BiologicalSex_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public BiologicalSex? BiologicalSex { get; set; }
 
         [Custom(Name = "GenderIdentity_Name", Description = "GenderIdentity_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public GenderIdentity? GenderIdentity { get; set; }
+        public HashSet<GenderIdentity> GenderIdentities { get; set; } = [];
 
         [Custom(Name = "SexualOrientation_Name", Description = "SexualOrientation_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public SexualOrientation? SexualOrientation { get; set; }
+        public HashSet<SexualOrientation> SexualOrientations { get; set; } = [];
 
         #endregion BASIC
 
@@ -57,11 +51,6 @@ namespace MM.Shared.Models.Profile
 
         [Custom(Name = "BirthDate_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public DateTime BirthDate { get; set; }
-
-        [Custom(Name = "Zodiac_Name",
-            FieldInfo = "Primeiramente, precisamos deixar claro que não existe embasamento científico, portanto pode variar de pessoa para pessoa ou das fontes pesquisadas. Apesar disso, sabemos que astrologia é uma área muito popular no dia a dia das pessoas.",
-            ResourceType = typeof(Resources.ProfileBioModel))]
-        public Zodiac Zodiac { get; set; }
 
         [Custom(Name = "Height_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public Height? Height { get; set; }
@@ -97,9 +86,6 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HaveChildren? HaveChildren { get; set; }
 
-        [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public WantChildren? WantChildren { get; set; }
-
         [Custom(Name = "EducationLevel_Name",
             FieldInfo = "A intenção deste campo não é julgar os caminhos escolhidos por cada um ou as oportunidades que tiveram na vida, mas estatisticamente falando, os parceiros que possuem níveis de escolaridade semelhantes tendem a ter os mesmos potenciais de crescimento na vida pessoal/profissional ou até mesmo ter um estilo de vida semelhante (para quem decidiu dedicar-se exclusivamente aos estudos/pesquisa). Ou, no caso de terem niveis de escolaridade diferentes, um dos parceiros poderá se sentir intimidado em relação ao outro.",
             ResourceType = typeof(Resources.ProfileLifestyleModel))]
@@ -117,6 +103,12 @@ namespace MM.Shared.Models.Profile
 
         [Custom(Name = "TravelFrequency_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public TravelFrequency? TravelFrequency { get; set; }
+
+        [Custom(Name = "NetWorth_Name", Description = "NetWorth_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        public NetWorth? NetWorth { get; set; }
+
+        [Custom(Name = "AnnualIncome_Name", Description = "AnnualIncome_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        public AnnualIncome? AnnualIncome { get; set; }
 
         #endregion LIFESTYLE
 
@@ -202,21 +194,28 @@ namespace MM.Shared.Models.Profile
 
         #endregion INTEREST
 
+        #region GOAL
+
+        [Custom(Name = "Intentions_Name", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
+        public HashSet<Intentions> Intentions { get; set; } = [];
+
+        [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        public WantChildren? WantChildren { get; set; }
+
+        [Custom(Name = "Relocation", ResourceType = typeof(Resources.FilterModel))]
+        public Relocation? Relocation { get; set; }
+
+        #endregion GOAL
+
         [JsonIgnore]
         public int Age { get; set; }
 
-        public ProfilePreferenceModel? Preference { get; set; }
         public ProfilePhotoModel? Photo { get; set; }
-        public ProfileReportModel[] Reports { get; set; } = [];
-
-        public List<Partner> Partners { get; set; } = [];
-
         private readonly string BlobPath = "https://storageverusdate.blob.core.windows.net";
 
         public void UpdateData(ProfileModel profile)
         {
             //BASIC
-            Modality = profile.Modality;
             NickName = profile.NickName;
             Description = profile.Description;
             Country = profile.Country;
@@ -226,12 +225,11 @@ namespace MM.Shared.Models.Profile
             CurrentSituation = profile.CurrentSituation;
             Intentions = profile.Intentions;
             BiologicalSex = profile.BiologicalSex;
-            GenderIdentity = profile.GenderIdentity;
-            SexualOrientation = profile.SexualOrientation;
+            GenderIdentities = profile.GenderIdentities;
+            SexualOrientations = profile.SexualOrientations;
 
             //BIO
             BirthDate = profile.BirthDate;
-            Zodiac = profile.Zodiac;
             Height = profile.Height;
             RaceCategory = profile.RaceCategory;
             BodyMass = profile.BodyMass;
@@ -268,33 +266,6 @@ namespace MM.Shared.Models.Profile
             //OTHERS
             Neurodiversity = profile.Neurodiversity;
             Disabilities = profile.Disabilities;
-
-            Partners = profile.Partners;
-
-            DtUpdate = DateTime.UtcNow;
-        }
-
-        public void UpdateLooking(ProfilePreferenceModel obj)
-        {
-            Preference = obj;
-
-            DtUpdate = DateTime.UtcNow;
-        }
-
-        public void UpdatePartner(string userId, string email)
-        {
-            var partner = Partners.Find(w => w.Email == email);
-            if (partner != null)
-            {
-                partner.Id = userId;
-
-                DtUpdate = DateTime.UtcNow;
-            }
-        }
-
-        public void UpdatePhoto(ProfilePhotoModel obj)
-        {
-            Photo = obj;
 
             DtUpdate = DateTime.UtcNow;
         }

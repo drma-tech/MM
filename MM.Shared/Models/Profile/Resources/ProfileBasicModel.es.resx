@@ -135,9 +135,6 @@
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Identidad de género</value>
   </data>
-  <data name="Intentions_Description" xml:space="preserve">
-    <value>Dependiendo de la selección, puede cambiar los campos obligatorios (elija hasta 2 opciones)</value>
-  </data>
   <data name="Intentions_Name" xml:space="preserve">
     <value>Intenciones</value>
   </data>

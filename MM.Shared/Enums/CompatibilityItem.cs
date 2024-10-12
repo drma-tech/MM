@@ -9,15 +9,14 @@
         CurrentSituation,
         Intentions,
         BiologicalSex,
-        GenderIdentity,
-        SexualOrientation,
+        GenderIdentities,
+        SexualOrientations,
 
         //BIO
 
         RaceCategory,
         BodyMass,
         Age,
-        Zodiac,
         Height,
         Neurodiversity,
         Disabilities,

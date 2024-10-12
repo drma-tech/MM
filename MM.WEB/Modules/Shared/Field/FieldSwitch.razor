@@ -1,0 +1,34 @@
+﻿@inherits FormBase<bool, FieldSwitch>
+
+@if (Visible)
+{
+    <Field Horizontal="true">
+        <FieldLabel ColumnSize="@GetLabelSize()">
+            @if (string.IsNullOrEmpty(CssIcon))
+            {
+                @For.GetCustomAttribute()?.Name
+            }
+            else
+            {
+                <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
+            }
+            @if (Required)
+            {
+                <div style="color: red; display: initial;"> *</div>
+            }
+        </FieldLabel>
+        <FieldBody ColumnSize="@GetBodySize()">
+            <Addons>
+                <Addon AddonType="AddonType.Body">
+                    <Switch Checked="@Value" CheckedChanged="@ValueChanged" CheckedExpression="@For" Size="Size.Large"></Switch>
+                </Addon>
+            </Addons>
+        </FieldBody>
+        @if (!string.IsNullOrEmpty(Description))
+        {
+            <Column>
+                <FieldHelp Style="color: #17a2b8 !important">@Description</FieldHelp>
+            </Column>
+        }
+    </Field>
+}

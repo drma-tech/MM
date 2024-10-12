@@ -14,7 +14,7 @@ namespace MM.WEB.Modules.Profile
         [Inject] protected MapApi MapApi { get; set; } = default!;
         [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
-        private ProfileModel? profile { get; set; }
+        private ProfileModel? Profile { get; set; }
         public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
         private GeoLocation? GPS { get; set; }
@@ -23,17 +23,17 @@ namespace MM.WEB.Modules.Profile
         {
             Core?.LoadingStarted?.Invoke();
 
-            profile = await ProfileApi.Get(null);
+            Profile = await ProfileApi.Get(null);
 
-            profile ??= new()
+            Profile ??= new()
             {
-                GenderIdentity = GenderIdentity.Cisgender,
-                SexualOrientation = SexualOrientation.Heterosexual,
-                BirthDate = DateTime.UtcNow.AddYears(-18).AddDays(1).Date,
+                GenderIdentities = [GenderIdentity.Cisgender],
+                SexualOrientations = [SexualOrientation.Heterosexual],
+                BirthDate = DateTime.UtcNow.Date,
                 Diet = Diet.Omnivore,
             };
 
-            Core?.LoadingFinished?.Invoke(profile);
+            Core?.LoadingFinished?.Invoke(Profile);
         }
 
         private async Task SetLocation(ProfileModel profile)
@@ -89,58 +89,13 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
-        private async Task HandleValidSubmit()
+        private async Task ValidSubmit()
         {
-            if (profile == null) throw new InvalidOperationException("profile is null");
+            if (Profile == null) throw new InvalidOperationException("profile is null");
 
             try
             {
-                //profile.Zodiac = profile.BirthDate.GetWesternZodiac();
-
-                await ProfileApi.Update(Core, profile);
-
-                profile = await ProfileApi.Get(Core); //TODO update id field
-
-                if (profile?.Modality == Modality.Matchmaker)
-                {
-                    //foreach (var item in profile.Partners)
-                    //{
-                    //    //TODO: remove the conections on others users
-                    //}
-
-                    //profile.Partners = [];
-                }
-                else
-                {
-                    //var invites = NewInvites.Except(RemovedInvites).ToList();
-                    //var principal = await PrincipalApi.Get();
-                    //var emailUser = principal?.Email;
-
-                    //foreach (var email in invites)
-                    //{
-                    //    var invite = await InviteApi.Invite_Get(email);
-                    //    var newInvite = false;
-
-                    //    if (invite == null)
-                    //    {
-                    //        invite = new InviteModel();
-                    //        invite.Initialize(email);
-                    //        newInvite = true;
-                    //    }
-
-                    //    invite.Invites.Add(new Invite(profile.Key, emailUser, InviteType.Partner));
-
-                    //    if (newInvite)
-                    //        await InviteApi.Invite_Add(invite);
-                    //    else
-                    //        await InviteApi.Invite_Update(invite);
-                    //}
-
-                    //foreach (var item in RemovedInvites)
-                    //{
-                    //    //TODO: remove removed invites
-                    //}
-                }
+                Profile = await ProfileApi.Update(Core, Profile);
             }
             catch (Exception ex)
             {
@@ -148,14 +103,14 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
-        private async Task HandleInvalidSubmit(EditContext context)
+        private async Task InvalidSubmit(EditContext context)
         {
-            if (profile == null) throw new InvalidOperationException("profile is null");
+            if (Profile == null) throw new InvalidOperationException("profile is null");
 
-            var errors = context.GetValidationMessages().ToList();
+            var validations = context.GetValidationMessages().ToList();
 
-            if (errors.Count == 1)
-                await Toast.Warning(errors[0]);
+            if (validations.Count == 1)
+                await Toast.Warning(validations[0]);
             else
                 await Toast.Warning(GlobalTranslations.ValidationErrorsDetected);
         }

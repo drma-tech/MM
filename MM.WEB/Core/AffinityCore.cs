@@ -4,60 +4,59 @@ namespace MM.WEB.Core
 {
     public static class AffinityCore
     {
-        public static List<AffinityVM> GetAffinity(ProfileModel? user, ProfileModel? view)
+        public static List<AffinityVM> GetAffinity(ProfileModel? profile, FilterModel? filter, ProfileModel? view)
         {
-            if (user == null) throw new NotificationException("Não foi possível identificar seu perfil");
+            if (profile == null) throw new NotificationException("Não foi possível identificar seu perfil");
+            if (filter == null) throw new NotificationException("Não foi possível identificar seus filtros");
             if (view == null) throw new NotificationException("Não foi possível identificar o perfil deste usuário");
-            if (user.Preference == null) throw new NotificationException("Não foi possível identificar suas preferências");
 
             var obj = new List<AffinityVM>
             {
                 //BASIC - DEFINIÇÕES DE BUSCA
                 //new AffinityVM(Section.Basic, CompatibilityItem.Location, GetLocation(user) == view.Location),
-                new(Section.Basic, CompatibilityItem.Language, GetLanguages(user, user.Preference).IsMatch(view.Languages)),
-                new(Section.Basic, CompatibilityItem.CurrentSituation, GetCurrentSituation(user, user.Preference).IsMatch(view.CurrentSituation.ToArray())),
-                new(Section.Basic, CompatibilityItem.Intentions, GetIntentions(user).IsMatch(view.Intentions)),
-                new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(user, user.Preference).IsMatch(view.BiologicalSex.ToArray())),
-                new(Section.Basic, CompatibilityItem.GenderIdentity, GetGenderIdentity(user, user.Preference).IsMatch(view.GenderIdentity.ToArray())),
-                new(Section.Basic, CompatibilityItem.SexualOrientation, GetSexualOrientation(user, user.Preference).IsMatch(view.SexualOrientation.ToArray())),
+                new(Section.Basic, CompatibilityItem.Language, GetLanguages(profile, filter).IsMatch(view.Languages)),
+                new(Section.Basic, CompatibilityItem.CurrentSituation, GetCurrentSituation(profile, filter).IsMatch(view.CurrentSituation.ToArray())),
+                new(Section.Basic, CompatibilityItem.Intentions, GetIntentions(profile).IsMatch(view.Intentions)),
+                new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(profile, filter).IsMatch(view.BiologicalSex.ToArray())),
+                new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(profile, filter).IsMatch(view.GenderIdentities)),
+                new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(profile, filter).IsMatch(view.SexualOrientations)),
 
                 //BIO - DEFINIÇÕES DE BUSCA
-                new(Section.Bio, CompatibilityItem.RaceCategory, GetRaceCategory(user.Preference).IsMatch(view.RaceCategory.ToArray())),
-                new(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(user.Preference).IsMatch(view.BodyMass.ToArray())),
-                new(Section.Bio, CompatibilityItem.Age, GetAge(user, user.Preference).IsRangeMatch(view.Age.ToArray())),
-                new(Section.Bio, CompatibilityItem.Zodiac, GetZodiac(user).IsMatch(view.Zodiac.ToArray())),
-                new(Section.Bio, CompatibilityItem.Height, GetHeight(user, user.Preference).Select(s => (int)s).IsRangeMatch(((int?)view.Height).ToArray())),
-                new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(user.Preference).IsMatch(view.Neurodiversity.ToArray())),
-                new(Section.Bio, CompatibilityItem.Disabilities, GetDisability(user.Preference).IsMatch(view.Disabilities)),
+                new(Section.Bio, CompatibilityItem.RaceCategory, GetRaceCategory(filter).IsMatch(view.RaceCategory.ToArray())),
+                new(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(filter).IsMatch(view.BodyMass.ToArray())),
+                new(Section.Bio, CompatibilityItem.Age, GetAge(profile, filter).IsRangeMatch(view.Age.ToArray())),
+                new(Section.Bio, CompatibilityItem.Height, GetHeight(profile, filter).Select(s => (int)s).IsRangeMatch(((int?)view.Height).ToArray())),
+                new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(filter).IsMatch(view.Neurodiversity.ToArray())),
+                new(Section.Bio, CompatibilityItem.Disabilities, GetDisability(filter).IsMatch(view.Disabilities)),
 
                 //LIFESTYLE - COMPATIBILIDADE DE PERFIL OU DEFINIÇÕES DE BUSCA (SE PREENCHIDO)
-                new(Section.Lifestyle, CompatibilityItem.Drink, GetDrink(user, user.Preference).IsMatch(view.Drink.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(user, user.Preference).IsMatch(view.Smoke.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(user, user.Preference).IsMatch(view.Diet.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(user, user.Preference).IsMatch(view.Religion.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(user, user.Preference).IsMatch(view.HaveChildren.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.WantChildren, GetWantChildren(user, user.Preference).IsMatch(view.WantChildren.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(user, user.Preference).IsMatch(view.EducationLevel.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(user, user.Preference).IsMatch(view.CareerCluster.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.TravelFrequency, GetTravelFrequency(user, user.Preference).IsMatch(view.TravelFrequency.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Drink, GetDrink(profile, filter).IsMatch(view.Drink.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(profile, filter).IsMatch(view.Smoke.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(profile, filter).IsMatch(view.Diet.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(profile, filter).IsMatch(view.Religion.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.WantChildren, GetWantChildren(profile, filter).IsMatch(view.WantChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(profile, filter).IsMatch(view.EducationLevel.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(profile, filter).IsMatch(view.CareerCluster.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.TravelFrequency, GetTravelFrequency(profile, filter).IsMatch(view.TravelFrequency.ToArray())),
 
                 //PERSONALITY - COMPATIBILIDADE DE PERFIL
-                new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(user).IsMatch(view.MoneyPersonality.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(user).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(user).IsMatch(view.RelationshipPersonality.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(user).IsMatch(view.MBTI.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(user).IsMatch(view.LoveLanguage.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(user).IsMatch(view.SexPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(profile).IsMatch(view.MoneyPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(profile).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(profile).IsMatch(view.RelationshipPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(profile).IsMatch(view.MBTI.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(profile).IsMatch(view.LoveLanguage.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(profile).IsMatch(view.SexPersonality.ToArray(), true)),
 
                 //INTEREST - COMPATIBILIDADE DE PERFIL (UMA OPÇAO IGUAL JÁ INDICA COMPATIBILIDADE)
-                new(Section.Interest, CompatibilityItem.Food, GetFood(user).IsMatch(view.Food)),
-                new(Section.Interest, CompatibilityItem.Vacation, GetVacation(user).IsMatch(view.Vacation)),
-                new(Section.Interest, CompatibilityItem.Sports, GetSports(user).IsMatch(view.Sports)),
-                new(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(user).IsMatch(view.LeisureActivities)),
-                new(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(user).IsMatch(view.MusicGenre)),
-                new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(user).IsMatch(view.MovieGenre)),
-                new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(user).IsMatch(view.TVGenre)),
-                new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(user).IsMatch(view.ReadingGenre)),
+                new(Section.Interest, CompatibilityItem.Food, GetFood(profile).IsMatch(view.Food)),
+                new(Section.Interest, CompatibilityItem.Vacation, GetVacation(profile).IsMatch(view.Vacation)),
+                new(Section.Interest, CompatibilityItem.Sports, GetSports(profile).IsMatch(view.Sports)),
+                new(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(profile).IsMatch(view.LeisureActivities)),
+                new(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(profile).IsMatch(view.MusicGenre)),
+                new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(profile).IsMatch(view.MovieGenre)),
+                new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(profile).IsMatch(view.TVGenre)),
+                new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(profile).IsMatch(view.ReadingGenre)),
             };
 
             return obj;
@@ -79,33 +78,33 @@ namespace MM.WEB.Core
             else return [];
         }
 
-        private static bool IsMatch<T>(this HashSet<T> preferences, HashSet<T> view, bool force = false)
+        private static bool IsMatch<T>(this HashSet<T> filters, HashSet<T> view, bool force = false)
         {
-            if (force && preferences.Count == 0) return false; //if preferences is required
-            if (preferences.Count == 0) return true; //if preferences are empty then accept all
+            if (force && filters.Count == 0) return false; //if preferences is required
+            if (filters.Count == 0) return true; //if preferences are empty then accept all
             if (view.Count == 0) return false; //if the preference is not empty and the view is empty then it does not accept anything
 
-            return preferences.Intersect(view).Any();
+            return filters.Intersect(view).Any();
         }
 
-        private static bool IsRangeMatch(this IEnumerable<int> preferences, IEnumerable<int> view)
+        private static bool IsRangeMatch(this IEnumerable<int> filters, IEnumerable<int> view)
         {
-            if (!preferences.Any()) return true; //if preferences are empty then accept all
+            if (!filters.Any()) return true; //if preferences are empty then accept all
             if (!view.Any()) return false; //if the preference is not empty and the view is empty then it does not accept anything
-            if (preferences.Count() != 2) throw new InvalidOperationException("preferences.Count != 2");
+            if (filters.Count() != 2) throw new InvalidOperationException("preferences.Count != 2");
 
-            return preferences.First() <= view.First() && view.First() <= preferences.Last();
+            return filters.First() <= view.First() && view.First() <= filters.Last();
         }
 
         #region BASIC
 
-        public static string GetLocation(ProfileModel user)
+        public static string GetLocation(ProfileModel profile, FilterModel? filter)
         {
-            var parts = user.Location?.Split(" - ") ?? [];
+            var parts = profile.Location?.Split(" - ") ?? [];
 
-            return user.Preference?.Region switch
+            return filter?.Region switch
             {
-                Region.City => user.Location, //level 3
+                Region.City => profile.Location, //level 3
                 Region.State => $"{parts[0]} - {parts[1]}", //level 2
                 Region.Country => $"{parts[0]}", //level 1
                 Region.World => "",
@@ -113,53 +112,49 @@ namespace MM.WEB.Core
             } ?? "";
         }
 
-        public static HashSet<Language> GetLanguages(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Language> GetLanguages(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.Languages.Count != 0) return pref.Languages;
-            else if (user.Languages.Count != 0) return user.Languages;
+            if (filter != null && filter.Languages.Count != 0) return filter.Languages;
+            else if (profile.Languages.Count != 0) return profile.Languages;
             else return [];
         }
 
-        public static HashSet<CurrentSituation> GetCurrentSituation(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<CurrentSituation> GetCurrentSituation(ProfileModel profile, FilterModel? filter = null)
         {
             HashSet<CurrentSituation> selected;
-            if (pref != null && pref.CurrentSituation.Count != 0) selected = pref.CurrentSituation;
-            else if (user.CurrentSituation.HasValue) selected = user.CurrentSituation.ToArray();
+            if (filter != null && filter.CurrentSituation.Count != 0) selected = filter.CurrentSituation;
             else selected = [];
 
-            if (selected.Count == 1 && selected.First() == CurrentSituation.Single)
-                return selected;
-            else
-                return [];
+            return selected;
         }
 
-        public static HashSet<Intentions> GetIntentions(ProfileModel user)
+        public static HashSet<Intentions> GetIntentions(ProfileModel profile)
         {
-            return user.Intentions;
+            return profile.Intentions;
         }
 
-        public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.BiologicalSex.Count != 0)
+            if (filter != null && filter.BiologicalSex.Count != 0)
             {
-                return pref.BiologicalSex;
+                return filter.BiologicalSex;
             }
             else
             {
-                if (user.GenderIdentity == GenderIdentity.Cisgender) //BINARY
+                if (profile.GenderIdentities.Contains(GenderIdentity.Cisgender)) //BINARY
                 {
-                    if (user.SexualOrientation == SexualOrientation.Heterosexual)
+                    if (profile.SexualOrientations.Contains(SexualOrientation.Heterosexual))
                     {
-                        return user.BiologicalSex switch
+                        return profile.BiologicalSex switch
                         {
                             BiologicalSex.Male => BiologicalSex.Female.ToArray(),
                             BiologicalSex.Female => BiologicalSex.Male.ToArray(),
                             _ => []
                         };
                     }
-                    else if (user.SexualOrientation == SexualOrientation.Homosexual)
+                    else if (profile.SexualOrientations.Contains(SexualOrientation.Homosexual))
                     {
-                        return user.BiologicalSex switch
+                        return profile.BiologicalSex switch
                         {
                             BiologicalSex.Male => BiologicalSex.Male.ToArray(),
                             BiologicalSex.Female => BiologicalSex.Female.ToArray(),
@@ -178,15 +173,15 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<GenderIdentity> GetGenderIdentity(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<GenderIdentity> GetGenderIdentities(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.GenderIdentity.Count != 0)
+            if (filter != null && filter.GenderIdentities.Count != 0)
             {
-                return pref.GenderIdentity;
+                return filter.GenderIdentities;
             }
             else
             {
-                if (user.GenderIdentity == GenderIdentity.Cisgender) //BINARY
+                if (profile.GenderIdentities.Contains(GenderIdentity.Cisgender)) //BINARY
                 {
                     return GenderIdentity.Cisgender.ToArray();
                 }
@@ -197,20 +192,17 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<SexualOrientation> GetSexualOrientation(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<SexualOrientation> GetSexualOrientations(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.SexualOrientation.Count != 0)
+            if (filter != null && filter.SexualOrientations.Count != 0)
             {
-                return pref.SexualOrientation;
+                return filter.SexualOrientations;
             }
             else
             {
-                return user.SexualOrientation switch
-                {
-                    SexualOrientation.Heterosexual => [SexualOrientation.Heterosexual],
-                    SexualOrientation.Homosexual => [SexualOrientation.Homosexual],
-                    _ => []
-                };
+                if (profile.SexualOrientations.Contains(SexualOrientation.Heterosexual)) return [SexualOrientation.Heterosexual];
+                else if (profile.SexualOrientations.Contains(SexualOrientation.Homosexual)) return [SexualOrientation.Homosexual];
+                else return [];
             }
         }
 
@@ -218,31 +210,31 @@ namespace MM.WEB.Core
 
         #region BIO
 
-        public static HashSet<RaceCategory> GetRaceCategory(ProfilePreferenceModel? pref = null)
+        public static HashSet<RaceCategory> GetRaceCategory(FilterModel? filter = null)
         {
-            if (pref != null && pref.RaceCategory.Count != 0) return pref.RaceCategory;
+            if (filter != null && filter.RaceCategory.Count != 0) return filter.RaceCategory;
             else return [];
         }
 
-        public static HashSet<BodyMass> GetBodyMass(ProfilePreferenceModel? pref = null)
+        public static HashSet<BodyMass> GetBodyMass(FilterModel? filter = null)
         {
-            if (pref != null && pref.BodyMass.Count != 0) return pref.BodyMass;
+            if (filter != null && filter.BodyMass.Count != 0) return filter.BodyMass;
             else return [];
         }
 
-        public static int[] GetAge(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
+        public static int[] GetAge(ProfileModel profile, FilterModel? filter = null, bool force = false)
         {
             int min;
             int max;
 
-            if (pref != null && !force)
+            if (filter != null && !force)
             {
-                min = pref.MinimalAge;
-                max = pref.MaxAge;
+                min = filter.MinimalAge;
+                max = filter.MaxAge;
             }
             else
             {
-                var age = user.BirthDate.GetAge();
+                var age = profile.BirthDate.GetAge();
 
                 min = age / 2 + 9;
                 if (min < 18) min = 18;
@@ -254,61 +246,41 @@ namespace MM.WEB.Core
             return [min, max];
         }
 
-        public static HashSet<Zodiac> GetZodiac(ProfileModel user)
-        {
-            return user.Zodiac switch
-            {
-                Zodiac.Aries => [Zodiac.Leo, Zodiac.Sagittarius],
-                Zodiac.Taurus => [Zodiac.Virgo, Zodiac.Capricorn],
-                Zodiac.Gemini => [Zodiac.Libra, Zodiac.Aquarius],
-                Zodiac.Cancer => [Zodiac.Scorpio, Zodiac.Pisces],
-                Zodiac.Leo => [Zodiac.Aries, Zodiac.Sagittarius],
-                Zodiac.Virgo => [Zodiac.Taurus, Zodiac.Capricorn],
-                Zodiac.Libra => [Zodiac.Gemini, Zodiac.Aquarius],
-                Zodiac.Scorpio => [Zodiac.Cancer, Zodiac.Scorpio, Zodiac.Pisces],
-                Zodiac.Sagittarius => [Zodiac.Aries, Zodiac.Leo],
-                Zodiac.Capricorn => [Zodiac.Taurus, Zodiac.Virgo],
-                Zodiac.Aquarius => [Zodiac.Gemini, Zodiac.Libra],
-                Zodiac.Pisces => [Zodiac.Cancer, Zodiac.Scorpio],
-                _ => []
-            };
-        }
-
-        public static Height[] GetHeight(ProfileModel user, ProfilePreferenceModel? pref = null, bool force = false)
+        public static Height[] GetHeight(ProfileModel profile, FilterModel? filter = null, bool force = false)
         {
             Height min;
             Height max;
             var ratio = 1.09;
 
-            if (pref != null && pref.MinimalHeight.HasValue && !force)
+            if (filter != null && filter.MinimalHeight.HasValue && !force)
             {
-                min = pref.MinimalHeight.Value;
+                min = filter.MinimalHeight.Value;
             }
             else
             {
-                if (user.Height.HasValue)
+                if (profile.Height.HasValue)
                 {
                     int minHeight;
 
-                    if (pref != null && pref.BiologicalSex.Count != 0 && pref.BiologicalSex.Count == 1)
+                    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
                     {
                         //TODO: USE CONTAINS?
-                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex.First() == BiologicalSex.Female)
+                        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
                         {
-                            minHeight = (int)Math.Round((int)user.Height.Value / (ratio + 0.04));
+                            minHeight = (int)Math.Round((int)profile.Height.Value / (ratio + 0.04));
                         }
-                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex.First() == BiologicalSex.Male)
+                        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
                         {
-                            minHeight = (int)Math.Round((int)user.Height.Value * (ratio - 0.04));
+                            minHeight = (int)Math.Round((int)profile.Height.Value * (ratio - 0.04));
                         }
                         else
                         {
-                            minHeight = (int)user.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
+                            minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
                         }
                     }
                     else
                     {
-                        minHeight = (int)user.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
+                        minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
 
                     if (minHeight < (int)Height._140) minHeight = (int)Height._140;
@@ -320,35 +292,35 @@ namespace MM.WEB.Core
                 }
             }
 
-            if (pref != null && pref.MaxHeight.HasValue && !force)
+            if (filter != null && filter.MaxHeight.HasValue && !force)
             {
-                max = pref.MaxHeight.Value;
+                max = filter.MaxHeight.Value;
             }
             else
             {
-                if (user.Height.HasValue)
+                if (profile.Height.HasValue)
                 {
                     int maxHeight;
 
-                    if (pref != null && pref.BiologicalSex.Count != 0 && pref.BiologicalSex.Count == 1)
+                    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
                     {
                         //TODO: USE CONTAINS?
-                        if (user.BiologicalSex == BiologicalSex.Male && pref.BiologicalSex.First() == BiologicalSex.Female)
+                        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
                         {
-                            maxHeight = (int)Math.Round((int)user.Height.Value / (ratio - 0.04));
+                            maxHeight = (int)Math.Round((int)profile.Height.Value / (ratio - 0.04));
                         }
-                        else if (user.BiologicalSex == BiologicalSex.Female && pref.BiologicalSex.First() == BiologicalSex.Male)
+                        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
                         {
-                            maxHeight = (int)Math.Round((int)user.Height.Value * (ratio + 0.04));
+                            maxHeight = (int)Math.Round((int)profile.Height.Value * (ratio + 0.04));
                         }
                         else
                         {
-                            maxHeight = (int)user.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
+                            maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
                         }
                     }
                     else
                     {
-                        maxHeight = (int)user.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
+                        maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
 
                     if (maxHeight > (int)Height._192) maxHeight = (int)Height._192;
@@ -363,18 +335,18 @@ namespace MM.WEB.Core
             return [min, max];
         }
 
-        public static HashSet<Neurodiversity> GetNeurodiversity(ProfilePreferenceModel? pref = null)
+        public static HashSet<Neurodiversity> GetNeurodiversity(FilterModel? filter = null)
         {
-            if (pref != null)
-                return pref.Neurodiversities;
+            if (filter != null)
+                return filter.Neurodiversities;
             else
                 return [];
         }
 
-        public static HashSet<Disability> GetDisability(ProfilePreferenceModel? pref = null)
+        public static HashSet<Disability> GetDisability(FilterModel? filter = null)
         {
-            if (pref != null)
-                return pref.Disabilities;
+            if (filter != null)
+                return filter.Disabilities;
             else
                 return [];
         }
@@ -383,15 +355,15 @@ namespace MM.WEB.Core
 
         #region LIFESTYLE
 
-        public static HashSet<Drink> GetDrink(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Drink> GetDrink(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.Drink.Count != 0)
+            if (filter != null && filter.Drink.Count != 0)
             {
-                return pref.Drink;
+                return filter.Drink;
             }
             else
             {
-                return user.Drink switch
+                return profile.Drink switch
                 {
                     Drink.No => [Drink.No, Drink.YesLight],
                     Drink.YesLight => [Drink.No, Drink.YesLight, Drink.YesModerate],
@@ -402,15 +374,15 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<Smoke> GetSmoke(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Smoke> GetSmoke(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.Smoke.Count != 0)
+            if (filter != null && filter.Smoke.Count != 0)
             {
-                return pref.Smoke;
+                return filter.Smoke;
             }
             else
             {
-                return user.Smoke switch
+                return profile.Smoke switch
                 {
                     Smoke.No => [Smoke.No],
                     Smoke.YesOccasionally => [Smoke.YesOccasionally, Smoke.YesOften],
@@ -420,11 +392,11 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<Diet> GetDiet(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Diet> GetDiet(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.Diet.Count != 0)
+            if (filter != null && filter.Diet.Count != 0)
             {
-                return pref.Diet;
+                return filter.Diet;
             }
             else
             {
@@ -432,7 +404,7 @@ namespace MM.WEB.Core
                 var group02 = new HashSet<Diet>([Diet.Vegetarian, Diet.Vegan]);
                 var group03 = new HashSet<Diet>([Diet.RawFood, Diet.OrganicAllnaturalLocal]);
 
-                return user.Diet switch
+                return profile.Diet switch
                 {
                     Diet.Omnivore => group01,
                     Diet.Flexitarian => group01,
@@ -447,27 +419,27 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<Religion> GetReligion(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<Religion> GetReligion(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.Religion.Count != 0)
+            if (filter != null && filter.Religion.Count != 0)
             {
-                return pref.Religion;
+                return filter.Religion;
             }
             else
             {
-                return [user.Religion ?? throw new NotificationException("Religion null")];
+                return [profile.Religion ?? throw new NotificationException("Religion null")];
             }
         }
 
-        public static HashSet<HaveChildren> GetHaveChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<HaveChildren> GetHaveChildren(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.HaveChildren.Count != 0)
+            if (filter != null && filter.HaveChildren.Count != 0)
             {
-                return pref.HaveChildren;
+                return filter.HaveChildren;
             }
             else
             {
-                return user.HaveChildren switch
+                return profile.HaveChildren switch
                 {
                     HaveChildren.No => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.YesNo => [HaveChildren.No, HaveChildren.YesNo],
@@ -477,15 +449,15 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<WantChildren> GetWantChildren(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<WantChildren> GetWantChildren(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.WantChildren.Count != 0)
+            if (filter != null && filter.WantChildren.Count != 0)
             {
-                return pref.WantChildren;
+                return filter.WantChildren;
             }
             else
             {
-                return user.WantChildren switch
+                return profile.WantChildren switch
                 {
                     WantChildren.No => [WantChildren.No],
                     WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
@@ -495,39 +467,39 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<EducationLevel> GetEducationLevel(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<EducationLevel> GetEducationLevel(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.EducationLevel.Count != 0)
+            if (filter != null && filter.EducationLevel.Count != 0)
             {
-                return pref.EducationLevel;
+                return filter.EducationLevel;
             }
             else
             {
-                return [user.EducationLevel ?? throw new NotificationException("EducationLevel null")];
+                return [profile.EducationLevel ?? throw new NotificationException("EducationLevel null")];
             }
         }
 
-        public static HashSet<CareerCluster> GetCareerCluster(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<CareerCluster> GetCareerCluster(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.CareerCluster.Count != 0)
+            if (filter != null && filter.CareerCluster.Count != 0)
             {
-                return pref.CareerCluster;
+                return filter.CareerCluster;
             }
             else
             {
-                return [user.CareerCluster ?? throw new NotificationException("CareerCluster null")];
+                return [profile.CareerCluster ?? throw new NotificationException("CareerCluster null")];
             }
         }
 
-        public static HashSet<TravelFrequency> GetTravelFrequency(ProfileModel user, ProfilePreferenceModel? pref = null)
+        public static HashSet<TravelFrequency> GetTravelFrequency(ProfileModel profile, FilterModel? filter = null)
         {
-            if (pref != null && pref.TravelFrequency.Count != 0)
+            if (filter != null && filter.TravelFrequency.Count != 0)
             {
-                return pref.TravelFrequency;
+                return filter.TravelFrequency;
             }
             else
             {
-                return user.TravelFrequency switch
+                return profile.TravelFrequency switch
                 {
                     TravelFrequency.NeverRarely => [TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently],
                     TravelFrequency.SometimesFrequently => [TravelFrequency.NeverRarely, TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
@@ -541,16 +513,16 @@ namespace MM.WEB.Core
 
         #region PERSONALITY
 
-        public static HashSet<MoneyPersonality> GetMoneyPersonality(ProfileModel user)
+        public static HashSet<MoneyPersonality> GetMoneyPersonality(ProfileModel profile)
         {
-            return user.MoneyPersonality.ToArray();
+            return profile.MoneyPersonality.ToArray();
         }
 
-        public static HashSet<SharedSpendingStyle> GetSharedSpendingStyle(ProfileModel user)
+        public static HashSet<SharedSpendingStyle> GetSharedSpendingStyle(ProfileModel profile)
         {
             //invented by me (dhiogo)
 
-            return user.SharedSpendingStyle switch
+            return profile.SharedSpendingStyle switch
             {
                 SharedSpendingStyle.Recipient => SharedSpendingStyle.Benefactor.ToArray(),
                 SharedSpendingStyle.Contributor => SharedSpendingStyle.Provider.ToArray(),
@@ -561,11 +533,11 @@ namespace MM.WEB.Core
             };
         }
 
-        public static HashSet<RelationshipPersonality> GetRelationshipPersonality(ProfileModel user)
+        public static HashSet<RelationshipPersonality> GetRelationshipPersonality(ProfileModel profile)
         {
             //https://helenfisher.com/downloads/articles/Article_%20We%20Have%20Chemistry.pdf
 
-            return user.RelationshipPersonality switch
+            return profile.RelationshipPersonality switch
             {
                 RelationshipPersonality.Explorers => RelationshipPersonality.Explorers.ToArray(),
                 RelationshipPersonality.Directors => RelationshipPersonality.Negotiator.ToArray(),
@@ -575,13 +547,13 @@ namespace MM.WEB.Core
             };
         }
 
-        public static HashSet<MyersBriggsTypeIndicator> GetMyersBriggsTypeIndicator(ProfileModel user)
+        public static HashSet<MyersBriggsTypeIndicator> GetMyersBriggsTypeIndicator(ProfileModel profile)
         {
             //http://www.personalityrelationships.net/
             //https://web.archive.org/web/20220322143220/http://www.personalityrelationships.net/
             //https://www.sosyncd.com/the-complete-guide-to-personality-type-compatibility/
 
-            return user.MBTI switch
+            return profile.MBTI switch
             {
                 MyersBriggsTypeIndicator.INTJ => [MyersBriggsTypeIndicator.ENTP, MyersBriggsTypeIndicator.ENFP],
                 MyersBriggsTypeIndicator.INTP => [MyersBriggsTypeIndicator.ENTJ, MyersBriggsTypeIndicator.ENFJ],
@@ -606,20 +578,20 @@ namespace MM.WEB.Core
             };
         }
 
-        public static HashSet<LoveLanguage> GetLoveLanguage(ProfileModel user)
+        public static HashSet<LoveLanguage> GetLoveLanguage(ProfileModel profile)
         {
-            return user.LoveLanguage.ToArray();
+            return profile.LoveLanguage.ToArray();
         }
 
-        public static HashSet<SexPersonality> GetSexPersonality(ProfileModel user)
+        public static HashSet<SexPersonality> GetSexPersonality(ProfileModel profile)
         {
-            if (user.SexPersonalityPreference.Count != 0)
+            if (profile.SexPersonalityPreference.Count != 0)
             {
-                return user.SexPersonalityPreference;
+                return profile.SexPersonalityPreference;
             }
             else
             {
-                return user.SexPersonality.ToArray();
+                return profile.SexPersonality.ToArray();
             }
         }
 
@@ -627,57 +599,57 @@ namespace MM.WEB.Core
 
         #region INTEREST
 
-        public static HashSet<Food> GetFood(ProfileModel user)
+        public static HashSet<Food> GetFood(ProfileModel profile)
         {
-            return user.Food;
+            return profile.Food;
         }
 
-        public static HashSet<Vacation> GetVacation(ProfileModel user)
+        public static HashSet<Vacation> GetVacation(ProfileModel profile)
         {
-            return user.Vacation;
+            return profile.Vacation;
         }
 
-        public static HashSet<Sports> GetSports(ProfileModel user)
+        public static HashSet<Sports> GetSports(ProfileModel profile)
         {
-            return user.Sports;
+            return profile.Sports;
         }
 
-        public static HashSet<LeisureActivities> GetLeisureActivities(ProfileModel user)
+        public static HashSet<LeisureActivities> GetLeisureActivities(ProfileModel profile)
         {
-            return user.LeisureActivities;
+            return profile.LeisureActivities;
         }
 
-        public static HashSet<MusicGenre> GetMusicGenre(ProfileModel user)
+        public static HashSet<MusicGenre> GetMusicGenre(ProfileModel profile)
         {
-            return user.MusicGenre;
+            return profile.MusicGenre;
         }
 
-        public static HashSet<MovieGenre> GetMovieGenre(ProfileModel user)
+        public static HashSet<MovieGenre> GetMovieGenre(ProfileModel profile)
         {
-            return user.MovieGenre;
+            return profile.MovieGenre;
         }
 
-        public static HashSet<TVGenre> GetTVGenre(ProfileModel user)
+        public static HashSet<TVGenre> GetTVGenre(ProfileModel profile)
         {
-            return user.TVGenre;
+            return profile.TVGenre;
         }
 
-        public static HashSet<ReadingGenre> GetReadingGenre(ProfileModel user)
+        public static HashSet<ReadingGenre> GetReadingGenre(ProfileModel profile)
         {
-            return user.ReadingGenre;
+            return profile.ReadingGenre;
         }
 
         #endregion INTEREST
 
-        public static int GetPercentAffinity(this List<AffinityVM> Affinities, Section? category = null)
+        public static int GetPercentAffinity(this List<AffinityVM> affinities, Section? category = null)
         {
             if (category == null)
             {
-                var totBasic = Affinities.GetPercentAffinity(Section.Basic);
-                var totBio = Affinities.GetPercentAffinity(Section.Bio);
-                var totLifestyle = Affinities.GetPercentAffinity(Section.Lifestyle);
-                var totPersonality = Affinities.GetPercentAffinity(Section.Personality);
-                var totInterest = Affinities.GetPercentAffinity(Section.Interest);
+                var totBasic = affinities.GetPercentAffinity(Section.Basic);
+                var totBio = affinities.GetPercentAffinity(Section.Bio);
+                var totLifestyle = affinities.GetPercentAffinity(Section.Lifestyle);
+                var totPersonality = affinities.GetPercentAffinity(Section.Personality);
+                var totInterest = affinities.GetPercentAffinity(Section.Interest);
 
                 var pesoBasic = 10;
                 var pesoBio = 15;
@@ -690,8 +662,8 @@ namespace MM.WEB.Core
             }
             else
             {
-                var totCheck = Affinities.Count(w => w.Section == category && w.HaveAffinity);
-                var totItens = Affinities.Count(w => w.Section == category);
+                var totCheck = affinities.Count(w => w.Section == category && w.HaveAffinity);
+                var totItens = affinities.Count(w => w.Section == category);
 
                 if (totCheck == 0 || totItens == 0) return 0;
 

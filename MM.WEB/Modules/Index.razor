@@ -7,36 +7,88 @@
 
 <SeoHeader Title="Home" Description="@SeoTranslations.Description" Url="/"></SeoHeader>
 
-<CardDeck Margin="Margin.Is3.FromBottom">
-    <Card>
-        <CardBody>
-            <CardTitle Size="5" Margin="Margin.Is0.FromBottom">
-                Countries <Badge Color="Color.Primary" Float="Float.End">0</Badge>
-            </CardTitle>
-        </CardBody>
-    </Card>
-    <Card>
-        <CardBody>
-            <CardTitle Size="5" Margin="Margin.Is0.FromBottom">
-                Cities <Badge Color="Color.Primary" Float="Float.End">0</Badge>
-            </CardTitle>
-        </CardBody>
-    </Card>
-    <Card>
-        <CardBody>
-            <CardTitle Size="5" Margin="Margin.Is0.FromBottom">
-                Users <Badge Color="Color.Primary" Float="Float.End">0</Badge>
-            </CardTitle>
-        </CardBody>
-    </Card>
-    <Card>
-        <CardBody>
-            <CardTitle Size="5" Margin="Margin.Is0.FromBottom">
-                Couples <Badge Color="Color.Primary" Float="Float.End">0</Badge>
-            </CardTitle>
-        </CardBody>
-    </Card>
-</CardDeck>
+<Row>
+    <Column>
+        <Card>
+            <CardBody>
+                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                    <Blazorise.Icon Name="@FontAwesomeIcons.Earth" IconSize="IconSize.Large"></Blazorise.Icon>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                        Countries
+                    </Span>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                        12
+                    </Span>
+                </Div>
+            </CardBody>
+        </Card>
+    </Column>
+    <Column>
+        <Card>
+            <CardBody>
+                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                    <Blazorise.Icon Name="@FontAwesomeIcons.City" IconSize="IconSize.Large"></Blazorise.Icon>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                        Cities
+                    </Span>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                        40
+                    </Span>
+                </Div>
+            </CardBody>
+        </Card>
+    </Column>
+    <Column>
+        <Card>
+            <CardBody>
+                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                    <Blazorise.Icon Name="@FontAwesomeIcons.Users" IconSize="IconSize.Large"></Blazorise.Icon>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                        Users
+                    </Span>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                        1050
+                    </Span>
+                </Div>
+            </CardBody>
+        </Card>
+    </Column>
+    <Column>
+        <Card>
+            <CardBody>
+                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                    <Blazorise.Icon Name="@FontAwesomeIcons.Ring" IconSize="IconSize.Large"></Blazorise.Icon>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                        Couples
+                    </Span>
+                </Div>
+                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                        32
+                    </Span>
+                </Div>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
 
 
 @code {

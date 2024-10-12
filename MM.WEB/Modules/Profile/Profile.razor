@@ -15,118 +15,95 @@
     <ProfileHeader></ProfileHeader>
 }
 
-<HeaderComponent IconName="@FontAwesomeIcons.Star" Title="Highlights">
-</HeaderComponent>
-<Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-    <RenderControl Core="CoreList" Model="Highlights" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="false">
-        @foreach (var item in Highlights)
-        {
-            <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-            </Column>
-        }
-    </RenderControl>
+<Row Margin="Margin.Is2.FromBottom">
+    <Column ColumnSize="ColumnSize.IsAuto">
+        <Button Color="@(profile?.DtInsert == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/data">
+            <Blazorise.Icon Name="FontAwesomeIcons.UserEdit"></Blazorise.Icon> Profile
+        </Button>
+        <Button Color="@(filter == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/filter">
+            <Blazorise.Icon Name="FontAwesomeIcons.UserCheck"></Blazorise.Icon> Filters
+        </Button>
+        <Button Color="@(filter == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/setting">
+            <Blazorise.Icon Name="FontAwesomeIcons.UserCog"></Blazorise.Icon> Settings
+        </Button>
+        <Button Color="@(profile?.Photo == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
+            <Blazorise.Icon Name="FontAwesomeIcons.Portrait"></Blazorise.Icon> Photos
+        </Button>
+        <Button Color="@(true ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
+            <Blazorise.Icon Name="FontAwesomeIcons.CheckDouble"></Blazorise.Icon> Validations
+        </Button>
+    </Column>
+    <Column ColumnSize="ColumnSize.IsAuto">
+        <Switch Checked="@IsPublic" CheckedChanged="(bool value)=>IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
+            @(IsPublic ? "Public" : "Private")
+        </Switch>
+    </Column>
 </Row>
 
 <HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="Suggestions">
+    <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Generate new suggestion list" Disabled="true">
+        Generate
+    </Button>
 </HeaderComponent>
-<Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-    <RenderControl Core="CoreList" Model="Suggestions" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="false">
+<RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true" PremiumFeature="true">
+    <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
         @foreach (var item in Suggestions)
         {
             <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
             </Column>
         }
-    </RenderControl>
-</Row>
+    </Row>
+</RenderControl>
 
 <Row HorizontalGutter="8" VerticalGutter="8">
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="Likes">
         </HeaderComponent>
-        <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-            @foreach (var item in Likes)
-            {
-                <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-                </Column>
-            }
-        </Row>
+        <RenderControl Core="CoreLikes" Model="Likes" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true">
+            <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
+                @foreach (var item in Likes)
+                {
+                    <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
+                    </Column>
+                }
+            </Row>
+        </RenderControl>
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)">
+                Simulate
+            </Button>
         </HeaderComponent>
-        <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-            @foreach (var item in Matches)
-            {
-                <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
-                </Column>
-            }
-        </Row>
-    </Column>
-</Row>
-
-@* <Row HorizontalGutter="8" VerticalGutter="0">
-    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is8.OnWidescreen.Is9.OnFullHD">
-
-        <RenderControl Core="Core" Model="profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)">
-            @if (profile?.Modality == Modality.Matchmaker)
-            {
-
-            }
-            else if (profile?.Modality == Modality.RelationshipAnalysis)
-            {
-                <Alert Visible="true" Color="Color.Dark" Shadow="Shadow.Small"><AlertMessage>Seu Parceiro (@(view?.NickName ?? "..."))</AlertMessage></Alert>
-
-                <RenderControl Core="Core" Model="view" ExpressionEmpty="((ProfileModel? obj)=> obj == null)">
-                    <Row HorizontalGutter="8" VerticalGutter="0">
-                        <Column ColumnSize="ColumnSize.IsFull.OnDesktop.Is4.OnFullHD">
-                            <Card Margin="Margin.Is2.FromBottom">
-                                <CardBody Padding="Padding.Is0">
-                                    @if (view != null)
-                                    {
-                                        <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" ShowControls="imageDataUriGallery.Count() > 1" ShowIndicators="imageDataUriGallery.Count() > 1">
-                                            @foreach (var item in imageDataUriGallery)
-                                            {
-                                                <CarouselSlide @key="@item" Name="@item" Style="text-align: center; background-color: black;">
-                                                    <Image Source="@item" Style="max-height: 450px !important;" />
-                                                </CarouselSlide>
-                                            }
-                                        </Carousel>
-                                    }
-                                </CardBody>
-                                <CardBody>
-                                    @if (view != null)
-                                    {
-
-                                    }
-                                </CardBody>
-                            </Card>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.IsFull.OnDesktop.Is8.OnFullHD">
-                            <CardCompatibility User="profile" View="view" Affinities="affinities"></CardCompatibility>
-                        </Column>
-                    </Row>
-                </RenderControl>
-            }
+        <RenderControl Core="CoreMatches" Model="Matches" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true">
+            <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
+                @foreach (var item in Matches)
+                {
+                    <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
+                    </Column>
+                }
+            </Row>
         </RenderControl>
     </Column>
-</Row> *@
+</Row>
 
 @code
 {
     private ProfileModel? profile;
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
-    public RenderControlCore<List<string>>? CoreList { get; set; } = new();
 
-    public List<string> Highlights { get; set; } = [];
+    public FilterModel? filter;
+
     public List<string> Suggestions { get; set; } = [];
+    public RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
+
     public List<string> Likes { get; set; } = [];
+    public RenderControlCore<List<string>>? CoreLikes { get; set; } = new();
+
     public List<string> Matches { get; set; } = [];
+    public RenderControlCore<List<string>>? CoreMatches { get; set; } = new();
 
-    private ProfileModel? view;
-    private List<AffinityVM> affinities = new();
-
-    string? selectedImage;
-    string[] imageDataUriGallery = new string[] { };
+    public bool IsPublic { get; set; }
 
     protected override async Task LoadDataRender()
     {
@@ -135,32 +112,11 @@
             if (IsAuthenticated)
             {
                 profile = await ProfileApi.Get(CoreProfile);
-
-                if (profile != null)
-                {
-                    if (profile.Modality == Modality.RelationshipAnalysis)
-                    {
-                        var partner = profile.Partners.FirstOrDefault(w => !string.IsNullOrEmpty(w.Id));
-                    }
-                    else
-                    {
-
-                    }
-
-                    imageDataUriGallery = new string[] { profile.GetMainPhoto() }.Concat(profile.GetGalleryPhotos()).ToArray();
-
-                    if (view != null)
-                    {
-                        affinities = AffinityCore.GetAffinity(profile, view);
-                    }
-                }
-                else
-                {
-                    imageDataUriGallery = new string[] { ImageHelper.GetNoUserPhoto };
-                }
-
-                selectedImage = imageDataUriGallery.First();
             }
+
+            CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
+            CoreLikes?.LoadingFinished?.Invoke(Likes);
+            CoreMatches?.LoadingFinished?.Invoke(Matches);
         }
         catch (Exception ex)
         {
@@ -168,22 +124,40 @@
         }
     }
 
-    private string GetSuggestionTitle()
+    private async Task IsPublicChanged(bool value)
     {
-        if (profile?.Preference?.Region == null) return "";
-
-        switch (profile.Preference.Region)
+        if (value)
         {
-            case Region.City:
-                return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.City)}";
-            case Region.State:
-                return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.State)}";
-            case Region.Country:
-                return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.Country)}";
-            case Region.World:
-                return $"{profile.Preference.Region.GetName()}";
-            default:
-                return "";
+            await Toast.Warning("To make your profile public, first complete all the steps");
+            IsPublic = false;
         }
     }
+
+    private async Task SimulateMatches()
+    {
+        if (await Message.Confirm("Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works.", "Confirmation"))
+        {
+            Matches.Add("asd");
+            CoreMatches?.LoadingFinished?.Invoke(Matches);
+        }
+    }
+
+    // private string GetSuggestionTitle()
+    // {
+    //     if (profile?.Preference?.Region == null) return "";
+
+    //     switch (profile.Preference.Region)
+    //     {
+    //         case Region.City:
+    //             return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.City)}";
+    //         case Region.State:
+    //             return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.State)}";
+    //         case Region.Country:
+    //             return $"{profile.Preference.Region.GetName()} - {profile?.GetLocation(ProfileModel.LocationType.Country)}";
+    //         case Region.World:
+    //             return $"{profile.Preference.Region.GetName()}";
+    //         default:
+    //             return "";
+    //     }
+    // }
 }

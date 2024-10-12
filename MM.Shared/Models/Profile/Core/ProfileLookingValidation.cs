@@ -2,15 +2,15 @@
 
 namespace MM.Shared.Models.Profile.Core
 {
-    public class ProfileLookingValidation : AbstractValidator<ProfilePreferenceModel>
+    public class ProfileLookingValidation : AbstractValidator<FilterModel>
     {
         public ProfileLookingValidation()
         {
             RuleFor(x => x.Region)
                 .NotEmpty();
 
-            RuleFor(x => x.Change)
-                .NotEmpty();
+            //RuleFor(x => x.Change)
+            //    .NotEmpty();
 
             RuleFor(x => x.MinimalAge)
                 .NotEmpty()

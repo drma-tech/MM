@@ -1,0 +1,17 @@
+﻿@page "/profile/setting"
+
+@attribute [Authorize]
+@inherits PageCore<ProfileSetting>
+
+<Row>
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+        <FieldSwitch For="@(() => BlindDate)" @bind-Value="@BlindDate" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.EyeSlash"></FieldSwitch>
+    </Column>
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+    </Column>
+</Row>
+
+@code {
+    [Custom(Name = "Blind Date", Description = "Hide all photos, creating an air of mystery until the meeting.")]
+    public bool BlindDate { get; set; }
+}

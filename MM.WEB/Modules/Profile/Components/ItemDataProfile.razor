@@ -32,7 +32,7 @@ else
     [Parameter] public CompatibilityType Type { get; set; }
     [Parameter] public CompatibilityItem Item { get; set; }
     [Parameter] public ProfileModel? User { get; set; }
-    [Parameter] public ProfilePreferenceModel? Pref { get; set; }
+    [Parameter] public FilterModel? Filter { get; set; }
 
     private string GetValue(TValue? value)
     {
@@ -108,8 +108,8 @@ else
                 x.Add(x => x.ExpectedValues, GetExpectedValue());
                 x.Add(x => x.ViewValues, Values);
                 x.Add(x => x.Affinities, Affinities);
-                x.Add(x => x.User, User);
-                x.Add(x => x.Pref, Pref);
+                x.Add(x => x.Profile, User);
+                x.Add(x => x.Filter, Filter);
                 x.Add(x => x.Type, Type);
                 x.Add(x => x.Item, Item);
                 x.Add(x => x.FieldInfo, CustomAttributeHelper.GetCustomAttribute(For)?.FieldInfo);
@@ -151,31 +151,30 @@ else
         return Item switch
         {
             //BASIC
-            CompatibilityItem.Location => AffinityCore.GetLocation(User).ToArray(),
-            CompatibilityItem.Language => AffinityCore.GetLanguages(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.CurrentSituation => AffinityCore.GetCurrentSituation(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Location => AffinityCore.GetLocation(User, Filter).ToArray(),
+            CompatibilityItem.Language => AffinityCore.GetLanguages(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.CurrentSituation => AffinityCore.GetCurrentSituation(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.Intentions => AffinityCore.GetIntentions(User).Select(s => s.GetName()),
-            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.GenderIdentity => AffinityCore.GetGenderIdentity(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.SexualOrientation => AffinityCore.GetSexualOrientation(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.GenderIdentities => AffinityCore.GetGenderIdentities(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.SexualOrientations => AffinityCore.GetSexualOrientations(User, Filter).Select(s => s.GetName()),
             //BIO
-            CompatibilityItem.RaceCategory => AffinityCore.GetRaceCategory(User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.BodyMass => AffinityCore.GetBodyMass(User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Age => AffinityCore.GetAge(User, User.Preference).Select(s => s.ToString()),
-            CompatibilityItem.Zodiac => AffinityCore.GetZodiac(User).Select(s => s.GetName()),
-            CompatibilityItem.Height => AffinityCore.GetHeight(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Disabilities => AffinityCore.GetDisability(User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.RaceCategory => AffinityCore.GetRaceCategory(Filter).Select(s => s.GetName()),
+            CompatibilityItem.BodyMass => AffinityCore.GetBodyMass(Filter).Select(s => s.GetName()),
+            CompatibilityItem.Age => AffinityCore.GetAge(User, Filter).Select(s => s.ToString()),
+            CompatibilityItem.Height => AffinityCore.GetHeight(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(Filter).Select(s => s.GetName()),
+            CompatibilityItem.Disabilities => AffinityCore.GetDisability(Filter).Select(s => s.GetName()),
             //LIFESTYLE
-            CompatibilityItem.Drink => AffinityCore.GetDrink(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Diet => AffinityCore.GetDiet(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.Religion => AffinityCore.GetReligion(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, User.Preference).Select(s => s.GetName()),
-            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, User.Preference).Select(s => s.GetName()),
+            CompatibilityItem.Drink => AffinityCore.GetDrink(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.Diet => AffinityCore.GetDiet(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.Religion => AffinityCore.GetReligion(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, Filter).Select(s => s.GetName()),
             //PERSONALITY
             CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetName()),
             CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetName()),

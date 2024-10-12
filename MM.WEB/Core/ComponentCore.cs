@@ -15,6 +15,7 @@ namespace MM.WEB.Core
     {
         [Inject] protected ILogger<T> Logger { get; set; } = default!;
         [Inject] protected INotificationService Toast { get; set; } = default!;
+        [Inject] protected IMessageService Message { get; set; } = default!;
         [Inject] protected IResizeListener listener { get; set; } = default!;
         [Inject] protected IModalService ModalService { get; set; } = default!;
         [Inject] protected NavigationManager Navigation { get; set; } = default!;

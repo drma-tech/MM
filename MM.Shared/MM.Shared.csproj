@@ -17,10 +17,15 @@
 	  <PackageReference Include="StrongGrid" Version="0.109.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="Enums\Resources\Change.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Change.resx</DependentUpon>
+		<Compile Update="Enums\Resources\AnnualIncome.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>AnnualIncome.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Enums\Resources\NetWorth.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>NetWorth.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Enums\Resources\Region.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -57,15 +62,10 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>ProfileLifestyleModel.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Models\Profile\Resources\ProfileMyRelationship.Designer.cs">
+		<Compile Update="Models\Profile\Resources\FilterModel.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
-			<DependentUpon>ProfileMyRelationship.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Models\Profile\Resources\ProfilePreferenceModel.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>ProfilePreferenceModel.resx</DependentUpon>
+			<DependentUpon>FilterModel.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Models\Support\Resources\TicketModel.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -97,11 +97,6 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>CareerCluster.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Enums\Resources\CurrentSituation.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>CurrentSituation.resx</DependentUpon>
-		</Compile>
 		<Compile Update="Enums\Resources\Diet.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -117,20 +112,10 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Drink.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Enums\Resources\EducationLevel.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>EducationLevel.resx</DependentUpon>
-		</Compile>
 		<Compile Update="Enums\Resources\Food.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Food.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Enums\Resources\GenderIdentity.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>GenderIdentity.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Enums\Resources\HaveChildren.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -156,11 +141,6 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>LoveLanguage.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Enums\Resources\Modality.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Modality.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Enums\Resources\MoneyPersonality.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -217,11 +197,6 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>SexPersonality.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Enums\Resources\SexualOrientation.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>SexualOrientation.resx</DependentUpon>
-		</Compile>
 		<Compile Update="Enums\Resources\Smoke.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -257,11 +232,20 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>WantChildren.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Resources\Validations.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Validations.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="Enums\Resources\Change.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Change.Designer.cs</LastGenOutput>
+		<EmbeddedResource Update="Enums\Resources\AnnualIncome.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>AnnualIncome.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\NetWorth.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>NetWorth.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Region.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
@@ -279,13 +263,9 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ProfileInterestModel.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Models\Profile\Resources\ProfileMyRelationship.resx">
+		<EmbeddedResource Update="Models\Profile\Resources\FilterModel.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>ProfileMyRelationship.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Models\Profile\Resources\ProfilePreferenceModel.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>ProfilePreferenceModel.Designer.cs</LastGenOutput>
+			<LastGenOutput>FilterModel.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Models\Support\Resources\TicketModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -311,10 +291,6 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>CareerCluster.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\CurrentSituation.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>CurrentSituation.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Diet.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Diet.Designer.cs</LastGenOutput>
@@ -327,17 +303,9 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Drink.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\EducationLevel.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>EducationLevel.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Food.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Food.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\GenderIdentity.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>GenderIdentity.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\HaveChildren.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -358,10 +326,6 @@
 		<EmbeddedResource Update="Enums\Resources\LoveLanguage.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>LoveLanguage.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\Modality.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Modality.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\MoneyPersonality.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -407,10 +371,6 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>SexPersonality.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Enums\Resources\SexualOrientation.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>SexualOrientation.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Smoke.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Smoke.Designer.cs</LastGenOutput>
@@ -450,6 +410,10 @@
 		<EmbeddedResource Update="Models\Profile\Resources\ProfileLifestyleModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ProfileLifestyleModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Validations.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Validations.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 </Project>

@@ -18,6 +18,8 @@ namespace MM.Shared.Models.Auth
 
         public ClientePaddle? ClientePaddle { get; set; }
 
+        public bool PublicProfile { get; set; } = false;
+
         public override void Initialize(string userId)
         {
             base.Initialize(userId);

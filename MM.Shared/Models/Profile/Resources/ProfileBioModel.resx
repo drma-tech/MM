@@ -139,9 +139,6 @@
     <value>Classification defined by US OMB</value>
   </data>
   <data name="RaceCategory_Name" xml:space="preserve">
-    <value>Race</value>
-  </data>
-  <data name="Zodiac_Name" xml:space="preserve">
-    <value>Zodiac</value>
+    <value>Race/Ethnicity</value>
   </data>
 </root>

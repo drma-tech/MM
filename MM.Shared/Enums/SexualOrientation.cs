@@ -6,85 +6,52 @@
     /// </summary>
     public enum SexualOrientation
     {
-        [Custom(Name = "Heterosexual_Name", Description = "Heterosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Heterosexual = 1,
+        [Custom(Name = "Androgynsexual", Description = "Describes people attracted to those who possess both masculine and feminine traits. The attraction is based on the androgynous appearance of the person.")]
+        Androgynsexual = 1,
 
-        [Custom(Name = "Homosexual_Name", Description = "Homosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Homosexual = 2,
+        [Custom(Name = "Androsexual", Description = "Refers to people who are attracted to men, males, or masculinity, including people who identify as men regardless of their biology or sex assigned at birth.")]
+        Androsexual = 2,
 
-        [Custom(Name = "Bisexual_Name", Description = "Bisexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Bisexual = 3,
+        [Custom(Name = "Asexual", Description = "A broad spectrum of people who experience little to no sexual attraction to others. Asexual people may still experience romantic attraction and form relationships, and may also identify with other specific terms on the asexual spectrum.")]
+        Asexual = 3,
 
-        [Custom(Name = "Pansexual_Name", Description = "Pansexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Pansexual = 4,
+        [Custom(Name = "Autosexual", Description = "Describes a person who is sexually attracted to themselves. This concept is distinct from self-pleasure or masturbation and relates more to self-desire.")]
+        Autosexual = 4,
 
-        [Custom(Name = "Asexual_Name", Description = "Asexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Asexual = 5,
+        [Custom(Name = "Bisexual", Description = "Describes people who experience sexual, romantic, or emotional attraction to more than one gender. This term is flexible and can encompass various forms of attraction to different genders.")]
+        Bisexual = 5,
 
-        [Custom(Name = "Demisexual_Name", Description = "Demisexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
+        [Custom(Name = "Demisexual", Description = "Falls within the asexual spectrum, describing people who experience sexual attraction only after forming a deep emotional or romantic bond.")]
         Demisexual = 6,
 
-        [Custom(Name = "Sapiosexual_Name", Description = "Sapiosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Sapiosexual = 7,
+        [Custom(Name = "Gynosexual", Description = "Refers to people who are attracted to women, females, or femininity, including people who identify as women regardless of their biology or sex assigned at birth.")]
+        Gynosexual = 7,
 
-        [Custom(Name = "Polysexual_Name", Description = "Polysexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Polysexual = 8,
+        [Custom(Name = "Graysexual", Description = "Describes people who exist in the “gray area” between asexuality and sexuality, experiencing occasional or conditional sexual attraction.")]
+        Graysexual = 8,
 
-        [Custom(Name = "Graysexual_Name", Description = "Graysexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Graysexual = 9,
+        [Custom(Name = "Heterosexual", Description = "Describes people who are sexually, romantically, or emotionally attracted to people of a different gender (e.g., men attracted to women and vice versa).")]
+        Heterosexual = 9,
 
-        [Custom(Name = "Androgynsexual_Name", Description = "Androgynsexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Androgynsexual = 10,
+        [Custom(Name = "Homosexual", Description = "Describes people who experience sexual, romantic, or emotional attraction to people of the same gender. However, many prefer terms like \"gay\" or \"lesbian\" as \"homosexual\" can sometimes carry clinical or outdated connotations.")]
+        Homosexual = 10,
 
-        [Custom(Name = "Androsexual_Name", Description = "Androsexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Androsexual = 11,
+        [Custom(Name = "Pansexual", Description = "Refers to people who can experience attraction to others regardless of their gender, embracing an openness to all genders and identities.")]
+        Pansexual = 11,
 
-        [Custom(Name = "Gynosexual_Name", Description = "Gynosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Gynosexual = 12,
+        [Custom(Name = "Polysexual", Description = "Refers to people who are attracted to multiple genders but not necessarily all genders. It differs from pansexuality in its focus on attraction to specific genders.")]
+        Polysexual = 12,
 
-        [Custom(Name = "Pomosexual_Name", Description = "Pomosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
+        [Custom(Name = "Pomosexual", Description = "A term used by people who reject sexuality labels or choose not to identify with any established sexual orientation. It is more of a rejection of categorization than a specific identity.")]
         Pomosexual = 13,
 
-        [Custom(Name = "Skoliosexual_Name", Description = "Skoliosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Skoliosexual = 14,
+        [Custom(Name = "Sapiosexual", Description = "Describes people who are primarily attracted to intelligence or intellectual connection rather than physical or gender-based attraction.")]
+        Sapiosexual = 14,
 
-        [Custom(Name = "Autosexual_Name", Description = "Autosexual_Description", ResourceType = typeof(Resources.SexualOrientation))]
-        Autosexual = 15,
-    }
+        [Custom(Name = "Skoliosexual", Description = "Describes people who are attracted to individuals with non-cisgender identities, such as nonbinary, genderqueer, or transgender people.")]
+        Skoliosexual = 15,
 
-    public enum SexualOrientationOld
-    {
-        [Custom(Name = "Heteressexual", Description = "A pessoa que gosta do sexo oposto")]
-        Heteressexual = 1,
-
-        [Custom(Name = "Homossexual", Description = "A pessoa que gosta do mesmo sexo (gays, lésbicas, etc)")]
-        Homossexual = 2,
-
-        [Custom(Name = "Bissexual", Description = "A pessoa que gosta de ambos os sexos")]
-        Bissexual = 3,
-
-        [Custom(Name = "Assexual", Description = "A pessoa que não sente atração por sexo algum")]
-        Assexual = 4,
-
-        [Custom(Name = "Panssexual", Description = "A pessoa que sente atração por alguém (independente do sexo e gênero)")]
-        Panssexual = 5,
-
-        [Custom(Name = "Polissexual", Description = "A pessoa que sente atração por vários generos diferentes - sem nenhum específico")]
-        Polissexual = 6,
-
-        [Custom(Name = "Demissexual", Description = "A pessoa que sente atração por outra pessoa apenas quando existe um laço ou vínculo muito forte")]
-        Demissexual = 7,
-
-        [Custom(Name = "Sapiossexual", Description = "A pessoa que sente atração pela inteligencia de alguém (independente da orientação sexual e identidade de genero)")]
-        Sapiossexual = 8,
-
-        //menossexual = atração por mulher menstruada (contrario = antiaemosexaul)
-        //graysexual = zona cinzenta entre a sexualidade e assexualidade (atração sexual esporádica)
-        //quoisexual = a pessoa não entende oq é atração sexual. ou se entende, não se aplica a ela
-        //pomosexual = prefere ou não consegue definir a orientação sexual
-        //Solossexual = não sente atração por terceiros, independente de sexo e genero (apenas por si mesmo)
-        //Lithsexual = sente atração por outra pessoa, mas não a necessidade de ser correspondido
-        [Custom(Name = "Outra", Description = "menossexual, graysexual, quoisexual, pomosexual, solossexual, lithsexual, etc")]
+        [Custom(Name = "Other", Description = "This user identifies with a unique sexual orientation that does not conform to common categories.")]
         Other = 99
     }
 }
