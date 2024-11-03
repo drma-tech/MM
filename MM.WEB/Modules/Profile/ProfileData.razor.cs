@@ -1,8 +1,9 @@
 ﻿using BrowserInterop.Extensions;
+using FluentValidation;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
 using MM.Shared.Models.Profile;
+using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Shared;
 
@@ -58,7 +59,6 @@ namespace MM.WEB.Modules.Profile
                         GPS.Longitude = position.Location.Coords.Longitude;
                         GPS.Accuracy = position.Location.Coords.Accuracy;
 
-                        //TODO: chamar código da api
                         var here = await MapApi.GetLocationHere(GPS.Latitude, GPS.Longitude);
                         if (here != null && here.items.Count != 0)
                         {
@@ -67,9 +67,10 @@ namespace MM.WEB.Modules.Profile
                             profile.State = address?.GetState();
                             profile.City = address?.GetCity();
                         }
-                        else
+
+                        if (GPS.Accuracy > 1000)
                         {
-                            //profile.Location = "Unknown Location";
+                            await Toast.Warning("The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.");
                         }
                     }
                     else
@@ -84,13 +85,15 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
-        private async Task ValidSubmit()
+        private async Task SaveHandle()
         {
             if (Profile == null) throw new InvalidOperationException("profile is null");
 
             try
             {
                 Profile = await ProfileApi.Update(Core, Profile);
+
+                Navigation.NavigateTo("profile");
             }
             catch (Exception ex)
             {
@@ -98,16 +101,18 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
-        private async Task InvalidSubmit(EditContext context)
+        private async Task ShowErrors(ProfileModel? profile)
         {
-            if (Profile == null) throw new InvalidOperationException("profile is null");
+            if (profile == null) return;
 
-            var validations = context.GetValidationMessages().ToList();
+            var validator = new ProfileValidation();
 
-            if (validations.Count == 1)
-                await Toast.Warning(validations[0]);
-            else
-                await Toast.Warning(GlobalTranslations.ValidationErrorsDetected);
+            var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab));
+
+            if (!result.IsValid)
+            {
+                await Toast.Warning(result.Errors[0].ErrorMessage);
+            }
         }
     }
 }

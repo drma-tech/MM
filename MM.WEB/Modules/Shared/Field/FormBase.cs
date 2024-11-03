@@ -35,7 +35,7 @@ namespace MM.WEB.Modules.Shared.Field
                 }
             }
 
-            dic.Add("placeholder", For?.GetCustomAttribute()?.Prompt ?? "");
+            dic.Add("placeholder", For?.GetCustomAttribute()?.Placeholder ?? "");
 
             return dic;
         }

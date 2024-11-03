@@ -123,9 +123,6 @@
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
-  <data name="BodyMass_Name" xml:space="preserve">
-    <value>Cuerpo</value>
-  </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Discapacidades</value>
   </data>
@@ -134,11 +131,5 @@
   </data>
   <data name="Neurodiversity_Name" xml:space="preserve">
     <value>Neurodiversidad</value>
-  </data>
-  <data name="RaceCategory_Description" xml:space="preserve">
-    <value>Clasificación definida por US OMB</value>
-  </data>
-  <data name="RaceCategory_Name" xml:space="preserve">
-    <value>Raza/Etnia</value>
   </data>
 </root>

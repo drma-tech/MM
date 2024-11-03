@@ -79,6 +79,15 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Goals.
+        /// </summary>
+        public static string Goals {
+            get {
+                return ResourceManager.GetString("Goals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Interest.
         /// </summary>
         public static string Interest {
@@ -102,6 +111,15 @@ namespace MM.Shared.Enums.Resources {
         public static string Personality {
             get {
                 return ResourceManager.GetString("Personality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship.
+        /// </summary>
+        public static string Relationship {
+            get {
+                return ResourceManager.GetString("Relationship", resourceCulture);
             }
         }
     }

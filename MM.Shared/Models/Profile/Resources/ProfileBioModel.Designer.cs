@@ -79,11 +79,11 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body.
+        ///   Looks up a localized string similar to Body Type.
         /// </summary>
-        public static string BodyMass_Name {
+        public static string BodyType {
             get {
-                return ResourceManager.GetString("BodyMass_Name", resourceCulture);
+                return ResourceManager.GetString("BodyType", resourceCulture);
             }
         }
         
@@ -93,6 +93,15 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string Disabilities_Name {
             get {
                 return ResourceManager.GetString("Disabilities_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ethnicity.
+        /// </summary>
+        public static string Ethnicity {
+            get {
+                return ResourceManager.GetString("Ethnicity", resourceCulture);
             }
         }
         
@@ -111,24 +120,6 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string Neurodiversity_Name {
             get {
                 return ResourceManager.GetString("Neurodiversity_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Classification defined by US OMB.
-        /// </summary>
-        public static string RaceCategory_Description {
-            get {
-                return ResourceManager.GetString("RaceCategory_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Race/Ethnicity.
-        /// </summary>
-        public static string RaceCategory_Name {
-            get {
-                return ResourceManager.GetString("RaceCategory_Name", resourceCulture);
             }
         }
     }

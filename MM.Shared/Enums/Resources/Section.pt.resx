@@ -123,6 +123,9 @@
   <data name="Bio" xml:space="preserve">
     <value>Bio</value>
   </data>
+  <data name="Goals" xml:space="preserve">
+    <value>Metas</value>
+  </data>
   <data name="Interest" xml:space="preserve">
     <value>Interesse</value>
   </data>

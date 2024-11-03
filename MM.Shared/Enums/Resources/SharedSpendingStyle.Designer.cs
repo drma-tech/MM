@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This spending style involves both partners contributing financially and splitting bills proportionally based on each person&apos;s income or financial situation..
+        ///   Looks up a localized string similar to I like to share expenses fairly based on each person&apos;s financial capabilities. For me, a relationship should have balance in financial responsibilities..
         /// </summary>
         public static string Balanced_Description {
             get {
@@ -79,25 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This spending style involves one partner paying for everything and frequently offering gifts to their partner..
-        /// </summary>
-        public static string Benefactor_Description {
-            get {
-                return ResourceManager.GetString("Benefactor_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Benefactor.
-        /// </summary>
-        public static string Benefactor_Name {
-            get {
-                return ResourceManager.GetString("Benefactor_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This spending style involves both partners contributing financially, but one partner paying for fewer things and receiving gifts occasionally..
+        ///   Looks up a localized string similar to I take on most of the expenses, but I value my partner&apos;s contribution, even if it&apos;s on a smaller scale. I believe a financial partnership is important..
         /// </summary>
         public static string Contributor_Description {
             get {
@@ -115,7 +97,25 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This spending style involves one partner paying for most things and occasionally offering gifts to their partner..
+        ///   Looks up a localized string similar to I prefer my partner to take on most or all financial responsibilities, as I don&apos;t see myself in a position to contribute financially..
+        /// </summary>
+        public static string Dependent_Description {
+            get {
+                return ResourceManager.GetString("Dependent_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dependent.
+        /// </summary>
+        public static string Dependent_Name {
+            get {
+                return ResourceManager.GetString("Dependent_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I prefer to be responsible for all the finances in the relationship, covering all expenses and providing financial security to my partner..
         /// </summary>
         public static string Provider_Description {
             get {
@@ -133,20 +133,20 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This spending style involves one person not contributing financially and receiving gifts frequently from their partner..
+        ///   Looks up a localized string similar to I contribute significantly, but I expect my partner to cover most of the costs. I believe it’s essential to have a clear understanding of financial responsibilities..
         /// </summary>
-        public static string Recipient_Description {
+        public static string Supporter_Description {
             get {
-                return ResourceManager.GetString("Recipient_Description", resourceCulture);
+                return ResourceManager.GetString("Supporter_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipient.
+        ///   Looks up a localized string similar to Supporter.
         /// </summary>
-        public static string Recipient_Name {
+        public static string Supporter_Name {
             get {
-                return ResourceManager.GetString("Recipient_Name", resourceCulture);
+                return ResourceManager.GetString("Supporter_Name", resourceCulture);
             }
         }
     }

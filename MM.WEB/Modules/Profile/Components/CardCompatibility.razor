@@ -1,4 +1,6 @@
 ﻿@using MM.Shared.Models.Profile;
+@using MM.WEB.Core.Enum
+@using MM.WEB.Core.Models
 @using MM.WEB.Modules.Shared.Popup;
 @inherits ComponentCore<CardCompatibility>
 
@@ -30,8 +32,8 @@
 {
     <ItemDataProfile For="@(() => View.Location)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Location" User="@User" Filter="@Filter" Value="@View.Location" ValueUser="@User.Location" ClassIcon="fas fa-map-marker-alt" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Languages)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Language" User="@User" Filter="@Filter" Values="@View.Languages" ValuesUser="@Filter.Languages" ClassIcon="fas fa-language" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.CurrentSituation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.CurrentSituation" User="@User" Filter="@Filter" Value="@View.CurrentSituation" ValuesUser="@Filter.CurrentSituation" ClassIcon="far fa-heart" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Intentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Intentions" User="@User" Filter="@Filter" Values="@View.Intentions" ValuesUser="@User.Intentions" ClassIcon="fas fa-search" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MaritalStatus)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MaritalStatus" User="@User" Filter="@Filter" Value="@View.MaritalStatus" ValuesUser="@Filter.MaritalStatus" ClassIcon="far fa-heart" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.RelationshipIntentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipIntentions" User="@User" Filter="@Filter" Values="@View.RelationshipIntentions" ValuesUser="@User.RelationshipIntentions" ClassIcon="fas fa-search" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.BiologicalSex)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BiologicalSex" User="@User" Filter="@Filter" Value="@View.BiologicalSex" ValuesUser="@Filter.BiologicalSex" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.GenderIdentities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.GenderIdentities" User="@User" Filter="@Filter" Value="@View.GenderIdentities" ValuesUser="@Filter.GenderIdentities" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.SexualOrientations)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SexualOrientations" User="@User" Filter="@Filter" Value="@View.SexualOrientations" ValuesUser="@Filter.SexualOrientations" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
@@ -42,8 +44,8 @@
 </Alert>
 @if (View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.RaceCategory)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RaceCategory" User="@User" Filter="@Filter" Value="@View.RaceCategory" ValuesUser="@Filter.RaceCategory" ClassIcon="fas fa-globe" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.BodyMass)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyMass" User="@User" Filter="@Filter" Value="@View.BodyMass" ValuesUser="@Filter.BodyMass" ClassIcon="fas fa-weight" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Ethnicity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Ethnicity" User="@User" Filter="@Filter" Value="@View.Ethnicity" ValuesUser="@Filter.Ethnicity" ClassIcon="fas fa-globe" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.BodyType)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyType" User="@User" Filter="@Filter" Value="@View.BodyType" ValuesUser="@Filter.BodyType" ClassIcon="fas fa-weight" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Age)" Type="@CompatibilityType.Range" Item="CompatibilityItem.Age" User="@User" Filter="@Filter" Value="@View.Age" ValueUser="@ProfileHelper.GetAge(User.BirthDate)" ClassIcon="fas fa-birthday-cake" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Height)" Type="@CompatibilityType.Range" Item="@CompatibilityItem.Height" User="@User" Filter="@Filter" Value="@View.Height" ValueUser="@User.Height" ClassIcon="fas fa-ruler" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Neurodiversity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Neurodiversity" User="@User" Filter="@Filter" Value="@View.Neurodiversity" ValueUser="@User.Neurodiversity" ClassIcon="fas fa-brain" Affinities="@Affinities"></ItemDataProfile>

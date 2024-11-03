@@ -1,4 +1,6 @@
 ﻿using MM.Shared.Models.Profile;
+using MM.WEB.Core.Enum;
+using MM.WEB.Core.Models;
 
 namespace MM.WEB.Core
 {
@@ -15,15 +17,15 @@ namespace MM.WEB.Core
                 //BASIC - DEFINIÇÕES DE BUSCA
                 //new AffinityVM(Section.Basic, CompatibilityItem.Location, GetLocation(user) == view.Location),
                 new(Section.Basic, CompatibilityItem.Language, GetLanguages(profile, filter).IsMatch(view.Languages)),
-                new(Section.Basic, CompatibilityItem.CurrentSituation, GetCurrentSituation(profile, filter).IsMatch(view.CurrentSituation.ToArray())),
-                new(Section.Basic, CompatibilityItem.Intentions, GetIntentions(profile).IsMatch(view.Intentions)),
+                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),
+                new(Section.Basic, CompatibilityItem.RelationshipIntentions, GetRelationshipIntentions(profile).IsMatch(view.RelationshipIntentions)),
                 new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(profile, filter).IsMatch(view.BiologicalSex.ToArray())),
                 new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(profile, filter).IsMatch(view.GenderIdentities)),
                 new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(profile, filter).IsMatch(view.SexualOrientations)),
 
                 //BIO - DEFINIÇÕES DE BUSCA
-                new(Section.Bio, CompatibilityItem.RaceCategory, GetRaceCategory(filter).IsMatch(view.RaceCategory.ToArray())),
-                new(Section.Bio, CompatibilityItem.BodyMass, GetBodyMass(filter).IsMatch(view.BodyMass.ToArray())),
+                new(Section.Bio, CompatibilityItem.Ethnicity, GetEthnicity(filter).IsMatch(view.Ethnicity.ToArray())),
+                new(Section.Bio, CompatibilityItem.BodyType, GetBodyType(filter).IsMatch(view.BodyType.ToArray())),
                 new(Section.Bio, CompatibilityItem.Age, GetAge(profile, filter).IsRangeMatch(view.Age.ToArray())),
                 new(Section.Bio, CompatibilityItem.Height, GetHeight(profile, filter).Select(s => (int)s).IsRangeMatch(((int?)view.Height).ToArray())),
                 new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(filter).IsMatch(view.Neurodiversity.ToArray())),
@@ -98,6 +100,17 @@ namespace MM.WEB.Core
 
         #region BASIC
 
+        public static Region? GetRegion(ProfileModel profile)
+        {
+            return profile?.Relocation switch
+            {
+                Relocation.NoRelocations => (Region?)null,
+                Relocation.OpenMovingCities => Region.Country,
+                Relocation.OpenMovingCountries => Region.World,
+                _ => null,
+            } ?? null;
+        }
+
         public static string GetLocation(ProfileModel profile, FilterModel? filter)
         {
             var parts = profile.Location?.Split(" - ") ?? [];
@@ -119,18 +132,18 @@ namespace MM.WEB.Core
             else return [];
         }
 
-        public static HashSet<CurrentSituation> GetCurrentSituation(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<MaritalStatus> GetMaritalStatus(ProfileModel profile, FilterModel? filter = null)
         {
-            HashSet<CurrentSituation> selected;
-            if (filter != null && filter.CurrentSituation.Count != 0) selected = filter.CurrentSituation;
+            HashSet<MaritalStatus> selected;
+            if (filter != null && filter.MaritalStatus.Count != 0) selected = filter.MaritalStatus;
             else selected = [];
 
             return selected;
         }
 
-        public static HashSet<Intentions> GetIntentions(ProfileModel profile)
+        public static HashSet<RelationshipIntention> GetRelationshipIntentions(ProfileModel profile)
         {
-            return profile.Intentions;
+            return profile.RelationshipIntentions;
         }
 
         public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel profile, FilterModel? filter = null)
@@ -210,15 +223,15 @@ namespace MM.WEB.Core
 
         #region BIO
 
-        public static HashSet<RaceCategory> GetRaceCategory(FilterModel? filter = null)
+        public static HashSet<Ethnicity> GetEthnicity(FilterModel? filter = null)
         {
-            if (filter != null && filter.RaceCategory.Count != 0) return filter.RaceCategory;
+            if (filter != null && filter.Ethnicity.Count != 0) return filter.Ethnicity;
             else return [];
         }
 
-        public static HashSet<BodyMass> GetBodyMass(FilterModel? filter = null)
+        public static HashSet<BodyType> GetBodyType(FilterModel? filter = null)
         {
-            if (filter != null && filter.BodyMass.Count != 0) return filter.BodyMass;
+            if (filter != null && filter.BodyType.Count != 0) return filter.BodyType;
             else return [];
         }
 
@@ -236,10 +249,10 @@ namespace MM.WEB.Core
             {
                 var age = profile.BirthDate.GetAge();
 
-                min = age / 2 + 9;
+                min = (int)Math.Round(age * 0.75);
                 if (min < 18) min = 18;
 
-                max = (age - 9) * 2;
+                max = (int)Math.Round(age * 1.33);
                 if (max > 120) max = 120;
             }
 
@@ -283,7 +296,7 @@ namespace MM.WEB.Core
                         minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
 
-                    if (minHeight < (int)Height._140) minHeight = (int)Height._140;
+                    if (minHeight < (int)Height._146) minHeight = (int)Height._146;
                     min = (Height)minHeight;
                 }
                 else
@@ -323,7 +336,7 @@ namespace MM.WEB.Core
                         maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
 
-                    if (maxHeight > (int)Height._192) maxHeight = (int)Height._192;
+                    if (maxHeight > (int)Height._188) maxHeight = (int)Height._188;
                     max = (Height)maxHeight;
                 }
                 else
@@ -520,15 +533,15 @@ namespace MM.WEB.Core
 
         public static HashSet<SharedSpendingStyle> GetSharedSpendingStyle(ProfileModel profile)
         {
-            //invented by me (dhiogo)
+            //Invented by ChatGPD
 
             return profile.SharedSpendingStyle switch
             {
-                SharedSpendingStyle.Recipient => SharedSpendingStyle.Benefactor.ToArray(),
-                SharedSpendingStyle.Contributor => SharedSpendingStyle.Provider.ToArray(),
+                SharedSpendingStyle.Provider => SharedSpendingStyle.Dependent.ToArray(),
+                SharedSpendingStyle.Contributor => SharedSpendingStyle.Supporter.ToArray(),
                 SharedSpendingStyle.Balanced => SharedSpendingStyle.Balanced.ToArray(),
-                SharedSpendingStyle.Provider => SharedSpendingStyle.Contributor.ToArray(),
-                SharedSpendingStyle.Benefactor => SharedSpendingStyle.Recipient.ToArray(),
+                SharedSpendingStyle.Supporter => SharedSpendingStyle.Contributor.ToArray(),
+                SharedSpendingStyle.Dependent => SharedSpendingStyle.Provider.ToArray(),
                 _ => []
             };
         }
@@ -645,20 +658,30 @@ namespace MM.WEB.Core
         {
             if (category == null)
             {
-                var totBasic = affinities.GetPercentAffinity(Section.Basic);
-                var totBio = affinities.GetPercentAffinity(Section.Bio);
-                var totLifestyle = affinities.GetPercentAffinity(Section.Lifestyle);
-                var totPersonality = affinities.GetPercentAffinity(Section.Personality);
-                var totInterest = affinities.GetPercentAffinity(Section.Interest);
+                var totalBasic = affinities.GetPercentAffinity(Section.Basic);
+                var totalBio = affinities.GetPercentAffinity(Section.Bio);
+                var totalLifestyle = affinities.GetPercentAffinity(Section.Lifestyle);
+                var totalPersonality = affinities.GetPercentAffinity(Section.Personality);
+                var totalInterest = affinities.GetPercentAffinity(Section.Interest);
+                var totalRelationship = affinities.GetPercentAffinity(Section.Relationship);
+                var totalGoals = affinities.GetPercentAffinity(Section.Goals);
 
-                var pesoBasic = 10;
-                var pesoBio = 15;
-                var pesoLifestyle = 20;
-                var pesoPersonality = 35;
-                var pesoInterest = 20;
+                var weightBasic = 10;
+                var weightBio = 5;
+                var weightLifestyle = 25;
+                var weightPersonality = 25;
+                var weightInterest = 5;
+                var weightRelationship = 20;
+                var weightGoals = 10;
 
-                return (totBasic * pesoBasic + totBio * pesoBio + totLifestyle * pesoLifestyle + totPersonality * pesoPersonality + totInterest * pesoInterest) /
-                    (pesoBasic + pesoBio + pesoLifestyle + pesoPersonality + pesoInterest);
+                return (totalBasic * weightBasic + 
+                    totalBio * weightBio + 
+                    totalLifestyle * weightLifestyle + 
+                    totalPersonality * weightPersonality + 
+                    totalInterest * weightInterest + 
+                    totalRelationship * weightRelationship +
+                    totalGoals + weightGoals) /
+                    (weightBasic + weightBio + weightLifestyle + weightPersonality + weightInterest + weightRelationship + weightGoals);
             }
             else
             {

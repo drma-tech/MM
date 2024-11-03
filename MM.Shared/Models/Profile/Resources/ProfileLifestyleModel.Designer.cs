@@ -124,7 +124,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Has Kids.
+        ///   Looks up a localized string similar to Have Children.
         /// </summary>
         public static string HaveChildren_Name {
             get {
@@ -133,7 +133,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have any doubts, you can take a test on the original website (English only).
+        ///   Looks up a localized string similar to If you have any doubts, you can take a test on the original website (English and Spanish).
         /// </summary>
         public static string LoveLanguage_Description {
             get {
@@ -178,7 +178,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financial Personality.
+        ///   Looks up a localized string similar to Money Personality.
         /// </summary>
         public static string MoneyPersonality_Name {
             get {
@@ -241,7 +241,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sexual Personality.
+        ///   Looks up a localized string similar to Sex Personality.
         /// </summary>
         public static string SexPersonality_Name {
             get {
@@ -259,7 +259,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sexual Personality (preferences).
+        ///   Looks up a localized string similar to Sex Personality (preferences).
         /// </summary>
         public static string SexPersonalityPreferences_Name {
             get {

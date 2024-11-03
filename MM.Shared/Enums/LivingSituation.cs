@@ -2,22 +2,22 @@
 {
     public enum LivingSituation
     {
-        [Custom(Name = "Alone", Description = "Lives independently, without other people in the household.")]
+        [Custom(Name = "Alone_Name", Description = "Alone_Description", ResourceType = typeof(Resources.LivingSituation))]
         Alone = 1,
 
-        [Custom(Name = "With Family", Description = "Shares a household with family members, such as parents, siblings, or extended relatives.")]
+        [Custom(Name = "WithFamily_Name", Description = "WithFamily_Description", ResourceType = typeof(Resources.LivingSituation))]
         WithFamily = 2,
 
-        [Custom(Name = "With Friends", Description = "Shares a living space with friends or close acquaintances.")]
+        [Custom(Name = "WithFriends_Name", Description = "WithFriends_Description", ResourceType = typeof(Resources.LivingSituation))]
         WithFriends = 3,
 
-        [Custom(Name = "With Ex-Partner", Description = "Continues to live with a former romantic partner.")]
+        [Custom(Name = "WithExPartner_Name", Description = "WithExPartner_Description", ResourceType = typeof(Resources.LivingSituation))]
         WithExPartner = 4,
 
-        [Custom(Name = "With Roommates", Description = "Shares living arrangements with individuals who are neither family nor close friends.")]
+        [Custom(Name = "WithRoommates_Name", Description = "WithRoommates_Description", ResourceType = typeof(Resources.LivingSituation))]
         WithRoommates = 5,
 
-        [Custom(Name = "Other", Description = "Has a different living situation that doesn't fit common categories.")]
+        [Custom(Name = "Other_Name", Description = "Other_Description", ResourceType = typeof(Resources.LivingSituation))]
         Other = 9
     }
 }

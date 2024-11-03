@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description" xml:space="preserve">
+    <value>Encontre sua alma gêmea com o sistema de compatibilidade mais sofisticado do mundo.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>
@@ -125,8 +128,5 @@
   </data>
   <data name="SupportTitle" xml:space="preserve">
     <value>Suporte</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Encontre sua alma gêmea com o sistema de compatibilidade mais sofisticado do mundo.</value>
   </data>
 </root>

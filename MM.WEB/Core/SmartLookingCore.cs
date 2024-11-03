@@ -10,9 +10,9 @@ namespace MM.WEB.Core
             filter ??= new FilterModel();
 
             //BASIC
-            filter.Region = Region.City;
+            filter.Region = AffinityCore.GetRegion(profile);
             filter.Languages = profile.Languages;
-            filter.CurrentSituation = AffinityCore.GetCurrentSituation(profile);
+            filter.MaritalStatus = AffinityCore.GetMaritalStatus(profile);
             //looking.Intent = profile.Basic.Intent; //selecionado ao carregar a tela
             filter.BiologicalSex = AffinityCore.GetBiologicalSex(profile);
             //looking.GenderIdentity = null;

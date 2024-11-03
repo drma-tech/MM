@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="_0K_10k" xml:space="preserve">
-    <value>$0K - $10k</value>
-  </data>
-  <data name="_20K_50K" xml:space="preserve">
-    <value>$20K - $50K</value>
-  </data>
-  <data name="_60K_100K" xml:space="preserve">
-    <value>$60K - $100K</value>
-  </data>
-  <data name="_200K_500K" xml:space="preserve">
-    <value>$200K - $500K</value>
-  </data>
-  <data name="_600K_1M" xml:space="preserve">
-    <value>$600K - $1M</value>
-  </data>
-  <data name="_2M_5M" xml:space="preserve">
-    <value>$2M - $5M</value>
-  </data>
-  <data name="_6M_10M" xml:space="preserve">
-    <value>$6M - $10M</value>
-  </data>
-  <data name="_20M_50M" xml:space="preserve">
-    <value>$20M - $50M</value>
-  </data>
-  <data name="_60M_100M" xml:space="preserve">
-    <value>$60M - $100M</value>
-  </data>
-  <data name="_200M" xml:space="preserve">
-    <value>&gt; $200M</value>
-  </data>
 </root>

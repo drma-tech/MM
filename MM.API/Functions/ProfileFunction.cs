@@ -1,4 +1,3 @@
-using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
@@ -10,7 +9,7 @@ namespace MM.API.Functions
         private readonly CosmosProfileRepository _repo = repo;
 
         [Function("ProfileGet")]
-        public async Task<ProfileModel?> Get(
+        public async Task<ProfileModel?> ProfileGet(
            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
@@ -73,7 +72,7 @@ namespace MM.API.Functions
         //}
 
         [Function("ProfileUpdate")]
-        public async Task<ProfileModel> Update(
+        public async Task<ProfileModel> ProfileUpdate(
             [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try

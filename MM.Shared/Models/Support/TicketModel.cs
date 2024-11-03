@@ -11,11 +11,11 @@ namespace MM.Shared.Models.Support
         public string? IdUserOwner { get; set; }
 
         [Required]
-        [Custom(Name = "TitleName", Prompt = "TitlePrompt", ResourceType = typeof(Resources.TicketModel))]
+        [Custom(Name = "TitleName", Placeholder = "TitlePlaceholder", ResourceType = typeof(Resources.TicketModel))]
         public string? Title { get; set; }
 
         [Required]
-        [Custom(Name = "DescriptionName", Prompt = "DescriptionPrompt", ResourceType = typeof(Resources.TicketModel))]
+        [Custom(Name = "DescriptionName", Placeholder = "DescriptionPlaceholder", ResourceType = typeof(Resources.TicketModel))]
         public string? Description { get; set; }
 
         [Required]

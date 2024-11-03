@@ -10,17 +10,18 @@
             }
             else
             {
-                <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
-            }
-            @if (Required)
-            {
-                <div style="color: red; display: initial;"> *</div>
+                <Blazorise.Icon Name="@CssIcon" Margin="Margin.Is1.FromEnd"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
             }
         </FieldLabel>
         <FieldBody ColumnSize="@GetBodySize()">
             <Addons>
                 <Addon AddonType="AddonType.Body">
-                    <Switch Checked="@Value" CheckedChanged="@ValueChanged" CheckedExpression="@For" Size="Size.Large"></Switch>
+                    @* <Switch Checked="@Value" CheckedChanged="@ValueChanged" CheckedExpression="@For" Size="Size.Large">@SwithLabel</Switch> *@
+
+                    <Buttons Width="Width.Is100">
+                        <Button Color="Color.Success" Outline="!Value" Clicked="@(()=>{Value=true;})">Active</Button>
+                        <Button Color="Color.Danger" Outline="Value" Clicked="@(()=>{Value=false;})">Inactive</Button>
+                    </Buttons>
                 </Addon>
             </Addons>
         </FieldBody>

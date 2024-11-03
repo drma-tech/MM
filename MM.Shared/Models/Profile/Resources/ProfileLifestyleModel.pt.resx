@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnnualIncome_Description" xml:space="preserve">
+    <value>Valor cumulativo ganho em um ano (em dólares americanos)</value>
+  </data>
+  <data name="AnnualIncome_Name" xml:space="preserve">
+    <value>Renda anual</value>
+  </data>
   <data name="CareerCluster_Name" xml:space="preserve">
     <value>Carreira</value>
   </data>
@@ -132,11 +138,8 @@
   <data name="EducationLevel_Name" xml:space="preserve">
     <value>Educação</value>
   </data>
-  <data name="HaveChildren_Name" xml:space="preserve">
-    <value>Tem Filho(s)</value>
-  </data>
   <data name="LoveLanguage_Description" xml:space="preserve">
-    <value>Caso tenha dúvidas, poderá fazer um teste no site original (somente em inglês)</value>
+    <value>Caso tenha alguma dúvida, você pode fazer um teste no site original (inglês e espanhol)</value>
   </data>
   <data name="LoveLanguage_Name" xml:space="preserve">
     <value>Linguagem do Amor</value>
@@ -153,6 +156,12 @@
   <data name="MoneyPersonality_Name" xml:space="preserve">
     <value>Personalidade Financeira</value>
   </data>
+  <data name="NetWorth_Description" xml:space="preserve">
+    <value>Valor total de todos os ativos menos o total de todos os passivos (em dólares americanos).</value>
+  </data>
+  <data name="NetWorth_Name" xml:space="preserve">
+    <value>Patrimônio líquido</value>
+  </data>
   <data name="RelationshipPersonality_Description" xml:space="preserve">
     <value>Caso tenha dúvidas, poderá fazer um teste em site de terceiros (somente em inglês)</value>
   </data>
@@ -162,14 +171,17 @@
   <data name="Religion_Name" xml:space="preserve">
     <value>Religião</value>
   </data>
-  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>Diferentemente das outras personalidades, a compatibilidade desta é uma preferência pessoal.</value>
-  </data>
   <data name="SexPersonality_Description" xml:space="preserve">
     <value>Caso tenha dúvidas, poderá fazer um teste no site original (somente em inglês)</value>
   </data>
   <data name="SexPersonality_Name" xml:space="preserve">
     <value>Personalidade Sexual</value>
+  </data>
+  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
+    <value>Diferentemente das outras personalidades, a compatibilidade desta é uma preferência pessoal.</value>
+  </data>
+  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
+    <value>Personalidade Sexual (preferências)</value>
   </data>
   <data name="SharedSpendingStyle_Name" xml:space="preserve">
     <value>Estilo de gastos compartilhados</value>
@@ -182,20 +194,5 @@
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Quer Filho(s)</value>
-  </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Personalidade sexual (preferências)</value>
-  </data>
-  <data name="NetWorth_Name" xml:space="preserve">
-    <value>Patrimônio líquido</value>
-  </data>
-  <data name="NetWorth_Description" xml:space="preserve">
-    <value>Valor total de todos os ativos menos o total de todos os passivos (em dólares americanos).</value>
-  </data>
-  <data name="AnnualIncome_Name" xml:space="preserve">
-    <value>Renda anual</value>
-  </data>
-  <data name="AnnualIncome_Description" xml:space="preserve">
-    <value>Valor cumulativo ganho em um ano (em dólares americanos)</value>
   </data>
 </root>

@@ -8,10 +8,10 @@ namespace MM.Shared.Core.Helper
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class CustomAttribute : Attribute
     {
+        public string? Group { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public string? Group { get; set; }
-        public string? Prompt { get; set; }
+        public string? Placeholder { get; set; }
         public string? FieldInfo { get; set; }
 
         /// <summary>
@@ -69,10 +69,10 @@ namespace MM.Shared.Core.Helper
             {
                 var rm = new ResourceManager(attr.ResourceType.FullName ?? "", attr.ResourceType.Assembly);
 
+                if (!string.IsNullOrEmpty(attr.Group)) attr.Group = rm.GetString(attr.Group) ?? attr.Group + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Name)) attr.Name = rm.GetString(attr.Name) ?? attr.Name + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Description)) attr.Description = rm.GetString(attr.Description) ?? attr.Description + " (incomplete translation)";
-                if (!string.IsNullOrEmpty(attr.Group)) attr.Group = rm.GetString(attr.Group) ?? attr.Group + " (incomplete translation)";
-                if (!string.IsNullOrEmpty(attr.Prompt)) attr.Prompt = rm.GetString(attr.Prompt)?.Replace(@"\n", Environment.NewLine);
+                if (!string.IsNullOrEmpty(attr.Placeholder)) attr.Placeholder = rm.GetString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine);
                 if (!string.IsNullOrEmpty(attr.FieldInfo)) attr.FieldInfo = rm.GetString(attr.FieldInfo)?.Replace(@"\n", Environment.NewLine) ?? attr.FieldInfo.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Tips)) attr.Tips = rm.GetString(attr.Tips) ?? attr.Tips + " (incomplete translation)";
             }

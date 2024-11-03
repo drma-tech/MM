@@ -120,23 +120,17 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Biological Sex</value>
   </data>
-  <data name="CurrentSituation_Name" xml:space="preserve">
-    <value>Current Situation</value>
-  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="Description_Prompt" xml:space="preserve">
-    <value>For your own safety, please do not include contact information (mobile, email, etc.) or your location (where you are or have been). \n\nNOTE: Promoting social networks, products, services and/or content that violates the rights of third parties will be subject to banishment from the platform.</value>
+  <data name="Description_Placeholder" xml:space="preserve">
+    <value>For your own safety, do not include contact information (cell phone, email, etc.) or places (where you live or frequent). \n\nNOTE: Promoting social networks, products, services and/or content that violates the rights of third parties will be subject to banning from the platform.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Gender Identity</value>
-  </data>
-  <data name="Intentions_Name" xml:space="preserve">
-    <value>Intentions</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
     <value>Automatically chosen according to the languages in force in the country (if available)</value>
@@ -150,8 +144,11 @@
   <data name="Location_Name" xml:space="preserve">
     <value>Location</value>
   </data>
-  <data name="Location_Prompt" xml:space="preserve">
+  <data name="Location_Placeholder" xml:space="preserve">
     <value>Please click on the button to the side</value>
+  </data>
+  <data name="MaritalStatus_Name" xml:space="preserve">
+    <value>Marital Status</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modality</value>
@@ -159,8 +156,11 @@
   <data name="NickName_Name" xml:space="preserve">
     <value>Nickname</value>
   </data>
-  <data name="NickName_Prompt" xml:space="preserve">
+  <data name="NickName_Placeholder" xml:space="preserve">
     <value>Ex: Paul</value>
+  </data>
+  <data name="RelationshipIntentions_Name" xml:space="preserve">
+    <value>Relationship Intentions</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>

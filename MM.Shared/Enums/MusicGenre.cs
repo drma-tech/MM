@@ -1,114 +1,47 @@
 ﻿namespace MM.Shared.Enums
 {
-    /// <summary>
-    /// https://www.omarimc.com/complete-music-genre-list/
-    /// </summary>
     public enum MusicGenre
     {
-        [Custom(Name = "Pop_Name", Description = "Pop_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Pop = 1,
+        [Custom(Name = "Pop & Mainstream", Description = "Accessible and widely popular music across charts and cultures (e.g., pop, dance-pop, synth-pop)")]
+        PopMainstream = 1,
 
-        [Custom(Name = "Rock_Name", Description = "Rock_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Rock = 2,
+        [Custom(Name = "Rock & Alternative", Description = "Guitar-driven sounds and subgenres with a rebellious edge (e.g., classic rock, punk, indie, grunge)")]
+        RockAlternative = 2,
 
-        [Custom(Name = "HipHopRap_Name", Description = "HipHopRap_Description", ResourceType = typeof(Resources.MusicGenre))]
-        HipHopRap = 3,
+        [Custom(Name = "R&B & Soul", Description = "Emotional and rhythm-focused music rooted in African-American traditions (e.g., R&B, soul, funk)")]
+        RBSoul = 3,
 
-        [Custom(Name = "RB_Name", Description = "RB_Description", ResourceType = typeof(Resources.MusicGenre))]
-        RB = 4,
+        [Custom(Name = "Hip-Hop & Rap", Description = "Beat-driven music with lyrical flow, storytelling, and social commentary (e.g., rap, trap, old-school hip-hop)")]
+        HipHopRap = 4,
 
-        [Custom(Name = "Reggae_Name", Description = "Reggae_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Reggae = 5,
+        [Custom(Name = "Jazz & Blues", Description = "Rich, improvisational genres with roots in African-American history (e.g., jazz, blues, bebop)")]
+        JazzBlues = 5,
 
-        [Custom(Name = "Country_Name", Description = "Country_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Country = 6,
+        [Custom(Name = "Classical & Opera", Description = "Structured compositions and orchestral music from various historical periods (e.g., baroque, symphonic, opera)")]
+        ClassicalOpera = 6,
 
-        [Custom(Name = "Folk_Name", Description = "Folk_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Folk = 7,
+        [Custom(Name = "Electronic & Dance", Description = "Synthesized sounds and beat-heavy tracks for club and festival scenes (e.g., house, techno, trance)")]
+        ElectronicDance = 7,
 
-        [Custom(Name = "Jazz_Name", Description = "Jazz_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Jazz = 8,
+        [Custom(Name = "Folk & Acoustic", Description = "Music rooted in traditional sounds, often featuring acoustic instruments (e.g., folk, Americana, singer-songwriter)")]
+        FolkAcoustic = 8,
 
-        [Custom(Name = "Classical_Name", Description = "Classical_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Classical = 9,
+        [Custom(Name = "Country", Description = "Storytelling-driven genre with roots in American folk traditions (e.g., classic country, contemporary country)")]
+        Country = 9,
 
-        [Custom(Name = "Blues_Name", Description = "Blues_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Blues = 10,
+        [Custom(Name = "Reggae & World Music", Description = "Music from diverse cultural origins, often with distinctive rhythms (e.g., reggae, Afrobeat, Latin)")]
+        ReggaeWorldMusic = 10,
 
-        [Custom(Name = "Electronic_Name", Description = "Electronic_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Electronic = 11,
+        [Custom(Name = "Metal & Hard Rock", Description = "Intense, amplified sounds often with aggressive tones (e.g., heavy metal, thrash, hard rock)")]
+        MetalHardRock = 11,
 
-        [Custom(Name = "Childrens_Name", Description = "Childrens_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Childrens = 12,
+        [Custom(Name = "Gospel & Religious", Description = "Music with religious or spiritual themes, often community-oriented (e.g., gospel, hymns, devotional music)")]
+        GospelReligious = 12,
 
-        [Custom(Name = "Christian_Name", Description = "Christian_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Christian = 13,
+        [Custom(Name = "Experimental & Avant-Garde", Description = "Nontraditional music pushing the boundaries of structure and sound (e.g., noise, ambient, minimalist)")]
+        ExperimentalAvantGarde = 13,
 
-        [Custom(Name = "Latino_Name", Description = "Latino_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Latino = 14,
-
-        [Custom(Name = "Alternative_Name", Description = "Alternative_Description", ResourceType = typeof(Resources.MusicGenre))]
-        Alternative = 15,
-
-        [Custom(Name = "NewAge_Name", Description = "NewAge_Description", ResourceType = typeof(Resources.MusicGenre))]
-        NewAge = 16
-    }
-
-    //https://www.musicgenreslist.com/
-    public enum MusicGenreOld
-    {
-        //POPULAR - 1
-
-        [Custom(Group = "Popular", Name = "Comédia", Description = "Novidade, Música de paródia, Comédia stand-up, Vaudeville")]
-        Comedy = 12,
-
-        [Custom(Group = "Popular", Name = "Country / Bluegrass", Description = "A música country geralmente consiste em baladas e melodias de dança com formas geralmente simples, letras folclóricas e harmonias, principalmente acompanhadas por instrumentos de cordas, como banjos, violões elétricos e acústicos, guitarras de aço (como pedal steels e dobros) e violinos, bem como gaitas .")]
-        CountryBluegrass = 13,
-
-        [Custom(Group = "Popular", Name = "Easy Listening", Description = "Plano de fundo, Bop, elevador, móveis, sala, meio da estrada, balanço")]
-        EasyListening = 14,
-
-        [Custom(Group = "Popular", Name = "Dance / Electronic / House", Description = "Música eletrônica é aquela que emprega instrumentos musicais eletrônicos, instrumentos digitais ou tecnologia musical baseada em circuitos. (Disco, House, Techno, Videogame)")]
-        DanceElectronicHouse = 15,
-
-        [Custom(Group = "Popular", Name = "Hip-Hop / Rap / Trap", Description = "Consiste em uma música rítmica estilizada que comumente acompanha o rap, uma fala rítmica e rimada que é cantada.")]
-        HipHopRapTrap = 16,
-
-        [Custom(Group = "Popular", Name = "Pop", Description = "Os fatores de identificação geralmente incluem refrões e ganchos repetidos, canções curtas a médias escritas em um formato básico (geralmente a estrutura verso-refrão) e ritmos ou andamentos que podem ser dançados facilmente. Grande parte da música pop também empresta elementos de outros estilos, como rock, urbano, dance, latino e country.")]
-        Pop = 18,
-
-        [Custom(Group = "Popular", Name = "R&B / Soul / Blues / Jazz", Description = "Combina elementos da música gospel afro-americana, ritmo, blues e jazz.")]
-        RBSoulBluesJazz = 19,
-
-        [Custom(Group = "Popular", Name = "Rock / Metal / Punk", Description = "É baseado em instrumentos amplificados, especialmente a guitarra e o baixo elétricos, e é caracterizado por uma linha de baixo forte e ritmos impulsionadores. É tipicamente executado por grupos de rock e, embora a música de dança rápida seja a forma básica, as músicas mais lentas no estilo de balada também são uma parte popular do repertório.")]
-        RockMetalPunk = 110,
-
-        [Custom(Group = "Popular", Name = "Singer / Songwriter", Description = "É baseado em instrumentos amplificados, especialmente a guitarra e o baixo elétricos, e é caracterizado por uma linha de baixo forte e ritmos impulsionadores. É tipicamente executado por grupos de rock e, embora a música de dança rápida seja a forma básica, as músicas mais lentas no estilo de balada também são uma parte popular do repertório.")]
-        SingerSongwriter = 111,
-
-        //REGIONAL - 2
-
-        [Custom(Group = "Regional", Name = "Música Popular Africana", Description = "A maioria dos gêneros contemporâneos de música popular africana baseia-se na polinização cruzada com a música popular ocidental. Muitos gêneros de música popular como blues, jazz, afrobeats, salsa, zouk e rumba derivam em graus variados das tradições musicais da África, levadas para as Américas por africanos escravizados.")]
-        AfricanMusic = 21,
-
-        [Custom(Group = "Regional", Name = "Música Asiática", Description = "Chinês (C-Pop), Hong Kong, Taiwanês, Japonês (Enka, J-pop), Coreano (K-pop), Sul da Ásia, Sudeste Asiático, Malaia, Indonésio, Tailandês, Filipino, Laosiano, Vietnamita")]
-        AsianMusic = 22,
-
-        [Custom(Group = "Regional", Name = "Caribenha e Influenciadas", Description = "Alguns dos estilos que ganharam grande popularidade fora do Caribe incluem bachata, merenque, palo, mombo, denbo, baithak gana, bouyon, cadence-lypso, calypso, chutney, chutney-soca, compas, dancehall, jing ping, parang, pichakaree, punta, ragga, reggae, reggaeton, salsa, soca e zouk.")]
-        CaribbeanCaribbeanInfluenced = 23,
-
-        [Custom(Group = "Regional", Name = "Latina / Brasileira", Description = "Alternativo & Rock Latino, Tango, Baladas y Boleros, Bossa Nova, Brazilian (Brega, Forró, Frevo, Maracatu, MPB, Pagode, Samba)")]
-        LatinBrazilian = 24,
-
-        //OTHERS - 3
-
-        [Custom(Group = "Other", Name = "Clássica / Contemporary", Description = "Avant-Garde, Barroco, Coral, Concerto, Ópera, Orquestral, Romântica, Música de Casamento")]
-        ClassicalContemporary = 31,
-
-        [Custom(Group = "Other", Name = "Música Religiosa / Cristian / Gospel", Description = "É qualquer tipo de música executada ou composta para uso religioso ou por influência religiosa.")]
-        ReligiousMusicCristianGospel = 32,
-
-        [Custom(Group = "Other", Name = "Tradicional / Popular", Description = "A música folclórica tradicional foi definida de várias maneiras: como música transmitida oralmente, música com compositores desconhecidos ou música executada por costume durante um longo período de tempo.")]
-        Folk = 33
+        [Custom(Name = "Soundtracks & Scores", Description = "Music composed for visual media, including movies and games (e.g., film scores, video game soundtracks)")]
+        SoundtracksScores = 14
     }
 }

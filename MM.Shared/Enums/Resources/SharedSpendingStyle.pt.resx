@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Balanced_Description" xml:space="preserve">
-    <value>Esse estilo de gasto envolve ambos os parceiros contribuindo financeiramente e dividindo as contas proporcionalmente com base na renda ou situação financeira de cada pessoa.</value>
+    <value>Gosto de dividir as despesas de forma justa, com base nas capacidades financeiras de cada um. Para mim, um relacionamento deve ter equilíbrio nas responsabilidades financeiras.</value>
   </data>
   <data name="Balanced_Name" xml:space="preserve">
-    <value>Balanceado</value>
-  </data>
-  <data name="Benefactor_Description" xml:space="preserve">
-    <value>Esse estilo de gasto envolve um parceiro pagando por tudo e frequentemente oferecendo presentes ao parceiro.</value>
-  </data>
-  <data name="Benefactor_Name" xml:space="preserve">
-    <value>Benfeitor</value>
+    <value>Equilibrado</value>
   </data>
   <data name="Contributor_Description" xml:space="preserve">
-    <value>Esse estilo de gasto envolve ambos os parceiros contribuindo financeiramente, mas um parceiro pagando por menos coisas e recebendo presentes ocasionalmente.</value>
+    <value>Eu assumo a maioria das despesas, mas valorizo a contribuição do meu parceiro, mesmo que seja em menor escala. Acredito que uma parceria financeira é importante.</value>
   </data>
   <data name="Contributor_Name" xml:space="preserve">
     <value>Contribuinte</value>
   </data>
+  <data name="Dependent_Description" xml:space="preserve">
+    <value>Prefiro que meu parceiro assuma todas as responsabilidades financeiras, pois não me vejo em posição de contribuir financeiramente.</value>
+  </data>
+  <data name="Dependent_Name" xml:space="preserve">
+    <value>Dependente</value>
+  </data>
   <data name="Provider_Description" xml:space="preserve">
-    <value>Esse estilo de gasto envolve um parceiro pagando pela maioria das coisas e, ocasionalmente, oferecendo presentes ao parceiro.</value>
+    <value>Prefiro ser responsável por todas as finanças do relacionamento, cobrindo todas as despesas e proporcionando segurança financeira ao meu parceiro.</value>
   </data>
   <data name="Provider_Name" xml:space="preserve">
     <value>Provedor</value>
   </data>
-  <data name="Recipient_Description" xml:space="preserve">
-    <value>Esse estilo de gasto envolve uma pessoa que não contribui financeiramente e recebe presentes frequentemente de seu parceiro.</value>
+  <data name="Supporter_Description" xml:space="preserve">
+    <value>Eu contribuo significativamente, mas espero que meu parceiro cubra a maior parte dos custos. Acredito que é essencial ter uma compreensão clara das responsabilidades financeiras.</value>
   </data>
-  <data name="Recipient_Name" xml:space="preserve">
-    <value>Recebedor</value>
+  <data name="Supporter_Name" xml:space="preserve">
+    <value>Apoiador</value>
   </data>
 </root>

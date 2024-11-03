@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Androgynsexual_Description" xml:space="preserve">
+    <value>Describe a las personas que se sienten atraídas por aquellas que poseen rasgos tanto masculinos como femeninos. La atracción se basa en la apariencia andrógina de la persona.</value>
+  </data>
+  <data name="Androgynsexual_Name" xml:space="preserve">
+    <value>Andrógino-sexual</value>
+  </data>
+  <data name="Androsexual_Description" xml:space="preserve">
+    <value>Se refiere a las personas que se sienten atraídas por los hombres, los varones o la masculinidad, incluidas las personas que se identifican como hombres independientemente de su biología o sexo asignado al nacer.</value>
+  </data>
+  <data name="Androsexual_Name" xml:space="preserve">
+    <value>Androsexual</value>
+  </data>
+  <data name="Asexual_Description" xml:space="preserve">
+    <value>Un amplio espectro de personas que sienten poca o ninguna atracción sexual hacia otras personas. Las personas asexuales pueden sentir atracción romántica y formar relaciones, y también pueden identificarse con otros términos específicos del espectro asexual.</value>
+  </data>
+  <data name="Asexual_Name" xml:space="preserve">
+    <value>Asexual</value>
+  </data>
+  <data name="Autosexual_Description" xml:space="preserve">
+    <value>Describe a una persona que se siente atraída sexualmente por sí misma. Este concepto es distinto del placer propio o la masturbación y se relaciona más con el deseo propio.</value>
+  </data>
+  <data name="Autosexual_Name" xml:space="preserve">
+    <value>Autosexual</value>
+  </data>
+  <data name="Bisexual_Description" xml:space="preserve">
+    <value>Describe a las personas que sienten atracción sexual, romántica o emocional hacia más de un género. Este término es flexible y puede abarcar diversas formas de atracción hacia diferentes géneros.</value>
+  </data>
+  <data name="Bisexual_Name" xml:space="preserve">
+    <value>Bisexual</value>
+  </data>
+  <data name="Demisexual_Description" xml:space="preserve">
+    <value>Se incluye dentro del espectro asexual y describe a personas que experimentan atracción sexual sólo después de formar un vínculo emocional o romántico profundo.</value>
+  </data>
+  <data name="Demisexual_Name" xml:space="preserve">
+    <value>Demisexual</value>
+  </data>
+  <data name="Graysexual_Description" xml:space="preserve">
+    <value>Describe a personas que existen en la “zona gris” entre la asexualidad y la sexualidad, experimentando atracción sexual ocasional o condicional.</value>
+  </data>
+  <data name="Graysexual_Name" xml:space="preserve">
+    <value>Grissexual</value>
+  </data>
+  <data name="Gynosexual_Description" xml:space="preserve">
+    <value>Se refiere a las personas que se sienten atraídas por las mujeres, las mujeres o la feminidad, incluidas las personas que se identifican como mujeres independientemente de su biología o sexo asignado al nacer.</value>
+  </data>
+  <data name="Gynosexual_Name" xml:space="preserve">
+    <value>Ginosexual</value>
+  </data>
+  <data name="Heterosexual_Description" xml:space="preserve">
+    <value>Describe a personas que se sienten atraídas sexual, romántica o emocionalmente por personas de un género diferente (por ejemplo, hombres atraídos por mujeres y viceversa).</value>
+  </data>
+  <data name="Heterosexual_Name" xml:space="preserve">
+    <value>Heterosexual</value>
+  </data>
+  <data name="Homosexual_Description" xml:space="preserve">
+    <value>Describe a las personas que sienten atracción sexual, romántica o emocional hacia personas del mismo sexo. Sin embargo, muchos prefieren términos como "gay" o "lesbiana", ya que "homosexual" a veces puede tener connotaciones clínicas o anticuadas.</value>
+  </data>
+  <data name="Homosexual_Name" xml:space="preserve">
+    <value>Homosexual</value>
+  </data>
+  <data name="Other_Description" xml:space="preserve">
+    <value>Este usuario se identifica con una orientación sexual única que no se ajusta a las categorías comunes.</value>
+  </data>
+  <data name="Other_Name" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="Pansexual_Description" xml:space="preserve">
+    <value>Se refiere a las personas que pueden experimentar atracción hacia otros independientemente de su género, abrazando una apertura a todos los géneros e identidades.</value>
+  </data>
+  <data name="Pansexual_Name" xml:space="preserve">
+    <value>Pansexual</value>
+  </data>
+  <data name="Polysexual_Description" xml:space="preserve">
+    <value>Se refiere a personas que se sienten atraídas por varios géneros, pero no necesariamente por todos. Se diferencia de la pansexualidad en que se centra en la atracción por géneros específicos.</value>
+  </data>
+  <data name="Polysexual_Name" xml:space="preserve">
+    <value>Polisexual</value>
+  </data>
+  <data name="Pomosexual_Description" xml:space="preserve">
+    <value>Término utilizado por personas que rechazan las etiquetas de sexualidad o que eligen no identificarse con ninguna orientación sexual establecida. Es más un rechazo a la categorización que a una identidad específica.</value>
+  </data>
+  <data name="Pomosexual_Name" xml:space="preserve">
+    <value>Pomosexual</value>
+  </data>
+  <data name="Sapiosexual_Description" xml:space="preserve">
+    <value>Describe a las personas que se sienten atraídas principalmente por la inteligencia o la conexión intelectual más que por la atracción física o de género.</value>
+  </data>
+  <data name="Sapiosexual_Name" xml:space="preserve">
+    <value>Sapiosexual</value>
+  </data>
+  <data name="Skoliosexual_Description" xml:space="preserve">
+    <value>Describe a las personas que se sienten atraídas por individuos con identidades no cisgénero, como personas no binarias, de género queer o transgénero.</value>
+  </data>
+  <data name="Skoliosexual_Name" xml:space="preserve">
+    <value>Escoliosexual</value>
+  </data>
+</root>

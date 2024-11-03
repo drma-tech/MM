@@ -11,27 +11,27 @@
     <FieldBody ColumnSize="ColumnSize.IsFull.OnWidescreen.Is8.OnFullHD">
         <Addons>
             <Addon AddonType="AddonType.Body">
-                <Select SelectedValue="@year" SelectedValueChanged="(int value)=>SetYear(value)" Class="form-control">
+                <Select SelectedValue="@year" SelectedValueChanged="(int value)=>SetYear(value)" Class="form-control" Width="Width.Auto">
                     @foreach (var item in years)
                     {
                         <SelectItem Value="@item">@item</SelectItem>
                     }
                 </Select>
-                <Select SelectedValue="@month" SelectedValueChanged="(int value)=>SetMonth(value)" Class="form-control">
+                <Select SelectedValue="@month" SelectedValueChanged="(int value)=>SetMonth(value)" Class="form-control" Width="Width.Auto">
                     @foreach (var item in months)
                     {
                         <SelectItem Value="@item">@(new DateTime(year, item, 1).ToString("MMM"))</SelectItem>
                     }
                 </Select>
-                <Select SelectedValue="@day" SelectedValueChanged="(int value)=>SetDay(value)" Class="form-control">
+                <Select SelectedValue="@day" SelectedValueChanged="(int value)=>SetDay(value)" Class="form-control" Width="Width.Auto">
                     @foreach (var item in days)
                     {
                         <SelectItem Value="@item">@item</SelectItem>
                     }
                 </Select>
+                <TextEdit Text="@($"{Value.GetAge()} {WEB.Resources.GlobalTranslations.Years}")" Disabled="true" Width="Width.Is33"></TextEdit>
             </Addon>
         </Addons>
-        <ValidationMessage For="@For"></ValidationMessage>
     </FieldBody>
     <Column ColumnSize="ColumnSize.IsFull">
         <FieldHelp Style="color: #17a2b8 !important">@Resources.GlobalTranslations.BirthdateTip</FieldHelp>

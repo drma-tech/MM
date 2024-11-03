@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnnualIncome_Description" xml:space="preserve">
+    <value>Cumulative amount earned in one year (in US dollars)</value>
+  </data>
+  <data name="AnnualIncome_Name" xml:space="preserve">
+    <value>Annual Income</value>
+  </data>
   <data name="CareerCluster_Name" xml:space="preserve">
     <value>Career</value>
   </data>
@@ -133,10 +139,10 @@
     <value>Education</value>
   </data>
   <data name="HaveChildren_Name" xml:space="preserve">
-    <value>Has Kids</value>
+    <value>Have Children</value>
   </data>
   <data name="LoveLanguage_Description" xml:space="preserve">
-    <value>If you have any doubts, you can take a test on the original website (English only)</value>
+    <value>If you have any doubts, you can take a test on the original website (English and Spanish)</value>
   </data>
   <data name="LoveLanguage_Name" xml:space="preserve">
     <value>Love Language</value>
@@ -151,7 +157,13 @@
     <value>If you have any doubts, you can take a test on the original website (English only)</value>
   </data>
   <data name="MoneyPersonality_Name" xml:space="preserve">
-    <value>Financial Personality</value>
+    <value>Money Personality</value>
+  </data>
+  <data name="NetWorth_Description" xml:space="preserve">
+    <value>Total value of all assets minus the total of all liabilities (in US dollars).</value>
+  </data>
+  <data name="NetWorth_Name" xml:space="preserve">
+    <value>Net Worth</value>
   </data>
   <data name="RelationshipPersonality_Description" xml:space="preserve">
     <value>If in doubt, you can take a test on a third-party site (English only)</value>
@@ -162,17 +174,17 @@
   <data name="Religion_Name" xml:space="preserve">
     <value>Religion</value>
   </data>
-  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>Unlike other personalities, this one's compatibility is a personal preference.</value>
-  </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Sexual Personality (preferences)</value>
-  </data>
   <data name="SexPersonality_Description" xml:space="preserve">
     <value>If you have any doubts, you can take a test on the original website (English only)</value>
   </data>
   <data name="SexPersonality_Name" xml:space="preserve">
-    <value>Sexual Personality</value>
+    <value>Sex Personality</value>
+  </data>
+  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
+    <value>Unlike other personalities, this one's compatibility is a personal preference.</value>
+  </data>
+  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
+    <value>Sex Personality (preferences)</value>
   </data>
   <data name="SharedSpendingStyle_Name" xml:space="preserve">
     <value>Shared Spending Style</value>
@@ -185,17 +197,5 @@
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Want Kids</value>
-  </data>
-  <data name="NetWorth_Name" xml:space="preserve">
-    <value>Net Worth</value>
-  </data>
-  <data name="NetWorth_Description" xml:space="preserve">
-    <value>Total value of all assets minus the total of all liabilities (in US dollars).</value>
-  </data>
-  <data name="AnnualIncome_Name" xml:space="preserve">
-    <value>Annual Income</value>
-  </data>
-  <data name="AnnualIncome_Description" xml:space="preserve">
-    <value>Cumulative amount earned in one year (in US dollars)</value>
   </data>
 </root>

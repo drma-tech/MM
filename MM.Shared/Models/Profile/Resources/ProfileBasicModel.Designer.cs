@@ -70,15 +70,6 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Situation.
-        /// </summary>
-        public static string CurrentSituation_Name {
-            get {
-                return ResourceManager.GetString("CurrentSituation_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description_Name {
@@ -88,11 +79,11 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For your own safety, please do not include contact information (mobile, email, etc.) or your location (where you are or have been). \n\nNOTE: Promoting social networks, products, services and/or content that violates the rights of third parties will be subject to banishment from the platform..
+        ///   Looks up a localized string similar to For your own safety, do not include contact information (cell phone, email, etc.) or places (where you live or frequent). \n\nNOTE: Promoting social networks, products, services and/or content that violates the rights of third parties will be subject to banning from the platform..
         /// </summary>
-        public static string Description_Prompt {
+        public static string Description_Placeholder {
             get {
-                return ResourceManager.GetString("Description_Prompt", resourceCulture);
+                return ResourceManager.GetString("Description_Placeholder", resourceCulture);
             }
         }
         
@@ -111,15 +102,6 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string GenderIdentity_Name {
             get {
                 return ResourceManager.GetString("GenderIdentity_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Intentions.
-        /// </summary>
-        public static string Intentions_Name {
-            get {
-                return ResourceManager.GetString("Intentions_Name", resourceCulture);
             }
         }
         
@@ -162,9 +144,18 @@ namespace MM.Shared.Models.Profile.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Please click on the button to the side.
         /// </summary>
-        public static string Location_Prompt {
+        public static string Location_Placeholder {
             get {
-                return ResourceManager.GetString("Location_Prompt", resourceCulture);
+                return ResourceManager.GetString("Location_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marital Status.
+        /// </summary>
+        public static string MaritalStatus_Name {
+            get {
+                return ResourceManager.GetString("MaritalStatus_Name", resourceCulture);
             }
         }
         
@@ -189,9 +180,18 @@ namespace MM.Shared.Models.Profile.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ex: Paul.
         /// </summary>
-        public static string NickName_Prompt {
+        public static string NickName_Placeholder {
             get {
-                return ResourceManager.GetString("NickName_Prompt", resourceCulture);
+                return ResourceManager.GetString("NickName_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intentions.
+        /// </summary>
+        public static string RelationshipIntentions_Name {
+            get {
+                return ResourceManager.GetString("RelationshipIntentions_Name", resourceCulture);
             }
         }
         

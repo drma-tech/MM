@@ -120,14 +120,11 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Sexo biológico</value>
   </data>
-  <data name="CurrentSituation_Name" xml:space="preserve">
-    <value>Situación actual</value>
-  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Descripción</value>
   </data>
-  <data name="Description_Prompt" xml:space="preserve">
-    <value>Por su propia seguridad, no incluya información de contacto (móvil, correo electrónico, etc.) o su ubicación (donde se encuentra o ha estado). \n\nNOTA: La promoción de redes sociales, productos, servicios y/o contenidos que vulneren derechos de terceros será objeto de expulsión de la plataforma.</value>
+  <data name="Description_Placeholder" xml:space="preserve">
+    <value>Por tu propia seguridad, no incluyas datos de contacto (celular, correo electrónico, etc.) ni lugares (donde vives o frecuentas). \n\nNOTA: Promocionar redes sociales, productos, servicios y/o contenidos que violen derechos de terceros será sujeto a baneo de la plataforma.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>La opción más común seleccionada automáticamente (aplicable a la mayoría de las personas)</value>
@@ -135,20 +132,20 @@
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Identidad de género</value>
   </data>
-  <data name="Intentions_Name" xml:space="preserve">
-    <value>Intenciones</value>
-  </data>
   <data name="Languages_Description" xml:space="preserve">
     <value>Elegido automáticamente según los idiomas vigentes en el país (si están disponibles)</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Idiomas</value>
   </data>
+  <data name="Location_Description" xml:space="preserve">
+    <value>No almacenamos su ubicación GPS, solo su ciudad. (El acceso a la ubicación del dispositivo debe estar habilitado)</value>
+  </data>
   <data name="Location_Name" xml:space="preserve">
     <value>Ubicación</value>
   </data>
-  <data name="Location_Prompt" xml:space="preserve">
-    <value>Por favor, haga clic en el botón al lado</value>
+  <data name="Location_Placeholder" xml:space="preserve">
+    <value>Haga clic en el botón a un lado</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modalidad</value>
@@ -156,16 +153,13 @@
   <data name="NickName_Name" xml:space="preserve">
     <value>Apodo</value>
   </data>
-  <data name="NickName_Prompt" xml:space="preserve">
-    <value>Ej: Pablo</value>
+  <data name="NickName_Placeholder" xml:space="preserve">
+    <value>Ej: Paul</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>La opción más común seleccionada automáticamente (aplicable a la mayoría de las personas)</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Orientación sexual</value>
-  </data>
-  <data name="Location_Description" xml:space="preserve">
-    <value>No almacenamos su ubicación GPS, solo su ciudad. (El acceso a la ubicación del dispositivo debe estar habilitado)</value>
   </data>
 </root>

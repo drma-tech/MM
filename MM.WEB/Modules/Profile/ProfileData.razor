@@ -1,5 +1,8 @@
 ﻿@page "/profile/data"
+@using FluentValidation
+@using FluentValidation.Results
 @using MM.Shared.Models.Profile;
+@using MM.Shared.Models.Profile.Core
 @using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core
 @using MM.WEB.Modules.Shared.Popup;
@@ -7,253 +10,310 @@
 @inherits PageCore<ProfileData>
 
 <RenderControl Core="Core" Model="Profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
-    <EditForm Model="@Profile" OnValidSubmit="ValidSubmit" OnInvalidSubmit="InvalidSubmit">
-        <FluentValidationValidator @ref="_validator" Options="@(options => options.IncludeRuleSets("BASIC", "BIO", "LIFESTYLE", "PERSONALITY", "INTEREST", "GOAL"))" />
+    <Tabs RenderMode="TabsRenderMode.LazyReload" @bind-SelectedTab="@Tab" FullWidth="true">
+        <Items>
+            <Tab Name="BASIC">
+                @MM.Shared.Enums.Resources.Section.Basic
+                @if (IsValid(Tabs.BASIC))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="BIO">
+                @MM.Shared.Enums.Resources.Section.Bio
+                @if (IsValid(Tabs.BIO))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="LIFESTYLE">
+                @MM.Shared.Enums.Resources.Section.Lifestyle
+                @if (IsValid(Tabs.LIFESTYLE))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="PERSONALITY">
+                @MM.Shared.Enums.Resources.Section.Personality
+                @if (IsValid(Tabs.PERSONALITY))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="INTEREST">
+                @MM.Shared.Enums.Resources.Section.Interest
+                @if (IsValid(Tabs.INTEREST))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="RELATIONSHIP">
+                @MM.Shared.Enums.Resources.Section.Relationship
+                @if (IsValid(Tabs.RELATIONSHIP))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+            <Tab Name="GOAL">
+                @MM.Shared.Enums.Resources.Section.Goals
+                @if (IsValid(Tabs.GOAL))
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromStart" TextColor="TextColor.Success"></Blazorise.Icon>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
+                }
+            </Tab>
+        </Items>
+        <Content>
+            <TabPanel Name="BASIC" Padding="Padding.Is3.FromTop">
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldText For="@(() => Profile.NickName)" @bind-Value="@Profile.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
+                        <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
+                                   Rows="7" LabelSize="LabelSize.Short"></FieldText>
+                        <Country For="@(() => Profile.Nationality)" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
+                                 CssIcon="@FontAwesomeIcons.EarthAmericas" Required="true" LabelSize="LabelSize.Short"></Country>
+                        <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
+                                   ButtomClicked="async ()=> { await SetLocation(Profile); }" ButtomCssIcon="@FontAwesomeIcons.MapMarkedAlt" LabelSize="LabelSize.Short"
+                                   ButtomTitle="Retrieve GPS position"></FieldText>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile.Languages"
+                                     CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" Order="@(o=>o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
+                                     CssIcon="@FontAwesomeIcons.Ring" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
+                                     CssIcon="@FontAwesomeIcons.PersonHalfDress" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
+                                     CssIcon="@FontAwesomeIcons.MarsAndVenus" Required="true" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Profile.SexualOrientations"
+                                     CssIcon="@FontAwesomeIcons.HeartPulse" Required="true" Multiple="true"></FieldSelect>
+                    </Column>
+                </Row>
+            </TabPanel>
+            <TabPanel Name="BIO" Padding="Padding.Is3.FromTop">
+                <Alert Visible="true" Color="Color.Info">
+                    <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataBioTip1</AlertDescription>
+                </Alert>
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.Ethnicity)" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@Profile!.Ethnicity"
+                                     CssIcon="@FontAwesomeIcons.Globe" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.BodyType)" TValue="BodyType?" TEnum="BodyType" @bind-SelectedValue="@Profile.BodyType"
+                                     CssIcon="@FontAwesomeIcons.Weight" Required="true" ShowHelper="false"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <Birthdate Type="FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
+                                   CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></Birthdate>
+                        <FieldSelect For="@(() => Profile.Height)" TValue="MM.Shared.Enums.Height?" TEnum="MM.Shared.Enums.Height" @bind-SelectedValue="@Profile.Height"
+                                     CssIcon="@FontAwesomeIcons.Ruler" Required="true" ShowHelper="false"></FieldSelect>
+                    </Column>
+                </Row>
+                <Card>
+                    <CardHeader>
+                        @WEB.Resources.CardHeader.ProfileOptionalSection
+                    </CardHeader>
+                    <CardBody>
+                        <Alert Visible="true" Color="Color.Info">
+                            <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataBioTip2</AlertDescription>
+                        </Alert>
+                        <Row>
+                            <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                                <FieldSelect For="@(() => Profile!.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@Profile!.Neurodiversity"
+                                             CssIcon="@FontAwesomeIcons.Brain"></FieldSelect>
+                            </Column>
+                            <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                                <FieldSelect For="@(() => Profile!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Profile!.Disabilities"
+                                             CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true"></FieldSelect>
+                            </Column>
+                        </Row>
+                    </CardBody>
+                </Card>
+            </TabPanel>
+            <TabPanel Name="LIFESTYLE" Padding="Padding.Is3.FromTop">
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@Profile!.Drink"
+                                     CssIcon="@FontAwesomeIcons.GlassCheers" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@Profile.Smoke"
+                                     CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@Profile.Diet"
+                                     CssIcon="@FontAwesomeIcons.Utensils" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
+                                     CssIcon="@FontAwesomeIcons.PrayingHands" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.FamilyInvolvement)" TValue="FamilyInvolvement?" TEnum="FamilyInvolvement" @bind-SelectedValue="@Profile.FamilyInvolvement"
+                                     CssIcon="@FontAwesomeIcons.PeopleRoof" Required="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
+                                     CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.HavePets)" TValue="HavePets?" TEnum="HavePets" @bind-SelectedValue="@Profile!.HavePets"
+                                     CssIcon="@FontAwesomeIcons.Paw" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@Profile.EducationLevel"
+                                     CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="true" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
+                                     CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
+                                     CssIcon="@FontAwesomeIcons.HomeUser" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
+                                     CssIcon="@FontAwesomeIcons.Plane" Required="true"></FieldSelect>
+                    </Column>
+                </Row>
+                <Card>
+                    <CardHeader>
+                        @WEB.Resources.CardHeader.ProfileOptionalSection
+                    </CardHeader>
+                    <CardBody>
+                        <Alert Visible="true" Color="Color.Info">
+                            <AlertDescription>Due to the sensitive nature of this information, it will only be visible to candidates after the match is made.</AlertDescription>
+                        </Alert>
+                        <Row>
+                            <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                                <FieldSelect For="@(() => Profile.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile.NetWorth"
+                                             CssIcon="@FontAwesomeIcons.Gem" ShowHelper="false"
+                                             ButtomClicked="@(()=>{})" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true"></FieldSelect>
+                            </Column>
+                            <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                                <FieldSelect For="@(() => Profile.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile.AnnualIncome"
+                                             CssIcon="@FontAwesomeIcons.MoneyBill" ShowHelper="false"
+                                             ButtomClicked="@(()=>{})" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true"></FieldSelect>
+                            </Column>
+                        </Row>
+                    </CardBody>
+                </Card>
+            </TabPanel>
+            <TabPanel Name="PERSONALITY" Padding="Padding.Is3.FromTop">
+                <Alert Visible="true" Color="Color.Info">
+                    <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataPersonTip1</AlertDescription>
+                </Alert>
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@Profile!.MoneyPersonality"
+                                     CssIcon="@FontAwesomeIcons.Wallet" LabelSize="LabelSize.Big" HelpLink="https://empower.me/quiz/"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@Profile.SharedSpendingStyle"
+                                     CssIcon="@FontAwesomeIcons.HandHoldingUsd" LabelSize="LabelSize.Big"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@Profile.RelationshipPersonality"
+                                     CssIcon="@FontAwesomeIcons.PeoplePulling" LabelSize="LabelSize.Big" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@Profile!.MBTI"
+                                     CssIcon="@FontAwesomeIcons.UserTag" LabelSize="LabelSize.Big" HelpLink="https://www.16personalities.com/" ShowGroup="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile.LoveLanguage"
+                                     CssIcon="@FontAwesomeIcons.HandHoldingHeart" LabelSize="LabelSize.Big" HelpLink="https://5lovelanguages.com/quizzes/love-language"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
+                                     CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" HelpLink="https://vmtherapy.com/sex-personality-type"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@Profile.SexPersonalityPreference"
+                                     CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" Multiple="true"></FieldSelect>
+                    </Column>
+                </Row>
+            </TabPanel>
+            <TabPanel Name="INTEREST" Padding="Padding.Is3.FromTop">
+                <Alert Visible="true" Color="Color.Info">
+                    <AlertDescription>@WEB.Resources.CardHeader.Maximum3Items</AlertDescription>
+                </Alert>
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Profile!.Food"
+                                     CssIcon="@FontAwesomeIcons.PizzaSlice" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Profile.Vacation"
+                                     CssIcon="@FontAwesomeIcons.PlaneDeparture" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Profile.Sports"
+                                     CssIcon="@FontAwesomeIcons.Swimmer" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Profile.LeisureActivities"
+                                     CssIcon="@FontAwesomeIcons.UmbrellaBeach" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Profile!.MusicGenre"
+                                     CssIcon="@FontAwesomeIcons.Music" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Profile.MovieGenre"
+                                     CssIcon="@FontAwesomeIcons.Film" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Profile.TVGenre"
+                                     CssIcon="@FontAwesomeIcons.Tv" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                        <FieldSelect For="@(() => Profile.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Profile.ReadingGenre"
+                                     CssIcon="@FontAwesomeIcons.BookReader" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
+                    </Column>
+                </Row>
+            </TabPanel>
+            <TabPanel Name="RELATIONSHIP" Padding="Padding.Is3.FromTop">
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.SharedFinances)" TValue="SharedFinances?" TEnum="SharedFinances" @bind-SelectedValue="@Profile!.SharedFinances"
+                                     CssIcon="@FontAwesomeIcons.MoneyBillTransfer" Required="true" LabelSize="LabelSize.Big"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.ConflictResolutionStyle)" TValue="ConflictResolutionStyle?" TEnum="ConflictResolutionStyle" @bind-SelectedValue="@Profile!.ConflictResolutionStyle"
+                                     CssIcon="@FontAwesomeIcons.Handshake" Required="true" LabelSize="LabelSize.Big"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.HouseholdManagement)" TValue="HouseholdManagement?" TEnum="HouseholdManagement" @bind-SelectedValue="@Profile!.HouseholdManagement"
+                                     CssIcon="@FontAwesomeIcons.Broom" Required="true" LabelSize="LabelSize.Big"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.TimeTogetherPreference)" TValue="TimeTogetherPreference?" TEnum="TimeTogetherPreference" @bind-SelectedValue="@Profile!.TimeTogetherPreference"
+                                     CssIcon="@FontAwesomeIcons.PeopleArrows" Required="true" LabelSize="LabelSize.Big"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.OppositeSexFriendships)" TValue="OppositeSexFriendships?" TEnum="OppositeSexFriendships" @bind-SelectedValue="@Profile!.OppositeSexFriendships"
+                                     CssIcon="@FontAwesomeIcons.Restroom" Required="true" LabelSize="LabelSize.Big"></FieldSelect>
+                    </Column>
+                </Row>
+            </TabPanel>
+            <TabPanel Name="GOAL" Padding="Padding.Is3.FromTop">
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile.RelationshipIntentions"
+                                     CssIcon="@FontAwesomeIcons.Search" Required="true" Multiple="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Profile!.Relocation"
+                                     CssIcon="@FontAwesomeIcons.Truck" Required="true"></FieldSelect>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                        <FieldSelect For="@(() => Profile!.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@Profile!.WantChildren"
+                                     CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Required="true"></FieldSelect>
+                        <FieldSelect For="@(() => Profile!.IdealPlaceToLive)" TValue="IdealPlaceToLive?" TEnum="IdealPlaceToLive" @bind-SelectedValue="@Profile!.IdealPlaceToLive"
+                                     CssIcon="@FontAwesomeIcons.HouseCircleCheck" Required="true"></FieldSelect>
+                    </Column>
+                </Row>
+            </TabPanel>
+        </Content>
+    </Tabs>
 
-        <Tabs RenderMode="TabsRenderMode.LazyReload" @bind-SelectedTab="@Tab" Pills="true" FullWidth="true">
-            <Items>
-                <Tab Name="Basic">
-                    @MM.Shared.Enums.Resources.Section.Basic
-                    @if (!IsValid(Tabs.Basic))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-                <Tab Name="Bio">
-                    @MM.Shared.Enums.Resources.Section.Bio
-                    @if (!IsValid(Tabs.Bio))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-                <Tab Name="Lifestyle">
-                    @MM.Shared.Enums.Resources.Section.Lifestyle
-                    @if (!IsValid(Tabs.Lifestyle))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-                <Tab Name="Personality">
-                    @MM.Shared.Enums.Resources.Section.Personality
-                    @if (!IsValid(Tabs.Personality))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-                <Tab Name="Interests">
-                    @MM.Shared.Enums.Resources.Section.Interest
-                    @if (!IsValid(Tabs.Interests))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-                <Tab Name="Goals">
-                    Goals
-                    @if (!IsValid(Tabs.Goals))
-                    {
-                        <Blazorise.Icon Name="FontAwesomeIcons.PenToSquare" Margin="Margin.Is2.FromStart" TextColor="TextColor.Warning"></Blazorise.Icon>
-                    }
-                </Tab>
-            </Items>
-            <Content>
-                <TabPanel Name="Basic" Padding="Padding.Is3.FromTop">
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldText For="@(() => Profile.NickName)" @bind-Value="@Profile.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
-                            <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
-                                       Rows="7" LabelSize="LabelSize.Short"></FieldText>
-                            <FieldSelect For="@(() => Profile.Nationality)" TValue="Country?" TEnum="Country" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
-                                         CssIcon="@FontAwesomeIcons.EarthAmericas" Required="true" LabelSize="LabelSize.Short" Order="@(o=>o.Name)" ShowHelper="false"></FieldSelect>
-                            <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
-                                       ButtomClicked="async ()=> { await SetLocation(Profile); }" ButtomCssIcon="@FontAwesomeIcons.MapMarkedAlt" LabelSize="LabelSize.Short" ButtomTitle="Recuperar posição GPS"></FieldText>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile.Languages"
-                                         CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile!.CurrentSituation)" TValue="CurrentSituation?" TEnum="CurrentSituation" @bind-SelectedValue="@Profile.CurrentSituation"
-                                         CssIcon="@FontAwesomeIcons.Heart" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
-                                         CssIcon="@FontAwesomeIcons.PersonHalfDress" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
-                                         CssIcon="@FontAwesomeIcons.MarsAndVenus" Required="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Profile.SexualOrientations"
-                                         CssIcon="@FontAwesomeIcons.HeartPulse" Required="true" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                </TabPanel>
-                <TabPanel Name="Bio" Padding="Padding.Is3.FromTop">
-                    <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataBioTip1</AlertDescription>
-                    </Alert>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.RaceCategory)" TValue="RaceCategory?" TEnum="RaceCategory" @bind-SelectedValue="@Profile!.RaceCategory"
-                                         CssIcon="@FontAwesomeIcons.Globe" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.BodyMass)" TValue="BodyMass?" TEnum="BodyMass" @bind-SelectedValue="@Profile.BodyMass"
-                                         CssIcon="@FontAwesomeIcons.Weight" Required="true" ShowHelper="false"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <Birthdate Type="FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
-                                       CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></Birthdate>
-                            <Field Horizontal="true">
-                                <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                                    <TextEdit Text="@($"{Profile.BirthDate.GetAge()} {WEB.Resources.GlobalTranslations.Years}")" Disabled="true"></TextEdit>
-                                </FieldBody>
-                            </Field>
-                            <FieldSelect For="@(() => Profile.Height)" TValue="MM.Shared.Enums.Height?" TEnum="MM.Shared.Enums.Height" @bind-SelectedValue="@Profile.Height"
-                                         CssIcon="@FontAwesomeIcons.Ruler" Required="true" ShowHelper="false"></FieldSelect>
-                        </Column>
-                    </Row>
-                    <Card>
-                        <CardHeader>
-                            @WEB.Resources.CardHeader.ProfileOptionalSection
-                        </CardHeader>
-                        <CardBody>
-                            <Alert Visible="true" Color="Color.Info">
-                                <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataBioTip2</AlertDescription>
-                            </Alert>
-                            <Row>
-                                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                    <FieldSelect For="@(() => Profile!.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@Profile!.Neurodiversity"
-                                                 CssIcon="@FontAwesomeIcons.Brain"></FieldSelect>
-                                </Column>
-                                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                    <FieldSelect For="@(() => Profile!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Profile!.Disabilities"
-                                                 CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true"></FieldSelect>
-                                </Column>
-                            </Row>
-                        </CardBody>
-                    </Card>
-                </TabPanel>
-                <TabPanel Name="Lifestyle" Padding="Padding.Is3.FromTop">
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@Profile!.Drink"
-                                         CssIcon="@FontAwesomeIcons.GlassCheers" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@Profile.Smoke"
-                                         CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@Profile.Diet"
-                                         CssIcon="@FontAwesomeIcons.Utensils" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
-                                         CssIcon="@FontAwesomeIcons.PrayingHands" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.FamilyApproval)" TValue="FamilyApproval?" TEnum="FamilyApproval" @bind-SelectedValue="@Profile.FamilyApproval"
-                                         CssIcon="@FontAwesomeIcons.UserGroup" Required="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
-                                         CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@Profile.EducationLevel"
-                                         CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="true" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
-                                         CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
-                                         CssIcon="@FontAwesomeIcons.HomeUser" Required="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
-                                         CssIcon="@FontAwesomeIcons.Plane" Required="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                    <Card>
-                        <CardHeader>
-                            @WEB.Resources.CardHeader.ProfileOptionalSection
-                        </CardHeader>
-                        <CardBody>
-                            <Alert Visible="true" Color="Color.Info">
-                                <AlertDescription>Due to the sensitive nature of this information, it will only be visible to candidates after the match is made.</AlertDescription>
-                            </Alert>
-                            <Row>
-                                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                    <FieldSelect For="@(() => Profile.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile.NetWorth"
-                                                 CssIcon="@FontAwesomeIcons.Gem" ShowHelper="false"></FieldSelect>
-                                </Column>
-                                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                    <FieldSelect For="@(() => Profile.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile.AnnualIncome"
-                                                 CssIcon="@FontAwesomeIcons.MoneyBill" ShowHelper="false"></FieldSelect>
-                                </Column>
-                            </Row>
-                        </CardBody>
-                    </Card>
-                </TabPanel>
-                <TabPanel Name="Personality" Padding="Padding.Is3.FromTop">
-                    <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>@WEB.Resources.GlobalTranslations.ProfileDataPersonTip1</AlertDescription>
-                    </Alert>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@Profile!.MoneyPersonality"
-                                         CssIcon="@FontAwesomeIcons.Wallet" LabelSize="LabelSize.Big" HelpLink="https://empower.me/quiz/"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@Profile.SharedSpendingStyle"
-                                         CssIcon="@FontAwesomeIcons.HandHoldingUsd" LabelSize="LabelSize.Big"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@Profile.RelationshipPersonality"
-                                         CssIcon="@FontAwesomeIcons.PeopleArrows" LabelSize="LabelSize.Big" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/"></FieldSelect>
-                            <FieldSelect For="@(() => Profile!.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@Profile!.MBTI"
-                                         CssIcon="@FontAwesomeIcons.User" LabelSize="LabelSize.Big" HelpLink="https://www.16personalities.com/" ShowGroup="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile.LoveLanguage"
-                                         CssIcon="@FontAwesomeIcons.HandHoldingHeart" LabelSize="LabelSize.Big" HelpLink="https://www.5lovelanguages.com/quizzes/singles-quiz/"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
-                                         CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" HelpLink="https://www.vmtherapy.com/personality-type/"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@Profile.SexPersonalityPreference"
-                                         CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                </TabPanel>
-                <TabPanel Name="Interests" Padding="Padding.Is3.FromTop">
-                    <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>@WEB.Resources.CardHeader.Maximum3Items</AlertDescription>
-                    </Alert>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Profile!.Food"
-                                         CssIcon="@FontAwesomeIcons.PizzaSlice" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Profile.Vacation"
-                                         CssIcon="@FontAwesomeIcons.PlaneDeparture" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Profile.Sports"
-                                         CssIcon="@FontAwesomeIcons.Swimmer" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Profile.LeisureActivities"
-                                         CssIcon="@FontAwesomeIcons.UmbrellaBeach" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Profile!.MusicGenre"
-                                         CssIcon="@FontAwesomeIcons.Music" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Profile.MovieGenre"
-                                         CssIcon="@FontAwesomeIcons.Film" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Profile.TVGenre"
-                                         CssIcon="@FontAwesomeIcons.Tv" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Profile.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Profile.ReadingGenre"
-                                         CssIcon="@FontAwesomeIcons.BookReader" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                </TabPanel>
-                <TabPanel Name="Goals" Padding="Padding.Is3.FromTop">
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile.Intentions)" TValue="HashSet<Intentions>" TEnum="Intentions" @bind-SelectedValues="@Profile.Intentions"
-                                         CssIcon="@FontAwesomeIcons.Search" Required="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Profile!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Profile!.Relocation"
-                                         CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Truck" Required="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@Profile!.WantChildren"
-                                         CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Required="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                </TabPanel>
-            </Content>
-        </Tabs>
-
-        <Button Type="ButtonType.Submit" Color="Color.Primary" Margin="Margin.Is2.OnY">
-            <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+    <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
+        <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+    </Button>
+    @if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab)).IsValid)
+    {
+        <Button Color="Color.Secondary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="()=>ShowErrors(Profile)">
+            <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> Show Errors
         </Button>
-        <Div Float="Float.End" Margin="Margin.Is2.OnY">
-            <Button Color="Color.Primary" Clicked="help!.ShowModal">
-                <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
-            </Button>
-            <Button Color="Color.Danger" Clicked="privacy!.ShowModal">
-                <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon> @WEB.Resources.Button.Privacy
-            </Button>
-        </Div>
-    </EditForm>
+    }
+    <Div Float="Float.End" Margin="Margin.Is2.OnY">
+        <Button Color="Color.Primary" Clicked="help!.ShowModal">
+            <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
+        </Button>
+        <Button Color="Color.Danger" Clicked="privacy!.ShowModal">
+            <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon> @WEB.Resources.Button.Privacy
+        </Button>
+    </Div>
 
     <BasicModal @ref="@privacy" Title="@WEB.Resources.GlobalTranslations.Privacy">
         <ul style="margin-left: -10px;">
@@ -282,21 +342,20 @@
     private BasicModal? privacy;
     private BasicModal? help;
 
-    private FluentValidationValidator? _validator;
-
-    public string? Tab { get; set; } = "Basic";
+    public string? Tab { get; set; } = "BASIC";
 
     private enum Tabs
     {
-        Basic,
-        Bio,
-        Lifestyle,
-        Personality,
-        Interests,
-        Goals
+        BASIC,
+        BIO,
+        LIFESTYLE,
+        PERSONALITY,
+        INTEREST,
+        RELATIONSHIP,
+        GOAL
     }
 
-    private void CountryChanged(Country? country)
+    private void CountryChanged(MM.Shared.Enums.Country? country)
     {
         if (Profile == null) return;
 
@@ -304,36 +363,38 @@
         Profile.AddLanguages(country);
     }
 
+    public ProfileValidation Validator { get; set; } = new();
+
     private bool IsValid(Tabs tab)
     {
-        var valid = false;
+        if (Profile == null) return false;
+
+        var result = new ValidationResult();
 
         switch (tab)
         {
-            case Tabs.Basic:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("BASIC")) ?? false;
+            case Tabs.BASIC:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("BASIC"));
                 break;
-            case Tabs.Bio:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("BIO")) ?? false;
+            case Tabs.BIO:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("BIO"));
                 break;
-            case Tabs.Lifestyle:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("LIFESTYLE")) ?? false;
+            case Tabs.LIFESTYLE:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("LIFESTYLE"));
                 break;
-            case Tabs.Personality:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("PERSONALITY")) ?? false;
+            case Tabs.PERSONALITY:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("PERSONALITY"));
                 break;
-            case Tabs.Interests:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("INTEREST")) ?? false;
+            case Tabs.INTEREST:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("INTEREST"));
                 break;
-            case Tabs.Goals:
-                valid = _validator?.Validate(options => options.IncludeRuleSets("GOAL")) ?? false;
+            case Tabs.GOAL:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("GOAL"));
                 break;
             default:
                 break;
         }
 
-        _validator?.Validate(options => options.IncludeAllRuleSets());
-
-        return valid;
+        return result.IsValid;
     }
 }

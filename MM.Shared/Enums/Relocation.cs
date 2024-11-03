@@ -2,13 +2,13 @@
 {
     public enum Relocation
     {
-        [Custom(Name = "Not Willing to Relocate", Description = "I am not open to moving and have no plans or desire to relocate")]
+        [Custom(Name = "NoRelocations_Name", Description = "NoRelocations_Description", ResourceType = typeof(Resources.Relocation))]
         NoRelocations = 1,
 
-        [Custom(Name = "Open to Moving Cities", Description = "I am willing to move to another city or region within my country if the opportunity arises")]
+        [Custom(Name = "OpenMovingCities_Name", Description = "OpenMovingCities_Description", ResourceType = typeof(Resources.Relocation))]
         OpenMovingCities = 2,
 
-        [Custom(Name = "Open to Moving Countries", Description = "I am open to moving to another country in the near future or if the right situation presents itself")]
+        [Custom(Name = "OpenMovingCountries_Name", Description = "OpenMovingCountries_Description", ResourceType = typeof(Resources.Relocation))]
         OpenMovingCountries = 3,
     }
 }

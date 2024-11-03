@@ -120,13 +120,13 @@
   <data name="DescriptionName" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="DescriptionPrompt" xml:space="preserve">
+  <data name="DescriptionPlaceholder" xml:space="preserve">
     <value>Please describe in as much detail as possible so that we can better understand the situation.</value>
   </data>
   <data name="TitleName" xml:space="preserve">
     <value>Title</value>
   </data>
-  <data name="TitlePrompt" xml:space="preserve">
+  <data name="TitlePlaceholder" xml:space="preserve">
     <value>One sentence that sums up your feedback</value>
   </data>
 </root>

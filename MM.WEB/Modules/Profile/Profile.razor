@@ -1,6 +1,8 @@
 ﻿@page "/profile"
 
+@using FluentValidation
 @using MM.Shared.Models.Profile;
+@using MM.Shared.Models.Profile.Core
 @using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core;
 @attribute [Authorize]
@@ -17,20 +19,55 @@
 
 <Row Margin="Margin.Is2.FromBottom">
     <Column ColumnSize="ColumnSize.IsAuto">
-        <Button Color="@(profile?.DtInsert == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/data">
-            <Blazorise.Icon Name="FontAwesomeIcons.UserEdit"></Blazorise.Icon> Profile
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data">
+            @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Profile</span>
+            }
+            else
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Profile</span>
+            }
         </Button>
-        <Button Color="@(filter == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/filter">
-            <Blazorise.Icon Name="FontAwesomeIcons.UserCheck"></Blazorise.Icon> Filters
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter">
+            @if (filter != null && FilterValidator.Validate(filter).IsValid)
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Filters</span>
+            }
+            else
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
+            }
         </Button>
-        <Button Color="@(filter == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/setting">
-            <Blazorise.Icon Name="FontAwesomeIcons.UserCog"></Blazorise.Icon> Settings
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting">
+            @if (false)
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
+            }
+            else
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
+            }
         </Button>
-        <Button Color="@(profile?.Photo == null ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
-            <Blazorise.Icon Name="FontAwesomeIcons.Portrait"></Blazorise.Icon> Photos
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
+            @if (false)
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
+            }
+            else
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Photos</span>
+            }
         </Button>
-        <Button Color="@(true ? Color.Danger : Color.Primary)" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
-            <Blazorise.Icon Name="FontAwesomeIcons.CheckDouble"></Blazorise.Icon> Validations
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
+            @if (false)
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Validations</span>
+            }
+            else
+            {
+                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Validations</span>
+            }
         </Button>
     </Column>
     <Column ColumnSize="ColumnSize.IsAuto">
@@ -89,9 +126,11 @@
 
 @code
 {
-    private ProfileModel? profile;
+    public ProfileValidation ProfileValidator { get; set; } = new();
+    public ProfileModel? profile;
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
+    public FilterValidation FilterValidator { get; set; } = new();
     public FilterModel? filter;
 
     public List<string> Suggestions { get; set; } = [];

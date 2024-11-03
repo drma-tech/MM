@@ -1,20 +1,20 @@
 ﻿namespace MM.Shared.Enums
 {
-    public enum BodyMass
+    public enum BodyType
     {
-        [Custom(Name = "UnderWeight", ResourceType = typeof(Resources.BodyMass))]
-        UnderWeight = 1,
+        [Custom(Name = "Thin / Slender")]
+        Slim = 1,
 
-        [Custom(Name = "NormalWeight", ResourceType = typeof(Resources.BodyMass))]
-        NormalWeight = 2,
+        [Custom(Name = "Average / Medium Build")]
+        Average = 2,
 
-        [Custom(Name = "Athletic", ResourceType = typeof(Resources.BodyMass))]
+        [Custom(Name = "Athletic / Fit")]
         Athletic = 3,
 
-        [Custom(Name = "OverWeight", ResourceType = typeof(Resources.BodyMass))]
-        OverWeight = 4,
+        [Custom(Name = "Curvy / Plus Size")]
+        Curvy = 4,
 
-        [Custom(Name = "Obese", ResourceType = typeof(Resources.BodyMass))]
-        Obese = 5,
+        [Custom(Name = "Fuller Figure")]
+        Full = 5,
     }
 }

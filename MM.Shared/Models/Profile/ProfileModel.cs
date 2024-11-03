@@ -7,17 +7,17 @@ namespace MM.Shared.Models.Profile
     {
         #region BASIC
 
-        [Custom(Name = "NickName_Name", Prompt = "NickName_Prompt", ResourceType = typeof(Resources.ProfileBasicModel))]
+        [Custom(Name = "NickName_Name", Placeholder = "NickName_Placeholder", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? NickName { get; set; }
 
-        [Custom(Name = "Description_Name", Prompt = "Description_Prompt", ResourceType = typeof(Resources.ProfileBasicModel))]
+        [Custom(Name = "Description_Name", Placeholder = "Description_Placeholder", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Description { get; set; }
 
         [Custom(Name = "Nationality")]
         public Country? Nationality { get; set; }
 
         [JsonIgnore]
-        [Custom(Name = "Location_Name", Prompt = "Location_Prompt", Description = "Location_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
+        [Custom(Name = "Location_Name", Placeholder = "Location_Placeholder", Description = "Location_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Location => Country.NotEmpty() ? $"{Country} - {State} - {City}" : null;
 
         public string? Country { get; set; }
@@ -27,8 +27,8 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Languages_Name", Description = "Languages_Description", FieldInfo = "Dizem que uma boa comunicação é a chave para qualquer relacionamento duradouro e bem-sucedido. É absolutamente essencial que duas pessoas compartilhem seus sentimentos, expressem seus pensamentos e, talvez o mais importante, ouçam atentamente uma à outra. Infelizmente, no mundo acelerado e agitado de hoje, muitos casais não encontram tempo para sentar e ter uma conversa significativa um com o outro. Telefonemas e mensagens de texto substituíram os bate-papos pessoais entre duas pessoas. A falta de comunicação adequada é uma das principais razões pelas quais muitos relacionamentos não duram tanto quanto deveriam. Tendo tudo isso em mente, é realmente uma boa ideia você namorar uma pessoa que não fala a mesma língua que você?", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<Language> Languages { get; set; } = [];
 
-        [Custom(Name = "CurrentSituation_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public CurrentSituation? CurrentSituation { get; set; }
+        [Custom(Name = "MaritalStatus_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
+        public MaritalStatus? MaritalStatus { get; set; }
 
         [Custom(Name = "BiologicalSex_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public BiologicalSex? BiologicalSex { get; set; }
@@ -43,14 +43,13 @@ namespace MM.Shared.Models.Profile
 
         #region BIO
 
-        [Custom(Name = "RaceCategory_Name",
-            Description = "RaceCategory_Description",
+        [Custom(Name = "Ethnicity",
             //FieldInfo = "É muito gratificante amar alguém que é diferente de você em termos de raça, cultura, identidade, religião e muito mais. Quando estamos abertos uns com os outros, podemos ampliar as perspectivas uns dos outros, abordar o mundo de maneiras diferentes e até descobrir que há uma conexão em nossas diferenças. Infelizmente, os casais inter-raciais ainda podem enfrentar dificuldades às vezes em virtude do fato de que o racismo existe em nossa sociedade em um nível profundo. Idealmente, o amor não deve ter limites a esse respeito. No entanto, na realidade, outras pessoas podem abrigar negatividade ou julgamento sobre um casal interracial. Os parceiros em um casamento inter-racial devem enfrentar essas questões juntos, mantendo empatia e apoio às experiências um do outro.",
             ResourceType = typeof(Resources.ProfileBioModel))]
-        public RaceCategory? RaceCategory { get; set; }
+        public Ethnicity? Ethnicity { get; set; }
 
-        [Custom(Name = "BodyMass_Name", ResourceType = typeof(Resources.ProfileBioModel))]
-        public BodyMass? BodyMass { get; set; }
+        [Custom(Name = "BodyType", ResourceType = typeof(Resources.ProfileBioModel))]
+        public BodyType? BodyType { get; set; }
 
         [Custom(Name = "BirthDate_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public DateTime BirthDate { get; set; }
@@ -86,8 +85,19 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Diet_Name", Description = "Diet_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public Diet? Diet { get; set; }
 
+        [Custom(Name = "Religion_Name",
+         FieldInfo = "Apesar de que algumas pesquisas indiquem que crenças religiosas não é um fator chave no sucesso do relacionamento, isso pode diminuir bastante conflitos na comunicação/forma de pensar dos parceiros ou até mesmo no relacionamento com amigos e familiares. A depender do país/religião/cultura, poderá existir muitas restrições quanto a relacionamentos entre pessoas de religiões diferentes.",
+         ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        public Religion? Religion { get; set; }
+
+        [Custom(Name = "Family Involvement", Description = "In some cultures, family plays a key role in relationship decisions. How involved is your family?")]
+        public FamilyInvolvement? FamilyInvolvement { get; set; }
+
         [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HaveChildren? HaveChildren { get; set; }
+
+        [Custom(Name = "Have Pets")]
+        public HavePets? HavePets { get; set; }
 
         [Custom(Name = "EducationLevel_Name",
             FieldInfo = "A intenção deste campo não é julgar os caminhos escolhidos por cada um ou as oportunidades que tiveram na vida, mas estatisticamente falando, os parceiros que possuem níveis de escolaridade semelhantes tendem a ter os mesmos potenciais de crescimento na vida pessoal/profissional ou até mesmo ter um estilo de vida semelhante (para quem decidiu dedicar-se exclusivamente aos estudos/pesquisa). Ou, no caso de terem niveis de escolaridade diferentes, um dos parceiros poderá se sentir intimidado em relação ao outro.",
@@ -99,19 +109,11 @@ namespace MM.Shared.Models.Profile
             ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public CareerCluster? CareerCluster { get; set; }
 
-        [Custom(Name = "Religion_Name",
-            FieldInfo = "Apesar de que algumas pesquisas indiquem que crenças religiosas não é um fator chave no sucesso do relacionamento, isso pode diminuir bastante conflitos na comunicação/forma de pensar dos parceiros ou até mesmo no relacionamento com amigos e familiares. A depender do país/religião/cultura, poderá existir muitas restrições quanto a relacionamentos entre pessoas de religiões diferentes.",
-            ResourceType = typeof(Resources.ProfileLifestyleModel))]
-        public Religion? Religion { get; set; }
-
-        [Custom(Name = "Family Approval", Description = "There is influence from the family in the choice of partners and/or relationships")]
-        public FamilyApproval? FamilyApproval { get; set; }
+        [Custom(Name = "Living Situation")]
+        public LivingSituation? LivingSituation { get; set; }
 
         [Custom(Name = "TravelFrequency_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public TravelFrequency? TravelFrequency { get; set; }
-
-        [Custom(Name = "Living Situation")]
-        public LivingSituation? LivingSituation { get; set; }
 
         [Custom(Name = "NetWorth_Name", Description = "NetWorth_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public NetWorth? NetWorth { get; set; }
@@ -203,16 +205,38 @@ namespace MM.Shared.Models.Profile
 
         #endregion INTEREST
 
+        #region RELATIONSHIP
+
+        [Custom(Name = "Shared Finances")]
+        public SharedFinances? SharedFinances { get; set; }
+
+        [Custom(Name = "Conflict Resolution Style")]
+        public ConflictResolutionStyle? ConflictResolutionStyle { get; set; }
+
+        [Custom(Name = "Household Management")]
+        public HouseholdManagement? HouseholdManagement { get; set; }
+
+        [Custom(Name = "Time Together Preference")]
+        public TimeTogetherPreference? TimeTogetherPreference { get; set; }
+
+        [Custom(Name = "Opposite-Sex Friendships", Description = "How I deal with my partner's friendships")]
+        public OppositeSexFriendships? OppositeSexFriendships { get; set; }
+
+        #endregion RELATIONSHIP
+
         #region GOAL
 
-        [Custom(Name = "Intentions_Name", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
-        public HashSet<Intentions> Intentions { get; set; } = [];
+        [Custom(Name = "RelationshipIntentions_Name", FieldInfo = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
+        public HashSet<RelationshipIntention> RelationshipIntentions { get; set; } = [];
 
         [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public WantChildren? WantChildren { get; set; }
 
         [Custom(Name = "Relocation", ResourceType = typeof(Resources.FilterModel))]
         public Relocation? Relocation { get; set; }
+
+        [Custom(Name = "Ideal Place to Live")]
+        public IdealPlaceToLive? IdealPlaceToLive { get; set; }
 
         #endregion GOAL
 
@@ -231,8 +255,8 @@ namespace MM.Shared.Models.Profile
             State = profile.State;
             City = profile.City;
             Languages = profile.Languages;
-            CurrentSituation = profile.CurrentSituation;
-            Intentions = profile.Intentions;
+            MaritalStatus = profile.MaritalStatus;
+            RelationshipIntentions = profile.RelationshipIntentions;
             BiologicalSex = profile.BiologicalSex;
             GenderIdentities = profile.GenderIdentities;
             SexualOrientations = profile.SexualOrientations;
@@ -240,8 +264,8 @@ namespace MM.Shared.Models.Profile
             //BIO
             BirthDate = profile.BirthDate;
             Height = profile.Height;
-            RaceCategory = profile.RaceCategory;
-            BodyMass = profile.BodyMass;
+            Ethnicity = profile.Ethnicity;
+            BodyType = profile.BodyType;
 
             //LIFESTYLE
             Drink = profile.Drink;

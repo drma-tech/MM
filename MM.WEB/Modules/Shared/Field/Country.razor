@@ -1,0 +1,64 @@
+﻿@inherits BaseCustomField<MM.Shared.Enums.Country?, Country>
+
+<Field Horizontal="true">
+    <FieldLabel ColumnSize="@GetLabelSize()">
+        <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @Label
+        @if (Required)
+        {
+            <div style="color: red; display: initial;"> *</div>
+        }
+    </FieldLabel>
+    <FieldBody ColumnSize="@GetBodySize()">
+        <Addons>
+            <Addon AddonType="AddonType.Body">
+                <Select @bind-SelectedValue="@Continent" Disabled="@Disabled" Width="Width.Is33">
+                    <SelectItem></SelectItem>
+                    @foreach (var group in EnumHelper.GetList<MM.Shared.Enums.Country>().Select(s => s.Group).Order().Distinct())
+                    {
+                        <SelectItem Value="@group">@group</SelectItem>
+                    }
+                </Select>
+                <Select TValue="MM.Shared.Enums.Country?" SelectedValue="@SelectedValue" SelectedValueChanged="SelectedValueChanged" Disabled="@Disabled" Width="Width.Is66">
+                    <SelectItem></SelectItem>
+                    @foreach (var item in EnumHelper.GetList<MM.Shared.Enums.Country>().Where(w => w.Group == Continent).OrderBy(o => o.Name))
+                    {
+                        <SelectItem Value="@item.Value">@item.Name</SelectItem>
+                    }
+                </Select>
+            </Addon>
+        </Addons>
+    </FieldBody>
+</Field>
+
+@code {
+    [Parameter] public MM.Shared.Enums.Country? SelectedValue { get; set; }
+    [Parameter] public EventCallback<MM.Shared.Enums.Country?> SelectedValueChanged { get; set; }
+    [Parameter] public bool Required { get; set; }
+
+    public string? Continent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Continent = SelectedValue?.GetCustomAttribute()?.Group;
+    }
+
+    // private async Task SetValue()
+    // {
+    //     try
+    //     {
+    //         var date = DateTime.Today;
+
+    //         if (year != default && month != default && day != default)
+    //         {
+    //             date = new DateTime(year, month, day);
+    //         }
+
+    //         Value = date;
+    //         await ValueChanged.InvokeAsync(Value);
+    //     }
+    //     catch (Exception)
+    //     {
+    //         await Toast.Error("Ocorreu um erro ao processar a data");
+    //     }
+    // }
+}

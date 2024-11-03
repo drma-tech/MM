@@ -25,7 +25,7 @@ namespace MM.WEB.Core
 
         static AppStateStatic()
         {
-            Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
+            System.Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
 
             Language = (Language?)language ?? Language.English;
         }

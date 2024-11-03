@@ -120,9 +120,6 @@
   <data name="BiologicalSex" xml:space="preserve">
     <value>Sexo biológico</value>
   </data>
-  <data name="CurrentSituation" xml:space="preserve">
-    <value>Situación actual</value>
-  </data>
   <data name="Disabilities" xml:space="preserve">
     <value>Discapacidades</value>
   </data>
@@ -131,18 +128,6 @@
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Idiomas</value>
-  </data>
-  <data name="Neurodiversities" xml:space="preserve">
-    <value>Neurodiversidad</value>
-  </data>
-  <data name="SexualOrientation" xml:space="preserve">
-    <value>Orientación sexual</value>
-  </data>
-  <data name="BodyMass" xml:space="preserve">
-    <value>Cuerpo</value>
-  </data>
-  <data name="Change" xml:space="preserve">
-    <value>Cambio</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
     <value>Filtrar perfiles que tengan al menos uno de los idiomas seleccionados</value>
@@ -159,13 +144,16 @@
   <data name="MinimalHeight" xml:space="preserve">
     <value>Altura (Mín. - Máx.)</value>
   </data>
-  <data name="RaceCategory" xml:space="preserve">
-    <value>Raza</value>
+  <data name="Neurodiversities" xml:space="preserve">
+    <value>Neurodiversidad</value>
   </data>
   <data name="Region" xml:space="preserve">
     <value>Región</value>
   </data>
   <data name="Relocation" xml:space="preserve">
     <value>Reubicación</value>
+  </data>
+  <data name="SexualOrientation" xml:space="preserve">
+    <value>Orientación sexual</value>
   </data>
 </root>

@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ReadingGenre" xml:space="preserve">
-    <value>Leitura</value>
-  </data>
-  <data name="Sports" xml:space="preserve">
-    <value>Esportes</value>
-  </data>
-  <data name="MusicGenre" xml:space="preserve">
-    <value>Música</value>
-  </data>
   <data name="Food" xml:space="preserve">
     <value>Comida</value>
   </data>
@@ -134,6 +125,15 @@
   </data>
   <data name="MovieGenre" xml:space="preserve">
     <value>Filme</value>
+  </data>
+  <data name="MusicGenre" xml:space="preserve">
+    <value>Música</value>
+  </data>
+  <data name="ReadingGenre" xml:space="preserve">
+    <value>Leitura</value>
+  </data>
+  <data name="Sports" xml:space="preserve">
+    <value>Esportes</value>
   </data>
   <data name="TVGenre" xml:space="preserve">
     <value>TV</value>

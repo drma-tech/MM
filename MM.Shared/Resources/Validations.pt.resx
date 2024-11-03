@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChooseMaximumOptions" xml:space="preserve">
-    <value>Escolha até um máximo de opções {0}</value>
+    <value>Escolha até um máximo de {0} {1}</value>
   </data>
   <data name="OlderToRegister" xml:space="preserve">
     <value>Você deve ter 18 anos ou mais para se registrar</value>

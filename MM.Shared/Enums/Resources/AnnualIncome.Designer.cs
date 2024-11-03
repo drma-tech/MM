@@ -61,92 +61,155 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $0K - $1K.
+        ///   Looks up a localized string similar to $0 - $500.
         /// </summary>
-        internal static string _0K_1K {
+        internal static string _0_500 {
             get {
-                return ResourceManager.GetString("_0K_1K", resourceCulture);
+                return ResourceManager.GetString("_0_500", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $200K - $500K.
+        ///   Looks up a localized string similar to $1,600 - $2,500.
         /// </summary>
-        internal static string _200K_500K {
+        internal static string _1_6K_2_5K {
             get {
-                return ResourceManager.GetString("_200K_500K", resourceCulture);
+                return ResourceManager.GetString("_1_6K_2_5K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $20K - $50K.
+        ///   Looks up a localized string similar to $12,800 - $19,200.
         /// </summary>
-        internal static string _20K_50K {
+        internal static string _12_8K_19_2K {
             get {
-                return ResourceManager.GetString("_20K_50K", resourceCulture);
+                return ResourceManager.GetString("_12_8K_19_2K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &gt; $20M.
+        ///   Looks up a localized string similar to $145,900 - $218,900.
         /// </summary>
-        internal static string _20M {
+        internal static string _145_9K_218_9K {
             get {
-                return ResourceManager.GetString("_20M", resourceCulture);
+                return ResourceManager.GetString("_145_9K_218_9K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $2K - $5K.
+        ///   Looks up a localized string similar to $19,200 - $28,800.
         /// </summary>
-        internal static string _2K_5K {
+        internal static string _19_2K_28_8K {
             get {
-                return ResourceManager.GetString("_2K_5K", resourceCulture);
+                return ResourceManager.GetString("_19_2K_28_8K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $2M - $5M.
+        ///   Looks up a localized string similar to $1,000 - $1,600.
         /// </summary>
-        internal static string _2M_5M {
+        internal static string _1K_1_6K {
             get {
-                return ResourceManager.GetString("_2M_5M", resourceCulture);
+                return ResourceManager.GetString("_1K_1_6K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $600K - $1M.
+        ///   Looks up a localized string similar to $2,500 - $3,800.
         /// </summary>
-        internal static string _600K_1M {
+        internal static string _2_5K_3_8K {
             get {
-                return ResourceManager.GetString("_600K_1M", resourceCulture);
+                return ResourceManager.GetString("_2_5K_3_8K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $60K - $100K.
+        ///   Looks up a localized string similar to $218,900+.
         /// </summary>
-        internal static string _60K_100K {
+        internal static string _218_9K {
             get {
-                return ResourceManager.GetString("_60K_100K", resourceCulture);
+                return ResourceManager.GetString("_218_9K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $6K - $10K.
+        ///   Looks up a localized string similar to $28,800 - $43,200.
         /// </summary>
-        internal static string _6K_10K {
+        internal static string _28_8K_43_2K {
             get {
-                return ResourceManager.GetString("_6K_10K", resourceCulture);
+                return ResourceManager.GetString("_28_8K_43_2K", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $6M - $10M.
+        ///   Looks up a localized string similar to $3,800 - $5,700.
         /// </summary>
-        internal static string _6M_10M {
+        internal static string _3_8K_5_7K {
             get {
-                return ResourceManager.GetString("_6M_10M", resourceCulture);
+                return ResourceManager.GetString("_3_8K_5_7K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $43,200 - $64,800.
+        /// </summary>
+        internal static string _43_2K_64_8K {
+            get {
+                return ResourceManager.GetString("_43_2K_64_8K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $5,700 - $8,500.
+        /// </summary>
+        internal static string _5_7K_8_5K {
+            get {
+                return ResourceManager.GetString("_5_7K_8_5K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $500 - $750.
+        /// </summary>
+        internal static string _500_750 {
+            get {
+                return ResourceManager.GetString("_500_750", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $64,800 - $97,300.
+        /// </summary>
+        internal static string _64_8K_97_3K {
+            get {
+                return ResourceManager.GetString("_64_8K_97_3K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $750 - $1,000.
+        /// </summary>
+        internal static string _750_1K {
+            get {
+                return ResourceManager.GetString("_750_1K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $8,500 - $12,800.
+        /// </summary>
+        internal static string _8_5K_12_8K {
+            get {
+                return ResourceManager.GetString("_8_5K_12_8K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $97,300 - $145,900.
+        /// </summary>
+        internal static string _97_3K_145_9K {
+            get {
+                return ResourceManager.GetString("_97_3K_145_9K", resourceCulture);
             }
         }
     }

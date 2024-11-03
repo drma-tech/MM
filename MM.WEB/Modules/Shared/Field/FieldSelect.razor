@@ -17,12 +17,12 @@
                 <Addon AddonType="AddonType.Body">
                     @if (Multiple)
                     {
-                        <div @attributes="@GetAttributes("height: auto; min-height: 38px;")">
+                        <div @attributes="@GetAttributes("height: auto; min-height: 38px; padding-bottom: 2px;")">
                             @if (SelectedValues != null)
                             {
                                 @foreach (var item in SelectedValues)
                                 {
-                                    <Badge Color="Color.Secondary" Style="font-size: 90%;" Margin="Margin.Is1.FromEnd"
+                                    <Badge Color="Color.Secondary" Style="font-size: 90%;" Margin="Margin.Is1.FromEnd.Is1.FromBottom"
                                            CloseClicked="@(async()=>{SelectedValues.Remove(item);await SelectedValuesChanged.InvokeAsync(SelectedValues);})">
                                         @item.GetName()
                                     </Badge>
@@ -36,11 +36,11 @@
                             @if (ShowGroup)
                             {
                                 <SelectItem></SelectItem>
-                                @foreach (var group in EnumHelper.GetList<TEnum>().Select(s => s.Group).Distinct())
+                                @foreach (var group in EnumHelper.GetList<TEnum>().Select(s => s.Group).Order().Distinct())
                                 {
                                     if (string.IsNullOrEmpty(group))
                                     {
-                                        @foreach (var item in EnumHelper.GetList<TEnum>().Where(w => w.Group == group))
+                                        @foreach (var item in EnumHelper.GetList<TEnum>().Where(w => w.Group == group).OrderBy(Order))
                                         {
                                             <SelectItem Value="@item.Value">@item.Name</SelectItem>
                                         }
@@ -48,7 +48,7 @@
                                     else
                                     {
                                         <SelectGroup Label="@group">
-                                            @foreach (var item in EnumHelper.GetList<TEnum>().Where(w => w.Group == group))
+                                            @foreach (var item in EnumHelper.GetList<TEnum>().Where(w => w.Group == group).OrderBy(Order))
                                             {
                                                 <SelectItem Value="@item.Value">@item.Name</SelectItem>
                                             }
@@ -70,7 +70,7 @@
                 @if (ButtomClicked.HasDelegate) //custom button
                 {
                     <Addon AddonType="AddonType.End">
-                        <Button Color="Color.Primary" Outline="true" Clicked="@ButtomClicked" title="@ButtomTitle" Disabled="@Disabled">
+                        <Button Color="Color.Primary" Outline="true" Clicked="@ButtomClicked" title="@ButtomTitle" Disabled="@(Disabled || ButtomDisabled)">
                             <Blazorise.Icon Name="@ButtomCssIcon"></Blazorise.Icon>
                         </Button>
                     </Addon>
@@ -100,11 +100,6 @@
                     </Addon>
                 }
             </Addons>
-
-            @if (IsForm)
-            {
-                <ValidationMessage For="@For"></ValidationMessage>
-            }
         </FieldBody>
         @if (!string.IsNullOrEmpty(Description) && ShowDescription)
         {

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActiveConnection" xml:space="preserve">
+    <value>Conexão ativa</value>
+  </data>
   <data name="BetaVersion" xml:space="preserve">
     <value>Versão Beta!</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>Convite não aceito</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Linguagem</value>
   </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>Meu Relacionamento</value>
@@ -216,6 +222,9 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>Uma nova versão está disponível</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
   <data name="Share" xml:space="preserve">
     <value>Compartilhar</value>
   </data>
@@ -237,25 +246,16 @@
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Foram detectados erros de validação</value>
   </data>
-  <data name="Years" xml:space="preserve">
-    <value>Anos</value>
-  </data>
-  <data name="YourCurrentLocation" xml:space="preserve">
-    <value>Sua localização atual:</value>
-  </data>
-  <data name="ActiveConnection" xml:space="preserve">
-    <value>Conexão ativa</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Configurações</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>Linguagem</value>
-  </data>
   <data name="WriteReviewMessage" xml:space="preserve">
     <value>Ajude -nos a alcançar um público maior.</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Escreva uma crítica</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Anos</value>
+  </data>
+  <data name="YourCurrentLocation" xml:space="preserve">
+    <value>Sua localização atual:</value>
   </data>
 </root>

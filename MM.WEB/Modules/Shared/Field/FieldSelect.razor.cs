@@ -16,11 +16,11 @@ namespace MM.WEB.Modules.Shared.Field
         [Parameter] public string? HelpLink { get; set; }
         [Parameter] public string? CustomInfo { get; set; }
         [Parameter] public bool Visible { get; set; } = true;
-        [Parameter] public bool IsForm { get; set; } = true;
 
         [Parameter] public EventCallback ButtomClicked { get; set; }
         [Parameter] public object? ButtomCssIcon { get; set; }
         [Parameter] public string? ButtomTitle { get; set; }
+        [Parameter] public bool ButtomDisabled { get; set; }
 
         [Parameter] public TValue? SelectedValue { get; set; }
         [Parameter] public EventCallback<TValue> SelectedValueChanged { get; set; }

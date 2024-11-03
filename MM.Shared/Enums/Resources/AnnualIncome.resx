@@ -117,34 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="_0K_1K" xml:space="preserve">
-    <value>$0K - $1K</value>
+  <data name="_0_500" xml:space="preserve">
+    <value>$0 - $500</value>
   </data>
-  <data name="_2K_5K" xml:space="preserve">
-    <value>$2K - $5K</value>
+  <data name="_500_750" xml:space="preserve">
+    <value>$500 - $750</value>
   </data>
-  <data name="_6K_10K" xml:space="preserve">
-    <value>$6K - $10K</value>
+  <data name="_750_1K" xml:space="preserve">
+    <value>$750 - $1,000</value>
   </data>
-  <data name="_20K_50K" xml:space="preserve">
-    <value>$20K - $50K</value>
+  <data name="_1K_1_6K" xml:space="preserve">
+    <value>$1,000 - $1,600</value>
   </data>
-  <data name="_60K_100K" xml:space="preserve">
-    <value>$60K - $100K</value>
+  <data name="_1_6K_2_5K" xml:space="preserve">
+    <value>$1,600 - $2,500</value>
   </data>
-  <data name="_200K_500K" xml:space="preserve">
-    <value>$200K - $500K</value>
+  <data name="_2_5K_3_8K" xml:space="preserve">
+    <value>$2,500 - $3,800</value>
   </data>
-  <data name="_600K_1M" xml:space="preserve">
-    <value>$600K - $1M</value>
+  <data name="_3_8K_5_7K" xml:space="preserve">
+    <value>$3,800 - $5,700</value>
   </data>
-  <data name="_2M_5M" xml:space="preserve">
-    <value>$2M - $5M</value>
+  <data name="_5_7K_8_5K" xml:space="preserve">
+    <value>$5,700 - $8,500</value>
   </data>
-  <data name="_6M_10M" xml:space="preserve">
-    <value>$6M - $10M</value>
+  <data name="_8_5K_12_8K" xml:space="preserve">
+    <value>$8,500 - $12,800</value>
   </data>
-  <data name="_20M" xml:space="preserve">
-    <value>&gt; $20M</value>
+  <data name="_12_8K_19_2K" xml:space="preserve">
+    <value>$12,800 - $19,200</value>
+  </data>
+  <data name="_19_2K_28_8K" xml:space="preserve">
+    <value>$19,200 - $28,800</value>
+  </data>
+  <data name="_28_8K_43_2K" xml:space="preserve">
+    <value>$28,800 - $43,200</value>
+  </data>
+  <data name="_43_2K_64_8K" xml:space="preserve">
+    <value>$43,200 - $64,800</value>
+  </data>
+  <data name="_64_8K_97_3K" xml:space="preserve">
+    <value>$64,800 - $97,300</value>
+  </data>
+  <data name="_97_3K_145_9K" xml:space="preserve">
+    <value>$97,300 - $145,900</value>
+  </data>
+  <data name="_145_9K_218_9K" xml:space="preserve">
+    <value>$145,900 - $218,900</value>
+  </data>
+  <data name="_218_9K" xml:space="preserve">
+    <value>$218,900+</value>
   </data>
 </root>

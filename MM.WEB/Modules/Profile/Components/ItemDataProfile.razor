@@ -1,5 +1,7 @@
 ﻿@using System.Linq.Expressions;
 @using MM.Shared.Models.Profile;
+@using MM.WEB.Core.Enum
+@using MM.WEB.Core.Models
 @inherits ComponentCore<ItemDataProfile<TValue, TValueUser>>
 @typeparam TValue
 @typeparam TValueUser
@@ -153,14 +155,14 @@ else
             //BASIC
             CompatibilityItem.Location => AffinityCore.GetLocation(User, Filter).ToArray(),
             CompatibilityItem.Language => AffinityCore.GetLanguages(User, Filter).Select(s => s.GetName()),
-            CompatibilityItem.CurrentSituation => AffinityCore.GetCurrentSituation(User, Filter).Select(s => s.GetName()),
-            CompatibilityItem.Intentions => AffinityCore.GetIntentions(User).Select(s => s.GetName()),
+            CompatibilityItem.MaritalStatus => AffinityCore.GetMaritalStatus(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.RelationshipIntentions => AffinityCore.GetRelationshipIntentions(User).Select(s => s.GetName()),
             CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.GenderIdentities => AffinityCore.GetGenderIdentities(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.SexualOrientations => AffinityCore.GetSexualOrientations(User, Filter).Select(s => s.GetName()),
             //BIO
-            CompatibilityItem.RaceCategory => AffinityCore.GetRaceCategory(Filter).Select(s => s.GetName()),
-            CompatibilityItem.BodyMass => AffinityCore.GetBodyMass(Filter).Select(s => s.GetName()),
+            CompatibilityItem.Ethnicity => AffinityCore.GetEthnicity(Filter).Select(s => s.GetName()),
+            CompatibilityItem.BodyType => AffinityCore.GetBodyType(Filter).Select(s => s.GetName()),
             CompatibilityItem.Age => AffinityCore.GetAge(User, Filter).Select(s => s.ToString()),
             CompatibilityItem.Height => AffinityCore.GetHeight(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(Filter).Select(s => s.GetName()),

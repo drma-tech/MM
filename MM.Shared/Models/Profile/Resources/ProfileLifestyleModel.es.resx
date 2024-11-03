@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Diet_Description" xml:space="preserve">
-    <value>La opción más común seleccionada automáticamente (aplicable a la mayoría de las personas)</value>
+  <data name="AnnualIncome_Description" xml:space="preserve">
+    <value>Cantidad acumulada obtenida en un año (en dólares estadounidenses)</value>
+  </data>
+  <data name="AnnualIncome_Name" xml:space="preserve">
+    <value>Renta anual</value>
   </data>
   <data name="CareerCluster_Name" xml:space="preserve">
     <value>Carrera</value>
+  </data>
+  <data name="Diet_Description" xml:space="preserve">
+    <value>La opción más común seleccionada automáticamente (aplicable a la mayoría de las personas)</value>
   </data>
   <data name="Diet_Name" xml:space="preserve">
     <value>Dieta</value>
@@ -132,11 +138,8 @@
   <data name="EducationLevel_Name" xml:space="preserve">
     <value>Educación</value>
   </data>
-  <data name="HaveChildren_Name" xml:space="preserve">
-    <value>Tiene hijos</value>
-  </data>
   <data name="LoveLanguage_Description" xml:space="preserve">
-    <value>Si tiene alguna duda, puede realizar una prueba en el sitio web original (solo en inglés)</value>
+    <value>Si tienes alguna duda puedes realizar un test en la web original (inglés y español)</value>
   </data>
   <data name="LoveLanguage_Name" xml:space="preserve">
     <value>Lenguaje del amor</value>
@@ -151,7 +154,13 @@
     <value>Si tiene alguna duda, puede realizar una prueba en el sitio web original (solo en inglés)</value>
   </data>
   <data name="MoneyPersonality_Name" xml:space="preserve">
-    <value>Personalidad financiera</value>
+    <value>Personalidad Monetaria</value>
+  </data>
+  <data name="NetWorth_Description" xml:space="preserve">
+    <value>Valor total de todos los activos menos el total de todos los pasivos (en dólares estadounidenses).</value>
+  </data>
+  <data name="NetWorth_Name" xml:space="preserve">
+    <value>Patrimonio neto</value>
   </data>
   <data name="RelationshipPersonality_Description" xml:space="preserve">
     <value>En caso de duda, puede realizar una prueba en un sitio de terceros (solo en inglés)</value>
@@ -162,14 +171,17 @@
   <data name="Religion_Name" xml:space="preserve">
     <value>Religión</value>
   </data>
-  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>A diferencia de otras personalidades, la compatibilidad de esta es una preferencia personal.</value>
-  </data>
   <data name="SexPersonality_Description" xml:space="preserve">
     <value>Si tiene alguna duda, puede realizar una prueba en el sitio web original (solo en inglés)</value>
   </data>
   <data name="SexPersonality_Name" xml:space="preserve">
-    <value>Personalidad sexual</value>
+    <value>Personalidad Sexual</value>
+  </data>
+  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
+    <value>A diferencia de otras personalidades, la compatibilidad de esta es una preferencia personal.</value>
+  </data>
+  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
+    <value>Personalidad Sexual (preferencias)</value>
   </data>
   <data name="SharedSpendingStyle_Name" xml:space="preserve">
     <value>Estilo de gasto compartido</value>
@@ -182,20 +194,5 @@
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Quiero hijos</value>
-  </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Personalidad sexual (preferencias)</value>
-  </data>
-  <data name="NetWorth_Name" xml:space="preserve">
-    <value>Patrimonio neto</value>
-  </data>
-  <data name="NetWorth_Description" xml:space="preserve">
-    <value>Valor total de todos los activos menos el total de todos los pasivos (en dólares estadounidenses).</value>
-  </data>
-  <data name="AnnualIncome_Name" xml:space="preserve">
-    <value>Renta anual</value>
-  </data>
-  <data name="AnnualIncome_Description" xml:space="preserve">
-    <value>Cantidad acumulada obtenida en un año (en dólares estadounidenses)</value>
   </data>
 </root>

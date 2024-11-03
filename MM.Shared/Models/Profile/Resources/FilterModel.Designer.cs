@@ -70,20 +70,11 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body.
+        ///   Looks up a localized string similar to Body Type.
         /// </summary>
-        internal static string BodyMass {
+        internal static string BodyType {
             get {
-                return ResourceManager.GetString("BodyMass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current Situation.
-        /// </summary>
-        internal static string CurrentSituation {
-            get {
-                return ResourceManager.GetString("CurrentSituation", resourceCulture);
+                return ResourceManager.GetString("BodyType", resourceCulture);
             }
         }
         
@@ -93,6 +84,15 @@ namespace MM.Shared.Models.Profile.Resources {
         internal static string Disabilities {
             get {
                 return ResourceManager.GetString("Disabilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ethnicity.
+        /// </summary>
+        internal static string Ethnicity {
+            get {
+                return ResourceManager.GetString("Ethnicity", resourceCulture);
             }
         }
         
@@ -120,6 +120,15 @@ namespace MM.Shared.Models.Profile.Resources {
         internal static string Languages_Description {
             get {
                 return ResourceManager.GetString("Languages_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marital Status.
+        /// </summary>
+        internal static string MaritalStatus {
+            get {
+                return ResourceManager.GetString("MaritalStatus", resourceCulture);
             }
         }
         
@@ -165,15 +174,6 @@ namespace MM.Shared.Models.Profile.Resources {
         internal static string Neurodiversities {
             get {
                 return ResourceManager.GetString("Neurodiversities", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Race.
-        /// </summary>
-        internal static string RaceCategory {
-            get {
-                return ResourceManager.GetString("RaceCategory", resourceCulture);
             }
         }
         

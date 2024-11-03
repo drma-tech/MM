@@ -8,553 +8,553 @@
     ///
     public enum Language
     {
-        [Custom(Name = "Abkhazian", Tips = "ab")]
-        Abkhazian,
+        [Custom(Name = "Abkhazian", Tips = "ab", ResourceType = typeof(Resources.Language))]
+        Abkhazian = ('a' * 1000) + 'b',
 
-        [Custom(Name = "Afar", Tips = "aa")]
-        Afar,
+        [Custom(Name = "Afar", Tips = "aa", ResourceType = typeof(Resources.Language))]
+        Afar = ('a' * 1000) + 'a',
 
-        [Custom(Name = "Afrikaans", Tips = "af")]
-        Afrikaans,
+        [Custom(Name = "Afrikaans", Tips = "af", ResourceType = typeof(Resources.Language))]
+        Afrikaans = ('a' * 1000) + 'f',
 
-        [Custom(Name = "Akan", Tips = "ak")]
-        Akan,
+        [Custom(Name = "Akan", Tips = "ak", ResourceType = typeof(Resources.Language))]
+        Akan = ('a' * 1000) + 'k',
 
-        [Custom(Name = "Albanian", Tips = "sq")]
-        Albanian,
+        [Custom(Name = "Albanian", Tips = "sq", ResourceType = typeof(Resources.Language))]
+        Albanian = ('s' * 1000) + 'q',
 
-        [Custom(Name = "Amharic", Tips = "am")]
-        Amharic,
+        [Custom(Name = "Amharic", Tips = "am", ResourceType = typeof(Resources.Language))]
+        Amharic = ('a' * 1000) + 'm',
 
-        [Custom(Name = "Arabic", Tips = "ar")]
-        Arabic,
+        [Custom(Name = "Arabic", Tips = "ar", ResourceType = typeof(Resources.Language))]
+        Arabic = ('a' * 1000) + 'r',
 
-        [Custom(Name = "Aragonese", Tips = "an")]
-        Aragonese,
+        [Custom(Name = "Aragonese", Tips = "an", ResourceType = typeof(Resources.Language))]
+        Aragonese = ('a' * 1000) + 'n',
 
-        [Custom(Name = "Armenian", Tips = "hy")]
-        Armenian,
+        [Custom(Name = "Armenian", Tips = "hy", ResourceType = typeof(Resources.Language))]
+        Armenian = ('h' * 1000) + 'y',
 
-        [Custom(Name = "Assamese", Tips = "as")]
-        Assamese,
+        [Custom(Name = "Assamese", Tips = "as", ResourceType = typeof(Resources.Language))]
+        Assamese = ('a' * 1000) + 's',
 
-        [Custom(Name = "Avaric", Tips = "av")]
-        Avaric,
+        [Custom(Name = "Avaric", Tips = "av", ResourceType = typeof(Resources.Language))]
+        Avaric = ('a' * 1000) + 'v',
 
-        [Custom(Name = "Avestan", Tips = "ae")]
-        Avestan,
+        [Custom(Name = "Avestan", Tips = "ae", ResourceType = typeof(Resources.Language))]
+        Avestan = ('a' * 1000) + 'e',
 
-        [Custom(Name = "Aymara", Tips = "ay")]
-        Aymara,
+        [Custom(Name = "Aymara", Tips = "ay", ResourceType = typeof(Resources.Language))]
+        Aymara = ('a' * 1000) + 'y',
 
-        [Custom(Name = "Azerbaijani", Tips = "az")]
-        Azerbaijani,
+        [Custom(Name = "Azerbaijani", Tips = "az", ResourceType = typeof(Resources.Language))]
+        Azerbaijani = ('a' * 1000) + 'z',
 
-        [Custom(Name = "Bambara", Tips = "bm")]
-        Bambara,
+        [Custom(Name = "Bambara", Tips = "bm", ResourceType = typeof(Resources.Language))]
+        Bambara = ('b' * 1000) + 'm',
 
-        [Custom(Name = "Bashkir", Tips = "ba")]
-        Bashkir,
+        [Custom(Name = "Bashkir", Tips = "ba", ResourceType = typeof(Resources.Language))]
+        Bashkir = ('b' * 1000) + 'a',
 
-        [Custom(Name = "Basque", Tips = "eu")]
-        Basque,
+        [Custom(Name = "Basque", Tips = "eu", ResourceType = typeof(Resources.Language))]
+        Basque = ('e' * 1000) + 'u',
 
-        [Custom(Name = "Belarusian", Tips = "be")]
-        Belarusian,
+        [Custom(Name = "Belarusian", Tips = "be", ResourceType = typeof(Resources.Language))]
+        Belarusian = ('b' * 1000) + 'e',
 
-        [Custom(Name = "Bengali", Tips = "bn")]
-        Bengali,
+        [Custom(Name = "Bengali", Tips = "bn", ResourceType = typeof(Resources.Language))]
+        Bengali = ('b' * 1000) + 'n',
 
-        [Custom(Name = "Bislama", Tips = "bi")]
-        Bislama,
+        [Custom(Name = "Bislama", Tips = "bi", ResourceType = typeof(Resources.Language))]
+        Bislama = ('b' * 1000) + 'i',
 
-        [Custom(Name = "Bosnian", Tips = "bs")]
-        Bosnian,
+        [Custom(Name = "Bosnian", Tips = "bs", ResourceType = typeof(Resources.Language))]
+        Bosnian = ('b' * 1000) + 's',
 
-        [Custom(Name = "Breton", Tips = "br")]
-        Breton,
+        [Custom(Name = "Breton", Tips = "br", ResourceType = typeof(Resources.Language))]
+        Breton = ('b' * 1000) + 'r',
 
-        [Custom(Name = "Bulgarian", Tips = "bg")]
-        Bulgarian,
+        [Custom(Name = "Bulgarian", Tips = "bg", ResourceType = typeof(Resources.Language))]
+        Bulgarian = ('b' * 1000) + 'g',
 
-        [Custom(Name = "Burmese", Tips = "my")]
-        Burmese,
+        [Custom(Name = "Burmese", Tips = "my", ResourceType = typeof(Resources.Language))]
+        Burmese = ('m' * 1000) + 'y',
 
-        [Custom(Name = "Catalan", Tips = "ca")]
-        Catalan,
+        [Custom(Name = "Catalan", Tips = "ca", ResourceType = typeof(Resources.Language))]
+        Catalan = ('c' * 1000) + 'a',
 
-        [Custom(Name = "Chamorro", Tips = "ch")]
-        Chamorro,
+        [Custom(Name = "CentralKhmer", Tips = "km", ResourceType = typeof(Resources.Language))]
+        CentralKhmer = ('k' * 1000) + 'm',
 
-        [Custom(Name = "Chechen", Tips = "ce")]
-        Chechen,
+        [Custom(Name = "Chamorro", Tips = "ch", ResourceType = typeof(Resources.Language))]
+        Chamorro = ('c' * 1000) + 'h',
 
-        [Custom(Name = "Chichewa", Tips = "ny")]
-        Chichewa,
+        [Custom(Name = "Chechen", Tips = "ce", ResourceType = typeof(Resources.Language))]
+        Chechen = ('c' * 1000) + 'e',
 
-        [Custom(Name = "Chinese", Tips = "zh")]
-        Chinese,
+        [Custom(Name = "Chichewa", Tips = "ny", ResourceType = typeof(Resources.Language))]
+        Chichewa = ('n' * 1000) + 'y',
 
-        [Custom(Name = "Church Slavonic", Tips = "cu")]
-        ChurchSlavonic,
+        [Custom(Name = "Chinese", Tips = "zh", ResourceType = typeof(Resources.Language))]
+        Chinese = ('z' * 1000) + 'h',
 
-        [Custom(Name = "Chuvash", Tips = "cv")]
-        Chuvash,
+        [Custom(Name = "ChurchSlavonic", Tips = "cu", ResourceType = typeof(Resources.Language))]
+        ChurchSlavonic = ('c' * 1000) + 'u',
 
-        [Custom(Name = "Cornish", Tips = "kw")]
-        Cornish,
+        [Custom(Name = "Chuvash", Tips = "cv", ResourceType = typeof(Resources.Language))]
+        Chuvash = ('c' * 1000) + 'v',
 
-        [Custom(Name = "Corsican", Tips = "co")]
-        Corsican,
+        [Custom(Name = "Cornish", Tips = "kw", ResourceType = typeof(Resources.Language))]
+        Cornish = ('k' * 1000) + 'w',
 
-        [Custom(Name = "Cree", Tips = "cr")]
-        Cree,
+        [Custom(Name = "Corsican", Tips = "co", ResourceType = typeof(Resources.Language))]
+        Corsican = ('c' * 1000) + 'o',
 
-        [Custom(Name = "Croatian", Tips = "hr")]
-        Croatian,
+        [Custom(Name = "Cree", Tips = "cr", ResourceType = typeof(Resources.Language))]
+        Cree = ('c' * 1000) + 'r',
 
-        [Custom(Name = "Czech", Tips = "cs")]
-        Czech,
+        [Custom(Name = "Croatian", Tips = "hr", ResourceType = typeof(Resources.Language))]
+        Croatian = ('h' * 1000) + 'r',
 
-        [Custom(Name = "Danish", Tips = "da")]
-        Danish,
+        [Custom(Name = "Czech", Tips = "cs", ResourceType = typeof(Resources.Language))]
+        Czech = ('c' * 1000) + 's',
 
-        [Custom(Name = "Divehi", Tips = "dv")]
-        Divehi,
+        [Custom(Name = "Danish", Tips = "da", ResourceType = typeof(Resources.Language))]
+        Danish = ('d' * 1000) + 'a',
 
-        [Custom(Name = "Dutch", Tips = "nl")]
-        Dutch,
+        [Custom(Name = "Divehi", Tips = "dv", ResourceType = typeof(Resources.Language))]
+        Divehi = ('d' * 1000) + 'v',
 
-        [Custom(Name = "Dzongkha", Tips = "dz")]
-        Dzongkha,
+        [Custom(Name = "Dutch", Tips = "nl", ResourceType = typeof(Resources.Language))]
+        Dutch = ('n' * 1000) + 'l',
 
-        [Custom(Name = "English", Tips = "en")]
-        English,
+        [Custom(Name = "Dzongkha", Tips = "dz", ResourceType = typeof(Resources.Language))]
+        Dzongkha = ('d' * 1000) + 'z',
 
-        [Custom(Name = "Esperanto", Tips = "eo")]
-        Esperanto,
+        [Custom(Name = "English", Tips = "en", ResourceType = typeof(Resources.Language))]
+        English = ('e' * 1000) + 'n',
 
-        [Custom(Name = "Estonian", Tips = "et")]
-        Estonian,
+        [Custom(Name = "Esperanto", Tips = "eo", ResourceType = typeof(Resources.Language))]
+        Esperanto = ('e' * 1000) + 'o',
 
-        [Custom(Name = "Ewe", Tips = "ee")]
-        Ewe,
+        [Custom(Name = "Estonian", Tips = "et", ResourceType = typeof(Resources.Language))]
+        Estonian = ('e' * 1000) + 't',
 
-        [Custom(Name = "Faroese", Tips = "fo")]
-        Faroese,
+        [Custom(Name = "Ewe", Tips = "ee", ResourceType = typeof(Resources.Language))]
+        Ewe = ('e' * 1000) + 'e',
 
-        [Custom(Name = "Fijian", Tips = "fj")]
-        Fijian,
+        [Custom(Name = "Faroese", Tips = "fo", ResourceType = typeof(Resources.Language))]
+        Faroese = ('f' * 1000) + 'o',
 
-        [Custom(Name = "Finnish", Tips = "fi")]
-        Finnish,
+        [Custom(Name = "Fijian", Tips = "fj", ResourceType = typeof(Resources.Language))]
+        Fijian = ('f' * 1000) + 'j',
 
-        [Custom(Name = "French", Tips = "fr")]
-        French,
+        [Custom(Name = "Finnish", Tips = "fi", ResourceType = typeof(Resources.Language))]
+        Finnish = ('f' * 1000) + 'i',
 
-        [Custom(Name = "Western Frisian", Tips = "fy")]
-        WesternFrisian,
+        [Custom(Name = "French", Tips = "fr", ResourceType = typeof(Resources.Language))]
+        French = ('f' * 1000) + 'r',
 
-        [Custom(Name = "Fulah", Tips = "ff")]
-        Fulah,
+        [Custom(Name = "Fulah", Tips = "ff", ResourceType = typeof(Resources.Language))]
+        Fulah = ('f' * 1000) + 'f',
 
-        [Custom(Name = "Gaelic", Tips = "gd")]
-        Gaelic,
+        [Custom(Name = "Gaelic", Tips = "gd", ResourceType = typeof(Resources.Language))]
+        Gaelic = ('g' * 1000) + 'd',
 
-        [Custom(Name = "Galician", Tips = "gl")]
-        Galician,
+        [Custom(Name = "Galician", Tips = "gl", ResourceType = typeof(Resources.Language))]
+        Galician = ('g' * 1000) + 'l',
 
-        [Custom(Name = "Ganda", Tips = "lg")]
-        Ganda,
+        [Custom(Name = "Ganda", Tips = "lg", ResourceType = typeof(Resources.Language))]
+        Ganda = ('l' * 1000) + 'g',
 
-        [Custom(Name = "Georgian", Tips = "ka")]
-        Georgian,
+        [Custom(Name = "Georgian", Tips = "ka", ResourceType = typeof(Resources.Language))]
+        Georgian = ('k' * 1000) + 'a',
 
-        [Custom(Name = "German", Tips = "de")]
-        German,
+        [Custom(Name = "German", Tips = "de", ResourceType = typeof(Resources.Language))]
+        German = ('d' * 1000) + 'e',
 
-        [Custom(Name = "Greek", Tips = "el")]
-        Greek,
+        [Custom(Name = "Greek", Tips = "el", ResourceType = typeof(Resources.Language))]
+        Greek = ('e' * 1000) + 'l',
 
-        [Custom(Name = "Kalaallisut", Tips = "kl")]
-        Kalaallisut,
+        [Custom(Name = "Guarani", Tips = "gn", ResourceType = typeof(Resources.Language))]
+        Guarani = ('g' * 1000) + 'n',
 
-        [Custom(Name = "Guarani", Tips = "gn")]
-        Guarani,
+        [Custom(Name = "Gujarati", Tips = "gu", ResourceType = typeof(Resources.Language))]
+        Gujarati = ('g' * 1000) + 'u',
 
-        [Custom(Name = "Gujarati", Tips = "gu")]
-        Gujarati,
+        [Custom(Name = "Haitian", Tips = "ht", ResourceType = typeof(Resources.Language))]
+        Haitian = ('h' * 1000) + 't',
 
-        [Custom(Name = "Haitian", Tips = "ht")]
-        Haitian,
+        [Custom(Name = "Hausa", Tips = "ha", ResourceType = typeof(Resources.Language))]
+        Hausa = ('h' * 1000) + 'a',
 
-        [Custom(Name = "Hausa", Tips = "ha")]
-        Hausa,
+        [Custom(Name = "Hebrew", Tips = "he", ResourceType = typeof(Resources.Language))]
+        Hebrew = ('h' * 1000) + 'e',
 
-        [Custom(Name = "Hebrew", Tips = "he")]
-        Hebrew,
+        [Custom(Name = "Herero", Tips = "hz", ResourceType = typeof(Resources.Language))]
+        Herero = ('h' * 1000) + 'z',
 
-        [Custom(Name = "Herero", Tips = "hz")]
-        Herero,
+        [Custom(Name = "Hindi", Tips = "hi", ResourceType = typeof(Resources.Language))]
+        Hindi = ('h' * 1000) + 'i',
 
-        [Custom(Name = "Hindi", Tips = "hi")]
-        Hindi,
+        [Custom(Name = "HiriMotu", Tips = "ho", ResourceType = typeof(Resources.Language))]
+        HiriMotu = ('h' * 1000) + 'o',
 
-        [Custom(Name = "Hiri Motu", Tips = "ho")]
-        HiriMotu,
+        [Custom(Name = "Hungarian", Tips = "hu", ResourceType = typeof(Resources.Language))]
+        Hungarian = ('h' * 1000) + 'u',
 
-        [Custom(Name = "Hungarian", Tips = "hu")]
-        Hungarian,
+        [Custom(Name = "Icelandic", Tips = "is", ResourceType = typeof(Resources.Language))]
+        Icelandic = ('i' * 1000) + 's',
 
-        [Custom(Name = "Icelandic", Tips = "is")]
-        Icelandic,
+        [Custom(Name = "Ido", Tips = "io", ResourceType = typeof(Resources.Language))]
+        Ido = ('i' * 1000) + 'o',
 
-        [Custom(Name = "Ido", Tips = "io")]
-        Ido,
+        [Custom(Name = "Igbo", Tips = "ig", ResourceType = typeof(Resources.Language))]
+        Igbo = ('i' * 1000) + 'g',
 
-        [Custom(Name = "Igbo", Tips = "ig")]
-        Igbo,
+        [Custom(Name = "Indonesian", Tips = "id", ResourceType = typeof(Resources.Language))]
+        Indonesian = ('i' * 1000) + 'd',
 
-        [Custom(Name = "Indonesian", Tips = "id")]
-        Indonesian,
+        [Custom(Name = "Interlingua", Tips = "ia", ResourceType = typeof(Resources.Language))]
+        Interlingua = ('i' * 1000) + 'a',
 
-        [Custom(Name = "Interlingua", Tips = "ia")]
-        Interlingua,
+        [Custom(Name = "Interlingue", Tips = "ie", ResourceType = typeof(Resources.Language))]
+        Interlingue = ('i' * 1000) + 'e',
 
-        [Custom(Name = "Interlingue", Tips = "ie")]
-        Interlingue,
+        [Custom(Name = "Inuktitut", Tips = "iu", ResourceType = typeof(Resources.Language))]
+        Inuktitut = ('i' * 1000) + 'u',
 
-        [Custom(Name = "Inuktitut", Tips = "iu")]
-        Inuktitut,
+        [Custom(Name = "Inupiaq", Tips = "ik", ResourceType = typeof(Resources.Language))]
+        Inupiaq = ('i' * 1000) + 'k',
 
-        [Custom(Name = "Inupiaq", Tips = "ik")]
-        Inupiaq,
+        [Custom(Name = "Irish", Tips = "ga", ResourceType = typeof(Resources.Language))]
+        Irish = ('g' * 1000) + 'a',
 
-        [Custom(Name = "Irish", Tips = "ga")]
-        Irish,
+        [Custom(Name = "Italian", Tips = "it", ResourceType = typeof(Resources.Language))]
+        Italian = ('i' * 1000) + 't',
 
-        [Custom(Name = "Italian", Tips = "it")]
-        Italian,
+        [Custom(Name = "Japanese", Tips = "ja", ResourceType = typeof(Resources.Language))]
+        Japanese = ('j' * 1000) + 'a',
 
-        [Custom(Name = "Japanese", Tips = "ja")]
-        Japanese,
+        [Custom(Name = "Javanese", Tips = "jv", ResourceType = typeof(Resources.Language))]
+        Javanese = ('j' * 1000) + 'v',
 
-        [Custom(Name = "Javanese", Tips = "jv")]
-        Javanese,
+        [Custom(Name = "Kalaallisut", Tips = "kl", ResourceType = typeof(Resources.Language))]
+        Kalaallisut = ('k' * 1000) + 'l',
 
-        [Custom(Name = "Kannada", Tips = "kn")]
-        Kannada,
+        [Custom(Name = "Kannada", Tips = "kn", ResourceType = typeof(Resources.Language))]
+        Kannada = ('k' * 1000) + 'n',
 
-        [Custom(Name = "Kanuri", Tips = "kr")]
-        Kanuri,
+        [Custom(Name = "Kanuri", Tips = "kr", ResourceType = typeof(Resources.Language))]
+        Kanuri = ('k' * 1000) + 'r',
 
-        [Custom(Name = "Kashmiri", Tips = "ks")]
-        Kashmiri,
+        [Custom(Name = "Kashmiri", Tips = "ks", ResourceType = typeof(Resources.Language))]
+        Kashmiri = ('k' * 1000) + 's',
 
-        [Custom(Name = "Kazakh", Tips = "kk")]
-        Kazakh,
+        [Custom(Name = "Kazakh", Tips = "kk", ResourceType = typeof(Resources.Language))]
+        Kazakh = ('k' * 1000) + 'k',
 
-        [Custom(Name = "Central Khmer", Tips = "km")]
-        CentralKhmer,
+        [Custom(Name = "Kikuyu", Tips = "ki", ResourceType = typeof(Resources.Language))]
+        Kikuyu = ('k' * 1000) + 'i',
 
-        [Custom(Name = "Kikuyu", Tips = "ki")]
-        Kikuyu,
+        [Custom(Name = "Kinyarwanda", Tips = "rw", ResourceType = typeof(Resources.Language))]
+        Kinyarwanda = ('r' * 1000) + 'w',
 
-        [Custom(Name = "Kinyarwanda", Tips = "rw")]
-        Kinyarwanda,
+        [Custom(Name = "Kirghiz", Tips = "ky", ResourceType = typeof(Resources.Language))]
+        Kirghiz = ('k' * 1000) + 'y',
 
-        [Custom(Name = "Kirghiz", Tips = "ky")]
-        Kirghiz,
+        [Custom(Name = "Komi", Tips = "kv", ResourceType = typeof(Resources.Language))]
+        Komi = ('k' * 1000) + 'v',
 
-        [Custom(Name = "Komi", Tips = "kv")]
-        Komi,
+        [Custom(Name = "Kongo", Tips = "kg", ResourceType = typeof(Resources.Language))]
+        Kongo = ('k' * 1000) + 'g',
 
-        [Custom(Name = "Kongo", Tips = "kg")]
-        Kongo,
+        [Custom(Name = "Korean", Tips = "ko", ResourceType = typeof(Resources.Language))]
+        Korean = ('k' * 1000) + 'o',
 
-        [Custom(Name = "Korean", Tips = "ko")]
-        Korean,
+        [Custom(Name = "Kuanyama", Tips = "kj", ResourceType = typeof(Resources.Language))]
+        Kuanyama = ('k' * 1000) + 'j',
 
-        [Custom(Name = "Kuanyama", Tips = "kj")]
-        Kuanyama,
+        [Custom(Name = "Kurdish", Tips = "ku", ResourceType = typeof(Resources.Language))]
+        Kurdish = ('k' * 1000) + 'u',
 
-        [Custom(Name = "Kurdish", Tips = "ku")]
-        Kurdish,
+        [Custom(Name = "Lao", Tips = "lo", ResourceType = typeof(Resources.Language))]
+        Lao = ('l' * 1000) + 'o',
 
-        [Custom(Name = "Lao", Tips = "lo")]
-        Lao,
+        [Custom(Name = "Latin", Tips = "la", ResourceType = typeof(Resources.Language))]
+        Latin = ('l' * 1000) + 'a',
 
-        [Custom(Name = "Latin", Tips = "la")]
-        Latin,
+        [Custom(Name = "Latvian", Tips = "lv", ResourceType = typeof(Resources.Language))]
+        Latvian = ('l' * 1000) + 'v',
 
-        [Custom(Name = "Latvian", Tips = "lv")]
-        Latvian,
+        [Custom(Name = "Limburgan", Tips = "li", ResourceType = typeof(Resources.Language))]
+        Limburgan = ('l' * 1000) + 'i',
 
-        [Custom(Name = "Limburgan", Tips = "li")]
-        Limburgan,
+        [Custom(Name = "Lingala", Tips = "ln", ResourceType = typeof(Resources.Language))]
+        Lingala = ('l' * 1000) + 'n',
 
-        [Custom(Name = "Lingala", Tips = "ln")]
-        Lingala,
+        [Custom(Name = "Lithuanian", Tips = "lt", ResourceType = typeof(Resources.Language))]
+        Lithuanian = ('l' * 1000) + 't',
 
-        [Custom(Name = "Lithuanian", Tips = "lt")]
-        Lithuanian,
+        [Custom(Name = "LubaKatanga", Tips = "lu", ResourceType = typeof(Resources.Language))]
+        LubaKatanga = ('l' * 1000) + 'u',
 
-        [Custom(Name = "Luba-Katanga", Tips = "lu")]
-        LubaKatanga,
+        [Custom(Name = "Luxembourgish", Tips = "lb", ResourceType = typeof(Resources.Language))]
+        Luxembourgish = ('l' * 1000) + 'b',
 
-        [Custom(Name = "Luxembourgish", Tips = "lb")]
-        Luxembourgish,
+        [Custom(Name = "Macedonian", Tips = "mk", ResourceType = typeof(Resources.Language))]
+        Macedonian = ('m' * 1000) + 'k',
 
-        [Custom(Name = "Macedonian", Tips = "mk")]
-        Macedonian,
+        [Custom(Name = "Malagasy", Tips = "mg", ResourceType = typeof(Resources.Language))]
+        Malagasy = ('m' * 1000) + 'g',
 
-        [Custom(Name = "Malagasy", Tips = "mg")]
-        Malagasy,
+        [Custom(Name = "Malay", Tips = "ms", ResourceType = typeof(Resources.Language))]
+        Malay = ('m' * 1000) + 's',
 
-        [Custom(Name = "Malay", Tips = "ms")]
-        Malay,
+        [Custom(Name = "Malayalam", Tips = "ml", ResourceType = typeof(Resources.Language))]
+        Malayalam = ('m' * 1000) + 'l',
 
-        [Custom(Name = "Malayalam", Tips = "ml")]
-        Malayalam,
+        [Custom(Name = "Maltese", Tips = "mt", ResourceType = typeof(Resources.Language))]
+        Maltese = ('m' * 1000) + 't',
 
-        [Custom(Name = "Maltese", Tips = "mt")]
-        Maltese,
+        [Custom(Name = "Manx", Tips = "gv", ResourceType = typeof(Resources.Language))]
+        Manx = ('g' * 1000) + 'v',
 
-        [Custom(Name = "Manx", Tips = "gv")]
-        Manx,
+        [Custom(Name = "Maori", Tips = "mi", ResourceType = typeof(Resources.Language))]
+        Maori = ('m' * 1000) + 'i',
 
-        [Custom(Name = "Maori", Tips = "mi")]
-        Maori,
+        [Custom(Name = "Marathi", Tips = "mr", ResourceType = typeof(Resources.Language))]
+        Marathi = ('m' * 1000) + 'r',
 
-        [Custom(Name = "Marathi", Tips = "mr")]
-        Marathi,
+        [Custom(Name = "Marshallese", Tips = "mh", ResourceType = typeof(Resources.Language))]
+        Marshallese = ('m' * 1000) + 'h',
 
-        [Custom(Name = "Marshallese", Tips = "mh")]
-        Marshallese,
+        [Custom(Name = "Mongolian", Tips = "mn", ResourceType = typeof(Resources.Language))]
+        Mongolian = ('m' * 1000) + 'n',
 
-        [Custom(Name = "Mongolian", Tips = "mn")]
-        Mongolian,
+        [Custom(Name = "Nauru", Tips = "na", ResourceType = typeof(Resources.Language))]
+        Nauru = ('n' * 1000) + 'a',
 
-        [Custom(Name = "Nauru", Tips = "na")]
-        Nauru,
+        [Custom(Name = "Navajo", Tips = "nv", ResourceType = typeof(Resources.Language))]
+        Navajo = ('n' * 1000) + 'v',
 
-        [Custom(Name = "Navajo", Tips = "nv")]
-        Navajo,
+        [Custom(Name = "Ndonga", Tips = "ng", ResourceType = typeof(Resources.Language))]
+        Ndonga = ('n' * 1000) + 'g',
 
-        [Custom(Name = "North Ndebele", Tips = "nd")]
-        NorthNdebele,
+        [Custom(Name = "Nepali", Tips = "ne", ResourceType = typeof(Resources.Language))]
+        Nepali = ('n' * 1000) + 'e',
 
-        [Custom(Name = "South Ndebele", Tips = "nr")]
-        SouthNdebele,
+        [Custom(Name = "NorthernSami", Tips = "se", ResourceType = typeof(Resources.Language))]
+        NorthernSami = ('s' * 1000) + 'e',
 
-        [Custom(Name = "Ndonga", Tips = "ng")]
-        Ndonga,
+        [Custom(Name = "NorthNdebele", Tips = "nd", ResourceType = typeof(Resources.Language))]
+        NorthNdebele = ('n' * 1000) + 'd',
 
-        [Custom(Name = "Nepali", Tips = "ne")]
-        Nepali,
+        [Custom(Name = "Norwegian", Tips = "no", ResourceType = typeof(Resources.Language))]
+        Norwegian = ('n' * 1000) + 'o',
 
-        [Custom(Name = "Norwegian", Tips = "no")]
-        Norwegian,
+        [Custom(Name = "NorwegianBokmål", Tips = "nb", ResourceType = typeof(Resources.Language))]
+        NorwegianBokmål = ('n' * 1000) + 'b',
 
-        [Custom(Name = "Norwegian Bokmål", Tips = "nb")]
-        NorwegianBokmål,
+        [Custom(Name = "NorwegianNynorsk", Tips = "nn", ResourceType = typeof(Resources.Language))]
+        NorwegianNynorsk = ('n' * 1000) + 'n',
 
-        [Custom(Name = "Norwegian Nynorsk", Tips = "nn")]
-        NorwegianNynorsk,
+        [Custom(Name = "Occitan", Tips = "oc", ResourceType = typeof(Resources.Language))]
+        Occitan = ('o' * 1000) + 'c',
 
-        [Custom(Name = "Sichuan Yi", Tips = "ii")]
-        SichuanYi,
+        [Custom(Name = "Ojibwa", Tips = "oj", ResourceType = typeof(Resources.Language))]
+        Ojibwa = ('o' * 1000) + 'j',
 
-        [Custom(Name = "Occitan", Tips = "oc")]
-        Occitan,
+        [Custom(Name = "Oriya", Tips = "or", ResourceType = typeof(Resources.Language))]
+        Oriya = ('o' * 1000) + 'r',
 
-        [Custom(Name = "Ojibwa", Tips = "oj")]
-        Ojibwa,
+        [Custom(Name = "Oromo", Tips = "om", ResourceType = typeof(Resources.Language))]
+        Oromo = ('o' * 1000) + 'm',
 
-        [Custom(Name = "Oriya", Tips = "or")]
-        Oriya,
+        [Custom(Name = "Ossetian", Tips = "os", ResourceType = typeof(Resources.Language))]
+        Ossetian = ('o' * 1000) + 's',
 
-        [Custom(Name = "Oromo", Tips = "om")]
-        Oromo,
+        [Custom(Name = "Pali", Tips = "pi", ResourceType = typeof(Resources.Language))]
+        Pali = ('p' * 1000) + 'i',
 
-        [Custom(Name = "Ossetian", Tips = "os")]
-        Ossetian,
+        [Custom(Name = "Pashto", Tips = "ps", ResourceType = typeof(Resources.Language))]
+        Pashto = ('p' * 1000) + 's',
 
-        [Custom(Name = "Pali", Tips = "pi")]
-        Pali,
+        [Custom(Name = "Persian", Tips = "fa", ResourceType = typeof(Resources.Language))]
+        Persian = ('f' * 1000) + 'a',
 
-        [Custom(Name = "Pashto", Tips = "ps")]
-        Pashto,
+        [Custom(Name = "Polish", Tips = "pl", ResourceType = typeof(Resources.Language))]
+        Polish = ('p' * 1000) + 'l',
 
-        [Custom(Name = "Persian", Tips = "fa")]
-        Persian,
+        [Custom(Name = "Portuguese", Tips = "pt", ResourceType = typeof(Resources.Language))]
+        Portuguese = ('p' * 1000) + 't',
 
-        [Custom(Name = "Polish", Tips = "pl")]
-        Polish,
+        [Custom(Name = "Punjabi", Tips = "pa", ResourceType = typeof(Resources.Language))]
+        Punjabi = ('p' * 1000) + 'a',
 
-        [Custom(Name = "Portuguese", Tips = "pt")]
-        Portuguese,
+        [Custom(Name = "Quechua", Tips = "qu", ResourceType = typeof(Resources.Language))]
+        Quechua = ('q' * 1000) + 'u',
 
-        [Custom(Name = "Punjabi", Tips = "pa")]
-        Punjabi,
+        [Custom(Name = "Romanian", Tips = "ro", ResourceType = typeof(Resources.Language))]
+        Romanian = ('r' * 1000) + 'o',
 
-        [Custom(Name = "Quechua", Tips = "qu")]
-        Quechua,
+        [Custom(Name = "Romansh", Tips = "rm", ResourceType = typeof(Resources.Language))]
+        Romansh = ('r' * 1000) + 'm',
 
-        [Custom(Name = "Romanian", Tips = "ro")]
-        Romanian,
+        [Custom(Name = "Rundi", Tips = "rn", ResourceType = typeof(Resources.Language))]
+        Rundi = ('r' * 1000) + 'n',
 
-        [Custom(Name = "Romansh", Tips = "rm")]
-        Romansh,
+        [Custom(Name = "Russian", Tips = "ru", ResourceType = typeof(Resources.Language))]
+        Russian = ('r' * 1000) + 'u',
 
-        [Custom(Name = "Rundi", Tips = "rn")]
-        Rundi,
+        [Custom(Name = "Samoan", Tips = "sm", ResourceType = typeof(Resources.Language))]
+        Samoan = ('s' * 1000) + 'm',
 
-        [Custom(Name = "Russian", Tips = "ru")]
-        Russian,
+        [Custom(Name = "Sango", Tips = "sg", ResourceType = typeof(Resources.Language))]
+        Sango = ('s' * 1000) + 'g',
 
-        [Custom(Name = "Northern Sami", Tips = "se")]
-        NorthernSami,
+        [Custom(Name = "Sanskrit", Tips = "sa", ResourceType = typeof(Resources.Language))]
+        Sanskrit = ('s' * 1000) + 'a',
 
-        [Custom(Name = "Samoan", Tips = "sm")]
-        Samoan,
+        [Custom(Name = "Sardinian", Tips = "sc", ResourceType = typeof(Resources.Language))]
+        Sardinian = ('s' * 1000) + 'c',
 
-        [Custom(Name = "Sango", Tips = "sg")]
-        Sango,
+        [Custom(Name = "Serbian", Tips = "sr", ResourceType = typeof(Resources.Language))]
+        Serbian = ('s' * 1000) + 'r',
 
-        [Custom(Name = "Sanskrit", Tips = "sa")]
-        Sanskrit,
+        [Custom(Name = "Shona", Tips = "sn", ResourceType = typeof(Resources.Language))]
+        Shona = ('s' * 1000) + 'n',
 
-        [Custom(Name = "Sardinian", Tips = "sc")]
-        Sardinian,
+        [Custom(Name = "SichuanYi", Tips = "ii", ResourceType = typeof(Resources.Language))]
+        SichuanYi = ('i' * 1000) + 'i',
 
-        [Custom(Name = "Serbian", Tips = "sr")]
-        Serbian,
+        [Custom(Name = "Sindhi", Tips = "sd", ResourceType = typeof(Resources.Language))]
+        Sindhi = ('s' * 1000) + 'd',
 
-        [Custom(Name = "Shona", Tips = "sn")]
-        Shona,
+        [Custom(Name = "Sinhala", Tips = "si", ResourceType = typeof(Resources.Language))]
+        Sinhala = ('s' * 1000) + 'i',
 
-        [Custom(Name = "Sindhi", Tips = "sd")]
-        Sindhi,
+        [Custom(Name = "Slovak", Tips = "sk", ResourceType = typeof(Resources.Language))]
+        Slovak = ('s' * 1000) + 'k',
 
-        [Custom(Name = "Sinhala", Tips = "si")]
-        Sinhala,
+        [Custom(Name = "Slovenian", Tips = "sl", ResourceType = typeof(Resources.Language))]
+        Slovenian = ('s' * 1000) + 'l',
 
-        [Custom(Name = "Slovak", Tips = "sk")]
-        Slovak,
+        [Custom(Name = "Somali", Tips = "so", ResourceType = typeof(Resources.Language))]
+        Somali = ('s' * 1000) + 'o',
 
-        [Custom(Name = "Slovenian", Tips = "sl")]
-        Slovenian,
+        [Custom(Name = "SouthernSotho", Tips = "st", ResourceType = typeof(Resources.Language))]
+        SouthernSotho = ('s' * 1000) + 't',
 
-        [Custom(Name = "Somali", Tips = "so")]
-        Somali,
+        [Custom(Name = "SouthNdebele", Tips = "nr", ResourceType = typeof(Resources.Language))]
+        SouthNdebele = ('n' * 1000) + 'r',
 
-        [Custom(Name = "Southern Sotho", Tips = "st")]
-        SouthernSotho,
+        [Custom(Name = "Spanish", Tips = "es", ResourceType = typeof(Resources.Language))]
+        Spanish = ('e' * 1000) + 's',
 
-        [Custom(Name = "Spanish", Tips = "es")]
-        Spanish,
+        [Custom(Name = "Sundanese", Tips = "su", ResourceType = typeof(Resources.Language))]
+        Sundanese = ('s' * 1000) + 'u',
 
-        [Custom(Name = "Sundanese", Tips = "su")]
-        Sundanese,
+        [Custom(Name = "Swahili", Tips = "sw", ResourceType = typeof(Resources.Language))]
+        Swahili = ('s' * 1000) + 'w',
 
-        [Custom(Name = "Swahili", Tips = "sw")]
-        Swahili,
+        [Custom(Name = "Swati", Tips = "ss", ResourceType = typeof(Resources.Language))]
+        Swati = ('s' * 1000) + 's',
 
-        [Custom(Name = "Swati", Tips = "ss")]
-        Swati,
+        [Custom(Name = "Swedish", Tips = "sv", ResourceType = typeof(Resources.Language))]
+        Swedish = ('s' * 1000) + 'v',
 
-        [Custom(Name = "Swedish", Tips = "sv")]
-        Swedish,
+        [Custom(Name = "Tagalog", Tips = "tl", ResourceType = typeof(Resources.Language))]
+        Tagalog = ('t' * 1000) + 'l',
 
-        [Custom(Name = "Tagalog", Tips = "tl")]
-        Tagalog,
+        [Custom(Name = "Tahitian", Tips = "ty", ResourceType = typeof(Resources.Language))]
+        Tahitian = ('t' * 1000) + 'y',
 
-        [Custom(Name = "Tahitian", Tips = "ty")]
-        Tahitian,
+        [Custom(Name = "Tajik", Tips = "tg", ResourceType = typeof(Resources.Language))]
+        Tajik = ('t' * 1000) + 'g',
 
-        [Custom(Name = "Tajik", Tips = "tg")]
-        Tajik,
+        [Custom(Name = "Tamil", Tips = "ta", ResourceType = typeof(Resources.Language))]
+        Tamil = ('t' * 1000) + 'a',
 
-        [Custom(Name = "Tamil", Tips = "ta")]
-        Tamil,
+        [Custom(Name = "Tatar", Tips = "tt", ResourceType = typeof(Resources.Language))]
+        Tatar = ('t' * 1000) + 't',
 
-        [Custom(Name = "Tatar", Tips = "tt")]
-        Tatar,
+        [Custom(Name = "Telugu", Tips = "te", ResourceType = typeof(Resources.Language))]
+        Telugu = ('t' * 1000) + 'e',
 
-        [Custom(Name = "Telugu", Tips = "te")]
-        Telugu,
+        [Custom(Name = "Thai", Tips = "th", ResourceType = typeof(Resources.Language))]
+        Thai = ('t' * 1000) + 'h',
 
-        [Custom(Name = "Thai", Tips = "th")]
-        Thai,
+        [Custom(Name = "Tibetan", Tips = "bo", ResourceType = typeof(Resources.Language))]
+        Tibetan = ('b' * 1000) + 'o',
 
-        [Custom(Name = "Tibetan", Tips = "bo")]
-        Tibetan,
+        [Custom(Name = "Tigrinya", Tips = "ti", ResourceType = typeof(Resources.Language))]
+        Tigrinya = ('t' * 1000) + 'i',
 
-        [Custom(Name = "Tigrinya", Tips = "ti")]
-        Tigrinya,
+        [Custom(Name = "Tonga", Tips = "to", ResourceType = typeof(Resources.Language))]
+        Tonga = ('t' * 1000) + 'o',
 
-        [Custom(Name = "Tonga", Tips = "to")]
-        Tonga,
+        [Custom(Name = "Tsonga", Tips = "ts", ResourceType = typeof(Resources.Language))]
+        Tsonga = ('t' * 1000) + 's',
 
-        [Custom(Name = "Tsonga", Tips = "ts")]
-        Tsonga,
+        [Custom(Name = "Tswana", Tips = "tn", ResourceType = typeof(Resources.Language))]
+        Tswana = ('t' * 1000) + 'n',
 
-        [Custom(Name = "Tswana", Tips = "tn")]
-        Tswana,
+        [Custom(Name = "Turkish", Tips = "tr", ResourceType = typeof(Resources.Language))]
+        Turkish = ('t' * 1000) + 'r',
 
-        [Custom(Name = "Turkish", Tips = "tr")]
-        Turkish,
+        [Custom(Name = "Turkmen", Tips = "tk", ResourceType = typeof(Resources.Language))]
+        Turkmen = ('t' * 1000) + 'k',
 
-        [Custom(Name = "Turkmen", Tips = "tk")]
-        Turkmen,
+        [Custom(Name = "Twi", Tips = "tw", ResourceType = typeof(Resources.Language))]
+        Twi = ('t' * 1000) + 'w',
 
-        [Custom(Name = "Twi", Tips = "tw")]
-        Twi,
+        [Custom(Name = "Uighur", Tips = "ug", ResourceType = typeof(Resources.Language))]
+        Uighur = ('u' * 1000) + 'g',
 
-        [Custom(Name = "Uighur", Tips = "ug")]
-        Uighur,
+        [Custom(Name = "Ukrainian", Tips = "uk", ResourceType = typeof(Resources.Language))]
+        Ukrainian = ('u' * 1000) + 'k',
 
-        [Custom(Name = "Ukrainian", Tips = "uk")]
-        Ukrainian,
+        [Custom(Name = "Urdu", Tips = "ur", ResourceType = typeof(Resources.Language))]
+        Urdu = ('u' * 1000) + 'r',
 
-        [Custom(Name = "Urdu", Tips = "ur")]
-        Urdu,
+        [Custom(Name = "Uzbek", Tips = "uz", ResourceType = typeof(Resources.Language))]
+        Uzbek = ('u' * 1000) + 'z',
 
-        [Custom(Name = "Uzbek", Tips = "uz")]
-        Uzbek,
+        [Custom(Name = "Venda", Tips = "ve", ResourceType = typeof(Resources.Language))]
+        Venda = ('v' * 1000) + 'e',
 
-        [Custom(Name = "Venda", Tips = "ve")]
-        Venda,
+        [Custom(Name = "Vietnamese", Tips = "vi", ResourceType = typeof(Resources.Language))]
+        Vietnamese = ('v' * 1000) + 'i',
 
-        [Custom(Name = "Vietnamese", Tips = "vi")]
-        Vietnamese,
+        [Custom(Name = "Volapük", Tips = "vo", ResourceType = typeof(Resources.Language))]
+        Volapük = ('v' * 1000) + 'o',
 
-        [Custom(Name = "Volapük", Tips = "vo")]
-        Volapük,
+        [Custom(Name = "Walloon", Tips = "wa", ResourceType = typeof(Resources.Language))]
+        Walloon = ('w' * 1000) + 'a',
 
-        [Custom(Name = "Walloon", Tips = "wa")]
-        Walloon,
+        [Custom(Name = "Welsh", Tips = "cy", ResourceType = typeof(Resources.Language))]
+        Welsh = ('c' * 1000) + 'y',
 
-        [Custom(Name = "Welsh", Tips = "cy")]
-        Welsh,
+        [Custom(Name = "WesternFrisian", Tips = "fy", ResourceType = typeof(Resources.Language))]
+        WesternFrisian = ('f' * 1000) + 'y',
 
-        [Custom(Name = "Wolof", Tips = "wo")]
-        Wolof,
+        [Custom(Name = "Wolof", Tips = "wo", ResourceType = typeof(Resources.Language))]
+        Wolof = ('w' * 1000) + 'o',
 
-        [Custom(Name = "Xhosa", Tips = "xh")]
-        Xhosa,
+        [Custom(Name = "Xhosa", Tips = "xh", ResourceType = typeof(Resources.Language))]
+        Xhosa = ('x' * 1000) + 'h',
 
-        [Custom(Name = "Yiddish", Tips = "yi")]
-        Yiddish,
+        [Custom(Name = "Yiddish", Tips = "yi", ResourceType = typeof(Resources.Language))]
+        Yiddish = ('y' * 1000) + 'i',
 
-        [Custom(Name = "Yoruba", Tips = "yo")]
-        Yoruba,
+        [Custom(Name = "Yoruba", Tips = "yo", ResourceType = typeof(Resources.Language))]
+        Yoruba = ('y' * 1000) + 'o',
 
-        [Custom(Name = "Zhuang", Tips = "za")]
-        Zhuang,
+        [Custom(Name = "Zhuang", Tips = "za", ResourceType = typeof(Resources.Language))]
+        Zhuang = ('z' * 1000) + 'a',
 
-        [Custom(Name = "Zulu", Tips = "zu")]
-        Zulu,
+        [Custom(Name = "Zulu", Tips = "zu", ResourceType = typeof(Resources.Language))]
+        Zulu = ('z' * 1000) + 'u',
     }
 }

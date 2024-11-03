@@ -72,9 +72,9 @@ namespace MM.Shared.Models.Support.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Please describe in as much detail as possible so that we can better understand the situation..
         /// </summary>
-        public static string DescriptionPrompt {
+        public static string DescriptionPlaceholder {
             get {
-                return ResourceManager.GetString("DescriptionPrompt", resourceCulture);
+                return ResourceManager.GetString("DescriptionPlaceholder", resourceCulture);
             }
         }
         
@@ -90,9 +90,9 @@ namespace MM.Shared.Models.Support.Resources {
         /// <summary>
         ///   Looks up a localized string similar to One sentence that sums up your feedback.
         /// </summary>
-        public static string TitlePrompt {
+        public static string TitlePlaceholder {
             get {
-                return ResourceManager.GetString("TitlePrompt", resourceCulture);
+                return ResourceManager.GetString("TitlePlaceholder", resourceCulture);
             }
         }
     }

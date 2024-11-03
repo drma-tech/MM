@@ -2,37 +2,31 @@
 {
     public enum ReadingGenre
     {
-        [Custom(Name = "FictionGenres_Name", Description = "FictionGenres_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        FictionGenres = 10,
+        [Custom(Name = "Fiction & Literature", Description = "Stories that explore human experiences and imagination, often through narrative prose (e.g., novels, contemporary fiction, classic literature, poetry)")]
+        FictionLiterature = 1,
 
-        [Custom(Name = "Biography_Name", Description = "Biography_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Biography = 31,
+        [Custom(Name = "Speculative & Adventure", Description = "Books that push boundaries through fantasy, science fiction, and adventurous themes (e.g., fantasy, sci-fi, thrillers, mystery, horror, supernatural, adventure)")]
+        SpeculativeAdventure = 2,
 
-        [Custom(Name = "Comics_Name", Description = "Comics_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Comics = 32,
+        [Custom(Name = "Romance & Relationships", Description = "Stories centered on love, connection, and human relationships (e.g., contemporary romance, historical romance, family dramas)")]
+        RomanceRelationships = 3,
 
-        [Custom(Name = "Essay_Name", Description = "Essay_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Essay = 33,
+        [Custom(Name = "History & Biographical", Description = "Accounts of real historical events, people, and memoirs of personal experiences (e.g., historical fiction, biographies, autobiographies)")]
+        HistoryBiographical = 4,
 
-        [Custom(Name = "Journalism_Name", Description = "Journalism_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Journalism = 34,
+        [Custom(Name = "Self-Improvement & Mindfulness", Description = "Books that focus on self-growth, wellness, and personal insight (e.g., self-help, personal development, mindfulness, spirituality)")]
+        SelfImprovementMindfulness = 5,
 
-        [Custom(Name = "Memoir_Name", Description = "Memoir_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Memoir = 35,
+        [Custom(Name = "Science, Nature & Exploration", Description = "Works explaining the natural and scientific world or narrating journeys of exploration (e.g., popular science, environmental studies, travel writing)")]
+        ScienceNatureExploration = 6,
 
-        [Custom(Name = "NarrativeNonfictionPersonalNarrative_Name", Description = "NarrativeNonfictionPersonalNarrative_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        NarrativeNonfictionPersonalNarrative = 36,
+        [Custom(Name = "Society & Current Affairs", Description = "Analyses and discussions on social, political, and economic issues of our time (e.g., politics, social issues, current events)")]
+        SocietyCurrentAffairs = 7,
 
-        [Custom(Name = "Reference_Name", Description = "Reference_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Reference = 37,
+        [Custom(Name = "Education & Reference", Description = "Informative resources and educational texts for structured learning or reference (e.g., textbooks, guides, encyclopedias)")]
+        EducationReference = 8,
 
-        [Custom(Name = "SelfHelp_Name", Description = "SelfHelp_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        SelfHelp = 38,
-
-        [Custom(Name = "ScientificArticle_Name", Description = "ScientificArticle_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        ScientificArticle = 39,
-
-        [Custom(Name = "Textbook_Name", Description = "Textbook_Description", ResourceType = typeof(Resources.ReadingGenre))]
-        Textbook = 40
+        [Custom(Name = "Visual Storytelling", Description = "Illustrated stories and graphic works that combine art with narrative (e.g., comics, graphic novels, manga)")]
+        VisualStorytelling = 9
     }
 }

@@ -61,7 +61,7 @@ namespace MM.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose up to a maximum of {0} options.
+        ///   Looks up a localized string similar to Choose up to a maximum of {0} {1}.
         /// </summary>
         internal static string ChooseMaximumOptions {
             get {
