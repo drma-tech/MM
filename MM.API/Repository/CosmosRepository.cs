@@ -30,7 +30,7 @@ namespace MM.API.Repository
             {
                 var response = await Container.ReadItemAsync<T>($"{type}:{id}", new PartitionKey($"{type}:{id}"), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-                if (response.RequestCharge > 1.5)
+                if (response.RequestCharge > 1.7)
                 {
                     _logger.LogWarning("Get - ID {0}, RequestCharge {1}", id, response.RequestCharge);
                 }
@@ -117,7 +117,7 @@ namespace MM.API.Repository
             {
                 var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
-                if (response.RequestCharge > 12)
+                if (response.RequestCharge > 15)
                 {
                     _logger.LogWarning("Upsert - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
                 }

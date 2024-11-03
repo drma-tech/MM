@@ -1,6 +1,7 @@
 ﻿@using MM.WEB.Modules.Profile
 @inherits ComponentCore<SettingsPopup>
 
+@inject IJSRuntime JsRuntime
 <ModalHeader>
     <ModalTitle Size="HeadingSize.Is5">@GlobalTranslations.Settings</ModalTitle>
     <CloseButton />
@@ -16,8 +17,19 @@
 </ModalFooter>
 
 @code {
-    protected void LanguageValueChanged(Language value)
+    protected override async Task LoadDataRender()
     {
+        var language = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "language");
+
+        if (language.NotEmpty())
+        {
+            AppStateStatic.ChangeLanguage((Language)Enum.Parse(typeof(Language), language.Replace("-", "")));
+        }
+    }
+
+    protected async Task LanguageValueChanged(Language value)
+    {
+        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "language", value.GetName(false));
         Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetCustomAttribute(false)?.Tips), forceLoad: true);
     }
 }

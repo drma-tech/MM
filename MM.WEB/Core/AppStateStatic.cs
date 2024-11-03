@@ -38,5 +38,10 @@ namespace MM.WEB.Core
                 _ => "en",
             };
         }
+
+        public static void ChangeLanguage(Language value)
+        {
+            Language = value;
+        }
     }
 }
