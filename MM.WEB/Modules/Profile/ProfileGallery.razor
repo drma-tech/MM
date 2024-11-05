@@ -1,4 +1,4 @@
-﻿@page "/Profile/Gallery"
+﻿@page "/profile/photo"
 @using MM.Shared.Models.Profile
 @using MM.WEB.Modules.Profile.Core
 @attribute [Authorize]
@@ -10,7 +10,7 @@
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
         <Card>
             <CardHeader>
-                @Resources.CardHeader.ProfileGaleryMainPhoto
+                Main Photo
                 <Button Size="Size.ExtraSmall" Color="Color.Primary" Float="Float.End" Clicked="helpMain.ShowModal" title="Ajuda" Margin="Margin.Is2.FromStart">
                     <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon>
                 </Button>
@@ -29,7 +29,7 @@
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is8.OnWidescreen" Margin="Margin.Is3.FromBottom">
         <Card>
             <CardHeader>
-                @Resources.CardHeader.ProfileGaleryPhotoGallery
+                Gallery
             </CardHeader>
             <CardBody>
                 <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" Margin="Margin.Is2.FromBottom">
@@ -53,22 +53,21 @@
 </Row>
 
 <BasicModal @ref="helpMain" Title="Dicas para foto principal">
-    Uma pesquisa divulgada no jornal da associação Psychological Science  destaca a importância da imagem de perfil e quais as impressões com a foto
     <ul>
-        <li>Mostre os dentes ao sorrir;</li>
-        <li>Use terno/casacos de cor escura com camisa clara;</li>
-        <li>Deixe que seu maxilar projete alguma sombra no pescoço;</li>
-        <li>Faça uma foto que mostre ombros e rosto ou da cintura até o rosto;</li>
-        <li>Use a técnica “Squinch” – explicada pelo fotógrafo profissional Peter Hurley. Que diz que um retrato frontal fica mais fotogênico ao projetar a cabeça para frente e fechar/cerrar um pouco os olhos;</li>
-        <li>Faça uma composição assimétrica;</li>
-        <li>Evite usar óculos ou acessórios que cubram seus olhos;</li>
+        <li>Show who you are: To complete your profile, please add one clear face photo and one full-body photo. This helps others get to know you better!</li>
+        <li>No filters, just the real you: To keep things authentic, we only accept photos without filters. We want you to shine just as you are!</li>
+        <li>Use natural lighting: Photos in well-lit places (like outdoors or near a window) always look great and bring out your personality.</li>
+        <li>Keep your face visible: Choose photos where your face is clear and uncovered. Avoid sunglasses, hats, or anything that hides your expression.</li>
+        <li>Pick a tidy background: A clean, organized setting highlights you in the best way possible.</li>
+        <li>Smile and be yourself: A genuine smile makes a friendly, welcoming impression – show off your best self!</li>
     </ul>
-    A pesquisa ainda diz que é bom tentar tirar as fotos em um fundo iluminado e de frente para a câmera (inclinar um pouco o rosto de lado também pode ser produtivo). Além disso, é preciso evitar chapéus; óculos de sol; cabelo, sombras nos olhos, sorriso muito exagerado ou com muita sensualidade.
 </BasicModal>
 
 @code
 {
     private ProfileModel? _profile = new();
+    public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
+
     string? imageDataUri = ImageHelper.GetNoUserPhoto;
 
     private BasicModal? helpMain;
@@ -78,7 +77,7 @@
 
     protected override async Task LoadDataRender()
     {
-        _profile = await Http.Profile_Get(SessionStorage);
+        _profile = await ProfileApi.Get(CoreProfile);
 
         if (_profile != null && _profile.Photo != null)
         {
@@ -95,25 +94,25 @@
             var maxAllowedFiles = 1;
             var format = "image/jpeg";
 
-            foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
-            {
-                var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
-                var buffer = new byte[resizedImageFile.Size];
-                await resizedImageFile.OpenReadStream().ReadAsync(buffer);
-                imageDataUri = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+            // foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
+            // {
+            //     var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
+            //     var buffer = new byte[resizedImageFile.Size];
+            //     await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+            //     imageDataUri = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
 
-                if (ImageHelper.ValidImage(buffer))
-                {
-                    await Http.Storage_UploadPhotoFace(buffer, SessionStorage, Toast);
+            //     if (ImageHelper.ValidImage(buffer))
+            //     {
+            //         await Http.Storage_UploadPhotoFace(buffer, SessionStorage, Toast);
 
-                    _profile = await Http.Profile_Get(SessionStorage);
-                }
-                else
-                {
-                    imageDataUri = null;
-                    await Toast.Error("Foto inválida, favor tentar novamente");
-                }
-            }
+            //         _profile = await Http.Profile_Get(SessionStorage);
+            //     }
+            //     else
+            //     {
+            //         imageDataUri = null;
+            //         await Toast.Error("Foto inválida, favor tentar novamente");
+            //     }
+            // }
         }
         catch (Exception ex)
         {
@@ -148,15 +147,15 @@
                 }
             }
 
-            if (imageDataUriGallery.Any())
-            {
-                await Http.Storage_UploadPhotoGallery(buffers, SessionStorage, Toast);
+            // if (imageDataUriGallery.Any())
+            // {
+            //     await Http.Storage_UploadPhotoGallery(buffers, SessionStorage, Toast);
 
-                _profile = await Http.Profile_Get(SessionStorage);
+            //     _profile = await Http.Profile_Get(SessionStorage);
 
-                selectedImage = imageDataUriGallery?.LastOrDefault();
-                StateHasChanged();
-            }
+            //     selectedImage = imageDataUriGallery?.LastOrDefault();
+            //     StateHasChanged();
+            // }
         }
         catch (Exception ex)
         {
@@ -169,15 +168,15 @@
     {
         try
         {
-            var fileName = System.IO.Path.GetFileName(selectedImage);
-            if (string.IsNullOrEmpty(fileName)) throw new InvalidOperationException("invalid fileName");
+            // var fileName = System.IO.Path.GetFileName(selectedImage);
+            // if (string.IsNullOrEmpty(fileName)) throw new InvalidOperationException("invalid fileName");
 
-            await Http.Storage_DeletePhotoGallery(fileName, SessionStorage, Toast);
+            // await Http.Storage_DeletePhotoGallery(fileName, SessionStorage, Toast);
 
-            imageDataUriGallery = imageDataUriGallery.Where(w => w != selectedImage).ToArray();
+            // imageDataUriGallery = imageDataUriGallery.Where(w => w != selectedImage).ToArray();
 
-            selectedImage = imageDataUriGallery?.FirstOrDefault();
-            StateHasChanged();
+            // selectedImage = imageDataUriGallery?.FirstOrDefault();
+            // StateHasChanged();
         }
         catch (Exception ex)
         {

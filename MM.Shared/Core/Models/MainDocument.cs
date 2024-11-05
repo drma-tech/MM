@@ -5,11 +5,11 @@
         Principal = 1,
         Ticket = 2,
         TicketVote = 3,
-        //Profile = 4,
-        //Invite = 5,
-        Announcement = 6,
-        Login = 7,
-        Update = 8
+        Announcement = 4,
+        Login = 5,
+        Update = 6,
+        Filter = 7,
+        Setting = 8
     }
 
     public abstract class MainDocument : CosmosDocument

@@ -4,19 +4,54 @@ using MM.Shared.Models.Profile;
 
 namespace MM.API.Functions
 {
-    public class ProfileFunction(CosmosProfileRepository repo)
+    public class ProfileFunction(CosmosProfileRepository repo, CosmosRepository repoFilter)
     {
-        private readonly CosmosProfileRepository _repo = repo;
+        private readonly CosmosProfileRepository _repoProfile = repo;
+        private readonly CosmosRepository _repo = repoFilter;
 
-        [Function("ProfileGet")]
-        public async Task<ProfileModel?> ProfileGet(
-           [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get")] HttpRequestData req, CancellationToken cancellationToken)
+        [Function("ProfileGetData")]
+        public async Task<ProfileModel?> ProfileGetData(
+           [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<ProfileModel>(userId, cancellationToken);
+                return await _repoProfile.Get<ProfileModel>(userId, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw new UnhandledException(ex.BuildException());
+            }
+        }
+
+        [Function("ProfileGetFilter")]
+        public async Task<FilterModel?> ProfileGetFilter(
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                return await _repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw new UnhandledException(ex.BuildException());
+            }
+        }
+
+        [Function("ProfileGetSetting")]
+        public async Task<SettingModel?> ProfileGetSetting(
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                return await _repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -71,13 +106,30 @@ namespace MM.API.Functions
         //    }
         //}
 
-        [Function("ProfileUpdate")]
-        public async Task<ProfileModel> ProfileUpdate(
-            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update")] HttpRequestData req, CancellationToken cancellationToken)
+        [Function("ProfileUpdateData")]
+        public async Task<ProfileModel> ProfileUpdateData(
+            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var body = await req.GetBody<ProfileModel>(cancellationToken);
+
+                return await _repoProfile.Upsert(body, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw new UnhandledException(ex.BuildException());
+            }
+        }
+
+        [Function("ProfileUpdateFilter")]
+        public async Task<FilterModel> ProfileUpdateFilter(
+            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var body = await req.GetBody<FilterModel>(cancellationToken);
 
                 return await _repo.Upsert(body, cancellationToken);
             }
@@ -88,27 +140,21 @@ namespace MM.API.Functions
             }
         }
 
-        //[Function("ProfileUpdateLooking")]
-        //public async Task<ProfileModel> UpdateLooking(
-        //    [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-preference")] HttpRequestData req, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        var userId = req.GetUserId();
-        //        var body = await req.GetPublicBody<ProfileModel>(cancellationToken);
+        [Function("ProfileUpdateSetting")]
+        public async Task<SettingModel> ProfileUpdateSetting(
+           [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var body = await req.GetBody<SettingModel>(cancellationToken);
 
-        //        var operations = new List<PatchOperation> {
-        //            PatchOperation.Set("/preference", body.Preference),
-        //            PatchOperation.Add("/dtUpdate", DateTime.UtcNow)
-        //        };
-
-        //        return await _repo.PatchItem<ProfileModel>(userId, operations, cancellationToken);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        req.ProcessException(ex);
-        //        throw new UnhandledException(ex.BuildException());
-        //    }
-        //}
+                return await _repo.Upsert(body, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw new UnhandledException(ex.BuildException());
+            }
+        }
     }
 }

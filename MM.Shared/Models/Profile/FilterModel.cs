@@ -1,11 +1,15 @@
 ﻿namespace MM.Shared.Models.Profile
 {
-    public class FilterModel
+    public class FilterModel : PrivateMainDocument
     {
+        public FilterModel() : base(DocumentType.Filter)
+        {
+        }
+
         #region BASIC
 
         [Custom(Name = "Region", ResourceType = typeof(Resources.FilterModel))]
-        public Region? Region { get; set; }
+        public Region Region { get; set; }
 
         [Custom(Name = "Nationality")]
         public HashSet<Country> Nationality { get; set; } = [];
@@ -36,10 +40,10 @@
         public HashSet<BodyType> BodyType { get; set; } = [];
 
         [Custom(Name = "MinimalAge", ResourceType = typeof(Resources.FilterModel))]
-        public int MinimalAge { get; set; }
+        public int? MinimalAge { get; set; }
 
         [Custom(Name = "MaxAge", ResourceType = typeof(Resources.FilterModel))]
-        public int MaxAge { get; set; }
+        public int? MaxAge { get; set; }
 
         [Custom(Name = "MinimalHeight", ResourceType = typeof(Resources.FilterModel))]
         public Height? MinimalHeight { get; set; }
@@ -182,5 +186,10 @@
         public HashSet<IdealPlaceToLive> IdealPlaceToLive { get; set; } = [];
 
         #endregion GOALS
+
+        public override bool HasValidData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

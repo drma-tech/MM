@@ -303,7 +303,7 @@
     @if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab)).IsValid)
     {
         <Button Color="Color.Secondary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="()=>ShowErrors(Profile)">
-            <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> Show Errors
+            <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> Show pending items
         </Button>
     }
     <Div Float="Float.End" Margin="Margin.Is2.OnY">

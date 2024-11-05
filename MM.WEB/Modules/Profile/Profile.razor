@@ -9,6 +9,8 @@
 @inherits PageCore<Profile>
 
 @inject ProfileApi ProfileApi
+@inject FilterApi FilterApi
+@inject SettingApi SettingApi
 
 <SeoHeader Title="Profile" Url="/profile"></SeoHeader>
 
@@ -40,7 +42,7 @@
             }
         </Button>
         <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting">
-            @if (false)
+            @if (setting != null)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
             }
@@ -49,7 +51,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo">
             @if (false)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
@@ -132,6 +134,10 @@
 
     public FilterValidation FilterValidator { get; set; } = new();
     public FilterModel? filter;
+    public RenderControlCore<FilterModel?>? CoreFilter { get; set; } = new();
+
+    public SettingModel? setting;
+    public RenderControlCore<SettingModel?>? CoreSetting { get; set; } = new();
 
     public List<string> Suggestions { get; set; } = [];
     public RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
@@ -151,6 +157,8 @@
             if (IsAuthenticated)
             {
                 profile = await ProfileApi.Get(CoreProfile);
+                filter = await FilterApi.Get(CoreFilter);
+                setting = await SettingApi.Get(CoreSetting);
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
@@ -167,7 +175,13 @@
     {
         if (value)
         {
-            await Toast.Warning("To make your profile public, first complete all the steps");
+            //await Toast.Warning("To make your profile public, first complete all the steps");
+            await Toast.Warning("Option not yet available");
+            IsPublic = false;
+        }
+        else
+        {
+            await Toast.Success("Your profile is now in private mode and will not be seen or shared with anyone.");
             IsPublic = false;
         }
     }

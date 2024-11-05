@@ -97,6 +97,10 @@ namespace MM.Shared.Models.Profile.Core
                     .NotEmpty()
                     .WithName(Resources.ProfileLifestyleModel.HaveChildren_Name);
 
+                RuleFor(x => x.HavePets)
+                    .NotEmpty()
+                    .WithName("Have Pets");
+
                 RuleFor(x => x.EducationLevel)
                     .NotEmpty()
                     .WithName(Resources.ProfileLifestyleModel.EducationLevel_Name);
@@ -180,6 +184,24 @@ namespace MM.Shared.Models.Profile.Core
                     .WithMessage(string.Format(Shared.Resources.Validations.ChooseMaximumOptions, 3, Resources.ProfileInterestModel.ReadingGenre));
             });
 
+            RuleSet("RELATIONSHIP", () =>
+            {
+                RuleFor(x => x.SharedFinances)
+                    .NotEmpty();
+
+                RuleFor(x => x.ConflictResolutionStyle)
+                    .NotEmpty();
+
+                RuleFor(x => x.HouseholdManagement)
+                    .NotEmpty();
+
+                RuleFor(x => x.TimeTogetherPreference)
+                    .NotEmpty();
+
+                RuleFor(x => x.OppositeSexFriendships)
+                    .NotEmpty();
+            });
+
             RuleSet("GOAL", () =>
             {
                 RuleFor(x => x.RelationshipIntentions)
@@ -194,6 +216,9 @@ namespace MM.Shared.Models.Profile.Core
 
                 RuleFor(x => x.Relocation)
                     .NotEmpty();
+
+                RuleFor(x => x.IdealPlaceToLive)
+                   .NotEmpty();
             });
         }
     }

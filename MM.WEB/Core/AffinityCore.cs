@@ -100,15 +100,15 @@ namespace MM.WEB.Core
 
         #region BASIC
 
-        public static Region? GetRegion(ProfileModel profile)
+        public static Region GetRegion(ProfileModel profile)
         {
             return profile?.Relocation switch
             {
-                Relocation.NoRelocations => (Region?)null,
+                Relocation.NoRelocations => Region.City,
                 Relocation.OpenMovingCities => Region.Country,
                 Relocation.OpenMovingCountries => Region.World,
-                _ => null,
-            } ?? null;
+                _ => throw new NotImplementedException(),
+            };
         }
 
         public static string GetLocation(ProfileModel profile, FilterModel? filter)
@@ -237,8 +237,8 @@ namespace MM.WEB.Core
 
         public static int[] GetAge(ProfileModel profile, FilterModel? filter = null, bool force = false)
         {
-            int min;
-            int max;
+            int? min;
+            int? max;
 
             if (filter != null && !force)
             {
@@ -256,7 +256,7 @@ namespace MM.WEB.Core
                 if (max > 120) max = 120;
             }
 
-            return [min, max];
+            return [min ?? 18, max ?? 120];
         }
 
         public static Height[] GetHeight(ProfileModel profile, FilterModel? filter = null, bool force = false)
@@ -674,11 +674,11 @@ namespace MM.WEB.Core
                 var weightRelationship = 20;
                 var weightGoals = 10;
 
-                return (totalBasic * weightBasic + 
-                    totalBio * weightBio + 
-                    totalLifestyle * weightLifestyle + 
-                    totalPersonality * weightPersonality + 
-                    totalInterest * weightInterest + 
+                return (totalBasic * weightBasic +
+                    totalBio * weightBio +
+                    totalLifestyle * weightLifestyle +
+                    totalPersonality * weightPersonality +
+                    totalInterest * weightInterest +
                     totalRelationship * weightRelationship +
                     totalGoals + weightGoals) /
                     (weightBasic + weightBio + weightLifestyle + weightPersonality + weightInterest + weightRelationship + weightGoals);
