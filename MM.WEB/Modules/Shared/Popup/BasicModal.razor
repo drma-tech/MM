@@ -1,5 +1,5 @@
 ﻿<Modal @ref="modal">
-    <ModalContent Centered="true">
+    <ModalContent Centered="true" Size="Size">
         <ModalHeader>
             <ModalTitle>@Title</ModalTitle>
             <CloseButton />
@@ -10,9 +10,10 @@
     </ModalContent>
 </Modal>
 
-@code {    
+@code {
     [Parameter] public string? Title { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public ModalSize Size { get; set; } = ModalSize.Default;
 
     private Modal? modal;
 

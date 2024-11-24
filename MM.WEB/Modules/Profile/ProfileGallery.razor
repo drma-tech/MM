@@ -1,58 +1,79 @@
 ﻿@page "/profile/photo"
+@using Blazorise.Cropper
 @using MM.Shared.Models.Profile
+@using MM.Shared.Requests
+@using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 @attribute [Authorize]
 @inherits PageCore<ProfileGallery>
 
 @inject ProfileApi ProfileApi
+@inject StorageApi StorageApi
 
 <Row HorizontalGutter="8" VerticalGutter="0">
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
         <Card>
             <CardHeader>
-                Main Photo
-                <Button Size="Size.ExtraSmall" Color="Color.Primary" Float="Float.End" Clicked="helpMain.ShowModal" title="Ajuda" Margin="Margin.Is2.FromStart">
-                    <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon>
-                </Button>
+                Face Photo
             </CardHeader>
             <CardBody>
-                <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
-                    <FigureImage Margin="Margin.Is0" Source="@imageDataUri" AlternateText="No User" Style="max-height: 450px !important;" />
-                </Figure>
-                <div class="custom-file">
-                    <InputFile OnChange="@OnInputFileChange" @attributes="@GetAttributes()"></InputFile>
-                    <label for="logo" class="custom-file-label">Escolher arquivo...</label>
-                </div>
+                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
+                    <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
+                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(ImageHelper.PhotoType.Face)" AlternateText="No Picture" Style="max-height: 300px !important;" />
+                    </Figure>
+                </RenderControl>
             </CardBody>
+            <CardFooter>
+                @if (_profile?.Photo?.FaceId == null)
+                {
+                    <Button Color="Color.Primary">Add</Button>
+                }
+                else
+                {
+                    <Button Color="Color.Secondary">Change</Button>
+                    <Button Color="Color.Danger">Remove</Button>
+                }
+            </CardFooter>
         </Card>
     </Column>
-    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is8.OnWidescreen" Margin="Margin.Is3.FromBottom">
+    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
         <Card>
             <CardHeader>
-                Gallery
+                Body Phto
             </CardHeader>
             <CardBody>
-                <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" Margin="Margin.Is2.FromBottom">
-                    @foreach (var item in imageDataUriGallery)
-                    {
-                        <CarouselSlide @key="@item" Name="@item" Style="text-align: center; background-color: black;">
-                            <Image Source="@item" Style="height: 450px" />
-                            <Button Color="Color.Danger" Style="position: absolute; right: 10px; top: 10px; z-index:2;" Clicked="DeletePhotoGallery">
-                                <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon>
-                            </Button>
-                        </CarouselSlide>
-                    }
-                </Carousel>
-                <div class="custom-file">
-                    <InputFile OnChange="@OnInputFileGalleryChange" @attributes="@GetAttributes()"></InputFile>
-                    <label for="logo" class="custom-file-label">Escolher arquivo...</label>
-                </div>
+                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
+                    <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
+                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(ImageHelper.PhotoType.Body)" AlternateText="No Picture" Style="max-height: 300px !important;" />
+                    </Figure>
+                </RenderControl>
             </CardBody>
+            <CardFooter>
+                @if (_profile?.Photo?.BodyId == null)
+                {
+                    <Button Color="Color.Primary" Clicked="@(()=>photo?.ShowModal())">Add</Button>
+                }
+                else
+                {
+                    <Button Color="Color.Secondary">Change</Button>
+                    <Button Color="Color.Danger">Remove</Button>
+                }
+            </CardFooter>
         </Card>
     </Column>
 </Row>
 
-<BasicModal @ref="helpMain" Title="Dicas para foto principal">
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
+    <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+</Button>
+
+<Div Float="Float.End" Margin="Margin.Is2.OnY">
+    <Button Color="Color.Primary" Clicked="help!.ShowModal">
+        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
+    </Button>
+</Div>
+
+<BasicModal @ref="help" Title="@WEB.Resources.GlobalTranslations.HelpTitle">
     <ul>
         <li>Show who you are: To complete your profile, please add one clear face photo and one full-body photo. This helps others get to know you better!</li>
         <li>No filters, just the real you: To keep things authentic, we only accept photos without filters. We want you to shine just as you are!</li>
@@ -62,106 +83,138 @@
         <li>Smile and be yourself: A genuine smile makes a friendly, welcoming impression – show off your best self!</li>
     </ul>
 </BasicModal>
+<BasicModal @ref="@photo" Title="Picture" Size="ModalSize.Large">
+    <Row Margin="Margin.Is2.FromBottom">
+        <Column>
+            <FilePicker Changed="OnFileChanged" Filter="image/*" MaxFileSize="MaxFileSize" AutoReset="true" DisableProgressReport="true" />
+        </Column>
+    </Row>
+    <Row>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.Is3">
+            <Cropper @ref="cropper" Source="@TempPicture" SelectionChanged="@OnSelectionChanged" Style="width: 256px; height: 256px;"
+                     SelectionOptions="@(new CropperSelectionOptions{ Zoomable = false, Resizable = false })" />
+        </Column>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.Is3">
+            <Button Color="Color.Primary" Clicked="@GetCroppedImage" Disabled="@cropButtonDisabled" Block="true" >Crop image</Button>
+            <Button Color="Color.Secondary" Clicked="@ResetSelection" Disabled="@cropButtonDisabled" Block="true">Reset Selection</Button>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.Is3">
+            <Image Source="@TempPictureResult" Border="Border.Is1" Style="width: 256px; height: 256px;" />
+        </Column>
+    </Row>
+</BasicModal>
 
 @code
 {
     private ProfileModel? _profile = new();
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
-    string? imageDataUri = ImageHelper.GetNoUserPhoto;
+    private BasicModal? help;
 
-    private BasicModal? helpMain;
+    private BasicModal? photo;
+    private Cropper? cropper;
+    private string? TempPicture = null;
+    private string? TempPictureResult = null;
+    private bool cropButtonDisabled = true;
 
-    string? selectedImage;
-    string[] imageDataUriGallery = Array.Empty<string>();
+    int MaxFileSize { get; set; } = 1024 * 1024 * 4; // 4 MB
 
     protected override async Task LoadDataRender()
     {
         _profile = await ProfileApi.Get(CoreProfile);
-
-        if (_profile != null && _profile.Photo != null)
-        {
-            imageDataUri = _profile.GetMainPhoto();
-            imageDataUriGallery = _profile.GetGalleryPhotos();
-            selectedImage = imageDataUriGallery?.FirstOrDefault();
-        }
     }
 
-    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    private async Task SaveHandle()
     {
+        if (_profile == null) throw new InvalidOperationException("profile is null");
+
         try
         {
-            var maxAllowedFiles = 1;
-            var format = "image/jpeg";
+            _profile = await ProfileApi.Update(CoreProfile, _profile);
 
-            // foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
-            // {
-            //     var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
-            //     var buffer = new byte[resizedImageFile.Size];
-            //     await resizedImageFile.OpenReadStream().ReadAsync(buffer);
-            //     imageDataUri = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
-
-            //     if (ImageHelper.ValidImage(buffer))
-            //     {
-            //         await Http.Storage_UploadPhotoFace(buffer, SessionStorage, Toast);
-
-            //         _profile = await Http.Profile_Get(SessionStorage);
-            //     }
-            //     else
-            //     {
-            //         imageDataUri = null;
-            //         await Toast.Error("Foto inválida, favor tentar novamente");
-            //     }
-            // }
+            Navigation.NavigateTo("profile");
         }
         catch (Exception ex)
         {
-            imageDataUri = null;
             ex.ProcessException(Toast, Logger);
         }
     }
 
-    private async Task OnInputFileGalleryChange(InputFileChangeEventArgs e)
+    private async Task<byte[]> GetBuffer(IFileEntry file)
     {
-        try
-        {
-            var maxAllowedFiles = 3;
-            var format = "image/jpeg";
-            var buffers = new List<byte[]>();
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream(file.Size).ReadAsync(buffer);
+        return buffer;
+    }
 
-            foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
+    private void ShowPicture(IFileEntry file, byte[] buffer)
+    {
+        TempPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
+    }
+
+    private async Task OnFileChanged(FileChangedEventArgs e)
+    {
+        foreach (var file in e.Files)
+        {
+            if (file.Status == FileEntryStatus.Error)
             {
-                var resizedImageFile = await imageFile.RequestImageFileAsync(format, 480, 480);
-                var buffer = new byte[resizedImageFile.Size];
-                await resizedImageFile.OpenReadStream().ReadAsync(buffer);
-                imageDataUriGallery = imageDataUriGallery.Concat(new string[] { $"data:{format};base64,{Convert.ToBase64String(buffer)}" }).ToArray();
-
-                if (ImageHelper.ValidImage(buffer))
-                {
-                    buffers.Add(buffer);
-                }
-                else
-                {
-                    imageDataUriGallery = Array.Empty<string>();
-                    await Toast.Error("Foto inválida, favor tentar novamente");
-                }
+                await Toast.Error(file.ErrorMessage);
             }
-
-            // if (imageDataUriGallery.Any())
-            // {
-            //     await Http.Storage_UploadPhotoGallery(buffers, SessionStorage, Toast);
-
-            //     _profile = await Http.Profile_Get(SessionStorage);
-
-            //     selectedImage = imageDataUriGallery?.LastOrDefault();
-            //     StateHasChanged();
-            // }
+            else if (file.Status == FileEntryStatus.ExceedsMaximumSize)
+            {
+                await Toast.Warning("File size is too large");
+            }
+            else if (file.Status == FileEntryStatus.Ready)
+            {
+                var buffer = await GetBuffer(file);
+                ShowPicture(file, buffer);
+            }
         }
-        catch (Exception ex)
+    }
+
+    // private async Task OnFileUpload(FileUploadEventArgs e)
+    // {
+    //     try
+    //     {
+    //         var buffer = await GetBuffer(e.File);
+
+    //         ShowPicture(e.File, buffer);
+
+    //         // var request = new PhotoRequest() { Buffer = buffer, PhotoType = ImageHelper.PhotoType.Face };
+
+    //         // await StorageApi.UploadPhotoFace(request);
+
+    //         // _profile = await ProfileApi.Get(null);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         // imageDataUri = null;
+    //         ex.ProcessException(Toast, Logger);
+    //     }
+    // }
+
+    private Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)
+    {
+        if (eventArgs.Width != 0)
         {
-            imageDataUriGallery = Array.Empty<string>();
-            ex.ProcessException(Toast, Logger);
+            cropButtonDisabled = false;
+
+            return InvokeAsync(StateHasChanged);
         }
+
+        return Task.CompletedTask;
+    }
+
+    private async Task GetCroppedImage()
+    {
+        TempPictureResult = await cropper.CropAsBase64ImageAsync(new() { Width = 512, Height = 512 });
+    }
+
+    private async Task ResetSelection()
+    {
+        cropButtonDisabled = true;
+
+        await cropper.ResetSelection();
     }
 
     private async Task DeletePhotoGallery()
@@ -180,13 +233,8 @@
         }
         catch (Exception ex)
         {
-            imageDataUriGallery = Array.Empty<string>();
+            // imageDataUriGallery = Array.Empty<string>();
             ex.ProcessException(Toast, Logger);
         }
-    }
-
-    public static Dictionary<string, object> GetAttributes()
-    {
-        return new Dictionary<string, object>() { { "class", "custom-file-input" }, { "accept", "image/*" } };
     }
 }

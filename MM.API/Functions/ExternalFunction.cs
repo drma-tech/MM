@@ -22,7 +22,7 @@ namespace MM.API.Functions
             catch (Exception ex)
             {
                 req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
+                throw;
             }
         }
 
@@ -39,7 +39,7 @@ namespace MM.API.Functions
             catch (Exception ex)
             {
                 req.ProcessException(ex);
-                throw new UnhandledException(ex.BuildException());
+                throw;
             }
         }
     }

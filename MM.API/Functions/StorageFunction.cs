@@ -1,56 +1,72 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
+using MM.Shared.Requests;
 
 namespace MM.API.Functions
 {
-    //public class StorageFunction(CosmosProfileRepository repo, StorageHelper storageHelper, FaceHelper faceHelper)
-    public class StorageFunction(CosmosProfileRepository repo)
+    public class StorageFunction(CosmosProfileRepository repo, StorageHelper storageHelper, ComputerVisionHelper computerVisionHelper)
     {
         private readonly CosmosProfileRepository _repo = repo;
 
-        //[Function("StorageUploadPhotoFace")]
-        //public async Task<bool> StorageUploadPhotoFace(
-        //    [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "storage/upload-photo-face")] HttpRequestData req, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        var userId = req.GetUserId();
+        [Function("StorageUploadPhotoFace")]
+        public async Task<ProfileModel> StorageUploadPhotoFace(
+            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "storage/upload-photo-face")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId() ?? throw new NotificationException("Invalid user");
+                var request = await req.GetPublicBody<PhotoRequest>(cancellationToken);
 
-        //        var profile = await _repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Perfil não encontrado");
-        //        var IdOldPhoto = profile.Photo?.Main;
+                var profile = await _repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
+                var currentPictureId = profile.Photo?.GetPictureId(request.PhotoType);
 
-        //        var bytes = await req.GetPublicBody<byte[]>(cancellationToken);
+                using var stream1 = new MemoryStream(request.Buffer);
 
-        //        using var stream1 = new MemoryStream(bytes);
+                profile.Photo ??= new ProfilePhotoModel();
 
-        //        profile.Photo ??= new ProfilePhotoModel();
+                var photoId = Guid.NewGuid().ToString() + ".jpg";
 
-        //        var photoName = Guid.NewGuid().ToString() + ".jpg";
-        //        profile.Photo.UpdateMainPhoto(photoName); //reset current photo data
+                profile.Photo.UpdatePictureId(request.PhotoType, photoId); //reset current photo data
 
-        //        await faceHelper.DetectFace(profile, stream1, true, cancellationToken); //validates the photo sent and saves data related to it
+                //await faceHelper.DetectFace(profile, stream1, true, cancellationToken); //validates the photo sent and saves data related to it
+                var analysis = await computerVisionHelper.AnalyzeImage(stream1, cancellationToken);
 
-        //        if (!string.IsNullOrEmpty(profile.Photo.Main)) //foto já existente
-        //        {
-        //            //if you keep the photo with the same id, the browser cache will not update the photo
-        //            await storageHelper.DeletePhoto(ImageHelper.PhotoType.PhotoFace, IdOldPhoto, cancellationToken);
-        //        }
+                if (analysis.Adult.RacyScore > 0.8 || analysis.Adult.GoreScore > 0.8 || analysis.Adult.AdultScore > 0.8)
+                {
+                    throw new NotificationException("Image content is inappropriate. Please use another one.");
+                }
 
-        //        using var stream2 = new MemoryStream(bytes);
+                if (analysis.Faces.Count == 0)
+                {
+                    throw new NotificationException("We cannot clearly identify a face in this photo. Please use another one.");
+                }
 
-        //        await storageHelper.UploadPhoto(ImageHelper.PhotoType.PhotoFace, stream2, photoName, cancellationToken);
+                if (request.PhotoType == ImageHelper.PhotoType.Face && analysis.Faces.Count > 1)
+                {
+                    throw new NotificationException("Your main photo should only feature you.");
+                }
 
-        //        profile.UpdatePhoto(profile.Photo);
+                if (currentPictureId != null) //delete old picture from azure storage
+                {
+                    //if you keep the photo with the same id, the browser cache will not update the photo
+                    await storageHelper.DeletePhoto(request.PhotoType, currentPictureId, cancellationToken);
+                }
 
-        //        return await _repo.Update(profile, cancellationToken);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        req.ProcessException(ex);
-        //        throw new UnhandledException(ex.BuildException());
-        //    }
-        //}
+                using var stream2 = new MemoryStream(request.Buffer);
+
+                await storageHelper.UploadPhoto(request.PhotoType, stream2, photoId, userId, cancellationToken);
+
+                profile.UpdatePhoto(profile.Photo);
+
+                return await _repo.Upsert(profile, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
 
         //[Function("StorageUploadPhotoGallery")]
         //public async Task<IActionResult> UploadPhotoGallery(

@@ -16,8 +16,8 @@
 	  <Compile Remove="Enums\EventType.cs" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="FluentValidation" Version="11.10.0" />
-	  <PackageReference Include="StrongGrid" Version="0.109.0" />
+	  <PackageReference Include="FluentValidation" Version="11.11.0" />
+	  <PackageReference Include="StrongGrid" Version="0.110.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Enums\Resources\AnnualIncome.Designer.cs">

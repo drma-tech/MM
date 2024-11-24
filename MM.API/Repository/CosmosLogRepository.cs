@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using MM.API.Repository.Core;
+using System.Text.Json.Serialization;
 
 namespace MM.API.Repository
 {
@@ -17,6 +18,9 @@ namespace MM.API.Repository
         public string? Message { get; set; }
         public string? StackTrace { get; set; }
         public DateTimeOffset DateTimeError { get; set; } = DateTimeOffset.Now;
+
+        [JsonInclude]
+        public int Ttl { get; init; }
     }
 
     public class CosmosLogRepository
@@ -26,9 +30,8 @@ namespace MM.API.Repository
         public CosmosLogRepository(IConfiguration config)
         {
             var databaseId = config.GetValue<string>("RepositoryOptions_DatabaseId");
-            var containerId = config.GetValue<string>("RepositoryOptions_ContainerLogId");
 
-            Container = ApiStartup.CosmosClient.GetContainer(databaseId, containerId);
+            Container = ApiStartup.CosmosClient.GetContainer(databaseId, "logs");
         }
 
         public async Task Add(LogModel log)

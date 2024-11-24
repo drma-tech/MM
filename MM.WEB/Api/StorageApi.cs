@@ -1,4 +1,8 @@
-﻿namespace MM.WEB.Api
+﻿using Microsoft.Extensions.Caching.Memory;
+using MM.Shared.Models.Profile;
+using MM.Shared.Requests;
+
+namespace MM.WEB.Api
 {
     public struct StorageEndpoint
     {
@@ -9,11 +13,11 @@
         public static string DeletePhotoGallery(string IdPhoto) => $"storage/DeletePhotoGallery?IdPhoto={IdPhoto}";
     }
 
-    public class StorageApi(IHttpClientFactory factory) : ApiCore(factory)
+    public class StorageApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ProfilePhotoModel>(factory, memoryCache, "ProfilePhotoModel")
     {
-        public async Task<bool> Storage_UploadPhotoFace(byte[] bytes)
+        public async Task<ProfilePhotoModel?> UploadPhotoFace(PhotoRequest request)
         {
-            return await PutAsync<byte[], bool>(StorageEndpoint.UploadPhotoFace, bytes);
+            return await PutAsync(StorageEndpoint.UploadPhotoFace, null, request);
         }
 
         //public static async Task Storage_UploadPhotoGallery(this HttpClient http, List<byte[]> Streams, ISyncSessionStorageService storage, INotificationService toast)

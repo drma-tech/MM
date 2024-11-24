@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MM.WEB;
+using MM.WEB.Api;
 using MM.WEB.Modules.Administrator.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
@@ -63,6 +64,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddScoped<TicketApi>();
     collection.AddScoped<UpdateApi>();
     collection.AddScoped<MapApi>();
+    collection.AddScoped<StorageApi>();
 
     collection.AddScoped<PaddleConfigurationApi>();
     collection.AddScoped<PaddleSubscriptionApi>();

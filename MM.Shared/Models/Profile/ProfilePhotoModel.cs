@@ -1,39 +1,38 @@
-﻿namespace MM.Shared.Models.Profile
+﻿using static MM.Shared.Core.Helper.ImageHelper;
+
+namespace MM.Shared.Models.Profile
 {
     public class ProfilePhotoModel
     {
-        public string? Main { get; set; }
-        public string[] Gallery { get; set; } = [];
+        public string? FaceId { get; set; }
+        public string? BodyId { get; set; }
+        public string? ValidationId { get; set; }
 
-        public string? Validation { get; set; }
-        public Guid? FaceId { get; set; }
-        public DateTime DtMainUpload { get; set; }
-
-        public double Confidence { get; set; }
-        public double? Age { get; set; }
-        public BiologicalSex? Gender { get; set; }
-
-        public void UpdateMainPhoto(string Main)
+        public string? GetPictureId(PhotoType type)
         {
-            this.Main = Main;
-
-            Validation = null;
-            FaceId = null;
-            DtMainUpload = DateTime.UtcNow;
-
-            Confidence = 0;
-            Age = null;
-            Gender = null;
+            return type switch
+            {
+                PhotoType.Face => FaceId,
+                PhotoType.Body => BodyId,
+                PhotoType.Validation => ValidationId,
+                _ => throw new InvalidOperationException(nameof(PhotoType)),
+            };
         }
 
-        public void UpdatePhotoGallery(string[] Gallery)
+        public void UpdatePictureId(PhotoType type, string? pictureId)
         {
-            this.Gallery = Gallery;
-        }
-
-        public void RemovePhotoGallery(string IdPhoto)
-        {
-            Gallery = Gallery.Where(w => w != IdPhoto).ToArray();
+            if (type == PhotoType.Face)
+            {
+                FaceId = pictureId;
+            }
+            else if (type == PhotoType.Body)
+            {
+                BodyId = pictureId;
+            }
+            else if (type == PhotoType.Validation)
+            {
+                ValidationId = pictureId;
+            }
         }
     }
 }

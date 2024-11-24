@@ -1,101 +1,261 @@
-﻿using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+﻿using Azure;
+using Azure.AI.Vision.Face;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using VerusDate.Shared.Helper;
-using VerusDate.Shared.Model;
+using MM.Shared.Models.Profile;
 
 namespace MM.API.Core
 {
-    public class FaceHelper
+    /// <summary>
+    /// https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/identity-client-library?tabs=windows%2Cvisual-studio&pivots=programming-language-csharp
+    /// </summary>
+    /// <param name="configuration"></param>
+    public class FaceHelper(IConfiguration configuration)
     {
-        public IConfiguration Configuration { get; }
-
-        public FaceHelper(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public IConfiguration Configuration { get; } = configuration;
+        private const string ImageBaseUrl = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/Face/images/";
+        private static readonly string LargePersonGroupId = Guid.NewGuid().ToString();
 
         public async Task DetectFace(ProfileModel profile, Stream StreamPhotoCamera, bool captureAttributes, CancellationToken cancellationToken)
         {
-            IFaceClient client = CreateClient(Configuration.GetValue<string>("CognitivePath"), Configuration.GetValue<string>("CognitiveKey"));
+            // Recognition model 4 was released in 2021 February.
+            // It is recommended since its accuracy is improved
+            // on faces wearing masks compared with model 3,
+            // and its overall accuracy is improved compared
+            // with models 1 and 2.
+            FaceRecognitionModel RecognitionModel4 = FaceRecognitionModel.Recognition04;
 
-            await DetectFaceFromStream(client, StreamPhotoCamera, profile, captureAttributes, cancellationToken);
+            // Authenticate.
+            FaceClient client = Authenticate(Configuration.GetValue<string>("CognitiveEndpoint"), Configuration.GetValue<string>("CognitiveKey"));
+
+            // Identify - recognize a face(s) in a large person group (a large person group is created in this example).
+            await IdentifyInLargePersonGroup(client, ImageBaseUrl, RecognitionModel4);
+
+            Console.WriteLine("End of quickstart.");
+
+            //IFaceClient client = CreateClient(Configuration.GetValue<string>("CognitiveEndpoint"), Configuration.GetValue<string>("CognitiveKey"));
+
+            //await DetectFaceFromStream(client, StreamPhotoCamera, profile, captureAttributes, cancellationToken);
         }
 
-        public async Task<bool> IsPhotoIdentical(ProfileModel profile, Stream StreamPhotoCamera, CancellationToken cancellationToken)
+        //public async Task<bool> IsPhotoIdentical(ProfileModel profile, Stream StreamPhotoCamera, CancellationToken cancellationToken)
+        //{
+        //    IFaceClient client = CreateClient(Configuration.GetValue<string>("CognitiveEndpoint"), Configuration.GetValue<string>("CognitiveKey"));
+
+        //    var verify = await VerifyFaces(client, profile, StreamPhotoCamera, false, cancellationToken);
+
+        //    profile.Photo.Confidence = verify.Confidence;
+
+        //    return verify.IsIdentical;
+        //}
+
+        public static FaceClient Authenticate(string endpoint, string key)
         {
-            IFaceClient client = CreateClient(Configuration.GetValue<string>("CognitivePath"), Configuration.GetValue<string>("CognitiveKey"));
-
-            var verify = await VerifyFaces(client, profile, StreamPhotoCamera, false, cancellationToken);
-
-            profile.Photo.Confidence = verify.Confidence;
-
-            return verify.IsIdentical;
+            return new FaceClient(new Uri(endpoint), new AzureKeyCredential(key));
         }
 
-        private static IFaceClient CreateClient(string endpoint, string key)
+        // Detect faces from image url for recognition purposes. This is a helper method for other functions in this quickstart.
+        // Parameter `returnFaceId` of `DetectAsync` must be set to `true` (by default) for recognition purposes.
+        // Parameter `returnFaceAttributes` is set to include the QualityForRecognition attribute.
+        // Recognition model must be set to recognition_03 or recognition_04 as a result.
+        // Result faces with insufficient quality for recognition are filtered out.
+        // The field `faceId` in returned `DetectedFace`s will be used in Verify and Identify.
+        // It will expire 24 hours after the detection call.
+        private static async Task<List<FaceDetectionResult>> DetectFaceRecognize(FaceClient faceClient, string url, FaceRecognitionModel recognitionModel)
         {
-            return new FaceClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
-        }
-
-        private static async Task<DetectedFace> DetectFaceFromStream(IFaceClient client, Stream stream, ProfileModel profile, bool captureAttributes, CancellationToken cancellationToken)
-        {
-            var faces = await client.Face.DetectWithStreamAsync(stream,
-                          returnFaceAttributes: GetAttributeTypes(captureAttributes),
-                          recognitionModel: RecognitionModel.Recognition03,
-                          cancellationToken: cancellationToken);
-
-            if (faces.Count == 0)
+            // Detect faces from image URL.
+            var response = await faceClient.DetectAsync(new Uri(url), FaceDetectionModel.Detection03, recognitionModel, true, [FaceAttributeType.QualityForRecognition]);
+            IReadOnlyList<FaceDetectionResult> detectedFaces = response.Value;
+            List<FaceDetectionResult> sufficientQualityFaces = new List<FaceDetectionResult>();
+            foreach (FaceDetectionResult detectedFace in detectedFaces)
             {
-                throw new NotificationException("Não foi possível detectar um rosto na foto");
-            }
-            else if (faces.Count == 1)
-            {
-                var face = faces.First();
-
-                if (captureAttributes)
+                QualityForRecognition? faceQualityForRecognition = detectedFace.FaceAttributes.QualityForRecognition;
+                if (faceQualityForRecognition.HasValue && (faceQualityForRecognition.Value != QualityForRecognition.Low))
                 {
-                    profile.Photo.Age = face.FaceAttributes.Age;
-                    profile.Photo.Gender = face.FaceAttributes.Gender switch
-                    {
-                        Gender.Male => Shared.Enum.BiologicalSex.Male,
-                        Gender.Female => Shared.Enum.BiologicalSex.Female,
-                        _ => Shared.Enum.BiologicalSex.Other,
+                    sufficientQualityFaces.Add(detectedFace);
+                }
+            }
+            Console.WriteLine($"{detectedFaces.Count} face(s) with {sufficientQualityFaces.Count} having sufficient quality for recognition detected from image `{Path.GetFileName(url)}`");
+
+            return sufficientQualityFaces;
+        }
+
+        /*
+         * IDENTIFY FACES
+         * To identify faces, you need to create and define a large person group.
+         * The Identify operation takes one or several face IDs from DetectedFace or PersistedFace and a LargePersonGroup and returns
+         * a list of Person objects that each face might belong to. Returned Person objects are wrapped as Candidate objects,
+         * which have a prediction confidence value.
+         */
+
+        public async Task IdentifyInLargePersonGroup(FaceClient client, string url, FaceRecognitionModel recognitionModel)
+        {
+            Console.WriteLine("========IDENTIFY FACES========");
+            Console.WriteLine();
+
+            // Create a dictionary for all your images, grouping similar ones under the same key.
+            Dictionary<string, string[]> personDictionary =
+                new Dictionary<string, string[]>
+                    { { "Family1-Dad", new[] { "Family1-Dad1.jpg", "Family1-Dad2.jpg" } },
+                      { "Family1-Mom", new[] { "Family1-Mom1.jpg", "Family1-Mom2.jpg" } },
+                      { "Family1-Son", new[] { "Family1-Son1.jpg", "Family1-Son2.jpg" } }
                     };
-                    profile.Photo.FaceId = face.FaceId;
-                    profile.Photo.DtMainUpload = DateTime.UtcNow;
+            // A group photo that includes some of the persons you seek to identify from your dictionary.
+            string sourceImageFileName = "identification1.jpg";
+
+            // Create a large person group.
+            Console.WriteLine($"Create a person group ({LargePersonGroupId}).");
+            LargePersonGroupClient largePersonGroupClient = new FaceAdministrationClient(new Uri(Configuration.GetValue<string>("CognitiveEndpoint")), new AzureKeyCredential(Configuration.GetValue<string>("CognitiveKey"))).GetLargePersonGroupClient(LargePersonGroupId);
+            await largePersonGroupClient.CreateAsync(LargePersonGroupId, recognitionModel: recognitionModel);
+            // The similar faces will be grouped into a single large person group person.
+            foreach (string groupedFace in personDictionary.Keys)
+            {
+                // Limit TPS
+                await Task.Delay(250);
+                var createPersonResponse = await largePersonGroupClient.CreatePersonAsync(groupedFace);
+                Guid personId = createPersonResponse.Value.PersonId;
+                Console.WriteLine($"Create a person group person '{groupedFace}'.");
+
+                // Add face to the large person group person.
+                foreach (string similarImage in personDictionary[groupedFace])
+                {
+                    Console.WriteLine($"Check whether image is of sufficient quality for recognition");
+                    var detectResponse = await client.DetectAsync(new Uri($"{url}{similarImage}"), FaceDetectionModel.Detection03, recognitionModel, false, [FaceAttributeType.QualityForRecognition]);
+                    IReadOnlyList<FaceDetectionResult> facesInImage = detectResponse.Value;
+                    bool sufficientQuality = true;
+                    foreach (FaceDetectionResult face in facesInImage)
+                    {
+                        QualityForRecognition? faceQualityForRecognition = face.FaceAttributes.QualityForRecognition;
+                        //  Only "high" quality images are recommended for person enrollment
+                        if (faceQualityForRecognition.HasValue && (faceQualityForRecognition.Value != QualityForRecognition.High))
+                        {
+                            sufficientQuality = false;
+                            break;
+                        }
+                    }
+
+                    if (!sufficientQuality)
+                    {
+                        continue;
+                    }
+
+                    if (facesInImage.Count != 1)
+                    {
+                        continue;
+                    }
+
+                    // add face to the large person group
+                    Console.WriteLine($"Add face to the person group person({groupedFace}) from image `{similarImage}`");
+                    await largePersonGroupClient.AddFaceAsync(personId, new Uri($"{url}{similarImage}"), detectionModel: FaceDetectionModel.Detection03);
+                }
+            }
+
+            // Start to train the large person group.
+            Console.WriteLine();
+            Console.WriteLine($"Train person group {LargePersonGroupId}.");
+            Operation operation = await largePersonGroupClient.TrainAsync(WaitUntil.Completed);
+
+            // Wait until the training is completed.
+            await operation.WaitForCompletionResponseAsync();
+            Console.WriteLine("Training status: succeeded.");
+            Console.WriteLine();
+
+            Console.WriteLine("Pausing for 60 seconds to avoid triggering rate limit on free account...");
+            await Task.Delay(60000);
+
+            List<Guid> sourceFaceIds = new List<Guid>();
+            // Detect faces from source image url.
+            List<FaceDetectionResult> detectedFaces = await DetectFaceRecognize(client, $"{url}{sourceImageFileName}", recognitionModel);
+
+            // Add detected faceId to sourceFaceIds.
+            foreach (FaceDetectionResult detectedFace in detectedFaces) { sourceFaceIds.Add(detectedFace.FaceId.Value); }
+
+            // Identify the faces in a large person group.
+            var identifyResponse = await client.IdentifyFromLargePersonGroupAsync(sourceFaceIds, LargePersonGroupId);
+            IReadOnlyList<FaceIdentificationResult> identifyResults = identifyResponse.Value;
+            foreach (FaceIdentificationResult identifyResult in identifyResults)
+            {
+                if (identifyResult.Candidates.Count == 0)
+                {
+                    Console.WriteLine($"No person is identified for the face in: {sourceImageFileName} - {identifyResult.FaceId},");
+                    continue;
                 }
 
-                return face;
+                FaceIdentificationCandidate candidate = identifyResult.Candidates.First();
+                var getPersonResponse = await largePersonGroupClient.GetPersonAsync(candidate.PersonId);
+                string personName = getPersonResponse.Value.Name;
+                Console.WriteLine($"Person '{personName}' is identified for the face in: {sourceImageFileName} - {identifyResult.FaceId}," + $" confidence: {candidate.Confidence}.");
+
+                var verifyResponse = await client.VerifyFromLargePersonGroupAsync(identifyResult.FaceId, LargePersonGroupId, candidate.PersonId);
+                FaceVerificationResult verifyResult = verifyResponse.Value;
+                Console.WriteLine($"Verification result: is a match? {verifyResult.IsIdentical}. confidence: {verifyResult.Confidence}");
             }
-            else
-            {
-                throw new NotificationException("Foi detectado mais de um rosto na foto");
-            }
+            Console.WriteLine();
+
+            // Delete large person group.
+            Console.WriteLine("========DELETE PERSON GROUP========");
+            Console.WriteLine();
+            await largePersonGroupClient.DeleteAsync();
+            Console.WriteLine($"Deleted the person group {LargePersonGroupId}.");
+            Console.WriteLine();
         }
 
-        private static List<FaceAttributeType> GetAttributeTypes(bool captureAttributes)
-        {
-            if (captureAttributes)
-                return new List<FaceAttributeType> {
-                    FaceAttributeType.Age,
-                    FaceAttributeType.Gender
-                };
-            else
-                return new List<FaceAttributeType>();
-        }
+        //private static IFaceClient CreateClient(string endpoint, string key)
+        //{
+        //    return new FaceClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
+        //}
 
-        private static async Task<VerifyResult> VerifyFaces(IFaceClient client, ProfileModel profile, Stream StreamPhotoCamera, bool captureAttributes, CancellationToken cancellationToken)
-        {
-            var photoCamera = await DetectFaceFromStream(client, StreamPhotoCamera, profile, captureAttributes, cancellationToken);
+        //private static async Task<DetectedFace> DetectFaceFromStream(IFaceClient client, Stream stream, ProfileModel profile, bool captureAttributes, CancellationToken cancellationToken)
+        //{
+        //    var faces = await client.Face.DetectWithStreamAsync(stream,
+        //                  returnFaceAttributes: GetAttributeTypes(captureAttributes),
+        //                  recognitionModel: RecognitionModel.Recognition03,
+        //                  cancellationToken: cancellationToken);
 
-            return await client.Face.VerifyFaceToFaceAsync(profile.Photo.FaceId.Value, photoCamera.FaceId.Value, cancellationToken);
-        }
+        //    if (faces.Count == 0)
+        //    {
+        //        throw new NotificationException("Não foi possível detectar um rosto na foto");
+        //    }
+        //    else if (faces.Count == 1)
+        //    {
+        //        var face = faces.First();
+
+        //        if (captureAttributes)
+        //        {
+        //            profile.Photo.Age = face.FaceAttributes.Age;
+        //            profile.Photo.Gender = face.FaceAttributes.Gender switch
+        //            {
+        //                Gender.Male => Shared.Enum.BiologicalSex.Male,
+        //                Gender.Female => Shared.Enum.BiologicalSex.Female,
+        //                _ => Shared.Enum.BiologicalSex.Other,
+        //            };
+        //            profile.Photo.FaceId = face.FaceId;
+        //            profile.Photo.DtMainUpload = DateTime.UtcNow;
+        //        }
+
+        //        return face;
+        //    }
+        //    else
+        //    {
+        //        throw new NotificationException("Foi detectado mais de um rosto na foto");
+        //    }
+        //}
+
+        //private static List<FaceAttributeType> GetAttributeTypes(bool captureAttributes)
+        //{
+        //    if (captureAttributes)
+        //        return [
+        //            FaceAttributeType.Age,
+        //            FaceAttributeType.Gender
+        //        ];
+        //    else
+        //        return [];
+        //}
+
+        //private static async Task<VerifyResult> VerifyFaces(IFaceClient client, ProfileModel profile, Stream StreamPhotoCamera, bool captureAttributes, CancellationToken cancellationToken)
+        //{
+        //    var photoCamera = await DetectFaceFromStream(client, StreamPhotoCamera, profile, captureAttributes, cancellationToken);
+
+        //    return await client.Face.VerifyFaceToFaceAsync(profile.Photo.FaceId.Value, photoCamera.FaceId.Value, cancellationToken);
+        //}
     }
 }

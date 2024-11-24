@@ -244,7 +244,7 @@ namespace MM.Shared.Models.Profile
         public int Age { get; set; }
 
         public ProfilePhotoModel? Photo { get; set; }
-        private readonly string BlobPath = "https://storageverusdate.blob.core.windows.net";
+        private readonly string BlobPath = "https://drmammstorage.blob.core.windows.net";
 
         public void UpdateData(ProfileModel profile)
         {
@@ -303,20 +303,20 @@ namespace MM.Shared.Models.Profile
             DtUpdate = DateTime.UtcNow;
         }
 
-        public string GetMainPhoto()
+        public void UpdatePhoto(ProfilePhotoModel obj)
         {
-            if (Photo == null || string.IsNullOrEmpty(Photo.Main))
-                return GetNoUserPhoto;
-            else
-                return $"{BlobPath}/{GetPhotoContainer(PhotoType.PhotoFace)}/{Photo.Main}";
+            Photo = obj;
+
+            DtUpdate = DateTime.UtcNow;
         }
 
-        public string[] GetGalleryPhotos()
+        public string GetPhoto(PhotoType type)
         {
-            if (Photo == null || Photo.Gallery.Length == 0)
-                return [];
-            else
-                return Photo.Gallery.Select(s => $"{BlobPath}/{GetPhotoContainer(PhotoType.PhotoGallery)}/{s}").ToArray();
+            if (Photo == null) return GetNoUserPhoto;
+            var id = Photo.GetPictureId(type);
+            if (id == null) return GetNoUserPhoto;
+
+            return $"{BlobPath}/{GetPhotoContainer(type)}/{id}";
         }
 
         public enum LocationType

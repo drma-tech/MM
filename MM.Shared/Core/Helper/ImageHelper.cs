@@ -4,9 +4,9 @@
     {
         public enum PhotoType
         {
-            PhotoFace,
-            PhotoGallery,
-            PhotoValidation
+            Face = 1,
+            Body = 2,
+            Validation = 9
         }
 
         public static string GetNoUserPhoto => "images/noimage.png";
@@ -15,16 +15,11 @@
         {
             return type switch
             {
-                PhotoType.PhotoFace => "photo-face",
-                PhotoType.PhotoGallery => "photo-gallery",
-                PhotoType.PhotoValidation => "photo-validation",
+                PhotoType.Face => "photo-face",
+                PhotoType.Body => "photo-body",
+                PhotoType.Validation => "photo-validation",
                 _ => throw new InvalidOperationException(nameof(PhotoType)),
             };
-        }
-
-        public static bool ValidImage(byte[] buffer)
-        {
-            return true;
         }
     }
 }

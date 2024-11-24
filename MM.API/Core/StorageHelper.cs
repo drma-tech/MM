@@ -1,40 +1,31 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Extensions.Configuration;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using static VerusDate.Shared.Helper.ImageHelper;
+using MM.Shared.Models.Profile;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Core
 {
-    public class StorageHelper
+    public class StorageHelper(IConfiguration configuration)
     {
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } = configuration;
 
-        public StorageHelper(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public async Task UploadPhoto(PhotoType type, Stream stream, string fileName, CancellationToken cancellationToken)
+        public async Task UploadPhoto(PhotoType type, Stream stream, string fileName, string userId, CancellationToken cancellationToken)
         {
             var container = new BlobContainerClient(Configuration.GetValue<string>("AzureStorage"), GetPhotoContainer(type));
             var client = container.GetBlobClient(fileName);
 
             var headers = new BlobHttpHeaders { ContentType = "image/jpeg" };
 
-            await client.UploadAsync(stream, headers, cancellationToken: cancellationToken);
+            await client.UploadAsync(stream, headers, new Dictionary<string, string>() { { "id", userId } }, cancellationToken: cancellationToken);
         }
 
-        public async Task DeletePhoto(PhotoType type, string fileName, CancellationToken cancellationToken)
+        public async Task DeletePhoto(PhotoType type, string pictureId, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrEmpty(fileName)) return;
-
             var container = new BlobContainerClient(Configuration.GetValue<string>("AzureStorage"), GetPhotoContainer(type));
-            var blob = container.GetBlobClient(fileName);
+            var blob = container.GetBlobClient(pictureId);
 
-            if (await blob.ExistsAsync())
+            if (await blob.ExistsAsync(cancellationToken))
             {
                 await blob.DeleteAsync(DeleteSnapshotsOption.IncludeSnapshots, cancellationToken: cancellationToken);
             }
