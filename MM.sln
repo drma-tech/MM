@@ -12,6 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E93B584-C40E-4D22-A214-54CD88CB754A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.github\workflows\azure-static-web-apps-jolly-coast-0ed44c910.yml = .github\workflows\azure-static-web-apps-jolly-coast-0ed44c910.yml
+		.github\workflows\azure-static-web-apps-red-rock-01eea0710.yml = .github\workflows\azure-static-web-apps-red-rock-01eea0710.yml
 	EndProjectSection
 EndProject
 Global
@@ -37,7 +41,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {85A99F38-1673-460C-8BF0-54C0A2E00F7D}
 		RESX_CultureCountyOverrides = pt=pt-BR
+		SolutionGuid = {85A99F38-1673-460C-8BF0-54C0A2E00F7D}
 	EndGlobalSection
 EndGlobal
