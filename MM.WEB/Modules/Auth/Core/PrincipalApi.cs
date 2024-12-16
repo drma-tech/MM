@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Auth;
+﻿using MM.Shared.Models.Auth;
 
 namespace MM.WEB.Modules.Auth.Core
 {
-    public class PrincipalApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ClientePrincipal>(factory, memoryCache, "ClientePrincipal")
+    public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincipal>(factory)
     {
         private struct Endpoint
         {
@@ -14,13 +13,8 @@ namespace MM.WEB.Modules.Auth.Core
             public const string Remove = "Principal/Remove";
         }
 
-        public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated, bool forceClean = false)
+        public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated)
         {
-            if (forceClean)
-            {
-                CleanCache();
-            }
-
             if (IsUserAuthenticated)
             {
                 return await GetAsync(Endpoint.Get, null);

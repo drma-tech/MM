@@ -13,7 +13,7 @@ namespace MM.API.Repository
 
         public CosmosEmailRepository(IConfiguration config)
         {
-            var databaseId = config.GetValue<string>("RepositoryOptions_DatabaseId");
+            var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
 
             Container = ApiStartup.CosmosClient.GetContainer(databaseId, "mail");
         }

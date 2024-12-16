@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Profile;
+﻿using MM.Shared.Models.Profile;
 using MM.Shared.Requests;
 
 namespace MM.WEB.Api
@@ -13,7 +12,7 @@ namespace MM.WEB.Api
         public static string DeletePhotoGallery(string IdPhoto) => $"storage/DeletePhotoGallery?IdPhoto={IdPhoto}";
     }
 
-    public class StorageApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ProfilePhotoModel>(factory, memoryCache, "ProfilePhotoModel")
+    public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfilePhotoModel>(factory)
     {
         public async Task<ProfilePhotoModel?> UploadPhotoFace(PhotoRequest request)
         {

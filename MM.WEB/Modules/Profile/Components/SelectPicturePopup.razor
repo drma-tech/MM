@@ -1,0 +1,117 @@
+﻿@using Blazorise.Cropper
+@inherits ComponentCore<SelectPicturePopup>
+
+<ModalHeader>
+    <ModalTitle Size="HeadingSize.Is5">
+        Picture
+    </ModalTitle>
+    <CloseButton />
+</ModalHeader>
+<ModalBody MaxHeight="70">
+    <Row Margin="Margin.Is2.FromBottom">
+        <Column>
+            <FilePicker Changed="OnFileChanged" Filter="image/*" MaxFileSize="MaxFileSize" AutoReset="true" DisableProgressReport="true" />
+        </Column>
+    </Row>
+    <Row>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;">
+            <Cropper @ref="cropper" Source="@OriginalPicture" SelectionChanged="@OnSelectionChanged" Style="width: 256px; height: 256px;" />
+        </Column>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;" Padding="Padding.Is2.OnMobile">
+            <Button Color="Color.Primary" Clicked="@GetCroppedImage" Disabled="@cropButtonDisabled" Block="true">Crop image</Button>
+            <Button Color="Color.Secondary" Clicked="@ResetSelection" Disabled="@cropButtonDisabled" Block="true">Reset Selection</Button>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="text-align: center;">
+            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 256px; height: 256px;" />
+        </Column>
+    </Row>
+</ModalBody>
+<ModalFooter>
+    <Button Color="Color.Primary" Clicked="SavePictureHandle">
+        OK
+    </Button>
+</ModalFooter>
+
+@code {
+    [Parameter] public string? OriginalPicture { get; set; }
+    [Parameter] public EventCallback<byte[]> CroppedPictureChanged { get; set; }
+
+    private Cropper? cropper;
+    private string? CroppedPicture = null;
+
+    int MaxFileSize { get; set; } = 1024 * 1024 * 4; // 4 MB
+    private bool cropButtonDisabled = true;
+
+    private async Task OnFileChanged(FileChangedEventArgs e)
+    {
+        try
+        {
+            foreach (var file in e.Files)
+            {
+                if (file.Status == FileEntryStatus.Error)
+                {
+                    await Toast.Error(file.ErrorMessage);
+                }
+                else if (file.Status == FileEntryStatus.ExceedsMaximumSize)
+                {
+                    await Toast.Warning("File size is too large");
+                }
+                else if (file.Status == FileEntryStatus.Ready)
+                {
+                    var buffer = await GetBuffer(file);
+                    ShowPicture(file, buffer);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task<byte[]> GetBuffer(IFileEntry file)
+    {
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream(file.Size).ReadAsync(buffer);
+        return buffer;
+    }
+
+    private void ShowPicture(IFileEntry file, byte[] buffer)
+    {
+        OriginalPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
+    }
+
+    private Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)
+    {
+        if (eventArgs.Width != 0)
+        {
+            cropButtonDisabled = false;
+
+            return InvokeAsync(StateHasChanged);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private async Task GetCroppedImage()
+    {
+        if (cropper == null) return;
+
+        CroppedPicture = await cropper.CropAsBase64ImageAsync(new() { Width = 512, Height = 512 });
+    }
+
+    private async Task ResetSelection()
+    {
+        cropButtonDisabled = true;
+
+        if (cropper != null) await cropper.ResetSelection();
+    }
+
+    private async Task SavePictureHandle()
+    {
+        var base64 = CroppedPicture?.Split(",")[1];
+        var buffer = Convert.FromBase64String(base64 ?? "");
+        await CroppedPictureChanged.InvokeAsync(buffer);
+        await ModalService.Hide();
+    }
+}

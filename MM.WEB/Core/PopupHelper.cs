@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Support;
+using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Modules.Support.Component;
 using MM.WEB.Shared;
@@ -244,6 +245,15 @@ namespace MM.WEB.Core
             {
                 x.Add(x => x.Client, client);
                 x.Add(x => x.IsAuthenticated, IsAuthenticated);
+            }, Options(ModalSize.Large));
+        }
+
+        public static async Task SelectPicturePopup(this IModalService service, string? picture, EventCallback<byte[]> pictureChanged)
+        {
+            await service.Show<SelectPicturePopup>(null, x =>
+            {
+                x.Add(x => x.OriginalPicture, picture);
+                x.Add(x => x.CroppedPictureChanged, pictureChanged);
             }, Options(ModalSize.Large));
         }
 

@@ -6,8 +6,8 @@ namespace MM.API.Functions
 {
     public class ExternalFunction(IConfiguration config)
     {
-        public string HereApiKey { get; set; } = config.GetValue<string>("Here_ApiKey");
-        public string GoogleApiKey { get; set; } = config.GetValue<string>("Google_ApiKey");
+        public string HereApiKey { get; set; } = config.GetValue<string>("Here:ApiKey");
+        public string GoogleApiKey { get; set; } = config.GetValue<string>("Google:ApiKey");
 
         [Function("GetLocationHere")]
         public async Task<HereJson?> GetLocationHere(

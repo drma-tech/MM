@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Subscription;
+﻿using MM.Shared.Models.Subscription;
 
 namespace MM.WEB.Modules.Subscription.Core
 {
-    public class PaddleConfigurationApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<Configurations>(factory, memoryCache, "PaddleConfigurationApi")
+    public class PaddleConfigurationApi(IHttpClientFactory factory) : ApiCosmos<Configurations>(factory)
     {
         private struct Endpoint
         {

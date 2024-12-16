@@ -14,12 +14,12 @@ namespace MM.API.Repository
         {
             _logger = logger;
 
-            var databaseId = config.GetValue<string>("RepositoryOptions_DatabaseId");
+            var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
 
             Container = ApiStartup.CosmosClient.GetContainer(databaseId, "cache");
         }
 
-        public async Task<CacheDocument<TData>?> Get<TData>(string id, CancellationToken cancellationToken) where TData : class
+        public async Task<CacheDocument<TData>?> Get<TData>(string id, CancellationToken cancellationToken) where TData : class, new()
         {
             try
             {
@@ -42,7 +42,7 @@ namespace MM.API.Repository
             }
         }
 
-        public async Task<CacheDocument<TData>?> UpsertItemAsync<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class
+        public async Task<CacheDocument<TData>?> UpsertItemAsync<TData>(CacheDocument<TData> cache, CancellationToken cancellationToken) where TData : class, new()
         {
             try
             {

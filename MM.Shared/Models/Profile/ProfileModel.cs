@@ -299,15 +299,11 @@ namespace MM.Shared.Models.Profile
             //OTHERS
             Neurodiversity = profile.Neurodiversity;
             Disabilities = profile.Disabilities;
-
-            DtUpdate = DateTime.UtcNow;
         }
 
         public void UpdatePhoto(ProfilePhotoModel obj)
         {
             Photo = obj;
-
-            DtUpdate = DateTime.UtcNow;
         }
 
         public string GetPhoto(PhotoType type)

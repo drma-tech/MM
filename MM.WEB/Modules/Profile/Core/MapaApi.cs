@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace MM.WEB.Modules.Profile.Core
 {
-    public class MapApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<HereJson>(http, memoryCache, "MapApi")
+    public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http)
     {
         public struct MapEndpoint
         {

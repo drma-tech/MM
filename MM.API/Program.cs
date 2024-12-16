@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MM.API.Core.Middleware;
 
-var host = new HostBuilder()
+var app = new HostBuilder()
      .ConfigureFunctionsWorkerDefaults(worker =>
      {
          worker.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -20,13 +20,13 @@ var host = new HostBuilder()
             config.AddUserSecrets<Program>();
         }
 
-        ApiStartup.Startup(config.Build().GetValue<string>("RepositoryOptions_CosmosConnectionString"));
+        ApiStartup.Startup(config.Build().GetValue<string>("CosmosDB:ConnectionString"));
     })
     .ConfigureServices(ConfigureServices)
     .ConfigureLogging(ConfigureLogging)
     .Build();
 
-await host.RunAsync();
+await app.RunAsync();
 
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {

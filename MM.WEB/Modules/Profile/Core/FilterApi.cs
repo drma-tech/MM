@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Profile;
+﻿using MM.Shared.Models.Profile;
 using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core
 {
-    public class FilterApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<FilterModel>(http, memoryCache, "profile-filter")
+    public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http)
     {
         public struct ProfileEndpoint
         {

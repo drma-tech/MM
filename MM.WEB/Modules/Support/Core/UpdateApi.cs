@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Support;
+﻿using MM.Shared.Models.Support;
 using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Support.Core
 {
-    public class UpdateApi(IHttpClientFactory http, IMemoryCache memoryCache) : ApiCosmos<UpdateModel>(http, memoryCache, null)
+    public class UpdateApi(IHttpClientFactory http) : ApiCosmos<UpdateModel>(http)
     {
         private struct Endpoint
         {
@@ -15,7 +14,7 @@ namespace MM.WEB.Modules.Support.Core
 
         public async Task<HashSet<UpdateModel>> Get(RenderControlCore<HashSet<UpdateModel>>? core)
         {
-            return await GetListAsync(Endpoint.Get, core, "UpdateModelList");
+            return await GetListAsync(Endpoint.Get, core);
         }
 
         public async Task<UpdateModel?> Add(UpdateModel model)

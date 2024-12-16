@@ -10,14 +10,16 @@ namespace MM.API.Functions
         private readonly CosmosRepository _repo = repoFilter;
 
         [Function("ProfileGetData")]
-        public async Task<ProfileModel?> ProfileGetData(
+        public async Task<HttpResponseData?> ProfileGetData(
            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
-                return await _repoProfile.Get<ProfileModel>(userId, cancellationToken);
+                var doc = await _repoProfile.Get<ProfileModel>(userId, cancellationToken);
+
+                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -27,14 +29,16 @@ namespace MM.API.Functions
         }
 
         [Function("ProfileGetFilter")]
-        public async Task<FilterModel?> ProfileGetFilter(
+        public async Task<HttpResponseData?> ProfileGetFilter(
             [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+                var doc = await _repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+
+                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -44,14 +48,16 @@ namespace MM.API.Functions
         }
 
         [Function("ProfileGetSetting")]
-        public async Task<SettingModel?> ProfileGetSetting(
+        public async Task<HttpResponseData?> ProfileGetSetting(
             [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
-                return await _repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+                var doc = await _repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+
+                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
             }
             catch (Exception ex)
             {

@@ -22,8 +22,8 @@ namespace MM.API.Core
         /// <returns></returns>
         public async Task<ImageAnalysis> AnalyzeImage(Stream stream, CancellationToken cancellationToken)
         {
-            var endpoint = Configuration.GetValue<string>("CognitiveEndpoint");
-            var key = Configuration.GetValue<string>("CognitiveKey");
+            var endpoint = Configuration.GetValue<string>("Azure:CognitiveEndpoint");
+            var key = Configuration.GetValue<string>("Azure:CognitiveKey");
 
             var client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
 

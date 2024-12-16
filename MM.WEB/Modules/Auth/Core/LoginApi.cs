@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using MM.Shared.Models.Auth;
+﻿using MM.Shared.Models.Auth;
 
 namespace MM.WEB.Modules.Auth.Core
 {
-    public class LoginApi(IHttpClientFactory factory, IMemoryCache memoryCache) : ApiCosmos<ClienteLogin>(factory, memoryCache, "ClienteLogin")
+    public class LoginApi(IHttpClientFactory factory) : ApiCosmos<ClienteLogin>(factory)
     {
         private struct Endpoint
         {
