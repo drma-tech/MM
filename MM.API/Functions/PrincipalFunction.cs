@@ -8,11 +8,12 @@ namespace MM.API.Functions
     {
         [Function("PrincipalGet")]
         public async Task<HttpResponseData?> PrincipalGet(
-           [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "Principal/Get")] HttpRequestData req, CancellationToken cancellationToken)
+           [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "principal/get")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
+                if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
                 var doc = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
 
@@ -27,7 +28,7 @@ namespace MM.API.Functions
 
         [Function("PrincipalGetEmail")]
         public async Task<string?> PrincipalGetEmail(
-          [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "Public/Principal/GetEmail")] HttpRequestData req, CancellationToken cancellationToken)
+          [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/principal/get-email")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -46,7 +47,7 @@ namespace MM.API.Functions
 
         [Function("PrincipalAdd")]
         public async Task<ClientePrincipal?> PrincipalAdd(
-            [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "Principal/Add")] HttpRequestData req, CancellationToken cancellationToken)
+            [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "principal/add")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -63,7 +64,7 @@ namespace MM.API.Functions
 
         [Function("PrincipalPaddle")]
         public async Task<ClientePrincipal> PrincipalPaddle(
-           [HttpTrigger(AuthorizationLevel.Anonymous, Method.PUT, Route = "Principal/Paddle")] HttpRequestData req, CancellationToken cancellationToken)
+           [HttpTrigger(AuthorizationLevel.Anonymous, Method.PUT, Route = "principal/paddle")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -85,7 +86,7 @@ namespace MM.API.Functions
 
         [Function("PrincipalRemove")]
         public async Task PrincipalRemove(
-           [HttpTrigger(AuthorizationLevel.Anonymous, Method.DELETE, Route = "Principal/Remove")] HttpRequestData req, CancellationToken cancellationToken)
+           [HttpTrigger(AuthorizationLevel.Anonymous, Method.DELETE, Route = "principal/remove")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {

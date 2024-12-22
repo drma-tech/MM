@@ -3,7 +3,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core
 {
-    public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http)
+    public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, "profile")
     {
         public struct ProfileEndpoint
         {

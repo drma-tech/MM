@@ -5,6 +5,7 @@
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core
+@using static MM.Shared.Core.Helper.ImageHelper
 @attribute [Authorize]
 @inherits PageCore<ProfileGallery>
 
@@ -27,12 +28,12 @@
             <CardFooter>
                 @if (_profile?.Photo?.FaceId == null)
                 {
-                    <Button Color="Color.Primary">Add</Button>
+                    <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Face,null))">Add</Button>
                 }
                 else
                 {
-                    <Button Color="Color.Secondary">Change</Button>
-                    <Button Color="Color.Danger">Remove</Button>
+                    <Button Color="Color.Secondary" Clicked="@(()=>SelectPicture(PhotoType.Face,null))">Change</Button>
+                    <Button Color="Color.Danger" Clicked="@(()=>DeletePhotoGallery(PhotoType.Face))">Remove</Button>
                 }
             </CardFooter>
         </Card>
@@ -52,19 +53,19 @@
             <CardFooter>
                 @if (_profile?.Photo?.BodyId == null)
                 {
-                    <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(null))">Add</Button>
+                    <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Body,null))">Add</Button>
                 }
                 else
                 {
-                    <Button Color="Color.Secondary" Clicked="@(()=>SelectPicture(null))">Change</Button>
-                    <Button Color="Color.Danger">Remove</Button>
+                    <Button Color="Color.Secondary" Clicked="@(()=>SelectPicture(PhotoType.Body,null))">Change</Button>
+                    <Button Color="Color.Danger" Clicked="@(()=>DeletePhotoGallery(PhotoType.Body))">Remove</Button>
                 }
             </CardFooter>
         </Card>
     </Column>
 </Row>
 
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle" Disabled="true">
     <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
 </Button>
 
@@ -97,21 +98,31 @@
         _profile = await ProfileApi.Get(CoreProfile);
     }
 
-    private async Task SelectPicture(string? picture)
+    private async Task SelectPicture(PhotoType photoType, string? picture)
     {
-        await PopupHelper.SelectPicturePopup(ModalService, picture,
-            new EventCallbackFactory().Create(this, async (byte[] value) => await CroppedPictureChanged(value)));
+        await PopupHelper.SelectPicturePopup(ModalService, picture, photoType,
+            new EventCallbackFactory().Create(this, async ((PhotoType, byte[]) result) => await CroppedPictureChanged(result.Item1, result.Item2)));
     }
 
-    private async Task CroppedPictureChanged(byte[] buffer)
+    private async Task DeletePhotoGallery(PhotoType type)
     {
         try
         {
-            var request = new PhotoRequest() { Buffer = buffer, PhotoType = ImageHelper.PhotoType.Body };
+            _profile = await StorageApi.DeletePhotoGallery(type);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
 
-            await StorageApi.UploadPhotoFace(request);
+    private async Task CroppedPictureChanged(PhotoType type, byte[] buffer)
+    {
+        try
+        {
+            var request = new PhotoRequest() { PhotoType = type, Buffer = buffer };
 
-            _profile = await ProfileApi.Get(null);
+            _profile = await StorageApi.UploadPhoto(request);
 
             StateHasChanged();
         }
@@ -133,27 +144,6 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
-        }
-    }
-
-    private async Task DeletePhotoGallery()
-    {
-        try
-        {
-            // var fileName = System.IO.Path.GetFileName(selectedImage);
-            // if (string.IsNullOrEmpty(fileName)) throw new InvalidOperationException("invalid fileName");
-
-            // await Http.Storage_DeletePhotoGallery(fileName, SessionStorage, Toast);
-
-            // imageDataUriGallery = imageDataUriGallery.Where(w => w != selectedImage).ToArray();
-
-            // selectedImage = imageDataUriGallery?.FirstOrDefault();
-            // StateHasChanged();
-        }
-        catch (Exception ex)
-        {
-            // imageDataUriGallery = Array.Empty<string>();
             ex.ProcessException(Toast, Logger);
         }
     }

@@ -19,8 +19,10 @@ namespace MM.API.Core
             await client.UploadAsync(stream, headers, new Dictionary<string, string>() { { "id", userId } }, cancellationToken: cancellationToken);
         }
 
-        public async Task DeletePhoto(PhotoType type, string pictureId, CancellationToken cancellationToken)
+        public async Task DeletePhoto(PhotoType type, string? pictureId, CancellationToken cancellationToken)
         {
+            if (pictureId.Empty()) throw new ArgumentNullException(nameof(pictureId));
+
             var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetPhotoContainer(type));
             var blob = container.GetBlobClient(pictureId);
 

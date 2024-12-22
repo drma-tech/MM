@@ -6,6 +6,7 @@ using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Modules.Support.Component;
 using MM.WEB.Shared;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Core
 {
@@ -248,11 +249,12 @@ namespace MM.WEB.Core
             }, Options(ModalSize.Large));
         }
 
-        public static async Task SelectPicturePopup(this IModalService service, string? picture, EventCallback<byte[]> pictureChanged)
+        public static async Task SelectPicturePopup(this IModalService service, string? picture, PhotoType photoType, EventCallback<(PhotoType, byte[])> pictureChanged)
         {
             await service.Show<SelectPicturePopup>(null, x =>
             {
                 x.Add(x => x.OriginalPicture, picture);
+                x.Add(x => x.PhotoType, photoType);
                 x.Add(x => x.CroppedPictureChanged, pictureChanged);
             }, Options(ModalSize.Large));
         }

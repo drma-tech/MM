@@ -52,7 +52,7 @@
             }
         </Button>
         <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo">
-            @if (false)
+            @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
             }
@@ -136,6 +136,8 @@
     public FilterModel? filter;
     public RenderControlCore<FilterModel?>? CoreFilter { get; set; } = new();
 
+    public PhotoValidation PhotoValidatior { get; set; } = new();
+
     public SettingModel? setting;
     public RenderControlCore<SettingModel?>? CoreSetting { get; set; } = new();
 
@@ -149,6 +151,11 @@
     public RenderControlCore<List<string>>? CoreMatches { get; set; } = new();
 
     public bool IsPublic { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ProfileApi.DataChanged += (ProfileModel? model) => { profile = model; StateHasChanged(); };
+    }
 
     protected override async Task LoadDataRender()
     {

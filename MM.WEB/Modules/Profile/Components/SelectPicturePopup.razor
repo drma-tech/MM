@@ -1,4 +1,5 @@
 ﻿@using Blazorise.Cropper
+@using static MM.Shared.Core.Helper.ImageHelper
 @inherits ComponentCore<SelectPicturePopup>
 
 <ModalHeader>
@@ -34,7 +35,8 @@
 
 @code {
     [Parameter] public string? OriginalPicture { get; set; }
-    [Parameter] public EventCallback<byte[]> CroppedPictureChanged { get; set; }
+    [Parameter] public PhotoType PhotoType { get; set; }
+    [Parameter] public EventCallback<(PhotoType, byte[])> CroppedPictureChanged { get; set; }
 
     private Cropper? cropper;
     private string? CroppedPicture = null;
@@ -111,7 +113,7 @@
     {
         var base64 = CroppedPicture?.Split(",")[1];
         var buffer = Convert.FromBase64String(base64 ?? "");
-        await CroppedPictureChanged.InvokeAsync(buffer);
+        await CroppedPictureChanged.InvokeAsync((PhotoType, buffer));
         await ModalService.Hide();
     }
 }

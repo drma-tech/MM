@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
 using MM.Shared.Requests;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions
 {
@@ -9,9 +10,9 @@ namespace MM.API.Functions
     {
         private readonly CosmosProfileRepository _repo = repo;
 
-        [Function("StorageUploadPhotoFace")]
-        public async Task<ProfileModel> StorageUploadPhotoFace(
-            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "storage/upload-photo-face")] HttpRequestData req, CancellationToken cancellationToken)
+        [Function("StorageUploadPhoto")]
+        public async Task<ProfileModel> StorageUploadPhoto(
+            [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "storage/upload-photo")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -68,49 +69,32 @@ namespace MM.API.Functions
             }
         }
 
-        //[Function("StorageUploadPhotoGallery")]
-        //public async Task<IActionResult> UploadPhotoGallery(
-        //    [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.PUT, Route = "Storage/UploadPhotoGallery")] HttpRequestData req,
-        //    ILogger log, CancellationToken cancellationToken)
-        //{
-        //    using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);
+        [Function("StorageDeletePhoto")]
+        public async Task<ProfileModel> StorageDeletePhoto(
+            [HttpTrigger(AuthorizationLevel.Function, Method.DELETE, Route = "storage/delete-photo/{photoType}")] HttpRequestData req, PhotoType photoType, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId() ?? throw new NotificationException("Invalid user");
 
-        //    try
-        //    {
-        //        var request = await req.BuildRequestCommand<UploadPhotoGalleryCommand>(source.Token);
+                var profile = await _repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
 
-        //        var result = await _mediator.Send(request, source.Token);
+                profile.Photo ??= new ProfilePhotoModel();
 
-        //        return new OkObjectResult(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        log.LogError(ex, req.Query.BuildMessage(), req.Query.ToList());
-        //        return new BadRequestObjectResult(ex.ProcessException());
-        //    }
-        //}
+                await storageHelper.DeletePhoto(photoType, profile.Photo.GetPictureId(photoType), cancellationToken);
 
-        //[Function("StorageDeletePhotoGallery")]
-        //public async Task<IActionResult> DeletePhotoGallery(
-        //    [HttpTrigger(AuthorizationLevel.Function, FunctionMethod.DELETE, Route = "Storage/DeletePhotoGallery")] HttpRequestData req,
-        //    ILogger log, CancellationToken cancellationToken)
-        //{
-        //    using var source = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, req.HttpContext.RequestAborted);
+                profile.Photo.UpdatePictureId(photoType, null); //reset current photo data
 
-        //    try
-        //    {
-        //        var request = req.BuildRequestDelete<DeletePhotoGalleryCommand, bool>();
+                profile.UpdatePhoto(profile.Photo);
 
-        //        var result = await _mediator.Send(request, source.Token);
-
-        //        return new OkObjectResult(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        log.LogError(ex, req.Query.BuildMessage(), req.Query.ToList());
-        //        return new BadRequestObjectResult(ex.ProcessException());
-        //    }
-        //}
+                return await _repo.Upsert(profile, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
 
         //[Function("StorageUploadPhotoValidation")]
         //public async Task<IActionResult> UploadPhotoValidation(

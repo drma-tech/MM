@@ -13,10 +13,7 @@ namespace MM.API.Core
         {
             var model = await JsonSerializer.DeserializeAsync<T>(req.Body, cancellationToken: cancellationToken);
 
-            if (model == null)
-            {
-                model = new T();
-            }
+            model ??= new T();
 
             var userId = req.GetUserId();
 

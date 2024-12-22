@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Profile.Core
 {
-    public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http)
+    public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, null)
     {
         public struct MapEndpoint
         {
