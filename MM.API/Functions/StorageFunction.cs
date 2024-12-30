@@ -6,9 +6,9 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions
 {
-    public class StorageFunction(CosmosProfileRepository repo, StorageHelper storageHelper, ComputerVisionHelper computerVisionHelper)
+    public class StorageFunction(CosmosProfileOffRepository repo, StorageHelper storageHelper, ComputerVisionHelper computerVisionHelper)
     {
-        private readonly CosmosProfileRepository _repo = repo;
+        private readonly CosmosProfileOffRepository _repo = repo;
 
         [Function("StorageUploadPhoto")]
         public async Task<ProfileModel> StorageUploadPhoto(

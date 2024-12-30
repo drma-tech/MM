@@ -24,7 +24,7 @@ namespace MM.WEB.Modules.Profile
         {
             Core?.LoadingStarted?.Invoke();
 
-            Profile = await ProfileApi.Get(Core);
+            Profile = await ProfileApi.Get(null);
 
             Profile ??= new()
             {

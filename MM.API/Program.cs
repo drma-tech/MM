@@ -31,7 +31,8 @@ static void ConfigureServices(HostBuilderContext context, IServiceCollection ser
     services.AddSingleton<CosmosRepository>();
     services.AddSingleton<CosmosCacheRepository>();
     services.AddSingleton<CosmosEmailRepository>();
-    services.AddSingleton<CosmosProfileRepository>();
+    services.AddSingleton<CosmosProfileOffRepository>();
+    services.AddSingleton<CosmosProfileOnRepository>();
     services.AddSingleton<StorageHelper>();
     services.AddSingleton<ComputerVisionHelper>();
     services.AddApplicationInsightsTelemetryWorkerService();

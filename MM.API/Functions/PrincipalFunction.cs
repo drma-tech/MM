@@ -1,10 +1,11 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Auth;
+using MM.Shared.Models.Profile;
 
 namespace MM.API.Functions
 {
-    public class PrincipalFunction(CosmosRepository repo)
+    public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
     {
         [Function("PrincipalGet")]
         public async Task<HttpResponseData?> PrincipalGet(
@@ -51,9 +52,30 @@ namespace MM.API.Functions
         {
             try
             {
-                var body = await req.GetBody<ClientePrincipal>(cancellationToken);
+                var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
 
-                return await repo.Upsert(body, cancellationToken);
+                var invite = await repoCache.Get<InviteModel>($"invite-{principal.Email}", cancellationToken);
+                if (invite != null)
+                {
+                    var myLikes = new MyLikesModel();
+                    myLikes.Initialize(principal.UserId!);
+
+                    foreach (var id in invite.Data?.UserIds.Distinct() ?? [])
+                    {
+                        ProfileModel? profile = null;
+
+                        if (principal.PublicProfile)
+                            profile = await repoOn.Get<ProfileModel>(id, cancellationToken);
+                        else
+                            profile = await repoOff.Get<ProfileModel>(id, cancellationToken);
+
+                        myLikes.Likes.Add(new LikeItem(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+                    }
+
+                    await repo.Upsert(myLikes, cancellationToken);
+                }
+
+                return await repo.Upsert(principal, cancellationToken);
             }
             catch (Exception ex)
             {

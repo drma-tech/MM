@@ -18,6 +18,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="Core\FaceHelper.cs" />
+		<Compile Remove="Core\Middleware\PerformanceBehaviour.cs" />
 		<Compile Remove="Functions\InteractionFunction.cs" />
 		<Compile Remove="Functions\PublicFunction.cs" />
 		<Compile Remove="Functions\SignalRFunction.cs" />

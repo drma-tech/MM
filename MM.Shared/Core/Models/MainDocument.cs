@@ -9,7 +9,8 @@
         Login = 5,
         Update = 6,
         Filter = 7,
-        Setting = 8
+        Setting = 8,
+        Likes = 9
     }
 
     public abstract class MainDocument : CosmosDocument

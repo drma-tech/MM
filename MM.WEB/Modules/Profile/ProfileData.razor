@@ -94,7 +94,7 @@
             <TabPanel Name="BASIC" Padding="Padding.Is3.FromTop">
                 <Row>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                        <FieldText For="@(() => Profile.NickName)" @bind-Value="@Profile.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
+                        <FieldText For="@(() => Profile!.NickName)" @bind-Value="@Profile!.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
                         <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
                                    Rows="7" LabelSize="LabelSize.Short"></FieldText>
                         <Country For="@(() => Profile.Nationality)" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
@@ -104,7 +104,7 @@
                                    ButtomTitle="Retrieve GPS position"></FieldText>
                     </Column>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                        <FieldSelect For="@(() => Profile.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile.Languages"
+                        <FieldSelect For="@(() => Profile!.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile!.Languages"
                                      CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" Order="@(o=>o.Name)"></FieldSelect>
                         <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
                                      CssIcon="@FontAwesomeIcons.Ring" Required="true"></FieldSelect>
@@ -195,12 +195,12 @@
                         </Alert>
                         <Row>
                             <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                <FieldSelect For="@(() => Profile.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile.NetWorth"
+                                <FieldSelect For="@(() => Profile!.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile!.NetWorth"
                                              CssIcon="@FontAwesomeIcons.Gem" ShowHelper="false"
                                              ButtomClicked="@(()=>{})" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true"></FieldSelect>
                             </Column>
                             <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                                <FieldSelect For="@(() => Profile.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile.AnnualIncome"
+                                <FieldSelect For="@(() => Profile!.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile!.AnnualIncome"
                                              CssIcon="@FontAwesomeIcons.MoneyBill" ShowHelper="false"
                                              ButtomClicked="@(()=>{})" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true"></FieldSelect>
                             </Column>
@@ -224,7 +224,7 @@
                                      CssIcon="@FontAwesomeIcons.UserTag" LabelSize="LabelSize.Big" HelpLink="https://www.16personalities.com/" ShowGroup="true"></FieldSelect>
                     </Column>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                        <FieldSelect For="@(() => Profile.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile.LoveLanguage"
+                        <FieldSelect For="@(() => Profile!.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile!.LoveLanguage"
                                      CssIcon="@FontAwesomeIcons.HandHoldingHeart" LabelSize="LabelSize.Big" HelpLink="https://5lovelanguages.com/quizzes/love-language"></FieldSelect>
                         <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
                                      CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" HelpLink="https://vmtherapy.com/sex-personality-type"></FieldSelect>
@@ -281,7 +281,7 @@
             <TabPanel Name="GOAL" Padding="Padding.Is3.FromTop">
                 <Row>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                        <FieldSelect For="@(() => Profile.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile.RelationshipIntentions"
+                        <FieldSelect For="@(() => Profile!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile!.RelationshipIntentions"
                                      CssIcon="@FontAwesomeIcons.Search" Required="true" Multiple="true"></FieldSelect>
                         <FieldSelect For="@(() => Profile!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Profile!.Relocation"
                                      CssIcon="@FontAwesomeIcons.Truck" Required="true"></FieldSelect>

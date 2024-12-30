@@ -64,6 +64,8 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddScoped<UpdateApi>();
     collection.AddScoped<MapApi>();
     collection.AddScoped<StorageApi>();
+    collection.AddScoped<MyLikesApi>();
+    collection.AddScoped<InviteApi>();
 
     collection.AddScoped<PaddleConfigurationApi>();
     collection.AddScoped<PaddleSubscriptionApi>();

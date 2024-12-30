@@ -3,6 +3,7 @@
 @using FluentValidation
 @using MM.Shared.Models.Profile;
 @using MM.Shared.Models.Profile.Core
+@using MM.Shared.Requests
 @using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core;
 @attribute [Authorize]
@@ -11,6 +12,8 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject SettingApi SettingApi
+@inject InviteApi InviteApi
+@inject MyLikesApi MyLikesApi
 
 <SeoHeader Title="Profile" Url="/profile"></SeoHeader>
 
@@ -88,7 +91,7 @@
     <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
         @foreach (var item in Suggestions)
         {
-            <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
+            <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
             </Column>
         }
     </Row>
@@ -97,12 +100,22 @@
 <Row HorizontalGutter="8" VerticalGutter="8">
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="Likes">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle">
+                Invite Partner
+            </Button>
         </HeaderComponent>
-        <RenderControl Core="CoreLikes" Model="Likes" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true">
+        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Likes.Empty())" PrivateContent="true">
             <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-                @foreach (var item in Likes)
+                @foreach (var item in MyLikes?.Likes.Take(6) ?? [])
                 {
-                    <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
+                    <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
+                        <Div Style="position:relative;">
+                            <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
+                            <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
+                                <FigureImage Margin="Margin.Is0" Source="@item.UserPhoto" AlternateText="No Picture" Rounded />
+                            </Figure>
+                        </Div>
+                        <Button Size="Size.Small" Color="Color.Primary" Block>Open</Button>
                     </Column>
                 }
             </Row>
@@ -110,7 +123,7 @@
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)" Disabled="true">
                 Simulate
             </Button>
         </HeaderComponent>
@@ -118,7 +131,7 @@
             <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
                 @foreach (var item in Matches)
                 {
-                    <Column ColumnSize="ColumnSize.Is1.OnFullHD.Is2.OnDesktop.Is3.OnMobile">
+                    <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
                     </Column>
                 }
             </Row>
@@ -144,8 +157,8 @@
     public List<string> Suggestions { get; set; } = [];
     public RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
 
-    public List<string> Likes { get; set; } = [];
-    public RenderControlCore<List<string>>? CoreLikes { get; set; } = new();
+    public MyLikesModel? MyLikes { get; set; }
+    public RenderControlCore<MyLikesModel?>? CoreLikes { get; set; } = new();
 
     public List<string> Matches { get; set; } = [];
     public RenderControlCore<List<string>>? CoreMatches { get; set; } = new();
@@ -166,10 +179,11 @@
                 profile = await ProfileApi.Get(CoreProfile);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
+                MyLikes = await MyLikesApi.Get(CoreLikes);
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
-            CoreLikes?.LoadingFinished?.Invoke(Likes);
+            CoreLikes?.LoadingFinished?.Invoke(MyLikes);
             CoreMatches?.LoadingFinished?.Invoke(Matches);
         }
         catch (Exception ex)
@@ -190,6 +204,26 @@
         {
             await Toast.Success("Your profile is now in private mode and will not be seen or shared with anyone.");
             IsPublic = false;
+        }
+    }
+
+    private async Task InviteHandle()
+    {
+        var principal = await PrincipalApi.Get(IsAuthenticated);
+        await PopupHelper.InvitePerEmail(ModalService, principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
+    }
+
+    private async Task InvitationSent(string email)
+    {
+        try
+        {
+            await InviteApi.SendInvite(new InviteRequest { Email = email });
+
+            await Toast.Success("Invitation sent successfully.");
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
         }
     }
 

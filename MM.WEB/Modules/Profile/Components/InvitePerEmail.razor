@@ -1,0 +1,55 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using MM.Shared.Models.Auth
+@inherits ComponentCore<InvitePerEmail>
+
+<ModalHeader>
+    <ModalTitle Size="HeadingSize.Is5">
+        Invite Partner
+    </ModalTitle>
+    <CloseButton />
+</ModalHeader>
+<ModalBody MaxHeight="70">
+    <Alert Color="Color.Warning" Visible="true">
+        <AlertMessage>
+            Invite your partner to test your compatibility
+        </AlertMessage>
+        <AlertDescription>
+            This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted.
+        </AlertDescription>
+    </Alert>
+    <FieldText For="()=>Email" @bind-Value="@Email" />
+</ModalBody>
+<ModalFooter>
+    <Button Color="Color.Secondary" Clicked="@ModalService.Hide">
+        @WEB.Resources.Button.Close
+    </Button>
+    <Button Color="Color.Primary" Clicked="SaveHandle">
+        @WEB.Resources.Button.Ok
+    </Button>
+</ModalFooter>
+
+@code {
+    [Parameter] public ClientePrincipal? principal { get; set; }
+    [Parameter] public EventCallback<string> InviteSent { get; set; }
+
+    [Custom(Name = "Partner Email")]
+    private string? Email { get; set; }
+
+    private async Task SaveHandle()
+    {
+        if (Email.Empty())
+        {
+            await Toast.Warning("Please enter the email address");
+            return;
+        }
+
+        if (Email == principal!.Email)
+        {
+            await Toast.Warning("Enter your partner's email");
+            return;
+        }
+
+        await ModalService.Hide();
+        await InviteSent.InvokeAsync(Email);
+    }
+}

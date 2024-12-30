@@ -7,18 +7,18 @@ using System.Linq.Expressions;
 
 namespace MM.API.Repository
 {
-    public class CosmosProfileRepository
+    public class CosmosProfileOffRepository
     {
         public Container Container { get; private set; }
-        private readonly ILogger<CosmosProfileRepository> _logger;
+        private readonly ILogger<CosmosProfileOffRepository> _logger;
 
-        public CosmosProfileRepository(IConfiguration config, ILogger<CosmosProfileRepository> logger)
+        public CosmosProfileOffRepository(IConfiguration config, ILogger<CosmosProfileOffRepository> logger)
         {
             _logger = logger;
 
             var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
 
-            Container = ApiStartup.CosmosClient.GetContainer(databaseId, "profile");
+            Container = ApiStartup.CosmosClient.GetContainer(databaseId, "profile-off");
         }
 
         public async Task<T?> Get<T>(string? id, CancellationToken cancellationToken) where T : CosmosDocument
@@ -31,7 +31,7 @@ namespace MM.API.Repository
 
                 if (response.RequestCharge > 1.7)
                 {
-                    _logger.LogWarning("Get - ID {0}, RequestCharge {1}", id, response.RequestCharge);
+                    _logger.LogWarning("Get - ID {Id}, RequestCharge {RequestCharge}", id, response.RequestCharge);
                 }
 
                 return response.Resource;

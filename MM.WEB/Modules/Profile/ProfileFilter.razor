@@ -274,7 +274,7 @@
         Core?.LoadingStarted?.Invoke();
 
         Profile = await ProfileApi.Get(null);
-        Filter = await FilterApi.Get(Core);
+        Filter = await FilterApi.Get(null);
 
         if (Filter == null)
         {

@@ -6,10 +6,10 @@
 @inherits PageCore<ProfileSetting>
 @inject SettingApi SettingApi
 
-<RenderControl Core="Core" Model="Setting" ExpressionEmpty="((SettingModel? obj)=> obj == null)" PrivateContent="true">
+<RenderControl Core="Core" Model="Setting" ExpressionEmpty="((SettingModel? obj) => obj == null)" PrivateContent="true">
     <Row>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldSwitch For="@(() => Setting.BlindDate)" @bind-Value="@Setting.BlindDate" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.EyeSlash"></FieldSwitch>
+            <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.EyeSlash"></FieldSwitch>
         </Column>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
         </Column>
@@ -28,7 +28,7 @@
     {
         Core?.LoadingStarted?.Invoke();
 
-        Setting = await SettingApi.Get(Core);
+        Setting = await SettingApi.Get(null);
 
         if (Setting == null)
         {

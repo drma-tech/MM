@@ -1,13 +1,17 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
+using MM.Shared.Requests;
 
 namespace MM.API.Functions
 {
-    public class ProfileFunction(CosmosProfileRepository repo, CosmosRepository repoFilter)
+    public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
     {
-        private readonly CosmosProfileRepository _repoProfile = repo;
-        private readonly CosmosRepository _repo = repoFilter;
+        private readonly CosmosRepository _repoGen = repoGen;
+        private readonly CosmosCacheRepository _repoCache = repoCache;
+        private readonly CosmosProfileOffRepository _repoProfileOff = repoOff;
+        private readonly CosmosProfileOnRepository _repoProfileOn = repoOn;
 
         [Function("ProfileGetData")]
         public async Task<HttpResponseData?> ProfileGetData(
@@ -16,10 +20,16 @@ namespace MM.API.Functions
             try
             {
                 var userId = req.GetUserId();
+                ProfileModel? profile = null;
 
-                var doc = await _repoProfile.Get<ProfileModel>(userId, cancellationToken);
+                var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
-                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
+                if (principal.PublicProfile)
+                    profile = await _repoProfileOn.Get<ProfileModel>(userId, cancellationToken);
+                else
+                    profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
+
+                return await req.CreateResponse(profile, ttlCache.one_day, profile?.ETag, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -36,7 +46,7 @@ namespace MM.API.Functions
             {
                 var userId = req.GetUserId();
 
-                var doc = await _repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+                var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
                 return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
             }
@@ -55,7 +65,7 @@ namespace MM.API.Functions
             {
                 var userId = req.GetUserId();
 
-                var doc = await _repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+                var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
                 return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
             }
@@ -118,9 +128,13 @@ namespace MM.API.Functions
         {
             try
             {
+                var userId = req.GetUserId();
                 var body = await req.GetBody<ProfileModel>(cancellationToken);
+                var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
-                return await _repoProfile.Upsert(body, cancellationToken);
+                if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
+
+                return await _repoProfileOff.Upsert(body, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -137,7 +151,7 @@ namespace MM.API.Functions
             {
                 var body = await req.GetBody<FilterModel>(cancellationToken);
 
-                return await _repo.Upsert(body, cancellationToken);
+                return await _repoGen.Upsert(body, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -154,7 +168,81 @@ namespace MM.API.Functions
             {
                 var body = await req.GetBody<SettingModel>(cancellationToken);
 
-                return await _repo.Upsert(body, cancellationToken);
+                return await _repoGen.Upsert(body, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
+        [Function("ProfileSendInvite")]
+        public async Task ProfileSendInvite(
+          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "profile/send-invite")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
+                var users = await _repoGen.Query<ClientePrincipal>((x) => x.Email == request.Email, DocumentType.Principal, cancellationToken);
+                var userId = req.GetUserId();
+
+                if (users.Count != 0) //if user already registered, register a like
+                {
+                    var principal = users.Single();
+                    ProfileModel? profile = null;
+
+                    if (principal.PublicProfile)
+                        profile = await _repoProfileOn.Get<ProfileModel>(principal.UserId, cancellationToken);
+                    else
+                        profile = await _repoProfileOff.Get<ProfileModel>(principal.UserId, cancellationToken);
+
+                    var myLikes = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+
+                    if (myLikes == null)
+                    {
+                        myLikes = new MyLikesModel();
+                        myLikes.Initialize(userId!);
+                    }
+
+                    myLikes.Likes.Add(new LikeItem(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+
+                    await _repoGen.Upsert(myLikes, cancellationToken);
+                }
+                else //if not, generate a temporary invite
+                {
+                    var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
+
+                    if (invite == null)
+                    {
+                        invite = new CacheDocument<InviteModel>($"invite-{request.Email}", new InviteModel() { UserIds = [userId] }, ttlCache.one_month);
+                    }
+                    else
+                    {
+                        invite.Data!.UserIds.Add(userId!);
+                    }
+
+                    await _repoCache.UpsertItemAsync(invite, cancellationToken);
+                }
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
+        [Function("ProfileGetMyLikes")]
+        public async Task<HttpResponseData?> ProfileGetMyLikes(
+         [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+
+                return await req.CreateResponse(obj, ttlCache.one_day, obj?.ETag, cancellationToken);
             }
             catch (Exception ex)
             {
