@@ -114,7 +114,7 @@
                         <Div Style="position:relative;">
                             <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
                             <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                <FigureImage Margin="Margin.Is0" Source="@item.UserPhoto" AlternateText="No Picture" Rounded />
+                                <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
                             </Figure>
                         </Div>
                         <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId))">Open</Button>
@@ -137,7 +137,7 @@
                         <Div Style="position:relative;">
                             <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
                             <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                <FigureImage Margin="Margin.Is0" Source="@item.UserPhoto" AlternateText="No Picture" Rounded />
+                                <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
                             </Figure>
                         </Div>
                         @if (item.Fake)

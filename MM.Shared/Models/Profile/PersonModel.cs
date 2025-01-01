@@ -20,6 +20,14 @@ namespace MM.Shared.Models.Profile
         public string? UserPhoto { get; set; }
         public DateTime DateTime { get; init; } = DateTime.UtcNow;
 
+        public string GetUserPhoto()
+        {
+            if (UserPhoto.Empty())
+                return ImageHelper.GetNoUserPhoto;
+            else
+                return UserPhoto!;
+        }
+
         [JsonIgnore]
         public bool Fake { get; set; }
 

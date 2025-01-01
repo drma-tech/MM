@@ -59,5 +59,11 @@ namespace MM.WEB.Core
         {
             return link.SimpleDecrypt();
         }
+
+        public static HashSet<T> ToHashSet<T>(this T? item) where T : struct
+        {
+            if (item == null) return [];
+            return [item.Value];
+        }
     }
 }

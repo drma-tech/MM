@@ -82,7 +82,14 @@ namespace MM.API.Functions
         {
             try
             {
-                var profile = await _repoProfileOn.Get<ProfileModel>(id, cancellationToken);
+                var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, id, cancellationToken) ?? throw new NotificationException("user not found");
+                ProfileModel? profile = null;
+
+                if (principal.PublicProfile)
+                    profile = await _repoProfileOn.Get<ProfileModel>(id, cancellationToken);
+                else
+                    profile = await _repoProfileOff.Get<ProfileModel>(id, cancellationToken);
+
                 if (profile == null) return null;
 
                 //profile.Age = profile.BirthDate.GetAge();
@@ -207,13 +214,13 @@ namespace MM.API.Functions
                     else
                         profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
 
-                    myLikes.Items.Add(new PersonModel(principal.UserId, profile?.NickName ?? principal.Email, profile?.GetPhoto(ImageHelper.PhotoType.Face)));
+                    myLikes.Items.Add(new PersonModel(principal.UserId, profile?.NickName ?? principal.Email?.Split("@")[0], profile?.GetPhoto(ImageHelper.PhotoType.Face)));
 
                     await _repoGen.Upsert(myLikes, cancellationToken);
                 }
                 else //if not, generate a temporary invite
                 {
-                    
+
                     var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
 
                     if (invite == null)

@@ -15,9 +15,9 @@ namespace MM.WEB.Core
             var obj = new List<AffinityVM>
             {
                 //BASIC - DEFINIÇÕES DE BUSCA
-                //new AffinityVM(Section.Basic, CompatibilityItem.Location, GetLocation(user) == view.Location),
+                new(Section.Basic, CompatibilityItem.Location, GetLocation(profile, filter).LocationIsMatch(view.Location)),
                 new(Section.Basic, CompatibilityItem.Language, GetLanguages(profile, filter).IsMatch(view.Languages)),
-                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),                
+                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),
                 new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(profile, filter).IsMatch(view.BiologicalSex.ToArray())),
                 new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(profile, filter).IsMatch(view.GenderIdentities)),
                 new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(profile, filter).IsMatch(view.SexualOrientations)),
@@ -36,7 +36,7 @@ namespace MM.WEB.Core
                 new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(profile, filter).IsMatch(view.Diet.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(profile, filter).IsMatch(view.Religion.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.FamilyInvolvement, GetFamilyInvolvement(profile, filter).IsMatch(view.FamilyInvolvement.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),                
+                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(profile, filter).IsMatch(view.EducationLevel.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(profile, filter).IsMatch(view.CareerCluster.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.LivingSituation, GetLivingSituation(profile, filter).IsMatch(view.LivingSituation.ToArray())),
@@ -79,9 +79,9 @@ namespace MM.WEB.Core
             return obj;
         }
 
-        public static HashSet<string> ToArray(this string item)
+        public static HashSet<string> ToArray(this string? item)
         {
-            return [item];
+            return item.Empty() ? [] : [item];
         }
 
         public static HashSet<T> ToArray<T>(this T item) where T : struct
@@ -93,6 +93,26 @@ namespace MM.WEB.Core
         {
             if (item.HasValue) return item.Value.ToArray();
             else return [];
+        }
+
+        private static bool LocationIsMatch(this (string? loc, int pos) filter, string? view)
+        {
+            if (filter.pos == -1) return true; //world
+
+            var parts = view?.Split(" - ") ?? [];
+
+            if (filter.pos == 0) //country
+            {
+                return filter.loc == parts[0];
+            }
+            else if (filter.pos == 1) //state
+            {
+                return filter.loc == $"{parts[0]} - {parts[1]}";
+            }
+            else //city
+            {
+                return filter.loc == view;
+            }
         }
 
         private static bool IsMatch<T>(this HashSet<T> filters, HashSet<T> view, bool force = false)
@@ -126,18 +146,18 @@ namespace MM.WEB.Core
             };
         }
 
-        public static string GetLocation(ProfileModel profile, FilterModel? filter)
+        public static (string? loc, int pos) GetLocation(ProfileModel profile, FilterModel? filter)
         {
             var parts = profile.Location?.Split(" - ") ?? [];
 
             return filter?.Region switch
             {
-                Region.City => profile.Location, //level 3
-                Region.State => $"{parts[0]} - {parts[1]}", //level 2
-                Region.Country => $"{parts[0]}", //level 1
-                Region.World => "",
-                _ => "",
-            } ?? "";
+                Region.City => (profile.Location, 2), //level 3
+                Region.State => ($"{parts[0]} - {parts[1]}", 1), //level 2
+                Region.Country => ($"{parts[0]}", 0), //level 1
+                Region.World => (null, -1),
+                _ => (null, -1)
+            };
         }
 
         public static HashSet<Language> GetLanguages(ProfileModel profile, FilterModel? filter = null)

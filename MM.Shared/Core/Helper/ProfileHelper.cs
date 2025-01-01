@@ -2,6 +2,13 @@
 {
     public static class ProfileHelper
     {
+        public static int GetAge(this DateTime? date)
+        {
+            if (date == null) return 0;
+
+            return GetAge(date.Value);
+        }
+
         public static int GetAge(this DateTime date)
         {
             int years = DateTime.UtcNow.Year - date.Year;

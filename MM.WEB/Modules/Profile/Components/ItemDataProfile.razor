@@ -25,9 +25,9 @@ else
 @code {
     [Parameter] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
-    [Parameter] public IEnumerable<TValue>? Values { get; set; }
+    [Parameter] public IEnumerable<TValue?>? Values { get; set; }
     [Parameter] public TValueUser? ValueUser { get; set; }
-    [Parameter] public IEnumerable<TValueUser>? ValuesUser { get; set; }
+    [Parameter] public IEnumerable<TValueUser?>? ValuesUser { get; set; }
     [Parameter] public string? ClassIcon { get; set; }
     [Parameter] public List<AffinityVM> Affinities { get; set; } = [];
 
@@ -153,7 +153,7 @@ else
         return Item switch
         {
             //BASIC
-            CompatibilityItem.Location => AffinityCore.GetLocation(User, Filter).ToArray(),
+            CompatibilityItem.Location => AffinityCore.GetLocation(User, Filter).loc.ToArray(),
             CompatibilityItem.Language => AffinityCore.GetLanguages(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.MaritalStatus => AffinityCore.GetMaritalStatus(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetName()),

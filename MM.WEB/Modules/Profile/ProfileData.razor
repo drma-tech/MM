@@ -388,6 +388,9 @@
             case Tabs.INTEREST:
                 result = Validator.Validate(Profile, options => options.IncludeRuleSets("INTEREST"));
                 break;
+            case Tabs.RELATIONSHIP:
+                result = Validator.Validate(Profile, options => options.IncludeRuleSets("RELATIONSHIP"));
+                break;
             case Tabs.GOAL:
                 result = Validator.Validate(Profile, options => options.IncludeRuleSets("GOAL"));
                 break;

@@ -151,7 +151,7 @@
 
             if (view == null)
             {
-                await Toast.Error("Profile not found or is in private mode.");
+                await Toast.Error("Profile not found or not yet registered properly.");
             }
             else
             {
@@ -159,6 +159,8 @@
                     imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face, true)];
                 else
                     imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
+
+                imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
                 selectedImage = imageDataUriGallery.First();
 
