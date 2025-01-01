@@ -1,4 +1,6 @@
-﻿namespace MM.Shared.Models.Profile
+﻿using Newtonsoft.Json;
+
+namespace MM.Shared.Models.Profile
 {
     public class PersonModel
     {
@@ -17,6 +19,8 @@
         public string? UserName { get; set; }
         public string? UserPhoto { get; set; }
         public DateTime DateTime { get; init; } = DateTime.UtcNow;
+
+        [JsonIgnore]
         public bool Fake { get; set; }
 
         public override bool Equals(object? obj)

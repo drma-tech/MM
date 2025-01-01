@@ -184,33 +184,36 @@ namespace MM.API.Functions
             try
             {
                 var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
-                var users = await _repoGen.Query<ClientePrincipal>((x) => x.Email == request.Email, DocumentType.Principal, cancellationToken);
+                var partners = await _repoGen.Query<ClientePrincipal>((x) => x.Email == request.Email, DocumentType.Principal, cancellationToken);
                 var userId = req.GetUserId();
 
-                if (users.Count != 0) //if user already registered, register a like
+                if (partners.Count != 0) //if user already registered, register a like
                 {
-                    var principal = users.Single();
-                    ProfileModel? profile = null;
+                    var partner = partners.Single();
 
-                    if (principal.PublicProfile)
-                        profile = await _repoProfileOn.Get<ProfileModel>(principal.UserId, cancellationToken);
-                    else
-                        profile = await _repoProfileOff.Get<ProfileModel>(principal.UserId, cancellationToken);
-
-                    var myLikes = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+                    var myLikes = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, partner.UserId, cancellationToken);
 
                     if (myLikes == null)
                     {
                         myLikes = new MyLikesModel();
-                        myLikes.Initialize(userId!);
+                        myLikes.Initialize(partner.UserId!);
                     }
 
-                    myLikes.Items.Add(new PersonModel(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+                    ProfileModel? profile = null;
+                    var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
+
+                    if (principal.PublicProfile)
+                        profile = await _repoProfileOn.Get<ProfileModel>(userId, cancellationToken);
+                    else
+                        profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
+
+                    myLikes.Items.Add(new PersonModel(principal.UserId, profile?.NickName ?? principal.Email, profile?.GetPhoto(ImageHelper.PhotoType.Face)));
 
                     await _repoGen.Upsert(myLikes, cancellationToken);
                 }
                 else //if not, generate a temporary invite
                 {
+                    
                     var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
 
                     if (invite == null)
