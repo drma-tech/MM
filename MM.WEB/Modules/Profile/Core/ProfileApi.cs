@@ -12,7 +12,7 @@ namespace MM.WEB.Modules.Profile.Core
             //public const string ListMatch = "Profile/ListMatch";
             //public const string ListSearch = "Profile/ListSearch";
 
-            //public static string GetView(string IdUserView) => $"Profile/GetView?id={IdUserView}";
+            public static string GetView(string id) => $"profile/get-view/{id}";
         }
 
         public async Task<ProfileModel?> Get(RenderControlCore<ProfileModel?>? core)
@@ -20,12 +20,12 @@ namespace MM.WEB.Modules.Profile.Core
             return await GetAsync(ProfileEndpoint.Get, core);
         }
 
-        //public async Task<ProfileView?> Profile_GetView(string? IdUserView)
-        //{
-        //    if (IdUserView == null) return default;
+        public async Task<ProfileModel?> GetView(string? IdUserView, RenderControlCore<ProfileModel?>? core)
+        {
+            if (IdUserView == null) return default;
 
-        //    return await GetAsync<ProfileView>(ProfileEndpoint.GetView(IdUserView), false);
-        //}
+            return await GetAsync(ProfileEndpoint.GetView(IdUserView), core);
+        }
 
         //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()
         //{

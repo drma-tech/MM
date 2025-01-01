@@ -15,7 +15,7 @@ namespace MM.API.Functions
 
         [Function("ProfileGetData")]
         public async Task<HttpResponseData?> ProfileGetData(
-           [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -76,32 +76,32 @@ namespace MM.API.Functions
             }
         }
 
-        //[Function("ProfileGetView")]
-        //public async Task<ProfileModel?> GetView(
-        //   [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "Profile/GetView/{IdUserView}")] HttpRequestData req, string IdUserView, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        var profile = await _repo.Get<ProfileView>(DocumentType.Profile + ":" + IdUserView, new PartitionKey(IdUserView), cancellationToken);
-        //        if (profile == null) return null;
+        [Function("ProfileGetView")]
+        public async Task<HttpResponseData?> GetView(
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var profile = await _repoProfileOn.Get<ProfileModel>(id, cancellationToken);
+                if (profile == null) return null;
 
-        //        profile.Age = profile.BirthDate.GetAge();
-        //        profile.BirthDate = DateTime.MinValue;
-        //        profile.ActivityStatus = ActivityStatus.Today;
+                //profile.Age = profile.BirthDate.GetAge();
+                //profile.BirthDate = DateTime.MinValue;
+                //profile.ActivityStatus = ActivityStatus.Today;
 
-        //        if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
-        //        else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
-        //        else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
-        //        else profile.ActivityStatus = ActivityStatus.Disabled;
+                //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
+                //else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
+                //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
+                //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-        //        return profile;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        req.ProcessException(ex);
-        //        throw new UnhandledException(ex.BuildException());
-        //    }
-        //}
+                return await req.CreateResponse(profile, ttlCache.one_day, profile?.ETag, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
 
         //[Function("ProfileListSearch")]
         //public async Task<List<ProfileSearch>> ListSearch(
@@ -179,7 +179,7 @@ namespace MM.API.Functions
 
         [Function("ProfileSendInvite")]
         public async Task ProfileSendInvite(
-          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "profile/send-invite")] HttpRequestData req, CancellationToken cancellationToken)
+            [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "profile/send-invite")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
@@ -205,7 +205,7 @@ namespace MM.API.Functions
                         myLikes.Initialize(userId!);
                     }
 
-                    myLikes.Likes.Add(new LikeItem(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+                    myLikes.Items.Add(new PersonModel(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
 
                     await _repoGen.Upsert(myLikes, cancellationToken);
                 }
@@ -234,13 +234,32 @@ namespace MM.API.Functions
 
         [Function("ProfileGetMyLikes")]
         public async Task<HttpResponseData?> ProfileGetMyLikes(
-         [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
                 var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+
+                return await req.CreateResponse(obj, ttlCache.one_day, obj?.ETag, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
+        [Function("ProfileGetMyMatches")]
+        public async Task<HttpResponseData?> ProfileGetMyMatches(
+            [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mymatches")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
                 return await req.CreateResponse(obj, ttlCache.one_day, obj?.ETag, cancellationToken);
             }

@@ -1,19 +1,21 @@
 ﻿@using MM.Shared.Models.Profile;
 @using MM.WEB.Core.Models
+@using MM.WEB.Modules.Profile.Components.Button
 @using MM.WEB.Modules.Profile.Core;
 @inherits ComponentCore<PopupProfile>
 @attribute [Authorize]
 
 @inject ProfileApi ProfileApi
+@inject FilterApi FilterApi
 
 <Modal @ref="modal">
     <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
         <ModalHeader>
-            <ModalTitle>Perfil</ModalTitle>
+            <ModalTitle>Profile</ModalTitle>
             <CloseButton />
         </ModalHeader>
         <ModalBody MaxHeight="70">
-            <RenderControl Core="Core" Model="view" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
+            <RenderControl Core="Core" Model="view" ExpressionEmpty="((ProfileModel? obj) => obj == null)" PrivateContent="true">
                 <Row HorizontalGutter="8" VerticalGutter="0">
                     <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is4.OnWidescreen">
                         <Card Margin="Margin.Is2.FromBottom">
@@ -81,16 +83,9 @@
                                 </Paragraph>
                             </CardBody>
                             <CardBody>
-                                @* @if (interaction != null && interaction.IsActiveInteraction())
-                                {
-                                <BtnChat IdUserView="@IdUserView"></BtnChat>
-                                }
-                                else
-                                {
-                                <BtnBlink IdUserView="@IdUserView"></BtnBlink>
-                                }*@
-                                <Dropdown Float="Float.End" Disabled="true">
-                                    <Button Color="Color.Danger" Clicked="report!.ShowModal" Disabled="true">
+                                <BtnChat IdUserView="@IdUserView" Disabled="Fake"></BtnChat>
+                                <Dropdown Float="Float.End" Disabled="Fake">
+                                    <Button Color="Color.Danger" Clicked="report!.ShowModal" Disabled="Fake">
                                         <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Deletar
                                     </Button>
                                     <DropdownToggle Split="true" Color="Color.Danger" />
@@ -102,32 +97,7 @@
                         </Card>
                     </Column>
                     <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is8.OnWidescreen">
-                        <Row HorizontalGutter="8" VerticalGutter="0">
-                            @*<Column ColumnSize="ColumnSize.IsFull.Is8.OnFullHD">
-                            <Card Margin="Margin.Is2.FromBottom">
-                            <CardHeader>Conquistas</CardHeader>
-                            <CardBody>
-                            <Row HorizontalGutter="8" VerticalGutter="0">
-                            <Column ColumnSize="ColumnSize.IsHalf.Is3.OnWidescreen" Margin="Margin.Is2.FromBottom">
-                            <ProfileBadge Type="@badge.Ranking"></ProfileBadge>
-                            </Column>
-                            <Column ColumnSize="ColumnSize.IsHalf.Is3.OnWidescreen" Margin="Margin.Is2.FromBottom">
-                            <ProfileBadge Type="@badge.Seniority"></ProfileBadge>
-                            </Column>
-                            <Column ColumnSize="ColumnSize.IsHalf.Is3.OnWidescreen" Margin="Margin.Is2.FromBottom">
-                            <ProfileBadge Type="@badge.VerifiedProfile"></ProfileBadge>
-                            </Column>
-                            <Column ColumnSize="ColumnSize.IsHalf.Is3.OnWidescreen" Margin="Margin.Is2.FromBottom">
-                            <ProfileBadge Type="@badge.Popular"></ProfileBadge>
-                            </Column>
-                            </Row>
-                            </CardBody>
-                            </Card>
-                            </Column>*@
-                            <Column ColumnSize="ColumnSize.IsFull.Is4.OnFullHD">
-                                <CardCompatibility Affinities="affinities"></CardCompatibility>
-                            </Column>
-                        </Row>
+                        <CardCompatibility User="user" Filter="filter" View="view" Affinities="affinities"></CardCompatibility>
                     </Column>
                 </Row>
                 <ProfileReport @ref="report"></ProfileReport>
@@ -143,31 +113,22 @@
     [Parameter][EditorRequired] public string? UserId { get; set; }
 
     private Modal? modal;
-    // public Loading Loading { get; set; } = default!;
-
-    [Parameter] public HttpClient Http { get; set; } = default!;
-
-    public async Task ShowModal(string IdUserView)
-    {
-        modal?.Show();
-        this.IdUserView = IdUserView;
-        await LoadDataRender();
-    }
 
     public string? IdUserView { get; set; }
+    public bool Fake { get; set; }
 
     private ProfileModel? user;
     private FilterModel? filter;
     private ProfileModel? view;
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
-    private List<AffinityVM> affinities = new();
+    private List<AffinityVM> affinities = [];
     //private ProfileGamificationModel gamification;
     //private ProfileBadgeModel? badge = new();
     //private InteractionModel interaction;
 
     string? selectedImage;
-    string[] imageDataUriGallery = Array.Empty<string>();
+    string[] imageDataUriGallery = [];
 
     private ProfileReport? report;
 
@@ -177,38 +138,53 @@
         {
             if (string.IsNullOrEmpty(IdUserView)) return;
 
-            if (IdUserView == UserId)
-            {
-                // Loading.Invalid();
-                return;
-            }
+            // if (IdUserView == UserId)
+            // {
+            //     // Loading.Invalid();
+            //     return;
+            // }
 
-            // Loading.Start();
+            Core?.LoadingStarted?.Invoke();
 
-            user = await ProfileApi.Get(Core);
-            // view = await ProfileApi.GetView(IdUserView);
-
-            // Loading.Finish(user == null);
+            user = await ProfileApi.Get(null);
+            view ??= await ProfileApi.GetView(IdUserView, null);
 
             if (view == null)
             {
-                await Toast.Error("Perfil não encontrado. Favor, tentar novamente.");
+                await Toast.Error("Profile not found or is in private mode.");
             }
             else
             {
-                imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
+                if (Fake)
+                    imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face, true)];
+                else
+                    imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
+
                 selectedImage = imageDataUriGallery.First();
+
+                filter = await FilterApi.Get(null);
 
                 affinities = AffinityCore.GetAffinity(user, filter, view);
                 //gamification = view.Gamification;
                 //if (view?.Badge != null) badge = view.Badge;
                 //interaction = await Http.Interation_Get(SessionStorage, IdUserView.ToString());
             }
+
+            Core?.LoadingFinished?.Invoke(view);
         }
         catch (Exception ex)
         {
             await Toast.Error(ex.Message);
         }
+    }
+
+    public async Task ShowModal(string? IdUserView, ProfileModel? view = null, bool fake = false)
+    {
+        modal?.Show();
+        this.IdUserView = IdUserView;
+        this.view = view;
+        this.Fake = fake;
+        await LoadDataRender();
     }
 
     public Color GetColor(int perc)

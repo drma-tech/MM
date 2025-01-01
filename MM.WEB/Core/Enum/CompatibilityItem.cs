@@ -7,7 +7,6 @@
         Location,
         Language,
         MaritalStatus,
-        RelationshipIntentions,
         BiologicalSex,
         GenderIdentities,
         SexualOrientations,
@@ -27,11 +26,14 @@
         Smoke,
         Diet,
         Religion,
+        FamilyInvolvement,
         HaveChildren,
-        WantChildren,
         EducationLevel,
         CareerCluster,
+        LivingSituation,
         TravelFrequency,
+        NetWorth,
+        AnnualIncome,
 
         //PERSONALITY
 
@@ -51,6 +53,21 @@
         MusicGenre,
         MovieGenre,
         TVGenre,
-        ReadingGenre
+        ReadingGenre,
+
+        //RELATIONSHIP
+
+        SharedFinances,
+        ConflictResolutionStyle,
+        HouseholdManagement,
+        TimeTogetherPreference,
+        OppositeSexFriendships,
+
+        //GOALS
+
+        RelationshipIntentions,
+        Relocation,
+        WantChildren,
+        IdealPlaceToLive
     }
 }

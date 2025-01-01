@@ -306,13 +306,16 @@ namespace MM.Shared.Models.Profile
             Photo = obj;
         }
 
-        public string GetPhoto(PhotoType type)
+        public string GetPhoto(PhotoType type, bool fake = false)
         {
             if (Photo == null) return GetNoUserPhoto;
             var id = Photo.GetPictureId(type);
             if (id == null) return GetNoUserPhoto;
 
-            return $"{BlobPath}/{GetPhotoContainer(type)}/{id}";
+            if (fake)
+                return id;
+            else
+                return $"{BlobPath}/{GetPhotoContainer(type)}/{id}";
         }
 
         public enum LocationType

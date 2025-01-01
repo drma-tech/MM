@@ -17,8 +17,7 @@ namespace MM.WEB.Core
                 //BASIC - DEFINIÇÕES DE BUSCA
                 //new AffinityVM(Section.Basic, CompatibilityItem.Location, GetLocation(user) == view.Location),
                 new(Section.Basic, CompatibilityItem.Language, GetLanguages(profile, filter).IsMatch(view.Languages)),
-                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),
-                new(Section.Basic, CompatibilityItem.RelationshipIntentions, GetRelationshipIntentions(profile).IsMatch(view.RelationshipIntentions)),
+                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),                
                 new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(profile, filter).IsMatch(view.BiologicalSex.ToArray())),
                 new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(profile, filter).IsMatch(view.GenderIdentities)),
                 new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(profile, filter).IsMatch(view.SexualOrientations)),
@@ -36,11 +35,14 @@ namespace MM.WEB.Core
                 new(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(profile, filter).IsMatch(view.Smoke.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(profile, filter).IsMatch(view.Diet.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(profile, filter).IsMatch(view.Religion.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),
-                new(Section.Lifestyle, CompatibilityItem.WantChildren, GetWantChildren(profile, filter).IsMatch(view.WantChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.FamilyInvolvement, GetFamilyInvolvement(profile, filter).IsMatch(view.FamilyInvolvement.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),                
                 new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(profile, filter).IsMatch(view.EducationLevel.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(profile, filter).IsMatch(view.CareerCluster.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.LivingSituation, GetLivingSituation(profile, filter).IsMatch(view.LivingSituation.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.TravelFrequency, GetTravelFrequency(profile, filter).IsMatch(view.TravelFrequency.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.NetWorth, GetNetWorth(profile, filter).IsMatch(view.NetWorth.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.AnnualIncome, GetAnnualIncome(profile, filter).IsMatch(view.AnnualIncome.ToArray())),
 
                 //PERSONALITY - COMPATIBILIDADE DE PERFIL
                 new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(profile).IsMatch(view.MoneyPersonality.ToArray(), true)),
@@ -59,6 +61,19 @@ namespace MM.WEB.Core
                 new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(profile).IsMatch(view.MovieGenre)),
                 new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(profile).IsMatch(view.TVGenre)),
                 new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(profile).IsMatch(view.ReadingGenre)),
+
+                //RELATIONSHIP
+                new(Section.Relationship, CompatibilityItem.SharedFinances, GetSharedFinances(profile, filter).IsMatch(view.SharedFinances.ToArray())),
+                new(Section.Relationship, CompatibilityItem.ConflictResolutionStyle, GetConflictResolutionStyle(profile, filter).IsMatch(view.ConflictResolutionStyle.ToArray())),
+                new(Section.Relationship, CompatibilityItem.HouseholdManagement, GetHouseholdManagement(profile, filter).IsMatch(view.HouseholdManagement.ToArray())),
+                new(Section.Relationship, CompatibilityItem.TimeTogetherPreference, GetTimeTogetherPreference(profile, filter).IsMatch(view.TimeTogetherPreference.ToArray())),
+                new(Section.Relationship, CompatibilityItem.OppositeSexFriendships, GetOppositeSexFriendships(profile, filter).IsMatch(view.OppositeSexFriendships.ToArray())),
+
+                //GOALS
+                new(Section.Goals, CompatibilityItem.RelationshipIntentions, GetRelationshipIntentions(profile).IsMatch(view.RelationshipIntentions)),
+                new(Section.Goals, CompatibilityItem.Relocation, GetRelocation(profile, filter).IsMatch(view.Relocation.ToArray())),
+                new(Section.Goals, CompatibilityItem.WantChildren, GetWantChildren(profile, filter).IsMatch(view.WantChildren.ToArray())),
+                new(Section.Goals, CompatibilityItem.IdealPlaceToLive, GetIdealPlaceToLive(profile, filter).IsMatch(view.IdealPlaceToLive.ToArray())),
             };
 
             return obj;
@@ -139,11 +154,6 @@ namespace MM.WEB.Core
             else selected = [];
 
             return selected;
-        }
-
-        public static HashSet<RelationshipIntention> GetRelationshipIntentions(ProfileModel profile)
-        {
-            return profile.RelationshipIntentions;
         }
 
         public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel profile, FilterModel? filter = null)
@@ -444,6 +454,18 @@ namespace MM.WEB.Core
             }
         }
 
+        public static HashSet<FamilyInvolvement> GetFamilyInvolvement(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.FamilyInvolvement.Count != 0)
+            {
+                return filter.FamilyInvolvement;
+            }
+            else
+            {
+                return [profile.FamilyInvolvement ?? throw new NotificationException("FamilyInvolvement null")];
+            }
+        }
+
         public static HashSet<HaveChildren> GetHaveChildren(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.HaveChildren.Count != 0)
@@ -457,24 +479,6 @@ namespace MM.WEB.Core
                     HaveChildren.No => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.YesNo => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.Yes => [HaveChildren.Yes],
-                    _ => []
-                };
-            }
-        }
-
-        public static HashSet<WantChildren> GetWantChildren(ProfileModel profile, FilterModel? filter = null)
-        {
-            if (filter != null && filter.WantChildren.Count != 0)
-            {
-                return filter.WantChildren;
-            }
-            else
-            {
-                return profile.WantChildren switch
-                {
-                    WantChildren.No => [WantChildren.No],
-                    WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
-                    WantChildren.Yes => [WantChildren.Maybe, WantChildren.Yes],
                     _ => []
                 };
             }
@@ -504,6 +508,18 @@ namespace MM.WEB.Core
             }
         }
 
+        public static HashSet<LivingSituation> GetLivingSituation(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.LivingSituation.Count != 0)
+            {
+                return filter.LivingSituation;
+            }
+            else
+            {
+                return [profile.LivingSituation ?? throw new NotificationException("LivingSituation null")];
+            }
+        }
+
         public static HashSet<TravelFrequency> GetTravelFrequency(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.TravelFrequency.Count != 0)
@@ -519,6 +535,30 @@ namespace MM.WEB.Core
                     TravelFrequency.UsuallyAlwaysNomad => [TravelFrequency.SometimesFrequently, TravelFrequency.UsuallyAlwaysNomad],
                     _ => []
                 };
+            }
+        }
+
+        public static HashSet<NetWorth> GetNetWorth(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.NetWorth.Count != 0)
+            {
+                return filter.NetWorth;
+            }
+            else
+            {
+                return [profile.NetWorth ?? throw new NotificationException("NetWorth null")];
+            }
+        }
+
+        public static HashSet<AnnualIncome> GetAnnualIncome(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.AnnualIncome.Count != 0)
+            {
+                return filter.AnnualIncome;
+            }
+            else
+            {
+                return [profile.AnnualIncome ?? throw new NotificationException("AnnualIncome null")];
             }
         }
 
@@ -653,6 +693,114 @@ namespace MM.WEB.Core
         }
 
         #endregion INTEREST
+
+        #region RELATIONSHIP
+
+        public static HashSet<SharedFinances> GetSharedFinances(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.SharedFinances.Count != 0)
+            {
+                return filter.SharedFinances;
+            }
+            else
+            {
+                return [profile.SharedFinances ?? throw new NotificationException("SharedFinances null")];
+            }
+        }
+
+        public static HashSet<ConflictResolutionStyle> GetConflictResolutionStyle(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.ConflictResolutionStyle.Count != 0)
+            {
+                return filter.ConflictResolutionStyle;
+            }
+            else
+            {
+                return [profile.ConflictResolutionStyle ?? throw new NotificationException("ConflictResolutionStyle null")];
+            }
+        }
+
+        public static HashSet<HouseholdManagement> GetHouseholdManagement(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.HouseholdManagement.Count != 0)
+            {
+                return filter.HouseholdManagement;
+            }
+            else
+            {
+                return [profile.HouseholdManagement ?? throw new NotificationException("HouseholdManagement null")];
+            }
+        }
+
+        public static HashSet<TimeTogetherPreference> GetTimeTogetherPreference(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.TimeTogetherPreference.Count != 0)
+            {
+                return filter.TimeTogetherPreference;
+            }
+            else
+            {
+                return [profile.TimeTogetherPreference ?? throw new NotificationException("TimeTogetherPreference null")];
+            }
+        }
+
+        public static HashSet<OppositeSexFriendships> GetOppositeSexFriendships(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.OppositeSexFriendships.Count != 0)
+            {
+                return filter.OppositeSexFriendships;
+            }
+            else
+            {
+                return [profile.OppositeSexFriendships ?? throw new NotificationException("OppositeSexFriendships null")];
+            }
+        }
+
+        #endregion RELATIONSHIP
+
+        #region GOALS
+
+        public static HashSet<RelationshipIntention> GetRelationshipIntentions(ProfileModel profile)
+        {
+            return profile.RelationshipIntentions;
+        }
+
+        public static HashSet<Relocation> GetRelocation(ProfileModel profile, FilterModel? filter = null)
+        {
+            return [profile.Relocation ?? throw new NotificationException("Relocation null")];
+        }
+
+        public static HashSet<WantChildren> GetWantChildren(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.WantChildren.Count != 0)
+            {
+                return filter.WantChildren;
+            }
+            else
+            {
+                return profile.WantChildren switch
+                {
+                    WantChildren.No => [WantChildren.No],
+                    WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
+                    WantChildren.Yes => [WantChildren.Maybe, WantChildren.Yes],
+                    _ => []
+                };
+            }
+        }
+
+        public static HashSet<IdealPlaceToLive> GetIdealPlaceToLive(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.IdealPlaceToLive.Count != 0)
+            {
+                return filter.IdealPlaceToLive;
+            }
+            else
+            {
+                return [profile.IdealPlaceToLive ?? throw new NotificationException("IdealPlaceToLive null")];
+            }
+        }
+
+        #endregion GOALS
 
         public static int GetPercentAffinity(this List<AffinityVM> affinities, Section? category = null)
         {

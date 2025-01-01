@@ -69,7 +69,7 @@ namespace MM.API.Functions
                         else
                             profile = await repoOff.Get<ProfileModel>(id, cancellationToken);
 
-                        myLikes.Likes.Add(new LikeItem(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+                        myLikes.Items.Add(new PersonModel(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
                     }
 
                     await repo.Upsert(myLikes, cancellationToken);

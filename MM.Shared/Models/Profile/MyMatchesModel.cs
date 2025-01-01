@@ -1,8 +1,8 @@
 ﻿namespace MM.Shared.Models.Profile
 {
-    public class MyLikesModel : PrivateMainDocument
+    public class MyMatchesModel : PrivateMainDocument
     {
-        public MyLikesModel() : base(DocumentType.Likes)
+        public MyMatchesModel() : base(DocumentType.Matches)
         {
         }
 
@@ -15,7 +15,7 @@
 
         public override bool Equals(object? obj)
         {
-            return obj is MyLikesModel q && q.Id == Id;
+            return obj is MyMatchesModel q && q.Id == Id;
         }
 
         public override int GetHashCode()

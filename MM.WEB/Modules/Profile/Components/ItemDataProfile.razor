@@ -38,19 +38,19 @@ else
 
     private string GetValue(TValue? value)
     {
-        if (value == null) return "Não Respondido";
+        if (value == null) return "Not Answered";
 
         if (value is string resultS)
         {
             if (string.IsNullOrEmpty(resultS))
-                return "Não Respondido";
+                return "Not Answered";
             else
                 return resultS;
         }
         else if (value is int resultI)
         {
             if (resultI <= 0)
-                return "Não Respondido";
+                return "Not Answered";
             else
                 return resultI.ToString();
         }
@@ -59,7 +59,7 @@ else
             var result = resultE.GetName();
 
             if (string.IsNullOrEmpty(result))
-                return "Não Respondido";
+                return "Not Answered";
             else
                 return result;
         }
@@ -156,7 +156,6 @@ else
             CompatibilityItem.Location => AffinityCore.GetLocation(User, Filter).ToArray(),
             CompatibilityItem.Language => AffinityCore.GetLanguages(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.MaritalStatus => AffinityCore.GetMaritalStatus(User, Filter).Select(s => s.GetName()),
-            CompatibilityItem.RelationshipIntentions => AffinityCore.GetRelationshipIntentions(User).Select(s => s.GetName()),
             CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.GenderIdentities => AffinityCore.GetGenderIdentities(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.SexualOrientations => AffinityCore.GetSexualOrientations(User, Filter).Select(s => s.GetName()),
@@ -172,11 +171,14 @@ else
             CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.Diet => AffinityCore.GetDiet(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.Religion => AffinityCore.GetReligion(User, Filter).Select(s => s.GetName()),
-            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, Filter).Select(s => s.GetName()),
-            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.FamilyInvolvement => AffinityCore.GetFamilyInvolvement(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, Filter).Select(s => s.GetName()),            
             CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.LivingSituation => AffinityCore.GetLivingSituation(User, Filter).Select(s => s.GetName()),
             CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.NetWorth => AffinityCore.GetNetWorth(User, Filter).Select(s => s.GetName()),
+            CompatibilityItem.AnnualIncome => AffinityCore.GetAnnualIncome(User, Filter).Select(s => s.GetName()),
             //PERSONALITY
             CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetName()),
             CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetName()),
@@ -193,6 +195,18 @@ else
             CompatibilityItem.MovieGenre => AffinityCore.GetMovieGenre(User).Select(s => s.GetName()),
             CompatibilityItem.TVGenre => AffinityCore.GetTVGenre(User).Select(s => s.GetName()),
             CompatibilityItem.ReadingGenre => AffinityCore.GetReadingGenre(User).Select(s => s.GetName()),
+            //RELATIONSHIP
+            CompatibilityItem.SharedFinances => AffinityCore.GetSharedFinances(User).Select(s => s.GetName()),
+            CompatibilityItem.ConflictResolutionStyle => AffinityCore.GetConflictResolutionStyle(User).Select(s => s.GetName()),
+            CompatibilityItem.HouseholdManagement => AffinityCore.GetHouseholdManagement(User).Select(s => s.GetName()),
+            CompatibilityItem.TimeTogetherPreference => AffinityCore.GetTimeTogetherPreference(User).Select(s => s.GetName()),
+            CompatibilityItem.OppositeSexFriendships => AffinityCore.GetOppositeSexFriendships(User).Select(s => s.GetName()),
+            //GOALS
+            CompatibilityItem.RelationshipIntentions => AffinityCore.GetRelationshipIntentions(User).Select(s => s.GetName()),
+            CompatibilityItem.Relocation => AffinityCore.GetRelocation(User).Select(s => s.GetName()),
+            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, Filter).Select(s => s.GetName()),            
+            CompatibilityItem.IdealPlaceToLive => AffinityCore.GetIdealPlaceToLive(User).Select(s => s.GetName()),
+
             _ => throw new InvalidOperationException("invalid CompatibilityItem: " + Item)
         };
     }

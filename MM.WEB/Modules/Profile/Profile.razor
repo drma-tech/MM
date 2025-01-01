@@ -1,5 +1,6 @@
 ﻿@page "/profile"
 
+@using Bogus
 @using FluentValidation
 @using MM.Shared.Models.Profile;
 @using MM.Shared.Models.Profile.Core
@@ -14,6 +15,7 @@
 @inject SettingApi SettingApi
 @inject InviteApi InviteApi
 @inject MyLikesApi MyLikesApi
+@inject MyMatchesApi MyMatchesApi
 
 <SeoHeader Title="Profile" Url="/profile"></SeoHeader>
 
@@ -104,9 +106,9 @@
                 Invite Partner
             </Button>
         </HeaderComponent>
-        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Likes.Empty())" PrivateContent="true">
+        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
             <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-                @foreach (var item in MyLikes?.Likes.Take(6) ?? [])
+                @foreach (var item in MyLikes?.Items.Take(6) ?? [])
                 {
                     <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
                         <Div Style="position:relative;">
@@ -115,7 +117,7 @@
                                 <FigureImage Margin="Margin.Is0" Source="@item.UserPhoto" AlternateText="No Picture" Rounded />
                             </Figure>
                         </Div>
-                        <Button Size="Size.Small" Color="Color.Primary" Block>Open</Button>
+                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId))">Open</Button>
                     </Column>
                 }
             </Row>
@@ -123,15 +125,29 @@
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)" Disabled="true">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)">
                 Simulate
             </Button>
         </HeaderComponent>
-        <RenderControl Core="CoreMatches" Model="Matches" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true">
+        <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="((MyMatchesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
             <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-                @foreach (var item in Matches)
+                @foreach (var item in MyMatches?.Items.Take(6) ?? [])
                 {
                     <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
+                        <Div Style="position:relative;">
+                            <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
+                            <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
+                                <FigureImage Margin="Margin.Is0" Source="@item.UserPhoto" AlternateText="No Picture" Rounded />
+                            </Figure>
+                        </Div>
+                        @if (item.Fake)
+                        {
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">Open</Button>
+                        }
+                        else
+                        {
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId))">Open</Button>
+                        }
                     </Column>
                 }
             </Row>
@@ -139,10 +155,15 @@
     </Column>
 </Row>
 
+<PopupProfile @ref="PopupProfile" UserId="@UserId"></PopupProfile>
+
 @code
 {
+    public PopupProfile? PopupProfile { get; set; }
+
     public ProfileValidation ProfileValidator { get; set; } = new();
     public ProfileModel? profile;
+    public HashSet<ProfileModel> fakeProfiles { get; set; } = [];
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
     public FilterValidation FilterValidator { get; set; } = new();
@@ -160,8 +181,8 @@
     public MyLikesModel? MyLikes { get; set; }
     public RenderControlCore<MyLikesModel?>? CoreLikes { get; set; } = new();
 
-    public List<string> Matches { get; set; } = [];
-    public RenderControlCore<List<string>>? CoreMatches { get; set; } = new();
+    public MyMatchesModel? MyMatches { get; set; }
+    public RenderControlCore<MyMatchesModel?>? CoreMatches { get; set; } = new();
 
     public bool IsPublic { get; set; }
 
@@ -179,12 +200,14 @@
                 profile = await ProfileApi.Get(CoreProfile);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
+
                 MyLikes = await MyLikesApi.Get(CoreLikes);
+                MyMatches = await MyMatchesApi.Get(CoreMatches);
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
             CoreLikes?.LoadingFinished?.Invoke(MyLikes);
-            CoreMatches?.LoadingFinished?.Invoke(Matches);
+            CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }
         catch (Exception ex)
         {
@@ -231,8 +254,80 @@
     {
         if (await Message.Confirm("Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works.", "Confirmation"))
         {
-            Matches.Add("asd");
-            CoreMatches?.LoadingFinished?.Invoke(Matches);
+            MyMatches = new MyMatchesModel();
+
+            var languages = EnumHelper.GetArray<MM.Shared.Enums.Language>();
+
+            fakeProfiles = new Faker<ProfileModel>()
+                .RuleFor(x => x.Id, f => f.Random.Guid().ToString())
+                .RuleFor(u => u.Photo, f => new ProfilePhotoModel() { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
+                //BASIC
+                .RuleFor(x => x.NickName, f => f.Name.FirstName())
+                .RuleFor(x => x.Description, f => f.Lorem.Text())
+                .RuleFor(x => x.Nationality, f => f.PickRandom<MM.Shared.Enums.Country>())
+                .RuleFor(x => x.Country, f => f.Address.Country())
+                .RuleFor(x => x.State, f => f.Address.County())
+                .RuleFor(x => x.City, f => f.Address.City())
+                .RuleFor(x => x.Languages, f => f.Random.EnumValues<MM.Shared.Enums.Language>(f.Random.Int(1, 3)).ToHashSet())
+                .RuleFor(x => x.MaritalStatus, f => f.PickRandom<MM.Shared.Enums.MaritalStatus>())
+                .RuleFor(x => x.BiologicalSex, f => f.PickRandom<MM.Shared.Enums.BiologicalSex>())
+                .RuleFor(x => x.GenderIdentities, f => f.Random.EnumValues<MM.Shared.Enums.GenderIdentity>(f.Random.Int(1, 2)).ToHashSet())
+                .RuleFor(x => x.SexualOrientations, f => f.Random.EnumValues<MM.Shared.Enums.SexualOrientation>(f.Random.Int(1, 2)).ToHashSet())
+                //BIO
+                .RuleFor(x => x.Ethnicity, f => f.PickRandom<MM.Shared.Enums.Ethnicity>())
+                .RuleFor(x => x.BodyType, f => f.PickRandom<MM.Shared.Enums.BodyType>())
+                .RuleFor(x => x.BirthDate, f => f.Date.Between(DateTime.Now.AddYears(-80), DateTime.Now.AddYears(-19)))
+                .RuleFor(x => x.Height, f => f.PickRandom<MM.Shared.Enums.Height>())
+                .RuleFor(x => x.Neurodiversity, f => f.PickRandom<MM.Shared.Enums.Neurodiversity>())
+                .RuleFor(x => x.Disabilities, f => f.Random.EnumValues<MM.Shared.Enums.Disability>(f.Random.Int(0, 1)).ToHashSet())
+                //LIFESTYLE
+                .RuleFor(x => x.Drink, f => f.PickRandom<MM.Shared.Enums.Drink>())
+                .RuleFor(x => x.Smoke, f => f.PickRandom<MM.Shared.Enums.Smoke>())
+                .RuleFor(x => x.Diet, f => f.PickRandom<MM.Shared.Enums.Diet>())
+                .RuleFor(x => x.Religion, f => f.PickRandom<MM.Shared.Enums.Religion>())
+                .RuleFor(x => x.FamilyInvolvement, f => f.PickRandom<MM.Shared.Enums.FamilyInvolvement>())
+                .RuleFor(x => x.HaveChildren, f => f.PickRandom<MM.Shared.Enums.HaveChildren>())
+                .RuleFor(x => x.HavePets, f => f.PickRandom<MM.Shared.Enums.HavePets>())
+                .RuleFor(x => x.EducationLevel, f => f.PickRandom<MM.Shared.Enums.EducationLevel>())
+                .RuleFor(x => x.CareerCluster, f => f.PickRandom<MM.Shared.Enums.CareerCluster>())
+                .RuleFor(x => x.LivingSituation, f => f.PickRandom<MM.Shared.Enums.LivingSituation>())
+                .RuleFor(x => x.TravelFrequency, f => f.PickRandom<MM.Shared.Enums.TravelFrequency>())
+                .RuleFor(x => x.NetWorth, f => f.PickRandom<MM.Shared.Enums.NetWorth>())
+                .RuleFor(x => x.AnnualIncome, f => f.PickRandom<MM.Shared.Enums.AnnualIncome>())
+                //PERSONALITY
+                .RuleFor(x => x.MoneyPersonality, f => f.PickRandom<MM.Shared.Enums.MoneyPersonality>())
+                .RuleFor(x => x.SharedSpendingStyle, f => f.PickRandom<MM.Shared.Enums.SharedSpendingStyle>())
+                .RuleFor(x => x.RelationshipPersonality, f => f.PickRandom<MM.Shared.Enums.RelationshipPersonality>())
+                .RuleFor(x => x.MBTI, f => f.PickRandom<MM.Shared.Enums.MyersBriggsTypeIndicator>())
+                .RuleFor(x => x.LoveLanguage, f => f.PickRandom<MM.Shared.Enums.LoveLanguage>())
+                .RuleFor(x => x.SexPersonality, f => f.PickRandom<MM.Shared.Enums.SexPersonality>())
+                .RuleFor(x => x.SexPersonalityPreference, f => f.Random.EnumValues<MM.Shared.Enums.SexPersonality>(f.Random.Int(1, 3)).ToHashSet())
+                //INTEREST
+                .RuleFor(x => x.Food, f => f.Random.EnumValues<MM.Shared.Enums.Food>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.Vacation, f => f.Random.EnumValues<MM.Shared.Enums.Vacation>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.Sports, f => f.Random.EnumValues<MM.Shared.Enums.Sports>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.LeisureActivities, f => f.Random.EnumValues<MM.Shared.Enums.LeisureActivities>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.MusicGenre, f => f.Random.EnumValues<MM.Shared.Enums.MusicGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.MovieGenre, f => f.Random.EnumValues<MM.Shared.Enums.MovieGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.TVGenre, f => f.Random.EnumValues<MM.Shared.Enums.TVGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.ReadingGenre, f => f.Random.EnumValues<MM.Shared.Enums.ReadingGenre>(f.Random.Int(0, 3)).ToHashSet())
+                //RELATIONSHIP
+                .RuleFor(x => x.SharedFinances, f => f.PickRandom<MM.Shared.Enums.SharedFinances>())
+                .RuleFor(x => x.ConflictResolutionStyle, f => f.PickRandom<MM.Shared.Enums.ConflictResolutionStyle>())
+                .RuleFor(x => x.HouseholdManagement, f => f.PickRandom<MM.Shared.Enums.HouseholdManagement>())
+                .RuleFor(x => x.TimeTogetherPreference, f => f.PickRandom<MM.Shared.Enums.TimeTogetherPreference>())
+                .RuleFor(x => x.OppositeSexFriendships, f => f.PickRandom<MM.Shared.Enums.OppositeSexFriendships>())
+                //GOAL
+                .RuleFor(x => x.RelationshipIntentions, f => f.Random.EnumValues<MM.Shared.Enums.RelationshipIntention>(f.Random.Int(1, 2)).ToHashSet())
+                .RuleFor(x => x.WantChildren, f => f.PickRandom<MM.Shared.Enums.WantChildren>())
+                .RuleFor(x => x.Relocation, f => f.PickRandom<MM.Shared.Enums.Relocation>())
+                .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<MM.Shared.Enums.IdealPlaceToLive>())
+
+                .GenerateLazy(6).ToHashSet();
+
+            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Fake = true }).ToHashSet();
+
+            CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }
     }
 
