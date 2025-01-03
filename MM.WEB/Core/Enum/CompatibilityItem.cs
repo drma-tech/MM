@@ -28,6 +28,7 @@
         Religion,
         FamilyInvolvement,
         HaveChildren,
+        HavePets,
         EducationLevel,
         CareerCluster,
         LivingSituation,

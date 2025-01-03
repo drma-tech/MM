@@ -6,20 +6,20 @@ namespace MM.WEB.Core
     {
         public static void PopulateFields(ProfileModel? profile, FilterModel? filter)
         {
-            if (profile == null) throw new NotificationException("Preenchimento de cadastro do perfil não encontrado");
+            if (profile == null) throw new NotificationException("Profile needs to be filled out first");
             filter ??= new FilterModel();
 
             //BASIC
-            filter.Region = AffinityCore.GetRegion(profile);
+            filter.Region = AffinityCore.GetRegion(profile.Relocation);
             filter.Languages = profile.Languages;
-            filter.MaritalStatus = AffinityCore.GetMaritalStatus(profile);
+            filter.MaritalStatus = AffinityCore.GetMaritalStatus(filter);
             //looking.Intent = profile.Basic.Intent; //selecionado ao carregar a tela
             filter.BiologicalSex = AffinityCore.GetBiologicalSex(profile);
             //looking.GenderIdentity = null;
-            filter.SexualOrientations = AffinityCore.GetSexualOrientations(profile);
+            filter.SexualOrientations = AffinityCore.GetSexualOrientations(filter, profile.SexualOrientations);
 
             //BIO
-            var ages = AffinityCore.GetAge(profile, filter, true);
+            var ages = AffinityCore.GetAge(filter, profile.BirthDate, true);
             filter.MinimalAge = ages[0];
             filter.MaxAge = ages[1];
             var heights = AffinityCore.GetHeight(profile, filter, true);

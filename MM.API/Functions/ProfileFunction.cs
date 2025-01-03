@@ -92,8 +92,8 @@ namespace MM.API.Functions
 
                 if (profile == null) return null;
 
-                //profile.Age = profile.BirthDate.GetAge();
-                //profile.BirthDate = DateTime.MinValue;
+                profile.Age = profile.BirthDate.GetAge();
+                profile.BirthDate = DateTime.MinValue;
                 //profile.ActivityStatus = ActivityStatus.Today;
 
                 //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;

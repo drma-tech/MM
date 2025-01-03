@@ -14,29 +14,30 @@ namespace MM.WEB.Core
 
             var obj = new List<AffinityVM>
             {
-                //BASIC - DEFINIÇÕES DE BUSCA
-                new(Section.Basic, CompatibilityItem.Location, GetLocation(profile, filter).LocationIsMatch(view.Location)),
-                new(Section.Basic, CompatibilityItem.Language, GetLanguages(profile, filter).IsMatch(view.Languages)),
-                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(profile, filter).IsMatch(view.MaritalStatus.ToArray())),
+                //BASIC - SEARCH SETTINGS
+                new(Section.Basic, CompatibilityItem.Location, GetLocation(filter, profile.Location).LocationIsMatch(view.Location)),
+                new(Section.Basic, CompatibilityItem.Language, GetLanguages(filter, profile.Languages).IsMatch(view.Languages)),
+                new(Section.Basic, CompatibilityItem.MaritalStatus, GetMaritalStatus(filter).IsMatch(view.MaritalStatus.ToArray())),
                 new(Section.Basic, CompatibilityItem.BiologicalSex, GetBiologicalSex(profile, filter).IsMatch(view.BiologicalSex.ToArray())),
-                new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(profile, filter).IsMatch(view.GenderIdentities)),
-                new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(profile, filter).IsMatch(view.SexualOrientations)),
+                new(Section.Basic, CompatibilityItem.GenderIdentities, GetGenderIdentities(filter, profile.GenderIdentities).IsMatch(view.GenderIdentities)),
+                new(Section.Basic, CompatibilityItem.SexualOrientations, GetSexualOrientations(filter, profile.SexualOrientations).IsMatch(view.SexualOrientations)),
 
-                //BIO - DEFINIÇÕES DE BUSCA
+                //BIO - SEARCH SETTINGS
                 new(Section.Bio, CompatibilityItem.Ethnicity, GetEthnicity(filter).IsMatch(view.Ethnicity.ToArray())),
                 new(Section.Bio, CompatibilityItem.BodyType, GetBodyType(filter).IsMatch(view.BodyType.ToArray())),
-                new(Section.Bio, CompatibilityItem.Age, GetAge(profile, filter).IsRangeMatch(view.Age.ToArray())),
+                new(Section.Bio, CompatibilityItem.Age, GetAge(filter, profile.BirthDate).IsRangeMatch(view.Age.ToArray())),
                 new(Section.Bio, CompatibilityItem.Height, GetHeight(profile, filter).Select(s => (int)s).IsRangeMatch(((int?)view.Height).ToArray())),
                 new(Section.Bio, CompatibilityItem.Neurodiversity, GetNeurodiversity(filter).IsMatch(view.Neurodiversity.ToArray())),
                 new(Section.Bio, CompatibilityItem.Disabilities, GetDisability(filter).IsMatch(view.Disabilities)),
 
-                //LIFESTYLE - COMPATIBILIDADE DE PERFIL OU DEFINIÇÕES DE BUSCA (SE PREENCHIDO)
+                //LIFESTYLE - PROFILE COMPATIBILITY OR SEARCH SETTINGS (IF COMPLETED)
                 new(Section.Lifestyle, CompatibilityItem.Drink, GetDrink(profile, filter).IsMatch(view.Drink.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Smoke, GetSmoke(profile, filter).IsMatch(view.Smoke.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Diet, GetDiet(profile, filter).IsMatch(view.Diet.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.Religion, GetReligion(profile, filter).IsMatch(view.Religion.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.FamilyInvolvement, GetFamilyInvolvement(profile, filter).IsMatch(view.FamilyInvolvement.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.HaveChildren, GetHaveChildren(profile, filter).IsMatch(view.HaveChildren.ToArray())),
+                new(Section.Lifestyle, CompatibilityItem.HavePets, GetHavePets(profile, filter).IsMatch(view.HavePets.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.EducationLevel, GetEducationLevel(profile, filter).IsMatch(view.EducationLevel.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.CareerCluster, GetCareerCluster(profile, filter).IsMatch(view.CareerCluster.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.LivingSituation, GetLivingSituation(profile, filter).IsMatch(view.LivingSituation.ToArray())),
@@ -44,7 +45,7 @@ namespace MM.WEB.Core
                 new(Section.Lifestyle, CompatibilityItem.NetWorth, GetNetWorth(profile, filter).IsMatch(view.NetWorth.ToArray())),
                 new(Section.Lifestyle, CompatibilityItem.AnnualIncome, GetAnnualIncome(profile, filter).IsMatch(view.AnnualIncome.ToArray())),
 
-                //PERSONALITY - COMPATIBILIDADE DE PERFIL
+                //PERSONALITY - PROFILE COMPATIBILITY
                 new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(profile).IsMatch(view.MoneyPersonality.ToArray(), true)),
                 new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(profile).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
                 new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(profile).IsMatch(view.RelationshipPersonality.ToArray(), true)),
@@ -52,25 +53,25 @@ namespace MM.WEB.Core
                 new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(profile).IsMatch(view.LoveLanguage.ToArray(), true)),
                 new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(profile).IsMatch(view.SexPersonality.ToArray(), true)),
 
-                //INTEREST - COMPATIBILIDADE DE PERFIL (UMA OPÇAO IGUAL JÁ INDICA COMPATIBILIDADE)
-                new(Section.Interest, CompatibilityItem.Food, GetFood(profile).IsMatch(view.Food)),
-                new(Section.Interest, CompatibilityItem.Vacation, GetVacation(profile).IsMatch(view.Vacation)),
-                new(Section.Interest, CompatibilityItem.Sports, GetSports(profile).IsMatch(view.Sports)),
-                new(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(profile).IsMatch(view.LeisureActivities)),
-                new(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(profile).IsMatch(view.MusicGenre)),
-                new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(profile).IsMatch(view.MovieGenre)),
-                new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(profile).IsMatch(view.TVGenre)),
-                new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(profile).IsMatch(view.ReadingGenre)),
+                //INTEREST - PROFILE COMPATIBILITY (A SINGLE SAME OPTION ALREADY INDICATES COMPATIBILITY)
+                new(Section.Interest, CompatibilityItem.Food, GetFood(profile, filter).IsMatch(view.Food)),
+                new(Section.Interest, CompatibilityItem.Vacation, GetVacation(profile, filter).IsMatch(view.Vacation)),
+                new(Section.Interest, CompatibilityItem.Sports, GetSports(profile, filter).IsMatch(view.Sports)),
+                new(Section.Interest, CompatibilityItem.LeisureActivities, GetLeisureActivities(profile, filter).IsMatch(view.LeisureActivities)),
+                new(Section.Interest, CompatibilityItem.MusicGenre, GetMusicGenre(profile, filter).IsMatch(view.MusicGenre)),
+                new(Section.Interest, CompatibilityItem.MovieGenre, GetMovieGenre(profile, filter).IsMatch(view.MovieGenre)),
+                new(Section.Interest, CompatibilityItem.TVGenre, GetTVGenre(profile, filter).IsMatch(view.TVGenre)),
+                new(Section.Interest, CompatibilityItem.ReadingGenre, GetReadingGenre(profile, filter).IsMatch(view.ReadingGenre)),
 
-                //RELATIONSHIP
+                //RELATIONSHIP - FIELD SPECIFIC RULES
                 new(Section.Relationship, CompatibilityItem.SharedFinances, GetSharedFinances(profile, filter).IsMatch(view.SharedFinances.ToArray())),
                 new(Section.Relationship, CompatibilityItem.ConflictResolutionStyle, GetConflictResolutionStyle(profile, filter).IsMatch(view.ConflictResolutionStyle.ToArray())),
                 new(Section.Relationship, CompatibilityItem.HouseholdManagement, GetHouseholdManagement(profile, filter).IsMatch(view.HouseholdManagement.ToArray())),
                 new(Section.Relationship, CompatibilityItem.TimeTogetherPreference, GetTimeTogetherPreference(profile, filter).IsMatch(view.TimeTogetherPreference.ToArray())),
                 new(Section.Relationship, CompatibilityItem.OppositeSexFriendships, GetOppositeSexFriendships(profile, filter).IsMatch(view.OppositeSexFriendships.ToArray())),
 
-                //GOALS
-                new(Section.Goals, CompatibilityItem.RelationshipIntentions, GetRelationshipIntentions(profile).IsMatch(view.RelationshipIntentions)),
+                //GOALS - FIELD SPECIFIC RULES
+                new(Section.Goals, CompatibilityItem.RelationshipIntentions, GetRelationshipIntentions(profile, filter).IsMatch(view.RelationshipIntentions)),
                 new(Section.Goals, CompatibilityItem.Relocation, GetRelocation(profile, filter).IsMatch(view.Relocation.ToArray())),
                 new(Section.Goals, CompatibilityItem.WantChildren, GetWantChildren(profile, filter).IsMatch(view.WantChildren.ToArray())),
                 new(Section.Goals, CompatibilityItem.IdealPlaceToLive, GetIdealPlaceToLive(profile, filter).IsMatch(view.IdealPlaceToLive.ToArray())),
@@ -133,26 +134,26 @@ namespace MM.WEB.Core
             return filters.First() <= view.First() && view.First() <= filters.Last();
         }
 
-        #region BASIC
+        #region BASIC - SEARCH SETTINGS
 
-        public static Region GetRegion(ProfileModel profile)
+        public static Region GetRegion(Relocation? relocation)
         {
-            return profile?.Relocation switch
+            return relocation switch
             {
                 Relocation.NoRelocations => Region.City,
                 Relocation.OpenMovingCities => Region.Country,
                 Relocation.OpenMovingCountries => Region.World,
-                _ => throw new NotImplementedException(),
+                _ => Region.City,
             };
         }
 
-        public static (string? loc, int pos) GetLocation(ProfileModel profile, FilterModel? filter)
+        public static (string? loc, int pos) GetLocation(FilterModel? filter, string? location)
         {
-            var parts = profile.Location?.Split(" - ") ?? [];
+            var parts = location?.Split(" - ") ?? [];
 
             return filter?.Region switch
             {
-                Region.City => (profile.Location, 2), //level 3
+                Region.City => (location, 2), //level 3
                 Region.State => ($"{parts[0]} - {parts[1]}", 1), //level 2
                 Region.Country => ($"{parts[0]}", 0), //level 1
                 Region.World => (null, -1),
@@ -160,20 +161,22 @@ namespace MM.WEB.Core
             };
         }
 
-        public static HashSet<Language> GetLanguages(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<Language> GetLanguages(FilterModel? filter, HashSet<Language> languages)
         {
-            if (filter != null && filter.Languages.Count != 0) return filter.Languages;
-            else if (profile.Languages.Count != 0) return profile.Languages;
-            else return [];
+            if (filter != null && filter.Languages.Count != 0)
+                return filter.Languages;
+            else if (languages.Count != 0)
+                return languages;
+            else
+                return [];
         }
 
-        public static HashSet<MaritalStatus> GetMaritalStatus(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<MaritalStatus> GetMaritalStatus(FilterModel? filter = null)
         {
-            HashSet<MaritalStatus> selected;
-            if (filter != null && filter.MaritalStatus.Count != 0) selected = filter.MaritalStatus;
-            else selected = [];
-
-            return selected;
+            if (filter != null && filter.MaritalStatus.Count != 0)
+                return filter.MaritalStatus;
+            else
+                return [];
         }
 
         public static HashSet<BiologicalSex> GetBiologicalSex(ProfileModel profile, FilterModel? filter = null)
@@ -216,7 +219,7 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<GenderIdentity> GetGenderIdentities(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<GenderIdentity> GetGenderIdentities(FilterModel? filter, HashSet<GenderIdentity> genderIdentities)
         {
             if (filter != null && filter.GenderIdentities.Count != 0)
             {
@@ -224,7 +227,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                if (profile.GenderIdentities.Contains(GenderIdentity.Cisgender)) //BINARY
+                if (genderIdentities.Contains(GenderIdentity.Cisgender)) //BINARY
                 {
                     return GenderIdentity.Cisgender.ToArray();
                 }
@@ -235,7 +238,7 @@ namespace MM.WEB.Core
             }
         }
 
-        public static HashSet<SexualOrientation> GetSexualOrientations(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<SexualOrientation> GetSexualOrientations(FilterModel? filter, HashSet<SexualOrientation> sexualOrientations)
         {
             if (filter != null && filter.SexualOrientations.Count != 0)
             {
@@ -243,29 +246,36 @@ namespace MM.WEB.Core
             }
             else
             {
-                if (profile.SexualOrientations.Contains(SexualOrientation.Heterosexual)) return [SexualOrientation.Heterosexual];
-                else if (profile.SexualOrientations.Contains(SexualOrientation.Homosexual)) return [SexualOrientation.Homosexual];
-                else return [];
+                if (sexualOrientations.Contains(SexualOrientation.Heterosexual))
+                    return [SexualOrientation.Heterosexual];
+                else if (sexualOrientations.Contains(SexualOrientation.Homosexual))
+                    return [SexualOrientation.Homosexual];
+                else
+                    return [];
             }
         }
 
-        #endregion BASIC
+        #endregion BASIC - SEARCH SETTINGS
 
-        #region BIO
+        #region BIO - SEARCH SETTINGS
 
         public static HashSet<Ethnicity> GetEthnicity(FilterModel? filter = null)
         {
-            if (filter != null && filter.Ethnicity.Count != 0) return filter.Ethnicity;
-            else return [];
+            if (filter != null && filter.Ethnicity.Count != 0)
+                return filter.Ethnicity;
+            else
+                return [];
         }
 
         public static HashSet<BodyType> GetBodyType(FilterModel? filter = null)
         {
-            if (filter != null && filter.BodyType.Count != 0) return filter.BodyType;
-            else return [];
+            if (filter != null && filter.BodyType.Count != 0)
+                return filter.BodyType;
+            else
+                return [];
         }
 
-        public static int[] GetAge(ProfileModel profile, FilterModel? filter = null, bool force = false)
+        public static int[] GetAge(FilterModel? filter, DateTime birthDate, bool force = false)
         {
             int? min;
             int? max;
@@ -277,7 +287,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                var age = profile.BirthDate.GetAge();
+                var age = birthDate.GetAge();
 
                 min = (int)Math.Round(age * 0.75);
                 if (min < 18) min = 18;
@@ -394,9 +404,9 @@ namespace MM.WEB.Core
                 return [];
         }
 
-        #endregion BIO
+        #endregion BIO - SEARCH SETTINGS
 
-        #region LIFESTYLE
+        #region LIFESTYLE - PROFILE COMPATIBILITY OR SEARCH SETTINGS (IF COMPLETED)
 
         public static HashSet<Drink> GetDrink(ProfileModel profile, FilterModel? filter = null)
         {
@@ -470,7 +480,7 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.Religion ?? throw new NotificationException("Religion null")];
+                return profile.Religion.ToHashSet();
             }
         }
 
@@ -482,7 +492,13 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.FamilyInvolvement ?? throw new NotificationException("FamilyInvolvement null")];
+                return profile.FamilyInvolvement switch
+                {
+                    FamilyInvolvement.NotInvolved => [FamilyInvolvement.NotInvolved, FamilyInvolvement.SomeInvolvement],
+                    FamilyInvolvement.SomeInvolvement => [FamilyInvolvement.NotInvolved, FamilyInvolvement.SomeInvolvement, FamilyInvolvement.HeavilyInvolved],
+                    FamilyInvolvement.HeavilyInvolved => [FamilyInvolvement.SomeInvolvement, FamilyInvolvement.HeavilyInvolved],
+                    _ => FamilyInvolvement.NotInvolved.ToArray(),
+                };
             }
         }
 
@@ -499,6 +515,28 @@ namespace MM.WEB.Core
                     HaveChildren.No => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.YesNo => [HaveChildren.No, HaveChildren.YesNo],
                     HaveChildren.Yes => [HaveChildren.Yes],
+                    _ => []
+                };
+            }
+        }
+
+        public static HashSet<HavePets> GetHavePets(ProfileModel profile, FilterModel? filter = null)
+        {
+            if (filter != null && filter.HavePets.Count != 0)
+            {
+                return filter.HavePets;
+            }
+            else
+            {
+                return profile.HavePets switch
+                {
+                    HavePets.IDontHave => EnumHelper.GetArray<HavePets>().ToHashSet(),
+                    HavePets.IDontWant => [HavePets.IDontHave, HavePets.IDontWant],
+                    HavePets.Dog => [HavePets.Dog, HavePets.DogCat],
+                    HavePets.Cat => [HavePets.Cat, HavePets.DogCat],
+                    HavePets.DogCat => [HavePets.Dog, HavePets.Cat, HavePets.DogCat],
+                    HavePets.SmallPets => [HavePets.SmallPets],
+                    HavePets.ExoticPets => [HavePets.ExoticPets],
                     _ => []
                 };
             }
@@ -524,7 +562,10 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.CareerCluster ?? throw new NotificationException("CareerCluster null")];
+                var group = profile.CareerCluster?.GetCustomAttribute()?.Group;
+                if (group.Empty()) return [CareerCluster.NoCareer];
+
+                return EnumHelper.GetArray<CareerCluster>().Where(w => w.GetCustomAttribute()?.Group == group).ToHashSet();
             }
         }
 
@@ -536,7 +577,20 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.LivingSituation ?? throw new NotificationException("LivingSituation null")];
+                var groupAll = EnumHelper.GetArray<LivingSituation>().ToHashSet();
+                var groupExcExPar = EnumHelper.GetArray<LivingSituation>().Except([LivingSituation.WithExPartner]).ToHashSet();
+                var groupExcFam = EnumHelper.GetArray<LivingSituation>().Except([LivingSituation.WithFamily]).ToHashSet();
+
+                return profile.LivingSituation switch
+                {
+                    LivingSituation.Alone => groupAll,
+                    LivingSituation.WithFamily => groupExcExPar,
+                    LivingSituation.WithFriends => groupAll,
+                    LivingSituation.WithExPartner => groupExcFam,
+                    LivingSituation.WithRoommates => groupAll,
+                    LivingSituation.Other => groupAll,
+                    _ => []
+                };
             }
         }
 
@@ -566,7 +620,15 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.NetWorth ?? throw new NotificationException("NetWorth null")];
+                var list = EnumHelper.GetArray<NetWorth>();
+                if (!profile.NetWorth.HasValue) return list.ToHashSet();
+
+                var pos = (int)profile.NetWorth - 1;
+
+                var before = pos == 0 ? null : (NetWorth?)list.GetValue(pos - 1);
+                var after = pos == list.Length - 1 ? null : (NetWorth?)list.GetValue(pos + 1);
+
+                return profile.NetWorth.ToHashSet().Union(before.ToHashSet()).Union(after.ToHashSet()).ToHashSet();
             }
         }
 
@@ -578,13 +640,21 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.AnnualIncome ?? throw new NotificationException("AnnualIncome null")];
+                var list = EnumHelper.GetArray<AnnualIncome>();
+                if (!profile.AnnualIncome.HasValue) return list.ToHashSet();
+
+                var pos = (int)profile.AnnualIncome - 1;
+
+                var before = pos == 0 ? null : (AnnualIncome?)list.GetValue(pos - 1);
+                var after = pos == list.Length - 1 ? null : (AnnualIncome?)list.GetValue(pos + 1);
+
+                return profile.AnnualIncome.ToHashSet().Union(before.ToHashSet()).Union(after.ToHashSet()).ToHashSet();
             }
         }
 
-        #endregion LIFESTYLE
+        #endregion LIFESTYLE - PROFILE COMPATIBILITY OR SEARCH SETTINGS (IF COMPLETED)
 
-        #region PERSONALITY
+        #region PERSONALITY - PROFILE COMPATIBILITY
 
         public static HashSet<MoneyPersonality> GetMoneyPersonality(ProfileModel profile)
         {
@@ -668,129 +738,157 @@ namespace MM.WEB.Core
             }
         }
 
-        #endregion PERSONALITY
+        #endregion PERSONALITY - PROFILE COMPATIBILITY
 
-        #region INTEREST
+        #region INTEREST - PROFILE COMPATIBILITY (A SINGLE SAME OPTION ALREADY INDICATES COMPATIBILITY)
 
-        public static HashSet<Food> GetFood(ProfileModel profile)
+        public static HashSet<Food> GetFood(ProfileModel profile, FilterModel? filter)
         {
-            return profile.Food;
+            if (filter != null && filter.Food.Count != 0)
+                return filter.Food;
+            else
+                return profile.Food;
         }
 
-        public static HashSet<Vacation> GetVacation(ProfileModel profile)
+        public static HashSet<Vacation> GetVacation(ProfileModel profile, FilterModel? filter)
         {
-            return profile.Vacation;
+            if (filter != null && filter.Vacation.Count != 0)
+                return filter.Vacation;
+            else
+                return profile.Vacation;
         }
 
-        public static HashSet<Sports> GetSports(ProfileModel profile)
+        public static HashSet<Sports> GetSports(ProfileModel profile, FilterModel? filter)
         {
-            return profile.Sports;
+            if (filter != null && filter.Sports.Count != 0)
+                return filter.Sports;
+            else
+                return profile.Sports;
         }
 
-        public static HashSet<LeisureActivities> GetLeisureActivities(ProfileModel profile)
+        public static HashSet<LeisureActivities> GetLeisureActivities(ProfileModel profile, FilterModel? filter)
         {
-            return profile.LeisureActivities;
+            if (filter != null && filter.LeisureActivities.Count != 0)
+                return filter.LeisureActivities;
+            else
+                return profile.LeisureActivities;
         }
 
-        public static HashSet<MusicGenre> GetMusicGenre(ProfileModel profile)
+        public static HashSet<MusicGenre> GetMusicGenre(ProfileModel profile, FilterModel? filter)
         {
-            return profile.MusicGenre;
+            if (filter != null && filter.MusicGenre.Count != 0)
+                return filter.MusicGenre;
+            else
+                return profile.MusicGenre;
         }
 
-        public static HashSet<MovieGenre> GetMovieGenre(ProfileModel profile)
+        public static HashSet<MovieGenre> GetMovieGenre(ProfileModel profile, FilterModel? filter)
         {
-            return profile.MovieGenre;
+            if (filter != null && filter.MovieGenre.Count != 0)
+                return filter.MovieGenre;
+            else
+                return profile.MovieGenre;
         }
 
-        public static HashSet<TVGenre> GetTVGenre(ProfileModel profile)
+        public static HashSet<TVGenre> GetTVGenre(ProfileModel profile, FilterModel? filter)
         {
-            return profile.TVGenre;
+            if (filter != null && filter.TVGenre.Count != 0)
+                return filter.TVGenre;
+            else
+                return profile.TVGenre;
         }
 
-        public static HashSet<ReadingGenre> GetReadingGenre(ProfileModel profile)
+        public static HashSet<ReadingGenre> GetReadingGenre(ProfileModel profile, FilterModel? filter)
         {
-            return profile.ReadingGenre;
+            if (filter != null && filter.ReadingGenre.Count != 0)
+                return filter.ReadingGenre;
+            else
+                return profile.ReadingGenre;
         }
 
-        #endregion INTEREST
+        #endregion INTEREST - PROFILE COMPATIBILITY (A SINGLE SAME OPTION ALREADY INDICATES COMPATIBILITY)
 
-        #region RELATIONSHIP
+        #region RELATIONSHIP - FIELD SPECIFIC RULES
 
         public static HashSet<SharedFinances> GetSharedFinances(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.SharedFinances.Count != 0)
-            {
                 return filter.SharedFinances;
-            }
             else
-            {
-                return [profile.SharedFinances ?? throw new NotificationException("SharedFinances null")];
-            }
+                return profile.SharedFinances switch
+                {
+                    SharedFinances.JointAccounts => [SharedFinances.JointAccounts, SharedFinances.HybridApproach],
+                    SharedFinances.SeparateAccounts => [SharedFinances.SeparateAccounts, SharedFinances.HybridApproach],
+                    SharedFinances.HybridApproach => [SharedFinances.JointAccounts, SharedFinances.SeparateAccounts, SharedFinances.HybridApproach],
+                    _ => []
+                };
         }
 
         public static HashSet<ConflictResolutionStyle> GetConflictResolutionStyle(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.ConflictResolutionStyle.Count != 0)
-            {
                 return filter.ConflictResolutionStyle;
-            }
             else
-            {
-                return [profile.ConflictResolutionStyle ?? throw new NotificationException("ConflictResolutionStyle null")];
-            }
+                return profile.ConflictResolutionStyle.ToHashSet();
         }
 
         public static HashSet<HouseholdManagement> GetHouseholdManagement(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.HouseholdManagement.Count != 0)
-            {
                 return filter.HouseholdManagement;
-            }
             else
-            {
-                return [profile.HouseholdManagement ?? throw new NotificationException("HouseholdManagement null")];
-            }
+                return profile.HouseholdManagement.ToHashSet();
         }
 
         public static HashSet<TimeTogetherPreference> GetTimeTogetherPreference(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.TimeTogetherPreference.Count != 0)
-            {
                 return filter.TimeTogetherPreference;
-            }
             else
-            {
-                return [profile.TimeTogetherPreference ?? throw new NotificationException("TimeTogetherPreference null")];
-            }
+                return profile.TimeTogetherPreference switch
+                {
+                    TimeTogetherPreference.AloneTime => [TimeTogetherPreference.AloneTime, TimeTogetherPreference.BalancedTime],
+                    TimeTogetherPreference.BalancedTime => [TimeTogetherPreference.AloneTime, TimeTogetherPreference.BalancedTime, TimeTogetherPreference.QualityTogether],
+                    TimeTogetherPreference.QualityTogether => [TimeTogetherPreference.BalancedTime, TimeTogetherPreference.QualityTogether],
+                    _ => []
+                };
         }
 
         public static HashSet<OppositeSexFriendships> GetOppositeSexFriendships(ProfileModel profile, FilterModel? filter = null)
         {
             if (filter != null && filter.OppositeSexFriendships.Count != 0)
-            {
                 return filter.OppositeSexFriendships;
-            }
             else
-            {
-                return [profile.OppositeSexFriendships ?? throw new NotificationException("OppositeSexFriendships null")];
-            }
+                return profile.OppositeSexFriendships switch
+                {
+                    OppositeSexFriendships.Comfortable => [OppositeSexFriendships.Comfortable, OppositeSexFriendships.BoundariesNeeded],
+                    OppositeSexFriendships.BoundariesNeeded => [OppositeSexFriendships.Comfortable, OppositeSexFriendships.BoundariesNeeded, OppositeSexFriendships.Uncomfortable],
+                    OppositeSexFriendships.Uncomfortable => [OppositeSexFriendships.BoundariesNeeded, OppositeSexFriendships.Uncomfortable],
+                    _ => []
+                };
         }
 
-        #endregion RELATIONSHIP
+        #endregion RELATIONSHIP - FIELD SPECIFIC RULES
 
-        #region GOALS
+        #region GOALS - FIELD SPECIFIC RULES
 
-        public static HashSet<RelationshipIntention> GetRelationshipIntentions(ProfileModel profile)
+        public static HashSet<RelationshipIntention> GetRelationshipIntentions(ProfileModel profile, FilterModel? filter)
         {
-            return profile.RelationshipIntentions;
+            if (filter != null && filter.RelationshipIntentions.Count != 0)
+                return filter.RelationshipIntentions;
+            else
+                return profile.RelationshipIntentions.ToHashSet();
         }
 
-        public static HashSet<Relocation> GetRelocation(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<Relocation> GetRelocation(ProfileModel profile, FilterModel? filter)
         {
-            return [profile.Relocation ?? throw new NotificationException("Relocation null")];
+            if (filter != null && filter.Relocation.HasValue)
+                return filter.Relocation.ToHashSet();
+            else
+                return profile.Relocation.ToHashSet();
         }
 
-        public static HashSet<WantChildren> GetWantChildren(ProfileModel profile, FilterModel? filter = null)
+        public static HashSet<WantChildren> GetWantChildren(ProfileModel profile, FilterModel? filter)
         {
             if (filter != null && filter.WantChildren.Count != 0)
             {
@@ -816,11 +914,18 @@ namespace MM.WEB.Core
             }
             else
             {
-                return [profile.IdealPlaceToLive ?? throw new NotificationException("IdealPlaceToLive null")];
+                return profile.IdealPlaceToLive switch
+                {
+                    IdealPlaceToLive.Urban => [IdealPlaceToLive.Urban],
+                    IdealPlaceToLive.Suburban => [IdealPlaceToLive.Suburban],
+                    IdealPlaceToLive.Rural => [IdealPlaceToLive.Rural],
+                    IdealPlaceToLive.Flexible => [IdealPlaceToLive.Urban, IdealPlaceToLive.Suburban, IdealPlaceToLive.Rural, IdealPlaceToLive.Flexible],
+                    _ => []
+                };
             }
         }
 
-        #endregion GOALS
+        #endregion GOALS - FIELD SPECIFIC RULES
 
         public static int GetPercentAffinity(this List<AffinityVM> affinities, Section? category = null)
         {
