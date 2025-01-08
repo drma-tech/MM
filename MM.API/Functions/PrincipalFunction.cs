@@ -18,7 +18,7 @@ namespace MM.API.Functions
 
                 var doc = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
 
-                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
+                return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
 ﻿using Blazorise;
-using BlazorPro.BlazorSize;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using MM.WEB.Modules.Auth.Core;
@@ -16,7 +15,6 @@ namespace MM.WEB.Core
         [Inject] protected ILogger<T> Logger { get; set; } = default!;
         [Inject] protected INotificationService Toast { get; set; } = default!;
         [Inject] protected IMessageService Message { get; set; } = default!;
-        [Inject] protected IResizeListener listener { get; set; } = default!;
         [Inject] protected IModalService ModalService { get; set; } = default!;
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
         [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
@@ -37,8 +35,6 @@ namespace MM.WEB.Core
             {
                 if (firstRender)
                 {
-                    listener.OnResized += WindowResized;
-
                     await LoadDataRender();
 
                     StateHasChanged();
@@ -48,17 +44,6 @@ namespace MM.WEB.Core
             {
                 ex.ProcessException(Toast, Logger);
             }
-        }
-
-        private async void WindowResized(object? obj, BrowserWindowSize window)
-        {
-            AppStateStatic.OnMobile = await listener.MatchMedia(Breakpoints.XSmallDown);
-            AppStateStatic.OnTablet = await listener.MatchMedia(Breakpoints.SmallUp);
-            AppStateStatic.OnDesktop = await listener.MatchMedia(Breakpoints.MediumUp);
-            AppStateStatic.OnWidescreen = await listener.MatchMedia(Breakpoints.LargeUp);
-            AppStateStatic.OnFullHD = await listener.MatchMedia(Breakpoints.XLargeUp);
-
-            StateHasChanged();
         }
     }
 

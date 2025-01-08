@@ -10,45 +10,34 @@ namespace MM.Shared.Core.Helper
     {
         public string? Group { get; set; }
         public string? Name { get; set; }
-        public string? Description { get; set; }
         public string? Placeholder { get; set; }
-        public string? FieldInfo { get; set; }
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Why is it important?
+        /// </summary>
+        public string? WhyImportant { get; set; }
 
         /// <summary>
         /// format: Title 1|Description 1|Title 2|Description 2
         /// </summary>
         public string? Tips { get; set; }
 
-        /// <summary>
-        /// Translations resource file
-        /// </summary>
         public Type? ResourceType { get; set; }
     }
 
     public static class CustomAttributeHelper
     {
-        public static string? GetName(this Enum value, bool translate = true)
-        {
-            return value.GetCustomAttribute(translate)?.Name;
-        }
-
-        public static string? GetDescription(this Enum value, bool translate = true)
-        {
-            return value.GetCustomAttribute(translate)?.Description;
-        }
-
-        public static CustomAttribute? GetCustomAttribute(this Enum value, bool translate = true)
+        public static CustomAttribute GetCustomAttribute(this Enum value, bool translate = true)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
 
-            if (fieldInfo == null) return default;
-
-            return fieldInfo.GetCustomAttribute(translate);
+            return fieldInfo != null ? fieldInfo.GetCustomAttribute(translate) : throw new NotificationException($"{value} fieldInfo is null");
         }
 
-        public static CustomAttribute? GetCustomAttribute<T>(this Expression<Func<T>>? expression, bool translate = true)
+        public static CustomAttribute GetCustomAttribute<T>(this Expression<Func<T>>? expression, bool translate = true)
         {
-            if (expression == null) return null;
+            if (expression == null) throw new NotificationException($"{expression} expression is null");
 
             if (expression.Body is MemberExpression body)
             {
@@ -71,13 +60,24 @@ namespace MM.Shared.Core.Helper
 
                 if (!string.IsNullOrEmpty(attr.Group)) attr.Group = rm.GetString(attr.Group) ?? attr.Group + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Name)) attr.Name = rm.GetString(attr.Name) ?? attr.Name + " (incomplete translation)";
+                if (!string.IsNullOrEmpty(attr.Placeholder)) attr.Placeholder = rm.GetString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine) ?? attr.Placeholder.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Description)) attr.Description = rm.GetString(attr.Description) ?? attr.Description + " (incomplete translation)";
-                if (!string.IsNullOrEmpty(attr.Placeholder)) attr.Placeholder = rm.GetString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine);
-                if (!string.IsNullOrEmpty(attr.FieldInfo)) attr.FieldInfo = rm.GetString(attr.FieldInfo)?.Replace(@"\n", Environment.NewLine) ?? attr.FieldInfo.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
+                
+                if (!string.IsNullOrEmpty(attr.WhyImportant)) attr.WhyImportant = rm.GetString(attr.WhyImportant)?.Replace(@"\n", Environment.NewLine) ?? attr.WhyImportant.Replace(@"\n", Environment.NewLine) + " (incomplete translation)";
                 if (!string.IsNullOrEmpty(attr.Tips)) attr.Tips = rm.GetString(attr.Tips) ?? attr.Tips + " (incomplete translation)";
             }
 
             return attr;
+        }
+
+        public static string GetName(this Enum value, bool translate = true)
+        {
+            return value.GetCustomAttribute(translate).Name ?? throw new NotificationException($"{value} Name is null");
+        }
+
+        public static string GetDescription(this Enum value, bool translate = true)
+        {
+            return value.GetCustomAttribute(translate).Description ?? throw new NotificationException($"{value} Description is null");
         }
     }
 }

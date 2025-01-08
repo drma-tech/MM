@@ -11,7 +11,8 @@
         Filter = 7,
         Setting = 8,
         Likes = 9,
-        Matches = 10
+        Matches = 10,
+        Interaction = 11
     }
 
     public abstract class MainDocument : CosmosDocument

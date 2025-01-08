@@ -29,7 +29,7 @@ namespace MM.API.Functions
                 else
                     profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
 
-                return await req.CreateResponse(profile, ttlCache.one_day, profile?.ETag, cancellationToken);
+                return await req.CreateResponse(profile, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace MM.API.Functions
 
                 var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
-                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
+                return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace MM.API.Functions
 
                 var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
-                return await req.CreateResponse(doc, ttlCache.one_day, doc?.ETag, cancellationToken);
+                return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace MM.API.Functions
                 //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
                 //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-                return await req.CreateResponse(profile, ttlCache.one_day, profile?.ETag, cancellationToken);
+                return await req.CreateResponse(profile, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -217,10 +217,23 @@ namespace MM.API.Functions
                     myLikes.Items.Add(new PersonModel(principal.UserId, profile?.NickName ?? principal.Email?.Split("@")[0], profile?.GetPhoto(ImageHelper.PhotoType.Face)));
 
                     await _repoGen.Upsert(myLikes, cancellationToken);
+
+                    //generates the interaction
+                    var id = InteractionModel.FormatId($"{userId}:{partner.UserId}");
+                    var interaction = await _repoGen.Get<InteractionModel>(DocumentType.Interaction, id, cancellationToken);
+
+                    if (interaction == null)
+                    {
+                        interaction = new InteractionModel();
+                        interaction.Initialize(id);
+                    }
+
+                    interaction.AddEventUser(userId, EventType.Like);
+
+                    await _repoGen.Upsert(interaction, cancellationToken);
                 }
                 else //if not, generate a temporary invite
                 {
-
                     var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
 
                     if (invite == null)
@@ -252,7 +265,7 @@ namespace MM.API.Functions
 
                 var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
-                return await req.CreateResponse(obj, ttlCache.one_day, obj?.ETag, cancellationToken);
+                return await req.CreateResponse(obj, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -271,7 +284,7 @@ namespace MM.API.Functions
 
                 var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
-                return await req.CreateResponse(obj, ttlCache.one_day, obj?.ETag, cancellationToken);
+                return await req.CreateResponse(obj, ttlCache.one_day, cancellationToken);
             }
             catch (Exception ex)
             {

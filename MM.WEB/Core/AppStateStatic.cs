@@ -17,12 +17,6 @@ namespace MM.WEB.Core
         public static Action<string>? ShowError { get; set; }
         public static Action<bool>? ShowFeedback { get; set; }
 
-        public static bool OnMobile { get; set; }
-        public static bool OnTablet { get; set; }
-        public static bool OnDesktop { get; set; }
-        public static bool OnWidescreen { get; set; }
-        public static bool OnFullHD { get; set; }
-
         static AppStateStatic()
         {
             System.Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);

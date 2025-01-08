@@ -8,9 +8,9 @@ namespace MM.WEB.Core
     {
         public static List<AffinityVM> GetAffinity(ProfileModel? profile, FilterModel? filter, ProfileModel? view)
         {
-            if (profile == null) throw new NotificationException("Não foi possível identificar seu perfil");
-            if (filter == null) throw new NotificationException("Não foi possível identificar seus filtros");
-            if (view == null) throw new NotificationException("Não foi possível identificar o perfil deste usuário");
+            if (profile == null) throw new NotificationException("Profile not found or not yet registered properly.");
+            if (filter == null) throw new NotificationException("Filter not found or not yet registered correctly.");
+            if (view == null) throw new NotificationException("Unable to identify this user's profile");
 
             var obj = new List<AffinityVM>
             {
@@ -381,7 +381,7 @@ namespace MM.WEB.Core
                 }
                 else
                 {
-                    throw new InvalidOperationException("user.Height.HasValue");
+                    throw new InvalidOperationException("profile.Height");
                 }
             }
 

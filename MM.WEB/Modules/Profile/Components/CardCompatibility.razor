@@ -28,7 +28,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Basic)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Basic (@Affinities.GetPercentAffinity(Section.Basic)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.Location)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Location" User="@User" Filter="@Filter" Value="@View.Location" ValueUser="@User?.Location" ClassIcon="fas fa-map-marker-alt" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Languages)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Language" User="@User" Filter="@Filter" Values="@View.Languages" ValuesUser="@Filter.Languages" ClassIcon="fas fa-language" Affinities="@Affinities"></ItemDataProfile>
@@ -41,7 +41,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Bio)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Bio (@Affinities.GetPercentAffinity(Section.Bio)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.Ethnicity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Ethnicity" User="@User" Filter="@Filter" Value="@View.Ethnicity" ValuesUser="@Filter.Ethnicity" ClassIcon="fas fa-globe" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.BodyType)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyType" User="@User" Filter="@Filter" Value="@View.BodyType" ValuesUser="@Filter.BodyType" ClassIcon="fas fa-weight" Affinities="@Affinities"></ItemDataProfile>
@@ -54,7 +54,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Lifestyle)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Lifestyle (@Affinities.GetPercentAffinity(Section.Lifestyle)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.Drink)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Drink" User="@User" Filter="@Filter" Value="@View.Drink" ValuesUser="@(Filter.Drink.Any()?Filter.Drink:User?.Drink.ToHashSet())" ClassIcon="fas fa-glass-cheers" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Smoke)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Smoke" User="@User" Filter="@Filter" Value="@View.Smoke" ValuesUser="@(Filter.Smoke.Any()?Filter.Smoke:User?.Smoke.ToHashSet())" ClassIcon="fas fa-smoking" Affinities="@Affinities"></ItemDataProfile>
@@ -75,7 +75,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Personality)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Personality (@Affinities.GetPercentAffinity(Section.Personality)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.MoneyPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MoneyPersonality" User="@User" Filter="@Filter" Value="@View.MoneyPersonality" ValueUser="@User?.MoneyPersonality" ClassIcon="fas fa-wallet" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.SharedSpendingStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedSpendingStyle" User="@User" Filter="@Filter" Value="@View.SharedSpendingStyle" ValueUser="@User?.SharedSpendingStyle" ClassIcon="fas fa-hand-holding-usd" Affinities="@Affinities"></ItemDataProfile>
@@ -88,7 +88,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Interest)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Interest (@Affinities.GetPercentAffinity(Section.Interest)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.Food)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Food" User="@User" Filter="@Filter" Values="@View.Food" ValuesUser="@User?.Food" ClassIcon="fas fa-pizza-slice" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Vacation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Vacation" User="@User" Filter="@Filter" Values="@View.Vacation" ValuesUser="@User?.Vacation" ClassIcon="fas fa-plane-departure" Affinities="@Affinities"></ItemDataProfile>
@@ -103,7 +103,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Relationship)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Relationship (@Affinities.GetPercentAffinity(Section.Relationship)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.SharedFinances)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedFinances" User="@User" Filter="@Filter" Value="@View.SharedFinances" ValuesUser="@(Filter.SharedFinances.Any()?Filter.SharedFinances:User?.SharedFinances.ToHashSet())" ClassIcon="fas fa-money-bill-transfer" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.ConflictResolutionStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ConflictResolutionStyle" User="@User" Filter="@Filter" Value="@View.ConflictResolutionStyle" ValuesUser="@(Filter.ConflictResolutionStyle.Any()?Filter.ConflictResolutionStyle:User?.ConflictResolutionStyle.ToHashSet())" ClassIcon="fas fa-handshake" Affinities="@Affinities"></ItemDataProfile>
@@ -115,7 +115,7 @@
 <Alert Visible="true" Color="@GetColor(Section.Goals)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
     <AlertMessage>Goals (@Affinities.GetPercentAffinity(Section.Goals)%)</AlertMessage>
 </Alert>
-@if (View != null && Filter != null)
+@if (User != null && View != null && Filter != null)
 {
     <ItemDataProfile For="@(() => View.RelationshipIntentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipIntentions" User="@User" Filter="@Filter" Values="@View.RelationshipIntentions" ValuesUser="@User?.RelationshipIntentions" ClassIcon="fas fa-search" Affinities="@Affinities"></ItemDataProfile>
     <ItemDataProfile For="@(() => View.Relocation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Relocation" User="@User" Filter="@Filter" Value="@View.Relocation" ValuesUser="@(Filter.Relocation.ToHashSet())" ClassIcon="fas fa-truck" Affinities="@Affinities"></ItemDataProfile>

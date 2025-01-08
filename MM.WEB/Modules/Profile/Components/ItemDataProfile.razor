@@ -25,9 +25,9 @@ else
 @code {
     [Parameter] public Expression<Func<object>>? For { get; set; }
     [Parameter] public TValue? Value { get; set; }
-    [Parameter] public IEnumerable<TValue?>? Values { get; set; }
+    [Parameter] public IEnumerable<TValue>? Values { get; set; }
     [Parameter] public TValueUser? ValueUser { get; set; }
-    [Parameter] public IEnumerable<TValueUser?>? ValuesUser { get; set; }
+    [Parameter] public IEnumerable<TValueUser>? ValuesUser { get; set; }
     [Parameter] public string? ClassIcon { get; set; }
     [Parameter] public List<AffinityVM> Affinities { get; set; } = [];
 
@@ -39,6 +39,7 @@ else
     private string GetValue(TValue? value)
     {
         if (value == null) return "Not Answered";
+        if (value?.ToString() == "0") return "Not Answered";
 
         if (value is string resultS)
         {
@@ -65,7 +66,7 @@ else
         }
         else
         {
-            throw new InvalidOperationException("invalid type: " + value.GetType());
+            throw new InvalidOperationException("invalid type: " + value?.GetType());
         }
     }
 
@@ -101,7 +102,8 @@ else
 
     public Task InstantiateModal()
     {
-        if (Values == null) Values = new TValue[] { Value };
+        if (Values == null && Value != null) Values = [Value];
+        if (Values == null && Value == null) Values = [];
 
         return ModalService.Show<AboutItemModal<TValue>>(CustomAttributeHelper.GetCustomAttribute(For)?.Name,
             x =>
@@ -114,7 +116,7 @@ else
                 x.Add(x => x.Filter, Filter);
                 x.Add(x => x.Type, Type);
                 x.Add(x => x.Item, Item);
-                x.Add(x => x.FieldInfo, CustomAttributeHelper.GetCustomAttribute(For)?.FieldInfo);
+                x.Add(x => x.WhyImportant, CustomAttributeHelper.GetCustomAttribute(For)?.WhyImportant);
                 x.Add(x => x.Tips, CustomAttributeHelper.GetCustomAttribute(For)?.Tips);
             },
             new ModalInstanceOptions()
@@ -125,26 +127,22 @@ else
                 });
     }
 
-    private List<string> GetPreferenceValues()
+    private IEnumerable<string> GetPreferenceValues()
     {
-        var result = new List<string>();
-
-        foreach (var item in ValuesUser ?? new TValueUser[] { ValueUser })
+        foreach (var item in ValuesUser ?? [ValueUser!])
         {
             if (item is Enum resultE)
             {
-                result.Add(resultE.GetName());
+                yield return resultE.GetName();
             }
             else if (item != null)
             {
-                result.Add(item.ToString());
+                yield return item.ToString()!;
             }
         }
-
-        return result;
     }
 
-    private IEnumerable<string?> GetExpectedValue()
+    private IEnumerable<string> GetExpectedValue()
     {
         if (User == null) return [];
 

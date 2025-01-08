@@ -176,7 +176,8 @@
         }
         catch (Exception ex)
         {
-            await Toast.Error(ex.Message);
+            //await Toast.Error(ex.Message);
+            Core?.ShowError(ex.Message);
         }
     }
 
