@@ -27,6 +27,16 @@
             return string.Join("-", ids.Order());
         }
 
+        public List<InteractionEvent> GetMyEvents(string? userId)
+        {
+            var ids = Id.Split('-');
+
+            if (ids[0] == userId)
+                return EventsUserA;
+            else
+                return EventsUserB;
+        }
+
         public void AddEventUser(string? userId, EventType type)
         {
             if (Id.Empty()) throw new NotificationException("must initialize the interaction first");

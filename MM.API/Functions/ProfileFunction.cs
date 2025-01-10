@@ -110,6 +110,26 @@ namespace MM.API.Functions
             }
         }
 
+        [Function("ProfileGetInteraction")]
+        public async Task<HttpResponseData?> GetInteraction(
+           [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-interaction/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                var intId = InteractionModel.FormatId($"{userId}:{id}");
+                var interaction = await _repoGen.Get<InteractionModel>(DocumentType.Interaction, intId, cancellationToken);
+
+                return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
         //[Function("ProfileListSearch")]
         //public async Task<List<ProfileSearch>> ListSearch(
         //   [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "Profile/ListSearch")] HttpRequestData req, CancellationToken cancellationToken)

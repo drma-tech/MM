@@ -8,8 +8,8 @@ namespace MM.WEB.Core
     {
         public static List<AffinityVM> GetAffinity(ProfileModel? profile, FilterModel? filter, ProfileModel? view)
         {
-            if (profile == null) throw new NotificationException("Profile not found or not yet registered properly.");
-            if (filter == null) throw new NotificationException("Filter not found or not yet registered correctly.");
+            if (profile == null) throw new NotificationException("You need to register your profile first");
+            if (filter == null) throw new NotificationException("You need to register your filters first");
             if (view == null) throw new NotificationException("Unable to identify this user's profile");
 
             var obj = new List<AffinityVM>
