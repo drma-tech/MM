@@ -29,9 +29,10 @@
 
         public List<InteractionEvent> GetMyEvents(string? userId)
         {
-            var ids = Id.Split('-');
+            var ids = Id.Split(":")[1];
+            var arrIds = ids.Split('-');
 
-            if (ids[0] == userId)
+            if (arrIds[0] == userId)
                 return EventsUserA;
             else
                 return EventsUserB;
@@ -41,9 +42,10 @@
         {
             if (Id.Empty()) throw new NotificationException("must initialize the interaction first");
 
-            var ids = Id.Split('-');
+            var ids = Id.Split(":")[1];
+            var arrIds = ids.Split('-');
 
-            if (ids[0] == userId)
+            if (arrIds[0] == userId)
                 EventsUserA.Add(new InteractionEvent { Type = type });
             else
                 EventsUserB.Add(new InteractionEvent { Type = type });
