@@ -1,6 +1,5 @@
 ﻿@using MM.Shared.Models.Profile;
 @using MM.WEB.Core.Models
-@using MM.WEB.Modules.Profile.Components.Button
 @using MM.WEB.Modules.Profile.Core;
 @inherits ComponentCore<PopupProfile>
 @attribute [Authorize]
@@ -8,6 +7,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject InteractionApi InteractionApi
+@inject EventApi EventApi
 
 <Modal @ref="modal">
     <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
@@ -84,27 +84,51 @@
                                 </Paragraph>
                             </CardBody>
                             <CardBody>
-                                @if (interaction != null)
-                                {
-                                    if (interaction.GetMyEvents(UserId).Empty())
-                                    {
-                                        <Span>no interactions</Span>
-                                    }
-                                    else
-                                    {
-                                        <Span>there are interactions</Span>
-                                    }
-                                }
-                                @* <BtnChat IdUserView="@IdUserView" Disabled="Fake"></BtnChat> *@
-                                <Dropdown Float="Float.End" Disabled="Fake">
-                                    <Button Color="Color.Danger" Clicked="report!.ShowModal" Disabled="Fake">
-                                        <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Delete
-                                    </Button>
-                                    <DropdownToggle Split="true" Color="Color.Danger" />
-                                    <DropdownMenu>
-                                        <DropdownItem Clicked="report.ShowModal">Delete and Report</DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
+                                <Row HorizontalGutter="8" VerticalGutter="0">
+                                    <Column ColumnSize="ColumnSize.IsHalf">
+                                        @if (interaction?.Status == InteractionStatus.Explorer)
+                                        {
+                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> Like
+                                            </Button>
+                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> Dislike
+                                            </Button>
+                                        }
+                                        else if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
+                                        {
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> Chat
+                                            </Button>
+                                        }
+                                        else if (interaction?.Status == InteractionStatus.Match)
+                                        {
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> Dating
+                                            </Button>
+                                        }
+                                        else if (interaction?.Status == InteractionStatus.Dating)
+                                        {
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> Relationship
+                                            </Button>
+                                        }
+                                        else if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
+                                        {
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> Feedback
+                                            </Button>
+                                        }
+                                    </Column>
+                                    <Column ColumnSize="ColumnSize.IsHalf">
+                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Delete
+                                        </Button>
+                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Flag"></Blazorise.Icon> Report
+                                        </Button>
+                                    </Column>
+                                </Row>
                             </CardBody>
                         </Card>
                     </Column>
@@ -148,20 +172,29 @@
         {
             if (string.IsNullOrEmpty(IdUserView)) return;
 
+            Core?.LoadingStarted?.Invoke();
+
             if (IdUserView == UserId)
             {
                 Core?.ShowError("Something wrong happened.");
                 return;
-            }
+            }          
 
-            Core?.LoadingStarted?.Invoke();
+            interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
+
+            if (interaction?.Status == InteractionStatus.Blocked)
+            {
+                Core?.ShowError("Profile not available.");
+                return;
+            }
 
             user = await ProfileApi.Get(null);
             view ??= await ProfileApi.GetView(IdUserView, null);
 
             if (view == null)
             {
-                await Toast.Error("Profile not found or not yet registered properly.");
+                Core?.ShowError("Profile not found or not yet registered properly.");
+                return;
             }
             else
             {
@@ -177,7 +210,6 @@
                 filter = await FilterApi.Get(null);
 
                 affinities = AffinityCore.GetAffinity(user, filter, view);
-                interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
             }
 
             Core?.LoadingFinished?.Invoke(view);
@@ -211,5 +243,39 @@
         {
             return Color.Danger;
         }
+    }
+
+    private async Task Like()
+    {
+        try
+        {
+            interaction = await EventApi.Like(IdUserView, null);
+
+            if (interaction?.Status == InteractionStatus.Match)
+            {
+                await Toast.Success("Match");
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private async Task Desike()
+    {
+        try
+        {
+            interaction = await EventApi.Dislike(IdUserView, null);
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
+    }
+
+    private void GoChat()
+    {
+        //Navigation.NavigateTo($"/Explore/Chat/{IdUserView}");
     }
 }

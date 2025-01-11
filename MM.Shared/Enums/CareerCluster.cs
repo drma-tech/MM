@@ -11,7 +11,7 @@
     public enum CareerCluster
     {
         [Custom(Name = "NoCareer_Name", Description = "NoCareer_Description", ResourceType = typeof(Resources.CareerCluster))]
-        NoCareer = 0,
+        NoCareer = -1,
 
         //AGRICULTURE, FOOD & NATURAL RESOURCES
 

@@ -238,19 +238,7 @@ namespace MM.API.Functions
 
                     await _repoGen.Upsert(myLikes, cancellationToken);
 
-                    //generates the interaction
-                    var id = InteractionModel.FormatId($"{userId}:{partner.UserId}");
-                    var interaction = await _repoGen.Get<InteractionModel>(DocumentType.Interaction, id, cancellationToken);
-
-                    if (interaction == null)
-                    {
-                        interaction = new InteractionModel();
-                        interaction.Initialize(id);
-                    }
-
-                    interaction.AddEventUser(userId, EventType.Like);
-
-                    await _repoGen.Upsert(interaction, cancellationToken);
+                    await _repoGen.SetInteraction(req, partner.UserId, EventType.Like, cancellationToken);
                 }
                 else //if not, generate a temporary invite
                 {

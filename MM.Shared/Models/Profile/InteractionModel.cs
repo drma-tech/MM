@@ -9,6 +9,8 @@
         public List<InteractionEvent> EventsUserA { get; set; } = [];
         public List<InteractionEvent> EventsUserB { get; set; } = [];
 
+        public InteractionStatus Status { get; set; } = InteractionStatus.Explorer;
+
         public new void Initialize(string? idUsers)
         {
             if (string.IsNullOrEmpty(idUsers)) throw new ArgumentNullException(nameof(idUsers));
@@ -51,16 +53,6 @@
                 EventsUserB.Add(new InteractionEvent { Type = type });
         }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is InteractionModel q && q.Id == Id;
-        }
-
-        public override int GetHashCode()
-        {
-            return Id?.GetHashCode() ?? 0;
-        }
-
         public override bool HasValidData()
         {
             return EventsUserA.Count != 0 || EventsUserB.Count != 0;
@@ -76,6 +68,12 @@
     public enum EventType
     {
         Like = 1,
-        Dislike = 2
+        Dislike = 2,
+        Dating = 3,
+        Feedback = 4,
+        Relationship = 5,
+
+        Delete = 8,
+        Report = 9
     }
 }
