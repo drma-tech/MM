@@ -88,14 +88,14 @@
                                     <Column ColumnSize="ColumnSize.IsHalf">
                                         @if (interaction?.Status == InteractionStatus.Explorer)
                                         {
-                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Like)">
+                                            <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
+                                                        Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Like)" Core="CoreEvent">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> Like
-                                            </Button>
-                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dislike)">
+                                            </DrmaButton>
+                                            <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
+                                                        Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dislike)" Core="CoreEvent">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> Dislike
-                                            </Button>
+                                            </DrmaButton>
                                         }
                                         else if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
                                         {
@@ -169,6 +169,7 @@
 
     private List<AffinityVM> affinities = [];
     private InteractionModel? interaction;
+    public RenderControlCore<InteractionModel?>? CoreEvent { get; set; } = new();
 
     string? selectedImage;
     string[] imageDataUriGallery = [];
@@ -258,7 +259,7 @@
     {
         try
         {
-            interaction = await EventApi.Like(IdUserView, null);
+            interaction = await EventApi.Like(IdUserView, CoreEvent);
             Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)
@@ -277,7 +278,7 @@
     {
         try
         {
-            interaction = await EventApi.Dislike(IdUserView, null);
+            interaction = await EventApi.Dislike(IdUserView, CoreEvent);
             Disliked?.Invoke();
         }
         catch (Exception ex)

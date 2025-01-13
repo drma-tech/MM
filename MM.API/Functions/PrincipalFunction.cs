@@ -57,6 +57,7 @@ namespace MM.API.Functions
                 var invite = await repoCache.Get<InviteModel>($"invite-{principal.Email}", cancellationToken);
                 if (invite != null)
                 {
+                    //add likes from invites
                     var myLikes = new MyLikesModel();
                     myLikes.Initialize(principal.UserId!);
 
@@ -65,6 +66,9 @@ namespace MM.API.Functions
                         var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
                         myLikes.Items.Add(new PersonModel(profile));
+
+                        //create interaction between users
+                        _ = await repo.SetInteractionNew(principal.UserId, id, EventType.Like, cancellationToken);
                     }
 
                     await repo.Upsert(myLikes, cancellationToken);

@@ -40,10 +40,6 @@ namespace MM.API.Functions
                 {
                     interaction.Status = InteractionStatus.Match;
                 }
-                //else
-                //{
-                //    await repo.SetListLikes(profile, passiveUserId, cancellationToken);
-                //}
             }
             else if (type == EventType.Dislike)
             {

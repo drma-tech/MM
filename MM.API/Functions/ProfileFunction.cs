@@ -48,6 +48,10 @@ namespace MM.API.Functions
         public static async Task SetMyMatches(this CosmosRepository repo, (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
             (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
         {
+            if (user.profile.Id == partner.profile.Id) throw new NotificationException("invalid operation. profiles are the same.");
+            if (user.likes.Id == partner.likes.Id) throw new NotificationException("invalid operation. likes are the same.");
+            if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
+
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
             user.matches.Items.Add(new PersonModel(partner.profile));
 

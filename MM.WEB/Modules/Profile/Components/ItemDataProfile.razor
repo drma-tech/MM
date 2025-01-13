@@ -2,9 +2,10 @@
 @using MM.Shared.Models.Profile;
 @using MM.WEB.Core.Enum
 @using MM.WEB.Core.Models
-@inherits ComponentCore<ItemDataProfile<TValue, TValueUser>>
 @typeparam TValue
 @typeparam TValueUser
+
+@inject IModalService ModalService
 
 @if (Values != null && Values.Any())
 {
