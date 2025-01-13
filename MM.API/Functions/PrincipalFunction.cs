@@ -62,14 +62,9 @@ namespace MM.API.Functions
 
                     foreach (var id in invite.Data?.UserIds.Distinct() ?? [])
                     {
-                        ProfileModel? profile = null;
+                        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
-                        if (principal.PublicProfile)
-                            profile = await repoOn.Get<ProfileModel>(id, cancellationToken);
-                        else
-                            profile = await repoOff.Get<ProfileModel>(id, cancellationToken);
-
-                        myLikes.Items.Add(new PersonModel(profile!.Id, profile.NickName, profile.GetPhoto(ImageHelper.PhotoType.Face)));
+                        myLikes.Items.Add(new PersonModel(profile));
                     }
 
                     await repo.Upsert(myLikes, cancellationToken);

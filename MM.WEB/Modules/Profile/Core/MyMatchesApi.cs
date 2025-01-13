@@ -10,9 +10,11 @@ namespace MM.WEB.Modules.Profile.Core
             public const string Get = "profile/get-mymatches";
         }
 
-        public async Task<MyMatchesModel?> Get(RenderControlCore<MyMatchesModel?>? core)
+        public async Task<MyMatchesModel?> Get(RenderControlCore<MyMatchesModel?>? core, bool isAuthenticated, bool setNewVersion = false)
         {
-            return await GetAsync(ProfileEndpoint.Get, core);
+            if (!isAuthenticated) return null;
+
+            return await GetAsync(ProfileEndpoint.Get, core, setNewVersion);
         }
     }
 }

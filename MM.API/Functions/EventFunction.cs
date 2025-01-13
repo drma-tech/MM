@@ -6,14 +6,9 @@ namespace MM.API.Functions
 {
     public static class EventHelper
     {
-        public static async Task<InteractionModel> SetInteraction(this CosmosRepository repo, HttpRequestData req, string? partnerUserId, EventType type, CancellationToken cancellationToken)
+        public static async Task<InteractionModel> GetInteractionModel(this CosmosRepository repo, string? userId, string? partnerId, CancellationToken cancellationToken)
         {
-            var userId = req.GetUserId();
-
-            if (userId == partnerUserId) throw new NotificationException("cannot interact with yourself");
-
-            var intId = InteractionModel.FormatId($"{userId}:{partnerUserId}");
-
+            var intId = InteractionModel.FormatId($"{userId}:{partnerId}");
             var interaction = await repo.Get<InteractionModel>(DocumentType.Interaction, intId, cancellationToken);
 
             if (interaction == null)
@@ -21,6 +16,16 @@ namespace MM.API.Functions
                 interaction = new InteractionModel();
                 interaction.Initialize(intId);
             }
+
+            return interaction;
+        }
+
+        public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? userId, string? partnerId,
+            EventType type, CancellationToken cancellationToken)
+        {
+            if (userId == partnerId) throw new NotificationException("cannot interact with yourself");
+
+            var interaction = await repo.GetInteractionModel(userId, partnerId, cancellationToken);
 
             interaction.AddEventUser(userId, type);
 
@@ -35,6 +40,10 @@ namespace MM.API.Functions
                 {
                     interaction.Status = InteractionStatus.Match;
                 }
+                //else
+                //{
+                //    await repo.SetListLikes(profile, passiveUserId, cancellationToken);
+                //}
             }
             else if (type == EventType.Dislike)
             {
@@ -48,17 +57,37 @@ namespace MM.API.Functions
         }
     }
 
-    public class EventFunction(CosmosRepository repoGen)
+    public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
     {
-        private readonly CosmosRepository _repoGen = repoGen;
-
         [Function("EventLike")]
         public async Task<HttpResponseData?> EventLike(
            [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/like/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
         {
             try
             {
-                var interaction = await _repoGen.SetInteraction(req, id, EventType.Like, cancellationToken);
+                var userId = req.GetUserId();
+                var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ?? throw new NotificationException("user not found");
+
+                //add like to partner
+                var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
+                partnerLikes.Items.Add(new PersonModel(userProfile));
+
+                //create interaction between users
+                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, cancellationToken);
+
+                if (interaction.Status == InteractionStatus.Match)
+                {
+                    var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken) ?? throw new NotificationException("user not found");
+
+                    var userLikes = await repoGen.GetMyLikes(userId, cancellationToken);
+                    var userMatches = await repoGen.GetMyMatches(userId, cancellationToken);
+
+                    var partnerMatches = await repoGen.GetMyMatches(id, cancellationToken);
+
+                    await repoGen.SetMyMatches((userProfile, userLikes, userMatches), (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
+                }
+
+                await repoGen.Upsert(partnerLikes, cancellationToken);
 
                 return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
             }
@@ -75,7 +104,9 @@ namespace MM.API.Functions
         {
             try
             {
-                var interaction = await _repoGen.SetInteraction(req, id, EventType.Dislike, cancellationToken);
+                var userId = req.GetUserId();
+
+                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, cancellationToken);
 
                 return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
             }

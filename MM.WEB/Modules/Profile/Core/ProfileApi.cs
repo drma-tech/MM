@@ -9,8 +9,6 @@ namespace MM.WEB.Modules.Profile.Core
         {
             public const string Get = "profile/get-data";
             public const string UpdateData = "profile/update-data";
-            //public const string ListMatch = "Profile/ListMatch";
-            //public const string ListSearch = "Profile/ListSearch";
 
             public static string GetView(string id) => $"profile/get-view/{id}";
         }

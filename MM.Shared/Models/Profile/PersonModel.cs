@@ -8,11 +8,11 @@ namespace MM.Shared.Models.Profile
         {
         }
 
-        public PersonModel(string? UserId, string? UserName, string? UserPhoto)
+        public PersonModel(ProfileModel? profile)
         {
-            this.UserId = UserId;
-            this.UserName = UserName;
-            this.UserPhoto = UserPhoto;
+            this.UserId = profile?.Id;
+            this.UserName = profile?.NickName ?? "unnamed user";
+            this.UserPhoto = profile?.GetPhoto(ImageHelper.PhotoType.Face);
         }
 
         public string? UserId { get; init; }

@@ -88,10 +88,12 @@
                                     <Column ColumnSize="ColumnSize.IsHalf">
                                         @if (interaction?.Status == InteractionStatus.Explorer)
                                         {
-                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom">
+                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Like)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> Like
                                             </Button>
-                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom">
+                                            <Button Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dislike)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> Dislike
                                             </Button>
                                         }
@@ -103,19 +105,22 @@
                                         }
                                         else if (interaction?.Status == InteractionStatus.Match)
                                         {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dating)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> Dating
                                             </Button>
                                         }
                                         else if (interaction?.Status == InteractionStatus.Dating)
                                         {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Relationship)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> Relationship
                                             </Button>
                                         }
                                         else if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
                                         {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Feedback)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> Feedback
                                             </Button>
                                         }
@@ -148,6 +153,10 @@
 @code {
     [Parameter][EditorRequired] public string? UserId { get; set; }
 
+    [Parameter] public Action? Liked { get; set; }
+    [Parameter] public Action? Disliked { get; set; }
+    [Parameter] public Action? Matched { get; set; }
+
     private Modal? modal;
 
     public string? IdUserView { get; set; }
@@ -178,7 +187,7 @@
             {
                 Core?.ShowError("Something wrong happened.");
                 return;
-            }          
+            }
 
             interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
 
@@ -250,10 +259,12 @@
         try
         {
             interaction = await EventApi.Like(IdUserView, null);
+            Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)
             {
                 await Toast.Success("Match");
+                Matched?.Invoke();
             }
         }
         catch (Exception ex)
@@ -267,6 +278,7 @@
         try
         {
             interaction = await EventApi.Dislike(IdUserView, null);
+            Disliked?.Invoke();
         }
         catch (Exception ex)
         {

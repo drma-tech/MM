@@ -6,12 +6,66 @@ using MM.Shared.Requests;
 
 namespace MM.API.Functions
 {
+    public static class ProfileHelper
+    {
+        public static async Task<ProfileModel?> GetProfile(CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, string? userId, CancellationToken cancellationToken)
+        {
+            //todo: after online mode, change to ON by default
+
+            var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken);
+
+            profile ??= await repoOn.Get<ProfileModel>(userId, cancellationToken);
+
+            return profile;
+        }
+
+        public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string? userId, CancellationToken cancellationToken)
+        {
+            var myLikes = await repo.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+
+            if (myLikes == null)
+            {
+                myLikes = new MyLikesModel();
+                myLikes.Initialize(userId);
+            }
+
+            return myLikes;
+        }
+
+        public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string? userId, CancellationToken cancellationToken)
+        {
+            var myLikes = await repo.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
+
+            if (myLikes == null)
+            {
+                myLikes = new MyMatchesModel();
+                myLikes.Initialize(userId);
+            }
+
+            return myLikes;
+        }
+
+        public static async Task SetMyMatches(this CosmosRepository repo, (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
+            (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
+        {
+            user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
+            user.matches.Items.Add(new PersonModel(partner.profile));
+
+            partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
+            partner.matches.Items.Add(new PersonModel(user.profile));
+
+            await repo.Upsert(user.likes, cancellationToken);
+            await repo.Upsert(user.matches, cancellationToken);
+
+            await repo.Upsert(partner.likes, cancellationToken);
+            await repo.Upsert(partner.matches, cancellationToken);
+        }
+    }
+
     public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
     {
         private readonly CosmosRepository _repoGen = repoGen;
         private readonly CosmosCacheRepository _repoCache = repoCache;
-        private readonly CosmosProfileOffRepository _repoProfileOff = repoOff;
-        private readonly CosmosProfileOnRepository _repoProfileOn = repoOn;
 
         [Function("ProfileGetData")]
         public async Task<HttpResponseData?> ProfileGetData(
@@ -20,14 +74,7 @@ namespace MM.API.Functions
             try
             {
                 var userId = req.GetUserId();
-                ProfileModel? profile = null;
-
-                var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
-
-                if (principal.PublicProfile)
-                    profile = await _repoProfileOn.Get<ProfileModel>(userId, cancellationToken);
-                else
-                    profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
+                var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
                 return await req.CreateResponse(profile, ttlCache.one_day, cancellationToken);
             }
@@ -82,13 +129,7 @@ namespace MM.API.Functions
         {
             try
             {
-                var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, id, cancellationToken) ?? throw new NotificationException("user not found");
-                ProfileModel? profile = null;
-
-                if (principal.PublicProfile)
-                    profile = await _repoProfileOn.Get<ProfileModel>(id, cancellationToken);
-                else
-                    profile = await _repoProfileOff.Get<ProfileModel>(id, cancellationToken);
+                var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
                 if (profile == null) return null;
 
@@ -118,8 +159,7 @@ namespace MM.API.Functions
             {
                 var userId = req.GetUserId();
 
-                var intId = InteractionModel.FormatId($"{userId}:{id}");
-                var interaction = await _repoGen.Get<InteractionModel>(DocumentType.Interaction, intId, cancellationToken);
+                var interaction = await _repoGen.GetInteractionModel(userId, id, cancellationToken);
 
                 return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
             }
@@ -161,7 +201,7 @@ namespace MM.API.Functions
 
                 if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
 
-                return await _repoProfileOff.Upsert(body, cancellationToken);
+                return await repoOff.Upsert(body, cancellationToken);
             }
             catch (Exception ex)
             {
@@ -217,28 +257,16 @@ namespace MM.API.Functions
                 if (partners.Count != 0) //if user already registered, register a like
                 {
                     var partner = partners.Single();
+                    var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
-                    var myLikes = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, partner.UserId, cancellationToken);
+                    //add like to partner
+                    var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
+                    partnerLikes.Items.Add(new PersonModel(profile));
 
-                    if (myLikes == null)
-                    {
-                        myLikes = new MyLikesModel();
-                        myLikes.Initialize(partner.UserId!);
-                    }
+                    //create interaction between users
+                    await _repoGen.SetInteractionNew(profile!.Id, partner.UserId, EventType.Like, cancellationToken);
 
-                    ProfileModel? profile = null;
-                    var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
-
-                    if (principal.PublicProfile)
-                        profile = await _repoProfileOn.Get<ProfileModel>(userId, cancellationToken);
-                    else
-                        profile = await _repoProfileOff.Get<ProfileModel>(userId, cancellationToken);
-
-                    myLikes.Items.Add(new PersonModel(principal.UserId, profile?.NickName ?? principal.Email?.Split("@")[0], profile?.GetPhoto(ImageHelper.PhotoType.Face)));
-
-                    await _repoGen.Upsert(myLikes, cancellationToken);
-
-                    await _repoGen.SetInteraction(req, partner.UserId, EventType.Like, cancellationToken);
+                    await _repoGen.Upsert(partnerLikes, cancellationToken);
                 }
                 else //if not, generate a temporary invite
                 {

@@ -10,9 +10,10 @@
         Update = 6,
         Filter = 7,
         Setting = 8,
-        Likes = 9,
-        Matches = 10,
-        Interaction = 11
+        Suggestions = 9,
+        Likes = 10,
+        Matches = 11,
+        Interaction = 12
     }
 
     public abstract class MainDocument : CosmosDocument
@@ -65,7 +66,7 @@
             this.type = type;
         }
 
-        public virtual void Initialize(string userId)
+        public virtual void Initialize(string? userId)
         {
             SetIds($"{type}:{userId}");
         }

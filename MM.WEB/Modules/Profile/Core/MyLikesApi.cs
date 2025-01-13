@@ -10,9 +10,11 @@ namespace MM.WEB.Modules.Profile.Core
             public const string Get = "profile/get-mylikes";
         }
 
-        public async Task<MyLikesModel?> Get(RenderControlCore<MyLikesModel?>? core)
+        public async Task<MyLikesModel?> Get(RenderControlCore<MyLikesModel?>? core, bool isAuthenticated, bool setNewVersion = false)
         {
-            return await GetAsync(ProfileEndpoint.Get, core);
+            if (!isAuthenticated) return null;
+
+            return await GetAsync(ProfileEndpoint.Get, core, setNewVersion);
         }
     }
 }

@@ -155,7 +155,7 @@
     </Column>
 </Row>
 
-<PopupProfile @ref="PopupProfile" UserId="@UserId"></PopupProfile>
+<PopupProfile @ref="PopupProfile" UserId="@UserId" Liked="async()=>await LoadLikes(true)" Matched="async()=>await LoadMatches(true)"></PopupProfile>
 
 @code
 {
@@ -200,19 +200,29 @@
                 profile = await ProfileApi.Get(CoreProfile);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
-
-                MyLikes = await MyLikesApi.Get(CoreLikes);
-                MyMatches = await MyMatchesApi.Get(CoreMatches);
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
-            CoreLikes?.LoadingFinished?.Invoke(MyLikes);
-            CoreMatches?.LoadingFinished?.Invoke(MyMatches);
+
+            await LoadLikes();
+            await LoadMatches();
         }
         catch (Exception ex)
         {
             ex.ProcessException(Toast, Logger);
         }
+    }
+
+    private async Task LoadLikes(bool setNewVersion = false)
+    {
+        MyLikes = await MyLikesApi.Get(CoreLikes, IsAuthenticated, setNewVersion);
+        CoreLikes?.LoadingFinished?.Invoke(MyLikes);
+    }
+
+    private async Task LoadMatches(bool setNewVersion = false)
+    {
+        MyMatches = await MyMatchesApi.Get(CoreMatches, IsAuthenticated, setNewVersion);
+        CoreMatches?.LoadingFinished?.Invoke(MyMatches);
     }
 
     private async Task IsPublicChanged(bool value)
