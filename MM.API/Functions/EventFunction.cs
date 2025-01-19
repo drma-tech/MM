@@ -20,14 +20,14 @@ namespace MM.API.Functions
             return interaction;
         }
 
-        public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? userId, string? partnerId,
+        public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? trigguerUserId, string? passiveUserId,
             EventType type, CancellationToken cancellationToken)
         {
-            if (userId == partnerId) throw new NotificationException("cannot interact with yourself");
+            if (trigguerUserId == passiveUserId) throw new NotificationException("cannot interact with yourself");
 
-            var interaction = await repo.GetInteractionModel(userId, partnerId, cancellationToken);
+            var interaction = await repo.GetInteractionModel(trigguerUserId, passiveUserId, cancellationToken);
 
-            interaction.AddEventUser(userId, type);
+            interaction.AddEventUser(trigguerUserId, type);
 
             if (type == EventType.Like)
             {

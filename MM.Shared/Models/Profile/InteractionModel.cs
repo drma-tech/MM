@@ -40,14 +40,14 @@
                 return EventsUserB;
         }
 
-        public void AddEventUser(string? userId, EventType type)
+        public void AddEventUser(string? trigguerUserId, EventType type)
         {
             if (Id.Empty()) throw new NotificationException("must initialize the interaction first");
 
             var ids = Id.Split(":")[1];
             var arrIds = ids.Split('-');
 
-            if (arrIds[0] == userId)
+            if (arrIds[0] == trigguerUserId)
                 EventsUserA.Add(new InteractionEvent { Type = type });
             else
                 EventsUserB.Add(new InteractionEvent { Type = type });

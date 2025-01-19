@@ -61,7 +61,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find your soulmate with the most sophisticated compatibility system in the world..
+        ///   Looks up a localized string similar to Your digital matchmaker.
         /// </summary>
         public static string Description {
             get {

@@ -61,14 +61,16 @@ namespace MM.API.Functions
                     var myLikes = new MyLikesModel();
                     myLikes.Initialize(principal.UserId!);
 
-                    foreach (var id in invite.Data?.UserIds.Distinct() ?? [])
+                    foreach (var partnerId in invite.Data?.UserIds.Distinct() ?? [])
                     {
-                        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
+                        if (principal.UserId == partnerId) continue; //avoid self like
 
-                        myLikes.Items.Add(new PersonModel(profile));
+                        var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, partnerId, cancellationToken);
+
+                        myLikes.Items.Add(new PersonModel(partnerProfile));
 
                         //create interaction between users
-                        _ = await repo.SetInteractionNew(principal.UserId, id, EventType.Like, cancellationToken);
+                        _ = await repo.SetInteractionNew(partnerId, principal.UserId, EventType.Like, cancellationToken);
                     }
 
                     await repo.Upsert(myLikes, cancellationToken);
