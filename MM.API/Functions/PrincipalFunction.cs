@@ -67,7 +67,7 @@ namespace MM.API.Functions
 
                         var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, partnerId, cancellationToken);
 
-                        myLikes.Items.Add(new PersonModel(partnerProfile));
+                        myLikes.Items.Add(new PersonModel(partnerId, partnerProfile));
 
                         //create interaction between users
                         _ = await repo.SetInteractionNew(partnerId, principal.UserId, EventType.Like, cancellationToken);

@@ -53,10 +53,10 @@ namespace MM.API.Functions
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            user.matches.Items.Add(new PersonModel(partner.profile));
+            user.matches.Items.Add(new PersonModel(partner.profile.Id, partner.profile));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            partner.matches.Items.Add(new PersonModel(user.profile));
+            partner.matches.Items.Add(new PersonModel(user.profile.Id, user.profile));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -265,10 +265,10 @@ namespace MM.API.Functions
 
                     //add like to partner
                     var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(profile));
+                    partnerLikes.Items.Add(new PersonModel(userId, profile));
 
                     //create interaction between users
-                    await _repoGen.SetInteractionNew(profile!.Id, partner.UserId, EventType.Like, cancellationToken);
+                    await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, cancellationToken);
 
                     await _repoGen.Upsert(partnerLikes, cancellationToken);
                 }

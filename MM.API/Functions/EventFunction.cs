@@ -66,7 +66,7 @@ namespace MM.API.Functions
 
                 //add like to partner
                 var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
-                partnerLikes.Items.Add(new PersonModel(userProfile));
+                partnerLikes.Items.Add(new PersonModel(userId, userProfile));
 
                 //create interaction between users
                 var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, cancellationToken);
