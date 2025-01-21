@@ -7,7 +7,6 @@
 @using MM.Shared.Requests
 @using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core;
-@attribute [Authorize]
 @inherits PageCore<Profile>
 
 @inject ProfileApi ProfileApi
@@ -36,7 +35,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Profile</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Disabled="profile==null">
             @if (filter != null && FilterValidator.Validate(filter).IsValid)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Filters</span>
@@ -46,7 +45,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="profile==null">
             @if (setting != null)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
@@ -56,7 +55,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="profile==null">
             @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
@@ -102,7 +101,7 @@
 <Row HorizontalGutter="8" VerticalGutter="8">
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="Likes">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle" Disabled="profile==null">
                 Invite Partner
             </Button>
         </HeaderComponent>
@@ -125,7 +124,7 @@
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
         <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)" Disabled="profile==null">
                 Simulate
             </Button>
         </HeaderComponent>

@@ -26,6 +26,11 @@ namespace MM.WEB.Modules.Profile
 
             Profile = await ProfileApi.Get(null);
 
+            if (Profile == null)
+            {
+                await Toast.Warning("The basic tab is mandatory for now. The other tabs can be filled in later.");
+            }
+
             Profile ??= new()
             {
                 GenderIdentities = [GenderIdentity.Cisgender],
@@ -41,7 +46,7 @@ namespace MM.WEB.Modules.Profile
         {
             try
             {
-                if (profile != null /*&& !profile.Longitude.HasValue*/)
+                if (profile != null)
                 {
                     var window = await JsRuntime.Window(); //todo: remove this component
                     var navigator = await window.Navigator();
@@ -91,9 +96,20 @@ namespace MM.WEB.Modules.Profile
 
             try
             {
-                Profile = await ProfileApi.Update(Core, Profile);
+                var validator = new ProfileValidation();
 
-                Navigation.NavigateTo("profile");
+                var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
+
+                if (result.IsValid)
+                {
+                    Profile = await ProfileApi.Update(Core, Profile);
+
+                    Navigation.NavigateTo("profile");
+                }
+                else
+                {
+                    await Toast.Warning(result.Errors[0].ErrorMessage);
+                }
             }
             catch (Exception ex)
             {

@@ -279,6 +279,11 @@
         Profile = await ProfileApi.Get(null);
         Filter = await FilterApi.Get(null);
 
+        if (Profile == null)
+        {
+            Core?.ShowError("Profile not found or not yet registered properly.");
+        }
+
         if (Filter == null)
         {
             Filter = new();

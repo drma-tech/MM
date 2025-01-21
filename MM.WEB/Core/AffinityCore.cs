@@ -301,9 +301,11 @@ namespace MM.WEB.Core
 
         public static Height[] GetHeight(ProfileModel profile, FilterModel? filter = null, bool force = false)
         {
-            Height min;
-            Height max;
+            Height? min;
+            Height? max;
             var ratio = 1.09;
+
+            if (profile == null || profile.Height == null) return [Height._146, Height._188];
 
             if (filter != null && filter.MinimalHeight.HasValue && !force)
             {
@@ -311,38 +313,31 @@ namespace MM.WEB.Core
             }
             else
             {
-                if (profile.Height.HasValue)
-                {
-                    int minHeight;
+                int minHeight;
 
-                    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+                if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+                {
+                    //TODO: USE CONTAINS?
+                    if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
                     {
-                        //TODO: USE CONTAINS?
-                        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
-                        {
-                            minHeight = (int)Math.Round((int)profile.Height.Value / (ratio + 0.04));
-                        }
-                        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
-                        {
-                            minHeight = (int)Math.Round((int)profile.Height.Value * (ratio - 0.04));
-                        }
-                        else
-                        {
-                            minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
-                        }
+                        minHeight = (int)Math.Round((int)profile.Height.Value / (ratio + 0.04));
+                    }
+                    else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
+                    {
+                        minHeight = (int)Math.Round((int)profile.Height.Value * (ratio - 0.04));
                     }
                     else
                     {
                         minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
-
-                    if (minHeight < (int)Height._146) minHeight = (int)Height._146;
-                    min = (Height)minHeight;
                 }
                 else
                 {
-                    throw new InvalidOperationException("user.Height.HasValue");
+                    minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
                 }
+
+                if (minHeight < (int)Height._146) minHeight = (int)Height._146;
+                min = (Height)minHeight;
             }
 
             if (filter != null && filter.MaxHeight.HasValue && !force)
@@ -351,41 +346,34 @@ namespace MM.WEB.Core
             }
             else
             {
-                if (profile.Height.HasValue)
-                {
-                    int maxHeight;
+                int maxHeight;
 
-                    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+                if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+                {
+                    //TODO: USE CONTAINS?
+                    if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
                     {
-                        //TODO: USE CONTAINS?
-                        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
-                        {
-                            maxHeight = (int)Math.Round((int)profile.Height.Value / (ratio - 0.04));
-                        }
-                        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
-                        {
-                            maxHeight = (int)Math.Round((int)profile.Height.Value * (ratio + 0.04));
-                        }
-                        else
-                        {
-                            maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
-                        }
+                        maxHeight = (int)Math.Round((int)profile.Height.Value / (ratio - 0.04));
+                    }
+                    else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
+                    {
+                        maxHeight = (int)Math.Round((int)profile.Height.Value * (ratio + 0.04));
                     }
                     else
                     {
                         maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
                     }
-
-                    if (maxHeight > (int)Height._188) maxHeight = (int)Height._188;
-                    max = (Height)maxHeight;
                 }
                 else
                 {
-                    throw new InvalidOperationException("profile.Height");
+                    maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
                 }
+
+                if (maxHeight > (int)Height._188) maxHeight = (int)Height._188;
+                max = (Height)maxHeight;
             }
 
-            return [min, max];
+            return [min ?? Height._146, max ?? Height._188];
         }
 
         public static HashSet<Neurodiversity> GetNeurodiversity(FilterModel? filter = null)
