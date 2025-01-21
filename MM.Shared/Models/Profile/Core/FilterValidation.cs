@@ -59,19 +59,19 @@ namespace MM.Shared.Models.Profile.Core
                 .WithName("Neurodiversities");
 
             RuleFor(x => x.MinimalAge)
-                .NotEmpty()
                 .GreaterThanOrEqualTo(18);
 
             RuleFor(x => x.MaxAge)
-                .NotEmpty()
                 .LessThanOrEqualTo(120);
 
             RuleFor(x => x.MinimalAge)
                 .Must((value, MinimalAge) => MinimalAge <= value.MaxAge)
+                .When(x => x.MinimalAge.HasValue)
                 .WithMessage("Minimum age must be less than maximum age");
 
             RuleFor(x => x.MaxAge)
                 .Must((value, MaxAge) => MaxAge >= value.MinimalAge)
+                .When(x => x.MaxAge.HasValue)
                 .WithMessage("Maximum age must be greater than minimum age");
 
             RuleFor(x => x.MinimalHeight)

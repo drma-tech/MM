@@ -286,6 +286,7 @@
                 .RuleFor(x => x.Ethnicity, f => f.PickRandom<MM.Shared.Enums.Ethnicity>())
                 .RuleFor(x => x.BodyType, f => f.PickRandom<MM.Shared.Enums.BodyType>())
                 .RuleFor(x => x.BirthDate, f => f.Date.Between(DateTime.Now.AddYears(-80), DateTime.Now.AddYears(-19)))
+                .RuleFor(x => x.Age, f => f.Random.Int(18, 80))
                 .RuleFor(x => x.Height, f => f.PickRandom<MM.Shared.Enums.Height>())
                 .RuleFor(x => x.Neurodiversity, f => f.PickRandom<MM.Shared.Enums.Neurodiversity>())
                 .RuleFor(x => x.Disabilities, f => f.Random.EnumValues<MM.Shared.Enums.Disability>(f.Random.Int(0, 1)).ToHashSet())

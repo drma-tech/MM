@@ -19,12 +19,19 @@ namespace MM.WEB.Core
             filter.SexualOrientations = AffinityCore.GetSexualOrientations(filter, profile.SexualOrientations);
 
             //BIO
-            var ages = AffinityCore.GetAge(filter, profile.BirthDate, true);
-            filter.MinimalAge = ages[0];
-            filter.MaxAge = ages[1];
-            var heights = AffinityCore.GetHeight(profile, filter, true);
-            filter.MinimalHeight = heights[0];
-            filter.MaxHeight = heights[1];
+            var ages = AffinityCore.GetAge(filter, profile.BirthDate);
+            if (ages.Length > 0)
+            {
+                filter.MinimalAge = ages[0];
+                filter.MaxAge = ages[1];
+            }
+
+            var heights = AffinityCore.GetHeight(profile, filter);
+            if (heights.Length > 0)
+            {
+                filter.MinimalHeight = heights[0];
+                filter.MaxHeight = heights[1];
+            }
             //looking.RaceCategory = null;
             //looking.BodyMass = null;
 

@@ -46,12 +46,12 @@ namespace MM.WEB.Core
                 new(Section.Lifestyle, CompatibilityItem.AnnualIncome, GetAnnualIncome(profile, filter).IsMatch(view.AnnualIncome.ToArray())),
 
                 //PERSONALITY - PROFILE COMPATIBILITY
-                new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(profile).IsMatch(view.MoneyPersonality.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(profile).IsMatch(view.SharedSpendingStyle.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(profile).IsMatch(view.RelationshipPersonality.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(profile).IsMatch(view.MBTI.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(profile).IsMatch(view.LoveLanguage.ToArray(), true)),
-                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(profile).IsMatch(view.SexPersonality.ToArray(), true)),
+                new(Section.Personality, CompatibilityItem.MoneyPersonality, GetMoneyPersonality(profile).IsMatch(view.MoneyPersonality.ToArray())),
+                new(Section.Personality, CompatibilityItem.SharedSpendingStyle, GetSharedSpendingStyle(profile).IsMatch(view.SharedSpendingStyle.ToArray())),
+                new(Section.Personality, CompatibilityItem.RelationshipPersonality, GetRelationshipPersonality(profile).IsMatch(view.RelationshipPersonality.ToArray())),
+                new(Section.Personality, CompatibilityItem.MyersBriggsTypeIndicator, GetMyersBriggsTypeIndicator(profile).IsMatch(view.MBTI.ToArray())),
+                new(Section.Personality, CompatibilityItem.LoveLanguage, GetLoveLanguage(profile).IsMatch(view.LoveLanguage.ToArray())),
+                new(Section.Personality, CompatibilityItem.SexPersonality, GetSexPersonality(profile).IsMatch(view.SexPersonality.ToArray())),
 
                 //INTEREST - PROFILE COMPATIBILITY (A SINGLE SAME OPTION ALREADY INDICATES COMPATIBILITY)
                 new(Section.Interest, CompatibilityItem.Food, GetFood(profile, filter).IsMatch(view.Food)),
@@ -116,9 +116,8 @@ namespace MM.WEB.Core
             }
         }
 
-        private static bool IsMatch<T>(this HashSet<T> filters, HashSet<T> view, bool force = false)
+        private static bool IsMatch<T>(this HashSet<T> filters, HashSet<T> view)
         {
-            if (force && filters.Count == 0) return false; //if preferences is required
             if (filters.Count == 0) return true; //if preferences are empty then accept all
             if (view.Count == 0) return false; //if the preference is not empty and the view is empty then it does not accept anything
 
@@ -275,105 +274,105 @@ namespace MM.WEB.Core
                 return [];
         }
 
-        public static int[] GetAge(FilterModel? filter, DateTime birthDate, bool force = false)
+        public static int[] GetAge(FilterModel? filter, DateTime birthDate)
         {
-            int? min;
-            int? max;
+            int? min = null;
+            int? max = null;
 
-            if (filter != null && !force)
+            if (filter != null)
             {
                 min = filter.MinimalAge;
                 max = filter.MaxAge;
             }
-            else
-            {
-                var age = birthDate.GetAge();
+            //else
+            //{
+            //    var age = birthDate.GetAge();
 
-                min = (int)Math.Round(age * 0.75);
-                if (min < 18) min = 18;
+            //    min = (int)Math.Round(age * 0.75);
+            //    if (min < 18) min = 18;
 
-                max = (int)Math.Round(age * 1.33);
-                if (max > 120) max = 120;
-            }
+            //    max = (int)Math.Round(age * 1.33);
+            //    if (max > 120) max = 120;
+            //}
 
-            return [min ?? 18, max ?? 120];
+            return min == null || max == null ? [] : [min.Value, max.Value];
         }
 
-        public static Height[] GetHeight(ProfileModel profile, FilterModel? filter = null, bool force = false)
+        public static Height[] GetHeight(ProfileModel profile, FilterModel? filter = null)
         {
-            Height? min;
-            Height? max;
-            var ratio = 1.09;
+            Height? min = null;
+            Height? max = null;
+            //var ratio = 1.09;
 
-            if (profile == null || profile.Height == null) return [Height._146, Height._188];
+            if (profile == null || profile.Height == null) return [];
 
-            if (filter != null && filter.MinimalHeight.HasValue && !force)
+            if (filter != null && filter.MinimalHeight.HasValue)
             {
                 min = filter.MinimalHeight.Value;
             }
-            else
-            {
-                int minHeight;
+            //else
+            //{
+            //    int minHeight;
 
-                if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
-                {
-                    //TODO: USE CONTAINS?
-                    if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
-                    {
-                        minHeight = (int)Math.Round((int)profile.Height.Value / (ratio + 0.04));
-                    }
-                    else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
-                    {
-                        minHeight = (int)Math.Round((int)profile.Height.Value * (ratio - 0.04));
-                    }
-                    else
-                    {
-                        minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
-                    }
-                }
-                else
-                {
-                    minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
-                }
+            //    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+            //    {
+            //        //TODO: USE CONTAINS?
+            //        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
+            //        {
+            //            minHeight = (int)Math.Round((int)profile.Height.Value / (ratio + 0.04));
+            //        }
+            //        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
+            //        {
+            //            minHeight = (int)Math.Round((int)profile.Height.Value * (ratio - 0.04));
+            //        }
+            //        else
+            //        {
+            //            minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
+            //        }
+            //    }
+            //    else
+            //    {
+            //        minHeight = (int)profile.Height.Value - 10; //if you don't have opposite biological sex, you don't have a formula for height
+            //    }
 
-                if (minHeight < (int)Height._146) minHeight = (int)Height._146;
-                min = (Height)minHeight;
-            }
+            //    if (minHeight < (int)Height._146) minHeight = (int)Height._146;
+            //    min = (Height)minHeight;
+            //}
 
-            if (filter != null && filter.MaxHeight.HasValue && !force)
+            if (filter != null && filter.MaxHeight.HasValue)
             {
                 max = filter.MaxHeight.Value;
             }
-            else
-            {
-                int maxHeight;
+            //else
+            //{
+            //    int maxHeight;
 
-                if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
-                {
-                    //TODO: USE CONTAINS?
-                    if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
-                    {
-                        maxHeight = (int)Math.Round((int)profile.Height.Value / (ratio - 0.04));
-                    }
-                    else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
-                    {
-                        maxHeight = (int)Math.Round((int)profile.Height.Value * (ratio + 0.04));
-                    }
-                    else
-                    {
-                        maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
-                    }
-                }
-                else
-                {
-                    maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
-                }
+            //    if (filter != null && filter.BiologicalSex.Count != 0 && filter.BiologicalSex.Count == 1)
+            //    {
+            //        //TODO: USE CONTAINS?
+            //        if (profile.BiologicalSex == BiologicalSex.Male && filter.BiologicalSex.First() == BiologicalSex.Female)
+            //        {
+            //            maxHeight = (int)Math.Round((int)profile.Height.Value / (ratio - 0.04));
+            //        }
+            //        else if (profile.BiologicalSex == BiologicalSex.Female && filter.BiologicalSex.First() == BiologicalSex.Male)
+            //        {
+            //            maxHeight = (int)Math.Round((int)profile.Height.Value * (ratio + 0.04));
+            //        }
+            //        else
+            //        {
+            //            maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
+            //        }
+            //    }
+            //    else
+            //    {
+            //        maxHeight = (int)profile.Height.Value + 10; //if you don't have opposite biological sex, you don't have a formula for height
+            //    }
 
-                if (maxHeight > (int)Height._188) maxHeight = (int)Height._188;
-                max = (Height)maxHeight;
-            }
+            //    if (maxHeight > (int)Height._188) maxHeight = (int)Height._188;
+            //    max = (Height)maxHeight;
+            //}
 
-            return [min ?? Height._146, max ?? Height._188];
+            return min == null || max == null ? [] : [min.Value, max.Value];
         }
 
         public static HashSet<Neurodiversity> GetNeurodiversity(FilterModel? filter = null)
@@ -485,7 +484,7 @@ namespace MM.WEB.Core
                     FamilyInvolvement.NotInvolved => [FamilyInvolvement.NotInvolved, FamilyInvolvement.SomeInvolvement],
                     FamilyInvolvement.SomeInvolvement => [FamilyInvolvement.NotInvolved, FamilyInvolvement.SomeInvolvement, FamilyInvolvement.HeavilyInvolved],
                     FamilyInvolvement.HeavilyInvolved => [FamilyInvolvement.SomeInvolvement, FamilyInvolvement.HeavilyInvolved],
-                    _ => FamilyInvolvement.NotInvolved.ToArray(),
+                    _ => [],
                 };
             }
         }
@@ -536,9 +535,13 @@ namespace MM.WEB.Core
             {
                 return filter.EducationLevel;
             }
+            else if (profile != null && profile.EducationLevel.HasValue)
+            {
+                return [profile.EducationLevel.Value];
+            }
             else
             {
-                return [profile.EducationLevel ?? throw new NotificationException("EducationLevel null")];
+                return [];
             }
         }
 
@@ -550,6 +553,7 @@ namespace MM.WEB.Core
             }
             else
             {
+                if (!profile.CareerCluster.HasValue) return [];
                 var group = profile.CareerCluster?.GetCustomAttribute()?.Group;
                 if (group.Empty()) return [CareerCluster.NoCareer];
 
@@ -608,11 +612,11 @@ namespace MM.WEB.Core
             }
             else
             {
-                var list = EnumHelper.GetArray<NetWorth>();
-                if (!profile.NetWorth.HasValue) return list.ToHashSet();
+                if (!profile.NetWorth.HasValue) return [];
 
                 var pos = (int)profile.NetWorth - 1;
 
+                var list = EnumHelper.GetArray<NetWorth>();
                 var before = pos == 0 ? null : (NetWorth?)list.GetValue(pos - 1);
                 var after = pos == list.Length - 1 ? null : (NetWorth?)list.GetValue(pos + 1);
 
@@ -628,11 +632,11 @@ namespace MM.WEB.Core
             }
             else
             {
-                var list = EnumHelper.GetArray<AnnualIncome>();
-                if (!profile.AnnualIncome.HasValue) return list.ToHashSet();
+                if (!profile.AnnualIncome.HasValue) return [];
 
                 var pos = (int)profile.AnnualIncome - 1;
 
+                var list = EnumHelper.GetArray<AnnualIncome>();
                 var before = pos == 0 ? null : (AnnualIncome?)list.GetValue(pos - 1);
                 var after = pos == list.Length - 1 ? null : (AnnualIncome?)list.GetValue(pos + 1);
 
@@ -646,6 +650,8 @@ namespace MM.WEB.Core
 
         public static HashSet<MoneyPersonality> GetMoneyPersonality(ProfileModel profile)
         {
+            if (!profile.MoneyPersonality.HasValue) return [];
+
             return profile.MoneyPersonality.ToArray();
         }
 
@@ -711,6 +717,8 @@ namespace MM.WEB.Core
 
         public static HashSet<LoveLanguage> GetLoveLanguage(ProfileModel profile)
         {
+            if (!profile.LoveLanguage.HasValue) return [];
+
             return profile.LoveLanguage.ToArray();
         }
 
@@ -720,9 +728,13 @@ namespace MM.WEB.Core
             {
                 return profile.SexPersonalityPreference;
             }
-            else
+            else if (profile.SexPersonality.HasValue)
             {
                 return profile.SexPersonality.ToArray();
+            }
+            else
+            {
+                return [];
             }
         }
 
@@ -935,14 +947,16 @@ namespace MM.WEB.Core
                 var weightRelationship = 20;
                 var weightGoals = 10;
 
-                return (totalBasic * weightBasic +
+                var calculated = totalBasic * weightBasic +
                     totalBio * weightBio +
                     totalLifestyle * weightLifestyle +
                     totalPersonality * weightPersonality +
                     totalInterest * weightInterest +
                     totalRelationship * weightRelationship +
-                    totalGoals + weightGoals) /
-                    (weightBasic + weightBio + weightLifestyle + weightPersonality + weightInterest + weightRelationship + weightGoals);
+                    totalGoals * weightGoals;
+                var totalWeight = weightBasic + weightBio + weightLifestyle + weightPersonality + weightInterest + weightRelationship + weightGoals;
+
+                return calculated / totalWeight;
             }
             else
             {

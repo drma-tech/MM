@@ -6,6 +6,13 @@ namespace MM.Shared.Models.Profile.Core
     {
         public ProfileValidation()
         {
+            RuleSet("REQUIRED", () =>
+            {
+                RuleFor(x => x.BirthDate)
+                    .NotEmpty()
+                    .LessThanOrEqualTo(DateTime.UtcNow.AddYears(-18).Date).WithMessage(Shared.Resources.Validations.OlderToRegister);
+            });
+
             RuleSet("BASIC", () =>
             {
                 RuleFor(x => x.NickName)
@@ -151,6 +158,9 @@ namespace MM.Shared.Models.Profile.Core
 
             RuleSet("INTEREST", () =>
             {
+                RuleFor(x => x).Must((value) => AtLeastThreeInterests(value))
+                    .WithMessage("Fill in at least 3 interests");
+
                 RuleFor(x => x.Food)
                     .Must((value) => value == null || value.Count <= 3)
                     .WithMessage(string.Format(Shared.Resources.Validations.ChooseMaximumOptions, 3, Resources.ProfileInterestModel.Food));
@@ -220,6 +230,22 @@ namespace MM.Shared.Models.Profile.Core
                 RuleFor(x => x.IdealPlaceToLive)
                    .NotEmpty();
             });
+        }
+
+        private static bool AtLeastThreeInterests(ProfileModel profile)
+        {
+            var tot = 0;
+
+            if (profile.Food.Count != 0) tot++;
+            if (profile.Vacation.Count != 0) tot++;
+            if (profile.Sports.Count != 0) tot++;
+            if (profile.LeisureActivities.Count != 0) tot++;
+            if (profile.MusicGenre.Count != 0) tot++;
+            if (profile.MovieGenre.Count != 0) tot++;
+            if (profile.TVGenre.Count != 0) tot++;
+            if (profile.ReadingGenre.Count != 0) tot++;
+
+            return tot >= 3;
         }
     }
 }

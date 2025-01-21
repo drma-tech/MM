@@ -35,7 +35,7 @@ namespace MM.WEB.Modules.Profile
             {
                 GenderIdentities = [GenderIdentity.Cisgender],
                 SexualOrientations = [SexualOrientation.Heterosexual],
-                BirthDate = DateTime.UtcNow.Date,
+                //BirthDate = DateTime.UtcNow.Date,
                 Diet = Diet.Omnivore,
             };
 
@@ -98,7 +98,7 @@ namespace MM.WEB.Modules.Profile
             {
                 var validator = new ProfileValidation();
 
-                var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
+                var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString(), "REQUIRED"));
 
                 if (result.IsValid)
                 {

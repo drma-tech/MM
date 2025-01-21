@@ -130,7 +130,7 @@
                     </Column>
                     <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                         <Birthdate Type="FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
-                                   CssIcon="@FontAwesomeIcons.BirthdayCake"></Birthdate>
+                                   CssIcon="@FontAwesomeIcons.BirthdayCake" Required="true"></Birthdate>
                         <FieldSelect For="@(() => Profile.Height)" TValue="MM.Shared.Enums.Height?" TEnum="MM.Shared.Enums.Height" @bind-SelectedValue="@Profile.Height"
                                      CssIcon="@FontAwesomeIcons.Ruler" ShowHelper="false"></FieldSelect>
                     </Column>
