@@ -13,9 +13,9 @@ namespace MM.WEB.Modules.Auth.Core
             public const string Remove = "principal/remove";
         }
 
-        public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated)
+        public async Task<ClientePrincipal?> Get(bool IsAuthenticated)
         {
-            if (IsUserAuthenticated)
+            if (IsAuthenticated)
             {
                 return await GetAsync(Endpoint.Get, null);
             }

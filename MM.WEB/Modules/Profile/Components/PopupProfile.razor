@@ -1,4 +1,5 @@
-﻿@using MM.Shared.Models.Profile;
+﻿@using MM.Shared.Models.Auth
+@using MM.Shared.Models.Profile;
 @using MM.WEB.Core.Models
 @using MM.WEB.Modules.Profile.Core;
 @inherits ComponentCore<PopupProfile>
@@ -89,38 +90,39 @@
                                         @if (interaction?.Status == InteractionStatus.Explorer)
                                         {
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                        Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Like)" Core="CoreEvent">
+                                                        Disabled="ButtonDisabled(EventType.Like)" Core="CoreEvent">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> Like
                                             </DrmaButton>
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                        Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dislike)" Core="CoreEvent">
+                                                        Disabled="ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> Dislike
                                             </DrmaButton>
                                         }
-                                        else if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
+                                        @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
                                         {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
+                                                    Disabled="true">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> Chat
                                             </Button>
                                         }
-                                        else if (interaction?.Status == InteractionStatus.Match)
+                                        @if (interaction?.Status == InteractionStatus.Match)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Dating)">
+                                                    Disabled="ButtonDisabled(EventType.Dating)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> Dating
                                             </Button>
                                         }
-                                        else if (interaction?.Status == InteractionStatus.Dating)
+                                        @if (interaction?.Status == InteractionStatus.Dating)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Relationship)">
+                                                    Disabled="ButtonDisabled(EventType.Relationship)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> Relationship
                                             </Button>
                                         }
-                                        else if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
+                                        @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="interaction.GetMyEvents(UserId).Any(a=>a.Type==EventType.Feedback)">
+                                                    Disabled="ButtonDisabled(EventType.Feedback)">
                                                 <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> Feedback
                                             </Button>
                                         }
@@ -152,6 +154,7 @@
 
 @code {
     [Parameter][EditorRequired] public string? UserId { get; set; }
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
 
     [Parameter] public Action? Liked { get; set; }
     [Parameter] public Action? Disliked { get; set; }
@@ -163,6 +166,7 @@
     public string? IdUserView { get; set; }
     public bool Fake { get; set; }
 
+    private ClientePrincipal? principal;
     private ProfileModel? user;
     private FilterModel? filter;
     private ProfileModel? view;
@@ -199,6 +203,7 @@
                 return;
             }
 
+            principal = await PrincipalApi.Get(IsAuthenticated);
             user = await ProfileApi.Get(null);
             view ??= await ProfileApi.GetView(IdUserView, null);
 
@@ -292,5 +297,44 @@
     private void GoChat()
     {
         //Navigation.NavigateTo($"/Explore/Chat/{IdUserView}");
+    }
+
+    private bool ButtonDisabled(EventType type)
+    {
+        if (type == EventType.Like)
+        {
+            var noLike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Like) ?? true;
+            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(view!.Id).FirstOrDefault()?.Origin == Origin.Invite;
+
+            return !(noLike && validated);
+        }
+        else if (type == EventType.Dislike)
+        {
+            var noDislike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Dislike) ?? true;
+
+            return !(noDislike);
+        }
+        else if (type == EventType.Dating)
+        {
+            var noDating = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Dating) ?? true;
+
+            return !(noDating);
+        }
+        else if (type == EventType.Relationship)
+        {
+            var noRelationship = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Relationship) ?? true;
+
+            return !(noRelationship);
+        }
+        else if (type == EventType.Feedback)
+        {
+            var noFeedback = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Feedback) ?? true;
+
+            return !(noFeedback);
+        }
+        else
+        {
+            return false;
+        }
     }
 }

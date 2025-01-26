@@ -240,6 +240,8 @@ namespace MM.Shared.Models.Profile
 
         #endregion GOAL
 
+        public bool Validated { get; set; }
+
         [JsonIgnore]
         [Custom(Name = "Age")]
         public int Age { get; set; }

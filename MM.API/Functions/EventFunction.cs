@@ -21,13 +21,13 @@ namespace MM.API.Functions
         }
 
         public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? trigguerUserId, string? passiveUserId,
-            EventType type, CancellationToken cancellationToken)
+            EventType type, Origin origin, CancellationToken cancellationToken)
         {
             if (trigguerUserId == passiveUserId) throw new NotificationException("cannot interact with yourself");
 
             var interaction = await repo.GetInteractionModel(trigguerUserId, passiveUserId, cancellationToken);
 
-            interaction.AddEventUser(trigguerUserId, type);
+            interaction.AddEventUser(trigguerUserId, type, origin);
 
             if (type == EventType.Like)
             {
@@ -66,10 +66,10 @@ namespace MM.API.Functions
 
                 //add like to partner
                 var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
-                partnerLikes.Items.Add(new PersonModel(userProfile, Origin.Like));
+                partnerLikes.Items.Add(new PersonModel(userProfile));
 
                 //create interaction between users
-                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, cancellationToken);
+                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, origin, cancellationToken);
 
                 if (interaction.Status == InteractionStatus.Match)
                 {
@@ -80,7 +80,7 @@ namespace MM.API.Functions
 
                     var partnerMatches = await repoGen.GetMyMatches(id, cancellationToken);
 
-                    await repoGen.SetMyMatches((userProfile, userLikes, userMatches), (partnerProfile, partnerLikes, partnerMatches), origin, cancellationToken);
+                    await repoGen.SetMyMatches((userProfile, userLikes, userMatches), (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
                 }
 
                 await repoGen.Upsert(partnerLikes, cancellationToken);
@@ -96,13 +96,13 @@ namespace MM.API.Functions
 
         [Function("EventDislike")]
         public async Task<HttpResponseData?> EventDislike(
-          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/dislike/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/dislike/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
         {
             try
             {
                 var userId = req.GetUserId();
 
-                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, cancellationToken);
+                var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
                 return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
             }

@@ -46,17 +46,17 @@ namespace MM.API.Functions
         }
 
         public static async Task SetMyMatches(this CosmosRepository repo, (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
-            (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, Origin origin, CancellationToken cancellationToken)
+            (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
         {
             if (user.profile.Id == partner.profile.Id) throw new NotificationException("invalid operation. profiles are the same.");
             if (user.likes.Id == partner.likes.Id) throw new NotificationException("invalid operation. likes are the same.");
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            user.matches.Items.Add(new PersonModel(partner.profile, origin));
+            user.matches.Items.Add(new PersonModel(partner.profile));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            partner.matches.Items.Add(new PersonModel(user.profile, origin));
+            partner.matches.Items.Add(new PersonModel(user.profile));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -265,10 +265,10 @@ namespace MM.API.Functions
 
                     //add like to partner
                     var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(profile, Origin.Invite));
+                    partnerLikes.Items.Add(new PersonModel(profile));
 
                     //create interaction between users
-                    await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, cancellationToken);
+                    await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);
 
                     await _repoGen.Upsert(partnerLikes, cancellationToken);
                 }

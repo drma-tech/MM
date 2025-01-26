@@ -40,7 +40,7 @@
                 return EventsUserB;
         }
 
-        public void AddEventUser(string? trigguerUserId, EventType type)
+        public void AddEventUser(string? trigguerUserId, EventType type, Origin origin)
         {
             if (Id.Empty()) throw new NotificationException("must initialize the interaction first");
 
@@ -48,9 +48,9 @@
             var arrIds = ids.Split('-');
 
             if (arrIds[0] == trigguerUserId)
-                EventsUserA.Add(new InteractionEvent { Type = type });
+                EventsUserA.Add(new InteractionEvent { Type = type, Origin = origin });
             else
-                EventsUserB.Add(new InteractionEvent { Type = type });
+                EventsUserB.Add(new InteractionEvent { Type = type, Origin = origin });
         }
 
         public override bool HasValidData()
@@ -63,6 +63,7 @@
     {
         public EventType Type { get; set; }
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
+        public Origin Origin { get; set; }
     }
 
     public enum EventType

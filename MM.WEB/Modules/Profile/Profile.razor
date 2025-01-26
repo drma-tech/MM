@@ -154,7 +154,7 @@
     </Column>
 </Row>
 
-<PopupProfile @ref="PopupProfile" UserId="@UserId" Liked="async()=>await LoadLikes(true)" Matched="async()=>await LoadMatches(true)"></PopupProfile>
+<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated" Liked="async()=>await LoadLikes(true)" Matched="async()=>await LoadMatches(true)"></PopupProfile>
 
 @code
 {
@@ -162,6 +162,7 @@
 
     public ProfileValidation ProfileValidator { get; set; } = new();
     public ProfileModel? profile;
+
     public HashSet<ProfileModel> fakeProfiles { get; set; } = [];
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
@@ -336,7 +337,7 @@
                 .GenerateLazy(6).ToHashSet();
 
             MyMatches.Items = fakeProfiles.Select(s => 
-                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Origin = Origin.Match, Fake = true }).ToHashSet();
+                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Fake = true }).ToHashSet();
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }

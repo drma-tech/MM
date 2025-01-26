@@ -19,8 +19,9 @@ namespace MM.Shared.Models.Auth
         public ClientePaddle? ClientePaddle { get; set; }
 
         public bool PublicProfile { get; set; } = false;
+        //public int Tokens { get; set; } = 0;
 
-        public override void Initialize(string userId)
+        public override void Initialize(string? userId)
         {
             base.Initialize(userId);
             UserId = userId;
