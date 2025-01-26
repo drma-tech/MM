@@ -57,7 +57,7 @@ namespace MM.API.Functions
     {
         [Function("EventLike")]
         public async Task<HttpResponseData?> EventLike(
-           [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/like/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+           [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/like/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace MM.API.Functions
 
                 //add like to partner
                 var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
-                partnerLikes.Items.Add(new PersonModel(userId, userProfile));
+                partnerLikes.Items.Add(new PersonModel(userProfile, Origin.Like));
 
                 //create interaction between users
                 var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, cancellationToken);
@@ -80,7 +80,7 @@ namespace MM.API.Functions
 
                     var partnerMatches = await repoGen.GetMyMatches(id, cancellationToken);
 
-                    await repoGen.SetMyMatches((userProfile, userLikes, userMatches), (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
+                    await repoGen.SetMyMatches((userProfile, userLikes, userMatches), (partnerProfile, partnerLikes, partnerMatches), origin, cancellationToken);
                 }
 
                 await repoGen.Upsert(partnerLikes, cancellationToken);

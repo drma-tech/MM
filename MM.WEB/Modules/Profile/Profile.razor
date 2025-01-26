@@ -116,7 +116,7 @@
                                 <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
                             </Figure>
                         </Div>
-                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId))">Open</Button>
+                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">Open</Button>
                     </Column>
                 }
             </Row>
@@ -141,11 +141,11 @@
                         </Div>
                         @if (item.Fake)
                         {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">Open</Button>
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">Open</Button>
                         }
                         else
                         {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(item.UserId))">Open</Button>
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">Open</Button>
                         }
                     </Column>
                 }
@@ -335,7 +335,8 @@
 
                 .GenerateLazy(6).ToHashSet();
 
-            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Fake = true }).ToHashSet();
+            MyMatches.Items = fakeProfiles.Select(s => 
+                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Origin = Origin.Match, Fake = true }).ToHashSet();
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }

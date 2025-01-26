@@ -126,10 +126,10 @@
                                         }
                                     </Column>
                                     <Column ColumnSize="ColumnSize.IsHalf">
-                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
                                             <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Delete
                                         </Button>
-                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true">
+                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
                                             <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Flag"></Blazorise.Icon> Report
                                         </Button>
                                     </Column>
@@ -157,6 +157,7 @@
     [Parameter] public Action? Disliked { get; set; }
     [Parameter] public Action? Matched { get; set; }
 
+    public Origin Origin { get; set; }
     private Modal? modal;
 
     public string? IdUserView { get; set; }
@@ -190,7 +191,7 @@
                 return;
             }
 
-            interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
@@ -230,12 +231,13 @@
         }
     }
 
-    public async Task ShowModal(string? IdUserView, ProfileModel? view = null, bool fake = false)
+    public async Task ShowModal(Origin Origin, string? IdUserView, ProfileModel? view = null, bool fake = false)
     {
-        modal?.Show();
         this.IdUserView = IdUserView;
         this.view = view;
         this.Fake = fake;
+        this.Origin = Origin;
+        modal?.Show();
         await LoadDataRender();
     }
 
@@ -259,7 +261,7 @@
     {
         try
         {
-            interaction = await EventApi.Like(IdUserView, CoreEvent);
+            interaction = await EventApi.Like(Origin, IdUserView, CoreEvent);
             Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)

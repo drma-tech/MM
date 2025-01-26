@@ -46,17 +46,17 @@ namespace MM.API.Functions
         }
 
         public static async Task SetMyMatches(this CosmosRepository repo, (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
-            (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
+            (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, Origin origin, CancellationToken cancellationToken)
         {
             if (user.profile.Id == partner.profile.Id) throw new NotificationException("invalid operation. profiles are the same.");
             if (user.likes.Id == partner.likes.Id) throw new NotificationException("invalid operation. likes are the same.");
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            user.matches.Items.Add(new PersonModel(partner.profile.Id, partner.profile));
+            user.matches.Items.Add(new PersonModel(partner.profile, origin));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            partner.matches.Items.Add(new PersonModel(user.profile.Id, user.profile));
+            partner.matches.Items.Add(new PersonModel(user.profile, origin));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -261,11 +261,11 @@ namespace MM.API.Functions
                 if (partners.Count != 0) //if user already registered, register a like
                 {
                     var partner = partners.Single();
-                    var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
+                    var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
                     //add like to partner
                     var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(userId, profile));
+                    partnerLikes.Items.Add(new PersonModel(profile, Origin.Invite));
 
                     //create interaction between users
                     await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, cancellationToken);

@@ -8,17 +8,19 @@ namespace MM.Shared.Models.Profile
         {
         }
 
-        public PersonModel(string? userId, ProfileModel? profile)
+        public PersonModel(ProfileModel profile, Origin origin)
         {
-            this.UserId = userId;
-            this.UserName = profile?.NickName ?? "unnamed user";
-            this.UserPhoto = profile?.GetPhoto(ImageHelper.PhotoType.Face);
+            this.UserId = profile.Id;
+            this.UserName = profile.NickName;
+            this.UserPhoto = profile.GetPhoto(ImageHelper.PhotoType.Face);
+            this.Origin = origin;
         }
 
         public string? UserId { get; init; }
         public string? UserName { get; set; }
         public string? UserPhoto { get; set; }
         public DateTime DateTime { get; init; } = DateTime.UtcNow;
+        public Origin Origin { get; set; }
 
         public string GetUserPhoto()
         {
