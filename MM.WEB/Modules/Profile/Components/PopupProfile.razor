@@ -8,7 +8,6 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject InteractionApi InteractionApi
-@inject EventApi EventApi
 
 <Modal @ref="modal">
     <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
@@ -266,7 +265,7 @@
     {
         try
         {
-            interaction = await EventApi.Like(Origin, IdUserView, CoreEvent);
+            interaction = await InteractionApi.Like(Origin, IdUserView, CoreEvent);
             Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)
@@ -285,7 +284,7 @@
     {
         try
         {
-            interaction = await EventApi.Dislike(IdUserView, CoreEvent);
+            interaction = await InteractionApi.Dislike(Origin, IdUserView, CoreEvent);
             Disliked?.Invoke();
         }
         catch (Exception ex)
@@ -314,27 +313,27 @@
 
             return !(noDislike);
         }
-        else if (type == EventType.Dating)
-        {
-            var noDating = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Dating) ?? true;
+        // else if (type == EventType.Dating)
+        // {
+        //     var noDating = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Dating) ?? true;
 
-            return !(noDating);
-        }
-        else if (type == EventType.Relationship)
-        {
-            var noRelationship = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Relationship) ?? true;
+        //     return !(noDating);
+        // }
+        // else if (type == EventType.Relationship)
+        // {
+        //     var noRelationship = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Relationship) ?? true;
 
-            return !(noRelationship);
-        }
-        else if (type == EventType.Feedback)
-        {
-            var noFeedback = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Feedback) ?? true;
+        //     return !(noRelationship);
+        // }
+        // else if (type == EventType.Feedback)
+        // {
+        //     var noFeedback = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Feedback) ?? true;
 
-            return !(noFeedback);
-        }
+        //     return !(noFeedback);
+        // }
         else
         {
-            return false;
+            return true;
         }
     }
 }

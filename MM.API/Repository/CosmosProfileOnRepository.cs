@@ -46,7 +46,38 @@ namespace MM.API.Repository
             }
         }
 
-        public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken) where T : MainDocument
+        public async Task<List<T>> ListAll<T>(CancellationToken cancellationToken) where T : CosmosDocument
+        {
+            try
+            {
+                var query = Container
+                   .GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions());
+
+                using var iterator = query.ToFeedIterator();
+                var results = new List<T>();
+
+                double charges = 0;
+                while (iterator.HasMoreResults)
+                {
+                    var response = await iterator.ReadNextAsync(cancellationToken);
+                    charges += response.RequestCharge;
+                    results.AddRange(response.Resource);
+                }
+
+                if (charges > 7)
+                {
+                    _logger.LogWarning("ListAll - ProfileOn, RequestCharge {Charges}", charges);
+                }
+
+                return results;
+            }
+            catch (CosmosOperationCanceledException)
+            {
+                return [];
+            }
+        }
+
+        public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken) where T : CosmosDocument
         {
             try
             {

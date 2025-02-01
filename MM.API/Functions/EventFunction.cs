@@ -55,9 +55,28 @@ namespace MM.API.Functions
 
     public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
     {
-        [Function("EventLike")]
-        public async Task<HttpResponseData?> EventLike(
-           [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/like/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
+        [Function("InteractionGet")]
+        public async Task<HttpResponseData?> InteractionGet(
+         [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "interaction/get/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
+
+                return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
+        [Function("InteractionLike")]
+        public async Task<HttpResponseData?> InteractionLike(
+           [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "interaction/like/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -94,9 +113,9 @@ namespace MM.API.Functions
             }
         }
 
-        [Function("EventDislike")]
-        public async Task<HttpResponseData?> EventDislike(
-          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "event/dislike/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
+        [Function("InteractionDislike")]
+        public async Task<HttpResponseData?> InteractionDislike(
+          [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "interaction/dislike/{origin}/{id}")] HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
         {
             try
             {

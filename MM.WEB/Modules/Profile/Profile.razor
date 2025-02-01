@@ -45,7 +45,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="profile==null">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
             @if (setting != null)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
@@ -55,7 +55,7 @@
                 <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
             }
         </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="profile==null">
+        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
             @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
             {
                 <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>

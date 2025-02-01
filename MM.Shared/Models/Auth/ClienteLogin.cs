@@ -10,7 +10,7 @@
 
         public Access[] Accesses { get; set; } = [];
 
-        public override void Initialize(string userId)
+        public override void Initialize(string? userId)
         {
             base.Initialize(userId);
             UserId = userId;
