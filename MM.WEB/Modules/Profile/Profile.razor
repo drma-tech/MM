@@ -21,67 +21,67 @@
 @if (IsAuthenticated)
 {
     <ProfileHeader></ProfileHeader>
-}
 
-<Row Margin="Margin.Is2.FromBottom">
-    <Column ColumnSize="ColumnSize.IsAuto">
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data">
-            @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Profile</span>
-            }
-            else
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Profile</span>
-            }
-        </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Disabled="profile==null">
-            @if (filter != null && FilterValidator.Validate(filter).IsValid)
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Filters</span>
-            }
-            else
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
-            }
-        </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
-            @if (setting != null)
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
-            }
-            else
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
-            }
-        </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
-            @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
-            }
-            else
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Photos</span>
-            }
-        </Button>
-        <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
-            @if (false)
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Validations</span>
-            }
-            else
-            {
-                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Validations</span>
-            }
-        </Button>
-    </Column>
-    <Column ColumnSize="ColumnSize.IsAuto">
-        <Switch Checked="@IsPublic" CheckedChanged="(bool value)=>IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
-            @(IsPublic ? "Public" : "Private")
-        </Switch>
-    </Column>
-</Row>
+    <Row Margin="Margin.Is2.FromBottom">
+        <Column ColumnSize="ColumnSize.IsAuto">
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data">
+                @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Profile</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Profile</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Disabled="profile==null">
+                @if (filter != null && FilterValidator.Validate(filter).IsValid)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Filters</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
+                @if (setting != null)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
+                @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Photos</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
+                @if (false)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Validations</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Validations</span>
+                }
+            </Button>
+        </Column>
+        <Column ColumnSize="ColumnSize.IsAuto">
+            <Switch Checked="@IsPublic" CheckedChanged="(bool value)=>IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
+                @(IsPublic ? "Public" : "Private")
+            </Switch>
+        </Column>
+    </Row>
+}
 
 <HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="Suggestions">
     <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Generate new suggestion list" Disabled="true">
