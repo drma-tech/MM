@@ -153,14 +153,14 @@
   <data name="Modality_Name" xml:space="preserve">
     <value>Modality</value>
   </data>
+  <data name="Nationality_Name" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
   <data name="NickName_Name" xml:space="preserve">
     <value>Nickname</value>
   </data>
   <data name="NickName_Placeholder" xml:space="preserve">
     <value>Ex: Paul</value>
-  </data>
-  <data name="RelationshipIntentions_Name" xml:space="preserve">
-    <value>Relationship Intentions</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>

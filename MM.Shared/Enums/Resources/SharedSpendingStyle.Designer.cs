@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I prefer my partner to take on most or all financial responsibilities, as I don&apos;t see myself in a position to contribute financially..
+        ///   Looks up a localized string similar to I prefer my partner to take on all financial responsibilities, as I don&apos;t see myself in a position to contribute financially..
         /// </summary>
         public static string Dependent_Description {
             get {

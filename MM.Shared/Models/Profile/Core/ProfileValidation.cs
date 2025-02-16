@@ -63,11 +63,11 @@ namespace MM.Shared.Models.Profile.Core
             {
                 RuleFor(x => x.Ethnicity)
                   .NotEmpty()
-                  .WithName(Resources.ProfileBioModel.Ethnicity);
+                  .WithName(Resources.ProfileBioModel.Ethnicity_Name);
 
                 RuleFor(x => x.BodyType)
                   .NotEmpty()
-                  .WithName(Resources.ProfileBioModel.BodyType);
+                  .WithName(Resources.ProfileBioModel.BodyType_Name);
 
                 RuleFor(x => x.BirthDate)
                     .NotEmpty()
@@ -217,18 +217,20 @@ namespace MM.Shared.Models.Profile.Core
                 RuleFor(x => x.RelationshipIntentions)
                    .NotEmpty()
                    .Must((value) => value.Count <= 2)
-                   .WithMessage(string.Format(Shared.Resources.Validations.ChooseMaximumOptions, 2, Resources.ProfileBasicModel.RelationshipIntentions_Name))
-                   .WithName(Resources.ProfileBasicModel.RelationshipIntentions_Name);
+                   .WithMessage(string.Format(Shared.Resources.Validations.ChooseMaximumOptions, 2, Resources.ProfileGoalModel.RelationshipIntentions))
+                   .WithName(Resources.ProfileGoalModel.RelationshipIntentions);
 
                 RuleFor(x => x.WantChildren)
                     .NotEmpty()
-                    .WithName(Resources.ProfileLifestyleModel.WantChildren_Name);
+                    .WithName(Resources.ProfileGoalModel.WantChildren);
 
                 RuleFor(x => x.Relocation)
-                    .NotEmpty();
+                    .NotEmpty()
+                    .WithName(Resources.ProfileGoalModel.Relocation);
 
                 RuleFor(x => x.IdealPlaceToLive)
-                   .NotEmpty();
+                   .NotEmpty()
+                   .WithName(Resources.ProfileGoalModel.IdealPlaceToLive);
             });
         }
 

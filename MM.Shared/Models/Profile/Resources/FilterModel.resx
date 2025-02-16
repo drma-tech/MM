@@ -126,6 +126,9 @@
   <data name="Disabilities" xml:space="preserve">
     <value>Disabilities</value>
   </data>
+  <data name="Ethnicity" xml:space="preserve">
+    <value>Ethnicity</value>
+  </data>
   <data name="GenderIdentity" xml:space="preserve">
     <value>Gender Identity</value>
   </data>
@@ -161,8 +164,5 @@
   </data>
   <data name="SexualOrientation" xml:space="preserve">
     <value>Sexual Orientation</value>
-  </data>
-  <data name="Ethnicity" xml:space="preserve">
-    <value>Ethnicity</value>
   </data>
 </root>

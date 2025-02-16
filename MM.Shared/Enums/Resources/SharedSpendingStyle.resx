@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Provider_Name" xml:space="preserve">
-    <value>Provider</value>
-  </data>
-  <data name="Provider_Description" xml:space="preserve">
-    <value>I prefer to be responsible for all the finances in the relationship, covering all expenses and providing financial security to my partner.</value>
-  </data>
-  <data name="Contributor_Name" xml:space="preserve">
-    <value>Contributor</value>
-  </data>
-  <data name="Contributor_Description" xml:space="preserve">
-    <value>I take on most of the expenses, but I value my partner's contribution, even if it's on a smaller scale. I believe a financial partnership is important.</value>
+  <data name="Balanced_Description" xml:space="preserve">
+    <value>I like to share expenses fairly based on each person's financial capabilities. For me, a relationship should have balance in financial responsibilities.</value>
   </data>
   <data name="Balanced_Name" xml:space="preserve">
     <value>Balanced</value>
   </data>
-  <data name="Balanced_Description" xml:space="preserve">
-    <value>I like to share expenses fairly based on each person's financial capabilities. For me, a relationship should have balance in financial responsibilities.</value>
+  <data name="Contributor_Description" xml:space="preserve">
+    <value>I take on most of the expenses, but I value my partner's contribution, even if it's on a smaller scale. I believe a financial partnership is important.</value>
   </data>
-  <data name="Supporter_Name" xml:space="preserve">
-    <value>Supporter</value>
+  <data name="Contributor_Name" xml:space="preserve">
+    <value>Contributor</value>
   </data>
-  <data name="Supporter_Description" xml:space="preserve">
-    <value>I contribute significantly, but I expect my partner to cover most of the costs. I believe it’s essential to have a clear understanding of financial responsibilities.</value>
+  <data name="Dependent_Description" xml:space="preserve">
+    <value>I prefer my partner to take on all financial responsibilities, as I don't see myself in a position to contribute financially.</value>
   </data>
   <data name="Dependent_Name" xml:space="preserve">
     <value>Dependent</value>
   </data>
-  <data name="Dependent_Description" xml:space="preserve">
-    <value>I prefer my partner to take on all financial responsibilities, as I don't see myself in a position to contribute financially.</value>
+  <data name="Provider_Description" xml:space="preserve">
+    <value>I prefer to be responsible for all the finances in the relationship, covering all expenses and providing financial security to my partner.</value>
+  </data>
+  <data name="Provider_Name" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Supporter_Description" xml:space="preserve">
+    <value>I contribute significantly, but I expect my partner to cover most of the costs. I believe it’s essential to have a clear understanding of financial responsibilities.</value>
+  </data>
+  <data name="Supporter_Name" xml:space="preserve">
+    <value>Supporter</value>
   </data>
 </root>

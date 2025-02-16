@@ -123,8 +123,14 @@
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
+  <data name="BodyType_Name" xml:space="preserve">
+    <value>Tipo de cuerpo</value>
+  </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Discapacidades</value>
+  </data>
+  <data name="Ethnicity_Name" xml:space="preserve">
+    <value>Etnicidad</value>
   </data>
   <data name="Height_Name" xml:space="preserve">
     <value>Altura</value>

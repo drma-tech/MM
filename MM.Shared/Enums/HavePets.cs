@@ -2,25 +2,25 @@
 {
     public enum HavePets
     {
-        [Custom(Name = "I Don’t Have", Description = "I currently don’t own any pets.")]
+        [Custom(Name = "IDontHave", Description = "IDontHave_Description", ResourceType = typeof(Resources.HavePets))]
         IDontHave = 1,
 
-        [Custom(Name = "I Don’t Want", Description = "I don’t have pets and prefer not to have any.")]
+        [Custom(Name = "IDontWant", Description = "IDontWant_Description", ResourceType = typeof(Resources.HavePets))]
         IDontWant = 2,
 
-        [Custom(Name = "Dog(s)", Description = "I have dog(s) (e.g., Labrador, Poodle, Bulldog).")]
+        [Custom(Name = "Dog", Description = "Dog_Description", ResourceType = typeof(Resources.HavePets))]
         Dog = 3,
 
-        [Custom(Name = "Cat(s)", Description = "I have cat(s) (e.g., Persian, Siamese, Maine Coon).")]
+        [Custom(Name = "Cat", Description = "Cat_Description", ResourceType = typeof(Resources.HavePets))]
         Cat = 4,
 
-        [Custom(Name = "Dog(s) and Cat(s)", Description = "I have both dog(s) and cat(s).")]
+        [Custom(Name = "DogCat", Description = "DogCat_Description", ResourceType = typeof(Resources.HavePets))]
         DogCat = 5,
 
-        [Custom(Name = "Small Pets", Description = "I have small pets (e.g., rabbits, hamsters, guinea pigs, or birds).")]
+        [Custom(Name = "SmallPets", Description = "SmallPets_Description", ResourceType = typeof(Resources.HavePets))]
         SmallPets = 6,
 
-        [Custom(Name = "Exotic Pets", Description = "I have exotic pets (e.g., snakes, lizards, ferrets, fish, or tarantulas).")]
+        [Custom(Name = "ExoticPets", Description = "ExoticPets_Description", ResourceType = typeof(Resources.HavePets))]
         ExoticPets = 7,
     }
 }

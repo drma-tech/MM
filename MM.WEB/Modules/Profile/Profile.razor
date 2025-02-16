@@ -27,65 +27,65 @@
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data">
                 @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Profile</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Profile</span>
                 }
                 else
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Profile</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Profile</span>
                 }
             </Button>
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Disabled="profile==null">
                 @if (filter != null && FilterValidator.Validate(filter).IsValid)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Filters</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
                 }
                 else
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Filters</span>
-                }
-            </Button>
-            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
-                @if (setting != null)
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Settings</span>
-                }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Settings</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
                 }
             </Button>
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
                 @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Photos</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Photos</span>
                 }
                 else
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Photos</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Photos</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
+                @if (setting != null)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
                 }
             </Button>
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">
                 @if (false)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Validations</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Validations</span>
                 }
                 else
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>Validations</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Validations</span>
                 }
             </Button>
         </Column>
         <Column ColumnSize="ColumnSize.IsAuto">
             <Switch Checked="@IsPublic" CheckedChanged="(bool value)=>IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
-                @(IsPublic ? "Public" : "Private")
+                @(IsPublic ? WEB.Resources.GlobalTranslations.Public : WEB.Resources.GlobalTranslations.Private)
             </Switch>
         </Column>
     </Row>
 }
 
-<HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="Suggestions">
+<HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="@WEB.Resources.CardHeader.Suggestions">
     <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Generate new suggestion list" Disabled="true">
-        Generate
+        @WEB.Resources.Button.Generate
     </Button>
 </HeaderComponent>
 <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true" PremiumFeature="true">
@@ -100,9 +100,9 @@
 
 <Row HorizontalGutter="8" VerticalGutter="8">
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="Likes">
+        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="@WEB.Resources.CardHeader.Likes">
             <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle" Disabled="profile==null">
-                Invite Partner
+                @WEB.Resources.Button.InvitePartner
             </Button>
         </HeaderComponent>
         <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
@@ -116,17 +116,23 @@
                                 <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
                             </Figure>
                         </Div>
-                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">Open</Button>
+                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
+                            @WEB.Resources.Button.Open
+                        </Button>
                     </Column>
                 }
             </Row>
         </RenderControl>
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="Matches">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)" Disabled="profile==null">
-                Simulate
-            </Button>
+        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="@WEB.Resources.CardHeader.Matches">
+            @if (MyMatches == null || MyMatches.Items.Empty())
+            {
+                <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)"
+                        Disabled="profile==null">
+                    @WEB.Resources.Button.Simulate
+                </Button>
+            }
         </HeaderComponent>
         <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="((MyMatchesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
             <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
@@ -141,11 +147,15 @@
                         </Div>
                         @if (item.Fake)
                         {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">Open</Button>
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">
+                                @WEB.Resources.Button.Open
+                            </Button>
                         }
                         else
                         {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">Open</Button>
+                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
+                                @WEB.Resources.Button.Open
+                            </Button>
                         }
                     </Column>
                 }
@@ -336,7 +346,7 @@
 
                 .GenerateLazy(6).ToHashSet();
 
-            MyMatches.Items = fakeProfiles.Select(s => 
+            MyMatches.Items = fakeProfiles.Select(s =>
                 new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Fake = true }).ToHashSet();
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);

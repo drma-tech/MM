@@ -123,7 +123,7 @@ namespace MM.WEB.Modules.Profile
 
             var validator = new ProfileValidation();
 
-            var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab));
+            var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab.ToString()));
 
             if (!result.IsValid)
             {

@@ -123,13 +123,13 @@
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Birth Date</value>
   </data>
-  <data name="BodyType" xml:space="preserve">
+  <data name="BodyType_Name" xml:space="preserve">
     <value>Body Type</value>
   </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Disabilities</value>
   </data>
-  <data name="Ethnicity" xml:space="preserve">
+  <data name="Ethnicity_Name" xml:space="preserve">
     <value>Ethnicity</value>
   </data>
   <data name="Height_Name" xml:space="preserve">

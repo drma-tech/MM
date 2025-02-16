@@ -173,16 +173,16 @@
 
         #region GOALS
 
-        [Custom(Name = "RelationshipIntentions_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
+        [Custom(Name = "RelationshipIntentions", ResourceType = typeof(Resources.ProfileGoalModel))]
         public HashSet<RelationshipIntention> RelationshipIntentions { get; set; } = [];
 
-        [Custom(Name = "Relocation", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Relocation", ResourceType = typeof(Resources.ProfileGoalModel))]
         public Relocation? Relocation { get; set; }
 
-        [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        [Custom(Name = "WantChildren", ResourceType = typeof(Resources.ProfileGoalModel))]
         public HashSet<WantChildren> WantChildren { get; set; } = [];
 
-        [Custom(Name = "Ideal Place to Live")]
+        [Custom(Name = "IdealPlaceToLive", ResourceType = typeof(Resources.ProfileGoalModel))]
         public HashSet<IdealPlaceToLive> IdealPlaceToLive { get; set; } = [];
 
         #endregion GOALS

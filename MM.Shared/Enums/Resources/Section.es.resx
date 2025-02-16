@@ -135,4 +135,7 @@
   <data name="Personality" xml:space="preserve">
     <value>Personalidad</value>
   </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relación</value>
+  </data>
 </root>

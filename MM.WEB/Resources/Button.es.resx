@@ -132,8 +132,17 @@
   <data name="Fill" xml:space="preserve">
     <value>Llenar</value>
   </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generar</value>
+  </data>
   <data name="Help" xml:space="preserve">
     <value>Ayuda</value>
+  </data>
+  <data name="InvitePartner" xml:space="preserve">
+    <value>Invitar socio</value>
   </data>
   <data name="LoadMore" xml:space="preserve">
     <value>Carga más</value>
@@ -150,8 +159,17 @@
   <data name="Ok" xml:space="preserve">
     <value>De acuerdo</value>
   </data>
+  <data name="Open" xml:space="preserve">
+    <value>Abierto</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>Fotos</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidad</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
   </data>
   <data name="ReadMore" xml:space="preserve">
     <value>Leer más</value>
@@ -165,7 +183,16 @@
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Simulate" xml:space="preserve">
+    <value>Simular</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Actualizar</value>
+  </data>
+  <data name="Validations" xml:space="preserve">
+    <value>Validaciones</value>
   </data>
 </root>

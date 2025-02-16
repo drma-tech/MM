@@ -25,6 +25,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>AnnualIncome.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Enums\Resources\BodyType.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>BodyType.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Enums\Resources\Country.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -40,6 +45,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>EducationLevel.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Enums\Resources\Ethnicity.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Ethnicity.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Enums\Resources\FamilyInvolvement.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -49,6 +59,11 @@
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>GenderIdentity.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Enums\Resources\HavePets.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>HavePets.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Enums\Resources\Language.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -70,6 +85,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Region.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Enums\Resources\Religion.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Religion.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Enums\Resources\Relocation.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -90,6 +110,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>ProfileBioModel.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Models\Profile\Resources\ProfileGoalModel.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ProfileGoalModel.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Models\Profile\Resources\ProfileInterestModel.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -104,6 +129,11 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>FilterModel.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Models\Profile\Resources\ProfileRelationshipModel.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ProfileRelationshipModel.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Models\Support\Resources\TicketModel.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -221,6 +251,16 @@
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>AnnualIncome.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\BodyType.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\BodyType.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\BodyType.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>BodyType.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Country.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Country.Designer.cs</LastGenOutput>
@@ -233,6 +273,16 @@
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>EducationLevel.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Ethnicity.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Ethnicity.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Ethnicity.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Ethnicity.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\FamilyInvolvement.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>FamilyInvolvement.Designer.cs</LastGenOutput>
@@ -240,6 +290,16 @@
 		<EmbeddedResource Update="Enums\Resources\GenderIdentity.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>GenderIdentity.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\HavePets.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\HavePets.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\HavePets.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>HavePets.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Language.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
@@ -257,6 +317,16 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Region.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Religion.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Religion.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Enums\Resources\Religion.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Religion.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Enums\Resources\Relocation.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>Relocation.Designer.cs</LastGenOutput>
@@ -265,6 +335,16 @@
 		  <Generator>ResXFileCodeGenerator</Generator>
 		  <LastGenOutput>SexualOrientation.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileGoalModel.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileGoalModel.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileGoalModel.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>ProfileGoalModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Models\Profile\Resources\ProfileInterestModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ProfileInterestModel.Designer.cs</LastGenOutput>
@@ -272,6 +352,16 @@
 		<EmbeddedResource Update="Models\Profile\Resources\FilterModel.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>FilterModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileRelationshipModel.es.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileRelationshipModel.pt.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileRelationshipModel.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>ProfileRelationshipModel.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Models\Support\Resources\TicketModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

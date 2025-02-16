@@ -132,8 +132,17 @@
   <data name="Fill" xml:space="preserve">
     <value>Fill</value>
   </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="InvitePartner" xml:space="preserve">
+    <value>Invite Partner</value>
   </data>
   <data name="LoadMore" xml:space="preserve">
     <value>Load More</value>
@@ -150,8 +159,17 @@
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="ReadMore" xml:space="preserve">
     <value>Read More</value>
@@ -165,7 +183,16 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Simulate" xml:space="preserve">
+    <value>Simulate</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Validations" xml:space="preserve">
+    <value>Validations</value>
   </data>
 </root>

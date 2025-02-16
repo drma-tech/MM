@@ -31,6 +31,7 @@ namespace MM.WEB.Modules.Shared.Field
         private string? Description => For?.GetCustomAttribute()?.Description;
 
         [Parameter] public Func<EnumObject, object> Order { get; set; } = o => o.Value;
+        [Parameter] public Func<EnumObject, bool> Filter { get; set; } = o => true;
 
         protected Task UpdateDataHelp(Expression<Func<TValue>>? For)
         {

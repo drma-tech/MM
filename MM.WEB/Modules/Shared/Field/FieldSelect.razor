@@ -36,7 +36,7 @@
                             @if (ShowGroup)
                             {
                                 <SelectItem></SelectItem>
-                                @foreach (var group in EnumHelper.GetList<TEnum>().Select(s => s.Group).Order().Distinct())
+                                @foreach (var group in EnumHelper.GetList<TEnum>().Where(Filter).Select(s => s.Group).Order().Distinct())
                                 {
                                     if (string.IsNullOrEmpty(group))
                                     {
@@ -59,7 +59,7 @@
                             else
                             {
                                 <SelectItem></SelectItem>
-                                @foreach (var item in EnumHelper.GetList<TEnum>().OrderBy(Order))
+                                @foreach (var item in EnumHelper.GetList<TEnum>().Where(Filter).OrderBy(Order))
                                 {
                                     <SelectItem Value="@item.Value">@item.Name</SelectItem>
                                 }

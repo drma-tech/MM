@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NotInvolved_Name" xml:space="preserve">
-    <value>Not Involved</value>
-  </data>
-  <data name="NotInvolved_Description" xml:space="preserve">
-    <value>My family does not participate in my relationship or marriage decisions.</value>
-  </data>
-  <data name="SomeInvolvement_Name" xml:space="preserve">
-    <value>Some Involvement</value>
-  </data>
-  <data name="SomeInvolvement_Description" xml:space="preserve">
-    <value>My family participates and provides input, but the final decision is mine.</value>
+  <data name="HeavilyInvolved_Description" xml:space="preserve">
+    <value>My family is deeply involved and has a strong influence on my relationship and marriage decisions.</value>
   </data>
   <data name="HeavilyInvolved_Name" xml:space="preserve">
     <value>Heavily Involved</value>
   </data>
-  <data name="HeavilyInvolved_Description" xml:space="preserve">
-    <value>My family is deeply involved and has a strong influence on my relationship and marriage decisions.</value>
+  <data name="NotInvolved_Description" xml:space="preserve">
+    <value>My family does not participate in my relationship or marriage decisions.</value>
+  </data>
+  <data name="NotInvolved_Name" xml:space="preserve">
+    <value>Not Involved</value>
+  </data>
+  <data name="SomeInvolvement_Description" xml:space="preserve">
+    <value>My family participates and provides input, but the final decision is mine.</value>
+  </data>
+  <data name="SomeInvolvement_Name" xml:space="preserve">
+    <value>Some Involvement</value>
   </data>
 </root>

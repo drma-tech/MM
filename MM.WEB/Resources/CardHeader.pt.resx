@@ -123,8 +123,14 @@
   <data name="EventMyEvents" xml:space="preserve">
     <value>Meus Eventos</value>
   </data>
-  <data name="Invitations" xml:space="preserve">
-    <value>Convites</value>
+  <data name="InvitePartner" xml:space="preserve">
+    <value>Convidar Parceiro</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>Curtidas</value>
+  </data>
+  <data name="Matches" xml:space="preserve">
+    <value>Conexões</value>
   </data>
   <data name="Maximum3Items" xml:space="preserve">
     <value>Escolha um máximo de 3 itens para cada campo</value>
@@ -152,6 +158,9 @@
   </data>
   <data name="ProfilePreferences" xml:space="preserve">
     <value>Preferências</value>
+  </data>
+  <data name="Suggestions" xml:space="preserve">
+    <value>Sugestões</value>
   </data>
   <data name="SupportErrors" xml:space="preserve">
     <value>Erros</value>

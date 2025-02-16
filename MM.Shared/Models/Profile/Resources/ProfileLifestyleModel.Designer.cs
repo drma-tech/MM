@@ -124,11 +124,47 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In some cultures, family plays a key role in relationship decisions. How involved is your family?.
+        /// </summary>
+        public static string FamilyInvolvement_Description {
+            get {
+                return ResourceManager.GetString("FamilyInvolvement_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FamilyInvolvement.
+        /// </summary>
+        public static string FamilyInvolvement_Name {
+            get {
+                return ResourceManager.GetString("FamilyInvolvement_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Have Children.
         /// </summary>
         public static string HaveChildren_Name {
             get {
                 return ResourceManager.GetString("HaveChildren_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pets.
+        /// </summary>
+        public static string HavePets_Name {
+            get {
+                return ResourceManager.GetString("HavePets_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I live with.
+        /// </summary>
+        public static string LivingSituation_Name {
+            get {
+                return ResourceManager.GetString("LivingSituation_Name", resourceCulture);
             }
         }
         
@@ -291,15 +327,6 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string TravelFrequency_Name {
             get {
                 return ResourceManager.GetString("TravelFrequency_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Want Kids.
-        /// </summary>
-        public static string WantChildren_Name {
-            get {
-                return ResourceManager.GetString("WantChildren_Name", resourceCulture);
             }
         }
     }

@@ -120,8 +120,14 @@
   <data name="BiologicalSex" xml:space="preserve">
     <value>Sexo biológico</value>
   </data>
+  <data name="BodyType" xml:space="preserve">
+    <value>Tipo de cuerpo</value>
+  </data>
   <data name="Disabilities" xml:space="preserve">
     <value>Discapacidades</value>
+  </data>
+  <data name="Ethnicity" xml:space="preserve">
+    <value>Etnicidad</value>
   </data>
   <data name="GenderIdentity" xml:space="preserve">
     <value>Identidad de género</value>
@@ -131,6 +137,9 @@
   </data>
   <data name="Languages_Description" xml:space="preserve">
     <value>Filtrar perfiles que tengan al menos uno de los idiomas seleccionados</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>Estado civil</value>
   </data>
   <data name="MaxAge" xml:space="preserve">
     <value>Edad (Mín. - Máx.)</value>

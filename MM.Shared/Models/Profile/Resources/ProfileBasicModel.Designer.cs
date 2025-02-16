@@ -169,6 +169,15 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nationality.
+        /// </summary>
+        public static string Nationality_Name {
+            get {
+                return ResourceManager.GetString("Nationality_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nickname.
         /// </summary>
         public static string NickName_Name {
@@ -183,15 +192,6 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string NickName_Placeholder {
             get {
                 return ResourceManager.GetString("NickName_Placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Intentions.
-        /// </summary>
-        public static string RelationshipIntentions_Name {
-            get {
-                return ResourceManager.GetString("RelationshipIntentions_Name", resourceCulture);
             }
         }
         

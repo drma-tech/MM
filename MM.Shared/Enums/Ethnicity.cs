@@ -2,31 +2,31 @@
 {
     public enum Ethnicity
     {
-        [Custom(Name = "White / Caucasian", Description = "People with origins in Europe, the Middle East, or North Africa.")]
+        [Custom(Name = "WhiteCaucasian", Description = "WhiteCaucasian_Description", ResourceType = typeof(Resources.Ethnicity))]
         WhiteCaucasian = 1,
 
-        [Custom(Name = "Black / African Descent", Description = "People with origins in Sub-Saharan Africa, including African American, Afro-Caribbean, and other Black identities.")]
+        [Custom(Name = "BlackAfricanDescent", Description = "BlackAfricanDescent_Description", ResourceType = typeof(Resources.Ethnicity))]
         BlackAfricanDescent = 2,
 
-        [Custom(Name = "Indigenous / Native Peoples", Description = "People native to the Americas, Australia, or other regions, such as Native American, First Nations, Aboriginal, or Maori.")]
+        [Custom(Name = "IndigenousNativePeoples", Description = "IndigenousNativePeoples_Description", ResourceType = typeof(Resources.Ethnicity))]
         IndigenousNativePeoples = 3,
 
-        [Custom(Name = "Asian", Description = "People with origins in East Asia, South Asia, or Southeast Asia, including Chinese, Indian, Filipino, Japanese, and more.")]
+        [Custom(Name = "Asian", Description = "Asian_Description", ResourceType = typeof(Resources.Ethnicity))]
         Asian = 4,
 
-        [Custom(Name = "Hispanic / Latino", Description = "People of Latin American or Hispanic descent, including Mexican, Puerto Rican, Cuban, and other Latin American identities.")]
+        [Custom(Name = "HispanicLatino", Description = "HispanicLatino_Description", ResourceType = typeof(Resources.Ethnicity))]
         HispanicLatino = 5,
 
-        [Custom(Name = "Middle Eastern / North African", Description = "People with origins in Middle Eastern or North African countries, such as Arab, Persian, or Berber.")]
+        [Custom(Name = "MiddleEasternNorthAfrican", Description = "MiddleEasternNorthAfrican_Description", ResourceType = typeof(Resources.Ethnicity))]
         MiddleEasternNorthAfrican = 6,
 
-        [Custom(Name = "Native Hawaiian / Pacific Islander", Description = "People native to the Pacific Islands, including Native Hawaiian, Samoan, and Chamorro.")]
+        [Custom(Name = "NativeHawaiianPacificIslander", Description = "NativeHawaiianPacificIslander_Description", ResourceType = typeof(Resources.Ethnicity))]
         NativeHawaiianPacificIslander = 7,
 
-        [Custom(Name = "Multiracial / Mixed", Description = "People who identify with more than one racial or ethnic background.")]
+        [Custom(Name = "MultiracialMixed", Description = "MultiracialMixed_Description", ResourceType = typeof(Resources.Ethnicity))]
         MultiracialMixed = 8,
 
-        [Custom(Name = "Other", Description = "Person with a racial or ethnic background not listed here.")]
+        [Custom(Name = "Other", Description = "Other_Description", ResourceType = typeof(Resources.Ethnicity))]
         Other = 9,
     }
 }

@@ -138,6 +138,21 @@
   <data name="EducationLevel_Name" xml:space="preserve">
     <value>Educación</value>
   </data>
+  <data name="FamilyInvolvement_Description" xml:space="preserve">
+    <value>En algunas culturas, la familia desempeña un papel fundamental en las decisiones sobre las relaciones. ¿En qué medida participa tu familia?</value>
+  </data>
+  <data name="FamilyInvolvement_Name" xml:space="preserve">
+    <value>Participación familiar</value>
+  </data>
+  <data name="HaveChildren_Name" xml:space="preserve">
+    <value>Tengo hijos</value>
+  </data>
+  <data name="HavePets_Name" xml:space="preserve">
+    <value>Mascotas</value>
+  </data>
+  <data name="LivingSituation_Name" xml:space="preserve">
+    <value>Yo vivo con</value>
+  </data>
   <data name="LoveLanguage_Description" xml:space="preserve">
     <value>Si tienes alguna duda puedes realizar un test en la web original (inglés y español)</value>
   </data>

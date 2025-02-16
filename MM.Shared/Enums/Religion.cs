@@ -2,28 +2,28 @@
 {
     public enum Religion
     {
-        [Custom(Name = "Christianity", Description = "A monotheistic religion based on the life and teachings of Jesus Christ. It emphasizes faith in one God and the importance of love, forgiveness, and salvation through Jesus.")]
+        [Custom(Name = "Christianity", Description = "Christianity_Description", ResourceType = typeof(Resources.Religion))]
         Christianity = 1,
 
-        [Custom(Name = "Islam", Description = "A monotheistic faith revealed through Muhammad as the Prophet of Allah. Followers, known as Muslims, practice the Five Pillars of Islam and believe in the Quran as their holy book.")]
+        [Custom(Name = "Islam", Description = "Islam_Description", ResourceType = typeof(Resources.Religion))]
         Islam = 2,
 
-        [Custom(Name = "Hinduism", Description = "One of the oldest religions, characterized by a variety of beliefs and practices, including concepts of karma, dharma, and the cycle of rebirth. It encompasses a wide range of philosophies and rituals.")]
+        [Custom(Name = "Hinduism", Description = "Hinduism_Description", ResourceType = typeof(Resources.Religion))]
         Hinduism = 3,
 
-        [Custom(Name = "Non-Religious / Atheist", Description = "Individuals who do not identify with any religion or believe in a deity. This category includes atheists, agnostics, and those who hold secular views.")]
+        [Custom(Name = "NonReligious", Description = "NonReligious_Description", ResourceType = typeof(Resources.Religion))]
         NonReligious = 4,
 
-        [Custom(Name = "Buddhism", Description = "A spiritual tradition focusing on personal spiritual development and the attainment of enlightenment through practices such as meditation and ethical living. It teaches the Four Noble Truths and the Eightfold Path.")]
+        [Custom(Name = "Buddhism", Description = "Buddhism_Description", ResourceType = typeof(Resources.Religion))]
         Buddhism = 5,
 
-        [Custom(Name = "Sikhism", Description = "A faith that emphasizes equality, service, and devotion to one God, founded in the 15th century in the Punjab region. Sikhs follow the teachings of the ten Gurus and regard the Guru Granth Sahib as their holy scripture.")]
+        [Custom(Name = "Sikhism", Description = "Sikhism_Description", ResourceType = typeof(Resources.Religion))]
         Sikhism = 6,
 
-        [Custom(Name = "Judaism", Description = "The monotheistic religion of the Jewish people, based on the Hebrew Bible (Tanakh). It emphasizes the covenant between God and the Jewish people, along with ethical conduct and community responsibility.")]
+        [Custom(Name = "Judaism", Description = "Judaism_Description", ResourceType = typeof(Resources.Religion))]
         Judaism = 7,
 
-        [Custom(Name = "Other", Description = "Any other belief system or religious affiliation not listed here, which may include indigenous beliefs, new religious movements, and other spiritual practices.")]
+        [Custom(Name = "Other", Description = "Other_Description", ResourceType = typeof(Resources.Religion))]
         Other = 8
     }
 }

@@ -9,7 +9,7 @@
 </ModalHeader>
 <ModalBody MaxHeight="70">
     <FieldSelect For="@(() => AppStateStatic.Language)" TValue="Language" TEnum="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged"
-                 CssIcon="@FontAwesomeIcons.Language" Order="(o)=>o.Name" ShowHelper="false"></FieldSelect>
+                 CssIcon="@FontAwesomeIcons.Language" Order="@((o)=>o.Name)" Filter="@((o)=>o.Group?.Contains("site")??false)" ShowHelper="false"></FieldSelect>
 </ModalBody>
 <ModalFooter>
     <Button Color="Color.Secondary" Clicked="@(()=>{ModalService.Hide();})" Size="Size.Small">
@@ -24,13 +24,16 @@
 
         if (language.NotEmpty())
         {
-            AppStateStatic.ChangeLanguage((Language)Enum.Parse(typeof(Language), language.Replace("-", "")));
+            var languages = EnumHelper.GetObjArray<Language>(false);
+            var lang = languages.FirstOrDefault(w => w.Description == language);
+
+            AppStateStatic.ChangeLanguage((Language?)lang?.Value ?? Language.English);
         }
     }
 
     protected async Task LanguageValueChanged(Language value)
     {
-        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "language", value.GetName(false));
-        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetCustomAttribute(false)?.Tips), forceLoad: true);
+        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "language", value.GetDescription(false));
+        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetCustomAttribute(false)?.Description), forceLoad: true);
     }
 }

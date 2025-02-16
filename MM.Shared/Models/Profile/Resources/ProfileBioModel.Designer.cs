@@ -81,9 +81,9 @@ namespace MM.Shared.Models.Profile.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Body Type.
         /// </summary>
-        public static string BodyType {
+        public static string BodyType_Name {
             get {
-                return ResourceManager.GetString("BodyType", resourceCulture);
+                return ResourceManager.GetString("BodyType_Name", resourceCulture);
             }
         }
         
@@ -99,9 +99,9 @@ namespace MM.Shared.Models.Profile.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Ethnicity.
         /// </summary>
-        public static string Ethnicity {
+        public static string Ethnicity_Name {
             get {
-                return ResourceManager.GetString("Ethnicity", resourceCulture);
+                return ResourceManager.GetString("Ethnicity_Name", resourceCulture);
             }
         }
         

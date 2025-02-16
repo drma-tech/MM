@@ -147,8 +147,14 @@
   <data name="Location_Placeholder" xml:space="preserve">
     <value>Haga clic en el botón a un lado</value>
   </data>
+  <data name="MaritalStatus_Name" xml:space="preserve">
+    <value>Estado civil</value>
+  </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modalidad</value>
+  </data>
+  <data name="Nationality_Name" xml:space="preserve">
+    <value>Nacionalidad</value>
   </data>
   <data name="NickName_Name" xml:space="preserve">
     <value>Apodo</value>

@@ -126,6 +126,15 @@
   <data name="BirthdateTip" xml:space="preserve">
     <value>Sólo se publicará tu edad. (Usamos el calendario gregoriano)</value>
   </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Ciudades</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Países</value>
+  </data>
+  <data name="Couples" xml:space="preserve">
+    <value>Parejas</value>
+  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operación no válida. Por favor, inténtelo de nuevo.</value>
   </data>
@@ -162,6 +171,12 @@
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>Invitación no aceptada</value>
   </data>
+  <data name="InviteYyourPartnerTitle1" xml:space="preserve">
+    <value>Invita a tu pareja a probar vuestra compatibilidad</value>
+  </data>
+  <data name="InviteYyourPartnerTitle2" xml:space="preserve">
+    <value>Esta invitación no se enviará por correo electrónico. Si no se acepta esta invitación en el plazo de un mes, se eliminará automáticamente.</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
@@ -180,6 +195,9 @@
   <data name="or" xml:space="preserve">
     <value>o</value>
   </data>
+  <data name="PartnerEmail" xml:space="preserve">
+    <value>Correo de la pareja</value>
+  </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
     <value>Aquí puede definir su tipo de perfil ideal, para que podamos calcular correctamente su índice de compatibilidad</value>
   </data>
@@ -191,6 +209,9 @@
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidad</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privado</value>
   </data>
   <data name="ProductUnderDevelopment" xml:space="preserve">
     <value>Producto aún en desarrollo, por lo que mucho mejorará. Si tiene sugerencias que hacer, pregunte en la sección de soporte de la aplicación.</value>
@@ -215,6 +236,9 @@
   </data>
   <data name="ProfilePreferPersonTip1" xml:space="preserve">
     <value>Esta sección no funciona como filtro, solo complementa el cálculo de compatibilidad de perfiles.</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Público</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>ACTUALIZA AHORA</value>
@@ -242,6 +266,9 @@
   </data>
   <data name="UnableDetectGps" xml:space="preserve">
     <value>No hemos podido detectar un sistema GPS en su dispositivo. Inténtalo de nuevo o libera el acceso al GPS de tu dispositivo.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuarios</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Se detectaron errores de validación</value>

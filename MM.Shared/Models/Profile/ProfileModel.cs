@@ -13,7 +13,7 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Description_Name", Placeholder = "Description_Placeholder", ResourceType = typeof(Resources.ProfileBasicModel))]
         public string? Description { get; set; }
 
-        [Custom(Name = "Nationality")]
+        [Custom(Name = "Nationality_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public Country? Nationality { get; set; }
 
         [JsonIgnore]
@@ -43,12 +43,12 @@ namespace MM.Shared.Models.Profile
 
         #region BIO
 
-        [Custom(Name = "Ethnicity",
+        [Custom(Name = "Ethnicity_Name",
             //FieldInfo = "É muito gratificante amar alguém que é diferente de você em termos de raça, cultura, identidade, religião e muito mais. Quando estamos abertos uns com os outros, podemos ampliar as perspectivas uns dos outros, abordar o mundo de maneiras diferentes e até descobrir que há uma conexão em nossas diferenças. Infelizmente, os casais inter-raciais ainda podem enfrentar dificuldades às vezes em virtude do fato de que o racismo existe em nossa sociedade em um nível profundo. Idealmente, o amor não deve ter limites a esse respeito. No entanto, na realidade, outras pessoas podem abrigar negatividade ou julgamento sobre um casal interracial. Os parceiros em um casamento inter-racial devem enfrentar essas questões juntos, mantendo empatia e apoio às experiências um do outro.",
             ResourceType = typeof(Resources.ProfileBioModel))]
         public Ethnicity? Ethnicity { get; set; }
 
-        [Custom(Name = "BodyType", ResourceType = typeof(Resources.ProfileBioModel))]
+        [Custom(Name = "BodyType_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public BodyType? BodyType { get; set; }
 
         [Custom(Name = "BirthDate_Name", ResourceType = typeof(Resources.ProfileBioModel))]
@@ -90,13 +90,13 @@ namespace MM.Shared.Models.Profile
          ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public Religion? Religion { get; set; }
 
-        [Custom(Name = "Family Involvement", Description = "In some cultures, family plays a key role in relationship decisions. How involved is your family?")]
+        [Custom(Name = "FamilyInvolvement_Name", Description = "FamilyInvolvement_Description", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public FamilyInvolvement? FamilyInvolvement { get; set; }
 
         [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HaveChildren? HaveChildren { get; set; }
 
-        [Custom(Name = "Have Pets")]
+        [Custom(Name = "HavePets_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HavePets? HavePets { get; set; }
 
         [Custom(Name = "EducationLevel_Name",
@@ -109,7 +109,7 @@ namespace MM.Shared.Models.Profile
             ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public CareerCluster? CareerCluster { get; set; }
 
-        [Custom(Name = "Living Situation")]
+        [Custom(Name = "LivingSituation_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public LivingSituation? LivingSituation { get; set; }
 
         [Custom(Name = "TravelFrequency_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
@@ -207,35 +207,35 @@ namespace MM.Shared.Models.Profile
 
         #region RELATIONSHIP
 
-        [Custom(Name = "Shared Finances")]
+        [Custom(Name = "SharedFinances", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public SharedFinances? SharedFinances { get; set; }
 
-        [Custom(Name = "Conflict Resolution Style")]
+        [Custom(Name = "ConflictResolutionStyle", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public ConflictResolutionStyle? ConflictResolutionStyle { get; set; }
 
-        [Custom(Name = "Household Management")]
+        [Custom(Name = "HouseholdManagement", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HouseholdManagement? HouseholdManagement { get; set; }
 
-        [Custom(Name = "Time Together Preference")]
+        [Custom(Name = "TimeTogetherPreference", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public TimeTogetherPreference? TimeTogetherPreference { get; set; }
 
-        [Custom(Name = "Opposite-Sex Friendships", Description = "How I deal with my partner's friendships")]
+        [Custom(Name = "OppositeSexFriendships", Description = "OppositeSexFriendships_Description", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public OppositeSexFriendships? OppositeSexFriendships { get; set; }
 
         #endregion RELATIONSHIP
 
         #region GOAL
 
-        [Custom(Name = "RelationshipIntentions_Name", WhyImportant = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileBasicModel))]
+        [Custom(Name = "RelationshipIntentions", WhyImportant = "De acordo com a psicoterapeuta e conselheira de casais de Sydney, Annie Gurton, ser honesto e claro sobre o que você está procurando em um relacionamento é para o benefício de ambos. E para a melhor chance de sucesso, ela acredita que vocês dois devem ter as mesmas intenções. \"É tudo uma questão de fazer um jogo\", explica ela. \"Algumas pessoas querem um relacionamento casual, talvez com outros parceiros ou talvez sem qualquer conversa de compromisso, e eles são melhores com alguém que pensa da mesma maneira e não com alguém que procura um compromisso de longo prazo.\"", ResourceType = typeof(Resources.ProfileGoalModel))]
         public HashSet<RelationshipIntention> RelationshipIntentions { get; set; } = [];
 
-        [Custom(Name = "WantChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
+        [Custom(Name = "WantChildren", ResourceType = typeof(Resources.ProfileGoalModel))]
         public WantChildren? WantChildren { get; set; }
 
-        [Custom(Name = "Relocation", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Relocation", ResourceType = typeof(Resources.ProfileGoalModel))]
         public Relocation? Relocation { get; set; }
 
-        [Custom(Name = "Ideal Place to Live")]
+        [Custom(Name = "IdealPlaceToLive", ResourceType = typeof(Resources.ProfileGoalModel))]
         public IdealPlaceToLive? IdealPlaceToLive { get; set; }
 
         #endregion GOAL

@@ -88,6 +88,33 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cities.
+        /// </summary>
+        public static string Cities {
+            get {
+                return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countries.
+        /// </summary>
+        public static string Countries {
+            get {
+                return ResourceManager.GetString("Countries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couples.
+        /// </summary>
+        public static string Couples {
+            get {
+                return ResourceManager.GetString("Couples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
         public static string CustomVisibilityInvalid {
@@ -196,6 +223,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invite your partner to test your compatibility.
+        /// </summary>
+        public static string InviteYyourPartnerTitle1 {
+            get {
+                return ResourceManager.GetString("InviteYyourPartnerTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted..
+        /// </summary>
+        public static string InviteYyourPartnerTitle2 {
+            get {
+                return ResourceManager.GetString("InviteYyourPartnerTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -250,6 +295,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Partner Email.
+        /// </summary>
+        public static string PartnerEmail {
+            get {
+                return ResourceManager.GetString("PartnerEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here you can define your ideal profile type, so that we can properly calculate your compatibility index.
         /// </summary>
         public static string PreferHelpTopic1 {
@@ -282,6 +336,15 @@ namespace MM.WEB.Resources {
         public static string Privacy {
             get {
                 return ResourceManager.GetString("Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private.
+        /// </summary>
+        public static string Private {
+            get {
+                return ResourceManager.GetString("Private", resourceCulture);
             }
         }
         
@@ -354,6 +417,15 @@ namespace MM.WEB.Resources {
         public static string ProfilePreferPersonTip1 {
             get {
                 return ResourceManager.GetString("ProfilePreferPersonTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public.
+        /// </summary>
+        public static string Public {
+            get {
+                return ResourceManager.GetString("Public", resourceCulture);
             }
         }
         
@@ -435,6 +507,15 @@ namespace MM.WEB.Resources {
         public static string UnableDetectGps {
             get {
                 return ResourceManager.GetString("UnableDetectGps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

@@ -130,9 +130,12 @@
     <value>Interesse</value>
   </data>
   <data name="Lifestyle" xml:space="preserve">
-    <value>Lifestyle</value>
+    <value>Estilo de vida</value>
   </data>
   <data name="Personality" xml:space="preserve">
     <value>Personalidade</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relacionamento</value>
   </data>
 </root>

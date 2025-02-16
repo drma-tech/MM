@@ -19,9 +19,11 @@ namespace MM.WEB.Core
 
         static AppStateStatic()
         {
-            System.Enum.TryParse(typeof(Language), CultureInfo.CurrentCulture.Name.Replace("-", ""), out object? language);
+            var languages = EnumHelper.GetObjArray<Language>(false);
+            var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
+            var language = languages.FirstOrDefault(w => w.Description == code);
 
-            Language = (Language?)language ?? Language.English;
+            Language = (Language?)language?.Value ?? Language.English;
         }
 
         public static string GetLanguageCode()

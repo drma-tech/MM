@@ -79,11 +79,29 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invitations.
+        ///   Looks up a localized string similar to Invite Partner.
         /// </summary>
-        public static string Invitations {
+        public static string InvitePartner {
             get {
-                return ResourceManager.GetString("Invitations", resourceCulture);
+                return ResourceManager.GetString("InvitePartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Likes.
+        /// </summary>
+        public static string Likes {
+            get {
+                return ResourceManager.GetString("Likes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matches.
+        /// </summary>
+        public static string Matches {
+            get {
+                return ResourceManager.GetString("Matches", resourceCulture);
             }
         }
         
@@ -165,6 +183,15 @@ namespace MM.WEB.Resources {
         public static string ProfilePreferences {
             get {
                 return ResourceManager.GetString("ProfilePreferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggestions.
+        /// </summary>
+        public static string Suggestions {
+            get {
+                return ResourceManager.GetString("Suggestions", resourceCulture);
             }
         }
         

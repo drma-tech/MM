@@ -2,19 +2,19 @@
 {
     public enum BodyType
     {
-        [Custom(Name = "Thin / Slender")]
+        [Custom(Name = "Slim", ResourceType = typeof(Resources.BodyType))]
         Slim = 1,
 
-        [Custom(Name = "Average / Medium Build")]
+        [Custom(Name = "Average", ResourceType = typeof(Resources.BodyType))]
         Average = 2,
 
-        [Custom(Name = "Athletic / Fit")]
+        [Custom(Name = "Athletic", ResourceType = typeof(Resources.BodyType))]
         Athletic = 3,
 
-        [Custom(Name = "Curvy / Plus Size")]
+        [Custom(Name = "Curvy", ResourceType = typeof(Resources.BodyType))]
         Curvy = 4,
 
-        [Custom(Name = "Fuller Figure")]
-        Full = 5,
+        [Custom(Name = "Heavyset", ResourceType = typeof(Resources.BodyType))]
+        Heavyset = 5,
     }
 }

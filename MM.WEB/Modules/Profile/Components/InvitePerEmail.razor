@@ -4,17 +4,17 @@
 
 <ModalHeader>
     <ModalTitle Size="HeadingSize.Is5">
-        Invite Partner
+        @WEB.Resources.CardHeader.InvitePartner
     </ModalTitle>
     <CloseButton />
 </ModalHeader>
 <ModalBody MaxHeight="70">
     <Alert Color="Color.Warning" Visible="true">
         <AlertMessage>
-            Invite your partner to test your compatibility
+            @WEB.Resources.GlobalTranslations.InviteYyourPartnerTitle1
         </AlertMessage>
         <AlertDescription>
-            This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted.
+            @WEB.Resources.GlobalTranslations.InviteYyourPartnerTitle2
         </AlertDescription>
     </Alert>
     <FieldText For="()=>Email" @bind-Value="@Email" />
@@ -32,7 +32,7 @@
     [Parameter] public ClientePrincipal? principal { get; set; }
     [Parameter] public EventCallback<string> InviteSent { get; set; }
 
-    [Custom(Name = "Partner Email")]
+    [Custom(Name = "PartnerEmail", ResourceType = typeof(WEB.Resources.GlobalTranslations))]
     private string? Email { get; set; }
 
     private async Task SaveHandle()

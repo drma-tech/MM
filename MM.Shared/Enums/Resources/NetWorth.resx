@@ -120,43 +120,43 @@
   <data name="_0_10K" xml:space="preserve">
     <value>$0 - $10,000</value>
   </data>
+  <data name="_1_3M" xml:space="preserve">
+    <value>$1,300,000+</value>
+  </data>
   <data name="_10K_15K" xml:space="preserve">
     <value>$10,000 - $15,000</value>
-  </data>
-  <data name="_15K_22K" xml:space="preserve">
-    <value>$15,000 - $22,000</value>
-  </data>
-  <data name="_22K_33K" xml:space="preserve">
-    <value>$22,000 - $33,000</value>
-  </data>
-  <data name="_33K_50K" xml:space="preserve">
-    <value>$33,000 - $50,000</value>
-  </data>
-  <data name="_50K_75K" xml:space="preserve">
-    <value>$50,000 - $75,000</value>
-  </data>
-  <data name="_75K_113K" xml:space="preserve">
-    <value>$75,000 - $113,000</value>
   </data>
   <data name="_113K_170K" xml:space="preserve">
     <value>$113,000 - $170,000</value>
   </data>
+  <data name="_15K_22K" xml:space="preserve">
+    <value>$15,000 - $22,000</value>
+  </data>
   <data name="_170K_256K" xml:space="preserve">
     <value>$170,000 - $256,000</value>
+  </data>
+  <data name="_22K_33K" xml:space="preserve">
+    <value>$22,000 - $33,000</value>
   </data>
   <data name="_256K_384K" xml:space="preserve">
     <value>$256,000 - $384,000</value>
   </data>
+  <data name="_33K_50K" xml:space="preserve">
+    <value>$33,000 - $50,000</value>
+  </data>
   <data name="_384K_576K" xml:space="preserve">
     <value>$384,000 - $576,000</value>
+  </data>
+  <data name="_50K_75K" xml:space="preserve">
+    <value>$50,000 - $75,000</value>
   </data>
   <data name="_576K_864K" xml:space="preserve">
     <value>$576,000 - $864,000</value>
   </data>
+  <data name="_75K_113K" xml:space="preserve">
+    <value>$75,000 - $113,000</value>
+  </data>
   <data name="_864K_1_3M" xml:space="preserve">
     <value>$864,000 - $1,300,000</value>
-  </data>
-  <data name="_1_3M" xml:space="preserve">
-    <value>$1,300,000+</value>
   </data>
 </root>
