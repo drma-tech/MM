@@ -2,13 +2,13 @@
 {
     public enum ConflictResolutionStyle
     {
-        [Custom(Name = "Direct Resolution", Description = "Prefers to discuss and resolve conflicts immediately and openly.")]
+        [Custom(Name = "DirectResolution", Description = "DirectResolution_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
         DirectResolution = 1,
 
-        [Custom(Name = "Reflective Approach", Description = "Takes time to think and reflect before addressing conflicts.")]
+        [Custom(Name = "ReflectiveApproach", Description = "ReflectiveApproach_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
         ReflectiveApproach = 2,
 
-        [Custom(Name = "Avoidance/Denial", Description = "Tends to avoid conflicts or overlook their existence altogether.")]
+        [Custom(Name = "AvoidanceDenial", Description = "AvoidanceDenial_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
         AvoidanceDenial = 3,
     }
 }

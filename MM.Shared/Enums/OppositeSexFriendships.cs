@@ -2,13 +2,13 @@
 {
     public enum OppositeSexFriendships
     {
-        [Custom(Name = "Comfortable", Description = "Open to friendships with the opposite sex without concerns.")]
+        [Custom(Name = "Comfortable", Description = "Comfortable_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
         Comfortable = 1,
 
-        [Custom(Name = "Boundaries Needed", Description = "Comfortable with friendships, but prefers clear boundaries.")]
+        [Custom(Name = "BoundariesNeeded", Description = "BoundariesNeeded_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
         BoundariesNeeded = 2,
 
-        [Custom(Name = "Uncomfortable", Description = "Feels uneasy about close friendships with the opposite sex.")]
+        [Custom(Name = "Uncomfortable", Description = "Uncomfortable_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
         Uncomfortable = 3,
     }
 }

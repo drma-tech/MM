@@ -2,13 +2,13 @@
 {
     public enum SharedFinances
     {
-        [Custom(Name = "Joint Accounts", Description = "Both partners share bank accounts and incomes.")]
+        [Custom(Name = "JointAccounts", Description = "JointAccounts_Description", ResourceType = typeof(Resources.SharedFinances))]
         JointAccounts = 1,
 
-        [Custom(Name = "Separate Accounts", Description = "Each partner maintains their own bank accounts and incomes.")]
+        [Custom(Name = "SeparateAccounts", Description = "SeparateAccounts_Description", ResourceType = typeof(Resources.SharedFinances))]
         SeparateAccounts = 2,
 
-        [Custom(Name = "Hybrid Approach", Description = "Some finances are shared, while others remain separate.")]
+        [Custom(Name = "HybridApproach", Description = "HybridApproach_Description", ResourceType = typeof(Resources.SharedFinances))]
         HybridApproach = 3,
     }
 }

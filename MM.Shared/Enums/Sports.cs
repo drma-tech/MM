@@ -2,52 +2,49 @@
 {
     public enum Sports
     {
-        [Custom(Name = "Team Sports", Description = "Group-based sports focused on cooperation (e.g., soccer, basketball, volleyball, baseball)")]
+        [Custom(Name = "TeamSports", Description = "TeamSports_Description", ResourceType = typeof(Resources.Sports))]
         TeamSports = 1,
 
-        [Custom(Name = "Water Sports", Description = "Sports in or on water (e.g., swimming, surfing, kayaking, water polo)")]
+        [Custom(Name = "WaterSports", Description = "WaterSports_Description", ResourceType = typeof(Resources.Sports))]
         WaterSports = 2,
 
-        [Custom(Name = "Adventure & Extreme Sports", Description = "High-adrenaline and thrill-seeking activities (e.g., rock climbing, skydiving, bungee jumping, snowboarding)")]
+        [Custom(Name = "AdventureExtremeSports", Description = "AdventureExtremeSports_Description", ResourceType = typeof(Resources.Sports))]
         AdventureExtremeSports = 3,
 
-        [Custom(Name = "Combat Sports", Description = "Physical, one-on-one competitions (e.g., boxing, martial arts, wrestling, fencing)")]
+        [Custom(Name = "CombatSports", Description = "CombatSports_Description", ResourceType = typeof(Resources.Sports))]
         CombatSports = 4,
 
-        [Custom(Name = "Racquet Sports", Description = "Sports involving rackets and coordination (e.g., tennis, badminton, squash, table tennis)")]
+        [Custom(Name = "RacquetSports", Description = "RacquetSports_Description", ResourceType = typeof(Resources.Sports))]
         RacquetSports = 5,
 
-        [Custom(Name = "Winter Sports", Description = "Sports practiced on snow or ice (e.g., skiing, snowboarding, ice hockey, ice skating)")]
+        [Custom(Name = "WinterSports", Description = "WinterSports_Description", ResourceType = typeof(Resources.Sports))]
         WinterSports = 6,
 
-        [Custom(Name = "Motorsports", Description = "Sports involving vehicles and racing (e.g., car racing, motocross, Formula 1, kart racing)")]
+        [Custom(Name = "Motorsports", Description = "Motorsports_Description", ResourceType = typeof(Resources.Sports))]
         Motorsports = 7,
 
-        [Custom(Name = "Fitness & Conditioning", Description = "Physical activities focused on health and fitness (e.g., weightlifting, aerobics, pilates, yoga)")]
+        [Custom(Name = "FitnessConditioning", Description = "FitnessConditioning_Description", ResourceType = typeof(Resources.Sports))]
         FitnessConditioning = 8,
 
-        [Custom(Name = "Outdoor Recreation", Description = "Non-competitive outdoor activities (e.g., hiking, trail running, camping, mountain biking)")]
+        [Custom(Name = "OutdoorRecreation", Description = "OutdoorRecreation_Description", ResourceType = typeof(Resources.Sports))]
         OutdoorRecreation = 9,
 
-        [Custom(Name = "Gymnastics & Aesthetics", Description = "Sports focusing on precision, form, and balance (e.g., gymnastics, ballet, cheerleading, rhythmic gymnastics)")]
+        [Custom(Name = "GymnasticsAesthetics", Description = "GymnasticsAesthetics_Description", ResourceType = typeof(Resources.Sports))]
         GymnasticsAesthetics = 10,
 
-        [Custom(Name = "Mind Sports", Description = "Strategy and concentration-based activities (e.g., chess, esports, poker, bridge)")]
+        [Custom(Name = "MindSports", Description = "MindSports_Description", ResourceType = typeof(Resources.Sports))]
         MindSports = 11,
 
-        [Custom(Name = "Shooting Sports", Description = "Accuracy-focused sports using projectiles (e.g., archery, shooting, paintball)")]
+        [Custom(Name = "ShootingSports", Description = "ShootingSports_Description", ResourceType = typeof(Resources.Sports))]
         ShootingSports = 12,
 
-        [Custom(Name = "Equestrian Sports", Description = "Activities involving horseback riding (e.g., show jumping, dressage, polo, rodeo)")]
+        [Custom(Name = "EquestrianSports", Description = "EquestrianSports_Description", ResourceType = typeof(Resources.Sports))]
         EquestrianSports = 13,
 
-        [Custom(Name = "Athletics", Description = "Track and field events (e.g., sprinting, long jump, high jump, shot put)")]
+        [Custom(Name = "Athletics", Description = "Athletics_Description", ResourceType = typeof(Resources.Sports))]
         Athletics = 14,
 
-        [Custom(Name = "Aquatic Sports", Description = "Competitive and recreational swimming-based sports (e.g., synchronized swimming, diving, open-water swimming)")]
-        AquaticSports = 15,
-
-        [Custom(Name = "Cycling Sports", Description = "Sports involving bicycles (e.g., road cycling, mountain biking, BMX, track cycling)")]
-        CyclingSports = 16,
+        [Custom(Name = "CyclingSports", Description = "CyclingSports_Description", ResourceType = typeof(Resources.Sports))]
+        CyclingSports = 15,
     }
 }

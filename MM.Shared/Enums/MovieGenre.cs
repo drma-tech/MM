@@ -2,49 +2,49 @@
 {
     public enum MovieGenre
     {
-        [Custom(Name = "Action & Adventure", Description = "High-energy films with exciting sequences and often heroic themes (e.g., action, spy thrillers, survival)")]
+        [Custom(Name = "ActionAdventure", Description = "ActionAdventure_Description", ResourceType = typeof(Resources.MovieGenre))]
         ActionAdventure = 1,
 
-        [Custom(Name = "Animation", Description = "Films that use animated techniques to tell stories, appealing to all ages (e.g., family animation, anime, CGI)")]
+        [Custom(Name = "Animation", Description = "Animation_Description", ResourceType = typeof(Resources.MovieGenre))]
         Animation = 2,
 
-        [Custom(Name = "Comedy", Description = "Light-hearted films intended to entertain and amuse with humor (e.g., romantic comedy, slapstick, dark comedy)")]
+        [Custom(Name = "Comedy", Description = "Comedy_Description", ResourceType = typeof(Resources.MovieGenre))]
         Comedy = 3,
 
-        [Custom(Name = "Drama", Description = "Emotionally focused films that explore complex characters and real-life situations (e.g., family drama, social issues, historical drama)")]
+        [Custom(Name = "Drama", Description = "Drama_Description", ResourceType = typeof(Resources.MovieGenre))]
         Drama = 4,
 
-        [Custom(Name = "Fantasy & Mythology", Description = "Films featuring magical worlds, mythical creatures, and supernatural elements (e.g., epic fantasy, fairy tales, urban fantasy)")]
+        [Custom(Name = "FantasyMythology", Description = "FantasyMythology_Description", ResourceType = typeof(Resources.MovieGenre))]
         FantasyMythology = 5,
 
-        [Custom(Name = "Horror & Thriller", Description = "Tension-driven films designed to elicit fear or suspense (e.g., psychological horror, supernatural thriller, slasher)")]
+        [Custom(Name = "HorrorThriller", Description = "HorrorThriller_Description", ResourceType = typeof(Resources.MovieGenre))]
         HorrorThriller = 6,
 
-        [Custom(Name = "Science Fiction", Description = "Films exploring futuristic concepts, technology, or alien life (e.g., space opera, dystopian, time travel)")]
+        [Custom(Name = "ScienceFiction", Description = "ScienceFiction_Description", ResourceType = typeof(Resources.MovieGenre))]
         ScienceFiction = 7,
 
-        [Custom(Name = "Romance", Description = "Stories centered around romantic relationships and emotional connections (e.g., romantic drama, rom-com, period romance)")]
+        [Custom(Name = "Romance", Description = "Romance_Description", ResourceType = typeof(Resources.MovieGenre))]
         Romance = 8,
 
-        [Custom(Name = "Mystery & Crime", Description = "Films focused on solving puzzles, often involving crime or investigation (e.g., detective stories, whodunit, heist)")]
+        [Custom(Name = "MysteryCrime", Description = "MysteryCrime_Description", ResourceType = typeof(Resources.MovieGenre))]
         MysteryCrime = 9,
 
-        [Custom(Name = "Historical & Biographical", Description = "Films based on real events, historical periods, or significant figures (e.g., biographies, war dramas, historical epics)")]
+        [Custom(Name = "HistoricalBiographical", Description = "HistoricalBiographical_Description", ResourceType = typeof(Resources.MovieGenre))]
         HistoricalBiographical = 10,
 
-        [Custom(Name = "Musical & Dance", Description = "Films where music and dance are central to the storytelling (e.g., musicals, dance movies, rock operas)")]
+        [Custom(Name = "MusicalDance", Description = "MusicalDance_Description", ResourceType = typeof(Resources.MovieGenre))]
         MusicalDance = 11,
 
-        [Custom(Name = "Western", Description = "Films set in the American frontier, often exploring themes of justice and survival (e.g., classic westerns, revisionist westerns)")]
+        [Custom(Name = "Western", Description = "Western_Description", ResourceType = typeof(Resources.MovieGenre))]
         Western = 12,
 
-        [Custom(Name = "Documentary", Description = "Nonfiction films presenting real events, people, or issues in an informative way (e.g., nature docs, true crime, cultural exploration)")]
+        [Custom(Name = "Documentary", Description = "Documentary_Description", ResourceType = typeof(Resources.MovieGenre))]
         Documentary = 13,
 
-        [Custom(Name = "Family & Kids", Description = "Films aimed at younger audiences or suitable for family viewing (e.g., family-friendly adventure, animated kids' movies)")]
+        [Custom(Name = "FamilyKids", Description = "FamilyKids_Description", ResourceType = typeof(Resources.MovieGenre))]
         FamilyKids = 14,
 
-        [Custom(Name = "Experimental & Avant-Garde", Description = "Nontraditional films that push the boundaries of narrative and form (e.g., surrealism, abstract cinema, art films)")]
+        [Custom(Name = "ExperimentalAvantGarde", Description = "ExperimentalAvantGarde_Description", ResourceType = typeof(Resources.MovieGenre))]
         ExperimentalAvantGarde = 15
     }
 }

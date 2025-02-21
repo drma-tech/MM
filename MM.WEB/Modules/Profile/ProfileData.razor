@@ -43,7 +43,7 @@
                         </Column>
                         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
                             <FieldSelect For="@(() => Profile!.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile!.Languages"
-                                         CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" Order="@(o=>o.Name)"></FieldSelect>
+                                         CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" Order="@(o=>o.Name)" ShowDataSelectDescription="false"></FieldSelect>
                             <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
                                          CssIcon="@FontAwesomeIcons.Ring" Required="true"></FieldSelect>
                             <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"

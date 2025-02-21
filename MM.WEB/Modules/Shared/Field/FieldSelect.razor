@@ -83,7 +83,7 @@
                         </AddonLabel>
                     </Addon>
                 }
-                @if (ShowHelper & !Multiple) //help
+                @if (ShowHelper && !Multiple) //help
                 {
                     <Addon AddonType="AddonType.End">
                         <Button Color="Color.Primary" Outline="true" Clicked="() => UpdateDataHelp(For)" Disabled="@Disabled">

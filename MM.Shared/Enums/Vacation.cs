@@ -2,49 +2,49 @@
 {
     public enum Vacation
     {
-        [Custom(Name = "Beach & Water Activities", Description = "Relaxing or adventuring near the water (e.g., beach days, snorkeling, scuba diving, surfing)")]
+        [Custom(Name = "BeachWaterActivities", Description = "BeachWaterActivities_Description", ResourceType = typeof(Resources.Vacation))]
         BeachWaterActivities = 1,
 
-        [Custom(Name = "Adventure Travel", Description = "High-energy and thrill-seeking experiences (e.g., rock climbing, zip-lining, skydiving, paragliding)")]
+        [Custom(Name = "AdventureTravel", Description = "AdventureTravel_Description", ResourceType = typeof(Resources.Vacation))]
         AdventureTravel = 2,
 
-        [Custom(Name = "Cultural Exploration", Description = "Immersive experiences in local cultures and histories (e.g., museum visits, historical tours, local festivals, heritage sites)")]
+        [Custom(Name = "CulturalExploration", Description = "CulturalExploration_Description", ResourceType = typeof(Resources.Vacation))]
         CulturalExploration = 3,
 
-        [Custom(Name = "Nature & Wildlife", Description = "Activities centered around nature and wildlife (e.g., safaris, hiking in national parks, birdwatching, camping)")]
+        [Custom(Name = "NatureWildlife", Description = "NatureWildlife_Description", ResourceType = typeof(Resources.Vacation))]
         NatureWildlife = 4,
 
-        [Custom(Name = "Road Trips", Description = "Exploring multiple destinations by car, often with scenic routes (e.g., cross-country trips, coastal drives, countryside exploring)")]
+        [Custom(Name = "RoadTrips", Description = "RoadTrips_Description", ResourceType = typeof(Resources.Vacation))]
         RoadTrips = 5,
 
-        [Custom(Name = "City Sightseeing", Description = "Enjoying urban attractions and city-specific experiences (e.g., visiting landmarks, dining at local restaurants, shopping)")]
+        [Custom(Name = "CitySightseeing", Description = "CitySightseeing_Description", ResourceType = typeof(Resources.Vacation))]
         CitySightseeing = 6,
 
-        [Custom(Name = "Food & Culinary Tourism", Description = "Discovering new cuisines and food experiences (e.g., food tours, local markets, cooking classes, wine and cheese tastings)")]
+        [Custom(Name = "FoodCulinaryTourism", Description = "FoodCulinaryTourism_Description", ResourceType = typeof(Resources.Vacation))]
         FoodCulinaryTourism = 7,
 
-        [Custom(Name = "Relaxation & Wellness", Description = "Focusing on relaxation and rejuvenation (e.g., spa retreats, yoga retreats, meditation, thermal springs)")]
+        [Custom(Name = "RelaxationWellness", Description = "RelaxationWellness_Description", ResourceType = typeof(Resources.Vacation))]
         RelaxationWellness = 8,
 
-        [Custom(Name = "Winter Sports", Description = "Enjoying seasonal sports and winter landscapes (e.g., skiing, snowboarding, ice skating, snowshoeing)")]
+        [Custom(Name = "WinterSports", Description = "WinterSports_Description", ResourceType = typeof(Resources.Vacation))]
         WinterSports = 9,
 
-        [Custom(Name = "Family-Friendly Activities", Description = "Activities for all ages, often focused on family fun (e.g., theme parks, aquariums, zoos, family beach days)")]
+        [Custom(Name = "FamilyFriendlyActivities", Description = "FamilyFriendlyActivities_Description", ResourceType = typeof(Resources.Vacation))]
         FamilyFriendlyActivities = 10,
 
-        [Custom(Name = "Cruises & Boat Tours", Description = "Exploring coastal areas or islands by sea (e.g., river cruises, yacht charters, island-hopping, sunset cruises)")]
+        [Custom(Name = "CruisesBoatTours", Description = "CruisesBoatTours_Description", ResourceType = typeof(Resources.Vacation))]
         CruisesBoatTours = 11,
 
-        [Custom(Name = "Volunteering Vacations", Description = "Traveling with a purpose to help communities or nature (e.g., habitat restoration, wildlife conservation, community support)")]
+        [Custom(Name = "VolunteeringVacations", Description = "VolunteeringVacations_Description", ResourceType = typeof(Resources.Vacation))]
         VolunteeringVacations = 12,
 
-        [Custom(Name = "Arts & Festivals", Description = "Attending local arts and entertainment events (e.g., music festivals, art shows, theater performances, film festivals)")]
+        [Custom(Name = "ArtsFestivals", Description = "ArtsFestivals_Description", ResourceType = typeof(Resources.Vacation))]
         ArtsFestivals = 13,
 
-        [Custom(Name = "Eco-Tourism", Description = "Sustainable travel with a focus on conservation (e.g., eco-lodges, guided nature tours, visiting wildlife sanctuaries)")]
+        [Custom(Name = "EcoTourism", Description = "EcoTourism_Description", ResourceType = typeof(Resources.Vacation))]
         EcoTourism = 14,
 
-        [Custom(Name = "Learning & Enrichment", Description = "Travel focused on personal growth and skills (e.g., language immersion, photography workshops, historical courses)")]
+        [Custom(Name = "LearningEnrichment", Description = "LearningEnrichment_Description", ResourceType = typeof(Resources.Vacation))]
         LearningEnrichment = 15,
     }
 }

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionAdventure" xml:space="preserve">
+    <value>Action &amp; Adventure</value>
+  </data>
+  <data name="ActionAdventure_Description" xml:space="preserve">
+    <value>High-energy films with exciting sequences and often heroic themes (e.g., action, spy thrillers, survival)</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="Animation_Description" xml:space="preserve">
+    <value>Films that use animated techniques to tell stories, appealing to all ages (e.g., family animation, anime, CGI)</value>
+  </data>
+  <data name="Comedy" xml:space="preserve">
+    <value>Comedy</value>
+  </data>
+  <data name="Comedy_Description" xml:space="preserve">
+    <value>Light-hearted films intended to entertain and amuse with humor (e.g., romantic comedy, slapstick, dark comedy)</value>
+  </data>
+  <data name="Documentary" xml:space="preserve">
+    <value>Documentary</value>
+  </data>
+  <data name="Documentary_Description" xml:space="preserve">
+    <value>Nonfiction films presenting real events, people, or issues in an informative way (e.g., nature docs, true crime, cultural exploration)</value>
+  </data>
+  <data name="Drama" xml:space="preserve">
+    <value>Drama</value>
+  </data>
+  <data name="Drama_Description" xml:space="preserve">
+    <value>Emotionally focused films that explore complex characters and real-life situations (e.g., family drama, social issues, historical drama)</value>
+  </data>
+  <data name="ExperimentalAvantGarde" xml:space="preserve">
+    <value>Experimental &amp; Avant-Garde</value>
+  </data>
+  <data name="ExperimentalAvantGarde_Description" xml:space="preserve">
+    <value>Nontraditional films that push the boundaries of narrative and form (e.g., surrealism, abstract cinema, art films)</value>
+  </data>
+  <data name="FamilyKids" xml:space="preserve">
+    <value>Family &amp; Kids</value>
+  </data>
+  <data name="FamilyKids_Description" xml:space="preserve">
+    <value>Films aimed at younger audiences or suitable for family viewing (e.g., family-friendly adventure, animated kids' movies)</value>
+  </data>
+  <data name="FantasyMythology" xml:space="preserve">
+    <value>Fantasy &amp; Mythology</value>
+  </data>
+  <data name="FantasyMythology_Description" xml:space="preserve">
+    <value>Films featuring magical worlds, mythical creatures, and supernatural elements (e.g., epic fantasy, fairy tales, urban fantasy)</value>
+  </data>
+  <data name="HistoricalBiographical" xml:space="preserve">
+    <value>Historical &amp; Biographical</value>
+  </data>
+  <data name="HistoricalBiographical_Description" xml:space="preserve">
+    <value>Films based on real events, historical periods, or significant figures (e.g., biographies, war dramas, historical epics)</value>
+  </data>
+  <data name="HorrorThriller" xml:space="preserve">
+    <value>Horror &amp; Thriller</value>
+  </data>
+  <data name="HorrorThriller_Description" xml:space="preserve">
+    <value>Tension-driven films designed to elicit fear or suspense (e.g., psychological horror, supernatural thriller, slasher)</value>
+  </data>
+  <data name="MusicalDance" xml:space="preserve">
+    <value>Musical &amp; Dance</value>
+  </data>
+  <data name="MusicalDance_Description" xml:space="preserve">
+    <value>Films where music and dance are central to the storytelling (e.g., musicals, dance movies, rock operas)</value>
+  </data>
+  <data name="MysteryCrime" xml:space="preserve">
+    <value>Mystery &amp; Crime</value>
+  </data>
+  <data name="MysteryCrime_Description" xml:space="preserve">
+    <value>Films focused on solving puzzles, often involving crime or investigation (e.g., detective stories, whodunit, heist)</value>
+  </data>
+  <data name="Romance" xml:space="preserve">
+    <value>Romance</value>
+  </data>
+  <data name="Romance_Description" xml:space="preserve">
+    <value>Stories centered around romantic relationships and emotional connections (e.g., romantic drama, rom-com, period romance)</value>
+  </data>
+  <data name="ScienceFiction" xml:space="preserve">
+    <value>Science Fiction</value>
+  </data>
+  <data name="ScienceFiction_Description" xml:space="preserve">
+    <value>Films exploring futuristic concepts, technology, or alien life (e.g., space opera, dystopian, time travel)</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>Western</value>
+  </data>
+  <data name="Western_Description" xml:space="preserve">
+    <value>Films set in the American frontier, often exploring themes of justice and survival (e.g., classic westerns, revisionist westerns)</value>
+  </data>
+</root>

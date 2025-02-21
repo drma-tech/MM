@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionAdventure" xml:space="preserve">
+    <value>Acción y aventura</value>
+  </data>
+  <data name="ActionAdventure_Description" xml:space="preserve">
+    <value>Películas llenas de energía con secuencias emocionantes y, a menudo, temas heroicos (por ejemplo, acción, thrillers de espías, supervivencia)</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animación</value>
+  </data>
+  <data name="Animation_Description" xml:space="preserve">
+    <value>Películas que utilizan técnicas animadas para contar historias, atractivas para todas las edades (por ejemplo, animación familiar, anime, CGI)</value>
+  </data>
+  <data name="Comedy" xml:space="preserve">
+    <value>Comedia</value>
+  </data>
+  <data name="Comedy_Description" xml:space="preserve">
+    <value>Películas alegres destinadas a entretener y divertir con humor (por ejemplo, comedia romántica, comedia física, comedia negra)</value>
+  </data>
+  <data name="Documentary" xml:space="preserve">
+    <value>Documental</value>
+  </data>
+  <data name="Documentary_Description" xml:space="preserve">
+    <value>Películas de no ficción que presentan hechos, personas o problemas reales de manera informativa (por ejemplo, documentales sobre la naturaleza, crímenes reales, exploración cultural)</value>
+  </data>
+  <data name="Drama" xml:space="preserve">
+    <value>Drama</value>
+  </data>
+  <data name="Drama_Description" xml:space="preserve">
+    <value>Películas centradas en las emociones que exploran personajes complejos y situaciones de la vida real (por ejemplo, drama familiar, problemas sociales, drama histórico)</value>
+  </data>
+  <data name="ExperimentalAvantGarde" xml:space="preserve">
+    <value>Experimental y vanguardista</value>
+  </data>
+  <data name="ExperimentalAvantGarde_Description" xml:space="preserve">
+    <value>Películas no tradicionales que amplían los límites de la narrativa y la forma (por ejemplo, el surrealismo, el cine abstracto, las películas de arte)</value>
+  </data>
+  <data name="FamilyKids" xml:space="preserve">
+    <value>Familia y niños</value>
+  </data>
+  <data name="FamilyKids_Description" xml:space="preserve">
+    <value>Películas dirigidas a un público más joven o adecuadas para ver en familia (por ejemplo, películas de aventuras para toda la familia, películas animadas para niños)</value>
+  </data>
+  <data name="FantasyMythology" xml:space="preserve">
+    <value>Fantasía y mitología</value>
+  </data>
+  <data name="FantasyMythology_Description" xml:space="preserve">
+    <value>Películas que presentan mundos mágicos, criaturas míticas y elementos sobrenaturales (por ejemplo, fantasía épica, cuentos de hadas, fantasía urbana)</value>
+  </data>
+  <data name="HistoricalBiographical" xml:space="preserve">
+    <value>Histórico y biográfico</value>
+  </data>
+  <data name="HistoricalBiographical_Description" xml:space="preserve">
+    <value>Películas basadas en hechos reales, períodos históricos o figuras significativas (por ejemplo, biografías, dramas de guerra, epopeyas históricas)</value>
+  </data>
+  <data name="HorrorThriller" xml:space="preserve">
+    <value>Terror y suspenso</value>
+  </data>
+  <data name="HorrorThriller_Description" xml:space="preserve">
+    <value>Películas impulsadas por la tensión diseñadas para provocar miedo o suspenso (por ejemplo, terror psicológico, thriller sobrenatural, slasher)</value>
+  </data>
+  <data name="MusicalDance" xml:space="preserve">
+    <value>Musical y danza</value>
+  </data>
+  <data name="MusicalDance_Description" xml:space="preserve">
+    <value>Películas en las que la música y la danza son fundamentales para la narración (por ejemplo, musicales, películas de baile, óperas rock)</value>
+  </data>
+  <data name="MysteryCrime" xml:space="preserve">
+    <value>Misterio y crimen</value>
+  </data>
+  <data name="MysteryCrime_Description" xml:space="preserve">
+    <value>Películas centradas en resolver acertijos, que a menudo involucran crímenes o investigaciones (por ejemplo, historias de detectives, novelas policiacas, atracos)</value>
+  </data>
+  <data name="Romance" xml:space="preserve">
+    <value>Romance</value>
+  </data>
+  <data name="Romance_Description" xml:space="preserve">
+    <value>Historias centradas en relaciones románticas y conexiones emocionales (por ejemplo, drama romántico, comedia romántica, romance de época)</value>
+  </data>
+  <data name="ScienceFiction" xml:space="preserve">
+    <value>Ciencia ficción</value>
+  </data>
+  <data name="ScienceFiction_Description" xml:space="preserve">
+    <value>Películas que exploran conceptos futuristas, tecnología o vida extraterrestre (por ejemplo, ópera espacial, distopía, viajes en el tiempo)</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>Western</value>
+  </data>
+  <data name="Western_Description" xml:space="preserve">
+    <value>Películas ambientadas en la frontera estadounidense, que a menudo exploran temas de justicia y supervivencia (por ejemplo, westerns clásicos, westerns revisionistas)</value>
+  </data>
+</root>

@@ -2,13 +2,13 @@
 {
     public enum TimeTogetherPreference
     {
-        [Custom(Name = "Alone Time", Description = "Enjoys significant alone time.")]
+        [Custom(Name = "AloneTime", Description = "AloneTime_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
         AloneTime = 1,
 
-        [Custom(Name = "Balanced Time", Description = "Values both personal time and time with a partner.")]
+        [Custom(Name = "BalancedTime", Description = "BalancedTime_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
         BalancedTime = 2,
 
-        [Custom(Name = "Quality Together", Description = "Prefers to spend most time with their partner.")]
+        [Custom(Name = "QualityTogether", Description = "QualityTogether_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
         QualityTogether = 3,
     }
 }

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AfricanCuisine" xml:space="preserve">
+    <value>Cozinha Africana</value>
+  </data>
+  <data name="AfricanCuisine_Description" xml:space="preserve">
+    <value>Pratos variados com foco em ensopados, grãos e tubérculos, muitas vezes temperados com especiarias locais únicas (por exemplo, arroz Jollof (Nigéria), Injera (Etiópia), Bobotie (África do Sul), Tagine (Marrocos), Biltong (África do Sul), Fufu (Gana)).</value>
+  </data>
+  <data name="AsianCuisine" xml:space="preserve">
+    <value>Cozinha Asiática</value>
+  </data>
+  <data name="AsianCuisine_Description" xml:space="preserve">
+    <value>Uma variedade de sabores do Leste e Sudeste Asiático, com pratos de arroz e macarrão (por exemplo, Sushi (Japão), Pho (Vietnã), Pad Thai (Tailândia), Bolinhos de Massa (China), Ramen (Japão), Satay (Indonésia)).</value>
+  </data>
+  <data name="BakedGoods" xml:space="preserve">
+    <value>Produtos assados</value>
+  </data>
+  <data name="BakedGoods_Description" xml:space="preserve">
+    <value>Uma grande variedade de pães, bolos e doces que são apreciados como lanches ou sobremesas (por exemplo, croissants (França), bagels (Estados Unidos), scones (Reino Unido), pastelaria dinamarquesa (Dinamarca), brownies (Estados Unidos), massa folhada (França)).</value>
+  </data>
+  <data name="DessertsSweets" xml:space="preserve">
+    <value>Sobremesas e Doces</value>
+  </data>
+  <data name="DessertsSweets_Description" xml:space="preserve">
+    <value>Uma variedade de doces e sobremesas, apresentando sabores e técnicas de todo o mundo (por exemplo, Tiramisu (Itália), Baklava (Turquia), Mochi (Japão), Crème Brûlée (França), Churros (Espanha), Dulce de Leche (Argentina)).</value>
+  </data>
+  <data name="EuropeanCuisine" xml:space="preserve">
+    <value>Cozinha Europeia</value>
+  </data>
+  <data name="EuropeanCuisine_Description" xml:space="preserve">
+    <value>Pratos tradicionais e modernos de vários países europeus, enfatizando ingredientes frescos e estilos de culinária únicos (por exemplo, massas (Itália), ratatouille (França), paella (Espanha), sauerbraten (Alemanha), borscht (Ucrânia), peixe com batatas fritas (Reino Unido)).</value>
+  </data>
+  <data name="FastFoodComfort" xml:space="preserve">
+    <value>Fast Food &amp; Conforto</value>
+  </data>
+  <data name="FastFoodComfort_Description" xml:space="preserve">
+    <value>Refeições rápidas que geralmente são fáceis de preparar e satisfazem desejos (por exemplo, frango frito (Estados Unidos), pizza (Itália), peixe com batata frita (Reino Unido), nachos (México), doner kebab (Turquia), cheeseburger (Estados Unidos)).</value>
+  </data>
+  <data name="FusionCuisine" xml:space="preserve">
+    <value>Cozinha de Fusão</value>
+  </data>
+  <data name="FusionCuisine_Description" xml:space="preserve">
+    <value>Pratos inovadores que combinam ingredientes e técnicas de culinária de diferentes culturas (por exemplo, tacos coreanos (Estados Unidos), burritos de sushi (Estados Unidos), pizza indiana (Índia), pizza tailandesa de curry (Estados Unidos), burrito mediterrâneo (global), hambúrguer Banh Mi (Vietnã)).</value>
+  </data>
+  <data name="GrilledBarbecue" xml:space="preserve">
+    <value>Grelhado e Churrasco</value>
+  </data>
+  <data name="GrilledBarbecue_Description" xml:space="preserve">
+    <value>Pratos preparados em fogo aberto ou na grelha, famosos por seus sabores defumados (por exemplo, costela de porco assada (Estados Unidos), frango tandoori (Índia), peixe grelhado (global), satay (Indonésia), vegetais grelhados (Mediterrâneo), carne grelhada no carvão (Coreia)).</value>
+  </data>
+  <data name="HomeCookedTraditional" xml:space="preserve">
+    <value>Tradicional Caseiro</value>
+  </data>
+  <data name="HomeCookedTraditional_Description" xml:space="preserve">
+    <value>Refeições em estilo familiar que refletem a herança cultural e o conforto, muitas vezes feitas com amor (por exemplo, frango assado (Estados Unidos), lasanha (Itália), curry (Índia), borscht (Ucrânia), bolo de carne (Estados Unidos), goulash (Hungria)).</value>
+  </data>
+  <data name="IndianSouthAsian" xml:space="preserve">
+    <value>Indiano e sul asiático</value>
+  </data>
+  <data name="IndianSouthAsian_Description" xml:space="preserve">
+    <value>Pratos picantes e saborosos, geralmente centrados em arroz e pão, usando uma variedade de especiarias (por exemplo, Biryani (Índia), Daal (Paquistão), Curry (Bangladesh), Samosas (Índia), Frango à Manteiga (Índia), Chaat (Índia)).</value>
+  </data>
+  <data name="LatinAmerican" xml:space="preserve">
+    <value>Latino-americano</value>
+  </data>
+  <data name="LatinAmerican_Description" xml:space="preserve">
+    <value>Alimentos vibrantes e saborosos que refletem as diversas culturas da América Central e do Sul (por exemplo, tacos (México), empanadas (Argentina), feijoada (Brasil), arepas (Venezuela), ceviche (Peru), tamales (México)).</value>
+  </data>
+  <data name="Mediterranean" xml:space="preserve">
+    <value>Mediterrâneo</value>
+  </data>
+  <data name="Mediterranean_Description" xml:space="preserve">
+    <value>Refeições leves e saudáveis, geralmente com vegetais frescos, grãos e proteínas grelhadas (por exemplo, salada grega (Grécia), homus (Líbano), falafel (Egito), tabule (Líbano), fattoush (Líbano), polvo grelhado (Grécia)).</value>
+  </data>
+  <data name="MiddleEasternNorthAfrican" xml:space="preserve">
+    <value>Oriente Médio e Norte da África</value>
+  </data>
+  <data name="MiddleEasternNorthAfrican_Description" xml:space="preserve">
+    <value>Pratos ricos e aromáticos caracterizados por especiarias e ervas, geralmente com carnes grelhadas e grãos integrais (por exemplo, Shawarma (Líbano), Cuscuz (Marrocos), Tagine (Argélia), Homus (Israel), Falafel (Egito), Kebabs (Turquia)).</value>
+  </data>
+  <data name="NorthAmerican" xml:space="preserve">
+    <value>Norte-americano</value>
+  </data>
+  <data name="NorthAmerican_Description" xml:space="preserve">
+    <value>Comida caseira com foco em refeições substanciosas, churrasco e especialidades regionais (por exemplo, hambúrgueres (Estados Unidos), poutine (Canadá), sopa de mariscos (Estados Unidos), costelas grelhadas (Estados Unidos), jambalaya (Estados Unidos), pão de milho (Estados Unidos)).</value>
+  </data>
+  <data name="SavorySnacksSmallPlates" xml:space="preserve">
+    <value>Petiscos Salgados e Pratos Pequenos</value>
+  </data>
+  <data name="SavorySnacksSmallPlates_Description" xml:space="preserve">
+    <value>Pequenos petiscos saborosos, perfeitos para compartilhar ou como aperitivos (por exemplo, tapas (Espanha), dim sum (China), mezze plate (Oriente Médio), tábua de frios (França), antipasto (Itália), samosas (Índia)).</value>
+  </data>
+  <data name="Seafood" xml:space="preserve">
+    <value>Frutos do mar</value>
+  </data>
+  <data name="Seafood_Description" xml:space="preserve">
+    <value>Pratos com foco em peixes e frutos do mar, celebrados por seu frescor e variedade (por exemplo, Ceviche (Peru), Tacos de Peixe (México), Salmão Grelhado (Noruega), Rolinho de Lagosta (Estados Unidos), Sopa de Mariscos (Estados Unidos), Bouillabaisse (França)).</value>
+  </data>
+  <data name="SpicyFood" xml:space="preserve">
+    <value>Comida apimentada</value>
+  </data>
+  <data name="SpicyFood_Description" xml:space="preserve">
+    <value>Pratos conhecidos por seus sabores picantes e robustos, que agradam aqueles que gostam de sabores ousados (por exemplo, Ramen Picante (Japão), Sichuan Hot Pot (China), Curry Picante (Índia), Vindaloo (Índia), Tacos Picantes (México), Kimchi (Coreia)).</value>
+  </data>
+  <data name="StreetFood" xml:space="preserve">
+    <value>Comida de rua</value>
+  </data>
+  <data name="StreetFood_Description" xml:space="preserve">
+    <value>Alimentos casuais e saborosos, geralmente vendidos por vendedores e que refletem os gostos locais (por exemplo, Pani Puri (Índia), Cachorro-quente (Estados Unidos), Arepas (Venezuela), Churros (Espanha), Gyoza (Japão), Rolinhos Primavera (Vietnã)).</value>
+  </data>
+  <data name="Vegan" xml:space="preserve">
+    <value>Vegan</value>
+  </data>
+  <data name="Vegan_Description" xml:space="preserve">
+    <value>Refeições totalmente à base de plantas, sem nenhum produto de origem animal, geralmente criativas e saborosas (por exemplo, hambúrgueres veganos (Estados Unidos), tofu frito (Tailândia), salada de grão-de-bico (global), chili vegano (Estados Unidos), sushi vegano (Japão), salada de quinoa (Peru)).</value>
+  </data>
+  <data name="Vegetarian" xml:space="preserve">
+    <value>Vegetariano</value>
+  </data>
+  <data name="Vegetarian_Description" xml:space="preserve">
+    <value>Uma grande variedade de refeições à base de vegetais, com destaque para vegetais, legumes e grãos (por exemplo, Ratatouille (França), Refogado de vegetais (China), Pimentões recheados (Itália), Salada Caprese (Itália), Sopa de lentilha (Turquia), Hambúrguer vegetariano (Estados Unidos)).</value>
+  </data>
+</root>

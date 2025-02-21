@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdventureExtremeSports" xml:space="preserve">
+    <value>Aventura e Esportes Radicais</value>
+  </data>
+  <data name="AdventureExtremeSports_Description" xml:space="preserve">
+    <value>Atividades de alta adrenalina e busca de emoção (por exemplo, escalada, paraquedismo, bungee jumping, snowboard)</value>
+  </data>
+  <data name="WaterSports_Description" xml:space="preserve">
+    <value>Esportes na água ou sobre ela (por exemplo, natação, surfe, caiaque, polo aquático, mergulho)</value>
+  </data>
+  <data name="Athletics" xml:space="preserve">
+    <value>Atletismo</value>
+  </data>
+  <data name="Athletics_Description" xml:space="preserve">
+    <value>Eventos de atletismo (por exemplo, corrida de velocidade, salto em distância, salto em altura, arremesso de peso)</value>
+  </data>
+  <data name="CombatSports" xml:space="preserve">
+    <value>Esportes de Combate</value>
+  </data>
+  <data name="CombatSports_Description" xml:space="preserve">
+    <value>Competições físicas individuais (por exemplo, boxe, artes marciais, luta livre, esgrima)</value>
+  </data>
+  <data name="CyclingSports" xml:space="preserve">
+    <value>Esportes de ciclismo</value>
+  </data>
+  <data name="CyclingSports_Description" xml:space="preserve">
+    <value>Esportes envolvendo bicicletas (por exemplo, ciclismo de estrada, mountain bike, BMX, ciclismo de pista)</value>
+  </data>
+  <data name="EquestrianSports" xml:space="preserve">
+    <value>Esportes Equestres</value>
+  </data>
+  <data name="EquestrianSports_Description" xml:space="preserve">
+    <value>Atividades que envolvam passeios a cavalo (por exemplo, hipismo, adestramento, polo, rodeio)</value>
+  </data>
+  <data name="FitnessConditioning" xml:space="preserve">
+    <value>Fitness e condicionamento</value>
+  </data>
+  <data name="FitnessConditioning_Description" xml:space="preserve">
+    <value>Atividades físicas focadas na saúde e no condicionamento físico (por exemplo, levantamento de peso, aeróbica, pilates, ioga)</value>
+  </data>
+  <data name="GymnasticsAesthetics" xml:space="preserve">
+    <value>Ginástica e Estética</value>
+  </data>
+  <data name="GymnasticsAesthetics_Description" xml:space="preserve">
+    <value>Esportes com foco em precisão, forma e equilíbrio (por exemplo, ginástica, balé, líder de torcida, ginástica rítmica)</value>
+  </data>
+  <data name="MindSports" xml:space="preserve">
+    <value>Esportes mentais</value>
+  </data>
+  <data name="MindSports_Description" xml:space="preserve">
+    <value>Atividades baseadas em estratégia e concentração (por exemplo, xadrez, esportes eletrônicos, pôquer, bridge)</value>
+  </data>
+  <data name="Motorsports" xml:space="preserve">
+    <value>Automobilismo</value>
+  </data>
+  <data name="Motorsports_Description" xml:space="preserve">
+    <value>Esportes envolvendo veículos e corridas (por exemplo, corridas de carros, motocross, Fórmula 1, corridas de kart)</value>
+  </data>
+  <data name="OutdoorRecreation" xml:space="preserve">
+    <value>Recreação ao ar livre</value>
+  </data>
+  <data name="OutdoorRecreation_Description" xml:space="preserve">
+    <value>Atividades ao ar livre não competitivas (por exemplo, caminhadas, corrida de trilha, acampamento, mountain bike)</value>
+  </data>
+  <data name="RacquetSports" xml:space="preserve">
+    <value>Esportes de raquete</value>
+  </data>
+  <data name="RacquetSports_Description" xml:space="preserve">
+    <value>Esportes que envolvem raquetes e coordenação (por exemplo, tênis, badminton, squash, tênis de mesa)</value>
+  </data>
+  <data name="ShootingSports" xml:space="preserve">
+    <value>Tiro esportivo</value>
+  </data>
+  <data name="ShootingSports_Description" xml:space="preserve">
+    <value>Esportes focados na precisão usando projéteis (por exemplo, arco e flecha, tiro, paintball)</value>
+  </data>
+  <data name="TeamSports" xml:space="preserve">
+    <value>Esportes de equipe</value>
+  </data>
+  <data name="TeamSports_Description" xml:space="preserve">
+    <value>Esportes de grupo focados na cooperação (por exemplo, futebol, basquete, vôlei, beisebol)</value>
+  </data>
+  <data name="WaterSports" xml:space="preserve">
+    <value>Esportes Aquáticos</value>
+  </data>
+  <data name="WinterSports" xml:space="preserve">
+    <value>Esportes de inverno</value>
+  </data>
+  <data name="WinterSports_Description" xml:space="preserve">
+    <value>Esportes praticados na neve ou no gelo (por exemplo, esqui, snowboard, hóquei no gelo, patinação no gelo)</value>
+  </data>
+</root>

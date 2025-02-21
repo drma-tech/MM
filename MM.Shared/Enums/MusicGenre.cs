@@ -2,46 +2,46 @@
 {
     public enum MusicGenre
     {
-        [Custom(Name = "Pop & Mainstream", Description = "Accessible and widely popular music across charts and cultures (e.g., pop, dance-pop, synth-pop)")]
+        [Custom(Name = "PopMainstream", Description = "PopMainstream_Description", ResourceType = typeof(Resources.MusicGenre))]
         PopMainstream = 1,
 
-        [Custom(Name = "Rock & Alternative", Description = "Guitar-driven sounds and subgenres with a rebellious edge (e.g., classic rock, punk, indie, grunge)")]
+        [Custom(Name = "RockAlternative", Description = "RockAlternative_Description", ResourceType = typeof(Resources.MusicGenre))]
         RockAlternative = 2,
 
-        [Custom(Name = "R&B & Soul", Description = "Emotional and rhythm-focused music rooted in African-American traditions (e.g., R&B, soul, funk)")]
+        [Custom(Name = "RBSoul", Description = "RBSoul_Description", ResourceType = typeof(Resources.MusicGenre))]
         RBSoul = 3,
 
-        [Custom(Name = "Hip-Hop & Rap", Description = "Beat-driven music with lyrical flow, storytelling, and social commentary (e.g., rap, trap, old-school hip-hop)")]
+        [Custom(Name = "HipHopRap", Description = "HipHopRap_Description", ResourceType = typeof(Resources.MusicGenre))]
         HipHopRap = 4,
 
-        [Custom(Name = "Jazz & Blues", Description = "Rich, improvisational genres with roots in African-American history (e.g., jazz, blues, bebop)")]
+        [Custom(Name = "JazzBlues", Description = "JazzBlues_Description", ResourceType = typeof(Resources.MusicGenre))]
         JazzBlues = 5,
 
-        [Custom(Name = "Classical & Opera", Description = "Structured compositions and orchestral music from various historical periods (e.g., baroque, symphonic, opera)")]
+        [Custom(Name = "ClassicalOpera", Description = "ClassicalOpera_Description", ResourceType = typeof(Resources.MusicGenre))]
         ClassicalOpera = 6,
 
-        [Custom(Name = "Electronic & Dance", Description = "Synthesized sounds and beat-heavy tracks for club and festival scenes (e.g., house, techno, trance)")]
+        [Custom(Name = "ElectronicDance", Description = "ElectronicDance_Description", ResourceType = typeof(Resources.MusicGenre))]
         ElectronicDance = 7,
 
-        [Custom(Name = "Folk & Acoustic", Description = "Music rooted in traditional sounds, often featuring acoustic instruments (e.g., folk, Americana, singer-songwriter)")]
+        [Custom(Name = "FolkAcoustic", Description = "FolkAcoustic_Description", ResourceType = typeof(Resources.MusicGenre))]
         FolkAcoustic = 8,
 
-        [Custom(Name = "Country", Description = "Storytelling-driven genre with roots in American folk traditions (e.g., classic country, contemporary country)")]
+        [Custom(Name = "Country", Description = "Country_Description", ResourceType = typeof(Resources.MusicGenre))]
         Country = 9,
 
-        [Custom(Name = "Reggae & World Music", Description = "Music from diverse cultural origins, often with distinctive rhythms (e.g., reggae, Afrobeat, Latin)")]
+        [Custom(Name = "ReggaeWorldMusic", Description = "ReggaeWorldMusic_Description", ResourceType = typeof(Resources.MusicGenre))]
         ReggaeWorldMusic = 10,
 
-        [Custom(Name = "Metal & Hard Rock", Description = "Intense, amplified sounds often with aggressive tones (e.g., heavy metal, thrash, hard rock)")]
+        [Custom(Name = "MetalHardRock", Description = "MetalHardRock_Description", ResourceType = typeof(Resources.MusicGenre))]
         MetalHardRock = 11,
 
-        [Custom(Name = "Gospel & Religious", Description = "Music with religious or spiritual themes, often community-oriented (e.g., gospel, hymns, devotional music)")]
+        [Custom(Name = "GospelReligious", Description = "GospelReligious_Description", ResourceType = typeof(Resources.MusicGenre))]
         GospelReligious = 12,
 
-        [Custom(Name = "Experimental & Avant-Garde", Description = "Nontraditional music pushing the boundaries of structure and sound (e.g., noise, ambient, minimalist)")]
+        [Custom(Name = "ExperimentalAvantGarde", Description = "ExperimentalAvantGarde_Description", ResourceType = typeof(Resources.MusicGenre))]
         ExperimentalAvantGarde = 13,
 
-        [Custom(Name = "Soundtracks & Scores", Description = "Music composed for visual media, including movies and games (e.g., film scores, video game soundtracks)")]
+        [Custom(Name = "SoundtracksScores", Description = "SoundtracksScores_Description", ResourceType = typeof(Resources.MusicGenre))]
         SoundtracksScores = 14
     }
 }

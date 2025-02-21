@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AnimatedAnime" xml:space="preserve">
+    <value>Animated &amp; Anime</value>
+  </data>
+  <data name="AnimatedAnime_Description" xml:space="preserve">
+    <value>Includes cartoons, animated series, and Japanese anime</value>
+  </data>
+  <data name="CookingFood" xml:space="preserve">
+    <value>Cooking &amp; Food</value>
+  </data>
+  <data name="CookingFood_Description" xml:space="preserve">
+    <value>Programs focused on cooking, baking, and food culture (e.g., cooking competitions, food documentaries)</value>
+  </data>
+  <data name="DocumentaryReality" xml:space="preserve">
+    <value>Documentary &amp; Reality</value>
+  </data>
+  <data name="DocumentaryReality_Description" xml:space="preserve">
+    <value>Real-life stories and situations, either informative or entertaining (e.g., nature documentaries, reality shows)</value>
+  </data>
+  <data name="EducationalScience" xml:space="preserve">
+    <value>Educational &amp; Science</value>
+  </data>
+  <data name="EducationalScience_Description" xml:space="preserve">
+    <value>Shows focused on learning and science topics, often informative (e.g., science shows, how-to programs)</value>
+  </data>
+  <data name="GameShowsCompetitions" xml:space="preserve">
+    <value>Game Shows &amp; Competitions</value>
+  </data>
+  <data name="GameShowsCompetitions_Description" xml:space="preserve">
+    <value>Shows where contestants compete for prizes or recognition (e.g., trivia shows, talent competitions)</value>
+  </data>
+  <data name="KidsFamily" xml:space="preserve">
+    <value>Kids &amp; Family</value>
+  </data>
+  <data name="KidsFamily_Description" xml:space="preserve">
+    <value>Programming suitable for children and family viewing (e.g., children’s shows, family-friendly series)</value>
+  </data>
+  <data name="LifestyleHome" xml:space="preserve">
+    <value>Lifestyle &amp; Home</value>
+  </data>
+  <data name="LifestyleHome_Description" xml:space="preserve">
+    <value>Shows that explore lifestyle topics, including design, travel, and wellness (e.g., home improvement, travel shows)</value>
+  </data>
+  <data name="MusicPerformances" xml:space="preserve">
+    <value>Music &amp; Performances</value>
+  </data>
+  <data name="MusicPerformances_Description" xml:space="preserve">
+    <value>Programs centered around music, live performances, and music videos (e.g., music countdowns, concert specials)</value>
+  </data>
+  <data name="NewsCurrentAffairs" xml:space="preserve">
+    <value>News &amp; Current Affairs</value>
+  </data>
+  <data name="NewsCurrentAffairs_Description" xml:space="preserve">
+    <value>News reports, talk shows, and in-depth analyses of current events</value>
+  </data>
+  <data name="SoapOperasDramas" xml:space="preserve">
+    <value>Soap Operas &amp; Dramas</value>
+  </data>
+  <data name="SoapOperasDramas_Description" xml:space="preserve">
+    <value>Serialized dramas with continuous storylines, often emotionally intense (e.g., daytime soaps, family dramas)</value>
+  </data>
+  <data name="SportsOutdoors" xml:space="preserve">
+    <value>Sports &amp; Outdoors</value>
+  </data>
+  <data name="SportsOutdoors_Description" xml:space="preserve">
+    <value>Programs focusing on sports events, commentary, and outdoor activities (e.g., live sports, extreme sports)</value>
+  </data>
+  <data name="TalkShowsInterviews" xml:space="preserve">
+    <value>Talk Shows &amp; Interviews</value>
+  </data>
+  <data name="TalkShowsInterviews_Description" xml:space="preserve">
+    <value>Shows featuring hosts in conversation with guests on various topics (e.g., celebrity interviews, discussion panels)</value>
+  </data>
+  <data name="VarietyComedy" xml:space="preserve">
+    <value>Variety &amp; Comedy</value>
+  </data>
+  <data name="VarietyComedy_Description" xml:space="preserve">
+    <value>Shows with a mix of entertainment elements, such as skits, stand-up, and comedy acts (e.g., late-night shows, sketch comedy)</value>
+  </data>
+</root>

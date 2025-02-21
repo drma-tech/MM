@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClassicalOpera" xml:space="preserve">
+    <value>Classical &amp; Opera</value>
+  </data>
+  <data name="ClassicalOpera_Description" xml:space="preserve">
+    <value>Structured compositions and orchestral music from various historical periods (e.g., baroque, symphonic, opera)</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Country_Description" xml:space="preserve">
+    <value>Storytelling-driven genre with roots in American folk traditions (e.g., classic country, contemporary country)</value>
+  </data>
+  <data name="ElectronicDance" xml:space="preserve">
+    <value>Electronic &amp; Dance</value>
+  </data>
+  <data name="ElectronicDance_Description" xml:space="preserve">
+    <value>Synthesized sounds and beat-heavy tracks for club and festival scenes (e.g., house, techno, trance)</value>
+  </data>
+  <data name="ExperimentalAvantGarde" xml:space="preserve">
+    <value>Experimental &amp; Avant-Garde</value>
+  </data>
+  <data name="ExperimentalAvantGarde_Description" xml:space="preserve">
+    <value>Nontraditional music pushing the boundaries of structure and sound (e.g., noise, ambient, minimalist)</value>
+  </data>
+  <data name="FolkAcoustic" xml:space="preserve">
+    <value>Folk &amp; Acoustic</value>
+  </data>
+  <data name="FolkAcoustic_Description" xml:space="preserve">
+    <value>Music rooted in traditional sounds, often featuring acoustic instruments (e.g., folk, Americana, singer-songwriter)</value>
+  </data>
+  <data name="GospelReligious" xml:space="preserve">
+    <value>Gospel &amp; Religious</value>
+  </data>
+  <data name="GospelReligious_Description" xml:space="preserve">
+    <value>Music with religious or spiritual themes, often community-oriented (e.g., gospel, hymns, devotional music)</value>
+  </data>
+  <data name="HipHopRap" xml:space="preserve">
+    <value>Hip-Hop &amp; Rap</value>
+  </data>
+  <data name="HipHopRap_Description" xml:space="preserve">
+    <value>Beat-driven music with lyrical flow, storytelling, and social commentary (e.g., rap, trap, old-school hip-hop)</value>
+  </data>
+  <data name="JazzBlues" xml:space="preserve">
+    <value>Jazz &amp; Blues</value>
+  </data>
+  <data name="JazzBlues_Description" xml:space="preserve">
+    <value>Rich, improvisational genres with roots in African-American history (e.g., jazz, blues, bebop)</value>
+  </data>
+  <data name="MetalHardRock" xml:space="preserve">
+    <value>Metal &amp; Hard Rock</value>
+  </data>
+  <data name="MetalHardRock_Description" xml:space="preserve">
+    <value>Intense, amplified sounds often with aggressive tones (e.g., heavy metal, thrash, hard rock)</value>
+  </data>
+  <data name="PopMainstream" xml:space="preserve">
+    <value>Pop &amp; Mainstream</value>
+  </data>
+  <data name="PopMainstream_Description" xml:space="preserve">
+    <value>Accessible and widely popular music across charts and cultures (e.g., pop, dance-pop, synth-pop)</value>
+  </data>
+  <data name="RBSoul" xml:space="preserve">
+    <value>R&amp;B &amp; Soul</value>
+  </data>
+  <data name="RBSoul_Description" xml:space="preserve">
+    <value>Emotional and rhythm-focused music rooted in African-American traditions (e.g., R&amp;B, soul, funk)</value>
+  </data>
+  <data name="ReggaeWorldMusic" xml:space="preserve">
+    <value>Reggae &amp; World Music</value>
+  </data>
+  <data name="ReggaeWorldMusic_Description" xml:space="preserve">
+    <value>Music from diverse cultural origins, often with distinctive rhythms (e.g., reggae, Afrobeat, Latin)</value>
+  </data>
+  <data name="RockAlternative" xml:space="preserve">
+    <value>Rock &amp; Alternative</value>
+  </data>
+  <data name="RockAlternative_Description" xml:space="preserve">
+    <value>Guitar-driven sounds and subgenres with a rebellious edge (e.g., classic rock, punk, indie, grunge)</value>
+  </data>
+  <data name="SoundtracksScores" xml:space="preserve">
+    <value>Soundtracks &amp; Scores</value>
+  </data>
+  <data name="SoundtracksScores_Description" xml:space="preserve">
+    <value>Music composed for visual media, including movies and games (e.g., film scores, video game soundtracks)</value>
+  </data>
+</root>

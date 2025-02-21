@@ -2,16 +2,16 @@
 {
     public enum IdealPlaceToLive
     {
-        [Custom(Name = "Urban", Description = "Prefers the excitement and opportunities of a bustling city environment.")]
+        [Custom(Name = "Urban", Description = "Urban_Description", ResourceType = typeof(Resources.IdealPlaceToLive))]
         Urban = 1,
 
-        [Custom(Name = "Suburban", Description = "Enjoys the charm and community feel of a small town.")]
+        [Custom(Name = "Suburban", Description = "Suburban_Description", ResourceType = typeof(Resources.IdealPlaceToLive))]
         Suburban = 2,
 
-        [Custom(Name = "Rural", Description = "Values the tranquility and natural beauty of countryside living.")]
+        [Custom(Name = "Rural", Description = "Rural_Description", ResourceType = typeof(Resources.IdealPlaceToLive))]
         Rural = 3,
 
-        [Custom(Name = "Flexible", Description = "Open to various living situations, prioritizing other factors over location.")]
+        [Custom(Name = "Flexible", Description = "Flexible_Description", ResourceType = typeof(Resources.IdealPlaceToLive))]
         Flexible = 4
     }
 }
