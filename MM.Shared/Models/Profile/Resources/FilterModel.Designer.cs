@@ -61,47 +61,20 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Biological Sex.
+        ///   Looks up a localized string similar to Annual Income.
         /// </summary>
-        internal static string BiologicalSex {
+        internal static string AnnualIncome {
             get {
-                return ResourceManager.GetString("BiologicalSex", resourceCulture);
+                return ResourceManager.GetString("AnnualIncome", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body Type.
+        ///   Looks up a localized string similar to It is necessary to check the field before using it as a filter..
         /// </summary>
-        internal static string BodyType {
+        internal static string AnnualIncome_Description {
             get {
-                return ResourceManager.GetString("BodyType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disabilities.
-        /// </summary>
-        internal static string Disabilities {
-            get {
-                return ResourceManager.GetString("Disabilities", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ethnicity.
-        /// </summary>
-        internal static string Ethnicity {
-            get {
-                return ResourceManager.GetString("Ethnicity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gender Identity.
-        /// </summary>
-        internal static string GenderIdentity {
-            get {
-                return ResourceManager.GetString("GenderIdentity", resourceCulture);
+                return ResourceManager.GetString("AnnualIncome_Description", resourceCulture);
             }
         }
         
@@ -120,15 +93,6 @@ namespace MM.Shared.Models.Profile.Resources {
         internal static string Languages_Description {
             get {
                 return ResourceManager.GetString("Languages_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Marital Status.
-        /// </summary>
-        internal static string MaritalStatus {
-            get {
-                return ResourceManager.GetString("MaritalStatus", resourceCulture);
             }
         }
         
@@ -169,11 +133,29 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Neurodiversity.
+        ///   Looks up a localized string similar to Nationality.
         /// </summary>
-        internal static string Neurodiversities {
+        internal static string Nationality {
             get {
-                return ResourceManager.GetString("Neurodiversities", resourceCulture);
+                return ResourceManager.GetString("Nationality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Worth.
+        /// </summary>
+        internal static string NetWorth {
+            get {
+                return ResourceManager.GetString("NetWorth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is necessary to check the field before using it as a filter..
+        /// </summary>
+        internal static string NetWorth_Description {
+            get {
+                return ResourceManager.GetString("NetWorth_Description", resourceCulture);
             }
         }
         
@@ -192,15 +174,6 @@ namespace MM.Shared.Models.Profile.Resources {
         internal static string Relocation {
             get {
                 return ResourceManager.GetString("Relocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sexual Orientation.
-        /// </summary>
-        internal static string SexualOrientation {
-            get {
-                return ResourceManager.GetString("SexualOrientation", resourceCulture);
             }
         }
     }

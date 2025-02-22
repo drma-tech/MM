@@ -11,32 +11,32 @@
         [Custom(Name = "Region", ResourceType = typeof(Resources.FilterModel))]
         public Region Region { get; set; }
 
-        [Custom(Name = "Nationality")]
+        [Custom(Name = "Nationality", ResourceType = typeof(Resources.FilterModel))]
         public HashSet<Country> Nationality { get; set; } = [];
 
-        [Custom(Name = "Languages", Description = "Languages_Description", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Languages_Name", Description = "Languages_Description", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<Language> Languages { get; set; } = [];
 
-        [Custom(Name = "MaritalStatus", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "MaritalStatus_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<MaritalStatus> MaritalStatus { get; set; } = [];
 
-        [Custom(Name = "BiologicalSex", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "BiologicalSex_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<BiologicalSex> BiologicalSex { get; set; } = [];
 
-        [Custom(Name = "GenderIdentity", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "GenderIdentity_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<GenderIdentity> GenderIdentities { get; set; } = [];
 
-        [Custom(Name = "SexualOrientation", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "SexualOrientation_Name", ResourceType = typeof(Resources.ProfileBasicModel))]
         public HashSet<SexualOrientation> SexualOrientations { get; set; } = [];
 
         #endregion BASIC
 
         #region BIO
 
-        [Custom(Name = "Ethnicity", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Ethnicity_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public HashSet<Ethnicity> Ethnicity { get; set; } = [];
 
-        [Custom(Name = "BodyType", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "BodyType_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public HashSet<BodyType> BodyType { get; set; } = [];
 
         [Custom(Name = "MinimalAge", ResourceType = typeof(Resources.FilterModel))]
@@ -51,10 +51,10 @@
         [Custom(Name = "MaxHeight", ResourceType = typeof(Resources.FilterModel))]
         public Height? MaxHeight { get; set; }
 
-        [Custom(Name = "Neurodiversities", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Neurodiversity_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public HashSet<Neurodiversity> Neurodiversities { get; set; } = [];
 
-        [Custom(Name = "Disabilities", ResourceType = typeof(Resources.FilterModel))]
+        [Custom(Name = "Disabilities_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public HashSet<Disability> Disabilities { get; set; } = [];
 
         #endregion BIO
@@ -73,13 +73,13 @@
         [Custom(Name = "Religion_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<Religion> Religion { get; set; } = [];
 
-        [Custom(Name = "Family Involvement")]
+        [Custom(Name = "FamilyInvolvement_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<FamilyInvolvement> FamilyInvolvement { get; set; } = [];
 
         [Custom(Name = "HaveChildren_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<HaveChildren> HaveChildren { get; set; } = [];
 
-        [Custom(Name = "Have Pets")]
+        [Custom(Name = "HavePets_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<HavePets> HavePets { get; set; } = [];
 
         [Custom(Name = "EducationLevel_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
@@ -88,38 +88,38 @@
         [Custom(Name = "CareerCluster_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<CareerCluster> CareerCluster { get; set; } = [];
 
-        [Custom(Name = "Living Situation")]
+        [Custom(Name = "LivingSituation_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<LivingSituation> LivingSituation { get; set; } = [];
 
-        [Custom(Name = "Travel Frequency")]
+        [Custom(Name = "TravelFrequency_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public HashSet<TravelFrequency> TravelFrequency { get; set; } = [];
 
-        [Custom(Name = "Net Worth", Description = "It is necessary to check the field before using it as a filter.")]
+        [Custom(Name = "NetWorth", Description = "NetWorth_Description", ResourceType = typeof(Resources.FilterModel))]
         public HashSet<NetWorth> NetWorth { get; set; } = [];
 
-        [Custom(Name = "Annual Income", Description = "It is necessary to check the field before using it as a filter.")]
+        [Custom(Name = "AnnualIncome", Description = "AnnualIncome_Description", ResourceType = typeof(Resources.FilterModel))]
         public HashSet<AnnualIncome> AnnualIncome { get; set; } = [];
 
         #endregion LIFESTYLE
 
         #region PERSONALITY
 
-        [Custom(Name = "Money Personality")]
+        [Custom(Name = "MoneyPersonality_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool MoneyPersonality { get; set; }
 
-        [Custom(Name = "Shared Spending Style")]
+        [Custom(Name = "SharedSpendingStyle_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool SharedSpendingStyle { get; set; }
 
-        [Custom(Name = "Relationship Personality")]
+        [Custom(Name = "RelationshipPersonality_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool RelationshipPersonality { get; set; }
 
-        [Custom(Name = "MBTI Personality")]
+        [Custom(Name = "MBTI_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool MyersBriggsTypeIndicator { get; set; }
 
-        [Custom(Name = "Love Language")]
+        [Custom(Name = "LoveLanguage_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool LoveLanguage { get; set; }
 
-        [Custom(Name = "Sex Personality")]
+        [Custom(Name = "SexPersonality_Name", ResourceType = typeof(Resources.ProfileLifestyleModel))]
         public bool SexPersonality { get; set; }
 
         #endregion PERSONALITY
@@ -154,19 +154,19 @@
 
         #region RELATIONSHIP
 
-        [Custom(Name = "Shared Finances")]
+        [Custom(Name = "SharedFinances", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HashSet<SharedFinances> SharedFinances { get; set; } = [];
 
-        [Custom(Name = "Conflict Resolution Style")]
+        [Custom(Name = "ConflictResolutionStyle", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HashSet<ConflictResolutionStyle> ConflictResolutionStyle { get; set; } = [];
 
-        [Custom(Name = "Household Management")]
+        [Custom(Name = "HouseholdManagement", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HashSet<HouseholdManagement> HouseholdManagement { get; set; } = [];
 
-        [Custom(Name = "Time Together Preference")]
+        [Custom(Name = "TimeTogetherPreference", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HashSet<TimeTogetherPreference> TimeTogetherPreference { get; set; } = [];
 
-        [Custom(Name = "Opposite-Sex Friendships")]
+        [Custom(Name = "OppositeSexFriendships", ResourceType = typeof(Resources.ProfileRelationshipModel))]
         public HashSet<OppositeSexFriendships> OppositeSexFriendships { get; set; } = [];
 
         #endregion RELATIONSHIP

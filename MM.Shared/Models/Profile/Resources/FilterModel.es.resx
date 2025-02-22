@@ -117,29 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BiologicalSex" xml:space="preserve">
-    <value>Sexo biológico</value>
+  <data name="AnnualIncome" xml:space="preserve">
+    <value>Renta anual</value>
   </data>
-  <data name="BodyType" xml:space="preserve">
-    <value>Tipo de cuerpo</value>
-  </data>
-  <data name="Disabilities" xml:space="preserve">
-    <value>Discapacidades</value>
-  </data>
-  <data name="Ethnicity" xml:space="preserve">
-    <value>Etnicidad</value>
-  </data>
-  <data name="GenderIdentity" xml:space="preserve">
-    <value>Identidad de género</value>
+  <data name="AnnualIncome_Description" xml:space="preserve">
+    <value>Es necesario comprobar el campo antes de usarlo como filtro.</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Idiomas</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
     <value>Filtrar perfiles que tengan al menos uno de los idiomas seleccionados</value>
-  </data>
-  <data name="MaritalStatus" xml:space="preserve">
-    <value>Estado civil</value>
   </data>
   <data name="MaxAge" xml:space="preserve">
     <value>Edad (Mín. - Máx.)</value>
@@ -153,16 +141,19 @@
   <data name="MinimalHeight" xml:space="preserve">
     <value>Altura (Mín. - Máx.)</value>
   </data>
-  <data name="Neurodiversities" xml:space="preserve">
-    <value>Neurodiversidad</value>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nacionalidad</value>
+  </data>
+  <data name="NetWorth" xml:space="preserve">
+    <value>Patrimonio neto</value>
+  </data>
+  <data name="NetWorth_Description" xml:space="preserve">
+    <value>Es necesario comprobar el campo antes de usarlo como filtro.</value>
   </data>
   <data name="Region" xml:space="preserve">
     <value>Región</value>
   </data>
   <data name="Relocation" xml:space="preserve">
     <value>Reubicación</value>
-  </data>
-  <data name="SexualOrientation" xml:space="preserve">
-    <value>Orientación sexual</value>
   </data>
 </root>
