@@ -123,9 +123,6 @@
   <data name="AdventureExtremeSports_Description" xml:space="preserve">
     <value>Atividades de alta adrenalina e busca de emoção (por exemplo, escalada, paraquedismo, bungee jumping, snowboard)</value>
   </data>
-  <data name="WaterSports_Description" xml:space="preserve">
-    <value>Esportes na água ou sobre ela (por exemplo, natação, surfe, caiaque, polo aquático, mergulho)</value>
-  </data>
   <data name="Athletics" xml:space="preserve">
     <value>Atletismo</value>
   </data>
@@ -200,6 +197,9 @@
   </data>
   <data name="WaterSports" xml:space="preserve">
     <value>Esportes Aquáticos</value>
+  </data>
+  <data name="WaterSports_Description" xml:space="preserve">
+    <value>Esportes na água ou sobre ela (por exemplo, natação, surfe, caiaque, polo aquático, mergulho)</value>
   </data>
   <data name="WinterSports" xml:space="preserve">
     <value>Esportes de inverno</value>

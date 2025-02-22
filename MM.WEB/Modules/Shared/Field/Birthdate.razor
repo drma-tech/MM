@@ -1,4 +1,4 @@
-﻿@inherits BaseCustomField<DateTime, Birthdate>
+﻿@inherits BaseCustomField<DateTime?, Birthdate>
 
 <Field Horizontal="true">
     <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
@@ -39,8 +39,8 @@
 </Field>
 
 @code {
-    [Parameter] public DateTime Value { get; set; }
-    [Parameter] public EventCallback<DateTime> ValueChanged { get; set; }
+    [Parameter] public DateTime? Value { get; set; }
+    [Parameter] public EventCallback<DateTime?> ValueChanged { get; set; }
     [Parameter] public bool Required { get; set; }
 
     private int year = DateTime.Now.Year;
@@ -53,9 +53,11 @@
 
     protected override void OnInitialized()
     {
-        year = Value.Year;
-        month = Value.Month;
-        day = Value.Day;
+        Value ??= DateTime.Today;
+
+        year = Value.Value.Year;
+        month = Value.Value.Month;
+        day = Value.Value.Day;
     }
 
     private async Task SetYear(int value)

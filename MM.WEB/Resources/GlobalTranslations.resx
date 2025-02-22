@@ -120,6 +120,9 @@
   <data name="ActiveConnection" xml:space="preserve">
     <value>Active Connection</value>
   </data>
+  <data name="BasicRequired" xml:space="preserve">
+    <value>The basic section is mandatory for now. The other sections can be filled in later.</value>
+  </data>
   <data name="BetaVersion" xml:space="preserve">
     <value>Beta Version!</value>
   </data>
@@ -128,6 +131,24 @@
   </data>
   <data name="Cities" xml:space="preserve">
     <value>Cities</value>
+  </data>
+  <data name="Compatibility" xml:space="preserve">
+    <value>Compatibility</value>
+  </data>
+  <data name="CompatibilityHigh" xml:space="preserve">
+    <value>Congratulations, you two are made for each other. This relationship has a bright future ahead of it.</value>
+  </data>
+  <data name="CompatibilityLow" xml:space="preserve">
+    <value>Unfortunately, you don't have much in common. We wish you both the best of luck, as it won't be an easy task.</value>
+  </data>
+  <data name="CompatibilityMedium" xml:space="preserve">
+    <value>You are not a perfect couple, but that doesn't mean that the relationship will fail. Review our report carefully and work through these differences together.</value>
+  </data>
+  <data name="CompleteAllSteps" xml:space="preserve">
+    <value>To make your profile public, first complete all the steps</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
@@ -144,17 +165,41 @@
   <data name="CustomVisibilityNoData" xml:space="preserve">
     <value>There is no data to show</value>
   </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Please enter the email address</value>
+  </data>
+  <data name="EnterPartnerEmail" xml:space="preserve">
+    <value>Enter your partner's email</value>
+  </data>
+  <data name="ExpectedCompatibility" xml:space="preserve">
+    <value>Expected Compatibility</value>
+  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Wait for news...</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Under development</value>
   </data>
+  <data name="GeneralCompatibility" xml:space="preserve">
+    <value>General Compatibility</value>
+  </data>
+  <data name="GenerateSimulation" xml:space="preserve">
+    <value>Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works.</value>
+  </data>
+  <data name="GpsNotAccurate" xml:space="preserve">
+    <value>The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.</value>
+  </data>
   <data name="HelpMap" xml:space="preserve">
     <value>This option will request location for your device (this option must be enabled)</value>
   </data>
   <data name="HelpPlus" xml:space="preserve">
     <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
+  </data>
+  <data name="HelpProfile1" xml:space="preserve">
+    <value>The calculation is based on research and statistics and may not accurately reflect all cases and/or contexts;</value>
+  </data>
+  <data name="HelpProfile2" xml:space="preserve">
+    <value>If you have any questions and/or suggestions for improvements, please open a ticket on our support page;</value>
   </data>
   <data name="HelpQuestion" xml:space="preserve">
     <value>This option will have explanations of each of the items available to choose from.</value>
@@ -171,11 +216,17 @@
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>invitation not accepted</value>
   </data>
+  <data name="InvitationSent" xml:space="preserve">
+    <value>Invitation sent successfully.</value>
+  </data>
   <data name="InviteYyourPartnerTitle1" xml:space="preserve">
     <value>Invite your partner to test your compatibility</value>
   </data>
   <data name="InviteYyourPartnerTitle2" xml:space="preserve">
     <value>This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted.</value>
+  </data>
+  <data name="ITrustPlataform" xml:space="preserve">
+    <value>I trust the platform's compatibility system and will only select what is non-negotiable for me.</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -186,17 +237,32 @@
   <data name="NoPendingInvitations" xml:space="preserve">
     <value>There are no pending invitations</value>
   </data>
+  <data name="NotAnswered" xml:space="preserve">
+    <value>Not answered</value>
+  </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operation cancelled!</value>
   </data>
   <data name="OperationCompleted" xml:space="preserve">
     <value>Operation completed successfully!</value>
   </data>
+  <data name="OptionNotAvailable" xml:space="preserve">
+    <value>Option not yet available</value>
+  </data>
   <data name="or" xml:space="preserve">
     <value>or</value>
   </data>
   <data name="PartnerEmail" xml:space="preserve">
     <value>Partner Email</value>
+  </data>
+  <data name="PartnerProfileNotAvailable" xml:space="preserve">
+    <value>Your partner's profile is not yet available</value>
+  </data>
+  <data name="PopulateFilterDescription" xml:space="preserve">
+    <value>This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team.</value>
+  </data>
+  <data name="PopulateFilterTitle" xml:space="preserve">
+    <value>Fields automatically populated</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
     <value>Here you can define your ideal profile type, so that we can properly calculate your compatibility index</value>
@@ -234,8 +300,17 @@
   <data name="ProfileHelpQuestion" xml:space="preserve">
     <value>This option will have explanations of each of the items available to choose from.</value>
   </data>
+  <data name="ProfileNotAvailable" xml:space="preserve">
+    <value>Profile not available</value>
+  </data>
+  <data name="ProfileNotFound" xml:space="preserve">
+    <value>Profile not found or not yet registered properly.</value>
+  </data>
   <data name="ProfilePreferPersonTip1" xml:space="preserve">
     <value>This section does not work as a filter, it only complements the profile compatibility calculation.</value>
+  </data>
+  <data name="ProfilePrivateMode" xml:space="preserve">
+    <value>Your profile is now in private mode and will not be seen or shared with anyone.</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Public</value>
@@ -264,14 +339,23 @@
   <data name="TermTopic2" xml:space="preserve">
     <value>To be aware of how your data will be treated, we ask you to read our</value>
   </data>
+  <data name="Tips" xml:space="preserve">
+    <value>Tips</value>
+  </data>
   <data name="UnableDetectGps" xml:space="preserve">
     <value>We were unable to detect a GPS system on your device. Please try again or release access to your device's GPS.</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Undefined</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Validation errors were detected</value>
+  </data>
+  <data name="WhyImportant" xml:space="preserve">
+    <value>Why is it important?</value>
   </data>
   <data name="WriteReviewMessage" xml:space="preserve">
     <value>Help us reach a larger audience.</value>
@@ -284,5 +368,11 @@
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Your current location:</value>
+  </data>
+  <data name="YourPartnerProfile" xml:space="preserve">
+    <value>Your partner's profile</value>
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value>Your profile (or preferences)</value>
   </data>
 </root>

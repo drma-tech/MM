@@ -168,33 +168,33 @@
 
 @code
 {
-    public PopupProfile? PopupProfile { get; set; }
+    private PopupProfile? PopupProfile { get; set; }
 
-    public ProfileValidation ProfileValidator { get; set; } = new();
-    public ProfileModel? profile;
+    private ProfileValidation ProfileValidator { get; set; } = new();
+    private ProfileModel? profile;
 
-    public HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-    public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
+    private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
+    private RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
-    public FilterValidation FilterValidator { get; set; } = new();
-    public FilterModel? filter;
-    public RenderControlCore<FilterModel?>? CoreFilter { get; set; } = new();
+    private FilterValidation FilterValidator { get; set; } = new();
+    private FilterModel? filter;
+    private RenderControlCore<FilterModel?>? CoreFilter { get; set; } = new();
 
-    public PhotoValidation PhotoValidatior { get; set; } = new();
+    private PhotoValidation PhotoValidatior { get; set; } = new();
 
-    public SettingModel? setting;
-    public RenderControlCore<SettingModel?>? CoreSetting { get; set; } = new();
+    private SettingModel? setting;
+    private RenderControlCore<SettingModel?>? CoreSetting { get; set; } = new();
 
-    public List<string> Suggestions { get; set; } = [];
-    public RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
+    private List<string> Suggestions { get; set; } = [];
+    private RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
 
-    public MyLikesModel? MyLikes { get; set; }
-    public RenderControlCore<MyLikesModel?>? CoreLikes { get; set; } = new();
+    private MyLikesModel? MyLikes { get; set; }
+    private RenderControlCore<MyLikesModel?>? CoreLikes { get; set; } = new();
 
-    public MyMatchesModel? MyMatches { get; set; }
-    public RenderControlCore<MyMatchesModel?>? CoreMatches { get; set; } = new();
+    private MyMatchesModel? MyMatches { get; set; }
+    private RenderControlCore<MyMatchesModel?>? CoreMatches { get; set; } = new();
 
-    public bool IsPublic { get; set; }
+    private bool IsPublic { get; set; }
 
     protected override void OnInitialized()
     {
@@ -239,13 +239,13 @@
     {
         if (value)
         {
-            //await Toast.Warning("To make your profile public, first complete all the steps");
-            await Toast.Warning("Option not yet available");
+            // await Toast.Warning(GlobalTranslations.CompleteAllSteps);
+            await Toast.Warning(GlobalTranslations.OptionNotAvailable);
             IsPublic = false;
         }
         else
         {
-            await Toast.Success("Your profile is now in private mode and will not be seen or shared with anyone.");
+            await Toast.Success(GlobalTranslations.ProfilePrivateMode);
             IsPublic = false;
         }
     }
@@ -262,7 +262,7 @@
         {
             await InviteApi.SendInvite(new InviteRequest { Email = email });
 
-            await Toast.Success("Invitation sent successfully.");
+            await Toast.Success(GlobalTranslations.InvitationSent);
         }
         catch (Exception ex)
         {
@@ -272,7 +272,7 @@
 
     private async Task SimulateMatches()
     {
-        if (await Message.Confirm("Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works.", "Confirmation"))
+        if (await Message.Confirm(GlobalTranslations.GenerateSimulation, GlobalTranslations.Confirmation))
         {
             MyMatches = new MyMatchesModel();
 

@@ -123,11 +123,26 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Charlar</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Cerrar</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmar</value>
+  </data>
+  <data name="Dating" xml:space="preserve">
+    <value>Cita</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="Dislike" xml:space="preserve">
+    <value>Aversión</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
   </data>
   <data name="Fill" xml:space="preserve">
     <value>Llenar</value>
@@ -143,6 +158,9 @@
   </data>
   <data name="InvitePartner" xml:space="preserve">
     <value>Invitar socio</value>
+  </data>
+  <data name="Like" xml:space="preserve">
+    <value>Gustar</value>
   </data>
   <data name="LoadMore" xml:space="preserve">
     <value>Carga más</value>
@@ -174,8 +192,14 @@
   <data name="ReadMore" xml:space="preserve">
     <value>Leer más</value>
   </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relación</value>
+  </data>
   <data name="Remove" xml:space="preserve">
     <value>Eliminar</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Informar</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Ahorrar</value>

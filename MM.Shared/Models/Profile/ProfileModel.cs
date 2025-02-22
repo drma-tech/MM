@@ -52,7 +52,7 @@ namespace MM.Shared.Models.Profile
         public BodyType? BodyType { get; set; }
 
         [Custom(Name = "BirthDate_Name", ResourceType = typeof(Resources.ProfileBioModel))]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [Custom(Name = "Height_Name", ResourceType = typeof(Resources.ProfileBioModel))]
         public Height? Height { get; set; }

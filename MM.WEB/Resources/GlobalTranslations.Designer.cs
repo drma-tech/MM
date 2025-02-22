@@ -70,6 +70,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
+        /// </summary>
+        public static string BasicRequired {
+            get {
+                return ResourceManager.GetString("BasicRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beta Version!.
         /// </summary>
         public static string BetaVersion {
@@ -93,6 +102,60 @@ namespace MM.WEB.Resources {
         public static string Cities {
             get {
                 return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compatibility.
+        /// </summary>
+        public static string Compatibility {
+            get {
+                return ResourceManager.GetString("Compatibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations, you two are made for each other. This relationship has a bright future ahead of it..
+        /// </summary>
+        public static string CompatibilityHigh {
+            get {
+                return ResourceManager.GetString("CompatibilityHigh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfortunately, you don&apos;t have much in common. We wish you both the best of luck, as it won&apos;t be an easy task..
+        /// </summary>
+        public static string CompatibilityLow {
+            get {
+                return ResourceManager.GetString("CompatibilityLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not a perfect couple, but that doesn&apos;t mean that the relationship will fail. Review our report carefully and work through these differences together..
+        /// </summary>
+        public static string CompatibilityMedium {
+            get {
+                return ResourceManager.GetString("CompatibilityMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To make your profile public, first complete all the steps.
+        /// </summary>
+        public static string CompleteAllSteps {
+            get {
+                return ResourceManager.GetString("CompleteAllSteps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
             }
         }
         
@@ -142,6 +205,33 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the email address.
+        /// </summary>
+        public static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your partner&apos;s email.
+        /// </summary>
+        public static string EnterPartnerEmail {
+            get {
+                return ResourceManager.GetString("EnterPartnerEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected Compatibility.
+        /// </summary>
+        public static string ExpectedCompatibility {
+            get {
+                return ResourceManager.GetString("ExpectedCompatibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wait for news....
         /// </summary>
         public static string FeatureUnavailableDescription {
@@ -160,6 +250,33 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Compatibility.
+        /// </summary>
+        public static string GeneralCompatibility {
+            get {
+                return ResourceManager.GetString("GeneralCompatibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works..
+        /// </summary>
+        public static string GenerateSimulation {
+            get {
+                return ResourceManager.GetString("GenerateSimulation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser..
+        /// </summary>
+        public static string GpsNotAccurate {
+            get {
+                return ResourceManager.GetString("GpsNotAccurate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
         /// </summary>
         public static string HelpMap {
@@ -174,6 +291,24 @@ namespace MM.WEB.Resources {
         public static string HelpPlus {
             get {
                 return ResourceManager.GetString("HelpPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The calculation is based on research and statistics and may not accurately reflect all cases and/or contexts;.
+        /// </summary>
+        public static string HelpProfile1 {
+            get {
+                return ResourceManager.GetString("HelpProfile1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have any questions and/or suggestions for improvements, please open a ticket on our support page;.
+        /// </summary>
+        public static string HelpProfile2 {
+            get {
+                return ResourceManager.GetString("HelpProfile2", resourceCulture);
             }
         }
         
@@ -223,6 +358,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invitation sent successfully..
+        /// </summary>
+        public static string InvitationSent {
+            get {
+                return ResourceManager.GetString("InvitationSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invite your partner to test your compatibility.
         /// </summary>
         public static string InviteYyourPartnerTitle1 {
@@ -237,6 +381,15 @@ namespace MM.WEB.Resources {
         public static string InviteYyourPartnerTitle2 {
             get {
                 return ResourceManager.GetString("InviteYyourPartnerTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I trust the platform&apos;s compatibility system and will only select what is non-negotiable for me..
+        /// </summary>
+        public static string ITrustPlataform {
+            get {
+                return ResourceManager.GetString("ITrustPlataform", resourceCulture);
             }
         }
         
@@ -268,6 +421,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not answered.
+        /// </summary>
+        public static string NotAnswered {
+            get {
+                return ResourceManager.GetString("NotAnswered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation cancelled!.
         /// </summary>
         public static string OperationCanceled {
@@ -286,6 +448,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Option not yet available.
+        /// </summary>
+        public static string OptionNotAvailable {
+            get {
+                return ResourceManager.GetString("OptionNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to or.
         /// </summary>
         public static string or {
@@ -300,6 +471,33 @@ namespace MM.WEB.Resources {
         public static string PartnerEmail {
             get {
                 return ResourceManager.GetString("PartnerEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner&apos;s profile is not yet available.
+        /// </summary>
+        public static string PartnerProfileNotAvailable {
+            get {
+                return ResourceManager.GetString("PartnerProfileNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team..
+        /// </summary>
+        public static string PopulateFilterDescription {
+            get {
+                return ResourceManager.GetString("PopulateFilterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fields automatically populated.
+        /// </summary>
+        public static string PopulateFilterTitle {
+            get {
+                return ResourceManager.GetString("PopulateFilterTitle", resourceCulture);
             }
         }
         
@@ -412,11 +610,38 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile not available.
+        /// </summary>
+        public static string ProfileNotAvailable {
+            get {
+                return ResourceManager.GetString("ProfileNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile not found or not yet registered properly..
+        /// </summary>
+        public static string ProfileNotFound {
+            get {
+                return ResourceManager.GetString("ProfileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This section does not work as a filter, it only complements the profile compatibility calculation..
         /// </summary>
         public static string ProfilePreferPersonTip1 {
             get {
                 return ResourceManager.GetString("ProfilePreferPersonTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone..
+        /// </summary>
+        public static string ProfilePrivateMode {
+            get {
+                return ResourceManager.GetString("ProfilePrivateMode", resourceCulture);
             }
         }
         
@@ -502,11 +727,29 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tips.
+        /// </summary>
+        public static string Tips {
+            get {
+                return ResourceManager.GetString("Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We were unable to detect a GPS system on your device. Please try again or release access to your device&apos;s GPS..
         /// </summary>
         public static string UnableDetectGps {
             get {
                 return ResourceManager.GetString("UnableDetectGps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undefined.
+        /// </summary>
+        public static string Undefined {
+            get {
+                return ResourceManager.GetString("Undefined", resourceCulture);
             }
         }
         
@@ -525,6 +768,15 @@ namespace MM.WEB.Resources {
         public static string ValidationErrorsDetected {
             get {
                 return ResourceManager.GetString("ValidationErrorsDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why is it important?.
+        /// </summary>
+        public static string WhyImportant {
+            get {
+                return ResourceManager.GetString("WhyImportant", resourceCulture);
             }
         }
         
@@ -561,6 +813,24 @@ namespace MM.WEB.Resources {
         public static string YourCurrentLocation {
             get {
                 return ResourceManager.GetString("YourCurrentLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner&apos;s profile.
+        /// </summary>
+        public static string YourPartnerProfile {
+            get {
+                return ResourceManager.GetString("YourPartnerProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile (or preferences).
+        /// </summary>
+        public static string YourProfile {
+            get {
+                return ResourceManager.GetString("YourProfile", resourceCulture);
             }
         }
     }

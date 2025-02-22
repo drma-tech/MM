@@ -39,13 +39,13 @@
     {
         if (Email.Empty())
         {
-            await Toast.Warning("Please enter the email address");
+            await Toast.Warning(GlobalTranslations.EmailRequired);
             return;
         }
 
         if (Email == principal!.Email)
         {
-            await Toast.Warning("Enter your partner's email");
+            await Toast.Warning(GlobalTranslations.EnterPartnerEmail);
             return;
         }
 

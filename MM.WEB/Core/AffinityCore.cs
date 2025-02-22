@@ -274,7 +274,7 @@ namespace MM.WEB.Core
                 return [];
         }
 
-        public static int[] GetAge(FilterModel? filter, DateTime birthDate)
+        public static int[] GetAge(FilterModel? filter, DateTime? birthDate)
         {
             int? min = null;
             int? max = null;

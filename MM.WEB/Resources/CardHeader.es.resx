@@ -123,6 +123,9 @@
   <data name="EventMyEvents" xml:space="preserve">
     <value>Mis Eventos</value>
   </data>
+  <data name="Help" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
   <data name="InvitePartner" xml:space="preserve">
     <value>Invitar pareja</value>
   </data>

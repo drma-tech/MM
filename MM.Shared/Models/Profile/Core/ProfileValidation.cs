@@ -6,13 +6,6 @@ namespace MM.Shared.Models.Profile.Core
     {
         public ProfileValidation()
         {
-            RuleSet("REQUIRED", () =>
-            {
-                RuleFor(x => x.BirthDate)
-                    .NotEmpty()
-                    .LessThanOrEqualTo(DateTime.UtcNow.AddYears(-18).Date).WithMessage(Shared.Resources.Validations.OlderToRegister);
-            });
-
             RuleSet("BASIC", () =>
             {
                 RuleFor(x => x.NickName)

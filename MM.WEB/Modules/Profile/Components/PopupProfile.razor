@@ -90,48 +90,48 @@
                                         {
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
                                                         Disabled="ButtonDisabled(EventType.Like)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> Like
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> @WEB.Resources.Button.Like
                                             </DrmaButton>
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
                                                         Disabled="ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> Dislike
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> @WEB.Resources.Button.Dislike
                                             </DrmaButton>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="true">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> Chat
+                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> @WEB.Resources.Button.Chat
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Match)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Dating)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> Dating
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> @WEB.Resources.Button.Dating
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Dating)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Relationship)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> Relationship
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> @WEB.Resources.Button.Relationship
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Feedback)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> Feedback
+                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> @WEB.Resources.Button.Feedback
                                             </Button>
                                         }
                                     </Column>
                                     <Column ColumnSize="ColumnSize.IsHalf">
                                         <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> Delete
+                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> @WEB.Resources.Button.Delete
                                         </Button>
                                         <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Flag"></Blazorise.Icon> Report
+                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Flag"></Blazorise.Icon> @WEB.Resources.Button.Report
                                         </Button>
                                     </Column>
                                 </Row>
@@ -198,7 +198,7 @@
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
-                Core?.ShowError("Profile not available.");
+                Core?.ShowError(GlobalTranslations.ProfileNotAvailable);
                 return;
             }
 
@@ -208,7 +208,7 @@
 
             if (view == null)
             {
-                Core?.ShowError("Your partner's profile is not yet available");
+                Core?.ShowError(GlobalTranslations.PartnerProfileNotAvailable);
                 return;
             }
             else
@@ -220,7 +220,7 @@
 
                 imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-                selectedImage = imageDataUriGallery.First();
+                selectedImage = imageDataUriGallery[0];
 
                 filter = await FilterApi.Get(null);
 

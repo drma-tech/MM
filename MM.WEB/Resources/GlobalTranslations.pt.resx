@@ -120,6 +120,9 @@
   <data name="ActiveConnection" xml:space="preserve">
     <value>Conexão ativa</value>
   </data>
+  <data name="BasicRequired" xml:space="preserve">
+    <value>A seção básica é obrigatória por enquanto. As outras seções podem ser preenchidas depois.</value>
+  </data>
   <data name="BetaVersion" xml:space="preserve">
     <value>Versão Beta!</value>
   </data>
@@ -128,6 +131,24 @@
   </data>
   <data name="Cities" xml:space="preserve">
     <value>Cidades</value>
+  </data>
+  <data name="Compatibility" xml:space="preserve">
+    <value>Compatibilidade</value>
+  </data>
+  <data name="CompatibilityHigh" xml:space="preserve">
+    <value>Parabéns, vocês dois foram feitos um para o outro. Esse relacionamento tem um futuro brilhante pela frente.</value>
+  </data>
+  <data name="CompatibilityLow" xml:space="preserve">
+    <value>Infelizmente, vocês não têm muito em comum. Desejamos a vocês dois boa sorte, pois não será uma tarefa fácil.</value>
+  </data>
+  <data name="CompatibilityMedium" xml:space="preserve">
+    <value>Vocês não são um casal perfeito, mas isso não significa que o relacionamento irá fracassar. Revise nosso relatório cuidadosamente e trabalhem essas diferenças juntos.</value>
+  </data>
+  <data name="CompleteAllSteps" xml:space="preserve">
+    <value>Para tornar seu perfil público, primeiro conclua todas as etapas</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmação</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Países</value>
@@ -144,17 +165,41 @@
   <data name="CustomVisibilityNoData" xml:space="preserve">
     <value>Não há dados para mostrar</value>
   </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Por favor, insira o endereço de e-mail</value>
+  </data>
+  <data name="EnterPartnerEmail" xml:space="preserve">
+    <value>Insira o e-mail do seu parceiro</value>
+  </data>
+  <data name="ExpectedCompatibility" xml:space="preserve">
+    <value>Compatibilidade esperada</value>
+  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Aguarde novidades...</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
     <value>Em desenvolvimento</value>
   </data>
+  <data name="GeneralCompatibility" xml:space="preserve">
+    <value>Compatibilidade geral</value>
+  </data>
+  <data name="GenerateSimulation" xml:space="preserve">
+    <value>Você quer gerar uma simulação de conexões? Isso é só para demonstrar como nosso sistema de compatibilidade funciona.</value>
+  </data>
+  <data name="GpsNotAccurate" xml:space="preserve">
+    <value>A posição do GPS não é precisa e pode resultar em uma localização incorreta. Se sua cidade estiver errada, tente novamente mais tarde ou teste em outro dispositivo ou navegador.</value>
+  </data>
   <data name="HelpMap" xml:space="preserve">
     <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
   </data>
   <data name="HelpPlus" xml:space="preserve">
     <value>Esta opção abrirá um pop-up com várias opções (juntamente com explicações, se houver)</value>
+  </data>
+  <data name="HelpProfile1" xml:space="preserve">
+    <value>O cálculo é baseado em pesquisas e estatísticas e pode não refletir com precisão todos os casos e/ou contextos;</value>
+  </data>
+  <data name="HelpProfile2" xml:space="preserve">
+    <value>Caso tenha alguma dúvida e/ou sugestão de melhorias, abra um ticket em nossa página de suporte;</value>
   </data>
   <data name="HelpQuestion" xml:space="preserve">
     <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
@@ -171,11 +216,17 @@
   <data name="InvitationNotAccepted" xml:space="preserve">
     <value>Convite não aceito</value>
   </data>
+  <data name="InvitationSent" xml:space="preserve">
+    <value>Convite enviado com sucesso.</value>
+  </data>
   <data name="InviteYyourPartnerTitle1" xml:space="preserve">
     <value>Convide seu parceiro para testar sua compatibilidade</value>
   </data>
   <data name="InviteYyourPartnerTitle2" xml:space="preserve">
     <value>Este convite não enviará um e-mail. Se este convite não for aceito dentro de um período de um mês, ele será automaticamente excluído.</value>
+  </data>
+  <data name="ITrustPlataform" xml:space="preserve">
+    <value>Confio no sistema de compatibilidade da plataforma e selecionarei apenas o que não for negociável para mim.</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Linguagem</value>
@@ -186,17 +237,32 @@
   <data name="NoPendingInvitations" xml:space="preserve">
     <value>Não há convites pendentes</value>
   </data>
+  <data name="NotAnswered" xml:space="preserve">
+    <value>Não respondido</value>
+  </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operação cancelada!</value>
   </data>
   <data name="OperationCompleted" xml:space="preserve">
     <value>Operação concluída com sucesso!</value>
   </data>
+  <data name="OptionNotAvailable" xml:space="preserve">
+    <value>Opção ainda não disponível</value>
+  </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
   <data name="PartnerEmail" xml:space="preserve">
     <value>E-mail do parceiro</value>
+  </data>
+  <data name="PartnerProfileNotAvailable" xml:space="preserve">
+    <value>O perfil do seu parceiro ainda não está disponível</value>
+  </data>
+  <data name="PopulateFilterDescription" xml:space="preserve">
+    <value>Este processo está em constante evolução. Se você quiser relatar um erro ou melhoria, abra um ticket com nossa equipe de suporte.</value>
+  </data>
+  <data name="PopulateFilterTitle" xml:space="preserve">
+    <value>Campos preenchidos automaticamente</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
     <value>Aqui você pode definir o seu tipo de perfil ideal, para que possamos calcular corretamente o seu índice de compatibilidade</value>
@@ -234,8 +300,17 @@
   <data name="ProfileHelpQuestion" xml:space="preserve">
     <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
   </data>
+  <data name="ProfileNotAvailable" xml:space="preserve">
+    <value>Perfil não disponível</value>
+  </data>
+  <data name="ProfileNotFound" xml:space="preserve">
+    <value>Perfil não encontrado ou ainda não registrado corretamente.</value>
+  </data>
   <data name="ProfilePreferPersonTip1" xml:space="preserve">
     <value>Esta seção não funciona como um filtro, apenas complementa o cálculo de compatibilidade de perfil.</value>
+  </data>
+  <data name="ProfilePrivateMode" xml:space="preserve">
+    <value>Seu perfil agora está no modo privado e não será visto nem compartilhado com ninguém.</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Público</value>
@@ -264,14 +339,23 @@
   <data name="TermTopic2" xml:space="preserve">
     <value>Para estar ciente de como seus dados serão tratados, pedimos que você leia nosso</value>
   </data>
+  <data name="Tips" xml:space="preserve">
+    <value>Dicas</value>
+  </data>
   <data name="UnableDetectGps" xml:space="preserve">
     <value>Não foi possível detectar um sistema GPS no seu dispositivo. Tente novamente ou libere o acesso ao GPS do seu dispositivo.</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Indefinido</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Usuários</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Foram detectados erros de validação</value>
+  </data>
+  <data name="WhyImportant" xml:space="preserve">
+    <value>Por que isso é importante?</value>
   </data>
   <data name="WriteReviewMessage" xml:space="preserve">
     <value>Ajude -nos a alcançar um público maior.</value>
@@ -284,5 +368,11 @@
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Sua localização atual:</value>
+  </data>
+  <data name="YourPartnerProfile" xml:space="preserve">
+    <value>Perfil do seu parceiro</value>
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value>Seu perfil (ou preferências)</value>
   </data>
 </root>

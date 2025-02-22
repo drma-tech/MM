@@ -28,7 +28,7 @@ namespace MM.WEB.Modules.Profile
 
             if (Profile == null)
             {
-                await Toast.Warning("The basic tab is mandatory for now. The other tabs can be filled in later.");
+                await Toast.Warning(GlobalTranslations.BasicRequired);
             }
 
             Profile ??= new()
@@ -75,7 +75,7 @@ namespace MM.WEB.Modules.Profile
 
                         if (GPS.Accuracy > 1000)
                         {
-                            await Toast.Warning("The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.");
+                            await Toast.Warning(GlobalTranslations.GpsNotAccurate);
                         }
                     }
                     else
@@ -98,7 +98,7 @@ namespace MM.WEB.Modules.Profile
             {
                 var validator = new ProfileValidation();
 
-                var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString(), "REQUIRED"));
+                var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
 
                 if (result.IsValid)
                 {

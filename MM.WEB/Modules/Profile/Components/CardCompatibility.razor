@@ -5,27 +5,27 @@
 
 <Alert Visible="true" Color="@GetColor(null)" Shadow="Shadow.Small">
     <Heading Size="HeadingSize.Is5">
-        General Compatibility (@(Affinities.GetPercentAffinity(null) + "%"))
+        @GlobalTranslations.GeneralCompatibility (@(Affinities.GetPercentAffinity(null) + "%"))
         <Button Size="Size.ExtraSmall" Color="Color.Primary" Float="Float.End" Clicked="@(()=>help?.ShowModal())" title="Ajuda" Margin="Margin.Is2.FromStart">
             <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon>
         </Button>
     </Heading>
     @if (totPercAff <= 60)
     {
-        <AlertDescription>Unfortunately, you don't have much in common. We wish you both the best of luck, as it won't be an easy task.</AlertDescription>
+        <AlertDescription>@GlobalTranslations.CompatibilityLow</AlertDescription>
     }
     else if (totPercAff <= 80)
     {
-        <AlertDescription>You are not a perfect couple, but that doesn't mean that the relationship will fail. Review our report carefully and work through these differences together.</AlertDescription>
+        <AlertDescription>@GlobalTranslations.CompatibilityMedium</AlertDescription>
     }
     else
     {
-        <AlertDescription>Congratulations, you two are made for each other. This relationship has a bright future ahead of it.</AlertDescription>
+        <AlertDescription>@GlobalTranslations.CompatibilityHigh</AlertDescription>
     }
 </Alert>
 
 <Alert Visible="true" Color="@GetColor(Section.Basic)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Basic (@Affinities.GetPercentAffinity(Section.Basic)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Basic (@Affinities.GetPercentAffinity(Section.Basic)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -38,7 +38,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Bio)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Bio (@Affinities.GetPercentAffinity(Section.Bio)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Bio (@Affinities.GetPercentAffinity(Section.Bio)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -51,7 +51,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Lifestyle)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Lifestyle (@Affinities.GetPercentAffinity(Section.Lifestyle)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Lifestyle (@Affinities.GetPercentAffinity(Section.Lifestyle)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -71,7 +71,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Personality)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Personality (@Affinities.GetPercentAffinity(Section.Personality)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Personality (@Affinities.GetPercentAffinity(Section.Personality)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -84,7 +84,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Interest)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Interest (@Affinities.GetPercentAffinity(Section.Interest)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Interest (@Affinities.GetPercentAffinity(Section.Interest)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -99,7 +99,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Relationship)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Relationship (@Affinities.GetPercentAffinity(Section.Relationship)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Relationship (@Affinities.GetPercentAffinity(Section.Relationship)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -111,7 +111,7 @@
 }
 
 <Alert Visible="true" Color="@GetColor(Section.Goals)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>Goals (@Affinities.GetPercentAffinity(Section.Goals)%)</AlertMessage>
+    <AlertMessage>@MM.Shared.Enums.Resources.Section.Goals (@Affinities.GetPercentAffinity(Section.Goals)%)</AlertMessage>
 </Alert>
 @if (User != null && View != null && Filter != null)
 {
@@ -121,10 +121,10 @@
     <ItemDataProfile For="@(() => View.IdealPlaceToLive)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.IdealPlaceToLive" User="@User" Filter="@Filter" Value="@View.IdealPlaceToLive" ValuesUser="@(Filter.IdealPlaceToLive.Any()?Filter.IdealPlaceToLive:User?.IdealPlaceToLive.ToHashSet())" ClassIcon="fas fa-house-circle-check" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<BasicModal @ref="help" Title="Help">
+<BasicModal @ref="help" Title="@WEB.Resources.CardHeader.Help">
     <ul class="mr-4">
-        <li>The calculation is based on research and statistics and may not accurately reflect all cases and/or contexts;</li>
-        <li>If you have any questions and/or suggestions for improvements, please open a ticket on our support page;</li>
+        <li>@GlobalTranslations.HelpProfile1</li>
+        <li>@GlobalTranslations.HelpProfile2</li>
     </ul>
 </BasicModal>
 

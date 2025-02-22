@@ -7,13 +7,13 @@
 <Tabs RenderMode="TabsRenderMode.LazyReload" @bind-SelectedTab="@Tab">
     <Items>
         <Tab Name="Affinity">
-            Compatibility
+            @GlobalTranslations.Compatibility
         </Tab>
         <Tab Name="WhyImportant" Disabled="WhyImportant.Empty()">
-            Why is it important?
+            @GlobalTranslations.WhyImportant
         </Tab>
         <Tab Name="Tips" Disabled="GetTips().Empty()">
-            Tips
+            @GlobalTranslations.Tips
         </Tab>
     </Items>
     <Content>
@@ -21,7 +21,7 @@
             <Row HorizontalGutter="8" VerticalGutter="0">
                 <Column>
                     <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromBottom">
-                        <AlertMessage>Your profile (or preferences)</AlertMessage>
+                        <AlertMessage>@GlobalTranslations.YourProfile</AlertMessage>
                     </Alert>
                     @if (PreferenceValues.Any())
                     {
@@ -35,13 +35,13 @@
                     else
                     {
                         <Badge Color="Color.Secondary">
-                            Not answered
+                            @GlobalTranslations.NotAnswered
                         </Badge>
                     }
                 </Column>
                 <Column>
                     <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromBottom">
-                        <AlertMessage>Expected Compatibility</AlertMessage>
+                        <AlertMessage>@GlobalTranslations.ExpectedCompatibility</AlertMessage>
                     </Alert>
                     @if (ExpectedValues.Any())
                     {
@@ -64,13 +64,13 @@
                     else
                     {
                         <Badge Color="Color.Secondary">
-                            Undefined
+                            @GlobalTranslations.Undefined
                         </Badge>
                     }
                 </Column>
             </Row>
             <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom">
-                <AlertMessage>Your partner's profile</AlertMessage>
+                <AlertMessage>@GlobalTranslations.YourPartnerProfile</AlertMessage>
             </Alert>
             @if (ViewValues.Any())
             {
@@ -104,7 +104,7 @@
                     else
                     {
                         <Alert Visible="true" Color="@GetColor(item)" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom" Style="display: inline-block">
-                            <AlertMessage>Not answered</AlertMessage>
+                            <AlertMessage>@GlobalTranslations.NotAnswered</AlertMessage>
                         </Alert>
                     }
                 }
@@ -112,7 +112,7 @@
             else
             {
                 <Alert Visible="true" Color="@GetColor()" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom" Style="display: inline-block">
-                    <AlertMessage>Not answered</AlertMessage>
+                    <AlertMessage>@GlobalTranslations.NotAnswered</AlertMessage>
                 </Alert>
             }
         </TabPanel>
