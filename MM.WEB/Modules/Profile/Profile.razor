@@ -44,7 +44,7 @@
                     <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
                 }
             </Button>
-            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="true">
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="profile==null">
                 @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
                 {
                     <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Photos</span>
