@@ -1,4 +1,4 @@
-using AzureStaticWebApps.Blazor.Authentication;
+﻿using AzureStaticWebApps.Blazor.Authentication;
 using Blazorise;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
@@ -50,6 +50,13 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddCascadingAuthenticationState();
     collection.AddOptions();
     collection.AddAuthorizationCore();
+
+    collection.AddMsalAuthentication(options =>
+    {
+        options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
+        options.ProviderOptions.DefaultAccessTokenScopes.Add("profile");
+        options.ProviderOptions.DefaultAccessTokenScopes.Add("User.Read");
+    });
 
     collection.AddScoped<AdministratorApi>();
     collection.AddScoped<PrincipalApi>();
