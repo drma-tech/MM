@@ -19,7 +19,7 @@
         @foreach (var provider in providers)
         {
             var link = provider.Key;
-            if (link == "microsoft") link = "azureActiveDirectory";
+            if (link == "microsoft") link = "aad";
             <Button Block="true" Class="@("btn-social btn-" + @provider.Key)" Size="Size.Large" Margin="Margin.Is3.FromBottom" Type="ButtonType.Link" To="@("/.auth/login/" + @link + "?post_login_redirect_uri=" + Navigation.BaseUri + "login-success")">
                 <span class="fa-brands fa-@provider.Key"></span> @Resources.Translations.LoginWith @provider.Value
             </Button>
