@@ -74,7 +74,7 @@
     private async Task<byte[]> GetBuffer(IFileEntry file)
     {
         var buffer = new byte[file.Size];
-        await file.OpenReadStream(file.Size).ReadAsync(buffer);
+        _ = await file.OpenReadStream(file.Size).ReadAsync(buffer);
         return buffer;
     }
 
