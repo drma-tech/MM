@@ -86,30 +86,49 @@
         SavedPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
     }
 
-    private Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)
+    private async Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)
     {
-        if (eventArgs.Width != 0)
+        try
         {
-            cropButtonDisabled = false;
+            if (eventArgs.Width != 0)
+            {
+                cropButtonDisabled = false;
 
-            return InvokeAsync(StateHasChanged);
+                await InvokeAsync(StateHasChanged);
+            }
         }
-
-        return Task.CompletedTask;
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
     }
 
     private async Task GetCroppedImage()
     {
-        if (cropper == null) return;
+        try
+        {
+            if (cropper == null) return;
 
-        CroppedPicture = await cropper.CropAsBase64ImageAsync(new() { Width = 512, Height = 512 });
+            CroppedPicture = await cropper.CropAsBase64ImageAsync(new() { Width = 512, Height = 512 });
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
     }
 
     private async Task ResetSelection()
     {
-        cropButtonDisabled = true;
+        try
+        {
+            cropButtonDisabled = true;
 
-        if (cropper != null) await cropper.ResetSelection();
+            if (cropper != null) await cropper.ResetSelection();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Toast, Logger);
+        }
     }
 
     private async Task SavePictureHandle()
