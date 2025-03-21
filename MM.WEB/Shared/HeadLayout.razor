@@ -33,7 +33,7 @@
 
     private void Logout()
     {
-        Navigation.NavigateTo("/.auth/logout", forceLoad: true);
+        Navigation.NavigateTo("/.auth/login/aad/callback", forceLoad: true);
     }
 
     private async Task OpenConfigurations()
