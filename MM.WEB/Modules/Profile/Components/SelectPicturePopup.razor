@@ -16,14 +16,15 @@
     </Row>
     <Row>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;">
-            <Cropper @ref="cropper" Source="@OriginalPicture" SelectionChanged="@OnSelectionChanged" Style="width: 256px; height: 256px;" />
+            <Cropper @ref="cropper" Source="@TempPicture" SelectionChanged="@OnSelectionChanged"
+                     Style="width: 300px; height: 300px;" />
         </Column>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;" Padding="Padding.Is2.OnMobile">
             <Button Color="Color.Primary" Clicked="@GetCroppedImage" Disabled="@cropButtonDisabled" Block="true">Crop image</Button>
             <Button Color="Color.Secondary" Clicked="@ResetSelection" Disabled="@cropButtonDisabled" Block="true">Reset Selection</Button>
         </Column>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="text-align: center;">
-            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 256px; height: 256px;" />
+            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 300px; height: 300px;" />
         </Column>
     </Row>
 </ModalBody>
@@ -34,9 +35,11 @@
 </ModalFooter>
 
 @code {
-    [Parameter] public string? OriginalPicture { get; set; }
+    [Parameter] public string? SavedPicture { get; set; }
     [Parameter] public PhotoType PhotoType { get; set; }
     [Parameter] public EventCallback<(PhotoType, byte[])> CroppedPictureChanged { get; set; }
+
+    public string? TempPicture => SavedPicture ?? ImageHelper.GetNoUserPhoto;
 
     private Cropper? cropper;
     private string? CroppedPicture = null;
@@ -80,7 +83,7 @@
 
     private void ShowPicture(IFileEntry file, byte[] buffer)
     {
-        OriginalPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
+        SavedPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
     }
 
     private Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)

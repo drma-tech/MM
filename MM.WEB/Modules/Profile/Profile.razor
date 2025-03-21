@@ -42,17 +42,17 @@
                     <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
                 }
             </Button>
-            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/photo" Disabled="profile==null">
-                @if (profile?.Photo != null && PhotoValidatior.Validate(profile.Photo).IsValid)
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Disabled="profile==null">
+                @if (profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Photos</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
                 }
                 else
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Photos</span>
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
                 }
             </Button>
-            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="true">
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="profile==null">
                 @if (setting != null)
                 {
                     <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
@@ -278,7 +278,7 @@
 
             fakeProfiles = new Faker<ProfileModel>()
                 .RuleFor(x => x.Id, f => f.Random.Guid().ToString())
-                .RuleFor(u => u.Photo, f => new ProfilePhotoModel() { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
+                .RuleFor(u => u.Gallery, f => new ProfileGalleryModel() { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
                 //BASIC
                 .RuleFor(x => x.NickName, f => f.Name.FirstName())
                 .RuleFor(x => x.Description, f => f.Lorem.Text())
@@ -345,7 +345,7 @@
                 .GenerateLazy(6).ToHashSet();
 
             MyMatches.Items = fakeProfiles.Select(s =>
-                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Photo?.FaceId, Fake = true }).ToHashSet();
+                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }

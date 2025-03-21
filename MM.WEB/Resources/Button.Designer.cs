@@ -169,6 +169,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        public static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate.
         /// </summary>
         public static string Generate {
@@ -264,15 +273,6 @@ namespace MM.WEB.Resources {
         public static string Open {
             get {
                 return ResourceManager.GetString("Open", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Photos.
-        /// </summary>
-        public static string Photos {
-            get {
-                return ResourceManager.GetString("Photos", resourceCulture);
             }
         }
         

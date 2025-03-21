@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Profile.Core
 {
-    public class PhotoValidation : AbstractValidator<ProfilePhotoModel>
+    public class PhotoValidation : AbstractValidator<ProfileGalleryModel>
     {
         public PhotoValidation()
         {

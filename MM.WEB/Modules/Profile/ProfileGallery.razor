@@ -1,4 +1,4 @@
-﻿@page "/profile/photo"
+﻿@page "/profile/gallery"
 @using Blazorise.Cropper
 @using MM.Shared.Models.Profile
 @using MM.Shared.Requests
@@ -26,7 +26,7 @@
                 </RenderControl>
             </CardBody>
             <CardFooter>
-                @if (_profile?.Photo?.FaceId == null)
+                @if (_profile?.Gallery?.FaceId == null)
                 {
                     <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Face,null))">Add</Button>
                 }
@@ -51,7 +51,7 @@
                 </RenderControl>
             </CardBody>
             <CardFooter>
-                @if (_profile?.Photo?.BodyId == null)
+                @if (_profile?.Gallery?.BodyId == null)
                 {
                     <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Body,null))">Add</Button>
                 }
@@ -65,8 +65,8 @@
     </Column>
 </Row>
 
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle" Disabled="true">
-    <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
+    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> Back
 </Button>
 
 <Div Float="Float.End" Margin="Margin.Is2.OnY">
@@ -132,19 +132,8 @@
         }
     }
 
-    private async Task SaveHandle()
+    private void SaveHandle()
     {
-        if (_profile == null) throw new InvalidOperationException("profile is null");
-
-        try
-        {
-            _profile = await ProfileApi.Update(CoreProfile, _profile);
-
-            Navigation.NavigateTo("profile");
-        }
-        catch (Exception ex)
-        {
-            ex.ProcessException(Toast, Logger);
-        }
+        Navigation.NavigateTo("profile");
     }
 }

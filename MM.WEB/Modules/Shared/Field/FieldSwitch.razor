@@ -19,8 +19,8 @@
                     @* <Switch Checked="@Value" CheckedChanged="@ValueChanged" CheckedExpression="@For" Size="Size.Large">@SwithLabel</Switch> *@
 
                     <Buttons Width="Width.Is100">
-                        <Button Color="Color.Success" Outline="!Value" Clicked="@(()=>{Value=true;})">@WEB.Resources.Button.Active</Button>
-                        <Button Color="Color.Danger" Outline="Value" Clicked="@(()=>{Value=false;})">@WEB.Resources.Button.Inactive</Button>
+                        <Button Color="Color.Success" Outline="!Value" Clicked="@(()=>{Value=true;ValueChanged.InvokeAsync(Value);})">@WEB.Resources.Button.Active</Button>
+                        <Button Color="Color.Danger" Outline="Value" Clicked="@(()=>{Value=false;ValueChanged.InvokeAsync(Value);})">@WEB.Resources.Button.Inactive</Button>
                     </Buttons>
                 </Addon>
             </Addons>

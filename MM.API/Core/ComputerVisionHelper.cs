@@ -9,11 +9,11 @@ namespace MM.API.Core
         public IConfiguration Configuration { get; } = configuration;
 
         /// <summary>
-        /// still using version 3.2 (old version)
+        /// still using version 3.2 (old version - year 2021)
         ///
         /// https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/image-analysis-client-library?pivots=programming-language-csharp&tabs=windows%2Cvisual-studio
         /// 
-        /// update when adult content is available
+        /// todo: update (4.0 or more recent) when adult content is available
         /// 
         /// https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis?tabs=4-0
         /// </summary>
@@ -29,7 +29,9 @@ namespace MM.API.Core
 
             var features = new List<VisualFeatureTypes?>()
             {
-                VisualFeatureTypes.Adult, VisualFeatureTypes.Faces
+                VisualFeatureTypes.Faces,
+                VisualFeatureTypes.Adult,
+                VisualFeatureTypes.Objects
             };
 
             return await client.AnalyzeImageInStreamAsync(stream, visualFeatures: features, cancellationToken: cancellationToken);

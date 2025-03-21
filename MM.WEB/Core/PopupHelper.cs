@@ -45,7 +45,7 @@ namespace MM.WEB.Core
         {
             await service.Show<SelectPicturePopup>(null, x =>
             {
-                x.Add(x => x.OriginalPicture, picture);
+                x.Add(x => x.SavedPicture, picture);
                 x.Add(x => x.PhotoType, photoType);
                 x.Add(x => x.CroppedPictureChanged, pictureChanged);
             }, Options(ModalSize.Large));

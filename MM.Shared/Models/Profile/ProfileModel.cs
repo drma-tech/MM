@@ -246,7 +246,7 @@ namespace MM.Shared.Models.Profile
         [Custom(Name = "Age")]
         public int Age { get; set; }
 
-        public ProfilePhotoModel? Photo { get; set; }
+        public ProfileGalleryModel? Gallery { get; set; }
         private readonly string BlobPath = "https://drmammstorage.blob.core.windows.net";
 
         public void UpdateData(ProfileModel profile)
@@ -304,15 +304,15 @@ namespace MM.Shared.Models.Profile
             Disabilities = profile.Disabilities;
         }
 
-        public void UpdatePhoto(ProfilePhotoModel obj)
+        public void UpdatePhoto(ProfileGalleryModel obj)
         {
-            Photo = obj;
+            Gallery = obj;
         }
 
         public string GetPhoto(PhotoType type, bool fake = false)
         {
-            if (Photo == null) return GetNoUserPhoto;
-            var id = Photo.GetPictureId(type);
+            if (Gallery == null) return GetNoUserPhoto;
+            var id = Gallery.GetPictureId(type);
             if (id == null) return GetNoUserPhoto;
 
             if (fake)

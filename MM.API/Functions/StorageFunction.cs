@@ -1,7 +1,9 @@
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
 using MM.Shared.Requests;
+using System.Reflection.Metadata;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions
@@ -20,15 +22,15 @@ namespace MM.API.Functions
                 var request = await req.GetPublicBody<PhotoRequest>(cancellationToken);
 
                 var profile = await _repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
-                var currentPictureId = profile.Photo?.GetPictureId(request.PhotoType);
+                var currentPictureId = profile.Gallery?.GetPictureId(request.PhotoType);
 
                 using var stream1 = new MemoryStream(request.Buffer);
 
-                profile.Photo ??= new ProfilePhotoModel();
+                profile.Gallery ??= new ProfileGalleryModel();
 
                 var photoId = Guid.NewGuid().ToString() + ".jpg";
 
-                profile.Photo.UpdatePictureId(request.PhotoType, photoId); //reset current photo data
+                profile.Gallery.UpdatePictureId(request.PhotoType, photoId); //reset current photo data
 
                 //await faceHelper.DetectFace(profile, stream1, true, cancellationToken); //validates the photo sent and saves data related to it
                 var analysis = await computerVisionHelper.AnalyzeImage(stream1, cancellationToken);
@@ -38,14 +40,57 @@ namespace MM.API.Functions
                     throw new NotificationException("Image content is inappropriate. Please use another one.");
                 }
 
-                if (analysis.Faces.Count == 0)
+                var faceObjects = analysis.Faces;
+                if (faceObjects.Count == 0)
                 {
                     throw new NotificationException("We cannot clearly identify a face in this photo. Please use another one.");
                 }
 
-                if (request.PhotoType == ImageHelper.PhotoType.Face && analysis.Faces.Count > 1)
+                if (request.PhotoType == PhotoType.Face && faceObjects.Count > 1)
                 {
                     throw new NotificationException("Your main photo should only feature you.");
+                }
+
+                var personObjects = analysis.Objects.Where(a => a.ObjectProperty == "person" && a.Confidence > 0.85);
+                if (request.PhotoType == PhotoType.Body)
+                {
+                    if (!personObjects.Any())
+                    {
+                        throw new NotificationException("We were unable to detect a body in this photo. Please choose a photo that best shows your body.");
+                    }
+
+                    if (personObjects.Count() > 1)
+                    {
+                        throw new NotificationException("We detected more than one person in this photo. Please choose a photo where you are alone.");
+                    }
+
+                    //todo: find a better way to detect a full body
+
+                    //var body = personObjects.Single();
+                    //var bodyArea = body.Rectangle.H * body.Rectangle.W;
+                    //var rect = body.Rectangle;
+                    //var aspectRatio = Math.Max(rect.H, rect.W) / (double)Math.Min(rect.H, rect.W);
+                    //var faceArea = faceObjects.Sum(face => face.FaceRectangle.Height * face.FaceRectangle.Width);
+
+                    //if (aspectRatio < 1.3)
+                    //{
+                    //    throw new NotificationException("We were unable to detect a full body in this photo. Please choose a photo that best shows your entire body.");
+                    //}
+
+                    //var face = faceObjects.FirstOrDefault();
+                    //if (face != null)
+                    //{
+                    //    var faceY = face.FaceRectangle.Left;
+                    //    if (faceY < rect.Y + rect.H * 0.25) // The face cannot be too far above the body
+                    //    {
+                    //        throw new NotificationException("We detected only the head or a partial body. Please choose a photo that best shows your entire body.");
+                    //    }
+                    //}
+
+                    //if (bodyArea < faceArea * 3)
+                    //{
+                    //    throw new NotificationException("We were unable to detect a full body in this photo. Please choose a photo that best shows your entire body.");
+                    //}
                 }
 
                 if (currentPictureId != null) //delete old picture from azure storage
@@ -58,7 +103,7 @@ namespace MM.API.Functions
 
                 await storageHelper.UploadPhoto(request.PhotoType, stream2, photoId, userId, cancellationToken);
 
-                profile.UpdatePhoto(profile.Photo);
+                profile.UpdatePhoto(profile.Gallery);
 
                 return await _repo.Upsert(profile, cancellationToken);
             }
@@ -79,13 +124,13 @@ namespace MM.API.Functions
 
                 var profile = await _repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
 
-                profile.Photo ??= new ProfilePhotoModel();
+                profile.Gallery ??= new ProfileGalleryModel();
 
-                await storageHelper.DeletePhoto(photoType, profile.Photo.GetPictureId(photoType), cancellationToken);
+                await storageHelper.DeletePhoto(photoType, profile.Gallery.GetPictureId(photoType), cancellationToken);
 
-                profile.Photo.UpdatePictureId(photoType, null); //reset current photo data
+                profile.Gallery.UpdatePictureId(photoType, null); //reset current photo data
 
-                profile.UpdatePhoto(profile.Photo);
+                profile.UpdatePhoto(profile.Gallery);
 
                 return await _repo.Upsert(profile, cancellationToken);
             }

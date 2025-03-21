@@ -186,8 +186,8 @@
   <data name="Open" xml:space="preserve">
     <value>Abrir</value>
   </data>
-  <data name="Photos" xml:space="preserve">
-    <value>Fotos</value>
+  <data name="Gallery" xml:space="preserve">
+    <value>Galeria</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidade</value>

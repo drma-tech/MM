@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Profile
 {
-    public class ProfilePhotoModel
+    public class ProfileGalleryModel
     {
         public string? FaceId { get; set; }
         public string? BodyId { get; set; }
