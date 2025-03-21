@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MM.WEB;
 using MM.WEB.Api;
-using MM.WEB.Modules.Administrator.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Subscription.Core;
@@ -51,7 +50,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddOptions();
     collection.AddAuthorizationCore();
 
-    collection.AddScoped<AdministratorApi>();
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<GravatarApi>();
     collection.AddScoped<LoginApi>();
@@ -114,5 +112,5 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
     return HttpPolicyExtensions
         .HandleTransientHttpError() // 408,5xx
-        .WaitAndRetryAsync([TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(6)]);
+        .WaitAndRetryAsync([TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3)]);
 }

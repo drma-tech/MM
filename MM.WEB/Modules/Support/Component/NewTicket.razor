@@ -5,13 +5,13 @@
 
 <ModalHeader>
     <ModalTitle Size="HeadingSize.Is5">@Resources.Translations.NewTicketTitle</ModalTitle>
-        <CloseButton />
-    </ModalHeader>
-    <ModalBody>
-        <EditForm Model="@Ticket" OnValidSubmit="SubmitForm">
-            <div class="form-group">
-                <Select TValue="TicketType" @bind-SelectedValue="@TicketType" Size="Size.Small">
-                    @foreach (var item in EnumHelper.GetArray<TicketType>())
+    <CloseButton />
+</ModalHeader>
+<ModalBody>
+    <EditForm Model="@Ticket" OnValidSubmit="SubmitForm">
+        <div class="form-group">
+            <Select TValue="TicketType" @bind-SelectedValue="@TicketType" Size="Size.Small">
+                @foreach (var item in EnumHelper.GetArray<TicketType>())
                 {
                     <SelectItem Value="@item">@item.GetName()</SelectItem>
                 }

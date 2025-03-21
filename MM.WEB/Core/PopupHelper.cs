@@ -18,8 +18,6 @@ namespace MM.WEB.Core
         {
             await service.Show<SettingsPopup>(null, x =>
             {
-                //x.Add(x => x.MySuggestions, MySuggestions);
-                //x.Add(x => x.MySuggestionsChanged, MySuggestionsChanged);
             }, Options(ModalSize.Default));
         }
 

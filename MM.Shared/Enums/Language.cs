@@ -5,7 +5,6 @@
     /// https://en.wikipedia.org/wiki/List_of_official_languages
     /// https://en.wikipedia.org/wiki/List_of_official_languages_by_country_and_territory
     /// </summary>
-    ///
     public enum Language
     {
         [Custom(Name = "Abkhazian", Description = "ab", ResourceType = typeof(Resources.Language))]

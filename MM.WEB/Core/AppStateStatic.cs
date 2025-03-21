@@ -1,5 +1,4 @@
-﻿using Blazorise;
-using MM.Shared.Models.Auth;
+﻿using MM.Shared.Models.Auth;
 using System.Globalization;
 
 namespace MM.WEB.Core
@@ -10,8 +9,6 @@ namespace MM.WEB.Core
 
         [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
         public static Language Language { get; private set; }
-
-        public static Bar? Sidebar { get; set; }
 
         public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
         public static Action<string>? ShowError { get; set; }

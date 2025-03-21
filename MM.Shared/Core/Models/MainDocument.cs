@@ -66,7 +66,7 @@
             this.type = type;
         }
 
-        public virtual void Initialize(string? userId)
+        public virtual void Initialize(string userId)
         {
             SetIds($"{type}:{userId}");
         }
