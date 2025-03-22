@@ -69,7 +69,9 @@ namespace MM.API.Functions
 
                         if (partnerProfile != null)
                         {
-                            myLikes.Items.Add(new PersonModel(partnerProfile));
+                            var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, principal.UserId, cancellationToken);
+
+                            myLikes.Items.Add(new PersonModel(partnerProfile, mySettings?.BlindDate ?? false));
                         }
 
                         //create interaction between users

@@ -52,11 +52,14 @@ namespace MM.API.Functions
             if (user.likes.Id == partner.likes.Id) throw new NotificationException("invalid operation. likes are the same.");
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
+            var userSettings = await repo.Get<SettingModel>(DocumentType.Setting, user.profile.Id, cancellationToken);
+            var partnerSettings = await repo.Get<SettingModel>(DocumentType.Setting, partner.profile.Id, cancellationToken);
+
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            user.matches.Items.Add(new PersonModel(partner.profile));
+            user.matches.Items.Add(new PersonModel(partner.profile, userSettings?.BlindDate ?? false));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            partner.matches.Items.Add(new PersonModel(user.profile));
+            partner.matches.Items.Add(new PersonModel(user.profile, partnerSettings?.BlindDate ?? false));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -255,7 +258,9 @@ namespace MM.API.Functions
 
                     //add like to partner
                     var partnerLikes = await _repoGen.GetMyLikes(partner.UserId!, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(profile));
+                    var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
+
+                    partnerLikes.Items.Add(new PersonModel(profile, partnerSettings?.BlindDate ?? false));
 
                     //create interaction between users
                     await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);

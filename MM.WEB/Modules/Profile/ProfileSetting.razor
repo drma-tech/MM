@@ -68,6 +68,16 @@
                     }
                 }
             }
+            else
+            {
+                var profile = await ProfileApi.Get(null);
+
+                if (profile?.Gallery?.Type == GalleryType.BlindDate)
+                {
+                    profile.Gallery.Type = GalleryType.NoPictures;
+                    await ProfileApi.Update(null, profile);
+                }
+            }
 
             Core?.ProcessingFinished?.Invoke(Setting);
 

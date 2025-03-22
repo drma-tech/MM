@@ -8,11 +8,11 @@ namespace MM.Shared.Models.Profile
         {
         }
 
-        public PersonModel(ProfileModel profile)
+        public PersonModel(ProfileModel profile, bool forceBlindDate)
         {
             this.UserId = profile.Id;
             this.UserName = profile.NickName;
-            this.UserPhoto = profile.GetPhoto(ImageHelper.PhotoType.Face);
+            this.UserPhoto = forceBlindDate ? ImageHelper.GetBlindDate : profile.GetPhoto(ImageHelper.PhotoType.Face);
         }
 
         public string? UserId { get; init; }
