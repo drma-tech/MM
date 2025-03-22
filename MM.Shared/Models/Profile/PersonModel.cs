@@ -8,18 +8,17 @@ namespace MM.Shared.Models.Profile
         {
         }
 
-        public PersonModel(ProfileModel profile, bool blindDate)
+        public PersonModel(ProfileModel profile)
         {
             this.UserId = profile.Id;
             this.UserName = profile.NickName;
-            this.UserPhoto = blindDate ? ImageHelper.GetBlindDate : profile.GetPhoto(ImageHelper.PhotoType.Face);
+            this.UserPhoto = profile.GetPhoto(ImageHelper.PhotoType.Face);
         }
 
         public string? UserId { get; init; }
         public string? UserName { get; set; }
         public string? UserPhoto { get; set; }
         public DateTime DateTime { get; init; } = DateTime.UtcNow;
-
 
         public string GetUserPhoto()
         {

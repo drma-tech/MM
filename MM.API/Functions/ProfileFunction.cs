@@ -53,12 +53,10 @@ namespace MM.API.Functions
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            var partnerSettings = await repo.Get<SettingModel>(DocumentType.Setting, partner.profile.Id, cancellationToken);
-            user.matches.Items.Add(new PersonModel(partner.profile, partnerSettings?.BlindDate ?? false));
+            user.matches.Items.Add(new PersonModel(partner.profile));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            var userSettings = await repo.Get<SettingModel>(DocumentType.Setting, user.profile.Id, cancellationToken);
-            partner.matches.Items.Add(new PersonModel(user.profile, userSettings?.BlindDate ?? false));
+            partner.matches.Items.Add(new PersonModel(user.profile));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -144,11 +142,10 @@ namespace MM.API.Functions
                 profile.BirthDate = DateTime.MinValue;
 
                 var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
-                var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, id, cancellationToken);
 
-                if ((userSettings?.BlindDate ?? false) || (partnerSettings?.BlindDate ?? false))
+                if (userSettings?.BlindDate ?? false)
                 {
-                    profile.Gallery?.BlindDateMode();
+                    profile.Gallery?.SimulateBlindDate();
                 }
 
                 //profile.ActivityStatus = ActivityStatus.Today;
@@ -257,9 +254,8 @@ namespace MM.API.Functions
                     var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
                     //add like to partner
-                    var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
-                    var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(profile, partnerSettings?.BlindDate ?? false));
+                    var partnerLikes = await _repoGen.GetMyLikes(partner.UserId!, cancellationToken);
+                    partnerLikes.Items.Add(new PersonModel(profile));
 
                     //create interaction between users
                     await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);

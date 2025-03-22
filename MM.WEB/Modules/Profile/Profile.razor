@@ -42,16 +42,6 @@
                     <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
                 }
             </Button>
-            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Disabled="profile==null">
-                @if (profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid)
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
-                }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
-                }
-            </Button>
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Disabled="profile==null">
                 @if (setting != null)
                 {
@@ -60,6 +50,16 @@
                 else
                 {
                     <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
+                }
+            </Button>
+            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Disabled="profile==null||profile.Gallery?.Type==GalleryType.BlindDate">
+                @if (profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid)
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
+                }
+                else
+                {
+                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
                 }
             </Button>
             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Disabled="true">

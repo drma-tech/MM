@@ -6,7 +6,6 @@
         {
             Face = 1,
             Body = 2,
-            Validation = 9
         }
 
         public static string GetNoUserPhoto => "images/no-picture.png";
@@ -18,7 +17,6 @@
             {
                 PhotoType.Face => "photo-face",
                 PhotoType.Body => "photo-body",
-                PhotoType.Validation => "photo-validation",
                 _ => throw new InvalidOperationException(nameof(PhotoType)),
             };
         }

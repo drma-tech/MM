@@ -7,10 +7,10 @@ namespace MM.Shared.Models.Profile.Core
         public PhotoValidation()
         {
             RuleFor(x => x.FaceId)
-                  .NotEmpty();
+                  .NotEmpty().When(x => x.Type != GalleryType.BlindDate);
 
             RuleFor(x => x.BodyId)
-                  .NotEmpty();
+                  .NotEmpty().When(x => x.Type != GalleryType.BlindDate);
         }
     }
 }

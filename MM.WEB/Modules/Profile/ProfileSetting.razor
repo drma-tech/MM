@@ -1,10 +1,14 @@
 ﻿@page "/profile/setting"
 @using MM.Shared.Models.Profile
+@using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 
 @attribute [Authorize]
 @inherits PageCore<ProfileSetting>
+
 @inject SettingApi SettingApi
+@inject ProfileApi ProfileApi
+@inject StorageApi StorageApi
 
 <RenderControl Core="Core" Model="Setting" ExpressionEmpty="((SettingModel? obj) => obj == null)" PrivateContent="true">
     <Row>
@@ -44,7 +48,28 @@
 
         try
         {
-            Setting = await SettingApi.Update(Core, Setting);
+            Core?.ProcessingStarted?.Invoke();
+
+            Setting = await SettingApi.Update(null, Setting);
+
+            if (Setting!.BlindDate)
+            {
+                var profile = await ProfileApi.Get(null);
+
+                if (profile != null && profile.Gallery != null)
+                {
+                    if (profile.Gallery.FaceId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Face);
+                    if (profile!.Gallery!.BodyId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Body);
+
+                    if (profile!.Gallery!.Type != GalleryType.BlindDate)
+                    {
+                        profile.Gallery.Type = GalleryType.BlindDate;
+                        await ProfileApi.Update(null, profile);
+                    }
+                }
+            }
+
+            Core?.ProcessingFinished?.Invoke(Setting);
 
             Navigation.NavigateTo("profile");
         }

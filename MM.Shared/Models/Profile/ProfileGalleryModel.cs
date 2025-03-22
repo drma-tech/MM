@@ -1,15 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using static MM.Shared.Core.Helper.ImageHelper;
+﻿using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile
 {
     public class ProfileGalleryModel
     {
+        public GalleryType Type { get; set; } = GalleryType.NoPictures;
         public string? FaceId { get; set; }
         public string? BodyId { get; set; }
-
-        [NotMapped]
-        public bool BlindDate { get; set; } = false;
 
         public string? GetPictureId(PhotoType type)
         {
@@ -31,16 +28,25 @@ namespace MM.Shared.Models.Profile
             {
                 BodyId = pictureId;
             }
+
+            if (FaceId == null && BodyId == null)
+            {
+                Type = GalleryType.NoPictures;
+            }
+            else
+            {
+                Type = GalleryType.Picures;
+            }
         }
 
         /// <summary>
         /// note: cannot update profile after calling this method
         /// </summary>
-        public void BlindDateMode()
+        public void SimulateBlindDate()
         {
+            Type = GalleryType.BlindDate;
             FaceId = null;
             BodyId = null;
-            BlindDate = true;
         }
     }
 }

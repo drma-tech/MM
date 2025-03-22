@@ -1,9 +1,7 @@
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Profile;
 using MM.Shared.Requests;
-using System.Reflection.Metadata;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions
