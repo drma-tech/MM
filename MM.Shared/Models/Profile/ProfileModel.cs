@@ -312,6 +312,8 @@ namespace MM.Shared.Models.Profile
         public string GetPhoto(PhotoType type, bool fake = false)
         {
             if (Gallery == null) return GetNoUserPhoto;
+            if (Gallery.BlindDate) return GetBlindDate;
+
             var id = Gallery.GetPictureId(type);
             if (id == null) return GetNoUserPhoto;
 

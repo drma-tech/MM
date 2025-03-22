@@ -9,7 +9,8 @@
             Validation = 9
         }
 
-        public static string GetNoUserPhoto => "images/no-user.png";
+        public static string GetNoUserPhoto => "images/no-picture.png";
+        public static string GetBlindDate => "images/blind-date.png";
 
         public static string GetPhotoContainer(PhotoType type)
         {

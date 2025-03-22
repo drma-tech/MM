@@ -19,7 +19,7 @@ namespace MM.API.Functions
             return profile;
         }
 
-        public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string? userId, CancellationToken cancellationToken)
+        public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
         {
             var myLikes = await repo.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
@@ -32,7 +32,7 @@ namespace MM.API.Functions
             return myLikes;
         }
 
-        public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string? userId, CancellationToken cancellationToken)
+        public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
         {
             var myLikes = await repo.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
@@ -53,10 +53,12 @@ namespace MM.API.Functions
             if (user.matches.Id == partner.matches.Id) throw new NotificationException("invalid operation. matches are the same.");
 
             user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
-            user.matches.Items.Add(new PersonModel(partner.profile));
+            var partnerSettings = await repo.Get<SettingModel>(DocumentType.Setting, partner.profile.Id, cancellationToken);
+            user.matches.Items.Add(new PersonModel(partner.profile, partnerSettings?.BlindDate ?? false));
 
             partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
-            partner.matches.Items.Add(new PersonModel(user.profile));
+            var userSettings = await repo.Get<SettingModel>(DocumentType.Setting, user.profile.Id, cancellationToken);
+            partner.matches.Items.Add(new PersonModel(user.profile, userSettings?.BlindDate ?? false));
 
             await repo.Upsert(user.likes, cancellationToken);
             await repo.Upsert(user.matches, cancellationToken);
@@ -133,12 +135,22 @@ namespace MM.API.Functions
         {
             try
             {
+                var userId = req.GetUserId();
                 var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
                 if (profile == null) return null;
 
                 profile.Age = profile.BirthDate.GetAge();
                 profile.BirthDate = DateTime.MinValue;
+
+                var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+                var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, id, cancellationToken);
+
+                if ((userSettings?.BlindDate ?? false) || (partnerSettings?.BlindDate ?? false))
+                {
+                    profile.Gallery?.BlindDateMode();
+                }
+
                 //profile.ActivityStatus = ActivityStatus.Today;
 
                 //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
@@ -246,7 +258,8 @@ namespace MM.API.Functions
 
                     //add like to partner
                     var partnerLikes = await _repoGen.GetMyLikes(partner.UserId, cancellationToken);
-                    partnerLikes.Items.Add(new PersonModel(profile));
+                    var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
+                    partnerLikes.Items.Add(new PersonModel(profile, partnerSettings?.BlindDate ?? false));
 
                     //create interaction between users
                     await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);

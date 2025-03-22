@@ -1,4 +1,5 @@
-﻿using static MM.Shared.Core.Helper.ImageHelper;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile
 {
@@ -6,7 +7,9 @@ namespace MM.Shared.Models.Profile
     {
         public string? FaceId { get; set; }
         public string? BodyId { get; set; }
-        public string? ValidationId { get; set; }
+
+        [NotMapped]
+        public bool BlindDate { get; set; } = false;
 
         public string? GetPictureId(PhotoType type)
         {
@@ -14,7 +17,6 @@ namespace MM.Shared.Models.Profile
             {
                 PhotoType.Face => FaceId,
                 PhotoType.Body => BodyId,
-                PhotoType.Validation => ValidationId,
                 _ => throw new InvalidOperationException(nameof(PhotoType)),
             };
         }
@@ -29,10 +31,16 @@ namespace MM.Shared.Models.Profile
             {
                 BodyId = pictureId;
             }
-            else if (type == PhotoType.Validation)
-            {
-                ValidationId = pictureId;
-            }
+        }
+
+        /// <summary>
+        /// note: cannot update profile after calling this method
+        /// </summary>
+        public void BlindDateMode()
+        {
+            FaceId = null;
+            BodyId = null;
+            BlindDate = true;
         }
     }
 }
