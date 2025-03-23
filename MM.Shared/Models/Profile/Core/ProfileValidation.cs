@@ -10,7 +10,7 @@ namespace MM.Shared.Models.Profile.Core
             {
                 RuleFor(x => x.NickName)
                     .NotEmpty()
-                    .MaximumLength(20)
+                    .MaximumLength(18)
                     .WithName(Resources.ProfileBasicModel.NickName_Name);
 
                 RuleFor(x => x.Description)

@@ -15,6 +15,7 @@
 @inject InviteApi InviteApi
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
+@inject IJSRuntime JsRuntime
 
 <SeoHeader Title="Profile" Url="/profile"></SeoHeader>
 
@@ -87,13 +88,17 @@
     </Button>
 </HeaderComponent>
 <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true" PremiumFeature="true">
-    <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-        @foreach (var item in Suggestions)
-        {
-            <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
-            </Column>
-        }
-    </Row>
+    <div id="@SuggestionsSwiperId" class="swiper">
+        <div class="swiper-wrapper">
+            @foreach (var item in Suggestions)
+            {
+                <div class="swiper-slide">
+                </div>
+            }
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
 </RenderControl>
 
 <Row HorizontalGutter="8" VerticalGutter="8">
@@ -104,22 +109,26 @@
             </Button>
         </HeaderComponent>
         <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
-            <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-                @foreach (var item in MyLikes?.Items.Take(6) ?? [])
-                {
-                    <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
-                        <Div Style="position:relative;">
-                            <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
-                            <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
-                            </Figure>
-                        </Div>
-                        <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
-                            @WEB.Resources.Button.Open
-                        </Button>
-                    </Column>
-                }
-            </Row>
+            <div id="@LikesSwiperId" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in MyLikes?.Items ?? [])
+                    {
+                        <div class="swiper-slide">
+                            <Div Style="position:relative;">
+                                <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
+                                <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
+                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
+                                </Figure>
+                                <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
+                                    @WEB.Resources.Button.Open
+                                </Button>
+                            </Div>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </RenderControl>
     </Column>
     <Column ColumnSize="ColumnSize.IsFull.OnMobile.IsHalf.OnDesktop">
@@ -133,31 +142,35 @@
             }
         </HeaderComponent>
         <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="((MyMatchesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
-            <Row HorizontalGutter="4" VerticalGutter="4" Margin="Margin.Is2.FromBottom">
-                @foreach (var item in MyMatches?.Items.Take(6) ?? [])
-                {
-                    <Column ColumnSize="ColumnSize.Is2.OnFullHD.Is3">
-                        <Div Style="position:relative;">
-                            <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
-                            <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
-                            </Figure>
-                        </Div>
-                        @if (item.Fake)
-                        {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">
-                                @WEB.Resources.Button.Open
-                            </Button>
-                        }
-                        else
-                        {
-                            <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
-                                @WEB.Resources.Button.Open
-                            </Button>
-                        }
-                    </Column>
-                }
-            </Row>
+            <div id="@MatchesSwiperId" class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in MyMatches?.Items ?? [])
+                    {
+                        <div class="swiper-slide">
+                            <Div Style="position:relative;">
+                                <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
+                                <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
+                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
+                                </Figure>
+                                @if (item.Fake)
+                                {
+                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">
+                                        @WEB.Resources.Button.Open
+                                    </Button>
+                                }
+                                else
+                                {
+                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
+                                        @WEB.Resources.Button.Open
+                                    </Button>
+                                }
+                            </Div>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </RenderControl>
     </Column>
 </Row>
@@ -193,10 +206,22 @@
     private RenderControlCore<MyMatchesModel?>? CoreMatches { get; set; } = new();
 
     private bool IsPublic { get; set; }
+    private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
+    private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
+    private readonly string MatchesSwiperId = $"swiper-{Guid.NewGuid()}";
 
     protected override void OnInitialized()
     {
         ProfileApi.DataChanged += (ProfileModel? model) => { profile = model; StateHasChanged(); };
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JsRuntime.InvokeVoidAsync("initSwiper", SuggestionsSwiperId);
+        await JsRuntime.InvokeVoidAsync("initSwiper", LikesSwiperId);
+        await JsRuntime.InvokeVoidAsync("initSwiper", MatchesSwiperId);
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     protected override async Task LoadDataRender()
@@ -342,7 +367,7 @@
                 .RuleFor(x => x.Relocation, f => f.PickRandom<MM.Shared.Enums.Relocation>())
                 .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<MM.Shared.Enums.IdealPlaceToLive>())
 
-                .GenerateLazy(6).ToHashSet();
+                .GenerateLazy(4).ToHashSet();
 
             MyMatches.Items = fakeProfiles.Select(s =>
                 new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();

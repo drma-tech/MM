@@ -1,12 +1,10 @@
 ﻿window.initSwiper = (id) => {
     let el = document.getElementById(id);
     if (!el) return;
-    let posterSize = 100;
+    let posterSize = 150;
     let margin = 4;
-    //let container = el.clientWidth;
 
     var swiper = new Swiper(el, {
-        /*slidesPerView: Math.floor((container + margin) / posterSize),*/
         slidesPerView: 'auto',
         spaceBetween: 4,
         breakpointsBase: 'container',
@@ -35,5 +33,23 @@
             [1600 - margin]: { slidesPerView: Math.floor(1600 / posterSize) },
             [2000 - margin]: { slidesPerView: Math.floor(2000 / posterSize) },
         },
+    });
+};
+
+window.initCalendar = (id) => {
+    let el = document.getElementById(id);
+    if (!el) return;
+
+    var swiper = new Swiper(el, {
+        navigation:
+        {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination:
+        {
+            el: ".swiper-pagination",
+            clickable: true,
+        }
     });
 };

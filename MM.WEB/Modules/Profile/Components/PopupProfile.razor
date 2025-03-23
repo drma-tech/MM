@@ -8,6 +8,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject InteractionApi InteractionApi
+@inject IJSRuntime JsRuntime
 
 <Modal @ref="modal">
     <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
@@ -28,14 +29,19 @@
                                 <Badge Color="Color.Dark" Style="position: absolute; top: 10px; right: 10px; z-index: 2;">
                                     <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Camera"></Blazorise.Icon> @imageDataUriGallery.Count()
                                 </Badge>
-                                <Carousel @bind-SelectedSlide="selectedImage" Autoplay="false" ShowControls="imageDataUriGallery.Count() > 1" ShowIndicators="imageDataUriGallery.Count() > 1">
-                                    @foreach (var item in imageDataUriGallery)
-                                    {
-                                        <CarouselSlide @key="@item" Name="@item" Style="text-align: center; background-color: black;">
-                                            <Image Source="@item" Style="max-height: 450px !important; width: 100%" />
-                                        </CarouselSlide>
-                                    }
-                                </Carousel>
+                                <div id="@GallerySwiperId" class="swiper">
+                                    <div class="swiper-wrapper">
+                                        @foreach (var item in imageDataUriGallery)
+                                        {
+                                            <div class="swiper-slide">
+                                                <Image Source="@item" Style="max-height: 450px !important; width: 100%" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
                             </CardBody>
                             <CardBody>
                                 <Badge Color="Color.Secondary">
@@ -175,10 +181,17 @@
     private InteractionModel? interaction;
     public RenderControlCore<InteractionModel?>? CoreEvent { get; set; } = new();
 
-    string? selectedImage;
+    private readonly string GallerySwiperId = $"swiper-{Guid.NewGuid()}";
     string[] imageDataUriGallery = [];
 
     private ProfileReport? report;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JsRuntime.InvokeVoidAsync("initCalendar", GallerySwiperId);
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
 
     protected override async Task LoadDataRender()
     {
@@ -219,8 +232,6 @@
                     imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
 
                 imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
-
-                selectedImage = imageDataUriGallery[0];
 
                 filter = await FilterApi.Get(null);
 
