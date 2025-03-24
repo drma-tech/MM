@@ -1,8 +1,8 @@
 {
   "id": "modern-matchmaker",
-  "name": "Modern Matchmaker",
+  "name": "Modern Matchmaker: Find your life partner",
   "short_name": "Modern Matchmaker",
-  "description": "Your digital matchmaker",
+  "description": "The future of relationships. Our exclusive compatibility system finds someone who aligns with you in every way. Stop searching - let us find your life partner.",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
   "start_url": "/",
