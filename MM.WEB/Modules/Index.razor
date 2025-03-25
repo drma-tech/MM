@@ -7,89 +7,90 @@
 @inject IJSRuntime JsRuntime
 @inject DashboardApi DashboardApi
 
-<Row Gutter="(8,8)">
-    <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-        <Card>
-            <CardBody>
-                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                    <Blazorise.Icon Name="@FontAwesomeIcons.Earth" IconSize="IconSize.Large"></Blazorise.Icon>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                        @WEB.Resources.GlobalTranslations.Countries
-                    </Span>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                        @(SumUsers?.Countries ?? 0)
-                    </Span>
-                </Div>
-            </CardBody>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-        <Card>
-            <CardBody>
-                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                    <Blazorise.Icon Name="@FontAwesomeIcons.City" IconSize="IconSize.Large"></Blazorise.Icon>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                        @WEB.Resources.GlobalTranslations.Cities
-                    </Span>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                        @(SumUsers?.Cities ?? 0)
-                    </Span>
-                </Div>
-            </CardBody>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-        <Card>
-            <CardBody>
-                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                    <Blazorise.Icon Name="@FontAwesomeIcons.Users" IconSize="IconSize.Large"></Blazorise.Icon>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                        @WEB.Resources.GlobalTranslations.Users
-                    </Span>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                        @(SumUsers?.Users ?? 0)
-                    </Span>
-                </Div>
-            </CardBody>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-        <Card>
-            <CardBody>
-                <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                     Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                    <Blazorise.Icon Name="@FontAwesomeIcons.Ring" IconSize="IconSize.Large"></Blazorise.Icon>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                        @WEB.Resources.GlobalTranslations.Couples
-                    </Span>
-                </Div>
-                <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                    <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                        @(SumUsers?.Couples ?? 0)
-                    </Span>
-                </Div>
-            </CardBody>
-        </Card>
-    </Column>
-</Row>
-
+<Container Fluid="true">
+    <Row Gutter="(8,8)">
+        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
+            <Card>
+                <CardBody>
+                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                        <Blazorise.Icon Name="@FontAwesomeIcons.Earth" IconSize="IconSize.Large"></Blazorise.Icon>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                            @WEB.Resources.GlobalTranslations.Countries
+                        </Span>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                            @(SumUsers?.Countries ?? 0)
+                        </Span>
+                    </Div>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
+            <Card>
+                <CardBody>
+                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                        <Blazorise.Icon Name="@FontAwesomeIcons.City" IconSize="IconSize.Large"></Blazorise.Icon>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                            @WEB.Resources.GlobalTranslations.Cities
+                        </Span>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                            @(SumUsers?.Cities ?? 0)
+                        </Span>
+                    </Div>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
+            <Card>
+                <CardBody>
+                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                        <Blazorise.Icon Name="@FontAwesomeIcons.Users" IconSize="IconSize.Large"></Blazorise.Icon>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                            @WEB.Resources.GlobalTranslations.Users
+                        </Span>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                            @(SumUsers?.Users ?? 0)
+                        </Span>
+                    </Div>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
+            <Card>
+                <CardBody>
+                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
+                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
+                        <Blazorise.Icon Name="@FontAwesomeIcons.Ring" IconSize="IconSize.Large"></Blazorise.Icon>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
+                            @WEB.Resources.GlobalTranslations.Couples
+                        </Span>
+                    </Div>
+                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
+                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
+                            @(SumUsers?.Couples ?? 0)
+                        </Span>
+                    </Div>
+                </CardBody>
+            </Card>
+        </Column>
+    </Row>
+</Container>
 
 @code {
     [Parameter][SupplyParameterFromQuery(Name = "language")] public string? language { get; set; }
