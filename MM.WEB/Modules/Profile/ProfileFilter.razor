@@ -293,8 +293,11 @@
     <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
         <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
     </Button>
-    <Button Color="Color.Success" Clicked="PopulateFields" Margin="Margin.Is2.OnY">
+    <Button Color="Color.Success" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="PopulateFields">
         <Blazorise.Icon Name="FontAwesomeIcons.Magic"></Blazorise.Icon> @WEB.Resources.Button.Fill
+    </Button>
+    <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
     </Button>
     <Button Color="Color.Primary" Float="Float.End" Clicked="(()=>help?.ShowModal())" Margin="Margin.Is2.OnY">
         <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
@@ -405,5 +408,10 @@
         {
             ex.ProcessException(Toast, Logger);
         }
+    }
+
+    private void GoProfile()
+    {
+        Navigation.NavigateTo("profile");
     }
 }

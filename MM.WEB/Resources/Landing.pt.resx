@@ -117,121 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Active" xml:space="preserve">
-    <value>Activo</value>
+  <data name="Authenticity" xml:space="preserve">
+    <value>Autenticidade</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="AuthenticityDesc" xml:space="preserve">
+    <value>Antes de qualquer interação, a verificação de identidade e foto é obrigatória. Os usuários podem fornecer feedback privado ou público a qualquer momento.</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Atrás</value>
+  <data name="CompatibilityReport" xml:space="preserve">
+    <value>Relatório de compatibilidade</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="CompatibilityReportDesc" xml:space="preserve">
+    <value>Para cada match (ou casal), temos uma análise completa de cada uma das nossas categorias, com dicas, sugestões de melhorias e como lidar melhor com seu parceiro.</value>
   </data>
-  <data name="Chat" xml:space="preserve">
-    <value>Charlar</value>
+  <data name="CompatibilitySystem" xml:space="preserve">
+    <value>Sistema de compatibilidade</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Cerrar</value>
+  <data name="CompatibilitySystemDesc" xml:space="preserve">
+    <value>Desenvolvemos o sistema de compatibilidade mais avançado e cientificamente respaldado para criar relacionamentos significativos e duradouros.</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmar</value>
+  <data name="CoupleCompatibility" xml:space="preserve">
+    <value>Compatibilidade de casal</value>
   </data>
-  <data name="Dating" xml:space="preserve">
-    <value>Cita</value>
+  <data name="CoupleCompatibilityDesc" xml:space="preserve">
+    <value>Os casais podem testar sua compatibilidade e receber um relatório detalhado com insights personalizados e áreas de crescimento.</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Borrar</value>
+  <data name="Couples" xml:space="preserve">
+    <value>Matchs bem-sucedidos</value>
   </data>
-  <data name="Dislike" xml:space="preserve">
-    <value>Aversión</value>
+  <data name="MMCoin" xml:space="preserve">
+    <value>Moeda MM</value>
   </data>
-  <data name="Feedback" xml:space="preserve">
-    <value>Feedback</value>
+  <data name="MMCoinDesc" xml:space="preserve">
+    <value>Nossa moeda virtual. Ela será usada para todas as operações premium, incluindo o recebimento de sugestões de matches. Novos recursos serão desenvolvidos e anunciados em breve.</value>
   </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
+  <data name="OurFeatures" xml:space="preserve">
+    <value>Nossas Funcionalidades</value>
   </data>
-  <data name="Filters" xml:space="preserve">
-    <value>Filtros</value>
+  <data name="OurNumbers" xml:space="preserve">
+    <value>Nossos Números</value>
   </data>
-  <data name="Gallery" xml:space="preserve">
-    <value>Galería</value>
+  <data name="OurNumbersMsg1" xml:space="preserve">
+    <value>Juntos estamos construindo algo incrível!</value>
   </data>
-  <data name="Generate" xml:space="preserve">
-    <value>Generar</value>
+  <data name="OurNumbersMsg2" xml:space="preserve">
+    <value>Nossos números estão crescendo a cada dia. Junte-se à nossa comunidade e encontre seu par perfeito.</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ayuda</value>
+  <data name="OurRoadmap" xml:space="preserve">
+    <value>Nosso Roteiro</value>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>Inactivo</value>
+  <data name="OurRoadmapMsg1" xml:space="preserve">
+    <value>Novos recursos desbloqueados conforme nossa comunidade se expande!</value>
   </data>
-  <data name="InvitePartner" xml:space="preserve">
-    <value>Invitar socio</value>
+  <data name="OurRoadmapMsg2" xml:space="preserve">
+    <value>Estamos em constante evolução! Os recursos podem ser lançados mais cedo para países específicos (quando atingirem 10 mil usuários) ou se o desenvolvimento for concluído antes do previsto. Agradecemos seu feedback — suas sugestões podem ajudar a moldar o futuro da nossa plataforma!</value>
   </data>
-  <data name="Like" xml:space="preserve">
-    <value>Gustar</value>
+  <data name="Phase1Opt1" xml:space="preserve">
+    <value>Crie seu perfil (somente modo privado)</value>
   </data>
-  <data name="LoadMore" xml:space="preserve">
-    <value>Carga más</value>
+  <data name="Phase1Opt2" xml:space="preserve">
+    <value>Explore nosso sistema de compatibilidade</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Acceso</value>
+  <data name="Phase1Opt3" xml:space="preserve">
+    <value>Casais: Obtenha uma análise detalhada do relacionamento</value>
   </data>
-  <data name="LoginHero" xml:space="preserve">
-    <value>Encuentra tu pareja ideal</value>
+  <data name="Phase1Title" xml:space="preserve">
+    <value>Fase 1 (0-100k usuários)</value>
   </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Cerrar sesión</value>
+  <data name="Phase2Opt1" xml:space="preserve">
+    <value>Perfis públicos são liberados</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Nuevo</value>
+  <data name="Phase2Opt2" xml:space="preserve">
+    <value>Sistema básico de matchmaking introduzido</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>De acuerdo</value>
+  <data name="Phase2Opt3" xml:space="preserve">
+    <value>Moeda MM: US$ 1 por unidade</value>
   </data>
-  <data name="Open" xml:space="preserve">
-    <value>Abierto</value>
+  <data name="Phase2Title" xml:space="preserve">
+    <value>Fase 2 (100k-200k usuários)</value>
+  </data>
+  <data name="Phase3Opt1" xml:space="preserve">
+    <value>Novos recursos a serem anunciados</value>
+  </data>
+  <data name="Phase3Opt2" xml:space="preserve">
+    <value>Moeda MM: US$ 2 por unidade</value>
+  </data>
+  <data name="Phase3Title" xml:space="preserve">
+    <value>Fase 3 (200k-300k usuários)</value>
+  </data>
+  <data name="Phase4Opt1" xml:space="preserve">
+    <value>Novos recursos a serem anunciados</value>
+  </data>
+  <data name="Phase4Opt2" xml:space="preserve">
+    <value>Moeda MM: US$ 3 por unidade</value>
+  </data>
+  <data name="Phase4Title" xml:space="preserve">
+    <value>Fase 4 (300k-400k usuários)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Privacidad</value>
+    <value>Privacidade</value>
+  </data>
+  <data name="PrivacyDesc" xml:space="preserve">
+    <value>Nós nos importamos com a privacidade de todos. Temos vários mecanismos e configurações em vigor para proteger sua privacidade da forma que melhor se adequa a você.</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="ReadMore" xml:space="preserve">
-    <value>Leer más</value>
+  <data name="ProfileDesc" xml:space="preserve">
+    <value>Desenvolvemos um perfil completo e cientificamente relevante para detectar verdadeiras compatibilidades dentro de um relacionamento estável e de longo prazo.</value>
   </data>
-  <data name="Relationship" xml:space="preserve">
-    <value>Relación</value>
+  <data name="Security" xml:space="preserve">
+    <value>Segurança</value>
   </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Eliminar</value>
+  <data name="SecurityDesc" xml:space="preserve">
+    <value>Não armazenamos ou trocamos informações com terceiros (ou de qualquer outra forma) que possam comprometer sua segurança ou seus dados.</value>
   </data>
-  <data name="Report" xml:space="preserve">
-    <value>Informar</value>
+  <data name="Tracking" xml:space="preserve">
+    <value>Monitorando</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Ahorrar</value>
+  <data name="TrackingDesc" xml:space="preserve">
+    <value>Nós apoiamos você em cada etapa da sua jornada de relacionamento — incluindo os primeiros encontros — garantindo um caminho seguro e significativo para um relacionamento duradouro.</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Ajustes</value>
-  </data>
-  <data name="ShowPendingItems" xml:space="preserve">
-    <value>Mostrar elementos pendientes</value>
-  </data>
-  <data name="Simulate" xml:space="preserve">
-    <value>Simular</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
-  <data name="Validations" xml:space="preserve">
-    <value>Validaciones</value>
+  <data name="Users" xml:space="preserve">
+    <value>USUÁRIOS NA COMUNIDADE</value>
   </data>
 </root>

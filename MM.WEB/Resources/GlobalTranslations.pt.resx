@@ -315,6 +315,9 @@
   <data name="Public" xml:space="preserve">
     <value>Público</value>
   </data>
+  <data name="PublicModeNotAvailable" xml:space="preserve">
+    <value>Nesta primeira fase, o modo público ainda não está disponível. Fique ligado para mais novidades.</value>
+  </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>ATUALIZAR AGORA</value>
   </data>

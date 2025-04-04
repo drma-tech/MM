@@ -36,7 +36,7 @@ namespace MM.API.Functions
                     doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, "dashboard"), cancellationToken);
                 }
 
-                return await req.CreateResponse(doc, ttlCache.half_day, cancellationToken);
+                return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
             }
             catch (TaskCanceledException ex)
             {

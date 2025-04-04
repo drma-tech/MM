@@ -41,6 +41,8 @@ window.initCalendar = (id) => {
     if (!el) return;
 
     var swiper = new Swiper(el, {
+        centeredSlides: true,
+        lazy: true,
         navigation:
         {
             nextEl: ".swiper-button-next",

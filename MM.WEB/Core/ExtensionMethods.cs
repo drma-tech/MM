@@ -50,16 +50,6 @@ namespace MM.WEB.Core
             return Combine().GetAwaiter();
         }
 
-        public static string HideExternalLink(this string? link)
-        {
-            return $"/redirect?link={link.SimpleEncrypt()}";
-        }
-
-        public static string ShowExternalLink(this string? link)
-        {
-            return link.SimpleDecrypt();
-        }
-
         public static HashSet<T> ToHashSet<T>(this T? item) where T : struct
         {
             if (item == null) return [];

@@ -61,7 +61,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of relationships. Our exclusive compatibility system finds someone who aligns with you in every way. Stop searching - let us find your life partner..
+        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our AI-powered system finds your perfect match with precision. Stop searching - let technology do the work..
         /// </summary>
         public static string Description {
             get {

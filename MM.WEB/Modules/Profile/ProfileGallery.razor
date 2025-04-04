@@ -65,8 +65,8 @@
     </Column>
 </Row>
 
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
-    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> Back
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
+    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
 </Button>
 
 <Div Float="Float.End" Margin="Margin.Is2.OnY">
@@ -132,7 +132,7 @@
         }
     }
 
-    private void SaveHandle()
+    private void GoProfile()
     {
         Navigation.NavigateTo("profile");
     }

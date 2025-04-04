@@ -22,6 +22,9 @@
     <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
         <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
     </Button>
+    <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+    </Button>
 </RenderControl>
 
 @code {
@@ -87,5 +90,10 @@
         {
             ex.ProcessException(Toast, Logger);
         }
+    }
+
+    private void GoProfile()
+    {
+        Navigation.NavigateTo("profile");
     }
 }

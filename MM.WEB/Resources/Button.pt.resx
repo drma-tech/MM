@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Adicionar</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -153,6 +156,9 @@
   <data name="Filters" xml:space="preserve">
     <value>Filtros</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Galeria</value>
+  </data>
   <data name="Generate" xml:space="preserve">
     <value>Gerar</value>
   </data>
@@ -174,6 +180,9 @@
   <data name="Login" xml:space="preserve">
     <value>Conecte-se</value>
   </data>
+  <data name="LoginHero" xml:space="preserve">
+    <value>Encontre seu par ideal</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Sair</value>
   </data>
@@ -185,9 +194,6 @@
   </data>
   <data name="Open" xml:space="preserve">
     <value>Abrir</value>
-  </data>
-  <data name="Gallery" xml:space="preserve">
-    <value>Galeria</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidade</value>

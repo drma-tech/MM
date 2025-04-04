@@ -365,6 +365,9 @@
             <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> @WEB.Resources.Button.ShowPendingItems
         </Button>
     }
+    <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+    </Button>
     <Div Float="Float.End" Margin="Margin.Is2.OnY">
         <Button Color="Color.Primary" Clicked="help!.ShowModal">
             <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
@@ -466,5 +469,10 @@
         }
 
         return result.IsValid;
+    }
+
+    private void GoProfile()
+    {
+        Navigation.NavigateTo("profile");
     }
 }

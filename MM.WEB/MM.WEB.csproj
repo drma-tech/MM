@@ -83,6 +83,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>GlobalTranslations.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Resources\Landing.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Landing.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Resources\Menu.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -126,6 +131,10 @@
 		<EmbeddedResource Update="Resources\GlobalTranslations.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>GlobalTranslations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Landing.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Landing.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Resources\Menu.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

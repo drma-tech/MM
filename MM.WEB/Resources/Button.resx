@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -153,6 +156,9 @@
   <data name="Filters" xml:space="preserve">
     <value>Filters</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
   <data name="Generate" xml:space="preserve">
     <value>Generate</value>
   </data>
@@ -174,6 +180,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LoginHero" xml:space="preserve">
+    <value>Find your ideal match</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
@@ -185,9 +194,6 @@
   </data>
   <data name="Open" xml:space="preserve">
     <value>Open</value>
-  </data>
-  <data name="Gallery" xml:space="preserve">
-    <value>Gallery</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>

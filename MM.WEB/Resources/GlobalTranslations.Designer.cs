@@ -655,6 +655,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In this first phase, public mode is not yet available. Stay tuned for more news..
+        /// </summary>
+        public static string PublicModeNotAvailable {
+            get {
+                return ResourceManager.GetString("PublicModeNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPDATE NOW.
         /// </summary>
         public static string PWAUpdaterButton {

@@ -51,7 +51,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddAuthorizationCore();
 
     collection.AddScoped<PrincipalApi>();
-    collection.AddScoped<GravatarApi>();
     collection.AddScoped<LoginApi>();
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<FilterApi>();
@@ -112,5 +111,5 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
     return HttpPolicyExtensions
         .HandleTransientHttpError() // 408,5xx
-        .WaitAndRetryAsync([TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3)]);
+        .WaitAndRetryAsync([TimeSpan.FromSeconds(2)]);
 }
