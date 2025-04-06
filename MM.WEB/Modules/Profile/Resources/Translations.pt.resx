@@ -132,12 +132,6 @@
   <data name="DeleteAccount" xml:space="preserve">
     <value>Deletar conta</value>
   </data>
-  <data name="DisplayName" xml:space="preserve">
-    <value>Nome de exibição</value>
-  </data>
-  <data name="EditProfileGravatar" xml:space="preserve">
-    <value>Editar perfil no Gravatar</value>
-  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -147,26 +141,8 @@
   <data name="IdentityProvider" xml:space="preserve">
     <value>Provedor de identidade</value>
   </data>
-  <data name="MyMovieWatching" xml:space="preserve">
-    <value>Assistindo - Filmes ({0} itens)</value>
-  </data>
-  <data name="MyMovieWishlist" xml:space="preserve">
-    <value>Minha Lista - Filmes ({0} itens)</value>
-  </data>
   <data name="MyProfile" xml:space="preserve">
     <value>Meu perfil</value>
-  </data>
-  <data name="MyProfileGravatar" xml:space="preserve">
-    <value>Meu Perfil (Gravatar)</value>
-  </data>
-  <data name="MyProviders" xml:space="preserve">
-    <value>Provedores favoritos ({0} itens)</value>
-  </data>
-  <data name="MyShowWatching" xml:space="preserve">
-    <value>Assistindo - Séries ({0} itens)</value>
-  </data>
-  <data name="MyShowWishlist" xml:space="preserve">
-    <value>Minha Lista - Séries ({0} itens)</value>
   </data>
   <data name="MySuggestions" xml:space="preserve">
     <value>Minhas Sugestões</value>
@@ -177,16 +153,10 @@
   <data name="OurSuggestions2" xml:space="preserve">
     <value>Nossas sugestões são baseadas em seus provedores favoritos e em suas preferências de gênero (excluindo títulos que já estão em suas listas pessoais).</value>
   </data>
-  <data name="PhotoLast" xml:space="preserve">
-    <value>Foto (última)</value>
-  </data>
   <data name="RegionsApplied" xml:space="preserve">
     <value>As regiões foram aplicadas automaticamente aos seus fornecedores favoritos. Se estiverem errados, remova e adicione -os novamente.</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Assinatura</value>
-  </data>
-  <data name="UpdateMySuggestions" xml:space="preserve">
-    <value>Suas preferências entrarão em vigor na próxima atualização desta lista</value>
   </data>
 </root>

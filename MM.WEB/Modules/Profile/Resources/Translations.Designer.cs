@@ -106,24 +106,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Name.
-        /// </summary>
-        public static string DisplayName {
-            get {
-                return ResourceManager.GetString("DisplayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit profile in Gravatar.
-        /// </summary>
-        public static string EditProfileGravatar {
-            get {
-                return ResourceManager.GetString("EditProfileGravatar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -151,65 +133,11 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Watching - Movies ({0} items).
-        /// </summary>
-        public static string MyMovieWatching {
-            get {
-                return ResourceManager.GetString("MyMovieWatching", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wishlist - Movies ({0} items).
-        /// </summary>
-        public static string MyMovieWishlist {
-            get {
-                return ResourceManager.GetString("MyMovieWishlist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Profile.
         /// </summary>
         public static string MyProfile {
             get {
                 return ResourceManager.GetString("MyProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Profile (Gravatar).
-        /// </summary>
-        public static string MyProfileGravatar {
-            get {
-                return ResourceManager.GetString("MyProfileGravatar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Favorite Providers ({0} items).
-        /// </summary>
-        public static string MyProviders {
-            get {
-                return ResourceManager.GetString("MyProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Watching - Shows ({0} items).
-        /// </summary>
-        public static string MyShowWatching {
-            get {
-                return ResourceManager.GetString("MyShowWatching", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wishlist - Shows ({0} items).
-        /// </summary>
-        public static string MyShowWishlist {
-            get {
-                return ResourceManager.GetString("MyShowWishlist", resourceCulture);
             }
         }
         
@@ -241,15 +169,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Photo (Last).
-        /// </summary>
-        public static string PhotoLast {
-            get {
-                return ResourceManager.GetString("PhotoLast", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Regions have been automatically applied for your favorite providers. If they are wrong, please remove and add them again..
         /// </summary>
         public static string RegionsApplied {
@@ -264,15 +183,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         public static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your preferences will take effect in the next update of this list.
-        /// </summary>
-        public static string UpdateMySuggestions {
-            get {
-                return ResourceManager.GetString("UpdateMySuggestions", resourceCulture);
             }
         }
     }

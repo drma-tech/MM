@@ -132,12 +132,6 @@
   <data name="DeleteAccount" xml:space="preserve">
     <value>Borrar cuenta</value>
   </data>
-  <data name="DisplayName" xml:space="preserve">
-    <value>Nombre para mostrar</value>
-  </data>
-  <data name="EditProfileGravatar" xml:space="preserve">
-    <value>Editar perfil en Gravatar</value>
-  </data>
   <data name="Email" xml:space="preserve">
     <value>Correo electrónico</value>
   </data>
@@ -147,26 +141,8 @@
   <data name="IdentityProvider" xml:space="preserve">
     <value>Proveedor de identidad</value>
   </data>
-  <data name="MyMovieWatching" xml:space="preserve">
-    <value>Viendo - Películas ({0} artículos)</value>
-  </data>
-  <data name="MyMovieWishlist" xml:space="preserve">
-    <value>Mi lista - Películas ({0} artículos)</value>
-  </data>
   <data name="MyProfile" xml:space="preserve">
     <value>Mi perfil</value>
-  </data>
-  <data name="MyProfileGravatar" xml:space="preserve">
-    <value>Mi perfil (Gravatar)</value>
-  </data>
-  <data name="MyProviders" xml:space="preserve">
-    <value>Proveedores favoritos ({0} artículos)</value>
-  </data>
-  <data name="MyShowWatching" xml:space="preserve">
-    <value>Viendo - Serie ({0} artículos)</value>
-  </data>
-  <data name="MyShowWishlist" xml:space="preserve">
-    <value>Mi lista - Serie ({0} artículos)</value>
   </data>
   <data name="MySuggestions" xml:space="preserve">
     <value>Mis sugerencias</value>
@@ -177,16 +153,10 @@
   <data name="OurSuggestions2" xml:space="preserve">
     <value>Nuestras sugerencias se basan en sus proveedores favoritos y sus preferencias de género (excluidos los títulos que ya están en sus listas personales).</value>
   </data>
-  <data name="PhotoLast" xml:space="preserve">
-    <value>Foto (Última)</value>
-  </data>
   <data name="RegionsApplied" xml:space="preserve">
     <value>Las regiones se han aplicado automáticamente para sus proveedores favoritos. Si están equivocados, retírelos y agréguelos nuevamente.</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Suscripción</value>
-  </data>
-  <data name="UpdateMySuggestions" xml:space="preserve">
-    <value>Sus preferencias entrarán en vigor en la próxima actualización de esta lista</value>
   </data>
 </root>

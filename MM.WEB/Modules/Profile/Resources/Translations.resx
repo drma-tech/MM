@@ -132,12 +132,6 @@
   <data name="DeleteAccount" xml:space="preserve">
     <value>Delete Account</value>
   </data>
-  <data name="DisplayName" xml:space="preserve">
-    <value>Display Name</value>
-  </data>
-  <data name="EditProfileGravatar" xml:space="preserve">
-    <value>Edit profile in Gravatar</value>
-  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -147,26 +141,8 @@
   <data name="IdentityProvider" xml:space="preserve">
     <value>Identity Provider</value>
   </data>
-  <data name="MyMovieWatching" xml:space="preserve">
-    <value>Watching - Movies ({0} items)</value>
-  </data>
-  <data name="MyMovieWishlist" xml:space="preserve">
-    <value>Wishlist - Movies ({0} items)</value>
-  </data>
   <data name="MyProfile" xml:space="preserve">
     <value>My Profile</value>
-  </data>
-  <data name="MyProfileGravatar" xml:space="preserve">
-    <value>My Profile (Gravatar)</value>
-  </data>
-  <data name="MyProviders" xml:space="preserve">
-    <value>Favorite Providers ({0} items)</value>
-  </data>
-  <data name="MyShowWatching" xml:space="preserve">
-    <value>Watching - Shows ({0} items)</value>
-  </data>
-  <data name="MyShowWishlist" xml:space="preserve">
-    <value>Wishlist - Shows ({0} items)</value>
   </data>
   <data name="MySuggestions" xml:space="preserve">
     <value>My Suggestions</value>
@@ -177,16 +153,10 @@
   <data name="OurSuggestions2" xml:space="preserve">
     <value>Our suggestions are based on your favorite providers and your genre preferences (excluding titles that are already on your personal lists).</value>
   </data>
-  <data name="PhotoLast" xml:space="preserve">
-    <value>Photo (Last)</value>
-  </data>
   <data name="RegionsApplied" xml:space="preserve">
     <value>Regions have been automatically applied for your favorite providers. If they are wrong, please remove and add them again.</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Subscription</value>
-  </data>
-  <data name="UpdateMySuggestions" xml:space="preserve">
-    <value>Your preferences will take effect in the next update of this list</value>
   </data>
 </root>

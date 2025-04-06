@@ -3,11 +3,11 @@
     public enum DocumentType
     {
         Principal = 1,
-        Ticket = 2,
-        TicketVote = 3,
-        Announcement = 4,
+        //Ticket = 2,
+        //TicketVote = 3,
+        //Announcement = 4,
         Login = 5,
-        Update = 6,
+        //Update = 6,
         Filter = 7,
         Setting = 8,
         Suggestions = 9,

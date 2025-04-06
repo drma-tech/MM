@@ -11,7 +11,6 @@ using MM.WEB.Api;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Subscription.Core;
-using MM.WEB.Modules.Support.Core;
 using Polly;
 using Polly.Extensions.Http;
 using System.Globalization;
@@ -55,8 +54,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress)
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<FilterApi>();
     collection.AddScoped<SettingApi>();
-    collection.AddScoped<TicketApi>();
-    collection.AddScoped<UpdateApi>();
     collection.AddScoped<MapApi>();
     collection.AddScoped<StorageApi>();
     collection.AddScoped<MyLikesApi>();
