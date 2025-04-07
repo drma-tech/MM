@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>Modern Matchmaker</value>
+  </data>
   <data name="Description" xml:space="preserve">
-    <value>O futuro de encontrar o amor está aqui. Mais inteligente, mais rápido e mais acessível do que o matchmaking tradicional. Nosso sistema alimentado por IA encontra seu par perfeito com precisão. Pare de procurar - deixe a tecnologia fazer o trabalho.</value>
+    <value>O futuro de encontrar o amor está aqui. Mais inteligente, mais rápido e mais acessível do que o matchmaking tradicional. Nosso avançado sistema de compatibilidade encontra seu par perfeito com precisão. Pare de procurar - deixe a tecnologia fazer o trabalho.</value>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>

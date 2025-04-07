@@ -8,7 +8,7 @@
 <Bar Mode="BarMode.Horizontal" Background="Background.Secondary" ThemeContrast="ThemeContrast.Dark" Padding="Padding.Is2">
     <Container Fluid="true" Padding="Padding.Is0.OnX">
         <BarBrand Display="Display.None.Block.OnDesktop" Padding="Padding.Is0">
-            Modern Matchmaker
+            @Resources.SeoTranslations.AppName
         </BarBrand>
         <BarMenu Style="flex-basis: unset !important;" Class="d-max-768-block d-min-768-contents">
             <BarStart Style="flex-flow: row;" Display="Display.None.Flex.Row.OnWidescreen">
@@ -24,10 +24,10 @@
                 </BarItem>
             </BarStart>
             <Buttons Role="ButtonsRole.Toolbar" Float="Float.End" Size="Size.Small">
-                <Button Color="Color.Warning" Clicked="OpenSubscription" Margin="Margin.Is2.FromEnd" Display="Display.Block.None.OnTablet">
+                <Button Color="Color.Warning" Clicked="OpenSubscription" Margin="Margin.Is2.FromEnd" Display="Display.Block.None.OnTablet" Disabled="true">
                     <Blazorise.Icon Name="FontAwesomeIcons.Gem"></Blazorise.Icon>
                 </Button>
-                <Button Color="Color.Warning" Clicked="OpenSubscription" Margin="Margin.Is2.FromEnd" Display="Display.None.Block.OnTablet">
+                <Button Color="Color.Warning" Clicked="OpenSubscription" Margin="Margin.Is2.FromEnd" Display="Display.None.Block.OnTablet" Disabled="true">
                     <Blazorise.Icon Name="FontAwesomeIcons.Gem"></Blazorise.Icon>
                     @Modules.Profile.Resources.Translations.Subscription
                 </Button>

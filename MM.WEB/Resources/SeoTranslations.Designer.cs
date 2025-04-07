@@ -61,7 +61,16 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our AI-powered system finds your perfect match with precision. Stop searching - let technology do the work..
+        ///   Looks up a localized string similar to Modern Matchmaker.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your perfect match with precision. Stop searching - let technology do the work..
         /// </summary>
         public static string Description {
             get {
