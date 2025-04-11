@@ -223,7 +223,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create your profile (private mode only).
+        ///   Looks up a localized string similar to Join our matchmaking pool.
         /// </summary>
         public static string Phase1Opt1 {
             get {
@@ -259,7 +259,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Public profiles are released.
+        ///   Looks up a localized string similar to Users can apply as matchmaking clients.
         /// </summary>
         public static string Phase2Opt1 {
             get {
@@ -268,7 +268,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic matchmaking system introduced.
+        ///   Looks up a localized string similar to All modules of our plataform released.
         /// </summary>
         public static string Phase2Opt2 {
             get {

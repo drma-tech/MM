@@ -169,10 +169,10 @@
     <value>¡Nuevas funciones desbloqueadas a medida que nuestra comunidad se expande!</value>
   </data>
   <data name="OurRoadmapMsg2" xml:space="preserve">
-    <value>¡Estamos en constante evolución! Es posible que las funciones se lancen antes en países específicos (una vez que alcancen los 10 000 usuarios) o si el desarrollo se completa antes de lo previsto. Agradecemos sus comentarios; sus sugerencias pueden ayudar a definir el futuro de nuestra plataforma.</value>
+    <value>¡Estamos en constante evolución! Es posible que las funciones se lancen antes en países específicos (una vez que alcancen los 10 000 usuarios) o si el desarrollo se completa antes de lo previsto. Agradecemos sus comentarios; sus sugerencias pueden ayudar a definir el futuro de nuestra plataforma!</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
-    <value>Crea tu perfil (solo modo privado)</value>
+    <value>Regístrate en nuestra base de datos de matchmaking</value>
   </data>
   <data name="Phase1Opt2" xml:space="preserve">
     <value>Explora nuestro sistema de compatibilidad</value>
@@ -184,10 +184,10 @@
     <value>Fase 1 (0-100k usuarios)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
-    <value>Se publican los perfiles públicos</value>
+    <value>Los usuarios pueden postularse como clientes de emparejamiento</value>
   </data>
   <data name="Phase2Opt2" xml:space="preserve">
-    <value>Se introduce el sistema básico de emparejamiento</value>
+    <value>Todos los módulos de nuestra plataforma liberados</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
     <value>Moneda MM: US$1 por unidad</value>

@@ -172,7 +172,7 @@
     <value>Estamos em constante evolução! Os recursos podem ser lançados mais cedo para países específicos (quando atingirem 10 mil usuários) ou se o desenvolvimento for concluído antes do previsto. Agradecemos seu feedback — suas sugestões podem ajudar a moldar o futuro da nossa plataforma!</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
-    <value>Crie seu perfil (somente modo privado)</value>
+    <value>Cadastre-se no nosso banco de perfis para matchmaking</value>
   </data>
   <data name="Phase1Opt2" xml:space="preserve">
     <value>Explore nosso sistema de compatibilidade</value>
@@ -184,10 +184,10 @@
     <value>Fase 1 (0-100k usuários)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
-    <value>Perfis públicos são liberados</value>
+    <value>Os usuários podem se candidatar como clientes de matchmaking</value>
   </data>
   <data name="Phase2Opt2" xml:space="preserve">
-    <value>Sistema básico de matchmaking introduzido</value>
+    <value>Todos os módulos da nossa plataforma lançados</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
     <value>Moeda MM: US$ 1 por unidade</value>

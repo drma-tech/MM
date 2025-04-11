@@ -172,7 +172,7 @@
     <value>We are constantly evolving! Features may be released earlier for specific countries (once they reach 10k users) or if development is completed ahead of schedule. We welcome your feedback—your suggestions can help shape the future of our platform!</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
-    <value>Create your profile (private mode only)</value>
+    <value>Join our matchmaking pool</value>
   </data>
   <data name="Phase1Opt2" xml:space="preserve">
     <value>Explore our compatibility system</value>
@@ -184,10 +184,10 @@
     <value>Phase 1 (0-100k users)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
-    <value>Public profiles are released</value>
+    <value>Users can apply as matchmaking clients</value>
   </data>
   <data name="Phase2Opt2" xml:space="preserve">
-    <value>Basic matchmaking system introduced</value>
+    <value>All modules of our plataform released</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
     <value>MM Coin: US$1 per unit</value>
