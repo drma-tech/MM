@@ -1,0 +1,58 @@
+﻿@page "/profile/validation"
+@using FluentValidation
+@using MM.Shared.Models.Profile
+@using MM.Shared.Models.Profile.Core
+@using MM.WEB.Api
+@using MM.WEB.Modules.Profile.Core
+
+@attribute [Authorize]
+@inherits PageCore<Validations>
+
+@inject ValidationApi ValidationApi
+@inject ProfileApi ProfileApi
+@inject StorageApi StorageApi
+
+<RenderControl Core="Core" Model="Validation" ExpressionEmpty="((ValidationModel? obj) => obj == null)" PrivateContent="true">
+    <Row>
+        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+            <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Images"></FieldActive>
+            <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.IdCard"
+                         Disabled="true" CustomButtonText="Only available in phase 2"></FieldActive>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+            <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Gem"
+                         Disabled="true" CustomButtonText="Only available in phase 3"></FieldActive>
+            <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.MoneyBill"
+                         Disabled="true" CustomButtonText="Only available in phase 3"></FieldActive>
+        </Column>
+    </Row>
+   
+    <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+    </Button>
+</RenderControl>
+
+@code {
+    private ValidationModel? Validation { get; set; }
+    private ValidationValidation ValidationValidator { get; set; } = new();
+    public RenderControlCore<ValidationModel?>? Core { get; set; } = new();
+
+    protected override async Task LoadDataRender()
+    {
+        Core?.LoadingStarted?.Invoke();
+
+        Validation = await ValidationApi.Get(null);
+
+        if (Validation == null)
+        {
+            Validation = new();
+        }
+
+        Core?.LoadingFinished?.Invoke(Validation);
+    }    
+
+    private void GoProfile()
+    {
+        Navigation.NavigateTo("profile");
+    }
+}

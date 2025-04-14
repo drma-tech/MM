@@ -13,7 +13,8 @@
         Suggestions = 9,
         Likes = 10,
         Matches = 11,
-        Interaction = 12
+        Interaction = 12,
+        Validation = 13,
     }
 
     public abstract class MainDocument : CosmosDocument

@@ -118,7 +118,9 @@ namespace MM.API.Functions
         {
             try
             {
-                var userId = req.GetUserId();
+                var id = req.GetQueryParameters()["offlineId"];
+
+                var userId = id ?? req.GetUserId();
 
                 var myPrincipal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
                 if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);

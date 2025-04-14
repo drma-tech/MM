@@ -135,6 +135,18 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="HeroButton" xml:space="preserve">
+    <value>Criar conta gratuita</value>
+  </data>
+  <data name="HeroNote" xml:space="preserve">
+    <value>Nota: Este não é um app de namoro. É um serviço digital de matchmaking focado em conexões reais.</value>
+  </data>
+  <data name="HeroText" xml:space="preserve">
+    <value>O futuro de encontrar o amor chegou. Mais inteligente, rápido e acessível do que o matchmaking tradicional. Nosso avançado sistema de compatibilidade encontra seu par ideal com precisão – sem swipes, sem buscas infinitas.</value>
+  </data>
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Encontre seu par perfeito com a ajuda da tecnologia</value>
+  </data>
   <data name="Identification" xml:space="preserve">
     <value>Identificação</value>
   </data>

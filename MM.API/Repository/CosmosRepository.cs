@@ -31,7 +31,7 @@ namespace MM.API.Repository
 
                 if (response.RequestCharge > 1.7)
                 {
-                    _logger.LogWarning("Get - ID {0}, RequestCharge {1}", id, response.RequestCharge);
+                    _logger.LogWarning("Get - ID {Id}, RequestCharge {Charges}", id, response.RequestCharge);
                 }
 
                 return response.Resource;

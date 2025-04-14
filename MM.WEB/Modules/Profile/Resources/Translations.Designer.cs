@@ -115,6 +115,42 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Free Account.
+        /// </summary>
+        public static string HeroButton {
+            get {
+                return ResourceManager.GetString("HeroButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: This is not a dating app. It&apos;s a digital matchmaking service designed for meaningful connections..
+        /// </summary>
+        public static string HeroNote {
+            get {
+                return ResourceManager.GetString("HeroNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision - no swiping, no endless searching..
+        /// </summary>
+        public static string HeroText {
+            get {
+                return ResourceManager.GetString("HeroText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find your perfect match with technology.
+        /// </summary>
+        public static string HeroTitle {
+            get {
+                return ResourceManager.GetString("HeroTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Identification.
         /// </summary>
         public static string Identification {

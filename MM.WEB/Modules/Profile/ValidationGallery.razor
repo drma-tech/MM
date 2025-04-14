@@ -1,6 +1,8 @@
-﻿@page "/Profile/PhotoValidation"
+﻿@page "/profile/validation/gallery"
 @attribute [Authorize]
-@inherits PageCore<PhotoValidation>
+@inherits PageCore<ValidationGallery>
+
+@inject IJSRuntime JsRuntime
 
 <Row>
     <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is3.WithOffset">
@@ -55,11 +57,6 @@
     private bool TakedPhoto = false;
 
     private BasicModal? privacy;
-
-    protected override async Task LoadDataRender()
-    {
-        //do nothing
-    }
 
     protected async Task StartDetection()
     {

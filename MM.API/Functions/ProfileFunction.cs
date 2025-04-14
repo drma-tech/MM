@@ -130,6 +130,25 @@ namespace MM.API.Functions
             }
         }
 
+        [Function("ProfileValidation")]
+        public async Task<HttpResponseData?> ProfileValidation(
+          [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-validation")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var userId = req.GetUserId();
+
+                var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+
+                return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
         [Function("ProfileGetView")]
         public async Task<HttpResponseData?> GetView(
             [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)

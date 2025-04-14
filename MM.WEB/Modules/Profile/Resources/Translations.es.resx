@@ -135,6 +135,18 @@
   <data name="Email" xml:space="preserve">
     <value>Correo electrónico</value>
   </data>
+  <data name="HeroButton" xml:space="preserve">
+    <value>Crear una cuenta gratuita</value>
+  </data>
+  <data name="HeroNote" xml:space="preserve">
+    <value>Nota: Esta no es una app de citas. Es un servicio digital de emparejamiento diseñado para conexiones reales.</value>
+  </data>
+  <data name="HeroText" xml:space="preserve">
+    <value>El futuro de encontrar el amor ha llegado. Más inteligente, rápido y económico que el emparejamiento tradicional. Nuestro avanzado sistema de compatibilidad encuentra a tu pareja perfecta con precisión – sin deslizar, sin búsquedas interminables.</value>
+  </data>
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Encuentra a tu pareja ideal con tecnología</value>
+  </data>
   <data name="Identification" xml:space="preserve">
     <value>Identificación</value>
   </data>
