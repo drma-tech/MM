@@ -133,7 +133,7 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision - no swiping, no endless searching..
+        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching..
         /// </summary>
         public static string HeroText {
             get {
