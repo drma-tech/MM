@@ -19,7 +19,7 @@
 
 <SeoHeader Title="Profile" Url="/profile"></SeoHeader>
 
-@if (IsAuthenticated)
+@if (!IsAuthenticated)
 {
     <Jumbotron Background="Background.Primary" TextColor="TextColor.Light" Padding="Padding.Is3" Margin="Margin.Is3.FromBottom">
         <JumbotronTitle Size="JumbotronTitleSize.Is4">
