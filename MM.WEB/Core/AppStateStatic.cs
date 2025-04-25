@@ -8,7 +8,7 @@ namespace MM.WEB.Core
         public static List<LogContainer> Logs { get; private set; } = [];
 
         [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
-        public static Language Language { get; private set; }
+        public static Language Language { get; private set; } = Language.English;
 
         public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
         public static Action<string>? ShowError { get; set; }

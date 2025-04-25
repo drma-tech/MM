@@ -403,6 +403,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some features need login..
+        /// </summary>
+        public static string LoginNeeded {
+            get {
+                return ResourceManager.GetString("LoginNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Relationship.
         /// </summary>
         public static string MyRelationship {
@@ -480,6 +489,15 @@ namespace MM.WEB.Resources {
         public static string PartnerProfileNotAvailable {
             get {
                 return ResourceManager.GetString("PartnerProfileNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This platform is for managing, not streaming..
+        /// </summary>
+        public static string PlatformForManaging {
+            get {
+                return ResourceManager.GetString("PlatformForManaging", resourceCulture);
             }
         }
         

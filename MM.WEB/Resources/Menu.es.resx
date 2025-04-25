@@ -126,12 +126,6 @@
   <data name="Profile" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="Providers" xml:space="preserve">
-    <value>Proveedores</value>
-  </data>
-  <data name="Suggestions" xml:space="preserve">
-    <value>Sugerencias</value>
-  </data>
   <data name="Support" xml:space="preserve">
     <value>Apoyo</value>
   </data>

@@ -126,10 +126,4 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="SupportDescription" xml:space="preserve">
-    <value>Vea nuevos anuncios, obtenga soporte con errores, sugiera nuevas funciones u obtenga información sobre en qué plataformas encontrar Streaming Discovery.</value>
-  </data>
-  <data name="SupportTitle" xml:space="preserve">
-    <value>Apoyo</value>
-  </data>
 </root>

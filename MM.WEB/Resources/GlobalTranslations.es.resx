@@ -231,6 +231,9 @@
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="LoginNeeded" xml:space="preserve">
+    <value>Algunas funciones requieren iniciar sesión.</value>
+  </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>Mi relación</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>El perfil de tu pareja aún no está disponible</value>
+  </data>
+  <data name="PlatformForManaging" xml:space="preserve">
+    <value>Esta plataforma es para administrar, no para transmitir.</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
     <value>Este proceso evoluciona constantemente. Si desea informar un error o una mejora, abra un ticket con nuestro equipo de soporte.</value>
