@@ -1,12 +1,8 @@
-﻿@page "/pre-logout"
+﻿@page "/force-logout"
 @inherits ComponentCore<ForceLogout>
 
 <script>
-    // 1. Tenta deletar o cookie (se não for HTTPOnly)
     document.cookie = 'AppServiceAuthSession=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
-
-    // 2. Redireciona para o logout do SWA, que DEVE voltar para a home
-    window.location.href = '/.auth/logout';
 </script>
 
 @code {
