@@ -85,7 +85,8 @@
 
     private void Logout()
     {
-        Navigation.NavigateTo("/.auth/logout?post_logout_redirect_uri=/force-logout", forceLoad: true);
+        //Navigation.NavigateTo("/.auth/logout", forceLoad: true);
+        Navigation.NavigateTo("/pre-logout", forceLoad: true);
     }
 
     private async Task OpenConfigurations()
