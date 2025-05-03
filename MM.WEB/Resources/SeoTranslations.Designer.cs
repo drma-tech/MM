@@ -86,23 +86,5 @@ namespace MM.WEB.Resources {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to See new announcements, get support with bugs, suggest new features, or learn which platforms to find Streaming Discovery on..
-        /// </summary>
-        public static string SupportDescription {
-            get {
-                return ResourceManager.GetString("SupportDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Support.
-        /// </summary>
-        public static string SupportTitle {
-            get {
-                return ResourceManager.GetString("SupportTitle", resourceCulture);
-            }
-        }
     }
 }

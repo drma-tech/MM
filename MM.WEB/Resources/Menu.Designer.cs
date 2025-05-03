@@ -88,24 +88,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Providers.
-        /// </summary>
-        public static string Providers {
-            get {
-                return ResourceManager.GetString("Providers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suggestions.
-        /// </summary>
-        public static string Suggestions {
-            get {
-                return ResourceManager.GetString("Suggestions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
         public static string Support {
