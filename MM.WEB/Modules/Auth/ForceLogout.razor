@@ -1,4 +1,4 @@
-﻿@page "/force-logout"
+﻿@page "/logout"
 @inherits ComponentCore<ForceLogout>
 
 <script>
@@ -6,8 +6,8 @@
 </script>
 
 @code {
-    protected override void OnInitialized()
+    protected override void OnAfterRender(bool firstRender)
     {
-        Navigation.NavigateTo("/.auth/logout", forceLoad: true);
-    } 
+        if (firstRender) Navigation.NavigateTo("/.auth/logout", forceLoad: true);
+    }
 }
