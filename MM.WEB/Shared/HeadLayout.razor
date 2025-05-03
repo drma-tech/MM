@@ -85,8 +85,8 @@
 
     private void Logout()
     {
-        var logoutUrl = $"/.auth/logout?post_logout_redirect_uri={Uri.EscapeDataString(Navigation.BaseUri)}";
-        Navigation.NavigateTo(logoutUrl, forceLoad: true);
+        //Navigation.NavigateTo("/.auth/logout", forceLoad: true);
+        Navigation.NavigateTo("/logout", forceLoad: true);
     }
 
     private async Task OpenConfigurations()
