@@ -1,13 +1,34 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Configuration;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Dashboard;
 using MM.Shared.Models.Profile;
 
 namespace MM.API.Functions
 {
-    public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+    public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IConfiguration configuration)
     {
+        [Function("Settings")]
+        public async Task<HttpResponseData> Configurations(
+            [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/settings")] HttpRequestData req, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var settings = new Settings
+                {
+                    ShowAdSense = configuration.GetValue<bool>("Settings:ShowAdSense"),
+                };
+
+                return await req.CreateResponse(settings, ttlCache.one_day, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                req.ProcessException(ex);
+                throw;
+            }
+        }
+
         [Function("Dashboard")]
         public async Task<HttpResponseData?> Dashboard(
            [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/cache/sum-users")] HttpRequestData req, CancellationToken cancellationToken)

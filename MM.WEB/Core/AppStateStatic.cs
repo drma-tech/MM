@@ -15,6 +15,7 @@ namespace MM.WEB.Core
 
         static AppStateStatic()
         {
+            //todo: deal with 419
             var languages = EnumHelper.GetObjArray<Language>(false);
             var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
             var language = languages.FirstOrDefault(w => w.Description == code);

@@ -37,7 +37,7 @@ namespace MM.Shared.Core.Helper
 
         public static CustomAttribute GetCustomAttribute<T>(this Expression<Func<T>>? expression, bool translate = true)
         {
-            if (expression == null) throw new NotificationException($"{expression} expression is null");
+            if (expression == null) throw new UnhandledException($"{expression} expression is null");
 
             if (expression.Body is MemberExpression body)
             {
@@ -77,7 +77,7 @@ namespace MM.Shared.Core.Helper
 
         public static string GetDescription(this Enum value, bool translate = true)
         {
-            return value.GetCustomAttribute(translate).Description ?? throw new NotificationException($"{value} Description is null");
+            return value.GetCustomAttribute(translate).Description ?? throw new UnhandledException($"{value} Description is null");
         }
     }
 }

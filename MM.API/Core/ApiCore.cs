@@ -8,7 +8,7 @@ namespace MM.API.Core
         {
             var response = await http.GetAsync(request_uri, cancellationToken);
 
-            if (!response.IsSuccessStatusCode) throw new NotificationException(response.ReasonPhrase);
+            if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
 
             return await response.Content.ReadFromJsonAsync<T>(cancellationToken: cancellationToken);
         }

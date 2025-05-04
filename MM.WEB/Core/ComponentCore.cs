@@ -18,6 +18,7 @@ namespace MM.WEB.Core
         [Inject] protected IModalService ModalService { get; set; } = default!;
         [Inject] protected NavigationManager Navigation { get; set; } = default!;
         [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
+        [Inject] protected CacheSettingsApi CacheSettingsApi { get; set; } = default!;
 
         protected virtual Task LoadDataRender()
         {
