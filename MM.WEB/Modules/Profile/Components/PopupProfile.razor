@@ -1,7 +1,8 @@
 ﻿@using MM.Shared.Models.Auth
-@using MM.Shared.Models.Profile;
+@using MM.Shared.Models.Profile
 @using MM.WEB.Core.Models
-@using MM.WEB.Modules.Profile.Core;
+@using MM.WEB.Modules.Profile.Core
+@using Button = MM.WEB.Resources.Button
 @inherits ComponentCore<PopupProfile>
 @attribute [Authorize]
 
@@ -14,27 +15,27 @@
     <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
         <ModalHeader>
             <ModalTitle>Profile</ModalTitle>
-            <CloseButton />
+            <CloseButton/>
         </ModalHeader>
         <ModalBody MaxHeight="70">
-            <RenderControl Core="Core" Model="view" ExpressionEmpty="((ProfileModel? obj) => obj == null)" PrivateContent="true">
+            <RenderControl Core="Core" Model="view" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
                 <Row HorizontalGutter="8" VerticalGutter="0">
                     <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is4.OnWidescreen">
                         <Card Margin="Margin.Is2.FromBottom">
                             <CardBody Padding="Padding.Is0">
                                 @{
-                                    int totPercAff = affinities.GetPercentAffinity(null);
+                                    var totPercAff = affinities.GetPercentAffinity();
                                 }
                                 <Badge Color="GetColor(totPercAff)" Style="position: absolute; top: 10px; left: 10px; z-index: 2;">@(totPercAff + "%")</Badge>
                                 <Badge Color="Color.Dark" Style="position: absolute; top: 10px; right: 10px; z-index: 2;">
-                                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Camera"></Blazorise.Icon> @imageDataUriGallery.Count()
+                                    <Blazorise.Icon Name="FontAwesomeIcons.Camera"></Blazorise.Icon> @imageDataUriGallery.Count()
                                 </Badge>
                                 <div id="@GallerySwiperId" class="swiper">
                                     <div class="swiper-wrapper">
                                         @foreach (var item in imageDataUriGallery)
                                         {
                                             <div class="swiper-slide">
-                                                <Image Source="@item" Style="max-height: 450px !important; width: 100%" />
+                                                <Image Source="@item" Style="max-height: 450px !important; width: 100%"/>
                                             </div>
                                         }
                                     </div>
@@ -48,7 +49,7 @@
                                     @view?.NickName
                                 </Badge>
                                 <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
-                                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @view?.GetLocation(ProfileModel.LocationType.City)
+                                    <Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @view?.GetLocation(ProfileModel.LocationType.City)
                                 </Badge>
                                 @* @if (view.ActivityStatus == ActivityStatus.Today)
                                 {
@@ -96,48 +97,48 @@
                                         {
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
                                                         Disabled="ButtonDisabled(EventType.Like)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> @WEB.Resources.Button.Like
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> @Button.Like
                                             </DrmaButton>
                                             <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
                                                         Disabled="ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> @WEB.Resources.Button.Dislike
+                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> @Button.Dislike
                                             </DrmaButton>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="true">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> @WEB.Resources.Button.Chat
+                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> @Button.Chat
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Match)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Dating)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> @WEB.Resources.Button.Dating
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> @Button.Dating
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Dating)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Relationship)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> @WEB.Resources.Button.Relationship
+                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> @Button.Relationship
                                             </Button>
                                         }
                                         @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
                                         {
                                             <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
                                                     Disabled="ButtonDisabled(EventType.Feedback)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> @WEB.Resources.Button.Feedback
+                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> @Button.Feedback
                                             </Button>
                                         }
                                     </Column>
                                     <Column ColumnSize="ColumnSize.IsHalf">
                                         <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Trash"></Blazorise.Icon> @WEB.Resources.Button.Delete
+                                            <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon> @Button.Delete
                                         </Button>
                                         <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Flag"></Blazorise.Icon> @WEB.Resources.Button.Report
+                                            <Blazorise.Icon Name="FontAwesomeIcons.Flag"></Blazorise.Icon> @Button.Report
                                         </Button>
                                     </Column>
                                 </Row>
@@ -158,8 +159,8 @@
 </Modal>
 
 @code {
-    [Parameter][EditorRequired] public string? UserId { get; set; }
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+    [Parameter] [EditorRequired] public string? UserId { get; set; }
+    [Parameter] [EditorRequired] public bool IsAuthenticated { get; set; }
 
     [Parameter] public Action? Liked { get; set; }
     [Parameter] public Action? Disliked { get; set; }
@@ -207,7 +208,7 @@
                 return;
             }
 
-            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView.ToString(), null);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, null);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
@@ -224,19 +225,17 @@
                 Core?.ShowError(GlobalTranslations.PartnerProfileNotAvailable);
                 return;
             }
+
+            if (Fake)
+                imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face, true)];
             else
-            {
-                if (Fake)
-                    imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face, true)];
-                else
-                    imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
+                imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
 
-                imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
+            imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-                filter = await FilterApi.Get(null);
+            filter = await FilterApi.Get(null);
 
-                affinities = AffinityCore.GetAffinity(user, filter, view);
-            }
+            affinities = AffinityCore.GetAffinity(user, filter, view);
 
             Core?.LoadingFinished?.Invoke(view);
         }
@@ -250,7 +249,7 @@
     {
         this.IdUserView = IdUserView;
         this.view = view;
-        this.Fake = fake;
+        Fake = fake;
         this.Origin = Origin;
         modal?.Show();
         await LoadDataRender();
@@ -262,14 +261,13 @@
         {
             return Color.Success;
         }
-        else if (perc >= 60)
+
+        if (perc >= 60)
         {
             return Color.Warning;
         }
-        else
-        {
-            return Color.Danger;
-        }
+
+        return Color.Danger;
     }
 
     private async Task Like()
@@ -318,11 +316,12 @@
 
             return !(noLike && validated);
         }
-        else if (type == EventType.Dislike)
+
+        if (type == EventType.Dislike)
         {
             var noDislike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Dislike) ?? true;
 
-            return !(noDislike);
+            return !noDislike;
         }
         // else if (type == EventType.Dating)
         // {
@@ -342,9 +341,8 @@
 
         //     return !(noFeedback);
         // }
-        else
-        {
-            return true;
-        }
+
+        return true;
     }
+
 }

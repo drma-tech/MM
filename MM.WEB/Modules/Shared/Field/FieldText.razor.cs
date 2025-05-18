@@ -1,33 +1,29 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace MM.WEB.Modules.Shared.Field
+namespace MM.WEB.Modules.Shared.Field;
+
+public partial class FieldText : FormBase<string, FieldText>
 {
-    public partial class FieldText : FormBase<string, FieldText>
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public int Rows { get; set; }
+
+    [Parameter] public string? CssIcon { get; set; }
+    [Parameter] public bool Required { get; set; }
+    [Parameter] public bool Visible { get; set; } = true;
+
+    [Parameter] public EventCallback ButtomClicked { get; set; }
+    [Parameter] public object? ButtomCssIcon { get; set; }
+    [Parameter] public string? ButtomTitle { get; set; }
+
+    private string? Description => For.GetCustomAttribute()?.Description;
+
+    protected override Dictionary<string, object> GetAttributes(string? customStyle)
     {
-        [Parameter] public string? Value { get; set; }
-        [Parameter] public EventCallback<string> ValueChanged { get; set; }
-        [Parameter] public int Rows { get; set; } = 0;
+        var result = base.GetAttributes(customStyle);
 
-        [Parameter] public string? CssIcon { get; set; }
-        [Parameter] public bool Required { get; set; }
-        [Parameter] public bool Visible { get; set; } = true;
+        if (Rows > 0) result.Add("rows", Rows);
 
-        [Parameter] public EventCallback ButtomClicked { get; set; }
-        [Parameter] public object? ButtomCssIcon { get; set; }
-        [Parameter] public string? ButtomTitle { get; set; }
-
-        private string? Description => For.GetCustomAttribute()?.Description;
-
-        protected override Dictionary<string, object> GetAttributes(string? customStyle)
-        {
-            var result = base.GetAttributes(customStyle);
-
-            if (Rows > 0)
-            {
-                result.Add("rows", Rows);
-            }
-
-            return result;
-        }
+        return result;
     }
 }

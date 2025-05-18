@@ -1,29 +1,30 @@
 ﻿@page "/profile/setting"
+
+@attribute [Authorize]
 @using MM.Shared.Models.Profile
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
-
-@attribute [Authorize]
+@using Button = MM.WEB.Resources.Button
 @inherits PageCore<ProfileSetting>
 
 @inject SettingApi SettingApi
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<RenderControl Core="Core" Model="Setting" ExpressionEmpty="((SettingModel? obj) => obj == null)" PrivateContent="true">
+<RenderControl Core="Core" Model="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null" PrivateContent="true">
     <Row>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.EyeSlash"></FieldSwitch>
+            <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@FontAwesomeIcons.EyeSlash"></FieldSwitch>
         </Column>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
         </Column>
     </Row>
 
     <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
-        <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
+        <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @Button.Save
     </Button>
     <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
-        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
     </Button>
 </RenderControl>
 
@@ -39,7 +40,7 @@
 
         if (Setting == null)
         {
-            Setting = new();
+            Setting = new SettingModel();
         }
 
         Core?.LoadingFinished?.Invoke(Setting);
@@ -96,4 +97,5 @@
     {
         Navigation.NavigateTo("profile");
     }
+
 }

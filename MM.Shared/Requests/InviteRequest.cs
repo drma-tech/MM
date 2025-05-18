@@ -1,7 +1,6 @@
-﻿namespace MM.Shared.Requests
+﻿namespace MM.Shared.Requests;
+
+public class InviteRequest
 {
-    public class InviteRequest
-    {
-        public string? Email { get; set; }
-    }
+    public string? Email { get; set; }
 }

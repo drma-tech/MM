@@ -1,8 +1,7 @@
-﻿namespace MM.WEB.Core.Enum
+﻿namespace MM.WEB.Core.Enum;
+
+public enum CompatibilityType
 {
-    public enum CompatibilityType
-    {
-        Range,
-        Enum
-    }
+    Range,
+    Enum
 }

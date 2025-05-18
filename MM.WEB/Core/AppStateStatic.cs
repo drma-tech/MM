@@ -1,40 +1,39 @@
-﻿using MM.Shared.Models.Auth;
-using System.Globalization;
+﻿using System.Globalization;
+using MM.Shared.Models.Auth;
 
-namespace MM.WEB.Core
+namespace MM.WEB.Core;
+
+public static class AppStateStatic
 {
-    public static class AppStateStatic
+    static AppStateStatic()
     {
-        public static List<LogContainer> Logs { get; private set; } = [];
+        //todo: deal with 419
+        var languages = EnumHelper.GetObjArray<Language>(false);
+        var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
+        var language = languages.FirstOrDefault(w => w.Description == code);
 
-        [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
-        public static Language Language { get; private set; } = Language.English;
+        Language = (Language?)language?.Value ?? Language.English;
+    }
 
-        public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
-        public static Action<string>? ShowError { get; set; }
+    public static List<LogContainer> Logs { get; private set; } = [];
 
-        static AppStateStatic()
+    [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
+    public static Language Language { get; private set; } = Language.English;
+
+    public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
+    public static Action<string>? ShowError { get; set; }
+
+    public static string GetLanguageCode()
+    {
+        return Language switch
         {
-            //todo: deal with 419
-            var languages = EnumHelper.GetObjArray<Language>(false);
-            var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
-            var language = languages.FirstOrDefault(w => w.Description == code);
+            Language.Portuguese => "pt",
+            _ => "en"
+        };
+    }
 
-            Language = (Language?)language?.Value ?? Language.English;
-        }
-
-        public static string GetLanguageCode()
-        {
-            return Language switch
-            {
-                Language.Portuguese => "pt",
-                _ => "en",
-            };
-        }
-
-        public static void ChangeLanguage(Language value)
-        {
-            Language = value;
-        }
+    public static void ChangeLanguage(Language value)
+    {
+        Language = value;
     }
 }

@@ -1,17 +1,16 @@
 ﻿using MM.Shared.Requests;
 
-namespace MM.WEB.Modules.Profile.Core
-{
-    public class InviteApi(IHttpClientFactory http) : ApiCosmos<InviteRequest>(http, "invite")
-    {
-        public struct ProfileEndpoint
-        {
-            public const string SendInvite = "profile/send-invite";
-        }
+namespace MM.WEB.Modules.Profile.Core;
 
-        public async Task SendInvite(InviteRequest request)
-        {
-            await PostAsync(ProfileEndpoint.SendInvite, null, request);
-        }
+public class InviteApi(IHttpClientFactory http) : ApiCosmos<InviteRequest>(http, "invite")
+{
+    public async Task SendInvite(InviteRequest request)
+    {
+        await PostAsync(ProfileEndpoint.SendInvite, null, request);
+    }
+
+    public struct ProfileEndpoint
+    {
+        public const string SendInvite = "profile/send-invite";
     }
 }

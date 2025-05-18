@@ -1,14 +1,15 @@
-﻿namespace MM.Shared.Enums
+﻿using MM.Shared.Enums.Resources;
+
+namespace MM.Shared.Enums;
+
+public enum RelationshipIntention
 {
-    public enum RelationshipIntention
-    {
-        [Custom(Name = "Serious_Name", Description = "Serious_Description", ResourceType = typeof(Resources.Intentions))]
-        Serious = 1,
+    [Custom(Name = "Serious_Name", Description = "Serious_Description", ResourceType = typeof(Intentions))]
+    Serious = 1,
 
-        [Custom(Name = "LiveTogether_Name", Description = "LiveTogether_Description", ResourceType = typeof(Resources.Intentions))]
-        LiveTogether = 2,
+    [Custom(Name = "LiveTogether_Name", Description = "LiveTogether_Description", ResourceType = typeof(Intentions))]
+    LiveTogether = 2,
 
-        [Custom(Name = "Married_Name", Description = "Married_Description", ResourceType = typeof(Resources.Intentions))]
-        Married = 3
-    }
+    [Custom(Name = "Married_Name", Description = "Married_Description", ResourceType = typeof(Intentions))]
+    Married = 3
 }

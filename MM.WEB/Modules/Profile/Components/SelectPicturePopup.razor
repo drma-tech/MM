@@ -1,30 +1,30 @@
 ﻿@using Blazorise.Cropper
-@using static MM.Shared.Core.Helper.ImageHelper
+@using static ImageHelper
 @inherits ComponentCore<SelectPicturePopup>
 
 <ModalHeader>
     <ModalTitle Size="HeadingSize.Is5">
         Picture
     </ModalTitle>
-    <CloseButton />
+    <CloseButton/>
 </ModalHeader>
 <ModalBody MaxHeight="70">
     <Row Margin="Margin.Is2.FromBottom">
         <Column>
-            <FilePicker Changed="OnFileChanged" Filter="image/*" MaxFileSize="MaxFileSize" AutoReset="true" DisableProgressReport="true" />
+            <FilePicker Changed="OnFileChanged" Filter="image/*" MaxFileSize="MaxFileSize" AutoReset="true" DisableProgressReport="true"/>
         </Column>
     </Row>
     <Row>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;">
             <Cropper @ref="cropper" Source="@TempPicture" SelectionChanged="@OnSelectionChanged"
-                     Style="width: 300px; height: 300px;" />
+                     Style="width: 300px; height: 300px;"/>
         </Column>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;" Padding="Padding.Is2.OnMobile">
             <Button Color="Color.Primary" Clicked="@GetCroppedImage" Disabled="@cropButtonDisabled" Block="true">Crop image</Button>
             <Button Color="Color.Secondary" Clicked="@ResetSelection" Disabled="@cropButtonDisabled" Block="true">Reset Selection</Button>
         </Column>
         <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="text-align: center;">
-            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 300px; height: 300px;" />
+            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 300px; height: 300px;"/>
         </Column>
     </Row>
 </ModalBody>
@@ -39,12 +39,12 @@
     [Parameter] public PhotoType PhotoType { get; set; }
     [Parameter] public EventCallback<(PhotoType, byte[])> CroppedPictureChanged { get; set; }
 
-    public string? TempPicture => SavedPicture ?? ImageHelper.GetNoUserPhoto;
+    public string? TempPicture => SavedPicture ?? GetNoUserPhoto;
 
     private Cropper? cropper;
-    private string? CroppedPicture = null;
+    private string? CroppedPicture;
 
-    int MaxFileSize { get; set; } = 1024 * 1024 * 4; // 4 MB
+    int MaxFileSize { get; } = 1024 * 1024 * 4; // 4 MB
     private bool cropButtonDisabled = true;
 
     private async Task OnFileChanged(FileChangedEventArgs e)
@@ -109,7 +109,7 @@
         {
             if (cropper == null) return;
 
-            CroppedPicture = await cropper.CropAsBase64ImageAsync(new() { Width = 512, Height = 512 });
+            CroppedPicture = await cropper.CropAsBase64ImageAsync(new CropperCropOptions { Width = 512, Height = 512 });
         }
         catch (Exception ex)
         {
@@ -138,4 +138,5 @@
         await CroppedPictureChanged.InvokeAsync((PhotoType, buffer));
         await ModalService.Hide();
     }
+
 }

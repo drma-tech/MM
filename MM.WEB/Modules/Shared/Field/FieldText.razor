@@ -10,7 +10,8 @@
             }
             else
             {
-                <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
+                <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon>
+                @For.GetCustomAttribute()?.Name
             }
             @if (Required)
             {

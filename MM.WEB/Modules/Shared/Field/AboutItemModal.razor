@@ -1,5 +1,4 @@
-﻿@using System.Linq.Expressions;
-@using MM.Shared.Models.Profile;
+﻿@using MM.Shared.Models.Profile
 @using MM.WEB.Core.Enum
 @using MM.WEB.Core.Models
 @typeparam TValue
@@ -78,8 +77,8 @@
                 {
                     if (item is Enum resultE)
                     {
-                        var desc = @resultE.GetCustomAttribute()?.Description;
-                        var name = @resultE.GetName();
+                        var desc = resultE.GetCustomAttribute()?.Description;
+                        var name = resultE.GetName();
 
                         if (string.IsNullOrEmpty(desc))
                         {
@@ -161,28 +160,26 @@
         {
             return Color.Secondary;
         }
-        else if (Affinities.Single(s => s.Item == Item).HaveAffinity) //if it is mapped and has affinity
+
+        if (Affinities.Single(s => s.Item == Item).HaveAffinity) //if it is mapped and has affinity
         {
             if (value == null)
             {
                 return Color.Success;
             }
-            else if (value is Enum result && Type == CompatibilityType.Enum)
+
+            if (value is Enum result && Type == CompatibilityType.Enum)
             {
                 if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetName()!))
                     return Color.Success;
-                else
-                    return Color.Warning;
+                return Color.Warning;
             }
-            else
-            {
-                return Color.Success;
-            }
+
+            return Color.Success;
         }
-        else //if mapped but without affinity
-        {
-            return Color.Danger;
-        }
+
+        //if mapped but without affinity
+        return Color.Danger;
     }
 
     private Dictionary<string, string> GetTips()
@@ -198,4 +195,5 @@
 
         return result;
     }
+
 }

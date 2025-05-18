@@ -1,30 +1,31 @@
-﻿@using System.ComponentModel.DataAnnotations
-@using MM.Shared.Models.Auth
+﻿@using MM.Shared.Models.Auth
+@using Button = MM.WEB.Resources.Button
+@using CardHeader = MM.WEB.Resources.CardHeader
 @inherits ComponentCore<InvitePerEmail>
 
 <ModalHeader>
     <ModalTitle Size="HeadingSize.Is5">
-        @WEB.Resources.CardHeader.InvitePartner
+        @CardHeader.InvitePartner
     </ModalTitle>
-    <CloseButton />
+    <CloseButton/>
 </ModalHeader>
 <ModalBody MaxHeight="70">
     <Alert Color="Color.Warning" Visible="true">
         <AlertMessage>
-            @WEB.Resources.GlobalTranslations.InviteYyourPartnerTitle1
+            @GlobalTranslations.InviteYyourPartnerTitle1
         </AlertMessage>
         <AlertDescription>
-            @WEB.Resources.GlobalTranslations.InviteYyourPartnerTitle2
+            @GlobalTranslations.InviteYyourPartnerTitle2
         </AlertDescription>
     </Alert>
-    <FieldText For="()=>Email" @bind-Value="@Email" />
+    <FieldText For="() => Email" @bind-Value="@Email"/>
 </ModalBody>
 <ModalFooter>
     <Button Color="Color.Secondary" Clicked="@ModalService.Hide">
-        @WEB.Resources.Button.Close
+        @Button.Close
     </Button>
     <Button Color="Color.Primary" Clicked="SaveHandle">
-        @WEB.Resources.Button.Ok
+        @Button.Ok
     </Button>
 </ModalFooter>
 
@@ -32,7 +33,7 @@
     [Parameter] public ClientePrincipal? principal { get; set; }
     [Parameter] public EventCallback<string> InviteSent { get; set; }
 
-    [Custom(Name = "PartnerEmail", ResourceType = typeof(WEB.Resources.GlobalTranslations))]
+    [Custom(Name = "PartnerEmail", ResourceType = typeof(GlobalTranslations))]
     private string? Email { get; set; }
 
     private async Task SaveHandle()
@@ -52,4 +53,5 @@
         await ModalService.Hide();
         await InviteSent.InvokeAsync(Email);
     }
+
 }

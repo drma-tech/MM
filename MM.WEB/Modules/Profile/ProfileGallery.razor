@@ -1,11 +1,10 @@
 ﻿@page "/profile/gallery"
-@using Blazorise.Cropper
 @using MM.Shared.Models.Profile
 @using MM.Shared.Requests
 @using MM.WEB.Api
-@using MM.WEB.Modules.Profile.Components
 @using MM.WEB.Modules.Profile.Core
-@using static MM.Shared.Core.Helper.ImageHelper
+@using static ImageHelper
+@using Button = MM.WEB.Resources.Button
 @attribute [Authorize]
 @inherits PageCore<ProfileGallery>
 
@@ -19,21 +18,21 @@
                 Face Photo
             </CardHeader>
             <CardBody>
-                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
+                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
                     <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
-                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(ImageHelper.PhotoType.Face)" AlternateText="No Picture" Style="max-height: 300px !important;" />
+                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(PhotoType.Face)" AlternateText="No Picture" Style="max-height: 300px !important;"/>
                     </Figure>
                 </RenderControl>
             </CardBody>
             <CardFooter>
                 @if (_profile?.Gallery?.FaceId == null)
                 {
-                    <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Face,null))">Add</Button>
+                    <Button Color="Color.Primary" Clicked="@(() => SelectPicture(PhotoType.Face, null))">Add</Button>
                 }
                 else
                 {
-                    <Button Color="Color.Secondary" Clicked="@(()=>SelectPicture(PhotoType.Face,null))">Change</Button>
-                    <Button Color="Color.Danger" Clicked="@(()=>DeletePhotoGallery(PhotoType.Face))">Remove</Button>
+                    <Button Color="Color.Secondary" Clicked="@(() => SelectPicture(PhotoType.Face, null))">Change</Button>
+                    <Button Color="Color.Danger" Clicked="@(() => DeletePhotoGallery(PhotoType.Face))">Remove</Button>
                 }
             </CardFooter>
         </Card>
@@ -44,21 +43,21 @@
                 Body Photo
             </CardHeader>
             <CardBody>
-                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="((ProfileModel? obj)=> obj == null)" PrivateContent="true">
+                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
                     <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
-                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(ImageHelper.PhotoType.Body)" AlternateText="No Picture" Style="max-height: 300px !important;" />
+                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(PhotoType.Body)" AlternateText="No Picture" Style="max-height: 300px !important;"/>
                     </Figure>
                 </RenderControl>
             </CardBody>
             <CardFooter>
                 @if (_profile?.Gallery?.BodyId == null)
                 {
-                    <Button Color="Color.Primary" Clicked="@(()=>SelectPicture(PhotoType.Body,null))">Add</Button>
+                    <Button Color="Color.Primary" Clicked="@(() => SelectPicture(PhotoType.Body, null))">Add</Button>
                 }
                 else
                 {
-                    <Button Color="Color.Secondary" Clicked="@(()=>SelectPicture(PhotoType.Body,null))">Change</Button>
-                    <Button Color="Color.Danger" Clicked="@(()=>DeletePhotoGallery(PhotoType.Body))">Remove</Button>
+                    <Button Color="Color.Secondary" Clicked="@(() => SelectPicture(PhotoType.Body, null))">Change</Button>
+                    <Button Color="Color.Danger" Clicked="@(() => DeletePhotoGallery(PhotoType.Body))">Remove</Button>
                 }
             </CardFooter>
         </Card>
@@ -66,16 +65,16 @@
 </Row>
 
 <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
-    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
 </Button>
 
 <Div Float="Float.End" Margin="Margin.Is2.OnY">
     <Button Color="Color.Primary" Clicked="help!.ShowModal">
-        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
+        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Button.Help
     </Button>
 </Div>
 
-<BasicModal @ref="help" Title="@WEB.Resources.GlobalTranslations.HelpTitle">
+<BasicModal @ref="help" Title="@GlobalTranslations.HelpTitle">
     <ul>
         <li>Show who you are: To complete your profile, please add one clear face photo and one full-body photo. This helps others get to know you better!</li>
         <li>No filters, just the real you: To keep things authentic, we only accept photos without filters. We want you to shine just as you are!</li>
@@ -100,7 +99,7 @@
 
     private async Task SelectPicture(PhotoType photoType, string? picture)
     {
-        await PopupHelper.SelectPicturePopup(ModalService, picture, photoType,
+        await ModalService.SelectPicturePopup(picture, photoType,
             new EventCallbackFactory().Create(this, async ((PhotoType, byte[]) result) => await CroppedPictureChanged(result.Item1, result.Item2)));
     }
 
@@ -120,7 +119,7 @@
     {
         try
         {
-            var request = new PhotoRequest() { PhotoType = type, Buffer = buffer };
+            var request = new PhotoRequest { PhotoType = type, Buffer = buffer };
 
             _profile = await StorageApi.UploadPhoto(request);
 

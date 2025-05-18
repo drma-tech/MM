@@ -1,12 +1,16 @@
 ﻿@page "/profile"
-
 @using Bogus
 @using FluentValidation
-@using MM.Shared.Models.Profile;
+@using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
 @using MM.Shared.Requests
 @using MM.WEB.Modules.Profile.Components
-@using MM.WEB.Modules.Profile.Core;
+@using MM.WEB.Modules.Profile.Core
+@using MM.WEB.Modules.Profile.Resources
+@using Button = MM.WEB.Resources.Button
+@using CardHeader = MM.WEB.Resources.CardHeader
+@using Country = MM.Shared.Enums.Country
+@using Height = MM.Shared.Enums.Height
 @inherits PageCore<Profile>
 
 @inject ProfileApi ProfileApi
@@ -23,17 +27,17 @@
 {
     <Jumbotron Background="Background.Primary" TextColor="TextColor.Light" Padding="Padding.Is3" Margin="Margin.Is3.FromBottom">
         <JumbotronTitle Size="JumbotronTitleSize.Is4">
-            @Resources.Translations.HeroTitle
+            @Translations.HeroTitle
         </JumbotronTitle>
         <JumbotronSubtitle Class="mb-3" TextAlignment="TextAlignment.Justified">
-            @Resources.Translations.HeroText
+            @Translations.HeroText
         </JumbotronSubtitle>
         <Button Type="ButtonType.Link" Color="Color.Warning" To="/login-providers">
-            @Resources.Translations.HeroButton
+            @Translations.HeroButton
         </Button>
         <Divider Background="Background.White" Style="opacity: .75"></Divider>
         <Paragraph>
-            @Resources.Translations.HeroNote
+            @Translations.HeroNote
         </Paragraph>
     </Jumbotron>
 }
@@ -42,14 +46,14 @@
     <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is4.OnWidescreen">
         <Card Margin="Margin.Is2.FromBottom" Padding="Padding.Is2">
             <CardBody TextAlignment="TextAlignment.Center">
-                <Image Source="@profile?.GetPhoto(ImageHelper.PhotoType.Face)" Fluid="true" Width="Width.Is50" Class="rounded-circle" />
+                <Image Source="@profile?.GetPhoto(ImageHelper.PhotoType.Face)" Fluid="true" Width="Width.Is50" Class="rounded-circle"/>
             </CardBody>
             <CardBody TextAlignment="TextAlignment.Center">
                 <Badge Color="Color.Secondary">
                     @profile?.NickName
                 </Badge>
                 <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
-                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @profile?.GetLocation(ProfileModel.LocationType.City)
+                    <Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @profile?.GetLocation(ProfileModel.LocationType.City)
                 </Badge>
                 <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromTop.Is0.FromBottom">
                     @profile?.Description
@@ -58,74 +62,80 @@
             <CardBody>
                 @if (IsAuthenticated)
                 {
-                    <Row Gutter="(8,8)" Margin="Margin.Is2.FromBottom">
+                    <Row Gutter="(8, 8)" Margin="Margin.Is2.FromBottom">
                         <Column>
                             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data" Block="true">
                                 @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Profile</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                                    <span>@Button.Profile</span>
                                 }
                                 else
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Profile</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
+                                    <span>@Button.Profile</span>
                                 }
                             </Button>
                         </Column>
                         <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Block="true" Disabled="profile==null">
+                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Block="true" Disabled="profile == null">
                                 @if (filter != null && FilterValidator.Validate(filter).IsValid)
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                                    <span>@Button.Filters</span>
                                 }
                                 else
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Filters</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
+                                    <span>@Button.Filters</span>
                                 }
                             </Button>
                         </Column>
                     </Row>
-                    <Row Gutter="(8,8)" Margin="Margin.Is2.FromBottom">
+                    <Row Gutter="(8, 8)" Margin="Margin.Is2.FromBottom">
                         <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Block="true" Disabled="profile==null">
+                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Block="true" Disabled="profile == null">
                                 @if (setting != null)
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                                    <span>@Button.Settings</span>
                                 }
                                 else
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Settings</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
+                                    <span>@Button.Settings</span>
                                 }
                             </Button>
                         </Column>
                         <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Block="true" Disabled="profile==null||profile.Gallery?.Type==GalleryType.BlindDate">
+                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Block="true" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                                 @if (profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid)
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                                    <span>@Button.Gallery</span>
                                 }
                                 else
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Gallery</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
+                                    <span>@Button.Gallery</span>
                                 }
                             </Button>
                         </Column>
                     </Row>
-                    <Row Gutter="(8,8)">
+                    <Row Gutter="(8, 8)">
                         <Column>
                             <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Block="true">
                                 @if (false)
                                 {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>@WEB.Resources.Button.Validations</span>
+                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                                    <span>@Button.Validations</span>
                                 }
-                                else
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@WEB.Resources.Button.Validations</span>
-                                }
+                                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@Button.Validations</span>
                             </Button>
                         </Column>
                         <Column>
-                            <Switch Checked="@IsPublic" CheckedChanged="(bool value)=>IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
-                                @(IsPublic ? WEB.Resources.GlobalTranslations.Public : WEB.Resources.GlobalTranslations.Private)
+                            <Switch Checked="@IsPublic" CheckedChanged="(bool value) => IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
+                                @(IsPublic ? GlobalTranslations.Public : GlobalTranslations.Private)
                             </Switch>
                         </Column>
                     </Row>
@@ -134,12 +144,12 @@
         </Card>
     </Column>
     <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is8.OnWidescreen">
-        <HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="@WEB.Resources.CardHeader.Suggestions">
+        <HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="@CardHeader.Suggestions">
             <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Generate new suggestion list" Disabled="true">
-                @WEB.Resources.Button.Generate
+                @Button.Generate
             </Button>
         </HeaderComponent>
-        <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="((List<string> lst)=> lst.Empty())" PrivateContent="true" PremiumFeature="true">
+        <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()" PrivateContent="true" PremiumFeature="true">
             <div id="@SuggestionsSwiperId" class="swiper mb-2">
                 <div class="swiper-wrapper">
                     @foreach (var item in Suggestions)
@@ -152,12 +162,12 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </RenderControl>
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="@WEB.Resources.CardHeader.Likes">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle" Disabled="profile==null">
-                @WEB.Resources.Button.InvitePartner
+        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="@CardHeader.Likes">
+            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle" Disabled="profile == null">
+                @Button.InvitePartner
             </Button>
         </HeaderComponent>
-        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="((MyLikesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
+        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
             <div id="@LikesSwiperId" class="swiper mb-2">
                 <div class="swiper-wrapper">
                     @foreach (var item in MyLikes?.Items ?? [])
@@ -166,10 +176,10 @@
                             <Div Style="position:relative;">
                                 <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
                                 <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
+                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded/>
                                 </Figure>
-                                <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
-                                    @WEB.Resources.Button.Open
+                                <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
+                                    @Button.Open
                                 </Button>
                             </Div>
                         </div>
@@ -179,16 +189,16 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </RenderControl>
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="@WEB.Resources.CardHeader.Matches">
+        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="@CardHeader.Matches">
             @if (MyMatches == null || MyMatches.Items.Empty())
             {
                 <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)"
-                        Disabled="profile==null">
-                    @WEB.Resources.Button.Simulate
+                        Disabled="profile == null">
+                    @Button.Simulate
                 </Button>
             }
         </HeaderComponent>
-        <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="((MyMatchesModel? obj) => obj == null || obj.Items.Empty())" PrivateContent="true">
+        <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="(MyMatchesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
             <div id="@MatchesSwiperId" class="swiper mb-2">
                 <div class="swiper-wrapper">
                     @foreach (var item in MyMatches?.Items ?? [])
@@ -197,18 +207,18 @@
                             <Div Style="position:relative;">
                                 <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
                                 <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded />
+                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded/>
                                 </Figure>
                                 @if (item.Fake)
                                 {
-                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s=>s.Id==item.UserId), true))">
-                                        @WEB.Resources.Button.Open
+                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
+                                        @Button.Open
                                     </Button>
                                 }
                                 else
                                 {
-                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async()=>await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
-                                        @WEB.Resources.Button.Open
+                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
+                                        @Button.Open
                                     </Button>
                                 }
                             </Div>
@@ -222,35 +232,35 @@
     </Column>
 </Row>
 
-<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated" Liked="async()=>await LoadLikes(true)" Matched="async()=>await LoadMatches(true)"></PopupProfile>
+<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated" Liked="async () => await LoadLikes(true)" Matched="async () => await LoadMatches(true)"></PopupProfile>
 
 @code
 {
     private PopupProfile? PopupProfile { get; set; }
 
-    private ProfileValidation ProfileValidator { get; set; } = new();
+    private ProfileValidation ProfileValidator { get; } = new();
     private ProfileModel? profile;
 
     private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-    private RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
+    private RenderControlCore<ProfileModel?>? CoreProfile { get; } = new();
 
-    private FilterValidation FilterValidator { get; set; } = new();
+    private FilterValidation FilterValidator { get; } = new();
     private FilterModel? filter;
-    private RenderControlCore<FilterModel?>? CoreFilter { get; set; } = new();
+    private RenderControlCore<FilterModel?>? CoreFilter { get; } = new();
 
-    private PhotoValidation PhotoValidatior { get; set; } = new();
+    private PhotoValidation PhotoValidatior { get; } = new();
 
     private SettingModel? setting;
-    private RenderControlCore<SettingModel?>? CoreSetting { get; set; } = new();
+    private RenderControlCore<SettingModel?>? CoreSetting { get; } = new();
 
-    private List<string> Suggestions { get; set; } = [];
-    private RenderControlCore<List<string>>? CoreSuggestions { get; set; } = new();
+    private List<string> Suggestions { get; } = [];
+    private RenderControlCore<List<string>>? CoreSuggestions { get; } = new();
 
     private MyLikesModel? MyLikes { get; set; }
-    private RenderControlCore<MyLikesModel?>? CoreLikes { get; set; } = new();
+    private RenderControlCore<MyLikesModel?>? CoreLikes { get; } = new();
 
     private MyMatchesModel? MyMatches { get; set; }
-    private RenderControlCore<MyMatchesModel?>? CoreMatches { get; set; } = new();
+    private RenderControlCore<MyMatchesModel?>? CoreMatches { get; } = new();
 
     private bool IsPublic { get; set; }
     private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
@@ -259,7 +269,11 @@
 
     protected override void OnInitialized()
     {
-        ProfileApi.DataChanged += (ProfileModel? model) => { profile = model; StateHasChanged(); };
+        ProfileApi.DataChanged += model =>
+        {
+            profile = model;
+            StateHasChanged();
+        };
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -323,7 +337,7 @@
     private async Task InviteHandle()
     {
         var principal = await PrincipalApi.Get(IsAuthenticated);
-        await PopupHelper.InvitePerEmail(ModalService, principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
+        await ModalService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
     }
 
     private async Task InvitationSent(string email)
@@ -346,74 +360,73 @@
         {
             MyMatches = new MyMatchesModel();
 
-            var languages = EnumHelper.GetArray<MM.Shared.Enums.Language>();
+            var languages = EnumHelper.GetArray<Language>();
 
             fakeProfiles = new Faker<ProfileModel>()
                 .RuleFor(x => x.Id, f => f.Random.Guid().ToString())
-                .RuleFor(u => u.Gallery, f => new ProfileGalleryModel() { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
+                .RuleFor(u => u.Gallery, f => new ProfileGalleryModel { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
                 //BASIC
                 .RuleFor(x => x.NickName, f => f.Name.FirstName())
                 .RuleFor(x => x.Description, f => f.Lorem.Text())
-                .RuleFor(x => x.Nationality, f => f.PickRandom<MM.Shared.Enums.Country>())
+                .RuleFor(x => x.Nationality, f => f.PickRandom<Country>())
                 .RuleFor(x => x.Country, f => f.Address.Country())
                 .RuleFor(x => x.State, f => f.Address.County())
                 .RuleFor(x => x.City, f => f.Address.City())
-                .RuleFor(x => x.Languages, f => f.Random.EnumValues<MM.Shared.Enums.Language>(f.Random.Int(1, 3)).ToHashSet())
-                .RuleFor(x => x.MaritalStatus, f => f.PickRandom<MM.Shared.Enums.MaritalStatus>())
-                .RuleFor(x => x.BiologicalSex, f => f.PickRandom<MM.Shared.Enums.BiologicalSex>())
-                .RuleFor(x => x.GenderIdentities, f => f.Random.EnumValues<MM.Shared.Enums.GenderIdentity>(f.Random.Int(1, 2)).ToHashSet())
-                .RuleFor(x => x.SexualOrientations, f => f.Random.EnumValues<MM.Shared.Enums.SexualOrientation>(f.Random.Int(1, 2)).ToHashSet())
+                .RuleFor(x => x.Languages, f => f.Random.EnumValues<Language>(f.Random.Int(1, 3)).ToHashSet())
+                .RuleFor(x => x.MaritalStatus, f => f.PickRandom<MaritalStatus>())
+                .RuleFor(x => x.BiologicalSex, f => f.PickRandom<BiologicalSex>())
+                .RuleFor(x => x.GenderIdentities, f => f.Random.EnumValues<GenderIdentity>(f.Random.Int(1, 2)).ToHashSet())
+                .RuleFor(x => x.SexualOrientations, f => f.Random.EnumValues<SexualOrientation>(f.Random.Int(1, 2)).ToHashSet())
                 //BIO
-                .RuleFor(x => x.Ethnicity, f => f.PickRandom<MM.Shared.Enums.Ethnicity>())
-                .RuleFor(x => x.BodyType, f => f.PickRandom<MM.Shared.Enums.BodyType>())
+                .RuleFor(x => x.Ethnicity, f => f.PickRandom<Ethnicity>())
+                .RuleFor(x => x.BodyType, f => f.PickRandom<BodyType>())
                 .RuleFor(x => x.BirthDate, f => f.Date.Between(DateTime.Now.AddYears(-80), DateTime.Now.AddYears(-19)))
                 .RuleFor(x => x.Age, f => f.Random.Int(18, 80))
-                .RuleFor(x => x.Height, f => f.PickRandom<MM.Shared.Enums.Height>())
-                .RuleFor(x => x.Neurodiversity, f => f.PickRandom<MM.Shared.Enums.Neurodiversity>())
-                .RuleFor(x => x.Disabilities, f => f.Random.EnumValues<MM.Shared.Enums.Disability>(f.Random.Int(0, 1)).ToHashSet())
+                .RuleFor(x => x.Height, f => f.PickRandom<Height>())
+                .RuleFor(x => x.Neurodiversity, f => f.PickRandom<Neurodiversity>())
+                .RuleFor(x => x.Disabilities, f => f.Random.EnumValues<Disability>(f.Random.Int(0, 1)).ToHashSet())
                 //LIFESTYLE
-                .RuleFor(x => x.Drink, f => f.PickRandom<MM.Shared.Enums.Drink>())
-                .RuleFor(x => x.Smoke, f => f.PickRandom<MM.Shared.Enums.Smoke>())
-                .RuleFor(x => x.Diet, f => f.PickRandom<MM.Shared.Enums.Diet>())
-                .RuleFor(x => x.Religion, f => f.PickRandom<MM.Shared.Enums.Religion>())
-                .RuleFor(x => x.FamilyInvolvement, f => f.PickRandom<MM.Shared.Enums.FamilyInvolvement>())
-                .RuleFor(x => x.HaveChildren, f => f.PickRandom<MM.Shared.Enums.HaveChildren>())
-                .RuleFor(x => x.HavePets, f => f.PickRandom<MM.Shared.Enums.HavePets>())
-                .RuleFor(x => x.EducationLevel, f => f.PickRandom<MM.Shared.Enums.EducationLevel>())
-                .RuleFor(x => x.CareerCluster, f => f.PickRandom<MM.Shared.Enums.CareerCluster>())
-                .RuleFor(x => x.LivingSituation, f => f.PickRandom<MM.Shared.Enums.LivingSituation>())
-                .RuleFor(x => x.TravelFrequency, f => f.PickRandom<MM.Shared.Enums.TravelFrequency>())
-                .RuleFor(x => x.NetWorth, f => f.PickRandom<MM.Shared.Enums.NetWorth>())
-                .RuleFor(x => x.AnnualIncome, f => f.PickRandom<MM.Shared.Enums.AnnualIncome>())
+                .RuleFor(x => x.Drink, f => f.PickRandom<Drink>())
+                .RuleFor(x => x.Smoke, f => f.PickRandom<Smoke>())
+                .RuleFor(x => x.Diet, f => f.PickRandom<Diet>())
+                .RuleFor(x => x.Religion, f => f.PickRandom<Religion>())
+                .RuleFor(x => x.FamilyInvolvement, f => f.PickRandom<FamilyInvolvement>())
+                .RuleFor(x => x.HaveChildren, f => f.PickRandom<HaveChildren>())
+                .RuleFor(x => x.HavePets, f => f.PickRandom<HavePets>())
+                .RuleFor(x => x.EducationLevel, f => f.PickRandom<EducationLevel>())
+                .RuleFor(x => x.CareerCluster, f => f.PickRandom<CareerCluster>())
+                .RuleFor(x => x.LivingSituation, f => f.PickRandom<LivingSituation>())
+                .RuleFor(x => x.TravelFrequency, f => f.PickRandom<TravelFrequency>())
+                .RuleFor(x => x.NetWorth, f => f.PickRandom<NetWorth>())
+                .RuleFor(x => x.AnnualIncome, f => f.PickRandom<AnnualIncome>())
                 //PERSONALITY
-                .RuleFor(x => x.MoneyPersonality, f => f.PickRandom<MM.Shared.Enums.MoneyPersonality>())
-                .RuleFor(x => x.SharedSpendingStyle, f => f.PickRandom<MM.Shared.Enums.SharedSpendingStyle>())
-                .RuleFor(x => x.RelationshipPersonality, f => f.PickRandom<MM.Shared.Enums.RelationshipPersonality>())
-                .RuleFor(x => x.MBTI, f => f.PickRandom<MM.Shared.Enums.MyersBriggsTypeIndicator>())
-                .RuleFor(x => x.LoveLanguage, f => f.PickRandom<MM.Shared.Enums.LoveLanguage>())
-                .RuleFor(x => x.SexPersonality, f => f.PickRandom<MM.Shared.Enums.SexPersonality>())
-                .RuleFor(x => x.SexPersonalityPreference, f => f.Random.EnumValues<MM.Shared.Enums.SexPersonality>(f.Random.Int(1, 3)).ToHashSet())
+                .RuleFor(x => x.MoneyPersonality, f => f.PickRandom<MoneyPersonality>())
+                .RuleFor(x => x.SharedSpendingStyle, f => f.PickRandom<SharedSpendingStyle>())
+                .RuleFor(x => x.RelationshipPersonality, f => f.PickRandom<RelationshipPersonality>())
+                .RuleFor(x => x.MBTI, f => f.PickRandom<MyersBriggsTypeIndicator>())
+                .RuleFor(x => x.LoveLanguage, f => f.PickRandom<LoveLanguage>())
+                .RuleFor(x => x.SexPersonality, f => f.PickRandom<SexPersonality>())
+                .RuleFor(x => x.SexPersonalityPreference, f => f.Random.EnumValues<SexPersonality>(f.Random.Int(1, 3)).ToHashSet())
                 //INTEREST
-                .RuleFor(x => x.Food, f => f.Random.EnumValues<MM.Shared.Enums.Food>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.Vacation, f => f.Random.EnumValues<MM.Shared.Enums.Vacation>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.Sports, f => f.Random.EnumValues<MM.Shared.Enums.Sports>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.LeisureActivities, f => f.Random.EnumValues<MM.Shared.Enums.LeisureActivities>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.MusicGenre, f => f.Random.EnumValues<MM.Shared.Enums.MusicGenre>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.MovieGenre, f => f.Random.EnumValues<MM.Shared.Enums.MovieGenre>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.TVGenre, f => f.Random.EnumValues<MM.Shared.Enums.TVGenre>(f.Random.Int(0, 3)).ToHashSet())
-                .RuleFor(x => x.ReadingGenre, f => f.Random.EnumValues<MM.Shared.Enums.ReadingGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.Food, f => f.Random.EnumValues<Food>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.Vacation, f => f.Random.EnumValues<Vacation>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.Sports, f => f.Random.EnumValues<Sports>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.LeisureActivities, f => f.Random.EnumValues<LeisureActivities>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.MusicGenre, f => f.Random.EnumValues<MusicGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.MovieGenre, f => f.Random.EnumValues<MovieGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.TVGenre, f => f.Random.EnumValues<TVGenre>(f.Random.Int(0, 3)).ToHashSet())
+                .RuleFor(x => x.ReadingGenre, f => f.Random.EnumValues<ReadingGenre>(f.Random.Int(0, 3)).ToHashSet())
                 //RELATIONSHIP
-                .RuleFor(x => x.SharedFinances, f => f.PickRandom<MM.Shared.Enums.SharedFinances>())
-                .RuleFor(x => x.ConflictResolutionStyle, f => f.PickRandom<MM.Shared.Enums.ConflictResolutionStyle>())
-                .RuleFor(x => x.HouseholdManagement, f => f.PickRandom<MM.Shared.Enums.HouseholdManagement>())
-                .RuleFor(x => x.TimeTogetherPreference, f => f.PickRandom<MM.Shared.Enums.TimeTogetherPreference>())
-                .RuleFor(x => x.OppositeSexFriendships, f => f.PickRandom<MM.Shared.Enums.OppositeSexFriendships>())
+                .RuleFor(x => x.SharedFinances, f => f.PickRandom<SharedFinances>())
+                .RuleFor(x => x.ConflictResolutionStyle, f => f.PickRandom<ConflictResolutionStyle>())
+                .RuleFor(x => x.HouseholdManagement, f => f.PickRandom<HouseholdManagement>())
+                .RuleFor(x => x.TimeTogetherPreference, f => f.PickRandom<TimeTogetherPreference>())
+                .RuleFor(x => x.OppositeSexFriendships, f => f.PickRandom<OppositeSexFriendships>())
                 //GOAL
-                .RuleFor(x => x.RelationshipIntentions, f => f.Random.EnumValues<MM.Shared.Enums.RelationshipIntention>(f.Random.Int(1, 2)).ToHashSet())
-                .RuleFor(x => x.WantChildren, f => f.PickRandom<MM.Shared.Enums.WantChildren>())
-                .RuleFor(x => x.Relocation, f => f.PickRandom<MM.Shared.Enums.Relocation>())
-                .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<MM.Shared.Enums.IdealPlaceToLive>())
-
+                .RuleFor(x => x.RelationshipIntentions, f => f.Random.EnumValues<RelationshipIntention>(f.Random.Int(1, 2)).ToHashSet())
+                .RuleFor(x => x.WantChildren, f => f.PickRandom<WantChildren>())
+                .RuleFor(x => x.Relocation, f => f.PickRandom<Relocation>())
+                .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<IdealPlaceToLive>())
                 .GenerateLazy(6).ToHashSet();
 
             MyMatches.Items = fakeProfiles.Select(s =>

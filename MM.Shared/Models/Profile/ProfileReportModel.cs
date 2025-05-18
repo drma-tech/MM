@@ -1,8 +1,7 @@
-﻿namespace MM.Shared.Models.Profile
+﻿namespace MM.Shared.Models.Profile;
+
+public class ProfileReportModel
 {
-    public class ProfileReportModel
-    {
-        public DateTime DtInsert { get; set; } = DateTime.UtcNow;
-        public ReportType Type { get; set; }
-    }
+    public DateTime DtInsert { get; set; } = DateTime.UtcNow;
+    public ReportType Type { get; set; }
 }

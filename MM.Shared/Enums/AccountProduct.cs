@@ -1,14 +1,10 @@
-﻿namespace MM.Shared.Enums
+﻿namespace MM.Shared.Enums;
+
+public enum AccountProduct
 {
-    public enum AccountProduct
-    {
-        [Custom(Name = "Basic")]
-        Basic = 1,
+    [Custom(Name = "Basic")] Basic = 1,
 
-        [Custom(Name = "Standard")]
-        Standard = 2,
+    [Custom(Name = "Standard")] Standard = 2,
 
-        [Custom(Name = "Premium")]
-        Premium = 3,
-    }
+    [Custom(Name = "Premium")] Premium = 3
 }

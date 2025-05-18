@@ -1,6 +1,5 @@
-﻿namespace MM.WEB.Core.Api
+﻿namespace MM.WEB.Core.Api;
+
+public abstract class ApiExternal(IHttpClientFactory factory) : ApiCore(factory, null)
 {
-    public abstract class ApiExternal(IHttpClientFactory factory) : ApiCore(factory, null)
-    {
-    }
 }

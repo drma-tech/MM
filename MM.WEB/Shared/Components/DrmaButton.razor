@@ -1,6 +1,6 @@
 ﻿@typeparam T
 
-<Button Color="Color" Clicked="Clicked" Block="Block" Margin="Margin" Disabled="(Disabled || Processing)">
+<Button Color="Color" Clicked="Clicked" Block="Block" Margin="Margin" Disabled="Disabled || Processing">
     <ChildContent>
         @ChildContent
     </ChildContent>
@@ -16,11 +16,12 @@
 
     [Parameter] public RenderControlCore<T?>? Core { get; set; }
 
-    private bool Processing = false;
+    private bool Processing;
 
     protected override void OnInitialized()
     {
         if (Core != null) Core.ProcessingStarted += () => Processing = true;
-        if (Core != null) Core.ProcessingFinished += (T? obj) => Processing = false;
+        if (Core != null) Core.ProcessingFinished += obj => Processing = false;
     }
+
 }

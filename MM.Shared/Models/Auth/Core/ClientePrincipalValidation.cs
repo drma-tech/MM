@@ -1,26 +1,25 @@
 ﻿using FluentValidation;
 
-namespace MM.Shared.Models.Auth.Core
+namespace MM.Shared.Models.Auth.Core;
+
+public class ClientePrincipalValidation : AbstractValidator<ClientePrincipal>
 {
-    public class ClientePrincipalValidation : AbstractValidator<ClientePrincipal>
+    public ClientePrincipalValidation()
     {
-        public ClientePrincipalValidation()
-        {
-            RuleFor(x => x.UserId)
-                .NotEmpty();
+        RuleFor(x => x.UserId)
+            .NotEmpty();
 
-            RuleFor(x => x.IdentityProvider)
-                .NotEmpty();
+        RuleFor(x => x.IdentityProvider)
+            .NotEmpty();
 
-            RuleFor(x => x.UserDetails)
-                .NotEmpty();
+        RuleFor(x => x.UserDetails)
+            .NotEmpty();
 
-            RuleFor(x => x.UserRoles)
-                .NotEmpty();
+        RuleFor(x => x.UserRoles)
+            .NotEmpty();
 
-            RuleFor(x => x.Email)
-                .NotEmpty()
-                .EmailAddress();
-        }
+        RuleFor(x => x.Email)
+            .NotEmpty()
+            .EmailAddress();
     }
 }

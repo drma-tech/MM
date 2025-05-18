@@ -1,314 +1,373 @@
 ﻿@page "/profile/filter"
-@using FluentValidation
-@using FluentValidation.Results
+@attribute [Authorize]
+@using MM.Shared.Enums.Resources
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
 @using MM.WEB.Modules.Profile.Core
-@attribute [Authorize]
+@using BiologicalSex = MM.Shared.Enums.BiologicalSex
+@using Button = MM.WEB.Resources.Button
+@using CareerCluster = MM.Shared.Enums.CareerCluster
+@using Country = MM.Shared.Enums.Country
+@using Diet = MM.Shared.Enums.Diet
+@using Disability = MM.Shared.Enums.Disability
+@using Drink = MM.Shared.Enums.Drink
+@using HaveChildren = MM.Shared.Enums.HaveChildren
+@using Height = MM.Shared.Enums.Height
+@using Neurodiversity = MM.Shared.Enums.Neurodiversity
+@using Smoke = MM.Shared.Enums.Smoke
+@using TravelFrequency = MM.Shared.Enums.TravelFrequency
+@using WantChildren = MM.Shared.Enums.WantChildren
 @inherits PageCore<ProfileFilter>
 
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
-<RenderControl Core="Core" Model="Filter" ExpressionEmpty="((FilterModel? obj)=> obj == null)" PrivateContent="true">
-    <Accordion>
-        <AccordionItem Visible="@(Tab==Tabs.BASIC)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.BASIC)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Basic
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.BASIC)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@Filter!.Region"
-                                         CssIcon="@FontAwesomeIcons.MapMarkedAlt" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Nationality)" TValue="HashSet<MM.Shared.Enums.Country>" TEnum="MM.Shared.Enums.Country" @bind-SelectedValues="@Filter.Nationality"
-                                         CssIcon="@FontAwesomeIcons.EarthAmericas" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Filter.Languages"
-                                         CssIcon="@FontAwesomeIcons.Language" Multiple="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@Filter!.MaritalStatus"
-                                         CssIcon="@FontAwesomeIcons.Ring" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@Filter.BiologicalSex"
-                                         CssIcon="@FontAwesomeIcons.PersonHalfDress" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Filter.GenderIdentities"
-                                         CssIcon="@FontAwesomeIcons.MarsAndVenus" ShowGroup="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Filter.SexualOrientations"
-                                         CssIcon="@FontAwesomeIcons.HeartPulse" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.BIO)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.BIO)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Bio
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.BIO)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Ethnicity)" TValue="HashSet<Ethnicity>" TEnum="Ethnicity" @bind-SelectedValues="@Filter!.Ethnicity"
-                                         CssIcon="@FontAwesomeIcons.Globe" Multiple="true"></FieldSelect>
+<RenderControl Core="Core" Model="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null" PrivateContent="true">
+<Accordion>
+<AccordionItem Visible="@(Tab == Tabs.BASIC)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Basic
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.BASIC)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@Filter!.Region"
+                                 CssIcon="@FontAwesomeIcons.MapMarkedAlt" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Nationality)" TValue="HashSet<Country>" TEnum="Country" @bind-SelectedValues="@Filter.Nationality"
+                                 CssIcon="@FontAwesomeIcons.EarthAmericas" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Filter.Languages"
+                                 CssIcon="@FontAwesomeIcons.Language" Multiple="true">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@Filter!.MaritalStatus"
+                                 CssIcon="@FontAwesomeIcons.Ring" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@Filter.BiologicalSex"
+                                 CssIcon="@FontAwesomeIcons.PersonHalfDress" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Filter.GenderIdentities"
+                                 CssIcon="@FontAwesomeIcons.MarsAndVenus" ShowGroup="true" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Filter.SexualOrientations"
+                                 CssIcon="@FontAwesomeIcons.HeartPulse" Multiple="true">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.BIO)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.BIO)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Bio
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.BIO)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Ethnicity)" TValue="HashSet<Ethnicity>" TEnum="Ethnicity" @bind-SelectedValues="@Filter!.Ethnicity"
+                                 CssIcon="@FontAwesomeIcons.Globe" Multiple="true">
+                    </FieldSelect>
 
-                            <FieldSelect For="@(() => Filter.BodyType)" TValue="HashSet<BodyType>" TEnum="BodyType" @bind-SelectedValues="@Filter.BodyType"
-                                         CssIcon="@FontAwesomeIcons.Weight" Multiple="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <Field Horizontal="true">
-                                <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
-                                    <Blazorise.Icon Name="@FontAwesomeIcons.BirthdayCake"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalAge)?.Name
-                                    <FieldHelp Style="color: #17a2b8 !important">@CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalAge)?.Description</FieldHelp>
-                                </FieldLabel>
-                                <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                                    <NumericEdit @bind-Value="@Filter!.MinimalAge" Min="18"></NumericEdit>
-                                </FieldBody>
-                                <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                                    <NumericEdit @bind-Value="@Filter!.MaxAge"></NumericEdit>
-                                </FieldBody>
-                            </Field>
-                            <Field Horizontal="true">
-                                <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
-                                    <Blazorise.Icon Name="@FontAwesomeIcons.Ruler"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalHeight)?.Name
-                                </FieldLabel>
-                                <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                                    <InputSelect TValue="MM.Shared.Enums.Height?" @bind-Value="@Filter!.MinimalHeight" @attributes="@(new Dictionary<string, object>() { { "class", "form-control" } })">
-                                        <option></option>
-                                        @foreach (var item in EnumHelper.GetArray<MM.Shared.Enums.Height>())
-                                        {
-                                            <option value="@item">@item.GetName()</option>
-                                        }
-                                    </InputSelect>
-                                </FieldBody>
-                                <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
-                                    <InputSelect TValue="MM.Shared.Enums.Height?" @bind-Value="@Filter!.MaxHeight" @attributes="@(new Dictionary<string, object>() { { "class", "form-control" } })">
-                                        <option></option>
-                                        @foreach (var item in EnumHelper.GetArray<MM.Shared.Enums.Height>())
-                                        {
-                                            <option value="@item">@item.GetName()</option>
-                                        }
-                                    </InputSelect>
-                                </FieldBody>
-                            </Field>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Neurodiversities)" TValue="HashSet<Neurodiversity>" TEnum="Neurodiversity" @bind-SelectedValues="@Filter!.Neurodiversities"
-                                         CssIcon="@FontAwesomeIcons.Brain" Multiple="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Filter!.Disabilities"
-                                         CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.LIFESTYLE)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.LIFESTYLE)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Lifestyle
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.LIFESTYLE)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@Filter!.Drink"
-                                         CssIcon="@FontAwesomeIcons.GlassCheers" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Smoke)" TValue="HashSet<Smoke>" TEnum="Smoke" @bind-SelectedValues="@Filter.Smoke"
-                                         CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Diet)" TValue="HashSet<Diet>" TEnum="Diet" @bind-SelectedValues="@Filter.Diet"
-                                         CssIcon="@FontAwesomeIcons.Utensils" Multiple="true" ShowDescription="false"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Religion)" TValue="HashSet<Religion>" TEnum="Religion" @bind-SelectedValues="@Filter.Religion"
-                                         CssIcon="@FontAwesomeIcons.PrayingHands" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.FamilyInvolvement)" TValue="HashSet<FamilyInvolvement>" TEnum="FamilyInvolvement" @bind-SelectedValue="@Filter.FamilyInvolvement"
-                                         CssIcon="@FontAwesomeIcons.PeopleRoof" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.NetWorth)" TValue="HashSet<NetWorth>" TEnum="NetWorth" @bind-SelectedValue="@Filter.NetWorth"
-                                         CssIcon="@FontAwesomeIcons.Gem" Multiple="true" Disabled="true"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@Filter!.HaveChildren"
-                                         CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.HavePets)" TValue="HashSet<HavePets>" TEnum="HavePets" @bind-SelectedValues="@Filter.HavePets"
-                                         CssIcon="@FontAwesomeIcons.Paw" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.EducationLevel)" TValue="HashSet<EducationLevel>" TEnum="EducationLevel" @bind-SelectedValues="@Filter.EducationLevel"
-                                         CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="false" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.CareerCluster)" TValue="HashSet<CareerCluster>" TEnum="CareerCluster" @bind-SelectedValues="@Filter.CareerCluster"
-                                         CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.LivingSituation)" TValue="HashSet<LivingSituation>" TEnum="LivingSituation" @bind-SelectedValue="@Filter.LivingSituation"
-                                         CssIcon="@FontAwesomeIcons.HomeUser" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.TravelFrequency)" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@Filter.TravelFrequency"
-                                         CssIcon="@FontAwesomeIcons.Plane" ShowGroup="true" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.AnnualIncome)" TValue="HashSet<AnnualIncome>" TEnum="AnnualIncome" @bind-SelectedValue="@Filter.AnnualIncome"
-                                         CssIcon="@FontAwesomeIcons.MoneyBill" Multiple="true" Disabled="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.PERSONALITY)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.PERSONALITY)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Personality
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.PERSONALITY)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSwitch For="@(() => Filter!.MoneyPersonality)" @bind-Value="@Filter!.MoneyPersonality" CssIcon="@FontAwesomeIcons.Wallet"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                            <FieldSwitch For="@(() => Filter.SharedSpendingStyle)" @bind-Value="@Filter.SharedSpendingStyle" CssIcon="@FontAwesomeIcons.HandHoldingUsd"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                            <FieldSwitch For="@(() => Filter.RelationshipPersonality)" @bind-Value="@Filter.RelationshipPersonality" CssIcon="@FontAwesomeIcons.PeoplePulling"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSwitch For="@(() => Filter!.MyersBriggsTypeIndicator)" @bind-Value="@Filter!.MyersBriggsTypeIndicator" CssIcon="@FontAwesomeIcons.UserTag"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                            <FieldSwitch For="@(() => Filter.LoveLanguage)" @bind-Value="@Filter.LoveLanguage" CssIcon="@FontAwesomeIcons.HandHoldingHeart"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                            <FieldSwitch For="@(() => Filter.SexPersonality)" @bind-Value="@Filter.SexPersonality" CssIcon="@FontAwesomeIcons.Heart"
-                                         LabelSize="LabelSize.Big" SwithLabel="Search for compatibility"></FieldSwitch>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.INTEREST)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.INTEREST)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Interest
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.INTEREST)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Filter!.Food"
-                                         CssIcon="@FontAwesomeIcons.PizzaSlice" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Filter.Vacation"
-                                         CssIcon="@FontAwesomeIcons.PlaneDeparture" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Filter.Sports"
-                                         CssIcon="@FontAwesomeIcons.Swimmer" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Filter.LeisureActivities"
-                                         CssIcon="@FontAwesomeIcons.UmbrellaBeach" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Filter!.MusicGenre"
-                                         CssIcon="@FontAwesomeIcons.Music" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Filter.MovieGenre"
-                                         CssIcon="@FontAwesomeIcons.Film" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Filter.TVGenre"
-                                         CssIcon="@FontAwesomeIcons.Tv" LabelSize="LabelSize.Short" Multiple="true" Order="(o => o.Name)"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Filter.ReadingGenre"
-                                         CssIcon="@FontAwesomeIcons.BookReader" LabelSize="LabelSize.Short" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.RELATIONSHIP)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.RELATIONSHIP)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Relationship
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.RELATIONSHIP)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.SharedFinances)" TValue="HashSet<SharedFinances>" TEnum="SharedFinances" @bind-SelectedValues="@Filter!.SharedFinances"
-                                         CssIcon="@FontAwesomeIcons.MoneyBillTransfer" Multiple="true" LabelSize="LabelSize.Big"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.ConflictResolutionStyle)" TValue="HashSet<ConflictResolutionStyle>" TEnum="ConflictResolutionStyle" @bind-SelectedValues="@Filter.ConflictResolutionStyle"
-                                         CssIcon="@FontAwesomeIcons.Handshake" Multiple="true" LabelSize="LabelSize.Big"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.HouseholdManagement)" TValue="HashSet<HouseholdManagement>" TEnum="HouseholdManagement" @bind-SelectedValues="@Filter.HouseholdManagement"
-                                         CssIcon="@FontAwesomeIcons.Broom" Multiple="true" LabelSize="LabelSize.Big"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.TimeTogetherPreference)" TValue="HashSet<TimeTogetherPreference>" TEnum="TimeTogetherPreference" @bind-SelectedValues="@Filter!.TimeTogetherPreference"
-                                         CssIcon="@FontAwesomeIcons.PeopleArrows" Multiple="true" LabelSize="LabelSize.Big"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.OppositeSexFriendships)" TValue="HashSet<OppositeSexFriendships>" TEnum="OppositeSexFriendships" @bind-SelectedValues="@Filter.OppositeSexFriendships"
-                                         CssIcon="@FontAwesomeIcons.Restroom" Multiple="true" LabelSize="LabelSize.Big"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-        <AccordionItem Visible="@(Tab==Tabs.GOAL)" VisibleChanged="(bool value)=>VisibleChanged(value,Tabs.GOAL)">
-            <AccordionHeader>
-                <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-                    <AccordionToggle Padding="Padding.Is3">
-                        @MM.Shared.Enums.Resources.Section.Goals
-                    </AccordionToggle>
-                </Heading>
-            </AccordionHeader>
-            <AccordionBody>
-                @if (Tab == Tabs.GOAL)
-                {
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Filter!.RelationshipIntentions"
-                                         CssIcon="@FontAwesomeIcons.Search" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Filter!.Relocation"
-                                         CssIcon="@FontAwesomeIcons.Truck"></FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Filter!.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@Filter!.WantChildren"
-                                         CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Multiple="true"></FieldSelect>
-                            <FieldSelect For="@(() => Filter.IdealPlaceToLive)" TValue="HashSet<IdealPlaceToLive>" TEnum="IdealPlaceToLive" @bind-SelectedValues="@Filter.IdealPlaceToLive"
-                                         CssIcon="@FontAwesomeIcons.HouseCircleCheck" Multiple="true"></FieldSelect>
-                        </Column>
-                    </Row>
-                }
-            </AccordionBody>
-        </AccordionItem>
-    </Accordion>
+                    <FieldSelect For="@(() => Filter.BodyType)" TValue="HashSet<BodyType>" TEnum="BodyType" @bind-SelectedValues="@Filter.BodyType"
+                                 CssIcon="@FontAwesomeIcons.Weight" Multiple="true">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <Field Horizontal="true">
+                        <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
+                            <Blazorise.Icon Name="@FontAwesomeIcons.BirthdayCake"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalAge)?.Name
+                            <FieldHelp Style="color: #17a2b8 !important">@CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalAge)?.Description</FieldHelp>
+                        </FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                            <NumericEdit @bind-Value="@Filter!.MinimalAge" Min="18"></NumericEdit>
+                        </FieldBody>
+                        <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                            <NumericEdit @bind-Value="@Filter!.MaxAge"></NumericEdit>
+                        </FieldBody>
+                    </Field>
+                    <Field Horizontal="true">
+                        <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
+                            <Blazorise.Icon Name="@FontAwesomeIcons.Ruler"></Blazorise.Icon> @CustomAttributeHelper.GetCustomAttribute(() => Filter!.MinimalHeight)?.Name
+                        </FieldLabel>
+                        <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                            <InputSelect TValue="Height?" @bind-Value="@Filter!.MinimalHeight" @attributes="@(new Dictionary<string, object> { { "class", "form-control" } })">
+                                <option></option>
+                                @foreach (var item in EnumHelper.GetArray<Height>())
+                                {
+                                    <option value="@item">@item.GetName()</option>
+                                }
+                            </InputSelect>
+                        </FieldBody>
+                        <FieldBody ColumnSize="ColumnSize.IsHalf.Is4.OnFullHD">
+                            <InputSelect TValue="Height?" @bind-Value="@Filter!.MaxHeight" @attributes="@(new Dictionary<string, object> { { "class", "form-control" } })">
+                                <option></option>
+                                @foreach (var item in EnumHelper.GetArray<Height>())
+                                {
+                                    <option value="@item">@item.GetName()</option>
+                                }
+                            </InputSelect>
+                        </FieldBody>
+                    </Field>
+                </Column>
+            </Row>
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Neurodiversities)" TValue="HashSet<Neurodiversity>" TEnum="Neurodiversity" @bind-SelectedValues="@Filter!.Neurodiversities"
+                                 CssIcon="@FontAwesomeIcons.Brain" Multiple="true">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Filter!.Disabilities"
+                                 CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.LIFESTYLE)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.LIFESTYLE)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Lifestyle
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.LIFESTYLE)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@Filter!.Drink"
+                                 CssIcon="@FontAwesomeIcons.GlassCheers" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Smoke)" TValue="HashSet<Smoke>" TEnum="Smoke" @bind-SelectedValues="@Filter.Smoke"
+                                 CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Diet)" TValue="HashSet<Diet>" TEnum="Diet" @bind-SelectedValues="@Filter.Diet"
+                                 CssIcon="@FontAwesomeIcons.Utensils" Multiple="true" ShowDescription="false">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Religion)" TValue="HashSet<Religion>" TEnum="Religion" @bind-SelectedValues="@Filter.Religion"
+                                 CssIcon="@FontAwesomeIcons.PrayingHands" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.FamilyInvolvement)" TValue="HashSet<FamilyInvolvement>" TEnum="FamilyInvolvement" @bind-SelectedValue="@Filter.FamilyInvolvement"
+                                 CssIcon="@FontAwesomeIcons.PeopleRoof" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.NetWorth)" TValue="HashSet<NetWorth>" TEnum="NetWorth" @bind-SelectedValue="@Filter.NetWorth"
+                                 CssIcon="@FontAwesomeIcons.Gem" Multiple="true" Disabled="true">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@Filter!.HaveChildren"
+                                 CssIcon="@FontAwesomeIcons.Child" ShowHelper="false" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.HavePets)" TValue="HashSet<HavePets>" TEnum="HavePets" @bind-SelectedValues="@Filter.HavePets"
+                                 CssIcon="@FontAwesomeIcons.Paw" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.EducationLevel)" TValue="HashSet<EducationLevel>" TEnum="EducationLevel" @bind-SelectedValues="@Filter.EducationLevel"
+                                 CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="false" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.CareerCluster)" TValue="HashSet<CareerCluster>" TEnum="CareerCluster" @bind-SelectedValues="@Filter.CareerCluster"
+                                 CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.LivingSituation)" TValue="HashSet<LivingSituation>" TEnum="LivingSituation" @bind-SelectedValue="@Filter.LivingSituation"
+                                 CssIcon="@FontAwesomeIcons.HomeUser" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.TravelFrequency)" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@Filter.TravelFrequency"
+                                 CssIcon="@FontAwesomeIcons.Plane" ShowGroup="true" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.AnnualIncome)" TValue="HashSet<AnnualIncome>" TEnum="AnnualIncome" @bind-SelectedValue="@Filter.AnnualIncome"
+                                 CssIcon="@FontAwesomeIcons.MoneyBill" Multiple="true" Disabled="true">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.PERSONALITY)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.PERSONALITY)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Personality
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.PERSONALITY)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSwitch For="@(() => Filter!.MoneyPersonality)" @bind-Value="@Filter!.MoneyPersonality" CssIcon="@FontAwesomeIcons.Wallet"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                    <FieldSwitch For="@(() => Filter.SharedSpendingStyle)" @bind-Value="@Filter.SharedSpendingStyle" CssIcon="@FontAwesomeIcons.HandHoldingUsd"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                    <FieldSwitch For="@(() => Filter.RelationshipPersonality)" @bind-Value="@Filter.RelationshipPersonality" CssIcon="@FontAwesomeIcons.PeoplePulling"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSwitch For="@(() => Filter!.MyersBriggsTypeIndicator)" @bind-Value="@Filter!.MyersBriggsTypeIndicator" CssIcon="@FontAwesomeIcons.UserTag"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                    <FieldSwitch For="@(() => Filter.LoveLanguage)" @bind-Value="@Filter.LoveLanguage" CssIcon="@FontAwesomeIcons.HandHoldingHeart"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                    <FieldSwitch For="@(() => Filter.SexPersonality)" @bind-Value="@Filter.SexPersonality" CssIcon="@FontAwesomeIcons.Heart"
+                                 LabelSize="LabelSize.Big" SwithLabel="Search for compatibility">
+                    </FieldSwitch>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.INTEREST)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.INTEREST)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Interest
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.INTEREST)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Filter!.Food"
+                                 CssIcon="@FontAwesomeIcons.PizzaSlice" LabelSize="LabelSize.Short" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Filter.Vacation"
+                                 CssIcon="@FontAwesomeIcons.PlaneDeparture" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Filter.Sports"
+                                 CssIcon="@FontAwesomeIcons.Swimmer" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Filter.LeisureActivities"
+                                 CssIcon="@FontAwesomeIcons.UmbrellaBeach" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Filter!.MusicGenre"
+                                 CssIcon="@FontAwesomeIcons.Music" LabelSize="LabelSize.Short" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Filter.MovieGenre"
+                                 CssIcon="@FontAwesomeIcons.Film" LabelSize="LabelSize.Short" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Filter.TVGenre"
+                                 CssIcon="@FontAwesomeIcons.Tv" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Filter.ReadingGenre"
+                                 CssIcon="@FontAwesomeIcons.BookReader" LabelSize="LabelSize.Short" Multiple="true">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.RELATIONSHIP)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.RELATIONSHIP)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Relationship
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.RELATIONSHIP)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.SharedFinances)" TValue="HashSet<SharedFinances>" TEnum="SharedFinances" @bind-SelectedValues="@Filter!.SharedFinances"
+                                 CssIcon="@FontAwesomeIcons.MoneyBillTransfer" Multiple="true" LabelSize="LabelSize.Big">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.ConflictResolutionStyle)" TValue="HashSet<ConflictResolutionStyle>" TEnum="ConflictResolutionStyle" @bind-SelectedValues="@Filter.ConflictResolutionStyle"
+                                 CssIcon="@FontAwesomeIcons.Handshake" Multiple="true" LabelSize="LabelSize.Big">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.HouseholdManagement)" TValue="HashSet<HouseholdManagement>" TEnum="HouseholdManagement" @bind-SelectedValues="@Filter.HouseholdManagement"
+                                 CssIcon="@FontAwesomeIcons.Broom" Multiple="true" LabelSize="LabelSize.Big">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.TimeTogetherPreference)" TValue="HashSet<TimeTogetherPreference>" TEnum="TimeTogetherPreference" @bind-SelectedValues="@Filter!.TimeTogetherPreference"
+                                 CssIcon="@FontAwesomeIcons.PeopleArrows" Multiple="true" LabelSize="LabelSize.Big">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.OppositeSexFriendships)" TValue="HashSet<OppositeSexFriendships>" TEnum="OppositeSexFriendships" @bind-SelectedValues="@Filter.OppositeSexFriendships"
+                                 CssIcon="@FontAwesomeIcons.Restroom" Multiple="true" LabelSize="LabelSize.Big">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+<AccordionItem Visible="@(Tab == Tabs.GOAL)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.GOAL)">
+    <AccordionHeader>
+        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
+            <AccordionToggle Padding="Padding.Is3">
+                @Section.Goals
+            </AccordionToggle>
+        </Heading>
+    </AccordionHeader>
+    <AccordionBody>
+        @if (Tab == Tabs.GOAL)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Filter!.RelationshipIntentions"
+                                 CssIcon="@FontAwesomeIcons.Search" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Filter!.Relocation"
+                                 CssIcon="@FontAwesomeIcons.Truck">
+                    </FieldSelect>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
+                    <FieldSelect For="@(() => Filter!.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@Filter!.WantChildren"
+                                 CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false" Multiple="true">
+                    </FieldSelect>
+                    <FieldSelect For="@(() => Filter.IdealPlaceToLive)" TValue="HashSet<IdealPlaceToLive>" TEnum="IdealPlaceToLive" @bind-SelectedValues="@Filter.IdealPlaceToLive"
+                                 CssIcon="@FontAwesomeIcons.HouseCircleCheck" Multiple="true">
+                    </FieldSelect>
+                </Column>
+            </Row>
+        }
+    </AccordionBody>
+</AccordionItem>
+</Accordion>
 
-    <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
-        <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @WEB.Resources.Button.Save
-    </Button>
-    <Button Color="Color.Success" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="PopulateFields">
-        <Blazorise.Icon Name="FontAwesomeIcons.Magic"></Blazorise.Icon> @WEB.Resources.Button.Fill
-    </Button>
-    <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
-        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
-    </Button>
-    <Button Color="Color.Primary" Float="Float.End" Clicked="(()=>help?.ShowModal())" Margin="Margin.Is2.OnY">
-        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @WEB.Resources.Button.Help
-    </Button>
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
+    <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @Button.Save
+</Button>
+<Button Color="Color.Success" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="PopulateFields">
+    <Blazorise.Icon Name="FontAwesomeIcons.Magic"></Blazorise.Icon> @Button.Fill
+</Button>
+<Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
+    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
+</Button>
+<Button Color="Color.Primary" Float="Float.End" Clicked="() => help?.ShowModal()" Margin="Margin.Is2.OnY">
+    <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Button.Help
+</Button>
 
-    <BasicModal @ref="help" Title="@WEB.Resources.GlobalTranslations.HelpTitle">
-        <ul style="margin-left: -10px;">
-            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic1</li>
-            <li>@WEB.Resources.GlobalTranslations.PreferHelpTopic2</li>
-        </ul>
-    </BasicModal>
+<BasicModal @ref="help" Title="@GlobalTranslations.HelpTitle">
+    <ul style="margin-left: -10px;">
+        <li>@GlobalTranslations.PreferHelpTopic1</li>
+        <li>@GlobalTranslations.PreferHelpTopic2</li>
+    </ul>
+</BasicModal>
 </RenderControl>
 
 @code {
@@ -353,7 +412,7 @@
 
         if (Filter == null)
         {
-            Filter = new();
+            Filter = new FilterModel();
 
             var confirmed = await Message.Confirm(GlobalTranslations.ITrustPlataform, "Modern Matchmaker");
 
@@ -414,4 +473,5 @@
     {
         Navigation.NavigateTo("profile");
     }
+
 }

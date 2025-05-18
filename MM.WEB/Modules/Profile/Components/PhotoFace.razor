@@ -1,13 +1,13 @@
 ﻿@if (isCircle)
 {
     <div class="embed-responsive embed-responsive-1by1 img-fluid img-circle divPhoto">
-        <img alt="..." class="imgPhoto" src="@GetPhotoFace()" />
+        <img alt="..." class="imgPhoto" src="@GetPhotoFace()"/>
     </div>
 }
 else
 {
     <div class="embed-responsive embed-responsive-1by1 divPhoto" style="background-color: black;">
-        <img alt="..." class="imgPhoto" src="@GetPhotoFace()" />
+        <img alt="..." class="imgPhoto" src="@GetPhotoFace()"/>
         @if (!string.IsNullOrEmpty(Label))
         {
             <span style="position: absolute; left: 10px; bottom: 10px;">
@@ -26,9 +26,9 @@ else
     {
         if (string.IsNullOrEmpty(IdFace))
             return ImageHelper.GetNoUserPhoto;
-        else if (IdFace.StartsWith("data:"))
+        if (IdFace.StartsWith("data:"))
             return IdFace;
-        else
-            return $"https://verusdatedev.blob.core.windows.net/photo-face/{IdFace}";
+        return $"https://verusdatedev.blob.core.windows.net/photo-face/{IdFace}";
     }
+
 }

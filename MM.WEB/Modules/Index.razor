@@ -1,7 +1,8 @@
 ﻿@page "/"
 @page "/index"
-@using MM.Shared.Models.Dashboard
 <SeoHeader Title="Home" Description="@SeoTranslations.Description" Url="/"></SeoHeader>
+@using MM.Shared.Models.Dashboard
+@using Button = MM.WEB.Resources.Button
 @inherits PageCore<Index>
 
 @inject IJSRuntime JsRuntime
@@ -14,25 +15,25 @@
         </div>
         <div class="col-lg-6">
             <h1 class="display-6 fw-bold text-body-emphasis lh-1 mb-4">Modern Matchmaker</h1>
-            <p class="lead text-justify mb-4">@WEB.Resources.SeoTranslations.Description</p>
+            <p class="lead text-justify mb-4">@SeoTranslations.Description</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">@Resources.Button.LoginHero</button>
+                <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">@Button.LoginHero</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Resources.Landing.OurNumbers</h2>
+    <h2 class="pb-2 border-bottom">@Landing.OurNumbers</h2>
     <Alert Color="Color.Info" Visible="true" Margin="Margin.Is3.OnY">
         <AlertMessage>
-            @Resources.Landing.OurNumbersMsg1
+            @Landing.OurNumbersMsg1
         </AlertMessage>
         <AlertDescription>
-            @Resources.Landing.OurNumbersMsg2
+            @Landing.OurNumbersMsg2
         </AlertDescription>
     </Alert>
-    <Row Gutter="(8,8)">
+    <Row Gutter="(8, 8)">
         <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
             <Card>
                 <CardBody>
@@ -42,7 +43,7 @@
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
                         <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @WEB.Resources.GlobalTranslations.Countries
+                            @GlobalTranslations.Countries
                         </Span>
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
@@ -62,7 +63,7 @@
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
                         <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @WEB.Resources.GlobalTranslations.Cities
+                            @GlobalTranslations.Cities
                         </Span>
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
@@ -82,7 +83,7 @@
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
                         <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @Resources.Landing.Users
+                            @Landing.Users
                         </Span>
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
@@ -102,7 +103,7 @@
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
                         <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @Resources.Landing.Couples
+                            @Landing.Couples
                         </Span>
                     </Div>
                     <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
@@ -117,15 +118,15 @@
 </div>
 
 <div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Resources.Landing.OurRoadmap</h2>
+    <h2 class="pb-2 border-bottom">@Landing.OurRoadmap</h2>
 
     <div class="row align-items-md-center g-5 py-5">
         <div class="col-12 col-lg-5 d-flex flex-column align-items-start gap-2">
             <h2 class="fw-bold text-body-emphasis text-center">
-                @Resources.Landing.OurRoadmapMsg1
+                @Landing.OurRoadmapMsg1
             </h2>
             <p class="text-body-secondary text-justify">
-                @Resources.Landing.OurRoadmapMsg2
+                @Landing.OurRoadmapMsg2
             </p>
         </div>
 
@@ -136,16 +137,16 @@
                          Flex="Flex.AlignItems.Center.JustifyContent.Center">
                         <Blazorise.Icon Name="@FontAwesomeIcons._1" IconSize="IconSize.Large"></Blazorise.Icon>
                     </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Resources.Landing.Phase1Title</h4>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase1Title</h4>
                     @if (SumUsers != null)
                     {
                         var tot = (int)((double)SumUsers.Users / 100000 * 100);
                         <Progress Value="@((int?)tot)" Width="Width.Is100" Color="Color.Primary" Animated Striped></Progress>
                     }
                     <ul>
-                        <li>@Resources.Landing.Phase1Opt1</li>
-                        <li>@Resources.Landing.Phase1Opt2</li>
-                        <li>@Resources.Landing.Phase1Opt3</li>
+                        <li>@Landing.Phase1Opt1</li>
+                        <li>@Landing.Phase1Opt2</li>
+                        <li>@Landing.Phase1Opt3</li>
                     </ul>
                 </div>
                 <div class="col d-flex flex-column gap-2">
@@ -153,12 +154,12 @@
                          Flex="Flex.AlignItems.Center.JustifyContent.Center">
                         <Blazorise.Icon Name="@FontAwesomeIcons._2" IconSize="IconSize.Large"></Blazorise.Icon>
                     </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Resources.Landing.Phase2Title</h4>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase2Title</h4>
                     <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
                     <ul>
-                        <li>@Resources.Landing.Phase2Opt1</li>
-                        <li>@Resources.Landing.Phase2Opt2</li>
-                        <li>@Resources.Landing.Phase2Opt3</li>
+                        <li>@Landing.Phase2Opt1</li>
+                        <li>@Landing.Phase2Opt2</li>
+                        <li>@Landing.Phase2Opt3</li>
                     </ul>
                 </div>
                 <div class="col d-flex flex-column gap-2">
@@ -166,11 +167,11 @@
                          Flex="Flex.AlignItems.Center.JustifyContent.Center">
                         <Blazorise.Icon Name="@FontAwesomeIcons._3" IconSize="IconSize.Large"></Blazorise.Icon>
                     </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Resources.Landing.Phase3Title</h4>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase3Title</h4>
                     <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
                     <ul>
-                        <li>@Resources.Landing.Phase3Opt1</li>
-                        <li>@Resources.Landing.Phase3Opt2</li>
+                        <li>@Landing.Phase3Opt1</li>
+                        <li>@Landing.Phase3Opt2</li>
                     </ul>
                 </div>
                 <div class="col d-flex flex-column gap-2">
@@ -178,11 +179,11 @@
                          Flex="Flex.AlignItems.Center.JustifyContent.Center">
                         <Blazorise.Icon Name="@FontAwesomeIcons._4" IconSize="IconSize.Large"></Blazorise.Icon>
                     </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Resources.Landing.Phase4Title</h4>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase4Title</h4>
                     <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
                     <ul>
-                        <li>@Resources.Landing.Phase4Opt1</li>
-                        <li>@Resources.Landing.Phase4Opt2</li>
+                        <li>@Landing.Phase4Opt1</li>
+                        <li>@Landing.Phase4Opt2</li>
                     </ul>
                 </div>
             </div>
@@ -191,7 +192,7 @@
 </div>
 
 <div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Resources.Landing.OurFeatures</h2>
+    <h2 class="pb-2 border-bottom">@Landing.OurFeatures</h2>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-5">
         <div class="col d-flex align-items-start">
@@ -199,8 +200,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.Sliders" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.CompatibilitySystem</h3>
-                <p class="text-justify">@Resources.Landing.CompatibilitySystemDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CompatibilitySystem</h3>
+                <p class="text-justify">@Landing.CompatibilitySystemDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -208,8 +209,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.PeopleArrows" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.CoupleCompatibility</h3>
-                <p class="text-justify">@Resources.Landing.CoupleCompatibilityDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CoupleCompatibility</h3>
+                <p class="text-justify">@Landing.CoupleCompatibilityDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -217,8 +218,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.IdBadge" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.Profile</h3>
-                <p class="text-justify">@Resources.Landing.ProfileDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Profile</h3>
+                <p class="text-justify">@Landing.ProfileDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -226,8 +227,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.Book" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.CompatibilityReport</h3>
-                <p class="text-justify">@Resources.Landing.CompatibilityReportDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CompatibilityReport</h3>
+                <p class="text-justify">@Landing.CompatibilityReportDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -235,8 +236,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.UserShield" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.Security</h3>
-                <p class="text-justify">@Resources.Landing.SecurityDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Security</h3>
+                <p class="text-justify">@Landing.SecurityDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -244,8 +245,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.UserLock" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.Privacy</h3>
-                <p class="text-justify">@Resources.Landing.PrivacyDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Privacy</h3>
+                <p class="text-justify">@Landing.PrivacyDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -253,8 +254,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.UserCheck" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.Authenticity</h3>
-                <p class="text-justify">@Resources.Landing.AuthenticityDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Authenticity</h3>
+                <p class="text-justify">@Landing.AuthenticityDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -262,8 +263,8 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.Shuffle" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.Tracking</h3>
-                <p class="text-justify">@Resources.Landing.TrackingDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Tracking</h3>
+                <p class="text-justify">@Landing.TrackingDesc</p>
             </div>
         </div>
         <div class="col d-flex align-items-start">
@@ -271,16 +272,22 @@
                 <Blazorise.Icon Name="@FontAwesomeIcons.Coins" IconSize="IconSize.Large"></Blazorise.Icon>
             </Div>
             <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Resources.Landing.MMCoin</h3>
-                <p class="text-justify">@Resources.Landing.MMCoinDesc</p>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.MMCoin</h3>
+                <p class="text-justify">@Landing.MMCoinDesc</p>
             </div>
         </div>
     </div>
 </div>
 
 @code {
-    [Parameter][SupplyParameterFromQuery(Name = "language")] public string? language { get; set; }
-    [Parameter][SupplyParameterFromQuery(Name = "platform")] public string? platform { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "language")]
+    public string? language { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "platform")]
+    public string? platform { get; set; }
 
     public SumUsers? SumUsers { get; set; }
 
@@ -303,4 +310,5 @@
         var cache = await DashboardApi.GetSumUsers(null);
         SumUsers = cache?.Data;
     }
+
 }

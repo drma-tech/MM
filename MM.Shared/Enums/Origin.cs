@@ -1,20 +1,14 @@
-﻿namespace MM.Shared.Enums
+﻿namespace MM.Shared.Enums;
+
+public enum Origin
 {
-    public enum Origin
-    {
-        [Custom(Name = "Suggestion")]
-        Suggestion = 1,
+    [Custom(Name = "Suggestion")] Suggestion = 1,
 
-        [Custom(Name = "Like")]
-        Like = 2,
+    [Custom(Name = "Like")] Like = 2,
 
-        [Custom(Name = "Invite")]
-        Invite = 3,
+    [Custom(Name = "Invite")] Invite = 3,
 
-        [Custom(Name = "Match")]
-        Match = 4,
+    [Custom(Name = "Match")] Match = 4,
 
-        [Custom(Name = "Highlight")]
-        Highlight = 5
-    }
+    [Custom(Name = "Highlight")] Highlight = 5
 }

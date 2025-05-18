@@ -1,26 +1,25 @@
-﻿namespace MM.Shared.Models.Profile
+﻿namespace MM.Shared.Models.Profile;
+
+public class MyMatchesModel : PrivateMainDocument
 {
-    public class MyMatchesModel : PrivateMainDocument
+    public MyMatchesModel() : base(DocumentType.Matches)
     {
-        public MyMatchesModel() : base(DocumentType.Matches)
-        {
-        }
+    }
 
-        public HashSet<PersonModel> Items { get; set; } = [];
+    public HashSet<PersonModel> Items { get; set; } = [];
 
-        public override bool HasValidData()
-        {
-            return Items.Count != 0;
-        }
+    public override bool HasValidData()
+    {
+        return Items.Count != 0;
+    }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is MyMatchesModel q && q.Id == Id;
-        }
+    public override bool Equals(object? obj)
+    {
+        return obj is MyMatchesModel q && q.Id == Id;
+    }
 
-        public override int GetHashCode()
-        {
-            return Id?.GetHashCode() ?? 0;
-        }
+    public override int GetHashCode()
+    {
+        return Id?.GetHashCode() ?? 0;
     }
 }

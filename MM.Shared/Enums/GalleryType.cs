@@ -1,9 +1,8 @@
-﻿namespace MM.Shared.Enums
+﻿namespace MM.Shared.Enums;
+
+public enum GalleryType
 {
-    public enum GalleryType
-    {
-        NoPictures = 1,
-        Picures = 2,
-        BlindDate = 3
-    }
+    NoPictures = 1,
+    Picures = 2,
+    BlindDate = 3
 }

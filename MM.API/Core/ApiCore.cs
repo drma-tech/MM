@@ -1,16 +1,16 @@
 ﻿using System.Net.Http.Json;
 
-namespace MM.API.Core
+namespace MM.API.Core;
+
+public static class ApiCore
 {
-    public static class ApiCore
+    public static async Task<T?> Get<T>(this HttpClient http, string request_uri, CancellationToken cancellationToken)
+        where T : class
     {
-        public static async Task<T?> Get<T>(this HttpClient http, string request_uri, CancellationToken cancellationToken) where T : class
-        {
-            var response = await http.GetAsync(request_uri, cancellationToken);
+        var response = await http.GetAsync(request_uri, cancellationToken);
 
-            if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
+        if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
 
-            return await response.Content.ReadFromJsonAsync<T>(cancellationToken: cancellationToken);
-        }
+        return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }
 }

@@ -1,8 +1,8 @@
-﻿@using System.Linq.Expressions;
-@using MM.Shared.Models.Profile;
+﻿@typeparam TValue
+@using System.Linq.Expressions
+@using MM.Shared.Models.Profile
 @using MM.WEB.Core.Enum
 @using MM.WEB.Core.Models
-@typeparam TValue
 @typeparam TValueUser
 
 @inject IModalService ModalService
@@ -46,29 +46,26 @@ else
         {
             if (string.IsNullOrEmpty(resultS))
                 return "Not Answered";
-            else
-                return resultS;
+            return resultS;
         }
-        else if (value is int resultI)
+
+        if (value is int resultI)
         {
             if (resultI <= 0)
                 return "Not Answered";
-            else
-                return resultI.ToString();
+            return resultI.ToString();
         }
-        else if (value is Enum resultE)
+
+        if (value is Enum resultE)
         {
             var result = resultE.GetName();
 
             if (string.IsNullOrEmpty(result))
                 return "Not Answered";
-            else
-                return result;
+            return result;
         }
-        else
-        {
-            throw new InvalidOperationException("invalid type: " + value?.GetType());
-        }
+
+        throw new InvalidOperationException("invalid type: " + value?.GetType());
     }
 
     private Color GetColor(TValue? value)
@@ -77,28 +74,26 @@ else
         {
             return Color.Secondary;
         }
-        else if (Affinities.Single(s => s.Item == Item).HaveAffinity) //if it is mapped and has affinity
+
+        if (Affinities.Single(s => s.Item == Item).HaveAffinity) //if it is mapped and has affinity
         {
             if (value == null)
             {
                 return Color.Success;
             }
-            else if (value is Enum result && Type == CompatibilityType.Enum)
+
+            if (value is Enum result && Type == CompatibilityType.Enum)
             {
                 if (!GetExpectedValue().Any() || GetExpectedValue().Contains(result.GetName()))
                     return Color.Success;
-                else
-                    return Color.Warning;
+                return Color.Warning;
             }
-            else
-            {
-                return Color.Success;
-            }
+
+            return Color.Success;
         }
-        else //if mapped but without affinity
-        {
-            return Color.Danger;
-        }
+
+        //if mapped but without affinity
+        return Color.Danger;
     }
 
     public Task InstantiateModal()
@@ -106,7 +101,7 @@ else
         if (Values == null && Value != null) Values = [Value];
         if (Values == null && Value == null) Values = [];
 
-        return ModalService.Show<AboutItemModal<TValue>>(CustomAttributeHelper.GetCustomAttribute(For)?.Name,
+        return ModalService.Show<AboutItemModal<TValue>>(For.GetCustomAttribute()?.Name,
             x =>
             {
                 x.Add(x => x.PreferenceValues, GetPreferenceValues());
@@ -117,15 +112,15 @@ else
                 x.Add(x => x.Filter, Filter);
                 x.Add(x => x.Type, Type);
                 x.Add(x => x.Item, Item);
-                x.Add(x => x.WhyImportant, CustomAttributeHelper.GetCustomAttribute(For)?.WhyImportant);
-                x.Add(x => x.Tips, CustomAttributeHelper.GetCustomAttribute(For)?.Tips);
+                x.Add(x => x.WhyImportant, For.GetCustomAttribute()?.WhyImportant);
+                x.Add(x => x.Tips, For.GetCustomAttribute()?.Tips);
             },
-            new ModalInstanceOptions()
-                {
-                    UseModalStructure = true,
-                    Centered = true,
-                    Size = ModalSize.Large,
-                });
+            new ModalInstanceOptions
+            {
+                UseModalStructure = true,
+                Centered = true,
+                Size = ModalSize.Large
+            });
     }
 
     private IEnumerable<string> GetPreferenceValues()
@@ -210,4 +205,5 @@ else
             _ => throw new InvalidOperationException("invalid CompatibilityItem: " + Item)
         };
     }
+
 }

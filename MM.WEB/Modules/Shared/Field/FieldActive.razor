@@ -10,7 +10,8 @@
             }
             else
             {
-                <Blazorise.Icon Name="@CssIcon" Margin="Margin.Is1.FromEnd"></Blazorise.Icon> @For.GetCustomAttribute()?.Name
+                <Blazorise.Icon Name="@CssIcon" Margin="Margin.Is1.FromEnd"></Blazorise.Icon>
+                @For.GetCustomAttribute()?.Name
             }
         </FieldLabel>
         <FieldBody ColumnSize="@GetBodySize()">
@@ -19,7 +20,8 @@
                     <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation/gallery" Block="true" Disabled="Disabled">
                         @if (Value)
                         {
-                            <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon> <span>Active</span>
+                            <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
+                            <span>Active</span>
                         }
                         else if (CustomButtonText.NotEmpty())
                         {
@@ -27,7 +29,8 @@
                         }
                         else
                         {
-                            <Blazorise.Icon Name="FontAwesomeIcons.XmarkCircle" TextColor="TextColor.Danger"></Blazorise.Icon> <span>Inactive</span>
+                            <Blazorise.Icon Name="FontAwesomeIcons.XmarkCircle" TextColor="TextColor.Danger"></Blazorise.Icon>
+                            <span>Inactive</span>
                         }
                     </Button>
                 </Addon>

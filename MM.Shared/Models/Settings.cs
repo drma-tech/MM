@@ -1,7 +1,6 @@
-﻿namespace MM.Shared.Models
+﻿namespace MM.Shared.Models;
+
+public class Settings
 {
-    public class Settings
-    {
-        public bool ShowAdSense { get; set; }
-    }
+    public bool ShowAdSense { get; set; }
 }

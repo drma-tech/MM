@@ -23,7 +23,11 @@
                                 @foreach (var item in SelectedValues)
                                 {
                                     <Badge Color="Color.Secondary" Style="font-size: 90%;" Margin="Margin.Is1.FromEnd.Is1.FromBottom"
-                                           CloseClicked="@(async()=>{SelectedValues.Remove(item);await SelectedValuesChanged.InvokeAsync(SelectedValues);})">
+                                           CloseClicked="@(async () =>
+                                                         {
+                                                             SelectedValues.Remove(item);
+                                                             await SelectedValuesChanged.InvokeAsync(SelectedValues);
+                                                         })">
                                         @item.GetName()
                                     </Badge>
                                 }
@@ -87,7 +91,7 @@
                 {
                     <Addon AddonType="AddonType.End">
                         <Button Color="Color.Primary" Outline="true" Clicked="() => UpdateDataHelp(For)" Disabled="@Disabled">
-                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Question"></Blazorise.Icon>
+                            <Blazorise.Icon Name="FontAwesomeIcons.Question"></Blazorise.Icon>
                         </Button>
                     </Addon>
                 }
@@ -95,7 +99,7 @@
                 {
                     <Addon AddonType="AddonType.End">
                         <Button Color="Color.Primary" Outline="true" Clicked="() => UpdateDataSelect(For)" Disabled="@Disabled">
-                            <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Plus"></Blazorise.Icon>
+                            <Blazorise.Icon Name="FontAwesomeIcons.Plus"></Blazorise.Icon>
                         </Button>
                     </Addon>
                 }
@@ -116,7 +120,7 @@
         @if (!string.IsNullOrEmpty(HelpLink))
         {
             <Column ColumnSize="ColumnSize.IsFull">
-                <a href="@HelpLink" target="_blank" style="display: block; font-size: 80%;" rel="noopener">@(new Uri(@HelpLink).Host)</a>
+                <a href="@HelpLink" target="_blank" style="display: block; font-size: 80%;" rel="noopener">@(new Uri(HelpLink).Host)</a>
             </Column>
         }
     </Field>

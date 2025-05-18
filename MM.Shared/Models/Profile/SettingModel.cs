@@ -1,17 +1,17 @@
-﻿namespace MM.Shared.Models.Profile
+﻿namespace MM.Shared.Models.Profile;
+
+public class SettingModel : PrivateMainDocument
 {
-    public class SettingModel : PrivateMainDocument
+    public SettingModel() : base(DocumentType.Setting)
     {
-        public SettingModel() : base(DocumentType.Setting)
-        {
-        }
+    }
 
-        [Custom(Name = "Blind Date", Description = "Hide all photos (yours and theirs), creating an air of mystery until the meeting.")]
-        public bool BlindDate { get; set; }
+    [Custom(Name = "Blind Date",
+        Description = "Hide all photos (yours and theirs), creating an air of mystery until the meeting.")]
+    public bool BlindDate { get; set; }
 
-        public override bool HasValidData()
-        {
-            throw new NotImplementedException();
-        }
+    public override bool HasValidData()
+    {
+        throw new NotImplementedException();
     }
 }

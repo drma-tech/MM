@@ -6,53 +6,54 @@ using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Shared;
 using static MM.Shared.Core.Helper.ImageHelper;
 
-namespace MM.WEB.Core
+namespace MM.WEB.Core;
+
+public static class PopupHelper
 {
-    public static class PopupHelper
+    public static readonly EventCallbackFactory Factory = new();
+
+    public static async Task InvitePerEmail(this IModalService service, ClientePrincipal? principal,
+        EventCallback<string> inviteSent)
     {
-        public static readonly EventCallbackFactory Factory = new();
-
-        public static async Task InvitePerEmail(this IModalService service, ClientePrincipal? principal, EventCallback<string> inviteSent)
+        await service.Show<InvitePerEmail>(null, x =>
         {
-            await service.Show<InvitePerEmail>(null, x =>
-            {
-                x.Add(x => x.principal, principal);
-                x.Add(x => x.InviteSent, inviteSent);
-            }, Options(ModalSize.Default));
-        }
+            x.Add(x => x.principal, principal);
+            x.Add(x => x.InviteSent, inviteSent);
+        }, Options(ModalSize.Default));
+    }
 
-        public static async Task OpenPopup<TComponent>(this IModalService service, Action<ModalProviderParameterBuilder<TComponent>> parameters, ModalSize size)
-            where TComponent : IComponent
+    public static async Task OpenPopup<TComponent>(this IModalService service,
+        Action<ModalProviderParameterBuilder<TComponent>> parameters, ModalSize size)
+        where TComponent : IComponent
+    {
+        await service.Show(null, parameters, Options(size));
+    }
+
+    public static async Task SelectPicturePopup(this IModalService service, string? picture, PhotoType photoType,
+        EventCallback<(PhotoType, byte[])> pictureChanged)
+    {
+        await service.Show<SelectPicturePopup>(null, x =>
         {
-            await service.Show(null, parameters, Options(size));
-        }
+            x.Add(x => x.SavedPicture, picture);
+            x.Add(x => x.PhotoType, photoType);
+            x.Add(x => x.CroppedPictureChanged, pictureChanged);
+        }, Options(ModalSize.Large));
+    }
 
-        public static async Task SelectPicturePopup(this IModalService service, string? picture, PhotoType photoType, EventCallback<(PhotoType, byte[])> pictureChanged)
-        {
-            await service.Show<SelectPicturePopup>(null, x =>
-            {
-                x.Add(x => x.SavedPicture, picture);
-                x.Add(x => x.PhotoType, photoType);
-                x.Add(x => x.CroppedPictureChanged, pictureChanged);
-            }, Options(ModalSize.Large));
-        }
+    public static async Task SettingsPopup(this IModalService service)
+    {
+        await service.Show<SettingsPopup>(null, x => { }, Options(ModalSize.Default));
+    }
 
-        public static async Task SettingsPopup(this IModalService service)
-        {
-            await service.Show<SettingsPopup>(null, x =>
-            {
-            }, Options(ModalSize.Default));
-        }
+    public static async Task SubscriptionPopup(this IModalService service, bool IsAuthenticated)
+    {
+        await service.Show<SubscriptionPopup>(null, x => { x.Add(x => x.IsAuthenticated, IsAuthenticated); },
+            Options(ModalSize.Large));
+    }
 
-        public static async Task SubscriptionPopup(this IModalService service, bool IsAuthenticated)
-        {
-            await service.Show<SubscriptionPopup>(null, x =>
-            {
-                x.Add(x => x.IsAuthenticated, IsAuthenticated);
-            }, Options(ModalSize.Large));
-        }
-
-        private static ModalInstanceOptions Options(ModalSize size) => new()
+    private static ModalInstanceOptions Options(ModalSize size)
+    {
+        return new ModalInstanceOptions
         {
             UseModalStructure = false,
             Centered = true,

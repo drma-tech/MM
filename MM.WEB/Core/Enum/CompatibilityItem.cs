@@ -1,74 +1,73 @@
-﻿namespace MM.WEB.Core.Enum
+﻿namespace MM.WEB.Core.Enum;
+
+public enum CompatibilityItem
 {
-    public enum CompatibilityItem
-    {
-        //BASIC
+    //BASIC
 
-        Location,
-        Language,
-        MaritalStatus,
-        BiologicalSex,
-        GenderIdentities,
-        SexualOrientations,
+    Location,
+    Language,
+    MaritalStatus,
+    BiologicalSex,
+    GenderIdentities,
+    SexualOrientations,
 
-        //BIO
+    //BIO
 
-        Ethnicity,
-        BodyType,
-        Age,
-        Height,
-        Neurodiversity,
-        Disabilities,
+    Ethnicity,
+    BodyType,
+    Age,
+    Height,
+    Neurodiversity,
+    Disabilities,
 
-        //LIFESTYLE
+    //LIFESTYLE
 
-        Drink,
-        Smoke,
-        Diet,
-        Religion,
-        FamilyInvolvement,
-        HaveChildren,
-        HavePets,
-        EducationLevel,
-        CareerCluster,
-        LivingSituation,
-        TravelFrequency,
-        NetWorth,
-        AnnualIncome,
+    Drink,
+    Smoke,
+    Diet,
+    Religion,
+    FamilyInvolvement,
+    HaveChildren,
+    HavePets,
+    EducationLevel,
+    CareerCluster,
+    LivingSituation,
+    TravelFrequency,
+    NetWorth,
+    AnnualIncome,
 
-        //PERSONALITY
+    //PERSONALITY
 
-        MoneyPersonality,
-        SharedSpendingStyle,
-        RelationshipPersonality,
-        MyersBriggsTypeIndicator,
-        LoveLanguage,
-        SexPersonality,
+    MoneyPersonality,
+    SharedSpendingStyle,
+    RelationshipPersonality,
+    MyersBriggsTypeIndicator,
+    LoveLanguage,
+    SexPersonality,
 
-        //INTEREST
+    //INTEREST
 
-        Food,
-        Vacation,
-        Sports,
-        LeisureActivities,
-        MusicGenre,
-        MovieGenre,
-        TVGenre,
-        ReadingGenre,
+    Food,
+    Vacation,
+    Sports,
+    LeisureActivities,
+    MusicGenre,
+    MovieGenre,
+    TVGenre,
+    ReadingGenre,
 
-        //RELATIONSHIP
+    //RELATIONSHIP
 
-        SharedFinances,
-        ConflictResolutionStyle,
-        HouseholdManagement,
-        TimeTogetherPreference,
-        OppositeSexFriendships,
+    SharedFinances,
+    ConflictResolutionStyle,
+    HouseholdManagement,
+    TimeTogetherPreference,
+    OppositeSexFriendships,
 
-        //GOALS
+    //GOALS
 
-        RelationshipIntentions,
-        Relocation,
-        WantChildren,
-        IdealPlaceToLive
-    }
+    RelationshipIntentions,
+    Relocation,
+    WantChildren,
+    IdealPlaceToLive
 }

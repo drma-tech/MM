@@ -1,34 +1,37 @@
 ﻿@page "/profile/validation"
-@using FluentValidation
+
+@attribute [Authorize]
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
-
-@attribute [Authorize]
+@using Button = MM.WEB.Resources.Button
 @inherits PageCore<Validations>
 
 @inject ValidationApi ValidationApi
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<RenderControl Core="Core" Model="Validation" ExpressionEmpty="((ValidationModel? obj) => obj == null)" PrivateContent="true">
+<RenderControl Core="Core" Model="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null" PrivateContent="true">
     <Row>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Images"></FieldActive>
-            <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.IdCard"
-                         Disabled="true" CustomButtonText="Only available in phase 2"></FieldActive>
+            <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@FontAwesomeIcons.Images"></FieldActive>
+            <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@FontAwesomeIcons.IdCard"
+                         Disabled="true" CustomButtonText="Only available in phase 2">
+            </FieldActive>
         </Column>
         <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.Gem"
-                         Disabled="true" CustomButtonText="Only available in phase 3"></FieldActive>
-            <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@Blazorise.Icons.FontAwesome.FontAwesomeIcons.MoneyBill"
-                         Disabled="true" CustomButtonText="Only available in phase 3"></FieldActive>
+            <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@FontAwesomeIcons.Gem"
+                         Disabled="true" CustomButtonText="Only available in phase 3">
+            </FieldActive>
+            <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@FontAwesomeIcons.MoneyBill"
+                         Disabled="true" CustomButtonText="Only available in phase 3">
+            </FieldActive>
         </Column>
     </Row>
-   
+
     <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
-        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @WEB.Resources.Button.Back
+        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
     </Button>
 </RenderControl>
 
@@ -45,14 +48,15 @@
 
         if (Validation == null)
         {
-            Validation = new();
+            Validation = new ValidationModel();
         }
 
         Core?.LoadingFinished?.Invoke(Validation);
-    }    
+    }
 
     private void GoProfile()
     {
         Navigation.NavigateTo("profile");
     }
+
 }
