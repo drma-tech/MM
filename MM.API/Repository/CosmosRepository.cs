@@ -127,6 +127,9 @@ public class CosmosRepository
         }
     }
 
+    /// <summary>
+    ///     to update arrays, there is no performance gain
+    /// </summary>
     public async Task<T> PatchItem<T>(DocumentType type, string? id, List<PatchOperation> operations,
         CancellationToken cancellationToken) where T : CosmosDocument, new()
     {

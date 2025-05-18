@@ -23,7 +23,7 @@
 }
 else if (Status == LoadingStatus.Locked && !PartialComponent)
 {
-    <Alert Color="Color.Primary" Visible="true">
+    <Alert Color="Color.Primary" Visible="true" Class="@ClassAnimationShake">
         <AlertMessage>
             <Blazorise.Icon Name="FontAwesomeIcons.UserLock"></Blazorise.Icon> @Translations.UnauthenticatedUser
         </AlertMessage>
@@ -55,7 +55,7 @@ else if (Status == LoadingStatus.Error && !PartialComponent)
 }
 else if (Status == LoadingStatus.Warning && !PartialComponent)
 {
-    <Alert Color="Color.Primary" Visible="true">
+    <Alert Color="Color.Primary" Visible="true" Class="@ClassAnimationShake">
         <AlertMessage>
             <Blazorise.Icon Name="FontAwesomeIcons.ExclamationTriangle"></Blazorise.Icon> @(MessageWarning ?? GlobalTranslations.CustomVisibilityNoData)
         </AlertMessage>
@@ -80,6 +80,8 @@ else //ShowContent
     [Parameter] public bool PartialComponent { get; set; }
     [Parameter] public bool PremiumFeature { get; set; }
     [Parameter] public string? PremiumDescription { get; set; }
+
+    [Parameter] public string? ClassAnimationShake { get; set; }
 
     public LoadingStatus Status { get; set; } = LoadingStatus.Loading;
     private string? MessageLoading { get; set; } = GlobalTranslations.CustomVisibilityLoading;

@@ -163,7 +163,7 @@
     <value>Carregando...</value>
   </data>
   <data name="CustomVisibilityNoData" xml:space="preserve">
-    <value>Não há dados para mostrar</value>
+    <value>Dados não disponíveis</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Por favor, insira o endereço de e-mail</value>
@@ -229,7 +229,7 @@
     <value>Confio no sistema de compatibilidade da plataforma e selecionarei apenas o que não for negociável para mim.</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Linguagem</value>
+    <value>Idioma</value>
   </data>
   <data name="LoginNeeded" xml:space="preserve">
     <value>Alguns recursos exigem login.</value>

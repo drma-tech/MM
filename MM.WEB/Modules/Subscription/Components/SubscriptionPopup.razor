@@ -46,7 +46,7 @@ else
                 </Radio>
                 <Radio Value="AccountCycle.Yearly">
                     @AccountCycle.Yearly.GetName()
-                    <Badge Color="Color.Success">@("save 17%")</Badge>
+                    <Badge Color="Color.Success">@Translations.YearSave</Badge>
                 </Radio>
             </RadioGroup>
         </div>
@@ -62,7 +62,13 @@ else
                     <CardText>
                         <ListGroup Flush="true">
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Favorite Providers
+                                @Translations.NoAds
+                                <Badge Color="Color.Danger">
+                                    <Blazorise.Icon Name="@FontAwesomeIcons.Xmark"></Blazorise.Icon>
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @* @Profile.Resources.Translations.MyProviders *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Basic.GetRestrictions().FavoriteProviders
                                 </Badge>
@@ -74,19 +80,19 @@ else
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watched
+                                @* @Profile.Resources.Translations.Watched *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Basic.GetRestrictions().Watched
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watching
+                                @* @Profile.Resources.Translations.Watching *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Basic.GetRestrictions().Watching
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Wishlist
+                                @* @Profile.Resources.Translations.Wishlist *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Basic.GetRestrictions().Wishlist
                                 </Badge>
@@ -106,7 +112,13 @@ else
                     <CardText>
                         <ListGroup Flush="true">
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Favorite Providers
+                                @Translations.NoAds
+                                <Badge Color="Color.Primary">
+                                    <Blazorise.Icon Name="@FontAwesomeIcons.Check"></Blazorise.Icon>
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @* @Profile.Resources.Translations.MyProviders *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Standard.GetRestrictions().FavoriteProviders
                                 </Badge>
@@ -118,19 +130,19 @@ else
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watched
+                                @* @Profile.Resources.Translations.Watched *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Standard.GetRestrictions().Watched
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watching
+                                @* @Profile.Resources.Translations.Watching *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Standard.GetRestrictions().Watching
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Wishlist
+                                @* @Profile.Resources.Translations.Wishlist *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Standard.GetRestrictions().Wishlist
                                 </Badge>
@@ -140,15 +152,15 @@ else
                     @if (Client == null)
                     {
                         <span onclick="animationShake('.alertLoginNeeded')">
-                            <Button Color="Color.Primary" Block="true" Class="mt-3" Disabled="true">
-                                Choose Plan
+                            <Button Color="Color.Primary" Block="true" Class="mt-3">
+                                @Translations.Select
                             </Button>
                         </span>
                     }
                     else
                     {
                         <Button Color="Color.Primary" Block="true" Class="mt-3" Clicked="@(() => OpenCheckout(GetSubscription(AccountProduct.Standard)?.PriceId))">
-                            Choose Plan
+                            @Translations.Select
                         </Button>
                     }
                 </CardBody>
@@ -164,7 +176,13 @@ else
                     <CardText>
                         <ListGroup Flush="true">
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Favorite Providers
+                                @Translations.NoAds
+                                <Badge Color="Color.Primary">
+                                    <Blazorise.Icon Name="@FontAwesomeIcons.Check"></Blazorise.Icon>
+                                </Badge>
+                            </ListGroupItem>
+                            <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
+                                @* @Profile.Resources.Translations.MyProviders *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Premium.GetRestrictions().FavoriteProviders
                                 </Badge>
@@ -176,19 +194,19 @@ else
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watched
+                                @* @Profile.Resources.Translations.Watched *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Premium.GetRestrictions().Watched
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Watching
+                                @* @Profile.Resources.Translations.Watching *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Premium.GetRestrictions().Watching
                                 </Badge>
                             </ListGroupItem>
                             <ListGroupItem Flex="Flex.JustifyContent.Between.AlignItems.Center" Background="Background.Secondary">
-                                Wishlist
+                                @* @Profile.Resources.Translations.Wishlist *@
                                 <Badge Color="Color.Primary">
                                     @AccountProduct.Premium.GetRestrictions().Wishlist
                                 </Badge>
@@ -198,15 +216,15 @@ else
                     @if (Client == null)
                     {
                         <span onclick="animationShake('.alertLoginNeeded')">
-                            <Button Color="Color.Primary" Block="true" Class="mt-3" Disabled="true">
-                                Choose Plan
+                            <Button Color="Color.Primary" Block="true" Class="mt-3">
+                                @Translations.Select
                             </Button>
                         </span>
                     }
                     else
                     {
                         <Button Color="Color.Primary" Block="true" Class="mt-3" Clicked="@(() => OpenCheckout(GetSubscription(AccountProduct.Premium)?.PriceId))">
-                            Choose Plan
+                            @Translations.Select
                         </Button>
                     }
                 </CardBody>
@@ -331,19 +349,19 @@ else
     }
 }
 </ModalBody>
-@if (Client == null)
-{
-    <ModalFooter>
-        <Alert Color="Color.Info" Margin="Margin.Is0" Visible="true" Width="Width.Is100" Class="alertLoginNeeded">
-            <AlertMessage>
-                @GlobalTranslations.LoginNeeded
+<ModalFooter>
+    <Alert Color="Color.Info" Margin="Margin.Is0" Visible="true" Width="Width.Is100" Class="alertLoginNeeded">
+        @if (Client == null)
+        {
+            <AlertMessage Style="margin-right: 0.3rem;">
+                @* @Suggestions.Resources.Translations.LoginNeeded *@
             </AlertMessage>
-            <AlertDescription>
-                @GlobalTranslations.PlatformForManaging
-            </AlertDescription>
-        </Alert>
-    </ModalFooter>
-}
+        }
+        <AlertDescription>
+            @* @Suggestions.Resources.Translations.PlatformForManaging *@
+        </AlertDescription>
+    </Alert>
+</ModalFooter>
 <ModalFooter>
     <Container Fluid="true" Margin="Margin.Is0" Padding="Padding.Is0.OnX">
         <Row HorizontalGutter="4" VerticalGutter="4">
@@ -510,7 +528,7 @@ else
             for (var i = 0; i < 20; i++)
             {
                 await Task.Delay(2000);
-                var principal = await PrincipalApi.Get(IsAuthenticated);
+                var principal = await PrincipalApi.Get(IsAuthenticated, true);
 
                 if (principal?.ClientePaddle != null && principal.ClientePaddle.SubscriptionId.NotEmpty())
                 {
@@ -529,7 +547,7 @@ else
     {
         try
         {
-            Client = await PrincipalApi.Get(true);
+            Client = await PrincipalApi.Get(true, true);
             PrincipalApi.DataChanged?.Invoke(Client);
             await LoadDataRender();
             StateHasChanged();

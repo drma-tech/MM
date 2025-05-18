@@ -16,7 +16,7 @@ public class LoginApi(IHttpClientFactory factory) : ApiCosmos<ClienteLogin>(fact
         }
         catch (Exception)
         {
-            //do nothing;
+            ip = "0.0.0.0";
         }
 
         await PostAsync<ClienteLogin>(Endpoint.Add(platform, ip?.Trim()), null, null);

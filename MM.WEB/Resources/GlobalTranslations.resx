@@ -163,7 +163,7 @@
     <value>Loading...</value>
   </data>
   <data name="CustomVisibilityNoData" xml:space="preserve">
-    <value>There is no data to show</value>
+    <value>Data not available</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Please enter the email address</value>

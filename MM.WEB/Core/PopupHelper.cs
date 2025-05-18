@@ -45,9 +45,9 @@ public static class PopupHelper
         await service.Show<SettingsPopup>(null, x => { }, Options(ModalSize.Default));
     }
 
-    public static async Task SubscriptionPopup(this IModalService service, bool IsAuthenticated)
+    public static async Task SubscriptionPopup(this IModalService service, bool isAuthenticated)
     {
-        await service.Show<SubscriptionPopup>(null, x => { x.Add(x => x.IsAuthenticated, IsAuthenticated); },
+        await service.Show<SubscriptionPopup>(null, x => { x.Add(x => x.IsAuthenticated, isAuthenticated); },
             Options(ModalSize.Large));
     }
 

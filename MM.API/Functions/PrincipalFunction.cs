@@ -121,6 +121,10 @@ public class PrincipalFunction(
             req.ProcessException(ex);
             throw;
         }
+        finally
+        {
+            req.LogWarning(req.GetUserId());
+        }
     }
 
     [Function("PrincipalRemove")]

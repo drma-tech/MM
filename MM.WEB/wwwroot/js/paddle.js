@@ -1,4 +1,6 @@
-﻿async function startPaddle(token) {
+﻿"use strict";
+
+async function startPaddle(token) {
     if (window.location.hostname == "localhost" || window.location.hostname.includes("dev.")) {
         Paddle.Environment.set("sandbox");
     }
@@ -43,8 +45,7 @@ async function getPlans(price_standard_month, price_standard_year, price_premium
             }
         })
         .catch((error) => {
-            console.error(error);
-            DotNet.invokeMethodAsync('MM.WEB', 'ShowError', error.error.detail);
+            showError(error.error.detail);
         });
 
     return list;

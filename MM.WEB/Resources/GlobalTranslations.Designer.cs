@@ -196,7 +196,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no data to show.
+        ///   Looks up a localized string similar to Data not available.
         /// </summary>
         public static string CustomVisibilityNoData {
             get {

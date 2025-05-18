@@ -4,9 +4,9 @@ namespace MM.WEB.Modules.Auth.Core;
 
 public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincipal>(factory, "principal")
 {
-    public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated)
+    public async Task<ClientePrincipal?> Get(bool IsUserAuthenticated, bool setNewVersion = false)
     {
-        if (IsUserAuthenticated) return await GetAsync(Endpoint.Get, null);
+        if (IsUserAuthenticated) return await GetAsync(Endpoint.Get, null, setNewVersion);
 
         return null;
     }

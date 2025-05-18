@@ -81,7 +81,7 @@ public static class CustomAttributeHelper
 
     public static string GetDescription(this Enum value, bool translate = true)
     {
-        return value.GetCustomAttribute(translate).Description ??
+        return value.GetCustomAttribute(translate)?.Description ??
                throw new UnhandledException($"{value} Description is null");
     }
 }

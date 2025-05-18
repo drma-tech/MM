@@ -150,6 +150,9 @@
   <data name="NextBilled" xml:space="preserve">
     <value>Siguiente facturado</value>
   </data>
+  <data name="NoAds" xml:space="preserve">
+    <value>Sin anuncios</value>
+  </data>
   <data name="PreviouslyBilled" xml:space="preserve">
     <value>Previamente facturado</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="RegistrationSuccessful" xml:space="preserve">
     <value>¡Registro exitoso!</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Seleccionar</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Estado</value>
@@ -173,5 +179,8 @@
   </data>
   <data name="UpdatePaymentDetails" xml:space="preserve">
     <value>Actualizar detalles del pago</value>
+  </data>
+  <data name="YearSave" xml:space="preserve">
+    <value>ahorre un 33%</value>
   </data>
 </root>

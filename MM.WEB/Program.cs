@@ -82,8 +82,8 @@ static async Task ConfigureCulture(WebAssemblyHost? app)
 
         if (language.Empty())
         {
-            var JsRuntime = app.Services.GetRequiredService<IJSRuntime>();
-            language = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "language");
+            var jsRuntime = app.Services.GetRequiredService<IJSRuntime>();
+            language = await jsRuntime.InvokeAsync<string>("GetLocalStorage", "language");
         }
 
         if (language.NotEmpty())

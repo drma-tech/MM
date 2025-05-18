@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -309,6 +309,11 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>WantChildren.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Enum\AccountCycle.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>AccountCycle.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\Validations.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -668,6 +673,10 @@
 		<EmbeddedResource Update="Models\Profile\Resources\ProfileLifestyleModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ProfileLifestyleModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Enum\AccountCycle.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>AccountCycle.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Resources\Validations.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
