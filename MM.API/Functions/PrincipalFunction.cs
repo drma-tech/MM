@@ -13,7 +13,7 @@ public class PrincipalFunction(
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "principal/get")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "principal/get")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -23,7 +23,7 @@ public class PrincipalFunction(
 
             var doc = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -34,7 +34,7 @@ public class PrincipalFunction(
 
     [Function("PrincipalGetEmail")]
     public async Task<string?> PrincipalGetEmail(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/principal/get-email")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/principal/get-email")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -54,7 +54,7 @@ public class PrincipalFunction(
 
     [Function("PrincipalAdd")]
     public async Task<ClientePrincipal?> PrincipalAdd(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "principal/add")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/add")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -101,20 +101,20 @@ public class PrincipalFunction(
 
     [Function("PrincipalPaddle")]
     public async Task<ClientePrincipal> PrincipalPaddle(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.PUT, Route = "principal/paddle")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/paddle")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
             var userId = req.GetUserId();
 
-            var Client = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ??
+            var client = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ??
                          throw new UnhandledException("Client null");
             var body = await req.GetBody<ClientePrincipal>(cancellationToken);
 
-            Client.ClientePaddle = body.ClientePaddle;
+            client.ClientePaddle = body.ClientePaddle;
 
-            return await repo.Upsert(Client, cancellationToken);
+            return await repo.Upsert(client, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -129,7 +129,7 @@ public class PrincipalFunction(
 
     [Function("PrincipalRemove")]
     public async Task PrincipalRemove(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.DELETE, Route = "principal/remove")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Delete, Route = "principal/remove")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try

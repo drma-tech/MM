@@ -11,7 +11,7 @@ public class ExternalFunction(IConfiguration config)
 
     [Function("GetLocationHere")]
     public async Task<HereJson?> GetLocationHere(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "location/here/{latitude}/{longitude}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "location/here/{latitude}/{longitude}")]
         HttpRequestData req,
         string latitude, string longitude, CancellationToken cancellationToken)
     {
@@ -31,7 +31,7 @@ public class ExternalFunction(IConfiguration config)
 
     [Function("GetLocationGoogle")]
     public async Task<GoogleJson?> GetLocationGoogle(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "location/google/{latitude}/{longitude}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "location/google/{latitude}/{longitude}")]
         HttpRequestData req,
         string latitude, string longitude, CancellationToken cancellationToken)
     {

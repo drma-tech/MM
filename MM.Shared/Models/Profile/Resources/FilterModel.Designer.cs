@@ -97,7 +97,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age (Min - Max).
+        ///   Looks up a localized string similar to Age (Max).
         /// </summary>
         internal static string MaxAge {
             get {
@@ -106,7 +106,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Height (Min - Max).
+        ///   Looks up a localized string similar to Height (Max).
         /// </summary>
         internal static string MaxHeight {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age (Min - Max).
+        ///   Looks up a localized string similar to Age (Min).
         /// </summary>
         internal static string MinimalAge {
             get {
@@ -124,7 +124,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Height (Min - Max).
+        ///   Looks up a localized string similar to Height (Min).
         /// </summary>
         internal static string MinimalHeight {
             get {

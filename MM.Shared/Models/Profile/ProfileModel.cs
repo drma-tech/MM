@@ -18,7 +18,7 @@ public class ProfileModel : CosmosDocument
 
     public bool Validated { get; set; }
 
-    [JsonIgnore] [Custom(Name = "Age")] public int Age { get; set; }
+    [JsonIgnore][Custom(Name = "Age")] public int Age { get; set; }
 
     public ProfileGalleryModel? Gallery { get; set; }
 
@@ -132,16 +132,14 @@ public class ProfileModel : CosmosDocument
     [Custom(Name = "NickName_Name", Placeholder = "NickName_Placeholder", ResourceType = typeof(ProfileBasicModel))]
     public string? NickName { get; set; }
 
-    [Custom(Name = "Description_Name", Placeholder = "Description_Placeholder",
-        ResourceType = typeof(ProfileBasicModel))]
+    [Custom(Name = "Description_Name", Placeholder = "Description_Placeholder", ResourceType = typeof(ProfileBasicModel))]
     public string? Description { get; set; }
 
     [Custom(Name = "Nationality_Name", ResourceType = typeof(ProfileBasicModel))]
     public Country? Nationality { get; set; }
 
     [JsonIgnore]
-    [Custom(Name = "Location_Name", Placeholder = "Location_Placeholder", Description = "Location_Description",
-        ResourceType = typeof(ProfileBasicModel))]
+    [Custom(Name = "Location_Name", Placeholder = "Location_Placeholder", Description = "Location_Description", ResourceType = typeof(ProfileBasicModel))]
     public string? Location => Country.NotEmpty() ? $"{Country} - {State} - {City}" : null;
 
     public string? Country { get; set; }

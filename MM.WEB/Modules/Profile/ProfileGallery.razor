@@ -11,95 +11,128 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<Row HorizontalGutter="8" VerticalGutter="0">
-    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
-        <Card>
-            <CardHeader>
-                Face Photo
-            </CardHeader>
-            <CardBody>
-                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
-                    <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
-                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(PhotoType.Face)" AlternateText="No Picture" Style="max-height: 300px !important;"/>
-                    </Figure>
-                </RenderControl>
-            </CardBody>
-            <CardFooter>
-                @if (_profile?.Gallery?.FaceId == null)
-                {
-                    <Button Color="Color.Primary" Clicked="@(() => SelectPicture(PhotoType.Face, null))">Add</Button>
-                }
-                else
-                {
-                    <Button Color="Color.Secondary" Clicked="@(() => SelectPicture(PhotoType.Face, null))">Change</Button>
-                    <Button Color="Color.Danger" Clicked="@(() => DeletePhotoGallery(PhotoType.Face))">Remove</Button>
-                }
-            </CardFooter>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is4.OnWidescreen" Margin="Margin.Is3.FromBottom">
-        <Card>
-            <CardHeader>
-                Body Photo
-            </CardHeader>
-            <CardBody>
-                <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
-                    <Figure Margin="Margin.Is0.Is2.FromBottom" Style="text-align: center; width: 100%; background-color: black;">
-                        <FigureImage Margin="Margin.Is0" Source="@_profile?.GetPhoto(PhotoType.Body)" AlternateText="No Picture" Style="max-height: 300px !important;"/>
-                    </Figure>
-                </RenderControl>
-            </CardBody>
-            <CardFooter>
-                @if (_profile?.Gallery?.BodyId == null)
-                {
-                    <Button Color="Color.Primary" Clicked="@(() => SelectPicture(PhotoType.Body, null))">Add</Button>
-                }
-                else
-                {
-                    <Button Color="Color.Secondary" Clicked="@(() => SelectPicture(PhotoType.Body, null))">Change</Button>
-                    <Button Color="Color.Danger" Clicked="@(() => DeletePhotoGallery(PhotoType.Body))">Remove</Button>
-                }
-            </CardFooter>
-        </Card>
-    </Column>
-</Row>
+<MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+    <MudGrid>
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">Face Photo</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent Style="padding: 0;">
+                    <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Face)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
+                    </RenderControl>
+                </MudCardContent>
+                <MudCardActions Style="align-self: center;">
+                    @if (_profile?.Gallery?.FaceId == null)
+                    {
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2">
+                            @Button.Add
+                        </MudButton>
+                    }
+                    else
+                    {
+                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2">
+                            @Button.Update
+                        </MudButton>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Face))">
+                            @Button.Remove
+                        </MudButton>
+                    }
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">Body Photo</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent Style="padding: 0;">
+                    <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Body)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
+                    </RenderControl>
+                </MudCardContent>
+                <MudCardActions Style="align-self: center;">
+                    @if (_profile?.Gallery?.BodyId == null)
+                    {
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2">
+                            @Button.Add
+                        </MudButton>
+                    }
+                    else
+                    {
+                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2">
+                            @Button.Update
+                        </MudButton>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Body))">
+                            @Button.Remove
+                        </MudButton>
+                    }
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
 
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
-    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
-</Button>
+</MudStack>
 
-<Div Float="Float.End" Margin="Margin.Is2.OnY">
-    <Button Color="Color.Primary" Clicked="help!.ShowModal">
-        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Button.Help
-    </Button>
-</Div>
+<div class="d-flex mt-3">
+    <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
+        @Button.Back
+    </MudButton>
+    <MudSpacer></MudSpacer>
+    <MudButton StartIcon="@IconsFA.Solid.Icon("circle-exclamation").Font" Color="Color.Secondary" Variant="Variant.Filled"
+               OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
+        @Button.Help
+    </MudButton>
+</div>
 
-<BasicModal @ref="help" Title="@GlobalTranslations.HelpTitle">
-    <ul>
-        <li>Show who you are: To complete your profile, please add one clear face photo and one full-body photo. This helps others get to know you better!</li>
-        <li>No filters, just the real you: To keep things authentic, we only accept photos without filters. We want you to shine just as you are!</li>
-        <li>Use natural lighting: Photos in well-lit places (like outdoors or near a window) always look great and bring out your personality.</li>
-        <li>Keep your face visible: Choose photos where your face is clear and uncovered. Avoid sunglasses, hats, or anything that hides your expression.</li>
-        <li>Pick a tidy background: A clean, organized setting highlights you in the best way possible.</li>
-        <li>Smile and be yourself: A genuine smile makes a friendly, welcoming impression – show off your best self!</li>
-    </ul>
-</BasicModal>
+<MudDialog @ref="@MudDialog" Style="width: 100%">
+    <DialogContent>
+        <MudList T="string" Dense="true">
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                Show who you are: To complete your profile, please add one clear face photo and one full-body photo. This helps others get to know you better!
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                No filters, just the real you: To keep things authentic, we only accept photos without filters. We want you to shine just as you are!
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                Use natural lighting: Photos in well-lit places (like outdoors or near a window) always look great and bring out your personality.
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                Keep your face visible: Choose photos where your face is clear and uncovered. Avoid sunglasses, hats, or anything that hides your expression.
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                Pick a tidy background: A clean, organized setting highlights you in the best way possible.
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                Smile and be yourself: A genuine smile makes a friendly, welcoming impression – show off your best self!
+            </MudListItem>
+        </MudList>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code
 {
     private ProfileModel? _profile = new();
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
-    private BasicModal? help;
+    private MudDialog? MudDialog { get; set; }
 
     protected override async Task LoadDataRender()
     {
         _profile = await ProfileApi.Get(CoreProfile);
     }
 
-    private async Task SelectPicture(PhotoType photoType, string? picture)
+    private async Task SelectPicture(PhotoType photoType)
     {
-        await ModalService.SelectPicturePopup(picture, photoType,
+        await DialogService.SelectPicturePopup(photoType,
             new EventCallbackFactory().Create(this, async ((PhotoType, byte[]) result) => await CroppedPictureChanged(result.Item1, result.Item2)));
     }
 
@@ -111,7 +144,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
@@ -127,7 +160,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 

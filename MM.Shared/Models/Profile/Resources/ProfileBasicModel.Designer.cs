@@ -142,7 +142,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please click on the button to the side.
+        ///   Looks up a localized string similar to Please click the button next to it.
         /// </summary>
         public static string Location_Placeholder {
             get {

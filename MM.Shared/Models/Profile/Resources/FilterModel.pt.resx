@@ -130,16 +130,16 @@
     <value>Filtrar perfis que tenham pelo menos um dos idiomas selecionados</value>
   </data>
   <data name="MaxAge" xml:space="preserve">
-    <value>Idade (Min - Max)</value>
+    <value>Idade (Max)</value>
   </data>
   <data name="MaxHeight" xml:space="preserve">
-    <value>Altura (Min - Max)</value>
+    <value>Altura (Max)</value>
   </data>
   <data name="MinimalAge" xml:space="preserve">
-    <value>Idade (Min - Max)</value>
+    <value>Idade (Min)</value>
   </data>
   <data name="MinimalHeight" xml:space="preserve">
-    <value>Altura (Min - Max)</value>
+    <value>Altura (Min)</value>
   </data>
   <data name="Nationality" xml:space="preserve">
     <value>Nacionalidade</value>

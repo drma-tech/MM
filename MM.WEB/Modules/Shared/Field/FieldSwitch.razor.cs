@@ -9,7 +9,6 @@ public partial class FieldSwitch : FormBase<bool, FieldSwitch>
 
     [Parameter] public string? CssIcon { get; set; }
     [Parameter] public bool Visible { get; set; } = true;
-    [Parameter] public string? SwithLabel { get; set; }
 
     private string? Description => For.GetCustomAttribute()?.Description;
 }

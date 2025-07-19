@@ -3,22 +3,30 @@
 
 @inject IJSRuntime JsRuntime
 
-<ModalHeader>
-    <ModalTitle Size="HeadingSize.Is5">@GlobalTranslations.Settings</ModalTitle>
-    <CloseButton/>
-</ModalHeader>
-<ModalBody MaxHeight="70">
-    <FieldSelect For="@(() => AppStateStatic.Language)" TValue="Language" TEnum="Language" SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged"
-                 CssIcon="@FontAwesomeIcons.Language" Order="@(o => o.Name)" Filter="@(o => o.Group?.Contains("site") ?? false)" ShowHelper="false">
-    </FieldSelect>
-</ModalBody>
-<ModalFooter>
-    <Button Color="Color.Secondary" Clicked="@(() => { ModalService.Hide(); })" Size="Size.Small">
-        @Button.Close
-    </Button>
-</ModalFooter>
+<MudDialog Style="width: 100%">
+    <DialogContent>
+        <MudGrid>
+            <MudItem xs="12">
+                <FieldSelect TValue="Language" TEnum="Language" For="@(() => AppStateStatic.Language)" ShowDataSelectDescription="false"
+                             SelectedValue="@AppStateStatic.Language" SelectedValueChanged="LanguageValueChanged"
+                             CssIcon="@Icons.Material.Filled.Language" Order="@(o => o.Name)" Filter="@(o => o.Group?.Contains("site") ?? false)" ShowHelper="false">
+                </FieldSelect>
+            </MudItem>
+            <MudItem xs="12">
+                <MudToggleIconButton Toggled="@AppStateStatic.DarkMode" ToggledChanged="DarkModeChanged"
+                                     Icon="@Icons.Material.Filled.DarkMode" ToggledIcon="@Icons.Material.Filled.LightMode" />
+                <span>@(AppStateStatic.DarkMode ? "Light" : "Dark") Mode</span>
+            </MudItem>
+        </MudGrid>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
+
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
     protected override async Task LoadDataRender()
     {
@@ -29,7 +37,7 @@
             var languages = EnumHelper.GetObjArray<Language>(false);
             var lang = languages.FirstOrDefault(w => w.Description == language);
 
-            AppStateStatic.ChangeLanguage((Language?)lang?.Value ?? Language.English);
+            AppStateStatic.ChangeLanguage(lang?.Value ?? Language.English);
         }
     }
 
@@ -37,6 +45,13 @@
     {
         await JsRuntime.InvokeAsync<string>("SetLocalStorage", "language", value.GetDescription(false));
         Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("language", value.GetCustomAttribute(false)?.Description), true);
+    }
+
+    protected async Task DarkModeChanged(bool value)
+    {
+        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "dark-mode", value.ToString());
+
+        AppStateStatic.ChangeDarkMode(value);
     }
 
 }

@@ -15,7 +15,7 @@ public class StorageFunction(
 
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
-        [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "storage/upload-photo")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -110,7 +110,7 @@ public class StorageFunction(
 
     [Function("StorageDeletePhoto")]
     public async Task<ProfileModel> StorageDeletePhoto(
-        [HttpTrigger(AuthorizationLevel.Function, Method.DELETE, Route = "storage/delete-photo/{photoType}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Delete, Route = "storage/delete-photo/{photoType}")]
         HttpRequestData req, PhotoType photoType, CancellationToken cancellationToken)
     {
         try

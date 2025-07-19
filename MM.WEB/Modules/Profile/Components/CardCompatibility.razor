@@ -2,130 +2,121 @@
 @using MM.WEB.Core.Enum
 @using MM.WEB.Core.Models
 @using CardHeader = MM.WEB.Resources.CardHeader
-<Alert Visible="true" Color="@GetColor(null)" Shadow="Shadow.Small">
-    <Heading Size="HeadingSize.Is5">
+
+<MudAlert Severity="@GetSeverity(null)" Icon="@GetIcon(null)" Variant="Variant.Filled" Dense="true" Class="mb-6">
+    <MudText Typo="Typo.h5" style="font-weight: bold;" Inline="false">
         @GlobalTranslations.GeneralCompatibility (@(Affinities.GetPercentAffinity() + "%"))
-        <Button Size="Size.ExtraSmall" Color="Color.Primary" Float="Float.End" Clicked="@(() => help?.ShowModal())" title="Ajuda" Margin="Margin.Is2.FromStart">
-            <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon>
-        </Button>
-    </Heading>
+    </MudText>
     @if (totPercAff <= 60)
     {
-        <AlertDescription>@GlobalTranslations.CompatibilityLow</AlertDescription>
+        @GlobalTranslations.CompatibilityLow
     }
     else if (totPercAff <= 80)
     {
-        <AlertDescription>@GlobalTranslations.CompatibilityMedium</AlertDescription>
+        @GlobalTranslations.CompatibilityMedium
     }
     else
     {
-        <AlertDescription>@GlobalTranslations.CompatibilityHigh</AlertDescription>
+        @GlobalTranslations.CompatibilityHigh
     }
-</Alert>
+</MudAlert>
 
-<Alert Visible="true" Color="@GetColor(Section.Basic)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Basic (@Affinities.GetPercentAffinity(Section.Basic)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Basic)" Icon="@GetIcon(Section.Basic)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Basic (@Affinities.GetPercentAffinity(Section.Basic)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.Location)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Location" User="@User" Filter="@Filter" Value="@View.Location" ValueUser="@User?.Location" ClassIcon="fas fa-map-marker-alt" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Languages)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Language" User="@User" Filter="@Filter" Values="@View.Languages" ValuesUser="@Filter.Languages" ClassIcon="fas fa-language" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.MaritalStatus)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MaritalStatus" User="@User" Filter="@Filter" Value="@View.MaritalStatus" ValuesUser="@Filter.MaritalStatus" ClassIcon="far fa-heart" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.BiologicalSex)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BiologicalSex" User="@User" Filter="@Filter" Value="@View.BiologicalSex" ValuesUser="@Filter.BiologicalSex" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.GenderIdentities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.GenderIdentities" User="@User" Filter="@Filter" Values="@View.GenderIdentities" ValuesUser="@Filter.GenderIdentities" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.SexualOrientations)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SexualOrientations" User="@User" Filter="@Filter" Values="@View.SexualOrientations" ValuesUser="@Filter.SexualOrientations" ClassIcon="fas fa-neuter" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Location)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Location" User="@User" Filter="@Filter" Value="@View.Location" ValueUser="@User?.Location" ClassIcon="@IconsFA.Solid.Icon("map-marker-alt").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Languages)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Language" User="@User" Filter="@Filter" Values="@View.Languages" ValuesUser="@Filter.Languages" ClassIcon="@IconsFA.Solid.Icon("language").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MaritalStatus)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MaritalStatus" User="@User" Filter="@Filter" Value="@View.MaritalStatus" ValuesUser="@Filter.MaritalStatus" ClassIcon="@IconsFA.Solid.Icon("heart").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.BiologicalSex)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BiologicalSex" User="@User" Filter="@Filter" Value="@View.BiologicalSex" ValuesUser="@Filter.BiologicalSex" ClassIcon="@IconsFA.Solid.Icon("neuter").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.GenderIdentities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.GenderIdentities" User="@User" Filter="@Filter" Values="@View.GenderIdentities" ValuesUser="@Filter.GenderIdentities" ClassIcon="@IconsFA.Solid.Icon("neuter").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.SexualOrientations)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SexualOrientations" User="@User" Filter="@Filter" Values="@View.SexualOrientations" ValuesUser="@Filter.SexualOrientations" ClassIcon="@IconsFA.Solid.Icon("neuter").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Bio)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Bio (@Affinities.GetPercentAffinity(Section.Bio)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Bio)" Icon="@GetIcon(Section.Bio)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Bio (@Affinities.GetPercentAffinity(Section.Bio)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.Ethnicity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Ethnicity" User="@User" Filter="@Filter" Value="@View.Ethnicity" ValuesUser="@Filter.Ethnicity" ClassIcon="fas fa-globe" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.BodyType)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyType" User="@User" Filter="@Filter" Value="@View.BodyType" ValuesUser="@Filter.BodyType" ClassIcon="fas fa-weight" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Age)" Type="@CompatibilityType.Range" Item="CompatibilityItem.Age" User="@User" Filter="@Filter" Value="@View.Age" ValueUser="@User.Age" ClassIcon="fas fa-birthday-cake" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Height)" Type="@CompatibilityType.Range" Item="@CompatibilityItem.Height" User="@User" Filter="@Filter" Value="@View.Height" ValueUser="@User?.Height" ClassIcon="fas fa-ruler" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Neurodiversity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Neurodiversity" User="@User" Filter="@Filter" Value="@View.Neurodiversity" ValueUser="@User?.Neurodiversity" ClassIcon="fas fa-brain" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Disabilities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Disabilities" User="@User" Filter="@Filter" Values="@View.Disabilities" ValuesUser="@User?.Disabilities" ClassIcon="fas fa-wheelchair" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Ethnicity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Ethnicity" User="@User" Filter="@Filter" Value="@View.Ethnicity" ValuesUser="@Filter.Ethnicity" ClassIcon="@IconsFA.Solid.Icon("globe").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.BodyType)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyType" User="@User" Filter="@Filter" Value="@View.BodyType" ValuesUser="@Filter.BodyType" ClassIcon="@IconsFA.Solid.Icon("weight").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Age)" Type="@CompatibilityType.Range" Item="CompatibilityItem.Age" User="@User" Filter="@Filter" Value="@View.Age" ValueUser="@User.Age" ClassIcon="@IconsFA.Solid.Icon("birthday-cake").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Height)" Type="@CompatibilityType.Range" Item="@CompatibilityItem.Height" User="@User" Filter="@Filter" Value="@View.Height" ValueUser="@User?.Height" ClassIcon="@IconsFA.Solid.Icon("ruler").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Neurodiversity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Neurodiversity" User="@User" Filter="@Filter" Value="@View.Neurodiversity" ValueUser="@User?.Neurodiversity" ClassIcon="@IconsFA.Solid.Icon("brain").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Disabilities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Disabilities" User="@User" Filter="@Filter" Values="@View.Disabilities" ValuesUser="@User?.Disabilities" ClassIcon="@IconsFA.Solid.Icon("wheelchair").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Lifestyle)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Lifestyle (@Affinities.GetPercentAffinity(Section.Lifestyle)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Lifestyle)" Icon="@GetIcon(Section.Lifestyle)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Lifestyle (@Affinities.GetPercentAffinity(Section.Lifestyle)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.Drink)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Drink" User="@User" Filter="@Filter" Value="@View.Drink" ValuesUser="@(Filter.Drink.Any() ? Filter.Drink : User?.Drink.ToHashSet())" ClassIcon="fas fa-glass-cheers" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Smoke)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Smoke" User="@User" Filter="@Filter" Value="@View.Smoke" ValuesUser="@(Filter.Smoke.Any() ? Filter.Smoke : User?.Smoke.ToHashSet())" ClassIcon="fas fa-smoking" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Diet)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Diet" User="@User" Filter="@Filter" Value="@View.Diet" ValuesUser="@(Filter.Diet.Any() ? Filter.Diet : User?.Diet.ToHashSet())" ClassIcon="fas fa-utensils" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Religion)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Religion" User="@User" Filter="@Filter" Value="@View.Religion" ValuesUser="@(Filter.Religion.Any() ? Filter.Religion : User?.Religion.ToHashSet())" ClassIcon="fas fa-praying-hands" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.FamilyInvolvement)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.FamilyInvolvement" User="@User" Filter="@Filter" Value="@View.FamilyInvolvement" ValuesUser="@(Filter.FamilyInvolvement.Any() ? Filter.FamilyInvolvement : User?.FamilyInvolvement.ToHashSet())" ClassIcon="fas fa-people-roof" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.HaveChildren)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HaveChildren" User="@User" Filter="@Filter" Value="@View.HaveChildren" ValuesUser="@(Filter.HaveChildren.Any() ? Filter.HaveChildren : User?.HaveChildren.ToHashSet())" ClassIcon="fas fa-child" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.HavePets)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HavePets" User="@User" Filter="@Filter" Value="@View.HavePets" ValuesUser="@(Filter.HavePets.Any() ? Filter.HavePets : User?.HavePets.ToHashSet())" ClassIcon="fas fa-paw" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.EducationLevel)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.EducationLevel" User="@User" Filter="@Filter" Value="@View.EducationLevel" ValuesUser="@(Filter.EducationLevel.Any() ? Filter.EducationLevel : User?.EducationLevel.ToHashSet())" ClassIcon="fas fa-graduation-cap" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.CareerCluster)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.CareerCluster" User="@User" Filter="@Filter" Value="@View.CareerCluster" ValuesUser="@(Filter.CareerCluster.Any() ? Filter.CareerCluster : User?.CareerCluster.ToHashSet())" ClassIcon="fas fa-briefcase" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.LivingSituation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LivingSituation" User="@User" Filter="@Filter" Value="@View.LivingSituation" ValuesUser="@(Filter.LivingSituation.Any() ? Filter.LivingSituation : User?.LivingSituation.ToHashSet())" ClassIcon="fas fa-house-user" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.TravelFrequency)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TravelFrequency" User="@User" Filter="@Filter" Value="@View.TravelFrequency" ValuesUser="@(Filter.TravelFrequency.Any() ? Filter.TravelFrequency : User?.TravelFrequency.ToHashSet())" ClassIcon="fas fa-plane" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.NetWorth)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.NetWorth" User="@User" Filter="@Filter" Value="@View.NetWorth" ValuesUser="@(Filter.NetWorth.Any() ? Filter.NetWorth : User?.NetWorth.ToHashSet())" ClassIcon="fas fa-gem" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.AnnualIncome)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.AnnualIncome" User="@User" Filter="@Filter" Value="@View.AnnualIncome" ValuesUser="@(Filter.AnnualIncome.Any() ? Filter.AnnualIncome : User?.AnnualIncome.ToHashSet())" ClassIcon="fas fa-money-bill" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Drink)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Drink" User="@User" Filter="@Filter" Value="@View.Drink" ValuesUser="@(Filter.Drink.Any() ? Filter.Drink : User?.Drink.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("glass-cheers").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Smoke)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Smoke" User="@User" Filter="@Filter" Value="@View.Smoke" ValuesUser="@(Filter.Smoke.Any() ? Filter.Smoke : User?.Smoke.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("smoking").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Diet)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Diet" User="@User" Filter="@Filter" Value="@View.Diet" ValuesUser="@(Filter.Diet.Any() ? Filter.Diet : User?.Diet.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("utensils").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Religion)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Religion" User="@User" Filter="@Filter" Value="@View.Religion" ValuesUser="@(Filter.Religion.Any() ? Filter.Religion : User?.Religion.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("praying-hands").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.FamilyInvolvement)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.FamilyInvolvement" User="@User" Filter="@Filter" Value="@View.FamilyInvolvement" ValuesUser="@(Filter.FamilyInvolvement.Any() ? Filter.FamilyInvolvement : User?.FamilyInvolvement.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("people-roof").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.HaveChildren)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HaveChildren" User="@User" Filter="@Filter" Value="@View.HaveChildren" ValuesUser="@(Filter.HaveChildren.Any() ? Filter.HaveChildren : User?.HaveChildren.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("child").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.HavePets)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HavePets" User="@User" Filter="@Filter" Value="@View.HavePets" ValuesUser="@(Filter.HavePets.Any() ? Filter.HavePets : User?.HavePets.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("paw").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.EducationLevel)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.EducationLevel" User="@User" Filter="@Filter" Value="@View.EducationLevel" ValuesUser="@(Filter.EducationLevel.Any() ? Filter.EducationLevel : User?.EducationLevel.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("graduation-cap").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.CareerCluster)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.CareerCluster" User="@User" Filter="@Filter" Value="@View.CareerCluster" ValuesUser="@(Filter.CareerCluster.Any() ? Filter.CareerCluster : User?.CareerCluster.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("briefcase").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.LivingSituation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LivingSituation" User="@User" Filter="@Filter" Value="@View.LivingSituation" ValuesUser="@(Filter.LivingSituation.Any() ? Filter.LivingSituation : User?.LivingSituation.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("house-user").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.TravelFrequency)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TravelFrequency" User="@User" Filter="@Filter" Value="@View.TravelFrequency" ValuesUser="@(Filter.TravelFrequency.Any() ? Filter.TravelFrequency : User?.TravelFrequency.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("plane").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.NetWorth)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.NetWorth" User="@User" Filter="@Filter" Value="@View.NetWorth" ValuesUser="@(Filter.NetWorth.Any() ? Filter.NetWorth : User?.NetWorth.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("gem").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.AnnualIncome)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.AnnualIncome" User="@User" Filter="@Filter" Value="@View.AnnualIncome" ValuesUser="@(Filter.AnnualIncome.Any() ? Filter.AnnualIncome : User?.AnnualIncome.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("money-bill").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Personality)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Personality (@Affinities.GetPercentAffinity(Section.Personality)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Personality)" Icon="@GetIcon(Section.Personality)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Personality (@Affinities.GetPercentAffinity(Section.Personality)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.MoneyPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MoneyPersonality" User="@User" Filter="@Filter" Value="@View.MoneyPersonality" ValueUser="@User?.MoneyPersonality" ClassIcon="fas fa-wallet" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.SharedSpendingStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedSpendingStyle" User="@User" Filter="@Filter" Value="@View.SharedSpendingStyle" ValueUser="@User?.SharedSpendingStyle" ClassIcon="fas fa-hand-holding-usd" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.RelationshipPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipPersonality" User="@User" Filter="@Filter" Value="@View.RelationshipPersonality" ValueUser="@User?.RelationshipPersonality" ClassIcon="fas fa-people-arrows" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.MBTI)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MyersBriggsTypeIndicator" User="@User" Filter="@Filter" Value="@View.MBTI" ValueUser="@User?.MBTI" ClassIcon="fas fa-user" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.LoveLanguage)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LoveLanguage" User="@User" Filter="@Filter" Value="@View.LoveLanguage" ValueUser="@User?.LoveLanguage" ClassIcon="fas fa-hand-holding-heart" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.SexPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SexPersonality" User="@User" Filter="@Filter" Value="@View.SexPersonality" ValuesUser="@User?.SexPersonalityPreference" ClassIcon="fas fa-heart" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MoneyPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MoneyPersonality" User="@User" Filter="@Filter" Value="@View.MoneyPersonality" ValueUser="@User?.MoneyPersonality" ClassIcon="@IconsFA.Solid.Icon("wallet").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.SharedSpendingStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedSpendingStyle" User="@User" Filter="@Filter" Value="@View.SharedSpendingStyle" ValueUser="@User?.SharedSpendingStyle" ClassIcon="@IconsFA.Solid.Icon("hand-holding-usd").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.RelationshipPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipPersonality" User="@User" Filter="@Filter" Value="@View.RelationshipPersonality" ValueUser="@User?.RelationshipPersonality" ClassIcon="@IconsFA.Solid.Icon("people-arrows").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MBTI)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MyersBriggsTypeIndicator" User="@User" Filter="@Filter" Value="@View.MBTI" ValueUser="@User?.MBTI" ClassIcon="@IconsFA.Solid.Icon("user").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.LoveLanguage)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LoveLanguage" User="@User" Filter="@Filter" Value="@View.LoveLanguage" ValueUser="@User?.LoveLanguage" ClassIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.SexPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SexPersonality" User="@User" Filter="@Filter" Value="@View.SexPersonality" ValuesUser="@User?.SexPersonalityPreference" ClassIcon="@IconsFA.Solid.Icon("heart").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Interest)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Interest (@Affinities.GetPercentAffinity(Section.Interest)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Interest)" Icon="@GetIcon(Section.Interest)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Interest (@Affinities.GetPercentAffinity(Section.Interest)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.Food)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Food" User="@User" Filter="@Filter" Values="@View.Food" ValuesUser="@User?.Food" ClassIcon="fas fa-pizza-slice" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Vacation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Vacation" User="@User" Filter="@Filter" Values="@View.Vacation" ValuesUser="@User?.Vacation" ClassIcon="fas fa-plane-departure" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Sports)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Sports" User="@User" Filter="@Filter" Values="@View.Sports" ValuesUser="@User?.Sports" ClassIcon="fas fa-swimmer" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.LeisureActivities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LeisureActivities" User="@User" Filter="@Filter" Values="@View.LeisureActivities" ValuesUser="@User?.LeisureActivities" ClassIcon="fas fa-umbrella-beach" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.MusicGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MusicGenre" User="@User" Filter="@Filter" Values="@View.MusicGenre" ValuesUser="@User?.MusicGenre" ClassIcon="fas fa-music" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.MovieGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MovieGenre" User="@User" Filter="@Filter" Values="@View.MovieGenre" ValuesUser="@User?.MovieGenre" ClassIcon="fas fa-film" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.TVGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TVGenre" User="@User" Filter="@Filter" Values="@View.TVGenre" ValuesUser="@User?.TVGenre" ClassIcon="fas fa-tv" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.ReadingGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ReadingGenre" User="@User" Filter="@Filter" Values="@View.ReadingGenre" ValuesUser="@User?.ReadingGenre" ClassIcon="fas fa-book-reader" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Food)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Food" User="@User" Filter="@Filter" Values="@View.Food" ValuesUser="@User?.Food" ClassIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Vacation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Vacation" User="@User" Filter="@Filter" Values="@View.Vacation" ValuesUser="@User?.Vacation" ClassIcon="@IconsFA.Solid.Icon("plane-departure").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Sports)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Sports" User="@User" Filter="@Filter" Values="@View.Sports" ValuesUser="@User?.Sports" ClassIcon="@IconsFA.Solid.Icon("swimmer").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.LeisureActivities)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.LeisureActivities" User="@User" Filter="@Filter" Values="@View.LeisureActivities" ValuesUser="@User?.LeisureActivities" ClassIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MusicGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MusicGenre" User="@User" Filter="@Filter" Values="@View.MusicGenre" ValuesUser="@User?.MusicGenre" ClassIcon="@IconsFA.Solid.Icon("music").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.MovieGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MovieGenre" User="@User" Filter="@Filter" Values="@View.MovieGenre" ValuesUser="@User?.MovieGenre" ClassIcon="@IconsFA.Solid.Icon("film").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.TVGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TVGenre" User="@User" Filter="@Filter" Values="@View.TVGenre" ValuesUser="@User?.TVGenre" ClassIcon="@IconsFA.Solid.Icon("tv").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.ReadingGenre)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ReadingGenre" User="@User" Filter="@Filter" Values="@View.ReadingGenre" ValuesUser="@User?.ReadingGenre" ClassIcon="@IconsFA.Solid.Icon("book-reader").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Relationship)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Relationship (@Affinities.GetPercentAffinity(Section.Relationship)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Relationship)" Icon="@GetIcon(Section.Relationship)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Relationship (@Affinities.GetPercentAffinity(Section.Relationship)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.SharedFinances)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedFinances" User="@User" Filter="@Filter" Value="@View.SharedFinances" ValuesUser="@(Filter.SharedFinances.Any() ? Filter.SharedFinances : User?.SharedFinances.ToHashSet())" ClassIcon="fas fa-money-bill-transfer" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.ConflictResolutionStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ConflictResolutionStyle" User="@User" Filter="@Filter" Value="@View.ConflictResolutionStyle" ValuesUser="@(Filter.ConflictResolutionStyle.Any() ? Filter.ConflictResolutionStyle : User?.ConflictResolutionStyle.ToHashSet())" ClassIcon="fas fa-handshake" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.HouseholdManagement)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HouseholdManagement" User="@User" Filter="@Filter" Value="@View.HouseholdManagement" ValuesUser="@(Filter.HouseholdManagement.Any() ? Filter.HouseholdManagement : User?.HouseholdManagement.ToHashSet())" ClassIcon="fas fa-broom" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.TimeTogetherPreference)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TimeTogetherPreference" User="@User" Filter="@Filter" Value="@View.TimeTogetherPreference" ValuesUser="@(Filter.TimeTogetherPreference.Any() ? Filter.TimeTogetherPreference : User?.TimeTogetherPreference.ToHashSet())" ClassIcon="fas fa-people-arrows" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.OppositeSexFriendships)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.OppositeSexFriendships" User="@User" Filter="@Filter" Value="@View.OppositeSexFriendships" ValuesUser="@(Filter.OppositeSexFriendships.Any() ? Filter.OppositeSexFriendships : User?.OppositeSexFriendships.ToHashSet())" ClassIcon="fas fa-restroom" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.SharedFinances)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedFinances" User="@User" Filter="@Filter" Value="@View.SharedFinances" ValuesUser="@(Filter.SharedFinances.Any() ? Filter.SharedFinances : User?.SharedFinances.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.ConflictResolutionStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ConflictResolutionStyle" User="@User" Filter="@Filter" Value="@View.ConflictResolutionStyle" ValuesUser="@(Filter.ConflictResolutionStyle.Any() ? Filter.ConflictResolutionStyle : User?.ConflictResolutionStyle.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("handshake").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.HouseholdManagement)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HouseholdManagement" User="@User" Filter="@Filter" Value="@View.HouseholdManagement" ValuesUser="@(Filter.HouseholdManagement.Any() ? Filter.HouseholdManagement : User?.HouseholdManagement.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("broom").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.TimeTogetherPreference)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.TimeTogetherPreference" User="@User" Filter="@Filter" Value="@View.TimeTogetherPreference" ValuesUser="@(Filter.TimeTogetherPreference.Any() ? Filter.TimeTogetherPreference : User?.TimeTogetherPreference.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("people-arrows").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.OppositeSexFriendships)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.OppositeSexFriendships" User="@User" Filter="@Filter" Value="@View.OppositeSexFriendships" ValuesUser="@(Filter.OppositeSexFriendships.Any() ? Filter.OppositeSexFriendships : User?.OppositeSexFriendships.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("restroom").Font" Affinities="@Affinities"></ItemDataProfile>
 }
 
-<Alert Visible="true" Color="@GetColor(Section.Goals)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom" Shadow="Shadow.Small">
-    <AlertMessage>@MM.Shared.Enums.Resources.Section.Goals (@Affinities.GetPercentAffinity(Section.Goals)%)</AlertMessage>
-</Alert>
+<MudAlert Severity="@GetSeverity(Section.Goals)" Icon="@GetIcon(Section.Goals)" Variant="Variant.Filled" Dense="true" Class="my-2">
+    @MM.Shared.Enums.Resources.Section.Goals (@Affinities.GetPercentAffinity(Section.Goals)%)
+</MudAlert>
 @if (User != null && View != null && Filter != null)
 {
-    <ItemDataProfile For="@(() => View.RelationshipIntentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipIntentions" User="@User" Filter="@Filter" Values="@View.RelationshipIntentions" ValuesUser="@User?.RelationshipIntentions" ClassIcon="fas fa-search" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.Relocation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Relocation" User="@User" Filter="@Filter" Value="@View.Relocation" ValuesUser="@(Filter.Relocation.ToHashSet())" ClassIcon="fas fa-truck" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.WantChildren)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.WantChildren" User="@User" Filter="@Filter" Value="@View.WantChildren" ValuesUser="@(Filter.WantChildren.Any() ? Filter.WantChildren : User?.WantChildren.ToHashSet())" ClassIcon="fas fa-baby" Affinities="@Affinities"></ItemDataProfile>
-    <ItemDataProfile For="@(() => View.IdealPlaceToLive)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.IdealPlaceToLive" User="@User" Filter="@Filter" Value="@View.IdealPlaceToLive" ValuesUser="@(Filter.IdealPlaceToLive.Any() ? Filter.IdealPlaceToLive : User?.IdealPlaceToLive.ToHashSet())" ClassIcon="fas fa-house-circle-check" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.RelationshipIntentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipIntentions" User="@User" Filter="@Filter" Values="@View.RelationshipIntentions" ValuesUser="@User?.RelationshipIntentions" ClassIcon="@IconsFA.Solid.Icon("search").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.Relocation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Relocation" User="@User" Filter="@Filter" Value="@View.Relocation" ValuesUser="@(Filter.Relocation.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("truck").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.WantChildren)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.WantChildren" User="@User" Filter="@Filter" Value="@View.WantChildren" ValuesUser="@(Filter.WantChildren.Any() ? Filter.WantChildren : User?.WantChildren.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("baby").Font" Affinities="@Affinities"></ItemDataProfile>
+    <ItemDataProfile For="@(() => View.IdealPlaceToLive)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.IdealPlaceToLive" User="@User" Filter="@Filter" Value="@View.IdealPlaceToLive" ValuesUser="@(Filter.IdealPlaceToLive.Any() ? Filter.IdealPlaceToLive : User?.IdealPlaceToLive.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("house-circle-check").Font" Affinities="@Affinities"></ItemDataProfile>
 }
-
-<BasicModal @ref="help" Title="@CardHeader.Help">
-    <ul class="mr-4">
-        <li>@GlobalTranslations.HelpProfile1</li>
-        <li>@GlobalTranslations.HelpProfile2</li>
-    </ul>
-</BasicModal>
 
 @code {
     [Parameter] public ProfileModel? User { get; set; }
@@ -133,7 +124,6 @@
     [Parameter] public ProfileModel? View { get; set; }
     [Parameter] public List<AffinityVM> Affinities { get; set; } = new();
 
-    private BasicModal? help;
     private int totPercAff => Affinities.GetPercentAffinity();
 
     // protected override async Task OnInitializedAsync()
@@ -145,22 +135,22 @@
     //    }
     // }
 
-    public Background GetBackground(Section? category)
-    {
-        var perc = Affinities.GetPercentAffinity(category);
+    // public Background GetBackground(Section? category)
+    // {
+    //     var perc = Affinities.GetPercentAffinity(category);
 
-        if (perc >= 80)
-        {
-            return Background.Success;
-        }
+    //     if (perc >= 80)
+    //     {
+    //         return Background.Success;
+    //     }
 
-        if (perc >= 60)
-        {
-            return Background.Warning;
-        }
+    //     if (perc >= 60)
+    //     {
+    //         return Background.Warning;
+    //     }
 
-        return Background.Danger;
-    }
+    //     return Background.Danger;
+    // }
 
     public Color GetColor(Section? category)
     {
@@ -176,7 +166,41 @@
             return Color.Warning;
         }
 
-        return Color.Danger;
+        return Color.Error;
+    }
+
+    public Severity GetSeverity(Section? category)
+    {
+        var perc = Affinities.GetPercentAffinity(category);
+
+        if (perc >= 80)
+        {
+            return Severity.Success;
+        }
+
+        if (perc >= 60)
+        {
+            return Severity.Warning;
+        }
+
+        return Severity.Error;
+    }
+
+    public string? GetIcon(Section? category)
+    {
+        var perc = Affinities.GetPercentAffinity(category);
+
+        if (perc >= 80)
+        {
+            return IconsFA.Solid.Icon("face-smile").WithAnimation(category == null ? IconAnimation.Bounce : IconAnimation.None).Font;
+        }
+
+        if (perc >= 60)
+        {
+            return IconsFA.Solid.Icon("face-meh").WithAnimation(category == null ? IconAnimation.Beat : IconAnimation.None).Font;
+        }
+
+        return IconsFA.Solid.Icon("face-frown").WithAnimation(category == null ? IconAnimation.Fade : IconAnimation.None).Font;
     }
 
 }

@@ -26,7 +26,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
         Profile = await ProfileApi.Get(null);
 
-        if (Profile == null) await Toast.Warning(GlobalTranslations.BasicRequired);
+        if (Profile == null) Snackbar.Add(GlobalTranslations.BasicRequired, MudBlazor.Severity.Warning);
 
         Profile ??= new ProfileModel
         {
@@ -51,7 +51,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 if (position.Error != null)
                 {
-                    await Toast.Warning(position.Error.Message);
+                    Snackbar.Add(position.Error.Message, MudBlazor.Severity.Warning);
                 }
                 else if (position.Location != null)
                 {
@@ -70,17 +70,17 @@ public partial class ProfileData : PageCore<ProfileData>
                         profile.City = address?.GetCity();
                     }
 
-                    if (GPS.Accuracy > 1000) await Toast.Warning(GlobalTranslations.GpsNotAccurate);
+                    if (GPS.Accuracy > 1000) Snackbar.Add(GlobalTranslations.GpsNotAccurate, MudBlazor.Severity.Warning);
                 }
                 else
                 {
-                    await Toast.Warning(GlobalTranslations.UnableDetectGps);
+                    Snackbar.Add(GlobalTranslations.UnableDetectGps, MudBlazor.Severity.Warning);
                 }
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
@@ -92,8 +92,7 @@ public partial class ProfileData : PageCore<ProfileData>
         {
             var validator = new ProfileValidation();
 
-            var result =
-                await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
+            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
 
             if (result.IsValid)
             {
@@ -103,12 +102,12 @@ public partial class ProfileData : PageCore<ProfileData>
             }
             else
             {
-                await Toast.Warning(result.Errors[0].ErrorMessage);
+                Snackbar.Add(result.Errors[0].ErrorMessage, MudBlazor.Severity.Warning);
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
@@ -120,6 +119,6 @@ public partial class ProfileData : PageCore<ProfileData>
 
         var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab.ToString()));
 
-        if (!result.IsValid) await Toast.Warning(result.Errors[0].ErrorMessage);
+        if (!result.IsValid) Snackbar.Add(result.Errors[0].ErrorMessage, MudBlazor.Severity.Warning);
     }
 }

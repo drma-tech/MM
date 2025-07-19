@@ -13,17 +13,8 @@ public partial class FieldText : FormBase<string, FieldText>
     [Parameter] public bool Visible { get; set; } = true;
 
     [Parameter] public EventCallback ButtomClicked { get; set; }
-    [Parameter] public object? ButtomCssIcon { get; set; }
+    [Parameter] public string? ButtomCssIcon { get; set; }
     [Parameter] public string? ButtomTitle { get; set; }
 
     private string? Description => For.GetCustomAttribute()?.Description;
-
-    protected override Dictionary<string, object> GetAttributes(string? customStyle)
-    {
-        var result = base.GetAttributes(customStyle);
-
-        if (Rows > 0) result.Add("rows", Rows);
-
-        return result;
-    }
 }

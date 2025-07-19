@@ -6,7 +6,7 @@ public class SumUsersCache : CacheDocument<SumUsers>
     {
     }
 
-    public SumUsersCache(SumUsers data, string key) : base(key, data, ttlCache.one_day)
+    public SumUsersCache(SumUsers data, string key) : base(key, data, TtlCache.OneDay)
     {
     }
 }

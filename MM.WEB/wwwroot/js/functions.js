@@ -1,14 +1,14 @@
 ﻿"use strict";
 
 function share(url) {
-    if (!('share' in navigator) || window.isSecureContext === false) {
-        showError('Web Share API not supported.');
+    if (!("share" in navigator) || window.isSecureContext === false) {
+        showError("Web Share API not supported.");
         return;
     }
 
     navigator
         .share({ url: url })
-        .then(() => console.log('Successful share'))
+        .then(() => console.log("Successful share"))
         .catch(error => showError(error.message));
 }
 
@@ -17,34 +17,34 @@ function GetLocalStorage(key) {
 }
 
 function SetLocalStorage(key, value) {
-    if (typeof key !== 'string' || typeof value !== 'string') {
-        showError('Key/value must be strings');
-        return;
+    if (typeof key !== "string" || typeof value !== "string") {
+        showError("Key/value must be strings");
+        return null;
     }
     return window.localStorage.setItem(key, value);
 }
 
 function TryDetectPlatform() {
-    if (GetLocalStorage('platform')) return; //if populate before, cancel, cause detection (windows) only works for first call
+    if (GetLocalStorage("platform")) return; //if populate before, cancel, cause detection (windows) only works for first call
 
-    let isWindows = document.referrer == "app-info://platform/microsoft-store";
-    let isGooglePlay = document.referrer?.includes("android-app://"); //let isAndroid = /(android)/i.test(navigator.userAgent);
-    let isIOS = document.cookie.split('; ').some(cookie => cookie === 'app-platform=iOS App Store');
+    const isWindows = document.referrer == "app-info://platform/microsoft-store";
+    const isGooglePlay = document.referrer?.includes("android-app://"); //let isAndroid = /(android)/i.test(navigator.userAgent);
+    const isIOS = document.cookie.split("; ").some(cookie => cookie === "app-platform=iOS App Store");
 
     if (isWindows)
-        SetLocalStorage('platform', 'windows');
+        SetLocalStorage("platform", "windows");
     else if (isGooglePlay)
-        SetLocalStorage('platform', 'play');
+        SetLocalStorage("platform", "play");
     else if (isIOS)
-        SetLocalStorage('platform', 'ios');
+        SetLocalStorage("platform", "ios");
     else
-        SetLocalStorage('platform', 'webapp');
+        SetLocalStorage("platform", "webapp");
 }
 
 async function getUserInfo() {
     try {
-        if (!window.location.host.includes('localhost')) {
-            const response = await fetch('/.auth/me');
+        if (!window.location.host.includes("localhost")) {
+            const response = await fetch("/.auth/me");
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const userInfo = await response.json();
             return userInfo?.clientPrincipal?.userId || null;
@@ -59,57 +59,35 @@ async function getUserInfo() {
 }
 
 function showError(message) {
-    if (window.DotNet)
+    if (window.DotNet) {
         try {
-            DotNet.invokeMethodAsync('SD.WEB', 'ShowError', message);
+            DotNet.invokeMethodAsync("MM.WEB", "ShowError", message);
         }
         catch {
             showToast(message);
         }
+    }
     else {
         showToast(message);
     }
 }
 
 function showToast(message) {
-    const container = document.getElementById('error-container');
+    const container = document.getElementById("error-container");
     if (!container) return;
 
     container.textContent = message;
-    container.style.display = 'block';
+    container.style.display = "block";
 
     setTimeout(() => {
-        container.style.display = 'none';
+        container.style.display = "none";
     }, 5000);
 }
 
-function changeDarkMode() {
-    let theme = GetLocalStorage('theme');
-    theme = (theme == "light" ? "dark" : "light");
-    SetLocalStorage('theme', theme);
-
-    document.body.setAttribute("data-bs-theme", theme);
-}
-
-function animationShake(cssClass) {
-    const alertBoxes = document.querySelectorAll(cssClass);
-
-    alertBoxes.forEach(el => {
-        el.classList.add("shake");
-        setTimeout(() => el.classList.remove("shake"), 300);
-    });
-
-    if (navigator.vibrate) { navigator.vibrate(200); }
-}
-
-function animationBlink(cssClass) {
-    const alertBoxes = document.querySelectorAll(cssClass);
-
-    alertBoxes.forEach(el => {
-        el.classList.add("blink");
-        setTimeout(() => { el.classList.remove("blink"); }, 1500);
-    });
-}
+(function () {
+    const theme = GetLocalStorage("theme") || "light";
+    document.documentElement.setAttribute("data-bs-theme", theme);
+})();
 
 async function detectBrowserFeatures() {
     const [simd, bulkMemory, bigInt] = await Promise.all([

@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using Blazorise;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace MM.WEB.Modules.Shared.Field;
 
@@ -11,7 +9,6 @@ public partial class FieldSelect<TValue, TEnum> : FormBase<TValue, FieldSelect<T
     [Parameter] public bool Required { get; set; }
     [Parameter] public bool Multiple { get; set; }
     [Parameter] public bool ShowGroup { get; set; }
-    [Parameter] public bool ShowSwitch { get; set; }
     [Parameter] public bool ShowHelper { get; set; } = true;
     [Parameter] public bool ShowDescription { get; set; } = true;
     [Parameter] public bool ShowDataSelectDescription { get; set; } = true;
@@ -20,50 +17,30 @@ public partial class FieldSelect<TValue, TEnum> : FormBase<TValue, FieldSelect<T
     [Parameter] public bool Visible { get; set; } = true;
 
     [Parameter] public EventCallback ButtomClicked { get; set; }
-    [Parameter] public object? ButtomCssIcon { get; set; }
+    [Parameter] public string? ButtomCssIcon { get; set; }
     [Parameter] public string? ButtomTitle { get; set; }
     [Parameter] public bool ButtomDisabled { get; set; }
 
-    [Parameter] public TValue? SelectedValue { get; set; }
+    [Parameter] public TValue SelectedValue { get; set; } = default!;
     [Parameter] public EventCallback<TValue> SelectedValueChanged { get; set; }
 
-    [Parameter] public HashSet<TEnum>? SelectedValues { get; set; }
+    [Parameter] public HashSet<TEnum> SelectedValues { get; set; } = [];
     [Parameter] public EventCallback<HashSet<TEnum>> SelectedValuesChanged { get; set; }
 
     private string? Description => For?.GetCustomAttribute()?.Description;
 
-    [Parameter] public Func<EnumObject, object> Order { get; set; } = o => o.Value;
-    [Parameter] public Func<EnumObject, bool> Filter { get; set; } = o => true;
+    [Parameter] public Func<EnumObject<TEnum>, object> Order { get; set; } = o => o.Value;
+    [Parameter] public Func<EnumObject<TEnum>, bool> Filter { get; set; } = o => true;
 
-    protected Task UpdateDataHelp(Expression<Func<TValue>>? For)
+    public List<EnumObject<TEnum>> EnumList { get; set; } = [];
+
+    protected override void OnInitialized()
     {
-        return ModalService.Show<ProfileDataHelp<TValue, TEnum>>(For?.GetCustomAttribute()?.Name,
-            x => { x.Add(x => x.HasGroup, ShowGroup); },
-            new ModalInstanceOptions
-            {
-                UseModalStructure = true,
-                Centered = true,
-                Size = ModalSize.Default
-            });
+        EnumList = EnumHelper.GetList<TEnum>().ToList();
     }
 
-    protected Task UpdateDataSelect(Expression<Func<TValue>>? For)
+    private static string GetMultiSelectionText(List<string> selectedValues)
     {
-        return ModalService.Show<ProfileDataSelect<TValue, TEnum>>("",
-            x =>
-            {
-                x.Add(x => x.HasGroup, ShowGroup);
-                x.Add(x => x.SelectedValues, SelectedValues);
-                x.Add(x => x.SelectedValuesChanged, SelectedValuesChanged);
-                x.Add(x => x.Order, Order);
-                x.Add(x => x.Title, For?.GetCustomAttribute()?.Name);
-                x.Add(x => x.ShowDescription, ShowDataSelectDescription);
-            },
-            new ModalInstanceOptions
-            {
-                UseModalStructure = false,
-                Centered = true,
-                Size = ModalSize.Default
-            });
+        return string.Join(", ", selectedValues.Select(x => Enum.Parse<TEnum>(x).GetName()));
     }
 }

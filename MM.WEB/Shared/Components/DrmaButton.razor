@@ -1,17 +1,17 @@
 ﻿@typeparam T
 
-<Button Color="Color" Clicked="Clicked" Block="Block" Margin="Margin" Disabled="Disabled || Processing">
+<MudButton StartIcon="@Icon" Variant="Variant.Filled" Color="Color" OnClick="Clicked" Style="width: 100%;" Disabled="Disabled || Processing">
     <ChildContent>
         @ChildContent
     </ChildContent>
-</Button>
+</MudButton>
 
 @code {
-    [Parameter] public Color? Color { get; set; }
+    [Parameter] public Color Color { get; set; } = Color.Default;
     [Parameter] public EventCallback<MouseEventArgs> Clicked { get; set; }
     [Parameter] public bool Block { get; set; }
-    [Parameter] public IFluentSpacing? Margin { get; set; }
     [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Icon { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
     [Parameter] public RenderControlCore<T?>? Core { get; set; }

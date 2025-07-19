@@ -25,214 +25,178 @@
 
 @if (!IsAuthenticated)
 {
-    <Jumbotron Background="Background.Primary" TextColor="TextColor.Light" Padding="Padding.Is3" Margin="Margin.Is3.FromBottom">
-        <JumbotronTitle Size="JumbotronTitleSize.Is4">
-            @Translations.HeroTitle
-        </JumbotronTitle>
-        <JumbotronSubtitle Class="mb-3" TextAlignment="TextAlignment.Justified">
-            @Translations.HeroText
-        </JumbotronSubtitle>
-        <Button Type="ButtonType.Link" Color="Color.Warning" To="/login-providers">
-            @Translations.HeroButton
-        </Button>
-        <Divider Background="Background.White" Style="opacity: .75"></Divider>
-        <Paragraph>
-            @Translations.HeroNote
-        </Paragraph>
-    </Jumbotron>
+    <MudCard Class="mb-2 mud-theme-primary" Outlined="true">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h3">@Translations.HeroTitle</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudText Typo="Typo.h6">@Translations.HeroText</MudText>
+            <MudText Typo="Typo.caption">@Translations.HeroNote</MudText>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" Href="/login-providers">@Translations.HeroButton</MudButton>
+        </MudCardActions>
+    </MudCard>
 }
 
-<Row HorizontalGutter="8" VerticalGutter="0">
-    <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is4.OnWidescreen">
-        <Card Margin="Margin.Is2.FromBottom" Padding="Padding.Is2">
-            <CardBody TextAlignment="TextAlignment.Center">
-                <Image Source="@profile?.GetPhoto(ImageHelper.PhotoType.Face)" Fluid="true" Width="Width.Is50" Class="rounded-circle"/>
-            </CardBody>
-            <CardBody TextAlignment="TextAlignment.Center">
-                <Badge Color="Color.Secondary">
-                    @profile?.NickName
-                </Badge>
-                <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
-                    <Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @profile?.GetLocation(ProfileModel.LocationType.City)
-                </Badge>
-                <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromTop.Is0.FromBottom">
+<MudGrid Spacing="3" Class="mb-2">
+    <MudItem xs="12" sm="6" md="4">
+        <MudPaper Class="pa-3" Outlined="true" Style="text-align: center;">
+            <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
+                <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face) ?? "images/no-picture.png")" FallbackSrc="images/no-picture.png" Fluid="true" />
+            </MudAvatar>
+            <div class="mb-2" style="text-align: center;">
+                <MudChip T="string" Color="Color.Primary" Label="true">
+                    @(profile?.NickName ?? "NickName")
+                </MudChip>
+                <MudTooltip Text="@profile?.Location">
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
+                        @(profile?.GetLocation(ProfileModel.LocationType.City) ?? "City")
+                    </MudChip>
+                </MudTooltip>
+                <MudText Typo="Typo.body1" Align="Align.Justify">
                     @profile?.Description
-                </Paragraph>
-            </CardBody>
-            <CardBody>
-                @if (IsAuthenticated)
+                </MudText>
+            </div>
+            <MudGrid Spacing="2">
+                <MudItem xs="6">
+                    <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data" Style="width: 100%;">
+                        @Button.Profile
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter" Style="width: 100%;"
+                               Disabled="profile == null">
+                        @Button.Filters
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting" Style="width: 100%;"
+                               Disabled="profile == null">
+                        @Button.Settings
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery" Style="width: 100%;"
+                               Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
+                        @Button.Gallery
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Filled" Href="/profile/validation" Style="width: 100%;"
+                               Disabled="true">
+                        @Button.Validations
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@IsPublic" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                    CheckMark="true" FixedContent="true">
+                        <MudToggleItem Value="false" Text="Private" />
+                        <MudToggleItem Value="true" Text="Public" />
+                    </MudToggleGroup>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6" md="8">
+        <SectionComponent IconName="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
+            <ActionFragment>
+                <MudTooltip Text="Generate new suggestion list">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="true">
+                        @Button.Generate
+                    </MudButton>
+                </MudTooltip>
+            </ActionFragment>
+            <BodyFragment>
+                <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()" PrivateContent="true" PremiumFeature="true"
+                               PremiumDescription="Only available in phase 2">
+                    <div id="@SuggestionsSwiperId" class="swiper mb-2">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in Suggestions)
+                            {
+                                <div class="swiper-slide">
+                                </div>
+                            }
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </RenderControl>
+            </BodyFragment>
+        </SectionComponent>
+        <SectionComponent IconName="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
+            <ActionFragment>
+                <MudTooltip Text="Invite someone by email">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="profile == null">
+                        @Button.InvitePartner
+                    </MudButton>
+                </MudTooltip>
+            </ActionFragment>
+            <BodyFragment>
+                <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
+                    <div id="@LikesSwiperId" class="swiper mb-2">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in MyLikes?.Items ?? [])
+                            {
+                                <div class="swiper-slide" style="height: auto !important;">
+                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Like, item.UserId))">
+                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
+                                            @item.UserName
+                                        </MudChip>
+                                        <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
+                                                  Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </RenderControl>
+            </BodyFragment>
+        </SectionComponent>
+        <SectionComponent IconName="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches">
+            <ActionFragment>
+                @if (MyMatches == null || MyMatches.Items.Empty())
                 {
-                    <Row Gutter="(8, 8)" Margin="Margin.Is2.FromBottom">
-                        <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/data" Block="true">
-                                @if (profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid)
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                                    <span>@Button.Profile</span>
-                                }
-                                else
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
-                                    <span>@Button.Profile</span>
-                                }
-                            </Button>
-                        </Column>
-                        <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/filter" Block="true" Disabled="profile == null">
-                                @if (filter != null && FilterValidator.Validate(filter).IsValid)
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                                    <span>@Button.Filters</span>
-                                }
-                                else
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
-                                    <span>@Button.Filters</span>
-                                }
-                            </Button>
-                        </Column>
-                    </Row>
-                    <Row Gutter="(8, 8)" Margin="Margin.Is2.FromBottom">
-                        <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/setting" Block="true" Disabled="profile == null">
-                                @if (setting != null)
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                                    <span>@Button.Settings</span>
-                                }
-                                else
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
-                                    <span>@Button.Settings</span>
-                                }
-                            </Button>
-                        </Column>
-                        <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/gallery" Block="true" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
-                                @if (profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid)
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                                    <span>@Button.Gallery</span>
-                                }
-                                else
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon>
-                                    <span>@Button.Gallery</span>
-                                }
-                            </Button>
-                        </Column>
-                    </Row>
-                    <Row Gutter="(8, 8)">
-                        <Column>
-                            <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation" Block="true">
-                                @if (false)
-                                {
-                                    <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                                    <span>@Button.Validations</span>
-                                }
-                                <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" TextColor="TextColor.Warning"></Blazorise.Icon> <span>@Button.Validations</span>
-                            </Button>
-                        </Column>
-                        <Column>
-                            <Switch Checked="@IsPublic" CheckedChanged="(bool value) => IsPublicChanged(value)" Size="Size.Large" title="Activate your profile">
-                                @(IsPublic ? GlobalTranslations.Public : GlobalTranslations.Private)
-                            </Switch>
-                        </Column>
-                    </Row>
+                    <MudTooltip Text="Simulate matches (non-paying users only)">
+                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="profile == null">
+                            @Button.Simulate
+                        </MudButton>
+                    </MudTooltip>
                 }
-            </CardBody>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is8.OnWidescreen">
-        <HeaderComponent IconName="@FontAwesomeIcons.ThumbsUp" Title="@CardHeader.Suggestions">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Generate new suggestion list" Disabled="true">
-                @Button.Generate
-            </Button>
-        </HeaderComponent>
-        <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()" PrivateContent="true" PremiumFeature="true">
-            <div id="@SuggestionsSwiperId" class="swiper mb-2">
-                <div class="swiper-wrapper">
-                    @foreach (var item in Suggestions)
-                    {
-                        <div class="swiper-slide">
+            </ActionFragment>
+            <BodyFragment>
+                <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="(MyMatchesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
+                    <div id="@MatchesSwiperId" class="swiper mb-2">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in MyMatches?.Items ?? [])
+                            {
+                                <div class="swiper-slide" style="height: auto !important;">
+                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
+                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
+                                            @item.UserName
+                                        </MudChip>
+                                        <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
+                                                  Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                                    </div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </RenderControl>
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleExclamation" Title="@CardHeader.Likes">
-            <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Primary" title="Invite someone by email" Clicked="InviteHandle" Disabled="profile == null">
-                @Button.InvitePartner
-            </Button>
-        </HeaderComponent>
-        <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
-            <div id="@LikesSwiperId" class="swiper mb-2">
-                <div class="swiper-wrapper">
-                    @foreach (var item in MyLikes?.Items ?? [])
-                    {
-                        <div class="swiper-slide">
-                            <Div Style="position:relative;">
-                                <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
-                                <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded/>
-                                </Figure>
-                                <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Like, item.UserId))">
-                                    @Button.Open
-                                </Button>
-                            </Div>
-                        </div>
-                    }
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </RenderControl>
-        <HeaderComponent IconName="@FontAwesomeIcons.HeartCircleCheck" Title="@CardHeader.Matches">
-            @if (MyMatches == null || MyMatches.Items.Empty())
-            {
-                <Button Float="Float.End" Size="Size.ExtraSmall" Color="Color.Danger" Clicked="SimulateMatches" title="Simulate matches (non-paying users only)"
-                        Disabled="profile == null">
-                    @Button.Simulate
-                </Button>
-            }
-        </HeaderComponent>
-        <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="(MyMatchesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
-            <div id="@MatchesSwiperId" class="swiper mb-2">
-                <div class="swiper-wrapper">
-                    @foreach (var item in MyMatches?.Items ?? [])
-                    {
-                        <div class="swiper-slide">
-                            <Div Style="position:relative;">
-                                <Badge Color="Color.Light" TextColor="TextColor.Dark" Padding="Padding.Is1" Style="position: absolute; top: .25rem; left: .25rem;">@item.UserName</Badge>
-                                <Figure Style="width: 100%;" Margin="Margin.Is0.Is2.FromBottom">
-                                    <FigureImage Margin="Margin.Is0" Source="@item.GetUserPhoto()" AlternateText="No Picture" Rounded/>
-                                </Figure>
-                                @if (item.Fake)
-                                {
-                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Match, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
-                                        @Button.Open
-                                    </Button>
-                                }
-                                else
-                                {
-                                    <Button Size="Size.Small" Color="Color.Primary" Block Clicked="@(async () => await PopupProfile!.ShowModal(Origin.Match, item.UserId))">
-                                        @Button.Open
-                                    </Button>
-                                }
-                            </Div>
-                        </div>
-                    }
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </RenderControl>
-    </Column>
-</Row>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </RenderControl>
+            </BodyFragment>
+        </SectionComponent>
+    </MudItem>
+</MudGrid>
 
-<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated" Liked="async () => await LoadLikes(true)" Matched="async () => await LoadMatches(true)"></PopupProfile>
+<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated"
+              Liked="async () => await LoadLikes(true)"
+              Matched="async () => await LoadMatches(true)"></PopupProfile>
 
 @code
 {
@@ -266,6 +230,12 @@
     private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string MatchesSwiperId = $"swiper-{Guid.NewGuid()}";
+
+    private bool ProfileValid => profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid;
+    private bool FilterValid => filter != null && FilterValidator.Validate(filter).IsValid;
+    private bool SettingValid => setting != null;
+    private bool GalleryValid => profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid;
+    private bool ValidationsValid => false;
 
     protected override void OnInitialized()
     {
@@ -303,8 +273,18 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
+    }
+
+    private Color GetButtonColor(bool valid)
+    {
+        return valid ? Color.Success : Color.Warning;
+    }
+
+    private string GetButtonIcon(bool valid)
+    {
+        return valid ? IconsFA.Solid.Icon("check").Font : IconsFA.Solid.Icon("circle-question").Font;
     }
 
     private async Task LoadLikes(bool setNewVersion = false)
@@ -324,12 +304,13 @@
         if (value)
         {
             // await Toast.Warning(GlobalTranslations.CompleteAllSteps);
-            await Message.Info(GlobalTranslations.PublicModeNotAvailable, GlobalTranslations.OptionNotAvailable);
+            //await Message.Info(GlobalTranslations.PublicModeNotAvailable, GlobalTranslations.OptionNotAvailable);
+            Snackbar.Add(GlobalTranslations.PublicModeNotAvailable, MudBlazor.Severity.Info);
             IsPublic = false;
         }
         else
         {
-            await Toast.Success(GlobalTranslations.ProfilePrivateMode);
+            Snackbar.Add(GlobalTranslations.ProfilePrivateMode, MudBlazor.Severity.Success);
             IsPublic = false;
         }
     }
@@ -337,7 +318,7 @@
     private async Task InviteHandle()
     {
         var principal = await PrincipalApi.Get(IsAuthenticated);
-        await ModalService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
+        await DialogService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
     }
 
     private async Task InvitationSent(string email)
@@ -346,17 +327,17 @@
         {
             await InviteApi.SendInvite(new InviteRequest { Email = email });
 
-            await Toast.Success(GlobalTranslations.InvitationSent);
+            Snackbar.Add(GlobalTranslations.InvitationSent, MudBlazor.Severity.Success);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
     private async Task SimulateMatches()
     {
-        if (await Message.Confirm(GlobalTranslations.GenerateSimulation, GlobalTranslations.Confirmation))
+        if (await DialogService.ShowMessageBox(GlobalTranslations.Confirmation, GlobalTranslations.GenerateSimulation, Button.Ok, Button.Cancel) ?? false)
         {
             MyMatches = new MyMatchesModel();
 
@@ -433,6 +414,20 @@
                 new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
+        }
+    }
+
+    private async Task OpenProfile(PersonModel? model)
+    {
+        if (model == null) return;
+
+        if (model.Fake)
+        {
+            await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, model.UserId, fakeProfiles.Single(s => s.Id == model.UserId), true);
+        }
+        else
+        {
+            await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, model.UserId);
         }
     }
 

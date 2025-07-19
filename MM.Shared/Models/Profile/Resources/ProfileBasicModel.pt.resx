@@ -139,13 +139,13 @@
     <value>Idiomas</value>
   </data>
   <data name="Location_Description" xml:space="preserve">
-    <value>Não armazenamos sua localização no GPS, apenas sua cidade. (O acesso à localização do dispositivo deve estar ativado)</value>
+    <value>Não armazenamos sua localização GPS, apenas sua cidade. (O acesso à localização do dispositivo deve estar ativado)</value>
   </data>
   <data name="Location_Name" xml:space="preserve">
     <value>Localização</value>
   </data>
   <data name="Location_Placeholder" xml:space="preserve">
-    <value>Clique no botão para o lado</value>
+    <value>Por favor, clique no botão ao lado</value>
   </data>
   <data name="MaritalStatus_Name" xml:space="preserve">
     <value>Estado civil</value>

@@ -2,45 +2,29 @@
 
 @if (Visible)
 {
-    <Field Horizontal="true">
-        <FieldLabel ColumnSize="@GetLabelSize()">
-            @if (string.IsNullOrEmpty(CssIcon))
+    <div class="d-flex" style="align-items: center;">
+        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        <MudButton Variant="Variant.Outlined" Href="/profile/validation/gallery" Style="width: 100%" Disabled="Disabled"
+                   StartIcon="@(Value ? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)"
+                   Color="@(Value ? Color.Success : Color.Error)">
+            @if (Value)
             {
-                @For.GetCustomAttribute()?.Name
+                <span>Active</span>
+            }
+            else if (CustomButtonText.NotEmpty())
+            {
+                <span>@CustomButtonText</span>
             }
             else
             {
-                <Blazorise.Icon Name="@CssIcon" Margin="Margin.Is1.FromEnd"></Blazorise.Icon>
-                @For.GetCustomAttribute()?.Name
+                <span>Inactive</span>
             }
-        </FieldLabel>
-        <FieldBody ColumnSize="@GetBodySize()">
-            <Addons>
-                <Addon AddonType="AddonType.Body">
-                    <Button Color="Color.Primary" Outline="true" Type="ButtonType.Link" To="/profile/validation/gallery" Block="true" Disabled="Disabled">
-                        @if (Value)
-                        {
-                            <Blazorise.Icon Name="FontAwesomeIcons.CheckCircle" TextColor="TextColor.Success"></Blazorise.Icon>
-                            <span>Active</span>
-                        }
-                        else if (CustomButtonText.NotEmpty())
-                        {
-                            <span>@CustomButtonText</span>
-                        }
-                        else
-                        {
-                            <Blazorise.Icon Name="FontAwesomeIcons.XmarkCircle" TextColor="TextColor.Danger"></Blazorise.Icon>
-                            <span>Inactive</span>
-                        }
-                    </Button>
-                </Addon>
-            </Addons>
-        </FieldBody>
-        @if (!string.IsNullOrEmpty(Description))
-        {
-            <Column>
-                <FieldHelp Style="color: #17a2b8 !important">@Description</FieldHelp>
-            </Column>
-        }
-    </Field>
+        </MudButton>
+    </div>
+    @if (Description.NotEmpty())
+    {
+        <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
+            @Description
+        </MudText>
+    }
 }

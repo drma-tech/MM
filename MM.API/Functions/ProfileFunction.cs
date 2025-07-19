@@ -87,7 +87,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetData")]
     public async Task<HttpResponseData?> ProfileGetData(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-data")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -95,7 +95,7 @@ public class ProfileFunction(
             var userId = req.GetUserId();
             var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
-            return await req.CreateResponse(profile, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -106,7 +106,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetFilter")]
     public async Task<HttpResponseData?> ProfileGetFilter(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-filter")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -115,7 +115,7 @@ public class ProfileFunction(
 
             var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -126,7 +126,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetSetting")]
     public async Task<HttpResponseData?> ProfileGetSetting(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-setting")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -135,7 +135,7 @@ public class ProfileFunction(
 
             var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -146,7 +146,7 @@ public class ProfileFunction(
 
     [Function("ProfileValidation")]
     public async Task<HttpResponseData?> ProfileValidation(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-validation")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -155,7 +155,7 @@ public class ProfileFunction(
 
             var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -166,7 +166,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetView")]
     public async Task<HttpResponseData?> GetView(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-view/{id}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")]
         HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         try
@@ -190,7 +190,7 @@ public class ProfileFunction(
             //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
             //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-            return await req.CreateResponse(profile, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -220,7 +220,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateData")]
     public async Task<ProfileModel> ProfileUpdateData(
-        [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-data")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -243,7 +243,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateFilter")]
     public async Task<FilterModel> ProfileUpdateFilter(
-        [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-filter")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -261,7 +261,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateSetting")]
     public async Task<SettingModel> ProfileUpdateSetting(
-        [HttpTrigger(AuthorizationLevel.Function, Method.PUT, Route = "profile/update-setting")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -279,7 +279,7 @@ public class ProfileFunction(
 
     [Function("ProfileSendInvite")]
     public async Task ProfileSendInvite(
-        [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "profile/send-invite")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/send-invite")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -314,7 +314,7 @@ public class ProfileFunction(
 
                 if (invite == null)
                     invite = new CacheDocument<InviteModel>($"invite-{request.Email}",
-                        new InviteModel { UserIds = [userId] }, ttlCache.one_month);
+                        new InviteModel { UserIds = [userId] }, TtlCache.OneMonth);
                 else
                     invite.Data!.UserIds.Add(userId!);
 
@@ -330,7 +330,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetMyLikes")]
     public async Task<HttpResponseData?> ProfileGetMyLikes(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mylikes")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mylikes")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -339,7 +339,7 @@ public class ProfileFunction(
 
             var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
-            return await req.CreateResponse(obj, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -350,7 +350,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetMyMatches")]
     public async Task<HttpResponseData?> ProfileGetMyMatches(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "profile/get-mymatches")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mymatches")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -359,7 +359,7 @@ public class ProfileFunction(
 
             var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
-            return await req.CreateResponse(obj, ttlCache.one_day, cancellationToken);
+            return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {

@@ -1,142 +1,90 @@
-﻿@using Blazorise.Cropper
-@using static ImageHelper
+﻿@using static ImageHelper
 @inherits ComponentCore<SelectPicturePopup>
 
-<ModalHeader>
-    <ModalTitle Size="HeadingSize.Is5">
-        Picture
-    </ModalTitle>
-    <CloseButton/>
-</ModalHeader>
-<ModalBody MaxHeight="70">
-    <Row Margin="Margin.Is2.FromBottom">
-        <Column>
-            <FilePicker Changed="OnFileChanged" Filter="image/*" MaxFileSize="MaxFileSize" AutoReset="true" DisableProgressReport="true"/>
-        </Column>
-    </Row>
-    <Row>
-        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;">
-            <Cropper @ref="cropper" Source="@TempPicture" SelectionChanged="@OnSelectionChanged"
-                     Style="width: 300px; height: 300px;"/>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="justify-items: center;" Padding="Padding.Is2.OnMobile">
-            <Button Color="Color.Primary" Clicked="@GetCroppedImage" Disabled="@cropButtonDisabled" Block="true">Crop image</Button>
-            <Button Color="Color.Secondary" Clicked="@ResetSelection" Disabled="@cropButtonDisabled" Block="true">Reset Selection</Button>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is12.OnMobile.IsAuto.OnDesktop" Style="text-align: center;">
-            <Image Source="@CroppedPicture" Border="Border.Is1" Style="width: 300px; height: 300px;"/>
-        </Column>
-    </Row>
-</ModalBody>
-<ModalFooter>
-    <Button Color="Color.Primary" Clicked="SavePictureHandle">
-        OK
-    </Button>
-</ModalFooter>
+@inject IJSRuntime JS
+
+<MudDialog Style="width: 100%; max-height: 100vh;">
+    <DialogContent>
+        <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="OnFileSelected" MaximumFileCount="1">
+            <ActivatorContent>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.CloudUpload">
+                    Select your photo
+                </MudButton>
+            </ActivatorContent>
+        </MudFileUpload>
+        @if (imageLoaded)
+        {
+            <div class="mt-2">
+                <img id="cropImage" style="max-height: calc(100vh - 200px); max-width: 100%; object-fit: contain;" />
+            </div>
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="@SavePictureHandle">@Button.Ok</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
-    [Parameter] public string? SavedPicture { get; set; }
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
     [Parameter] public PhotoType PhotoType { get; set; }
     [Parameter] public EventCallback<(PhotoType, byte[])> CroppedPictureChanged { get; set; }
 
-    public string? TempPicture => SavedPicture ?? GetNoUserPhoto;
+    // const long maxAllowedSize = 2 * 1024 * 1024; // 2 MB
+    private bool imageLoaded = false;
 
-    private Cropper? cropper;
-    private string? CroppedPicture;
-
-    int MaxFileSize { get; } = 1024 * 1024 * 4; // 4 MB
-    private bool cropButtonDisabled = true;
-
-    private async Task OnFileChanged(FileChangedEventArgs e)
-    {
-        try
-        {
-            foreach (var file in e.Files)
-            {
-                if (file.Status == FileEntryStatus.Error)
-                {
-                    await Toast.Error(file.ErrorMessage);
-                }
-                else if (file.Status == FileEntryStatus.ExceedsMaximumSize)
-                {
-                    await Toast.Warning("File size is too large");
-                }
-                else if (file.Status == FileEntryStatus.Ready)
-                {
-                    var buffer = await GetBuffer(file);
-                    ShowPicture(file, buffer);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            ex.ProcessException(Toast, Logger);
-        }
-    }
-
-    private async Task<byte[]> GetBuffer(IFileEntry file)
+    private async Task<byte[]> GetBuffer(IBrowserFile file)
     {
         var buffer = new byte[file.Size];
         _ = await file.OpenReadStream(file.Size).ReadAsync(buffer);
         return buffer;
     }
 
-    private void ShowPicture(IFileEntry file, byte[] buffer)
+    public class ImageDimensions
     {
-        SavedPicture = $"data:{file.Type};base64,{Convert.ToBase64String(buffer)}";
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 
-    private async Task OnSelectionChanged(CropperSelectionChangedEventArgs eventArgs)
+    private async Task OnFileSelected(IBrowserFile? file)
     {
         try
         {
-            if (eventArgs.Width != 0)
+            if (file == null) return;
+
+            var buffer = await GetBuffer(file);
+            var base64 = Convert.ToBase64String(buffer);
+            var imageUrl = $"data:{file.ContentType};base64,{base64}";
+
+            var dimensions = await JS.InvokeAsync<ImageDimensions>("getImageSize", imageUrl);
+
+            if (dimensions.Width < 300 || dimensions.Height < 300)
             {
-                cropButtonDisabled = false;
-
-                await InvokeAsync(StateHasChanged);
+                Snackbar.Add("The image must be at least 300x300 pixels.", Severity.Error);
+                return;
             }
+
+            imageLoaded = true;
+            StateHasChanged();
+
+            await JS.InvokeVoidAsync("eval", $"document.getElementById('cropImage').src = '{imageUrl}'");
+            await JS.InvokeVoidAsync("initCropper", "cropImage", 1);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
-        }
-    }
-
-    private async Task GetCroppedImage()
-    {
-        try
-        {
-            if (cropper == null) return;
-
-            CroppedPicture = await cropper.CropAsBase64ImageAsync(new CropperCropOptions { Width = 512, Height = 512 });
-        }
-        catch (Exception ex)
-        {
-            ex.ProcessException(Toast, Logger);
-        }
-    }
-
-    private async Task ResetSelection()
-    {
-        try
-        {
-            cropButtonDisabled = true;
-
-            if (cropper != null) await cropper.ResetSelection();
-        }
-        catch (Exception ex)
-        {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
     private async Task SavePictureHandle()
     {
-        var base64 = CroppedPicture?.Split(",")[1];
-        var buffer = Convert.FromBase64String(base64 ?? "");
+        var dataUrl = await JS.InvokeAsync<string>("getCroppedImage", 300, 300);
+
+        var base64 = dataUrl.Split(',')[1];
+        var buffer = Convert.FromBase64String(base64);
         await CroppedPictureChanged.InvokeAsync((PhotoType, buffer));
-        await ModalService.Hide();
+
+        MudDialog?.Close();
     }
 
 }

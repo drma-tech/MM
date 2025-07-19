@@ -1,42 +1,34 @@
 ﻿@inherits BaseCustomField<DateTime?, Birthdate>
 
-<Field Horizontal="true">
-    <FieldLabel ColumnSize="ColumnSize.IsFull.OnWidescreen.Is4.OnFullHD">
-        <Blazorise.Icon Name="FontAwesomeIcons.BirthdayCake"></Blazorise.Icon> @Label
-        @if (Required)
+<div class="d-flex" style="align-items: center;">
+    <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+    <MudSelect Label="Year" Value="@year" ValueChanged="(int value) => SetYear(value)" AdornmentColor="Color.Primary"
+               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+        @foreach (var item in years)
         {
-            <div style="color: red; display: initial;"> *</div>
+            <MudSelectItem Value="@item">@item</MudSelectItem>
         }
-    </FieldLabel>
-    <FieldBody ColumnSize="ColumnSize.IsFull.OnWidescreen.Is8.OnFullHD">
-        <Addons>
-            <Addon AddonType="AddonType.Body">
-                <Select SelectedValue="@year" SelectedValueChanged="(int value) => SetYear(value)" Class="form-control" Width="Width.Auto">
-                    @foreach (var item in years)
-                    {
-                        <SelectItem Value="@item">@item</SelectItem>
-                    }
-                </Select>
-                <Select SelectedValue="@month" SelectedValueChanged="(int value) => SetMonth(value)" Class="form-control" Width="Width.Auto">
-                    @foreach (var item in months)
-                    {
-                        <SelectItem Value="@item">@(new DateTime(year, item, 1).ToString("MMM"))</SelectItem>
-                    }
-                </Select>
-                <Select SelectedValue="@day" SelectedValueChanged="(int value) => SetDay(value)" Class="form-control" Width="Width.Auto">
-                    @foreach (var item in days)
-                    {
-                        <SelectItem Value="@item">@item</SelectItem>
-                    }
-                </Select>
-                <TextEdit Text="@($"{Value.GetAge()} {GlobalTranslations.Years}")" Disabled="true" Width="Width.Is33"></TextEdit>
-            </Addon>
-        </Addons>
-    </FieldBody>
-    <Column ColumnSize="ColumnSize.IsFull">
-        <FieldHelp Style="color: #17a2b8 !important">@GlobalTranslations.BirthdateTip</FieldHelp>
-    </Column>
-</Field>
+    </MudSelect>
+    <MudSelect Label="Month" Value="@month" ValueChanged="(int value) => SetMonth(value)" AdornmentColor="Color.Primary"
+               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+        @foreach (var item in months)
+        {
+            <MudSelectItem Value="@item">@item</MudSelectItem>
+        }
+    </MudSelect>
+    <MudSelect Label="Day" Value="@day" ValueChanged="(int value) => SetDay(value)" AdornmentColor="Color.Primary"
+               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+        @foreach (var item in days)
+        {
+            <MudSelectItem Value="@item">@item</MudSelectItem>
+        }
+    </MudSelect>
+    <MudTextField T="string" Label="Age" Text="@($"{Value.GetAge()} {GlobalTranslations.Years}")"
+                  Disabled="true" FullWidth="true"></MudTextField>
+</div>
+<MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
+    @GlobalTranslations.BirthdateTip
+</MudText>
 
 @code {
     [Parameter] public DateTime? Value { get; set; }
@@ -94,7 +86,7 @@
         }
         catch (Exception)
         {
-            await Toast.Error("Ocorreu um erro ao processar a data");
+            Snackbar.Add("An error occurred while processing the date", Severity.Error);
         }
     }
 

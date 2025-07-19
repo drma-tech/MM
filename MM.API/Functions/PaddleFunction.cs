@@ -8,22 +8,21 @@ using MM.Shared.Models.Subscription;
 
 namespace MM.API.Functions;
 
-public class PaddleFunction(CosmosRepository repo, IConfiguration configuration)
+public class PaddleFunction(CosmosRepository repo)
 {
     [Function("GetSubscription")]
     public async Task<RootSubscription?> GetSubscription(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/paddle/subscription")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/paddle/subscription")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
             var id = req.GetQueryParameters()["id"];
 
-            var endpoint = configuration.GetValue<string>("Paddle:Endpoint");
-            var key = configuration.GetValue<string>("Paddle:Key");
+            var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
+            var key = ApiStartup.Configurations.Paddle?.Key;
 
-            ApiStartup.HttpClientPaddle.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", key);
+            ApiStartup.HttpClientPaddle.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
 
             using var request = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}subscriptions/{id}");
 
@@ -42,21 +41,19 @@ public class PaddleFunction(CosmosRepository repo, IConfiguration configuration)
 
     [Function("GetSubscriptionUpdate")]
     public async Task<RootSubscription?> GetSubscriptionUpdate(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/paddle/subscription/update")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/paddle/subscription/update")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
             var id = req.GetQueryParameters()["id"];
 
-            var endpoint = configuration.GetValue<string>("Paddle:Endpoint");
-            var key = configuration.GetValue<string>("Paddle:Key");
+            var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
+            var key = ApiStartup.Configurations.Paddle?.Key;
 
-            ApiStartup.HttpClientPaddle.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", key);
+            ApiStartup.HttpClientPaddle.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
 
-            using var request = new HttpRequestMessage(HttpMethod.Get,
-                $"{endpoint}subscriptions/{id}/update-payment-method-transaction");
+            using var request = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}subscriptions/{id}/update-payment-method-transaction");
 
             var response = await ApiStartup.HttpClientPaddle.SendAsync(request, cancellationToken);
 
@@ -73,28 +70,23 @@ public class PaddleFunction(CosmosRepository repo, IConfiguration configuration)
 
     [Function("PostSubscription")]
     public async Task PostSubscription(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "public/paddle/subscription")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/paddle/subscription")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
-            var validSignature = await req.ValidPaddleSignature(configuration["Paddle:Signature"], cancellationToken);
+            var validSignature = await req.ValidPaddleSignature(ApiStartup.Configurations.Paddle?.Signature, cancellationToken);
 
             if (!validSignature) throw new UnhandledException("wrong paddle signature");
 
-            var body = await req.GetPublicBody<RootEvent>(cancellationToken) ??
-                       throw new UnhandledException("body null");
+            var body = await req.GetPublicBody<RootEvent>(cancellationToken) ?? throw new UnhandledException("body null");
             if (body.data == null) throw new UnhandledException("body.data null");
 
-            //todo: find a better way to wait for the ClientePaddle to be saved or save before payment
-            await Task.Delay(1000, cancellationToken);
+            await Task.Delay(200, cancellationToken);
 
-            var result =
-                await repo.Query<ClientePrincipal>(
-                    x => x.ClientePaddle != null && x.ClientePaddle.CustomerId == body.data.customer_id,
-                    DocumentType.Principal, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
-            var client = result.FirstOrDefault() ??
-                         throw new UnhandledException($"client null - customer_id:{body.data.customer_id}");
+            var result = await repo.Query<ClientePrincipal>(x => x.ClientePaddle != null && x.ClientePaddle.CustomerId == body.data.customer_id, DocumentType.Principal, 
+                cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            var client = result.FirstOrDefault() ?? throw new UnhandledException($"client null - customer_id:{body.data.customer_id}");
             if (client.ClientePaddle == null) throw new UnhandledException("client.ClientePaddle null");
 
             client.ClientePaddle.SubscriptionId = body.data.id;
@@ -111,21 +103,21 @@ public class PaddleFunction(CosmosRepository repo, IConfiguration configuration)
     }
 
     [Function("Configurations")]
-    public Configurations Configurations(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.GET, Route = "public/paddle/configurations")]
+    public static PaddleConfigurations Configurations(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/paddle/configurations")]
         HttpRequestData req)
     {
         try
         {
-            var config = new Configurations
+            var config = new PaddleConfigurations
             {
-                Token = configuration.GetValue<string>("Paddle:Token"),
-                ProductStandard = configuration.GetValue<string>("Paddle:Standard:Product"),
-                ProductPremium = configuration.GetValue<string>("Paddle:Premium:Product"),
-                PriceStandardMonth = configuration.GetValue<string>("Paddle:Standard:PriceMonth"),
-                PriceStandardYear = configuration.GetValue<string>("Paddle:Standard:PriceYear"),
-                PricePremiumMonth = configuration.GetValue<string>("Paddle:Premium:PriceMonth"),
-                PricePremiumYear = configuration.GetValue<string>("Paddle:Premium:PriceYear")
+                Token = ApiStartup.Configurations.Paddle?.Token,
+                ProductStandard = ApiStartup.Configurations.Paddle?.Standard?.Product,
+                ProductPremium = ApiStartup.Configurations.Paddle?.Premium?.Product,
+                PriceStandardMonth = ApiStartup.Configurations.Paddle?.Standard?.PriceMonth,
+                PriceStandardYear = ApiStartup.Configurations.Paddle?.Standard?.PriceYear,
+                PricePremiumMonth = ApiStartup.Configurations.Paddle?.Premium?.PriceMonth,
+                PricePremiumYear = ApiStartup.Configurations.Paddle?.Premium?.PriceYear
             };
 
             return config;

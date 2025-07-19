@@ -8,307 +8,379 @@
 @inject IJSRuntime JsRuntime
 @inject DashboardApi DashboardApi
 
-<div class="container col-xxl-8 px-4 py-4">
-    <div class="row flex-lg-row-reverse align-items-center justify-content-center g-5">
-        <div class="col-12 col-sm-8 col-sm-2 col-lg-6 bg-dark" style="border-radius: 5px;">
-            <img src="icon/icon-full.png" class="d-block mx-lg-auto img-fluid" alt="Modern Matchmaker" width="700" height="500" loading="lazy">
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-6 fw-bold text-body-emphasis lh-1 mb-4">Modern Matchmaker</h1>
-            <p class="lead text-justify mb-4">@SeoTranslations.Description</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">@Button.LoginHero</button>
-            </div>
-        </div>
-    </div>
-</div>
+<MudContainer>
+    <MudGrid Spacing="4" Class="mb-20" Style="align-items: center;">
+        <MudItem xs="12" sm="6" Style="text-align: center;">
+            <MudImage Src="icon/icon-full.png" Alt="@SeoTranslations.AppName" Style="width: 80%;" />
+        </MudItem>
+        <MudItem xs="12" sm="6" Style="text-align: center;">
+            <MudPaper Elevation="2" Class="pa-6">
+                <MudText Typo="Typo.h4" Color="Color.Primary" Class="mb-2">
+                    @SeoTranslations.AppName
+                </MudText>
+                <MudText Typo="Typo.body1" Align="Align.Justify">
+                    @SeoTranslations.Description
+                </MudText>
+                <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled">
+                    @Button.LoginHero
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
 
-<div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Landing.OurNumbers</h2>
-    <Alert Color="Color.Info" Visible="true" Margin="Margin.Is3.OnY">
-        <AlertMessage>
-            @Landing.OurNumbersMsg1
-        </AlertMessage>
-        <AlertDescription>
-            @Landing.OurNumbersMsg2
-        </AlertDescription>
-    </Alert>
-    <Row Gutter="(8, 8)">
-        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-            <Card>
-                <CardBody>
-                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                        <Blazorise.Icon Name="@FontAwesomeIcons.Earth" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @GlobalTranslations.Countries
-                        </Span>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                            @(SumUsers?.Countries ?? 0)
-                        </Span>
-                    </Div>
-                </CardBody>
-            </Card>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-            <Card>
-                <CardBody>
-                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                        <Blazorise.Icon Name="@FontAwesomeIcons.City" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @GlobalTranslations.Cities
-                        </Span>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                            @(SumUsers?.Cities ?? 0)
-                        </Span>
-                    </Div>
-                </CardBody>
-            </Card>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-            <Card>
-                <CardBody>
-                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                        <Blazorise.Icon Name="@FontAwesomeIcons.Users" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @Landing.Users
-                        </Span>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                            @(SumUsers?.Users ?? 0)
-                        </Span>
-                    </Div>
-                </CardBody>
-            </Card>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is3.OnFullHD.Is6.OnMobile">
-            <Card>
-                <CardBody>
-                    <Div Background="Background.Primary" Float="Float.Start" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" Margin="Margin.Is2.FromEnd"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center" TextColor="TextColor.White">
-                        <Blazorise.Icon Name="@FontAwesomeIcons.Ring" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextTransform="TextTransform.Uppercase" TextColor="TextColor.Muted">
-                            @Landing.Couples
-                        </Span>
-                    </Div>
-                    <Div Flex="Flex.AlignItems.Center" Gap="Gap.Is2">
-                        <Span TextSize="TextSize.Heading3" TextColor="TextColor.Dark">
-                            @(SumUsers?.Couples ?? 0)
-                        </Span>
-                    </Div>
-                </CardBody>
-            </Card>
-        </Column>
-    </Row>
-</div>
+    <MudText Typo="Typo.h4" Color="Color.Primary">
+        @Landing.OurNumbers
+    </MudText>
+    <MudDivider Class="mb-10"></MudDivider>
+    <MudGrid Spacing="2" Class="mb-3">
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                <div class="d-flex" style="align-items: center;">
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                        @GlobalTranslations.Countries
+                    </MudText>
+                    <MudSpacer></MudSpacer>
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        @(SumUsers?.Countries ?? 0)
+                    </MudChip>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                <div class="d-flex" style="align-items: center;">
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                        @GlobalTranslations.Cities
+                    </MudText>
+                    <MudSpacer></MudSpacer>
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        @(SumUsers?.Cities ?? 0)
+                    </MudChip>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                <div class="d-flex" style="align-items: center;">
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                        @Landing.Users
+                    </MudText>
+                    <MudSpacer></MudSpacer>
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        @(SumUsers?.Users ?? 0)
+                    </MudChip>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                <div class="d-flex" style="align-items: center;">
+                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("ring").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                        @Landing.Couples
+                    </MudText>
+                    <MudSpacer></MudSpacer>
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        @(SumUsers?.Couples ?? 0)
+                    </MudChip>
+                </div>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+    <MudAlert Variant="Variant.Outlined" Severity="Severity.Info" Dense="true" Class="mb-20" Style="text-align: justify;">
+        <span class="me-2" style="font-weight: bold;">@Landing.OurNumbersMsg1</span>@Landing.OurNumbersMsg2
+    </MudAlert>
 
-<div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Landing.OurRoadmap</h2>
-
-    <div class="row align-items-md-center g-5 py-5">
-        <div class="col-12 col-lg-5 d-flex flex-column align-items-start gap-2">
-            <h2 class="fw-bold text-body-emphasis text-center">
+    <MudText Typo="Typo.h4" Color="Color.Primary">
+        @Landing.OurRoadmap
+    </MudText>
+    <MudDivider Class="mb-10"></MudDivider>
+    <MudGrid Spacing="6" Class="mb-20" Style="align-items: center;">
+        <MudItem xs="12" md="5">
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Align="Align.Center" Class="mb-2">
                 @Landing.OurRoadmapMsg1
-            </h2>
-            <p class="text-body-secondary text-justify">
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Style="line-height: 1.6;">
                 @Landing.OurRoadmapMsg2
-            </p>
-        </div>
+            </MudText>
+        </MudItem>
+        <MudItem xs="12" md="7">
+            <MudGrid Spacing="4">
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
+                        <div class="d-flex mb-2">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("1").WithAnimation(IconAnimation.Fade).Font" Color="GetPhaseColor(1)" Label="true" Class="chip-no-text" />
+                            <MudText Typo="Typo.h6" Color="GetPhaseColor(1)" Style="align-content: center;">
+                                @Landing.Phase1Title
+                            </MudText>
+                        </div>
+                        <div>
+                            @if (SumUsers != null)
+                            {
+                                var tot = GetPhaseValue(1);
+                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                        <b>@tot.ToString("P2")</b>
+                                    </MudText>
+                                </MudProgressLinear>
+                            }
+                        </div>
+                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
+                            <li>@Landing.Phase1Opt1</li>
+                            <li>@Landing.Phase1Opt2</li>
+                            <li>@Landing.Phase1Opt3</li>
+                        </ul>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
+                        <div class="d-flex mb-2">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("2").Font" Color="GetPhaseColor(2)" Label="true" Class="chip-no-text" />
+                            <MudText Typo="Typo.h6" Color="GetPhaseColor(2)" Style="align-content: center;">
+                                @Landing.Phase2Title
+                            </MudText>
+                        </div>
+                        <div>
+                            @if (SumUsers != null)
+                            {
+                                var tot = GetPhaseValue(2);
+                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                        <b>@tot.ToString("P2")</b>
+                                    </MudText>
+                                </MudProgressLinear>
+                            }
+                        </div>
+                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
+                            <li>@Landing.Phase2Opt1</li>
+                            <li>@Landing.Phase2Opt2</li>
+                            <li>@Landing.Phase2Opt3</li>
+                        </ul>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
+                        <div class="d-flex mb-2">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("3").Font" Color="GetPhaseColor(3)" Label="true" Class="chip-no-text" />
+                            <MudText Typo="Typo.h6" Color="GetPhaseColor(3)" Style="align-content: center;">
+                                @Landing.Phase3Title
+                            </MudText>
+                        </div>
+                        <div>
+                            @if (SumUsers != null)
+                            {
+                                var tot = GetPhaseValue(3);
+                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
+                                    <MudText Typo="Typo.subtitle2" Color="Color.Dark">
+                                        <b>@tot.ToString("P2")</b>
+                                    </MudText>
+                                </MudProgressLinear>
+                            }
+                        </div>
+                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
+                            <li>@Landing.Phase3Opt1</li>
+                            <li>@Landing.Phase3Opt2</li>
+                        </ul>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
+                        <div class="d-flex mb-2">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("4").Font" Color="GetPhaseColor(4)" Label="true" Class="chip-no-text" />
+                            <MudText Typo="Typo.h6" Color="GetPhaseColor(4)" Style="align-content: center;">
+                                @Landing.Phase4Title
+                            </MudText>
+                        </div>
+                        <div>
+                            @if (SumUsers != null)
+                            {
+                                var tot = GetPhaseValue(4);
+                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
+                                    <MudText Typo="Typo.subtitle2" Color="Color.Dark">
+                                        <b>@tot.ToString("P2")</b>
+                                    </MudText>
+                                </MudProgressLinear>
+                            }
+                        </div>
+                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
+                            <li>@Landing.Phase4Opt1</li>
+                            <li>@Landing.Phase4Opt2</li>
+                        </ul>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
 
-        <div class="col-12 col-lg-7">
-            <div class="row row-cols-1 row-cols-sm-2 g-4">
-                <div class="col d-flex flex-column gap-2">
-                    <Div Background="Background.Primary" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" TextColor="TextColor.White"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center">
-                        <Blazorise.Icon Name="@FontAwesomeIcons._1" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase1Title</h4>
-                    @if (SumUsers != null)
-                    {
-                        var tot = (int)((double)SumUsers.Users / 100000 * 100);
-                        <Progress Value="@((int?)tot)" Width="Width.Is100" Color="Color.Primary" Animated Striped></Progress>
-                    }
-                    <ul>
-                        <li>@Landing.Phase1Opt1</li>
-                        <li>@Landing.Phase1Opt2</li>
-                        <li>@Landing.Phase1Opt3</li>
-                    </ul>
+    <MudText Typo="Typo.h4" Color="Color.Primary">
+        @Landing.OurFeatures
+    </MudText>
+    <MudDivider Class="mb-10"></MudDivider>
+    <MudGrid Spacing="3">
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CompatibilitySystem</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilitySystemDesc</MudText>
                 </div>
-                <div class="col d-flex flex-column gap-2">
-                    <Div Background="Background.Secondary" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" TextColor="TextColor.White"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center">
-                        <Blazorise.Icon Name="@FontAwesomeIcons._2" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase2Title</h4>
-                    <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
-                    <ul>
-                        <li>@Landing.Phase2Opt1</li>
-                        <li>@Landing.Phase2Opt2</li>
-                        <li>@Landing.Phase2Opt3</li>
-                    </ul>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("people-arrows").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CoupleCompatibility</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CoupleCompatibilityDesc</MudText>
                 </div>
-                <div class="col d-flex flex-column gap-2">
-                    <Div Background="Background.Secondary" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" TextColor="TextColor.White"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center">
-                        <Blazorise.Icon Name="@FontAwesomeIcons._3" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase3Title</h4>
-                    <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
-                    <ul>
-                        <li>@Landing.Phase3Opt1</li>
-                        <li>@Landing.Phase3Opt2</li>
-                    </ul>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("id-badge").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Profile</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.ProfileDesc</MudText>
                 </div>
-                <div class="col d-flex flex-column gap-2">
-                    <Div Background="Background.Secondary" Width="Width.Rem(3)" Height="Height.Rem(3)" Border="Border.Rounded" TextColor="TextColor.White"
-                         Flex="Flex.AlignItems.Center.JustifyContent.Center">
-                        <Blazorise.Icon Name="@FontAwesomeIcons._4" IconSize="IconSize.Large"></Blazorise.Icon>
-                    </Div>
-                    <h4 class="fw-semibold mb-0 text-body-emphasis">@Landing.Phase4Title</h4>
-                    <Progress Width="Width.Is100" Color="Color.Secondary"></Progress>
-                    <ul>
-                        <li>@Landing.Phase4Opt1</li>
-                        <li>@Landing.Phase4Opt2</li>
-                    </ul>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("book").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CompatibilityReport</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilityReportDesc</MudText>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container px-4 py-4">
-    <h2 class="pb-2 border-bottom">@Landing.OurFeatures</h2>
-
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Security</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.SecurityDesc</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("user-lock").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Privacy</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.PrivacyDesc</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Authenticity</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.AuthenticityDesc</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("shuffle").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Tracking</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.TrackingDesc</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                <MudIcon Icon="@IconsFA.Solid.Icon("coins").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                <div>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.MMCoin</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.MMCoinDesc</MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-5">
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.Sliders" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CompatibilitySystem</h3>
-                <p class="text-justify">@Landing.CompatibilitySystemDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.PeopleArrows" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CoupleCompatibility</h3>
-                <p class="text-justify">@Landing.CoupleCompatibilityDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.IdBadge" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Profile</h3>
-                <p class="text-justify">@Landing.ProfileDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.Book" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.CompatibilityReport</h3>
-                <p class="text-justify">@Landing.CompatibilityReportDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.UserShield" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Security</h3>
-                <p class="text-justify">@Landing.SecurityDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.UserLock" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Privacy</h3>
-                <p class="text-justify">@Landing.PrivacyDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.UserCheck" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Authenticity</h3>
-                <p class="text-justify">@Landing.AuthenticityDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.Shuffle" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.Tracking</h3>
-                <p class="text-justify">@Landing.TrackingDesc</p>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <Div Background="Background.Light" Width="Width.Rem(2)" Height="Height.Rem(2)" Flex="Flex.AlignItems.Center.JustifyContent.Center" Margin="Margin.Is3.FromEnd">
-                <Blazorise.Icon Name="@FontAwesomeIcons.Coins" IconSize="IconSize.Large"></Blazorise.Icon>
-            </Div>
-            <div>
-                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">@Landing.MMCoin</h3>
-                <p class="text-justify">@Landing.MMCoinDesc</p>
-            </div>
-        </div>
     </div>
-</div>
+</MudContainer>
 
 @code {
 
     [Parameter]
     [SupplyParameterFromQuery(Name = "language")]
-    public string? language { get; set; }
+    public string? Language { get; set; }
 
     [Parameter]
     [SupplyParameterFromQuery(Name = "platform")]
-    public string? platform { get; set; }
+    public string? Platform { get; set; }
 
     public SumUsers? SumUsers { get; set; }
+    public Settings? Settings { get; set; }
+    public ClientePrincipal? Principal { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnInitializedAsync();
+        if (firstRender)
+        {
+            if (Platform.NotEmpty())
+            {
+                await JsRuntime.InvokeAsync<string>("SetLocalStorage", "platform", Platform);
+            }
+            else
+            {
+                await JsRuntime.InvokeAsync<string>("TryDetectPlatform");
+            }
+        }
 
-        if (platform.NotEmpty())
-        {
-            await JsRuntime.InvokeAsync<string>("SetLocalStorage", "platform", platform);
-        }
-        else
-        {
-            await JsRuntime.InvokeAsync<string>("TryDetectPlatform");
-        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     protected override async Task LoadDataRender()
     {
+        Settings = await CacheSettingsApi.GetSettings();
+        Principal = await PrincipalApi.Get(IsAuthenticated);
+
         var cache = await DashboardApi.GetSumUsers(null);
         SumUsers = cache?.Data;
+    }
+
+    private double GetPhaseValue(int phase)
+    {
+        var totUsers = SumUsers?.Users ?? 0;
+
+        if (phase == 1)
+        {
+            //do nothing
+        }
+        else if (phase == 2)
+        {
+            if (totUsers > 100_000) totUsers -= 100_000;
+            else return 0;
+        }
+        else if (phase == 3)
+        {
+            if (totUsers > 200_000) totUsers -= 200_000;
+            else return 0;
+        }
+        else if (phase == 4)
+        {
+            if (totUsers > 300_000) totUsers -= 300_000;
+            else return 0;
+        }
+
+        if (totUsers < 100_000) return (double)totUsers / 100_000;
+        else return 1;
+    }
+
+    private Color GetPhaseColor(int phase)
+    {
+        var value = GetPhaseValue(phase);
+
+        if (value == 1) return Color.Success;
+        else if (value == 0) return Color.Default;
+        else return Color.Primary;
     }
 
 }

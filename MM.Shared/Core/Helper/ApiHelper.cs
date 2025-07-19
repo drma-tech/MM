@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace MM.WEB.Core.Api;
+namespace MM.Shared.Core.Helper;
 
 public static class ApiHelper
 {
@@ -12,7 +12,7 @@ public static class ApiHelper
 
         if (response.IsSuccessStatusCode)
         {
-            if (response.StatusCode == HttpStatusCode.NoContent) return default;
+            if (response.StatusCode == HttpStatusCode.NoContent) return null;
 
             return await response.Content.ReadAsStringAsync();
         }

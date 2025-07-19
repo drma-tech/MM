@@ -3,136 +3,138 @@
 @using MM.WEB.Core.Models
 @typeparam TValue
 
-<Tabs RenderMode="TabsRenderMode.LazyReload" @bind-SelectedTab="@Tab">
-    <Items>
-        <Tab Name="Affinity">
-            @GlobalTranslations.Compatibility
-        </Tab>
-        <Tab Name="WhyImportant" Disabled="WhyImportant.Empty()">
-            @GlobalTranslations.WhyImportant
-        </Tab>
-        <Tab Name="Tips" Disabled="GetTips().Empty()">
-            @GlobalTranslations.Tips
-        </Tab>
-    </Items>
-    <Content>
-        <TabPanel Name="Affinity" Padding="Padding.Is3.FromTop">
-            <Row HorizontalGutter="8" VerticalGutter="0">
-                <Column>
-                    <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromBottom">
-                        <AlertMessage>@GlobalTranslations.YourProfile</AlertMessage>
-                    </Alert>
-                    @if (PreferenceValues.Any())
-                    {
-                        @foreach (var item in PreferenceValues)
+<MudDialog Style="width: 100%">
+    <DialogContent>
+        <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+            <MudTabPanel Tag="@("Affinity")" Text="@GlobalTranslations.Compatibility">
+                <MudGrid Spacing="2">
+                    <MudItem xs="6">
+                        <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
+                            @GlobalTranslations.YourProfile
+                        </MudAlert>
+                        @if (PreferenceValues.Any())
                         {
-                            <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
-                                @item
-                            </Badge>
-                        }
-                    }
-                    else
-                    {
-                        <Badge Color="Color.Secondary">
-                            @GlobalTranslations.NotAnswered
-                        </Badge>
-                    }
-                </Column>
-                <Column>
-                    <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromBottom">
-                        <AlertMessage>@GlobalTranslations.ExpectedCompatibility</AlertMessage>
-                    </Alert>
-                    @if (ExpectedValues.Any())
-                    {
-                        if (Type == CompatibilityType.Range)
-                        {
-                            <Badge Color="Color.Secondary">@ExpectedValues.First()</Badge>
-
-                            <Blazorise.Text> - </Blazorise.Text>
-
-                            <Badge Color="Color.Secondary">@ExpectedValues.Last()</Badge>
-                        }
-                        else
-                        {
-                            foreach (var item in ExpectedValues)
+                            @foreach (var item in PreferenceValues)
                             {
-                                <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">@item</Badge>
+                                <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                    @item
+                                </MudChip>
                             }
                         }
-                    }
-                    else
-                    {
-                        <Badge Color="Color.Secondary">
-                            @GlobalTranslations.Undefined
-                        </Badge>
-                    }
-                </Column>
-            </Row>
-            <Alert Visible="true" Color="Color.Primary" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom">
-                <AlertMessage>@GlobalTranslations.YourPartnerProfile</AlertMessage>
-            </Alert>
-            @if (ViewValues.Any())
-            {
-                foreach (var item in ViewValues)
-                {
-                    if (item is Enum resultE)
-                    {
-                        var desc = resultE.GetCustomAttribute()?.Description;
-                        var name = resultE.GetName();
-
-                        if (string.IsNullOrEmpty(desc))
+                        else
                         {
-                            <Alert Visible="true" Color="@GetColor(item)" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom.Is2.FromEnd" Style="display: inline-block">
-                                <AlertMessage>@name</AlertMessage>
-                            </Alert>
+                            <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                @GlobalTranslations.NotAnswered
+                            </MudChip>
+                        }
+                    </MudItem>
+                    <MudItem xs="6">
+                        <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
+                            @GlobalTranslations.ExpectedCompatibility
+                        </MudAlert>
+                        @if (ExpectedValues.Any())
+                        {
+                            if (Type == CompatibilityType.Range)
+                            {
+                                <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                    @ExpectedValues.First()
+                                </MudChip>
+                                <MudText> - </MudText>
+                                <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                    @ExpectedValues.Last()
+                                </MudChip>
+                            }
+                            else
+                            {
+                                foreach (var item in ExpectedValues)
+                                {
+
+                                    <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                        @item
+                                    </MudChip>
+                                }
+                            }
                         }
                         else
                         {
-                            <Alert Visible="true" Color="@GetColor(item)" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom">
-                                <AlertMessage>@name</AlertMessage>
-                                <AlertDescription>@desc</AlertDescription>
-                            </Alert>
+                            <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
+                                @GlobalTranslations.Undefined
+                            </MudChip>
+                        }
+                    </MudItem>
+                </MudGrid>
+                <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
+                    @GlobalTranslations.YourPartnerProfile
+                </MudAlert>
+                @if (ViewValues.Any())
+                {
+                    foreach (var item in ViewValues)
+                    {
+                        if (item is Enum resultE)
+                        {
+                            var desc = resultE.GetCustomAttribute()?.Description;
+                            var name = resultE.GetName();
+
+                            if (string.IsNullOrEmpty(desc))
+                            {
+                                <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
+                                    @name
+                                </MudAlert>
+                            }
+                            else
+                            {
+                                <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
+                                    <span class="me-2" style="font-weight: bold;">@name</span>@desc
+                                </MudAlert>
+                            }
+                        }
+                        else if (item != null)
+                        {
+                            <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
+                                @item
+                            </MudAlert>
+                        }
+                        else
+                        {
+                            <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
+                                @GlobalTranslations.NotAnswered
+                            </MudAlert>
                         }
                     }
-                    else if (item != null)
-                    {
-                        <Alert Visible="true" Color="@GetColor(item)" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom" Style="display: inline-block">
-                            <AlertMessage>@item</AlertMessage>
-                        </Alert>
-                    }
-                    else
-                    {
-                        <Alert Visible="true" Color="@GetColor(item)" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom" Style="display: inline-block">
-                            <AlertMessage>@GlobalTranslations.NotAnswered</AlertMessage>
-                        </Alert>
-                    }
                 }
-            }
-            else
-            {
-                <Alert Visible="true" Color="@GetColor()" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom" Style="display: inline-block">
-                    <AlertMessage>@GlobalTranslations.NotAnswered</AlertMessage>
-                </Alert>
-            }
-        </TabPanel>
-        <TabPanel Name="WhyImportant" Padding="Padding.Is3.FromTop">
-            <Alert Visible="true" Color="Color.Light" Padding="Padding.Is0.OnY" Margin="Margin.Is1.FromTop.Is1.FromBottom">
-                <AlertDescription>@WhyImportant</AlertDescription>
-            </Alert>
-        </TabPanel>
-        <TabPanel Name="Tips" Padding="Padding.Is3.FromTop">
-            @foreach (var item in GetTips())
-            {
-                <Alert Visible="true" Color="Color.Light" Padding="Padding.Is0.OnY" Margin="Margin.Is2.FromTop.Is1.FromBottom">
-                    <AlertMessage>@item.Key</AlertMessage>
-                    <AlertDescription>@item.Value</AlertDescription>
-                </Alert>
-            }
-        </TabPanel>
-    </Content>
-</Tabs>
+                else
+                {
+                    <MudAlert Severity="@GetSeverity()" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
+                        @GlobalTranslations.NotAnswered
+                    </MudAlert>
+                }
+            </MudTabPanel>
+            <MudTabPanel Tag="@("WhyImportant")" Text="@GlobalTranslations.WhyImportant" Disabled="WhyImportant.Empty()">
+                <MudText Class="my-2" Typo="Typo.body1">
+                    @WhyImportant
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Tag="@("Tips")" Text="@GlobalTranslations.Tips" Disabled="GetTips().Empty()">
+                <MudList T="string" Dense="true">
+                    @foreach (var item in GetTips())
+                    {
+                        <MudListItem Icon="@IconsFA.Solid.Icon("check").Font">
+                            <span class="me-2" style="font-weight: bold;">@item.Key</span><span style="text-align: justify;">@item.Value</span>
+                        </MudListItem>
+                    }
+                </MudList>
+            </MudTabPanel>
+        </MudTabs>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
 
 @code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
     [Parameter] public IEnumerable<string> PreferenceValues { get; set; } = [];
     [Parameter] public IEnumerable<string> ExpectedValues { get; set; } = [];
     [Parameter] public IEnumerable<TValue> ViewValues { get; set; } = [];
@@ -145,41 +147,32 @@
     [Parameter] public string? WhyImportant { get; set; }
     [Parameter] public string? Tips { get; set; }
 
-    public string? Tab { get; set; } = "Affinity";
-
-    private enum Tabs
-    {
-        Affinity,
-        WhyImportant,
-        Tips
-    }
-
-    private Color GetColor(TValue? value = default)
+    private Severity GetSeverity(TValue? value = default)
     {
         if (!Affinities.Any(s => s.Item == Item)) //if the attribute is not mapped to affinity, it remains neutral
         {
-            return Color.Secondary;
+            return Severity.Normal;
         }
 
         if (Affinities.Single(s => s.Item == Item).HaveAffinity) //if it is mapped and has affinity
         {
             if (value == null)
             {
-                return Color.Success;
+                return Severity.Success;
             }
 
             if (value is Enum result && Type == CompatibilityType.Enum)
             {
                 if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetName()!))
-                    return Color.Success;
-                return Color.Warning;
+                    return Severity.Success;
+                return Severity.Warning;
             }
 
-            return Color.Success;
+            return Severity.Success;
         }
 
         //if mapped but without affinity
-        return Color.Danger;
+        return Severity.Error;
     }
 
     private Dictionary<string, string> GetTips()

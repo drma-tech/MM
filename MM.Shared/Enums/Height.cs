@@ -2,13 +2,15 @@
 
 public enum Height
 {
-    [Custom(Name = "< 4’9” / 146 cm")] _146 = 146,
+    [Custom(Name = "< 4’9” / 145 cm")] _145 = 145,
 
-    [Custom(Name = "4’10” / 149 cm")] _149 = 149,
+    [Custom(Name = "4’10” / 147 cm")] _147 = 147,
 
-    [Custom(Name = "4’11” / 152 cm")] _152 = 152,
+    [Custom(Name = "4’11” / 150 cm")] _150 = 150,
 
-    [Custom(Name = " 5’1” / 155 cm")] _155 = 155,
+    [Custom(Name = "5’0” / 152 cm")] _152 = 152,
+
+    [Custom(Name = "5’1” / 155 cm")] _155 = 155,
 
     [Custom(Name = "5’2” / 157 cm")] _157 = 157,
 

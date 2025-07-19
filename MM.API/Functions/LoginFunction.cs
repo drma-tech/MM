@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Auth;
+using System.Net;
 
 namespace MM.API.Functions;
 
@@ -8,7 +9,7 @@ public class LoginFunction(CosmosRepository repo)
 {
     [Function("LoginAdd")]
     public async Task LoginAdd(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.POST, Route = "login/add")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
         try
@@ -43,5 +44,13 @@ public class LoginFunction(CosmosRepository repo)
             req.ProcessException(ex);
             throw;
         }
+    }
+
+    [Function("Test")]
+    public static HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/test")] HttpRequestData req)
+    {
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.WriteString("OK");
+        return response;
     }
 }

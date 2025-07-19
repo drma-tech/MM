@@ -1,44 +1,36 @@
 ﻿@inherits BaseCustomField<MM.Shared.Enums.Country?, Country>
 
-<Field Horizontal="true">
-    <FieldLabel ColumnSize="@GetLabelSize()">
-        <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon> @Label
-        @if (Required)
+<div class="d-flex" style="align-items: center;">
+    <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+    <MudSelect Label="Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
+               Disabled="@Disabled" Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true">
+        @foreach (var group in Countries.Select(s => s.Group).Order().Distinct())
         {
-            <div style="color: red; display: initial;"> *</div>
+            <MudSelectItem Value="@group">@group</MudSelectItem>
         }
-    </FieldLabel>
-    <FieldBody ColumnSize="@GetBodySize()">
-        <Addons>
-            <Addon AddonType="AddonType.Body">
-                <Select @bind-SelectedValue="@Continent" Disabled="@Disabled" Width="Width.Is33">
-                    <SelectItem></SelectItem>
-                    @foreach (var group in EnumHelper.GetList<MM.Shared.Enums.Country>().Select(s => s.Group).Order().Distinct())
-                    {
-                        <SelectItem Value="@group">@group</SelectItem>
-                    }
-                </Select>
-                <Select TValue="MM.Shared.Enums.Country?" SelectedValue="@SelectedValue" SelectedValueChanged="SelectedValueChanged" Disabled="@Disabled" Width="Width.Is66">
-                    <SelectItem></SelectItem>
-                    @foreach (var item in EnumHelper.GetList<MM.Shared.Enums.Country>().Where(w => w.Group == Continent).OrderBy(o => o.Name))
-                    {
-                        <SelectItem Value="@item.Value">@item.Name</SelectItem>
-                    }
-                </Select>
-            </Addon>
-        </Addons>
-    </FieldBody>
-</Field>
+    </MudSelect>
+    <MudSelect Label="@For?.GetCustomAttribute().Name" Value="@SelectedValue" ValueChanged="@SelectedValueChanged" AdornmentColor="Color.Primary"
+               Disabled="@(Disabled || FilteredCountries.Empty())" Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true">
+        @foreach (var item in FilteredCountries)
+        {
+            <MudSelectItem Value="@((MM.Shared.Enums.Country?)item.Value)">@item.Name</MudSelectItem>
+        }
+    </MudSelect>
+</div>
 
 @code {
     [Parameter] public MM.Shared.Enums.Country? SelectedValue { get; set; }
     [Parameter] public EventCallback<MM.Shared.Enums.Country?> SelectedValueChanged { get; set; }
     [Parameter] public bool Required { get; set; }
 
+    public List<EnumObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
+    public IEnumerable<EnumObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name);
+
     public string? Continent { get; set; }
 
     protected override void OnInitialized()
     {
+        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>().ToList();
         Continent = SelectedValue?.GetCustomAttribute()?.Group;
     }
 

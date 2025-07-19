@@ -40,5 +40,11 @@
     "inputFiles": [
       "wwwroot/js/paddle.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/crop-helper.min.js",
+    "inputFiles": [
+      "wwwroot/js/crop-helper.js"
+    ]
   }
 ]

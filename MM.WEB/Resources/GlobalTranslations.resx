@@ -195,12 +195,6 @@
   <data name="HelpPlus" xml:space="preserve">
     <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
   </data>
-  <data name="HelpProfile1" xml:space="preserve">
-    <value>The calculation is based on research and statistics and may not accurately reflect all cases and/or contexts;</value>
-  </data>
-  <data name="HelpProfile2" xml:space="preserve">
-    <value>If you have any questions and/or suggestions for improvements, please open a ticket on our support page;</value>
-  </data>
   <data name="HelpQuestion" xml:space="preserve">
     <value>This option will have explanations of each of the items available to choose from.</value>
   </data>
@@ -282,6 +276,9 @@
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
   </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
   <data name="Private" xml:space="preserve">
     <value>Private</value>
   </data>
@@ -289,22 +286,13 @@
     <value>Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app's support section.</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
-    <value>To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly.</value>
+    <value>To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately.</value>
   </data>
   <data name="ProfileDataBioTip2" xml:space="preserve">
     <value>If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support.</value>
   </data>
   <data name="ProfileDataPersonTip1" xml:space="preserve">
     <value>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</value>
-  </data>
-  <data name="ProfileHelpMap" xml:space="preserve">
-    <value>This option will request location for your device (this option must be enabled)</value>
-  </data>
-  <data name="ProfileHelpPlus" xml:space="preserve">
-    <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
-  </data>
-  <data name="ProfileHelpQuestion" xml:space="preserve">
-    <value>This option will have explanations of each of the items available to choose from.</value>
   </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
     <value>Profile not available</value>

@@ -5,22 +5,26 @@
 @using MM.WEB.Core.Models
 @typeparam TValueUser
 
-@inject IModalService ModalService
+@inject IDialogService DialogService
 
 @if (Values != null && Values.Any())
 {
     foreach (var item in Values)
     {
-        <Badge Color="@GetColor(item)" Pill="true" Style="cursor: pointer;" @onclick="InstantiateModal">
-            <Blazorise.Icon Name="@ClassIcon"></Blazorise.Icon> @GetValue(item)
-        </Badge>
+        <MudTooltip Text="@For.GetCustomAttribute().Name">
+            <MudChip T="string" Icon="@ClassIcon" Color="GetColor(item)" Variant="Variant.Outlined" OnClick="InstantiateModal" Size="Size.Small">
+                @GetValue(item)
+            </MudChip>
+        </MudTooltip>
     }
 }
 else
 {
-    <Badge Color="@GetColor(Value)" Pill="true" Style="cursor: pointer;" @onclick="InstantiateModal">
-        <Blazorise.Icon Name="@ClassIcon"></Blazorise.Icon> @GetValue(Value)
-    </Badge>
+    <MudTooltip Text="@For.GetCustomAttribute().Name">
+        <MudChip T="string" Icon="@ClassIcon" Color="GetColor(Value)" Variant="Variant.Outlined" OnClick="InstantiateModal" Size="Size.Small">
+            @GetValue(Value)
+        </MudChip>
+    </MudTooltip>
 }
 
 @code {
@@ -93,7 +97,7 @@ else
         }
 
         //if mapped but without affinity
-        return Color.Danger;
+        return Color.Error;
     }
 
     public Task InstantiateModal()
@@ -101,26 +105,20 @@ else
         if (Values == null && Value != null) Values = [Value];
         if (Values == null && Value == null) Values = [];
 
-        return ModalService.Show<AboutItemModal<TValue>>(For.GetCustomAttribute()?.Name,
-            x =>
-            {
-                x.Add(x => x.PreferenceValues, GetPreferenceValues());
-                x.Add(x => x.ExpectedValues, GetExpectedValue());
-                x.Add(x => x.ViewValues, Values);
-                x.Add(x => x.Affinities, Affinities);
-                x.Add(x => x.Profile, User);
-                x.Add(x => x.Filter, Filter);
-                x.Add(x => x.Type, Type);
-                x.Add(x => x.Item, Item);
-                x.Add(x => x.WhyImportant, For.GetCustomAttribute()?.WhyImportant);
-                x.Add(x => x.Tips, For.GetCustomAttribute()?.Tips);
-            },
-            new ModalInstanceOptions
-            {
-                UseModalStructure = true,
-                Centered = true,
-                Size = ModalSize.Large
-            });
+        var parameters = new DialogParameters<AboutItemModal<TValue>>
+        {
+            { x => x.PreferenceValues, GetPreferenceValues() },
+            { x => x.ExpectedValues, GetExpectedValue() },
+            { x => x.ViewValues, Values },
+            { x => x.Affinities, Affinities },
+            { x => x.Profile, User },
+            { x => x.Type, Type },
+            { x => x.Item, Item },
+            { x => x.WhyImportant, For.GetCustomAttribute()?.WhyImportant },
+            { x => x.Tips, For.GetCustomAttribute()?.Tips },
+        };
+
+        return DialogService.ShowAsync<AboutItemModal<TValue>>(For.GetCustomAttribute().Name, parameters, PopupHelper.Options(MaxWidth.Medium));
     }
 
     private IEnumerable<string> GetPreferenceValues()

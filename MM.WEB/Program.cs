@@ -1,8 +1,4 @@
-using System.Globalization;
 using AzureStaticWebApps.Blazor.Authentication;
-using Blazorise;
-using Blazorise.Bootstrap5;
-using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -12,19 +8,21 @@ using MM.WEB.Api;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Subscription.Core;
+using MudBlazor.Services;
 using Polly;
 using Polly.Extensions.Http;
+using System.Globalization;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
-ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
 
 if (builder.RootComponents.Empty())
 {
     builder.RootComponents.Add<App>("#app");
     builder.RootComponents.Add<HeadOutlet>("head::after");
 }
+
+ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
 
 var app = builder.Build();
 
@@ -34,10 +32,7 @@ await app.RunAsync();
 
 static void ConfigureServices(IServiceCollection collection, string baseAddress)
 {
-    collection
-        .AddBlazorise(options => options.Immediate = true)
-        .AddBootstrap5Providers()
-        .AddFontAwesomeIcons();
+    collection.AddMudServices();
 
     collection.AddPWAUpdater();
 

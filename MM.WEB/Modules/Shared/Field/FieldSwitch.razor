@@ -3,47 +3,16 @@
 
 @if (Visible)
 {
-    <Field Horizontal="true">
-        <FieldLabel ColumnSize="@GetLabelSize()">
-            @if (string.IsNullOrEmpty(CssIcon))
-            {
-                @For.GetCustomAttribute()?.Name
-            }
-            else
-            {
-                <Blazorise.Icon Name="@CssIcon" Margin="Margin.Is1.FromEnd"></Blazorise.Icon>
-                @For.GetCustomAttribute()?.Name
-            }
-        </FieldLabel>
-        <FieldBody ColumnSize="@GetBodySize()">
-            <Addons>
-                <Addon AddonType="AddonType.Body">
-                    @* <Switch Checked="@Value" CheckedChanged="@ValueChanged" CheckedExpression="@For" Size="Size.Large">@SwithLabel</Switch> *@
-
-                    <Buttons Width="Width.Is100">
-                        <Button Color="Color.Success" Outline="!Value" Clicked="@(() =>
-                                                                                {
-                                                                                    Value = true;
-                                                                                    ValueChanged.InvokeAsync(Value);
-                                                                                })">
-                            @Button.Active
-                        </Button>
-                        <Button Color="Color.Danger" Outline="Value" Clicked="@(() =>
-                                                                              {
-                                                                                  Value = false;
-                                                                                  ValueChanged.InvokeAsync(Value);
-                                                                              })">
-                            @Button.Inactive
-                        </Button>
-                    </Buttons>
-                </Addon>
-            </Addons>
-        </FieldBody>
-        @if (!string.IsNullOrEmpty(Description))
-        {
-            <Column>
-                <FieldHelp Style="color: #17a2b8 !important">@Description</FieldHelp>
-            </Column>
-        }
-    </Field>
+    <div class="d-flex" style="align-items: center;">
+        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        <MudSwitch @bind-Value="Value" ThumbIcon="@(Value? Icons.Material.Filled.Done : Icons.Material.Filled.Close)" ThumbIconColor="@(Value? Color.Success: Color.Error)">
+            @For.GetCustomAttribute()?.Name
+        </MudSwitch>
+    </div>
+    @if (Description.NotEmpty())
+    {
+        <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
+            @Description
+        </MudText>
+    }
 }

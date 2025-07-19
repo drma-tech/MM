@@ -295,24 +295,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The calculation is based on research and statistics and may not accurately reflect all cases and/or contexts;.
-        /// </summary>
-        public static string HelpProfile1 {
-            get {
-                return ResourceManager.GetString("HelpProfile1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you have any questions and/or suggestions for improvements, please open a ticket on our support page;.
-        /// </summary>
-        public static string HelpProfile2 {
-            get {
-                return ResourceManager.GetString("HelpProfile2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
         /// </summary>
         public static string HelpQuestion {
@@ -556,6 +538,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Private.
         /// </summary>
         public static string Private {
@@ -574,7 +565,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To ensure a positive atmosphere, we take harassment and prejudice seriously. If you encounter such behavior, please report the profile promptly..
+        ///   Looks up a localized string similar to To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately..
         /// </summary>
         public static string ProfileDataBioTip1 {
             get {
@@ -597,33 +588,6 @@ namespace MM.WEB.Resources {
         public static string ProfileDataPersonTip1 {
             get {
                 return ResourceManager.GetString("ProfileDataPersonTip1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
-        /// </summary>
-        public static string ProfileHelpMap {
-            get {
-                return ResourceManager.GetString("ProfileHelpMap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
-        /// </summary>
-        public static string ProfileHelpPlus {
-            get {
-                return ResourceManager.GetString("ProfileHelpPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
-        /// </summary>
-        public static string ProfileHelpQuestion {
-            get {
-                return ResourceManager.GetString("ProfileHelpQuestion", resourceCulture);
             }
         }
         

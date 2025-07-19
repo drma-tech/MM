@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>MM.API</RootNamespace>
 		<UserSecretsId>34ce4f7a-ae5c-4644-b219-86df6469e377</UserSecretsId>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Core\Hubs\**" />
@@ -24,15 +25,15 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.Storage.Blobs" Version="12.24.0" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.25.0" />
 		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.23.0" />
 		<PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="7.0.1" />
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.51.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.52.1" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.3.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.2" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.5" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.7" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />

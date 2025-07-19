@@ -2,39 +2,37 @@
 @using System.Security.Claims
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Auth.Resources
-@inherits PageCore<LoginProviders>
+@inherits PageCore<LoginSuccess>
 
 @inject LoginApi LoginApi
 @inject IJSRuntime JsRuntime
 
-<div class="alert alert-warning" role="alert">
-    <div class="spinner-border spinner-border-sm" role="status">
-        <span class="sr-only">@Translations.AuthenticationInProgress</span>
-    </div>
+<MudAlert Variant="Variant.Filled" Severity="Severity.Warning" Dense="true" Icon="@IconsFA.Solid.Icon("spinner").WithAnimation(IconAnimation.Spin).Font">
     @Translations.AuthenticationInProgress
-</div>
+</MudAlert>
 
 @code {
-    private ClientePrincipal? principal { get; set; } = new();
+    private ClientePrincipal? Principal { get; set; } = new();
 
     protected override async Task LoadDataRender()
     {
         if (IsAuthenticated)
         {
-            principal = await PrincipalApi.Get(IsAuthenticated);
+            Principal = await PrincipalApi.Get(IsAuthenticated);
 
-            if (principal == null && User != null)
+            if (Principal == null && User != null)
             {
-                principal = new ClientePrincipal();
+                Principal = new ClientePrincipal
+                {
+                    UserId = UserId,
+                    IdentityProvider = User.Identity?.AuthenticationType,
+                    UserDetails = User.Identity?.Name,
+                    UserRoles = User.Claims.Where(w => w.Type == ClaimTypes.Role)?.Select(s => s.Value).ToArray() ?? []
+                };
 
-                principal.UserId = UserId;
-                principal.IdentityProvider = User.Identity?.AuthenticationType;
-                principal.UserDetails = User.Identity?.Name;
-                principal.UserRoles = User.Claims.Where(w => w.Type == ClaimTypes.Role)?.Select(s => s.Value).ToArray() ?? Array.Empty<string>();
+                Principal.Email = Principal.UserDetails;
 
-                principal.Email = principal.UserDetails;
-
-                principal = await PrincipalApi.Add(principal);
+                Principal = await PrincipalApi.Add(Principal);
             }
 
             var platform = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "platform");

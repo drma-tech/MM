@@ -3,33 +3,22 @@
 @using CardHeader = MM.WEB.Resources.CardHeader
 @inherits ComponentCore<InvitePerEmail>
 
-<ModalHeader>
-    <ModalTitle Size="HeadingSize.Is5">
-        @CardHeader.InvitePartner
-    </ModalTitle>
-    <CloseButton/>
-</ModalHeader>
-<ModalBody MaxHeight="70">
-    <Alert Color="Color.Warning" Visible="true">
-        <AlertMessage>
-            @GlobalTranslations.InviteYyourPartnerTitle1
-        </AlertMessage>
-        <AlertDescription>
-            @GlobalTranslations.InviteYyourPartnerTitle2
-        </AlertDescription>
-    </Alert>
-    <FieldText For="() => Email" @bind-Value="@Email"/>
-</ModalBody>
-<ModalFooter>
-    <Button Color="Color.Secondary" Clicked="@ModalService.Hide">
-        @Button.Close
-    </Button>
-    <Button Color="Color.Primary" Clicked="SaveHandle">
-        @Button.Ok
-    </Button>
-</ModalFooter>
+<MudDialog Style="width: 100%">
+    <DialogContent>
+        <MudAlert Variant="Variant.Outlined" Severity="Severity.Warning" Dense="true" Class="mb-2">
+            <span style="font-weight: bold;" class="me-2">@GlobalTranslations.InviteYyourPartnerTitle1</span>@GlobalTranslations.InviteYyourPartnerTitle2
+        </MudAlert>
+        <FieldText For="() => Email" @bind-Value="@Email" CssIcon="@IconsFA.Solid.Icon("at").Font" Required="true" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(() => { MudDialog!.Close(); })">@Button.Close</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@SaveHandle">@Button.Ok</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
     [Parameter] public ClientePrincipal? principal { get; set; }
     [Parameter] public EventCallback<string> InviteSent { get; set; }
 
@@ -40,17 +29,17 @@
     {
         if (Email.Empty())
         {
-            await Toast.Warning(GlobalTranslations.EmailRequired);
+            Snackbar.Add(GlobalTranslations.EmailRequired, Severity.Warning);
             return;
         }
 
         if (Email == principal!.Email)
         {
-            await Toast.Warning(GlobalTranslations.EnterPartnerEmail);
+            Snackbar.Add(GlobalTranslations.EnterPartnerEmail, Severity.Warning);
             return;
         }
 
-        await ModalService.Hide();
+        MudDialog?.Close();
         await InviteSent.InvokeAsync(Email);
     }
 

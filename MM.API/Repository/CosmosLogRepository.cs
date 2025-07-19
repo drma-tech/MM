@@ -7,12 +7,7 @@ namespace MM.API.Repository;
 
 public class LogModel
 {
-    public LogModel()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-
-    public string? Id { get; set; }
+    public string? Id { get; set; } = Guid.NewGuid().ToString();
     public string? Name { get; set; }
     public string? State { get; set; }
     public string? Message { get; set; }
@@ -22,20 +17,12 @@ public class LogModel
     [JsonInclude] public int Ttl { get; init; }
 }
 
-public class CosmosLogRepository
+public class CosmosLogRepository()
 {
-    public CosmosLogRepository(IConfiguration config)
-    {
-        var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
-
-        Container = ApiStartup.CosmosClient.GetContainer(databaseId, "logs");
-    }
-
-    public Container Container { get; }
+    public Container Container { get; } = ApiStartup.CosmosClient.GetContainer(ApiStartup.Configurations.CosmosDB?.DatabaseId, "logs");
 
     public async Task Add(LogModel log)
     {
-        await Container.CreateItemAsync(log, new PartitionKey(log.Id),
-            CosmosRepositoryExtensions.GetItemRequestOptions());
+        await Container.CreateItemAsync(log, new PartitionKey(log.Id), CosmosRepositoryExtensions.GetItemRequestOptions());
     }
 }

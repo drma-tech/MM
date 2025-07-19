@@ -11,163 +11,167 @@
 @inject InteractionApi InteractionApi
 @inject IJSRuntime JsRuntime
 
-<Modal @ref="modal">
-    <ModalContent Centered="true" Size="ModalSize.ExtraLarge">
-        <ModalHeader>
-            <ModalTitle>Profile</ModalTitle>
-            <CloseButton/>
-        </ModalHeader>
-        <ModalBody MaxHeight="70">
-            <RenderControl Core="Core" Model="view" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
-                <Row HorizontalGutter="8" VerticalGutter="0">
-                    <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is4.OnWidescreen">
-                        <Card Margin="Margin.Is2.FromBottom">
-                            <CardBody Padding="Padding.Is0">
-                                @{
-                                    var totPercAff = affinities.GetPercentAffinity();
-                                }
-                                <Badge Color="GetColor(totPercAff)" Style="position: absolute; top: 10px; left: 10px; z-index: 2;">@(totPercAff + "%")</Badge>
-                                <Badge Color="Color.Dark" Style="position: absolute; top: 10px; right: 10px; z-index: 2;">
-                                    <Blazorise.Icon Name="FontAwesomeIcons.Camera"></Blazorise.Icon> @imageDataUriGallery.Count()
-                                </Badge>
-                                <div id="@GallerySwiperId" class="swiper">
-                                    <div class="swiper-wrapper">
-                                        @foreach (var item in imageDataUriGallery)
-                                        {
-                                            <div class="swiper-slide">
-                                                <Image Source="@item" Style="max-height: 450px !important; width: 100%"/>
-                                            </div>
-                                        }
+<MudDialog @ref="@modal" Style="width: 100%">
+    <DialogContent>
+        <RenderControl Core="Core" Model="view" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper style="position: relative;" Outlined="true">
+                        @{
+                            var totPercAff = affinities.GetPercentAffinity();
+                        }
+                        <MudChip T="string" Color="GetColor(totPercAff)" Label="true" Class="poster-chip" Style="top: 5px; left: 5px;">
+                            @(totPercAff + "%")
+                        </MudChip>
+                        <MudChip T="string" Color="Color.Dark" Label="true" Class="poster-chip" Style="top: 5px; right: 5px;"
+                                 Icon="@IconsFA.Solid.Icon("camera").Font">
+                            @imageDataUriGallery.Count()
+                        </MudChip>
+                        <div id="@GallerySwiperId" class="swiper">
+                            <div class="swiper-wrapper">
+                                @foreach (var item in imageDataUriGallery)
+                                {
+                                    <div class="swiper-slide">
+                                        <MudImage Src="@item" FallbackSrc="images/no-image.png" Style="max-height: 300px !important; width: 300px !important;"></MudImage>
                                     </div>
-                                    <div class="swiper-pagination"></div>
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
-                                </div>
-                            </CardBody>
-                            <CardBody>
-                                <Badge Color="Color.Secondary">
-                                    @view?.NickName
-                                </Badge>
-                                <Badge Color="Color.Secondary" Margin="Margin.Is1.FromEnd">
-                                    <Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon> @view?.GetLocation(ProfileModel.LocationType.City)
-                                </Badge>
-                                @* @if (view.ActivityStatus == ActivityStatus.Today)
-                                {
-                                <Badge Color="Color.Success">
-                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado hoje
-                                </Badge>
                                 }
-                                else if (view.ActivityStatus == ActivityStatus.Week)
-                                {
-                                <Badge Color="Color.Warning">
-                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado esta semana
-                                </Badge>
-                                }
-                                else if (view.ActivityStatus == ActivityStatus.Month)
-                                {
-                                <Badge Color="Color.Danger">
-                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado este mês
-                                </Badge>
-                                }
-                                else
-                                {
-                                <Badge Color="Color.Dark">
-                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> usuário desativado
-                                </Badge>
-                                } *@
-                                @* @if (view.Reports.Any())
-                                {
-                                <Paragraph Margin="Margin.Is0.FromTop.Is0.FromBottom">
-                                @foreach (var item in view.Reports)
-                                {
-                                <Badge Color="Color.Warning" Style="cursor: help;">
-                                <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @item.Type.GetName()
-                                </Badge>
-                                }
-                                </Paragraph>
-                                }*@
-                                <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromTop.Is0.FromBottom">
-                                    @view?.Description
-                                </Paragraph>
-                            </CardBody>
-                            <CardBody>
-                                <Row HorizontalGutter="8" VerticalGutter="0">
-                                    <Column ColumnSize="ColumnSize.IsHalf">
-                                        @if (interaction?.Status == InteractionStatus.Explorer)
-                                        {
-                                            <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                        Disabled="ButtonDisabled(EventType.Like)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsUp"></Blazorise.Icon> @Button.Like
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div class="mb-2" style="text-align: center;">
+                            <MudChip T="string" Color="Color.Primary" Label="true">
+                                @(view?.NickName ?? "NickName")
+                            </MudChip>
+                            <MudTooltip Text="@view?.Location">
+                                <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
+                                    @(view?.GetLocation(ProfileModel.LocationType.City) ?? "City")
+                                </MudChip>
+                            </MudTooltip>
+                            <MudText Typo="Typo.body1" Align="Align.Justify" Class="ma-2">
+                                @view?.Description
+                            </MudText>
+                        </div>
+                        <MudGrid Spacing="2" Class="pa-2">
+                            <MudItem xs="6">
+                                <MudGrid Spacing="2">
+                                    @if (interaction?.Status != InteractionStatus.Explorer)
+                                    {
+                                        <MudItem xs="12">
+                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumb-up").Font" Color="Color.Primary" Clicked="Like" Disabled="ButtonDisabled(EventType.Like)" Core="CoreEvent">
+                                                @Button.Like
                                             </DrmaButton>
-                                            <DrmaButton Color="Color.Primary" Clicked="Like" Block="true" Margin="Margin.Is2.FromBottom"
-                                                        Disabled="ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.ThumbsDown"></Blazorise.Icon> @Button.Dislike
+                                        </MudItem>
+                                        <MudItem xs="12">
+                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumb-down").Font" Color="Color.Primary" Clicked="Like" Disabled="ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
+                                                @Button.Dislike
                                             </DrmaButton>
-                                        }
-                                        @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
-                                        {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="true">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.Comments"></Blazorise.Icon> @Button.Chat
-                                            </Button>
-                                        }
-                                        @if (interaction?.Status == InteractionStatus.Match)
-                                        {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="ButtonDisabled(EventType.Dating)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceKissWinkHeart"></Blazorise.Icon> @Button.Dating
-                                            </Button>
-                                        }
-                                        @if (interaction?.Status == InteractionStatus.Dating)
-                                        {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="ButtonDisabled(EventType.Relationship)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.FaceGrinHearts"></Blazorise.Icon> @Button.Relationship
-                                            </Button>
-                                        }
-                                        @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
-                                        {
-                                            <Button Color="Color.Primary" Clicked="GoChat" Block="true" Margin="Margin.Is2.FromBottom"
-                                                    Disabled="ButtonDisabled(EventType.Feedback)">
-                                                <Blazorise.Icon Name="FontAwesomeIcons.CommentDots"></Blazorise.Icon> @Button.Feedback
-                                            </Button>
-                                        }
-                                    </Column>
-                                    <Column ColumnSize="ColumnSize.IsHalf">
-                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="FontAwesomeIcons.Trash"></Blazorise.Icon> @Button.Delete
-                                        </Button>
-                                        <Button Color="Color.Danger" Clicked="report!.ShowModal" Block="true" Margin="Margin.Is2.FromBottom" Disabled="true || Fake">
-                                            <Blazorise.Icon Name="FontAwesomeIcons.Flag"></Blazorise.Icon> @Button.Report
-                                        </Button>
-                                    </Column>
-                                </Row>
-                            </CardBody>
-                        </Card>
-                    </Column>
-                    <Column ColumnSize="ColumnSize.IsHalf.OnDesktop.Is8.OnWidescreen">
-                        <CardCompatibility User="user" Filter="filter" View="view" Affinities="affinities"></CardCompatibility>
-                    </Column>
-                </Row>
-                <ProfileReport @ref="report"></ProfileReport>
-            </RenderControl>
-        </ModalBody>
-        <ModalFooter>
-            <Button Color="Color.Secondary" Clicked="@modal!.Hide">Fechar</Button>
-        </ModalFooter>
-    </ModalContent>
-</Modal>
+                                        </MudItem>
+                                    }
+                                    @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
+                                    {
+                                        <MudItem xs="12">
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comments").Font" Style="width: 100%;"
+                                                       OnClick="GoChat" Disabled="true">
+                                                @Button.Chat
+                                            </MudButton>
+                                        </MudItem>
+                                    }
+                                    @if (interaction?.Status == InteractionStatus.Match)
+                                    {
+                                        <MudItem xs="12">
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-kiss-heart").Font" Style="width: 100%;"
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Dating)">
+                                                @Button.Dating
+                                            </MudButton>
+                                        </MudItem>
+                                    }
+                                    @if (interaction?.Status == InteractionStatus.Dating)
+                                    {
+                                        <MudItem xs="12">
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-grin-heart").Font" Style="width: 100%;"
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Relationship)">
+                                                @Button.Relationship
+                                            </MudButton>
+                                        </MudItem>
+                                    }
+                                    @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
+                                    {
+                                        <MudItem xs="12">
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comment-dots").Font" Style="width: 100%;"
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Feedback)">
+                                                @Button.Feedback
+                                            </MudButton>
+                                        </MudItem>
+                                    }
+                                </MudGrid>
+                            </MudItem>
+                            <MudItem xs="6">
+                                <MudGrid Spacing="2">
+                                    <MudItem xs="12">
+                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("trash").Font" Style="width: 100%;"
+                                                   OnClick="report!.ShowModal" Disabled="true || Fake">
+                                            @Button.Delete
+                                        </MudButton>
+                                    </MudItem>
+                                    <MudItem xs="12">
+                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("flag").Font" Style="width: 100%;"
+                                                   OnClick="report!.ShowModal" Disabled="true || Fake">
+                                            @Button.Report
+                                        </MudButton>
+                                    </MudItem>
+                                </MudGrid>
+                            </MudItem>
+                        </MudGrid>
+                    </MudPaper>
+                    @* @if (view.ActivityStatus == ActivityStatus.Today)
+                    {
+                    <Badge Color="Color.Success">
+                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado hoje
+                    </Badge>
+                    }
+                    else if (view.ActivityStatus == ActivityStatus.Week)
+                    {
+                    <Badge Color="Color.Warning">
+                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado esta semana
+                    </Badge>
+                    }
+                    else if (view.ActivityStatus == ActivityStatus.Month)
+                    {
+                    <Badge Color="Color.Danger">
+                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> logado este mês
+                    </Badge>
+                    }
+                    else
+                    {
+                    <Badge Color="Color.Dark">
+                    <Blazorise.Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.DotCircle"></Blazorise.Icon> usuário desativado
+                    </Badge>
+                    } *@
+                </MudItem>
+                <MudItem xs="12" sm="6" md="8">
+                    <CardCompatibility User="user" Filter="filter" View="view" Affinities="affinities"></CardCompatibility>
+                </MudItem>
+            </MudGrid>
+            <ProfileReport @ref="report"></ProfileReport>
+        </RenderControl>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async() => { await modal!.CloseAsync(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
-    [Parameter] [EditorRequired] public string? UserId { get; set; }
-    [Parameter] [EditorRequired] public bool IsAuthenticated { get; set; }
+    [Parameter][EditorRequired] public string? UserId { get; set; }
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
 
     [Parameter] public Action? Liked { get; set; }
     [Parameter] public Action? Disliked { get; set; }
     [Parameter] public Action? Matched { get; set; }
 
-    public Origin Origin { get; set; }
-    private Modal? modal;
+    public MM.Shared.Enums.Origin Origin { get; set; }
+    private MudDialog? modal;
 
     public string? IdUserView { get; set; }
     public bool Fake { get; set; }
@@ -189,9 +193,9 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await JsRuntime.InvokeVoidAsync("initCalendar", GallerySwiperId);
-
         await base.OnAfterRenderAsync(firstRender);
+
+        await JsRuntime.InvokeVoidAsync("initCalendar", GallerySwiperId);
     }
 
     protected override async Task LoadDataRender()
@@ -245,13 +249,13 @@
         }
     }
 
-    public async Task ShowModal(Origin Origin, string? IdUserView, ProfileModel? view = null, bool fake = false)
+    public async Task ShowModal(MM.Shared.Enums.Origin Origin, string? IdUserView, ProfileModel? view = null, bool fake = false)
     {
         this.IdUserView = IdUserView;
         this.view = view;
         Fake = fake;
         this.Origin = Origin;
-        modal?.Show();
+        modal?.ShowAsync(view?.NickName, PopupHelper.Options(MaxWidth.Large));
         await LoadDataRender();
     }
 
@@ -267,7 +271,7 @@
             return Color.Warning;
         }
 
-        return Color.Danger;
+        return Color.Error;
     }
 
     private async Task Like()
@@ -279,13 +283,13 @@
 
             if (interaction?.Status == InteractionStatus.Match)
             {
-                await Toast.Success("Match");
+                Snackbar.Add("Match", Severity.Success);
                 Matched?.Invoke();
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
@@ -298,7 +302,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 
@@ -312,7 +316,7 @@
         if (type == EventType.Like)
         {
             var noLike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Like) ?? true;
-            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(view!.Id).FirstOrDefault()?.Origin == Origin.Invite;
+            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(view!.Id).FirstOrDefault()?.Origin == MM.Shared.Enums.Origin.Invite;
 
             return !(noLike && validated);
         }

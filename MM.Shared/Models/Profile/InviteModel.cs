@@ -6,7 +6,7 @@ public class InviteCache : CacheDocument<InviteModel>
     {
     }
 
-    public InviteCache(InviteModel data, string key) : base(key, data, ttlCache.one_month)
+    public InviteCache(InviteModel data, string key) : base(key, data, TtlCache.OneMonth)
     {
     }
 }

@@ -57,7 +57,7 @@ public class EventFunction(
 {
     [Function("InteractionGet")]
     public async Task<HttpResponseData?> InteractionGet(
-        [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "interaction/get/{id}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
         HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         try
@@ -66,7 +66,7 @@ public class EventFunction(
 
             var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
-            return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
+            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -77,7 +77,7 @@ public class EventFunction(
 
     [Function("InteractionLike")]
     public async Task<HttpResponseData?> InteractionLike(
-        [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "interaction/like/{origin}/{id}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/like/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
         try
@@ -111,7 +111,7 @@ public class EventFunction(
 
             await repoGen.Upsert(partnerLikes, cancellationToken);
 
-            return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
+            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -122,7 +122,7 @@ public class EventFunction(
 
     [Function("InteractionDislike")]
     public async Task<HttpResponseData?> InteractionDislike(
-        [HttpTrigger(AuthorizationLevel.Function, Method.POST, Route = "interaction/dislike/{origin}/{id}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/dislike/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
         try
@@ -131,7 +131,7 @@ public class EventFunction(
 
             var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
-            return await req.CreateResponse(interaction, ttlCache.one_hour, cancellationToken);
+            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
         }
         catch (Exception ex)
         {

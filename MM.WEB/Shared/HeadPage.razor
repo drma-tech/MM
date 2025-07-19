@@ -1,0 +1,66 @@
+﻿@inherits ComponentCore<HeadPage>
+
+@inject IJSRuntime Js
+
+<MudPaper Class="mb-2" Outlined="true">
+    <MudStack StretchItems="StretchItems.Middle" Row="true" Spacing="2">
+        <div class="pa-2" style="align-self: center;">
+            @if (string.IsNullOrEmpty(Link))
+            {
+                <MudImage Src="@ImageSource" Style="height: 50px;" Alt="@ImageSource"></MudImage>
+            }
+            else
+            {
+                <a href="@Link" target="_blank" rel="nofollow">
+                    <MudImage Src="@ImageSource" Style="height: 50px;" Alt="@ImageSource"></MudImage>
+                </a>
+            }
+        </div>
+        <div class="pa-2">
+            <MudText Typo="Typo.h6" Color="Color.Primary">
+                @if (string.IsNullOrEmpty(Link))
+                {
+                    @Title
+                }
+                else
+                {
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="mud-primary-text">@Title</div>
+                        <a href="@Link" target="_blank" rel="nofollow" class="mud-info-text">@(new Uri(Link ?? "").Host)</a>
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        @($"{Title} ▪ ")
+                        <a href="@Link" target="_blank" rel="nofollow" class="mud-info-text">@(new Uri(Link ?? "").Host)</a>
+                    </MudHidden>
+                }
+            </MudText>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                <MudText Typo="Typo.body1" Align="Align.Justify">
+                    @Text
+                </MudText>
+            </MudHidden>
+        </div>
+        <div class="pa-2" style="align-self: center;">            
+            @if (ShowShare)
+            {
+                <MudIconButton Icon="@IconsFA.Solid.Icon("share").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => Share(Navigation.Uri))"></MudIconButton>
+            }
+        </div>
+    </MudStack>    
+</MudPaper>
+
+@code {
+    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
+
+    [Parameter] public string? ImageSource { get; set; }
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Text { get; set; }
+    [Parameter] public string? Link { get; set; }
+    [Parameter] public bool ShowShare { get; set; } = true;
+
+    private async Task Share(string? link)
+    {
+        await Js.InvokeVoidAsync("share", link);
+    }
+
+}

@@ -1,0 +1,119 @@
+﻿@using MM.WEB.Modules.Auth
+@using MM.WEB.Modules.Profile.Resources
+@using MM.WEB.Modules.Subscription.Core
+@using Button = MM.WEB.Resources.Button
+@inherits ComponentCore<HeadLayout>
+
+@inject IJSRuntime JsRuntime
+
+@inject PaddleConfigurationApi ConfigurationApi
+
+@if (Breakpoint <= Breakpoint.Sm)
+{
+    <MudIconButton Icon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Class="me-2" Href="/" Variant="@GetVariant("/")" />
+    <MudIconButton Icon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Class="me-2" Href="/profile" Variant="@GetVariant("/profile")" Target="_self" Rel="nofollow" />
+    <MudIconButton Icon="@IconsFA.Solid.Icon("headset").Font" Color="@GetColor("/support")" Href="/support" Variant="@GetVariant("/support")" />
+    <MudSpacer />
+    <MudMenu Icon="@IconsFA.Solid.Icon("bars").Font" Color="Color.Inherit">
+        <MudMenuItem Icon="@IconsFA.Solid.Icon("gem").Font" Label="@Translations.Subscription" IconColor="Color.Warning" OnClick="@OpenSubscription" Disabled="true" />
+        <AuthorizeView>
+            <Authorized>
+                <MudMenuItem Icon="@IconsFA.Solid.Icon("circle-user").Font" Label="@Menu.Profile" OnClick="@MyAccount" />
+            </Authorized>
+        </AuthorizeView>
+        <MudMenuItem Icon="@IconsFA.Solid.Icon("cog").Font" Label="Settings" OnClick="@OpenConfigurations" />
+        <MudDivider></MudDivider>
+        <AuthorizeView>
+            <Authorized>
+                <MudMenuItem Icon="@IconsFA.Solid.Icon("right-from-bracket").Font" Label="@Button.Logout" OnClick="@Logout" IconColor="Color.Error" />
+            </Authorized>
+            <NotAuthorized>
+                <MudMenuItem Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" Label="@Button.Login" Href="/login-providers" />
+            </NotAuthorized>
+        </AuthorizeView>
+    </MudMenu>
+}
+else
+{
+    <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Class="me-2" Href="/" Variant="@GetVariant("/")">
+        @Menu.Home
+    </MudButton>
+    <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Class="me-2" Href="/profile" Variant="@GetVariant("/profile")" Target="_self" Rel="nofollow">
+        @Menu.Profile
+    </MudButton>
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").Font" Class="me-2" OnClick="@OpenSubscription" Disabled="true">
+        @Translations.Subscription
+    </MudButton>
+    <AuthorizeView>
+        <Authorized>
+            <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("circle-user").Font" Class="me-2" OnClick="@MyAccount" />
+        </Authorized>
+    </AuthorizeView>
+    <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
+    <AuthorizeView>
+        <Authorized>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Error" OnClick="@Logout" StartIcon="@IconsFA.Solid.Icon("right-from-bracket").Font">
+                @Button.Logout
+            </MudButton>
+        </Authorized>
+        <NotAuthorized>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="/login-providers" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
+                @Button.Login
+            </MudButton>
+        </NotAuthorized>
+    </AuthorizeView>
+}
+
+@code {
+    [SupplyParameterFromQuery][Parameter] public string? _ptxn { get; set; }
+    [Parameter] public bool IsAuthenticated { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += delegate { StateHasChanged(); };
+    }
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("/.auth/logout?post_logout_redirect_uri=" + Navigation.BaseUri, true);
+    }
+
+    private async Task OpenConfigurations()
+    {
+        await DialogService.SettingsPopup();
+    }
+
+    private async Task MyAccount()
+    {
+        await DialogService.OpenAccountPopup(IsAuthenticated);
+    }
+
+    private async Task OpenSubscription()
+    {
+        if (!string.IsNullOrEmpty(_ptxn))
+        {
+            var config = await ConfigurationApi.GetConfigurations();
+            if (config == null) throw new NotificationException("server communication error");
+
+            await JsRuntime.InvokeVoidAsync("startPaddle", config.Token);
+        }
+
+        await DialogService.SubscriptionPopup(IsAuthenticated);
+    }
+
+    private Color GetColor(string endpoint)
+    {
+        var uri = new Uri(Navigation.Uri);
+
+        return string.Equals(uri.AbsolutePath, endpoint, StringComparison.OrdinalIgnoreCase) ? Color.Primary : Color.Inherit;
+    }
+
+    private Variant GetVariant(string endpoint)
+    {
+        var uri = new Uri(Navigation.Uri);
+
+        return string.Equals(uri.AbsolutePath, endpoint, StringComparison.OrdinalIgnoreCase) ? Variant.Filled : Variant.Text;
+    }
+
+}

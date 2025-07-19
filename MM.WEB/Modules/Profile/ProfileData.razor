@@ -1,7 +1,6 @@
 ﻿@page "/profile/data"
 @attribute [Authorize]
 @using FluentValidation
-@using FluentValidation.Results
 @using MM.Shared.Enums.Resources
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
@@ -29,456 +28,528 @@
 @inherits PageCore<ProfileData>
 
 <RenderControl Core="Core" Model="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
-<Accordion>
-<AccordionItem Visible="@(Tab == Tabs.BASIC)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.BASIC))
+    <MudExpansionPanels Elevation="2">
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.BASIC))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Basic</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.BASIC)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldText For="@(() => Profile!.NickName)" @bind-Value="@Profile!.NickName" CssIcon="@IconsFA.Solid.Icon("user").Font"
+                                           Required="true"></FieldText>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@IconsFA.Solid.Icon("quote-left").Font"
+                                           Rows="8">
+                                </FieldText>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <Country For="@(() => Profile.Nationality)" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
+                                         CssIcon="@IconsFA.Solid.Icon("earth-americas").Font" Required="true">
+                                </Country>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
+                                           ButtomClicked="async () => { await SetLocation(Profile); }" ButtomCssIcon="@IconsFA.Solid.Icon("map-location-dot").Font"
+                                           ButtomTitle="Retrieve GPS position">
+                                </FieldText>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile!.Languages"
+                                             CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)"
+                                             ShowDataSelectDescription="false">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
+                                             CssIcon="@IconsFA.Solid.Icon("ring").Font" Required="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
+                                             CssIcon="@IconsFA.Solid.Icon("person-half-dress").Font" Required="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
+                                             CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Required="true" Multiple="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Profile.SexualOrientations"
+                                             CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Required="true" Multiple="true">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
                 }
-                else
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BIO)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.BIO))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Bio</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.BIO)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
+                    <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="mb-4">
+                        @GlobalTranslations.ProfileDataBioTip1
+                    </MudAlert>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.Ethnicity)" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@Profile!.Ethnicity"
+                                             CssIcon="@IconsFA.Solid.Icon("globe").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.BodyType)" TValue="BodyType?" TEnum="BodyType" @bind-SelectedValue="@Profile.BodyType"
+                                             CssIcon="@IconsFA.Solid.Icon("weight-scale").Font" ShowHelper="false">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <Birthdate Type="Shared.Field.FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
+                                           CssIcon="@IconsFA.Solid.Icon("cake-candles").Font">
+                                </Birthdate>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Height)" TValue="Height?" TEnum="Height" @bind-SelectedValue="@Profile.Height"
+                                             CssIcon="@IconsFA.Solid.Icon("ruler").Font" ShowHelper="false">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
+                    <MudStack Spacing="0">
+                        <MudButton Color="Color.Warning" Variant="Variant.Outlined" OnClick="@(() => { _BioExpanded = !_BioExpanded; })"
+                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font">
+                            @CardHeader.ProfileOptionalSection
+                        </MudButton>
+                        <MudCollapse Expanded="_BioExpanded">
+                            <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="my-4">
+                                @GlobalTranslations.ProfileDataBioTip2
+                            </MudAlert>
+                            <MudGrid Spacing="4">
+                                <MudItem xs="12" sm="6">
+                                    <FieldSelect For="@(() => Profile!.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@Profile!.Neurodiversity"
+                                                 CssIcon="@IconsFA.Solid.Icon("brain").Font">
+                                    </FieldSelect>
+                                </MudItem>
+                                <MudItem xs="12" sm="6">
+                                    <FieldSelect For="@(() => Profile!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Profile!.Disabilities"
+                                                 CssIcon="@IconsFA.Solid.Icon("wheelchair").Font" Multiple="true">
+                                    </FieldSelect>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCollapse>
+                    </MudStack>
                 }
-                @Section.Basic
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.BASIC)
-        {
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldText For="@(() => Profile!.NickName)" @bind-Value="@Profile!.NickName" CssIcon="@FontAwesomeIcons.User" Required="true" LabelSize="LabelSize.Short"></FieldText>
-                    <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@FontAwesomeIcons.QuoteLeft"
-                               Rows="8" LabelSize="LabelSize.Short">
-                    </FieldText>
-                    <Country For="@(() => Profile.Nationality)" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
-                             CssIcon="@FontAwesomeIcons.EarthAmericas" Required="true" LabelSize="LabelSize.Short">
-                    </Country>
-                    <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@FontAwesomeIcons.MapMarkerAlt" Required="true" Disabled="true"
-                               ButtomClicked="async () => { await SetLocation(Profile); }" ButtomCssIcon="@FontAwesomeIcons.MapMarkedAlt" LabelSize="LabelSize.Short"
-                               ButtomTitle="Retrieve GPS position">
-                    </FieldText>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile!.Languages"
-                                 CssIcon="@FontAwesomeIcons.Language" Required="true" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
-                                 CssIcon="@FontAwesomeIcons.Ring" Required="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
-                                 CssIcon="@FontAwesomeIcons.PersonHalfDress" Required="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
-                                 CssIcon="@FontAwesomeIcons.MarsAndVenus" Required="true" Multiple="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Profile.SexualOrientations"
-                                 CssIcon="@FontAwesomeIcons.HeartPulse" Required="true" Multiple="true">
-                    </FieldSelect>
-                </Column>
-            </Row>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.BIO)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.BIO)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.BIO))
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.LIFESTYLE)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.LIFESTYLE))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Lifestyle</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.LIFESTYLE)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@Profile!.Drink"
+                                             CssIcon="@IconsFA.Solid.Icon("champagne-glasses").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@Profile.Smoke"
+                                             CssIcon="@IconsFA.Solid.Icon("smoking").Font" ShowHelper="false">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@Profile.Diet"
+                                             CssIcon="@IconsFA.Solid.Icon("utensils").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
+                                             CssIcon="@IconsFA.Solid.Icon("hands-praying").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.FamilyInvolvement)" TValue="FamilyInvolvement?" TEnum="FamilyInvolvement" @bind-SelectedValue="@Profile.FamilyInvolvement"
+                                             CssIcon="@IconsFA.Solid.Icon("people-roof").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
+                                             CssIcon="@IconsFA.Solid.Icon("child").Font" ShowHelper="false">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.HavePets)" TValue="HavePets?" TEnum="HavePets" @bind-SelectedValue="@Profile!.HavePets"
+                                             CssIcon="@IconsFA.Solid.Icon("paw").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@Profile.EducationLevel"
+                                             CssIcon="@IconsFA.Solid.Icon("graduation-cap").Font" ShowHelper="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
+                                             CssIcon="@IconsFA.Solid.Icon("briefcase").Font" ShowGroup="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
+                                             CssIcon="@IconsFA.Solid.Icon("house-user").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
+                                             CssIcon="@IconsFA.Solid.Icon("plane").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
+                    <MudStack Spacing="0">
+                        <MudButton Color="Color.Warning" Variant="Variant.Outlined" OnClick="@(() => { _BioExpanded = !_BioExpanded; })"
+                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font">
+                            @CardHeader.ProfileOptionalSection
+                        </MudButton>
+                        <MudCollapse Expanded="_BioExpanded">
+                            <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="my-4">
+                                Due to the sensitive nature of this information, it will only be visible to candidates after the match is made.
+                            </MudAlert>
+                            <MudGrid Spacing="4">
+                                <MudItem xs="12" sm="6">
+                                    <FieldSelect For="@(() => Profile!.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile!.NetWorth"
+                                                 CssIcon="@IconsFA.Solid.Icon("gem").Font" ShowHelper="false"
+                                                 ButtomClicked="@(() => { })" ButtomTitle="Check" ButtomCssIcon="@Icons.Material.Filled.CheckCircle" ButtomDisabled="true">
+                                    </FieldSelect>
+                                </MudItem>
+                                <MudItem xs="12" sm="6">
+                                    <FieldSelect For="@(() => Profile!.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile!.AnnualIncome"
+                                                 CssIcon="@IconsFA.Solid.Icon("money-bill").Font" ShowHelper="false"
+                                                 ButtomClicked="@(() => { })" ButtomTitle="Check" ButtomCssIcon="@Icons.Material.Filled.CheckCircle" ButtomDisabled="true">
+                                    </FieldSelect>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCollapse>
+                    </MudStack>
                 }
-                else
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.PERSONALITY)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.PERSONALITY))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Personality</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.PERSONALITY)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
+                    <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="mb-4">
+                        @GlobalTranslations.ProfileDataPersonTip1
+                    </MudAlert>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@Profile!.MoneyPersonality"
+                                             CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://empower.me/quiz/">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@Profile.SharedSpendingStyle"
+                                             CssIcon="@IconsFA.Solid.Icon("hand-holding-dollar").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@Profile.RelationshipPersonality"
+                                             CssIcon="@IconsFA.Solid.Icon("people-pulling").Font" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@Profile!.MBTI"
+                                             CssIcon="@IconsFA.Solid.Icon("user-tag").Font" HelpLink="https://www.16personalities.com/" ShowGroup="true">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile!.LoveLanguage"
+                                             CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
+                                             CssIcon="@IconsFA.Solid.Icon("heart").Font" HelpLink="https://vmtherapy.com/sex-personality-type">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@Profile.SexPersonalityPreference"
+                                             CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
                 }
-                @Section.Bio
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.BIO)
-        {
-            <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>@GlobalTranslations.ProfileDataBioTip1</AlertDescription>
-            </Alert>
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.Ethnicity)" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@Profile!.Ethnicity"
-                                 CssIcon="@FontAwesomeIcons.Globe">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.BodyType)" TValue="BodyType?" TEnum="BodyType" @bind-SelectedValue="@Profile.BodyType"
-                                 CssIcon="@FontAwesomeIcons.Weight" ShowHelper="false">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <Birthdate Type="FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
-                               CssIcon="@FontAwesomeIcons.BirthdayCake">
-                    </Birthdate>
-                    <FieldSelect For="@(() => Profile.Height)" TValue="Height?" TEnum="Height" @bind-SelectedValue="@Profile.Height"
-                                 CssIcon="@FontAwesomeIcons.Ruler" ShowHelper="false">
-                    </FieldSelect>
-                </Column>
-            </Row>
-            <Card>
-                <CardHeader>
-                    @CardHeader.ProfileOptionalSection
-                </CardHeader>
-                <CardBody>
-                    <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>@GlobalTranslations.ProfileDataBioTip2</AlertDescription>
-                    </Alert>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@Profile!.Neurodiversity"
-                                         CssIcon="@FontAwesomeIcons.Brain">
-                            </FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Profile!.Disabilities"
-                                         CssIcon="@FontAwesomeIcons.Wheelchair" Multiple="true">
-                            </FieldSelect>
-                        </Column>
-                    </Row>
-                </CardBody>
-            </Card>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.LIFESTYLE)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.LIFESTYLE)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.LIFESTYLE))
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.INTEREST)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.INTEREST))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Interest</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.INTEREST)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
+                    <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="mb-4">
+                        @CardHeader.Maximum3Items
+                    </MudAlert>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Profile!.Food"
+                                             CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Profile.Vacation"
+                                             CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Profile.Sports"
+                                             CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Profile.LeisureActivities"
+                                             CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Profile!.MusicGenre"
+                                             CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Profile.MovieGenre"
+                                             CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Profile.TVGenre"
+                                             CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Profile.ReadingGenre"
+                                             CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true" Order="o => o.Name">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
                 }
-                else
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.RELATIONSHIP)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.RELATIONSHIP))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Relationship</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.RELATIONSHIP)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.SharedFinances)" TValue="SharedFinances?" TEnum="SharedFinances" @bind-SelectedValue="@Profile!.SharedFinances"
+                                             CssIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.ConflictResolutionStyle)" TValue="ConflictResolutionStyle?" TEnum="ConflictResolutionStyle" @bind-SelectedValue="@Profile!.ConflictResolutionStyle"
+                                             CssIcon="@IconsFA.Solid.Icon("handshake").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.HouseholdManagement)" TValue="HouseholdManagement?" TEnum="HouseholdManagement" @bind-SelectedValue="@Profile!.HouseholdManagement"
+                                             CssIcon="@IconsFA.Solid.Icon("broom").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.TimeTogetherPreference)" TValue="TimeTogetherPreference?" TEnum="TimeTogetherPreference" @bind-SelectedValue="@Profile!.TimeTogetherPreference"
+                                             CssIcon="@IconsFA.Solid.Icon("hand-holding-hand").Font">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.OppositeSexFriendships)" TValue="OppositeSexFriendships?" TEnum="OppositeSexFriendships" @bind-SelectedValue="@Profile!.OppositeSexFriendships"
+                                             CssIcon="@IconsFA.Solid.Icon("people-arrows").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
                 }
-                @Section.Lifestyle
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.LIFESTYLE)
-        {
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@Profile!.Drink"
-                                 CssIcon="@FontAwesomeIcons.GlassCheers">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@Profile.Smoke"
-                                 CssIcon="@FontAwesomeIcons.Smoking" ShowHelper="false">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@Profile.Diet"
-                                 CssIcon="@FontAwesomeIcons.Utensils">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
-                                 CssIcon="@FontAwesomeIcons.PrayingHands">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.FamilyInvolvement)" TValue="FamilyInvolvement?" TEnum="FamilyInvolvement" @bind-SelectedValue="@Profile.FamilyInvolvement"
-                                 CssIcon="@FontAwesomeIcons.PeopleRoof">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
-                                 CssIcon="@FontAwesomeIcons.Child" ShowHelper="false">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.HavePets)" TValue="HavePets?" TEnum="HavePets" @bind-SelectedValue="@Profile!.HavePets"
-                                 CssIcon="@FontAwesomeIcons.Paw">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@Profile.EducationLevel"
-                                 CssIcon="@FontAwesomeIcons.GraduationCap" ShowHelper="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
-                                 CssIcon="@FontAwesomeIcons.Briefcase" ShowGroup="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
-                                 CssIcon="@FontAwesomeIcons.HomeUser">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
-                                 CssIcon="@FontAwesomeIcons.Plane">
-                    </FieldSelect>
-                </Column>
-            </Row>
-            <Card>
-                <CardHeader>
-                    @CardHeader.ProfileOptionalSection
-                </CardHeader>
-                <CardBody>
-                    <Alert Visible="true" Color="Color.Info">
-                        <AlertDescription>Due to the sensitive nature of this information, it will only be visible to candidates after the match is made.</AlertDescription>
-                    </Alert>
-                    <Row>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.NetWorth)" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile!.NetWorth"
-                                         CssIcon="@FontAwesomeIcons.Gem" ShowHelper="false"
-                                         ButtomClicked="@(() => { })" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true">
-                            </FieldSelect>
-                        </Column>
-                        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                            <FieldSelect For="@(() => Profile!.AnnualIncome)" TValue="AnnualIncome?" TEnum="AnnualIncome" @bind-SelectedValue="@Profile!.AnnualIncome"
-                                         CssIcon="@FontAwesomeIcons.MoneyBill" ShowHelper="false"
-                                         ButtomClicked="@(() => { })" ButtomTitle="Check" ButtomCssIcon="@FontAwesomeIcons.CheckCircle" ButtomDisabled="true">
-                            </FieldSelect>
-                        </Column>
-                    </Row>
-                </CardBody>
-            </Card>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.PERSONALITY)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.PERSONALITY)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.PERSONALITY))
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.GOAL)" HeaderClass="mud-primary-text">
+            <TitleContent>
+                <div class="d-flex">
+                    @if (IsValid(Tabs.GOAL))
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
+                    }
+                    <MudText Color="Color.Primary" Typo="Typo.button">@Section.Goals</MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                @if (Tab == Tabs.GOAL)
                 {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
+                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile!.RelationshipIntentions"
+                                             CssIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Multiple="true">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Profile!.Relocation"
+                                             CssIcon="@IconsFA.Solid.Icon("truck").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@Profile!.WantChildren"
+                                             CssIcon="@IconsFA.Solid.Icon("baby").Font" ShowHelper="false">
+                                </FieldSelect>
+                            </MudItem>
+                            <MudItem xs="12">
+                                <FieldSelect For="@(() => Profile!.IdealPlaceToLive)" TValue="IdealPlaceToLive?" TEnum="IdealPlaceToLive" @bind-SelectedValue="@Profile!.IdealPlaceToLive"
+                                             CssIcon="@IconsFA.Solid.Icon("house-circle-check").Font">
+                                </FieldSelect>
+                            </MudItem>
+                        </MudGrid>
+                    </MudStack>
                 }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
-                }
-                @Section.Personality
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.PERSONALITY)
-        {
-            <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>@GlobalTranslations.ProfileDataPersonTip1</AlertDescription>
-            </Alert>
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@Profile!.MoneyPersonality"
-                                 CssIcon="@FontAwesomeIcons.Wallet" LabelSize="LabelSize.Big" HelpLink="https://empower.me/quiz/">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@Profile.SharedSpendingStyle"
-                                 CssIcon="@FontAwesomeIcons.HandHoldingUsd" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@Profile.RelationshipPersonality"
-                                 CssIcon="@FontAwesomeIcons.PeoplePulling" LabelSize="LabelSize.Big" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@Profile!.MBTI"
-                                 CssIcon="@FontAwesomeIcons.UserTag" LabelSize="LabelSize.Big" HelpLink="https://www.16personalities.com/" ShowGroup="true">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile!.LoveLanguage"
-                                 CssIcon="@FontAwesomeIcons.HandHoldingHeart" LabelSize="LabelSize.Big" HelpLink="https://5lovelanguages.com/quizzes/love-language">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
-                                 CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" HelpLink="https://vmtherapy.com/sex-personality-type">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@Profile.SexPersonalityPreference"
-                                 CssIcon="@FontAwesomeIcons.Heart" LabelSize="LabelSize.Big" Multiple="true">
-                    </FieldSelect>
-                </Column>
-            </Row>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.INTEREST)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.INTEREST)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.INTEREST))
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
-                }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
-                }
-                @Section.Interest
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.INTEREST)
-        {
-            <Alert Visible="true" Color="Color.Info">
-                <AlertDescription>@CardHeader.Maximum3Items</AlertDescription>
-            </Alert>
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Profile!.Food"
-                                 CssIcon="@FontAwesomeIcons.PizzaSlice" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Profile.Vacation"
-                                 CssIcon="@FontAwesomeIcons.PlaneDeparture" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Profile.Sports"
-                                 CssIcon="@FontAwesomeIcons.Swimmer" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Profile.LeisureActivities"
-                                 CssIcon="@FontAwesomeIcons.UmbrellaBeach" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Profile!.MusicGenre"
-                                 CssIcon="@FontAwesomeIcons.Music" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Profile.MovieGenre"
-                                 CssIcon="@FontAwesomeIcons.Film" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Profile.TVGenre"
-                                 CssIcon="@FontAwesomeIcons.Tv" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Profile.ReadingGenre"
-                                 CssIcon="@FontAwesomeIcons.BookReader" LabelSize="LabelSize.Short" Multiple="true" Order="o => o.Name">
-                    </FieldSelect>
-                </Column>
-            </Row>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.RELATIONSHIP)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.RELATIONSHIP)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.RELATIONSHIP))
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
-                }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
-                }
-                @Section.Relationship
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.RELATIONSHIP)
-        {
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.SharedFinances)" TValue="SharedFinances?" TEnum="SharedFinances" @bind-SelectedValue="@Profile!.SharedFinances"
-                                 CssIcon="@FontAwesomeIcons.MoneyBillTransfer" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.ConflictResolutionStyle)" TValue="ConflictResolutionStyle?" TEnum="ConflictResolutionStyle" @bind-SelectedValue="@Profile!.ConflictResolutionStyle"
-                                 CssIcon="@FontAwesomeIcons.Handshake" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.HouseholdManagement)" TValue="HouseholdManagement?" TEnum="HouseholdManagement" @bind-SelectedValue="@Profile!.HouseholdManagement"
-                                 CssIcon="@FontAwesomeIcons.Broom" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.TimeTogetherPreference)" TValue="TimeTogetherPreference?" TEnum="TimeTogetherPreference" @bind-SelectedValue="@Profile!.TimeTogetherPreference"
-                                 CssIcon="@FontAwesomeIcons.PeopleArrows" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.OppositeSexFriendships)" TValue="OppositeSexFriendships?" TEnum="OppositeSexFriendships" @bind-SelectedValue="@Profile!.OppositeSexFriendships"
-                                 CssIcon="@FontAwesomeIcons.Restroom" LabelSize="LabelSize.Big">
-                    </FieldSelect>
-                </Column>
-            </Row>
-        }
-    </AccordionBody>
-</AccordionItem>
-<AccordionItem Visible="@(Tab == Tabs.GOAL)" VisibleChanged="(bool value) => VisibleChanged(value, Tabs.GOAL)">
-    <AccordionHeader>
-        <Heading Size="HeadingSize.Is5" Margin="Margin.Is0">
-            <AccordionToggle Padding="Padding.Is3">
-                @if (IsValid(Tabs.GOAL))
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.CircleCheck" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Success"></Blazorise.Icon>
-                }
-                else
-                {
-                    <Blazorise.Icon Name="FontAwesomeIcons.QuestionCircle" Margin="Margin.Is2.FromEnd" TextColor="TextColor.Warning"></Blazorise.Icon>
-                }
-                @Section.Goals
-            </AccordionToggle>
-        </Heading>
-    </AccordionHeader>
-    <AccordionBody>
-        @if (Tab == Tabs.GOAL)
-        {
-            <Row>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile!.RelationshipIntentions"
-                                 CssIcon="@FontAwesomeIcons.Search" Multiple="true">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Profile!.Relocation"
-                                 CssIcon="@FontAwesomeIcons.Truck">
-                    </FieldSelect>
-                </Column>
-                <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-                    <FieldSelect For="@(() => Profile!.WantChildren)" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@Profile!.WantChildren"
-                                 CssIcon="@FontAwesomeIcons.Baby" ShowHelper="false">
-                    </FieldSelect>
-                    <FieldSelect For="@(() => Profile!.IdealPlaceToLive)" TValue="IdealPlaceToLive?" TEnum="IdealPlaceToLive" @bind-SelectedValue="@Profile!.IdealPlaceToLive"
-                                 CssIcon="@FontAwesomeIcons.HouseCircleCheck">
-                    </FieldSelect>
-                </Column>
-            </Row>
-        }
-    </AccordionBody>
-</AccordionItem>
-</Accordion>
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
 
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
-    <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @Button.Save
-</Button>
-@if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab.ToString())).IsValid)
-{
-    <Button Color="Color.Secondary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="() => ShowErrors(Profile)">
-        <Blazorise.Icon Name="FontAwesomeIcons.Bug"></Blazorise.Icon> @Button.ShowPendingItems
-    </Button>
-}
-<Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
-    <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
-</Button>
-<Div Float="Float.End" Margin="Margin.Is2.OnY">
-    <Button Color="Color.Primary" Clicked="help!.ShowModal">
-        <Blazorise.Icon Name="FontAwesomeIcons.ExclamationCircle"></Blazorise.Icon> @Button.Help
-    </Button>
-    <Button Color="Color.Danger" Clicked="privacy!.ShowModal">
-        <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon> @Button.Privacy
-    </Button>
-</Div>
-
-<BasicModal @ref="@privacy" Title="@GlobalTranslations.Privacy">
-    <ul style="margin-left: -10px;">
-        <li>@GlobalTranslations.TermTopic1</li>
-        <li>@GlobalTranslations.TermTopic2 '<a href="@($"/support/terms/{AppStateStatic.GetLanguageCode()}")" target="_blank">@GlobalTranslations.TermsOfUse</a>';</li>
-    </ul>
-</BasicModal>
-
-<BasicModal @ref="help" Title="@GlobalTranslations.HelpTitle">
-    <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
-        <Button Color="Color.Primary" Outline="true">
-            <Blazorise.Icon Name="FontAwesomeIcons.Question"></Blazorise.Icon>
-        </Button>
-        @GlobalTranslations.ProfileHelpQuestion
-    </Paragraph>
-    <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
-        <Button Color="Color.Primary" Outline="true">
-            <Blazorise.Icon Name="FontAwesomeIcons.Plus"></Blazorise.Icon>
-        </Button>
-        @GlobalTranslations.ProfileHelpPlus
-    </Paragraph>
-    <Paragraph Margin="Margin.Is2.FromBottom" TextAlignment="TextAlignment.Justified">
-        <Button Color="Color.Primary" Outline="true">
-            <Blazorise.Icon Name="FontAwesomeIcons.MapMarkedAlt"></Blazorise.Icon>
-        </Button>
-        @GlobalTranslations.ProfileHelpMap
-    </Paragraph>
-</BasicModal>
+    <div class="d-flex mt-3">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
+            @Button.Save
+        </MudButton>
+        @if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab.ToString())).IsValid)
+        {
+            <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)" Class="me-2">
+                @Button.ShowPendingItems
+            </MudButton>
+        }
+        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
+            @Button.Back
+        </MudButton>
+        <MudSpacer></MudSpacer>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Variant="Variant.Filled"
+                   OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.Privacy, PopupHelper.Options(MaxWidth.ExtraSmall))">
+            @Button.Privacy
+        </MudButton>
+    </div>
 </RenderControl>
 
+<MudDialog @ref="@MudDialog" Style="width: 100%">
+    <DialogContent>
+        <MudList T="string" Dense="true">
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                @GlobalTranslations.TermTopic1
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                @GlobalTranslations.TermTopic2 <MudLink Href="@($"/support/privacy/{AppStateStatic.GetLanguageCode()}")" Target="_blank" Typo="Typo.body2">@GlobalTranslations.PrivacyPolicy</MudLink>;
+            </MudListItem>
+        </MudList>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
 @code {
-    private BasicModal? privacy;
-    private BasicModal? help;
+    private MudDialog? MudDialog { get; set; }
 
     private Tabs? Tab { get; set; }
 
@@ -492,6 +563,8 @@
         RELATIONSHIP,
         GOAL
     }
+
+    bool _BioExpanded = false;
 
     private void VisibleChanged(bool value, Tabs? tab)
     {
@@ -515,7 +588,7 @@
     {
         if (Profile == null) return false;
 
-        var result = new ValidationResult();
+        var result = new FluentValidation.Results.ValidationResult();
 
         switch (tab)
         {

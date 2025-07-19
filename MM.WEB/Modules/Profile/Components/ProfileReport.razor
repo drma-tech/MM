@@ -1,50 +1,44 @@
 ﻿@using Button = MM.WEB.Resources.Button
 @inherits ComponentCore<ProfileReport>
 
-<Modal @ref="modal">
-    <ModalContent Centered="true" Size="ModalSize.Default">
-        <ModalHeader>
-            <ModalTitle>Denunciar Perfil</ModalTitle>
-            <CloseButton/>
-        </ModalHeader>
-        <ModalBody MaxHeight="50">
-            <RadioGroup TValue="int" Name="report" CheckedValue="@checkedValue" CheckedValueChanged="@OnCheckedValueChanged">
-                @{
-                    var previousGroup = "";
-                    @foreach (var item in EnumHelper.GetList<ReportType>())
+<MudDialog @ref="@modal" Style="width: 100%">
+    <DialogContent>
+       @*  <RadioGroup TValue="int" Name="report" CheckedValue="@checkedValue" CheckedValueChanged="@OnCheckedValueChanged">
+            @{
+                var previousGroup = "";
+                @foreach (var item in EnumHelper.GetList<ReportType>())
+                {
+                    if (!string.IsNullOrEmpty(item.Group) && previousGroup != item.Group)
                     {
-                        if (!string.IsNullOrEmpty(item.Group) && previousGroup != item.Group)
-                        {
-                            <Alert Visible="true" Color="Color.Info">
-                                <AlertMessage>@item.Group.Split("|")[0]</AlertMessage>
-                                <AlertDescription>@item.Group.Split("|")[1]</AlertDescription>
-                            </Alert>
-                        }
-
-                        <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromBottom">
-                            <Radio Size="Size.Medium" Value="@item.Value">@item.Name</Radio>
-                            <FieldHelp Style="display: inline;">@item.Description</FieldHelp>
-                        </Paragraph>
-                        previousGroup = item?.Group ?? "";
+                        <Alert Visible="true" Color="Color.Info">
+                            <AlertMessage>@item.Group.Split("|")[0]</AlertMessage>
+                            <AlertDescription>@item.Group.Split("|")[1]</AlertDescription>
+                        </Alert>
                     }
+
+                    <Paragraph TextAlignment="TextAlignment.Justified" Margin="Margin.Is2.FromBottom">
+                        <Radio Size="Size.Medium" Value="@item.Value">@item.Name</Radio>
+                        <FieldHelp Style="display: inline;">@item.Description</FieldHelp>
+                    </Paragraph>
+                    previousGroup = item?.Group ?? "";
                 }
-            </RadioGroup>
-        </ModalBody>
-        <ModalFooter>
-            <Button Color="Color.Secondary" Clicked="@modal!.Hide">@Button.Cancel</Button>
-            <Button Color="Color.Primary" Clicked="@Confirmar" Disabled="true">@Button.Confirm</Button>
-        </ModalFooter>
-    </ModalContent>
-</Modal>
+            }
+        </RadioGroup> *@
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })">@Button.Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true">@Button.Confirm</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
 
-    private Modal? modal;
+    private MudDialog? modal;
     private int checkedValue = 1;
 
     public void ShowModal()
     {
-        modal?.Show();
+        modal?.ShowAsync("Report Profile");
     }
 
     void OnCheckedValueChanged(int value)
@@ -58,7 +52,7 @@
 
         //delete match
 
-        modal?.Hide();
+        modal?.CloseAsync();
     }
 
 }

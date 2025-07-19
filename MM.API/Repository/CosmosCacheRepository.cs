@@ -10,11 +10,11 @@ public class CosmosCacheRepository
 {
     private readonly ILogger<CosmosCacheRepository> _logger;
 
-    public CosmosCacheRepository(IConfiguration config, ILogger<CosmosCacheRepository> logger)
+    public CosmosCacheRepository(ILogger<CosmosCacheRepository> logger)
     {
         _logger = logger;
 
-        var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
+        var databaseId = ApiStartup.Configurations.CosmosDB?.DatabaseId;
 
         Container = ApiStartup.CosmosClient.GetContainer(databaseId, "cache");
     }

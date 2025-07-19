@@ -1,8 +1,8 @@
-﻿using System.Security.Claims;
-using Blazorise;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using MM.WEB.Modules.Auth.Core;
+using MudBlazor;
+using System.Security.Claims;
 
 namespace MM.WEB.Core;
 
@@ -10,15 +10,17 @@ namespace MM.WEB.Core;
 ///     if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ComponentCore<T> : ComponentBase where T : class
+public abstract class ComponentCore<T> : ComponentBase, IBrowserViewportObserver, IAsyncDisposable where T : class
 {
-    [Inject] protected ILogger<T> Logger { get; set; } = default!;
-    [Inject] protected INotificationService Toast { get; set; } = default!;
-    [Inject] protected IMessageService Message { get; set; } = default!;
-    [Inject] protected IModalService ModalService { get; set; } = default!;
-    [Inject] protected NavigationManager Navigation { get; set; } = default!;
-    [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
-    [Inject] protected CacheSettingsApi CacheSettingsApi { get; set; } = default!;
+    [Inject] protected ILogger<T> Logger { get; set; } = null!;
+    [Inject] protected ISnackbar Snackbar { get; set; } = null!;
+    [Inject] protected IDialogService DialogService { get; set; } = null!;
+    [Inject] protected NavigationManager Navigation { get; set; } = null!;
+    [Inject] protected PrincipalApi PrincipalApi { get; set; } = null!;
+    [Inject] protected CacheSettingsApi CacheSettingsApi { get; set; } = null!;
+
+    [Inject] private IBrowserViewportService BrowserViewportService { get; set; } = null!;
+    public Breakpoint Breakpoint { get; set; }
 
     protected virtual Task LoadDataRender()
     {
@@ -36,16 +38,35 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
         {
             if (firstRender)
             {
+                await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+
                 await LoadDataRender();
 
                 StateHasChanged();
             }
+
+            await base.OnAfterRenderAsync(firstRender);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
+
+    #region BrowserViewportObserver
+
+    Guid IBrowserViewportObserver.Id { get; } = Guid.NewGuid();
+
+    Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
+    {
+        Breakpoint = browserViewportEventArgs.Breakpoint;
+
+        return InvokeAsync(StateHasChanged);
+    }
+
+    public async ValueTask DisposeAsync() => await BrowserViewportService.UnsubscribeAsync(this);
+
+    #endregion BrowserViewportObserver
 }
 
 /// <summary>
@@ -54,7 +75,7 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 /// <typeparam name="T"></typeparam>
 public abstract class PageCore<T> : ComponentCore<T> where T : class
 {
-    [CascadingParameter] protected Task<AuthenticationState>? authenticationState { get; set; }
+    [CascadingParameter] protected Task<AuthenticationState>? AuthenticationState { get; set; }
 
     protected bool IsAuthenticated { get; set; }
     protected ClaimsPrincipal? User { get; set; }
@@ -62,11 +83,11 @@ public abstract class PageCore<T> : ComponentCore<T> where T : class
 
     protected override async Task OnInitializedAsync()
     {
-        if (authenticationState is not null)
+        if (AuthenticationState is not null)
         {
-            var authState = await authenticationState;
+            var authState = await AuthenticationState;
 
-            User = authState?.User;
+            User = authState.User;
             IsAuthenticated = User?.Identity is not null && User.Identity.IsAuthenticated;
             UserId = User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         }

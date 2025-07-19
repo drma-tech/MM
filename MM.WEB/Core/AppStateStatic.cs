@@ -20,6 +20,11 @@ public static class AppStateStatic
     [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
     public static Language Language { get; private set; } = Language.English;
 
+    [Custom(Name = "Dark Mode")]
+    public static bool DarkMode { get; private set; }
+
+    public static Action? RegionChanged { get; set; }
+    public static Action? DarkModeChanged { get; set; }
     public static Action<TempClientePaddle>? RegistrationSuccessful { get; set; }
     public static Action<string>? ShowError { get; set; }
 
@@ -28,6 +33,7 @@ public static class AppStateStatic
         return Language switch
         {
             Language.Portuguese => "pt",
+            Language.Spanish => "es",
             _ => "en"
         };
     }
@@ -35,5 +41,11 @@ public static class AppStateStatic
     public static void ChangeLanguage(Language value)
     {
         Language = value;
+    }
+
+    public static void ChangeDarkMode(bool darkMode)
+    {
+        DarkMode = darkMode;
+        DarkModeChanged?.Invoke();
     }
 }

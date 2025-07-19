@@ -1,9 +1,10 @@
-﻿using Blazorise;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Auth;
+using MM.WEB.Modules.Auth;
 using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Shared;
+using MudBlazor;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Core;
@@ -12,52 +13,62 @@ public static class PopupHelper
 {
     public static readonly EventCallbackFactory Factory = new();
 
-    public static async Task InvitePerEmail(this IModalService service, ClientePrincipal? principal,
+    public static async Task InvitePerEmail(this IDialogService service, ClientePrincipal? principal,
         EventCallback<string> inviteSent)
     {
-        await service.Show<InvitePerEmail>(null, x =>
+        var parameters = new DialogParameters<InvitePerEmail>
         {
-            x.Add(x => x.principal, principal);
-            x.Add(x => x.InviteSent, inviteSent);
-        }, Options(ModalSize.Default));
+            { x => x.principal, principal },
+            { x => x.InviteSent, inviteSent }
+        };
+
+        await service.ShowAsync<InvitePerEmail>(CardHeader.InvitePartner, parameters, Options(MaxWidth.Small));
     }
 
-    public static async Task OpenPopup<TComponent>(this IModalService service,
-        Action<ModalProviderParameterBuilder<TComponent>> parameters, ModalSize size)
-        where TComponent : IComponent
+    public static async Task SelectPicturePopup(this IDialogService service, PhotoType photoType, EventCallback<(PhotoType, byte[])> pictureChanged)
     {
-        await service.Show(null, parameters, Options(size));
-    }
-
-    public static async Task SelectPicturePopup(this IModalService service, string? picture, PhotoType photoType,
-        EventCallback<(PhotoType, byte[])> pictureChanged)
-    {
-        await service.Show<SelectPicturePopup>(null, x =>
+        var parameters = new DialogParameters<SelectPicturePopup>
         {
-            x.Add(x => x.SavedPicture, picture);
-            x.Add(x => x.PhotoType, photoType);
-            x.Add(x => x.CroppedPictureChanged, pictureChanged);
-        }, Options(ModalSize.Large));
+            { x => x.PhotoType, photoType },
+            { x => x.CroppedPictureChanged, pictureChanged }
+        };
+
+        await service.ShowAsync<SelectPicturePopup>("Picture", parameters, Options(MaxWidth.Medium));
     }
 
-    public static async Task SettingsPopup(this IModalService service)
+    public static async Task OpenAccountPopup(this IDialogService service, bool isAuthenticated)
     {
-        await service.Show<SettingsPopup>(null, x => { }, Options(ModalSize.Default));
-    }
-
-    public static async Task SubscriptionPopup(this IModalService service, bool isAuthenticated)
-    {
-        await service.Show<SubscriptionPopup>(null, x => { x.Add(x => x.IsAuthenticated, isAuthenticated); },
-            Options(ModalSize.Large));
-    }
-
-    private static ModalInstanceOptions Options(ModalSize size)
-    {
-        return new ModalInstanceOptions
+        var parameters = new DialogParameters<ProfilePopup>
         {
-            UseModalStructure = false,
-            Centered = true,
-            Size = size
+            { x => x.IsAuthenticated, isAuthenticated }
+        };
+
+        await service.ShowAsync<ProfilePopup>(Modules.Profile.Resources.Translations.MyProfile, parameters, Options(MaxWidth.ExtraSmall));
+    }
+
+    public static async Task SettingsPopup(this IDialogService service)
+    {
+        await service.ShowAsync<SettingsPopup>(GlobalTranslations.Settings, Options(MaxWidth.Small));
+    }
+
+    public static async Task SubscriptionPopup(this IDialogService service, bool isAuthenticated)
+    {
+        var parameters = new DialogParameters<SubscriptionPopup>
+        {
+            { x => x.IsAuthenticated, isAuthenticated }
+        };
+
+        await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+    }
+
+    public static DialogOptions Options(MaxWidth width)
+    {
+        return new DialogOptions
+        {
+            CloseOnEscapeKey = true,
+            CloseButton = true,
+            Position = DialogPosition.Center,
+            MaxWidth = width
         };
     }
 }

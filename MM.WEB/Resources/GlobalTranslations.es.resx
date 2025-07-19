@@ -195,12 +195,6 @@
   <data name="HelpPlus" xml:space="preserve">
     <value>Esta opción abrirá una ventana emergente con múltiples opciones (junto con explicaciones, si las hay)</value>
   </data>
-  <data name="HelpProfile1" xml:space="preserve">
-    <value>El cálculo se basa en investigaciones y estadísticas y puede no reflejar con precisión todos los casos y/o contextos;</value>
-  </data>
-  <data name="HelpProfile2" xml:space="preserve">
-    <value>Si tiene alguna pregunta y/o sugerencia de mejora, abra un ticket en nuestra página de soporte;</value>
-  </data>
   <data name="HelpQuestion" xml:space="preserve">
     <value>Esta opción tendrá explicaciones de cada uno de los elementos disponibles para elegir.</value>
   </data>
@@ -282,6 +276,9 @@
   <data name="Privacy" xml:space="preserve">
     <value>Privacidad</value>
   </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Políticas de privacidad</value>
+  </data>
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
   </data>
@@ -289,22 +286,13 @@
     <value>Producto aún en desarrollo, por lo que mucho mejorará. Si tiene sugerencias que hacer, pregunte en la sección de soporte de la aplicación.</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
-    <value>Para garantizar una atmósfera positiva, nos tomamos muy en serio el acoso y los prejuicios. Si encuentra tal comportamiento, informe el perfil de inmediato.</value>
+    <value>Para garantizar un ambiente positivo, nos tomamos muy en serio el acoso y los prejuicios. Si detecta este tipo de comportamiento, por favor, reporte el perfil inmediatamente.</value>
   </data>
   <data name="ProfileDataBioTip2" xml:space="preserve">
     <value>Si le resulta difícil interactuar o reconocer intenciones dañinas, considere comunicarse con amigos o familiares para obtener apoyo.</value>
   </data>
   <data name="ProfileDataPersonTip1" xml:space="preserve">
     <value>Para personalidades más complejas, explore las pruebas en sitios especializados. Algunos se pueden responder simplemente leyendo las descripciones de los artículos.</value>
-  </data>
-  <data name="ProfileHelpMap" xml:space="preserve">
-    <value>Esta opción solicitará la ubicación de su dispositivo (esta opción debe estar habilitada)</value>
-  </data>
-  <data name="ProfileHelpPlus" xml:space="preserve">
-    <value>Esta opción abrirá una ventana emergente con múltiples opciones (junto con explicaciones, si las hay)</value>
-  </data>
-  <data name="ProfileHelpQuestion" xml:space="preserve">
-    <value>Esta opción tendrá explicaciones de cada uno de los elementos disponibles para elegir.</value>
   </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
     <value>Perfil no disponible</value>
@@ -346,7 +334,7 @@
     <value>Sea honesto en las respuestas dadas en este formulario. Toda la información contenida en este documento está abierta a denuncias y puede ser evaluada;</value>
   </data>
   <data name="TermTopic2" xml:space="preserve">
-    <value>Para conocer cómo se tratarán sus datos, le rogamos que lea nuestro</value>
+    <value>Para conocer cómo serán tratados sus datos, le pedimos que lea nuestra</value>
   </data>
   <data name="Tips" xml:space="preserve">
     <value>Consejos</value>

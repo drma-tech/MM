@@ -12,20 +12,27 @@
 @inject StorageApi StorageApi
 
 <RenderControl Core="Core" Model="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null" PrivateContent="true">
-    <Row>
-        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@FontAwesomeIcons.EyeSlash"></FieldSwitch>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-        </Column>
-    </Row>
+    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+        <MudGrid>
+            <MudItem xs="12">
+                <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@IconsFA.Solid.Icon("eye").Font"></FieldSwitch>
+            </MudItem>
+        </MudGrid>
+        <MudGrid>
+            <MudItem xs="12">
 
-    <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="SaveHandle">
-        <Blazorise.Icon Name="FontAwesomeIcons.Save"></Blazorise.Icon> @Button.Save
-    </Button>
-    <Button Color="Color.Primary" Margin="Margin.Is2.OnY.Is2.FromStart" Clicked="GoProfile">
-        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
-    </Button>
+            </MudItem>
+        </MudGrid>
+    </MudStack>
+
+    <div class="d-flex mt-3">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
+            @Button.Save
+        </MudButton>
+        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
+            @Button.Back
+        </MudButton>
+    </div>
 </RenderControl>
 
 @code {
@@ -89,7 +96,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Toast, Logger);
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 

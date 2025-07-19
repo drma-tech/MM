@@ -1,10 +1,9 @@
-﻿using System.Linq.Expressions;
-using System.Net;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MM.API.Repository.Core;
+using System.Linq.Expressions;
+using System.Net;
 
 namespace MM.API.Repository;
 
@@ -12,11 +11,11 @@ public class CosmosRepository
 {
     private readonly ILogger<CosmosRepository> _logger;
 
-    public CosmosRepository(IConfiguration config, ILogger<CosmosRepository> logger)
+    public CosmosRepository(ILogger<CosmosRepository> logger)
     {
         _logger = logger;
 
-        var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
+        var databaseId = ApiStartup.Configurations.CosmosDB?.DatabaseId;
 
         Container = ApiStartup.CosmosClient.GetContainer(databaseId, "main");
     }
@@ -48,13 +47,13 @@ public class CosmosRepository
         }
     }
 
-    public async Task<List<T>> ListAll<T>(DocumentType Type, CancellationToken cancellationToken) where T : MainDocument
+    public async Task<List<T>> ListAll<T>(DocumentType type, CancellationToken cancellationToken) where T : MainDocument
     {
         try
         {
             var query = Container
                 .GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions())
-                .Where(item => item.Type == Type);
+                .Where(item => item.Type == type);
 
             using var iterator = query.ToFeedIterator();
             var results = new List<T>();
@@ -68,7 +67,7 @@ public class CosmosRepository
             }
 
             if (charges > 7)
-                _logger.LogWarning("ListAll - Type {Type}, RequestCharge {Charges}", Type.ToString(), charges);
+                _logger.LogWarning("ListAll - Type {Type}, RequestCharge {Charges}", type.ToString(), charges);
 
             return results;
         }
@@ -78,14 +77,14 @@ public class CosmosRepository
         }
     }
 
-    public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, DocumentType Type,
+    public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, DocumentType type,
         CancellationToken cancellationToken) where T : MainDocument
     {
         try
         {
             var query = Container
                 .GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions())
-                .Where(predicate.Compose(item => item.Type == Type, Expression.AndAlso));
+                .Where(predicate.Compose(item => item.Type == type, Expression.AndAlso));
 
             using var iterator = query.ToFeedIterator();
             var results = new List<T>();
@@ -99,7 +98,7 @@ public class CosmosRepository
             }
 
             if (charges > 15)
-                _logger.LogWarning("Query - Type {Type}, RequestCharge {Charges}", Type.ToString(), charges);
+                _logger.LogWarning("Query - Type {Type}, RequestCharge {Charges}", type.ToString(), charges);
 
             return results;
         }

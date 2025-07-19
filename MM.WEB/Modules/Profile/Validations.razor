@@ -13,26 +13,36 @@
 @inject StorageApi StorageApi
 
 <RenderControl Core="Core" Model="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null" PrivateContent="true">
-    <Row>
-        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@FontAwesomeIcons.Images"></FieldActive>
-            <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@FontAwesomeIcons.IdCard"
-                         Disabled="true" CustomButtonText="Only available in phase 2">
-            </FieldActive>
-        </Column>
-        <Column ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@FontAwesomeIcons.Gem"
-                         Disabled="true" CustomButtonText="Only available in phase 3">
-            </FieldActive>
-            <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@FontAwesomeIcons.MoneyBill"
-                         Disabled="true" CustomButtonText="Only available in phase 3">
-            </FieldActive>
-        </Column>
-    </Row>
+    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+        <MudGrid>
+            <MudItem xs="12">
+                <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@IconsFA.Solid.Icon("images").Font"></FieldActive>
+            </MudItem>
+            <MudItem xs="12">
+                <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@IconsFA.Solid.Icon("id-card").Font"
+                             Disabled="true" CustomButtonText="Only available in phase 2">
+                </FieldActive>
+            </MudItem>
+        </MudGrid>
+        <MudGrid>
+            <MudItem xs="12">
+                <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@IconsFA.Solid.Icon("gem").Font"
+                             Disabled="true" CustomButtonText="Only available in phase 3">
+                </FieldActive>
+            </MudItem>
+            <MudItem xs="12">
+                <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@IconsFA.Solid.Icon("money-bill").Font"
+                             Disabled="true" CustomButtonText="Only available in phase 3">
+                </FieldActive>
+            </MudItem>
+        </MudGrid>
+    </MudStack>
 
-    <Button Color="Color.Primary" Margin="Margin.Is2.OnY" Clicked="GoProfile">
-        <Blazorise.Icon Name="FontAwesomeIcons.LeftLong"></Blazorise.Icon> @Button.Back
-    </Button>
+    <div class="d-flex mt-3">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
+            @Button.Back
+        </MudButton>
+    </div>
 </RenderControl>
 
 @code {

@@ -2,49 +2,15 @@
 
 @if (Visible)
 {
-    <Field Horizontal="true">
-        <FieldLabel ColumnSize="@GetLabelSize()">
-            @if (string.IsNullOrEmpty(CssIcon))
-            {
-                @For.GetCustomAttribute()?.Name
-            }
-            else
-            {
-                <Blazorise.Icon Name="@CssIcon"></Blazorise.Icon>
-                @For.GetCustomAttribute()?.Name
-            }
-            @if (Required)
-            {
-                <div style="color: red; display: initial;"> *</div>
-            }
-        </FieldLabel>
-        <FieldBody ColumnSize="@GetBodySize()">
-            <Addons>
-                <Addon AddonType="AddonType.Body">
-                    @if (Rows == 0)
-                    {
-                        <InputText Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@For" @attributes="@GetAttributes(null)"></InputText>
-                    }
-                    else
-                    {
-                        <InputTextArea Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@For" @attributes="@GetAttributes(null)"></InputTextArea>
-                    }
-                </Addon>
-                @if (ButtomClicked.HasDelegate)
-                {
-                    <Addon AddonType="AddonType.End">
-                        <Button Color="Color.Primary" Outline="true" Clicked="@ButtomClicked" title="@ButtomTitle">
-                            <Blazorise.Icon Name="@ButtomCssIcon"></Blazorise.Icon>
-                        </Button>
-                    </Addon>
-                }
-            </Addons>
-        </FieldBody>
-        @if (!string.IsNullOrEmpty(Description))
+    <div class="d-flex" style="align-items: center;">
+        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        <MudTextField Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Lines="@Rows" Required="@Required" ReadOnly="@ReadOnly" Immediate="true"
+                      Label="@For.GetCustomAttribute()?.Name" HelperText="@Description" Placeholder="@For?.GetCustomAttribute()?.Placeholder" />
+        @if (ButtomClicked.HasDelegate)
         {
-            <Column>
-                <FieldHelp Style="color: #17a2b8 !important">@Description</FieldHelp>
-            </Column>
+            <MudTooltip Text="@ButtomTitle">
+                <MudIconButton Color="Color.Primary" Icon="@ButtomCssIcon" OnClick="@ButtomClicked" />
+            </MudTooltip>
         }
-    </Field>
+    </div>
 }
