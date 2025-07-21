@@ -29,11 +29,10 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
             @Button.Save
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
-            @Button.Back
-        </MudButton>
     </div>
 </RenderControl>
+
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private SettingModel? Setting { get; set; }
@@ -98,11 +97,6 @@
         {
             ex.ProcessException(Snackbar, Logger);
         }
-    }
-
-    private void GoProfile()
-    {
-        Navigation.NavigateTo("profile");
     }
 
 }

@@ -5,7 +5,8 @@ public static class ImageHelper
     public enum PhotoType
     {
         Face = 1,
-        Body = 2
+        Body = 2,
+        Validation = 3
     }
 
     public static string GetNoUserPhoto => "images/no-picture.png";
@@ -17,6 +18,7 @@ public static class ImageHelper
         {
             PhotoType.Face => "photo-face",
             PhotoType.Body => "photo-body",
+            PhotoType.Validation => "photo-validation",
             _ => throw new InvalidOperationException(nameof(PhotoType))
         };
     }

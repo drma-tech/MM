@@ -1,11 +1,7 @@
 ﻿namespace MM.Shared.Models.Profile;
 
-public class ValidationModel : PrivateMainDocument
+public class ValidationModel() : PrivateMainDocument(DocumentType.Validation)
 {
-    public ValidationModel() : base(DocumentType.Validation)
-    {
-    }
-
     [Custom(Name = "Gallery", Description = "Validates all photos in the gallery (all photos must contain you and only you and be easily identifiable)")]
     public bool Gallery { get; set; }
 

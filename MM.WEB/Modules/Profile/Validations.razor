@@ -37,13 +37,9 @@
             </MudItem>
         </MudGrid>
     </MudStack>
-
-    <div class="d-flex mt-3">
-        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
-            @Button.Back
-        </MudButton>
-    </div>
 </RenderControl>
+
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private ValidationModel? Validation { get; set; }
@@ -62,11 +58,6 @@
         }
 
         Core?.LoadingFinished?.Invoke(Validation);
-    }
-
-    private void GoProfile()
-    {
-        Navigation.NavigateTo("profile");
     }
 
 }

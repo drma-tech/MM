@@ -7,7 +7,7 @@ namespace MM.WEB.Api;
 public struct StorageEndpoint
 {
     public const string UploadPhoto = "storage/upload-photo";
-    public const string UploadPhotoValidation = "storage/UploadPhotoValidation";
+    public const string UploadPhotoValidation = "storage/upload-photo-validation";
 
     public static string DeletePhotoGallery(PhotoType photoType)
     {
@@ -28,17 +28,4 @@ public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfileModel>(fa
         SetNewVersion("profile");
         return await DeleteAsync(StorageEndpoint.DeletePhotoGallery(photoType), null);
     }
-
-    //public async Task Storage_UploadPhotoValidation(this HttpClient http, byte[] bytes, ISyncSessionStorageService storage, INotificationService toast)
-    //{
-    //    var response = await http.Put(StorageEndpoint.UploadPhotoValidation, new { Stream = bytes });
-
-    //    if (response.IsSuccessStatusCode)
-    //    {
-    //        storage.RemoveItem(ProfileEndpoint.Get);
-    //        await http.Profile_Get(storage); //TODO ??
-    //    }
-
-    //    await response.ProcessResponse(toast, "Foto atualizada com sucesso!");
-    //}
 }

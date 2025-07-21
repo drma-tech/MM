@@ -12,7 +12,7 @@ public static class AppStateStatic
         var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
         var language = languages.FirstOrDefault(w => w.Description == code);
 
-        Language = (Language?)language?.Value ?? Language.English;
+        Language = language?.Value ?? Language.English;
     }
 
     public static List<LogContainer> Logs { get; private set; } = [];

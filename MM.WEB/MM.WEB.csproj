@@ -12,13 +12,13 @@
 		<Content Remove="Modules\Profile\Interactions.razor" />
 		<Content Remove="Modules\Profile\PhotoValidation.razor" />
 		<Content Remove="Modules\Profile\ProfileChatList.razor" />
-		<Content Remove="Modules\Profile\ValidationGallery.razor" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AnthonyChu.AzureStaticWebApps.Blazor.Authentication" Version="0.0.2-preview" />
+		<PackageReference Include="BlazorCameraStreamer" Version="3.0.1" />
 		<PackageReference Include="BlazorWasmPreRendering.Build" Version="6.0.0" />
 		<PackageReference Include="Bogus" Version="35.6.3" />
 		<PackageReference Include="BrowserInterop" Version="1.1.2" />

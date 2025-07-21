@@ -428,16 +428,6 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("wand-magic").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="PopulateFields" Class="me-2">
             @Button.Fill
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
-            @Button.Back
-        </MudButton>
-
-        <MudSpacer></MudSpacer>
-
-        <MudButton StartIcon="@IconsFA.Solid.Icon("circle-exclamation").Font" Color="Color.Secondary" Variant="Variant.Filled"
-                   OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
-            @Button.Help
-        </MudButton>
     </div>
 </RenderControl>
 
@@ -456,6 +446,11 @@
         <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
+
+<FloatingButton StartIcon="@IconsFA.Solid.Icon("circle-exclamation").Font" Color="Color.Info" Side="Side.Right" Position="2"
+                OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
+</FloatingButton>
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private ProfileModel? Profile { get; set; }
@@ -554,18 +549,14 @@
         {
             SmartLookingCore.PopulateFields(Profile, Filter);
 
-            //Snackbar.Add(GlobalTranslations.PopulateFilterDescription, GlobalTranslations.PopulateFilterTitle, );
-            Snackbar.Add(GlobalTranslations.PopulateFilterDescription, Severity.Warning);
+            Snackbar.Add(@<div>
+                <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
+            </div>, Severity.Info);
         }
         catch (Exception ex)
         {
             ex.ProcessException(Snackbar, Logger);
         }
-    }
-
-    private void GoProfile()
-    {
-        Navigation.NavigateTo("profile");
     }
 
 }

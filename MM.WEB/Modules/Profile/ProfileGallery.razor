@@ -83,11 +83,6 @@
     <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
         @Button.Back
     </MudButton>
-    <MudSpacer></MudSpacer>
-    <MudButton StartIcon="@IconsFA.Solid.Icon("circle-exclamation").Font" Color="Color.Secondary" Variant="Variant.Filled"
-               OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
-        @Button.Help
-    </MudButton>
 </div>
 
 <MudDialog @ref="@MudDialog" Style="width: 100%">
@@ -117,6 +112,11 @@
         <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
+
+<FloatingButton StartIcon="@IconsFA.Solid.Icon("circle-exclamation").Font" Color="Color.Info" Side="Side.Right" Position="2"
+                OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
+</FloatingButton>
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code
 {

@@ -304,13 +304,13 @@
     <value>Esta sección no funciona como filtro, solo complementa el cálculo de compatibilidad de perfiles.</value>
   </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
-    <value>Tu perfil ahora está en modo privado y no será visto ni compartido con nadie.</value>
+    <value>Tu perfil ahora está en modo privado y no será visto ni compartido con nadie</value>
+  </data>
+  <data name="ProfilePublicMode" xml:space="preserve">
+    <value>Su perfil ahora es público y puede estar disponible para nuestros clientes.</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Público</value>
-  </data>
-  <data name="PublicModeNotAvailable" xml:space="preserve">
-    <value>En esta primera fase, el modo público aún no está disponible. Manténganse al tanto de las novedades.</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>ACTUALIZA AHORA</value>

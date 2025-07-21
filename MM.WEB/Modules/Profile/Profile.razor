@@ -16,6 +16,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject SettingApi SettingApi
+@inject ValidationApi ValidationApi
 @inject InviteApi InviteApi
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
@@ -62,39 +63,40 @@
             </div>
             <MudGrid Spacing="2">
                 <MudItem xs="6">
-                    <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data" Style="width: 100%;">
+                    <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
+                               Style="width: 100%;">
                         @Button.Profile
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter" Style="width: 100%;"
-                               Disabled="profile == null">
+                    <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter"
+                               Style="width: 100%;" Disabled="profile == null">
                         @Button.Filters
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting" Style="width: 100%;"
-                               Disabled="profile == null">
+                    <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
+                               Style="width: 100%;" Disabled="profile == null">
                         @Button.Settings
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery" Style="width: 100%;"
-                               Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
+                    <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
+                               Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                         @Button.Gallery
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Filled" Href="/profile/validation" Style="width: 100%;"
-                               Disabled="true">
+                    <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Filled" Href="/profile/validation"
+                               Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                         @Button.Validations
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@IsPublic" ValueChanged="(bool value) => IsPublicChanged(value)"
+                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
                                     CheckMark="true" FixedContent="true">
-                        <MudToggleItem Value="false" Text="Private" />
-                        <MudToggleItem Value="true" Text="Public" />
+                        <MudToggleItem Value="false" Text="Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
+                        <MudToggleItem Value="true" Text="Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                     </MudToggleGroup>
                 </MudItem>
             </MudGrid>
@@ -202,6 +204,8 @@
 {
     private PopupProfile? PopupProfile { get; set; }
 
+    private ClientePrincipal? principal;
+
     private ProfileValidation ProfileValidator { get; } = new();
     private ProfileModel? profile;
 
@@ -217,6 +221,8 @@
     private SettingModel? setting;
     private RenderControlCore<SettingModel?>? CoreSetting { get; } = new();
 
+    private ValidationModel? validation;
+
     private List<string> Suggestions { get; } = [];
     private RenderControlCore<List<string>>? CoreSuggestions { get; } = new();
 
@@ -226,7 +232,6 @@
     private MyMatchesModel? MyMatches { get; set; }
     private RenderControlCore<MyMatchesModel?>? CoreMatches { get; } = new();
 
-    private bool IsPublic { get; set; }
     private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string MatchesSwiperId = $"swiper-{Guid.NewGuid()}";
@@ -235,7 +240,7 @@
     private bool FilterValid => filter != null && FilterValidator.Validate(filter).IsValid;
     private bool SettingValid => setting != null;
     private bool GalleryValid => profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid;
-    private bool ValidationsValid => false;
+    private bool ValidationsValid => validation != null && validation.Gallery;
 
     protected override void OnInitialized()
     {
@@ -261,9 +266,11 @@
         {
             if (IsAuthenticated)
             {
+                principal = await PrincipalApi.Get(true);
                 profile = await ProfileApi.Get(CoreProfile);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
+                validation = await ValidationApi.Get(null);
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
@@ -303,15 +310,20 @@
     {
         if (value)
         {
-            // await Toast.Warning(GlobalTranslations.CompleteAllSteps);
-            //await Message.Info(GlobalTranslations.PublicModeNotAvailable, GlobalTranslations.OptionNotAvailable);
-            Snackbar.Add(GlobalTranslations.PublicModeNotAvailable, MudBlazor.Severity.Info);
-            IsPublic = false;
+            if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
+            {
+                Snackbar.Add(GlobalTranslations.CompleteAllSteps, MudBlazor.Severity.Warning);
+            }
+            else
+            {
+                principal = await PrincipalApi.Public();
+                Snackbar.Add(GlobalTranslations.ProfilePublicMode, MudBlazor.Severity.Success);
+            }
         }
         else
         {
+            principal = await PrincipalApi.Private();
             Snackbar.Add(GlobalTranslations.ProfilePrivateMode, MudBlazor.Severity.Success);
-            IsPublic = false;
         }
     }
 

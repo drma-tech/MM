@@ -1,69 +1,113 @@
 ﻿@page "/profile/validation/gallery"
+@using BlazorCameraStreamer
+@using MM.Shared.Models.Profile
+@using MM.WEB.Api
+@using MM.WEB.Modules.Profile.Core
 @attribute [Authorize]
 @inherits PageCore<ValidationGallery>
 
+@inject ValidationApi ValidationApi
 @inject IJSRuntime JsRuntime
 
-<Row>
-    <Column ColumnSize="ColumnSize.Is6.OnDesktop.Is3.WithOffset">
-        <Card>
-            <CardHeader>
-                Validação da foto principal
-                <Button Size="Size.ExtraSmall" Color="Color.Danger" Float="Float.End" Clicked="privacy.ShowModal" title="Privacidade">
-                    <Blazorise.Icon Name="FontAwesomeIcons.UserShield"></Blazorise.Icon>
-                </Button>
-            </CardHeader>
-            <CardBody>
-                <video id="video" style="background-color: black; width: 100%;" autoplay muted></video>
-                <img id="photo" crossorigin="anonymous" style="width: 100%; max-height: 450px !important; display: none;"/>
-                <div id="divMessage" class="alert alert-warning" role="alert" style="margin-bottom: 0; margin-top: 6px; padding: 6px;">
-                    <span id="lblMessage">Precisamos ativar a câmera do seu dispositivo para validar sua foto principal</span>
-                </div>
-            </CardBody>
-            <CardFooter>
-                @if (ActiveCamera)
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="10" md="8" lg="6">
+        <MudCard Outlined="true">
+            <MudCardHeader Class="pa-2">
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">Main photo validation</MudText>
+                </CardHeaderContent>
+                <CardHeaderActions>
+                    <MudIconButton Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Default"
+                                   OnClick="@(async() => await MudDialog!.ShowAsync("Privacy Terms", PopupHelper.Options(MaxWidth.ExtraSmall)))" />
+                </CardHeaderActions>
+            </MudCardHeader>
+            <MudCardContent Class="pa-2">
+                <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" CameraID="@DeviceId" OnRendered="OnRenderedHandler" Autostart="true" />
+            </MudCardContent>
+            <MudCardActions Class="pt-0">
+                @if (Picture.Empty())
                 {
-                    <Button Color="Color.Danger" Clicked="FinishDetection">
-                        <Blazorise.Icon Name="FontAwesomeIcons.Camera"></Blazorise.Icon> Desativar Câmera
-                    </Button>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot"
+                               Class="me-2">
+                        Take Shot
+                    </MudButton>
                 }
                 else
                 {
-                    <Button Color="Color.Primary" Clicked="StartDetection">
-                        <Blazorise.Icon Name="FontAwesomeIcons.Camera"></Blazorise.Icon> Ativar Câmera
-                    </Button>
+                    <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset"
+                               Class="me-2">
+                        Reset
+                    </MudButton>
                 }
-                <Button Color="Color.Primary" Clicked="TakeShot" Disabled="!ActiveCamera" Margin="Margin.Is2.FromStart">
-                    <Blazorise.Icon Name="FontAwesomeIcons.Portrait"></Blazorise.Icon> Tirar Foto
-                </Button>
-                <Button Color="Color.Primary" Clicked="SendPhoto" Float="Float.End" Disabled="!TakedPhoto">
-                    <Blazorise.Icon Name="FontAwesomeIcons.ShareSquare"></Blazorise.Icon> Enviar
-                </Button>
-            </CardFooter>
-        </Card>
-    </Column>
-</Row>
+                <MudSpacer></MudSpacer>
+                <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera-rotate").Font" OnClick="NextCamera"
+                           Class="me-2" Disabled="Cameras.Length < 2">
+                    Next Camera
+                </MudButton>
+                <MudSpacer></MudSpacer>
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto"
+                           Disabled="Picture.Empty()">
+                    Send
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+</MudGrid>
 
-<BasicModal @ref="privacy" Title="Termos de privacidade">
-    <ul>
-        <li>A foto tirada por sua câmera será mantida privada (não será acessível dentro da plataforma) para futura verificação, caso seja necessário;</li>
-        <li>Os dados resultantes desta validação (atributos do seu rosto) não serão mantidos em nossos servidores e só existirá durante o processo de detecção;</li>
-    </ul>
-</BasicModal>
+<MudDialog @ref="@MudDialog" Style="width: 100%">
+    <DialogContent>
+        <MudList T="string" Dense="true">
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary.
+            </MudListItem>
+            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process.
+            </MudListItem>
+        </MudList>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code
 {
-    private bool ActiveCamera;
-    private bool TakedPhoto;
+    private RenderControlCore<ValidationModel?>? Core { get; set; } = new();
+    private MudDialog? MudDialog { get; set; }
+    private CameraStreamer? CameraStreamerReference;
+    private byte[] Picture { get; set; } = [];
 
-    private BasicModal? privacy;
+    private MediaDeviceInfoModel[] Cameras { get; set; } = [];
+    private int CameraIndex { get; set; }
+    private string? DeviceId { get; set; }
+    private string? DeviceName { get; set; }
 
-    protected async Task StartDetection()
+    private async void OnRenderedHandler()
     {
         try
         {
-            await JsRuntime.InvokeVoidAsync("RealDate.Face.startDetection");
-            ActiveCamera = true;
+            if (CameraStreamerReference == null) return;
+
+            // Check camera-access or ask user, if it's not allowed currently
+            if (await CameraStreamerReference.GetCameraAccessAsync())
+            {
+                Cameras = await CameraStreamerReference.GetCameraDevicesAsync();
+
+                var cameraId = await JsRuntime.InvokeAsync<string>("window.localStorage.getItem", ["CameraId"]);
+                if (cameraId.NotEmpty()) CameraIndex = Array.FindIndex(Cameras, row => row.DeviceId == cameraId);
+
+                if (CameraIndex == -1) CameraIndex = 0; //Default to first camera
+                DeviceId = Cameras[CameraIndex].DeviceId;
+                DeviceName = Cameras[CameraIndex].Label;
+                StateHasChanged();
+
+                await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "CameraId", DeviceId);
+                await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "CameraName", DeviceName);
+
+                await CameraStreamerReference.ReloadAsync();
+            }
         }
         catch (Exception ex)
         {
@@ -71,12 +115,28 @@
         }
     }
 
-    protected async Task FinishDetection()
+    private async Task NextCamera()
     {
         try
         {
-            await JsRuntime.InvokeVoidAsync("RealDate.Face.finishDetection");
-            ActiveCamera = false;
+            if (CameraStreamerReference == null) return;
+
+            if (CameraIndex == Cameras.Length - 1)
+            {
+                CameraIndex = 0;
+            }
+            else
+            {
+                CameraIndex = CameraIndex + 1;
+            }
+
+            DeviceId = Cameras[CameraIndex].DeviceId;
+            DeviceName = Cameras[CameraIndex].Label;
+
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "CameraId", DeviceId);
+            await JsRuntime.InvokeVoidAsync("window.localStorage.setItem", "CameraName", DeviceName);
+
+            await CameraStreamerReference.ReloadAsync();
         }
         catch (Exception ex)
         {
@@ -88,9 +148,28 @@
     {
         try
         {
-            await JsRuntime.InvokeVoidAsync("RealDate.Face.takeShot");
-            TakedPhoto = true;
-            ActiveCamera = false;
+            if (CameraStreamerReference == null) return;
+
+            var data = await CameraStreamerReference.GetCurrentFrameAsync();
+            data = data[(data.IndexOf(',') + 1)..]; // Remove the suffix added by javascript
+            Picture = Convert.FromBase64String(data);
+
+            await CameraStreamerReference.StopAsync();
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    protected async Task Reset()
+    {
+        try
+        {
+            if (CameraStreamerReference == null) return;
+
+            Picture = [];
+            await CameraStreamerReference.ReloadAsync();
         }
         catch (Exception ex)
         {
@@ -102,7 +181,9 @@
     {
         try
         {
-            await JsRuntime.InvokeVoidAsync("RealDate.Face.sendPhoto");
+            await ValidationApi.UploadPhotoValidation(Core, Picture);
+            Snackbar.Add("Photo validated successfully!", Severity.Success);
+            await JsRuntime.InvokeVoidAsync("history.back");
         }
         catch (Exception ex)
         {

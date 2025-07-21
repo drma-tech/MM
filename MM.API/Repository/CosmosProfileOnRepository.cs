@@ -1,10 +1,10 @@
-﻿using System.Linq.Expressions;
-using System.Net;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MM.API.Repository.Core;
+using System.Linq.Expressions;
+using System.Net;
 
 namespace MM.API.Repository;
 
@@ -18,7 +18,7 @@ public class CosmosProfileOnRepository
 
         var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
 
-        Container = ApiStartup.CosmosClient.GetContainer(databaseId, "profile-off");
+        Container = ApiStartup.CosmosClient.GetContainer(databaseId, "profile-on");
     }
 
     public Container Container { get; }
@@ -102,6 +102,63 @@ public class CosmosProfileOnRepository
         catch (CosmosOperationCanceledException)
         {
             return [];
+        }
+    }
+
+    public async Task<T> Upsert<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
+    {
+        try
+        {
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id),
+                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+
+            if (response.RequestCharge > 15)
+                _logger.LogWarning("Upsert - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
+
+            return response.Resource;
+        }
+        catch (CosmosOperationCanceledException)
+        {
+            return new T();
+        }
+    }
+
+    public async Task<T> PatchItem<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
+        where T : CosmosDocument, new()
+    {
+        //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
+
+        try
+        {
+            var response = await Container.PatchItemAsync<T>(id, new PartitionKey(id), operations,
+                CosmosRepositoryExtensions.GetPatchItemRequestOptions(), cancellationToken);
+
+            if (response.RequestCharge > 12)
+                _logger.LogWarning("PatchItem - ID {Id}, RequestCharge {Charges}", id, response.RequestCharge);
+
+            return response.Resource;
+        }
+        catch (CosmosOperationCanceledException)
+        {
+            return new T();
+        }
+    }
+
+    public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
+    {
+        try
+        {
+            var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey(item.Id),
+                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+
+            if (response.RequestCharge > 12)
+                _logger.LogWarning("Delete - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
+
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+        catch (CosmosOperationCanceledException)
+        {
+            return false;
         }
     }
 }

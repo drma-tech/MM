@@ -150,4 +150,54 @@ public class PrincipalFunction(
             throw;
         }
     }
+
+    [Function("PrincipalPublicMode")]
+    public async Task<ClientePrincipal?> PrincipalPublicMode(
+     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")]
+        HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = req.GetUserId();
+
+            var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
+            await repoOn.Upsert(profile, cancellationToken);
+            await repoOff.Delete(profile, cancellationToken);
+
+            var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            principal.PublicProfile = true;
+            
+            return await repo.Upsert(principal, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
+    [Function("PrincipalPrivateMode")]
+    public async Task<ClientePrincipal?> PrincipalPrivateMode(
+    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")]
+        HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = req.GetUserId();
+
+            var profile = await repoOn.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
+            await repoOff.Upsert(profile, cancellationToken);
+            await repoOn.Delete(profile, cancellationToken);
+
+            var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            principal.PublicProfile = false;
+
+            return await repo.Upsert(principal, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
 }

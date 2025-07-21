@@ -28,7 +28,7 @@
 @inherits PageCore<ProfileData>
 
 <RenderControl Core="Core" Model="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
-    <MudExpansionPanels Elevation="2">
+    <MudExpansionPanels Elevation="2" Class="mb-3">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
@@ -510,27 +510,18 @@
             </ChildContent>
         </MudExpansionPanel>
     </MudExpansionPanels>
-
-    <div class="d-flex mt-3">
-        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
-            @Button.Save
-        </MudButton>
-        @if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab.ToString())).IsValid)
-        {
-            <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)" Class="me-2">
-                @Button.ShowPendingItems
-            </MudButton>
-        }
-        <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
-            @Button.Back
-        </MudButton>
-        <MudSpacer></MudSpacer>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Variant="Variant.Filled"
-                   OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.Privacy, PopupHelper.Options(MaxWidth.ExtraSmall))">
-            @Button.Privacy
-        </MudButton>
-    </div>
 </RenderControl>
+
+<MudButton StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary" Variant="Variant.Filled" Class="me-2" OnClick="SaveHandle">
+    @Button.Save
+</MudButton>
+
+@if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab.ToString())).IsValid)
+{
+    <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)">
+        @Button.ShowPendingItems
+    </MudButton>
+}
 
 <MudDialog @ref="@MudDialog" Style="width: 100%">
     <DialogContent>
@@ -547,6 +538,11 @@
         <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
+
+<FloatingButton StartIcon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Info" Side="Side.Right" Position="2"
+                OnClick="async () => await MudDialog!.ShowAsync(GlobalTranslations.Privacy, PopupHelper.Options(MaxWidth.ExtraSmall))">
+</FloatingButton>
+<FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private MudDialog? MudDialog { get; set; }
@@ -616,11 +612,6 @@
         }
 
         return result.IsValid;
-    }
-
-    private void GoProfile()
-    {
-        Navigation.NavigateTo("profile");
     }
 
 }

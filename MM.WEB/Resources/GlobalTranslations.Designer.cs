@@ -619,11 +619,20 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone..
+        ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone.
         /// </summary>
         public static string ProfilePrivateMode {
             get {
                 return ResourceManager.GetString("ProfilePrivateMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile is now public and can be made available to our customers.
+        /// </summary>
+        public static string ProfilePublicMode {
+            get {
+                return ResourceManager.GetString("ProfilePublicMode", resourceCulture);
             }
         }
         
@@ -633,15 +642,6 @@ namespace MM.WEB.Resources {
         public static string Public {
             get {
                 return ResourceManager.GetString("Public", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to In this first phase, public mode is not yet available. Stay tuned for more news..
-        /// </summary>
-        public static string PublicModeNotAvailable {
-            get {
-                return ResourceManager.GetString("PublicModeNotAvailable", resourceCulture);
             }
         }
         

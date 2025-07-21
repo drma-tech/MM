@@ -35,6 +35,16 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincip
         await DeleteAsync(Endpoint.Remove, null);
     }
 
+    public async Task<ClientePrincipal?> Public()
+    {
+        return await PutAsync<ClientePrincipal>(Endpoint.Public, null, null);
+    }
+
+    public async Task<ClientePrincipal?> Private()
+    {
+        return await PutAsync<ClientePrincipal>(Endpoint.Private, null, null);
+    }
+
     private struct Endpoint
     {
         public const string Get = "principal/get";
@@ -42,5 +52,7 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincip
         public const string Add = "principal/add";
         public const string Paddle = "principal/paddle";
         public const string Remove = "principal/remove";
+        public const string Public = "principal/public";
+        public const string Private = "principal/private";
     }
 }

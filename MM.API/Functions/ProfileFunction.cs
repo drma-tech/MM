@@ -11,7 +11,7 @@ public static class ProfileHelper
     public static async Task<ProfileModel?> GetProfile(CosmosProfileOffRepository repoOff,
         CosmosProfileOnRepository repoOn, string? userId, CancellationToken cancellationToken)
     {
-        //todo: after online mode, change to ON by default
+        //todo: after online mode, exchange to ON by default
 
         var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken);
 
@@ -20,8 +20,7 @@ public static class ProfileHelper
         return profile;
     }
 
-    public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string userId,
-        CancellationToken cancellationToken)
+    public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
     {
         var myLikes = await repo.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
@@ -34,8 +33,7 @@ public static class ProfileHelper
         return myLikes;
     }
 
-    public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string userId,
-        CancellationToken cancellationToken)
+    public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
     {
         var myLikes = await repo.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
@@ -87,8 +85,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetData")]
     public async Task<HttpResponseData?> ProfileGetData(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -106,8 +103,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetFilter")]
     public async Task<HttpResponseData?> ProfileGetFilter(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -126,8 +122,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetSetting")]
     public async Task<HttpResponseData?> ProfileGetSetting(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -146,8 +141,7 @@ public class ProfileFunction(
 
     [Function("ProfileValidation")]
     public async Task<HttpResponseData?> ProfileValidation(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -166,8 +160,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetView")]
     public async Task<HttpResponseData?> GetView(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")]
-        HttpRequestData req, string id, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         try
         {
@@ -220,8 +213,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateData")]
     public async Task<ProfileModel> ProfileUpdateData(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -243,8 +235,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateFilter")]
     public async Task<FilterModel> ProfileUpdateFilter(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -261,8 +252,7 @@ public class ProfileFunction(
 
     [Function("ProfileUpdateSetting")]
     public async Task<SettingModel> ProfileUpdateSetting(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -279,8 +269,7 @@ public class ProfileFunction(
 
     [Function("ProfileSendInvite")]
     public async Task ProfileSendInvite(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/send-invite")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/send-invite")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -330,8 +319,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetMyLikes")]
     public async Task<HttpResponseData?> ProfileGetMyLikes(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mylikes")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -350,8 +338,7 @@ public class ProfileFunction(
 
     [Function("ProfileGetMyMatches")]
     public async Task<HttpResponseData?> ProfileGetMyMatches(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mymatches")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mymatches")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
