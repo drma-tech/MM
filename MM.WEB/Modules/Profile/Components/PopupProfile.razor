@@ -11,9 +11,9 @@
 @inject InteractionApi InteractionApi
 @inject IJSRuntime JsRuntime
 
-<MudDialog @ref="@modal" Style="width: 100%">
+<MudDialog Style="width: 100%">
     <DialogContent>
-        <RenderControl Core="Core" Model="view" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+        <RenderControl Core="Core" Model="View" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
             <MudGrid>
                 <MudItem xs="12" sm="6" md="4">
                     <MudPaper style="position: relative;" Outlined="true">
@@ -42,15 +42,15 @@
                         </div>
                         <div class="mb-2" style="text-align: center;">
                             <MudChip T="string" Color="Color.Primary" Label="true">
-                                @(view?.NickName ?? "NickName")
+                                @(View?.NickName ?? "NickName")
                             </MudChip>
-                            <MudTooltip Text="@view?.Location">
+                            <MudTooltip Text="@View?.Location">
                                 <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
-                                    @(view?.GetLocation(ProfileModel.LocationType.City) ?? "City")
+                                    @(View?.GetLocation(ProfileModel.LocationType.City) ?? "City")
                                 </MudChip>
                             </MudTooltip>
                             <MudText Typo="Typo.body1" Align="Align.Justify" Class="ma-2">
-                                @view?.Description
+                                @View?.Description
                             </MudText>
                         </div>
                         <MudGrid Spacing="2" Class="pa-2">
@@ -151,18 +151,20 @@
                     } *@
                 </MudItem>
                 <MudItem xs="12" sm="6" md="8">
-                    <CardCompatibility User="user" Filter="filter" View="view" Affinities="affinities"></CardCompatibility>
+                    <CardCompatibility User="user" Filter="filter" View="View" Affinities="affinities"></CardCompatibility>
                 </MudItem>
             </MudGrid>
             <ProfileReport @ref="report"></ProfileReport>
         </RenderControl>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async() => { await modal!.CloseAsync(); })">@Button.Close</MudButton>
+        <MudButton OnClick="@(async () => { MudDialog!.Close(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
 
 @code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+
     [Parameter][EditorRequired] public string? UserId { get; set; }
     [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
 
@@ -170,16 +172,15 @@
     [Parameter] public Action? Disliked { get; set; }
     [Parameter] public Action? Matched { get; set; }
 
-    public MM.Shared.Enums.Origin Origin { get; set; }
-    private MudDialog? modal;
+    [Parameter] public MM.Shared.Enums.Origin Origin { get; set; }
 
-    public string? IdUserView { get; set; }
-    public bool Fake { get; set; }
+    [Parameter] public string? IdUserView { get; set; }
+    [Parameter] public bool Fake { get; set; }
 
     private ClientePrincipal? principal;
     private ProfileModel? user;
     private FilterModel? filter;
-    private ProfileModel? view;
+    [Parameter] public ProfileModel? View { get; set; }
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
     private List<AffinityVM> affinities = [];
@@ -222,41 +223,33 @@
 
             principal = await PrincipalApi.Get(IsAuthenticated);
             user = await ProfileApi.Get(null);
-            view ??= await ProfileApi.GetView(IdUserView, null);
+            View ??= await ProfileApi.GetView(IdUserView, null);
 
-            if (view == null)
+            await MudDialog!.SetTitleAsync(View?.NickName);
+
+            if (View == null)
             {
                 Core?.ShowError(GlobalTranslations.PartnerProfileNotAvailable);
                 return;
             }
 
             if (Fake)
-                imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face, true)];
+                imageDataUriGallery = [View.GetPhoto(ImageHelper.PhotoType.Face, true)];
             else
-                imageDataUriGallery = [view.GetPhoto(ImageHelper.PhotoType.Face), view.GetPhoto(ImageHelper.PhotoType.Body)];
+                imageDataUriGallery = [View.GetPhoto(ImageHelper.PhotoType.Face), View.GetPhoto(ImageHelper.PhotoType.Body)];
 
             imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
             filter = await FilterApi.Get(null);
 
-            affinities = AffinityCore.GetAffinity(user, filter, view);
+            affinities = AffinityCore.GetAffinity(user, filter, View);
 
-            Core?.LoadingFinished?.Invoke(view);
+            Core?.LoadingFinished?.Invoke(View);
         }
         catch (Exception ex)
         {
             Core?.ShowError(ex.Message);
         }
-    }
-
-    public async Task ShowModal(MM.Shared.Enums.Origin Origin, string? IdUserView, ProfileModel? view = null, bool fake = false)
-    {
-        this.IdUserView = IdUserView;
-        this.view = view;
-        Fake = fake;
-        this.Origin = Origin;
-        modal?.ShowAsync(view?.NickName, PopupHelper.Options(MaxWidth.Large));
-        await LoadDataRender();
     }
 
     public Color GetColor(int perc)
@@ -316,7 +309,7 @@
         if (type == EventType.Like)
         {
             var noLike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Like) ?? true;
-            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(view!.Id).FirstOrDefault()?.Origin == MM.Shared.Enums.Origin.Invite;
+            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(View!.Id).FirstOrDefault()?.Origin == MM.Shared.Enums.Origin.Invite;
 
             return !(noLike && validated);
         }

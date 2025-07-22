@@ -143,7 +143,7 @@
                             @foreach (var item in MyLikes?.Items ?? [])
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Like, item.UserId))">
+                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Like, UserId, item.UserId))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
                                             @item.UserName
                                         </MudChip>
@@ -177,7 +177,7 @@
                             @foreach (var item in MyMatches?.Items ?? [])
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
+                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Match, UserId, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
                                             @item.UserName
                                         </MudChip>
@@ -196,14 +196,8 @@
     </MudItem>
 </MudGrid>
 
-<PopupProfile @ref="PopupProfile" UserId="@UserId" IsAuthenticated="IsAuthenticated"
-              Liked="async () => await LoadLikes(true)"
-              Matched="async () => await LoadMatches(true)"></PopupProfile>
-
 @code
 {
-    private PopupProfile? PopupProfile { get; set; }
-
     private ClientePrincipal? principal;
 
     private ProfileValidation ProfileValidator { get; } = new();
@@ -427,21 +421,7 @@
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }
-    }
-
-    private async Task OpenProfile(PersonModel? model)
-    {
-        if (model == null) return;
-
-        if (model.Fake)
-        {
-            await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, model.UserId, fakeProfiles.Single(s => s.Id == model.UserId), true);
-        }
-        else
-        {
-            await PopupProfile!.ShowModal(MM.Shared.Enums.Origin.Match, model.UserId);
-        }
-    }
+    }   
 
     // private string GetSuggestionTitle()
     // {

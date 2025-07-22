@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Auth;
+using MM.Shared.Models.Profile;
 using MM.WEB.Modules.Auth;
 using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
@@ -44,6 +45,24 @@ public static class PopupHelper
         };
 
         await service.ShowAsync<ProfilePopup>(Modules.Profile.Resources.Translations.MyProfile, parameters, Options(MaxWidth.ExtraSmall));
+    }
+
+    public static async Task OpenPopupProfile(this IDialogService service, bool isAuthenticated, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
+        ProfileModel? view = null, bool fake = false)
+    {
+        var parameters = new DialogParameters<PopupProfile>
+        {
+            { x => x.IsAuthenticated, isAuthenticated },
+            { x => x.Origin, origin },
+            { x => x.UserId, userId },
+            { x => x.IdUserView, idUserView },
+            { x => x.View, view },
+            { x => x.Fake, fake },
+            //{ x => x.Liked, await LoadLikes(true) },
+            //{ x => x.Matched, await LoadMatches(true) }
+        };
+
+        await service.ShowAsync<PopupProfile>(view?.NickName, parameters, Options(MaxWidth.Large));
     }
 
     public static async Task SettingsPopup(this IDialogService service)
