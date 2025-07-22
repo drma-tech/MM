@@ -78,7 +78,7 @@
 
     private async Task SavePictureHandle()
     {
-        var dataUrl = await JS.InvokeAsync<string>("getCroppedImage", 300, 300);
+        var dataUrl = await JS.InvokeAsync<string>("getCroppedImage", 512, 512);
 
         var base64 = dataUrl.Split(',')[1];
         var buffer = Convert.FromBase64String(base64);

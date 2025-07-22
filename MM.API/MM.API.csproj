@@ -18,7 +18,6 @@
 		<None Remove="Mediator\**" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Remove="Core\Middleware\PerformanceBehaviour.cs" />
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>

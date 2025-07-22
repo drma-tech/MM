@@ -98,8 +98,8 @@
         @Landing.OurRoadmap
     </MudText>
     <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="6" Class="mb-20" Style="align-items: center;">
-        <MudItem xs="12" md="5">
+    <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
+        <MudItem xs="12">
             <MudText Typo="Typo.h6" Color="Color.Secondary" Align="Align.Center" Class="mb-2">
                 @Landing.OurRoadmapMsg1
             </MudText>
@@ -107,111 +107,151 @@
                 @Landing.OurRoadmapMsg2
             </MudText>
         </MudItem>
-        <MudItem xs="12" md="7">
-            <MudGrid Spacing="4">
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
-                        <div class="d-flex mb-2">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("1").WithAnimation(IconAnimation.Fade).Font" Color="GetPhaseColor(1)" Label="true" Class="chip-no-text" />
-                            <MudText Typo="Typo.h6" Color="GetPhaseColor(1)" Style="align-content: center;">
-                                @Landing.Phase1Title
-                            </MudText>
-                        </div>
-                        <div>
-                            @if (SumUsers != null)
-                            {
-                                var tot = GetPhaseValue(1);
-                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
-                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                        <b>@tot.ToString("P2")</b>
-                                    </MudText>
-                                </MudProgressLinear>
-                            }
-                        </div>
-                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
-                            <li>@Landing.Phase1Opt1</li>
-                            <li>@Landing.Phase1Opt2</li>
-                            <li>@Landing.Phase1Opt3</li>
-                        </ul>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
-                        <div class="d-flex mb-2">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("2").Font" Color="GetPhaseColor(2)" Label="true" Class="chip-no-text" />
-                            <MudText Typo="Typo.h6" Color="GetPhaseColor(2)" Style="align-content: center;">
-                                @Landing.Phase2Title
-                            </MudText>
-                        </div>
-                        <div>
-                            @if (SumUsers != null)
-                            {
-                                var tot = GetPhaseValue(2);
-                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
-                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                        <b>@tot.ToString("P2")</b>
-                                    </MudText>
-                                </MudProgressLinear>
-                            }
-                        </div>
-                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
-                            <li>@Landing.Phase2Opt1</li>
-                            <li>@Landing.Phase2Opt2</li>
-                            <li>@Landing.Phase2Opt3</li>
-                        </ul>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
-                        <div class="d-flex mb-2">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("3").Font" Color="GetPhaseColor(3)" Label="true" Class="chip-no-text" />
-                            <MudText Typo="Typo.h6" Color="GetPhaseColor(3)" Style="align-content: center;">
-                                @Landing.Phase3Title
-                            </MudText>
-                        </div>
-                        <div>
-                            @if (SumUsers != null)
-                            {
-                                var tot = GetPhaseValue(3);
-                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
-                                    <MudText Typo="Typo.subtitle2" Color="Color.Dark">
-                                        <b>@tot.ToString("P2")</b>
-                                    </MudText>
-                                </MudProgressLinear>
-                            }
-                        </div>
-                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
-                            <li>@Landing.Phase3Opt1</li>
-                            <li>@Landing.Phase3Opt2</li>
-                        </ul>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="2" Class="mb-6 pa-4" Style="height: 100%;">
-                        <div class="d-flex mb-2">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("4").Font" Color="GetPhaseColor(4)" Label="true" Class="chip-no-text" />
-                            <MudText Typo="Typo.h6" Color="GetPhaseColor(4)" Style="align-content: center;">
-                                @Landing.Phase4Title
-                            </MudText>
-                        </div>
-                        <div>
-                            @if (SumUsers != null)
-                            {
-                                var tot = GetPhaseValue(4);
-                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 20px;">
-                                    <MudText Typo="Typo.subtitle2" Color="Color.Dark">
-                                        <b>@tot.ToString("P2")</b>
-                                    </MudText>
-                                </MudProgressLinear>
-                            }
-                        </div>
-                        <ul class="px-4 py-1" style="text-align: justify; line-height: 1.6;">
-                            <li>@Landing.Phase4Opt1</li>
-                            <li>@Landing.Phase4Opt2</li>
-                        </ul>
-                    </MudPaper>
-                </MudItem>
-            </MudGrid>
+        <MudItem xs="12" md="10">
+            <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)">
+                <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
+                    <ItemDot>
+                        <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
+                    </ItemDot>
+                    <ItemOpposite>
+                        <MudText Color="GetPhaseColor(1)" Typo="Typo.h5">@Landing.Phase1Title</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        @if (Breakpoint < Breakpoint.Sm)
+                        {
+                            <MudText Color="GetPhaseColor(1)" Typo="Typo.h5" Class="my-2">@Landing.Phase1Title</MudText>
+                        }
+                        <MudCard Elevation="25">
+                            <MudCardContent>
+                                <MudList T="string" Dense="true">
+                                    <MudListSubheader Class="pa-0">
+                                        <div>
+                                            @if (SumUsers != null)
+                                            {
+                                                var tot = GetPhaseValue(1);
+                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                        <b>@tot.ToString("P2")</b>
+                                                    </MudText>
+                                                </MudProgressLinear>
+                                            }
+                                        </div>
+                                    </MudListSubheader>
+                                    <MudListItem>@Landing.Phase1Opt1</MudListItem>
+                                    <MudListItem>@Landing.Phase1Opt2</MudListItem>
+                                    <MudListItem>@Landing.Phase1Opt3</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </ItemContent>
+                </MudTimelineItem>
+                <MudTimelineItem Color="GetPhaseColor(2)" Size="Size.Medium">
+                    <ItemDot>
+                        <MudIcon Icon="@IconsFA.Solid.Icon("2").Font" Style="text-align: center;"></MudIcon>
+                    </ItemDot>
+                    <ItemOpposite>
+                        <MudText Color="GetPhaseColor(2)" Typo="Typo.h5">@Landing.Phase2Title</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        @if (Breakpoint < Breakpoint.Sm)
+                        {
+                            <MudText Color="GetPhaseColor(2)" Typo="Typo.h5" Class="my-2">@Landing.Phase2Title</MudText>
+                        }
+                        <MudCard Elevation="25">
+                            <MudCardContent>
+                                <MudList T="string" Dense="true">
+                                    <MudListSubheader Class="pa-0">
+                                        <div>
+                                            @if (SumUsers != null)
+                                            {
+                                                var tot = GetPhaseValue(2);
+                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                        <b>@tot.ToString("P2")</b>
+                                                    </MudText>
+                                                </MudProgressLinear>
+                                            }
+                                        </div>
+                                    </MudListSubheader>
+                                    <MudListItem>@Landing.Phase2Opt1</MudListItem>
+                                    <MudListItem>@Landing.Phase2Opt2</MudListItem>
+                                    <MudListItem>@Landing.Phase2Opt3</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </ItemContent>
+                </MudTimelineItem>
+                <MudTimelineItem Color="GetPhaseColor(3)" Size="Size.Medium">
+                    <ItemDot>
+                        <MudIcon Icon="@IconsFA.Solid.Icon("3").Font" Style="text-align: center;"></MudIcon>
+                    </ItemDot>
+                    <ItemOpposite>
+                        <MudText Color="GetPhaseColor(3)" Typo="Typo.h5">@Landing.Phase3Title</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        @if (Breakpoint < Breakpoint.Sm)
+                        {
+                            <MudText Color="GetPhaseColor(3)" Typo="Typo.h5" Class="my-2">@Landing.Phase3Title</MudText>
+                        }
+                        <MudCard Elevation="25">
+                            <MudCardContent>
+                                <MudList T="string" Dense="true">
+                                    <MudListSubheader Class="pa-0">
+                                        <div>
+                                            @if (SumUsers != null)
+                                            {
+                                                var tot = GetPhaseValue(3);
+                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                        <b>@tot.ToString("P2")</b>
+                                                    </MudText>
+                                                </MudProgressLinear>
+                                            }
+                                        </div>
+                                    </MudListSubheader>
+                                    <MudListItem>@Landing.Phase3Opt1</MudListItem>
+                                    <MudListItem>@Landing.Phase3Opt2</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </ItemContent>
+                </MudTimelineItem>
+                <MudTimelineItem Color="GetPhaseColor(4)" Size="Size.Medium">
+                    <ItemDot>
+                        <MudIcon Icon="@IconsFA.Solid.Icon("4").Font" Style="text-align: center;"></MudIcon>
+                    </ItemDot>
+                    <ItemOpposite>
+                        <MudText Color="GetPhaseColor(4)" Typo="Typo.h5">@Landing.Phase4Title</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        @if (Breakpoint < Breakpoint.Sm)
+                        {
+                            <MudText Color="GetPhaseColor(4)" Typo="Typo.h5" Class="my-2">@Landing.Phase4Title</MudText>
+                        }
+                        <MudCard Elevation="25">
+                            <MudCardContent>
+                                <MudList T="string" Dense="true">
+                                    <MudListSubheader Class="pa-0">
+                                        <div>
+                                            @if (SumUsers != null)
+                                            {
+                                                var tot = GetPhaseValue(4);
+                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                        <b>@tot.ToString("P2")</b>
+                                                    </MudText>
+                                                </MudProgressLinear>
+                                            }
+                                        </div>
+                                    </MudListSubheader>
+                                    <MudListItem>@Landing.Phase4Opt1</MudListItem>
+                                    <MudListItem>@Landing.Phase4Opt2</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </ItemContent>
+                </MudTimelineItem>
+            </MudTimeline>
         </MudItem>
     </MudGrid>
 
@@ -302,8 +342,6 @@
             </MudPaper>
         </MudItem>
     </MudGrid>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-5">
-    </div>
 </MudContainer>
 
 @code {

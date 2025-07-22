@@ -20,11 +20,11 @@
                         @{
                             var totPercAff = affinities.GetPercentAffinity();
                         }
-                        <MudChip T="string" Color="GetColor(totPercAff)" Label="true" Class="poster-chip" Style="top: 5px; left: 5px;">
+                        <MudChip T="string" Color="GetColor(totPercAff)" Label="true" Class="poster-chip" Style="top: 5px; left: 5px; z-index: 2;">
                             @(totPercAff + "%")
                         </MudChip>
-                        <MudChip T="string" Color="Color.Dark" Label="true" Class="poster-chip" Style="top: 5px; right: 5px;"
-                                 Icon="@IconsFA.Solid.Icon("camera").Font">
+                        <MudChip T="string" Color="Color.Dark" Label="true" Class="poster-chip" Style="top: 5px; right: 5px; z-index: 2;"
+                                 Icon="@IconsFA.Solid.Icon("camera").WithSise(IconSize.sm).Font">
                             @imageDataUriGallery.Count()
                         </MudChip>
                         <div id="@GallerySwiperId" class="swiper">
@@ -32,7 +32,7 @@
                                 @foreach (var item in imageDataUriGallery)
                                 {
                                     <div class="swiper-slide">
-                                        <MudImage Src="@item" FallbackSrc="images/no-image.png" Style="max-height: 300px !important; width: 300px !important;"></MudImage>
+                                        <MudImage Src="@item" FallbackSrc="images/no-image.png" Style="max-height: 400px !important; width: 100% !important;"></MudImage>
                                     </div>
                                 }
                             </div>

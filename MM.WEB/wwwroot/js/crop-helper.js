@@ -18,16 +18,16 @@ window.initCropper = (imageId, aspectRatio) => {
             const data = cropper.getImageData();
 
             if (data.naturalWidth < 300 || data.naturalHeight < 300) {
-                alert("A imagem deve ter pelo menos 300x300 pixels.");
+                alert("The image must be at least 300x300 pixels.");
                 cropper.destroy(); // remove cropper
             }
 
             const containerData = cropper.getContainerData();
             const cropBoxData = {
-                width: 300,
-                height: 300,
-                left: (containerData.width - 300) / 2,
-                top: (containerData.height - 300) / 2
+                width: 512,
+                height: 512,
+                left: (containerData.width - 512) / 2,
+                top: (containerData.height - 512) / 2
             };
             cropper.setCropBoxData(cropBoxData);
         }
