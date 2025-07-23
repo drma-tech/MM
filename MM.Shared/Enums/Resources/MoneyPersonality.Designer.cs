@@ -61,79 +61,43 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Why settle for the ordinary when you can buy yourself the extraordinary?.
+        ///   Looks up a localized string similar to You love money (and there&apos;s nothing wrong with that)! You love spending it, primarily on amazing stuff, experiences, and services. You may even enjoy saving it, but with a spending goal in mind. You enjoy the finer things in life, however you define them, and pride yourself on your good taste — it&apos;s all about quality for you. You also work hard for your money, which allows you to feel good about spending it, and treating yourself and others well. You like to enjoy life with all five senses and inviting othe [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Celebrity_Description {
+        public static string Connoisseur_Description {
             get {
-                return ResourceManager.GetString("Celebrity_Description", resourceCulture);
+                return ResourceManager.GetString("Connoisseur_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Celebrity.
+        ///   Looks up a localized string similar to Connoisseur.
         /// </summary>
-        public static string Celebrity_Name {
+        public static string Connoisseur_Name {
             get {
-                return ResourceManager.GetString("Celebrity_Name", resourceCulture);
+                return ResourceManager.GetString("Connoisseur_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Making money comes naturally to you because work is the love of your life..
+        ///   Looks up a localized string similar to It&apos;s important to you to live life on your own terms and to have the freedom to follow your bliss. You tend not to think about money unless it&apos;s getting in the way of living life the way you want. You resist having money dictate your life choices, and are aware that your choices may not make sense to others around you. Some Independents see money as a game with too many rules and rebel against how others say it must be played. Others have an easy-come-easy-go attitude about money. Because you&apos;re resourceful [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Conqueror_Description {
+        public static string Independent_Description {
             get {
-                return ResourceManager.GetString("Conqueror_Description", resourceCulture);
+                return ResourceManager.GetString("Independent_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conqueror.
+        ///   Looks up a localized string similar to Independent.
         /// </summary>
-        public static string Conqueror_Name {
+        public static string Independent_Name {
             get {
-                return ResourceManager.GetString("Conqueror_Name", resourceCulture);
+                return ResourceManager.GetString("Independent_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You know how to enjoy life. Money’s not going to get in the way of your freedom!.
-        /// </summary>
-        public static string Hedonist_Description {
-            get {
-                return ResourceManager.GetString("Hedonist_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hedonist.
-        /// </summary>
-        public static string Hedonist_Name {
-            get {
-                return ResourceManager.GetString("Hedonist_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You&apos;re aware that money is a necessary part of life, but you&apos;d rather not get bogged down with it..
-        /// </summary>
-        public static string Idealist_Description {
-            get {
-                return ResourceManager.GetString("Idealist_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Idealist.
-        /// </summary>
-        public static string Idealist_Name {
-            get {
-                return ResourceManager.GetString("Idealist_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your savings provide for the people you love if they ever find themselves in a pinch..
+        ///   Looks up a localized string similar to Relationships come first, so you keep others in mind when making financial decisions (even though sometimes you&apos;re aware that putting others first means unintentionally harming yourself). You love giving and empowering others with both your money and your time. In a relationship or family, being a good provider is a priority for you..
         /// </summary>
         public static string Nurturer_Description {
             get {
@@ -151,20 +115,38 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re always saving for a rainy day, just in case..
+        ///   Looks up a localized string similar to You enjoy accumulating money and the process of watching it grow. You&apos;re on top of your finances, paying close attention to what&apos;s coming in and what&apos;s going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals..
         /// </summary>
-        public static string Stockpiler_Description {
+        public static string Producer_Description {
             get {
-                return ResourceManager.GetString("Stockpiler_Description", resourceCulture);
+                return ResourceManager.GetString("Producer_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stockpiler.
+        ///   Looks up a localized string similar to Producer.
         /// </summary>
-        public static string Stockpiler_Name {
+        public static string Producer_Name {
             get {
-                return ResourceManager.GetString("Stockpiler_Name", resourceCulture);
+                return ResourceManager.GetString("Producer_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You enjoy accumulating money and the process of watching it grow. You&apos;re on top of your finances, paying close attention to what&apos;s coming in and what&apos;s going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals..
+        /// </summary>
+        public static string Visionary_Description {
+            get {
+                return ResourceManager.GetString("Visionary_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visionary.
+        /// </summary>
+        public static string Visionary_Name {
+            get {
+                return ResourceManager.GetString("Visionary_Name", resourceCulture);
             }
         }
     }

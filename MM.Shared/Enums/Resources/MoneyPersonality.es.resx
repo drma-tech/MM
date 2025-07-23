@@ -117,40 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Celebrity_Description" xml:space="preserve">
-    <value>¿Por qué conformarse con lo ordinario cuando puedes comprarte lo extraordinario?</value>
+  <data name="CONNOISSEUR_Description" xml:space="preserve">
+    <value />
   </data>
-  <data name="Celebrity_Name" xml:space="preserve">
-    <value>Celebridad</value>
+  <data name="Connoisseur_Description" xml:space="preserve">
+    <value>Te encanta el dinero (¡y no hay nada de malo en ello!) Te encanta gastarlo, principalmente en cosas, experiencias y servicios increíbles. Incluso puedes disfrutar ahorrándolo, pero con un objetivo de gasto en mente. Disfrutas de las cosas buenas de la vida, como las definas, y te enorgulleces de tu buen gusto; para ti, lo importante es la calidad. También trabajas duro para ganarte el dinero, lo que te permite sentirte bien al gastarlo y tratarte bien a ti mismo y a los demás. Te gusta disfrutar de la vida con los cinco sentidos e invitar a los demás a que te acompañen.</value>
   </data>
-  <data name="Conqueror_Description" xml:space="preserve">
-    <value>Ganar dinero es algo natural para ti porque el trabajo es el amor de tu vida.</value>
+  <data name="CONNOISSEUR_Name" xml:space="preserve">
+    <value />
   </data>
-  <data name="Conqueror_Name" xml:space="preserve">
-    <value>Conquistador</value>
+  <data name="Connoisseur_Name" xml:space="preserve">
+    <value>Conocedor</value>
   </data>
-  <data name="Hedonist_Description" xml:space="preserve">
-    <value>Sabes cómo disfrutar de la vida. ¡El dinero no se interpondrá en tu libertad!</value>
+  <data name="INDEPENDENT_Description" xml:space="preserve">
+    <value />
   </data>
-  <data name="Hedonist_Name" xml:space="preserve">
-    <value>Hedonista</value>
+  <data name="Independent_Description" xml:space="preserve">
+    <value>Para ti es importante vivir la vida a tu manera y tener la libertad de seguir tu felicidad. Tiendes a no pensar en el dinero a menos que te impida vivir como deseas. Te resistes a que el dinero dicte tus decisiones y eres consciente de que tus decisiones podrían no tener sentido para quienes te rodean. Algunos independientes ven el dinero como un juego con demasiadas reglas y se rebelan contra cómo otros dicen que debe jugarse. Otros tienen una actitud de "viene y se va" con respecto al dinero. Como eres ingenioso, tienes una visión global y confías en que lo resolverás.</value>
   </data>
-  <data name="Idealist_Description" xml:space="preserve">
-    <value>Eres consciente de que el dinero es una parte necesaria de la vida, pero prefieres no empantanarte con él.</value>
+  <data name="INDEPENDENT_Name" xml:space="preserve">
+    <value />
   </data>
-  <data name="Idealist_Name" xml:space="preserve">
-    <value>Idealista</value>
+  <data name="Independent_Name" xml:space="preserve">
+    <value>Independiente</value>
+  </data>
+  <data name="NURTURER_Description" xml:space="preserve">
+    <value />
   </data>
   <data name="Nurturer_Description" xml:space="preserve">
-    <value>Sus ahorros proveen a las personas que ama si alguna vez se encuentran en apuros.</value>
+    <value>Las relaciones son lo primero, así que piensas en los demás al tomar decisiones financieras (aunque a veces eres consciente de que priorizar a los demás significa perjudicarte sin querer). Te encanta dar y empoderar a los demás con tu dinero y tu tiempo. En una relación o familia, ser un buen proveedor es una prioridad para ti.</value>
+  </data>
+  <data name="NURTURER_Name" xml:space="preserve">
+    <value />
   </data>
   <data name="Nurturer_Name" xml:space="preserve">
-    <value>Nutridor</value>
+    <value>Criador</value>
   </data>
-  <data name="Stockpiler_Description" xml:space="preserve">
-    <value>Siempre estás ahorrando para un día lluvioso, por si acaso.</value>
+  <data name="PRODUCER_Description" xml:space="preserve">
+    <value />
   </data>
-  <data name="Stockpiler_Name" xml:space="preserve">
-    <value>Acopiador</value>
+  <data name="Producer_Description" xml:space="preserve">
+    <value>Disfrutas acumulando dinero y viéndolo crecer. Controlas tus finanzas, prestando mucha atención a lo que entra y lo que sale, y tomando decisiones metódicas. Sueles ser financieramente conservador y tomas medidas para minimizar tu exposición al riesgo, independientemente de tu presupuesto. A veces, descubres que esta cautela te impide alcanzar tus metas.</value>
+  </data>
+  <data name="PRODUCER_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Producer_Name" xml:space="preserve">
+    <value>Productor</value>
+  </data>
+  <data name="VISIONARY_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Visionary_Description" xml:space="preserve">
+    <value>Disfrutas acumulando dinero y viéndolo crecer. Controlas tus finanzas, prestando mucha atención a lo que entra y lo que sale, y tomando decisiones metódicas. Sueles ser financieramente conservador y tomas medidas para minimizar tu exposición al riesgo, independientemente de tu presupuesto. A veces, descubres que esta cautela te impide alcanzar tus metas.</value>
+  </data>
+  <data name="VISIONARY_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Visionary_Name" xml:space="preserve">
+    <value>Visionario</value>
   </data>
 </root>

@@ -1,31 +1,22 @@
 ﻿namespace MM.Shared.Enums;
 
 /// <summary>
-///     https://empower.me/quiz/
+///     https://moneytype.hermoney.com/
 /// </summary>
 public enum MoneyPersonality
 {
-    [Custom(Name = "Idealist_Name", Description = "Idealist_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Idealist = 1,
+    [Custom(Name = "Visionary_Name", Description = "Visionary_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    Visionary = 1,
 
-    [Custom(Name = "Stockpiler_Name", Description = "Stockpiler_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Stockpiler = 2,
+    [Custom(Name = "Nurturer_Name", Description = "Nurturer_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    Nurturer = 2,
 
-    [Custom(Name = "Hedonist_Name", Description = "Hedonist_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Hedonist = 3,
+    [Custom(Name = "Independent_Name", Description = "Independent_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    Independent = 3,
 
-    [Custom(Name = "Celebrity_Name", Description = "Celebrity_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Celebrity = 4,
+    [Custom(Name = "Connoisseur_Name", Description = "Connoisseur_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    Connoisseur = 4,
 
-    [Custom(Name = "Nurturer_Name", Description = "Nurturer_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Nurturer = 5,
-
-    [Custom(Name = "Conqueror_Name", Description = "Conqueror_Description",
-        ResourceType = typeof(Resources.MoneyPersonality))]
-    Conqueror = 6
+    [Custom(Name = "Producer_Name", Description = "Producer_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    Producer = 5
 }
