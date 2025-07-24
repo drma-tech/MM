@@ -28,16 +28,19 @@
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.FaceId == null)
                     {
-                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Add
                         </MudButton>
                     }
                     else
                     {
-                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Update
                         </MudButton>
-                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Face))">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Face))"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Remove
                         </MudButton>
                     }
@@ -59,16 +62,19 @@
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.BodyId == null)
                     {
-                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Add
                         </MudButton>
                     }
                     else
                     {
-                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Update
                         </MudButton>
-                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Body))">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Body))"
+                                   Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Remove
                         </MudButton>
                     }
@@ -120,6 +126,7 @@
 
 @code
 {
+    private ClientePrincipal? Principal { get; set; }
     private ProfileModel? _profile = new();
     public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
 
@@ -128,6 +135,7 @@
     protected override async Task LoadDataRender()
     {
         _profile = await ProfileApi.Get(CoreProfile);
+        Principal = await PrincipalApi.Get(IsAuthenticated);
     }
 
     private async Task SelectPicture(PhotoType photoType)

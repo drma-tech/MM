@@ -64,7 +64,7 @@
             <MudGrid Spacing="2">
                 <MudItem xs="6">
                     <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
-                               Style="width: 100%;">
+                               Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)">
                         @Button.Profile
                     </MudButton>
                 </MudItem>
@@ -76,13 +76,14 @@
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
-                               Style="width: 100%;" Disabled="profile == null">
+                               Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile">
                         @Button.Settings
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
-                               Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
+                               Style="width: 100%;"
+                               Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile">
                         @Button.Gallery
                     </MudButton>
                 </MudItem>
@@ -143,7 +144,8 @@
                             @foreach (var item in MyLikes?.Items ?? [])
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Like, UserId, item.UserId))">
+                                    <div style="position: relative; cursor: pointer;"
+                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Like, UserId, item.UserId))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
                                             @item.UserName
                                         </MudChip>
@@ -177,7 +179,8 @@
                             @foreach (var item in MyMatches?.Items ?? [])
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;" @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Match, UserId, item.UserId, fakeProfiles.Single(s => s.Id == item.UserId), true))">
+                                    <div style="position: relative; cursor: pointer;"
+                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Match, UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
                                             @item.UserName
                                         </MudChip>
@@ -260,8 +263,8 @@
         {
             if (IsAuthenticated)
             {
-                principal = await PrincipalApi.Get(true);
                 profile = await ProfileApi.Get(CoreProfile);
+                principal = await PrincipalApi.Get(true);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
                 validation = await ValidationApi.Get(null);
@@ -421,7 +424,7 @@
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }
-    }   
+    }
 
     // private string GetSuggestionTitle()
     // {

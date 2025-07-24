@@ -46,7 +46,7 @@
                 </MudButton>
                 <MudSpacer></MudSpacer>
                 <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto"
-                           Disabled="Picture.Empty()">
+                           Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
                     Send
                 </MudButton>
             </MudCardActions>
@@ -74,6 +74,7 @@
 
 @code
 {
+    private ValidationModel? Validation { get; set; }
     private RenderControlCore<ValidationModel?>? Core { get; set; } = new();
     private MudDialog? MudDialog { get; set; }
     private CameraStreamer? CameraStreamerReference;
@@ -83,6 +84,11 @@
     private int CameraIndex { get; set; }
     private string? DeviceId { get; set; }
     private string? DeviceName { get; set; }
+
+    protected override async Task LoadDataRender()
+    {
+        Validation = await ValidationApi.Get(Core);
+    }
 
     private async void OnRenderedHandler()
     {

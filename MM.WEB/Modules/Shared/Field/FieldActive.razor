@@ -5,7 +5,7 @@
     <div class="d-flex" style="align-items: center;">
         <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
         <MudText Style="width: 50%;" Class="me-3">@For.GetCustomAttribute().Name</MudText>
-        <MudButton Variant="Variant.Outlined" Href="/profile/validation/gallery" Style="width: 100%" Disabled="Disabled"
+        <MudButton Variant="Variant.Outlined" Href="/profile/validation/gallery" Style="width: 100%" Disabled="Disabled || Value"
                    StartIcon="@(Value ? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)"
                    Color="@(Value ? Color.Success : Color.Warning)">
             @if (Value)

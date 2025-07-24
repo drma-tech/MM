@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Profile.Core;
@@ -15,7 +16,8 @@ public partial class ProfileData : PageCore<ProfileData>
     [Inject] protected MapApi MapApi { get; set; } = default!;
     [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
-    private ProfileModel? Profile { get; set; }
+    private ClientePrincipal? Principal { get; set; }
+    private ProfileModel? Profile { get; set; }    
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
     private GeoLocation? GPS { get; set; }
@@ -24,7 +26,8 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         Core?.LoadingStarted?.Invoke();
 
-        Profile = await ProfileApi.Get(null);
+        Principal = await PrincipalApi.Get(IsAuthenticated);
+        Profile = await ProfileApi.Get(null);        
 
         if (Profile == null) Snackbar.Add(GlobalTranslations.BasicRequired, MudBlazor.Severity.Warning);
 

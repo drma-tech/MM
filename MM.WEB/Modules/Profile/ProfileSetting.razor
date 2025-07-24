@@ -26,7 +26,8 @@
     </MudStack>
 
     <div class="d-flex mt-3">
-        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2"
+                   Disabled="@(Setting == null || Principal == null || Principal.PublicProfile)">
             @Button.Save
         </MudButton>
     </div>
@@ -35,6 +36,7 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
+    private ClientePrincipal? Principal { get; set; }
     private SettingModel? Setting { get; set; }
     public RenderControlCore<SettingModel?>? Core { get; set; } = new();
 
@@ -42,6 +44,7 @@
     {
         Core?.LoadingStarted?.Invoke();
 
+        Principal = await PrincipalApi.Get(IsAuthenticated);
         Setting = await SettingApi.Get(null);
 
         if (Setting == null)

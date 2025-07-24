@@ -869,7 +869,7 @@ public static class AffinityCore
         return profile.WantChildren switch
         {
             WantChildren.No => [WantChildren.No],
-            WantChildren.Maybe => [WantChildren.Maybe, WantChildren.Yes],
+            WantChildren.Maybe => [WantChildren.No, WantChildren.Maybe, WantChildren.Yes],
             WantChildren.Yes => [WantChildren.Maybe, WantChildren.Yes],
             _ => []
         };
