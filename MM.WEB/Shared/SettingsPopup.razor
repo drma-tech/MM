@@ -13,9 +13,17 @@
                 </FieldSelect>
             </MudItem>
             <MudItem xs="12">
-                <MudToggleIconButton Toggled="@AppStateStatic.DarkMode" ToggledChanged="DarkModeChanged"
-                                     Icon="@Icons.Material.Filled.DarkMode" ToggledIcon="@Icons.Material.Filled.LightMode" />
-                <span>@(AppStateStatic.DarkMode ? "Light" : "Dark") Mode</span>
+                <MudToggleGroup SelectionMode="SelectionMode.SingleSelection" Vertical="false" Color="Color.Primary"
+                                Value="AppStateStatic.DarkMode" ValueChanged="(bool vl) => DarkModeChanged(vl)">
+                    <MudToggleItem Value="false">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("sun").Font" Title="Light Mode" Class="me-1"></MudIcon>
+                        Light Mode
+                    </MudToggleItem>
+                    <MudToggleItem Value="true">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("moon").Font" Title="Dark Mode" Class="me-1"></MudIcon>
+                        Dark Mode
+                    </MudToggleItem>
+                </MudToggleGroup>
             </MudItem>
         </MudGrid>
     </DialogContent>
@@ -34,7 +42,7 @@
 
         if (language.NotEmpty())
         {
-            var languages = EnumHelper.GetObjArray<Language>(false);
+            var languages = EnumHelper.GetList<Language>(false);
             var lang = languages.FirstOrDefault(w => w.Description == language);
 
             AppStateStatic.ChangeLanguage(lang?.Value ?? Language.English);

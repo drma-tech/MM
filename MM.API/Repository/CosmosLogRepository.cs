@@ -1,7 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Azure.Cosmos;
 using MM.API.Repository.Core;
+using System.Text.Json.Serialization;
 
 namespace MM.API.Repository;
 

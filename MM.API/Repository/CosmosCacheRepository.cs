@@ -1,8 +1,7 @@
-﻿using System.Net;
-using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using MM.API.Repository.Core;
+using System.Net;
 
 namespace MM.API.Repository;
 

@@ -34,6 +34,8 @@ return;
 
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
+    services.AddHttpClient("paddle");
+
     services.AddSingleton<CosmosRepository>();
     services.AddSingleton<CosmosCacheRepository>();
     services.AddSingleton<CosmosProfileOffRepository>();

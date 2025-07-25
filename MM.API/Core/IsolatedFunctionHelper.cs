@@ -1,10 +1,10 @@
-﻿using System.Collections.Specialized;
+﻿using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
+using System.Collections.Specialized;
 using System.Net;
 using System.Text.Json;
 using System.Web;
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.Logging;
 
 namespace MM.API.Core;
 
@@ -41,25 +41,21 @@ public static class IsolatedFunctionHelper
         return model;
     }
 
-    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache maxAge,
-        CancellationToken cancellationToken) where T : class
+    public static async Task<HttpResponseData> CreateResponse<T>(this HttpRequestData req, T? doc, TtlCache maxAge, CancellationToken cancellationToken)
+        where T : class
     {
-        HttpResponseData? response;
+        var response = req.CreateResponse();
 
         if (doc != null)
         {
-            response = req.CreateResponse();
-
             await response.WriteAsJsonAsync(doc, cancellationToken);
         }
         else
         {
-            response = req.CreateResponse(HttpStatusCode.NoContent);
+            response.StatusCode = HttpStatusCode.NoContent;
         }
 
         response.Headers.Add("Cache-Control", $"public, max-age={(int)maxAge}");
-        //response.Headers.Add("ETag", eTag); // unique identification to verify data changes
-        //response.Headers.Add("Access-Control-Expose-Headers", "ETag"); //don't using anymore
 
         return response;
     }
@@ -80,26 +76,25 @@ public static class IsolatedFunctionHelper
     {
         var logger = req.FunctionContext.GetLogger(req.FunctionContext.FunctionDefinition.Name);
 
-        const string messageTemplate = "ProcessException. State: {State}, Params: {Params}";
+        const string messageTemplate = "ProcessException. InvocationId: {InvocationId}, State: {State}, Params: {Params}";
 
-        logger.LogError(ex, messageTemplate, req.BuildState(), req.BuildParams());
+        logger.LogError(ex, messageTemplate, req.FunctionContext.InvocationId, req.BuildState(), req.BuildParams());
     }
 
     public static void LogWarning(this HttpRequestData req, string? message)
     {
         var logger = req.FunctionContext.GetLogger(req.FunctionContext.FunctionDefinition.Name);
 
-        const string messageTemplate = "LogWarning. Message: {message} State: {State}, Params: {Params}";
+        const string messageTemplate = "LogWarning. Message: {message}, InvocationId: {InvocationId}, State: {State}, Params: {Params}";
 
-        logger.LogWarning(messageTemplate, message, req.BuildState(), req.BuildParams());
+        logger.LogWarning(messageTemplate, message, req.FunctionContext.InvocationId, req.BuildState(), req.BuildParams());
     }
 
     private static string BuildState(this HttpRequestData req)
     {
         var valueCollection = HttpUtility.ParseQueryString(req.Url.Query);
 
-        return string.Join("",
-            valueCollection.AllKeys.Select(key => $"{key?.ToLowerInvariant()}={{{key?.ToLowerInvariant()}}}|"));
+        return string.Join("", valueCollection.AllKeys.Select(key => $"{key?.ToLowerInvariant()}={{{key?.ToLowerInvariant()}}}|"));
     }
 
     private static string[] BuildParams(this HttpRequestData req)

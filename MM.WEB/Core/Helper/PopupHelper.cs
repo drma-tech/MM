@@ -8,7 +8,7 @@ using MM.WEB.Shared;
 using MudBlazor;
 using static MM.Shared.Core.Helper.ImageHelper;
 
-namespace MM.WEB.Core;
+namespace MM.WEB.Core.Helper;
 
 public static class PopupHelper
 {
