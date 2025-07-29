@@ -17,7 +17,7 @@
         </MudItem>
         <MudItem xs="12" sm="6" Style="text-align: center;">
             <MudPaper Elevation="2" Class="pa-6">
-                <MudText Typo="Typo.h4" Color="Color.Primary" Class="mb-2">
+                <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 custom-h2-landpage">
                     @SeoTranslations.AppName
                 </MudText>
                 <MudText Typo="Typo.body1" Align="Align.Justify">
@@ -30,7 +30,7 @@
         </MudItem>
     </MudGrid>
 
-    <MudText Typo="Typo.h4" Color="Color.Primary">
+    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
         @Landing.OurNumbers
     </MudText>
     <MudDivider Class="mb-10"></MudDivider>
@@ -96,13 +96,13 @@
         <span class="me-2" style="font-weight: bold;">@Landing.OurNumbersMsg1</span>@Landing.OurNumbersMsg2
     </MudAlert>
 
-    <MudText Typo="Typo.h4" Color="Color.Primary">
+    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
         @Landing.OurRoadmap
     </MudText>
     <MudDivider Class="mb-10"></MudDivider>
     <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
         <MudItem xs="12">
-            <MudText Typo="Typo.h6" Color="Color.Secondary" Align="Align.Center" Class="mb-2">
+            <MudText Typo="Typo.h3" Color="Color.Secondary" Align="Align.Center" Class="mb-2 custom-h3-roadmap">
                 @Landing.OurRoadmapMsg1
             </MudText>
             <MudText Typo="Typo.body1" Align="Align.Justify" Style="line-height: 1.6;">
@@ -110,18 +110,18 @@
             </MudText>
         </MudItem>
         <MudItem xs="12" md="10">
-            <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)">
+            <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)">
                 <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                     <ItemDot>
                         <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
                     </ItemDot>
                     <ItemOpposite>
-                        <MudText Color="GetPhaseColor(1)" Typo="Typo.h5">@Landing.Phase1Title</MudText>
+                        <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase1Title</MudText>
                     </ItemOpposite>
                     <ItemContent>
                         @if (Breakpoint < Breakpoint.Sm)
                         {
-                            <MudText Color="GetPhaseColor(1)" Typo="Typo.h5" Class="my-2">@Landing.Phase1Title</MudText>
+                            <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase1Title</MudText>
                         }
                         <MudCard Elevation="25">
                             <MudCardContent>
@@ -152,12 +152,12 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("2").Font" Style="text-align: center;"></MudIcon>
                     </ItemDot>
                     <ItemOpposite>
-                        <MudText Color="GetPhaseColor(2)" Typo="Typo.h5">@Landing.Phase2Title</MudText>
+                        <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase2Title</MudText>
                     </ItemOpposite>
                     <ItemContent>
                         @if (Breakpoint < Breakpoint.Sm)
                         {
-                            <MudText Color="GetPhaseColor(2)" Typo="Typo.h5" Class="my-2">@Landing.Phase2Title</MudText>
+                            <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase2Title</MudText>
                         }
                         <MudCard Elevation="25">
                             <MudCardContent>
@@ -188,12 +188,12 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("3").Font" Style="text-align: center;"></MudIcon>
                     </ItemDot>
                     <ItemOpposite>
-                        <MudText Color="GetPhaseColor(3)" Typo="Typo.h5">@Landing.Phase3Title</MudText>
+                        <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase3Title</MudText>
                     </ItemOpposite>
                     <ItemContent>
                         @if (Breakpoint < Breakpoint.Sm)
                         {
-                            <MudText Color="GetPhaseColor(3)" Typo="Typo.h5" Class="my-2">@Landing.Phase3Title</MudText>
+                            <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase3Title</MudText>
                         }
                         <MudCard Elevation="25">
                             <MudCardContent>
@@ -223,12 +223,12 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("4").Font" Style="text-align: center;"></MudIcon>
                     </ItemDot>
                     <ItemOpposite>
-                        <MudText Color="GetPhaseColor(4)" Typo="Typo.h5">@Landing.Phase4Title</MudText>
+                        <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase4Title</MudText>
                     </ItemOpposite>
                     <ItemContent>
                         @if (Breakpoint < Breakpoint.Sm)
                         {
-                            <MudText Color="GetPhaseColor(4)" Typo="Typo.h5" Class="my-2">@Landing.Phase4Title</MudText>
+                            <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase4Title</MudText>
                         }
                         <MudCard Elevation="25">
                             <MudCardContent>
@@ -257,7 +257,7 @@
         </MudItem>
     </MudGrid>
 
-    <MudText Typo="Typo.h4" Color="Color.Primary">
+    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
         @Landing.OurFeatures
     </MudText>
     <MudDivider Class="mb-10"></MudDivider>
@@ -266,7 +266,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CompatibilitySystem</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilitySystem</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilitySystemDesc</MudText>
                 </div>
             </MudPaper>
@@ -275,7 +275,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("people-arrows").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CoupleCompatibility</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CoupleCompatibility</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CoupleCompatibilityDesc</MudText>
                 </div>
             </MudPaper>
@@ -284,7 +284,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("id-badge").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Profile</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Profile</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.ProfileDesc</MudText>
                 </div>
             </MudPaper>
@@ -293,7 +293,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("book").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.CompatibilityReport</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilityReport</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilityReportDesc</MudText>
                 </div>
             </MudPaper>
@@ -302,7 +302,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Security</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Security</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.SecurityDesc</MudText>
                 </div>
             </MudPaper>
@@ -311,7 +311,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("user-lock").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Privacy</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Privacy</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.PrivacyDesc</MudText>
                 </div>
             </MudPaper>
@@ -320,7 +320,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Authenticity</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Authenticity</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.AuthenticityDesc</MudText>
                 </div>
             </MudPaper>
@@ -329,7 +329,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("shuffle").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.Tracking</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Tracking</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.TrackingDesc</MudText>
                 </div>
             </MudPaper>
@@ -338,7 +338,7 @@
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("coins").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
                 <div>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Landing.MMCoin</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.MMCoin</MudText>
                     <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.MMCoinDesc</MudText>
                 </div>
             </MudPaper>

@@ -1,1 +1,3 @@
 ﻿Sitemap: https://www.modern-matchmaker.com/sitemap.xml
+User-agent: *
+Disallow: /.auth/login/

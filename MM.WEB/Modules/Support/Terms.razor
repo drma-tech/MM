@@ -1,13 +1,6 @@
 ﻿@page "/support/terms/{lang}"
 <SeoHeader Title="Terms" Url=@($"/support/terms/{Lang}")></SeoHeader>
 
-@code {
-    [Parameter] public string? Lang { get; set; }
-
-    public string? ProjectTitle => SeoTranslations.AppName;
-    public string? ProjectDomain => "www.modern-matchmaker.com";
-}
-
 <style>
     .terms-container {
         max-width: 900px;
@@ -37,7 +30,7 @@
         margin-bottom: 2.2rem;
     }
 
-        .terms-section h3 {
+        .terms-section h2 {
             margin-bottom: 0.7rem;
             color: var(--mud-palette-primary, #1976d2);
             font-size: 1.18rem;
@@ -52,6 +45,10 @@
         }
 
         .terms-section ul {
+            text-align: justify;
+            margin-bottom: 0.5rem;
+            color: var(--mud-palette-text-primary, #333);
+            line-height: 1.7;
             padding-left: 1.4rem;
             list-style-type: disc;
         }
@@ -64,39 +61,39 @@
 <div class="terms-container">
     @if (Lang == "pt")
     {
-        <div class="terms-title">Termos de Uso</div>
+        <h1 class="terms-title">Termos de Uso</h1>
         <div class="terms-subtitle">
             Bem-vindo ao <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>)!<br />
             Ao acessar ou usar este serviço, você concorda com estes Termos de Uso e com nossa Política de Privacidade.
         </div>
         <div class="terms-section">
-            <h3>1. Sobre o Serviço</h3>
+            <h2>1. Sobre o Serviço</h2>
             <p>O <b>@ProjectTitle</b> é uma plataforma digital de matchmaking operada pela Delivering Reliable Modern Apps Tech OÜ, registrada na Estônia. O serviço é global e oferece uma alternativa moderna e estruturada ao matchmaking tradicional.</p>
             <p>Todo o processo de sugestão é feito por curadoria automatizada, utilizando algoritmos proprietários e modelos estatísticos de compatibilidade. Filtros e preferências do usuário afetam diretamente o número e tipo de sugestões disponíveis. Não garantimos uma quantidade específica de sugestões ou compatibilidade.</p>
             <p>Apenas clientes ativos ou usuários verificados podem iniciar ou responder interações. Usuários não-clientes podem se registrar gratuitamente e podem ser selecionados como sugestões, mas não podem interagir ativamente sem realizar a verificação.</p>
             <p>Não há intervenção humana no processo de sugestão, embora moderação possa ser aplicada quando necessário.</p>
         </div>
         <div class="terms-section">
-            <h3>2. Elegibilidade e Verificação de Usuário</h3>
+            <h2>2. Elegibilidade e Verificação de Usuário</h2>
             <p>Este serviço está disponível apenas para pessoas com 18 anos ou mais, ou a idade mínima legal em sua jurisdição — o que for maior. Usuários menores de idade são estritamente proibidos e terão suas contas excluídas sem aviso prévio.</p>
             <p>Para interagir com outros (como cliente ou como sugestão), a verificação de identidade é obrigatória. Esse processo é realizado por terceiros certificados (ex.: Veriff), utilizando documentos oficiais e testes de vivacidade. Os dados coletados são limitados e seguem as práticas de privacidade do terceiro envolvido.</p>
             <p>Os usuários são responsáveis por fornecer informações precisas, verdadeiras e atualizadas durante o cadastro e o uso da plataforma. Os dados pessoais são processados de acordo com nossa Política de Privacidade.</p>
         </div>
         <div class="terms-section">
-            <h3>3. Tokens, Planos e Pagamentos</h3>
+            <h2>3. Tokens, Planos e Pagamentos</h2>
             <p>Todas as interações no <b>@ProjectTitle</b> requerem tokens — nossa moeda virtual — que podem ser adquiridos via pagamento único ou assinaturas recorrentes com nosso parceiro de pagamento (Paddle).</p>
             <p><b>Pagamentos únicos:</b> o usuário compra uma quantidade específica de tokens. <b>Assinaturas:</b> fornecem uma quantidade recorrente de tokens e são renovadas automaticamente conforme o plano escolhido (mensal, semestral, anual). O cancelamento de uma assinatura também cancela quaisquer tokens não utilizados vinculados a ela. Os prazos mínimos de cancelamento podem variar por plano e são informados no momento da compra.</p>
             <p>Os tokens não expiram e não são transferíveis entre usuários. Eles não possuem valor monetário e não são reembolsáveis, salvo indicação expressa em contrário ou em casos excepcionais avaliados pelo suporte.</p>
             <p>Os preços são em dólares (USD) e convertidos automaticamente para a moeda local pelo processador de pagamentos. A disponibilidade e moedas suportadas variam por país. Alguns países podem estar restritos por razões legais ou de conformidade. Os comprovantes e recibos são emitidos pela Paddle.</p>
         </div>
         <div class="terms-section">
-            <h3>4. Conduta e Conteúdo</h3>
+            <h2>4. Conduta e Conteúdo</h2>
             <p>É estritamente proibido publicar, compartilhar ou transmitir conteúdo ofensivo, ilegal, falso, discriminatório, violento, ameaçador, difamatório ou sexualmente explícito. Usuários devem se tratar com respeito em todo momento.</p>
             <p>Denúncias de comportamento inadequado são revisadas de forma automatizada, com moderação manual quando necessário. A revisão ocorre em até 48 horas úteis, e as sanções podem incluir advertências, suspensões ou banimentos permanentes sem reembolso.</p>
             <p>A plataforma pode suspender ou excluir permanentemente qualquer conta envolvida em fraude, falsidade ideológica, assédio ou violação destes Termos — de forma automática e sem aviso prévio. Violações repetidas ou tentativas de burlar a moderação podem resultar em bloqueios por IP ou medidas legais adicionais.</p>
         </div>
         <div class="terms-section">
-            <h3>5. Segurança e Responsabilidade do Usuário</h3>
+            <h2>5. Segurança e Responsabilidade do Usuário</h2>
             <p>O <b>@ProjectTitle</b> fornece ferramentas como denúncia, bloqueio e diretrizes de segurança, mas não garante a identidade, intenções ou ações dos usuários dentro ou fora da plataforma.</p>
             <p>Todas as interações e decisões são de responsabilidade exclusiva do usuário. A plataforma isenta-se de responsabilidade por danos, angústia emocional, perdas financeiras ou consequências decorrentes do uso do serviço.</p>
             <p>As sugestões de encontro vêm acompanhadas de dicas e orientações de segurança. Recomendamos fortemente encontros em locais públicos e o aviso prévio a contatos confiáveis.</p>
@@ -104,45 +101,45 @@
             <p>Onde legalmente permitido, o usuário concorda em indenizar a plataforma e seus operadores por quaisquer reivindicações, danos ou consequências decorrentes de suas ações dentro ou fora da plataforma.</p>
         </div>
         <div class="terms-section">
-            <h3>6. Propriedade Intelectual</h3>
+            <h2>6. Propriedade Intelectual</h2>
             <p>Todo o conteúdo, algoritmos, marca, layout e tecnologias utilizados no <b>@ProjectTitle</b> estão protegidos sob a licença MPL-2.0 ou licenças de terceiros, conforme aplicável. O uso ou redistribuição não autorizada é estritamente proibido.</p>
             <p>A plataforma inclui serviços e conteúdos de terceiros, incluindo, mas não se limitando a: Paddle (pagamentos), Veriff (verificação de identidade), HERE (localização) e infraestrutura em nuvem da Azure e AWS. Cada serviço está sujeito a seus próprios termos e licenças. Uma lista completa de atribuições e licenças está disponível na seção de Créditos.</p>
             <p>Dados anônimos e agregados podem ser usados para análises internas e melhoria dos serviços.</p>
             <p>Todo conteúdo enviado pelo usuário (ex.: fotos, biografias, descrições) permanece de propriedade do respectivo autor. No entanto, ao enviar conteúdo para a plataforma, o usuário concede ao <b>@ProjectTitle</b> uma licença mundial, isenta de royalties, perpétua e sublicenciável para usar, exibir, reproduzir e distribuir esse conteúdo dentro da plataforma e em materiais promocionais, se aplicável. Essa licença é encerrada com a exclusão da conta ou do conteúdo, exceto quando já utilizado de forma irreversível.</p>
         </div>
         <div class="terms-section">
-            <h3>7. Alterações dos Termos</h3>
+            <h2>7. Alterações dos Termos</h2>
             <p>Estes Termos podem ser atualizados periodicamente por razões legais, técnicas ou operacionais. Mudanças relevantes serão notificadas por e-mail ou dentro da plataforma. O uso contínuo após alterações implica aceitação dos novos termos.</p>
         </div>
         <div class="terms-section">
-            <h3>8. Gerenciamento de Conta e Inatividade</h3>
+            <h2>8. Gerenciamento de Conta e Inatividade</h2>
             <p>A plataforma se reserva o direito de suspender ou excluir contas inativas ou que violem estes Termos. O usuário pode excluir permanentemente sua conta e dados utilizando as ferramentas de privacidade disponíveis na plataforma.</p>
         </div>
         <div class="terms-section">
-            <h3>9. Suporte e Contato</h3>
+            <h2>9. Suporte e Contato</h2>
             <p>Para suporte, feedback ou denúncias, o usuário pode acessar as ferramentas de suporte disponíveis na plataforma ou entrar em contato através da seção de suporte.</p>
         </div>
         <div class="terms-section">
-            <h3>10. Conformidade Legal</h3>
+            <h2>10. Conformidade Legal</h2>
             <p>O usuário é responsável por garantir que seu uso do <b>@ProjectTitle</b> esteja em conformidade com as leis locais, incluindo restrições de idade, proteção de dados e normas de conduta online. O serviço é desenvolvido em conformidade com padrões internacionais, incluindo o GDPR.</p>
         </div>
         <div class="terms-section">
-            <h3>11. Legislação Aplicável e Resolução de Conflitos</h3>
+            <h2>11. Legislação Aplicável e Resolução de Conflitos</h2>
             <p>Estes Termos são regidos pelas leis da Estônia. O usuário concorda em resolver todas as disputas por arbitragem vinculante, salvo se proibido pela lei local ou em casos que envolvam investigação criminal, onde as autoridades competentes podem ser envolvidas.</p>
             <p>Qualquer disputa legal será tratada em inglês e sob jurisdição exclusiva dos tribunais de Tallinn, Estônia.</p>
         </div>
         <div class="terms-section">
-            <h3>12. Licença de Uso da Plataforma</h3>
+            <h2>12. Licença de Uso da Plataforma</h2>
             <p>O <b>@ProjectTitle</b> concede ao usuário uma licença limitada, pessoal, não exclusiva, intransferível e revogável para acessar e utilizar a plataforma conforme estes Termos. É estritamente proibido acesso automatizado, scraping, mineração de dados, uso de bots ou engenharia reversa.</p>
             <p>As contas são de uso exclusivo da pessoa que as registrou. Uso comercial, divulgação ou solicitação a outros usuários é estritamente proibido.</p>
         </div>
         <div class="terms-section">
-            <h3>13. Isenção e Limitação de Responsabilidade</h3>
+            <h2>13. Isenção e Limitação de Responsabilidade</h2>
             <p>O <b>@ProjectTitle</b> oferece o serviço “como está” e “conforme disponível”, sem garantias de qualquer tipo, expressas ou implícitas. Não garantimos a exatidão, integridade ou utilidade de qualquer conteúdo ou comportamento de usuários.</p>
             <p>Na máxima extensão permitida por lei, não seremos responsáveis por danos indiretos, incidentais, consequenciais ou punitivos, incluindo, entre outros, perda de lucros, estresse emocional ou perda de dados.</p>
         </div>
         <div class="terms-section">
-            <h3>14. Disposições Legais</h3>
+            <h2>14. Disposições Legais</h2>
             <p><b>Força Maior:</b> Não somos responsáveis por atrasos ou falhas decorrentes de eventos fora de nosso controle, como desastres naturais, guerras, pandemias, ações governamentais, falhas de infraestrutura ou interrupções de serviços de terceiros.</p>
             <p><b>Cessão:</b> Podemos ceder ou transferir nossos direitos e obrigações sob estes Termos em caso de fusão, aquisição ou venda de ativos. O usuário não pode transferir seus direitos sem consentimento por escrito.</p>
             <p><b>Renúncia a Ações Coletivas:</b> Quando legalmente permitido, o usuário concorda em resolver disputas de forma individual e renuncia ao direito de participar de ações coletivas ou arbitragens coletivas.</p>
@@ -150,39 +147,39 @@
     }
     else if (Lang == "es")
     {
-        <div class="terms-title">Términos de Uso</div>
+        <h1 class="terms-title">Términos de Uso</h1>
         <div class="terms-subtitle">
             Bienvenido a <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>)!<br />
             Al acceder o utilizar este servicio, aceptas estos Términos de Uso y nuestra Política de Privacidad.
         </div>
         <div class="terms-section">
-            <h3>1. Sobre el Servicio</h3>
+            <h2>1. Sobre el Servicio</h2>
             <p><b>@ProjectTitle</b> es una plataforma digital de matchmaking operada por Delivering Reliable Modern Apps Tech OÜ, registrada en Estonia. El servicio es global y ofrece una alternativa moderna y estructurada al matchmaking tradicional.</p>
             <p>Todo el sistema de sugerencias se realiza mediante curación automatizada, utilizando algoritmos propietarios y modelos estadísticos de compatibilidad. Los filtros y preferencias del usuario determinan el número y tipo de sugerencias disponibles. No garantizamos una cantidad específica de coincidencias ni resultados de compatibilidad.</p>
             <p>Sólo los clientes activos o los usuarios verificados pueden iniciar o responder interacciones. Los usuarios no clientes pueden registrarse de forma gratuita y ser sugeridos, pero no pueden interactuar activamente hasta completar la verificación.</p>
             <p>No hay intervención humana en el proceso de sugerencias, aunque se aplica moderación cuando es necesario.</p>
         </div>
         <div class="terms-section">
-            <h3>2. Elegibilidad y Verificación de Usuario</h3>
+            <h2>2. Elegibilidad y Verificación de Usuario</h2>
             <p>Este servicio está disponible únicamente para personas de 18 años o más, o la edad mínima legal en su jurisdicción — la que sea mayor. Está estrictamente prohibido el uso por menores; esas cuentas serán eliminadas sin aviso.</p>
             <p>Para interactuar con otros (ya sea como cliente o como sugerencia), la verificación de identidad es obligatoria. Este proceso es realizado por terceros certificados (por ejemplo, Veriff), empleando documentos oficiales y pruebas de vivacidad. Los datos recopilados son limitados y se rigen por las políticas de privacidad del tercero.</p>
             <p>Los usuarios son responsables de proporcionar información precisa, veraz y actualizada durante el registro y el uso de la plataforma. Los datos personales se procesan de acuerdo con nuestra Política de Privacidad.</p>
         </div>
         <div class="terms-section">
-            <h3>3. Tokens, Planes y Pagos</h3>
+            <h2>3. Tokens, Planes y Pagos</h2>
             <p>Todas las interacciones en <b>@ProjectTitle</b> requieren tokens — nuestra moneda virtual — que se pueden adquirir mediante pagos únicos o suscripciones a través de nuestro socio de pago (Paddle).</p>
             <p><b>Compras únicas:</b> el usuario compra una cantidad específica de tokens. <b>Suscripciones:</b> proporcionan tokens de forma recurrente y se renuevan automáticamente según el plan elegido (mensual, semestral, anual). Cancelar una suscripción también cancela cualquier token no utilizado asociado a la misma. Las condiciones de cancelación mínima pueden variar según el plan y se informan al momento de la compra.</p>
             <p>Los tokens no caducan ni son transferibles entre usuarios. No tienen valor monetario y no son reembolsables, salvo indicación explícita o en casos excepcionales evaluados por el soporte.</p>
             <p>Los precios están en dólares (USD) y se convierten automáticamente a la moneda local mediante el procesador de pagos. La disponibilidad y las monedas compatibles varían según el país. Algunos países pueden estar restringidos por razones legales o de cumplimiento. Los recibos y comprobantes son emitidos por Paddle.</p>
         </div>
         <div class="terms-section">
-            <h3>4. Conducta y Contenido</h3>
+            <h2>4. Conducta y Contenido</h2>
             <p>Está terminantemente prohibido publicar, compartir o transmitir contenido ofensivo, ilegal, falso, discriminatorio, violento, amenazante, difamatorio o sexualmente explícito. Los usuarios deben tratarse con respeto en todo momento.</p>
             <p>Las denuncias de comportamiento inapropiado se revisan automáticamente, con moderación manual si corresponde. La revisión se realiza en un plazo de hasta 48 horas hábiles, y las sanciones pueden incluir advertencias, suspensiones o expulsiones permanentes sin reembolso.</p>
             <p>La plataforma puede suspender o eliminar permanentemente cualquier cuenta involucrada en fraude, suplantación de identidad, acoso o violación de estos Términos —de forma automática y sin aviso previo. Las violaciones reiteradas o los intentos de eludir la moderación pueden resultar en bloqueos por IP o acciones legales adicionales.</p>
         </div>
         <div class="terms-section">
-            <h3>5. Seguridad y Responsabilidad del Usuario</h3>
+            <h2>5. Seguridad y Responsabilidad del Usuario</h2>
             <p><b>@ProjectTitle</b> proporciona herramientas como reportes, bloqueo y pautas de seguridad, pero no garantiza la identidad, intenciones o acciones de los usuarios dentro o fuera de la plataforma.</p>
             <p>Todas las interacciones y decisiones corren por cuenta exclusiva del usuario. La plataforma no se hace responsable por daños, sufrimiento emocional, pérdidas financieras o consecuencias derivadas del uso del servicio.</p>
             <p>Las sugerencias de encuentros incluyen consejos y pautas de seguridad. Recomendamos encarecidamente realizar encuentros en lugares públicos y notificar a contactos de confianza.</p>
@@ -190,45 +187,45 @@
             <p>Donde la ley lo permita, el usuario acepta indemnizar a la plataforma y sus operadores por cualquier reclamo, daño o consecuencia derivada de sus acciones dentro o fuera de la plataforma.</p>
         </div>
         <div class="terms-section">
-            <h3>6. Propiedad Intelectual</h3>
+            <h2>6. Propiedad Intelectual</h2>
             <p>Todo el contenido, algoritmos, marca, diseño y tecnologías utilizadas en <b>@ProjectTitle</b> están protegidos bajo licencia MPL‑2.0 o licencias de terceros, según corresponda. Está prohibido usar o redistribuir este material sin autorización.</p>
             <p>La plataforma incluye servicios y contenido de terceros, incluyendo, entre otros: Paddle (pagos), Veriff (verificación de identidad), HERE (servicios de ubicación) e infraestructura en la nube de Azure y AWS. Cada servicio está sujeto a sus propios términos y licencias. Una lista completa de atribuciones y licencias está disponible en la sección de Créditos.</p>
             <p>Los datos anónimos y agregados pueden utilizarse para análisis internos y mejorar el servicio.</p>
             <p>El contenido enviado por el usuario (por ejemplo, fotos, biografías, descripciones) sigue siendo propiedad del mismo. Sin embargo, al subir contenido a la plataforma, el usuario concede a <b>@ProjectTitle</b> una licencia mundial, gratuita, perpetua y sublicenciable para usar, mostrar, reproducir y distribuir dicho contenido en la plataforma y en materiales promocionales, si corresponde. Esta licencia termina con la eliminación de la cuenta o del contenido, salvo si ya se ha utilizado de forma irreversible.</p>
         </div>
         <div class="terms-section">
-            <h3>7. Modificaciones de los Términos</h3>
+            <h2>7. Modificaciones de los Términos</h2>
             <p>Estos Términos pueden actualizarse periódicamente por razones legales, técnicas u operativas. Los cambios relevantes serán notificados por correo electrónico o dentro de la plataforma. El uso continuado tras los cambios implica aceptación de los nuevos términos.</p>
         </div>
         <div class="terms-section">
-            <h3>8. Gestión de Cuenta e Inactividad</h3>
+            <h2>8. Gestión de Cuenta e Inactividad</h2>
             <p>La plataforma se reserva el derecho de suspender o eliminar cuentas inactivas o que incumplen estos Términos. El usuario puede eliminar permanentemente su cuenta y datos usando las herramientas disponibles en la plataforma.</p>
         </div>
         <div class="terms-section">
-            <h3>9. Soporte y Contacto</h3>
+            <h2>9. Soporte y Contacto</h2>
             <p>Para soporte, comentarios o reportes, el usuario puede acceder a las herramientas de soporte dentro de la plataforma o contactarnos a través de la sección de ayuda.</p>
         </div>
         <div class="terms-section">
-            <h3>10. Cumplimiento Legal</h3>
+            <h2>10. Cumplimiento Legal</h2>
             <p>El usuario es responsable de garantizar que su uso de <b>@ProjectTitle</b> cumpla con las leyes locales, incluidas las restricciones de edad, protección de datos y normas de conducta en línea. El servicio está diseñado para cumplir con estándares internacionales, incluido el GDPR.</p>
         </div>
         <div class="terms-section">
-            <h3>11. Ley Aplicable y Resolución de Disputas</h3>
+            <h2>11. Ley Aplicable y Resolución de Disputas</h2>
             <p>Estos Términos se rigen por las leyes de Estonia. El usuario acepta resolver todas las disputas mediante arbitraje vinculante, salvo que la legislación local lo prohíba o en casos que involucren investigación penal, donde corresponderá a las autoridades competentes.</p>
             <p>Cualquier disputa legal se llevará a cabo en inglés y bajo la jurisdicción exclusiva de los tribunales de Tallin, Estonia.</p>
         </div>
         <div class="terms-section">
-            <h3>12. Licencia de Uso de la Plataforma</h3>
+            <h2>12. Licencia de Uso de la Plataforma</h2>
             <p><b>@ProjectTitle</b> concede al usuario una licencia limitada, personal, no exclusiva, intransferible y revocable para acceder y usar la plataforma conforme a estos Términos. Se prohíbe expresamente el acceso automatizado, scraping, minería de datos, uso de bots o ingeniería inversa.</p>
             <p>Las cuentas sólo pueden ser usadas por la persona que las registró. El uso comercial, promocional o de solicitud a otros usuarios está estrictamente prohibido.</p>
         </div>
         <div class="terms-section">
-            <h3>13. Descargo de Responsabilidad y Limitación de Responsabilidad</h3>
+            <h2>13. Descargo de Responsabilidad y Limitación de Responsabilidad</h2>
             <p><b>@ProjectTitle</b> ofrece su servicio “tal cual” y “según disponibilidad”, sin garantías de ningún tipo, expresas o implícitas. No garantizamos la exactitud, integridad o utilidad de cualquier contenido o comportamiento de los usuarios.</p>
             <p>En la máxima medida permitida por la ley, no seremos responsables por daños indirectos, accidentales, consecuentes o punitivos, incluyendo, pero no limitados a, pérdida de beneficios, sufrimiento emocional o pérdida de datos.</p>
         </div>
         <div class="terms-section">
-            <h3>14. Disposiciones Legales</h3>
+            <h2>14. Disposiciones Legales</h2>
             <p><b>Fuerza Mayor:</b> No seremos responsables por retrasos o fallos originados por eventos fuera de nuestro control, como desastres naturales, guerras, pandemias, acciones gubernamentales, fallos de infraestructura o interrupciones de servicios de terceros.</p>
             <p><b>Cesión:</b> Podemos ceder o transferir nuestros derechos y obligaciones bajo estos Términos en caso de fusión, adquisición o venta de activos. El usuario no puede ceder sus derechos sin consentimiento por escrito.</p>
             <p><b>Renuncia a Acciones Colectivas:</b> Cuando sea legalmente exigible, el usuario acepta resolver disputas individualmente y renuncia al derecho de participar en demandas colectivas o arbitrajes colectivos.</p>
@@ -236,39 +233,39 @@
     }
     else
     {
-        <div class="terms-title">Terms of Use</div>
+        <h1 class="terms-title">Terms of Use</h1>
         <div class="terms-subtitle">
             Welcome to <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>)!<br />
             By accessing or using this service, you agree to these Terms of Use and our Privacy Policy.
         </div>
         <div class="terms-section">
-            <h3>1. About the Service</h3>
+            <h2>1. About the Service</h2>
             <p><b>@ProjectTitle</b> is a digital matchmaking platform operated by Delivering Reliable Modern Apps Tech OÜ, registered in Estonia. The service is global and offers a modern, structured alternative to traditional matchmaking.</p>
             <p>All matching is performed through automated curation using proprietary algorithms and statistical compatibility models. Filters and user preferences directly affect the number and type of suggestions available. We do not guarantee a specific number of matches or compatibility outcomes.</p>
             <p>Only active clients or verified users may initiate or respond to interactions. Non-clients can register for free and may be selected as potential suggestions, but cannot actively participate unless they complete verification.</p>
             <p>No human intervention is used in the suggestion process, though moderation may be applied when necessary.</p>
         </div>
         <div class="terms-section">
-            <h3>2. Eligibility and User Verification</h3>
+            <h2>2. Eligibility and User Verification</h2>
             <p>This service is only available to individuals aged 18 or older, or the legal minimum age in their jurisdiction—whichever is higher. Underage users are strictly prohibited. Any such accounts will be deleted without notice.</p>
             <p>To interact with others (either as a client or as a suggested match), identity verification is mandatory. This process is handled by certified third parties (e.g., Veriff), using official documents and liveness checks. The data collected during this process is limited and subject to the privacy practices of the third party involved.</p>
             <p>Users are responsible for providing accurate, truthful, and up-to-date information during registration and while using the platform. Personal data is processed in accordance with our Privacy Policy.</p>
         </div>
         <div class="terms-section">
-            <h3>3. Tokens, Plans, and Payments</h3>
+            <h2>3. Tokens, Plans, and Payments</h2>
             <p>All interactions on <b>@ProjectTitle</b> require tokens—our virtual currency—which can be purchased via one-time payments or subscriptions through our payment partner (Paddle).</p>
             <p><b>One-time purchases:</b> Users buy a chosen token amount. <b>Subscriptions:</b> Provide a recurring token allowance and auto-renew based on the selected plan (monthly, semiannual, annual). Cancelling a subscription also cancels any unused tokens associated with it. Cancellation terms may vary by plan and are disclosed at the time of purchase.</p>
             <p>Tokens do not expire and are not transferable between users. They have no monetary value and are non-refundable, unless explicitly stated otherwise or in exceptional cases evaluated via support.</p>
             <p>Prices are in USD and automatically converted to local currency by our payment processor. Availability and supported currencies vary by country. Some countries may be restricted due to legal or compliance reasons. Paddle issues all payment confirmations and receipts.</p>
         </div>
         <div class="terms-section">
-            <h3>4. Conduct and Content</h3>
+            <h2>4. Conduct and Content</h2>
             <p>Publishing, sharing, or transmitting any offensive, illegal, false, discriminatory, violent, threatening, defamatory, or sexually explicit content is strictly prohibited. Users must treat each other with respect at all times.</p>
             <p>Reports of inappropriate behavior are typically reviewed automatically, with manual moderation applied when required. Reviews occur within 48 business hours, and sanctions may include warnings, suspensions, or permanent bans without refund.</p>
             <p>The platform may suspend or permanently delete any account involved in fraud, impersonation, harassment, or violations of these Terms—automatically and without prior notice. Repeated violations or attempts to bypass moderation may result in IP-level bans or further legal action.</p>
         </div>
         <div class="terms-section">
-            <h3>5. Security and User Responsibility</h3>
+            <h2>5. Security and User Responsibility</h2>
             <p><b>@ProjectTitle</b> provides tools such as reporting, blocking, and safety guidelines, but cannot guarantee the identity, intentions, or actions of users on or off the platform.</p>
             <p>All interactions and decisions are made at the user’s sole risk. The platform disclaims liability for any harm, emotional distress, financial loss, or consequences resulting from use of the service.</p>
             <p>Meeting suggestions are accompanied by safety tips and guidelines. We strongly recommend public places and notifying trusted contacts about meetings.</p>
@@ -276,48 +273,55 @@
             <p>Where legally permitted, users agree to indemnify the platform and its operators against any claims, damages, or consequences arising from their actions on or off the platform.</p>
         </div>
         <div class="terms-section">
-            <h3>6. Intellectual Property</h3>
+            <h2>6. Intellectual Property</h2>
             <p>All content, algorithms, branding, layouts, and technologies used in <b>@ProjectTitle</b> are protected under the MPL-2.0 license or third-party licenses where applicable. Unauthorized use or redistribution of such materials is strictly prohibited.</p>
             <p>The platform includes services and content provided by third parties, including but not limited to Paddle (payments), Veriff (identity verification), HERE (location services), and cloud infrastructure from Azure and AWS. Each third-party service is governed by its own terms and licenses. A full list of third-party attributions and licenses is available on our Credits section.</p>
             <p>Anonymous, aggregated data may be used for internal analytics and service improvement.</p>
             <p>All user-submitted content (e.g., photos, bios, descriptions) remains the property of the respective user. However, by uploading content to the platform, the user grants @ProjectTitle a worldwide, royalty-free, perpetual, and sublicensable license to use, display, reproduce, and distribute such content within the platform and in promotional materials, if deemed relevant. This license ends upon deletion of the account or the content, unless it has already been used in a way that cannot be reversed.</p>
         </div>
         <div class="terms-section">
-            <h3>7. Modifications to the Terms</h3>
+            <h2>7. Modifications to the Terms</h2>
             <p>These Terms may be updated periodically due to legal, technical, or operational changes. Material changes will be notified via email or platform notice. Continued use of the service after updates implies acceptance of the new terms.</p>
         </div>
         <div class="terms-section">
-            <h3>8. Account Management and Inactivity</h3>
+            <h2>8. Account Management and Inactivity</h2>
             <p>The platform reserves the right to suspend or delete inactive accounts or those that fail to comply with the Terms. Users may permanently delete their account and data through the platform’s privacy tools.</p>
         </div>
         <div class="terms-section">
-            <h3>9. Support and Contact</h3>
+            <h2>9. Support and Contact</h2>
             <p>For support, feedback, or reporting issues, users can access the support tools available on the platform or contact us through the support section.</p>
         </div>
         <div class="terms-section">
-            <h3>10. Legal Compliance</h3>
+            <h2>10. Legal Compliance</h2>
             <p>Users are responsible for ensuring that their use of <b>@ProjectTitle</b> complies with local laws, including age restrictions, data protection, and online conduct regulations. The service is designed to comply with international standards, including GDPR.</p>
         </div>
         <div class="terms-section">
-            <h3>11. Governing Law and Dispute Resolution</h3>
+            <h2>11. Governing Law and Dispute Resolution</h2>
             <p>These Terms are governed by the laws of Estonia. Users agree to resolve all disputes through binding arbitration, unless prohibited by local law or in cases involving criminal investigation, where competent authorities may be involved.</p>
             <p>Any legal disputes will be handled in English and under the exclusive jurisdiction of the courts of Tallinn, Estonia.</p>
         </div>
         <div class="terms-section">
-            <h3>12. License to Use the Platform</h3>
+            <h2>12. License to Use the Platform</h2>
             <p>@ProjectTitle grants users a limited, personal, non-exclusive, non-transferable, and revocable license to access and use the platform in accordance with these Terms. Any automated access, scraping, data mining, use of bots, or reverse engineering is strictly prohibited.</p>
             <p>Accounts may only be used by the individual who registered them. Commercial use, promotion, or solicitation of other users is strictly forbidden.</p>
         </div>
         <div class="terms-section">
-            <h3>13. Disclaimer and Limitation of Liability</h3>
+            <h2>13. Disclaimer and Limitation of Liability</h2>
             <p>@ProjectTitle provides its service “as is” and “as available,” without warranties of any kind, express or implied. We do not guarantee the accuracy, completeness, or usefulness of any content or user behavior.</p>
             <p>To the maximum extent permitted by law, we shall not be liable for indirect, incidental, consequential, or punitive damages, including but not limited to loss of profits, emotional distress, or data loss.</p>
         </div>
         <div class="terms-section">
-            <h3>14. Legal Provisions</h3>
+            <h2>14. Legal Provisions</h2>
             <p><b>Force Majeure:</b> We are not liable for delays or failures resulting from events beyond our control, including natural disasters, war, pandemics, government actions, infrastructure failures, or third-party service disruptions.</p>
             <p><b>Assignment:</b> We may assign or transfer our rights and obligations under these Terms in case of a merger, acquisition, or sale of assets. Users may not transfer their rights without written consent.</p>
             <p><b>Class Action Waiver:</b> Where legally enforceable, users agree to resolve disputes individually and waive the right to participate in class actions or class arbitrations.</p>
         </div>
     }
 </div>
+
+@code {
+    [Parameter] public string? Lang { get; set; }
+
+    public string? ProjectTitle => SeoTranslations.AppName;
+    public string? ProjectDomain => "www.modern-matchmaker.com";
+}

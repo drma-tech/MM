@@ -15,18 +15,6 @@
     {
       "route": "/api/*",
       "allowedRoles": [ "authenticated" ]
-    },
-    {
-      "route": "/ads.txt",
-      "rewrite": "/ads.txt"
-    },
-    {
-      "route": "/robots.txt",
-      "rewrite": "/robots.txt"
-    },
-    {
-      "route": "/sitemap.xml",
-      "rewrite": "/sitemap.xml"
     }
   ],
   "navigationFallback": {
@@ -51,6 +39,18 @@
           "openIdIssuer": "https://login.microsoftonline.com/8b617097-d54f-4b3f-8c79-41dc184c8f81/v2.0",
           "clientIdSettingName": "AZURE_CLIENT_ID",
           "clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
+        }
+      },
+      "apple": {
+        "registration": {
+          "clientIdSettingName": "APPLE_CLIENT_ID",
+          "clientSecretSettingName": "APPLE_CLIENT_SECRET_APP_SETTING_NAME"
+        }
+      },
+      "facebook": {
+        "registration": {
+          "appIdSettingName": "FACEBOOK_APP_ID",
+          "appSecretSettingName": "FACEBOOK_APP_SECRET_APP_SETTING_NAME"
         }
       }
     }

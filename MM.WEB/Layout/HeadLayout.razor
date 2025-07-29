@@ -34,10 +34,24 @@
 else
 {
     <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="px-3">
-        @Menu.Home
+        @if (Focused("/"))
+        {
+            <MudText Typo="Typo.h1" Class="custom-h1-menu">@Menu.Home</MudText>
+        }
+        else
+        {
+            @Menu.Home
+        }
     </MudButton>
     <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Target="_self" Rel="nofollow">
-        @Menu.Profile
+        @if (Focused("/profile"))
+        {
+            <MudText Typo="Typo.h1" Class="custom-h1-menu">@Menu.Profile</MudText>
+        }
+        else
+        {
+            @Menu.Profile
+        }
     </MudButton>
     <MudSpacer />
     <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Warning" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription" Disabled="true">
@@ -102,16 +116,19 @@ else
 
     private Color GetColor(string endpoint)
     {
-        var uri = new Uri(Navigation.Uri);
-
-        return string.Equals(uri.AbsolutePath, endpoint, StringComparison.OrdinalIgnoreCase) ? Color.Primary : Color.Inherit;
+        return Focused(endpoint) ? Color.Primary : Color.Inherit;
     }
 
     private Variant GetVariant(string endpoint)
     {
+        return Focused(endpoint) ? Variant.Filled : Variant.Text;
+    }
+
+    private bool Focused(string endpoint)
+    {
         var uri = new Uri(Navigation.Uri);
 
-        return string.Equals(uri.AbsolutePath, endpoint, StringComparison.OrdinalIgnoreCase) ? Variant.Filled : Variant.Text;
+        return string.Equals(uri.AbsolutePath, endpoint, StringComparison.OrdinalIgnoreCase);
     }
 
 }

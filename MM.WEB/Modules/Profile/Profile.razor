@@ -22,7 +22,7 @@
 @inject MyMatchesApi MyMatchesApi
 @inject IJSRuntime JsRuntime
 
-<SeoHeader Title="Profile" Url="/profile"></SeoHeader>
+<SeoHeader Title="Profile" Url="/profile" Index="false"></SeoHeader>
 
 @if (!IsAuthenticated)
 {
@@ -95,7 +95,7 @@
                 </MudItem>
                 <MudItem xs="6">
                     <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                    CheckMark="true" FixedContent="true">
+                                    CheckMark="true" FixedContent="true" Disabled="principal == null">
                         <MudToggleItem Value="false" Text="Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
                         <MudToggleItem Value="true" Text="Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                     </MudToggleGroup>
