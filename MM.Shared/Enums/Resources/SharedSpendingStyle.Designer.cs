@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I like to share expenses fairly based on each person&apos;s financial capabilities. For me, a relationship should have balance in financial responsibilities..
+        ///   Looks up a localized string similar to I believe in splitting costs fairly based on each person’s income or situation. To me, a healthy relationship means sharing financial responsibilities in a way that feels equitable for both..
         /// </summary>
         public static string Balanced_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I take on most of the expenses, but I value my partner&apos;s contribution, even if it&apos;s on a smaller scale. I believe a financial partnership is important..
+        ///   Looks up a localized string similar to I&apos;m comfortable paying for most things, but I appreciate when my partner contributes, even in smaller ways. I see financial partnership as a way to build trust and balance..
         /// </summary>
         public static string Contributor_Description {
             get {
@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I prefer my partner to take on all financial responsibilities, as I don&apos;t see myself in a position to contribute financially..
+        ///   Looks up a localized string similar to I’m looking for a partner who’s willing to handle the financial side of the relationship. Right now, I’m not in a position to contribute financially, and I prefer being supported..
         /// </summary>
         public static string Dependent_Description {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I prefer to be responsible for all the finances in the relationship, covering all expenses and providing financial security to my partner..
+        ///   Looks up a localized string similar to I prefer to take full financial responsibility in a relationship. Covering all expenses and offering financial security is something I value and enjoy providing for my partner..
         /// </summary>
         public static string Provider_Description {
             get {
@@ -133,7 +133,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I contribute significantly, but I expect my partner to cover most of the costs. I believe it’s essential to have a clear understanding of financial responsibilities..
+        ///   Looks up a localized string similar to I contribute when I can, but I generally expect my partner to take care of most financial needs. For me, clear expectations help avoid misunderstandings about money..
         /// </summary>
         public static string Supporter_Description {
             get {

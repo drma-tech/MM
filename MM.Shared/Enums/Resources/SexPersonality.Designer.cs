@@ -61,8 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This sex personality is all about stress relief! Say, for example, one has a high-powered job or they’re stressed about something. For the Decompressor, having a bit of sexy time is exactly what they seek in order to blow off some steam, relax, and clear their head. It often leads to getting some well-deserved sleep.
-        ///Side note: orgasming causes the release of pleasant hormones — oxytocin, vasopressin and prolactin. They reduce stress, induce sleep, and give you an overall feeling of wellbeing..
+        ///   Looks up a localized string similar to Uses sex mainly to relieve stress and relax. After a tough day or high pressure, they seek intimacy to unwind, clear their mind, and often get better sleep. Sex is a way to decompress emotionally and physically..
         /// </summary>
         public static string Decompresser_Description {
             get {
@@ -80,8 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For the Explorer, physical intimacy is all about the adventure! These types of people are curious, inquisitive, and ready to try new things in the bedroom. In general, an Explorer loves to be pushed outside of their comfort zone, and doesn’t take themselves too seriously.
-        ///They’ve probably done a ton of research about sex, and are knowledgable on the subject, ready to experience it all first-hand. In fact, they’re even down to laugh at some awkward things that may take place in between the sheets. It’s all  [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Curious and adventurous in bed. Loves trying new things, pushing boundaries, and doesn’t take sex too seriously. Playful, open-minded, and enjoys intellectual and physical exploration during intimacy..
         /// </summary>
         public static string Explorer_Description {
             get {
@@ -99,8 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For the Fair-Trader, sex is all about balance! It’s about giving and receiving pleasure equally, and being open and ready to talk about their desires, kinks, likes and dislikes.
-        ///A person with this type of sex personality is willing to compromise. They love the idea of finding out what their partner’s favorite kind of stimulation is, then providing them with said-stimulation. And, of course, having the favor returned!.
+        ///   Looks up a localized string similar to Values balance and reciprocity. Open to discussing desires, willing to compromise, and focuses on giving and receiving pleasure equally. Communication about likes and dislikes is key for them..
         /// </summary>
         public static string FairTrader_Description {
             get {
@@ -118,8 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Giver is, well, someone who actively gains pleasure from seeing their partner squirm in sexual bliss! For people of this kind of sex personality, they’re not so much focused on themselves, but find their partner’s wellbeing to be more important.
-        ///That means that they’re very much in-tune with who they’re with, and strive to make them feel good. On the other side of the spectrum, the giver may actually be uncomfortable with receiving pleasure..
+        ///   Looks up a localized string similar to Finds pleasure primarily in making their partner feel good. More focused on their partner’s enjoyment than their own, sometimes even uncomfortable receiving pleasure. Very attentive and nurturing in sex..
         /// </summary>
         public static string Giver_Description {
             get {
@@ -137,8 +133,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Guardian loves a good sex session, but only if said session is safe and comfortable for both parties! This type of sex personality will always make sure that their partner feels secure, and won’t allow any intimacy to go down without full consent.
-        ///This kind of lover may have this sex personality because of past traumas, or they may just love to be intimate when there’s a great level of trust and safety..
+        ///   Looks up a localized string similar to Needs sex to feel safe and consensual. Prioritizes trust, comfort, and emotional security before intimacy. May have past trauma or simply values a secure, slow-building connection..
         /// </summary>
         public static string Guardian_Description {
             get {
@@ -156,8 +151,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you’re all about animalistic, carnal and lustful sex sessions, then you may very well be a Passion-Pursuer! For people who have this kind of sex personality style, sex is about exchanging raw and passionate energy. There’s a sense of really letting go and getting lost in the moment for Passion-Purserers.
-        ///During lovemaking, it is as if both partners are taken away to new heights of euphoria. Time doesn’t exist, creating boundless opportunities for them to really be who they are without judgment..
+        ///   Looks up a localized string similar to Seeks intense, animalistic, and lustful sexual experiences. Lost in raw passion and energy, where time feels suspended. Very physical and uninhibited, aiming for euphoric connection..
         /// </summary>
         public static string PassionPursuer_Description {
             get {
@@ -175,8 +169,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This sex personality is all about physical sensations! For them, sex feels good, so they partake in all kinds of fun with a partner or partners. The thought and act of touching and being touched is entirely erotic.
-        ///For Pleasure-Seekers, sex isn’t really an emotional experience, it’s something to be enjoyed for what it is. In fact, people of this sex personality may not require any deep emotional connections at all in order to partake in all kinds of sexual ecstasy..
+        ///   Looks up a localized string similar to Enjoys sex for the pure physical sensations. Doesn’t necessarily require emotional connection, just wants to have fun and experience pleasure. Focused on the tactile and erotic aspects..
         /// </summary>
         public static string PleasureSeeker_Description {
             get {
@@ -194,8 +187,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For the Prioritizer, sex is their number one priority! It’s an act that should be a part of everyday life, and not taken off the table when there are inconveniences. For example, if it’s been a busy day or one or both partners feel tired, sex won’t be dismissed. Instead, it’ll be prioritized. Sacrifices are made, and little excuses won’t work when it comes to skipping sex.
-        ///People of this sex personality are usually routine-focused and want their sex life to be consistent..
+        ///   Looks up a localized string similar to Makes sex a non-negotiable daily priority. Regardless of tiredness or busy schedules, sex must happen regularly. Prefers routine and consistency in their sex life..
         /// </summary>
         public static string Prioritizer_Description {
             get {
@@ -213,8 +205,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Emotional connection is the name of the game for the Romantic! While physical intimacy is just as sensual and important, without emotion, sex just isn’t very memorable or meaningful.
-        ///If your sex personality is the Romantic, you enjoy eye contact, slower sex, long session of foreplay, and words of affirmation..
+        ///   Looks up a localized string similar to Sex is deeply emotional and meaningful. Prefers slow, sensual intimacy with eye contact, foreplay, and affirming words. Emotional connection is essential for sexual satisfaction..
         /// </summary>
         public static string Romantic_Description {
             get {
@@ -232,8 +223,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If this is your sex personality, you find that intimacy isn&apos;t just physical and it isn&apos;t just emotional. It’s a combination of both, plus an opportunity to connect to a higher purpose! Sex, for the Spiritualist, is a transcendent experience. It’s when two people really connect, energies intertwine, and the experience feels almost palpable.
-        ///An example of intimacy enjoyed by this kind of personality would be tantric sex..
+        ///   Looks up a localized string similar to Sees sex as a transcendent, almost sacred experience. Combines physical, emotional, and spiritual connection. Practices like tantric sex exemplify this type, focusing on energy and deeper unity..
         /// </summary>
         public static string Spiritualist_Description {
             get {
@@ -251,8 +241,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It’s all about the taboo, baby! Thrill-Seekers get a rush from all things that are forbidden or naughty. It includes acts of BDSM, like taking on dominant or submissive roles. Or simply trying things in bed that some may consider intense, weird, or even crazy.
-        ///Kinks, fetishes, and more… a Thrill-Seeker is usually ready to experience it all..
+        ///   Looks up a localized string similar to Attracted to taboo and intense experiences. Enjoys BDSM, kinks, fetishes, and pushing sexual boundaries. Loves the excitement of forbidden or unconventional activities..
         /// </summary>
         public static string ThrillSeeker_Description {
             get {

@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You love money (and there&apos;s nothing wrong with that)! You love spending it, primarily on amazing stuff, experiences, and services. You may even enjoy saving it, but with a spending goal in mind. You enjoy the finer things in life, however you define them, and pride yourself on your good taste — it&apos;s all about quality for you. You also work hard for your money, which allows you to feel good about spending it, and treating yourself and others well. You like to enjoy life with all five senses and inviting othe [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to You love spending money on high-quality items, experiences, and services. You might also save with a clear spending goal in mind. Enjoying life’s finer things and sharing that enjoyment with others is a key value for you..
         /// </summary>
         public static string Connoisseur_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It&apos;s important to you to live life on your own terms and to have the freedom to follow your bliss. You tend not to think about money unless it&apos;s getting in the way of living life the way you want. You resist having money dictate your life choices, and are aware that your choices may not make sense to others around you. Some Independents see money as a game with too many rules and rebel against how others say it must be played. Others have an easy-come-easy-go attitude about money. Because you&apos;re resourceful [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Living life on your own terms and having freedom is essential. Money only becomes a concern if it blocks your lifestyle. You tend to reject traditional financial rules, taking an unconventional approach, trusting you’ll figure things out..
         /// </summary>
         public static string Independent_Description {
             get {
@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Relationships come first, so you keep others in mind when making financial decisions (even though sometimes you&apos;re aware that putting others first means unintentionally harming yourself). You love giving and empowering others with both your money and your time. In a relationship or family, being a good provider is a priority for you..
+        ///   Looks up a localized string similar to You put relationships first, considering others in your financial choices—even if it sometimes means sacrificing your own needs. Giving your time and money to support others and being a dependable provider are important to you..
         /// </summary>
         public static string Nurturer_Description {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You enjoy accumulating money and the process of watching it grow. You&apos;re on top of your finances, paying close attention to what&apos;s coming in and what&apos;s going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals..
+        ///   Looks up a localized string similar to You focus on growing your money steadily by carefully tracking income and expenses. You tend to be cautious, avoiding financial risks. While this careful approach provides security, it can sometimes limit your progress toward bigger goals..
         /// </summary>
         public static string Producer_Description {
             get {
@@ -133,7 +133,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You enjoy accumulating money and the process of watching it grow. You&apos;re on top of your finances, paying close attention to what&apos;s coming in and what&apos;s going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals..
+        ///   Looks up a localized string similar to You’re motivated by doing work you love and feel proud when it leads to financial success. Money represents recognition of your ideas and achievements, though having enough to keep pursuing your passions is often what matters most..
         /// </summary>
         public static string Visionary_Description {
             get {

@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to “Deaf” describes an individual who has severe to profound hearing loss. “Deafened” describes an individual who has acquired a hearing loss in adulthood..
+        ///   Looks up a localized string similar to Covers partial or total hearing loss. They may use hearing aids, lip reading, or sign language. Group conversations, noisy places, or phone calls might be difficult. Examples: someone Deaf from birth or who lost hearing later in life (deafened)..
         /// </summary>
         public static string Hearing_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Characterized by intellectual development and capacity that is significantly below average. Involves a permanent limitation in a person’s ability to learn..
+        ///   Looks up a localized string similar to Involves significant difficulty with learning, reasoning, or problem-solving. The person might need more time to understand abstract concepts or follow complex conversations. Conditions include Down syndrome or other cognitive disabilities..
         /// </summary>
         public static string Intellectual_Description {
             get {
@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A learning disability is essentially a specific and persistent disorder of a person’s central nervous system affecting the learning process. This impacts a person’s ability to either interpret what they see and hear, or to link information from different parts of the brain..
+        ///   Looks up a localized string similar to Describes differences in how the brain processes information. Common types include dyslexia (reading), dyscalculia (math), or ADHD (focus). They may seem disorganized or forgetful, but these are processing challenges—not lack of intelligence or interest..
         /// </summary>
         public static string Learning_Description {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mental health disabilities can take many forms, just as physical disabilities do. They are generally classified into six categories: Schizophrenia, Mood Disorders, Anxiety Disorders, Eating Disorders, Personality Disorders, Organic Brain Disorders..
+        ///   Looks up a localized string similar to Refers to diagnosed conditions like anxiety, depression, bipolar disorder, or PTSD. These can affect energy, mood, or communication. There might be good and bad days, need for understanding around emotional regulation, or therapy/medication routines..
         /// </summary>
         public static string MentalHealth_Description {
             get {
@@ -133,7 +133,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Includes physiological, functional and/or mobility impairments. Can be fluctuating or intermittent, chronic, progressive or stable, visible or invisible..
+        ///   Looks up a localized string similar to Includes conditions that affect movement, strength, coordination, or stamina. Examples: using a wheelchair, chronic pain, muscular dystrophy, or limited mobility from injury. The person may need accessible environments and could face physical limitations in daily or shared activities..
         /// </summary>
         public static string Physical_Description {
             get {
@@ -151,7 +151,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to “Legally Blind” describes an individual who has 10% or less of normal vision. Only 10% of people with a visual disability are actually totally blind. The other 90% are described as having a “Visual Impairment.”.
+        ///   Looks up a localized string similar to Applies to people with low vision or blindness. Most are not totally blind, but may struggle to read signs, recognize faces, or use screens without assistive tech. Expect possible use of screen readers, guide dogs, or extra planning in visual-heavy situations..
         /// </summary>
         public static string Visual_Description {
             get {

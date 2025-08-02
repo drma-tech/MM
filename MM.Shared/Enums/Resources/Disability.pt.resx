@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Hearing_Description" xml:space="preserve">
-    <value>“Surdo” descreve um indivíduo que tem perda auditiva severa a profunda. “Ensurdecido” descreve um indivíduo que adquiriu uma perda auditiva na idade adulta.</value>
+    <value>Cobre perda auditiva parcial ou total. Podem usar aparelhos auditivos, leitura labial ou linguagem de sinais. Conversas em grupo, locais barulhentos ou telefonemas podem ser difíceis. Exemplos: alguém surdo de nascença ou que perdeu a audição mais tarde na vida (surdo).</value>
   </data>
   <data name="Hearing_Name" xml:space="preserve">
     <value>Audição</value>
   </data>
   <data name="Intellectual_Description" xml:space="preserve">
-    <value>Caracterizado por um desenvolvimento e capacidade intelectual significativamente abaixo da média. Envolve uma limitação permanente na capacidade de uma pessoa aprender.</value>
+    <value>Envolve dificuldade significativa de aprendizagem, raciocínio ou resolução de problemas. A pessoa pode precisar de mais tempo para compreender conceitos abstratos ou acompanhar conversas complexas. Condições como síndrome de Down ou outras deficiências cognitivas podem ser consideradas.</value>
   </data>
   <data name="Intellectual_Name" xml:space="preserve">
     <value>Intelectual</value>
   </data>
   <data name="Learning_Description" xml:space="preserve">
-    <value>Uma dificuldade de aprendizagem é essencialmente um distúrbio específico e persistente do sistema nervoso central de uma pessoa que afeta o processo de aprendizagem. Isso afeta a capacidade de uma pessoa de interpretar o que vê e ouve ou vincular informações de diferentes partes do cérebro.</value>
+    <value>Descreve as diferenças na forma como o cérebro processa informações. Os tipos comuns incluem dislexia (leitura), discalculia (matemática) ou TDAH (foco). Podem parecer desorganizados ou esquecidos, mas são desafios de processamento — não falta de inteligência ou interesse.</value>
   </data>
   <data name="Learning_Name" xml:space="preserve">
     <value>Aprendizagem</value>
   </data>
   <data name="MentalHealth_Description" xml:space="preserve">
-    <value>As deficiências de saúde mental podem assumir muitas formas, assim como as deficiências físicas. Eles são geralmente classificados em seis categorias: Esquizofrenia, Transtornos do Humor, Transtornos de Ansiedade, Transtornos Alimentares, Transtornos da Personalidade, Transtornos Orgânicos do Cérebro.</value>
+    <value>Refere-se a condições diagnosticadas como ansiedade, depressão, transtorno bipolar ou TEPT. Essas condições podem afetar a energia, o humor ou a comunicação. Pode haver dias bons e ruins, necessidade de compreensão sobre regulação emocional ou rotinas de terapia/medicação.</value>
   </data>
   <data name="MentalHealth_Name" xml:space="preserve">
     <value>Saúde mental</value>
   </data>
   <data name="Physical_Description" xml:space="preserve">
-    <value>Inclui deficiências fisiológicas, funcionais e/ou de mobilidade. Pode ser flutuante ou intermitente, crônica, progressiva ou estável, visível ou invisível.</value>
+    <value>Inclui condições que afetam movimento, força, coordenação ou resistência. Exemplos: uso de cadeira de rodas, dor crônica, distrofia muscular ou mobilidade limitada devido a lesão. A pessoa pode precisar de ambientes acessíveis e enfrentar limitações físicas em atividades diárias ou compartilhadas.</value>
   </data>
   <data name="Physical_Name" xml:space="preserve">
     <value>Física</value>
   </data>
   <data name="Visual_Description" xml:space="preserve">
-    <value>“Legally Blind” descreve um indivíduo que tem 10% ou menos de visão normal. Apenas 10% das pessoas com deficiência visual são realmente totalmente cegas. Os outros 90% são descritos como tendo uma “deficiência visual”</value>
+    <value>Aplica-se a pessoas com baixa visão ou cegueira. A maioria não é totalmente cega, mas pode ter dificuldade para ler placas, reconhecer rostos ou usar telas sem tecnologia assistiva. É possível o uso de leitores de tela, cães-guia ou planejamento extra em situações com alta necessidade visual.</value>
   </data>
   <data name="Visual_Name" xml:space="preserve">
     <value>Visual</value>

@@ -115,6 +115,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our compatibility system is still developing. If you have any suggestions or feedback, please submit a support ticket or email us..
+        /// </summary>
+        public static string CompatibilityDeveloping {
+            get {
+                return ResourceManager.GetString("CompatibilityDeveloping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Congratulations, you two are made for each other. This relationship has a bright future ahead of it..
         /// </summary>
         public static string CompatibilityHigh {

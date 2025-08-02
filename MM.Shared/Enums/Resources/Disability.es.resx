@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Hearing_Description" xml:space="preserve">
-    <value>"Sordo" describe a una persona que tiene pérdida auditiva de severa a profunda. "Ensordecido" describe a un individuo que ha adquirido una pérdida auditiva en la edad adulta.</value>
+    <value>Cubre la pérdida auditiva parcial o total. Pueden usar audífonos, lectura labial o lenguaje de señas. Las conversaciones en grupo, los lugares ruidosos o las llamadas telefónicas pueden resultar difíciles. Ejemplos: personas sordas de nacimiento o que perdieron la audición posteriormente (sordera).</value>
   </data>
   <data name="Hearing_Name" xml:space="preserve">
     <value>Oído</value>
   </data>
   <data name="Intellectual_Description" xml:space="preserve">
-    <value>Se caracteriza por un desarrollo intelectual y una capacidad significativamente inferior a la media. Implica una limitación permanente en la capacidad de una persona para aprender.</value>
+    <value>Implica una dificultad significativa para aprender, razonar o resolver problemas. La persona podría necesitar más tiempo para comprender conceptos abstractos o seguir conversaciones complejas. Entre las afecciones se incluyen el síndrome de Down u otras discapacidades cognitivas.</value>
   </data>
   <data name="Intellectual_Name" xml:space="preserve">
     <value>Intelectual</value>
   </data>
   <data name="Learning_Description" xml:space="preserve">
-    <value>Una discapacidad de aprendizaje es esencialmente un trastorno específico y persistente del sistema nervioso central de una persona que afecta el proceso de aprendizaje. Esto afecta la capacidad de una persona para interpretar lo que ve y escucha, o para vincular información de diferentes partes del cerebro.</value>
+    <value>Describe las diferencias en cómo el cerebro procesa la información. Los tipos comunes incluyen dislexia (lectura), discalculia (matemáticas) o TDAH (concentración). Pueden parecer desorganizados u olvidadizos, pero se trata de dificultades de procesamiento, no de falta de inteligencia o interés.</value>
   </data>
   <data name="Learning_Name" xml:space="preserve">
     <value>Aprendizaje</value>
   </data>
   <data name="MentalHealth_Description" xml:space="preserve">
-    <value>Las discapacidades de salud mental pueden tomar muchas formas, al igual que las discapacidades físicas. Generalmente se clasifican en seis categorías: esquizofrenia, trastornos del estado de ánimo, trastornos de ansiedad, trastornos de la alimentación, trastornos de la personalidad, trastornos cerebrales orgánicos.</value>
+    <value>Se refiere a afecciones diagnosticadas como ansiedad, depresión, trastorno bipolar o TEPT. Estas pueden afectar la energía, el estado de ánimo o la comunicación. Puede haber días buenos y malos, necesidad de comprensión sobre la regulación emocional o rutinas de terapia/medicación.</value>
   </data>
   <data name="MentalHealth_Name" xml:space="preserve">
     <value>Salud mental</value>
   </data>
   <data name="Physical_Description" xml:space="preserve">
-    <value>Incluye impedimentos fisiológicos, funcionales y/o de movilidad. Puede ser fluctuante o intermitente, crónica, progresiva o estable, visible o invisible.</value>
+    <value>Incluye afecciones que afectan el movimiento, la fuerza, la coordinación o la resistencia. Ejemplos: uso de silla de ruedas, dolor crónico, distrofia muscular o movilidad limitada por lesión. La persona podría necesitar entornos accesibles y podría enfrentar limitaciones físicas en actividades cotidianas o compartidas.</value>
   </data>
   <data name="Physical_Name" xml:space="preserve">
     <value>Físico</value>
   </data>
   <data name="Visual_Description" xml:space="preserve">
-    <value>"Legalmente ciego" describe a un individuo que tiene un 10% o menos de visión normal. Solo el 10% de las personas con discapacidad visual son totalmente ciegas. El otro 90% se describe como que tiene una "discapacidad visual"</value>
+    <value>Aplica a personas con baja visión o ceguera. La mayoría no son totalmente ciegas, pero pueden tener dificultades para leer letreros, reconocer rostros o usar pantallas sin tecnología de asistencia. Es posible que se necesiten lectores de pantalla, perros guía o planificación adicional en situaciones de alta necesidad visual.</value>
   </data>
   <data name="Visual_Name" xml:space="preserve">
     <value>Visual</value>

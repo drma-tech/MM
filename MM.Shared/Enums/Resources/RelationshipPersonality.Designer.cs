@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Builders are the traditional, loyal, balanced types, powered by serotonin (the calming hormone). These people are very routine-oriented and highly planned, valuing authority, rules, and precision. They are typically grounded and fact-based, conscientious and cautious. Builders want to do a thorough job, and they want to do it right the first time. They revere home and family and have a sense of what they “should” be doing at all times. Builders are often attracted to those like themselves, preferring to sta [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Grounded and dependable, Builders value stability, structure, and tradition. They tend to be family-oriented, loyal, and meticulous planners. With a preference for clear roles and routines, Builders often connect best with others who share their appreciation for harmony and order..
         /// </summary>
         public static string Builders_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directors are powered by testosterone. They are analytical and logical, direct and forthcoming. They are sure of themselves, independent, decisive, and skeptical. Directors are resourceful, competitive, and type A, often making excellent leaders. These types tend to be drawn to estrogen-oriented Negotiators, their opposites; the complementary match provides a perfect pairing for the emotionality and people skills that Directors lack..
+        ///   Looks up a localized string similar to Logical, confident, and goal-driven, Directors value clarity and efficiency. They tend to be independent thinkers, assertive communicators, and natural leaders. They often seek emotionally attuned partners who can balance their intensity with empathy and social insight..
         /// </summary>
         public static string Directors_Description {
             get {
@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explorers are the doers, and they&apos;re powered by dopamine (a neurotransmitter involved in pleasure-seeking and motivation). Explorers seek novelty and excitement, and love to learn, travel, and meet new people. They are highly curious, goal-oriented, and value their independence. They live in the moment and typically have a ton of energy. Explorers are often attracted to those who similar-minded. They contend that if you want to do, learn, seek, and experience, you wouldn’t do well with someone who didn’t sh [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Adventurous and spontaneous, Explorers thrive on new experiences and challenges. Motivated by curiosity and excitement, they love to travel, meet new people, and explore ideas. Independent and energetic, they prefer partners who share their appetite for discovery and action..
         /// </summary>
         public static string Explorers_Description {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Negotiators are characterized by estrogen. They&apos;re intuitive, charming, insightful, and caring. They do well with ambiguity, and can read between the lines. Negotiators are highly empathetic, and are skilled at organizing and connecting people. They like when everyone gets along, and they are also emotionally expressive. These types are often drawn to testosterone-led Directors, their opposites; Directors can lend the logic, directness, and decisiveness skills that Negotiators often lack..
+        ///   Looks up a localized string similar to Empathetic, perceptive, and emotionally expressive, Negotiators are strong communicators who excel at creating deep connections. They value emotional harmony, intuition, and mutual understanding. Often drawn to more analytical partners, they balance logic with care and insight..
         /// </summary>
         public static string Negotiator_Description {
             get {

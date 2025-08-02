@@ -165,7 +165,7 @@
             <ActionFragment>
                 @if (MyMatches == null || MyMatches.Items.Empty())
                 {
-                    <MudTooltip Text="Simulate matches (non-paying users only)">
+                    <MudTooltip Text="Simulate matches to learn about our compatibility system">
                         <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="profile == null">
                             @Button.Simulate
                         </MudButton>

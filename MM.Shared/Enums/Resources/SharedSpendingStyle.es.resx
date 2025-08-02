@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Balanced_Description" xml:space="preserve">
-    <value>Me gusta compartir los gastos de manera justa en función de las capacidades económicas de cada persona. Para mí, una relación debe tener un equilibrio en las responsabilidades económicas.</value>
+    <value>Creo en dividir los gastos de forma justa según los ingresos o la situación de cada persona. Para mí, una relación sana significa compartir las responsabilidades financieras de forma equitativa para ambos.</value>
   </data>
   <data name="Balanced_Name" xml:space="preserve">
     <value>Equilibrado</value>
   </data>
   <data name="Contributor_Description" xml:space="preserve">
-    <value>Yo me hago cargo de la mayoría de los gastos, pero valoro la contribución de mi pareja, aunque sea en menor escala. Creo que una asociación financiera es importante.</value>
+    <value>Me siento cómodo pagando casi todo, pero agradezco que mi pareja contribuya, incluso con pequeñas contribuciones. Considero que la colaboración financiera es una forma de generar confianza y equilibrio.</value>
   </data>
   <data name="Contributor_Name" xml:space="preserve">
     <value>Contribuyente</value>
   </data>
   <data name="Dependent_Description" xml:space="preserve">
-    <value>Prefiero que mi pareja asuma todas las responsabilidades financieras, ya que no me veo en posición de contribuir económicamente.</value>
+    <value>Busco una pareja dispuesta a encargarse de la parte financiera de la relación. Actualmente, no estoy en condiciones de contribuir económicamente y prefiero recibir apoyo.</value>
   </data>
   <data name="Dependent_Name" xml:space="preserve">
     <value>Dependiente</value>
   </data>
   <data name="Provider_Description" xml:space="preserve">
-    <value>Prefiero ser responsable de todas las finanzas de la relación, cubriendo todos los gastos y brindando seguridad financiera a mi pareja.</value>
+    <value>Prefiero asumir la plena responsabilidad financiera en una relación. Cubrir todos los gastos y ofrecer seguridad financiera es algo que valoro y disfruto brindarle a mi pareja.</value>
   </data>
   <data name="Provider_Name" xml:space="preserve">
     <value>Proveedor</value>
   </data>
   <data name="Supporter_Description" xml:space="preserve">
-    <value>Yo contribuyo de forma significativa, pero espero que mi pareja cubra la mayor parte de los costes. Creo que es fundamental tener claras las responsabilidades financieras.</value>
+    <value>Contribuyo cuando puedo, pero generalmente espero que mi pareja se encargue de la mayoría de las necesidades financieras. Para mí, tener expectativas claras ayuda a evitar malentendidos sobre el dinero.</value>
   </data>
   <data name="Supporter_Name" xml:space="preserve">
     <value>Seguidor</value>

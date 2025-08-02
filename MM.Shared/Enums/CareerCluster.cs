@@ -9,38 +9,36 @@
 /// </summary>
 public enum CareerCluster
 {
-    [Custom(Name = "NoCareer_Name", Description = "NoCareer_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Name = "NoCareer_Name", Description = "NoCareer_Description", ResourceType = typeof(Resources.CareerCluster))]
     NoCareer = -1,
 
     //AGRICULTURE, FOOD & NATURAL RESOURCES
 
-    [Custom(Group = "AgricultureFoodNaturalResources_Group", Name = "AgricultureFoodNaturalResources_Name",
-        Description = "AgricultureFoodNaturalResources_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "AgricultureFoodNaturalResources_Group", Name = "AgricultureFoodNaturalResources_Name", Description = "AgricultureFoodNaturalResources_Description", ResourceType = typeof(Resources.CareerCluster))]
     AgricultureFoodNaturalResources = 1,
 
     //COMMUNICATION & INFORMATION SYSTEMS
 
-    [Custom(Group = "CommunicationArts_Group", Name = "CommunicationArts_Name",
-        Description = "CommunicationArts_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "CommunicationArts_Group", Name = "CommunicationArts_Name", Description = "CommunicationArts_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     CommunicationArts = 2,
 
-    [Custom(Group = "InformationTechnology_Group", Name = "InformationTechnology_Name",
-        Description = "InformationTechnology_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "InformationTechnology_Group", Name = "InformationTechnology_Name", Description = "InformationTechnology_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     InformationTechnology = 3,
 
     //BUSINESS, MARKETING AND MANAGEMENT
 
-    [Custom(Group = "BusinessManagementAdministration_Group", Name = "BusinessManagementAdministration_Name",
-        Description = "BusinessManagementAdministration_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "BusinessManagementAdministration_Group", Name = "BusinessManagementAdministration_Name", Description = "BusinessManagementAdministration_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     BusinessManagementAdministration = 4,
 
     [Custom(Group = "Finance_Group", Name = "Finance_Name", Description = "Finance_Description",
         ResourceType = typeof(Resources.CareerCluster))]
     Finance = 5,
 
-    [Custom(Group = "HospitalityTourism_Group", Name = "HospitalityTourism_Name",
-        Description = "HospitalityTourism_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "HospitalityTourism_Group", Name = "HospitalityTourism_Name", Description = "HospitalityTourism_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     HospitalityTourism = 6,
 
     [Custom(Group = "Marketing_Group", Name = "Marketing_Name", Description = "Marketing_Description",
@@ -49,20 +47,20 @@ public enum CareerCluster
 
     //HUMAN SCIENCES AND EDUCATION
 
-    [Custom(Group = "EducationTraining_Group", Name = "EducationTraining_Name",
-        Description = "EducationTraining_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "EducationTraining_Group", Name = "EducationTraining_Name", Description = "EducationTraining_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     EducationTraining = 8,
 
-    [Custom(Group = "GovernmentPublicAdministration_Group", Name = "GovernmentPublicAdministration_Name",
-        Description = "GovernmentPublicAdministration_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "GovernmentPublicAdministration_Group", Name = "GovernmentPublicAdministration_Name", Description = "GovernmentPublicAdministration_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     GovernmentPublicAdministration = 9,
 
     [Custom(Group = "HumanServices_Group", Name = "HumanServices_Name", Description = "HumanServices_Description",
         ResourceType = typeof(Resources.CareerCluster))]
     HumanServices = 10,
 
-    [Custom(Group = "LawPublicSafetyCorrectionsSecurity_Group", Name = "LawPublicSafetyCorrectionsSecurity_Name",
-        Description = "LawPublicSafetyCorrectionsSecurity_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "LawPublicSafetyCorrectionsSecurity_Group", Name = "LawPublicSafetyCorrectionsSecurity_Name", Description = "LawPublicSafetyCorrectionsSecurity_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     LawPublicSafetyCorrectionsSecurity = 11,
 
     //HEALTH SCIENCES
@@ -73,12 +71,12 @@ public enum CareerCluster
 
     //SKILLED & TECHNICAL SCIENCES
 
-    [Custom(Group = "ArchitectureConstruction_Group", Name = "ArchitectureConstruction_Name",
-        Description = "ArchitectureConstruction_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "ArchitectureConstruction_Group", Name = "ArchitectureConstruction_Name", Description = "ArchitectureConstruction_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     ArchitectureConstruction = 13,
 
-    [Custom(Group = "EnergyEngineering_Group", Name = "EnergyEngineering_Name",
-        Description = "EnergyEngineering_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [Custom(Group = "EnergyEngineering_Group", Name = "EnergyEngineering_Name", Description = "EnergyEngineering_Description",
+        ResourceType = typeof(Resources.CareerCluster))]
     EnergyEngineering = 14,
 
     [Custom(Group = "Manufacturing_Group", Name = "Manufacturing_Name", Description = "Manufacturing_Description",
@@ -86,7 +84,6 @@ public enum CareerCluster
     Manufacturing = 15,
 
     [Custom(Group = "TransportationDistributionLogistics_Group", Name = "TransportationDistributionLogistics_Name",
-        Description = "TransportationDistributionLogistics_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+        Description = "TransportationDistributionLogistics_Description", ResourceType = typeof(Resources.CareerCluster))]
     TransportationDistributionLogistics = 16
 }

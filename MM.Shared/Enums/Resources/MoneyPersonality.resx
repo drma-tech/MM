@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Connoisseur_Description" xml:space="preserve">
-    <value>You love money (and there's nothing wrong with that)! You love spending it, primarily on amazing stuff, experiences, and services. You may even enjoy saving it, but with a spending goal in mind. You enjoy the finer things in life, however you define them, and pride yourself on your good taste — it's all about quality for you. You also work hard for your money, which allows you to feel good about spending it, and treating yourself and others well. You like to enjoy life with all five senses and inviting others along for the ride.</value>
+    <value>You love spending money on high-quality items, experiences, and services. You might also save with a clear spending goal in mind. Enjoying life’s finer things and sharing that enjoyment with others is a key value for you.</value>
   </data>
   <data name="Connoisseur_Name" xml:space="preserve">
     <value>Connoisseur</value>
   </data>
   <data name="Independent_Description" xml:space="preserve">
-    <value>It's important to you to live life on your own terms and to have the freedom to follow your bliss. You tend not to think about money unless it's getting in the way of living life the way you want. You resist having money dictate your life choices, and are aware that your choices may not make sense to others around you. Some Independents see money as a game with too many rules and rebel against how others say it must be played. Others have an easy-come-easy-go attitude about money. Because you're resourceful, you take a big-picture view and trust you will figure it out.</value>
+    <value>Living life on your own terms and having freedom is essential. Money only becomes a concern if it blocks your lifestyle. You tend to reject traditional financial rules, taking an unconventional approach, trusting you’ll figure things out.</value>
   </data>
   <data name="Independent_Name" xml:space="preserve">
     <value>Independent</value>
   </data>
   <data name="Nurturer_Description" xml:space="preserve">
-    <value>Relationships come first, so you keep others in mind when making financial decisions (even though sometimes you're aware that putting others first means unintentionally harming yourself). You love giving and empowering others with both your money and your time. In a relationship or family, being a good provider is a priority for you.</value>
+    <value>You put relationships first, considering others in your financial choices—even if it sometimes means sacrificing your own needs. Giving your time and money to support others and being a dependable provider are important to you.</value>
   </data>
   <data name="Nurturer_Name" xml:space="preserve">
     <value>Nurturer</value>
   </data>
   <data name="Producer_Description" xml:space="preserve">
-    <value>You enjoy accumulating money and the process of watching it grow. You're on top of your finances, paying close attention to what's coming in and what's going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals.</value>
+    <value>You focus on growing your money steadily by carefully tracking income and expenses. You tend to be cautious, avoiding financial risks. While this careful approach provides security, it can sometimes limit your progress toward bigger goals.</value>
   </data>
   <data name="Producer_Name" xml:space="preserve">
     <value>Producer</value>
   </data>
   <data name="Visionary_Description" xml:space="preserve">
-    <value>You enjoy accumulating money and the process of watching it grow. You're on top of your finances, paying close attention to what's coming in and what's going out — and making decisions about it methodically. You are often financially conservative, taking steps to minimize your exposure to risk, regardless of how much money you have. Sometimes, you find that this cautious stance holds you back from achieving your goals.</value>
+    <value>You’re motivated by doing work you love and feel proud when it leads to financial success. Money represents recognition of your ideas and achievements, though having enough to keep pursuing your passions is often what matters most.</value>
   </data>
   <data name="Visionary_Name" xml:space="preserve">
     <value>Visionary</value>

@@ -85,12 +85,6 @@
 
 </MudStack>
 
-<div class="d-flex mt-3">
-    <MudButton StartIcon="@IconsFA.Solid.Icon("left-long").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="GoProfile" Class="me-2">
-        @Button.Back
-    </MudButton>
-</div>
-
 <MudDialog @ref="@MudDialog" Style="width: 100%">
     <DialogContent>
         <MudList T="string" Dense="true">
@@ -170,10 +164,5 @@
         {
             ex.ProcessException(Snackbar, Logger);
         }
-    }
-
-    private void GoProfile()
-    {
-        Navigation.NavigateTo("profile");
     }
 }

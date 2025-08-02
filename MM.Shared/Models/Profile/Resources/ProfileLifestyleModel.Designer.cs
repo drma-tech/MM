@@ -133,7 +133,7 @@ namespace MM.Shared.Models.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FamilyInvolvement.
+        ///   Looks up a localized string similar to Family Involvement.
         /// </summary>
         public static string FamilyInvolvement_Name {
             get {
@@ -327,6 +327,15 @@ namespace MM.Shared.Models.Profile.Resources {
         public static string TravelFrequency_Name {
             get {
                 return ResourceManager.GetString("TravelFrequency_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Want Kids.
+        /// </summary>
+        public static string WantChildren_Name {
+            get {
+                return ResourceManager.GetString("WantChildren_Name", resourceCulture);
             }
         }
     }

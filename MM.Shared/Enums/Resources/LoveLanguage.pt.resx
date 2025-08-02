@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActsOfServices_Description" xml:space="preserve">
-    <value>Essa linguagem do amor se expressa fazendo coisas que você sabe que seu cônjuge gostaria. Cozinhar uma refeição, lavar a roupa e pegar uma receita são atos de serviço. Eles exigem algum pensamento, tempo e esforço.</value>
+    <value>Para aqueles cuja linguagem de amor são os atos de serviço, as ações falam mais alto que as palavras. Eles se sentem cuidados quando o parceiro ajuda com tarefas ou faz algo atencioso, como preparar uma refeição, consertar algo ou fazer recados. Isso demonstra dedicação e disposição para aliviar a carga.</value>
   </data>
   <data name="ActsOfServices_Name" xml:space="preserve">
     <value>Gestos de Serviço</value>
   </data>
   <data name="PhysicalTouch_Description" xml:space="preserve">
-    <value>Para as pessoas com essa linguagem do amor, nada é mais impactante do que o toque físico de seu parceiro. Eles não gostam de DPA (demonstração pública de afeto) exagerado, mas se sentem mais conectados e seguros em um relacionamento, dando as mãos, beijando, abraçando, etc.</value>
+    <value>Para pessoas cuja principal linguagem de amor é o toque físico, a proximidade e a segurança vêm por meio do contato físico. Elas se sentem mais amadas ao dar as mãos, abraçar, beijar ou fazer outros toques suaves. Não se trata de demonstrações públicas de afeto, mas sim de uma conexão física que tranquiliza e cria laços.</value>
   </data>
   <data name="PhysicalTouch_Name" xml:space="preserve">
     <value>Toque Físico</value>
   </data>
   <data name="QualityTime_Description" xml:space="preserve">
-    <value>Essa linguagem do amor tem tudo a ver com atenção exclusiva. Sem televisores, sem smartphones ou qualquer outra distração. Se este for o idioma principal do seu parceiro, eles não querem apenas ser incluídos durante este período, eles querem ser o centro da sua atenção. Eles querem que seus parceiros olhem para eles e apenas para eles.</value>
+    <value>Essa linguagem do amor se concentra na atenção integral. Quem prefere tempo de qualidade quer que o parceiro esteja totalmente presente — sem celulares, sem distrações —, apenas focado em compartilhar momentos juntos. Trata-se de se sentir priorizado e verdadeiramente conectado durante esse tempo.</value>
   </data>
   <data name="QualityTime_Name" xml:space="preserve">
     <value>Qualidade de Tempo</value>
   </data>
   <data name="ReceivingGifts_Description" xml:space="preserve">
-    <value>Essa linguagem do amor não é necessariamente materialista. Significa apenas que um presente significativo ou atencioso faz seu parceiro se sentir amado e apreciado. Algo tão simples como pegar meio litro de seu sorvete favorito depois de uma longa semana de trabalho pode ter um grande impacto.</value>
+    <value>Pessoas que se identificam com essa linguagem do amor se sentem amadas quando recebem símbolos tangíveis de afeto. Não se trata de materialismo, mas da consideração por trás do presente. Um presente pequeno e significativo — como um lanche favorito depois de um dia difícil — pode fazê-las se sentirem profundamente apreciadas.</value>
   </data>
   <data name="ReceivingGifts_Name" xml:space="preserve">
     <value>Recebendo Presentes</value>
   </data>
   <data name="WordsOfAffirmation_Description" xml:space="preserve">
-    <value>Esta linguagem do amor expressa o amor com palavras que edificam o seu parceiro. Elogios verbais não precisam ser complicados; os elogios mais curtos e simples podem ser os mais eficazes.</value>
+    <value>Essa linguagem do amor consiste em expressar afeição por meio de palavras faladas ou escritas. Pessoas que valorizam isso se sentem mais amadas quando recebem elogios sinceros, incentivo e palavras gentis. Até mesmo declarações simples como "Eu te aprecio" ou "Você fez um ótimo trabalho" têm um grande impacto.</value>
   </data>
   <data name="WordsOfAffirmation_Name" xml:space="preserve">
     <value>Palavras de Afirmação</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ENFJ_Description" xml:space="preserve">
-    <value>Las personas que comparten el tipo de personalidad Protagonista se sienten más en casa cuando están en una relación, y pocos tipos están más ansiosos por hacer un compromiso romántico con su pareja elegida. Los protagonistas se toman en serio las citas y las relaciones, seleccionando parejas con una visión a largo plazo en lugar del enfoque más informal que podría esperar de algunos tipos de exploradores. No hay mayor alegría para los Protagonistas que ayudar a alcanzar los objetivos de alguien que les importa, y el entrelazamiento de vidas que representa una relación comprometida es la oportunidad perfecta para hacer precisamente eso.</value>
+    <value>Los protagonistas se sienten cómodos en las relaciones y se comprometen con entusiasmo con sus parejas. Se toman las citas en serio, eligiendo parejas con una visión a largo plazo en lugar de hacerlo a la ligera. Encuentran una gran alegría al apoyar los objetivos de su pareja y entrelazar sus vidas en una relación comprometida.</value>
   </data>
   <data name="ENFJ_Group" xml:space="preserve">
     <value>Diplomáticos</value>
@@ -127,7 +127,7 @@
     <value>Protagonista (ENFJ)</value>
   </data>
   <data name="ENFP_Description" xml:space="preserve">
-    <value>Cuando se trata de relaciones, casi no hay nadie alrededor que esté más emocionado que los activistas de compartir con sus parejas la abundancia de ideas y experiencias perspicaces que la vida tiene para ofrecer. Para las personas con el tipo de personalidad de Activistas, las relaciones son un proceso alegre de exploración mutua e imaginación, una oportunidad para conectarse con otra alma. Los activistas toman en serio sus relaciones y son conocidos por su devoción desinhibida e inquebrantable a las personas a las que han comprometido sus corazones.</value>
+    <value>Los activistas se entusiasman por compartir sus perspectivas y experiencias de vida con sus parejas. Para ellos, las relaciones son una exploración mutua y alegre, y una oportunidad para conectar profundamente. Se toman las relaciones en serio y son conocidos por su devoción desinhibida e inquebrantable hacia sus seres queridos.</value>
   </data>
   <data name="ENFP_Group" xml:space="preserve">
     <value>Diplomáticos</value>
@@ -136,7 +136,7 @@
     <value>Activista (ENFP)</value>
   </data>
   <data name="ENTJ_Description" xml:space="preserve">
-    <value>Al igual que en otras áreas de sus vidas, los comandantes abordan las citas y las relaciones con un conjunto de objetivos y un plan para alcanzarlos, y lo hacen con una energía y entusiasmo impresionantes. Las personas con el tipo de personalidad Comandante quieren ganar y con gusto asumirán roles de liderazgo en las relaciones desde el principio, asumiendo la responsabilidad personal de cómo van las cosas y trabajando activamente para garantizar una experiencia mutuamente gratificante. Las relaciones románticas son un asunto serio, y los comandantes han estado en ello durante mucho tiempo.</value>
+    <value>Los Comandantes abordan las citas y las relaciones con objetivos claros y mucha energía. Les gusta liderar desde el principio, asumiendo la responsabilidad del desarrollo de las relaciones y trabajando activamente para crear una experiencia gratificante para ambos. El romance es un asunto serio para ellos y cuentan con amplia experiencia.</value>
   </data>
   <data name="ENTJ_Group" xml:space="preserve">
     <value>Analistas</value>
@@ -145,7 +145,7 @@
     <value>Comandante (ENTJ)</value>
   </data>
   <data name="ENTP_Description" xml:space="preserve">
-    <value>Si hay algo en lo que los debatientes son buenos, es en crear un flujo interminable de innovaciones e ideas para que las cosas sigan avanzando, y eso también es evidente en sus relaciones románticas. Para las personas con el tipo de personalidad Breakthrough, el crecimiento es clave, e incluso antes de encontrar una pareja de citas, imaginan todas las formas en que pueden probar cosas nuevas juntos, para crecer juntos. Este puede ser un proceso abrumador si su pareja no responde, pero cuando los innovadores encuentren a alguien que comparta su amor por la exploración intelectual, tenga cuidado.</value>
+    <value>Los debatientes son expertos en generar ideas inagotables para impulsar las relaciones. Crecer es clave para ellos, e incluso antes de salir, imaginan todas las maneras de explorar y evolucionar juntos. Esto puede ser abrumador si su pareja no les sigue el ritmo, pero cuando encuentran a alguien que comparte su pasión por la aventura intelectual, se convierten en una pareja apasionante.</value>
   </data>
   <data name="ENTP_Group" xml:space="preserve">
     <value>Analistas</value>
@@ -154,7 +154,7 @@
     <value>Debatidor (ENTP)</value>
   </data>
   <data name="ESFJ_Description" xml:space="preserve">
-    <value>Valorando tanto la validación social y el sentido de pertenencia, las relaciones románticas tienen un nivel especial de importancia para los cónsules. Ningún otro tipo de relación proporciona a las personas con el tipo de personalidad Cónsul el mismo nivel de apoyo y devoción, y los sentimientos de seguridad y estabilidad que acompañan a las fuertes relaciones románticas son extremadamente cálidos.</value>
+    <value>Los Cónsules valoran mucho la validación social y el sentido de pertenencia. Las relaciones románticas les brindan un apoyo emocional y seguridad considerables. Para los Cónsules, los vínculos románticos fuertes les brindan calidez, devoción y una sensación de estabilidad.</value>
   </data>
   <data name="ESFJ_Group" xml:space="preserve">
     <value>Centinelas</value>
@@ -163,7 +163,7 @@
     <value>Cónsul (ESFJ)</value>
   </data>
   <data name="ESFP_Description" xml:space="preserve">
-    <value>Los artistas son personas sociables, amantes de la diversión y de espíritu libre que viven la vida en el momento y extraen cada pedacito de emoción de todo. Naturalmente, no escatiman nada de esa frescura y energía en las citas. Para las personas con el tipo de personalidad Entertainer, las relaciones no se tratan de construir lentamente las bases para el futuro o planificar una vida, son cosas burbujeantes e impredecibles para disfrutar siempre que haya placer.</value>
+    <value>Los artistas son sociables, divertidos y de espíritu libre. Viven el momento y extraen emociones de todo. Sus relaciones no se basan en planes a largo plazo, sino en disfrutar de experiencias alegres e impredecibles, siempre que haya placer.</value>
   </data>
   <data name="ESFP_Group" xml:space="preserve">
     <value>Exploradores</value>
@@ -172,7 +172,7 @@
     <value>Animador (ESFP)</value>
   </data>
   <data name="ESTJ_Description" xml:space="preserve">
-    <value>Los ejecutivos son bastante únicos en el sentido de que sus relaciones realmente no cambian a medida que avanzan de la fase de citas a relaciones más estables y a largo plazo e incluso más en el matrimonio. Debido a que valoran tanto la honestidad y la franqueza, las personas con una personalidad ejecutiva tienden a tener claro quiénes son, cómo son y cuáles son sus objetivos desde el principio, y deben seguir adelante con estas declaraciones a largo plazo. Mientras su pareja pueda tomar su palabra y seguir su ejemplo, tienden a ser relaciones extremadamente estables.</value>
+    <value>Los ejecutivos mantienen la constancia desde las citas hasta las relaciones a largo plazo y el matrimonio. Valoran la honestidad y la franqueza, tienen claros sus objetivos desde el principio y esperan que sus parejas los cumplan. Esto da lugar a relaciones extremadamente estables y confiables.</value>
   </data>
   <data name="ESTJ_Group" xml:space="preserve">
     <value>Centinelas</value>
@@ -181,7 +181,7 @@
     <value>Ejecutivo (ESTJ)</value>
   </data>
   <data name="ESTP_Description" xml:space="preserve">
-    <value>Cuando se trata de relaciones románticas, difícilmente se puede decir que las personas con el tipo de personalidad emprendedora se están perdiendo el día de su boda. La vida es divertida y llena de sorpresas (algo que los empresarios tienen una habilidad especial para entregar), y disfrutan de todo aquí y ahora. Es posible que los empresarios no pasen mucho tiempo planeando "algún día", pero su entusiasmo e imprevisibilidad los convierten en socios de citas emocionantes.</value>
+    <value>Los emprendedores viven la vida con diversión y sorpresas, y disfrutan cada momento. Puede que no planifiquen con mucha antelación, pero su entusiasmo e imprevisibilidad los convierten en parejas apasionantes. A menudo no priorizan los planes de boda tradicionales.</value>
   </data>
   <data name="ESTP_Group" xml:space="preserve">
     <value>Exploradores</value>
@@ -190,7 +190,7 @@
     <value>Emprendedor (ESTP)</value>
   </data>
   <data name="INFJ_Description" xml:space="preserve">
-    <value>Los defensores (INFJ) tienden a tomar en serio el proceso de encontrar una pareja romántica. Las personas con este tipo de personalidad buscan profundidad y significado en sus relaciones, prefiriendo no conformarse con una unión que se basa en nada menos que el amor verdadero. Puede tomar algún tiempo para que los defensores encuentren un socio compatible. Algunas personas pueden pensar que los defensores son demasiado exigentes y es cierto que estas personalidades pueden tener expectativas poco realistas. Algunos defensores pueden esperar una pareja o relación "perfecta" que finalmente no existe.</value>
+    <value>Los defensores suelen tomarse en serio la búsqueda de una pareja romántica. Buscan profundidad y significado en las relaciones, negándose a conformarse con nada menos que el amor verdadero. Encontrar una pareja compatible puede llevar tiempo. Los defensores pueden ser vistos como exigentes o con expectativas poco realistas, a veces deseando una pareja o relación "perfecta" que en realidad no existe.</value>
   </data>
   <data name="INFJ_Group" xml:space="preserve">
     <value>Diplomáticos</value>
@@ -199,7 +199,7 @@
     <value>Abogado (INFJ)</value>
   </data>
   <data name="INFP_Description" xml:space="preserve">
-    <value>Los mediadores (INFP) son soñadores e idealistas, especialmente cuando se trata de romance. El concepto de amor verdadero resuena con ellos, y es poco probable que sean felices en una relación basada en algo menos. Las personas con este tipo de personalidad pueden soñar despiertas con la relación perfecta, imaginando cómo sería compartir su ser más íntimo con otra persona.</value>
+    <value>Los mediadores son soñadores e idealistas en el romance. La idea del amor verdadero les resuena profundamente, y es poco probable que sean felices con menos. Suelen fantasear con una relación perfecta e imaginar compartir su yo más íntimo con otra persona.</value>
   </data>
   <data name="INFP_Group" xml:space="preserve">
     <value>Diplomáticos</value>
@@ -208,7 +208,7 @@
     <value>Mediador (INFP)</value>
   </data>
   <data name="INTJ_Description" xml:space="preserve">
-    <value>Los arquitectos (INTJ) abordan el romance de la manera en que hacen la mayoría de los desafíos: estratégicamente, con objetivos claros y un plan para alcanzarlos. En un mundo puramente racional, este enfoque sería infalible. Por desgracia, el amor rara vez es racional, y los arquitectos corren el riesgo de pasar por alto o malinterpretar la imprevisibilidad de la naturaleza humana y el afecto.</value>
+    <value>Los arquitectos abordan el romance como la mayoría de los desafíos: estratégicamente, con objetivos claros y un plan para alcanzarlos. En un mundo puramente racional, esto funcionaría a la perfección. Sin embargo, el amor rara vez es racional, y los arquitectos pueden pasar por alto o malinterpretar la naturaleza impredecible de las emociones y el afecto humanos.</value>
   </data>
   <data name="INTJ_Group" xml:space="preserve">
     <value>Analistas</value>
@@ -217,7 +217,7 @@
     <value>Arquitecto (INTJ)</value>
   </data>
   <data name="INTP_Description" xml:space="preserve">
-    <value>Cuando se trata de relaciones románticas, los lógicos tienen una interesante mezcla de rasgos que a menudo sorprenden gratamente a sus parejas. Las personas con este tipo de personalidad siempre están llenas de ideas, pero tienen pocas oportunidades de explorar sus nociones más románticas. Al igual que con cualquiera de sus teorías, a los lógicos les encanta compartir con los demás, y cuando finalmente conocen a alguien donde los pensamientos románticos son apropiados, están emocionados, entusiastas e incluso juguetones, coqueteando con el juego de palabras y el juego intelectual.</value>
+    <value>Los lógicos poseen una combinación única de rasgos en las relaciones románticas que a menudo sorprenden gratamente a sus parejas. Son muy ingeniosos, pero rara vez exploran sus pensamientos románticos. Cuando encuentran a alguien con quien el romance encaja, se entusiasman, se vuelven juguetones y disfrutan del coqueteo intelectual y los juegos de palabras.</value>
   </data>
   <data name="INTP_Group" xml:space="preserve">
     <value>Analistas</value>
@@ -226,7 +226,7 @@
     <value>Lógico (INTP)</value>
   </data>
   <data name="ISFJ_Description" xml:space="preserve">
-    <value>Cuando se trata de relaciones románticas, la amabilidad de los Defensores se convierte en una alegría que solo se encuentra en el cuidado de su familia y hogar, en estar allí para apoyo emocional y práctico cuando sea necesario. El hogar es donde está el corazón para las personas con el tipo de personalidad Defender, y en ninguna otra área de sus vidas se esfuerzan tanto por crear la armonía y la belleza que quieren ver en el mundo.</value>
+    <value>Los Defensores expresan su bondad a través del profundo cariño por la familia y el hogar. Brindan apoyo emocional y práctico siempre que es necesario. Para los Defensores, el hogar es donde reside el corazón, y se esfuerzan por crear armonía y belleza en su vida personal.</value>
   </data>
   <data name="ISFJ_Group" xml:space="preserve">
     <value>Centinelas</value>
@@ -235,7 +235,7 @@
     <value>Defensor (ISFJ)</value>
   </data>
   <data name="ISFP_Description" xml:space="preserve">
-    <value>Los aventureros son bastante misteriosos y difíciles de conocer. Aunque son individuos muy emocionales, protegen este núcleo sensible cuidadosamente, prefiriendo escuchar en lugar de expresar. Las personas con el tipo de personalidad Aventurero se centran en sus parejas, con poco interés en dictar el estado de ánimo de una situación con sus propios sentimientos. Si bien esto a veces puede ser frustrante, si son aceptados por lo que son, los aventureros demuestran ser socios cálidos y entusiastas.</value>
+    <value>Los aventureros son misteriosos y emotivos, pero protegen su sensibilidad. Prefieren escuchar antes que expresar sus sentimientos. Se centran en sus parejas en lugar de controlar su estado de ánimo. Si se les acepta tal como son, los aventureros demuestran ser compañeros cálidos y entusiastas.</value>
   </data>
   <data name="ISFP_Group" xml:space="preserve">
     <value>Exploradores</value>
@@ -244,7 +244,7 @@
     <value>Aventurero (ISFP)</value>
   </data>
   <data name="ISTJ_Description" xml:space="preserve">
-    <value>Los logísticos son totalmente confiables y este rasgo se expresa claramente cuando se trata de sus relaciones románticas. A menudo representando el epítome de los valores familiares, las personas con el tipo de personalidad de Logística se sienten cómodas con, y a menudo incluso alientan, los roles domésticos y de género tradicionales, y buscan una estructura familiar guiada por expectativas claras y honestidad. Si bien su naturaleza reservada a menudo hace que los logísticos de citas sean un desafío, son socios verdaderamente dedicados, dispuestos a pensar mucho y energía para garantizar relaciones estables y mutuamente satisfactorias.</value>
+    <value>Los logistas son extremadamente confiables, especialmente en las relaciones románticas. Suelen encarnar los valores familiares tradicionales, se sienten cómodos con expectativas claras y honestidad, y pueden fomentar los roles domésticos y de género tradicionales. Aunque reservados, son socios dedicados que invierten esfuerzo y energía en relaciones estables y mutuamente satisfactorias.</value>
   </data>
   <data name="ISTJ_Group" xml:space="preserve">
     <value>Centinelas</value>
@@ -253,7 +253,7 @@
     <value>Logista (ISTJ)</value>
   </data>
   <data name="ISTP_Description" xml:space="preserve">
-    <value>Cuando se trata de relaciones románticas con Virtuosos, es un poco como clavar gelatina en un árbol. Citas con personalidades Virtuoso es un tango, complejo e interesante, con alternancia de frialdad y desapego, y pasión, espontaneidad y placer del momento. Nada puede ser forzado en las relaciones virtuosas, pero siempre que se les dé el espacio que necesitan para ser ellos mismos, estarán felices de disfrutar de la comodidad de una pareja estable de por vida.</value>
+    <value>Las relaciones románticas con Virtuosos son complejas y dinámicas, como clavar gelatina en un árbol. Alternan entre la frialdad y el desapego, y la pasión, la espontaneidad y el placer del momento. No se puede forzar nada; necesitan espacio para ser ellos mismos, pero disfrutarán de la comodidad de una pareja estable para toda la vida.</value>
   </data>
   <data name="ISTP_Group" xml:space="preserve">
     <value>Exploradores</value>

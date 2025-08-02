@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This love language expresses itself by doing things that you know your spouse would like. Cooking a meal, doing laundry, and picking up a recipe are all acts of service. They require some thought, time and effort..
+        ///   Looks up a localized string similar to For those whose love language is acts of service, actions speak louder than words. They feel cared for when their partner helps with tasks or does something thoughtful, like cooking a meal, fixing something, or running errands. It shows dedication and willingness to ease their load..
         /// </summary>
         public static string ActsOfServices_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For people with this love language, nothing is more impactful than their partner&apos;s physical touch. They don&apos;t like over-the-top DPA (Public Display of Affection), but they feel more connected and secure in a relationship, holding hands, kissing, hugging, etc..
+        ///   Looks up a localized string similar to For people whose primary love language is physical touch, closeness and security come through physical contact. They feel most loved by holding hands, hugs, kisses, or other gentle touches. It’s not about public displays of affection, but about physical connection that reassures and bonds..
         /// </summary>
         public static string PhysicalTouch_Description {
             get {
@@ -97,7 +97,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This love language is all about exclusive attention. No televisions, no smartphones or any other distractions. If this is your partner&apos;s primary language, they don&apos;t just want to be included during this time, they want to be the center of your attention. They want their partners to look at them and only them..
+        ///   Looks up a localized string similar to This love language centers on undivided attention. Those who prefer quality time want their partner to be fully present — no phones, no distractions — just focused on sharing moments together. It’s about feeling prioritized and truly connected during that time..
         /// </summary>
         public static string QualityTime_Description {
             get {
@@ -115,7 +115,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This love language is not necessarily materialistic. It just means that a meaningful or thoughtful gift makes your partner feel loved and appreciated. Something as simple as grabbing a pint of your favorite ice cream after a long week at work can have a big impact..
+        ///   Looks up a localized string similar to People who resonate with this love language feel loved when they receive tangible symbols of affection. It’s not about materialism but the thoughtfulness behind the gift. A small, meaningful present — like a favorite snack after a tough day — can make them feel deeply appreciated..
         /// </summary>
         public static string ReceivingGifts_Description {
             get {
@@ -133,7 +133,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This love language expresses love with words that edify your partner. Verbal praise doesn&apos;t have to be complicated; the shortest, simplest compliments can be the most effective..
+        ///   Looks up a localized string similar to This love language is about expressing affection through spoken or written words. People who value this feel most loved when they receive sincere compliments, encouragement, and kind words. Even simple statements like “I appreciate you” or “You did a great job” have a big impact..
         /// </summary>
         public static string WordsOfAffirmation_Description {
             get {

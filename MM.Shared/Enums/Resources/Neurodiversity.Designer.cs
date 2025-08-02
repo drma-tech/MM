@@ -61,7 +61,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Neurodivergence is the term for people whose brains function differently in one or more ways than is considered standard or typical. There are many different ways that neurodivergence manifests, ranging from very mild ways that most people would never notice to more obvious ways that lead to a person behaving differently than is standard in our society. Several \&quot;recognized\&quot; types of Neurodivergence, include autism, Asperger&apos;s syndrome, dyslexia, dyscalculia, epilepsy, hyperlexia, Dyspraxia, ADHD, obsessiv [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Describes someone whose brain works in a naturally different way—such as thinking, learning, or processing emotions differently. This can include conditions like autism, ADHD, or dyslexia, among others..
         /// </summary>
         public static string Neurodivergent_Description {
             get {
@@ -79,7 +79,7 @@ namespace MM.Shared.Enums.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Neurotypical is a descriptor that refers to someone who has the brain functions, behaviors, and processing considered standard or typical..
+        ///   Looks up a localized string similar to Describes someone whose brain processes, behavior, and way of interacting with the world are considered typical or expected by most people..
         /// </summary>
         public static string Neurotypical_Description {
             get {

@@ -23,11 +23,9 @@ public enum Diet
     [Custom(Name = "GlutenFree_Name", Description = "GlutenFree_Description", ResourceType = typeof(Resources.Diet))]
     GlutenFree = 6,
 
-    [Custom(Name = "OrganicAllnaturalLocal_Name", Description = "OrganicAllnaturalLocal_Description",
-        ResourceType = typeof(Resources.Diet))]
+    [Custom(Name = "OrganicAllnaturalLocal_Name", Description = "OrganicAllnaturalLocal_Description", ResourceType = typeof(Resources.Diet))]
     OrganicAllnaturalLocal = 7,
 
-    [Custom(Name = "DetoxWeightLoss_Name", Description = "DetoxWeightLoss_Description",
-        ResourceType = typeof(Resources.Diet))]
+    [Custom(Name = "DetoxWeightLoss_Name", Description = "DetoxWeightLoss_Description", ResourceType = typeof(Resources.Diet))]
     DetoxWeightLoss = 8
 }

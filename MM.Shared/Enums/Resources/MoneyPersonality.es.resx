@@ -117,62 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CONNOISSEUR_Description" xml:space="preserve">
-    <value />
-  </data>
   <data name="Connoisseur_Description" xml:space="preserve">
-    <value>Te encanta el dinero (¡y no hay nada de malo en ello!) Te encanta gastarlo, principalmente en cosas, experiencias y servicios increíbles. Incluso puedes disfrutar ahorrándolo, pero con un objetivo de gasto en mente. Disfrutas de las cosas buenas de la vida, como las definas, y te enorgulleces de tu buen gusto; para ti, lo importante es la calidad. También trabajas duro para ganarte el dinero, lo que te permite sentirte bien al gastarlo y tratarte bien a ti mismo y a los demás. Te gusta disfrutar de la vida con los cinco sentidos e invitar a los demás a que te acompañen.</value>
-  </data>
-  <data name="CONNOISSEUR_Name" xml:space="preserve">
-    <value />
+    <value>Te encanta gastar dinero en artículos, experiencias y servicios de alta calidad. También podrías ahorrar con un objetivo claro de gasto. Disfrutar de las cosas buenas de la vida y compartir ese placer con los demás es un valor clave para ti.</value>
   </data>
   <data name="Connoisseur_Name" xml:space="preserve">
     <value>Conocedor</value>
   </data>
-  <data name="INDEPENDENT_Description" xml:space="preserve">
-    <value />
-  </data>
   <data name="Independent_Description" xml:space="preserve">
-    <value>Para ti es importante vivir la vida a tu manera y tener la libertad de seguir tu felicidad. Tiendes a no pensar en el dinero a menos que te impida vivir como deseas. Te resistes a que el dinero dicte tus decisiones y eres consciente de que tus decisiones podrían no tener sentido para quienes te rodean. Algunos independientes ven el dinero como un juego con demasiadas reglas y se rebelan contra cómo otros dicen que debe jugarse. Otros tienen una actitud de "viene y se va" con respecto al dinero. Como eres ingenioso, tienes una visión global y confías en que lo resolverás.</value>
-  </data>
-  <data name="INDEPENDENT_Name" xml:space="preserve">
-    <value />
+    <value>Vivir la vida a tu manera y tener libertad es esencial. El dinero solo se convierte en una preocupación si te impide vivir. Tiendes a rechazar las reglas financieras tradicionales, adoptando un enfoque poco convencional y confiando en que encontrarás la solución.</value>
   </data>
   <data name="Independent_Name" xml:space="preserve">
     <value>Independiente</value>
   </data>
-  <data name="NURTURER_Description" xml:space="preserve">
-    <value />
-  </data>
   <data name="Nurturer_Description" xml:space="preserve">
-    <value>Las relaciones son lo primero, así que piensas en los demás al tomar decisiones financieras (aunque a veces eres consciente de que priorizar a los demás significa perjudicarte sin querer). Te encanta dar y empoderar a los demás con tu dinero y tu tiempo. En una relación o familia, ser un buen proveedor es una prioridad para ti.</value>
-  </data>
-  <data name="NURTURER_Name" xml:space="preserve">
-    <value />
+    <value>Priorizas las relaciones y consideras a los demás en tus decisiones financieras, incluso si a veces eso implica sacrificar tus propias necesidades. Donar tu tiempo y dinero para apoyar a los demás y ser un proveedor confiable es importante para ti.</value>
   </data>
   <data name="Nurturer_Name" xml:space="preserve">
     <value>Criador</value>
   </data>
-  <data name="PRODUCER_Description" xml:space="preserve">
-    <value />
-  </data>
   <data name="Producer_Description" xml:space="preserve">
-    <value>Disfrutas acumulando dinero y viéndolo crecer. Controlas tus finanzas, prestando mucha atención a lo que entra y lo que sale, y tomando decisiones metódicas. Sueles ser financieramente conservador y tomas medidas para minimizar tu exposición al riesgo, independientemente de tu presupuesto. A veces, descubres que esta cautela te impide alcanzar tus metas.</value>
-  </data>
-  <data name="PRODUCER_Name" xml:space="preserve">
-    <value />
+    <value>Te concentras en hacer crecer tu dinero de forma constante mediante un seguimiento minucioso de tus ingresos y gastos. Tiendes a ser cauteloso y a evitar riesgos financieros. Si bien este enfoque cuidadoso te brinda seguridad, a veces puede limitar tu progreso hacia metas más grandes.</value>
   </data>
   <data name="Producer_Name" xml:space="preserve">
     <value>Productor</value>
   </data>
-  <data name="VISIONARY_Description" xml:space="preserve">
-    <value />
-  </data>
   <data name="Visionary_Description" xml:space="preserve">
-    <value>Disfrutas acumulando dinero y viéndolo crecer. Controlas tus finanzas, prestando mucha atención a lo que entra y lo que sale, y tomando decisiones metódicas. Sueles ser financieramente conservador y tomas medidas para minimizar tu exposición al riesgo, independientemente de tu presupuesto. A veces, descubres que esta cautela te impide alcanzar tus metas.</value>
-  </data>
-  <data name="VISIONARY_Name" xml:space="preserve">
-    <value />
+    <value>Te motiva hacer el trabajo que te apasiona y te enorgullece cuando te lleva al éxito financiero. El dinero representa el reconocimiento a tus ideas y logros, aunque tener lo suficiente para seguir persiguiendo tus pasiones suele ser lo más importante.</value>
   </data>
   <data name="Visionary_Name" xml:space="preserve">
     <value>Visionario</value>

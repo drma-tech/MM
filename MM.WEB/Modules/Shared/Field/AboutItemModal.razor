@@ -3,6 +3,8 @@
 @using MM.WEB.Core.Models
 @typeparam TValue
 
+@inject IDialogService DialogService
+
 <MudDialog Style="width: 100%">
     <DialogContent>
         <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
@@ -39,7 +41,7 @@
                                 <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
                                     @ExpectedValues.First()
                                 </MudChip>
-                                <MudText> - </MudText>
+                                <MudText Inline="true"> - </MudText>
                                 <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
                                     @ExpectedValues.Last()
                                 </MudChip>
@@ -73,18 +75,19 @@
                         if (item is Enum resultE)
                         {
                             var desc = resultE.GetCustomAttribute()?.Description;
+                            var show = resultE.GetCustomAttribute()?.ShowDescription ?? false;
                             var name = resultE.GetName();
 
-                            if (string.IsNullOrEmpty(desc))
+                            if (desc.NotEmpty() && show)
                             {
                                 <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
-                                    @name
+                                    <span class="me-2" style="font-weight: bold;">@name</span>@desc
                                 </MudAlert>
                             }
                             else
                             {
                                 <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
-                                    <span class="me-2" style="font-weight: bold;">@name</span>@desc
+                                    @name
                                 </MudAlert>
                             }
                         }
@@ -110,7 +113,7 @@
                 }
             </MudTabPanel>
             <MudTabPanel Tag="@("WhyImportant")" Text="@GlobalTranslations.WhyImportant" Disabled="WhyImportant.Empty()">
-                <MudText Class="my-2" Typo="Typo.body1">
+                <MudText Class="my-2" Typo="Typo.body1" Align="Align.Justify">
                     @WhyImportant
                 </MudText>
             </MudTabPanel>
@@ -118,8 +121,8 @@
                 <MudList T="string" Dense="true">
                     @foreach (var item in GetTips())
                     {
-                        <MudListItem Icon="@IconsFA.Solid.Icon("check").Font">
-                            <span class="me-2" style="font-weight: bold;">@item.Key</span><span style="text-align: justify;">@item.Value</span>
+                        <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                            <span class="me-2" style="font-weight: bold;">@item.Key</span><span>@item.Value</span>
                         </MudListItem>
                     }
                 </MudList>
@@ -127,6 +130,7 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })">@Button.Feedback</MudButton>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>

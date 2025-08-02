@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Builders_Description" xml:space="preserve">
-    <value>Builders are the traditional, loyal, balanced types, powered by serotonin (the calming hormone). These people are very routine-oriented and highly planned, valuing authority, rules, and precision. They are typically grounded and fact-based, conscientious and cautious. Builders want to do a thorough job, and they want to do it right the first time. They revere home and family and have a sense of what they “should” be doing at all times. Builders are often attracted to those like themselves, preferring to start relationships and families with others who value peace and tradition.</value>
+    <value>Grounded and dependable, Builders value stability, structure, and tradition. They tend to be family-oriented, loyal, and meticulous planners. With a preference for clear roles and routines, Builders often connect best with others who share their appreciation for harmony and order.</value>
   </data>
   <data name="Builders_Name" xml:space="preserve">
     <value>Builders</value>
   </data>
   <data name="Directors_Description" xml:space="preserve">
-    <value>Directors are powered by testosterone. They are analytical and logical, direct and forthcoming. They are sure of themselves, independent, decisive, and skeptical. Directors are resourceful, competitive, and type A, often making excellent leaders. These types tend to be drawn to estrogen-oriented Negotiators, their opposites; the complementary match provides a perfect pairing for the emotionality and people skills that Directors lack.</value>
+    <value>Logical, confident, and goal-driven, Directors value clarity and efficiency. They tend to be independent thinkers, assertive communicators, and natural leaders. They often seek emotionally attuned partners who can balance their intensity with empathy and social insight.</value>
   </data>
   <data name="Directors_Name" xml:space="preserve">
     <value>Directors</value>
   </data>
   <data name="Explorers_Description" xml:space="preserve">
-    <value>Explorers are the doers, and they're powered by dopamine (a neurotransmitter involved in pleasure-seeking and motivation). Explorers seek novelty and excitement, and love to learn, travel, and meet new people. They are highly curious, goal-oriented, and value their independence. They live in the moment and typically have a ton of energy. Explorers are often attracted to those who similar-minded. They contend that if you want to do, learn, seek, and experience, you wouldn’t do well with someone who didn’t share those desires.</value>
+    <value>Adventurous and spontaneous, Explorers thrive on new experiences and challenges. Motivated by curiosity and excitement, they love to travel, meet new people, and explore ideas. Independent and energetic, they prefer partners who share their appetite for discovery and action.</value>
   </data>
   <data name="Explorers_Name" xml:space="preserve">
     <value>Explorers</value>
   </data>
   <data name="Negotiator_Description" xml:space="preserve">
-    <value>Negotiators are characterized by estrogen. They're intuitive, charming, insightful, and caring. They do well with ambiguity, and can read between the lines. Negotiators are highly empathetic, and are skilled at organizing and connecting people. They like when everyone gets along, and they are also emotionally expressive. These types are often drawn to testosterone-led Directors, their opposites; Directors can lend the logic, directness, and decisiveness skills that Negotiators often lack.</value>
+    <value>Empathetic, perceptive, and emotionally expressive, Negotiators are strong communicators who excel at creating deep connections. They value emotional harmony, intuition, and mutual understanding. Often drawn to more analytical partners, they balance logic with care and insight.</value>
   </data>
   <data name="Negotiator_Name" xml:space="preserve">
     <value>Negotiator</value>

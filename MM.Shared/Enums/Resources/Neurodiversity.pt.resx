@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Neurodivergent_Description" xml:space="preserve">
-    <value>Neurodivergência é o termo para pessoas cujos cérebros funcionam de maneira diferente em uma ou mais maneiras do que é considerado padrão ou típico. Existem muitas maneiras diferentes pelas quais a neurodivergência se manifesta, variando de maneiras muito suaves que a maioria das pessoas nunca notaria a maneiras mais óbvias que levam uma pessoa a se comportar de maneira diferente do padrão em nossa sociedade. Vários tipos \"reconhecidos\" de neurodivergência incluem autismo, síndrome de Asperger, dislexia, discalculia, epilepsia, hiperlexia, dispraxia, TDAH, transtorno obsessivo-compulsivo (TOC) e síndrome de Tourette (TS).</value>
+    <value>Descreve alguém cujo cérebro funciona de uma maneira naturalmente diferente — como pensar, aprender ou processar emoções de forma diferente. Isso pode incluir condições como autismo, TDAH ou dislexia, entre outras.</value>
   </data>
   <data name="Neurodivergent_Name" xml:space="preserve">
     <value>Neurodivergente</value>
   </data>
   <data name="Neurotypical_Description" xml:space="preserve">
-    <value>Neurotípico é um descritor que se refere a alguém que tem as funções cerebrais, comportamentos e processamento considerados padrão ou típicos.</value>
+    <value>Descreve alguém cujos processos cerebrais, comportamento e maneira de interagir com o mundo são considerados típicos ou esperados pela maioria das pessoas.</value>
   </data>
   <data name="Neurotypical_Name" xml:space="preserve">
     <value>Neurotípico</value>

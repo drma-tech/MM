@@ -10,8 +10,7 @@ public enum MaritalStatus
     [Custom(Name = "Married_Name", Description = "Married_Description", ResourceType = typeof(CurrentSituation))]
     Married = 2,
 
-    [Custom(Name = "CommonLawCohabiting_Name", Description = "CommonLawCohabiting_Description",
-        ResourceType = typeof(CurrentSituation))]
+    [Custom(Name = "CommonLawCohabiting_Name", Description = "CommonLawCohabiting_Description", ResourceType = typeof(CurrentSituation))]
     CommonLawCohabiting = 3,
 
     [Custom(Name = "Separated_Name", Description = "Separated_Description", ResourceType = typeof(CurrentSituation))]
@@ -23,7 +22,6 @@ public enum MaritalStatus
     [Custom(Name = "Annulled_Name", Description = "Annulled_Description", ResourceType = typeof(CurrentSituation))]
     Annulled = 6,
 
-    [Custom(Name = "MarriageConvenience_Name", Description = "MarriageConvenience_Description",
-        ResourceType = typeof(CurrentSituation))]
+    [Custom(Name = "MarriageConvenience_Name", Description = "MarriageConvenience_Description", ResourceType = typeof(CurrentSituation))]
     MarriageConvenience = 7
 }

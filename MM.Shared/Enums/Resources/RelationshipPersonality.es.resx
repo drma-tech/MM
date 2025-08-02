@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Builders_Description" xml:space="preserve">
-    <value>Los constructores son los tipos tradicionales, leales y equilibrados, impulsados por la serotonina (la hormona calmante). Estas personas están muy orientadas a la rutina y altamente planificadas, valorando la autoridad, las reglas y la precisión. Por lo general, están fundamentados y basados en hechos, son concienzudos y cautelosos. Los constructores quieren hacer un trabajo minucioso, y quieren hacerlo bien la primera vez. Reverencian el hogar y la familia y tienen un sentido de lo que "deberían" estar haciendo en todo momento. Los constructores a menudo se sienten atraídos por aquellos como ellos, prefiriendo iniciar relaciones y familias con otros que valoran la paz y la tradición.</value>
+    <value>Con los pies en la tierra y confiables, los Constructores valoran la estabilidad, la estructura y la tradición. Tienden a ser familiares, leales y planificadores meticulosos. Con preferencia por roles y rutinas claras, los Constructores suelen conectar mejor con quienes comparten su aprecio por la armonía y el orden.</value>
   </data>
   <data name="Builders_Name" xml:space="preserve">
     <value>Constructores</value>
   </data>
   <data name="Directors_Description" xml:space="preserve">
-    <value>Los directores son impulsados por la testosterona. Son analíticos y lógicos, directos y directos. Están seguros de sí mismos, independientes, decididos y escépticos. Los directores son ingeniosos, competitivos y de tipo A, a menudo son excelentes líderes. Estos tipos tienden a ser atraídos por los negociadores orientados al estrógeno, sus opuestos; la combinación complementaria proporciona una combinación perfecta para la emotividad y las habilidades de las personas de las que carecen los directores.</value>
+    <value>Lógicos, seguros de sí mismos y centrados en objetivos, los Directores valoran la claridad y la eficiencia. Tienden a ser pensadores independientes, comunicadores asertivos y líderes natos. Suelen buscar socios emocionalmente afines que puedan equilibrar su intensidad con empatía y perspicacia social.</value>
   </data>
   <data name="Directors_Name" xml:space="preserve">
     <value>Directores</value>
   </data>
   <data name="Explorers_Description" xml:space="preserve">
-    <value>Los exploradores son los hacedores, y son impulsados por la dopamina (un neurotransmisor involucrado en la búsqueda de placer y la motivación). Los exploradores buscan novedad y emoción, y les encanta aprender, viajar y conocer gente nueva. Son muy curiosos, orientados a objetivos y valoran su independencia. Viven en el momento y típicamente tienen una tonelada de energía. Los exploradores a menudo se sienten atraídos por aquellos que tienen una mentalidad similar. Sostienen que si quieres hacer, aprender, buscar y experimentar, no te iría bien con alguien que no compartiera esos deseos.</value>
+    <value>Aventureros y espontáneos, los Exploradores se apasionan por las nuevas experiencias y los desafíos. Motivados por la curiosidad y la emoción, les encanta viajar, conocer gente nueva y explorar ideas. Independientes y enérgicos, prefieren parejas que compartan su afán por el descubrimiento y la acción.</value>
   </data>
   <data name="Explorers_Name" xml:space="preserve">
     <value>Exploradores</value>
   </data>
   <data name="Negotiator_Description" xml:space="preserve">
-    <value>Los negociadores se caracterizan por el estrógeno. Son intuitivos, encantadores, perspicaces y cariñosos. Les va bien con la ambigüedad, y pueden leer entre líneas. Los negociadores son altamente empáticos y son hábiles para organizar y conectar a las personas. Les gusta cuando todos se llevan bien, y también son emocionalmente expresivos. Estos tipos a menudo se sienten atraídos por los directores dirigidos por la testosterona, sus opuestos; Los directores pueden prestar las habilidades de lógica, franqueza y decisión de las que a menudo carecen los negociadores.</value>
+    <value>Empáticos, perceptivos y emocionalmente expresivos, los negociadores son excelentes comunicadores que destacan por crear conexiones profundas. Valoran la armonía emocional, la intuición y la comprensión mutua. A menudo se sienten atraídos por socios más analíticos, y equilibran la lógica con la atención y la perspicacia.</value>
   </data>
   <data name="Negotiator_Name" xml:space="preserve">
     <value>Negociador</value>

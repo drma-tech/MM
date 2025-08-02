@@ -135,6 +135,9 @@
   <data name="Compatibility" xml:space="preserve">
     <value>Compatibilidad</value>
   </data>
+  <data name="CompatibilityDeveloping" xml:space="preserve">
+    <value>Nuestro sistema de compatibilidad aún está en desarrollo. Si tiene alguna sugerencia o comentario, envíenos un ticket de soporte o un correo electrónico.</value>
+  </data>
   <data name="CompatibilityHigh" xml:space="preserve">
     <value>Felicidades, ustedes dos están hechos el uno para el otro. Esta relación tiene un futuro brillante por delante.</value>
   </data>
