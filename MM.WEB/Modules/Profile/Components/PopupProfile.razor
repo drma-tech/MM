@@ -158,6 +158,7 @@
         </RenderControl>
     </DialogContent>
     <DialogActions>
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })">@Button.Feedback</MudButton>
         <MudButton OnClick="@(async () => { MudDialog!.Close(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>

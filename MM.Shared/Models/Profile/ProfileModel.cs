@@ -18,8 +18,6 @@ public class ProfileModel : CosmosDocument
 
     public bool Validated { get; set; }
 
-
-
     public ProfileGalleryModel? Gallery { get; set; }
 
     public void UpdateData(ProfileModel profile)
@@ -450,7 +448,7 @@ public class ProfileModel : CosmosDocument
         ResourceType = typeof(ProfileGoalModel))]
     public Relocation? Relocation { get; set; }
 
-    [Custom(Name = "IdealPlaceToLive", 
+    [Custom(Name = "IdealPlaceToLive",
         WhyImportant = "Where you want to live shapes your daily lifestyle, social opportunities, and long-term satisfaction. Differences in preferences—whether urban bustle, quiet suburbs, or rural calm—can affect everything from commute times to social life to access to amenities. If partners have conflicting ideas about their ideal environment, it can lead to compromises that leave one or both unhappy. Understanding this helps set expectations and avoid frustration, especially when planning for the future.",
         Tips = "Urban|If your partner loves city life, support their need for access to culture, nightlife, and convenience, even if it means more noise or crowds.|Suburban|If they prefer suburbs, respect their desire for space, safety, and community feel. Balance this with social activities outside the neighborhood.|Rural|For rural lovers, acknowledge the need for nature, quiet, and simplicity. Discuss how to manage distance from services or social opportunities.|Flexible|If one or both are flexible, leverage this as a strength to explore compromises and adapt to life changes together.|Discuss expectations|Talk about how often you want to visit friends, family, or cultural venues to find a place that suits both.|Consider future needs|Think about work, children, health, and aging—what suits you now might change over time.|Try before deciding|If possible, spend time in different settings together before committing to one lifestyle.",
         ResourceType = typeof(ProfileGoalModel))]
