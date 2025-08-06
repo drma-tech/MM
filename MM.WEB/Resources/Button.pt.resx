@@ -165,6 +165,12 @@
   <data name="Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
+  <data name="IAgree" xml:space="preserve">
+    <value>Concordo</value>
+  </data>
+  <data name="IDoNotAgree" xml:space="preserve">
+    <value>Eu não concordo</value>
+  </data>
   <data name="Inactive" xml:space="preserve">
     <value>Inativo</value>
   </data>

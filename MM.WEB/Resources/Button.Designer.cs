@@ -205,6 +205,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I agree.
+        /// </summary>
+        public static string IAgree {
+            get {
+                return ResourceManager.GetString("IAgree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I do not agree.
+        /// </summary>
+        public static string IDoNotAgree {
+            get {
+                return ResourceManager.GetString("IDoNotAgree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inactive.
         /// </summary>
         public static string Inactive {
