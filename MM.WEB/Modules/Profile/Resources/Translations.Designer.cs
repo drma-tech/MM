@@ -124,29 +124,20 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find your true partner today — it’s free!.
+        /// </summary>
+        public static string HeroCall {
+            get {
+                return ResourceManager.GetString("HeroCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note: This is not a dating app. It&apos;s a digital matchmaking service designed for meaningful connections..
         /// </summary>
         public static string HeroNote {
             get {
                 return ResourceManager.GetString("HeroNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching..
-        /// </summary>
-        public static string HeroText {
-            get {
-                return ResourceManager.GetString("HeroText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Find your perfect match with technology.
-        /// </summary>
-        public static string HeroTitle {
-            get {
-                return ResourceManager.GetString("HeroTitle", resourceCulture);
             }
         }
         
@@ -219,6 +210,51 @@ namespace MM.WEB.Modules.Profile.Resources {
         public static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top Features.
+        /// </summary>
+        public static string TopFeatures {
+            get {
+                return ResourceManager.GetString("TopFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart Compatibility System.
+        /// </summary>
+        public static string TopFeaturesTitle1 {
+            get {
+                return ResourceManager.GetString("TopFeaturesTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship Insights for Couples.
+        /// </summary>
+        public static string TopFeaturesTitle2 {
+            get {
+                return ResourceManager.GetString("TopFeaturesTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personalized Profiles &amp; Filters.
+        /// </summary>
+        public static string TopFeaturesTitle3 {
+            get {
+                return ResourceManager.GetString("TopFeaturesTitle3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security &amp; Privacy First.
+        /// </summary>
+        public static string TopFeaturesTitle4 {
+            get {
+                return ResourceManager.GetString("TopFeaturesTitle4", resourceCulture);
             }
         }
     }

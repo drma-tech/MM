@@ -138,14 +138,11 @@
   <data name="HeroButton" xml:space="preserve">
     <value>Crear una cuenta gratuita</value>
   </data>
+  <data name="HeroCall" xml:space="preserve">
+    <value>Encuentra a tu verdadera pareja hoy: ¡es gratis!</value>
+  </data>
   <data name="HeroNote" xml:space="preserve">
     <value>Nota: Esta no es una app de citas. Es un servicio digital de emparejamiento diseñado para conexiones reales.</value>
-  </data>
-  <data name="HeroText" xml:space="preserve">
-    <value>El futuro de encontrar el amor ha llegado. Más inteligente, rápido y económico que el emparejamiento tradicional. Nuestro avanzado sistema de compatibilidad encuentra a tu pareja perfecta con precisión – sin deslizar, sin búsquedas interminables.</value>
-  </data>
-  <data name="HeroTitle" xml:space="preserve">
-    <value>Encuentra a tu pareja ideal con tecnología</value>
   </data>
   <data name="Identification" xml:space="preserve">
     <value>Identificación</value>
@@ -170,5 +167,20 @@
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Suscripción</value>
+  </data>
+  <data name="TopFeatures" xml:space="preserve">
+    <value>Características principales</value>
+  </data>
+  <data name="TopFeaturesTitle1" xml:space="preserve">
+    <value>Sistema de compatibilidad inteligente</value>
+  </data>
+  <data name="TopFeaturesTitle2" xml:space="preserve">
+    <value>Ideas sobre relaciones para parejas</value>
+  </data>
+  <data name="TopFeaturesTitle3" xml:space="preserve">
+    <value>Perfiles y filtros personalizados</value>
+  </data>
+  <data name="TopFeaturesTitle4" xml:space="preserve">
+    <value>La seguridad y la privacidad son lo primero</value>
   </data>
 </root>

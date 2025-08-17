@@ -60,12 +60,12 @@ public class Google
     public string? Captcha { get; set; }
 }
 
-public class Settings
-{
-    public bool ShowAdSense { get; set; }
-}
-
 public class Here
 {
     public string? ApiKey { get; set; }
+}
+
+public class Settings
+{
+    public bool ShowAdSense { get; set; }
 }

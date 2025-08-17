@@ -5,7 +5,7 @@
 <MudPaper Class="@(IncludeMB ? "mb-2" : "")" Outlined="true">
     <MudStack StretchItems="StretchItems.Middle" Row="true" Spacing="2">
         <div class="pa-2" style="align-self: center;">
-            @if (string.IsNullOrEmpty(Link))
+            @if (Link.Empty())
             {
                 <MudImage Src="@ImageSource" Alt="@ImageSource" Style="max-height: 50px; max-width: 50px;"></MudImage>
             }
@@ -18,35 +18,33 @@
         </div>
         <div class="pa-2">
             <MudText Typo="Typo.h1" Color="Color.Primary" Class="custom-h1">
-                @if (string.IsNullOrEmpty(Link))
+                @if (Link.Empty())
                 {
                     @Title
                 }
                 else
                 {
-                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
-                        <div class="mud-primary-text">@Title</div>
-                        <a href="@Link" target="_blank" rel="nofollow" class="mud-info-text">@(new Uri(Link ?? "").Host)</a>
-                    </MudHidden>
-                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
-                        @($"{Title} ▪ ")
-                        <a href="@Link" target="_blank" rel="nofollow" class="mud-info-text">@(new Uri(Link ?? "").Host)</a>
-                    </MudHidden>
+                    <a href="@Link" target="_blank" rel="nofollow" class="mud-primary-text">@Title</a>
                 }
             </MudText>
-            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
-                <MudText Typo="Typo.body1" Align="Align.Justify">
-                    @Text
-                </MudText>
-            </MudHidden>
         </div>
-        <div class="pa-2" style="align-self: center;">            
+        <div class="pa-2" style="align-self: center;">
             @if (ShowShare)
             {
-                <MudIconButton Icon="@IconsFA.Solid.Icon("share").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => Share(Navigation.Uri))"></MudIconButton>
+                <MudButton StartIcon="@IconsFA.Solid.Icon("share").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => Share(Navigation.Uri))">
+                    @Button.Share
+                </MudButton>
             }
         </div>
-    </MudStack>    
+    </MudStack>
+    @if (Text.NotEmpty())
+    {
+        <MudStack Row="true" Class="px-2">
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                @Text
+            </MudText>
+        </MudStack>
+    }
 </MudPaper>
 
 @code {

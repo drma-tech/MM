@@ -2,7 +2,7 @@
   "id": "modern-matchmaker",
   "name": "Modern Matchmaker: Find your life partner",
   "short_name": "Modern Matchmaker",
-  "description": "The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your perfect match with precision. Stop searching — let technology do the work.",
+  "description": "The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching.",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
   "start_url": "/",
@@ -19,23 +19,28 @@
   "prefer_related_applications": true,
   "related_applications": [
     {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.streamingdiscovery.www.twa",
-      "id": "com.streamingdiscovery.www.twa"
-    },
-    {
       "platform": "windows",
-      "url": "https://apps.microsoft.com/detail/9PB1PKRDD8L0?hl=en-us&gl=US",
-      "id": "9PB1PKRDD8L0"
+      "url": "",
+      "id": ""
     },
     {
-      "platform": "webapp",
-      "url": "https://www.streamingdiscovery.com/"
+      "platform": "play",
+      "url": "",
+      "id": ""
+    },
+    {
+      "platform": "ios",
+      "url": "",
+      "id": ""
     },
     {
       "platform": "huawei",
-      "url": "https://appgallery.huawei.com/app/C111325113",
-      "id": "C111325113"
+      "url": "",
+      "id": ""
+    },
+    {
+      "platform": "webapp",
+      "url": "https://www.modern-matchmaker.com/"
     }
   ],
   "categories": [
@@ -49,24 +54,9 @@
       "sizes": "71x71"
     },
     {
-      "src": "icon/icon-114.png",
-      "type": "image/png",
-      "sizes": "114x114"
-    },
-    {
-      "src": "icon/icon-150.png",
-      "type": "image/png",
-      "sizes": "150x150"
-    },
-    {
       "src": "icon/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
-    },
-    {
-      "src": "icon/icon-300.png",
-      "type": "image/png",
-      "sizes": "300x300"
     },
     {
       "src": "icon/icon-512.png",
@@ -76,45 +66,24 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/index_desktop.png",
+      "src": "screenshots/index_desktop.png",
       "type": "image/jpg",
       "sizes": "1200x750",
       "form_factor": "wide",
       "label": "Index"
     },
     {
-      "src": "/screenshots/index_mobile.png",
-      "type": "image/jpg",
-      "sizes": "360x740",
-      "form_factor": "narrow",
-      "label": "Index"
-    },
-    {
-      "src": "/screenshots/profile_desktop.png",
+      "src": "screenshots/profile_desktop.png",
       "type": "image/jpg",
       "sizes": "1200x750",
       "form_factor": "wide",
       "label": "Profile"
     },
     {
-      "src": "/screenshots/profile_mobile.png",
-      "type": "image/jpg",
-      "sizes": "360x740",
-      "form_factor": "narrow",
-      "label": "Profile"
-    },
-    {
-      "src": "/screenshots/suggestions_desktop.png",
+      "src": "screenshots/suggestions_desktop.png",
       "type": "image/jpg",
       "sizes": "1200x750",
       "form_factor": "wide",
-      "label": "Collections"
-    },
-    {
-      "src": "/screenshots/suggestions_mobile.png",
-      "type": "image/jpg",
-      "sizes": "360x740",
-      "form_factor": "narrow",
       "label": "Collections"
     }
   ],
@@ -123,8 +92,5 @@
       "navigate-existing",
       "auto"
     ]
-  },
-  "scope_extensions": [
-    { "origin": "*.modern-matchmaker.com" }
-  ]
+  }
 }

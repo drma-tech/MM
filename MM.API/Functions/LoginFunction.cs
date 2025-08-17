@@ -7,15 +7,32 @@ namespace MM.API.Functions;
 
 public class LoginFunction(CosmosRepository repo)
 {
+    [Function("LoginGet")]
+    public async Task<ClienteLogin?> LoginGet(
+      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = req.GetUserId();
+            if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
+
+            return await repo.Get<ClienteLogin>(DocumentType.Login, userId, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
     [Function("LoginAdd")]
     public async Task LoginAdd(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
             var platform = req.GetQueryParameters()["platform"] ?? "webapp";
-            var ip = req.GetQueryParameters()["ip"] ?? "null ip";
+            var ip = req.GetUserIP();
             var userId = req.GetUserId();
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
             var login = await repo.Get<ClienteLogin>(DocumentType.Login, userId, cancellationToken);

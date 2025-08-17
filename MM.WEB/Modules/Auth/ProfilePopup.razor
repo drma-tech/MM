@@ -4,6 +4,8 @@
 @inherits ComponentCore<ProfilePopup>
 @inject IJSRuntime JsRuntime
 
+@inject LoginApi LoginApi
+
 <MudDialog Style="width: 100%">
     <DialogContent>
         <MudCard Outlined="true">
@@ -24,7 +26,7 @@
                         </MudButton>
                     </MudItem>
                     <MudItem xs="12" sm="6">
-                        <MudButton Variant="Variant.Filled" FullWidth="true" Color="Color.Error" OnClick="@DeleteAccount">
+                        <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@DeleteAccount" Color="Color.Error">
                             @Translations.DeleteAccount
                         </MudButton>
                     </MudItem>
@@ -56,7 +58,7 @@
         {
             var data = new SuperData() { Principal = Principal };
 
-            // data.Login = await LoginApi.GetAll(Principal!.Id);
+            data.Login = await LoginApi.Get(IsAuthenticated);
             // data.Filter = await FilterApi.GetAll(Principal.Id);
             // data.Settings = await SettingsApi.Get(Principal.Id);
             // data.Suggestions = await SuggestionApi.GetAll(Principal.Id);
@@ -91,10 +93,10 @@
                 //close popup
                 MudDialog?.Close();
 
-                //remove data from azure
+                //remove authentication data from azure (its not working)
                 Navigation.NavigateTo("/.auth/purge/" + Principal?.IdentityProvider);
 
-                //close session
+                //close current login session
                 Navigation.NavigateTo("/.auth/logout", true);
             }
             else

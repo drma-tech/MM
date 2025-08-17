@@ -7,6 +7,16 @@ public static class ParameterHelper
 {
     private static readonly JsonSerializerOptions IndentedOptions = new() { WriteIndented = true };
 
+    public static string ConvertFromStringToBase64(this string str)
+    {
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
+    }
+
+    public static string ConvertFromBase64ToString(this string base64)
+    {
+        return Encoding.UTF8.GetString(Convert.FromBase64String(base64));
+    }
+
     public static string ConvertFromObjectToBase64<T>(this T obj) where T : class
     {
         return Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(obj, IndentedOptions)));

@@ -36,7 +36,7 @@ public partial class FieldSelect<TValue, TEnum> : FormBase<TValue, FieldSelect<T
 
     protected override void OnInitialized()
     {
-        EnumList = EnumHelper.GetList<TEnum>().ToList();
+        EnumList = EnumHelper.GetList<TEnum>();
     }
 
     private static string GetMultiSelectionText(List<string> selectedValues)

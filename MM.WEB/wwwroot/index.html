@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" />
 
     <base href="/" />
@@ -27,7 +27,6 @@
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
     <script src="js/crop-helper.js"></script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7B5BSBS9S"></script>
 
     <script src="js/functions.min.js"></script>
@@ -35,6 +34,7 @@
     <script src="js/services.min.js"></script>
 
     <script type="text/javascript">
+        TryDetectPlatform();
         window.setRobotsMeta();
         window.initGoogleAnalytics("G-P7B5BSBS9S");
         window.initClarity("r3z34efopo");
@@ -86,16 +86,7 @@
             .catch((error) => {
                 showError(`Browser not supported: ${error.message}`);
             });
-    </script>
 
-    <script>
-        window.Userback = window.Userback || {};
-        Userback.access_token = "A-A2J4M5NKCbDp1QyQe7ogemmmq";
-        (function (d) {
-            var s = d.createElement('script'); s.async = true; s.src = 'https://static.userback.io/widget/v1.js'; (d.head || d.body).appendChild(s);
-        })(document);
-        const browserLang = navigator.language || navigator.userLanguage;
-        Userback.widget_settings = { language: GetLocalStorage("language") ?? browserLang.slice(0, 2) };
         window.initUserBack();
     </script>
 

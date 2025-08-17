@@ -228,9 +228,6 @@
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
-  <data name="LoginNeeded" xml:space="preserve">
-    <value>Alguns recursos exigem login.</value>
-  </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>Meu Relacionamento</value>
   </data>
@@ -365,6 +362,12 @@
   </data>
   <data name="Years" xml:space="preserve">
     <value>Anos</value>
+  </data>
+  <data name="YouMustLogged" xml:space="preserve">
+    <value>Você deve estar logado</value>
+  </data>
+  <data name="YouMustLoggedSubscribe" xml:space="preserve">
+    <value>Você precisa estar logado para assinar</value>
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Sua localização atual:</value>

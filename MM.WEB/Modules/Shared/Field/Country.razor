@@ -24,13 +24,13 @@
     [Parameter] public bool Required { get; set; }
 
     public List<EnumObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
-    public IEnumerable<EnumObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name);
+    public List<EnumObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name).ToList();
 
     public string? Continent { get; set; }
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>().ToList();
+        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>();
         Continent = SelectedValue?.GetCustomAttribute()?.Group;
     }
 

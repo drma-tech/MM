@@ -1,6 +1,6 @@
 ﻿@page "/"
 @page "/index"
-<SeoHeader Title="Home" Description="@SeoTranslations.Description" Url="/"></SeoHeader>
+
 @using MM.Shared.Models.Dashboard
 @using Button = MM.WEB.Resources.Button
 @inherits PageCore<Index>
@@ -8,6 +8,7 @@
 @inject IJSRuntime JsRuntime
 @inject DashboardApi DashboardApi
 
+<SeoHeader Title="Home" Description="@SeoTranslations.AppDescription" Url="/"></SeoHeader>
 <GoogleAdSense Settings="@Settings" Principal="@Principal" Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
 
 <MudContainer>
@@ -21,7 +22,7 @@
                     @SeoTranslations.AppName
                 </MudText>
                 <MudText Typo="Typo.body1" Align="Align.Justify">
-                    @SeoTranslations.Description
+                    @SeoTranslations.AppDescription
                 </MudText>
                 <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled">
                     @Button.LoginHero
@@ -352,30 +353,9 @@
     [SupplyParameterFromQuery(Name = "language")]
     public string? Language { get; set; }
 
-    [Parameter]
-    [SupplyParameterFromQuery(Name = "platform")]
-    public string? Platform { get; set; }
-
     public SumUsers? SumUsers { get; set; }
     public Settings? Settings { get; set; }
     public ClientePrincipal? Principal { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            if (Platform.NotEmpty())
-            {
-                await JsRuntime.InvokeAsync<string>("SetLocalStorage", "platform", Platform);
-            }
-            else
-            {
-                await JsRuntime.InvokeAsync<string>("TryDetectPlatform");
-            }
-        }
-
-        await base.OnAfterRenderAsync(firstRender);
-    }
 
     protected override async Task LoadDataRender()
     {

@@ -46,15 +46,19 @@ function TryDetectPlatform() {
     if (GetLocalStorage("platform")) return; //if populate before, cancel, cause detection (windows) only works for first call
 
     const isWindows = document.referrer == "app-info://platform/microsoft-store";
-    const isGooglePlay = document.referrer?.includes("android-app://"); //let isAndroid = /(android)/i.test(navigator.userAgent);
-    const isIOS = document.cookie.split("; ").some(cookie => cookie === "app-platform=iOS App Store");
+    const isAndroid = /(android)/i.test(navigator.userAgent);
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    //const isMac = /macintosh|mac os x/i.test(navigator.userAgent);
+    const isHuawei = /huawei|honor/i.test(navigator.userAgent);
 
     if (isWindows)
         SetLocalStorage("platform", "windows");
-    else if (isGooglePlay)
+    else if (isAndroid)
         SetLocalStorage("platform", "play");
     else if (isIOS)
         SetLocalStorage("platform", "ios");
+    else if (isHuawei)
+        SetLocalStorage("platform", "huawei");
     else
         SetLocalStorage("platform", "webapp");
 }

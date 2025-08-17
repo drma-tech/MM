@@ -138,14 +138,11 @@
   <data name="HeroButton" xml:space="preserve">
     <value>Create Free Account</value>
   </data>
+  <data name="HeroCall" xml:space="preserve">
+    <value>Find your true partner today — it’s free!</value>
+  </data>
   <data name="HeroNote" xml:space="preserve">
     <value>Note: This is not a dating app. It's a digital matchmaking service designed for meaningful connections.</value>
-  </data>
-  <data name="HeroText" xml:space="preserve">
-    <value>The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching.</value>
-  </data>
-  <data name="HeroTitle" xml:space="preserve">
-    <value>Find your perfect match with technology</value>
   </data>
   <data name="Identification" xml:space="preserve">
     <value>Identification</value>
@@ -170,5 +167,20 @@
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Subscription</value>
+  </data>
+  <data name="TopFeatures" xml:space="preserve">
+    <value>Top Features</value>
+  </data>
+  <data name="TopFeaturesTitle1" xml:space="preserve">
+    <value>Smart Compatibility System</value>
+  </data>
+  <data name="TopFeaturesTitle2" xml:space="preserve">
+    <value>Relationship Insights for Couples</value>
+  </data>
+  <data name="TopFeaturesTitle3" xml:space="preserve">
+    <value>Personalized Profiles &amp; Filters</value>
+  </data>
+  <data name="TopFeaturesTitle4" xml:space="preserve">
+    <value>Security &amp; Privacy First</value>
   </data>
 </root>

@@ -394,15 +394,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some features need login..
-        /// </summary>
-        public static string LoginNeeded {
-            get {
-                return ResourceManager.GetString("LoginNeeded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Relationship.
         /// </summary>
         public static string MyRelationship {
@@ -804,6 +795,24 @@ namespace MM.WEB.Resources {
         public static string Years {
             get {
                 return ResourceManager.GetString("Years", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must be logged in.
+        /// </summary>
+        public static string YouMustLogged {
+            get {
+                return ResourceManager.GetString("YouMustLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must be logged in to subscribe.
+        /// </summary>
+        public static string YouMustLoggedSubscribe {
+            get {
+                return ResourceManager.GetString("YouMustLoggedSubscribe", resourceCulture);
             }
         }
         

@@ -78,10 +78,9 @@ public class CacheFunction(
         }
         catch (TaskCanceledException ex)
         {
-            if (ex.CancellationToken.IsCancellationRequested)
-                req.ProcessException(new NotificationException("Cancellation Requested"));
-            else
-                req.ProcessException(new NotificationException("Timeout occurred"));
+            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+                ? new NotificationException("Cancellation Requested")
+                : new NotificationException("Timeout occurred"));
 
             return req.CreateResponse(HttpStatusCode.RequestTimeout);
         }
