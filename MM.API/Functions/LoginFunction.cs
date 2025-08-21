@@ -9,7 +9,7 @@ public class LoginFunction(CosmosRepository repo)
 {
     [Function("LoginGet")]
     public async Task<ClienteLogin?> LoginGet(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -17,6 +17,21 @@ public class LoginFunction(CosmosRepository repo)
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
 
             return await repo.Get<ClienteLogin>(DocumentType.Login, userId, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
+    [Function("LoginRoles")]
+    public static string[] LoginRoles(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "login/roles")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return ["authenticated"];
         }
         catch (Exception ex)
         {

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>El futuro de encontrar el amor ya está aquí. Más inteligente, rápido y económico que las búsquedas de pareja tradicionales. Nuestro avanzado sistema de compatibilidad encuentra a tu pareja ideal con precisión. Deja de buscar, deja que la tecnología haga el trabajo.</value>
+    <value>El futuro de encontrar el amor ya está aquí. Más inteligente, rápido y económico que las búsquedas tradicionales. Nuestro avanzado sistema de compatibilidad encuentra a tu pareja ideal con precisión, sin deslizar ni buscar sin parar.</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Modern Matchmaker</value>
