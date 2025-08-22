@@ -40,7 +40,7 @@
     "identityProviders": {
       "azureActiveDirectory": {
         "registration": {
-          "openIdIssuer": "https://drmatech.ciamlogin.com/456b0c20-6734-43f2-8081-3a389816dabb/v2.0",
+          "openIdIssuer": "https://drmatech.ciamlogin.com/983095b4-b0a8-49a6-ac17-0a96b7126888/v2.0",
           "clientIdSettingName": "AZURE_CLIENT_ID",
           "clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
         }
