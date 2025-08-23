@@ -15,7 +15,10 @@
                         <MudTextField T="@string" Label="@Translations.IdentityProvider" Text="@Principal?.IdentityProvider" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
                     </MudItem>
                     <MudItem xs="12">
-                        <MudTextField T="@string" Label="@Translations.Identification" Text="@Principal?.UserDetails" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
+                        <MudTextField T="@string" Label="@Translations.Identification" Text="@Principal?.UserId" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudTextField T="@string" Label="Display Name" Text="@Principal?.DisplayName" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
                     </MudItem>
                     <MudItem xs="12">
                         <MudTextField T="@string" Label="@Translations.Email" Text="@Principal?.Email" Variant="Variant.Filled" ReadOnly="true"></MudTextField>

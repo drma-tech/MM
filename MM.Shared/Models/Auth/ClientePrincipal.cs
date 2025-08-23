@@ -12,6 +12,8 @@ public class ClientePrincipal() : PrivateMainDocument(DocumentType.Principal)
     [DataType(DataType.EmailAddress)] 
     public string? Email { get; set; }
 
+    public string? DisplayName { get; set; }
+
     public ClientePaddle? ClientePaddle { get; set; }
 
     public bool PublicProfile { get; set; } = false;
