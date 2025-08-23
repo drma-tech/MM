@@ -17,7 +17,6 @@
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AnthonyChu.AzureStaticWebApps.Blazor.Authentication" Version="0.0.2-preview" />
 		<PackageReference Include="BlazorCameraStreamer" Version="3.0.1" />
 		<PackageReference Include="BlazorWasmPreRendering.Build" Version="6.0.0" />
 		<PackageReference Include="Bogus" Version="35.6.3" />
@@ -35,6 +34,7 @@
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.0.1" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\..\blazor-auth-static-web-apps\src\StaticWebAppsAuthenticationExtensions\StaticWebAppsAuthenticationExtensions.csproj" />
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>

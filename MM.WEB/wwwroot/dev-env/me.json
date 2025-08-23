@@ -6,6 +6,16 @@
     "userRoles": [
       "authenticated",
       "administrator"
+    ],
+    "claims": [
+      {
+        "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+        "val": "support@modern-matchmaker.com"
+      },
+      {
+        "typ": "http://schemas.microsoft.com/identity/claims/identityprovider",
+        "val": "google.com"
+      }
     ]
   }
 }
