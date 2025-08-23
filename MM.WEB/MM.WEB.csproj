@@ -34,7 +34,6 @@
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\blazor-auth-static-web-apps\src\StaticWebAppsAuthenticationExtensions\StaticWebAppsAuthenticationExtensions.csproj" />
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -145,6 +144,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Modules\Explore\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="StaticWebAppsAuthenticationExtensions">
+	    <HintPath>ReferenceDll\StaticWebAppsAuthenticationExtensions.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	<PropertyGroup>
 		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>
