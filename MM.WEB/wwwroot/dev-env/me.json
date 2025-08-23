@@ -15,6 +15,10 @@
       {
         "typ": "http://schemas.microsoft.com/identity/claims/identityprovider",
         "val": "google.com"
+      },
+      {
+        "typ": "name",
+        "val": "Support MM"
       }
     ]
   }
