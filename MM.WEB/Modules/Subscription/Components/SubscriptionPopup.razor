@@ -350,7 +350,7 @@
             else
             {
                 Snackbar.Add(GlobalTranslations.YouMustLoggedSubscribe, Severity.Warning);
-                Navigation.NavigateTo("/login-providers");
+                Navigation.NavigateTo($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success");
             }
         }
         catch (Exception ex)

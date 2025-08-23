@@ -25,12 +25,11 @@
                 Principal = new ClientePrincipal
                 {
                     UserId = UserId,
-                    IdentityProvider = User.Identity?.AuthenticationType,
+                    IdentityProvider = User.Claims.SingleOrDefault(w => w.Type == "identityprovider")?.Value,
                     UserDetails = User.Identity?.Name,
+                    Email = User.Claims.SingleOrDefault(w => w.Type == ClaimTypes.Email)?.Value,
                     UserRoles = User.Claims.Where(w => w.Type == ClaimTypes.Role)?.Select(s => s.Value).ToArray() ?? []
                 };
-
-                Principal.Email = Principal.UserDetails;
 
                 Principal = await PrincipalApi.Add(Principal);
             }
