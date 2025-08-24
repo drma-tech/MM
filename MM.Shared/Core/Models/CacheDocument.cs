@@ -8,7 +8,7 @@ public class CacheDocument<TData> : CosmosDocument where TData : class, new()
     {
     }
 
-    public CacheDocument(string id, TData data, TtlCache ttl) : base(id)
+    public CacheDocument(string id, TData? data, TtlCache ttl) : base(id)
     {
         Data = data;
         Ttl = (int)ttl;

@@ -1,6 +1,6 @@
 ﻿{
   "clientPrincipal": {
-    "identityProvider": "google",
+    "identityProvider": "google.com",
     "userId": "8ed6f45c90ac43248353b90a846a8519",
     "userDetails": "support@modern-matchmaker.com",
     "userRoles": [

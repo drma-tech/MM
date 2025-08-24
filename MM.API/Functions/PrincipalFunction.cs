@@ -1,6 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Auth;
+using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
 
 namespace MM.API.Functions;
@@ -58,6 +59,17 @@ public class PrincipalFunction(
         {
             var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
 
+            var mail = principal.Email?.Trim().ToLowerInvariant() ?? throw new NotificationException("Failed to retrieve email");
+            var ip = req.GetUserIP() ?? throw new NotificationException("Failed to retrieve IP");
+
+            //check if user data was blocked
+            var blockedMail = await repoCache.Get<DataBlockedCache>($"block-{mail}", cancellationToken);
+            if (blockedMail != null) throw new NotificationException("We're unable to create your profile right now. Please try again later.");
+
+            var blockedIp = await repoCache.Get<DataBlockedCache>($"block-{ip}", cancellationToken);
+            if (blockedIp != null) throw new NotificationException("We're unable to create your profile right now. Please try again later.");
+
+            //check if user was invited
             var invite = await repoCache.Get<InviteModel>($"invite-{principal.Email}", cancellationToken);
             if (invite != null)
             {
@@ -86,6 +98,10 @@ public class PrincipalFunction(
 
                 await repo.Upsert(myLikes, cancellationToken);
             }
+
+            //register block for mail and ip
+            await repoCache.UpsertItemAsync(new DataBlockedCache($"block-{mail}", TtlCache.OneDay), cancellationToken);
+            await repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneDay), cancellationToken);
 
             return await repo.Upsert(principal, cancellationToken);
         }
@@ -156,7 +172,7 @@ public class PrincipalFunction(
 
             var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
             principal.PublicProfile = true;
-            
+
             return await repo.Upsert(principal, cancellationToken);
         }
         catch (Exception ex)
