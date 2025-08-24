@@ -8,11 +8,6 @@ public class MyLikesModel : PrivateMainDocument
 
     public HashSet<PersonModel> Items { get; set; } = [];
 
-    public override bool HasValidData()
-    {
-        return Items.Count != 0;
-    }
-
     public override bool Equals(object? obj)
     {
         return obj is MyLikesModel q && q.Id == Id;

@@ -29,8 +29,7 @@ public static class StaticWebAppsAuth
 
         var principal = req.Parse();
 
-        return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value ??
-               throw new UnhandledException("user id not available");
+        return principal?.Claims.FirstOrDefault(w => w.Type == ClaimTypes.NameIdentifier)?.Value ?? throw new UnhandledException("Failed to retrieve user identification");
     }
 
     public static string? GetUserIP(this HttpRequestData req, bool includePort = true)

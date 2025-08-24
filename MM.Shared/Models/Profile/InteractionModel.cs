@@ -51,11 +51,6 @@ public class InteractionModel : ProtectedMainDocument
         else
             EventsUserB.Add(new InteractionEvent { Type = type, Origin = origin });
     }
-
-    public override bool HasValidData()
-    {
-        return EventsUserA.Count != 0 || EventsUserB.Count != 0;
-    }
 }
 
 public class InteractionEvent

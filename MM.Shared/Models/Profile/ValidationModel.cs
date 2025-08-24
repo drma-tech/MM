@@ -13,9 +13,4 @@ public class ValidationModel() : PrivateMainDocument(DocumentType.Validation)
 
     [Custom(Name = "Annual Income", Description = "Validation required to use this field in your filters")]
     public bool AnnualIncome { get; set; }
-
-    public override bool HasValidData()
-    {
-        throw new NotImplementedException();
-    }
 }

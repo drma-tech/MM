@@ -8,11 +8,6 @@ public class FilterModel : PrivateMainDocument
     {
     }
 
-    public override bool HasValidData()
-    {
-        throw new NotImplementedException();
-    }
-
     #region BASIC
 
     [Custom(Name = "Region", ResourceType = typeof(Resources.FilterModel))]

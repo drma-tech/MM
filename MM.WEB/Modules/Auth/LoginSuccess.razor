@@ -24,7 +24,6 @@
             {
                 Principal = new ClientePrincipal
                 {
-                    UserId = UserId,
                     IdentityProvider = User.FindFirst("http://schemas.microsoft.com/identity/claims/identityprovider")?.Value,
                     DisplayName = User.FindFirst("name")?.Value,
                     Email = User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value,

@@ -120,11 +120,6 @@ public class ProfileModel : CosmosDocument
         }
     }
 
-    public override bool HasValidData()
-    {
-        throw new NotImplementedException();
-    }
-
     #region BASIC
 
     [Custom(Name = "NickName_Name", Placeholder = "NickName_Placeholder", ResourceType = typeof(ProfileBasicModel))]

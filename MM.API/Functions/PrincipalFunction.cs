@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
@@ -10,7 +11,8 @@ public class PrincipalFunction(
     CosmosRepository repo,
     CosmosCacheRepository repoCache,
     CosmosProfileOffRepository repoOff,
-    CosmosProfileOnRepository repoOn)
+    CosmosProfileOnRepository repoOn,
+    ILogger<PrincipalFunction> logger)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -58,12 +60,17 @@ public class PrincipalFunction(
         try
         {
             var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
+            principal.UserId = req.GetUserId();
 
+            //check if user ip is blocked for insert
             var ip = req.GetUserIP(false) ?? throw new NotificationException("Failed to retrieve IP");
-
-            //check if user is blocked
             var blockedIp = await repoCache.Get<DataBlockedCache>($"block-{ip}", cancellationToken);
-            if (blockedIp != null) throw new NotificationException("We're unable to create your profile right now. Please try again later.");
+            if (blockedIp != null)
+            {
+                //todo: create a mecanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
+                logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
+                throw new NotificationException("You've reached the limit for creating or editing profiles. Please try again later.");
+            }
 
             //check if user was invited
             var invite = await repoCache.Get<InviteModel>($"invite-{principal.Email}", cancellationToken);
@@ -93,8 +100,8 @@ public class PrincipalFunction(
                 await repo.Upsert(myLikes, cancellationToken);
             }
 
-            //register block for mail and ip
-            _ = repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneDay), cancellationToken);
+            //register block by ip
+            _ = repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneHour), cancellationToken);
 
             return await repo.Upsert(principal, cancellationToken);
         }

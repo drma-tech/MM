@@ -20,16 +20,4 @@ public class ClientePrincipal() : PrivateMainDocument(DocumentType.Principal)
         base.Initialize(userId);
         UserId = userId;
     }
-
-    public override bool HasValidData()
-    {
-        if (UserId.Empty()) return false;
-        if (IdentityProvider.Empty()) return false;
-        if (DisplayName.Empty()) return false;
-        if (Email.Empty()) return false;
-
-        if (UserRoles.Empty()) return false;
-
-        return true;
-    }
 }

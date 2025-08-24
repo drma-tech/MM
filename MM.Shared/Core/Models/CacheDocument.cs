@@ -17,9 +17,4 @@ public class CacheDocument<TData> : CosmosDocument where TData : class, new()
     [JsonInclude] public TData? Data { get; init; } //TODO: cosmos doesn't support save dynamic property (yet)
 
     [JsonInclude] public int Ttl { get; init; }
-
-    public override bool HasValidData()
-    {
-        return Data != null;
-    }
 }
