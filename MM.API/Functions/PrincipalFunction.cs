@@ -59,13 +59,9 @@ public class PrincipalFunction(
         {
             var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
 
-            var mail = principal.Email?.Trim().ToLowerInvariant() ?? throw new NotificationException("Failed to retrieve email");
             var ip = req.GetUserIP() ?? throw new NotificationException("Failed to retrieve IP");
 
-            //check if user data was blocked
-            var blockedMail = await repoCache.Get<DataBlockedCache>($"block-{mail}", cancellationToken);
-            if (blockedMail != null) throw new NotificationException("We're unable to create your profile right now. Please try again later.");
-
+            //check if user is blocked
             var blockedIp = await repoCache.Get<DataBlockedCache>($"block-{ip}", cancellationToken);
             if (blockedIp != null) throw new NotificationException("We're unable to create your profile right now. Please try again later.");
 
@@ -85,23 +81,20 @@ public class PrincipalFunction(
 
                     if (partnerProfile != null)
                     {
-                        var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, principal.UserId,
-                            cancellationToken);
+                        var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, principal.UserId, cancellationToken);
 
                         myLikes.Items.Add(new PersonModel(partnerProfile, mySettings?.BlindDate ?? false));
                     }
 
                     //create interaction between users
-                    _ = await repo.SetInteractionNew(partnerId, principal.UserId, EventType.Like, Origin.Invite,
-                        cancellationToken);
+                    await repo.SetInteractionNew(partnerId, principal.UserId, EventType.Like, Origin.Invite, cancellationToken);
                 }
 
                 await repo.Upsert(myLikes, cancellationToken);
             }
 
             //register block for mail and ip
-            await repoCache.UpsertItemAsync(new DataBlockedCache($"block-{mail}", TtlCache.OneDay), cancellationToken);
-            await repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneDay), cancellationToken);
+            _ = repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneDay), cancellationToken);
 
             return await repo.Upsert(principal, cancellationToken);
         }

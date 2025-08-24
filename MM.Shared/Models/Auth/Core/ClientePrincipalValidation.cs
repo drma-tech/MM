@@ -12,14 +12,13 @@ public class ClientePrincipalValidation : AbstractValidator<ClientePrincipal>
         RuleFor(x => x.IdentityProvider)
             .NotEmpty();
 
-        RuleFor(x => x.UserDetails)
-            .NotEmpty();
-
-        RuleFor(x => x.UserRoles)
+        RuleFor(x => x.DisplayName)
             .NotEmpty();
 
         RuleFor(x => x.Email)
-            .NotEmpty()
             .EmailAddress();
+
+        RuleFor(x => x.UserRoles)
+            .NotEmpty();
     }
 }
