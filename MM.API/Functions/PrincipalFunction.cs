@@ -59,7 +59,7 @@ public class PrincipalFunction(
         {
             var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
 
-            var ip = req.GetUserIP() ?? throw new NotificationException("Failed to retrieve IP");
+            var ip = req.GetUserIP(false) ?? throw new NotificationException("Failed to retrieve IP");
 
             //check if user is blocked
             var blockedIp = await repoCache.Get<DataBlockedCache>($"block-{ip}", cancellationToken);

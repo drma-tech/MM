@@ -33,11 +33,14 @@ public static class StaticWebAppsAuth
                throw new UnhandledException("user id not available");
     }
 
-    public static string? GetUserIP(this HttpRequestData req)
+    public static string? GetUserIP(this HttpRequestData req, bool includePort = true)
     {
         if (req.Headers.TryGetValues("X-Forwarded-For", out var values))
         {
-            return values.FirstOrDefault()?.Split(',')[0];
+            if (includePort)
+                return values.FirstOrDefault()?.Split(',')[0];
+            else
+                return values.FirstOrDefault()?.Split(',')[0].Split(':')[0];
         }
 
         if (Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT") == "Development")
