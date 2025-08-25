@@ -61,14 +61,14 @@ public class LoginFunction(CosmosRepository repo)
                 };
                 newLogin.Initialize(userId);
 
-                await repo.Upsert(newLogin, cancellationToken);
+                await repo.UpsertItemAsync(newLogin, cancellationToken);
             }
             else
             {
                 login.Accesses = login.Accesses
                     .Union([new Access { Date = DateTimeOffset.Now, Platform = platform, Ip = ip }]).ToArray();
 
-                await repo.Upsert(login, cancellationToken);
+                await repo.UpsertItemAsync(login, cancellationToken);
             }
         }
         catch (Exception ex)

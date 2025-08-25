@@ -1,12 +1,12 @@
 ﻿namespace MM.Shared.Models.Blocked;
 
-public class DataBlockedCache : CacheDocument<object>
+public class DataBlockedCache : CacheDocument<DataBlocked>
 {
     public DataBlockedCache()
     {
     }
 
-    public DataBlockedCache(string key, TtlCache ttl) : base(key, null, ttl)
+    public DataBlockedCache(DataBlocked data, string key, TtlCache ttl) : base(key, data, ttl)
     {
     }
 }

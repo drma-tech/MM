@@ -11,11 +11,6 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincip
         return null;
     }
 
-    public async Task<string?> GetEmail(string? token)
-    {
-        return await GetValueAsync($"{Endpoint.GetEmail}?token={token}", null);
-    }
-
     public async Task<ClientePrincipal?> Add(ClientePrincipal? obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
@@ -48,7 +43,6 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincip
     private struct Endpoint
     {
         public const string Get = "principal/get";
-        public const string GetEmail = "public/principal/get-email";
         public const string Add = "principal/add";
         public const string Paddle = "principal/paddle";
         public const string Remove = "principal/remove";

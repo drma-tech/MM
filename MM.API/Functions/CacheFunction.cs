@@ -60,8 +60,7 @@ public class CacheFunction(
 
                     var principals = await repo.ListAll<ClientePrincipal>(DocumentType.Principal, cancellationToken);
 
-                    var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship,
-                        DocumentType.Interaction, cancellationToken);
+                    var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship, DocumentType.Interaction, cancellationToken);
 
                     obj.Countries = profiles.Select(s => s.Country).Distinct().Count();
                     obj.Cities = profiles.Select(s => s.Location).Distinct().Count();

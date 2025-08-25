@@ -46,7 +46,7 @@ public static class EventHelper
                 throw new NotificationException("cannot dislike this user");
         }
 
-        return await repo.Upsert(interaction, cancellationToken);
+        return await repo.UpsertItemAsync(interaction, cancellationToken);
     }
 }
 
@@ -109,7 +109,7 @@ public class EventFunction(
                     (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
             }
 
-            await repoGen.Upsert(partnerLikes, cancellationToken);
+            await repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
 
             return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
         }

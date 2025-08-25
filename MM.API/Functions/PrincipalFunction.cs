@@ -23,28 +23,9 @@ public class PrincipalFunction(
             var userId = req.GetUserId();
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
-            var doc = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var model = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.ProcessException(ex);
-            throw;
-        }
-    }
-
-    [Function("PrincipalGetEmail")]
-    public async Task<string?> PrincipalGetEmail(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/principal/get-email")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var token = req.GetQueryParameters()["token"];
-
-            var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, token, cancellationToken);
-
-            return principal?.Email;
+            return await req.CreateResponse(model, TtlCache.OneDay, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -57,53 +38,70 @@ public class PrincipalFunction(
     public async Task<ClientePrincipal?> PrincipalAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        //note: its called once per user (first acccess)
+
         try
         {
-            var principal = await req.GetBody<ClientePrincipal>(cancellationToken);
-            principal.UserId = req.GetUserId();
+            var userId = req.GetUserId();
+            var body = await req.GetBody<ClientePrincipal>(cancellationToken);
 
             //check if user ip is blocked for insert
             var ip = req.GetUserIP(false) ?? throw new NotificationException("Failed to retrieve IP");
-            var blockedIp = await repoCache.Get<DataBlockedCache>($"block-{ip}", cancellationToken);
-            if (blockedIp != null)
+            var blockedIp = await repoCache.Get<DataBlocked>($"block-{ip}", cancellationToken);
+            if (blockedIp?.Data != null)
             {
-                //todo: create a mecanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
-                logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
-                throw new NotificationException("You've reached the limit for creating or editing profiles. Please try again later.");
+                blockedIp.Data.Quantity++;
+                await repoCache.UpsertItemAsync(blockedIp, cancellationToken);
+
+                if (blockedIp.Data?.Quantity > 2)
+                {
+                    //todo: create a mecanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
+                    logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
+                    throw new NotificationException("You've reached the limit for creating profiles. Please try again later.");
+                }
+            }
+            else
+            {
+                _ = repoCache.CreateItemAsync(new DataBlockedCache(new DataBlocked(), $"block-{ip}", TtlCache.OneWeek), cancellationToken);
             }
 
             //check if user was invited
-            var invite = await repoCache.Get<InviteModel>($"invite-{principal.Email}", cancellationToken);
+            var invite = await repoCache.Get<InviteModel>($"invite-{body.Email}", cancellationToken);
             if (invite != null)
             {
                 //add likes from invites
                 var myLikes = new MyLikesModel();
-                myLikes.Initialize(principal.UserId!);
+                myLikes.Initialize(userId);
 
                 foreach (var partnerId in invite.Data?.UserIds.Distinct() ?? [])
                 {
-                    if (principal.UserId == partnerId) continue; //avoid self like
+                    if (userId == partnerId) continue; //avoid self like
 
                     var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, partnerId, cancellationToken);
 
                     if (partnerProfile != null)
                     {
-                        var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, principal.UserId, cancellationToken);
+                        var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
                         myLikes.Items.Add(new PersonModel(partnerProfile, mySettings?.BlindDate ?? false));
                     }
 
                     //create interaction between users
-                    await repo.SetInteractionNew(partnerId, principal.UserId, EventType.Like, Origin.Invite, cancellationToken);
+                    await repo.SetInteractionNew(partnerId, userId, EventType.Like, Origin.Invite, cancellationToken);
                 }
 
-                await repo.Upsert(myLikes, cancellationToken);
+                await repo.UpsertItemAsync(myLikes, cancellationToken);
             }
 
-            //register block by ip
-            _ = repoCache.UpsertItemAsync(new DataBlockedCache($"block-{ip}", TtlCache.OneHour), cancellationToken);
+            var model = new ClientePrincipal
+            {
+                IdentityProvider = body.IdentityProvider,
+                DisplayName = body.DisplayName,
+                Email = body.Email
+            };
+            model.Initialize(userId);
 
-            return await repo.Upsert(principal, cancellationToken);
+            return await repo.CreateItemAsync(model, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -120,12 +118,12 @@ public class PrincipalFunction(
         {
             var userId = req.GetUserId();
 
-            var client = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
+            var model = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var body = await req.GetBody<ClientePrincipal>(cancellationToken);
 
-            client.ClientePaddle = body.ClientePaddle;
+            model.ClientePaddle = body.ClientePaddle;
 
-            return await repo.Upsert(client, cancellationToken);
+            return await repo.UpsertItemAsync(model, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -173,7 +171,7 @@ public class PrincipalFunction(
             var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
             principal.PublicProfile = true;
 
-            return await repo.Upsert(principal, cancellationToken);
+            return await repo.UpsertItemAsync(principal, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -198,7 +196,7 @@ public class PrincipalFunction(
             var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
             principal.PublicProfile = false;
 
-            return await repo.Upsert(principal, cancellationToken);
+            return await repo.UpsertItemAsync(principal, cancellationToken);
         }
         catch (Exception ex)
         {

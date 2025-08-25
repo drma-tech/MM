@@ -17,8 +17,5 @@ public class ClientePrincipalValidation : AbstractValidator<ClientePrincipal>
 
         RuleFor(x => x.Email)
             .EmailAddress();
-
-        RuleFor(x => x.UserRoles)
-            .NotEmpty();
     }
 }

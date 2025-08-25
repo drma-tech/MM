@@ -66,11 +66,11 @@ public static class ProfileHelper
         partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
         partner.matches.Items.Add(new PersonModel(user.profile, partnerSettings?.BlindDate ?? false));
 
-        await repo.Upsert(user.likes, cancellationToken);
-        await repo.Upsert(user.matches, cancellationToken);
+        await repo.UpsertItemAsync(user.likes, cancellationToken);
+        await repo.UpsertItemAsync(user.matches, cancellationToken);
 
-        await repo.Upsert(partner.likes, cancellationToken);
-        await repo.Upsert(partner.matches, cancellationToken);
+        await repo.UpsertItemAsync(partner.likes, cancellationToken);
+        await repo.UpsertItemAsync(partner.matches, cancellationToken);
     }
 }
 
@@ -241,7 +241,7 @@ public class ProfileFunction(
         {
             var body = await req.GetBody<FilterModel>(cancellationToken);
 
-            return await _repoGen.Upsert(body, cancellationToken);
+            return await _repoGen.UpsertItemAsync(body, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -258,7 +258,7 @@ public class ProfileFunction(
         {
             var body = await req.GetBody<SettingModel>(cancellationToken);
 
-            return await _repoGen.Upsert(body, cancellationToken);
+            return await _repoGen.UpsertItemAsync(body, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -295,7 +295,7 @@ public class ProfileFunction(
                 await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite,
                     cancellationToken);
 
-                await _repoGen.Upsert(partnerLikes, cancellationToken);
+                await _repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
             }
             else //if not, generate a temporary invite
             {

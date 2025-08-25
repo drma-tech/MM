@@ -181,7 +181,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
                 validation.Initialize(userId);
             }
             validation.Gallery = true;
-            return await repoGen.Upsert(validation, cancellationToken);
+            return await repoGen.UpsertItemAsync(validation, cancellationToken);
         }
         catch (Exception ex)
         {
