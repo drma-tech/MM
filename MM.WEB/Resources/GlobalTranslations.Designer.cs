@@ -61,15 +61,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active Connection.
-        /// </summary>
-        public static string ActiveConnection {
-            get {
-                return ResourceManager.GetString("ActiveConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
         /// </summary>
         public static string BasicRequired {
@@ -178,15 +169,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couples.
-        /// </summary>
-        public static string Couples {
-            get {
-                return ResourceManager.GetString("Couples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
         public static string CustomVisibilityInvalid {
@@ -286,47 +268,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option will request location for your device (this option must be enabled).
-        /// </summary>
-        public static string HelpMap {
-            get {
-                return ResourceManager.GetString("HelpMap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will open a popup with multiple choices (along with explanations, if any).
-        /// </summary>
-        public static string HelpPlus {
-            get {
-                return ResourceManager.GetString("HelpPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This option will have explanations of each of the items available to choose from..
-        /// </summary>
-        public static string HelpQuestion {
-            get {
-                return ResourceManager.GetString("HelpQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string HelpTitle {
             get {
                 return ResourceManager.GetString("HelpTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inactive Connection.
-        /// </summary>
-        public static string InactiveConnection {
-            get {
-                return ResourceManager.GetString("InactiveConnection", resourceCulture);
             }
         }
         
@@ -448,15 +394,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to or.
-        /// </summary>
-        public static string or {
-            get {
-                return ResourceManager.GetString("or", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Partner Email.
         /// </summary>
         public static string PartnerEmail {
@@ -471,15 +408,6 @@ namespace MM.WEB.Resources {
         public static string PartnerProfileNotAvailable {
             get {
                 return ResourceManager.GetString("PartnerProfileNotAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This platform is for managing, not streaming..
-        /// </summary>
-        public static string PlatformForManaging {
-            get {
-                return ResourceManager.GetString("PlatformForManaging", resourceCulture);
             }
         }
         
@@ -556,7 +484,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app&apos;s support section..
+        ///   Looks up a localized string similar to The product is still under development. If you have any suggestions or find any bugs, please contact us through our feedback section..
         /// </summary>
         public static string ProductUnderDevelopment {
             get {
@@ -691,15 +619,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Terms of use.
-        /// </summary>
-        public static string TermsOfUse {
-            get {
-                return ResourceManager.GetString("TermsOfUse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;.
         /// </summary>
         public static string TermTopic1 {
@@ -741,15 +660,6 @@ namespace MM.WEB.Resources {
         public static string Undefined {
             get {
                 return ResourceManager.GetString("Undefined", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Users.
-        /// </summary>
-        public static string Users {
-            get {
-                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

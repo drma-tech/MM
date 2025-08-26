@@ -161,6 +161,8 @@
             Picture = Convert.FromBase64String(data);
 
             await CameraStreamerReference.StopAsync();
+
+            Validation ??= new ValidationModel();
         }
         catch (Exception ex)
         {
@@ -187,7 +189,7 @@
     {
         try
         {
-            await ValidationApi.UploadPhotoValidation(Core, Picture);
+            Validation = await ValidationApi.UploadPhotoValidation(Core, Picture);
             Snackbar.Add("Photo validated successfully!", Severity.Success);
             await JsRuntime.InvokeVoidAsync("history.back");
         }

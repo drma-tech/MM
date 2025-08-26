@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActiveConnection" xml:space="preserve">
-    <value>Conexão ativa</value>
-  </data>
   <data name="BasicRequired" xml:space="preserve">
     <value>A seção básica é obrigatória por enquanto. As outras seções podem ser preenchidas depois.</value>
   </data>
@@ -156,9 +153,6 @@
   <data name="Countries" xml:space="preserve">
     <value>Países</value>
   </data>
-  <data name="Couples" xml:space="preserve">
-    <value>Casais</value>
-  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Operação inválida. Por favor, tente novamente.</value>
   </data>
@@ -192,20 +186,8 @@
   <data name="GpsNotAccurate" xml:space="preserve">
     <value>A posição do GPS não é precisa e pode resultar em uma localização incorreta. Se sua cidade estiver errada, tente novamente mais tarde ou teste em outro dispositivo ou navegador.</value>
   </data>
-  <data name="HelpMap" xml:space="preserve">
-    <value>Esta opção solicitará a localização do seu dispositivo (esta opção deve estar ativada)</value>
-  </data>
-  <data name="HelpPlus" xml:space="preserve">
-    <value>Esta opção abrirá um pop-up com várias opções (juntamente com explicações, se houver)</value>
-  </data>
-  <data name="HelpQuestion" xml:space="preserve">
-    <value>Esta opção terá explicações de cada um dos itens disponíveis para escolher.</value>
-  </data>
   <data name="HelpTitle" xml:space="preserve">
     <value>Ajuda</value>
-  </data>
-  <data name="InactiveConnection" xml:space="preserve">
-    <value>Conexão inativa</value>
   </data>
   <data name="InvitationAccepted" xml:space="preserve">
     <value>Convite aceito</value>
@@ -246,17 +228,11 @@
   <data name="OptionNotAvailable" xml:space="preserve">
     <value>Opção ainda não disponível</value>
   </data>
-  <data name="or" xml:space="preserve">
-    <value>ou</value>
-  </data>
   <data name="PartnerEmail" xml:space="preserve">
     <value>E-mail do parceiro</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>O perfil do seu parceiro ainda não está disponível</value>
-  </data>
-  <data name="PlatformForManaging" xml:space="preserve">
-    <value>Esta plataforma é para gerenciamento, não para streaming.</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
     <value>Este processo está em constante evolução. Se você quiser relatar um erro ou melhoria, abra um ticket com nossa equipe de suporte.</value>
@@ -282,8 +258,9 @@
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
   </data>
-  <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>Produto ainda em desenvolvimento, então muita coisa ainda vai melhorar. Se você tiver sugestões a fazer, favor solicitar na seção de suporte do aplicativo.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ProductUnderDevelopment" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>Para garantir um ambiente positivo, levamos assédio e preconceito a sério. Se você se deparar com esse tipo de comportamento, denuncie o perfil imediatamente.</value>
@@ -327,9 +304,6 @@
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.</value>
   </data>
-  <data name="TermsOfUse" xml:space="preserve">
-    <value>Termos de uso</value>
-  </data>
   <data name="TermTopic1" xml:space="preserve">
     <value>Seja honesto nas respostas dadas neste formulário. Todas as informações aqui contidas são passíveis de denúncias e podem ser avaliadas;</value>
   </data>
@@ -344,9 +318,6 @@
   </data>
   <data name="Undefined" xml:space="preserve">
     <value>Indefinido</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Usuários</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Foram detectados erros de validação</value>
@@ -377,5 +348,8 @@
   </data>
   <data name="YourProfile" xml:space="preserve">
     <value>Seu perfil (ou preferências)</value>
+  </data>
+  <data name="ProductUnderDevelopment" xml:space="preserve">
+    <value>O produto ainda está em desenvolvimento. Se você tiver alguma sugestão ou encontrar bugs, entre em contato conosco através da seção de feedback.</value>
   </data>
 </root>

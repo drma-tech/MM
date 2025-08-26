@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActiveConnection" xml:space="preserve">
-    <value>Active Connection</value>
-  </data>
   <data name="BasicRequired" xml:space="preserve">
     <value>The basic section is mandatory for now. The other sections can be filled in later.</value>
   </data>
@@ -156,9 +153,6 @@
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
   </data>
-  <data name="Couples" xml:space="preserve">
-    <value>Couples</value>
-  </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
     <value>Invalid operation. Please try again.</value>
   </data>
@@ -192,20 +186,8 @@
   <data name="GpsNotAccurate" xml:space="preserve">
     <value>The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.</value>
   </data>
-  <data name="HelpMap" xml:space="preserve">
-    <value>This option will request location for your device (this option must be enabled)</value>
-  </data>
-  <data name="HelpPlus" xml:space="preserve">
-    <value>This option will open a popup with multiple choices (along with explanations, if any)</value>
-  </data>
-  <data name="HelpQuestion" xml:space="preserve">
-    <value>This option will have explanations of each of the items available to choose from.</value>
-  </data>
   <data name="HelpTitle" xml:space="preserve">
     <value>Help</value>
-  </data>
-  <data name="InactiveConnection" xml:space="preserve">
-    <value>Inactive Connection</value>
   </data>
   <data name="InvitationAccepted" xml:space="preserve">
     <value>Invitation accepted</value>
@@ -246,17 +228,11 @@
   <data name="OptionNotAvailable" xml:space="preserve">
     <value>Option not yet available</value>
   </data>
-  <data name="or" xml:space="preserve">
-    <value>or</value>
-  </data>
   <data name="PartnerEmail" xml:space="preserve">
     <value>Partner Email</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>Your partner's profile is not yet available</value>
-  </data>
-  <data name="PlatformForManaging" xml:space="preserve">
-    <value>This platform is for managing, not streaming.</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
     <value>This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team.</value>
@@ -283,7 +259,7 @@
     <value>Private</value>
   </data>
   <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>Product still under development, so a lot will still improve. If you have suggestions to make, please ask in the app's support section.</value>
+    <value>The product is still under development. If you have any suggestions or find any bugs, please contact us through our feedback section.</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately.</value>
@@ -327,9 +303,6 @@
   <data name="SureDeleteAccount" xml:space="preserve">
     <value>Are you sure you want to delete your account? This action cannot be undone.</value>
   </data>
-  <data name="TermsOfUse" xml:space="preserve">
-    <value>Terms of use</value>
-  </data>
   <data name="TermTopic1" xml:space="preserve">
     <value>Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;</value>
   </data>
@@ -344,9 +317,6 @@
   </data>
   <data name="Undefined" xml:space="preserve">
     <value>Undefined</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Users</value>
   </data>
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Validation errors were detected</value>
