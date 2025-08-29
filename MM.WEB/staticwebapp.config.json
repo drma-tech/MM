@@ -2,27 +2,19 @@
   "routes": [
     {
       "route": "/api/public/*",
-      "allowedRoles": [
-        "anonymous"
-      ]
+      "allowedRoles": [ "anonymous" ]
     },
     {
       "route": "/api/principal/remove",
-      "allowedRoles": [
-        "anonymous"
-      ]
+      "allowedRoles": [ "anonymous" ]
     },
     {
       "route": "/api/adm/*",
-      "allowedRoles": [
-        "administrator"
-      ]
+      "allowedRoles": [ "administrator" ]
     },
     {
       "route": "/api/*",
-      "allowedRoles": [
-        "authenticated"
-      ]
+      "allowedRoles": [ "authenticated" ]
     }
   ],
   "navigationFallback": {
