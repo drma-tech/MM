@@ -82,8 +82,18 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
             }
 
             if (currentPictureId != null) //delete old picture from azure storage
+            {
                 //if you keep the photo with the same id, the browser cache will not update the photo
                 await storageHelper.DeletePhoto(request.PhotoType, currentPictureId, cancellationToken);
+
+                //reset validation flag
+                var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+                if (validation != null)
+                {
+                    validation.Gallery = false;
+                    await repoGen.UpsertItemAsync(validation, cancellationToken);
+                }
+            }
 
             using var stream2 = new MemoryStream(request.Buffer);
 
@@ -118,6 +128,14 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
             profile.Gallery.UpdatePictureId(photoType, null); //reset current photo data
 
             profile.UpdatePhoto(profile.Gallery);
+
+            //reset validation flag
+            var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+            if (validation != null)
+            {
+                validation.Gallery = false;
+                await repoGen.UpsertItemAsync(validation, cancellationToken);
+            }
 
             return await repo.Upsert(profile, cancellationToken);
         }
