@@ -9,7 +9,7 @@
 @inject DashboardApi DashboardApi
 
 <SeoHeader Title="Home" Description="@SeoTranslations.AppDescription" Url="/"></SeoHeader>
-<GoogleAdSense Settings="@Settings" Principal="@Principal" Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Main" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
 
 <MudContainer>
     <MudGrid Spacing="4" Class="mb-20" Style="align-items: center;">
@@ -357,14 +357,9 @@
     public string? Language { get; set; }
 
     public SumUsers? SumUsers { get; set; }
-    public Settings? Settings { get; set; }
-    public ClientePrincipal? Principal { get; set; }
 
     protected override async Task LoadDataRender()
     {
-        Settings = await CacheSettingsApi.GetSettings();
-        Principal = await PrincipalApi.Get(IsAuthenticated);
-
         var cache = await DashboardApi.GetSumUsers(null);
         SumUsers = cache?.Data;
     }

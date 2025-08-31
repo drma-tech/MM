@@ -23,7 +23,7 @@
 @inject IJSRuntime JsRuntime
 
 <SeoHeader Title="Profile" Url="/profile" Index="false"></SeoHeader>
-<GoogleAdSense Settings="@Settings" Principal="@principal" Section="@GoogleAdSense.AdUnit.Profile"></GoogleAdSense>
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
 
 @if (!IsAuthenticated)
 {
