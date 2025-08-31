@@ -43,9 +43,12 @@
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
-                    @Button.Login
-                </MudButton>
+                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")"
+                               Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="true">
+                        @Button.Login
+                    </MudButton>
+                </MudTooltip>
             </NotAuthorized>
         </AuthorizeView>
     }
@@ -91,9 +94,12 @@
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
-                    @Button.Login
-                </MudButton>
+                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")"
+                               Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="true">
+                        @Button.Login
+                    </MudButton>
+                </MudTooltip>
             </NotAuthorized>
         </AuthorizeView>
     }
@@ -123,7 +129,11 @@
                     <MudNavLink Icon="@IconsFA.Solid.Icon("right-from-bracket").Font" OnClick="@Logout" IconColor="Color.Error">@Button.Logout</MudNavLink>
                 </Authorized>
                 <NotAuthorized>
-                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")">@Button.Login</MudNavLink>
+                    <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
+                        <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Disabled="true">
+                            @Button.Login
+                        </MudNavLink>
+                    </MudTooltip>
                 </NotAuthorized>
             </AuthorizeView>
         </MudNavMenu>

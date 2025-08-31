@@ -24,9 +24,12 @@
                 <MudText Typo="Typo.body1" Align="Align.Justify">
                     @SeoTranslations.AppDescription
                 </MudText>
-                <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled">
-                    @Button.LoginHero
-                </MudButton>
+                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
+                    <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")"
+                               Rel="nofollow" Disabled="true">
+                        @Button.LoginHero
+                    </MudButton>
+                </MudTooltip>
             </MudPaper>
         </MudItem>
     </MudGrid>
