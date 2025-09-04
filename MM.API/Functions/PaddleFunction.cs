@@ -16,16 +16,17 @@ public class PaddleFunction(CosmosRepository repo, IHttpClientFactory factory)
         try
         {
             var id = req.GetQueryParameters()["id"];
+            if (id.Empty()) throw new UnhandledException("id null");
 
             var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
             var key = ApiStartup.Configurations.Paddle?.Key;
 
-            var client = factory.CreateClient("paddle");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
+            var http = factory.CreateClient("paddle");
+            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
 
             using var request = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}subscriptions/{id}");
 
-            var response = await client.SendAsync(request, cancellationToken);
+            var response = await http.SendAsync(request, cancellationToken);
 
             if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
 
@@ -51,13 +52,17 @@ public class PaddleFunction(CosmosRepository repo, IHttpClientFactory factory)
             var body = await req.GetPublicBody<RootEvent>(cancellationToken) ?? throw new UnhandledException("body null");
             if (body.data == null) throw new UnhandledException("body.data null");
 
-            var result = await repo.Query<ClientePrincipal>(x => x.ClientePaddle != null && x.ClientePaddle.CustomerId == body.data.customer_id, DocumentType.Principal,
-                cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
-            var client = result.FirstOrDefault() ?? throw new UnhandledException($"client null - customer_id:{body.data.customer_id}");
-            if (client.ClientePaddle == null) throw new UnhandledException("client.ClientePaddle null");
+            await Task.Delay(1000, cancellationToken); //wait for user be updated in cosmos
 
-            client.ClientePaddle.SubscriptionId = body.data.id;
-            client.ClientePaddle.IsPaidUser = body.data.status is "active" or "trialing";
+            var result = await repo.Query<AuthPrincipal>(x => x.AuthPaddle != null && x.AuthPaddle.CustomerId == body.data.customer_id, DocumentType.Principal, cancellationToken) ??
+                throw new UnhandledException("AuthPrincipal null");
+            var client = result.LastOrDefault() ?? throw new UnhandledException($"client null - customer_id:{body.data.customer_id}");
+            if (client.AuthPaddle == null) throw new UnhandledException("client.AuthPaddle null");
+
+            client.AuthPaddle.SubscriptionId = body.data.id;
+            client.AuthPaddle.IsPaidUser = body.data.status is "active" or "trialing";
+
+            client.Events = client.Events.Union([new Event { Description = $"subscription = {body.data.status}" }]).ToArray();
 
             await repo.UpsertItemAsync(client, cancellationToken);
         }
@@ -76,6 +81,7 @@ public class PaddleFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             var config = new PaddleConfigurations
             {
+                CustomerPortalEndpoint = ApiStartup.Configurations.Paddle?.CustomerPortalEndpoint,
                 Token = ApiStartup.Configurations.Paddle?.Token,
                 ProductStandard = ApiStartup.Configurations.Paddle?.Standard?.Product,
                 ProductPremium = ApiStartup.Configurations.Paddle?.Premium?.Product,

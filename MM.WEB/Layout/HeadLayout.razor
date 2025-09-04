@@ -43,12 +43,9 @@
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")"
-                               Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="true">
-                        @Button.Login
-                    </MudButton>
-                </MudTooltip>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
+                    @Button.Login
+                </MudButton>
             </NotAuthorized>
         </AuthorizeView>
     }
@@ -94,12 +91,9 @@
                 </MudButton>
             </Authorized>
             <NotAuthorized>
-                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")"
-                               Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font" Disabled="true">
-                        @Button.Login
-                    </MudButton>
-                </MudTooltip>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
+                    @Button.Login
+                </MudButton>
             </NotAuthorized>
         </AuthorizeView>
     }
@@ -114,7 +108,9 @@
         <MudNavMenu>
             @if (SubscriptionAllowed)
             {
-                <MudNavLink Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" OnClick="@OpenSubscription" Disabled="true">@Translations.Subscription</MudNavLink>
+                <MudNavLink Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" OnClick="@OpenSubscription" Disabled="true">
+                    @Translations.Subscription
+                </MudNavLink>
             }
             <AuthorizeView>
                 <Authorized>
@@ -129,11 +125,7 @@
                     <MudNavLink Icon="@IconsFA.Solid.Icon("right-from-bracket").Font" OnClick="@Logout" IconColor="Color.Error">@Button.Logout</MudNavLink>
                 </Authorized>
                 <NotAuthorized>
-                    <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
-                        <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Disabled="true">
-                            @Button.Login
-                        </MudNavLink>
-                    </MudTooltip>
+                    <MudNavLink Icon="@IconsFA.Solid.Icon("right-to-bracket").Font" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")">@Button.Login</MudNavLink>
                 </NotAuthorized>
             </AuthorizeView>
         </MudNavMenu>

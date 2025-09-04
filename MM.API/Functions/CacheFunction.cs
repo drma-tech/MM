@@ -58,7 +58,7 @@ public class CacheFunction(
                     var onProfiles = await repoOn.ListAll<ProfileModel>(cancellationToken);
                     var profiles = offProfiles.Union(onProfiles);
 
-                    var principals = await repo.ListAll<ClientePrincipal>(DocumentType.Principal, cancellationToken);
+                    var principals = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
 
                     var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship, DocumentType.Interaction, cancellationToken);
 

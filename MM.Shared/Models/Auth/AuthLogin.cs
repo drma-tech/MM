@@ -1,6 +1,6 @@
 ﻿namespace MM.Shared.Models.Auth;
 
-public class ClienteLogin() : PrivateMainDocument(DocumentType.Login)
+public class AuthLogin() : PrivateMainDocument(DocumentType.Login)
 {
     public string? UserId { get; set; }
 

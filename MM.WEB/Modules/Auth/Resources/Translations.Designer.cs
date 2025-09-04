@@ -79,6 +79,15 @@ namespace MM.WEB.Modules.Auth.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Account.
+        /// </summary>
+        public static string CreateAccount {
+            get {
+                return ResourceManager.GetString("CreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -111,6 +120,24 @@ namespace MM.WEB.Modules.Auth.Resources {
         public static string RegistrationInformation {
             get {
                 return ResourceManager.GetString("RegistrationInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have read and agree to the.
+        /// </summary>
+        public static string Terms1 {
+            get {
+                return ResourceManager.GetString("Terms1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I understand that in the first phase some features of the platform are limited or disabled..
+        /// </summary>
+        public static string Terms2 {
+            get {
+                return ResourceManager.GetString("Terms2", resourceCulture);
             }
         }
         

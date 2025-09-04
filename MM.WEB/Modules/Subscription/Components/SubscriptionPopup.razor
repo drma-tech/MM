@@ -18,19 +18,13 @@
                 @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_BlockedCountries[CurrentCountry!]}.")
             </MudAlert>
         }
-        @if (AppleNotAllowed)
-        {
-            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
-                @($"Subscriptions are not available in this region through the app.")
-            </MudAlert>
-        }
         else if (IsAuthenticated && (Client == null || Config == null))
         {
             <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="100%" Height="100px" Animation="Animation.Wave" />
         }
         else
         {
-            if (Client?.ClientePaddle == null)
+            if (Client?.AuthPaddle == null)
             {
                 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Icon="@IconsFA.Solid.Icon("gift").Font" Class="mb-3" Dense="true">
                     @Translations.FreePeriod
@@ -189,6 +183,10 @@
                             </MudDataGrid>
                         </MudCardContent>
                     </MudCard>
+                    <MudButton Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("list-check").Font" Variant="Variant.Filled" Class="me-3 mb-2"
+                               Href="@CustomerPortalUrl" Target="_blank" Rel="nofollow">
+                        Customer portal
+                    </MudButton>
                     @if (Subscription?.data?.IsCanceled ?? true)
                     {
                         <MudButton Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").Font" Variant="Variant.Filled" Class="me-2 mb-2"
@@ -199,11 +197,11 @@
                     else
                     {
                         <MudButton Color="Color.Secondary" StartIcon="@IconsFA.Solid.Icon("credit-card").Font" Variant="Variant.Outlined" Class="me-2 mb-2"
-                                   Href="@Subscription?.data?.management_urls?.update_payment_method" Target="_blank" rel="nofollow">
+                                   Href="@Subscription?.data?.management_urls?.update_payment_method" Target="_blank" Rel="nofollow">
                             @Translations.UpdatePaymentDetails
                         </MudButton>
                         <MudButton Color="Color.Error" StartIcon="@IconsFA.Solid.Icon("ban").Font" Variant="Variant.Outlined" Class="me-2 mb-2"
-                                   Href="@Subscription?.data?.management_urls?.cancel" Target="_blank" rel="nofollow">
+                                   Href="@Subscription?.data?.management_urls?.cancel" Target="_blank" Rel="nofollow">
                             @Translations.CancelSubscription
                         </MudButton>
                     }
@@ -212,11 +210,6 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudText Class="ms-4">Powered by</MudText>
-        <a href="https://www.paddle.com/" target="_blank" rel="nofollow">
-            <img src="/logo/paddle.avif" style="height: 30px;" alt="paddle" />
-        </a>
-        <MudSpacer></MudSpacer>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
@@ -225,7 +218,7 @@
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
     [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
-    private ClientePrincipal? Client { get; set; }
+    private AuthPrincipal? Client { get; set; }
 
     public RootSubscription? Subscription { get; set; }
     public PaddleConfigurations? Config { get; set; }
@@ -235,7 +228,7 @@
     private string? CurrentCountry { get; set; }
     private string? CurrentPlatform { get; set; }
     private bool BlockedCountry { get; set; }
-    private bool AppleNotAllowed { get; set; }
+    private string? CustomerPortalUrl { get; set; }
 
     private readonly Dictionary<string, string> _BlockedCountries = new()
     {
@@ -250,11 +243,6 @@
         { "RU", "Russia" },
         { "SY", "Syria" },
         { "VE", "Venezuela" }
-    };
-
-    private readonly Dictionary<string, string> _iosAllowedCountries = new()
-    {
-        { "US", "United States" }
     };
 
     private class Plan
@@ -274,7 +262,7 @@
         return Plans.FirstOrDefault(f => f.Product == product && f.Cycle == Cycle);
     }
 
-    private Action<TempClientePaddle> Registration => async client => await RegistrationSuccessful(client);
+    private Action<TempAuthPaddle> Registration => async client => await RegistrationSuccessful(client);
 
     protected override void OnInitialized()
     {
@@ -313,27 +301,23 @@
 
         CurrentPlatform = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "platform");
 
-        if (CurrentCountry.NotEmpty() && CurrentPlatform == "ios")
-        {
-            //https://developer.apple.com/app-store/review/guidelines/#link-to-other-purchase-methods
-            AppleNotAllowed = !_iosAllowedCountries.ContainsKey(CurrentCountry);
-        }
-
         Config = await ConfigurationApi.GetConfigurations();
         if (Config == null) throw new NotificationException("server communication error");
 
-        if (Client?.ClientePaddle == null && string.IsNullOrEmpty(Client?.ClientePaddle?.SubscriptionId))
+        if (Client?.AuthPaddle == null && string.IsNullOrEmpty(Client?.AuthPaddle?.SubscriptionId))
         {
             await JsRuntime.InvokeVoidAsync("startPaddle", Config.Token);
             Plans = await JsRuntime.InvokeAsync<IEnumerable<Plan>>("getPlans", Config.PriceStandardMonth, Config.PriceStandardYear, Config.PricePremiumMonth, Config.PricePremiumYear);
         }
-        else if (string.IsNullOrEmpty(Client?.ClientePaddle?.SubscriptionId))
+        else if (string.IsNullOrEmpty(Client?.AuthPaddle?.SubscriptionId))
         {
             Snackbar.Add(Translations.UnableReadSubscription, Severity.Error);
         }
         else
         {
-            Subscription = await SubscriptionApi.GetSubscription(Client?.ClientePaddle?.SubscriptionId);
+            Subscription = await SubscriptionApi.GetSubscription(Client?.AuthPaddle?.SubscriptionId);
+
+            CustomerPortalUrl = $"{Config.CustomerPortalEndpoint}?token={Subscription?.data?.management_urls?.update_payment_method?.GetParameter("token")}";
         }
     }
 
@@ -345,12 +329,11 @@
             {
                 var locale = AppStateStatic.Language.ToString().Substring(0, 2);
 
-                await JsRuntime.InvokeVoidAsync("openCheckout", priceId, Client?.Email, locale, Client?.ClientePaddle?.CustomerId, Client?.ClientePaddle?.AddressId);
+                await JsRuntime.InvokeVoidAsync("openCheckout", priceId, Client?.Email, locale, Client?.AuthPaddle?.CustomerId, Client?.AuthPaddle?.AddressId);
             }
             else
             {
                 Snackbar.Add(GlobalTranslations.YouMustLoggedSubscribe, Severity.Warning);
-                Navigation.NavigateTo($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success");
             }
         }
         catch (Exception ex)
@@ -359,7 +342,7 @@
         }
     }
 
-    private async Task RegistrationSuccessful(TempClientePaddle client)
+    private async Task RegistrationSuccessful(TempAuthPaddle client)
     {
         try
         {
@@ -380,11 +363,11 @@
 
             var product = Plans.Single(w => w.ProductId == client.ProductId && w.Cycle == Cycle).Product;
 
-            freshClient.ClientePaddle ??= new ClientePaddle();
+            freshClient.AuthPaddle ??= new AuthPaddle();
 
-            freshClient.ClientePaddle.CustomerId = client.CustomerId;
-            freshClient.ClientePaddle.AddressId = client.AddressId;
-            freshClient.ClientePaddle.Items = [new PaddleItem { ProductId = client.ProductId, Product = product }];
+            freshClient.AuthPaddle.CustomerId = client.CustomerId;
+            freshClient.AuthPaddle.AddressId = client.AddressId;
+            freshClient.AuthPaddle.Items = [new PaddleItem { ProductId = client.ProductId, Product = product }];
 
             Client = await PrincipalApi.Paddle(freshClient);
 
@@ -392,12 +375,12 @@
 
             Snackbar.Add(Translations.RegistrationSuccessful, Severity.Success);
 
-            for (var i = 0; i < 20; i++)
+            for (var i = 0; i < 60; i++)
             {
                 await Task.Delay(2000);
                 var principal = await PrincipalApi.Get(IsAuthenticated, true);
 
-                if (principal?.ClientePaddle != null && principal.ClientePaddle.SubscriptionId.NotEmpty())
+                if (principal?.AuthPaddle != null && principal.AuthPaddle.SubscriptionId.NotEmpty())
                 {
                     await UpdateData();
                     break;
@@ -429,7 +412,7 @@
     {
         try
         {
-            if (Client != null) Client.ClientePaddle = null;
+            if (Client != null) Client.AuthPaddle = null;
             Subscription = null;
             await LoadDataRender();
         }

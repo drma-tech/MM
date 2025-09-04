@@ -258,9 +258,8 @@
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ProductUnderDevelopment" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ProductUnderDevelopment" xml:space="preserve">
+    <value>O produto ainda está em desenvolvimento. Se você tiver alguma sugestão ou encontrar bugs, entre em contato conosco através da seção de feedback.</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>Para garantir um ambiente positivo, levamos assédio e preconceito a sério. Se você se deparar com esse tipo de comportamento, denuncie o perfil imediatamente.</value>
@@ -348,8 +347,5 @@
   </data>
   <data name="YourProfile" xml:space="preserve">
     <value>Seu perfil (ou preferências)</value>
-  </data>
-  <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>O produto ainda está em desenvolvimento. Se você tiver alguma sugestão ou encontrar bugs, entre em contato conosco através da seção de feedback.</value>
   </data>
 </root>

@@ -126,14 +126,14 @@
   <data name="Dog" xml:space="preserve">
     <value>Perros)</value>
   </data>
-  <data name="Dog_Description" xml:space="preserve">
-    <value>Tengo perro(s) (por ejemplo, labrador, caniche, bulldog).</value>
-  </data>
   <data name="DogCat" xml:space="preserve">
     <value>Perro(s) y Gato(s)</value>
   </data>
   <data name="DogCat_Description" xml:space="preserve">
     <value>Tengo perro(s) y gato(s).</value>
+  </data>
+  <data name="Dog_Description" xml:space="preserve">
+    <value>Tengo perro(s) (por ejemplo, labrador, caniche, bulldog).</value>
   </data>
   <data name="ExoticPets" xml:space="preserve">
     <value>Mascotas exóticas</value>

@@ -14,7 +14,7 @@ public static class PopupHelper
 {
     public static readonly EventCallbackFactory Factory = new();
 
-    public static async Task InvitePerEmail(this IDialogService service, ClientePrincipal? principal,
+    public static async Task InvitePerEmail(this IDialogService service, AuthPrincipal? principal,
         EventCallback<string> inviteSent)
     {
         var parameters = new DialogParameters<InvitePerEmail>

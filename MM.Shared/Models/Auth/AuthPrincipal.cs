@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Auth;
 
-public class ClientePrincipal() : PrivateMainDocument(DocumentType.Principal)
+public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
 {
     public string? UserId { get; set; }
     public string? IdentityProvider { get; set; }
@@ -11,11 +11,18 @@ public class ClientePrincipal() : PrivateMainDocument(DocumentType.Principal)
     public bool PublicProfile { get; set; } = false;
     public int Tokens { get; set; } = 0;
 
-    public ClientePaddle? ClientePaddle { get; set; }
+    public AuthPaddle? AuthPaddle { get; set; }
+    public Event[] Events { get; set; } = [];
 
     public override void Initialize(string userId)
     {
         base.Initialize(userId);
         UserId = userId;
     }
+}
+
+public class Event
+{
+    public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
+    public string? Description { get; set; }
 }

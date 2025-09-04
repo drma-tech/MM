@@ -219,7 +219,7 @@ public class ProfileFunction(
         {
             var userId = req.GetUserId();
             var body = await req.GetBody<ProfileModel>(cancellationToken);
-            var principal = await _repoGen.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ??
+            var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ??
                             throw new NotificationException("user not found");
 
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
@@ -274,7 +274,7 @@ public class ProfileFunction(
         try
         {
             var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
-            var partners = await _repoGen.Query<ClientePrincipal>(x => x.Email == request.Email, DocumentType.Principal,
+            var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal,
                 cancellationToken);
             var userId = req.GetUserId();
 

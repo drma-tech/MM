@@ -2,23 +2,23 @@
 
 namespace MM.WEB.Modules.Auth.Core;
 
-public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincipal>(factory, "principal")
+public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>(factory, "principal")
 {
-    public async Task<ClientePrincipal?> Get(bool isUserAuthenticated, bool setNewVersion = false)
+    public async Task<AuthPrincipal?> Get(bool isUserAuthenticated, bool setNewVersion = false)
     {
         if (isUserAuthenticated) return await GetAsync(Endpoint.Get, null, setNewVersion);
 
         return null;
     }
 
-    public async Task<ClientePrincipal?> Add(ClientePrincipal? obj)
+    public async Task<AuthPrincipal?> Add(AuthPrincipal? obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
 
         return await PostAsync(Endpoint.Add, null, obj);
     }
 
-    public async Task<ClientePrincipal?> Paddle(ClientePrincipal? obj)
+    public async Task<AuthPrincipal?> Paddle(AuthPrincipal? obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
 
@@ -30,14 +30,14 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<ClientePrincip
         await DeleteAsync(Endpoint.Remove, null);
     }
 
-    public async Task<ClientePrincipal?> Public()
+    public async Task<AuthPrincipal?> Public()
     {
-        return await PutAsync<ClientePrincipal>(Endpoint.Public, null, null);
+        return await PutAsync<AuthPrincipal>(Endpoint.Public, null, null);
     }
 
-    public async Task<ClientePrincipal?> Private()
+    public async Task<AuthPrincipal?> Private()
     {
-        return await PutAsync<ClientePrincipal>(Endpoint.Private, null, null);
+        return await PutAsync<AuthPrincipal>(Endpoint.Private, null, null);
     }
 
     private struct Endpoint

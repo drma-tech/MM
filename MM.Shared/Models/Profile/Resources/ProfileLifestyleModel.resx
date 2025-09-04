@@ -186,17 +186,17 @@
   <data name="Religion_Name" xml:space="preserve">
     <value>Religion</value>
   </data>
-  <data name="SexPersonality_Description" xml:space="preserve">
-    <value>If you have any doubts, you can take a test on the original website (English only)</value>
-  </data>
-  <data name="SexPersonality_Name" xml:space="preserve">
-    <value>Sex Personality</value>
-  </data>
   <data name="SexPersonalityPreferences_Description" xml:space="preserve">
     <value>Unlike other personalities, this one's compatibility is a personal preference.</value>
   </data>
   <data name="SexPersonalityPreferences_Name" xml:space="preserve">
     <value>Sex Personality (preferences)</value>
+  </data>
+  <data name="SexPersonality_Description" xml:space="preserve">
+    <value>If you have any doubts, you can take a test on the original website (English only)</value>
+  </data>
+  <data name="SexPersonality_Name" xml:space="preserve">
+    <value>Sex Personality</value>
   </data>
   <data name="SharedSpendingStyle_Name" xml:space="preserve">
     <value>Shared Spending Style</value>

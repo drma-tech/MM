@@ -19,7 +19,7 @@
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
-    [Parameter] public ClientePrincipal? principal { get; set; }
+    [Parameter] public AuthPrincipal? principal { get; set; }
     [Parameter] public EventCallback<string> InviteSent { get; set; }
 
     [Custom(Name = "PartnerEmail", ResourceType = typeof(GlobalTranslations))]

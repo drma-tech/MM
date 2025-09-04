@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Auth.Core;
 
-public class ClientePrincipalValidation : AbstractValidator<ClientePrincipal>
+public class ClientePrincipalValidation : AbstractValidator<AuthPrincipal>
 {
     public ClientePrincipalValidation()
     {

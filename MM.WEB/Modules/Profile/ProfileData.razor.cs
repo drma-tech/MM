@@ -16,7 +16,7 @@ public partial class ProfileData : PageCore<ProfileData>
     [Inject] protected MapApi MapApi { get; set; } = default!;
     [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
-    private ClientePrincipal? Principal { get; set; }
+    private AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 

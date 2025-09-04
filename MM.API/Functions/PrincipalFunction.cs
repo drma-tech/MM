@@ -23,7 +23,7 @@ public class PrincipalFunction(
             var userId = req.GetUserId();
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
-            var model = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
             return await req.CreateResponse(model, TtlCache.OneDay, cancellationToken);
         }
@@ -35,15 +35,17 @@ public class PrincipalFunction(
     }
 
     [Function("PrincipalAdd")]
-    public async Task<ClientePrincipal?> PrincipalAdd(
+    public async Task<AuthPrincipal?> PrincipalAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        //note: its called once per user (first acccess)
+        //note: its called once per user (first access)
 
         try
         {
             var userId = req.GetUserId();
-            var body = await req.GetBody<ClientePrincipal>(cancellationToken);
+            var body = await req.GetBody<AuthPrincipal>(cancellationToken);
+
+            if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
 
             //check if user ip is blocked for insert
             var ip = req.GetUserIP(false) ?? throw new NotificationException("Failed to retrieve IP");
@@ -55,7 +57,7 @@ public class PrincipalFunction(
 
                 if (blockedIp.Data?.Quantity > 2)
                 {
-                    //todo: create a mecanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
+                    //todo: create a mechanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
                     logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
                     throw new NotificationException("You've reached the limit for creating profiles. Please try again later.");
                 }
@@ -93,11 +95,12 @@ public class PrincipalFunction(
                 await repo.UpsertItemAsync(myLikes, cancellationToken);
             }
 
-            var model = new ClientePrincipal
+            var model = new AuthPrincipal
             {
                 IdentityProvider = body.IdentityProvider,
                 DisplayName = body.DisplayName,
-                Email = body.Email
+                Email = body.Email,
+                Events = body.Events
             };
             model.Initialize(userId);
 
@@ -111,17 +114,20 @@ public class PrincipalFunction(
     }
 
     [Function("PrincipalPaddle")]
-    public async Task<ClientePrincipal> PrincipalPaddle(
+    public async Task<AuthPrincipal> PrincipalPaddle(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/paddle")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
             var userId = req.GetUserId();
 
-            var model = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
-            var body = await req.GetBody<ClientePrincipal>(cancellationToken);
+            var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
+            var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
-            model.ClientePaddle = body.ClientePaddle;
+            model.AuthPaddle ??= new AuthPaddle();
+            model.AuthPaddle.CustomerId = body.AuthPaddle!.CustomerId;
+            model.AuthPaddle.AddressId = body.AuthPaddle.AddressId;
+            model.AuthPaddle.Items = body.AuthPaddle.Items;
 
             return await repo.UpsertItemAsync(model, cancellationToken);
         }
@@ -142,10 +148,10 @@ public class PrincipalFunction(
 
             var userId = id ?? req.GetUserId();
 
-            var myPrincipal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
             if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);
 
-            var myLogins = await repo.Get<ClienteLogin>(DocumentType.Login, userId, cancellationToken);
+            var myLogins = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
             if (myLogins != null) await repo.Delete(myLogins, cancellationToken);
         }
         catch (Exception ex)
@@ -156,7 +162,7 @@ public class PrincipalFunction(
     }
 
     [Function("PrincipalPublicMode")]
-    public async Task<ClientePrincipal?> PrincipalPublicMode(
+    public async Task<AuthPrincipal?> PrincipalPublicMode(
      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
@@ -168,7 +174,7 @@ public class PrincipalFunction(
             await repoOn.Upsert(profile, cancellationToken);
             await repoOff.Delete(profile, cancellationToken);
 
-            var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
             principal.PublicProfile = true;
 
             return await repo.UpsertItemAsync(principal, cancellationToken);
@@ -181,7 +187,7 @@ public class PrincipalFunction(
     }
 
     [Function("PrincipalPrivateMode")]
-    public async Task<ClientePrincipal?> PrincipalPrivateMode(
+    public async Task<AuthPrincipal?> PrincipalPrivateMode(
     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
@@ -193,7 +199,7 @@ public class PrincipalFunction(
             await repoOff.Upsert(profile, cancellationToken);
             await repoOn.Delete(profile, cancellationToken);
 
-            var principal = await repo.Get<ClientePrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
             principal.PublicProfile = false;
 
             return await repo.UpsertItemAsync(principal, cancellationToken);
