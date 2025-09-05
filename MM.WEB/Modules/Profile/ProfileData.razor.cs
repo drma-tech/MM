@@ -52,7 +52,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
             }
-            else //english
+            else //English
             {
                 var message = new MarkupString(
                     "To match you accurately, we ask for some personal information such as ethnicity, religion, and sexual orientation. These are considered sensitive personal data under privacy laws.<br><br>" +
@@ -68,6 +68,8 @@ public partial class ProfileData : PageCore<ProfileData>
                 Navigation.NavigateTo("profile");
                 return;
             }
+
+            await PrincipalApi.Event("data processing granted");
 
             Snackbar.Add(GlobalTranslations.BasicRequired, MudBlazor.Severity.Warning);
         }

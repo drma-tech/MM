@@ -78,13 +78,6 @@
       "sizes": "1200x750",
       "form_factor": "wide",
       "label": "Profile"
-    },
-    {
-      "src": "screenshots/suggestions_desktop.png",
-      "type": "image/jpg",
-      "sizes": "1200x750",
-      "form_factor": "wide",
-      "label": "Collections"
     }
   ],
   "launch_handler": {

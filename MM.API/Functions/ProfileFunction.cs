@@ -2,7 +2,9 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
+using MM.Shared.Models.Profile.Core;
 using MM.Shared.Requests;
+using FluentValidation;
 
 namespace MM.API.Functions;
 
@@ -219,6 +221,11 @@ public class ProfileFunction(
             var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
+            if (body.Id != userId) throw new NotificationException("Invalid Operation");
+
+            var validator = new ProfileValidation();
+            var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
+            if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
             return await repoOff.UpsertItemAsync(body, cancellationToken);
         }
