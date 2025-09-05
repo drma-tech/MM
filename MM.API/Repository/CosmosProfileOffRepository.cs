@@ -1,10 +1,10 @@
-﻿using System.Linq.Expressions;
-using System.Net;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MM.API.Repository.Core;
+using System.Linq.Expressions;
+using System.Net;
 
 namespace MM.API.Repository;
 
@@ -51,8 +51,7 @@ public class CosmosProfileOffRepository
     {
         try
         {
-            var query = Container
-                .GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions());
+            var query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions());
 
             using var iterator = query.ToFeedIterator();
             var results = new List<T>();
@@ -75,7 +74,7 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<List<T>> Query<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
+    public async Task<List<T>> QueryAsync<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
         where T : CosmosDocument
     {
         try
@@ -105,7 +104,7 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<T> Upsert<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
+    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
     {
         try
         {
@@ -123,7 +122,7 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<T> PatchItem<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
+    public async Task<T> PatchItemAsync<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
         where T : CosmosDocument, new()
     {
         //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
@@ -144,7 +143,7 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
+    public async Task<bool> DeleteItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
     {
         try
         {

@@ -101,7 +101,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
             profile.UpdatePhoto(profile.Gallery);
 
-            return await repo.Upsert(profile, cancellationToken);
+            return await repo.UpsertItemAsync(profile, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -137,7 +137,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
                 await repoGen.UpsertItemAsync(validation, cancellationToken);
             }
 
-            return await repo.Upsert(profile, cancellationToken);
+            return await repo.UpsertItemAsync(profile, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -190,7 +190,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
             profile.Gallery.ValidationId = photoName;
 
-            await repo.Upsert(profile, cancellationToken);
+            await repo.UpsertItemAsync(profile, cancellationToken);
 
             var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
             if (validation == null)

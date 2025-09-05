@@ -144,15 +144,41 @@ public class PrincipalFunction(
     {
         try
         {
-            var id = req.GetQueryParameters()["offlineId"];
-
-            var userId = id ?? req.GetUserId();
+            var userId = req.GetUserId();
 
             var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
             if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);
 
             var myLogins = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
             if (myLogins != null) await repo.Delete(myLogins, cancellationToken);
+
+            var myProfileOff = await repoOff.Get<ProfileModel>(userId, cancellationToken);
+            if (myProfileOff != null) await repoOff.DeleteItemAsync(myProfileOff, cancellationToken);
+
+            var myProfileOn = await repoOn.Get<ProfileModel>(userId, cancellationToken);
+            if (myProfileOn != null) await repoOn.DeleteItemAsync(myProfileOn, cancellationToken);
+
+            var myFilter = await repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+            if (myFilter != null) await repo.Delete(myFilter, cancellationToken);
+
+            var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+            if (mySettings != null) await repo.Delete(mySettings, cancellationToken);
+
+            var mySuggestions = await repo.Get<MySuggestionsModel>(DocumentType.Suggestions, userId, cancellationToken);
+            if (mySuggestions != null) await repo.Delete(mySuggestions, cancellationToken);
+
+            var myLikes = await repo.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+            if (myLikes != null) await repo.Delete(myLikes, cancellationToken);
+
+            var myMatches = await repo.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
+            if (myMatches != null) await repo.Delete(myMatches, cancellationToken);
+
+            //todo: interactions belongs to two users. decide what to do.
+            //var myInteractions = await repo.Get<InteractionModel>(DocumentType.Interaction, userId, cancellationToken);
+            //await repo.Delete(myInteractions, cancellationToken);
+
+            var myValidations = await repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+            if (myValidations != null) await repo.Delete(myValidations, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -171,10 +197,10 @@ public class PrincipalFunction(
             var userId = req.GetUserId();
 
             var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
-            await repoOn.Upsert(profile, cancellationToken);
-            await repoOff.Delete(profile, cancellationToken);
+            await repoOn.UpsertItemAsync(profile, cancellationToken);
+            await repoOff.DeleteItemAsync(profile, cancellationToken);
 
-            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal null");
             principal.PublicProfile = true;
 
             return await repo.UpsertItemAsync(principal, cancellationToken);
@@ -196,10 +222,10 @@ public class PrincipalFunction(
             var userId = req.GetUserId();
 
             var profile = await repoOn.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
-            await repoOff.Upsert(profile, cancellationToken);
-            await repoOn.Delete(profile, cancellationToken);
+            await repoOff.UpsertItemAsync(profile, cancellationToken);
+            await repoOn.DeleteItemAsync(profile, cancellationToken);
 
-            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("ClientePrincipal null");
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal null");
             principal.PublicProfile = false;
 
             return await repo.UpsertItemAsync(principal, cancellationToken);

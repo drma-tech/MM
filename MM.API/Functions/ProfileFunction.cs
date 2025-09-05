@@ -11,7 +11,7 @@ public static class ProfileHelper
     public static async Task<ProfileModel?> GetProfile(CosmosProfileOffRepository repoOff,
         CosmosProfileOnRepository repoOn, string? userId, CancellationToken cancellationToken)
     {
-        //todo: after online mode, exchange to ON by default
+        //todo: on second phase, exchange to ON by default
 
         var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken);
 
@@ -108,7 +108,6 @@ public class ProfileFunction(
         try
         {
             var userId = req.GetUserId();
-
             var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -127,7 +126,6 @@ public class ProfileFunction(
         try
         {
             var userId = req.GetUserId();
-
             var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -146,7 +144,6 @@ public class ProfileFunction(
         try
         {
             var userId = req.GetUserId();
-
             var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -158,39 +155,39 @@ public class ProfileFunction(
         }
     }
 
-    [Function("ProfileGetView")]
-    public async Task<HttpResponseData?> GetView(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var userId = req.GetUserId();
-            var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
+    //[Function("ProfileGetView")]
+    //public async Task<HttpResponseData?> GetView(
+    //    [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    //{
+    //    try
+    //    {
+    //        var userId = req.GetUserId();
+    //        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
-            if (profile == null) return null;
+    //        if (profile == null) return null;
 
-            profile.Age = profile.BirthDate.GetAge();
-            profile.BirthDate = DateTime.MinValue;
+    //        profile.Age = profile.BirthDate.GetAge();
+    //        profile.BirthDate = null;
 
-            var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+    //        var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
-            if (userSettings?.BlindDate ?? false) profile.Gallery?.SimulateBlindDate();
+    //        if (userSettings?.BlindDate ?? false) profile.Gallery?.SimulateBlindDate();
 
-            //profile.ActivityStatus = ActivityStatus.Today;
+    //        //profile.ActivityStatus = ActivityStatus.Today;
 
-            //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
-            //else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
-            //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
-            //else profile.ActivityStatus = ActivityStatus.Disabled;
+    //        //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
+    //        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
+    //        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
+    //        //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-            return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.ProcessException(ex);
-            throw;
-        }
-    }
+    //        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        req.ProcessException(ex);
+    //        throw;
+    //    }
+    //}
 
     //[Function("ProfileListSearch")]
     //public async Task<List<ProfileSearch>> ListSearch(
@@ -219,12 +216,11 @@ public class ProfileFunction(
         {
             var userId = req.GetUserId();
             var body = await req.GetBody<ProfileModel>(cancellationToken);
-            var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ??
-                            throw new NotificationException("user not found");
+            var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
 
-            return await repoOff.Upsert(body, cancellationToken);
+            return await repoOff.UpsertItemAsync(body, cancellationToken);
         }
         catch (Exception ex)
         {

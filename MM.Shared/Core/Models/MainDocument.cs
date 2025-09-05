@@ -3,14 +3,14 @@
 public enum DocumentType
 {
     Principal = 1,
-    Login = 5,
-    Filter = 7,
-    Setting = 8,
-    Suggestions = 9,
-    Likes = 10,
-    Matches = 11,
-    Interaction = 12,
-    Validation = 13
+    Login = 2,
+    Filter = 3,
+    Setting = 4,
+    Suggestions = 5,
+    Likes = 6,
+    Matches = 7,
+    Interaction = 8,
+    Validation = 9
 }
 
 public abstract class MainDocument : CosmosDocument

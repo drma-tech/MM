@@ -51,8 +51,7 @@ public class CosmosProfileOnRepository
     {
         try
         {
-            var query = Container
-                .GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions());
+            var query = Container.GetItemLinqQueryable<T>(requestOptions: CosmosRepositoryExtensions.GetQueryRequestOptions());
 
             using var iterator = query.ToFeedIterator();
             var results = new List<T>();
@@ -105,12 +104,11 @@ public class CosmosProfileOnRepository
         }
     }
 
-    public async Task<T> Upsert<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
+    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
     {
         try
         {
-            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             if (response.RequestCharge > 15)
                 _logger.LogWarning("Upsert - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
@@ -123,7 +121,7 @@ public class CosmosProfileOnRepository
         }
     }
 
-    public async Task<T> PatchItem<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
+    public async Task<T> PatchItemAsync<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
         where T : CosmosDocument, new()
     {
         //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
@@ -144,7 +142,7 @@ public class CosmosProfileOnRepository
         }
     }
 
-    public async Task<bool> Delete<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
+    public async Task<bool> DeleteItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument
     {
         try
         {

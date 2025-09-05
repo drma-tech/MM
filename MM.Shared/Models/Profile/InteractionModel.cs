@@ -39,14 +39,14 @@ public class InteractionModel : ProtectedMainDocument
         return EventsUserB;
     }
 
-    public void AddEventUser(string? trigguerUserId, EventType type, Origin origin)
+    public void AddEventUser(string? triggerUserId, EventType type, Origin origin)
     {
         if (Id.Empty()) throw new NotificationException("must initialize the interaction first");
 
         var ids = Id.Split(":")[1];
         var arrIds = ids.Split('-');
 
-        if (arrIds[0] == trigguerUserId)
+        if (arrIds[0] == triggerUserId)
             EventsUserA.Add(new InteractionEvent { Type = type, Origin = origin });
         else
             EventsUserB.Add(new InteractionEvent { Type = type, Origin = origin });
