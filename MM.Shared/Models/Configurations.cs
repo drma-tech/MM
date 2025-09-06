@@ -8,7 +8,6 @@ public class Configurations
     public Paddle? Paddle { get; set; }
     public Sendgrid? Sendgrid { get; set; }
     public Google? Google { get; set; }
-    public Settings? Settings { get; set; }
     public Here? Here { get; set; }
 }
 
@@ -64,9 +63,4 @@ public class Google
 public class Here
 {
     public string? ApiKey { get; set; }
-}
-
-public class Settings
-{
-    public bool ShowAdSense { get; set; }
 }

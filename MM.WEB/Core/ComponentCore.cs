@@ -17,7 +17,6 @@ public abstract class ComponentCore<T> : ComponentBase, IBrowserViewportObserver
     [Inject] protected IDialogService DialogService { get; set; } = null!;
     [Inject] protected NavigationManager Navigation { get; set; } = null!;
     [Inject] protected PrincipalApi PrincipalApi { get; set; } = null!;
-    [Inject] protected CacheSettingsApi CacheSettingsApi { get; set; } = null!;
 
     [Inject] private IBrowserViewportService BrowserViewportService { get; set; } = null!;
     public Breakpoint Breakpoint { get; set; }
@@ -83,23 +82,30 @@ public abstract class PageCore<T> : ComponentCore<T> where T : class
 
     protected override async Task OnInitializedAsync()
     {
-        if (AuthenticationState is not null)
+        try
         {
-            var authState = await AuthenticationState;
-
-            User = authState.User;
-            IsAuthenticated = User?.Identity is not null && User.Identity.IsAuthenticated;
-            UserId = User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        }
-
-        if (IsAuthenticated)
-        {
-            var principal = await PrincipalApi.Get(true);
-
-            if (principal == null)
+            if (AuthenticationState is not null)
             {
-                Navigation.NavigateTo("/login-success");
+                var authState = await AuthenticationState;
+
+                User = authState.User;
+                IsAuthenticated = User?.Identity is not null && User.Identity.IsAuthenticated;
+                UserId = User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             }
+
+            if (IsAuthenticated)
+            {
+                var principal = await PrincipalApi.Get(true);
+
+                if (principal == null)
+                {
+                    Navigation.NavigateTo("/login-success");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
         }
     }
 }

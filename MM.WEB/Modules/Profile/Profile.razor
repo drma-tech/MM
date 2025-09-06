@@ -331,7 +331,6 @@
 
 @code
 {
-    public Settings? Settings { get; set; }
     private AuthPrincipal? principal;
 
     private ProfileValidation ProfileValidator { get; } = new();
@@ -392,8 +391,6 @@
     {
         try
         {
-            Settings = await CacheSettingsApi.GetSettings();
-
             if (IsAuthenticated)
             {
                 profile = await ProfileApi.Get(CoreProfile);

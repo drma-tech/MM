@@ -61,6 +61,15 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Child Safety Policy.
+        /// </summary>
+        public static string ChildPolicy {
+            get {
+                return ResourceManager.GetString("ChildPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import Last Error.
         /// </summary>
         public static string ImportLastError {

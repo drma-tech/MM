@@ -16,22 +16,6 @@ public class CacheFunction(
     CosmosProfileOnRepository repoOn,
     IDistributedCache distributedCache)
 {
-    [Function("Settings")]
-    public static async Task<HttpResponseData> Configurations(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/settings")]
-        HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            return await req.CreateResponse(ApiStartup.Configurations.Settings, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.ProcessException(ex);
-            throw;
-        }
-    }
-
     [Function("Dashboard")]
     public async Task<HttpResponseData?> Dashboard(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/sum-users")]
