@@ -54,7 +54,7 @@ public class FilterModel : PrivateMainDocument
     public Height? MaxHeight { get; set; }
 
     [Custom(Name = "Neurodiversity_Name", ResourceType = typeof(ProfileBioModel))]
-    public HashSet<Neurodiversity> Neurodiversities { get; set; } = [];
+    public HashSet<Neurodiversity> Neurodiversity { get; set; } = [];
 
     [Custom(Name = "Disabilities_Name", ResourceType = typeof(ProfileBioModel))]
     public HashSet<Disability> Disabilities { get; set; } = [];

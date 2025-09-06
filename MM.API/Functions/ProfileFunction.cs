@@ -242,7 +242,14 @@ public class ProfileFunction(
     {
         try
         {
+            var userId = req.GetUserId();
             var body = await req.GetBody<FilterModel>(cancellationToken);
+
+            if (body.Id != userId) throw new NotificationException("Invalid Operation");
+
+            var validator = new FilterValidation();
+            var result = await validator.ValidateAsync(body);
+            if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
             return await _repoGen.UpsertItemAsync(body, cancellationToken);
         }

@@ -421,7 +421,7 @@ public static class AffinityCore
     public static HashSet<Neurodiversity> GetNeurodiversity(FilterModel? filter = null)
     {
         if (filter != null)
-            return filter.Neurodiversities;
+            return filter.Neurodiversity;
         return [];
     }
 

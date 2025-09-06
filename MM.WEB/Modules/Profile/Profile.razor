@@ -343,7 +343,7 @@
     private FilterModel? filter;
     private RenderControlCore<FilterModel?>? CoreFilter { get; } = new();
 
-    private PhotoValidation PhotoValidatior { get; } = new();
+    private PhotoValidation PhotoValidator { get; } = new();
 
     private SettingModel? setting;
     private RenderControlCore<SettingModel?>? CoreSetting { get; } = new();
@@ -366,7 +366,7 @@
     private bool ProfileValid => profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid;
     private bool FilterValid => filter != null && FilterValidator.Validate(filter).IsValid;
     private bool SettingValid => setting != null;
-    private bool GalleryValid => profile?.Gallery != null && PhotoValidatior.Validate(profile.Gallery).IsValid;
+    private bool GalleryValid => profile?.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
     private bool ValidationsValid => validation != null && validation.Gallery;
 
     protected override void OnInitialized()

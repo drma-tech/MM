@@ -55,10 +55,10 @@ public class FilterValidation : AbstractValidator<FilterModel>
             .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Body Type"))
             .WithName("Body Type");
 
-        RuleFor(x => x.Neurodiversities)
+        RuleFor(x => x.Neurodiversity)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Neurodiversities"))
-            .WithName("Neurodiversities");
+            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Neurodiversity"))
+            .WithName("Neurodiversity");
 
         RuleFor(x => x.MinimalAge)
             .GreaterThanOrEqualTo(18);

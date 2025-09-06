@@ -1,9 +1,11 @@
+using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
+using MM.Shared.Models.Profile.Core;
 
 namespace MM.API.Functions;
 
@@ -219,6 +221,27 @@ public class PrincipalFunction(
             var userId = req.GetUserId();
 
             var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
+            var ProfileValidator = new ProfileValidation();
+            var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
+
+            var filter = await repoOff.Get<FilterModel>(userId, cancellationToken) ?? throw new NotificationException("filter not found");
+            var FilterValidator = new FilterValidation();
+            var FilterValid = filter != null && FilterValidator.Validate(filter).IsValid;
+
+            var setting = await repoOff.Get<SettingModel>(userId, cancellationToken) ?? throw new NotificationException("setting not found");
+            var SettingValid = setting != null;
+
+            var PhotoValidator = new PhotoValidation();
+            var GalleryValid = profile.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
+
+            var validation = await repoOff.Get<ValidationModel>(userId, cancellationToken) ?? throw new NotificationException("validation not found");
+            var ValidationsValid = validation != null && validation.Gallery;
+
+            if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
+            {
+                throw new NotificationException("Please complete all steps before making your profile public.");
+            }
+
             await repoOn.UpsertItemAsync(profile, cancellationToken);
             await repoOff.DeleteItemAsync(profile, cancellationToken);
 
