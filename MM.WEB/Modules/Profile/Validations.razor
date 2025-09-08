@@ -46,7 +46,7 @@
     private ValidationValidation ValidationValidator { get; set; } = new();
     public RenderControlCore<ValidationModel?>? Core { get; set; } = new();
 
-    protected override async Task LoadDataRender()
+    protected override async Task LoadNonEssentialDataAsync()
     {
         Core?.LoadingStarted?.Invoke();
 

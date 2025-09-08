@@ -22,7 +22,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
     private GeoLocation? GPS { get; set; }
 
-    protected override async Task LoadDataRender()
+    protected override async Task LoadNonEssentialDataAsync()
     {
         Core?.LoadingStarted?.Invoke();
 

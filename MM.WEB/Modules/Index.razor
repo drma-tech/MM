@@ -8,7 +8,7 @@
 @inject IJSRuntime JsRuntime
 @inject DashboardApi DashboardApi
 
-<SeoHeader Title="Home" Description="@SeoTranslations.AppDescription" Url="/"></SeoHeader>
+<SeoHeader Title="Find your life partner" Description="@SeoTranslations.AppDescription" Url="/"></SeoHeader>
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
 
 <MudContainer>
@@ -357,7 +357,7 @@
 
     public SumUsers? SumUsers { get; set; }
 
-    protected override async Task LoadDataRender()
+    protected override async Task LoadEssentialDataAsync()
     {
         var cache = await DashboardApi.GetSumUsers(null);
         SumUsers = cache?.Data;

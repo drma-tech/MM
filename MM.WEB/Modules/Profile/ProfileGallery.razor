@@ -126,7 +126,7 @@
 
     private MudDialog? MudDialog { get; set; }
 
-    protected override async Task LoadDataRender()
+    protected override async Task LoadNonEssentialDataAsync()
     {
         _profile = await ProfileApi.Get(CoreProfile);
         Principal = await PrincipalApi.Get(IsAuthenticated);
