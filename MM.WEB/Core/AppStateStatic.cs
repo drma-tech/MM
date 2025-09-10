@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Security.Claims;
 using MM.Shared.Models.Auth;
 
 namespace MM.WEB.Core;
@@ -14,6 +15,10 @@ public static class AppStateStatic
 
         Language = language?.Value ?? Language.English;
     }
+
+    public static bool IsAuthenticated { get; set; }
+    public static ClaimsPrincipal? User { get; set; }
+    public static string? UserId { get; set; }
 
     public static List<LogContainer> Logs { get; private set; } = [];
 

@@ -1,15 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 using MM.WEB.Modules.Auth.Core;
 using MudBlazor;
 using System.Security.Claims;
 
 namespace MM.WEB.Core;
 
-/// <summary>
-///     if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
-/// </summary>
-/// <typeparam name="T"></typeparam>
 public abstract class ComponentCore<T> : ComponentBase, IBrowserViewportObserver, IAsyncDisposable where T : class
 {
     [Inject] protected ILogger<T> Logger { get; set; } = null!;
@@ -32,6 +27,8 @@ public abstract class ComponentCore<T> : ComponentBase, IBrowserViewportObserver
 
     /// <summary>
     /// Non-critical data that may be delayed (popups, javascript handling, authenticated user data, etc.)
+    /// 
+    /// NOTE: This method cannot depend on previously loaded variables, as events can be executed in parallel.
     /// </summary>
     /// <returns></returns>
     protected virtual Task LoadNonEssentialDataAsync()
@@ -81,46 +78,9 @@ public abstract class ComponentCore<T> : ComponentBase, IBrowserViewportObserver
     #endregion BrowserViewportObserver
 }
 
-/// <summary>
-///     if you implement the OnAfterRenderAsync method, call 'await base.OnAfterRenderAsync(firstRender);'
-/// </summary>
-/// <typeparam name="T"></typeparam>
 public abstract class PageCore<T> : ComponentCore<T> where T : class
 {
-    [CascadingParameter] protected Task<AuthenticationState>? AuthenticationState { get; set; }
-
-    protected bool IsAuthenticated { get; set; }
-    protected ClaimsPrincipal? User { get; set; }
-    protected string? UserId { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            if (AuthenticationState is not null)
-            {
-                var authState = await AuthenticationState;
-
-                User = authState.User;
-                IsAuthenticated = User?.Identity is not null && User.Identity.IsAuthenticated;
-                UserId = User?.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            }
-
-            if (IsAuthenticated)
-            {
-                var principal = await PrincipalApi.Get(true);
-
-                if (principal == null)
-                {
-                    Navigation.NavigateTo("/login-success");
-                }
-            }
-
-            await base.OnInitializedAsync();
-        }
-        catch (Exception ex)
-        {
-            ex.ProcessException(Snackbar, Logger);
-        }
-    }
+    protected static bool IsAuthenticated => AppStateStatic.IsAuthenticated;
+    protected static ClaimsPrincipal? User => AppStateStatic.User;
+    protected static string? UserId => AppStateStatic.UserId;
 }

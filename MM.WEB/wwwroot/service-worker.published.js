@@ -21,7 +21,7 @@ self.addEventListener("message", event => {
     try {
         if (event.origin) {
             const url = new URL(event.origin);
-            if (!url.hostname.endsWith(".modern-matchmaker.com")) return;
+            if (!url.hostname.endsWith("modern-matchmaker.com")) return;
         }
         else { return; }
     } catch { return; }
