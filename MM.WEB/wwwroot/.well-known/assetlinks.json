@@ -5,10 +5,9 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.streamingdiscovery.www.twa",
+      "package_name": "com.modern_matchmaker.www.twa",
       "sha256_cert_fingerprints": [
-        "A9:6A:92:C9:81:E5:DA:E3:46:B6:B0:DD:F6:70:70:0E:AD:13:83:BF:47:20:1D:F2:DF:81:66:73:F4:BF:8E:86",
-        "19:1A:E7:5D:3A:DC:5F:55:FF:18:82:DC:94:68:2F:F6:75:AB:76:83:FD:1C:11:9A:FF:87:65:9C:05:0B:51:1E"
+        "35:7D:20:A1:C7:45:A6:5D:73:62:57:8D:B5:45:40:23:E6:BB:A6:1E:22:8C:71:0A:C2:ED:2E:27:FF:0D:97:0B"
       ]
     }
   }
