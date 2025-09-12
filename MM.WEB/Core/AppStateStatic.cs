@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Security.Claims;
 using MM.Shared.Models.Auth;
+using MudBlazor;
 
 namespace MM.WEB.Core;
 
@@ -19,6 +20,8 @@ public static class AppStateStatic
     public static bool IsAuthenticated { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
+    public static Breakpoint Breakpoint { get; set; }
+    public static Action<Breakpoint>? BreakpointChanged { get; set; }
 
     public static List<LogContainer> Logs { get; private set; } = [];
 
