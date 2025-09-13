@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>El futuro de encontrar el amor ya está aquí. Más inteligente, rápido y económico que las búsquedas tradicionales. Nuestro avanzado sistema de compatibilidad encuentra a tu pareja ideal con precisión, sin deslizar ni buscar sin parar.</value>
   </data>
+  <data name="AppDescriptionShort" xml:space="preserve">
+    <value>Matchmaking digital: Encuentra a tu pareja ideal sin perder tiempo</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Modern Matchmaker</value>
   </data>

@@ -70,6 +70,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Digital Matchmaking: Find your ideal partner without wasting time.
+        /// </summary>
+        public static string AppDescriptionShort {
+            get {
+                return ResourceManager.GetString("AppDescriptionShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modern Matchmaker.
         /// </summary>
         public static string AppName {

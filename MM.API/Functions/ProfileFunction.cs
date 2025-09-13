@@ -245,7 +245,7 @@ public class ProfileFunction(
             var userId = req.GetUserId();
             var body = await req.GetBody<FilterModel>(cancellationToken);
 
-            if (body.Id != userId) throw new NotificationException("Invalid Operation");
+            if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
 
             var validator = new FilterValidation();
             var result = await validator.ValidateAsync(body);

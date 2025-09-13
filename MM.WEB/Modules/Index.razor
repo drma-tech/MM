@@ -12,26 +12,29 @@
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
 
 <MudContainer>
-    <MudGrid Spacing="4" Class="mb-20" Style="align-items: center;">
-        <MudItem xs="12" sm="6" Style="text-align: center;">
-            <MudImage Src="icon/icon-full.png" Alt="@SeoTranslations.AppName" Style="width: 80%;" />
-        </MudItem>
-        <MudItem xs="12" sm="6" Style="text-align: center;">
-            <MudPaper Elevation="2" Class="pa-6">
-                <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 custom-h2-landpage">
-                    @SeoTranslations.AppName
-                </MudText>
-                <MudText Typo="Typo.body1" Align="Align.Justify">
-                    @SeoTranslations.AppDescription
-                </MudText>
-                <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
-                    <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow">
-                        @Button.LoginHero
-                    </MudButton>
-                </MudTooltip>
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
+    @if (!IsAuthenticated)
+    {
+        <MudGrid Spacing="4" Class="mb-20" Style="align-items: center;">
+            <MudItem xs="12" sm="6" Style="text-align: center;">
+                <MudImage Src="icon/icon-full.png" Alt="@SeoTranslations.AppName" Style="width: 80%;" />
+            </MudItem>
+            <MudItem xs="12" sm="6" Style="text-align: center;">
+                <MudPaper Elevation="2" Class="pa-6">
+                    <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 custom-h2-landpage">
+                        @SeoTranslations.AppName
+                    </MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Justify">
+                        @SeoTranslations.AppDescription
+                    </MudText>
+                    <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
+                        <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow">
+                            @Button.LoginHero
+                        </MudButton>
+                    </MudTooltip>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    }
 
     <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
         @Landing.OurNumbers

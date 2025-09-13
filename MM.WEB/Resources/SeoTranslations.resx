@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching.</value>
   </data>
+  <data name="AppDescriptionShort" xml:space="preserve">
+    <value>Digital Matchmaking: Find your ideal partner without wasting time</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Modern Matchmaker</value>
   </data>

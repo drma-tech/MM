@@ -1,26 +1,27 @@
 ﻿@inherits ComponentCore<GoogleAdSense>
 
 @inject IJSRuntime JS
+@implements IDisposable
 
-@if (Navigation.BaseUri.Contains("localhost"))
+@if (IsLocalhost)
 {
     <div style="text-align: center;">
         <ins class="adsbygoogle mb-3" data-ad-status="unfilled"
-             style="@($"display: block; min-width: 300px; min-height: {(IsMobile ? "90" : "280")}px; text-align: center; border-width: 1px; border-radius: 4px; border-color: var(--mud-palette-lines-inputs); background-color: white;")">
+             style="@($"display: block; min-width: 300px; min-height: {(IsMobile || Format == "horizontal" ? "90" : "280")}px; text-align: center; border-width: 1px; border-radius: 4px; border-color: var(--mud-palette-lines-inputs); background-color: white;")">
             <div></div>
         </ins>
     </div>
 }
-else if (Principal?.AuthPaddle is not { IsPaidUser: true })
+else if (!IsPaidUser)
 {
     <div style="text-align: center;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display: block; min-width: 300px; margin-bottom: 12px; border-width: 1px; border-radius: 4px; border-color: var(--mud-palette-lines-inputs);"
-             data-ad-client="ca-pub-@AdClientId" data-ad-slot="@(((long)Section).ToString())" data-ad-format="@AdFormat" data-full-width-responsive="true"></ins>
+        <ins id="@_adId" class="adsbygoogle" style="display: block; min-width: 300px; margin-bottom: 12px; border-width: 1px; border-radius: 4px; border-color: var(--mud-palette-lines-inputs);"
+             data-ad-client="ca-pub-@AdClientId"
+             data-ad-slot="@(((long)Section).ToString())"
+             data-ad-format="@AdFormat"
+             data-full-width-responsive="true">
+        </ins>
     </div>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 }
 
 @code {
@@ -30,10 +31,13 @@ else if (Principal?.AuthPaddle is not { IsPaidUser: true })
 
     private bool IsMobile => Breakpoint < Breakpoint.Sm;
     private string? AdFormat => Format ?? (IsMobile ? "horizontal" : "auto");
+    private bool IsLocalhost => Navigation.BaseUri.Contains("localhost");
+    private bool IsPaidUser => Principal?.AuthPaddle is { IsPaidUser: true };
 
     private AuthPrincipal? Principal { get; set; }
 
     private const string AdClientId = "5145928155833172";
+    private readonly string _adId = $"adsense-{Guid.NewGuid()}";
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,6 +49,30 @@ else if (Principal?.AuthPaddle is not { IsPaidUser: true })
         catch (Exception ex)
         {
             ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if (firstRender && !IsLocalhost && !IsPaidUser)
+            {
+                await JS.InvokeVoidAsync("adsenseManager.load", AdClientId);
+                await JS.InvokeVoidAsync("adsenseManager.observeAd", _adId);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.ProcessException(Snackbar, Logger);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (!IsLocalhost && !IsPaidUser)
+        {
+            JS.InvokeVoidAsync("adsenseManager.removeObserver", _adId).AsTask().ContinueWith(t => { /* Ignore errors */ });
         }
     }
 
