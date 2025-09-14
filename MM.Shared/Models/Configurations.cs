@@ -9,6 +9,7 @@ public class Configurations
     public Sendgrid? Sendgrid { get; set; }
     public Google? Google { get; set; }
     public Here? Here { get; set; }
+    public Settings? Settings { get; set; }
 }
 
 public class CosmosDB
@@ -63,4 +64,9 @@ public class Google
 public class Here
 {
     public string? ApiKey { get; set; }
+}
+
+public class Settings
+{
+    public bool ShowAdSense { get; set; } = true;
 }
