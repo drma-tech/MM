@@ -29,7 +29,7 @@ else if (!IsPaidUser)
     [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
     [Parameter] public string? Format { get; set; }
 
-    private bool IsMobile => Breakpoint < Breakpoint.Sm;
+    private bool IsMobile => Breakpoint < Breakpoint.Sm; //todo: also get height less then 600px
     private string? AdFormat => Format ?? (IsMobile ? "horizontal" : "auto");
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost");
     private bool IsPaidUser => Principal?.AuthPaddle is { IsPaidUser: true };
