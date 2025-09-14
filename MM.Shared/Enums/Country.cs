@@ -98,8 +98,7 @@ public enum Country
     [Custom(Group = "Americas", Name = "Brazil", Tips = "BRA", ResourceType = typeof(Resources.Country))]
     Brazil = 76,
 
-    [Custom(Group = "Africa", Name = "BritishIndianOceanTerritory", Tips = "IOT",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Africa", Name = "BritishIndianOceanTerritory", Tips = "IOT", ResourceType = typeof(Resources.Country))]
     BritishIndianOceanTerritory = 86,
 
     [Custom(Group = "Americas", Name = "BritishVirginIslands", Tips = "VGB", ResourceType = typeof(Resources.Country))]
@@ -189,8 +188,7 @@ public enum Country
     [Custom(Group = "Europe", Name = "Czechia", Tips = "CZE", ResourceType = typeof(Resources.Country))]
     Czechia = 203,
 
-    [Custom(Group = "Africa", Name = "DemocraticRepublicOfTheCongo", Tips = "COD",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Africa", Name = "DemocraticRepublicOfTheCongo", Tips = "COD", ResourceType = typeof(Resources.Country))]
     DemocraticRepublicOfTheCongo = 180,
 
     [Custom(Group = "Europe", Name = "Denmark", Tips = "DNK", ResourceType = typeof(Resources.Country))]
@@ -250,8 +248,7 @@ public enum Country
     [Custom(Group = "Oceania", Name = "FrenchPolynesia", Tips = "PYF", ResourceType = typeof(Resources.Country))]
     FrenchPolynesia = 258,
 
-    [Custom(Group = "Africa", Name = "FrenchSouthernAndAntarcticLands", Tips = "ATF",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Africa", Name = "FrenchSouthernAndAntarcticLands", Tips = "ATF", ResourceType = typeof(Resources.Country))]
     FrenchSouthernAndAntarcticLands = 260,
 
     [Custom(Group = "Africa", Name = "Gabon", Tips = "GAB", ResourceType = typeof(Resources.Country))]
@@ -305,8 +302,7 @@ public enum Country
     [Custom(Group = "Americas", Name = "Haiti", Tips = "HTI", ResourceType = typeof(Resources.Country))]
     Haiti = 332,
 
-    [Custom(Group = "Oceania", Name = "HeardIslandAndMcDonaldIslands", Tips = "HMD",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Oceania", Name = "HeardIslandAndMcDonaldIslands", Tips = "HMD", ResourceType = typeof(Resources.Country))]
     HeardIslandAndMcDonaldIslands = 334,
 
     [Custom(Group = "Europe", Name = "VaticanCity", Tips = "VAT", ResourceType = typeof(Resources.Country))]
@@ -438,8 +434,7 @@ public enum Country
     [Custom(Group = "Americas", Name = "Mexico", Tips = "MEX", ResourceType = typeof(Resources.Country))]
     Mexico = 484,
 
-    [Custom(Group = "Oceania", Name = "FederatedStatesOfMicronesia", Tips = "FSM",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Oceania", Name = "FederatedStatesOfMicronesia", Tips = "FSM", ResourceType = typeof(Resources.Country))]
     FederatedStatesOfMicronesia = 583,
 
     [Custom(Group = "Europe", Name = "PrincipalityOfMonaco", Tips = "MCO", ResourceType = typeof(Resources.Country))]
@@ -568,8 +563,7 @@ public enum Country
     [Custom(Group = "Americas", Name = "SaintBarthelemy", Tips = "BLM", ResourceType = typeof(Resources.Country))]
     SaintBarthelemy = 652,
 
-    [Custom(Group = "Africa", Name = "SaintHelenaAscensionAndTristanDaCunha", Tips = "SHN",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Africa", Name = "SaintHelenaAscensionAndTristanDaCunha", Tips = "SHN", ResourceType = typeof(Resources.Country))]
     SaintHelenaAscensionAndTristanDaCunha = 654,
 
     [Custom(Group = "Americas", Name = "SaintKittsAndNevis", Tips = "KNA", ResourceType = typeof(Resources.Country))]
@@ -581,12 +575,10 @@ public enum Country
     [Custom(Group = "Americas", Name = "SaintMartin", Tips = "MAF", ResourceType = typeof(Resources.Country))]
     SaintMartin = 663,
 
-    [Custom(Group = "Americas", Name = "SaintPierreAndMiquelon", Tips = "SPM",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Americas", Name = "SaintPierreAndMiquelon", Tips = "SPM", ResourceType = typeof(Resources.Country))]
     SaintPierreAndMiquelon = 666,
 
-    [Custom(Group = "Americas", Name = "SaintVincentAndTheGrenadines", Tips = "VCT",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Americas", Name = "SaintVincentAndTheGrenadines", Tips = "VCT", ResourceType = typeof(Resources.Country))]
     SaintVincentAndTheGrenadines = 670,
 
     [Custom(Group = "Oceania", Name = "Samoa", Tips = "WSM", ResourceType = typeof(Resources.Country))]
@@ -637,8 +629,7 @@ public enum Country
     [Custom(Group = "Africa", Name = "SouthAfrica", Tips = "ZAF", ResourceType = typeof(Resources.Country))]
     SouthAfrica = 710,
 
-    [Custom(Group = "Americas", Name = "SouthGeorgiaAndSouthSandwichIslands", Tips = "SGS",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Americas", Name = "SouthGeorgiaAndSouthSandwichIslands", Tips = "SGS", ResourceType = typeof(Resources.Country))]
     SouthGeorgiaAndSouthSandwichIslands = 239,
 
     [Custom(Group = "Africa", Name = "SouthSudan", Tips = "SSD", ResourceType = typeof(Resources.Country))]
@@ -725,8 +716,7 @@ public enum Country
     [Custom(Group = "Africa", Name = "Tanzania", Tips = "TZA", ResourceType = typeof(Resources.Country))]
     Tanzania = 834,
 
-    [Custom(Group = "Oceania", Name = "UnitedStatesMinorOutlyingIslands", Tips = "UMI",
-        ResourceType = typeof(Resources.Country))]
+    [Custom(Group = "Oceania", Name = "UnitedStatesMinorOutlyingIslands", Tips = "UMI", ResourceType = typeof(Resources.Country))]
     UnitedStatesMinorOutlyingIslands = 581,
 
     [Custom(Group = "Americas", Name = "UnitedStatesOfAmerica", Tips = "USA", ResourceType = typeof(Resources.Country))]

@@ -224,17 +224,17 @@ public class PrincipalFunction(
             var ProfileValidator = new ProfileValidation();
             var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
 
-            var filter = await repoOff.Get<FilterModel>(userId, cancellationToken) ?? throw new NotificationException("filter not found");
+            var filter = await repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken) ?? throw new NotificationException("filter not found");
             var FilterValidator = new FilterValidation();
             var FilterValid = filter != null && FilterValidator.Validate(filter).IsValid;
 
-            var setting = await repoOff.Get<SettingModel>(userId, cancellationToken) ?? throw new NotificationException("setting not found");
+            var setting = await repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken) ?? throw new NotificationException("setting not found");
             var SettingValid = setting != null;
 
             var PhotoValidator = new PhotoValidation();
             var GalleryValid = profile.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
 
-            var validation = await repoOff.Get<ValidationModel>(userId, cancellationToken) ?? throw new NotificationException("validation not found");
+            var validation = await repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken) ?? throw new NotificationException("validation not found");
             var ValidationsValid = validation != null && validation.Gallery;
 
             if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
