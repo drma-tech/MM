@@ -2,63 +2,61 @@
 using System.Security.Claims;
 using MM.Shared.Models.Auth;
 using MudBlazor;
+using SD.Shared.Enums;
 
 namespace MM.WEB.Core;
 
 public static class AppStateStatic
 {
-    static AppStateStatic()
-    {
-        //todo: deal with 419
-        var languages = EnumHelper.GetList<Language>(false);
-        var code = CultureInfo.CurrentCulture.Name.Split('-')[0];
-        var language = languages.FirstOrDefault(w => w.Description == code);
-
-        Language = language?.Value ?? Language.English;
-    }
-
     public static bool IsAuthenticated { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
+
     public static Breakpoint Breakpoint { get; set; }
     public static Action<Breakpoint>? BreakpointChanged { get; set; }
 
-    public static List<LogContainer> Logs { get; private set; } = [];
+    public static Platform Platform { get; set; } = Platform.webapp;
+    public static string? Version { get; set; }
 
-    [Custom(Name = "Language", ResourceType = typeof(GlobalTranslations))]
-    public static Language Language { get; private set; } = Language.English;
+    #region AppLanguage
 
-    [Custom(Name = "Dark Mode")]
+    [Custom(Name = "AppLanguage", ResourceType = typeof(GlobalTranslations))]
+    public static AppLanguage AppLanguage { get; set; }
+
+    public static AppLanguage GetValidAppLanguage(CultureInfo? culture)
+    {
+        culture ??= CultureInfo.CurrentUICulture ?? CultureInfo.CurrentCulture;
+        var code = culture.TwoLetterISOLanguageName?.ToLowerInvariant();
+
+        if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
+        {
+            return language;
+        }
+        else
+        {
+            return AppLanguage.en;
+        }
+    }
+
+    #endregion AppLanguage
+
+    #region DarkMode
+
+    [Custom(Name = "DarkMode", ResourceType = typeof(GlobalTranslations))]
     public static bool DarkMode { get; private set; }
 
-    public static Platform Platform { get; set; } = Platform.webapp;
-    public static string Version { get; set; }
-
-    public static Action? RegionChanged { get; set; }
-    public static Action? DarkModeChanged { get; set; }
-    public static Action<TempAuthPaddle>? RegistrationSuccessful { get; set; }
-    public static Action<string>? ShowError { get; set; }
-    public static Action? ProcessingStarted { get; set; }
-    public static Action? ProcessingFinished { get; set; }
-
-    public static string GetLanguageCode()
-    {
-        return Language switch
-        {
-            Language.Portuguese => "pt",
-            Language.Spanish => "es",
-            _ => "en"
-        };
-    }
-
-    public static void ChangeLanguage(Language value)
-    {
-        Language = value;
-    }
+    public static Action<bool>? DarkModeChanged { get; set; }
 
     public static void ChangeDarkMode(bool darkMode)
     {
         DarkMode = darkMode;
-        DarkModeChanged?.Invoke();
+        DarkModeChanged?.Invoke(darkMode);
     }
+
+    #endregion DarkMode
+
+    public static Action<TempAuthPaddle>? RegistrationSuccessful { get; set; }
+    public static Action<string>? ShowError { get; set; }
+    public static Action? ProcessingStarted { get; set; }
+    public static Action? ProcessingFinished { get; set; }
 }

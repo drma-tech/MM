@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppLanguage" xml:space="preserve">
+    <value>Idioma de la App</value>
+  </data>
+  <data name="AppLanguageDesc" xml:space="preserve">
+    <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
+  </data>
   <data name="BasicRequired" xml:space="preserve">
     <value>La sección básica es obligatoria por ahora. Las demás secciones se pueden completar más adelante.</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="CustomVisibilityNoData" xml:space="preserve">
     <value>Datos no disponibles</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>Modo Oscuro</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Por favor, introduzca la dirección de correo electrónico</value>
@@ -209,6 +218,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>Modo Claro</value>
   </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>Mi relación</value>

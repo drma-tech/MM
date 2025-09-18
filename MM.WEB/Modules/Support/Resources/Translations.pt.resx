@@ -120,16 +120,16 @@
   <data name="ChildPolicy" xml:space="preserve">
     <value>Política de Segurança Infantil</value>
   </data>
-  <data name="ImportLastError" xml:space="preserve">
-    <value>Importar último erro</value>
+  <data name="Credits" xml:space="preserve">
+    <value>Créditos</value>
   </data>
-  <data name="LinkFAQ" xml:space="preserve">
+  <data name="FAQ" xml:space="preserve">
     <value>Perguntas</value>
   </data>
-  <data name="LinkPrivacy" xml:space="preserve">
-    <value>Políticas de privacidade</value>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Política de Privacidade</value>
   </data>
-  <data name="LinkTerm" xml:space="preserve">
+  <data name="TermsUse" xml:space="preserve">
     <value>Termos de uso</value>
   </data>
 </root>

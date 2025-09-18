@@ -7,7 +7,7 @@
 @inject LoginApi LoginApi
 @inject IJSRuntime JsRuntime
 
-<SeoHeader Title="login-success" Description="login-success" Url="/best-awards-year" Index="false"></SeoHeader>
+<SeoHeader Title="login-success" Description="login-success" Url="/best-awards-year" Index="false" Keywords="@([])"></SeoHeader>
 
 @if (IsAuthenticated)
 {
@@ -19,22 +19,12 @@
             </MudText>
 
             <MudCheckBox @bind-Value="_terms1" Color="Color.Primary" Class="mb-2">
-                <MudText Inline="true" Class="me-1">@Resources.Translations.Terms1</MudText>
-                @if (AppStateStatic.GetLanguageCode() == "pt")
-                {
-                    <MudLink Href="support/terms/pt" Target="_blank">Termos de Uso</MudLink>
-                }
-                else if (AppStateStatic.GetLanguageCode() == "es")
-                {
-                    <MudLink Href="support/terms/es" Target="_blank">Términos de uso</MudLink>
-                }
-                else
-                {
-                    <MudLink Href="support/terms/en" Target="_blank">Terms of Use</MudLink>
-                }
+                <MudText Inline="true">
+                    @((MarkupString)string.Format(Translations.Terms1, $"<a href='support/terms' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{Support.Resources.Translations.TermsUse}</a>", $"<a href='support/privacy' target='_blank' class='mud-link mud-primary-text mud-link-underline-hover'>{Support.Resources.Translations.PrivacyPolicy}</a>"))
+                </MudText>
             </MudCheckBox>
             <MudCheckBox @bind-Value="_terms2" Color="Color.Primary">
-                <MudText Inline="true">@Resources.Translations.Terms2</MudText>
+                <MudText Inline="true">@Translations.Terms2</MudText>
             </MudCheckBox>
 
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateAccount" Disabled="(!_terms1 || !_terms2)" Class="mt-4 me-2">
@@ -54,7 +44,7 @@
 }
 
 @code {
-    private AuthPrincipal? Principal { get; set; } = new();
+    private AuthPrincipal? Principal { get; set; }
 
     private bool _terms1 { get; set; } = false;
     private bool _terms2 { get; set; } = false;

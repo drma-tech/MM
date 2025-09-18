@@ -61,6 +61,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App Language.
+        /// </summary>
+        public static string AppLanguage {
+            get {
+                return ResourceManager.GetString("AppLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translates the app interface. Partial translations may apply for some languages..
+        /// </summary>
+        public static string AppLanguageDesc {
+            get {
+                return ResourceManager.GetString("AppLanguageDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
         /// </summary>
         public static string BasicRequired {
@@ -192,6 +210,15 @@ namespace MM.WEB.Resources {
         public static string CustomVisibilityNoData {
             get {
                 return ResourceManager.GetString("CustomVisibilityNoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Mode.
+        /// </summary>
+        public static string DarkMode {
+            get {
+                return ResourceManager.GetString("DarkMode", resourceCulture);
             }
         }
         
@@ -336,6 +363,15 @@ namespace MM.WEB.Resources {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Mode.
+        /// </summary>
+        public static string LightMode {
+            get {
+                return ResourceManager.GetString("LightMode", resourceCulture);
             }
         }
         

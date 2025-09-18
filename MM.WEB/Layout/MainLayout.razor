@@ -53,7 +53,7 @@
     {
         try
         {
-            AppStateStatic.DarkModeChanged += StateHasChanged;
+            AppStateStatic.DarkModeChanged += dark => StateHasChanged();
             AppStateStatic.ShowError = msg => { Snackbar.Add(msg, Severity.Error); };
 
             if (AppStateStatic.User == null)
@@ -80,11 +80,6 @@
         {
             ex.ProcessException(Snackbar, Logger);
         }
-        finally
-        {
-            IsLoading = false;
-            StateHasChanged();
-        }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -93,6 +88,8 @@
         {
             if (firstRender)
             {
+                IsLoading = true; StateHasChanged();
+
                 //REGION
                 var region = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "region");
 
@@ -105,8 +102,6 @@
 
                     await JsRuntime.InvokeAsync<string>("SetLocalStorage", "region", region);
                 }
-
-                // AppStateStatic.ChangeRegion(AppStateStatic.GetValidRegion(region));
 
                 //DARK MODE
                 var darkMode = await JsRuntime.InvokeAsync<string>("GetLocalStorage", "dark-mode");
@@ -126,11 +121,14 @@
 
                 AppStateStatic.Platform = Enum.Parse<Platform>(platform);
                 AppStateStatic.Version = BuildDateString();
+
+                IsLoading = false; StateHasChanged();
             }
         }
         catch (Exception ex)
         {
             ex.ProcessException(Snackbar, Logger);
+            IsLoading = false; StateHasChanged();
         }
     }
 

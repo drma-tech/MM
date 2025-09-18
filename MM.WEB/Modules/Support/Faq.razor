@@ -1,7 +1,7 @@
-﻿@page "/support/faq/{lang}"
+﻿@page "/support/faq"
 @inherits PageCore<Faq>
 
-<SeoHeader Title="FAQ" Description="@SeoTranslations.AppDescription" Url=@($"/support/faq/{Lang}")></SeoHeader>
+<SeoHeader Title="FAQ" Description="@SeoTranslations.AppDescription" Url=@($"/support/faq") Keywords="@(["faq"])"></SeoHeader>
 
 <MudExpansionPanels Outlined="true" Elevation="0" Class="mb-2">
     <MudExpansionPanel Disabled="true" HideIcon="true">
@@ -136,7 +136,3 @@
         Currently: English, Portuguese, and Spanish. More may be added in the future.
     </MudExpansionPanel>
 </MudExpansionPanels>
-
-@code {
-    [Parameter] public string? Lang { get; set; }
-}

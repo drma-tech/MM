@@ -22,7 +22,7 @@
 @inject MyMatchesApi MyMatchesApi
 @inject IJSRuntime JsRuntime
 
-<SeoHeader Title="Profile" Url="/profile" Index="false"></SeoHeader>
+<SeoHeader Title="Profile" Description="@SeoTranslations.AppDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" IsAuthenticated="IsAuthenticated" Format="horizontal"></GoogleAdSense>
 
 @if (!IsAuthenticated)

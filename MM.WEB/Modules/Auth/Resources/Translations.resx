@@ -139,7 +139,7 @@
     <value>Registration Information</value>
   </data>
   <data name="Terms1" xml:space="preserve">
-    <value>I have read and agree to the</value>
+    <value>I have read and agree to the {0} and {1}</value>
   </data>
   <data name="Terms2" xml:space="preserve">
     <value>I understand that in the first phase some features of the platform are limited or disabled.</value>

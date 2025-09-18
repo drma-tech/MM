@@ -1,7 +1,8 @@
 ﻿@page "/support/credits"
 @inherits PageCore<Credits>
 
-<SeoHeader Title="Credits" Description="@SeoTranslations.AppDescription" Url="/support/credits"></SeoHeader>
+<SeoHeader Title="Credits" Description="@SeoTranslations.AppDescription" Url="/support/credits"
+           Keywords="@(["credits", "HerMoney", "16Personalities", "The 5 Love Languages", "Vanessa + Xander: Therapy", "The Anatomy Of Love", "Veriff", "HERE Technologies", "Microsoft Azure", "Amazon Web Services (AWS)"])"></SeoHeader>
 
 <MudGrid>
     <MudItem xs="12" sm="6">
@@ -34,12 +35,12 @@
                   IsAuthenticated="IsAuthenticated" IncludeMB="false">
         </HeadPage>
     </MudItem>
-    <MudItem xs="12" sm="6">
+  @*   <MudItem xs="12" sm="6">
         <HeadPage Title="Paddle" ImageSource="logo/paddle.avif" Link="https://www.paddle.com/"
                   Text="We are the merchant of record for B2B & B2C digital companies. Helping increase global conversions, reducing churn, staying compliant, and scaling up fast."
                   IsAuthenticated="IsAuthenticated" IncludeMB="false">
         </HeadPage>
-    </MudItem>
+    </MudItem> *@
     <MudItem xs="12" sm="6">
         <HeadPage Title="Veriff" ImageSource="logo/veriff.png" Link="https://www.veriff.com/"
                   Text="Highly automated identity verification for fraud prevention, compliance and safeguarding your customers. Build trust, transparency online and drive more growth."

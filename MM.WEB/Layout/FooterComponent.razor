@@ -27,7 +27,7 @@
                         Company
                     </MudText>
                 </MudListSubheader>
-                <MudListItem Text="About us" Href="@GetSupportUrl("about-us")" Class="py-0" />
+                <MudListItem Text="About us" Href="/support/about-us" Class="py-0" />
                 <MudListItem Text="Website" Href="https://www.drma-tech.com/" Target="_blank" Class="py-0" />
             </MudList>
         </MudItem>
@@ -41,7 +41,8 @@
                 <MudListItem Text="Website" Href="https://www.modern-matchmaker.com" Target="_blank" Class="py-0" />
                 <MudListItem Text="Google Play" Href="https://play.google.com/store/apps/details?id=com.modern_matchmaker.www.twa" Target="_blank" Class="py-0" />
                 <MudListItem Text="Microsoft Store" Href="https://apps.microsoft.com/detail/9n8h01jxft99" Target="_blank" Class="py-0" />
-                @* <MudListItem Text="Huawei AppGallery" Href="" Target="_blank" Class="py-0" /> *@
+                @* <MudListItem Text="Huawei AppGallery" Href="https://appgallery.huawei.com/app/C111325113" Target="_blank" Class="py-0" /> *@
+                @* <MudListItem Text="Xiaomi GetApps" Href="https://global.app.mi.com/details?lo=ID&id=com.streamingdiscovery.www.twa" Target="_blank" Class="py-0" /> *@
             </MudList>
         </MudItem>
         <MudItem xs="12" sm="3" md="2">
@@ -52,7 +53,7 @@
                     </MudText>
                 </MudListSubheader>
                 <MudListItem Text="Contact" Href="mailto:support@modern-matchmaker.com" Class="py-0" />
-                <MudListItem Text="FAQ" Href="@GetSupportUrl("faq")" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.FAQ" Href="/support/faq" Class="py-0" />
             </MudList>
         </MudItem>
         <MudItem xs="12" sm="3" md="2">
@@ -62,10 +63,10 @@
                         Legal
                     </MudText>
                 </MudListSubheader>
-                <MudListItem Text="@Translations.LinkTerm" Href="@GetSupportUrl("terms")" Class="py-0" />
-                <MudListItem Text="@Translations.LinkPrivacy" Href="@GetSupportUrl("privacy")" Class="py-0" />
-                <MudListItem Text="@Translations.ChildPolicy" Href="@GetSupportUrl("child-safety")" Class="py-0" />
-                <MudListItem Text="Credits" Href="/support/credits" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.TermsUse" Href="/support/terms" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.PrivacyPolicy" Href="/support/privacy" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.ChildPolicy" Href="/support/child-safety" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.Credits" Href="/support/credits" Class="py-0" />
             </MudList>
         </MudItem>
     </MudGrid>
@@ -73,10 +74,4 @@
 
 @code {
     [Parameter] public bool Support { get; set; }
-
-    private string GetSupportUrl(string type)
-    {
-        var lang = AppStateStatic.GetLanguageCode();
-        return $"/support/{type}/{lang}";
-    }
 }

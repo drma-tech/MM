@@ -32,7 +32,7 @@ public partial class ProfileData : PageCore<ProfileData>
         if (Profile == null)
         {
             bool confirmed;
-            if (AppStateStatic.Language == Language.Portuguese)
+            if (AppStateStatic.AppLanguage == SD.Shared.Enums.AppLanguage.pt)
             {
                 var message = new MarkupString(
                     "Para combinar você com mais precisão, pedimos algumas informações pessoais, como etnia, religião e orientação sexual. Esses dados são considerados sensíveis pelas leis de privacidade.<br><br>" +
@@ -42,7 +42,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
             }
-            else if (AppStateStatic.Language == Language.Spanish)
+            else if (AppStateStatic.AppLanguage == SD.Shared.Enums.AppLanguage.es)
             {
                 var message = new MarkupString(
                     "Para emparejarte con precisión, te pedimos algunos datos personales como etnia, religión y orientación sexual. Estos se consideran datos personales sensibles según las leyes de privacidad.<br><br>" +
