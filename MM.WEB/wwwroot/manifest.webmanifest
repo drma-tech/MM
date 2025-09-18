@@ -78,6 +78,13 @@
       "sizes": "1440x900",
       "form_factor": "wide",
       "label": "Profile"
+    },
+    {
+      "src": "screenshots/match_desktop.png",
+      "type": "image/jpg",
+      "sizes": "1440x900",
+      "form_factor": "wide",
+      "label": "Match"
     }
   ],
   "launch_handler": {

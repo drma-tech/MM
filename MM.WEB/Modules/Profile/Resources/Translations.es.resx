@@ -162,8 +162,44 @@
   <data name="OurSuggestions2" xml:space="preserve">
     <value>Nuestras sugerencias se basan en sus proveedores favoritos y sus preferencias de género (excluidos los títulos que ya están en sus listas personales).</value>
   </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privado</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Público</value>
+  </data>
   <data name="RegionsApplied" xml:space="preserve">
     <value>Las regiones se han aplicado automáticamente para sus proveedores favoritos. Si están equivocados, retírelos y agréguelos nuevamente.</value>
+  </data>
+  <data name="StepFilter" xml:space="preserve">
+    <value>Establecer filtros</value>
+  </data>
+  <data name="StepFilterDesc" xml:space="preserve">
+    <value>Defina sus preferencias no negociables.</value>
+  </data>
+  <data name="StepGallery" xml:space="preserve">
+    <value>Galería de fotos</value>
+  </data>
+  <data name="StepGalleryDesc" xml:space="preserve">
+    <value>Sube y organiza tus fotos.</value>
+  </data>
+  <data name="StepProfile" xml:space="preserve">
+    <value>Crear perfil</value>
+  </data>
+  <data name="StepProfileDesc" xml:space="preserve">
+    <value>Complete sus datos: básico, bio, estilo de vida, personalidad, intereses, relaciones y objetivos.</value>
+  </data>
+  <data name="StepSettings" xml:space="preserve">
+    <value>Ajustar la configuración</value>
+  </data>
+  <data name="StepSettingsDesc" xml:space="preserve">
+    <value>Controle las opciones de su perfil y el comportamiento de la plataforma.</value>
+  </data>
+  <data name="StepValidation" xml:space="preserve">
+    <value>Validación de perfil</value>
+  </data>
+  <data name="StepValidationDesc" xml:space="preserve">
+    <value>El sistema verificará su información antes de que su perfil se haga público.</value>
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Suscripción</value>

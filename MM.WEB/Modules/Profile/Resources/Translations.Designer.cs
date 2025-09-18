@@ -196,11 +196,119 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Private.
+        /// </summary>
+        public static string Private {
+            get {
+                return ResourceManager.GetString("Private", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public.
+        /// </summary>
+        public static string Public {
+            get {
+                return ResourceManager.GetString("Public", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Regions have been automatically applied for your favorite providers. If they are wrong, please remove and add them again..
         /// </summary>
         public static string RegionsApplied {
             get {
                 return ResourceManager.GetString("RegionsApplied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Filters.
+        /// </summary>
+        public static string StepFilter {
+            get {
+                return ResourceManager.GetString("StepFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Define your non-negotiable preferences..
+        /// </summary>
+        public static string StepFilterDesc {
+            get {
+                return ResourceManager.GetString("StepFilterDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo Gallery.
+        /// </summary>
+        public static string StepGallery {
+            get {
+                return ResourceManager.GetString("StepGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload and organize your photos..
+        /// </summary>
+        public static string StepGalleryDesc {
+            get {
+                return ResourceManager.GetString("StepGalleryDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Profile.
+        /// </summary>
+        public static string StepProfile {
+            get {
+                return ResourceManager.GetString("StepProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill in your details: Basic, Bio, Lifestyle, Personality, Interests, Relationship, and Goals..
+        /// </summary>
+        public static string StepProfileDesc {
+            get {
+                return ResourceManager.GetString("StepProfileDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjust Settings.
+        /// </summary>
+        public static string StepSettings {
+            get {
+                return ResourceManager.GetString("StepSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control your profile options and platform behavior..
+        /// </summary>
+        public static string StepSettingsDesc {
+            get {
+                return ResourceManager.GetString("StepSettingsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Validation.
+        /// </summary>
+        public static string StepValidation {
+            get {
+                return ResourceManager.GetString("StepValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The system will verify your information before your profile goes public..
+        /// </summary>
+        public static string StepValidationDesc {
+            get {
+                return ResourceManager.GetString("StepValidationDesc", resourceCulture);
             }
         }
         

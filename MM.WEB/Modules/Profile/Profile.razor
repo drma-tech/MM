@@ -175,37 +175,37 @@
 
 <MudGrid Spacing="3" Class="mb-2">
     <MudItem xs="12" sm="6" md="4">
-        @if (principal == null || !principal.PublicProfile)
+        @if ((principal == null || !principal.PublicProfile) && validation == null)
         {
             <MudPaper Class="pa-3" Outlined="true">
                 <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary">
                     <ChildContent>
-                        <MudStep Title="Create Profile" SecondaryText="Fill in your details: Basic, Bio, Lifestyle, Personality, Interests, Relationship, and Goals." Completed="ProfileValid">
+                        <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Outlined" Href="/profile/data"
                                        Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)">
                                 @Button.Profile
                             </MudButton>
                         </MudStep>
-                        <MudStep Title="Set Filters" SecondaryText="Define your non-negotiable preferences." Completed="FilterValid">
+                        <MudStep Title="@Resources.Translations.StepFilter" SecondaryText="@Resources.Translations.StepFilterDesc" Completed="FilterValid">
                             <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Outlined" Href="/profile/filter"
                                        Style="width: 100%;" Disabled="profile == null">
                                 @Button.Filters
                             </MudButton>
                         </MudStep>
-                        <MudStep Title="Adjust Settings" SecondaryText="Control your profile options and platform behavior." Completed="SettingValid">
+                        <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">
                             <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Outlined" Href="/profile/setting"
                                        Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile">
                                 @Button.Settings
                             </MudButton>
                         </MudStep>
-                        <MudStep Title="Photo Gallery" SecondaryText="Upload and organize your photos." Completed="GalleryValid">
+                        <MudStep Title="@Resources.Translations.StepGallery" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="GalleryValid">
                             <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Outlined" Href="/profile/gallery"
                                        Style="width: 100%;"
                                        Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile">
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
-                        <MudStep Title="Profile Validation" SecondaryText="The system will verify your information before your profile goes public." Completed="ValidationsValid">
+                        <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="ValidationsValid">
                             <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Outlined" Href="/profile/validation"
                                        Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                                 @Button.Validations
@@ -216,8 +216,8 @@
                     <CompletedContent>
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
                                         CheckMark="true" FixedContent="true" Disabled="principal == null">
-                            <MudToggleItem Value="false" Text="Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
-                            <MudToggleItem Value="true" Text="Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
+                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
+                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                         </MudToggleGroup>
                     </CompletedContent>
                 </MudStepper>
@@ -277,8 +277,8 @@
                     <MudItem xs="6">
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
                                         CheckMark="true" FixedContent="true" Disabled="principal == null">
-                            <MudToggleItem Value="false" Text="Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
-                            <MudToggleItem Value="true" Text="Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
+                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
+                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                         </MudToggleGroup>
                     </MudItem>
                 </MudGrid>
@@ -630,5 +630,5 @@
     //         default:
     //             return "";
     //     }
-    // }   
+    // }
 }
