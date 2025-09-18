@@ -99,15 +99,15 @@
             //DARK MODE
             var darkMode = await AppStateStatic.GetDarkMode(JsRuntime);
 
-            if (darkMode == null)
+            if (darkMode == null && _mudThemeProvider != null)
             {
-                var system = await _mudThemeProvider!.GetSystemDarkModeAsync();
+                var system = await _mudThemeProvider.GetSystemDarkModeAsync();
                 darkMode = system;
 
-                await JsRuntime.InvokeAsync<string>("SetLocalStorage", "dark-mode", darkMode.ToString());
+                await JsRuntime.InvokeAsync<string>("SetLocalStorage", "dark-mode", darkMode.ToString()?.ToLower());
             }
 
-            AppStateStatic.ChangeDarkMode(darkMode.Value);
+            AppStateStatic.ChangeDarkMode(darkMode ?? false);
         }
     }
 

@@ -21,31 +21,33 @@ public static class AppStateStatic
     #region Platform
 
     private static Platform? _platform;
+    private static readonly SemaphoreSlim _platformSemaphore = new(1, 1);
 
     public static async Task<Platform> GetPlatform(IJSRuntime? js = null)
     {
-        if (_platform.HasValue)
+        await _platformSemaphore.WaitAsync();
+        try
         {
-            return _platform.Value;
-        }
-        else
-        {
+            if (_platform.HasValue)
+            {
+                return _platform.Value;
+            }
+
             var cache = js != null ? await js.InvokeAsync<string>("GetLocalStorage", "platform") : null;
 
             if (cache.Empty() && js != null) //shouldn't happen (because it's called in index.html)
             {
-                await js.InvokeVoidAsync("SetLocalStorage", "TryDetectPlatform");
+                await js.InvokeVoidAsync("TryDetectPlatform");
                 cache = await js.InvokeAsync<string>("GetLocalStorage", "platform");
             }
 
             if (cache.NotEmpty())
             {
                 if (System.Enum.TryParse<Platform>(cache, true, out var platform) && System.Enum.IsDefined(platform))
+                {
                     _platform = platform;
+                }
                 else
-                    _platform = null;
-
-                if (_platform == null)
                 {
                     _platform = Platform.webapp;
                     if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "platform", _platform.ToString());
@@ -58,6 +60,10 @@ public static class AppStateStatic
 
             return _platform.Value;
         }
+        finally
+        {
+            _platformSemaphore.Release();
+        }
     }
 
     #endregion Platform
@@ -65,15 +71,18 @@ public static class AppStateStatic
     #region AppLanguage
 
     private static AppLanguage? _appLanguage;
+    private static readonly SemaphoreSlim _appLanguageSemaphore = new(1, 1);
 
     public static async Task<AppLanguage> GetAppLanguage(IJSRuntime? js = null)
     {
-        if (_appLanguage.HasValue)
+        await _appLanguageSemaphore.WaitAsync();
+        try
         {
-            return _appLanguage.Value;
-        }
-        else
-        {
+            if (_appLanguage.HasValue)
+            {
+                return _appLanguage.Value;
+            }
+
             var cache = js != null ? await js.InvokeAsync<string>("GetLocalStorage", "app-language") : null;
 
             if (cache.NotEmpty())
@@ -97,10 +106,16 @@ public static class AppStateStatic
 
             return _appLanguage.Value;
         }
+        finally
+        {
+            _appLanguageSemaphore.Release();
+        }
     }
 
     private static AppLanguage? GetAppLanguage(string? code)
     {
+        if (code.Empty()) return null;
+
         if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
             return language;
         else
@@ -114,23 +129,27 @@ public static class AppStateStatic
     public static Action<bool>? DarkModeChanged { get; set; }
 
     private static bool? _darkMode;
+    private static readonly SemaphoreSlim _darkModeSemaphore = new(1, 1);
 
     public static async Task<bool?> GetDarkMode(IJSRuntime? js = null)
     {
-        if (_darkMode.HasValue)
+        await _darkModeSemaphore.WaitAsync();
+        try
         {
-            return _darkMode.Value;
-        }
-        else
-        {
+            if (_darkMode.HasValue)
+            {
+                return _darkMode.Value;
+            }
+
             var cache = js != null ? await js.InvokeAsync<string>("GetLocalStorage", "dark-mode") : null;
 
             if (cache.NotEmpty())
             {
                 if (bool.TryParse(cache, out var value))
+                {
                     _darkMode = value;
-
-                if (_darkMode == null)
+                }
+                else
                 {
                     _darkMode = false;
                     if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "dark-mode", _darkMode.ToString()?.ToLower());
@@ -138,6 +157,10 @@ public static class AppStateStatic
             }
 
             return _darkMode;
+        }
+        finally
+        {
+            _darkModeSemaphore.Release();
         }
     }
 
@@ -152,15 +175,18 @@ public static class AppStateStatic
     #region Region Country
 
     private static string? _country;
+    private static readonly SemaphoreSlim _countrySemaphore = new(1, 1);
 
     public static async Task<string> GetCountry(IpInfoApi api, IJSRuntime? js = null)
     {
-        if (_country.NotEmpty())
+        await _countrySemaphore.WaitAsync();
+        try
         {
-            return _country;
-        }
-        else
-        {
+            if (_country.NotEmpty())
+            {
+                return _country;
+            }
+
             var cache = js != null ? await js.InvokeAsync<string>("GetLocalStorage", "country") : null;
 
             if (cache.NotEmpty())
@@ -170,16 +196,20 @@ public static class AppStateStatic
             else
             {
                 _country = (await api.GetCountry())?.Trim();
-                if (js != null) await js.InvokeAsync<string>("SetLocalStorage", "country", _country);
+                if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "country", _country);
             }
 
             _country ??= "US";
 
             return _country;
         }
+        finally
+        {
+            _countrySemaphore.Release();
+        }
     }
 
-    #endregion Region
+    #endregion Region Country
 
     public static Action<TempAuthPaddle>? RegistrationSuccessful { get; set; }
     public static Action<string>? ShowError { get; set; }
