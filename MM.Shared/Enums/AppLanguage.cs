@@ -1,4 +1,4 @@
-﻿namespace SD.Shared.Enums
+﻿namespace MM.Shared.Enums
 {
     public enum AppLanguage
     {

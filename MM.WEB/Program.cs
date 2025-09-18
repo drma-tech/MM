@@ -81,7 +81,7 @@ static async Task ConfigureCulture(WebAssemblyHost? app)
 
         if (appLanguage.Empty())
         {
-            appLanguage = await jsRuntime.InvokeAsync<string>("GetLocalStorage", "app-language");
+            appLanguage = (await AppStateStatic.GetAppLanguage(jsRuntime)).ToString();
         }
 
         if (appLanguage.NotEmpty())
@@ -100,9 +100,6 @@ static async Task ConfigureCulture(WebAssemblyHost? app)
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
-
-        AppStateStatic.AppLanguage = AppStateStatic.GetValidAppLanguage(CultureInfo.DefaultThreadCurrentUICulture);
-        await jsRuntime.InvokeAsync<string>("SetLocalStorage", "app-language", AppStateStatic.AppLanguage.ToString());
     }
 }
 
