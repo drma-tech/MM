@@ -45,17 +45,17 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        Language = await AppStateStatic.GetAppLanguage(null);
-        DarkMode = await AppStateStatic.GetDarkMode(null) ?? false;
+        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
+        DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
     {
         Language = value;
 
-        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "app-language", value.ToString());
+        await JsRuntime.InvokeAsync<string>("SetLocalStorage", "app-language", value.ToString()?.ToLower());
 
-        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("app-language", value.ToString()), true);
+        Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("app-language", value.ToString()?.ToLower()), true);
     }
 
     protected async Task DarkModeChanged(bool value)

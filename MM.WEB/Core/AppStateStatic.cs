@@ -87,7 +87,7 @@ public static class AppStateStatic
 
             if (cache.NotEmpty())
             {
-                _appLanguage = GetAppLanguage(cache);
+                _appLanguage = ConvertAppLanguage(cache);
 
                 if (_appLanguage == null)
                 {
@@ -100,7 +100,7 @@ public static class AppStateStatic
                 var culture = CultureInfo.CurrentUICulture ?? CultureInfo.CurrentCulture;
                 var code = culture.TwoLetterISOLanguageName?.ToLowerInvariant();
 
-                _appLanguage = GetAppLanguage(code) ?? AppLanguage.en;
+                _appLanguage = ConvertAppLanguage(code) ?? AppLanguage.en;
                 if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "app-language", _appLanguage.ToString());
             }
 
@@ -112,7 +112,7 @@ public static class AppStateStatic
         }
     }
 
-    private static AppLanguage? GetAppLanguage(string? code)
+    private static AppLanguage? ConvertAppLanguage(string? code)
     {
         if (code.Empty()) return null;
 
@@ -195,7 +195,7 @@ public static class AppStateStatic
             }
             else
             {
-                _country = (await api.GetCountry())?.Trim();
+                _country = (await api.GetCountry())?.Trim() ?? "US";
                 if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "country", _country);
             }
 
