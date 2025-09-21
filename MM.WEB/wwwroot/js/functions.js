@@ -10,18 +10,6 @@ function sendLog(msg) {
     }).catch(() => { /* do nothing */ });
 }
 
-function share(url) {
-    if (!("share" in navigator) || window.isSecureContext === false) {
-        showError("Web Share API not supported.");
-        return;
-    }
-
-    navigator
-        .share({ url: url })
-        .then(() => console.log("Successful share"))
-        .catch(error => showError(error.message));
-}
-
 function jsSaveAsFile(filename, contentType, content) {
     // Create the URL
     const file = new File([content], filename, { type: contentType });
@@ -191,16 +179,3 @@ function getOperatingSystem() {
     if (ua.includes("iOS") || ua.includes("iPhone") || ua.includes("iPad")) return "iOS";
     return "Unknown";
 }
-
-window.onAppVersionReady = (version) => {
-    SetLocalStorage("app-version", version);
-
-    const PLATFORM = GetLocalStorage("platform");
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('set', {
-        'app_version': version,
-        'platform': PLATFORM
-    });
-};

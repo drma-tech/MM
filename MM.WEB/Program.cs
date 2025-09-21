@@ -31,7 +31,7 @@ var js = app.Services.GetRequiredService<IJSRuntime>();
 await ConfigureCulture(app, js);
 
 var version = MM.WEB.Layout.MainLayout.GetAppVersion();
-await js.InvokeVoidAsync("onAppVersionReady", version);
+await js.InvokeVoidAsync("initGoogleAnalytics", "G-P7B5BSBS9S", version);
 
 await app.RunAsync();
 

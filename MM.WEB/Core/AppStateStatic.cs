@@ -2,6 +2,7 @@
 using MM.Shared.Models.Auth;
 using MM.WEB.Modules.Subscription.Core;
 using MudBlazor;
+using MudBlazor.Services;
 using System.Globalization;
 using System.Security.Claims;
 
@@ -15,6 +16,9 @@ public static class AppStateStatic
 
     public static Breakpoint Breakpoint { get; set; }
     public static Action<Breakpoint>? BreakpointChanged { get; set; }
+
+    public static BrowserWindowSize? BrowserWindowSize { get; set; }
+    public static Action<BrowserWindowSize>? BrowserWindowSizeChanged { get; set; }
 
     public static string? Version { get; set; }
 
