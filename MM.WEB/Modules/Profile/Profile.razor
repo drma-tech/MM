@@ -27,143 +27,17 @@
 
 @if (!IsAuthenticated)
 {
-    <MudCarousel ShowArrows="true" AutoCycle="true" TData="object" Class="mud-width-full mb-5" Style="@($"height: {(Breakpoint <= Breakpoint.Xs ? 450 : 300)}px;")">
-        <MudCarouselItem Transition="Transition.Slide" Color="@Color.Primary" Class="px-10 pt-2 pb-10" Style="text-align: center; height: 100%;">
-            <MudGrid Spacing="2" Justify="Justify.Center" Style="@($"{(Breakpoint <= Breakpoint.Xs ? "max-height" : "height")}: 100%; align-content: center;")">
-                <MudItem xs="12" sm="6" Style="height: 100%; align-content: center;">
-                    <MudImage Src="visitor-slide-1.png" Style="@($"max-width: {(Breakpoint <= Breakpoint.Xs ? "80" : "100")}%;")"></MudImage>
-                </MudItem>
-                <MudItem xs="12" sm="6">
-                    <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
-                        @SeoTranslations.AppName
-                    </MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="my-3">
-                        @SeoTranslations.AppDescription
-                    </MudText>
-                </MudItem>
-            </MudGrid>
-        </MudCarouselItem>
-        <MudCarouselItem Transition="Transition.Slide" Color="@Color.Primary" Class="px-10 pt-2 pb-10" Style="text-align: center; height: 100%;">
-            <MudStack Style="@($"{(Breakpoint <= Breakpoint.Xs ? "max-height" : "height")}: 100%;")">
-                <MudText Typo="Typo.h5" Align="Align.Center" Class="mt-3">
-                    @Resources.Translations.TopFeatures
-                </MudText>
-                <MudStack Row="true" Style="height: calc(100% - 44px);">
-                    <MudGrid Spacing="2" Justify="Justify.Center" Style="height: 100%; align-content: center;">
-                        <MudItem xs="6" sm="3" Style="max-height: 100%; align-content: center;">
-                            <MudPaper Class="pa-2 relative" Elevation="3" Style="text-align:center; width: 100%; height: 100%;">
-                                <div style="position: absolute; left: 8px; top: 8px;">
-                                    <MudTooltip>
-                                        <ChildContent>
-                                            <MudIcon Color="Color.Secondary" Icon="@IconsFA.Solid.Icon("circle-question").Font" />
-                                        </ChildContent>
-                                        <TooltipContent>
-                                            <MudList T="string" Dense="true">
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Designed to be the most accurate compatibility system on the market." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Built on solid data, not empty “AI” claims or random pairings like most apps." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Focused on what you truly need for a lasting connection, not just what you think you want." />
-                                            </MudList>
-                                        </TooltipContent>
-                                    </MudTooltip>
-                                </div>
-                                <MudImage Src="visitor-slide-2-system.png" Style="@($"max-height: calc(100% - 64px); max-width: {(Breakpoint <= Breakpoint.Sm ? "65" : "100")}%;")"></MudImage>
-                                <MudText Typo="Typo.subtitle1" Style="line-height: 1.3">
-                                    @Resources.Translations.TopFeaturesTitle1
-                                </MudText>
-                            </MudPaper>
-                        </MudItem>
-                        <MudItem xs="6" sm="3" Style="max-height: 100%; align-content: center;">
-                            <MudPaper Class="pa-2 relative" Elevation="3" Style="text-align:center; width: 100%; height: 100%;">
-                                <div style="position: absolute; left: 8px; top: 8px;">
-                                    <MudTooltip>
-                                        <ChildContent>
-                                            <MudIcon Color="Color.Secondary" Icon="@IconsFA.Solid.Icon("circle-question").Font" />
-                                        </ChildContent>
-                                        <TooltipContent>
-                                            <MudList T="string" Dense="true">
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Our compatibility system is so effective that it’s also designed for already established couples." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Get a clear, data-driven report that highlights relationship weak points and how to improve them." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="As a couple, your profile always stays in private mode—connected to the platform but invisible to everyone else." />
-                                            </MudList>
-                                        </TooltipContent>
-                                    </MudTooltip>
-                                </div>
-                                <MudImage Src="visitor-slide-2-insight.png" Style="@($"max-height: calc(100% - 64px); max-width: {(Breakpoint <= Breakpoint.Sm ? "65" : "100")}%;")"></MudImage>
-                                <MudText Typo="Typo.subtitle1" Style="line-height: 1.3">
-                                    @Resources.Translations.TopFeaturesTitle2
-                                </MudText>
-                            </MudPaper>
-                        </MudItem>
-                        <MudItem xs="6" sm="3" Style="max-height: 100%; align-content: center;">
-                            <MudPaper Class="pa-2 relative" Elevation="3" Style="text-align:center; width: 100%; height: 100%;">
-                                <div style="position: absolute; left: 8px; top: 8px;">
-                                    <MudTooltip>
-                                        <ChildContent>
-                                            <MudIcon Color="Color.Secondary" Icon="@IconsFA.Solid.Icon("circle-question").Font" />
-                                        </ChildContent>
-                                        <TooltipContent>
-                                            <MudList T="string" Dense="true">
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Profiles are designed to be the most complete and detailed on the market." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Most of the information you provide can be used as filters, helping generate suggestions that better reflect your preferences." />
-                                            </MudList>
-                                        </TooltipContent>
-                                    </MudTooltip>
-                                </div>
-                                <MudImage Src="visitor-slide-2-profile.png" Style="@($"max-height: calc(100% - 64px); max-width: {(Breakpoint <= Breakpoint.Sm ? "65" : "100")}%;")"></MudImage>
-                                <MudText Typo="Typo.subtitle1" Style="line-height: 1.3">
-                                    @Resources.Translations.TopFeaturesTitle3
-                                </MudText>
-                            </MudPaper>
-                        </MudItem>
-                        <MudItem xs="6" sm="3" Style="max-height: 100%; align-content: center;">
-                            <MudPaper Class="pa-2 relative" Elevation="3" Style="text-align:center; width: 100%; height: 100%;">
-                                <div style="position: absolute; left: 8px; top: 8px;">
-                                    <MudTooltip>
-                                        <ChildContent>
-                                            <MudIcon Color="Color.Secondary" Icon="@IconsFA.Solid.Icon("circle-question").Font" />
-                                        </ChildContent>
-                                        <TooltipContent>
-                                            <MudList T="string" Dense="true">
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="All data is encrypted in transit and at rest." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="Sensitive information can be hidden until a match occurs." />
-                                                <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" IconColor="Color.Success"
-                                                             Text="In-person meetings can be logged on the platform for added security." />
-                                            </MudList>
-                                        </TooltipContent>
-                                    </MudTooltip>
-                                </div>
-                                <MudImage Src="visitor-slide-2-security.png" Style="@($"max-height: calc(100% - 64px); max-width: {(Breakpoint <= Breakpoint.Sm ? "65" : "100")}%;")"></MudImage>
-                                <MudText Typo="Typo.subtitle1" Style="line-height: 1.3">
-                                    @Resources.Translations.TopFeaturesTitle4
-                                </MudText>
-                            </MudPaper>
-                        </MudItem>
-                    </MudGrid>
-                </MudStack>
-            </MudStack>
-        </MudCarouselItem>
-        <MudCarouselItem Transition="Transition.Slide" Color="@Color.Primary" Class="px-12 pt-2 pb-6" Style="text-align: center; height: 100%;">
-            <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
-                @Translations.HeroCall
-            </MudText>
-            <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
-                @Translations.HeroButton
-            </MudButton>
-            <MudText Typo="Typo.caption" Align="Align.Center" Class="my-3 d-block" Style="bottom: 50px; position: absolute; left: 0; right: 0;">
-                @Translations.HeroNote
-            </MudText>
-        </MudCarouselItem>
-    </MudCarousel>
+    <MudPaper Class="pa-3 mb-3 mud-theme-primary" Outlined="true" Style="text-align: center;">
+        <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
+            @Translations.HeroCall
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
+            @Translations.HeroButton
+        </MudButton>
+        <MudText Typo="Typo.caption" Align="Align.Center" Class="my-3 d-block">
+            @Translations.HeroNote
+        </MudText>
+    </MudPaper>
 }
 
 @if (IsAuthenticated)

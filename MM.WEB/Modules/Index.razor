@@ -26,11 +26,9 @@
                     <MudText Typo="Typo.body1" Align="Align.Justify">
                         @SeoTranslations.AppDescription
                     </MudText>
-                    <MudTooltip Text="@GlobalTranslations.OptionNotAvailable">
-                        <MudButton Color="Color.Warning" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow">
-                            @Button.LoginHero
-                        </MudButton>
-                    </MudTooltip>
+                    <MudButton Color="Color.Secondary" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow">
+                        @Button.LoginHero
+                    </MudButton>
                 </MudPaper>
             </MudItem>
         </MudGrid>
@@ -267,7 +265,7 @@
         @Landing.OurFeatures
     </MudText>
     <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="3">
+    <MudGrid Spacing="3" Class="mb-20">
         <MudItem xs="12" sm="6" md="4">
             <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                 <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
@@ -350,6 +348,21 @@
             </MudPaper>
         </MudItem>
     </MudGrid>
+
+    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
+        @Landing.CompatibilitySystem
+    </MudText>
+    <MudDivider Class="mb-10"></MudDivider>
+    <MudGrid Spacing="6" Justify="Justify.Center">
+        <MudItem xs="12">
+            <MudText Typo="Typo.body1" Align="Align.Justify" Style="line-height: 1.6;">
+                @Landing.CompatibilitySystemDesc
+            </MudText>
+        </MudItem>
+        <MudItem xs="12">
+            <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
+        </MudItem>
+    </MudGrid>   
 </MudContainer>
 
 @code {

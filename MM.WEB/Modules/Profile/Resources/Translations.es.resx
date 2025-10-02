@@ -156,12 +156,6 @@
   <data name="MySuggestions" xml:space="preserve">
     <value>Mis sugerencias</value>
   </data>
-  <data name="OurSuggestions1" xml:space="preserve">
-    <value>Nuestras sugerencias se basan en los proveedores que ha marcado como favoritos</value>
-  </data>
-  <data name="OurSuggestions2" xml:space="preserve">
-    <value>Nuestras sugerencias se basan en sus proveedores favoritos y sus preferencias de género (excluidos los títulos que ya están en sus listas personales).</value>
-  </data>
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
   </data>
@@ -203,20 +197,5 @@
   </data>
   <data name="Subscription" xml:space="preserve">
     <value>Suscripción</value>
-  </data>
-  <data name="TopFeatures" xml:space="preserve">
-    <value>Características principales</value>
-  </data>
-  <data name="TopFeaturesTitle1" xml:space="preserve">
-    <value>Sistema de compatibilidad inteligente</value>
-  </data>
-  <data name="TopFeaturesTitle2" xml:space="preserve">
-    <value>Ideas sobre relaciones para parejas</value>
-  </data>
-  <data name="TopFeaturesTitle3" xml:space="preserve">
-    <value>Perfiles y filtros personalizados</value>
-  </data>
-  <data name="TopFeaturesTitle4" xml:space="preserve">
-    <value>La seguridad y la privacidad son lo primero</value>
   </data>
 </root>

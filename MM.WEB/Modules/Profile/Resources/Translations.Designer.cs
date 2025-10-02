@@ -178,24 +178,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our suggestions are based on the providers you&apos;ve favorited.
-        /// </summary>
-        public static string OurSuggestions1 {
-            get {
-                return ResourceManager.GetString("OurSuggestions1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Our suggestions are based on your favorite providers and your genre preferences (excluding titles that are already on your personal lists)..
-        /// </summary>
-        public static string OurSuggestions2 {
-            get {
-                return ResourceManager.GetString("OurSuggestions2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Private.
         /// </summary>
         public static string Private {
@@ -318,51 +300,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         public static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top Features.
-        /// </summary>
-        public static string TopFeatures {
-            get {
-                return ResourceManager.GetString("TopFeatures", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Smart Compatibility System.
-        /// </summary>
-        public static string TopFeaturesTitle1 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Relationship Insights for Couples.
-        /// </summary>
-        public static string TopFeaturesTitle2 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Personalized Profiles &amp; Filters.
-        /// </summary>
-        public static string TopFeaturesTitle3 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Security &amp; Privacy First.
-        /// </summary>
-        public static string TopFeaturesTitle4 {
-            get {
-                return ResourceManager.GetString("TopFeaturesTitle4", resourceCulture);
             }
         }
     }
