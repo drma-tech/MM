@@ -133,7 +133,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SUCCESSFUL MATCHES.
+        ///   Looks up a localized string similar to MATCHES.
         /// </summary>
         public static string Couples {
             get {
@@ -421,7 +421,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to USERS IN THE COMMUNITY.
+        ///   Looks up a localized string similar to USERS.
         /// </summary>
         public static string Users {
             get {

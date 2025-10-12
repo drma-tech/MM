@@ -16,6 +16,7 @@ public static class AppStateStatic
 
     public static Breakpoint Breakpoint { get; set; }
     public static Action<Breakpoint>? BreakpointChanged { get; set; }
+    public static Size Size { get; set; }
 
     public static BrowserWindowSize? BrowserWindowSize { get; set; }
     public static Action<BrowserWindowSize>? BrowserWindowSizeChanged { get; set; }
@@ -41,7 +42,7 @@ public static class AppStateStatic
 
             if (cache.Empty() && js != null) //shouldn't happen (because it's called in index.html)
             {
-                await js.InvokeVoidAsync("TryDetectPlatform");
+                await js.InvokeVoidAsync("LoadAppVariables");
                 cache = await js.InvokeAsync<string>("GetLocalStorage", "platform");
             }
 
@@ -200,7 +201,7 @@ public static class AppStateStatic
             else
             {
                 _country = (await api.GetCountry())?.Trim() ?? "US";
-                if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "country", _country);
+                if (js != null) await js.InvokeVoidAsync("SetLocalStorage", "country", _country?.ToLower());
             }
 
             _country ??= "US";

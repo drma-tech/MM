@@ -27,25 +27,22 @@
             <MudCardActions Class="pt-0">
                 @if (Picture.Empty())
                 {
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot"
-                               Class="me-2">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2" Size="AppStateStatic.Size">
                         Take Shot
                     </MudButton>
                 }
                 else
                 {
-                    <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset"
-                               Class="me-2">
+                    <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset" Class="me-2" Size="AppStateStatic.Size">
                         Reset
                     </MudButton>
                 }
                 <MudSpacer></MudSpacer>
-                <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera-rotate").Font" OnClick="NextCamera"
-                           Class="me-2" Disabled="Cameras.Length < 2">
+                <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera-rotate").Font" OnClick="NextCamera" Class="me-2" Size="AppStateStatic.Size" Disabled="Cameras.Length < 2">
                     Next Camera
                 </MudButton>
                 <MudSpacer></MudSpacer>
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto"
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto" Size="AppStateStatic.Size"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
                     Send
                 </MudButton>
@@ -66,7 +63,7 @@
         </MudList>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
 

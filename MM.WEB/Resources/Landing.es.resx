@@ -142,7 +142,7 @@
     <value>Las parejas pueden probar su compatibilidad y recibir un informe detallado con información personalizada y áreas de crecimiento.</value>
   </data>
   <data name="Couples" xml:space="preserve">
-    <value>Matches exitosos</value>
+    <value>MATCHES</value>
   </data>
   <data name="MMCoin" xml:space="preserve">
     <value>Moneda MM</value>
@@ -238,6 +238,6 @@
     <value>Lo apoyamos en cada paso de su proceso de emparejamiento, incluidos los primeros encuentros, garantizando un camino seguro y significativo hacia una relación duradera.</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>USUARIOS EN LA COMUNIDAD</value>
+    <value>USUARIOS</value>
   </data>
 </root>

@@ -422,10 +422,10 @@
     </MudExpansionPanels>
 
     <div class="d-flex mt-3">
-        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2" Size="AppStateStatic.Size">
             @Button.Save
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("wand-magic").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="PopulateFields" Class="me-2">
+        <MudButton StartIcon="@IconsFA.Solid.Icon("wand-magic").Font" Color="Color.Secondary" Variant="Variant.Filled" OnClick="PopulateFields" Class="me-2" Size="AppStateStatic.Size">
             @Button.Fill
         </MudButton>
     </div>
@@ -443,7 +443,7 @@
         </MudList>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">@Button.Close</MudButton>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
     </DialogActions>
 </MudDialog>
 

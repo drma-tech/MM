@@ -26,8 +26,8 @@
         </RadioGroup> *@
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })">@Button.Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true">@Button.Confirm</MudButton>
+        <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true" Size="AppStateStatic.Size">@Button.Confirm</MudButton>
     </DialogActions>
 </MudDialog>
 

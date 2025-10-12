@@ -7,7 +7,7 @@
     <DialogContent>
         <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="OnFileSelected" MaximumFileCount="1">
             <ActivatorContent>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.CloudUpload">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.CloudUpload" Size="AppStateStatic.Size">
                     Select your photo
                 </MudButton>
             </ActivatorContent>
@@ -20,7 +20,7 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Primary" OnClick="@SavePictureHandle">@Button.Ok</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@SavePictureHandle" Size="AppStateStatic.Size">@Button.Ok</MudButton>
     </DialogActions>
 </MudDialog>
 

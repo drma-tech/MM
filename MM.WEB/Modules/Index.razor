@@ -3,366 +3,347 @@
 
 @using MM.Shared.Models.Dashboard
 @using Button = MM.WEB.Resources.Button
+@using MM.WEB.Modules.Subscription.Core
 @inherits PageCore<Index>
 
-@inject IJSRuntime JsRuntime
 @inject DashboardApi DashboardApi
+@inject PaddleConfigurationApi ConfigurationApi
+@inject IpInfoApi IpInfoApi
+@inject IJSRuntime JsRuntime
 
-<SeoHeader Title="Find your life partner" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["matchmaker", "matchmaking", "dating", "Find your life partner"])"></SeoHeader>
+<SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
+<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription">
+    <ActionFragment>
+        @if (SubscriptionAllowed)
+        {
+            <MudTooltip Text="@Modules.Profile.Resources.Translations.Subscription">
+                <MudFab Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" Size="AppStateStatic.Size" OnClick="@OpenSubscription" Disabled="true" />
+            </MudTooltip>
+        }
+    </ActionFragment>
+</PageHeader>
+
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
 
 <MudContainer>
     @if (!IsAuthenticated)
     {
-        <MudGrid Spacing="4" Class="mb-20" Style="align-items: center;">
-            <MudItem xs="12" sm="6" Style="text-align: center;">
-                <MudImage Src="icon/icon-full.png" Alt="@SeoTranslations.AppName" Style="width: 80%;" />
-            </MudItem>
-            <MudItem xs="12" sm="6" Style="text-align: center;">
-                <MudPaper Elevation="2" Class="pa-6">
-                    <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 custom-h2-landpage">
-                        @SeoTranslations.AppName
-                    </MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">
-                        @SeoTranslations.AppDescription
-                    </MudText>
-                    <MudButton Color="Color.Secondary" Class="mt-3" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow">
-                        @Button.LoginHero
-                    </MudButton>
-                </MudPaper>
-            </MudItem>
-        </MudGrid>
+        <MudPaper Elevation="2" Class="pa-4 my-8 mud-theme-primary" Style="text-align: center;">
+            <MudButton Color="Color.Secondary" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" Size="AppStateStatic.Size">
+                @Button.LoginHero
+            </MudButton>
+        </MudPaper>
     }
 
-    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
-        @Landing.OurNumbers
-    </MudText>
-    <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="2" Class="mb-3">
-        <MudItem xs="12" sm="6" md="3">
-            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                <div class="d-flex" style="align-items: center;">
-                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                        @GlobalTranslations.Countries
-                    </MudText>
-                    <MudSpacer></MudSpacer>
-                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                        @(SumUsers?.Countries ?? 0)
-                    </MudChip>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
-            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                <div class="d-flex" style="align-items: center;">
-                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                        @GlobalTranslations.Cities
-                    </MudText>
-                    <MudSpacer></MudSpacer>
-                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                        @(SumUsers?.Cities ?? 0)
-                    </MudChip>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
-            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                <div class="d-flex" style="align-items: center;">
-                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                        @Landing.Users
-                    </MudText>
-                    <MudSpacer></MudSpacer>
-                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                        @(SumUsers?.Users ?? 0)
-                    </MudChip>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
-            <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                <div class="d-flex" style="align-items: center;">
-                    <MudChip T="string" Icon="@IconsFA.Solid.Icon("ring").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                    <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                        @Landing.Couples
-                    </MudText>
-                    <MudSpacer></MudSpacer>
-                    <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                        @(SumUsers?.Couples ?? 0)
-                    </MudChip>
-                </div>
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
-    <MudAlert Variant="Variant.Outlined" Severity="Severity.Info" Dense="true" Class="mb-20" Style="text-align: justify;">
-        <span class="me-2" style="font-weight: bold;">@Landing.OurNumbersMsg1</span>@Landing.OurNumbersMsg2
-    </MudAlert>
+    <PageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" BodyClass="mb-8">
+        <BodyFragment>
+            <MudGrid Spacing="2" Class="mb-3">
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                        <div class="d-flex" style="align-items: center;">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                                @GlobalTranslations.Countries
+                            </MudText>
+                            <MudSpacer></MudSpacer>
+                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                                @(SumUsers?.Countries ?? 0)
+                            </MudChip>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                        <div class="d-flex" style="align-items: center;">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                                @GlobalTranslations.Cities
+                            </MudText>
+                            <MudSpacer></MudSpacer>
+                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                                @(SumUsers?.Cities ?? 0)
+                            </MudChip>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                        <div class="d-flex" style="align-items: center;">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                                @Landing.Users
+                            </MudText>
+                            <MudSpacer></MudSpacer>
+                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                                @(SumUsers?.Users ?? 0)
+                            </MudChip>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
+                        <div class="d-flex" style="align-items: center;">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("ring").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                                @Landing.Couples
+                            </MudText>
+                            <MudSpacer></MudSpacer>
+                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                                @(SumUsers?.Couples ?? 0)
+                            </MudChip>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </BodyFragment>
+    </PageSection>
 
-    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
-        @Landing.OurRoadmap
-    </MudText>
-    <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
-        <MudItem xs="12">
-            <MudText Typo="Typo.h3" Color="Color.Secondary" Align="Align.Center" Class="mb-2 custom-h3-roadmap">
-                @Landing.OurRoadmapMsg1
-            </MudText>
-            <MudText Typo="Typo.body1" Align="Align.Justify" Style="line-height: 1.6;">
-                @Landing.OurRoadmapMsg2
-            </MudText>
-        </MudItem>
-        <MudItem xs="12" md="10">
-            <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)">
-                <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
-                    <ItemDot>
-                        <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
-                    </ItemDot>
-                    <ItemOpposite>
-                        <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase1Title</MudText>
-                    </ItemOpposite>
-                    <ItemContent>
-                        @if (Breakpoint < Breakpoint.Sm)
-                        {
-                            <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase1Title</MudText>
-                        }
-                        <MudCard Elevation="25">
-                            <MudCardContent>
-                                <MudList T="string" Dense="true">
-                                    <MudListSubheader Class="pa-0">
-                                        <div>
-                                            @if (SumUsers != null)
-                                            {
-                                                var tot = GetPhaseValue(1);
-                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
-                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                                        <b>@tot.ToString("P2")</b>
-                                                    </MudText>
-                                                </MudProgressLinear>
-                                            }
-                                        </div>
-                                    </MudListSubheader>
-                                    <MudListItem>@Landing.Phase1Opt1</MudListItem>
-                                    <MudListItem>@Landing.Phase1Opt2</MudListItem>
-                                    <MudListItem>@Landing.Phase1Opt3</MudListItem>
-                                </MudList>
-                            </MudCardContent>
-                        </MudCard>
-                    </ItemContent>
-                </MudTimelineItem>
-                <MudTimelineItem Color="GetPhaseColor(2)" Size="Size.Medium">
-                    <ItemDot>
-                        <MudIcon Icon="@IconsFA.Solid.Icon("2").Font" Style="text-align: center;"></MudIcon>
-                    </ItemDot>
-                    <ItemOpposite>
-                        <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase2Title</MudText>
-                    </ItemOpposite>
-                    <ItemContent>
-                        @if (Breakpoint < Breakpoint.Sm)
-                        {
-                            <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase2Title</MudText>
-                        }
-                        <MudCard Elevation="25">
-                            <MudCardContent>
-                                <MudList T="string" Dense="true">
-                                    <MudListSubheader Class="pa-0">
-                                        <div>
-                                            @if (SumUsers != null)
-                                            {
-                                                var tot = GetPhaseValue(2);
-                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
-                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                                        <b>@tot.ToString("P2")</b>
-                                                    </MudText>
-                                                </MudProgressLinear>
-                                            }
-                                        </div>
-                                    </MudListSubheader>
-                                    <MudListItem>@Landing.Phase2Opt1</MudListItem>
-                                    <MudListItem>@Landing.Phase2Opt2</MudListItem>
-                                    <MudListItem>@Landing.Phase2Opt3</MudListItem>
-                                </MudList>
-                            </MudCardContent>
-                        </MudCard>
-                    </ItemContent>
-                </MudTimelineItem>
-                <MudTimelineItem Color="GetPhaseColor(3)" Size="Size.Medium">
-                    <ItemDot>
-                        <MudIcon Icon="@IconsFA.Solid.Icon("3").Font" Style="text-align: center;"></MudIcon>
-                    </ItemDot>
-                    <ItemOpposite>
-                        <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase3Title</MudText>
-                    </ItemOpposite>
-                    <ItemContent>
-                        @if (Breakpoint < Breakpoint.Sm)
-                        {
-                            <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase3Title</MudText>
-                        }
-                        <MudCard Elevation="25">
-                            <MudCardContent>
-                                <MudList T="string" Dense="true">
-                                    <MudListSubheader Class="pa-0">
-                                        <div>
-                                            @if (SumUsers != null)
-                                            {
-                                                var tot = GetPhaseValue(3);
-                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
-                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                                        <b>@tot.ToString("P2")</b>
-                                                    </MudText>
-                                                </MudProgressLinear>
-                                            }
-                                        </div>
-                                    </MudListSubheader>
-                                    <MudListItem>@Landing.Phase3Opt1</MudListItem>
-                                    <MudListItem>@Landing.Phase3Opt2</MudListItem>
-                                </MudList>
-                            </MudCardContent>
-                        </MudCard>
-                    </ItemContent>
-                </MudTimelineItem>
-                <MudTimelineItem Color="GetPhaseColor(4)" Size="Size.Medium">
-                    <ItemDot>
-                        <MudIcon Icon="@IconsFA.Solid.Icon("4").Font" Style="text-align: center;"></MudIcon>
-                    </ItemDot>
-                    <ItemOpposite>
-                        <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase4Title</MudText>
-                    </ItemOpposite>
-                    <ItemContent>
-                        @if (Breakpoint < Breakpoint.Sm)
-                        {
-                            <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase4Title</MudText>
-                        }
-                        <MudCard Elevation="25">
-                            <MudCardContent>
-                                <MudList T="string" Dense="true">
-                                    <MudListSubheader Class="pa-0">
-                                        <div>
-                                            @if (SumUsers != null)
-                                            {
-                                                var tot = GetPhaseValue(4);
-                                                <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
-                                                    <MudText Typo="Typo.subtitle1" Color="Color.Dark">
-                                                        <b>@tot.ToString("P2")</b>
-                                                    </MudText>
-                                                </MudProgressLinear>
-                                            }
-                                        </div>
-                                    </MudListSubheader>
-                                    <MudListItem>@Landing.Phase4Opt1</MudListItem>
-                                    <MudListItem>@Landing.Phase4Opt2</MudListItem>
-                                </MudList>
-                            </MudCardContent>
-                        </MudCard>
-                    </ItemContent>
-                </MudTimelineItem>
-            </MudTimeline>
-        </MudItem>
-    </MudGrid>
+    <PageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" BodyClass="mb-8">
+        <BodyFragment>
+            <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
+                <MudItem xs="12" md="10">
+                    <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)">
+                        <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
+                            <ItemDot>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
+                            </ItemDot>
+                            <ItemOpposite>
+                                <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase1Title</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                @if (Breakpoint < Breakpoint.Sm)
+                                {
+                                    <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase1Title</MudText>
+                                }
+                                <MudCard Elevation="25">
+                                    <MudCardContent>
+                                        <MudList T="string" Dense="true">
+                                            <MudListSubheader Class="pa-0">
+                                                <div>
+                                                    @if (SumUsers != null)
+                                                    {
+                                                        var tot = GetPhaseValue(1);
+                                                        <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                            <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                                <b>@tot.ToString("P2")</b>
+                                                            </MudText>
+                                                        </MudProgressLinear>
+                                                    }
+                                                </div>
+                                            </MudListSubheader>
+                                            <MudListItem>@Landing.Phase1Opt1</MudListItem>
+                                            <MudListItem>@Landing.Phase1Opt2</MudListItem>
+                                            <MudListItem>@Landing.Phase1Opt3</MudListItem>
+                                        </MudList>
+                                    </MudCardContent>
+                                </MudCard>
+                            </ItemContent>
+                        </MudTimelineItem>
+                        <MudTimelineItem Color="GetPhaseColor(2)" Size="Size.Medium">
+                            <ItemDot>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("2").Font" Style="text-align: center;"></MudIcon>
+                            </ItemDot>
+                            <ItemOpposite>
+                                <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase2Title</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                @if (Breakpoint < Breakpoint.Sm)
+                                {
+                                    <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase2Title</MudText>
+                                }
+                                <MudCard Elevation="25">
+                                    <MudCardContent>
+                                        <MudList T="string" Dense="true">
+                                            <MudListSubheader Class="pa-0">
+                                                <div>
+                                                    @if (SumUsers != null)
+                                                    {
+                                                        var tot = GetPhaseValue(2);
+                                                        <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                            <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                                <b>@tot.ToString("P2")</b>
+                                                            </MudText>
+                                                        </MudProgressLinear>
+                                                    }
+                                                </div>
+                                            </MudListSubheader>
+                                            <MudListItem>@Landing.Phase2Opt1</MudListItem>
+                                            <MudListItem>@Landing.Phase2Opt2</MudListItem>
+                                            <MudListItem>@Landing.Phase2Opt3</MudListItem>
+                                        </MudList>
+                                    </MudCardContent>
+                                </MudCard>
+                            </ItemContent>
+                        </MudTimelineItem>
+                        <MudTimelineItem Color="GetPhaseColor(3)" Size="Size.Medium">
+                            <ItemDot>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("3").Font" Style="text-align: center;"></MudIcon>
+                            </ItemDot>
+                            <ItemOpposite>
+                                <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase3Title</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                @if (Breakpoint < Breakpoint.Sm)
+                                {
+                                    <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase3Title</MudText>
+                                }
+                                <MudCard Elevation="25">
+                                    <MudCardContent>
+                                        <MudList T="string" Dense="true">
+                                            <MudListSubheader Class="pa-0">
+                                                <div>
+                                                    @if (SumUsers != null)
+                                                    {
+                                                        var tot = GetPhaseValue(3);
+                                                        <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                            <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                                <b>@tot.ToString("P2")</b>
+                                                            </MudText>
+                                                        </MudProgressLinear>
+                                                    }
+                                                </div>
+                                            </MudListSubheader>
+                                            <MudListItem>@Landing.Phase3Opt1</MudListItem>
+                                            <MudListItem>@Landing.Phase3Opt2</MudListItem>
+                                        </MudList>
+                                    </MudCardContent>
+                                </MudCard>
+                            </ItemContent>
+                        </MudTimelineItem>
+                        <MudTimelineItem Color="GetPhaseColor(4)" Size="Size.Medium">
+                            <ItemDot>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("4").Font" Style="text-align: center;"></MudIcon>
+                            </ItemDot>
+                            <ItemOpposite>
+                                <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase4Title</MudText>
+                            </ItemOpposite>
+                            <ItemContent>
+                                @if (Breakpoint < Breakpoint.Sm)
+                                {
+                                    <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase4Title</MudText>
+                                }
+                                <MudCard Elevation="25">
+                                    <MudCardContent>
+                                        <MudList T="string" Dense="true">
+                                            <MudListSubheader Class="pa-0">
+                                                <div>
+                                                    @if (SumUsers != null)
+                                                    {
+                                                        var tot = GetPhaseValue(4);
+                                                        <MudProgressLinear Value="(tot * 100)" Color="Color.Info" Striped="@(tot < 1)" Class="my-1" Style="height: 30px;">
+                                                            <MudText Typo="Typo.subtitle1" Color="Color.Dark">
+                                                                <b>@tot.ToString("P2")</b>
+                                                            </MudText>
+                                                        </MudProgressLinear>
+                                                    }
+                                                </div>
+                                            </MudListSubheader>
+                                            <MudListItem>@Landing.Phase4Opt1</MudListItem>
+                                            <MudListItem>@Landing.Phase4Opt2</MudListItem>
+                                        </MudList>
+                                    </MudCardContent>
+                                </MudCard>
+                            </ItemContent>
+                        </MudTimelineItem>
+                    </MudTimeline>
+                </MudItem>
+            </MudGrid>
+        </BodyFragment>
+    </PageSection>
 
-    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
-        @Landing.OurFeatures
-    </MudText>
-    <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="3" Class="mb-20">
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilitySystem</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilitySystemDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("people-arrows").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CoupleCompatibility</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CoupleCompatibilityDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("id-badge").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Profile</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.ProfileDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("book").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilityReport</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilityReportDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Security</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.SecurityDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("user-lock").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Privacy</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.PrivacyDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Authenticity</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.AuthenticityDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("shuffle").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Tracking</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.TrackingDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                <MudIcon Icon="@IconsFA.Solid.Icon("coins").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
-                <div>
-                    <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.MMCoin</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.MMCoinDesc</MudText>
-                </div>
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
+    <PageSection Title="@Landing.OurFeatures" BodyClass="mb-8">
+        <BodyFragment>
+            <MudGrid Spacing="3" Class="mb-20">
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilitySystem</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilitySystemDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("people-arrows").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CoupleCompatibility</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CoupleCompatibilityDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("id-badge").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Profile</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.ProfileDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("book").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilityReport</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilityReportDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Security</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.SecurityDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("user-lock").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Privacy</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.PrivacyDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Authenticity</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.AuthenticityDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("shuffle").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Tracking</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.TrackingDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
+                        <MudIcon Icon="@IconsFA.Solid.Icon("coins").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2"></MudIcon>
+                        <div>
+                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.MMCoin</MudText>
+                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.MMCoinDesc</MudText>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </BodyFragment>
+    </PageSection>
 
-    <MudText Typo="Typo.h2" Color="Color.Primary" Class="custom-h2-landpage">
-        @Landing.CompatibilitySystem
-    </MudText>
-    <MudDivider Class="mb-10"></MudDivider>
-    <MudGrid Spacing="6" Justify="Justify.Center">
-        <MudItem xs="12">
-            <MudText Typo="Typo.body1" Align="Align.Justify" Style="line-height: 1.6;">
-                @Landing.CompatibilitySystemDesc
-            </MudText>
-        </MudItem>
-        <MudItem xs="12">
+    <PageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" BodyClass="mb-8">
+        <BodyFragment>
             <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
-        </MudItem>
-    </MudGrid>   
+        </BodyFragment>
+    </PageSection>
 </MudContainer>
 
 @code {
@@ -373,10 +354,29 @@
 
     public SumUsers? SumUsers { get; set; }
 
+    private bool SubscriptionAllowed { get; set; } = true;
+
+    private readonly Dictionary<string, string> _iosAllowedCountries = new()
+    {
+        { "US", "United States" }
+    };
+
     protected override async Task LoadEssentialDataAsync()
     {
         var cache = await DashboardApi.GetSumUsers(null);
         SumUsers = cache?.Data;
+    }
+
+    protected override async Task LoadNonEssentialDataAsync()
+    {
+        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+        var platform = await AppStateStatic.GetPlatform(JsRuntime);
+
+        if (country.NotEmpty() && platform == MM.Shared.Enums.Platform.ios)
+        {
+            //https://developer.apple.com/app-store/review/guidelines/#link-to-other-purchase-methods
+            SubscriptionAllowed = _iosAllowedCountries.ContainsKey(country);
+        }
     }
 
     private double GetPhaseValue(int phase)
@@ -414,6 +414,16 @@
         if (value == 1) return Color.Success;
         else if (value == 0) return Color.Default;
         else return Color.Primary;
+    }
+
+    private async Task OpenSubscription()
+    {
+        var config = await ConfigurationApi.GetConfigurations();
+        if (config == null) throw new NotificationException("server communication error");
+
+        await JsRuntime.InvokeVoidAsync("startPaddle", config.Token);
+
+        await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 
 }

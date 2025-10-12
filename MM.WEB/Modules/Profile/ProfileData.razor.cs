@@ -39,7 +39,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 var message = new MarkupString(
                     "Para combinar você com mais precisão, pedimos algumas informações pessoais, como etnia, religião e orientação sexual. Esses dados são considerados sensíveis pelas leis de privacidade.<br><br>" +
                     "Ao clicar em “Concordo”, você consente expressamente com o tratamento desses dados para fins de compatibilidade dentro da plataforma.<br><br>" +
-                    "Leia nossa <a href=\"/support/privacy/pt\" target=\"_blank\">Política de Privacidade</a> e nossos <a href=\"/support/terms/pt\" target=\"_blank\">Termos de Uso</a> para mais detalhes."
+                    "Leia nossa <a href=\"/support/privacy\" target=\"_blank\">Política de Privacidade</a> e nossos <a href=\"/support/terms\" target=\"_blank\">Termos de Uso</a> para mais detalhes."
                 );
 
                 confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
@@ -49,7 +49,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 var message = new MarkupString(
                     "Para emparejarte con precisión, te pedimos algunos datos personales como etnia, religión y orientación sexual. Estos se consideran datos personales sensibles según las leyes de privacidad.<br><br>" +
                     "Al hacer clic en “Acepto”, usted consiente expresamente el tratamiento de estos datos con fines de compatibilidad dentro de la plataforma.<br><br>" +
-                    "Lee nuestra <a href=\"/support/privacy/es\" target=\"_blank\">Política de Privacidad</a> y nuestros <a href=\"/support/terms/es\" target=\"_blank\">Términos de Uso</a> para más información."
+                    "Lee nuestra <a href=\"/support/privacy\" target=\"_blank\">Política de Privacidad</a> y nuestros <a href=\"/support/terms\" target=\"_blank\">Términos de Uso</a> para más información."
                 );
 
                 confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
@@ -59,7 +59,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 var message = new MarkupString(
                     "To match you accurately, we ask for some personal information such as ethnicity, religion, and sexual orientation. These are considered sensitive personal data under privacy laws.<br><br>" +
                     "By clicking “I agree”, you expressly consent to the processing of this data for compatibility purposes within the platform.<br><br>" +
-                    "Read our <a href=\"/support/privacy/en\" target=\"_blank\">Privacy Policy</a> and <a href=\"/support/terms/en\" target=\"_blank\">Terms of Use</a> for full details."
+                    "Read our <a href=\"/support/privacy\" target=\"_blank\">Privacy Policy</a> and <a href=\"/support/terms\" target=\"_blank\">Terms of Use</a> for full details."
                 );
 
                 confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;

@@ -82,7 +82,7 @@ public class EventFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = req.GetUserId() ?? throw new NotificationException("user id null");
             var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
                               throw new NotificationException("user not found");
 

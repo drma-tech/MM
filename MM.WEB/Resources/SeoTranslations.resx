@@ -126,6 +126,9 @@
   <data name="AppName" xml:space="preserve">
     <value>Modern Matchmaker</value>
   </data>
+  <data name="AppSubtitle" xml:space="preserve">
+    <value>Find your life partner</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Profile</value>
   </data>

@@ -27,7 +27,7 @@
 
     <div class="d-flex mt-3">
         <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2"
-                   Disabled="@(Setting == null || Principal == null || Principal.PublicProfile)">
+                   Disabled="@(Setting == null || Principal == null || Principal.PublicProfile)" Size="AppStateStatic.Size">
             @Button.Save
         </MudButton>
     </div>

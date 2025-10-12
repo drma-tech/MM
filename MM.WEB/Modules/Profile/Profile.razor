@@ -31,7 +31,7 @@
         <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
             @Translations.HeroCall
         </MudText>
-        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4" Size="AppStateStatic.Size">
             @Translations.HeroButton
         </MudButton>
         <MudText Typo="Typo.caption" Align="Align.Center" Class="my-3 d-block">
@@ -56,32 +56,32 @@
                     <ChildContent>
                         <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Outlined" Href="/profile/data"
-                                       Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)">
+                                       Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)" Size="AppStateStatic.Size">
                                 @Button.Profile
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepFilter" SecondaryText="@Resources.Translations.StepFilterDesc" Completed="FilterValid">
                             <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Outlined" Href="/profile/filter"
-                                       Style="width: 100%;" Disabled="profile == null">
+                                       Style="width: 100%;" Disabled="profile == null" Size="AppStateStatic.Size">
                                 @Button.Filters
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">
                             <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Outlined" Href="/profile/setting"
-                                       Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile">
+                                       Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                                 @Button.Settings
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepGallery" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="GalleryValid">
                             <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Outlined" Href="/profile/gallery"
                                        Style="width: 100%;"
-                                       Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile">
+                                       Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="ValidationsValid">
                             <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Outlined" Href="/profile/validation"
-                                       Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
+                                       Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate" Size="AppStateStatic.Size">
                                 @Button.Validations
                             </MudButton>
                         </MudStep>
@@ -89,7 +89,7 @@
                     <ActionContent></ActionContent>
                     <CompletedContent>
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        CheckMark="true" FixedContent="true" Disabled="principal == null">
+                                        CheckMark="true" FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
                             <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
                             <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                         </MudToggleGroup>
@@ -119,38 +119,37 @@
                 <MudGrid Spacing="2">
                     <MudItem xs="6">
                         <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
-                                   Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)">
+                                   Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)" Size="AppStateStatic.Size">
                             @Button.Profile
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter"
-                                   Style="width: 100%;" Disabled="profile == null">
+                                   Style="width: 100%;" Disabled="profile == null" Size="AppStateStatic.Size">
                             @Button.Filters
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
-                                   Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile">
+                                   Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                             @Button.Settings
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
-                                   Style="width: 100%;"
-                                   Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile">
+                                   Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                             @Button.Gallery
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Filled" Href="/profile/validation"
-                                   Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
+                                   Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate" Size="AppStateStatic.Size">
                             @Button.Validations
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        CheckMark="true" FixedContent="true" Disabled="principal == null">
+                                        CheckMark="true" FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
                             <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
                             <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
                         </MudToggleGroup>
@@ -160,10 +159,10 @@
         }
     </MudItem>
     <MudItem xs="12" sm="6" md="8">
-        <SectionComponent IconName="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
+        <PageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
             <ActionFragment>
                 <MudTooltip Text="Generate new suggestion list">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="true">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="true" Size="AppStateStatic.Size">
                         @Button.Generate
                     </MudButton>
                 </MudTooltip>
@@ -184,11 +183,11 @@
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </SectionComponent>
-        <SectionComponent IconName="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
+        </PageSection>
+        <PageSection Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
             <ActionFragment>
                 <MudTooltip Text="Invite someone by email">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="profile == null">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="profile == null" Size="AppStateStatic.Size">
                         @Button.InvitePartner
                     </MudButton>
                 </MudTooltip>
@@ -202,7 +201,7 @@
                                 <div class="swiper-slide" style="height: auto !important;">
                                     <div style="position: relative; cursor: pointer;"
                                          @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Like, UserId, item.UserId))">
-                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
+                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                             @item.UserName
                                         </MudChip>
                                         <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
@@ -216,13 +215,13 @@
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </SectionComponent>
-        <SectionComponent IconName="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches">
+        </PageSection>
+        <PageSection Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches">
             <ActionFragment>
                 @if (MyMatches == null || MyMatches.Items.Empty())
                 {
                     <MudTooltip Text="Simulate matches to learn about our compatibility system">
-                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="profile == null">
+                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="profile == null" Size="AppStateStatic.Size">
                             @Button.Simulate
                         </MudButton>
                     </MudTooltip>
@@ -237,7 +236,7 @@
                                 <div class="swiper-slide" style="height: auto !important;">
                                     <div style="position: relative; cursor: pointer;"
                                          @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Match, UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
-                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
+                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                             @item.UserName
                                         </MudChip>
                                         <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
@@ -251,7 +250,7 @@
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </SectionComponent>
+        </PageSection>
     </MudItem>
 </MudGrid>
 

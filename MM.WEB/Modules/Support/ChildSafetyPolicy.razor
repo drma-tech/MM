@@ -1,152 +1,95 @@
 ﻿@page "/support/child-safety"
 <SeoHeader Title="Child Safety Policy" Description="@SeoTranslations.AppDescription" Url=@($"/support/child-safety") Keywords="@(["Child Safety Policy"])"></SeoHeader>
 
-<style>
-    .policy-container {
-        max-width: 900px;
-        margin: 32px auto;
-        padding: 40px 24px 32px 24px;
-        background: var(--mud-palette-background, #fff);
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-    }
-
-    .policy-title {
-        text-align: center;
-        font-size: 2.2rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--mud-palette-text-primary, #222);
-    }
-
-    .policy-subtitle {
-        text-align: center;
-        color: var(--mud-palette-text-secondary, #555);
-        font-size: 1.1rem;
-        margin-bottom: 2.2rem;
-    }
-
-    .policy-section {
-        margin-bottom: 2.2rem;
-    }
-
-        .policy-section h2 {
-            margin-bottom: 0.7rem;
-            color: var(--mud-palette-primary, #1976d2);
-            font-size: 1.18rem;
-            font-weight: 500;
-        }
-
-        .policy-section p, .policy-section ul {
-            text-align: justify;
-            margin-bottom: 0.5rem;
-            color: var(--mud-palette-text-primary, #333);
-            line-height: 1.7;
-        }
-
-        .policy-section ul {
-            text-align: justify;
-            margin-bottom: 0.5rem;
-            color: var(--mud-palette-text-primary, #333);
-            line-height: 1.7;
-            padding-left: 1.4rem;
-            list-style-type: disc;
-        }
-
-            .policy-section ul li {
-                padding-left: 0.1rem;
-            }
-</style>
-
-<div class="policy-container">
+<div class="support-container">
     @if (Language == AppLanguage.pt)
     {
-        <h1 class="policy-title">Política de Segurança Infantil</h1>
-        <div class="policy-subtitle">
+        <h1 class="support-title">Política de Segurança Infantil</h1>
+        <div class="support-subtitle">
             Compromisso do <b>@ProjectTitle</b> com a proteção de crianças e adolescentes.
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>1. Conteúdo Proibido</h2>
             <p>Não é permitido publicar, enviar ou compartilhar qualquer conteúdo sexual envolvendo crianças ou qualquer forma de exploração infantil. Violações resultarão em exclusão imediata da conta e reporte às autoridades competentes.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>2. Moderação e Denúncia</h2>
             <p>Todos os relatórios de conteúdo suspeito são tratados com prioridade. O <b>@ProjectTitle</b> possui mecanismos de moderação automática e manual, além de canais claros de denúncia para usuários.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>3. Educação e Conscientização</h2>
             <p>Fornecemos informações e orientações de segurança digital para proteger crianças e adolescentes de exploração online.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>4. Conformidade Legal</h2>
             <p>Nossa plataforma segue leis internacionais e locais de proteção à criança, incluindo COPPA e LGPD quando aplicáveis. Cooperamos com autoridades em qualquer investigação de abuso infantil.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>5. Contato</h2>
             <p>Para denúncias ou dúvidas sobre segurança infantil, entre em contato com <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
         </div>
-        <div class="policy-section" style="text-align:center; color:#888; font-size:0.9rem;">
-            Última atualização: 5 de setembro de 2025
+        <div class="support-footer">
+            <p>Última atualização: 5 de setembro de 2025</p>
         </div>
     }
     else if (Language == AppLanguage.es)
     {
-        <h1 class="policy-title">Política de Seguridad Infantil</h1>
-        <div class="policy-subtitle">
+        <h1 class="support-title">Política de Seguridad Infantil</h1>
+        <div class="support-subtitle">
             Compromiso de <b>@ProjectTitle</b> con la protección de niños y adolescentes.
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>1. Contenido Prohibido</h2>
             <p>No se permite publicar, enviar o compartir contenido sexual que involucre a menores. Las violaciones resultarán en la eliminación inmediata de la cuenta y reporte a las autoridades competentes.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>2. Moderación y Denuncia</h2>
             <p>Todos los informes de contenido sospechoso se manejan con prioridad. <b>@ProjectTitle</b> tiene mecanismos de moderación automática y manual, así como canales claros para denuncias de usuarios.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>3. Educación y Conciencia</h2>
             <p>Proporcionamos información y guías de seguridad digital para proteger a niños y adolescentes de la explotación en línea.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>4. Cumplimiento Legal</h2>
             <p>Nuestra plataforma cumple con leyes internacionales y locales de protección infantil, incluyendo COPPA y LGPD cuando corresponda. Cooperamos con las autoridades en cualquier investigación de abuso infantil.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>5. Contacto</h2>
             <p>Para denuncias o consultas sobre seguridad infantil, contacta <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
         </div>
-        <div class="policy-section" style="text-align:center; color:#888; font-size:0.9rem;">
-            Última actualización: 5 de septiembre de 2025
+        <div class="support-footer">
+            <p>Última actualización: 5 de septiembre de 2025</p>
         </div>
     }
     else
     {
-        <h1 class="policy-title">Child Safety Policy</h1>
-        <div class="policy-subtitle">
+        <h1 class="support-title">Child Safety Policy</h1>
+        <div class="support-subtitle">
             <b>@ProjectTitle</b>'s commitment to protecting children and teenagers.
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>1. Prohibited Content</h2>
             <p>It is strictly forbidden to post, send, or share any sexual content involving children or any form of child exploitation. Violations will result in immediate account deletion and reporting to authorities.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>2. Moderation and Reporting</h2>
             <p>All reports of suspicious content are handled with priority. <b>@ProjectTitle</b> has automated and manual moderation mechanisms, as well as clear reporting channels for users.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>3. Education and Awareness</h2>
             <p>We provide information and digital safety guidance to protect children and teenagers from online exploitation.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>4. Legal Compliance</h2>
             <p>Our platform complies with international and local child protection laws, including COPPA and LGPD where applicable. We cooperate with authorities in any child abuse investigation.</p>
         </div>
-        <div class="policy-section">
+        <div class="support-section">
             <h2>5. Contact</h2>
             <p>For reports or questions about child safety, contact <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
         </div>
-        <div class="policy-section" style="text-align:center; color:#888; font-size:0.9rem;">
-            Last updated: September 5, 2025
+        <div class="support-footer">
+            <p>Last updated: September 5, 2025</p>
         </div>
     }
 </div>

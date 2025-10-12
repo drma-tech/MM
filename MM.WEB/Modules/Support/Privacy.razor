@@ -3,83 +3,26 @@
 
 <SeoHeader Title="Privacy Policy" Description="@SeoTranslations.AppDescription" Url=@($"/support/privacy") Keywords="@(["Privacy Policy"])"></SeoHeader>
 
-<style>
-    .privacy-container {
-        max-width: 900px;
-        margin: 32px auto;
-        padding: 40px 24px 32px 24px;
-        background: var(--mud-palette-background, #fff);
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-    }
-
-    .privacy-title {
-        text-align: center;
-        font-size: 2.2rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--mud-palette-text-primary, #222);
-    }
-
-    .privacy-subtitle {
-        text-align: center;
-        color: var(--mud-palette-text-secondary, #555);
-        font-size: 1.1rem;
-        margin-bottom: 2.2rem;
-    }
-
-    .privacy-section {
-        margin-bottom: 2.2rem;
-    }
-
-        .privacy-section h2 {
-            margin-bottom: 0.7rem;
-            color: var(--mud-palette-primary, #1976d2);
-            font-size: 1.18rem;
-            font-weight: 500;
-        }
-
-        .privacy-section p {
-            text-align: justify;
-            margin-bottom: 0.5rem;
-            color: var(--mud-palette-text-primary, #333);
-            line-height: 1.7;
-        }
-
-        .privacy-section ul {
-            text-align: justify;
-            margin-bottom: 0.5rem;
-            color: var(--mud-palette-text-primary, #333);
-            line-height: 1.7;
-            padding-left: 1.4rem;
-            list-style-type: disc;
-        }
-
-            .privacy-section ul li {
-                padding-left: 0.1rem;
-            }
-</style>
-
-<div class="privacy-container">
+<div class="support-container">
     @if (Language == AppLanguage.pt)
     {
-        <h1 class="privacy-title">Política de Privacidade</h1>
-        <div class="privacy-subtitle">
+        <h1 class="support-title">Política de Privacidade</h1>
+        <div class="support-subtitle">
             Proteger seus dados é uma prioridade para <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política está em conformidade com o Regulamento Geral de Proteção de Dados (GDPR - UE), a Lei Geral de Proteção de Dados (LGPD - Brasil) e a Lei de Privacidade do Consumidor da Califórnia (CCPA/CPRA - EUA).<br />
             Recomendamos a leitura atenta desta política para entender como suas informações são coletadas, utilizadas e protegidas.
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>1. Dados que Coletamos</h2>
             <p>Durante o uso da plataforma, coletamos respostas a um questionário detalhado que pode incluir dados sobre saúde, hábitos, preferências, personalidade, objetivos, além de fotos e documentos de identidade para fins de verificação (utilizados exclusivamente para conferência). Também registramos informações técnicas e de acesso como e-mail, endereço IP, país e dados de login social. Localização aproximada (ex: cidade ou país) é solicitada durante o cadastro e pode ser atualizada pelo usuário a qualquer momento. Não coletamos localização precisa ou em tempo real por GPS. Dados de uso como cliques, histórico de interações e horários de acesso também podem ser coletados para melhorar o desempenho do serviço e detectar abusos.</p>
             <p>O fornecimento de dados sensíveis é opcional, e a visibilidade do perfil pode ser limitada com base nas configurações do usuário. O tratamento desses dados sensíveis opcionais baseia-se no consentimento explícito do usuário e é utilizado exclusivamente para aprimorar a relevância das combinações.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>2. Como Utilizamos Seus Dados</h2>
             <p>As informações coletadas são utilizadas para fornecer uma experiência personalizada e segura. Isso inclui gerar sugestões de perfil com base em modelos científicos e estatísticos, autenticar a identidade do usuário, prevenir fraudes, moderar conteúdos denunciados, garantir a segurança do sistema e melhorar continuamente o serviço com base nas interações dos usuários.</p>
             <p>Os dados também podem ser utilizados, de forma agregada ou anonimizada, para treinar e aprimorar algoritmos internos que melhoram a avaliação de compatibilidade e a detecção de comportamentos suspeitos. Esse processamento não gera efeitos legais ou significativos para o usuário e pode ser revisado manualmente mediante solicitação.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>3. Bases Legais para o Tratamento</h2>
             <p>Tratamos dados pessoais com base nas seguintes bases legais, conforme exigido pelo GDPR (UE), LGPD (Brasil) e CCPA/CPRA (EUA):</p>
             <ul>
@@ -89,7 +32,7 @@
                 <li><b>Obrigação legal:</b> Quando o tratamento é necessário para cumprir obrigações legais.</li>
             </ul>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>4. Compartilhamento e Terceiros</h2>
             <p>Não vendemos seus dados pessoais. Informações que permitam identificação pessoal são compartilhadas apenas com provedores confiáveis quando estritamente necessário para oferecer funcionalidades essenciais da plataforma, cumprir obrigações legais ou mediante consentimento explícito do usuário.</p>
             <p>
@@ -101,15 +44,15 @@
                     <li>Azure e AWS – hospedam e validam dados e fotos dos usuários com verificações automatizadas.</li>
                 </ul>
             </p>
-            <p>Se você reside na Califórnia, pode optar por não permitir a venda ou o compartilhamento dos seus dados pessoais a qualquer momento, através da página <a href="/support/do-not-sell/en">Não Vender ou Compartilhar Meus Dados Pessoais</a>.</p>
-            <p>De acordo com a CCPA/CPRA, certos intercâmbios técnicos de dados (por exemplo, para análises ou publicidade) podem ser considerados "compartilhamento" mesmo sem venda direta. Veja detalhes na página <a href="/support/do-not-sell/pt">Não Vender ou Compartilhar Meus Dados Pessoais</a>.</p>
+            <p>Se você reside na Califórnia, pode optar por não permitir a venda ou o compartilhamento dos seus dados pessoais a qualquer momento, através da página <a href="/support/do-not-sell">Não Vender ou Compartilhar Meus Dados Pessoais</a>.</p>
+            <p>De acordo com a CCPA/CPRA, certos intercâmbios técnicos de dados (por exemplo, para análises ou publicidade) podem ser considerados "compartilhamento" mesmo sem venda direta. Veja detalhes na página <a href="/support/do-not-sell">Não Vender ou Compartilhar Meus Dados Pessoais</a>.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>5. Cookies, Rastreamento e Publicidade</h2>
             <p>Utilizamos cookies próprios e de terceiros para análise de uso, melhoria de desempenho, experiência personalizada e exibição de publicidade. Nenhuma informação pessoalmente identificável é coletada sem seu consentimento. Os usuários podem gerenciar preferências de cookies através das configurações do navegador e revogar o consentimento a qualquer momento.</p>
             <p><b>Importante:</b> Devido ao framework AppTrackingTransparency (ATT) da Apple, que exige permissão explícita do usuário para rastreamento comportamental entre apps e sites, esse tipo de rastreamento não é realizado em dispositivos Apple através do nosso app. Não instalamos nem usamos ferramentas de rastreamento que dependam do consentimento ATT, portanto o rastreamento comportamental e as análises relacionadas são limitados ou desativados em dispositivos Apple.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>6. Armazenamento e Segurança dos Dados</h2>
             <p>Todos os dados são armazenados com segurança em servidores em nuvem da Microsoft Azure, com a região de armazenamento principal localizada nos Estados Unidos. Os dados podem ser replicados para outras regiões para garantir estabilidade e alta disponibilidade da plataforma.</p>
             <p>As informações são criptografadas durante a transmissão por meio de protocolos seguros como HTTPS. Os dados em repouso são protegidos com controles de acesso rígidos, monitoramento e práticas recomendadas oferecidas pela infraestrutura de nível empresarial da Azure.</p>
@@ -117,53 +60,53 @@
             <p>Os usuários também são responsáveis por manter a confidencialidade de suas credenciais e relatar qualquer atividade suspeita.</p>
             <p><b>Aviso:</b> Em dispositivos Apple, devido às restrições do ATT, o rastreamento comportamental e a coleta de dados entre apps são limitados. Cumprimos integralmente essas restrições e não as contornamos, portanto os dados dos usuários Apple podem ser menos completos ou ausentes em certas análises.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>7. Retenção e Exclusão de Dados</h2>
             <p>Os usuários podem excluir suas contas e solicitar a remoção dos dados a qualquer momento diretamente na plataforma. Uma vez excluídos, os dados pessoais são removidos permanentemente do banco de dados principal.</p>
             <p>No entanto, certas informações podem ser retidas em um sistema isolado por até 6 meses exclusivamente para fins legais, como prevenção a fraudes, cumprimento de obrigações regulatórias, tratamento de denúncias ou atendimento a solicitações de autoridades. Após esse período, os dados serão permanentemente excluídos ou anonimizados de forma irreversível.</p>
             <p>Essa retenção se baseia em obrigações legais, interesse legítimo ou cumprimento de solicitações dos usuários, em conformidade com o Art. 6 do GDPR e o Art. 7 da LGPD.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>8. Seus Direitos de Privacidade</h2>
             <p>O acesso à plataforma é protegido por autenticação, e as sessões expiram automaticamente após 24 horas por segurança. Os usuários têm o direito de acessar, corrigir, atualizar, excluir, restringir o tratamento, se opor ao tratamento, solicitar portabilidade de dados, retirar o consentimento e não se submeter a decisões baseadas unicamente em tratamento automatizado. Esses direitos podem variar conforme a jurisdição (ex: GDPR na UE, LGPD no Brasil, e CCPA/CPRA na Califórnia). Os usuários também podem solicitar informações sobre práticas de compartilhamento de dados e registrar reclamações junto a autoridades competentes.</p>
             <p>Para exercer seus direitos de privacidade, esclarecer dúvidas ou obter mais informações sobre o tratamento dos seus dados, utilize os canais de suporte disponíveis na plataforma. Se necessário, você também pode entrar em contato com nossa equipe através do e-mail <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>9. Restrições de Idade e Verificação</h2>
             <p>O cadastro e uso da plataforma são estritamente restritos a pessoas com 18 anos ou mais. Mesmo que leis locais permitam idade inferior para relacionamentos ou casamento, esta plataforma não permite a participação de menores de 18 anos sob nenhuma circunstância. A verificação de identidade é obrigatória antes de qualquer interação relevante entre usuários. O envio de documentos falsos ou informações enganosas para burlar essa restrição pode resultar em suspensão permanente da conta.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>10. Moderação de Conteúdo e Solicitações Legais</h2>
             <p>Perfis denunciados podem ser analisados por sistemas automatizados ou por equipe especializada. Em caso de violação dos termos ou suspeita de atividade ilegal, o conteúdo e os dados relacionados podem ser preservados temporariamente e, se necessário, compartilhados com autoridades competentes para investigação, sempre conforme a legislação aplicável. Todas as ações de moderação são auditáveis e documentadas internamente para garantir transparência e responsabilidade.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>11. Atualizações e Conformidade</h2>
             <p>Esta política pode ser atualizada periodicamente para refletir mudanças legais ou melhorias nos nossos serviços. Os usuários serão notificados com antecedência em caso de alterações relevantes e poderão ser solicitados a renovar seu consentimento, quando exigido por lei. Estamos em conformidade com as normas de proteção de dados aplicáveis, incluindo a LGPD, o GDPR e outras leis relevantes nas regiões onde atuamos.</p>
         </div>
-        <div class="privacy-section">
-            <p style="text-align:center; color:#888; font-size:0.9rem;">Última atualização: 5 de agosto de 2025</p>
-            <p style="text-align:center; color:#888; font-size:0.9rem;">Ao utilizar a plataforma, você concorda com esta Política de Privacidade e os <a href="/support/terms/pt">Termos de Uso</a>.</p>
+        <div class="support-footer">
+            <p>Última atualização: 5 de agosto de 2025</p>
+            <p>Ao utilizar a plataforma, você concorda com esta Política de Privacidade e os <a href="/support/terms">Termos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.es)
     {
-        <h1 class="privacy-title">Política de Privacidad</h1>
-        <div class="privacy-subtitle">
+        <h1 class="support-title">Política de Privacidad</h1>
+        <div class="support-subtitle">
             Proteger tus datos es una prioridad para <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operado por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política cumple con el Reglamento General de Protección de Datos (GDPR – UE), la Ley General de Protección de Datos (LGPD – Brasil) y la Ley de Privacidad del Consumidor de California (CCPA/CPRA – EE.UU.).<br />
             Recomendamos leer detenidamente esta política para comprender cómo se recopila, utiliza y protege tu información.
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>1. Datos que Recopilamos</h2>
             <p>Durante el uso de la plataforma, recopilamos respuestas a un cuestionario detallado que puede incluir datos sobre salud, hábitos, preferencias, personalidad, objetivos, así como fotos y documentos de identidad con fines de verificación (utilizados exclusivamente para comprobación). También registramos información técnica y de acceso como correo electrónico, dirección IP, país y datos de inicio de sesión social. La ubicación aproximada (por ejemplo, ciudad o país) se solicita durante el registro y puede ser actualizada por el usuario en cualquier momento. No recopilamos ubicación GPS precisa o en tiempo real. También pueden recopilarse datos de uso, como clics, historial de interacción y horarios de acceso, para mejorar el rendimiento del servicio y detectar abusos.</p>
             <p>Proporcionar datos sensibles es opcional, y la visibilidad del perfil puede limitarse según la configuración del usuario. El tratamiento de estos datos sensibles opcionales se basa en el consentimiento explícito del usuario y se utiliza únicamente para mejorar la relevancia de las coincidencias.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>2. Cómo Utilizamos tus Datos</h2>
             <p>La información recopilada se utiliza para ofrecer una experiencia personalizada y segura. Esto incluye generar sugerencias de perfil basadas en modelos científicos y estadísticos, autenticar la identidad del usuario, prevenir fraudes, moderar contenido reportado, garantizar la seguridad del sistema y mejorar continuamente el servicio según las interacciones de los usuarios.</p>
             <p>Los datos también pueden utilizarse, en forma agregada o anonimizada, para entrenar y mejorar algoritmos internos que optimizan la evaluación de compatibilidad y la detección de comportamientos sospechosos. Este procesamiento no tiene efectos legales ni significativos en el usuario y puede revisarse manualmente si se solicita.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>3. Bases Legales para el Tratamiento</h2>
             <p>Tratamos datos personales conforme a las siguientes bases legales, según lo exigido por el GDPR (UE), la LGPD (Brasil) y la CCPA/CPRA (EE.UU.):</p>
             <ul>
@@ -173,7 +116,7 @@
                 <li><b>Obligación legal:</b> cuando el tratamiento es necesario para cumplir con la ley aplicable.</li>
             </ul>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>4. Compartición y Terceras Partes</h2>
             <p>No vendemos tus datos personales. La información identificable se comparte únicamente con proveedores de terceros de confianza cuando es estrictamente necesario para ofrecer funcionalidades esenciales de la plataforma, cumplir con la ley o con consentimiento explícito del usuario.</p>
             <p>
@@ -185,15 +128,15 @@
                     <li>Azure y AWS – alojan y validan datos y fotos de usuarios con verificaciones automatizadas.</li>
                 </ul>
             </p>
-            <p>Si resides en California, puedes optar por no permitir la venta o el intercambio de tus datos personales en cualquier momento, a través de la página <a href="/support/do-not-sell/en">No vender ni compartir mi información personal</a>.</p>
-            <p>Según la CCPA/CPRA, ciertos intercambios técnicos de datos (por ejemplo, para análisis o publicidad) pueden considerarse “compartir” incluso si no hay venta directa. Consulta nuestra página <a href="/support/do-not-sell/es">No vender ni compartir mi información personal</a> para más detalles.</p>
+            <p>Si resides en California, puedes optar por no permitir la venta o el intercambio de tus datos personales en cualquier momento, a través de la página <a href="/support/do-not-sell">No vender ni compartir mi información personal</a>.</p>
+            <p>Según la CCPA/CPRA, ciertos intercambios técnicos de datos (por ejemplo, para análisis o publicidad) pueden considerarse “compartir” incluso si no hay venta directa. Consulta nuestra página <a href="/support/do-not-sell">No vender ni compartir mi información personal</a> para más detalles.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>5. Cookies, Seguimiento y Publicidad</h2>
             <p>Utilizamos cookies propias y de terceros para analizar el uso, mejorar el rendimiento, personalizar la experiencia y mostrar publicidad. No se recopila ninguna información personal identificable sin tu consentimiento. Los usuarios pueden gestionar sus preferencias de cookies desde la configuración del navegador y revocar el consentimiento en cualquier momento.</p>
             <p><b>Importante:</b> Debido al framework AppTrackingTransparency (ATT) de Apple, que requiere permiso explícito del usuario para el seguimiento conductual entre apps y sitios web, este tipo de seguimiento no se realiza en dispositivos Apple a través de nuestra app. No instalamos ni usamos herramientas de seguimiento que requieran el consentimiento ATT, por lo que el seguimiento conductual y los análisis relacionados están limitados o desactivados en dispositivos Apple.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>6. Almacenamiento y Seguridad de Datos</h2>
             <p>Todos los datos se almacenan de forma segura en servidores en la nube de Microsoft Azure, con la región principal de almacenamiento ubicada en Estados Unidos. Los datos también pueden replicarse a otras regiones para asegurar estabilidad y alta disponibilidad de la plataforma.</p>
             <p>La información se encripta durante la transmisión mediante protocolos seguros como HTTPS. Los datos en reposo están protegidos mediante controles de acceso estrictos, monitoreo y buenas prácticas ofrecidas por la infraestructura empresarial de Azure.</p>
@@ -201,53 +144,53 @@
             <p>También eres responsable de mantener la confidencialidad de tus credenciales y reportar cualquier actividad sospechosa.</p>
             <p><b>Nota:</b> En dispositivos Apple, debido a las restricciones de ATT, el seguimiento conductual y la recopilación de datos entre apps están limitados. Cumplimos completamente con estas restricciones y no las eludimos, por lo que los datos de los usuarios de Apple pueden ser menos completos o estar ausentes en ciertos análisis.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>7. Retención y Eliminación de Datos</h2>
             <p>Los usuarios pueden eliminar su cuenta y solicitar la eliminación de sus datos en cualquier momento directamente desde la plataforma. Una vez eliminados, los datos personales se eliminan permanentemente de la base de datos principal.</p>
             <p>No obstante, cierta información puede retenerse en un sistema aislado por hasta 6 meses exclusivamente con fines legales, como prevención de fraudes, cumplimiento de obligaciones regulatorias, manejo de reportes o atención a solicitudes de autoridades. Tras este periodo, los datos se eliminarán permanentemente o se anonimizarán de forma irreversible.</p>
             <p>Esta retención se basa en obligaciones legales, interés legítimo o cumplimiento de solicitudes de los usuarios, conforme al Art. 6 del GDPR y Art. 7 de la LGPD.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>8. Tus Derechos de Privacidad</h2>
             <p>El acceso a la plataforma está protegido por autenticación y las sesiones caducan automáticamente después de 24 horas por seguridad. Los usuarios tienen derecho a acceder, corregir, actualizar, eliminar, restringir el tratamiento, oponerse al tratamiento, solicitar portabilidad de datos, retirar el consentimiento y no estar sujetos a decisiones basadas únicamente en procesamiento automatizado. Estos derechos pueden variar según la jurisdicción (por ejemplo, GDPR en la UE, LGPD en Brasil y CCPA/CPRA en California). También puedes solicitar información sobre prácticas de compartición de datos y presentar reclamaciones ante autoridades competentes.</p>
             <p>Para ejercer tus derechos de privacidad, aclarar dudas o obtener más información sobre cómo se manejan tus datos, utiliza los canales de soporte disponibles en la plataforma. Si es necesario, también puedes contactarnos vía correo electrónico en <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>9. Restricciones de Edad y Verificación</h2>
             <p>El registro y uso de la plataforma están estrictamente restringidos a personas mayores de 18 años. Aunque las leyes locales permitan una edad menor para relaciones o matrimonio, esta plataforma no permite la participación de menores de 18 años bajo ninguna circunstancia. La verificación de identidad es obligatoria antes de cualquier interacción significativa entre usuarios. El envío de documentos falsos o información engañosa para eludir esta restricción puede resultar en la suspensión permanente de la cuenta.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>10. Moderación de Contenido y Solicitudes Legales</h2>
             <p>Los perfiles denunciados pueden ser revisados por sistemas automatizados o personal especializado. En caso de violación de los términos o sospecha de actividad ilegal, el contenido y los datos relacionados pueden conservarse temporalmente y, si es necesario, compartirse con autoridades competentes para investigación, siempre conforme a la ley aplicable. Todas las acciones de moderación son auditables y documentadas internamente para garantizar transparencia y responsabilidad.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>11. Actualizaciones y Cumplimiento</h2>
             <p>Esta política puede actualizarse periódicamente para reflejar cambios legales o mejoras en nuestros servicios. Se notificará a los usuarios con anticipación en caso de cambios importantes, y puede solicitarse la renovación del consentimiento cuando la ley lo exija. Cumplimos con las normativas de protección de datos aplicables, incluyendo LGPD, GDPR y otras leyes relevantes en las regiones donde operamos.</p>
         </div>
-        <div class="privacy-section">
-            <p style="text-align:center; color:#888; font-size:0.9rem;">Última actualización: 5 de agosto de 2025</p>
-            <p style="text-align:center; color:#888; font-size:0.9rem;">Al usar la plataforma, aceptas esta Política de Privacidad y los <a href="/support/terms/es">Términos de Uso</a>.</p>
+        <div class="support-footer">
+            <p>Última actualización: 5 de agosto de 2025</p>
+            <p>Al usar la plataforma, aceptas esta Política de Privacidad y los <a href="/support/terms">Términos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.zh)
     {
-        <h1 class="privacy-title">隐私政策</h1>
-        <div class="privacy-subtitle">
+        <h1 class="support-title">隐私政策</h1>
+        <div class="support-subtitle">
             保护您的数据是 <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>) 的首要任务，该平台由 DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) 运营。<br />
             本政策遵守《通用数据保护条例》（GDPR - 欧盟）、《巴西通用数据保护法》（LGPD - 巴西）以及《加州消费者隐私法案》（CCPA/CPRA - 美国）。<br />
             我们建议您仔细阅读本政策，以了解您的信息如何被收集、使用和保护。
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>1. 我们收集的数据</h2>
             <p>在使用平台时，我们会收集您填写的详细问卷答案，可能包括健康、习惯、偏好、个性、目标等数据，以及用于验证的照片和身份证件（仅用于核查）。我们还会记录电子邮件、IP 地址、国家和社交登录数据等技术和访问信息。注册时会要求提供大致位置（如城市或国家），用户可随时更新。我们不会收集精确或实时的 GPS 位置。使用数据（如点击、交互历史和访问时间）也可能被收集，用于改进服务性能和检测滥用行为。</p>
             <p>提供敏感数据是可选的，用户资料的可见性可能受设置限制。可选敏感数据的处理基于用户的明确同意，仅用于提高匹配的相关性。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>2. 我们如何使用您的数据</h2>
             <p>收集到的信息用于为您提供个性化和安全的体验，包括基于科学和统计模型生成资料推荐、验证用户身份、防止欺诈、审核举报内容、保障系统安全，以及根据用户互动不断改进服务。</p>
             <p>数据还可能以汇总或匿名形式用于训练和优化内部算法，以提高匹配评估和可疑行为检测。这类处理不会对用户产生法律或重大影响，并可根据请求进行人工复核。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>3. 数据处理的法律依据</h2>
             <p>我们根据以下法律依据处理个人数据，符合《通用数据保护条例》（GDPR - 欧盟）、《巴西通用数据保护法》（LGPD - 巴西）和《加州消费者隐私法案》（CCPA/CPRA）：</p>
             <ul>
@@ -257,7 +200,7 @@
                 <li><b>法律义务：</b> 当处理是为遵守适用法律所必需。</li>
             </ul>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>4. 数据共享和第三方</h2>
             <p>我们不会出售您的个人数据。仅在必要时与受信任的第三方服务提供商共享可识别信息，用于提供核心功能、遵守法律或基于用户的明确同意。</p>
             <p>
@@ -269,15 +212,15 @@
                     <li>Azure 和 AWS – 托管和验证用户数据及照片，并进行自动检查。</li>
                 </ul>
             </p>
-            <p>如果您是加州居民，可以随时通过我们的 <a href="/support/do-not-sell/en">“禁止出售或共享我的个人信息”</a> 页面选择退出数据出售或共享。</p>
-            <p>根据 CCPA/CPRA，某些技术性数据交换（如分析或广告）即使未直接出售，也可能被视为“共享”。详情请参见 <a href="/support/do-not-sell/en">“禁止出售或共享我的个人信息”</a> 页面。</p>
+            <p>如果您是加州居民，可以随时通过我们的 <a href="/support/do-not-sell">“禁止出售或共享我的个人信息”</a> 页面选择退出数据出售或共享。</p>
+            <p>根据 CCPA/CPRA，某些技术性数据交换（如分析或广告）即使未直接出售，也可能被视为“共享”。详情请参见 <a href="/support/do-not-sell">“禁止出售或共享我的个人信息”</a> 页面。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>5. Cookies、追踪和广告</h2>
             <p>我们使用自有和第三方 Cookies 进行使用分析、性能优化、个性化体验和广告展示。在未获得您同意的情况下，不会收集可识别的个人信息。用户可通过浏览器设置管理 Cookie 偏好，并可随时撤销同意。</p>
             <p><b>重要提示：</b> 由于 Apple 的 AppTrackingTransparency (ATT) 框架要求用户明确授权进行跨应用和跨网站的行为追踪，因此我们的应用在 Apple 设备上不会执行此类追踪。我们不会安装或使用需要 ATT 授权的追踪工具，因此在 Apple 设备上的行为追踪和相关分析功能受到限制或停用。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>6. 数据存储和安全</h2>
             <p>所有数据都安全存储在 Microsoft Azure 云服务器上，主要存储区域位于美国。数据也可能复制到其他区域，以确保平台的稳定性和高可用性。</p>
             <p>信息在传输过程中使用 HTTPS 等安全协议加密。静态数据存储时，采用严格的访问控制、监控和 Azure 企业级基础设施的最佳安全实践进行保护。</p>
@@ -285,53 +228,53 @@
             <p>用户也有责任妥善保管其账户凭证，并及时报告可疑活动。</p>
             <p><b>注意：</b> 在 Apple 设备上，由于 ATT 限制，行为追踪和跨应用数据收集受到限制。我们完全遵守这些限制，不会规避，因此 Apple 用户的数据在某些分析中可能较少或缺失。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>7. 数据保留和删除</h2>
             <p>用户可以随时通过平台删除账户并请求移除数据。一旦删除，个人数据将从主数据库中永久清除。</p>
             <p>但某些信息可能在隔离系统中保留最长 6 个月，仅用于法律目的，例如防止欺诈、履行监管义务、处理举报或回应主管机关请求。之后，数据将被永久删除或不可逆转地匿名化。</p>
             <p>此保留基于法律义务、合法利益或用户请求，符合 GDPR（第 6 条）和 LGPD（第 7 条）。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>8. 您的隐私权利</h2>
             <p>平台访问受身份验证保护，且会话在 24 小时后自动过期以保证安全。用户有权访问、更正、更新、删除、限制处理、反对处理、请求数据可携带性、撤回同意，并有权不受仅基于自动化处理的决定影响。这些权利可能因司法管辖区不同而有所差异（如欧盟的 GDPR、巴西的 LGPD 和加州的 CCPA/CPRA）。用户也可请求了解数据共享实践并向监管机构投诉。</p>
             <p>要行使您的隐私权、澄清疑问或获取更多关于数据处理的信息，请使用平台提供的支持渠道。如有需要，您还可以通过 <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> 联系我们的支持团队。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>9. 年龄限制和验证</h2>
             <p>注册和使用平台严格限制为年满 18 岁的用户。即使当地法律允许较低年龄的恋爱或婚姻，本平台在任何情况下均不允许 18 岁以下用户参与。在用户之间进行重大互动前，必须完成身份验证。提交虚假文件或误导性信息以规避年龄限制，可能导致账户被永久封禁。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>10. 内容审核和法律请求</h2>
             <p>被举报的资料可能由自动化系统或专业人员审核。在违反条款或涉嫌违法活动的情况下，相关内容和数据可能会被暂时保留，并在必要时与有权机关共享，以供调查，始终遵守适用法律。所有审核操作均会在内部记录，以保证透明度和问责。</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>11. 政策更新和合规</h2>
             <p>本政策可能会定期更新，以反映法律变更或服务改进。若有重大变更，用户将在事前收到通知，并在法律要求时被要求重新同意。我们遵守适用的数据保护法规，包括 LGPD、GDPR 以及我们运营地区的其他相关法律。</p>
         </div>
-        <div class="privacy-section">
-            <p style="text-align:center; color:#888; font-size:0.9rem;">最后更新日期：2025 年 8 月 5 日</p>
-            <p style="text-align:center; color:#888; font-size:0.9rem;">使用本平台即表示您同意本隐私政策及 <a href="/support/terms/en">使用条款</a>。</p>
+        <div class="support-footer">
+            <p>最后更新日期：2025 年 8 月 5 日</p>
+            <p>使用本平台即表示您同意本隐私政策及 <a href="/support/terms">使用条款</a>。</p>
         </div>
     }
     else
     {
-        <h1 class="privacy-title">Privacy Policy</h1>
-        <div class="privacy-subtitle">
+        <h1 class="support-title">Privacy Policy</h1>
+        <div class="support-subtitle">
             Protecting your data is a priority for <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             This policy complies with the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA - USA).<br />
             We recommend reading this policy carefully to understand how your information is collected, used, and protected.
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>1. Data We Collect</h2>
             <p>While using the platform, we collect answers to a detailed questionnaire that may include data on health, habits, preferences, personality, goals, as well as photos and ID documents for verification purposes (used exclusively for checking). We also record technical and access information such as email, IP address, country, and social login data. Approximate location (e.g., city or country) is requested during registration and can be updated by the user at any time. We do not collect precise or real-time GPS location. Usage data such as clicks, interaction history, and access times may also be collected to improve service performance and detect abuse.</p>
             <p>Providing sensitive data is optional, and profile visibility may be limited based on user settings. The processing of optional sensitive data is based on the user’s explicit consent and is used solely to enhance match relevance.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>2. How We Use Your Data</h2>
             <p>The information collected is used to provide a personalized and secure experience. This includes generating profile suggestions based on scientific and statistical models, authenticating user identity, preventing fraud, moderating reported content, ensuring system security, and continuously improving the service based on user interactions.</p>
             <p>Data may also be used, in aggregated or anonymized form, to train and refine internal algorithms that improve compatibility assessments and detection of suspicious behavior. This processing has no legal or significant effect on the user and can be reviewed manually upon request.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>3. Legal Grounds for Processing</h2>
             <p>We process personal data based on the following legal grounds, as required by the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA):</p>
             <ul>
@@ -341,7 +284,7 @@
                 <li><b>Legal obligation:</b> When processing is necessary to comply with applicable law.</li>
             </ul>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>4. Sharing and Third Parties</h2>
             <p>We do not sell your personal data. Personally identifiable information is only shared with trusted third-party providers when strictly necessary to deliver core platform features, comply with the law, or with the user’s explicit consent.</p>
             <p>
@@ -353,15 +296,15 @@
                     <li>Azure and AWS – host and validate user data and photos with automated checks.</li>
                 </ul>
             </p>
-            <p>If you are a California resident, you may opt out of the sale or sharing of your personal data at any time via our <a href="/support/do-not-sell/en">Do Not Sell or Share My Personal Information</a> page.</p>
-            <p>Under CCPA/CPRA, certain technical data exchanges (e.g., for analytics or ads) may be considered “sharing” even if no direct sale occurs. See our <a href="/support/do-not-sell/en">Do Not Sell or Share My Personal Information</a> page for details.</p>
+            <p>If you are a California resident, you may opt out of the sale or sharing of your personal data at any time via our <a href="/support/do-not-sell">Do Not Sell or Share My Personal Information</a> page.</p>
+            <p>Under CCPA/CPRA, certain technical data exchanges (e.g., for analytics or ads) may be considered “sharing” even if no direct sale occurs. See our <a href="/support/do-not-sell">Do Not Sell or Share My Personal Information</a> page for details.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>5. Cookies, Tracking, and Advertising</h2>
             <p>We use first-party and third-party cookies for usage analysis, performance improvement, personalized experience, and advertising display. No personally identifiable information is collected without your consent. Users can manage their cookie preferences through their browser settings and may revoke consent at any time.</p>
             <p><b>Important:</b> Due to Apple's AppTrackingTransparency (ATT) framework, which requires explicit user permission for cross-app and cross-site behavioral tracking, such tracking is not performed on Apple devices through our app. We do not install or use tracking tools that require ATT consent, so behavioral tracking and related analytics are limited or disabled on Apple devices.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>6. Data Storage and Security</h2>
             <p>All data is securely stored on Microsoft Azure cloud servers, with the primary storage region located in the United States. Data may also be replicated to other regions to ensure platform stability and high availability.</p>
             <p>Information is encrypted during transmission using secure protocols such as HTTPS. Data at rest is protected using strict access controls, monitoring, and best practices provided by Azure's enterprise-grade infrastructure.</p>
@@ -369,32 +312,32 @@
             <p>Users are also responsible for maintaining the confidentiality of their credentials and reporting any suspicious activity.</p>
             <p><b>Note:</b> On Apple devices, due to ATT restrictions, behavioral tracking and cross-app data collection are limited. We fully comply with these restrictions and do not circumvent them, so data from Apple users may be less comprehensive or absent in certain analytics.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>7. Data Retention and Deletion</h2>
             <p>Users can delete their accounts and request the removal of their data at any time directly through the platform. Once deleted, personal data is permanently removed from the main database.</p>
             <p>However, certain information may be retained in an isolated system for up to 6 months solely for legal purposes, such as fraud prevention, compliance with regulatory obligations, handling reports, or responding to requests from authorities. After this period, the data will be permanently deleted or irreversibly anonymized.</p>
             <p>This retention is based on legal obligations, legitimate interest, or compliance with user requests, in line with GDPR (Art. 6) and LGPD (Art. 7).</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>8. Your Privacy Rights</h2>
             <p>Platform access is protected by authentication, and sessions automatically expire after 24 hours for security. Users have the right to access, correct, update, delete, restrict processing, object to processing, request data portability, withdraw consent, and not be subject to decisions based solely on automated processing. These rights may vary based on jurisdiction (e.g., GDPR in the EU, LGPD in Brazil, and CCPA/CPRA in California). Users can also request information about data sharing practices and lodge complaints with a supervisory authority.</p>
             <p>To exercise your privacy rights, clarify doubts, or get more information about how your data is handled, use the support channels available on the platform. If necessary, you may also contact our support team via <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
-        </div>       
-        <div class="privacy-section">
+        </div>
+        <div class="support-section">
             <h2>9. Age Restrictions and Verification</h2>
             <p>Registration and use of the platform are strictly restricted to users aged 18 or older. Even if local laws allow a lower age for relationships or marriage, this platform does not permit participation by individuals under 18 under any circumstances. Identity verification is mandatory before any significant interaction between users. Submitting false documents or misleading information to bypass age restrictions may result in permanent suspension of the account.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>10. Content Moderation and Legal Requests</h2>
             <p>Reported profiles may be reviewed by automated systems or specialized staff. In cases of terms violation or suspected illegal activity, related content and data may be temporarily preserved and, if necessary, shared with competent authorities for investigation, always in accordance with applicable law. All moderation actions are auditable and documented internally for transparency and accountability.</p>
         </div>
-        <div class="privacy-section">
+        <div class="support-section">
             <h2>11. Policy Updates and Compliance</h2>
             <p>This policy may be updated periodically to reflect legal changes or improvements to our services. Users will be notified in advance in the case of material changes, and may be asked to renew their consent where legally required. We comply with applicable data protection regulations, including LGPD, GDPR, and other relevant laws in the regions where we operate.</p>
         </div>
-        <div class="privacy-section">
-            <p style="text-align:center; color:#888; font-size:0.9rem;">Last updated: August 5, 2025</p>
-            <p style="text-align:center; color:#888; font-size:0.9rem;">By using the platform, you agree to this Privacy Policy and the <a href="/support/terms/en">Terms of Use</a>.</p>
+        <div class="support-footer">
+            <p>Last updated: August 5, 2025</p>
+            <p>By using the platform, you agree to this Privacy Policy and the <a href="/support/terms">Terms of Use</a>.</p>
         </div>
     }
 </div>

@@ -88,6 +88,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find your life partner.
+        /// </summary>
+        public static string AppSubtitle {
+            get {
+                return ResourceManager.GetString("AppSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string ProfileTitle {
