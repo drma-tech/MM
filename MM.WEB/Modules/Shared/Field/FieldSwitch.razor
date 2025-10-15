@@ -5,7 +5,7 @@
 {
     <div class="d-flex" style="align-items: center;">
         <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
-        <MudSwitch @bind-Value="Value" ThumbIcon="@(Value? Icons.Material.Filled.Done : Icons.Material.Filled.Close)" ThumbIconColor="@(Value? Color.Success: Color.Error)">
+        <MudSwitch @bind-Value="Value" ThumbIcon="@(Value? Icons.Material.Filled.Done : Icons.Material.Filled.Close)" ThumbIconColor="@(Value? Color.Success: Color.Error)" Size="AppStateStatic.Size">
             @For.GetCustomAttribute()?.Name
         </MudSwitch>
     </div>

@@ -9,12 +9,12 @@ window.initSwiper = (id, size) => {
 
     const el = document.getElementById(id);
     if (!el) return;
-    const posterSize = size ?? (mobile ? 105 : 128);
+    const posterSize = size ?? (mobile ? 98 : 128);
     const margin = 8;
 
     var swiper = new Swiper(el, {
         slidesPerView: "auto",
-        spaceBetween: 8,
+        spaceBetween: mobile ? 4 : 8,
         breakpointsBase: "container",
         navigation:
         {

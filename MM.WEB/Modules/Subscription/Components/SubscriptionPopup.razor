@@ -38,7 +38,9 @@
                             </MudToggleItem>
                             <MudToggleItem Value="@AccountCycle.Yearly">
                                 @AccountCycle.Yearly.GetName()
-                                <MudChip Size="Size.Small" Color="Color.Success">@Translations.YearSave</MudChip>
+                                <MudChip Size="Size.Small" Color="Color.Success" Style="padding: 0.2rem;">
+                                    @Translations.YearSave
+                                </MudChip>
                             </MudToggleItem>
                         </MudToggleGroup>
                     </MudItem>
@@ -106,7 +108,7 @@
                                     <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
                                         <MudText>@AccountProduct.Standard.GetRestrictions().MySuggestions.ToString()</MudText>
                                     </MudChip>
-                                </MudItem>                          
+                                </MudItem>
                             </MudGrid>
                         </MudCardContent>
                         <MudCardActions>
@@ -134,7 +136,7 @@
                                     <MudChip T="string" Color="Color.Default" Size="Size.Small" Label="true">
                                         <MudText>@AccountProduct.Premium.GetRestrictions().MySuggestions.ToString()</MudText>
                                     </MudChip>
-                                </MudItem>                               
+                                </MudItem>
                             </MudGrid>
                         </MudCardContent>
                         <MudCardActions>

@@ -134,7 +134,7 @@ body .pwa-updater[b-pwa-updater] {
 
 .grid-relative-container-news {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 12px;
 }
 
@@ -226,6 +226,18 @@ body .pwa-updater[b-pwa-updater] {
     }
 
 /* MUD BLAZOR */
+
+@media (max-width: 599.95px), (max-height: 599.95px) {
+    .mud-dialog .mud-dialog-title {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .mud-dialog .mud-dialog-content {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
 
 .custom-title-list {
     line-height: normal;
