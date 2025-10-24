@@ -1,4 +1,3 @@
-using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +30,11 @@ await app.RunAsync();
 
 return;
 
+static void ConfigureLogging(ILoggingBuilder builder)
+{
+    builder.AddProvider(new CosmosLoggerProvider(new CosmosLogRepository()));
+}
+
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
     services.AddHttpClient("paddle");
@@ -40,12 +44,5 @@ static void ConfigureServices(HostBuilderContext context, IServiceCollection ser
     services.AddSingleton<CosmosProfileOffRepository>();
     services.AddSingleton<CosmosProfileOnRepository>();
     services.AddSingleton<StorageHelper>();
-    services.AddApplicationInsightsTelemetryWorkerService();
-    services.ConfigureFunctionsApplicationInsights();
     services.AddDistributedMemoryCache();
-}
-
-static void ConfigureLogging(ILoggingBuilder builder)
-{
-    builder.AddProvider(new CosmosLoggerProvider(new CosmosLogRepository()));
 }
