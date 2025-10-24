@@ -304,6 +304,17 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        // if (AppStateStatic.IsAuthenticated)
+        // {
+        //     var subscription = await GetLocalStorage("subscription-popup");
+
+        //     if (subscription.Empty())
+        //     {
+        //         await DialogService.SubscriptionPopup(AppStateStatic.IsAuthenticated);
+        //         await SetLocalStorage("subscription-popup", true.ToString().ToLower());
+        //     }
+        // }
+
         await JsRuntime.InvokeVoidAsync("initSwiper", SuggestionsSwiperId);
         await JsRuntime.InvokeVoidAsync("initSwiper", LikesSwiperId);
         await JsRuntime.InvokeVoidAsync("initSwiper", MatchesSwiperId);

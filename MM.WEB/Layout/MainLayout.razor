@@ -137,15 +137,15 @@
             }
 
             //open onboarding dialog for new users
-            if (!AppStateStatic.IsAuthenticated)
-            {
-                var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
-                if (onboarding.Empty())
-                {
-                    await DialogService.OnboardingPopup();
-                    await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
-                }
-            }
+            // if (!AppStateStatic.IsAuthenticated)
+            // {
+            //     var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
+            //     if (onboarding.Empty())
+            //     {
+            //         await DialogService.OnboardingPopup();
+            //         await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
+            //     }
+            // }
 
             //request an app rating on the second day of access
             var accesses = await JsRuntime.GetLocalStorage<HashSet<DateTime>>("accesses") ?? new HashSet<DateTime>();
