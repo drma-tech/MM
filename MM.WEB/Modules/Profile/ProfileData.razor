@@ -27,7 +27,7 @@
 @using WantChildren = MM.Shared.Enums.WantChildren
 @inherits PageCore<ProfileData>
 
-<RenderControl Core="Core" Model="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+<RenderControl TModel="ProfileModel" Core="Core" Model="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
     <MudExpansionPanels Elevation="2" Class="mb-3">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
@@ -49,50 +49,50 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldText For="@(() => Profile!.NickName)" @bind-Value="@Profile!.NickName" CssIcon="@IconsFA.Solid.Icon("user").Font"
+                                <FieldText For="@(() => context.NickName)" @bind-Value="@context.NickName" CssIcon="@IconsFA.Solid.Icon("user").Font"
                                            Required="true"></FieldText>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldText For="@(() => Profile.Description)" @bind-Value="@Profile.Description" CssIcon="@IconsFA.Solid.Icon("quote-left").Font"
+                                <FieldText For="@(() => context.Description)" @bind-Value="@context.Description" CssIcon="@IconsFA.Solid.Icon("quote-left").Font"
                                            Rows="8">
                                 </FieldText>
                             </MudItem>
                             <MudItem xs="12">
-                                <Country For="@(() => Profile.Nationality)" SelectedValue="@Profile.Nationality" SelectedValueChanged="CountryChanged"
+                                <Country For="@(() => context.Nationality)" SelectedValue="@context.Nationality" SelectedValueChanged="CountryChanged"
                                          CssIcon="@IconsFA.Solid.Icon("earth-americas").Font" Required="true">
                                 </Country>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldText For="@(() => Profile.Location)" Value="@Profile.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
-                                           ButtomClicked="async () => { await SetLocation(Profile); }" ButtomCssIcon="@IconsFA.Solid.Icon("map-location-dot").Font"
+                                <FieldText For="@(() => context.Location)" Value="@context.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
+                                           ButtomClicked="async () => { await SetLocation(context); }" ButtomCssIcon="@IconsFA.Solid.Icon("map-location-dot").Font"
                                            ButtomTitle="Retrieve GPS position">
                                 </FieldText>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Profile!.Languages"
+                                <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
                                              CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)"
                                              ShowDataSelectDescription="false">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@Profile.MaritalStatus"
+                                <FieldSelect For="@(() => context.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@context.MaritalStatus"
                                              CssIcon="@IconsFA.Solid.Icon("ring").Font" Required="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@Profile.BiologicalSex"
+                                <FieldSelect For="@(() => context.BiologicalSex)" TValue="BiologicalSex?" TEnum="BiologicalSex" @bind-SelectedValue="@context.BiologicalSex"
                                              CssIcon="@IconsFA.Solid.Icon("person-half-dress").Font" Required="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Profile.GenderIdentities"
+                                <FieldSelect For="@(() => context.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
                                              CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Required="true" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Profile.SexualOrientations"
+                                <FieldSelect For="@(() => context.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
                                              CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Required="true" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -124,24 +124,24 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.Ethnicity)" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@Profile!.Ethnicity"
+                                <FieldSelect For="@(() => context.Ethnicity)" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@context.Ethnicity"
                                              CssIcon="@IconsFA.Solid.Icon("globe").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.BodyType)" TValue="BodyType?" TEnum="BodyType" @bind-SelectedValue="@Profile.BodyType"
+                                <FieldSelect For="@(() => context.BodyType)" TValue="BodyType?" TEnum="BodyType" @bind-SelectedValue="@context.BodyType"
                                              CssIcon="@IconsFA.Solid.Icon("weight-scale").Font" ShowHelper="false">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <Birthdate Type="Shared.Field.FieldType.Date" For="@(() => Profile!.BirthDate)" @bind-Value="@Profile!.BirthDate"
+                                <Birthdate Type="Shared.Field.FieldType.Date" For="@(() => context.BirthDate)" @bind-Value="@context.BirthDate"
                                            CssIcon="@IconsFA.Solid.Icon("cake-candles").Font">
                                 </Birthdate>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Height)" TValue="Height?" TEnum="Height" @bind-SelectedValue="@Profile.Height"
+                                <FieldSelect For="@(() => context.Height)" TValue="Height?" TEnum="Height" @bind-SelectedValue="@context.Height"
                                              CssIcon="@IconsFA.Solid.Icon("ruler").Font" ShowHelper="false">
                                 </FieldSelect>
                             </MudItem>
@@ -158,12 +158,12 @@
                             </MudAlert>
                             <MudGrid Spacing="4">
                                 <MudItem xs="12" sm="6">
-                                    <FieldSelect For="@(() => Profile!.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@Profile!.Neurodiversity"
+                                    <FieldSelect For="@(() => context.Neurodiversity)" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@context.Neurodiversity"
                                                  CssIcon="@IconsFA.Solid.Icon("brain").Font">
                                     </FieldSelect>
                                 </MudItem>
                                 <MudItem xs="12" sm="6">
-                                    <FieldSelect For="@(() => Profile!.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@Profile!.Disabilities"
+                                    <FieldSelect For="@(() => context.Disabilities)" TValue="HashSet<Disability>" TEnum="Disability" @bind-SelectedValues="@context.Disabilities"
                                                  CssIcon="@IconsFA.Solid.Icon("wheelchair").Font" Multiple="true">
                                     </FieldSelect>
                                 </MudItem>
@@ -193,59 +193,59 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@Profile!.Drink"
+                                <FieldSelect For="@(() => context.Drink)" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@context.Drink"
                                              CssIcon="@IconsFA.Solid.Icon("champagne-glasses").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@Profile.Smoke"
+                                <FieldSelect For="@(() => context.Smoke)" TValue="Smoke?" TEnum="Smoke" @bind-SelectedValue="@context.Smoke"
                                              CssIcon="@IconsFA.Solid.Icon("smoking").Font" ShowHelper="false">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@Profile.Diet"
+                                <FieldSelect For="@(() => context.Diet)" TValue="Diet?" TEnum="Diet" @bind-SelectedValue="@context.Diet"
                                              CssIcon="@IconsFA.Solid.Icon("utensils").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@Profile.Religion"
+                                <FieldSelect For="@(() => context.Religion)" TValue="Religion?" TEnum="Religion" @bind-SelectedValue="@context.Religion"
                                              CssIcon="@IconsFA.Solid.Icon("hands-praying").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.FamilyInvolvement)" TValue="FamilyInvolvement?" TEnum="FamilyInvolvement" @bind-SelectedValue="@Profile.FamilyInvolvement"
+                                <FieldSelect For="@(() => context.FamilyInvolvement)" TValue="FamilyInvolvement?" TEnum="FamilyInvolvement" @bind-SelectedValue="@context.FamilyInvolvement"
                                              CssIcon="@IconsFA.Solid.Icon("people-roof").Font">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@Profile!.HaveChildren"
+                                <FieldSelect For="@(() => context.HaveChildren)" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@context.HaveChildren"
                                              CssIcon="@IconsFA.Solid.Icon("child").Font" ShowHelper="false">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.HavePets)" TValue="HavePets?" TEnum="HavePets" @bind-SelectedValue="@Profile!.HavePets"
+                                <FieldSelect For="@(() => context.HavePets)" TValue="HavePets?" TEnum="HavePets" @bind-SelectedValue="@context.HavePets"
                                              CssIcon="@IconsFA.Solid.Icon("paw").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@Profile.EducationLevel"
+                                <FieldSelect For="@(() => context.EducationLevel)" TValue="EducationLevel?" TEnum="EducationLevel" @bind-SelectedValue="@context.EducationLevel"
                                              CssIcon="@IconsFA.Solid.Icon("graduation-cap").Font" ShowHelper="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@Profile.CareerCluster"
+                                <FieldSelect For="@(() => context.CareerCluster)" TValue="CareerCluster?" TEnum="CareerCluster" @bind-SelectedValue="@context.CareerCluster"
                                              CssIcon="@IconsFA.Solid.Icon("briefcase").Font" ShowGroup="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@Profile.LivingSituation"
+                                <FieldSelect For="@(() => context.LivingSituation)" TValue="LivingSituation?" TEnum="LivingSituation" @bind-SelectedValue="@context.LivingSituation"
                                              CssIcon="@IconsFA.Solid.Icon("house-user").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@Profile.TravelFrequency"
+                                <FieldSelect For="@(() => context.TravelFrequency)" TValue="TravelFrequency?" TEnum="TravelFrequency" @bind-SelectedValue="@context.TravelFrequency"
                                              CssIcon="@IconsFA.Solid.Icon("plane").Font">
                                 </FieldSelect>
                             </MudItem>
@@ -302,39 +302,39 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@Profile!.MoneyPersonality"
+                                <FieldSelect For="@(() => context.MoneyPersonality)" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@context.MoneyPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://moneytype.hermoney.com/">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@Profile.SharedSpendingStyle"
+                                <FieldSelect For="@(() => context.SharedSpendingStyle)" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@context.SharedSpendingStyle"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-dollar").Font">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@Profile.RelationshipPersonality"
+                                <FieldSelect For="@(() => context.RelationshipPersonality)" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@context.RelationshipPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("people-pulling").Font" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@Profile!.MBTI"
+                                <FieldSelect For="@(() => context.MBTI)" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@context.MBTI"
                                              CssIcon="@IconsFA.Solid.Icon("user-tag").Font" HelpLink="https://www.16personalities.com/" ShowGroup="true">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@Profile!.LoveLanguage"
+                                <FieldSelect For="@(() => context.LoveLanguage)" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@context.LoveLanguage"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@Profile.SexPersonality"
+                                <FieldSelect For="@(() => context.SexPersonality)" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@context.SexPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("heart").Font" HelpLink="https://vmtherapy.com/sex-personality-type">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@Profile.SexPersonalityPreference"
+                                <FieldSelect For="@(() => context.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@context.SexPersonalityPreference"
                                              CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -366,44 +366,44 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Profile!.Food"
+                                <FieldSelect For="@(() => context.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@context.Food"
                                              CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Profile.Vacation"
+                                <FieldSelect For="@(() => context.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@context.Vacation"
                                              CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Profile.Sports"
+                                <FieldSelect For="@(() => context.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@context.Sports"
                                              CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Profile.LeisureActivities"
+                                <FieldSelect For="@(() => context.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@context.LeisureActivities"
                                              CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Profile!.MusicGenre"
+                                <FieldSelect For="@(() => context.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@context.MusicGenre"
                                              CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Profile.MovieGenre"
+                                <FieldSelect For="@(() => context.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@context.MovieGenre"
                                              CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Profile.TVGenre"
+                                <FieldSelect For="@(() => context.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@context.TVGenre"
                                              CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Profile.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Profile.ReadingGenre"
+                                <FieldSelect For="@(() => context.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@context.ReadingGenre"
                                              CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>

@@ -700,6 +700,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome to {0}.
+        /// </summary>
+        public static string WelcomeTo {
+            get {
+                return ResourceManager.GetString("WelcomeTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Why is it important?.
         /// </summary>
         public static string WhyImportant {

@@ -4,6 +4,7 @@ using MM.Shared.Models.Profile;
 using MM.WEB.Modules.Auth;
 using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
+using MM.WEB.Modules.Support;
 using MM.WEB.Shared;
 using MudBlazor;
 using static MM.Shared.Core.Helper.ImageHelper;
@@ -78,6 +79,11 @@ public static class PopupHelper
         };
 
         await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+    }
+
+    public static async Task OnboardingPopup(this IDialogService service)
+    {
+        await service.ShowAsync<Onboarding>(string.Format(GlobalTranslations.WelcomeTo, SeoTranslations.AppName), Options(MaxWidth.Medium));
     }
 
     public static DialogOptions Options(MaxWidth width)

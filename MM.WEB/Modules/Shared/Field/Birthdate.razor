@@ -86,7 +86,7 @@
         }
         catch (Exception)
         {
-            Snackbar.Add("An error occurred while processing the date", Severity.Error);
+            await ShowError("An error occurred while processing the date");
         }
     }
 

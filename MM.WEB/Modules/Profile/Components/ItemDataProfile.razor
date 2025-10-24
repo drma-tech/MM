@@ -127,7 +127,7 @@ else
         {
             if (item is Enum resultE)
             {
-                yield return resultE.GetName();
+                yield return resultE.GetName()!;
             }
             else if (item != null)
             {

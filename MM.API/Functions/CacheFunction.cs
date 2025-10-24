@@ -9,17 +9,11 @@ using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class CacheFunction(
-    CosmosCacheRepository cacheRepo,
-    CosmosRepository repo,
-    CosmosProfileOffRepository repoOff,
-    CosmosProfileOnRepository repoOn,
-    IDistributedCache distributedCache)
+public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache distributedCache)
 {
     [Function("Settings")]
     public static async Task<HttpResponseData> Configurations(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/settings")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/settings")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
@@ -34,8 +28,7 @@ public class CacheFunction(
 
     [Function("Dashboard")]
     public async Task<HttpResponseData?> Dashboard(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/sum-users")]
-        HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/sum-users")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {

@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Auth.Core;
 
-public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>(factory, "principal")
+public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>(factory, ApiType.Authenticated, "principal")
 {
     public async Task<AuthPrincipal?> Get(bool isUserAuthenticated, bool setNewVersion = false)
     {

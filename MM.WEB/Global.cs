@@ -5,4 +5,5 @@ global using MM.Shared.Enums;
 global using MM.Shared.Models;
 global using MM.WEB.Core;
 global using MM.WEB.Core.Api;
+global using MM.WEB.Core.Helper;
 global using MM.WEB.Resources;

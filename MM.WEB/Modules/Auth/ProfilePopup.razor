@@ -1,8 +1,8 @@
 ﻿@using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Profile.Resources
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
 @inherits ComponentCore<ProfilePopup>
-@inject IJSRuntime JsRuntime
 
 @inject LoginApi LoginApi
 
@@ -74,7 +74,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -97,19 +97,19 @@
                 MudDialog?.Close();
 
                 //remove authentication data from azure (todo: its not working)
-                Navigation.NavigateTo("/.auth/purge/aad");
+                // Navigation.NavigateTo("/.auth/purge/aad");
 
                 //close current login session
-                Navigation.NavigateTo("/.auth/logout", true);
+                Navigation.NavigateToLogout("/authentication/logout");
             }
             else
             {
-                Snackbar.Add(GlobalTranslations.OperationCanceled, Severity.Warning);
+                await ShowInfo(GlobalTranslations.OperationCanceled);
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

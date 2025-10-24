@@ -20,7 +20,6 @@
 @inject InviteApi InviteApi
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
-@inject IJSRuntime JsRuntime
 
 <SeoHeader Title="Profile" Description="@SeoTranslations.AppDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" IsAuthenticated="IsAuthenticated" Format="horizontal"></GoogleAdSense>
@@ -55,32 +54,32 @@
                 <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary">
                     <ChildContent>
                         <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
-                            <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Outlined" Href="/profile/data"
+                            <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
                                        Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)" Size="AppStateStatic.Size">
                                 @Button.Profile
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepFilter" SecondaryText="@Resources.Translations.StepFilterDesc" Completed="FilterValid">
-                            <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Outlined" Href="/profile/filter"
+                            <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter"
                                        Style="width: 100%;" Disabled="profile == null" Size="AppStateStatic.Size">
                                 @Button.Filters
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">
-                            <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Outlined" Href="/profile/setting"
+                            <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
                                        Style="width: 100%;" Disabled="profile == null || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                                 @Button.Settings
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepGallery" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="GalleryValid">
-                            <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Outlined" Href="/profile/gallery"
+                            <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
                                        Style="width: 100%;"
                                        Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || principal == null || principal.PublicProfile" Size="AppStateStatic.Size">
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="ValidationsValid">
-                            <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Outlined" Href="/profile/validation"
+                            <MudButton Color="GetButtonColor(ValidationsValid)" StartIcon="@GetButtonIcon(ValidationsValid)" Variant="Variant.Filled" Href="/profile/validation"
                                        Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate" Size="AppStateStatic.Size">
                                 @Button.Validations
                             </MudButton>
@@ -332,7 +331,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -369,18 +368,18 @@
         {
             if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
             {
-                Snackbar.Add(GlobalTranslations.CompleteAllSteps, MudBlazor.Severity.Warning);
+                await ShowWarning(GlobalTranslations.CompleteAllSteps);
             }
             else
             {
                 principal = await PrincipalApi.Public();
-                Snackbar.Add(GlobalTranslations.ProfilePublicMode, MudBlazor.Severity.Success);
+                await ShowSuccess(GlobalTranslations.ProfilePublicMode);
             }
         }
         else
         {
             principal = await PrincipalApi.Private();
-            Snackbar.Add(GlobalTranslations.ProfilePrivateMode, MudBlazor.Severity.Success);
+            await ShowSuccess(GlobalTranslations.ProfilePrivateMode);
         }
     }
 
@@ -396,11 +395,11 @@
         {
             await InviteApi.SendInvite(new InviteRequest { Email = email });
 
-            Snackbar.Add(GlobalTranslations.InvitationSent, MudBlazor.Severity.Success);
+            await ShowSuccess(GlobalTranslations.InvitationSent);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

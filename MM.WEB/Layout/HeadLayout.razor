@@ -1,8 +1,7 @@
 @using MM.WEB.Modules.Profile.Resources
 @using MM.WEB.Modules.Subscription.Core
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inherits ComponentCore<HeadLayout>
-
-@inject IJSRuntime JsRuntime
 
 @if (_processing)
 {
@@ -133,12 +132,12 @@
 
     private void Login()
     {
-        Navigation.NavigateTo("/.auth/login/aad?post_login_redirect_uri=" + Navigation.BaseUri + "login-success", true);
+        Navigation.NavigateToLogin("/authentication/login");
     }
 
     private void Logout()
     {
-        Navigation.NavigateTo("/.auth/logout?post_logout_redirect_uri=" + Navigation.BaseUri, true);
+        Navigation.NavigateToLogout("/authentication/logout");
     }
 
     private async Task OpenConfigurations()

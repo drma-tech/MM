@@ -3,7 +3,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, "profile")
+public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile")
 {
     public async Task<ProfileModel?> Get(RenderControlCore<ProfileModel?>? core)
     {

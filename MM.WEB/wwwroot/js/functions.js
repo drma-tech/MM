@@ -67,18 +67,15 @@ function LoadAppVariables() {
 
 async function getUserInfo() {
     try {
-        if (window.location.host.includes("localhost")) {
-            const response = await fetch("/dev-env/me.json");
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const userInfo = await response.json();
-            return userInfo?.clientPrincipal;
-        }
-        else {
-            const response = await fetch("/.auth/me");
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const userInfo = await response.json();
-            return userInfo?.clientPrincipal;
-        }
+        let keys = JSON.parse(GetLocalStorage("msal.account.keys"));
+        if (!keys) return null;
+        let session = JSON.parse(GetLocalStorage(keys[0]));
+
+        return {
+            userId: session.localAccountId,
+            name: session.name,
+            email: session.idTokenClaims["email"]
+        };
     } catch (error) {
         showError(error.message);
         return null;
@@ -218,3 +215,29 @@ function getOperatingSystem() {
     if (ua.includes("iOS") || ua.includes("iPhone") || ua.includes("iPad")) return "iOS";
     return "Unknown";
 }
+
+window.alertEffects = {
+    playBeep: (frequency, duration, type) => {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.type = type; // "sine", "square", "triangle", "sawtooth"
+            oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + duration / 1000);
+        } catch (err) {
+            console.warn("Audio playback failed:", err);
+        }
+    },
+
+    vibrate: (pattern) => {
+        if (navigator.vibrate) navigator.vibrate(pattern);
+    }
+};

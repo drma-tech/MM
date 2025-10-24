@@ -1,7 +1,6 @@
 ﻿using BrowserInterop.Extensions;
 using FluentValidation;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
@@ -14,7 +13,6 @@ public partial class ProfileData : PageCore<ProfileData>
 {
     [Inject] protected ProfileApi ProfileApi { get; set; } = default!;
     [Inject] protected MapApi MapApi { get; set; } = default!;
-    [Inject] protected IJSRuntime JsRuntime { get; set; } = default!;
 
     private AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
@@ -32,7 +30,7 @@ public partial class ProfileData : PageCore<ProfileData>
         if (Profile == null)
         {
             bool confirmed;
-            var language = await AppStateStatic.GetAppLanguage(null);
+            var language = await AppStateStatic.GetAppLanguage(JsRuntime);
 
             if (language == AppLanguage.pt)
             {
@@ -73,7 +71,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
             await PrincipalApi.Event("data processing granted");
 
-            Snackbar.Add(GlobalTranslations.BasicRequired, MudBlazor.Severity.Warning);
+            await ShowWarning(GlobalTranslations.BasicRequired);
         }
 
         Profile ??= new ProfileModel
@@ -99,7 +97,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 if (position.Error != null)
                 {
-                    Snackbar.Add(position.Error.Message, MudBlazor.Severity.Warning);
+                    await ShowWarning(position.Error.Message);
                 }
                 else if (position.Location != null)
                 {
@@ -118,17 +116,17 @@ public partial class ProfileData : PageCore<ProfileData>
                         profile.City = address?.GetCity();
                     }
 
-                    if (GPS.Accuracy > 1000) Snackbar.Add(GlobalTranslations.GpsNotAccurate, MudBlazor.Severity.Warning);
+                    if (GPS.Accuracy > 1000) await ShowInfo(GlobalTranslations.GpsNotAccurate);
                 }
                 else
                 {
-                    Snackbar.Add(GlobalTranslations.UnableDetectGps, MudBlazor.Severity.Warning);
+                    await ShowWarning(GlobalTranslations.UnableDetectGps);
                 }
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -150,12 +148,12 @@ public partial class ProfileData : PageCore<ProfileData>
             }
             else
             {
-                Snackbar.Add(result.Errors[0].ErrorMessage, MudBlazor.Severity.Warning);
+                await ShowWarning(result.Errors[0].ErrorMessage);
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -167,6 +165,6 @@ public partial class ProfileData : PageCore<ProfileData>
 
         var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab.ToString()));
 
-        if (!result.IsValid) Snackbar.Add(result.Errors[0].ErrorMessage, MudBlazor.Severity.Warning);
+        if (!result.IsValid) await ShowWarning(result.Errors[0].ErrorMessage);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class InviteApi(IHttpClientFactory http) : ApiCosmos<InviteRequest>(http, "invite")
+public class InviteApi(IHttpClientFactory http) : ApiCosmos<InviteRequest>(http, ApiType.Authenticated, "invite")
 {
     public async Task SendInvite(InviteRequest request)
     {

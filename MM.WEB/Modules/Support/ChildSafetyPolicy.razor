@@ -1,4 +1,6 @@
 ﻿@page "/support/child-safety"
+@inherits PageCore<ChildSafetyPolicy>
+
 <SeoHeader Title="Child Safety Policy" Description="@SeoTranslations.AppDescription" Url=@($"/support/child-safety") Keywords="@(["Child Safety Policy"])"></SeoHeader>
 
 <div class="support-container">
@@ -101,6 +103,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Language = await AppStateStatic.GetAppLanguage(null);
+        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
     }
 }

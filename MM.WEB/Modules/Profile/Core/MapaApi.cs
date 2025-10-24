@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, null)
+public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, ApiType.Anonymous, null)
 {
     public async Task<HereJson?> GetLocationHere(double Latitude, double Longitude)
     {

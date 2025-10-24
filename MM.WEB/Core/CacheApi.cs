@@ -8,7 +8,7 @@ public struct Endpoint
     public static string SumUsers => "public/cache/sum-users";
 }
 
-public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, null)
+public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, ApiType.Anonymous, null)
 {
     public async Task<CacheDocument<SumUsers>?> GetSumUsers(RenderControlCore<CacheDocument<SumUsers>?>? core)
     {

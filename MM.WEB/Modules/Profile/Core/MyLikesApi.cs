@@ -3,7 +3,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, "profile-mylikes")
+public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, ApiType.Authenticated, "profile-mylikes")
 {
     public async Task<MyLikesModel?> Get(RenderControlCore<MyLikesModel?>? core, bool isAuthenticated,
         bool setNewVersion = false)

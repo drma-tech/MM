@@ -7,7 +7,6 @@
 @inherits PageCore<ValidationGallery>
 
 @inject ValidationApi ValidationApi
-@inject IJSRuntime JsRuntime
 
 <MudGrid Justify="Justify.Center">
     <MudItem xs="12" sm="10" md="8" lg="6">
@@ -114,7 +113,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -143,7 +142,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -163,7 +162,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -178,7 +177,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
@@ -187,12 +186,12 @@
         try
         {
             Validation = await ValidationApi.UploadPhotoValidation(Core, Picture);
-            Snackbar.Add("Photo validated successfully!", Severity.Success);
+            await ShowSuccess("Photo validated successfully!");
             await JsRuntime.InvokeVoidAsync("history.back");
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 }

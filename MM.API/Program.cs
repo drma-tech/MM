@@ -3,12 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MM.API.Core.Middleware;
 
 var app = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(worker =>
     {
-        worker.UseMiddleware<ExceptionHandlingMiddleware>();
+        worker.UseMiddleware<ApiMiddleware>();
     })
     .ConfigureAppConfiguration((hostContext, config) =>
     {

@@ -9,12 +9,7 @@ using MM.Shared.Models.Profile.Core;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(
-    CosmosRepository repo,
-    CosmosCacheRepository repoCache,
-    CosmosProfileOffRepository repoOff,
-    CosmosProfileOnRepository repoOn,
-    ILogger<PrincipalFunction> logger)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, ILogger<PrincipalFunction> logger)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -22,7 +17,7 @@ public class PrincipalFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
@@ -44,7 +39,7 @@ public class PrincipalFunction(
 
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
             if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
@@ -121,7 +116,7 @@ public class PrincipalFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var msg = req.GetQueryParameters()["msg"];
@@ -143,7 +138,7 @@ public class PrincipalFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var body = await req.GetBody<AuthPrincipal>(cancellationToken);
@@ -168,7 +163,7 @@ public class PrincipalFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
             if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);
@@ -213,12 +208,11 @@ public class PrincipalFunction(
 
     [Function("PrincipalPublicMode")]
     public async Task<AuthPrincipal?> PrincipalPublicMode(
-     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")]
-        HttpRequestData req, CancellationToken cancellationToken)
+     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
             var ProfileValidator = new ProfileValidation();
@@ -259,12 +253,11 @@ public class PrincipalFunction(
 
     [Function("PrincipalPrivateMode")]
     public async Task<AuthPrincipal?> PrincipalPrivateMode(
-    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")]
-        HttpRequestData req, CancellationToken cancellationToken)
+    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var profile = await repoOn.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
             await repoOff.UpsertItemAsync(profile, cancellationToken);

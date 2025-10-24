@@ -60,7 +60,7 @@
 
             if (dimensions.Width < 300 || dimensions.Height < 300)
             {
-                Snackbar.Add("The image must be at least 300x300 pixels.", Severity.Error);
+                await ShowWarning("The image must be at least 300x300 pixels.");
                 return;
             }
 
@@ -72,7 +72,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

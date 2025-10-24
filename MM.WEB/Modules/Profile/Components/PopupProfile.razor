@@ -9,7 +9,6 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 @inject InteractionApi InteractionApi
-@inject IJSRuntime JsRuntime
 
 <MudDialog Style="width: 100%">
     <DialogContent>
@@ -281,17 +280,17 @@
 
             if (interaction?.Status == InteractionStatus.Match)
             {
-                Snackbar.Add("Match", Severity.Success);
+                await ShowSuccess("Match");
                 Matched?.Invoke();
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
-    private async Task Desike()
+    private async Task Deslike()
     {
         try
         {
@@ -300,7 +299,7 @@
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

@@ -3,7 +3,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, "interaction")
+public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction")
 {
     public async Task<InteractionModel?> GetInteraction(string? IdUserView, RenderControlCore<InteractionModel?>? core)
     {

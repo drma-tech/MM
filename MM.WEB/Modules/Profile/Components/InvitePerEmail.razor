@@ -29,13 +29,13 @@
     {
         if (Email.Empty())
         {
-            Snackbar.Add(GlobalTranslations.EmailRequired, Severity.Warning);
+            await ShowWarning(GlobalTranslations.EmailRequired);
             return;
         }
 
         if (Email == principal!.Email)
         {
-            Snackbar.Add(GlobalTranslations.EnterPartnerEmail, Severity.Warning);
+            await ShowWarning(GlobalTranslations.EnterPartnerEmail);
             return;
         }
 

@@ -22,7 +22,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
-<RenderControl Core="Core" Model="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null" PrivateContent="true">
+<RenderControl TModel="FilterModel" Core="Core" Model="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null" PrivateContent="true">
     <MudExpansionPanels Elevation="2">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
@@ -36,39 +36,39 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@Filter!.Region"
+                                <FieldSelect For="@(() => context.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@context.Region"
                                              CssIcon="@IconsFA.Solid.Icon("map-location-dot").Font" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Nationality)" TValue="HashSet<Country>" TEnum="Country" @bind-SelectedValues="@Filter.Nationality"
+                                <FieldSelect For="@(() => context.Nationality)" TValue="HashSet<Country>" TEnum="Country" @bind-SelectedValues="@context.Nationality"
                                              CssIcon="@IconsFA.Solid.Icon("earth-americas").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@Filter.Languages"
+                                <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
                                              CssIcon="@IconsFA.Solid.Icon("language").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@Filter!.MaritalStatus"
+                                <FieldSelect For="@(() => context.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@context.MaritalStatus"
                                              CssIcon="@IconsFA.Solid.Icon("ring").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@Filter.BiologicalSex"
+                                <FieldSelect For="@(() => context.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@context.BiologicalSex"
                                              CssIcon="@IconsFA.Solid.Icon("person-half-dress").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@Filter.GenderIdentities"
+                                <FieldSelect For="@(() => context.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
                                              CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" ShowGroup="true" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@Filter.SexualOrientations"
+                                <FieldSelect For="@(() => context.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
                                              CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -89,17 +89,17 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Ethnicity)" TValue="HashSet<Ethnicity>" TEnum="Ethnicity" @bind-SelectedValues="@Filter!.Ethnicity"
+                                <FieldSelect For="@(() => context.Ethnicity)" TValue="HashSet<Ethnicity>" TEnum="Ethnicity" @bind-SelectedValues="@context.Ethnicity"
                                              CssIcon="@IconsFA.Solid.Icon("globe").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.BodyType)" TValue="HashSet<BodyType>" TEnum="BodyType" @bind-SelectedValues="@Filter.BodyType"
+                                <FieldSelect For="@(() => context.BodyType)" TValue="HashSet<BodyType>" TEnum="BodyType" @bind-SelectedValues="@context.BodyType"
                                              CssIcon="@IconsFA.Solid.Icon("weight-scale").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Neurodiversity)" TValue="HashSet<Neurodiversity>" TEnum="Neurodiversity" @bind-SelectedValues="@Filter!.Neurodiversity"
+                                <FieldSelect For="@(() => context.Neurodiversity)" TValue="HashSet<Neurodiversity>" TEnum="Neurodiversity" @bind-SelectedValues="@context.Neurodiversity"
                                              CssIcon="@IconsFA.Solid.Icon("brain").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -161,69 +161,69 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@Filter!.Drink"
+                                <FieldSelect For="@(() => context.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@context.Drink"
                                              CssIcon="@IconsFA.Solid.Icon("champagne-glasses").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Smoke)" TValue="HashSet<Smoke>" TEnum="Smoke" @bind-SelectedValues="@Filter.Smoke"
+                                <FieldSelect For="@(() => context.Smoke)" TValue="HashSet<Smoke>" TEnum="Smoke" @bind-SelectedValues="@context.Smoke"
                                              CssIcon="@IconsFA.Solid.Icon("smoking").Font" ShowHelper="false" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Diet)" TValue="HashSet<Diet>" TEnum="Diet" @bind-SelectedValues="@Filter.Diet"
+                                <FieldSelect For="@(() => context.Diet)" TValue="HashSet<Diet>" TEnum="Diet" @bind-SelectedValues="@context.Diet"
                                              CssIcon="@IconsFA.Solid.Icon("utensils").Font" Multiple="true" ShowDescription="false">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Religion)" TValue="HashSet<Religion>" TEnum="Religion" @bind-SelectedValues="@Filter.Religion"
+                                <FieldSelect For="@(() => context.Religion)" TValue="HashSet<Religion>" TEnum="Religion" @bind-SelectedValues="@context.Religion"
                                              CssIcon="@IconsFA.Solid.Icon("hands-praying").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.FamilyInvolvement)" TValue="HashSet<FamilyInvolvement>" TEnum="FamilyInvolvement" @bind-SelectedValues="@Filter.FamilyInvolvement"
+                                <FieldSelect For="@(() => context.FamilyInvolvement)" TValue="HashSet<FamilyInvolvement>" TEnum="FamilyInvolvement" @bind-SelectedValues="@context.FamilyInvolvement"
                                              CssIcon="@IconsFA.Solid.Icon("people-roof").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.NetWorth)" TValue="HashSet<NetWorth>" TEnum="NetWorth" @bind-SelectedValues="@Filter.NetWorth"
+                                <FieldSelect For="@(() => context.NetWorth)" TValue="HashSet<NetWorth>" TEnum="NetWorth" @bind-SelectedValues="@context.NetWorth"
                                              CssIcon="@IconsFA.Solid.Icon("gem").Font" Multiple="true" Disabled="true">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@Filter!.HaveChildren"
+                                <FieldSelect For="@(() => context.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@context.HaveChildren"
                                              CssIcon="@IconsFA.Solid.Icon("child").Font" ShowHelper="false" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.HavePets)" TValue="HashSet<HavePets>" TEnum="HavePets" @bind-SelectedValues="@Filter.HavePets"
+                                <FieldSelect For="@(() => context.HavePets)" TValue="HashSet<HavePets>" TEnum="HavePets" @bind-SelectedValues="@context.HavePets"
                                              CssIcon="@IconsFA.Solid.Icon("paw").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.EducationLevel)" TValue="HashSet<EducationLevel>" TEnum="EducationLevel" @bind-SelectedValues="@Filter.EducationLevel"
+                                <FieldSelect For="@(() => context.EducationLevel)" TValue="HashSet<EducationLevel>" TEnum="EducationLevel" @bind-SelectedValues="@context.EducationLevel"
                                              CssIcon="@IconsFA.Solid.Icon("graduation-cap").Font" ShowHelper="false" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.CareerCluster)" TValue="HashSet<CareerCluster>" TEnum="CareerCluster" @bind-SelectedValues="@Filter.CareerCluster"
+                                <FieldSelect For="@(() => context.CareerCluster)" TValue="HashSet<CareerCluster>" TEnum="CareerCluster" @bind-SelectedValues="@context.CareerCluster"
                                              CssIcon="@IconsFA.Solid.Icon("briefcase").Font" ShowGroup="true" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.LivingSituation)" TValue="HashSet<LivingSituation>" TEnum="LivingSituation" @bind-SelectedValues="@Filter.LivingSituation"
+                                <FieldSelect For="@(() => context.LivingSituation)" TValue="HashSet<LivingSituation>" TEnum="LivingSituation" @bind-SelectedValues="@context.LivingSituation"
                                              CssIcon="@IconsFA.Solid.Icon("house-user").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.TravelFrequency)" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@Filter.TravelFrequency"
+                                <FieldSelect For="@(() => context.TravelFrequency)" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@context.TravelFrequency"
                                              CssIcon="@IconsFA.Solid.Icon("plane").Font" ShowGroup="true" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.AnnualIncome)" TValue="HashSet<AnnualIncome>" TEnum="AnnualIncome" @bind-SelectedValues="@Filter.AnnualIncome"
+                                <FieldSelect For="@(() => context.AnnualIncome)" TValue="HashSet<AnnualIncome>" TEnum="AnnualIncome" @bind-SelectedValues="@context.AnnualIncome"
                                              CssIcon="@IconsFA.Solid.Icon("money-bill").Font" Multiple="true" Disabled="true">
                                 </FieldSelect>
                             </MudItem>
@@ -244,34 +244,34 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter!.MoneyPersonality)" @bind-Value="@Filter!.MoneyPersonality"
+                                <FieldSwitch For="@(() => context.MoneyPersonality)" @bind-Value="@context.MoneyPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("wallet").Font">
                                 </FieldSwitch>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter.SharedSpendingStyle)" @bind-Value="@Filter.SharedSpendingStyle"
+                                <FieldSwitch For="@(() => context.SharedSpendingStyle)" @bind-Value="@context.SharedSpendingStyle"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-dollar").Font">
                                 </FieldSwitch>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter.RelationshipPersonality)" @bind-Value="@Filter.RelationshipPersonality"
+                                <FieldSwitch For="@(() => context.RelationshipPersonality)" @bind-Value="@context.RelationshipPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("people-pulling").Font">
                                 </FieldSwitch>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter!.MyersBriggsTypeIndicator)" @bind-Value="@Filter!.MyersBriggsTypeIndicator"
+                                <FieldSwitch For="@(() => context.MyersBriggsTypeIndicator)" @bind-Value="@context.MyersBriggsTypeIndicator"
                                              CssIcon="@IconsFA.Solid.Icon("user-tag").Font">
                                 </FieldSwitch>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter.LoveLanguage)" @bind-Value="@Filter.LoveLanguage"
+                                <FieldSwitch For="@(() => context.LoveLanguage)" @bind-Value="@context.LoveLanguage"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font">
                                 </FieldSwitch>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSwitch For="@(() => Filter.SexPersonality)" @bind-Value="@Filter.SexPersonality"
+                                <FieldSwitch For="@(() => context.SexPersonality)" @bind-Value="@context.SexPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("heart").Font">
                                 </FieldSwitch>
                             </MudItem>
@@ -292,44 +292,44 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@Filter!.Food"
+                                <FieldSelect For="@(() => context.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@context.Food"
                                              CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@Filter.Vacation"
+                                <FieldSelect For="@(() => context.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@context.Vacation"
                                              CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@Filter.Sports"
+                                <FieldSelect For="@(() => context.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@context.Sports"
                                              CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@Filter.LeisureActivities"
+                                <FieldSelect For="@(() => context.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@context.LeisureActivities"
                                              CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@Filter!.MusicGenre"
+                                <FieldSelect For="@(() => context.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@context.MusicGenre"
                                              CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@Filter.MovieGenre"
+                                <FieldSelect For="@(() => context.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@context.MovieGenre"
                                              CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@Filter.TVGenre"
+                                <FieldSelect For="@(() => context.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@context.TVGenre"
                                              CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@Filter.ReadingGenre"
+                                <FieldSelect For="@(() => context.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@context.ReadingGenre"
                                              CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -350,29 +350,29 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.SharedFinances)" TValue="HashSet<SharedFinances>" TEnum="SharedFinances" @bind-SelectedValues="@Filter!.SharedFinances"
+                                <FieldSelect For="@(() => context.SharedFinances)" TValue="HashSet<SharedFinances>" TEnum="SharedFinances" @bind-SelectedValues="@context.SharedFinances"
                                              CssIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.ConflictResolutionStyle)" TValue="HashSet<ConflictResolutionStyle>" TEnum="ConflictResolutionStyle" @bind-SelectedValues="@Filter.ConflictResolutionStyle"
+                                <FieldSelect For="@(() => context.ConflictResolutionStyle)" TValue="HashSet<ConflictResolutionStyle>" TEnum="ConflictResolutionStyle" @bind-SelectedValues="@context.ConflictResolutionStyle"
                                              CssIcon="@IconsFA.Solid.Icon("handshake").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.HouseholdManagement)" TValue="HashSet<HouseholdManagement>" TEnum="HouseholdManagement" @bind-SelectedValues="@Filter.HouseholdManagement"
+                                <FieldSelect For="@(() => context.HouseholdManagement)" TValue="HashSet<HouseholdManagement>" TEnum="HouseholdManagement" @bind-SelectedValues="@context.HouseholdManagement"
                                              CssIcon="@IconsFA.Solid.Icon("broom").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.TimeTogetherPreference)" TValue="HashSet<TimeTogetherPreference>" TEnum="TimeTogetherPreference" @bind-SelectedValues="@Filter!.TimeTogetherPreference"
+                                <FieldSelect For="@(() => context.TimeTogetherPreference)" TValue="HashSet<TimeTogetherPreference>" TEnum="TimeTogetherPreference" @bind-SelectedValues="@context.TimeTogetherPreference"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-hand").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.OppositeSexFriendships)" TValue="HashSet<OppositeSexFriendships>" TEnum="OppositeSexFriendships" @bind-SelectedValues="@Filter.OppositeSexFriendships"
+                                <FieldSelect For="@(() => context.OppositeSexFriendships)" TValue="HashSet<OppositeSexFriendships>" TEnum="OppositeSexFriendships" @bind-SelectedValues="@context.OppositeSexFriendships"
                                              CssIcon="@IconsFA.Solid.Icon("people-arrows").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -393,24 +393,24 @@
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Filter!.RelationshipIntentions"
+                                <FieldSelect For="@(() => context.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@context.RelationshipIntentions"
                                              CssIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@Filter!.Relocation"
+                                <FieldSelect For="@(() => context.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@context.Relocation"
                                              CssIcon="@IconsFA.Solid.Icon("truck").Font">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter!.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@Filter!.WantChildren"
+                                <FieldSelect For="@(() => context.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@context.WantChildren"
                                              CssIcon="@IconsFA.Solid.Icon("baby").Font" ShowHelper="false" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => Filter.IdealPlaceToLive)" TValue="HashSet<IdealPlaceToLive>" TEnum="IdealPlaceToLive" @bind-SelectedValues="@Filter.IdealPlaceToLive"
+                                <FieldSelect For="@(() => context.IdealPlaceToLive)" TValue="HashSet<IdealPlaceToLive>" TEnum="IdealPlaceToLive" @bind-SelectedValues="@context.IdealPlaceToLive"
                                              CssIcon="@IconsFA.Solid.Icon("house-circle-check").Font" Multiple="true">
                                 </FieldSelect>
                             </MudItem>
@@ -510,7 +510,7 @@
                 return;
             }
 
-            PopulateFields();
+            await PopulateFields();
         }
 
         Core?.LoadingFinished?.Invoke(Filter);
@@ -534,28 +534,28 @@
             }
             else
             {
-                Snackbar.Add(result.Errors[0].ErrorMessage, Severity.Warning);
+                await ShowWarning(result.Errors[0].ErrorMessage);
             }
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 
-    private void PopulateFields()
+    private async Task PopulateFields()
     {
         try
         {
             SmartLookingCore.PopulateFields(Profile, Filter);
 
-            Snackbar.Add(@<div>
+            await ShowInfo(@<div>
                 <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
-            </div>, Severity.Info);
+            </div>);
         }
         catch (Exception ex)
         {
-            ex.ProcessException(Snackbar, Logger);
+            await ProcessException(ex);
         }
     }
 

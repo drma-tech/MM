@@ -2,6 +2,7 @@
 
 public class Configurations
 {
+    public AzureAd? AzureAd { get; set; }
     public CosmosDB? CosmosDB { get; set; }
     public Azure? Azure { get; set; }
     public AWS? AWS { get; set; }
@@ -10,6 +11,12 @@ public class Configurations
     public Google? Google { get; set; }
     public Here? Here { get; set; }
     public Settings? Settings { get; set; }
+}
+
+public class AzureAd
+{
+    public string? ClientId { get; set; }
+    public string? Issuer { get; set; }
 }
 
 public class CosmosDB

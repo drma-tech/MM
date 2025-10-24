@@ -330,6 +330,9 @@
   <data name="ValidationErrorsDetected" xml:space="preserve">
     <value>Validation errors were detected</value>
   </data>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Welcome to {0}</value>
+  </data>
   <data name="WhyImportant" xml:space="preserve">
     <value>Why is it important?</value>
   </data>

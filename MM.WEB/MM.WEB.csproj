@@ -148,11 +148,6 @@
 	<ItemGroup>
 		<Folder Include="Modules\Explore\" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Reference Include="StaticWebAppsAuthenticationExtensions">
-	    <HintPath>ReferenceDll\StaticWebAppsAuthenticationExtensions.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
 	<PropertyGroup>
 		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>

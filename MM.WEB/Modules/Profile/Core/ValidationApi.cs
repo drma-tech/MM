@@ -4,7 +4,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, "profile-validation")
+public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation")
 {
     public async Task<ValidationModel?> Get(RenderControlCore<ValidationModel?>? core)
     {

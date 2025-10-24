@@ -9,7 +9,6 @@
 @inject DashboardApi DashboardApi
 @inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
-@inject IJSRuntime JsRuntime
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
 <PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription">
@@ -421,7 +420,7 @@
         var config = await ConfigurationApi.GetConfigurations();
         if (config == null) throw new NotificationException("server communication error");
 
-        await JsRuntime.InvokeVoidAsync("startPaddle", config.Token);
+        await JavascriptVoidAsync("startPaddle", config.Token);
 
         await DialogService.SubscriptionPopup(IsAuthenticated);
     }

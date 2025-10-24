@@ -3,7 +3,7 @@ using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, "profile-filter")
+public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter")
 {
     public async Task<FilterModel?> Get(RenderControlCore<FilterModel?>? core)
     {

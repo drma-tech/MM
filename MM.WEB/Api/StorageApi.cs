@@ -15,7 +15,7 @@ public struct StorageEndpoint
     }
 }
 
-public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfileModel>(factory, null)
+public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfileModel>(factory, ApiType.Authenticated, null)
 {
     public async Task<ProfileModel?> UploadPhoto(PhotoRequest request)
     {

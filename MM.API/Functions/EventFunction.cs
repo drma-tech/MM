@@ -62,7 +62,7 @@ public class EventFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
@@ -82,7 +82,7 @@ public class EventFunction(
     {
         try
         {
-            var userId = req.GetUserId() ?? throw new NotificationException("user id null");
+            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
             var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
                               throw new NotificationException("user not found");
 
@@ -127,7 +127,7 @@ public class EventFunction(
     {
         try
         {
-            var userId = req.GetUserId();
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
