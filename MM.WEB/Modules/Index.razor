@@ -28,7 +28,7 @@
     @if (!IsAuthenticated)
     {
         <MudPaper Elevation="2" Class="pa-4 my-8 mud-theme-primary" Style="text-align: center;">
-            <MudButton Color="Color.Secondary" Variant="Variant.Filled" Href="@($"/.auth/login/aad?post_login_redirect_uri={Navigation.BaseUri}login-success")" Rel="nofollow" Size="AppStateStatic.Size">
+            <MudButton Color="Color.Secondary" Variant="Variant.Filled" Size="AppStateStatic.Size" OnClick="Login">
                 @Button.LoginHero
             </MudButton>
         </MudPaper>
@@ -423,6 +423,11 @@
         await JavascriptVoidAsync("startPaddle", config.Token);
 
         await DialogService.SubscriptionPopup(IsAuthenticated);
+    }
+
+    private void Login()
+    {
+        Navigation.NavigateToLogin("/authentication/login");
     }
 
 }
