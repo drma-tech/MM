@@ -11,6 +11,7 @@
 @using CardHeader = MM.WEB.Resources.CardHeader
 @using Country = MM.Shared.Enums.Country
 @using Height = MM.Shared.Enums.Height
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inherits PageCore<Profile>
 
 @inject ProfileApi ProfileApi
@@ -489,6 +490,11 @@
 
             CoreMatches?.LoadingFinished?.Invoke(MyMatches);
         }
+    }
+
+    private void Login()
+    {
+        Navigation.NavigateToLogin("/authentication/login");
     }
 
     // private string GetSuggestionTitle()
