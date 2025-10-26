@@ -70,7 +70,7 @@
             // data.Validations = await ValidationApi.GetAll(Principal.Id);
 
             var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.IdentityProvider}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
-            await JsRuntime.InvokeVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
+            await JavascriptVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
         {

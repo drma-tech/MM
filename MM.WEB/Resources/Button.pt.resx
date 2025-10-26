@@ -132,6 +132,9 @@
   <data name="Chat" xml:space="preserve">
     <value>Bater papo</value>
   </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Limpar cache</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Fechar</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
+  </data>
+  <data name="ShowCache" xml:space="preserve">
+    <value>Mostrar cache</value>
   </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Mostrar itens pendentes</value>

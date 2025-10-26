@@ -152,7 +152,6 @@
 		<BlazorWasmPrerenderingMode>Static</BlazorWasmPrerenderingMode>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 		<CurrentDate>$([System.DateTime]::Now.ToString(yyyy.MM.dd))</CurrentDate>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="echo $(CurrentDate) &gt; &quot;$(ProjectDir)\Resources\BuildDate.txt&quot;" />

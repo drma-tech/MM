@@ -132,6 +132,9 @@
   <data name="Chat" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="ShowCache" xml:space="preserve">
+    <value>Show Cache</value>
   </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Show pending items</value>
