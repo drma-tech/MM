@@ -38,6 +38,7 @@ static void ConfigureLogging(ILoggingBuilder builder)
 static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
     services.AddHttpClient("paddle");
+    services.AddHttpClient("ipinfo");
 
     services.AddSingleton<CosmosRepository>();
     services.AddSingleton<CosmosCacheRepository>();

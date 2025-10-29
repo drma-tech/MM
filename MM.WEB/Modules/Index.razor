@@ -10,6 +10,7 @@
 @inject DashboardApi DashboardApi
 @inject PaddleConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
+@inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
 <PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription">
@@ -369,7 +370,7 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
+        var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
         var platform = await AppStateStatic.GetPlatform(JsRuntime);
 
         if (country.NotEmpty() && platform == MM.Shared.Enums.Platform.ios)

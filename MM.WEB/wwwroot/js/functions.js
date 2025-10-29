@@ -63,6 +63,16 @@ function LoadAppVariables() {
         else
             SetLocalStorage("platform", "webapp");
     }
+
+    //language for apps from webtonative
+    //if (!GetLocalStorage("app-language")) {
+    //    if (/webtonative/i.test(navigator.userAgent)) {
+    //        WTN.deviceInfo().then(function (value) {
+    //            SetLocalStorage("app-language", value.language);
+    //            location.reload();
+    //        });
+    //    }
+    //}
 }
 
 async function getUserInfo() {
