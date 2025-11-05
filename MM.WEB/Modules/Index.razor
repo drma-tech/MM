@@ -100,7 +100,7 @@
         <BodyFragment>
             <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline Modifiers="true" TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)">
+                    <MudTimeline TimelinePosition="@(Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true" >
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>

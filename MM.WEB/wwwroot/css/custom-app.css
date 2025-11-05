@@ -345,6 +345,21 @@ body .pwa-updater[b-pwa-updater] {
         margin-inline: inherit !important
     }
 
+@media (max-width: 599.95px), (max-height: 599.95px) {
+    .mud-timeline-vertical.mud-timeline-position-start::before {
+        left: 31px !important;
+    }
+
+    .mud-timeline-vertical.mud-timeline-position-start .mud-timeline-item-content, .mud-timeline-vertical.mud-timeline-position-end .mud-timeline-item-content {
+        max-width: calc(100% - 64px) !important;
+    }
+
+    .mud-timeline-vertical .mud-timeline-item .mud-timeline-item-divider {
+        min-width: 64px !important;
+        margin-right: 8px;
+    }
+}
+
 /* FONT AWESOME */
 
 .fa-sm {
