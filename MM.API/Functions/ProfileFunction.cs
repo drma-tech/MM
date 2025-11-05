@@ -1,10 +1,10 @@
+using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.Shared.Requests;
-using FluentValidation;
 
 namespace MM.API.Functions;
 
@@ -76,11 +76,7 @@ public static class ProfileHelper
     }
 }
 
-public class ProfileFunction(
-    CosmosRepository repoGen,
-    CosmosCacheRepository repoCache,
-    CosmosProfileOffRepository repoOff,
-    CosmosProfileOnRepository repoOn)
+public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
 {
     private readonly CosmosCacheRepository _repoCache = repoCache;
     private readonly CosmosRepository _repoGen = repoGen;
@@ -91,7 +87,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
             var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
             return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
@@ -109,7 +105,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
             var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -127,7 +123,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
             var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -145,7 +141,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
             var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -216,8 +212,8 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var body = await req.GetBody<ProfileModel>(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var body = await req.GetBody<ProfileModel>(factory, cancellationToken);
             var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
@@ -242,8 +238,8 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var body = await req.GetBody<FilterModel>(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var body = await req.GetBody<FilterModel>(factory, cancellationToken);
 
             if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
 
@@ -266,7 +262,7 @@ public class ProfileFunction(
     {
         try
         {
-            var body = await req.GetBody<SettingModel>(cancellationToken);
+            var body = await req.GetBody<SettingModel>(factory, cancellationToken);
 
             return await _repoGen.UpsertItemAsync(body, cancellationToken);
         }
@@ -286,7 +282,7 @@ public class ProfileFunction(
             var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
             var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal,
                 cancellationToken);
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
             if (partners.Count != 0) //if user already registered, register a like
             {
@@ -333,7 +329,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
             var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
@@ -352,7 +348,7 @@ public class ProfileFunction(
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
             var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 

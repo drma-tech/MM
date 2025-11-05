@@ -50,19 +50,15 @@ public static class EventHelper
     }
 }
 
-public class EventFunction(
-    CosmosRepository repoGen,
-    CosmosProfileOffRepository repoOff,
-    CosmosProfileOnRepository repoOn)
+public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
 {
     [Function("InteractionGet")]
-    public async Task<HttpResponseData?> InteractionGet(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
+    public async Task<HttpResponseData?> InteractionGet([HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
         HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
             var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
@@ -76,13 +72,12 @@ public class EventFunction(
     }
 
     [Function("InteractionLike")]
-    public async Task<HttpResponseData?> InteractionLike(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/like/{origin}/{id}")]
+    public async Task<HttpResponseData?> InteractionLike([HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/like/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
+            var userId = await req.GetUserIdAsync(factory, cancellationToken) ?? throw new NotificationException("user id null");
             var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
                               throw new NotificationException("user not found");
 
@@ -121,13 +116,12 @@ public class EventFunction(
     }
 
     [Function("InteractionDislike")]
-    public async Task<HttpResponseData?> InteractionDislike(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/dislike/{origin}/{id}")]
+    public async Task<HttpResponseData?> InteractionDislike([HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/dislike/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
         try
         {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
 
             var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 

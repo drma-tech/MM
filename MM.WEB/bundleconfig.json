@@ -42,6 +42,18 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/js/apple.min.js",
+    "inputFiles": [
+      "wwwroot/js/apple.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/google.min.js",
+    "inputFiles": [
+      "wwwroot/js/google.js"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/js/crop-helper.min.js",
     "inputFiles": [
       "wwwroot/js/crop-helper.js"

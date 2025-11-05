@@ -11,7 +11,7 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
     public bool PublicProfile { get; set; } = false;
     public int Tokens { get; set; } = 0;
 
-    public AuthPaddle? AuthPaddle { get; set; }
+    public AuthSubscription? Subscription { get; set; }
     public Event[] Events { get; set; } = [];
 
     public override void Initialize(string userId)

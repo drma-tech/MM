@@ -12,13 +12,13 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
         {
             RuleFor(x => x.NickName)
                 .NotEmpty()
-                .MaximumLength(18)
-                .Matches("^[a-zA-Z0-9_]+$").WithMessage("NickName can only contain letters, numbers and underscore.")
+                .MaximumLength(18).WithMessage("Nickname must be 18 characters or fewer.")
+                .Matches(@"^[\p{L}\p{N}_]+$").WithMessage("Nickname can only include letters, numbers, or underscores.")
                 .WithName(ProfileBasicModel.NickName_Name);
 
             RuleFor(x => x.Description)
-                .MaximumLength(512)
-                .Matches("^[a-zA-Z0-9 ,.\\-\\r\\n]*$").WithMessage("Description contains invalid characters.")
+                .MaximumLength(512).WithMessage("Description must be 512 characters or fewer.")
+                .Matches(@"^(?!.*[<>""'\/=;%&\p{Cc}])[\p{L}\p{N}\p{P}\p{S}\p{Z}\r\n]{0,512}$").WithMessage("Description can include letters, numbers, punctuation, emojis, and line breaks — but not code or special symbols.")
                 .WithName(ProfileBasicModel.Description_Name);
 
             RuleFor(x => x.Nationality)
