@@ -133,15 +133,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MATCHES.
-        /// </summary>
-        public static string Couples {
-            get {
-                return ResourceManager.GetString("Couples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to MM Coin.
         /// </summary>
         public static string MMCoin {
@@ -385,6 +376,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recently Joined.
+        /// </summary>
+        public static string RecentlyJoined {
+            get {
+                return ResourceManager.GetString("RecentlyJoined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Security.
         /// </summary>
         public static string Security {
@@ -403,6 +403,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Users.
+        /// </summary>
+        public static string TotalUsers {
+            get {
+                return ResourceManager.GetString("TotalUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tracking.
         /// </summary>
         public static string Tracking {
@@ -417,15 +426,6 @@ namespace MM.WEB.Resources {
         public static string TrackingDesc {
             get {
                 return ResourceManager.GetString("TrackingDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to USERS.
-        /// </summary>
-        public static string Users {
-            get {
-                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
     }

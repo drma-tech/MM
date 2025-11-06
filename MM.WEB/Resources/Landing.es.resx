@@ -141,9 +141,6 @@
   <data name="CoupleCompatibilityDesc" xml:space="preserve">
     <value>Las parejas pueden probar su compatibilidad y recibir un informe detallado con información personalizada y áreas de crecimiento.</value>
   </data>
-  <data name="Couples" xml:space="preserve">
-    <value>MATCHES</value>
-  </data>
   <data name="MMCoin" xml:space="preserve">
     <value>Moneda MM</value>
   </data>
@@ -225,19 +222,22 @@
   <data name="ProfileDesc" xml:space="preserve">
     <value>Desarrollamos un perfil completo y científicamente relevante para detectar compatibilidades reales dentro de una relación estable y de largo plazo.</value>
   </data>
+  <data name="RecentlyJoined" xml:space="preserve">
+    <value>Se unió recientemente</value>
+  </data>
   <data name="Security" xml:space="preserve">
     <value>Seguridad</value>
   </data>
   <data name="SecurityDesc" xml:space="preserve">
     <value>No almacenamos ni intercambiamos información con terceros (ni de ninguna otra forma) que pueda comprometer su seguridad o sus datos.</value>
   </data>
+  <data name="TotalUsers" xml:space="preserve">
+    <value>Usuarios totales</value>
+  </data>
   <data name="Tracking" xml:space="preserve">
     <value>Seguimiento</value>
   </data>
   <data name="TrackingDesc" xml:space="preserve">
     <value>Lo apoyamos en cada paso de su proceso de emparejamiento, incluidos los primeros encuentros, garantizando un camino seguro y significativo hacia una relación duradera.</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>USUARIOS</value>
   </data>
 </root>

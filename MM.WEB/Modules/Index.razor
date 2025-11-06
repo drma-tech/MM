@@ -69,11 +69,11 @@
                         <div class="d-flex" style="align-items: center;">
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
                             <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                                @Landing.Users
+                                @Landing.TotalUsers
                             </MudText>
                             <MudSpacer></MudSpacer>
                             <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                                @(SumUsers?.Users ?? 0)
+                                @(SumUsers?.TotalUsers ?? 0)
                             </MudChip>
                         </div>
                     </MudPaper>
@@ -81,13 +81,13 @@
                 <MudItem xs="12" sm="6" md="3">
                     <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
                         <div class="d-flex" style="align-items: center;">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("ring").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("user-plus").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
                             <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
-                                @Landing.Couples
+                                @Landing.RecentlyJoined
                             </MudText>
                             <MudSpacer></MudSpacer>
                             <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
-                                @(SumUsers?.Couples ?? 0)
+                                @(SumUsers?.RecentlyJoined ?? 0)
                             </MudChip>
                         </div>
                     </MudPaper>
@@ -379,7 +379,7 @@
 
     private double GetPhaseValue(int phase)
     {
-        var totUsers = SumUsers?.Users ?? 0;
+        var totUsers = SumUsers?.TotalUsers ?? 0;
 
         if (phase == 1)
         {

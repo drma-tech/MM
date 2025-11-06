@@ -50,15 +50,16 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                     var offProfiles = await repoOff.ListAll<ProfileModel>(cancellationToken);
                     var onProfiles = await repoOn.ListAll<ProfileModel>(cancellationToken);
                     var profiles = offProfiles.Union(onProfiles);
+                    var oneWeekAgo = DateTime.UtcNow.AddDays(-7);
 
                     var principals = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
 
-                    var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship, DocumentType.Interaction, cancellationToken);
+                    //var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship, DocumentType.Interaction, cancellationToken);
 
                     obj.Countries = profiles.Select(s => s.Country).Distinct().Count();
                     obj.Cities = profiles.Select(s => s.Location).Distinct().Count();
-                    obj.Users = principals.Count;
-                    obj.Couples = relationships.Count;
+                    obj.TotalUsers = principals.Count;                    
+                    obj.RecentlyJoined = principals.Count(w => w.DateTime > oneWeekAgo);
 
                     doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);
                 }
