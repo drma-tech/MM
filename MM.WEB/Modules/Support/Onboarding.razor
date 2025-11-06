@@ -23,7 +23,10 @@
                         @Resources.Translations.Step2Title
                     </MudText>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step2Subtitle
+                        @Resources.Translations.Step2Subtitle.Split("|")[0]
+                    </MudText>
+                    <MudText Typo="Typo.h6">
+                        @Resources.Translations.Step2Subtitle.Split("|")[1]
                     </MudText>
                 </div>
             </MudCarouselItem>
@@ -32,7 +35,7 @@
                     <MudImage Src="images/onboarding-step-3.png" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">
                         @Resources.Translations.Step3Title
-                    </MudText>
+                    </MudText>                   
                     <MudText Typo="Typo.h6">
                         @Resources.Translations.Step3Subtitle
                     </MudText>
@@ -40,12 +43,23 @@
             </MudCarouselItem>
             <MudCarouselItem>
                 <div class="pa-4" style="text-align: center; height: 100%;">
-                    <MudImage Src="icon/icon-300.png" Style="height: 200px;"></MudImage>
+                    <MudImage Src="images/onboarding-step-4.png" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">
                         @Resources.Translations.Step4Title
                     </MudText>
                     <MudText Typo="Typo.h6">
                         @Resources.Translations.Step4Subtitle
+                    </MudText>
+                </div>
+            </MudCarouselItem>
+            <MudCarouselItem>
+                <div class="pa-4" style="text-align: center; height: 100%;">
+                    <MudImage Src="icon/icon-300.png" Style="height: 200px;"></MudImage>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">
+                        @Resources.Translations.Step5Title
+                    </MudText>
+                    <MudText Typo="Typo.h6">
+                        @Resources.Translations.Step5Subtitle
                     </MudText>
                 </div>
             </MudCarouselItem>

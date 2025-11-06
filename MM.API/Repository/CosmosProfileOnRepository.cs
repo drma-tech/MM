@@ -64,7 +64,7 @@ public class CosmosProfileOnRepository
                 results.AddRange(response.Resource);
             }
 
-            if (charges > 7) _logger.LogWarning("ListAll - ProfileOn, RequestCharge {Charges}", charges);
+            if (charges > 12) _logger.LogWarning("ListAll - ProfileOn, RequestCharge {Charges}", charges);
 
             return results;
         }

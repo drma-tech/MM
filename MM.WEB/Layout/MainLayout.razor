@@ -94,12 +94,12 @@
                 else
                 {
                     //open onboarding dialog for new users
-                    // var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
-                    // if (onboarding.Empty())
-                    // {
-                    //     await DialogService.OnboardingPopup();
-                    //     await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
-                    // }
+                    var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
+                    if (onboarding.Empty())
+                    {
+                        await DialogService.OnboardingPopup();
+                        await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
+                    }
                 }
             }
 

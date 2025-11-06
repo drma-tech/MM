@@ -130,28 +130,34 @@
     <value>Privacy Policy</value>
   </data>
   <data name="Step1Subtitle" xml:space="preserve">
-    <value>Explore hundreds of thousands of movies and series from over 800 streaming platforms in 140 countries — your entire streaming life in one place.</value>
+    <value>We’re creating a global compatibility network powered by real data and genuine connections.</value>
   </data>
   <data name="Step1Title" xml:space="preserve">
-    <value>Discover a world of entertainment.</value>
+    <value>Build the future of matchmaking</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Search, follow, and keep up with your favorite platforms, movies, series, and artists — all in real time.</value>
+    <value>Phase 1: we’re forming the matchmaking pool — the foundation of our system.|Phase 2: matchmaking opens for clients as we reach 100k users.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
-    <value>Stay in the know.</value>
+    <value>How it works</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Create personal lists to track what you’re watching and what’s next on your list.</value>
+    <value>Join our matchmaking pool and take part in shaping how real compatibility is discovered.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
-    <value>Keep your universe organized.</value>
+    <value>For singles</value>
   </data>
   <data name="Step4Subtitle" xml:space="preserve">
-    <value>Create your account and unlock your personalized streaming experience.</value>
+    <value>Take the compatibility test with your partner and explore your relationship dynamics — privately, outside the pool.</value>
   </data>
   <data name="Step4Title" xml:space="preserve">
-    <value>Join for free.</value>
+    <value>For couples</value>
+  </data>
+  <data name="Step5Subtitle" xml:space="preserve">
+    <value>Create your profile and help us redefine how people connect.</value>
+  </data>
+  <data name="Step5Title" xml:space="preserve">
+    <value>Join the journey</value>
   </data>
   <data name="TermsUse" xml:space="preserve">
     <value>Terms of Use</value>

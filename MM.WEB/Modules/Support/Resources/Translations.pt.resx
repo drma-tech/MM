@@ -130,28 +130,34 @@
     <value>Política de Privacidade</value>
   </data>
   <data name="Step1Subtitle" xml:space="preserve">
-    <value>Explore centenas de milhares de filmes e séries de mais de 800 plataformas de streaming em 140 países – toda a sua vida de streaming em um só lugar.</value>
+    <value>Estamos criando uma rede global de compatibilidade alimentada por dados reais e conexões genuínas.</value>
   </data>
   <data name="Step1Title" xml:space="preserve">
-    <value>Descubra um mundo de entretenimento.</value>
+    <value>Construa o futuro do matchmaking</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Pesquise, siga e acompanhe suas plataformas, filmes, séries e artistas favoritos — tudo em tempo real.</value>
+    <value>Fase 1: estamos formando o pool de matchmaking — a base do nosso sistema.|Fase 2: o matchmaking é aberto para clientes à medida que alcançamos 100 mil usuários.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
-    <value>Fique por dentro.</value>
+    <value>Como funciona</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Crie listas pessoais para acompanhar o que você está assistindo e o que vem a seguir na sua lista.</value>
+    <value>Junte-se ao nosso grupo de matchmaking e participe na definição de como a compatibilidade real é descoberta.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
-    <value>Mantenha seu universo organizado.</value>
+    <value>Para solteiros</value>
   </data>
   <data name="Step4Subtitle" xml:space="preserve">
-    <value>Crie sua conta e desbloqueie sua experiência de streaming personalizada.</value>
+    <value>Faça o teste de compatibilidade com seu parceiro e explore a dinâmica do seu relacionamento — em particular, fora da pool.</value>
   </data>
   <data name="Step4Title" xml:space="preserve">
-    <value>Cadastre-se gratuitamente.</value>
+    <value>Para casais</value>
+  </data>
+  <data name="Step5Subtitle" xml:space="preserve">
+    <value>Crie seu perfil e ajude-nos a redefinir a forma como as pessoas se conectam.</value>
+  </data>
+  <data name="Step5Title" xml:space="preserve">
+    <value>Junte-se à jornada</value>
   </data>
   <data name="TermsUse" xml:space="preserve">
     <value>Termos de uso</value>

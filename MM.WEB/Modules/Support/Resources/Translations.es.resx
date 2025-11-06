@@ -130,28 +130,34 @@
     <value>Política de Privacidad</value>
   </data>
   <data name="Step1Subtitle" xml:space="preserve">
-    <value>Explora cientos de miles de películas y series de más de 800 plataformas de streaming en 140 países: toda tu vida de streaming en un solo lugar.</value>
+    <value>Estamos creando una red de compatibilidad global impulsada por datos reales y conexiones genuinas.</value>
   </data>
   <data name="Step1Title" xml:space="preserve">
-    <value>Descubre un mundo de entretenimiento.</value>
+    <value>Construye el futuro del emparejamiento</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Busca, sigue y mantente al día con tus plataformas, películas, series y artistas favoritos, todo en tiempo real.</value>
+    <value>Fase 1: estamos formando el grupo de emparejamiento, la base de nuestro sistema. Fase 2: el emparejamiento se abre para los clientes a medida que llegamos a los 100.000 usuarios.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
-    <value>Manténgase informado.</value>
+    <value>como funciona</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Crea listas personales para realizar un seguimiento de lo que estás viendo y de lo que sigue en tu lista.</value>
+    <value>Únase a nuestro grupo de emparejamiento y participe en la configuración de cómo se descubre la compatibilidad real.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
-    <value>Mantén tu universo organizado.</value>
+    <value>para solteros</value>
   </data>
   <data name="Step4Subtitle" xml:space="preserve">
-    <value>Crea tu cuenta y desbloquea tu experiencia de streaming personalizada.</value>
+    <value>Realice la prueba de compatibilidad con su pareja y explore la dinámica de su relación, en privado, fuera del grupo.</value>
   </data>
   <data name="Step4Title" xml:space="preserve">
-    <value>Únase gratis.</value>
+    <value>Para parejas</value>
+  </data>
+  <data name="Step5Subtitle" xml:space="preserve">
+    <value>Crea tu perfil y ayúdanos a redefinir cómo se conectan las personas.</value>
+  </data>
+  <data name="Step5Title" xml:space="preserve">
+    <value>Únete al viaje</value>
   </data>
   <data name="TermsUse" xml:space="preserve">
     <value>Términos de Uso</value>

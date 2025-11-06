@@ -97,7 +97,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore hundreds of thousands of movies and series from over 800 streaming platforms in 140 countries — your entire streaming life in one place..
+        ///   Looks up a localized string similar to We’re creating a global compatibility network powered by real data and genuine connections..
         /// </summary>
         public static string Step1Subtitle {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover a world of entertainment..
+        ///   Looks up a localized string similar to Build the future of matchmaking.
         /// </summary>
         public static string Step1Title {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search, follow, and keep up with your favorite platforms, movies, series, and artists — all in real time..
+        ///   Looks up a localized string similar to Phase 1: we’re forming the matchmaking pool — the foundation of our system.|Phase 2: matchmaking opens for clients as we reach 100k users..
         /// </summary>
         public static string Step2Subtitle {
             get {
@@ -124,7 +124,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stay in the know..
+        ///   Looks up a localized string similar to How it works.
         /// </summary>
         public static string Step2Title {
             get {
@@ -133,7 +133,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create personal lists to track what you’re watching and what’s next on your list..
+        ///   Looks up a localized string similar to Join our matchmaking pool and take part in shaping how real compatibility is discovered..
         /// </summary>
         public static string Step3Subtitle {
             get {
@@ -142,7 +142,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keep your universe organized..
+        ///   Looks up a localized string similar to For singles.
         /// </summary>
         public static string Step3Title {
             get {
@@ -151,7 +151,7 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create your account and unlock your personalized streaming experience..
+        ///   Looks up a localized string similar to Take the compatibility test with your partner and explore your relationship dynamics — privately, outside the pool..
         /// </summary>
         public static string Step4Subtitle {
             get {
@@ -160,11 +160,29 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join for free..
+        ///   Looks up a localized string similar to For couples.
         /// </summary>
         public static string Step4Title {
             get {
                 return ResourceManager.GetString("Step4Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create your profile and help us redefine how people connect..
+        /// </summary>
+        public static string Step5Subtitle {
+            get {
+                return ResourceManager.GetString("Step5Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join the journey.
+        /// </summary>
+        public static string Step5Title {
+            get {
+                return ResourceManager.GetString("Step5Title", resourceCulture);
             }
         }
         
