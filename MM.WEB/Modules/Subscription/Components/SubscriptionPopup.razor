@@ -24,7 +24,7 @@
         }
         else
         {
-            if (Client?.AuthPaddle == null)
+            if (Client?.Subscription == null || !Client.Subscription.IsPaidUser)
             {
                 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Icon="@IconsFA.Solid.Icon("gift").Font" Class="mb-3" Dense="true">
                     @Translations.FreePeriod
