@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 function openAppleCheckout(productId) {
-    //DotNet.invokeMethodAsync('SD.WEB', 'AppleVerify', null);
+    //DotNet.invokeMethodAsync('MM.WEB', 'AppleVerify', null);
     if (!WTN) alert("WTN plugin not found");
     WTN.inAppPurchase({
         productId: productId,
@@ -14,7 +14,7 @@ function openAppleCheckout(productId) {
                 const receiptData = data.receiptData;
                 if (!receiptData) { showToast("Receipt not found"); return; }
 
-                DotNet.invokeMethodAsync('SD.WEB', 'AppleVerify', receiptData);
+                DotNet.invokeMethodAsync('MM.WEB', 'AppleVerify', receiptData);
             }
         }
     })

@@ -141,9 +141,6 @@
   <data name="CoupleCompatibilityDesc" xml:space="preserve">
     <value>Couples can test their compatibility and receive a detailed report with personalized insights and areas for growth.</value>
   </data>
-  <data name="RecentlyJoined" xml:space="preserve">
-    <value>Recently Joined</value>
-  </data>
   <data name="MMCoin" xml:space="preserve">
     <value>MM Coin</value>
   </data>
@@ -224,6 +221,9 @@
   </data>
   <data name="ProfileDesc" xml:space="preserve">
     <value>We develop a complete and scientifically relevant profile to detect true compatibilities within a stable and long-term relationship.</value>
+  </data>
+  <data name="RecentlyJoined" xml:space="preserve">
+    <value>Recently Joined</value>
   </data>
   <data name="Security" xml:space="preserve">
     <value>Security</value>

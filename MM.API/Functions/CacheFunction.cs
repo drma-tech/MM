@@ -11,21 +11,6 @@ namespace MM.API.Functions;
 
 public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache distributedCache)
 {
-    [Function("Settings")]
-    public static async Task<HttpResponseData> Configurations(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/settings")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            return await req.CreateResponse(ApiStartup.Configurations.Settings, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.ProcessException(ex);
-            throw;
-        }
-    }
-
     [Function("Dashboard")]
     public async Task<HttpResponseData?> Dashboard(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/sum-users")] HttpRequestData req, CancellationToken cancellationToken)
@@ -58,7 +43,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                     obj.Countries = profiles.Select(s => s.Country).Distinct().Count();
                     obj.Cities = profiles.Select(s => s.Location).Distinct().Count();
-                    obj.TotalUsers = principals.Count;                    
+                    obj.TotalUsers = principals.Count;
                     obj.RecentlyJoined = principals.Count(w => w.DateTime > oneWeekAgo);
 
                     doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);

@@ -2,28 +2,28 @@
 
 public class Configurations
 {
-    public AzureAd? AzureAd { get; set; }
     public CosmosDB? CosmosDB { get; set; }
+    public Firebase? Firebase { get; set; }
     public Azure? Azure { get; set; }
     public AWS? AWS { get; set; }
     public Paddle? Paddle { get; set; }
     public Apple? Apple { get; set; }
-    public Sendgrid? Sendgrid { get; set; }
-    public Google? Google { get; set; }
     public Here? Here { get; set; }
-    public Settings? Settings { get; set; }
-}
-
-public class AzureAd
-{
-    public string? ClientId { get; set; }
-    public string? Issuer { get; set; }
 }
 
 public class CosmosDB
 {
     public string? DatabaseId { get; set; }
     public string? ConnectionString { get; set; }
+}
+
+public class Firebase
+{
+    public string? ClientId { get; set; }
+    public string? PrivateKeyId { get; set; }
+    public string? PrivateKey { get; set; }
+    public string? ClientEmail { get; set; }
+    public string? CertUrl { get; set; }
 }
 
 public class Azure
@@ -66,23 +66,7 @@ public class ProductSettings
     public string? PriceYear { get; set; }
 }
 
-public class Sendgrid
-{
-    public string? Key { get; set; }
-}
-
-public class Google
-{
-    public string? ApiKey { get; set; }
-    public string? Captcha { get; set; }
-}
-
 public class Here
 {
     public string? ApiKey { get; set; }
-}
-
-public class Settings
-{
-    public bool ShowAdSense { get; set; } = true;
 }

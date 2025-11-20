@@ -12,7 +12,7 @@
                         @SeoTranslations.AppName
                     </MudText>
                 </MudListSubheader>
-                <MudListItem Style="text-align: justify" Class="py-0" >
+                <MudListItem Style="text-align: justify" Class="py-0">
                     @SeoTranslations.AppDescriptionShort
                 </MudListItem>
                 <MudListItem Style="text-align: justify" Class="py-0">
@@ -25,7 +25,7 @@
                 <MudListSubheader>
                     <MudText Color="Color.Secondary">Company</MudText>
                 </MudListSubheader>
-                <MudListItem Text="About us" Href="/support/about-us" Class="py-0" />
+                <MudListItem Text="About us" Href="/support/about-us" Class="py-0" Disabled="_blockedActions" />
                 <MudListItem Text="Website" Href="https://www.drma-tech.com/" Target="_blank" Class="py-0" />
             </MudList>
         </MudItem>
@@ -48,7 +48,7 @@
                     <MudText Color="Color.Secondary">Support</MudText>
                 </MudListSubheader>
                 <MudListItem Text="Contact" Href="mailto:support@modern-matchmaker.com" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.FAQ" Href="/support/faq" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.FAQ" Href="/support/faq" Class="py-0" Disabled="_blockedActions" />
             </MudList>
         </MudItem>
         <MudItem xs="12" sm="3" md="2">
@@ -56,10 +56,10 @@
                 <MudListSubheader>
                     <MudText Color="Color.Secondary">Legal</MudText>
                 </MudListSubheader>
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.TermsUse" Href="/support/terms" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.PrivacyPolicy" Href="/support/privacy" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.ChildPolicy" Href="/support/child-safety" Class="py-0" />
-                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.Credits" Href="/support/credits" Class="py-0" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.TermsUse" Href="/support/terms" Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.PrivacyPolicy" Href="/support/privacy" Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.ChildPolicy" Href="/support/child-safety" Class="py-0" Disabled="_blockedActions" />
+                <MudListItem Text="@WEB.Modules.Support.Resources.Translations.Credits" Href="/support/credits" Class="py-0" Disabled="_blockedActions" />
             </MudList>
         </MudItem>
     </MudGrid>
@@ -67,4 +67,5 @@
 
 @code {
     [Parameter] public bool Support { get; set; }
+    private bool _blockedActions => Navigation.Uri.Contains("register-user") || Navigation.Uri.Contains("ask-consent");
 }

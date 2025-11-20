@@ -3,6 +3,7 @@
 @using MM.WEB.Core.Models
 @using MM.WEB.Modules.Profile.Core
 @using Button = MM.WEB.Resources.Button
+@using Microsoft.AspNetCore.Authorization
 @inherits ComponentCore<PopupProfile>
 @attribute [Authorize]
 
@@ -200,7 +201,7 @@
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        await JsRuntime.InvokeVoidAsync("initCalendar", GallerySwiperId);
+        await JavascriptVoidAsync("initCalendar", GallerySwiperId);
     }
 
     protected override async Task LoadNonEssentialDataAsync()

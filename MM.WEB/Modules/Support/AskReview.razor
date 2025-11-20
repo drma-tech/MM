@@ -1,11 +1,11 @@
-﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inherits ComponentCore<AskReview>
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mb-3">
+        <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mb-3" Style="text-align: center;">
             Your feedback helps us keep improving and makes it easier for new users to discover the platform.
         </MudText>
+
         @if (Platform != null && Platform != "webapp")
         {
             <ul class="ms-6 mb-3">
@@ -83,5 +83,11 @@
         await base.OnInitializedAsync();
 
         Platform = await GetLocalStorage("platform");
+    }
+
+    private async Task Reviewed()
+    {
+        await JsRuntime.SetLocalStorage("store-reviewed", true.ToString().ToLower());
+        MudDialog?.Close();
     }
 }

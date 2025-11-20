@@ -12,13 +12,13 @@ public class CosmosProfileOnRepository
 {
     private readonly ILogger<CosmosProfileOnRepository> _logger;
 
-    public CosmosProfileOnRepository(IConfiguration config, ILogger<CosmosProfileOnRepository> logger)
+    public CosmosProfileOnRepository(CosmosClient CosmosClient, IConfiguration config, ILogger<CosmosProfileOnRepository> logger)
     {
         _logger = logger;
 
         var databaseId = config.GetValue<string>("CosmosDB:DatabaseId");
 
-        Container = ApiStartup.CosmosClient.GetContainer(databaseId, "profile-on");
+        Container = CosmosClient.GetContainer(databaseId, "profile-on");
     }
 
     public Container Container { get; }

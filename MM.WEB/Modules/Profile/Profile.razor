@@ -316,9 +316,9 @@
         //     }
         // }
 
-        await JsRuntime.InvokeVoidAsync("initSwiper", SuggestionsSwiperId);
-        await JsRuntime.InvokeVoidAsync("initSwiper", LikesSwiperId);
-        await JsRuntime.InvokeVoidAsync("initSwiper", MatchesSwiperId);
+        await JavascriptVoidAsync("initSwiper", SuggestionsSwiperId);
+        await JavascriptVoidAsync("initSwiper", LikesSwiperId);
+        await JavascriptVoidAsync("initSwiper", MatchesSwiperId);
 
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -492,9 +492,9 @@
         }
     }
 
-    private void Login()
+    private async Task Login()
     {
-        Navigation.NavigateToLogin("/authentication/login");
+        await PopupHelper.LoginPopup(DialogService);
     }
 
     // private string GetSuggestionTitle()

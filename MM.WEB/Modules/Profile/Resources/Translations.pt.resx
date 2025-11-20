@@ -126,6 +126,9 @@
   <data name="Actions" xml:space="preserve">
     <value>Ações</value>
   </data>
+  <data name="AuthProviders" xml:space="preserve">
+    <value>Provedores de autenticação</value>
+  </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Limpar cache</value>
   </data>

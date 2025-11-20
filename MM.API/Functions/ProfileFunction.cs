@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using MM.API.Core.Auth;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;

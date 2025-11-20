@@ -1,10 +1,11 @@
-﻿@using MM.WEB.Modules.Auth.Core
+﻿@using MM.WEB.Core.Auth
+@using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Profile.Resources
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
 @inherits ComponentCore<ProfilePopup>
 
 @inject LoginApi LoginApi
+@inject FirebaseAuthService Auth
 
 <MudDialog Style="width: 100%">
     <DialogContent>
@@ -12,7 +13,7 @@
             <MudCardContent>
                 <MudGrid>
                     <MudItem xs="12">
-                        <MudTextField T="@string" Label="@Translations.IdentityProvider" Text="@Principal?.IdentityProvider" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
+                        <MudTextField T="@string" Label="@Translations.AuthProviders" Text="@(string.Join(", ", Principal?.AuthProviders ?? []))" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
                     </MudItem>
                     <MudItem xs="12">
                         <MudTextField T="@string" Label="@Translations.Identification" Text="@Principal?.UserId" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
@@ -50,9 +51,9 @@
 
     private AuthPrincipal? Principal { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
-        Principal = await PrincipalApi.Get(IsAuthenticated);
+        Principal = await PrincipalApi.Get(IsAuthenticated, true);
     }
 
     private async Task DownloadData()
@@ -69,7 +70,7 @@
             // data.Matches = await MatchApi.GetAll(Principal.Id);
             // data.Validations = await ValidationApi.GetAll(Principal.Id);
 
-            var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.IdentityProvider}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
+            var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
             await JavascriptVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
@@ -82,7 +83,7 @@
     {
         try
         {
-            if (Principal?.Subscription is { Active: true })
+            if (Principal?.Subscription?.IsActive() ?? false)
             {
                 await DialogService.ShowMessageBox("You still have an active subscription", "Please cancel your subscription before deleting your profile.");
                 return;
@@ -100,7 +101,7 @@
                 // Navigation.NavigateTo("/.auth/purge/aad");
 
                 //close current login session
-                Navigation.NavigateToLogout("/authentication/logout");
+                await Logout();
             }
             else
             {
@@ -111,6 +112,11 @@
         {
             await ProcessException(ex);
         }
+    }
+
+    private async Task Logout()
+    {
+        await Auth.SignOutAsync();
     }
 
 }

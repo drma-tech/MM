@@ -54,6 +54,12 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/js/firebase.min.js",
+    "inputFiles": [
+      "wwwroot/js/firebase.js"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/js/crop-helper.min.js",
     "inputFiles": [
       "wwwroot/js/crop-helper.js"

@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 function sendLog(msg) {
-    const baseUrl = window.location.hostname === "localhost" ? "http://localhost:7071" : "";
+    const baseUrl = window.location.hostname === "localhost" ? "http://localhost:7091" : "";
 
     fetch(`${baseUrl}/api/public/logger`, {
         method: "POST",
@@ -32,12 +32,24 @@ function GetLocalStorage(key) {
     return window.localStorage.getItem(key);
 }
 
+function GetSessionStorage(key) {
+    return window.sessionStorage.getItem(key);
+}
+
 function SetLocalStorage(key, value) {
     if (typeof key !== "string" || typeof value !== "string") {
         showError("Key/value must be strings");
         return null;
     }
     return window.localStorage.setItem(key, value);
+}
+
+function SetSessionStorage(key, value) {
+    if (typeof key !== "string" || typeof value !== "string") {
+        showError("Key/value must be strings");
+        return null;
+    }
+    return window.sessionStorage.setItem(key, value);
 }
 
 function LoadAppVariables() {
@@ -77,14 +89,14 @@ function LoadAppVariables() {
 
 async function getUserInfo() {
     try {
-        let keys = JSON.parse(GetLocalStorage("msal.account.keys"));
-        if (!keys) return null;
-        let session = JSON.parse(GetLocalStorage(keys[0]));
+        const user = firebaseAuth.getUser();
+
+        if (!user) return null;
 
         return {
-            userId: session.localAccountId,
-            name: session.name,
-            email: session.idTokenClaims["email"]
+            userId: user.uid,
+            name: user.displayName || null,
+            email: user.email || null
         };
     } catch (error) {
         showError(error.message);
@@ -108,7 +120,12 @@ function showError(message) {
 
 function showToast(message) {
     const container = document.getElementById("error-container");
-    if (!container) return;
+
+    if (!container) {
+        setTimeout(() => {
+            showToast(message);
+        }, 1000);
+    }
 
     container.textContent = message;
     container.style.display = "block";
@@ -268,3 +285,21 @@ window.showCache = () => {
         ", platform: " + GetLocalStorage("platform")
     );
 };
+
+async function invokeDotNetWhenReady(assembly, method, args) {
+    const retries = 10;
+    const delay = 500;
+
+    for (let i = 0; i < retries; i++) {
+        if (window.DotNet && DotNet.invokeMethodAsync) {
+            try {
+                await DotNet.invokeMethodAsync(assembly, method, args);
+                return;
+            } catch (err) {
+                console.warn("DotNet invocation failed, retrying...", err);
+            }
+        }
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    console.error("DotNet not ready after multiple retries");
+}

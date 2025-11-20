@@ -13,7 +13,7 @@
 @inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
-<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription">
+<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle">
     <ActionFragment>
         <MudTooltip Text="@Modules.Profile.Resources.Translations.Subscription">
             <MudFab Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" Size="AppStateStatic.Size" OnClick="@OpenSubscription" />
@@ -419,9 +419,9 @@
         await DialogService.SubscriptionPopup(IsAuthenticated);
     }
 
-    private void Login()
+    private async Task Login()
     {
-        Navigation.NavigateToLogin("/authentication/login");
+        await PopupHelper.LoginPopup(DialogService);
     }
 
 }

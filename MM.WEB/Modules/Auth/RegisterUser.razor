@@ -1,13 +1,15 @@
-﻿@page "/login-success"
+﻿@page "/register-user"
+@inherits PageCore<RegisterUser>
+
 @using System.Security.Claims
+@using MM.WEB.Core.Auth
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Auth.Resources
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@inherits PageCore<LoginSuccess>
 
 @inject LoginApi LoginApi
+@inject FirebaseAuthService Auth
 
-<SeoHeader Title="Login" Description="Login" Url="/login-success" Index="false" Keywords="@([])"></SeoHeader>
+<SeoHeader Title="Register User" Description="Register User" Url="/register-user" Index="false" Keywords="@([])"></SeoHeader>
 
 @if (IsAuthenticated)
 {
@@ -60,7 +62,7 @@
 
                 if (Principal == null) //first access
                 {
-                    //wait the user answer the terms of use
+                    //wait the user answer the terms of use (call CreateAccount)
                 }
                 else //just do login
                 {
@@ -87,7 +89,7 @@
 
             Principal = new AuthPrincipal
             {
-                IdentityProvider = User.FindFirst("idp")?.Value,
+                AuthProviders = [User.FindFirst("idp")!.Value],
                 DisplayName = User.FindFirst("name")?.Value,
                 Email = User.FindFirst("email")?.Value
             };
@@ -111,16 +113,22 @@
 
     private async Task RegisterLogin()
     {
-         var platform = await AppStateStatic.GetPlatform(JsRuntime);
+        var platform = await AppStateStatic.GetPlatform(JsRuntime);
 
         await LoginApi.Add(platform);
+
+        if (Principal!.AuthProviders.Empty() || !Principal!.AuthProviders.Contains(User!.FindFirst("idp")!.Value)) //if its a new auth provider
+        {
+            Principal.AuthProviders = Principal.AuthProviders.Union([User!.FindFirst("idp")!.Value]).ToArray();
+            await PrincipalApi.Update(Principal);
+        }
 
         Navigation.NavigateTo("/profile");
     }
 
-    private void Logout()
+    private async Task Logout()
     {
-        Navigation.NavigateToLogout("/authentication/logout");
+        await Auth.SignOutAsync();
     }
 
 }

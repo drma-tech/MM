@@ -11,6 +11,7 @@ namespace MM.WEB.Core;
 
 public static class AppStateStatic
 {
+    public static string? Token { get; set; }
     public static bool IsAuthenticated { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
@@ -235,6 +236,9 @@ public static class AppStateStatic
 
     #endregion Region Country
 
+    public static Action<string?>? AuthChanged { get; set; }
+    public static Action<string, string>? NotificationEnabled { get; set; }
+    public static Action? UserStateChanged { get; set; }
     public static Action? RegistrationSuccessful { get; set; }
     public static Action<string>? AppleVerify { get; set; }
     public static Action<string>? ShowError { get; set; }

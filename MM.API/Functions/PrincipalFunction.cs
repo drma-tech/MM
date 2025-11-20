@@ -1,7 +1,10 @@
+using FirebaseAdmin.Auth;
+using FirebaseAdmin.Messaging;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using MM.API.Core.Auth;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
@@ -94,7 +97,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
             var model = new AuthPrincipal
             {
-                IdentityProvider = body.IdentityProvider,
+                AuthProviders = body.AuthProviders,
                 DisplayName = body.DisplayName,
                 Email = body.Email,
                 Events = body.Events
@@ -102,6 +105,30 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
             model.Initialize(userId);
 
             return await repo.CreateItemAsync(model, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
+    [Function("PrincipalUpdate")]
+    public async Task<AuthPrincipal?> PrincipalUpdate(
+       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/update")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var body = await req.GetBody<AuthPrincipal>(factory, cancellationToken);
+
+            if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
+
+            var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+
+            model!.AuthProviders = body.AuthProviders;
+
+            return await repo.UpsertItemAsync(model, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -173,6 +200,71 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
             var myValidations = await repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
             if (myValidations != null) await repo.Delete(myValidations, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
+    [Function("PrincipalImport")]
+    public async Task PrincipalImport(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/import")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var users = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
+
+            foreach (var user in users)
+            {
+                var args = new UserRecordArgs()
+                {
+                    Uid = user.Id.Split(":")[1],
+                    Email = user.Email,
+                    DisplayName = user.DisplayName
+                };
+
+                try
+                {
+                    await FirebaseAuth.DefaultInstance.CreateUserAsync(args, CancellationToken.None);
+                }
+                catch (Exception ex)
+                {
+                    req.ProcessException(ex); //It logs the error, but doesn't stop the import.
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            req.ProcessException(ex);
+            throw;
+        }
+    }
+
+    [Function("SubscribeToTopics")]
+    public static async Task SubscribeToTopics(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "firebase/subscribe")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var token = req.GetQueryParameters()["token"];
+            var platform = req.GetQueryParameters()["platform"];
+
+            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], "global");
+            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], platform);
+
+            var message = new Message()
+            {
+                Token = token,
+                Data = new Dictionary<string, string>
+                {
+                    { "title", "Streaming Discovery" },
+                    { "body", "Welcome to your personal streaming guide." }
+                }
+            };
+
+            await FirebaseMessaging.DefaultInstance.SendAsync(message, cancellationToken);
         }
         catch (Exception ex)
         {

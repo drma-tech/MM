@@ -7,7 +7,6 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>MM.API</RootNamespace>
 		<UserSecretsId>34ce4f7a-ae5c-4644-b219-86df6469e377</UserSecretsId>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Core\Hubs\**" />
@@ -21,8 +20,9 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.3" />
+		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.4" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.26.0" />
+		<PackageReference Include="FirebaseAdmin" Version="3.4.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.10" />
 		<PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.55.0" />
