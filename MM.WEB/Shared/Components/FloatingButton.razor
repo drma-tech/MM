@@ -21,7 +21,7 @@
             {
                 Side = Side.Right;
                 Color = Color.Secondary;
-                StartIcon = Icons.Material.Filled.ArrowBack;
+                StartIcon = IconsFA.Solid.Icon("arrow-left").Font;
                 OnClick = EventCallback.Factory.Create<MouseEventArgs>(this, async () => await JsRuntime.InvokeVoidAsync("history.back"));
             }
         }

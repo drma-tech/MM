@@ -303,3 +303,48 @@ async function invokeDotNetWhenReady(assembly, method, args) {
     }
     console.error("DotNet not ready after multiple retries");
 }
+
+async function UpdateLocation() {
+    if (!("permissions" in navigator) || !("geolocation" in navigator)) {
+        showError("Geolocation is not supported by this browser.");
+        return;
+    }
+
+    const status = await navigator.permissions.query({ name: "geolocation" });
+
+    if (status.state === "denied") {
+        showError("Location access is blocked. Enable it in your browser settings.");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        async (position) => {
+            if (!position?.coords) {
+                showError("Unable to read location data.");
+                return;
+            }
+
+            const { latitude, longitude, accuracy } = position.coords;
+
+            await invokeDotNetWhenReady("MM.WEB", "LocationChanged", { latitude, longitude, accuracy });
+        },
+        (err) => {
+            const code = err.code;
+
+            if (code === err.PERMISSION_DENIED) {
+                showError("User denied the request for Geolocation.");
+            } else if (code === err.POSITION_UNAVAILABLE) {
+                showError("Location information is unavailable.");
+            } else if (code === err.TIMEOUT) {
+                showError("The request to obtain a location timed out.");
+            } else {
+                showError("An unexpected error occurred while retrieving location.");
+            }
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000, // 10s
+            maximumAge: 0
+        }
+    );
+}

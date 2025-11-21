@@ -1,10 +1,7 @@
 ﻿using Microsoft.JSInterop;
-using MM.Shared.Models.Auth;
-using MM.WEB.Core.Helper;
 using MM.WEB.Modules.Subscription.Core;
 using MudBlazor;
 using MudBlazor.Services;
-using System.Globalization;
 using System.Security.Claims;
 
 namespace MM.WEB.Core;
@@ -237,6 +234,7 @@ public static class AppStateStatic
     #endregion Region Country
 
     public static Action<string?>? AuthChanged { get; set; }
+    public static Action<GeoLocation>? LocationChanged { get; set; }
     public static Action<string, string>? NotificationEnabled { get; set; }
     public static Action? UserStateChanged { get; set; }
     public static Action? RegistrationSuccessful { get; set; }

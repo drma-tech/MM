@@ -267,6 +267,12 @@
     }
 
     [JSInvokable]
+    public static void LocationChanged(GeoLocation geo)
+    {
+        AppStateStatic.LocationChanged?.Invoke(geo);
+    }
+
+    [JSInvokable]
     public static string GetAppVersion()
     {
         try

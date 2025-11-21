@@ -1,5 +1,4 @@
-﻿using BrowserInterop.Extensions;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
@@ -18,7 +17,18 @@ public partial class ProfileData : PageCore<ProfileData>
     private ProfileModel? Profile { get; set; }
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
-    private GeoLocation? GPS { get; set; }
+
+    protected override void OnInitialized()
+    {
+        AppStateStatic.LocationChanged += async location =>
+        {
+            if (location is GeoLocation geoLocation)
+            {
+                await UpdateLocation(Profile!, geoLocation);
+                StateHasChanged();
+            }
+        };
+    }
 
     protected override async Task LoadNonEssentialDataAsync()
     {
@@ -91,42 +101,33 @@ public partial class ProfileData : PageCore<ProfileData>
         {
             if (profile != null)
             {
-                var window = await JsRuntime.Window(); //todo: remove this component
-                var navigator = await window.Navigator();
-                var position = await navigator.Geolocation.GetCurrentPosition();
-
-                if (position.Error != null)
-                {
-                    await ShowWarning(position.Error.Message);
-                }
-                else if (position.Location != null)
-                {
-                    GPS ??= new GeoLocation();
-
-                    GPS.Latitude = position.Location.Coords.Latitude;
-                    GPS.Longitude = position.Location.Coords.Longitude;
-                    GPS.Accuracy = position.Location.Coords.Accuracy;
-
-                    var here = await MapApi.GetLocationHere(GPS.Latitude, GPS.Longitude);
-                    if (here != null && here.items.Count != 0)
-                    {
-                        var address = here.items[0].address;
-                        profile.Country = address?.GetCountry();
-                        profile.State = address?.GetState();
-                        profile.City = address?.GetCity();
-                    }
-
-                    if (GPS.Accuracy > 1000) await ShowInfo(GlobalTranslations.GpsNotAccurate);
-                }
-                else
-                {
-                    await ShowWarning(GlobalTranslations.UnableDetectGps);
-                }
+                await JavascriptVoidAsync("window.UpdateLocation");
             }
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
+        }
+    }
+
+    private async Task UpdateLocation(ProfileModel profile, GeoLocation? gps)
+    {
+        if (gps != null)
+        {
+            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude);
+            if (here != null && here.items.Count != 0)
+            {
+                var address = here.items[0].address;
+                profile.Country = address?.GetCountry();
+                profile.State = address?.GetState();
+                profile.City = address?.GetCity();
+            }
+
+            if (gps.Accuracy > 1000) await ShowInfo(GlobalTranslations.GpsNotAccurate);
+        }
+        else
+        {
+            await ShowWarning(GlobalTranslations.UnableDetectGps);
         }
     }
 

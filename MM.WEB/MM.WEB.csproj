@@ -25,7 +25,6 @@
 		<PackageReference Include="Humanizer.Core.es" Version="3.0.1" />
 		<PackageReference Include="Humanizer.Core.pt" Version="3.0.1" />
 		<PackageReference Include="Bogus" Version="35.6.5" />
-		<PackageReference Include="BrowserInterop" Version="1.1.2" />
 		<PackageReference Include="FluentValidation" Version="12.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.10">
 			<TreatAsUsed>true</TreatAsUsed>
