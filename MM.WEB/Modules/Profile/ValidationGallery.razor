@@ -83,7 +83,7 @@
     private string? DeviceId { get; set; }
     private string? DeviceName { get; set; }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
         Validation = await ValidationApi.Get(Core);
     }

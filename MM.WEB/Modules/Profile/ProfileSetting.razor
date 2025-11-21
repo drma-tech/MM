@@ -41,7 +41,7 @@
     private SettingModel? Setting { get; set; }
     public RenderControlCore<SettingModel?>? Core { get; set; } = new();
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
         Core?.LoadingStarted?.Invoke();
 

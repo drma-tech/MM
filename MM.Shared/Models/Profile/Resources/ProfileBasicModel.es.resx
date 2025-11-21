@@ -124,7 +124,7 @@
     <value>Descripción</value>
   </data>
   <data name="Description_Placeholder" xml:space="preserve">
-    <value>Por tu propia seguridad, no incluyas datos de contacto (celular, correo electrónico, etc.) ni lugares (donde vives o frecuentas). \n\nNOTA: Promocionar redes sociales, productos, servicios y/o contenidos que violen derechos de terceros será sujeto a baneo de la plataforma.</value>
+    <value>Trate de no incluir datos de contacto personales (como números de teléfono o correos electrónicos) ni mencionar los lugares exactos donde vive o pasa el rato. Esto ayuda a mantener su perfil seguro. 💛\n\nAdemás, compartir o publicitar cuentas sociales, productos, servicios o cualquier cosa que infrinja los derechos de otra persona no está permitido y puede dar lugar a su eliminación.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>La opción más común seleccionada automáticamente (aplicable a la mayoría de las personas)</value>

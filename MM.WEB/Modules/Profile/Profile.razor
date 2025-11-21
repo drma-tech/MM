@@ -162,14 +162,14 @@
         <PageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
             <ActionFragment>
                 <MudTooltip Text="Generate new suggestion list">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="true" Size="AppStateStatic.Size">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="GenerateSuggestions" Size="AppStateStatic.Size">
                         @Button.Generate
                     </MudButton>
                 </MudTooltip>
             </ActionFragment>
             <BodyFragment>
                 <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()" PrivateContent="true" PremiumFeature="true"
-                               PremiumDescription="Only available in phase 2">
+                               PremiumDescription="This feature is only available in phase 2.">
                     <div id="@SuggestionsSwiperId" class="swiper mb-2">
                         <div class="swiper-wrapper">
                             @foreach (var item in Suggestions)
@@ -221,7 +221,7 @@
                 @if (MyMatches == null || MyMatches.Items.Empty())
                 {
                     <MudTooltip Text="Simulate matches to learn about our compatibility system">
-                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="profile == null" Size="AppStateStatic.Size">
+                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Size="AppStateStatic.Size">
                             @Button.Simulate
                         </MudButton>
                     </MudTooltip>
@@ -323,7 +323,7 @@
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
         try
         {
@@ -410,8 +410,25 @@
         }
     }
 
+    private async Task GenerateSuggestions()
+    {
+        await ShowWarning("This feature is only available in phase 2.");
+    }
+
     private async Task SimulateMatches()
     {
+        if (profile == null)
+        {
+            await ShowWarning("Profile data is required to simulate matches.");
+            return;
+        }
+
+        if (filter == null)
+        {
+            await ShowWarning("Filter data is required to simulate matches.");
+            return;
+        }
+
         if (await DialogService.ShowMessageBox(GlobalTranslations.Confirmation, GlobalTranslations.GenerateSimulation, Button.Ok, Button.Cancel) ?? false)
         {
             MyMatches = new MyMatchesModel();

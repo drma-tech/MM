@@ -204,7 +204,7 @@
         await JavascriptVoidAsync("initCalendar", GallerySwiperId);
     }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
         try
         {
@@ -291,7 +291,7 @@
         }
     }
 
-    private async Task Deslike()
+    private async Task Dislike()
     {
         try
         {

@@ -30,7 +30,7 @@ public partial class ProfileData : PageCore<ProfileData>
         };
     }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task LoadAuthDataAsync()
     {
         Core?.LoadingStarted?.Invoke();
 
