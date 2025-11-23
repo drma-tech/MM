@@ -1,12 +1,26 @@
 ﻿"use strict";
 
-function sendLog(msg) {
-    const baseUrl = window.location.hostname === "localhost" ? "http://localhost:7091" : "";
+function sendLog(error) {
+    const baseUrl = window.location.hostname === "localhost" ? "http://localhost:7071" : "";
+
+    let msg;
+    if (error instanceof Error) {
+        msg = {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
+            env: `${getOperatingSystem()} | ${getBrowserName()} | ${getBrowserVersion()}`,
+            app: `${GetLocalStorage("platform")} | ${GetLocalStorage("app-version")}`,
+            userAgent: navigator.userAgent,
+        };
+    } else {
+        msg = error;
+    }
 
     fetch(`${baseUrl}/api/public/logger`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: msg
+        body: JSON.stringify(msg)
     }).catch(() => { /* do nothing */ });
 }
 
@@ -89,6 +103,8 @@ function LoadAppVariables() {
 
 async function getUserInfo() {
     try {
+        if (!firebaseAuth) return null;
+
         const user = firebaseAuth.getUser();
 
         if (!user) return null;
@@ -99,6 +115,7 @@ async function getUserInfo() {
             email: user.email || null
         };
     } catch (error) {
+        sendLog(error);
         showError(error.message);
         return null;
     }

@@ -41,7 +41,7 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
 
     /// <summary>
     /// Exclusive for data associated with authenticated users (will be called every time the state changes)
-    ///
+    /// 
     /// NOTE: All APIs should check if the user is logged in or not.
     /// </summary>
     /// <returns></returns>
