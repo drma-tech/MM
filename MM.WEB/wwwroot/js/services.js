@@ -8,22 +8,12 @@ window.initGoogleAnalytics = function (code, version) {
         function gtag() { dataLayer.push(arguments); }
         gtag("js", new Date());
 
-        getUserInfo()
-            .then(user => {
-                const config = {
-                    'app_version': version,
-                    'platform': PLATFORM
-                };
+        const config = {
+            'app_version': version,
+            'platform': PLATFORM
+        };
 
-                if (user) {
-                    config['user_id'] = user.userId;
-                }
-
-                gtag("config", code, config);
-            })
-            .catch(error => {
-                showError(error.message);
-            });
+        gtag("config", code, config);
     }
 }
 
@@ -51,7 +41,7 @@ window.initUserBack = function () {
     window.Userback = window.Userback || {};
     Userback.access_token = "A-A2J4M5NKCbDp1QyQe7ogemmmq";
     (function (d) {
-        var s = d.createElement('script'); s.async = true; s.src = 'https://static.userback.io/widget/v1.js?vs=202511'; (d.head || d.body).appendChild(s);
+        var s = d.createElement('script'); s.async = true; s.src = 'https://static.userback.io/widget/v1.js'; (d.head || d.body).appendChild(s);
     })(document);
     const browserLang = navigator.language || navigator.userLanguage;
     Userback.widget_settings = {
@@ -61,20 +51,6 @@ window.initUserBack = function () {
     Userback.custom_data = {
         platform: GetLocalStorage("platform"),
         app_version: GetLocalStorage("app-version")
-    };
-    Userback.on_load = () => {
-        getUserInfo()
-            .then(user => {
-                if (user) {
-                    Userback.identify(user.userId, {
-                        name: user.name,
-                        email: user.email
-                    });
-                }
-            })
-            .catch(error => {
-                showError(error.message);
-            });
     };
     Userback.on_survey_submit = (obj) => {
         if (obj.key == "kcyhCB") {

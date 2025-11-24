@@ -101,9 +101,9 @@ function LoadAppVariables() {
     //}
 }
 
-async function getUserInfo() {
+function getUser() {
     try {
-        if (!firebaseAuth) return null;
+        if (typeof firebaseAuth === "undefined" || !firebaseAuth) return null;
 
         const user = firebaseAuth.getUser();
 

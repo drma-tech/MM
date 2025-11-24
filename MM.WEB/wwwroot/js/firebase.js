@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 window.initFirebase = () => {
-    if (!window.firebase || !firebase.auth || !firebase.messaging) {
+    if (typeof firebase === "undefined" || !firebase || !firebase.auth || !firebase.messaging) {
         setTimeout(window.initFirebase, 100);
         return;
     }
@@ -31,8 +31,7 @@ window.initFirebase = () => {
     // =========================
 
     auth.onAuthStateChanged(async (user) => {
-        const token = user ? await user.getIdToken() : null;
-        await invokeDotNetWhenReady("MM.WEB", "AuthChanged", token);
+        await AuthStateChanged(user);
     });
 
     window.firebaseAuth = {
@@ -122,4 +121,6 @@ window.initFirebase = () => {
     });
 }
 
-window.initFirebase();
+if (!isBot) {
+    window.initFirebase();
+}
