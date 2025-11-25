@@ -95,7 +95,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -113,7 +113,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -131,7 +131,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -149,7 +149,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -228,7 +228,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -252,7 +252,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -269,7 +269,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -319,7 +319,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -338,7 +338,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -357,7 +357,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

@@ -56,7 +56,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (TaskCanceledException ex)
         {
-            req.ProcessException(ex.CancellationToken.IsCancellationRequested
+            req.LogError(ex.CancellationToken.IsCancellationRequested
                 ? new NotificationException("Cancellation Requested")
                 : new NotificationException("Timeout occurred"));
 
@@ -64,7 +64,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             return req.CreateResponse(HttpStatusCode.InternalServerError);
         }
     }

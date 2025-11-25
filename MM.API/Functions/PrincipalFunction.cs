@@ -29,7 +29,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -58,7 +58,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
                 if (blockedIp.Data?.Quantity > 2)
                 {
                     //todo: create a mechanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
-                    logger.LogWarning("PrincipalAdd blocked IP {IP}", ip);
+                    req.LogWarning($"PrincipalAdd blocked IP {ip}");
                     throw new NotificationException("You've reached the limit for creating profiles. Please try again later.");
                 }
             }
@@ -108,7 +108,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -132,7 +132,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -154,7 +154,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -203,7 +203,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -231,13 +231,13 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
                 }
                 catch (Exception ex)
                 {
-                    req.ProcessException(ex); //It logs the error, but doesn't stop the import.
+                    req.LogError(ex); //It logs the error, but doesn't stop the import.
                 }
             }
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -268,7 +268,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -313,7 +313,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -337,7 +337,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

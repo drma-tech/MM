@@ -24,7 +24,7 @@ public class ExternalFunction(IConfiguration config)
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -44,7 +44,7 @@ public class ExternalFunction(IConfiguration config)
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

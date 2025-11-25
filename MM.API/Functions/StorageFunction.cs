@@ -106,7 +106,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -142,7 +142,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -204,7 +204,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }

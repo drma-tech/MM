@@ -7,7 +7,7 @@ namespace MM.WEB.Core.Auth
         public async Task SignInAsync(string provider)
         {
             ApiCore.ResetCacheVersion();
-            await js.InvokeVoidAsync("firebaseAuth.signIn", provider);
+            await js.InvokeVoidAsync("FirebaseSignIn", provider);
         }
 
         public async Task SignOutAsync()

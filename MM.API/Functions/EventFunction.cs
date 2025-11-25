@@ -67,7 +67,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -111,7 +111,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
@@ -130,7 +130,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
         }
         catch (Exception ex)
         {
-            req.ProcessException(ex);
+            req.LogError(ex);
             throw;
         }
     }
