@@ -1,6 +1,6 @@
-﻿//lists
+//lists
 window.initSwiper = (id, size) => {
-    if (typeof Swiper === 'undefined') {
+    if (typeof Swiper === "undefined") {
         setTimeout(() => window.initSwiper(id, size), 200);
         return;
     }
@@ -16,15 +16,13 @@ window.initSwiper = (id, size) => {
         slidesPerView: "auto",
         spaceBetween: mobile ? 4 : 8,
         breakpointsBase: "container",
-        navigation:
-        {
+        navigation: {
             nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
+            prevEl: ".swiper-button-prev",
         },
-        pagination:
-        {
+        pagination: {
             el: ".swiper-pagination",
-            clickable: true
+            clickable: true,
         },
         breakpoints: {
             [250 - margin]: { slidesPerView: Math.floor(250 / posterSize) },
@@ -40,13 +38,13 @@ window.initSwiper = (id, size) => {
             [1400 - margin]: { slidesPerView: Math.floor(1400 / posterSize) },
             [1600 - margin]: { slidesPerView: Math.floor(1600 / posterSize) },
             [2000 - margin]: { slidesPerView: Math.floor(2000 / posterSize) },
-        }
+        },
     });
 };
 
 //news
 window.initCalendar = (id) => {
-    if (typeof Swiper === 'undefined') {
+    if (typeof Swiper === "undefined") {
         setTimeout(() => window.initCalendar(id), 200);
         return;
     }
@@ -64,13 +62,11 @@ window.initCalendar = (id) => {
             delay: 2500,
             disableOnInteraction: false,
         },
-        navigation:
-        {
+        navigation: {
             nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
+            prevEl: ".swiper-button-prev",
         },
-        pagination:
-        {
+        pagination: {
             el: ".swiper-pagination",
             clickable: true,
         },

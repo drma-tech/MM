@@ -157,42 +157,47 @@
 
     protected override async Task LoadNonEssentialDataAsync()
     {
-        // Client = await PrincipalApi.Get(IsAuthenticated, true);
+        CurrentCountry = await IpInfoApi.GetCountry();
 
-        // CurrentCountry = await IpInfoApi.GetCountry();
+        if (CurrentCountry.NotEmpty())
+        {
+            BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
 
-        // if (CurrentCountry.NotEmpty())
-        // {
-        //     BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
+            if (BlockedCountry) return;
+        }
 
-        //     if (BlockedCountry) return;
-        // }
-
-        // Providers.Clear();
+        Providers.Clear();
 
         Platform = await AppStateStatic.GetPlatform(JsRuntime);
 
-        // if (Platform == MM.Shared.Enums.Platform.ios)
-        // {
-        //     Providers.Add(PaymentProvider.Apple);
-        //     Providers.Add(PaymentProvider.Paddle);
-        // }
-        // else if (Platform == MM.Shared.Enums.Platform.play)
-        // {
-        //     Providers.Add(PaymentProvider.Paddle);
-        //     Providers.Add(PaymentProvider.Google);
-        // }
-        // else if (Platform == MM.Shared.Enums.Platform.windows)
-        // {
-        //     Providers.Add(PaymentProvider.Paddle);
-        //     Providers.Add(PaymentProvider.Microsoft);
-        // }
-        // else
-        // {
-        //     Providers.Add(PaymentProvider.Paddle);
-        // }
+        if (Platform == MM.Shared.Enums.Platform.ios)
+        {
+            if (CurrentCountry == "US")
+            {
+                Providers.Add(PaymentProvider.Apple);
+                Providers.Add(PaymentProvider.Paddle);
+            }
+            else
+            {
+                Providers.Add(PaymentProvider.Apple);
+            }
+        }
+        else if (Platform == MM.Shared.Enums.Platform.play)
+        {
+            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Google);
+        }
+        else if (Platform == MM.Shared.Enums.Platform.windows)
+        {
+            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Microsoft);
+        }
+        else
+        {
+            Providers.Add(PaymentProvider.Paddle);
+        }
 
-        // Provider = Providers[0]; //todo: when implemented, select native provider by default
+        Provider = Providers[0]; //todo: when implemented, select native provider by default
     }
 
     protected override async Task LoadAuthDataAsync()

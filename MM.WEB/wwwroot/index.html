@@ -35,6 +35,7 @@
         const isBot = /google|baidu|bingbot|duckduckbot|teoma|slurp|yandex|toutiao|bytespider|applebot/i.test(window.navigator.userAgent);
         const isLocalhost = window.location.host.includes("localhost");
         const isDev = window.location.hostname.includes("dev.");
+        const isWebview = /webtonative/i.test(window.navigator.userAgent);
     </script>
 
     <script src="js/functions.min.js"></script>
@@ -53,6 +54,19 @@
             meta.name = "robots";
             meta.content = "noindex, nofollow";
             document.head.appendChild(meta);
+        }
+
+        // temporary: remove in the first quarter of 2026
+        if (typeof Promise.withResolvers !== "function") {
+            showError("Your system’s web engine is outdated and may not support all features. Please update your device or browser to ensure the best experience.");
+            Promise.withResolvers = function () {
+                let resolve, reject;
+                const promise = new Promise((res, rej) => {
+                    resolve = res;
+                    reject = rej;
+                });
+                return { promise, resolve, reject };
+            };
         }
     </script>
 </head>
@@ -79,13 +93,7 @@
         </div>
     </noscript>
 
-    <div id="error-container" class="error-container"></div>
-
-    <!--https://github.com/firebase/firebase-js-sdk/releases-->
-    <script defer src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/12.6.0/firebase-messaging-compat.js"></script>
-    <script src="js/auth.min.js"></script>
+    <div id="toast-stack"></div>
 
     <script src="https://unpkg.com/wasm-feature-detect@1.8.0/dist/umd/index.js" integrity="sha384-WHs/UcbXblETJuoOp/1/SabA6yOoteU6urWZ9Yh+f/Ln4aoXkYtaqEW4X2yRXyB8" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -94,7 +102,8 @@
             if (window.navigator.serviceWorker?.register) {
                 navigator.serviceWorker.register('service-worker.js')
                     .catch(err => {
-                        showError("Failed to register the service worker, which may affect platform functionality. This can occur if your browser blocks certain features or if there's a network issue.");
+                        showError(`Failed to register the service worker, which may affect platform functionality. Details: ${err.message}`);
+                        sendLog(err);
                     });
             }
 
@@ -102,6 +111,12 @@
             window.initUserBack();
         }
     </script>
+
+    <!--https://github.com/firebase/firebase-js-sdk/releases-->
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-messaging-compat.js" crossorigin="anonymous"></script>
+    <script src="js/auth.min.js"></script>
 
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 

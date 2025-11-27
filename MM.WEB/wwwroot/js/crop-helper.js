@@ -1,4 +1,4 @@
-﻿let cropper;
+let cropper;
 
 window.initCropper = (imageId, aspectRatio) => {
     const image = document.getElementById(imageId);
@@ -27,18 +27,20 @@ window.initCropper = (imageId, aspectRatio) => {
                 width: 512,
                 height: 512,
                 left: (containerData.width - 512) / 2,
-                top: (containerData.height - 512) / 2
+                top: (containerData.height - 512) / 2,
             };
             cropper.setCropBoxData(cropBoxData);
-        }
+        },
     });
 };
 
 window.getCroppedImage = (width, height) => {
-    return cropper.getCroppedCanvas({
-        width,
-        height
-    }).toDataURL("image/jpeg");
+    return cropper
+        .getCroppedCanvas({
+            width,
+            height,
+        })
+        .toDataURL("image/jpeg");
 };
 
 window.getImageSize = (imageUrl) => {
@@ -47,7 +49,7 @@ window.getImageSize = (imageUrl) => {
         img.onload = () => {
             resolve({
                 width: img.naturalWidth,
-                height: img.naturalHeight
+                height: img.naturalHeight,
             });
         };
         img.onerror = reject;
