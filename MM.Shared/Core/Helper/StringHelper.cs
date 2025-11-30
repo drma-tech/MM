@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace MM.Shared.Core.Helper;
@@ -88,5 +89,15 @@ public static partial class StringHelper
         var offset = tzInfo.GetUtcOffset(localTime);
 
         return new DateTimeOffset(localTime, offset);
+    }
+
+    public static string ToHash(this string? text)
+    {
+        if (text.Empty()) return "none";
+
+        var bytes = Encoding.UTF8.GetBytes(text);
+        var hash = MD5.HashData(bytes);
+
+        return Convert.ToHexString(hash, 0, 8);
     }
 }

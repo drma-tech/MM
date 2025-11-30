@@ -52,7 +52,7 @@ public class CosmosLogger(CosmosLogRepository repo) : ILogger
             Platform = context?.Platform,
             AppVersion = context?.AppVersion,
             UserId = context?.UserId,
-            Ip = context?.Ip,
+            Ip = context?.Ip ?? "null-ip",
             UserAgent = context?.UserAgent,
             Ttl = (int)TtlCache.ThreeMonths
         };
