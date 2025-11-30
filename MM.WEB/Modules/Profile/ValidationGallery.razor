@@ -23,7 +23,14 @@
                 </CardHeaderActions>
             </MudCardHeader>
             <MudCardContent Class="pa-2">
-                <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" CameraID="@DeviceId" OnRendered="OnRenderedHandler" Autostart="true" />
+                @if (DeviceId.NotEmpty())
+                {
+                    <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" CameraID="@DeviceId" OnRendered="OnRenderedHandler" Autostart="true" />
+                }
+                else
+                {
+                    <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" OnRendered="OnRenderedHandler" Autostart="true" />
+                }
             </MudCardContent>
             <MudCardActions Class="pt-0">
                 @if (Picture.Empty())

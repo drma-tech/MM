@@ -400,12 +400,6 @@
 
     private async Task InviteHandle()
     {
-        if (profile == null)
-        {
-            await ShowWarning("Profile data is required to simulate matches.");
-            return;
-        }
-
         var principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         await DialogService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
     }
