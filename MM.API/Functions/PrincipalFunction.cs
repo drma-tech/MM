@@ -12,7 +12,7 @@ using MM.Shared.Models.Profile.Core;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, ILogger<PrincipalFunction> logger, IHttpClientFactory factory)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(

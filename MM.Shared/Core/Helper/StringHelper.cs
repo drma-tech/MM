@@ -16,8 +16,7 @@ public static partial class StringHelper
         return RemoveSpecialCharacters(str.AsSpan(), customExceptions, replace).ToString();
     }
 
-    public static ReadOnlySpan<char> RemoveSpecialCharacters(this ReadOnlySpan<char> str,
-        char[]? customExceptions = null, char? replace = null)
+    public static ReadOnlySpan<char> RemoveSpecialCharacters(this ReadOnlySpan<char> str, char[]? customExceptions = null, char? replace = null)
     {
         Span<char> buffer = new char[str.Length];
         var idx = 0;
@@ -61,34 +60,6 @@ public static partial class StringHelper
         str = str.Trim('-'); // Trim leading and trailing hyphens
 
         return str;
-    }
-
-    public static DateTimeOffset ParseAppleDate(this string appleDate)
-    {
-        var parts = appleDate.Split(' ');
-        if (parts.Length < 3)
-            return DateTimeOffset.Parse(appleDate);
-
-        var datePart = $"{parts[0]} {parts[1]}";
-        var tzPart = parts[2];
-
-        var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-        {
-            { "America/Los_Angeles", "Pacific Standard Time" },
-            { "America/New_York", "Eastern Standard Time" },
-            { "Europe/London", "GMT Standard Time" },
-            { "Asia/Bangkok", "SE Asia Standard Time" },
-            { "Etc/GMT", "GMT Standard Time" }
-        };
-
-        if (!map.TryGetValue(tzPart, out var winTz))
-            winTz = "UTC"; //fallback
-
-        var tzInfo = TimeZoneInfo.FindSystemTimeZoneById(winTz);
-        var localTime = DateTime.Parse(datePart);
-        var offset = tzInfo.GetUtcOffset(localTime);
-
-        return new DateTimeOffset(localTime, offset);
     }
 
     public static string? ToHash(this string? text)
