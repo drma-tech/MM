@@ -45,7 +45,7 @@
     {
         Core?.LoadingStarted?.Invoke();
 
-        Principal = await PrincipalApi.Get(IsAuthenticated);
+        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         Setting = await SettingApi.Get(null);
 
         if (Setting == null)

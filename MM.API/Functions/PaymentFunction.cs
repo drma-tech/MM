@@ -7,6 +7,8 @@ using MM.Shared.Models.Subscription;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 
 namespace MM.API.Functions;
 
@@ -144,31 +146,33 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
     public async Task PostAppleVerify(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "apple/verify")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        AuthPrincipal? client = null;
         try
         {
             var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
+            client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
 
-            var receipt = await req.ReadAsStringAsync();
-            var endpoint = ApiStartup.Configurations.Apple?.Endpoint;
+            var raw = await req.ReadAsStringAsync();
+            var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new NotificationException("body not present"));
+
             var bundleId = ApiStartup.Configurations.Apple?.BundleId;
 
-            var http = factory.CreateClient("apple");
-            using var request = new HttpRequestMessage(HttpMethod.Post, $"{endpoint}verifyReceipt");
-            request.Content = JsonContent.Create(new AppleRequestModel { ReceiptData = receipt, Password = ApiStartup.Configurations.Apple?.SharedSecret, ExcludeOldTransactions = true });
-            var response = await http.SendAsync(request, cancellationToken);
-            var result = await response.Content.ReadFromJsonAsync<AppleResponseReceipt>(cancellationToken);
+            client.Subscription ??= new AuthSubscription();
+            client.Subscription.LatestReceipt = receipt; //save receipt before cause it may fail
 
-            if (result == null) throw new UnhandledException("AppleResponseReceipt null");
+            var result = await VerifyReceipt(ApiStartup.Configurations.Apple?.Endpoint, receipt, cancellationToken) ?? throw new UnhandledException("AppleResponseReceipt null");
+            if (result.status == 21007)
+            {
+                //when tested with TestFlight
+                result = await VerifyReceipt("https://sandbox.itunes.apple.com/", receipt, cancellationToken) ?? throw new UnhandledException("AppleResponseReceipt null");
+            }
+
             if (result.status != 0) throw new UnhandledException($"invalid status: {result.status}");
             if (result.receipt!.bundle_id != bundleId) throw new UnhandledException("invalid receipt");
 
             var purchase = result.latest_receipt_info[result.latest_receipt_info.Count - 1];
 
-            client.Subscription ??= new AuthSubscription();
-
             client.Subscription.SubscriptionId = purchase.original_transaction_id;
-            client.Subscription.LatestReceipt = receipt;
             client.Subscription.ExpiresDate = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(purchase.expires_date_ms ?? "0", CultureInfo.InvariantCulture));
 
             client.Subscription.Provider = PaymentProvider.Apple;
@@ -176,15 +180,26 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             client.Subscription.Cycle = purchase.product_id!.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
 
             //https://developer.apple.com/documentation/appstorereceipts/status
-            client.Events = client.Events.Union([new Event { Description = $"subscription = {receipt}, status = {result.status}" }]).ToArray();
-
-            await repo.UpsertItemAsync(client, cancellationToken);
+            client.Events = client.Events.Union([new Event { Description = $"apple verify || subscription = {purchase.original_transaction_id}, status = {result.status}" }]).ToArray();
         }
         catch (Exception ex)
         {
             req.LogError(ex);
             throw;
         }
+        finally
+        {
+            if (client != null) await repo.UpsertItemAsync(client, cancellationToken);
+        }
+    }
+
+    private async Task<AppleResponseReceipt?> VerifyReceipt(string? endpoint, string? receipt, CancellationToken cancellationToken)
+    {
+        var http = factory.CreateClient("apple");
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"{endpoint}verifyReceipt");
+        request.Content = new StringContent($$"""{"receipt-data":"{{receipt}}","password":"{{ApiStartup.Configurations.Apple?.SharedSecret}}","exclude-old-transactions":true}""", Encoding.UTF8, "application/json");
+        var response = await http.SendAsync(request, cancellationToken);
+        return await response.Content.ReadFromJsonAsync<AppleResponseReceipt>(cancellationToken);
     }
 
     [Function("PostAppleSubscription")]
@@ -211,7 +226,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
             if (client.Subscription == null) throw new UnhandledException("client.Subscription null");
 
-            var newExpires = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(transaction.ExpiresDate));
+            var newExpires = DateTimeOffset.FromUnixTimeMilliseconds(transaction.ExpiresDate);
             if (client.Subscription.ExpiresDate == null || newExpires > client.Subscription.ExpiresDate)
             {
                 client.Subscription.ExpiresDate = newExpires;
@@ -219,7 +234,9 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             client.Subscription.Product = transaction.ProductId!.Contains("premium") ? AccountProduct.Premium : AccountProduct.Standard;
             client.Subscription.Cycle = transaction.ProductId!.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
 
-            client.Events = client.Events.Union([new Event { Description = $"subscription = {originalTransactionId}, expiresDate = {transaction.ExpiresDate}" }]).ToArray();
+            client.Events = client.Events.Union([new Event {
+                Description = $"apple subscription || subscription = {originalTransactionId}, product = {client.Subscription.Product}, Cycle = {client.Subscription.Cycle}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}, expiresDate = {newExpires}"
+            }]).ToArray();
 
             await repo.UpsertItemAsync(client, cancellationToken);
         }

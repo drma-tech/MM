@@ -21,10 +21,10 @@
     </ActionFragment>
 </PageHeader>
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Main" IsAuthenticated="IsAuthenticated"></GoogleAdSense>
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
 
 <MudContainer>
-    @if (!IsAuthenticated)
+    @if (!AppStateStatic.IsAuthenticated)
     {
         <MudPaper Elevation="2" Class="pa-4 my-8 mud-theme-primary" Style="text-align: center;">
             <MudButton Color="Color.Secondary" Variant="Variant.Filled" Size="AppStateStatic.Size" OnClick="Login">
@@ -416,7 +416,7 @@
 
     private async Task OpenSubscription()
     {
-        await DialogService.SubscriptionPopup(IsAuthenticated);
+        await DialogService.SubscriptionPopup();
     }
 
     private async Task Login()

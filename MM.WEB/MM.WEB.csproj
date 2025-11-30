@@ -13,7 +13,6 @@
 		<Content Remove="Modules\Profile\PhotoValidation.razor" />
 		<Content Remove="Modules\Profile\ProfileChatList.razor" />
 		<Content Remove="Modules\Subscription\Components\SubscriptionPlans.razor" />
-		<Content Remove="Modules\Subscription\Components\SubscriptionPopup.razor" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />

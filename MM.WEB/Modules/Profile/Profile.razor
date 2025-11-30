@@ -23,9 +23,9 @@
 @inject MyMatchesApi MyMatchesApi
 
 <SeoHeader Title="Profile" Description="@SeoTranslations.AppDescription" Url="/profile" Index="false" Keywords="@([])"></SeoHeader>
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" IsAuthenticated="IsAuthenticated" Format="horizontal"></GoogleAdSense>
+<GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile" Format="horizontal"></GoogleAdSense>
 
-@if (!IsAuthenticated)
+@if (!AppStateStatic.IsAuthenticated)
 {
     <MudPaper Class="pa-3 mb-3 mud-theme-primary" Outlined="true" Style="text-align: center;">
         <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
@@ -40,7 +40,7 @@
     </MudPaper>
 }
 
-@if (IsAuthenticated)
+@if (AppStateStatic.IsAuthenticated)
 {
     <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="mb-3">
         <strong>@GlobalTranslations.BetaVersion</strong> @GlobalTranslations.ProductUnderDevelopment
@@ -162,7 +162,7 @@
         <PageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
             <ActionFragment>
                 <MudTooltip Text="Generate new suggestion list">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="GenerateSuggestions" Disabled="!IsAuthenticated" Size="AppStateStatic.Size">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="GenerateSuggestions" Disabled="!AppStateStatic.IsAuthenticated" Size="AppStateStatic.Size">
                         @Button.Generate
                     </MudButton>
                 </MudTooltip>
@@ -187,7 +187,7 @@
         <PageSection Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
             <ActionFragment>
                 <MudTooltip Text="Invite someone by email">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="!IsAuthenticated" Size="AppStateStatic.Size">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="!AppStateStatic.IsAuthenticated" Size="AppStateStatic.Size">
                         @Button.InvitePartner
                     </MudButton>
                 </MudTooltip>
@@ -200,7 +200,7 @@
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
                                     <div style="position: relative; cursor: pointer;"
-                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Like, UserId, item.UserId))">
+                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                             @item.UserName
                                         </MudChip>
@@ -221,7 +221,7 @@
                 @if (MyMatches == null || MyMatches.Items.Empty())
                 {
                     <MudTooltip Text="Simulate matches to learn about our compatibility system">
-                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="!IsAuthenticated" Size="AppStateStatic.Size">
+                        <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="!AppStateStatic.IsAuthenticated" Size="AppStateStatic.Size">
                             @Button.Simulate
                         </MudButton>
                     </MudTooltip>
@@ -235,7 +235,7 @@
                             {
                                 <div class="swiper-slide" style="height: auto !important;">
                                     <div style="position: relative; cursor: pointer;"
-                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(IsAuthenticated, MM.Shared.Enums.Origin.Match, UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
+                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
                                         <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                             @item.UserName
                                         </MudChip>
@@ -327,13 +327,21 @@
     {
         try
         {
-            if (IsAuthenticated)
+            if (AppStateStatic.IsAuthenticated)
             {
                 profile = await ProfileApi.Get(CoreProfile);
                 principal = await PrincipalApi.Get(true);
                 filter = await FilterApi.Get(CoreFilter);
                 setting = await SettingApi.Get(CoreSetting);
                 validation = await ValidationApi.Get(null);
+            }
+            else
+            {
+                profile = null;
+                principal = null;
+                filter = null;
+                setting = null;
+                validation = null;
             }
 
             CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
@@ -359,13 +367,13 @@
 
     private async Task LoadLikes(bool setNewVersion = false)
     {
-        MyLikes = await MyLikesApi.Get(CoreLikes, IsAuthenticated, setNewVersion);
+        MyLikes = await MyLikesApi.Get(CoreLikes, AppStateStatic.IsAuthenticated, setNewVersion);
         CoreLikes?.LoadingFinished?.Invoke(MyLikes);
     }
 
     private async Task LoadMatches(bool setNewVersion = false)
     {
-        MyMatches = await MyMatchesApi.Get(CoreMatches, IsAuthenticated, setNewVersion);
+        MyMatches = await MyMatchesApi.Get(CoreMatches, AppStateStatic.IsAuthenticated, setNewVersion);
         CoreMatches?.LoadingFinished?.Invoke(MyMatches);
     }
 
@@ -398,7 +406,7 @@
             return;
         }
 
-        var principal = await PrincipalApi.Get(IsAuthenticated);
+        var principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         await DialogService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
     }
 

@@ -46,14 +46,13 @@
 </MudDialog>
 
 @code {
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
     private AuthPrincipal? Principal { get; set; }
 
     protected override async Task LoadAuthDataAsync()
     {
-        Principal = await PrincipalApi.Get(IsAuthenticated, true);
+        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
     }
 
     private async Task DownloadData()
@@ -62,7 +61,7 @@
         {
             var data = new SuperData() { Principal = Principal };
 
-            data.Login = await LoginApi.Get(IsAuthenticated);
+            data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
             // data.Filter = await FilterApi.GetAll(Principal.Id);
             // data.Settings = await SettingsApi.Get(Principal.Id);
             // data.Suggestions = await SuggestionApi.GetAll(Principal.Id);

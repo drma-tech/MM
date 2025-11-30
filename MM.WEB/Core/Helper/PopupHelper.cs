@@ -38,22 +38,18 @@ public static class PopupHelper
         await service.ShowAsync<SelectPicturePopup>("Picture", parameters, Options(MaxWidth.Medium));
     }
 
-    public static async Task OpenAccountPopup(this IDialogService service, bool isAuthenticated)
+    public static async Task OpenAccountPopup(this IDialogService service)
     {
-        var parameters = new DialogParameters<ProfilePopup>
-        {
-            { x => x.IsAuthenticated, isAuthenticated }
-        };
+        var parameters = new DialogParameters<ProfilePopup> { };
 
         await service.ShowAsync<ProfilePopup>(Modules.Profile.Resources.Translations.MyProfile, parameters, Options(MaxWidth.ExtraSmall));
     }
 
-    public static async Task OpenPopupProfile(this IDialogService service, bool isAuthenticated, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
+    public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
         ProfileModel? fakeView = null)
     {
         var parameters = new DialogParameters<PopupProfile>
         {
-            { x => x.IsAuthenticated, isAuthenticated },
             { x => x.Origin, origin },
             { x => x.UserId, userId },
             { x => x.IdUserView, idUserView },
@@ -71,14 +67,11 @@ public static class PopupHelper
         await service.ShowAsync<SettingsPopup>(GlobalTranslations.Settings, Options(MaxWidth.Small));
     }
 
-    public static async Task SubscriptionPopup(this IDialogService service, bool isAuthenticated)
+    public static async Task SubscriptionPopup(this IDialogService service)
     {
-        var parameters = new DialogParameters<NewSubscriptionPopup>
-        {
-            { x => x.IsAuthenticated, isAuthenticated }
-        };
+        var parameters = new DialogParameters<SubscriptionPopup> { };
 
-        await service.ShowAsync<NewSubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+        await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
     }
 
     public static async Task OnboardingPopup(this IDialogService service)

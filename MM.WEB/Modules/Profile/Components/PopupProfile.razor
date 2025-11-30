@@ -171,7 +171,6 @@
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
     [Parameter][EditorRequired] public string? UserId { get; set; }
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
 
     [Parameter] public Action? Liked { get; set; }
     [Parameter] public Action? Disliked { get; set; }
@@ -226,7 +225,7 @@
                 return;
             }
 
-            principal = await PrincipalApi.Get(IsAuthenticated);
+            principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
             user = await ProfileApi.Get(null);
             View ??= await ProfileApi.GetView(IdUserView, null);
 

@@ -39,7 +39,7 @@ function sendLog(error) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(log),
     }).catch(() => {
-        showError("sendLog: failed to send log");
+        showError("sendLog: failed to send log.");
     });
 }
 
@@ -88,9 +88,7 @@ function SetSessionStorage(key, value) {
 function LoadAppVariables() {
     //platform
     if (!GetLocalStorage("platform")) {
-        const isWindows =
-            document.referrer == "app-info://platform/microsoft-store" ||
-            /microsoft-store/i.test(navigator.userAgent);
+        const isWindows = document.referrer == "app-info://platform/microsoft-store" || /microsoft-store/i.test(navigator.userAgent);
         const isAndroid = /(android)/i.test(navigator.userAgent);
         const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
         const isMac = /macintosh|mac os x/i.test(navigator.userAgent);
@@ -152,6 +150,9 @@ function showToast(message, attempts = 20) {
         }
         return;
     }
+
+    const exists = Array.from(stack.children).some(el => el.textContent === message);
+    if (exists) return;
 
     const toast = document.createElement("div");
     toast.className = "toast";
@@ -303,7 +304,7 @@ window.showCache = () => {
 };
 
 async function invokeDotNetWhenReady(assembly, method, args) {
-    const retries = 10;
+    const retries = 20;
     const delay = 500;
 
     for (let i = 0; i < retries; i++) {
@@ -311,9 +312,7 @@ async function invokeDotNetWhenReady(assembly, method, args) {
             try {
                 await DotNet.invokeMethodAsync(assembly, method, args);
                 return;
-            } catch (err) {
-                console.warn("DotNet invocation failed, retrying...", err);
-            }
+            } catch { }
         }
         await new Promise((resolve) => setTimeout(resolve, delay));
     }

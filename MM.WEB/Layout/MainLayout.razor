@@ -32,7 +32,7 @@
 <PWAUpdater Text="@GlobalTranslations.PWAUpdaterText" ButtonCaption="@GlobalTranslations.PWAUpdaterButton" />
 
 <MudLayout>
-    <HeadLayout IsAuthenticated="AppStateStatic.IsAuthenticated"></HeadLayout>
+    <HeadLayout></HeadLayout>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-3" Style="min-height: calc(100vh - 64px - 32px);">
             @if (IsLoading)
@@ -190,7 +190,7 @@
         if (lastAccess != null)
         {
             var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
-            isTooSoon = hoursSinceLast < 6;
+            isTooSoon = hoursSinceLast < 12;
         }
 
         if (hasPreviousAccess && !isTooSoon) //starting with the second access (avoid the first 5 minutes)
@@ -226,7 +226,7 @@
         if (lastAccess != null)
         {
             var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
-            isTooSoon = hoursSinceLast < 6;
+            isTooSoon = hoursSinceLast < 12;
         }
 
         var rating = await JsRuntime.GetLocalStorage<int?>("survey-rating");

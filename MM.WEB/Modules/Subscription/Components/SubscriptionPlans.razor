@@ -71,7 +71,7 @@
         </MudCardContent>
         <MudCardActions>
             <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true" Disabled="true" Size="AppStateStatic.Size">
-                @Resources.Translations.YourCurrentPlan
+                @Modules.Subscription.Resources.Translations.YourCurrentPlan
             </MudButton>
         </MudCardActions>
     </MudCard>
@@ -215,8 +215,6 @@
 </MudText>
 
 @code {
-    [Parameter][EditorRequired] public bool IsAuthenticated { get; set; }
-
     [Parameter][EditorRequired] public PaymentProvider Provider { get; set; }
     [Parameter][EditorRequired] public AccountCycle Cycle { get; set; }
     [Parameter][EditorRequired] public AuthPrincipal? Client { get; set; }
@@ -249,7 +247,7 @@
     {
         try
         {
-            if (IsAuthenticated)
+            if (AppStateStatic.IsAuthenticated)
             {
                 var priceId = Config?.GetPriceId(product, Cycle);
 

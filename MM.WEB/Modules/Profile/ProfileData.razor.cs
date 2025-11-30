@@ -34,7 +34,7 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         Core?.LoadingStarted?.Invoke();
 
-        Principal = await PrincipalApi.Get(IsAuthenticated);
+        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         Profile = await ProfileApi.Get(null);
 
         if (Profile == null)
