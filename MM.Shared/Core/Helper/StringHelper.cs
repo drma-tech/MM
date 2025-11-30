@@ -91,9 +91,9 @@ public static partial class StringHelper
         return new DateTimeOffset(localTime, offset);
     }
 
-    public static string ToHash(this string? text)
+    public static string? ToHash(this string? text)
     {
-        if (text.Empty()) return "none";
+        if (text.Empty()) return null;
 
         var bytes = Encoding.UTF8.GetBytes(text);
         var hash = MD5.HashData(bytes);

@@ -62,7 +62,7 @@ public class CosmosLogRepository
     public async Task Add(LogModel log)
     {
         ItemResponse<LogDbModel>? response = null;
-        var id = $"{log.Ip}_{log.UserAgent.ToHash()}";
+        var id = $"{log.Ip ?? "null-ip"}_{log.UserAgent.ToHash() ?? "null-ua"}";
 
         try
         {

@@ -41,7 +41,7 @@ public class CosmosLogger(CosmosLogRepository repo) : ILogger
 
         var log = new LogModel
         {
-            Message = context?.Message ?? exception?.Message ??  formatter(state, exception),
+            Message = context?.Message ?? exception?.Message ?? formatter(state, exception),
             StackTrace = context?.StackTrace ?? exception?.StackTrace,
             Origin = context?.Origin,
             Params = context?.Params,
@@ -52,7 +52,7 @@ public class CosmosLogger(CosmosLogRepository repo) : ILogger
             Platform = context?.Platform,
             AppVersion = context?.AppVersion,
             UserId = context?.UserId,
-            Ip = context?.Ip ?? "null-ip",
+            Ip = context?.Ip,
             UserAgent = context?.UserAgent,
             Ttl = (int)TtlCache.ThreeMonths
         };
