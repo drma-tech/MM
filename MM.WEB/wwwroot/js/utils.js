@@ -1,7 +1,7 @@
 "use strict";
 
 import { isBot, baseApiUrl } from "./main.js";
-import { simd } from "https://unpkg.com/wasm-feature-detect?module";
+import { simd } from "./wasm-feature-detect.js";
 
 export const storage = {
     clearLocalStorage() {
@@ -212,10 +212,6 @@ export const environment = {
     },
     async checkBrowserFeatures() {
         const wasmSupported = typeof WebAssembly === "object";
-        //const wasmModule = await import(
-        //    "https://unpkg.com/wasm-feature-detect?module"
-        //);
-        //const simdSupported = await wasmModule.simd();
         const simdSupported = await simd();
 
         if (!wasmSupported || !simdSupported) {
