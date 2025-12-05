@@ -5,8 +5,6 @@
 @using MM.WEB.Modules.Subscription.Core
 @using Microsoft.AspNetCore.Components.Authorization
 
-@inject FirebaseAuthService Auth
-
 @if (_processing)
 {
     <MudProgressLinear Color="Color.Secondary" Indeterminate="true" Style="position: fixed; z-index: 1400;" />
@@ -93,7 +91,7 @@
         <MudNavMenu>
             <AuthorizeView>
                 <Authorized>
-                    <MudNavLink Icon="@IconsFA.Solid.Icon("circle-user").Font" OnClick="@MyAccount">@Menu.Profile</MudNavLink>
+                    <MudNavLink Icon="@IconsFA.Solid.Icon("circle-user").Font" OnClick="@MyAccount">@Modules.Auth.Resources.Translations.MyAccount</MudNavLink>
                 </Authorized>
             </AuthorizeView>
             <MudNavLink Icon="@IconsFA.Solid.Icon("cog").Font" OnClick="@OpenConfigurations">Settings</MudNavLink>
@@ -151,7 +149,7 @@
 
     private async Task Logout()
     {
-        await Auth.SignOutAsync();
+        await JsRuntime.Firebase().SignOutAsync();
     }
 
     private async Task OpenConfigurations()
@@ -161,7 +159,7 @@
 
     private async Task MyAccount()
     {
-        await DialogService.OpenAccountPopup();
+        await DialogService.AccountPopup();
     }
 
     private Color GetColor(string endpoint)

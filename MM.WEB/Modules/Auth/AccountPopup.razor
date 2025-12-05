@@ -1,17 +1,17 @@
 ﻿@using MM.WEB.Core.Auth
 @using MM.WEB.Modules.Auth.Core
+@using MM.WEB.Modules.Profile.Core
 @using MM.WEB.Modules.Profile.Resources
 
-@inherits ComponentCore<ProfilePopup>
+@inherits ComponentCore<AccountPopup>
 
 @inject LoginApi LoginApi
-@inject FirebaseAuthService Auth
 
-<MudDialog Style="width: 100%">
+<MudDialog Style="width: 100%; max-height: 70%;">
     <DialogContent>
-        <MudCard Outlined="true">
-            <MudCardContent>
-                <MudGrid>
+        <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+            <MudTabPanel Text="Auth">
+                <MudGrid Spacing="2">
                     <MudItem xs="12">
                         <MudTextField T="@string" Label="@Translations.AuthProviders" Text="@(string.Join(", ", Principal?.AuthProviders ?? []))" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
                     </MudItem>
@@ -24,21 +24,36 @@
                     <MudItem xs="12">
                         <MudTextField T="@string" Label="@Translations.Email" Text="@Principal?.Email" Variant="Variant.Filled" ReadOnly="true"></MudTextField>
                     </MudItem>
-                    <MudItem xs="12" sm="6">
-                        <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@DownloadData" Disabled="Principal == null" Size="AppStateStatic.Size">
-                            Download Data
-                        </MudButton>
-                    </MudItem>
-                    <MudItem xs="12" sm="6">
-                        <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@DeleteAccount" Color="Color.Error" Size="AppStateStatic.Size">
-                            @Translations.DeleteAccount
-                        </MudButton>
-                    </MudItem>
                 </MudGrid>
-            </MudCardContent>
-        </MudCard>
+            </MudTabPanel>
+            <MudTabPanel Text="Events">
+                <MudGrid Spacing="2">
+                    @foreach (var item in Principal?.Events ?? [])
+                    {
+                        <MudItem xs="12" Style="text-align: justify;">
+                            <MudPaper Outlined="true" Class="pa-2">
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Primary">@item?.Date.DateTime.ToLocalTime()</MudText>
+                                </div>
+                                <MudText Typo="Typo.body1" Align="Align.Justify" Inline="true"
+                                         Style="@($"line-height: normal; {(AppStateStatic.Size == Size.Small ? "font-size: 0.8rem !important;" : "font-size: 1rem !important;")}")">
+                                    @item?.Description
+                                </MudText>
+                            </MudPaper>
+                        </MudItem>
+                    }
+                </MudGrid>
+            </MudTabPanel>
+        </MudTabs>
     </DialogContent>
     <DialogActions>
+        <MudButton OnClick="@DownloadData" Disabled="Principal == null" Size="AppStateStatic.Size">
+            Download Data
+        </MudButton>
+        <MudButton OnClick="@DeleteAccount" Color="Color.Error" Size="AppStateStatic.Size">
+            @Translations.DeleteAccount
+        </MudButton>
+        <MudSpacer></MudSpacer>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
             @Button.Close
         </MudButton>
@@ -62,15 +77,11 @@
             var data = new SuperData() { Principal = Principal };
 
             data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
-            // data.Filter = await FilterApi.GetAll(Principal.Id);
-            // data.Settings = await SettingsApi.Get(Principal.Id);
-            // data.Suggestions = await SuggestionApi.GetAll(Principal.Id);
-            // data.Likes = await LikeApi.GetAll(Principal.Id);
-            // data.Matches = await MatchApi.GetAll(Principal.Id);
-            // data.Validations = await ValidationApi.GetAll(Principal.Id);
+            // if (Principal!.Subscription?.ActiveProduct is null or AccountProduct.Basic) data.Suggestions = null;
+            // else data.Suggestions = await MySuggestionsApi.Get(Principal!.Subscription?.ActiveProduct, AppStateStatic.IsAuthenticated, null);
 
             var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
-            await JavascriptVoidAsync("jsSaveAsFile", fileName, "application/json", data.ConvertFromObjectToBytes());
+            await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
         {
@@ -115,7 +126,7 @@
 
     private async Task Logout()
     {
-        await Auth.SignOutAsync();
+        await JsRuntime.Firebase().SignOutAsync();
     }
 
 }

@@ -43,11 +43,11 @@ public class AuthSubscription
     {
         return Provider switch
         {
-            PaymentProvider.Paddle => Active,
+            PaymentProvider.Generic => Active,
             PaymentProvider.Microsoft => false,
             PaymentProvider.Google => false,
             PaymentProvider.Apple => ExpiresDate.HasValue && ExpiresDate.Value > DateTimeOffset.UtcNow,
-            _ => false,
+            _ => throw new UnhandledException("invalid provider"),
         };
     }
 }

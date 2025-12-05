@@ -38,11 +38,11 @@ public static class PopupHelper
         await service.ShowAsync<SelectPicturePopup>("Picture", parameters, Options(MaxWidth.Medium));
     }
 
-    public static async Task OpenAccountPopup(this IDialogService service)
+    public static async Task AccountPopup(this IDialogService service)
     {
-        var parameters = new DialogParameters<ProfilePopup> { };
+        var parameters = new DialogParameters<AccountPopup> { };
 
-        await service.ShowAsync<ProfilePopup>(Modules.Profile.Resources.Translations.MyProfile, parameters, Options(MaxWidth.ExtraSmall));
+        await service.ShowAsync<AccountPopup>(Modules.Auth.Resources.Translations.MyAccount, parameters, Options(MaxWidth.Small));
     }
 
     public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,

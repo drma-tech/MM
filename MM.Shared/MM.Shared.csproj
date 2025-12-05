@@ -17,7 +17,7 @@
 		<Compile Remove="Enums\EventType.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="12.1.0" />
+		<PackageReference Include="FluentValidation" Version="12.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 	<ItemGroup>

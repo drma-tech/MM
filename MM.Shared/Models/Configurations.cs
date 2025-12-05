@@ -6,7 +6,6 @@ public class Configurations
     public Firebase? Firebase { get; set; }
     public Azure? Azure { get; set; }
     public AWS? AWS { get; set; }
-    public Paddle? Paddle { get; set; }
     public Apple? Apple { get; set; }
     public Here? Here { get; set; }
 }
@@ -38,17 +37,6 @@ public class AWS
     public string? Region { get; set; }
     public string? AccessKey { get; set; }
     public string? SecretKey { get; set; }
-}
-
-public class Paddle
-{
-    public string? CustomerPortalEndpoint { get; set; } = string.Empty;
-    public string? Endpoint { get; set; } = string.Empty;
-    public string? Token { get; set; } = string.Empty;
-    public string? Key { get; set; } = string.Empty; //do not share with users
-    public string? Signature { get; set; } = string.Empty; //do not share with users
-    public ProductSettings? Standard { get; set; } = new();
-    public ProductSettings? Premium { get; set; } = new();
 }
 
 public class Apple

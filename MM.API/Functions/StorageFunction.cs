@@ -8,7 +8,7 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
-public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepository repo, StorageHelper storageHelper, IHttpClientFactory factory)
+public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepository repo, StorageHelper storageHelper)
 {
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
@@ -17,7 +17,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken) ?? throw new NotificationException("Invalid user");
+            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
             var request = await req.GetPublicBody<PhotoRequest>(cancellationToken);
 
             var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
@@ -118,7 +118,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken) ?? throw new NotificationException("Invalid user");
+            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
 
             var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
 
@@ -153,7 +153,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken) ?? throw new NotificationException("Invalid user");
+            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
             var request = await req.GetPublicBody<UploadPhotoValidationCommand>(cancellationToken);
 
             var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");

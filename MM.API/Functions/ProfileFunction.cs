@@ -77,7 +77,7 @@ public static class ProfileHelper
     }
 }
 
-public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
+public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     private readonly CosmosCacheRepository _repoCache = repoCache;
     private readonly CosmosRepository _repoGen = repoGen;
@@ -88,7 +88,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
             return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
@@ -106,7 +106,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -124,7 +124,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -142,7 +142,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
             return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -213,8 +213,8 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var body = await req.GetBody<ProfileModel>(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
+            var body = await req.GetBody<ProfileModel>(cancellationToken);
             var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
@@ -239,8 +239,8 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var body = await req.GetBody<FilterModel>(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
+            var body = await req.GetBody<FilterModel>(cancellationToken);
 
             if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
 
@@ -263,7 +263,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var body = await req.GetBody<SettingModel>(factory, cancellationToken);
+            var body = await req.GetBody<SettingModel>(cancellationToken);
 
             return await _repoGen.UpsertItemAsync(body, cancellationToken);
         }
@@ -283,7 +283,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
             var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
             var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal,
                 cancellationToken);
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             if (partners.Count != 0) //if user already registered, register a like
             {
@@ -330,7 +330,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
@@ -349,7 +349,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 

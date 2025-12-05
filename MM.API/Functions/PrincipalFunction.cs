@@ -12,7 +12,7 @@ using MM.Shared.Models.Profile.Core;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -20,7 +20,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
@@ -42,13 +42,13 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var body = await req.GetBody<AuthPrincipal>(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
+            var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
             if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
 
             //check if user ip is blocked for insert
-            var ip = req.GetUserIP(false) ?? throw new NotificationException("Failed to retrieve IP");
+            var ip = req.GetUserIP(false) ?? throw new UnhandledException("Failed to retrieve IP");
             var blockedIp = await repoCache.Get<DataBlocked>($"block-{ip}", cancellationToken);
             if (blockedIp?.Data != null)
             {
@@ -119,8 +119,8 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var body = await req.GetBody<AuthPrincipal>(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
+            var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
             if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
 
@@ -143,7 +143,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var model = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("Client null");
             var msg = req.GetQueryParameters()["msg"];
@@ -165,7 +165,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
             if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);
@@ -279,7 +279,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
             var ProfileValidator = new ProfileValidation();
@@ -324,7 +324,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var profile = await repoOn.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
             await repoOff.UpsertItemAsync(profile, cancellationToken);

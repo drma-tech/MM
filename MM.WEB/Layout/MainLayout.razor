@@ -14,7 +14,6 @@
 @inject IDialogService DialogService
 @inject ILogger<MainLayout> Logger
 @inject IJSRuntime JsRuntime
-@inject FirebaseAuthService Auth
 @inject AuthenticationStateProvider AuthStateProvider
 
 @inject PrincipalApi PrincipalApi
@@ -131,11 +130,11 @@
         try
         {
             //register new user or new login (need to be last step here)
-            var registered = await JsRuntime.GetSessionStorage<bool?>("registered");
+            var registered = await JsRuntime.Utils().GetSessionStorage<bool?>("registered");
 
             if (AppStateStatic.IsAuthenticated && !Navigation.Uri.Contains("/support/") && registered != true)
             {
-                await JsRuntime.SetSessionStorage("registered", true.ToString().ToLower());
+                await JsRuntime.Utils().SetSessionStorage("registered", true.ToString().ToLower());
                 Navigation.NavigateTo("/register-user");
             }
         }
@@ -154,7 +153,7 @@
             var system = await _mudThemeProvider.GetSystemDarkModeAsync();
             darkMode = system;
 
-            await JsRuntime.SetLocalStorage("dark-mode", darkMode.ToString()?.ToLower() ?? "false");
+            await JsRuntime.Utils().SetLocalStorage("dark-mode", darkMode.ToString()?.ToLower() ?? "false");
         }
 
         AppStateStatic.ChangeDarkMode(darkMode ?? false);
@@ -168,7 +167,7 @@
 
             if (country.ToUpper() == "CN")
             {
-                var consent = await JsRuntime.GetLocalStorage<bool>("consent");
+                var consent = await JsRuntime.Utils().GetLocalStorage<bool>("consent");
 
                 if (!consent)
                 {
@@ -182,7 +181,7 @@
     {
         if (Navigation.BaseUri.Contains("localhost")) return;
 
-        var accesses = await JsRuntime.GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
+        var accesses = await JsRuntime.Utils().GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
         var hasPreviousAccess = accesses.Count > 0;
         var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
         bool isTooSoon = false;
@@ -195,7 +194,7 @@
 
         if (hasPreviousAccess && !isTooSoon) //starting with the second access (avoid the first 5 minutes)
         {
-            var rating1 = await JsRuntime.GetLocalStorage<int?>("survey-rating");
+            var rating1 = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
             if (rating1 == null)
             {
                 _ = Task.Run(async () =>
@@ -213,12 +212,12 @@
             accesses = accesses.OrderByDescending(x => x).Take(10).ToHashSet();
         }
 
-        await JsRuntime.SetLocalStorage("session-accesses", accesses);
+        await JsRuntime.Utils().SetLocalStorage("session-accesses", accesses);
     }
 
     private async Task AskUSerForReview()
     {
-        var accesses = await JsRuntime.GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
+        var accesses = await JsRuntime.Utils().GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
         var hasPreviousAccess = accesses.Count > 0;
         var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
         bool isTooSoon = false;
@@ -229,8 +228,8 @@
             isTooSoon = hoursSinceLast < 12;
         }
 
-        var rating = await JsRuntime.GetLocalStorage<int?>("survey-rating");
-        var reviewed = await JsRuntime.GetLocalStorage("store-reviewed");
+        var rating = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
+        var reviewed = await JsRuntime.Utils().GetLocalStorage("store-reviewed");
 
         //ask for app store review if ratings are 4 or 5 stars
         if (rating != null && rating > 3 && reviewed.Empty() && !isTooSoon)
@@ -245,13 +244,13 @@
 
     private async Task ShowOnBoardingPopup()
     {
-        var onboarding = await JsRuntime.GetLocalStorage("onboarding-popup");
+        var onboarding = await JsRuntime.Utils().GetLocalStorage("onboarding-popup");
 
         //show only once
         if (onboarding.Empty())
         {
             await DialogService.OnboardingPopup();
-            await JsRuntime.SetLocalStorage("onboarding-popup", true.ToString().ToLower());
+            await JsRuntime.Utils().SetLocalStorage("onboarding-popup", true.ToString().ToLower());
         }
     }
 

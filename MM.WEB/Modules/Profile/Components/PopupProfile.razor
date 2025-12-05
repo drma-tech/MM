@@ -200,7 +200,7 @@
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        await JavascriptVoidAsync("initCalendar", GallerySwiperId);
+        await JsRuntime.Swiper().InitGallery(GallerySwiperId);
     }
 
     protected override async Task LoadAuthDataAsync()

@@ -106,7 +106,7 @@
             {
                 Cameras = await CameraStreamerReference.GetCameraDevicesAsync();
 
-                var cameraId = await GetLocalStorage("CameraId");
+                var cameraId = await JsRuntime.Utils().GetLocalStorage("CameraId");
                 if (cameraId.NotEmpty()) CameraIndex = Array.FindIndex(Cameras, row => row.DeviceId == cameraId);
 
                 if (CameraIndex == -1) CameraIndex = 0; //Default to first camera
@@ -114,8 +114,8 @@
                 DeviceName = Cameras[CameraIndex].Label;
                 StateHasChanged();
 
-                await SetLocalStorage("CameraId", DeviceId);
-                await SetLocalStorage("CameraName", DeviceName);
+                await JsRuntime.Utils().SetLocalStorage("CameraId", DeviceId);
+                await JsRuntime.Utils().SetLocalStorage("CameraName", DeviceName);
 
                 await CameraStreamerReference.ReloadAsync();
             }
@@ -144,8 +144,8 @@
             DeviceId = Cameras[CameraIndex].DeviceId;
             DeviceName = Cameras[CameraIndex].Label;
 
-            await SetLocalStorage("CameraId", DeviceId);
-            await SetLocalStorage("CameraName", DeviceName);
+            await JsRuntime.Utils().SetLocalStorage("CameraId", DeviceId);
+            await JsRuntime.Utils().SetLocalStorage("CameraName", DeviceName);
 
             await CameraStreamerReference.ReloadAsync();
         }

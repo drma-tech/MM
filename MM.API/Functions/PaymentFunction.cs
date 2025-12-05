@@ -14,134 +14,6 @@ namespace MM.API.Functions;
 
 public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 {
-    [Function("GetSubscription")]
-    public async Task<PaddleRootSubscription?> GetSubscription(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/paddle/subscription")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var id = req.GetQueryParameters()["id"];
-            if (id.Empty()) throw new UnhandledException("id null");
-
-            var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
-            var key = ApiStartup.Configurations.Paddle?.Key;
-
-            var http = factory.CreateClient("paddle");
-            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
-
-            using var request = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}subscriptions/{id}");
-
-            var response = await http.SendAsync(request, cancellationToken);
-
-            if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
-
-            return await response.Content.ReadFromJsonAsync<PaddleRootSubscription>(cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
-    [Function("CreateCustomer")]
-    public async Task CreateCustomer(
-       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "paddle/customer")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
-            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
-
-            var endpoint = ApiStartup.Configurations.Paddle?.Endpoint;
-            var key = ApiStartup.Configurations.Paddle?.Key;
-
-            var http = factory.CreateClient("paddle");
-            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", key);
-
-            using var request = new HttpRequestMessage(HttpMethod.Post, $"{endpoint}customers");
-
-            request.Content = JsonContent.Create(new { email = principal.Email, name = principal.DisplayName });
-
-            var response = await http.SendAsync(request, cancellationToken);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadFromJsonAsync<PaddleCustomerResponse>(cancellationToken);
-
-                principal.Subscription = new AuthSubscription
-                {
-                    Provider = PaymentProvider.Paddle,
-                    CustomerId = result?.data?.id
-                };
-
-                await repo.UpsertItemAsync(principal, cancellationToken);
-            }
-            else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-            {
-                using var requestOld = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}customers?email={principal.Email}");
-                var responseOld = await http.SendAsync(requestOld, cancellationToken);
-
-                if (!responseOld.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
-
-                var result = await responseOld.Content.ReadFromJsonAsync<PaddleCustomerResponseArray>(cancellationToken);
-
-                principal.Subscription = new AuthSubscription
-                {
-                    Provider = PaymentProvider.Paddle,
-                    CustomerId = result?.data.Single().id
-                };
-
-                await repo.UpsertItemAsync(principal, cancellationToken);
-            }
-            else
-            {
-                throw new UnhandledException(response.ReasonPhrase);
-            }
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
-    [Function("PostPaddleSubscription")]
-    public async Task PostPaddleSubscription(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/paddle/subscription")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var validSignature = await req.ValidPaddleSignature(ApiStartup.Configurations.Paddle?.Signature, cancellationToken);
-
-            if (!validSignature) throw new UnhandledException("wrong paddle signature");
-
-            var body = await req.GetPublicBody<RootEvent>(cancellationToken) ?? throw new UnhandledException("body null");
-            if (body.data == null) throw new UnhandledException("body.data null");
-
-            var result = await repo.Query<AuthPrincipal>(x => x.Subscription != null && x.Subscription.CustomerId == body.data.customer_id, DocumentType.Principal, cancellationToken) ??
-                throw new UnhandledException("AuthPrincipal null");
-            var client = result.LastOrDefault() ?? throw new UnhandledException($"client null - customer_id:{body.data.customer_id}");
-            if (client.Subscription == null) throw new UnhandledException("client.Subscription null");
-
-            client.Subscription.SubscriptionId = body.data.id;
-            client.Subscription.Active = body.data.status is "active" or "trialing";
-
-            client.Subscription.Provider = PaymentProvider.Paddle;
-            client.Subscription.Product = body.data.items[0].price?.custom_data?.ProductEnum;
-            client.Subscription.Cycle = body.data.items[0].price?.custom_data?.CycleEnum;
-
-            client.Events = client.Events.Union([new Event { Description = $"subscription = {body.data.id}, status = {body.data.status}" }]).ToArray();
-
-            await repo.UpsertItemAsync(client, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
     [Function("PostAppleVerify")]
     public async Task PostAppleVerify(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "apple/verify")] HttpRequestData req, CancellationToken cancellationToken)
@@ -149,11 +21,11 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         AuthPrincipal? client = null;
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
             client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
 
             var raw = await req.ReadAsStringAsync();
-            var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new NotificationException("body not present"));
+            var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new UnhandledException("body not present"));
 
             var bundleId = ApiStartup.Configurations.Apple?.BundleId;
 
@@ -256,16 +128,14 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             var valid = Enum.TryParse(req.GetQueryParameters()["provider"], out PaymentProvider provider);
             if (!valid) throw new UnhandledException("invalid provider");
 
-            if (provider == PaymentProvider.Paddle)
+            if (provider == PaymentProvider.Generic)
             {
                 return new PaymentConfigurations
                 {
-                    CustomerPortalEndpoint = ApiStartup.Configurations.Paddle?.CustomerPortalEndpoint,
-                    Token = ApiStartup.Configurations.Paddle?.Token,
-                    PriceStandardMonth = ApiStartup.Configurations.Paddle?.Standard?.PriceMonth,
-                    PriceStandardYear = ApiStartup.Configurations.Paddle?.Standard?.PriceYear,
-                    PricePremiumMonth = ApiStartup.Configurations.Paddle?.Premium?.PriceMonth,
-                    PricePremiumYear = ApiStartup.Configurations.Paddle?.Premium?.PriceYear
+                    //PriceStandardMonth = ApiStartup.Configurations.Paddle?.Standard?.PriceMonth,
+                    //PriceStandardYear = ApiStartup.Configurations.Paddle?.Standard?.PriceYear,
+                    //PricePremiumMonth = ApiStartup.Configurations.Paddle?.Premium?.PriceMonth,
+                    //PricePremiumYear = ApiStartup.Configurations.Paddle?.Premium?.PriceYear
                 };
             }
             else if (provider == PaymentProvider.Apple)

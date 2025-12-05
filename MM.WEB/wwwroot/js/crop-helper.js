@@ -1,58 +1,60 @@
+import Cropper from "https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.esm.js";
+
 let cropper;
 
-window.initCropper = (imageId, aspectRatio) => {
-    const image = document.getElementById(imageId);
-    if (!image) return;
+export const crop = {
+    initCropper(imageId, aspectRatio) {
+        const image = document.getElementById(imageId);
+        if (!image) return;
 
-    if (cropper) cropper.destroy();
+        if (cropper) cropper.destroy();
 
-    cropper = new Cropper(image, {
-        aspectRatio: aspectRatio,
-        viewMode: 1,
-        autoCropArea: 1,
-        minCropBoxWidth: 300,
-        minCropBoxHeight: 300,
-        responsive: true,
-        background: false,
-        ready() {
-            const data = cropper.getImageData();
+        cropper = new Cropper(image, {
+            aspectRatio: aspectRatio,
+            viewMode: 1,
+            autoCropArea: 1,
+            minCropBoxWidth: 300,
+            minCropBoxHeight: 300,
+            responsive: true,
+            background: false,
+            ready() {
+                const data = cropper.getImageData();
 
-            if (data.naturalWidth < 300 || data.naturalHeight < 300) {
-                alert("The image must be at least 300x300 pixels.");
-                cropper.destroy(); // remove cropper
-            }
+                if (data.naturalWidth < 300 || data.naturalHeight < 300) {
+                    alert("The image must be at least 300x300 pixels.");
+                    cropper.destroy(); // remove cropper
+                }
 
-            const containerData = cropper.getContainerData();
-            const cropBoxData = {
-                width: 512,
-                height: 512,
-                left: (containerData.width - 512) / 2,
-                top: (containerData.height - 512) / 2,
+                const containerData = cropper.getContainerData();
+                const cropBoxData = {
+                    width: 512,
+                    height: 512,
+                    left: (containerData.width - 512) / 2,
+                    top: (containerData.height - 512) / 2,
+                };
+                cropper.setCropBoxData(cropBoxData);
+            },
+        });
+    },
+    getCroppedImage(width, height) {
+        return cropper
+            .getCroppedCanvas({
+                width,
+                height,
+            })
+            .toDataURL("image/jpeg");
+    },
+    getImageSize(imageUrl) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => {
+                resolve({
+                    width: img.naturalWidth,
+                    height: img.naturalHeight,
+                });
             };
-            cropper.setCropBoxData(cropBoxData);
-        },
-    });
-};
-
-window.getCroppedImage = (width, height) => {
-    return cropper
-        .getCroppedCanvas({
-            width,
-            height,
-        })
-        .toDataURL("image/jpeg");
-};
-
-window.getImageSize = (imageUrl) => {
-    return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => {
-            resolve({
-                width: img.naturalWidth,
-                height: img.naturalHeight,
-            });
-        };
-        img.onerror = reject;
-        img.src = imageUrl;
-    });
+            img.onerror = reject;
+            img.src = imageUrl;
+        });
+    },
 };

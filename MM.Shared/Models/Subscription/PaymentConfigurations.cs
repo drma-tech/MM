@@ -2,8 +2,6 @@
 
 public class PaymentConfigurations
 {
-    public string? CustomerPortalEndpoint { get; set; }
-    public string? Token { get; set; }
     public string? PriceStandardMonth { get; set; }
     public string? PriceStandardYear { get; set; }
     public string? PricePremiumMonth { get; set; }

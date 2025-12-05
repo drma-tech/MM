@@ -101,7 +101,7 @@ public partial class ProfileData : PageCore<ProfileData>
         {
             if (profile != null)
             {
-                await JavascriptVoidAsync("window.UpdateLocation");
+                await JsRuntime.Utils().UpdateLocation();
             }
         }
         catch (Exception ex)

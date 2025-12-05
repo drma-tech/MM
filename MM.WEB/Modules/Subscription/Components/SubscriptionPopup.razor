@@ -115,7 +115,7 @@
 
     private AccountCycle Cycle { get; set; } = AccountCycle.Yearly;
     private MM.Shared.Enums.Platform? Platform { get; set; }
-    private PaymentProvider Provider { get; set; } = PaymentProvider.Paddle;
+    private PaymentProvider Provider { get; set; } = PaymentProvider.Generic;
     private string? CurrentCountry { get; set; }
     private bool BlockedCountry { get; set; }
 
@@ -173,7 +173,7 @@
             if (CurrentCountry == "US")
             {
                 Providers.Add(PaymentProvider.Apple);
-                Providers.Add(PaymentProvider.Paddle);
+                Providers.Add(PaymentProvider.Generic);
             }
             else
             {
@@ -182,17 +182,17 @@
         }
         else if (Platform == MM.Shared.Enums.Platform.play)
         {
-            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Generic);
             Providers.Add(PaymentProvider.Google);
         }
         else if (Platform == MM.Shared.Enums.Platform.windows)
         {
-            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Generic);
             Providers.Add(PaymentProvider.Microsoft);
         }
         else
         {
-            Providers.Add(PaymentProvider.Paddle);
+            Providers.Add(PaymentProvider.Generic);
         }
 
         Provider = Providers[0]; //todo: when implemented, select native provider by default
@@ -202,10 +202,10 @@
     {
         Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
 
-        if (Client?.Subscription?.Provider != null)
+        if (Client?.Subscription?.Provider != null && Client.Subscription.Cycle != null)
         {
             Provider = Client.Subscription.Provider.Value;
-            Cycle = Client.Subscription.Cycle!.Value;
+            Cycle = Client.Subscription.Cycle.Value;
         }
     }
 

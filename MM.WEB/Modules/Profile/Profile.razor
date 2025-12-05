@@ -316,9 +316,9 @@
         //     }
         // }
 
-        await JavascriptVoidAsync("initSwiper", SuggestionsSwiperId);
-        await JavascriptVoidAsync("initSwiper", LikesSwiperId);
-        await JavascriptVoidAsync("initSwiper", MatchesSwiperId);
+        await JsRuntime.Swiper().InitLists(SuggestionsSwiperId);
+        await JsRuntime.Swiper().InitLists(LikesSwiperId);
+        await JsRuntime.Swiper().InitLists(MatchesSwiperId);
 
         await base.OnAfterRenderAsync(firstRender);
     }

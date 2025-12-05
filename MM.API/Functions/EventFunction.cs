@@ -7,8 +7,7 @@ namespace MM.API.Functions;
 
 public static class EventHelper
 {
-    public static async Task<InteractionModel> GetInteractionModel(this CosmosRepository repo, string? userId,
-        string? partnerId, CancellationToken cancellationToken)
+    public static async Task<InteractionModel> GetInteractionModel(this CosmosRepository repo, string? userId, string? partnerId, CancellationToken cancellationToken)
     {
         var intId = InteractionModel.FormatId($"{userId}:{partnerId}");
         var interaction = await repo.Get<InteractionModel>(DocumentType.Interaction, intId, cancellationToken);
@@ -22,9 +21,7 @@ public static class EventHelper
         return interaction;
     }
 
-    public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? trigguerUserId,
-        string? passiveUserId,
-        EventType type, Origin origin, CancellationToken cancellationToken)
+    public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? trigguerUserId, string? passiveUserId, EventType type, Origin origin, CancellationToken cancellationToken)
     {
         if (trigguerUserId == passiveUserId) throw new NotificationException("cannot interact with yourself");
 
@@ -51,7 +48,7 @@ public static class EventHelper
     }
 }
 
-public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IHttpClientFactory factory)
+public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     [Function("InteractionGet")]
     public async Task<HttpResponseData?> InteractionGet([HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
@@ -59,7 +56,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
@@ -78,7 +75,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken) ?? throw new NotificationException("user id null");
+            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
             var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
                               throw new NotificationException("user not found");
 
@@ -122,7 +119,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
     {
         try
         {
-            var userId = await req.GetUserIdAsync(factory, cancellationToken);
+            var userId = await req.GetUserIdAsync(cancellationToken);
 
             var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
