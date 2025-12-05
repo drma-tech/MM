@@ -1,5 +1,7 @@
 ﻿@page "/profile/validation/gallery"
-@using BlazorCameraStreamer
+@using KristofferStrube.Blazor.MediaCaptureStreams
+@using KristofferStrube.Blazor.MediaCaptureStreams.Exceptions
+@using KristofferStrube.Blazor.WebIDL.Exceptions
 @using MM.Shared.Models.Profile
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
@@ -9,6 +11,7 @@
 @inherits PageCore<ValidationGallery>
 
 @inject ValidationApi ValidationApi
+@inject IMediaDevicesService MediaDevicesService;
 
 <MudGrid Justify="Justify.Center">
     <MudItem xs="12" sm="10" md="8" lg="6">
@@ -23,19 +26,39 @@
                 </CardHeaderActions>
             </MudCardHeader>
             <MudCardContent Class="pa-2">
-                @if (DeviceId.NotEmpty())
+                @if (videoStreamTrack is null && Picture.NotEmpty())
                 {
-                    <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" CameraID="@DeviceId" OnRendered="OnRenderedHandler" Autostart="true" />
+                    <img src="data:image/png;base64,@Convert.ToBase64String(Picture)" alt="Captured Photo" width="100%" />
+                }
+                else if (videoStreamTrack is null)
+                {
+                    <div style="text-align: center;">
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Size="AppStateStatic.Size" Class="my-5">
+                            Load Camera
+                        </MudButton>
+                    </div>
                 }
                 else
                 {
-                    <CameraStreamer @ref="CameraStreamerReference" Style="width: 100%;" OnRendered="OnRenderedHandler" Autostart="true" />
+                    @if (videoOptions.Count > 0)
+                    {
+                        <MudSelect Label="Camera" Value="@selectedVideoSource" ValueChanged="@(async (string vl) => { selectedVideoSource = vl; await SelectDevice(); })" Class="mb-2">
+                            @foreach (var option in videoOptions)
+                            {
+                                <MudSelectItem Value="@option.id">
+                                    @option.label
+                                </MudSelectItem>
+                            }
+                        </MudSelect>
+                    }
+                    <video @ref="videoElement" width="100%" autoplay></video>
                 }
             </MudCardContent>
             <MudCardActions Class="pt-0">
                 @if (Picture.Empty())
                 {
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2" Size="AppStateStatic.Size">
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2" Size="AppStateStatic.Size"
+                               Disabled="@(videoStreamTrack is null)">
                         Take Shot
                     </MudButton>
                 }
@@ -45,10 +68,6 @@
                         Reset
                     </MudButton>
                 }
-                <MudSpacer></MudSpacer>
-                <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera-rotate").Font" OnClick="NextCamera" Class="me-2" Size="AppStateStatic.Size" Disabled="Cameras.Length < 2">
-                    Next Camera
-                </MudButton>
                 <MudSpacer></MudSpacer>
                 <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto" Size="AppStateStatic.Size"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
@@ -82,90 +101,32 @@
     private ValidationModel? Validation { get; set; }
     private RenderControlCore<ValidationModel?>? Core { get; set; } = new();
     private MudDialog? MudDialog { get; set; }
-    private CameraStreamer? CameraStreamerReference;
     private byte[] Picture { get; set; } = [];
 
-    private MediaDeviceInfoModel[] Cameras { get; set; } = [];
-    private int CameraIndex { get; set; }
-    private string? DeviceId { get; set; }
-    private string? DeviceName { get; set; }
+    private MediaDevices? mediaDevices = default;
+    private MediaStreamTrack? videoStreamTrack;
+    private ElementReference videoElement;
+    private readonly List<(string label, string id)> videoOptions = new();
+    private string? selectedVideoSource;
+    private string? shownVideoSource;
+    private double? frameRate;
+    private double minimalFrameRate;
+    private double maximumFrameRate;
 
     protected override async Task LoadAuthDataAsync()
     {
         Validation = await ValidationApi.Get(Core);
     }
 
-    private async void OnRenderedHandler()
-    {
-        try
-        {
-            if (CameraStreamerReference == null) return;
-
-            // Check camera-access or ask user, if it's not allowed currently
-            if (await CameraStreamerReference.GetCameraAccessAsync())
-            {
-                Cameras = await CameraStreamerReference.GetCameraDevicesAsync();
-
-                var cameraId = await JsRuntime.Utils().GetLocalStorage("CameraId");
-                if (cameraId.NotEmpty()) CameraIndex = Array.FindIndex(Cameras, row => row.DeviceId == cameraId);
-
-                if (CameraIndex == -1) CameraIndex = 0; //Default to first camera
-                DeviceId = Cameras[CameraIndex].DeviceId;
-                DeviceName = Cameras[CameraIndex].Label;
-                StateHasChanged();
-
-                await JsRuntime.Utils().SetLocalStorage("CameraId", DeviceId);
-                await JsRuntime.Utils().SetLocalStorage("CameraName", DeviceName);
-
-                await CameraStreamerReference.ReloadAsync();
-            }
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
-    private async Task NextCamera()
-    {
-        try
-        {
-            if (CameraStreamerReference == null) return;
-
-            if (CameraIndex == Cameras.Length - 1)
-            {
-                CameraIndex = 0;
-            }
-            else
-            {
-                CameraIndex = CameraIndex + 1;
-            }
-
-            DeviceId = Cameras[CameraIndex].DeviceId;
-            DeviceName = Cameras[CameraIndex].Label;
-
-            await JsRuntime.Utils().SetLocalStorage("CameraId", DeviceId);
-            await JsRuntime.Utils().SetLocalStorage("CameraName", DeviceName);
-
-            await CameraStreamerReference.ReloadAsync();
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
-    }
-
     protected async Task TakeShot()
     {
         try
         {
-            if (CameraStreamerReference == null) return;
-
-            var data = await CameraStreamerReference.GetCurrentFrameAsync();
+            var data = await JsRuntime.InvokeAsync<string>("captureFrame", videoElement);
             data = data[(data.IndexOf(',') + 1)..]; // Remove the suffix added by javascript
             Picture = Convert.FromBase64String(data);
 
-            await CameraStreamerReference.StopAsync();
+            await StopVideoTrack();
 
             Validation ??= new ValidationModel();
         }
@@ -179,10 +140,8 @@
     {
         try
         {
-            if (CameraStreamerReference == null) return;
-
             Picture = [];
-            await CameraStreamerReference.ReloadAsync();
+            await OpenVideo();
         }
         catch (Exception ex)
         {
@@ -196,11 +155,99 @@
         {
             Validation = await ValidationApi.UploadPhotoValidation(Core, Picture);
             await ShowSuccess("Photo validated successfully!");
-            await JsRuntime.InvokeVoidAsync("history.back");
+            await JsRuntime.Window().HistoryBack();
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
         }
+    }
+
+    async Task OpenVideo()
+    {
+        try
+        {
+            if (mediaDevices is null)
+                mediaDevices = await MediaDevicesService.GetMediaDevicesAsync();
+
+            await SelectDevice();
+            var deviceInfos = await mediaDevices.EnumerateDevicesAsync();
+            videoOptions.Clear();
+            foreach (var device in deviceInfos)
+            {
+                if (await device.GetKindAsync() is MediaDeviceKind.VideoInput)
+                {
+                    videoOptions.Add((await device.GetLabelAsync(), await device.GetDeviceIdAsync()));
+                }
+            }
+
+            selectedVideoSource = videoOptions.FirstOrDefault().id;
+        }
+        catch (WebIDLException ex)
+        {
+            await ProcessException(new Exception($"{ex.GetType().Name}: {ex.Message}"));
+            await StopVideoTrack();
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+            await StopVideoTrack();
+        }
+    }
+
+    async Task SelectDevice()
+    {
+        if (selectedVideoSource != null && shownVideoSource == selectedVideoSource)
+            return; // They picked the same device
+
+        var mediaTrackConstraints = new MediaTrackConstraints();
+        if (selectedVideoSource is not null)
+        {
+            mediaTrackConstraints.DeviceId = new ConstrainDOMStringParameters() { Exact = selectedVideoSource };
+        }
+
+        await using var mediaStream = await mediaDevices!.GetUserMediaAsync(new MediaStreamConstraints() { Video = mediaTrackConstraints });
+        var videoTracks = await mediaStream.GetVideoTracksAsync();
+        videoStreamTrack = videoTracks.FirstOrDefault();
+        foreach (var unusedTrack in videoTracks.Skip(1))
+        {
+            await unusedTrack.DisposeAsync();
+        }
+        if (videoStreamTrack is not null)
+        {
+            var capabilities = await videoStreamTrack.GetCapabilitiesAsync();
+            minimalFrameRate = capabilities.FrameRate?.Min ?? 0;
+            maximumFrameRate = capabilities.FrameRate?.Max ?? 0;
+            frameRate = (maximumFrameRate + minimalFrameRate) / 2.0;
+            selectedVideoSource = capabilities.DeviceId;
+            shownVideoSource = selectedVideoSource;
+        }
+
+        StateHasChanged();
+
+        // We don't have a wrapper for HtmlMediaElement's yet so we use simple JSInterop for this part.
+        await using var htmlMediaElement = await JsRuntime.InvokeAsync<IJSObjectReference>("getReference", videoElement);
+        await JsRuntime.InvokeVoidAsync("setAttribute", htmlMediaElement, "srcObject", mediaStream.JSReference);
+    }
+
+    async Task StopVideoTrack()
+    {
+        if (videoStreamTrack is not null)
+        {
+            await videoStreamTrack.StopAsync();
+        }
+        videoStreamTrack = null;
+        frameRate = null;
+        if (mediaDevices is not null)
+            await mediaDevices.DisposeAsync();
+        mediaDevices = null;
+        shownVideoSource = null;
+        selectedVideoSource = null;
+    }
+
+    public override async ValueTask DisposeAsync()
+    {
+        await base.DisposeAsync();
+        await StopVideoTrack();
     }
 }

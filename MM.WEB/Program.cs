@@ -1,3 +1,5 @@
+using KristofferStrube.Blazor.MediaCaptureStreams;
+using KristofferStrube.Blazor.WebIDL;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -29,6 +31,8 @@ ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, builder
 
 var app = builder.Build();
 
+await app.Services.SetupErrorHandlingJSInterop();
+
 var js = app.Services.GetRequiredService<IJSRuntime>();
 
 await ConfigureCulture(app, js);
@@ -50,6 +54,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     });
 
     collection.AddPWAUpdater();
+    collection.AddMediaDevicesService();
 
     collection.AddHttpClient("Local", c => { c.BaseAddress = new Uri(baseAddress); });
 
