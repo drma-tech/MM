@@ -89,9 +89,9 @@
                     <ActionContent></ActionContent>
                     <CompletedContent>
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        CheckMark="true" FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
-                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
-                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
+                                        FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
+                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" />
+                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" />
                         </MudToggleGroup>
                     </CompletedContent>
                 </MudStepper>
@@ -149,9 +149,9 @@
                     </MudItem>
                     <MudItem xs="6">
                         <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        CheckMark="true" FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
-                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" SelectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye-slash").Font" />
-                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" SelectedIcon="@IconsFA.Solid.Icon("eye").Font" UnselectedIcon="@IconsFA.Solid.Icon("eye").Font" />
+                                        FixedContent="true" Disabled="principal == null" Size="AppStateStatic.Size">
+                            <MudToggleItem Value="false" Text="@Resources.Translations.Private" />
+                            <MudToggleItem Value="true" Text="@Resources.Translations.Public" />
                         </MudToggleGroup>
                     </MudItem>
                 </MudGrid>
