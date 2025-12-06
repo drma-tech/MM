@@ -39,12 +39,6 @@ public static class AppStateStatic
 
             var cache = await js.Utils().GetLocalStorage("platform");
 
-            if (cache.Empty() && js != null) //shouldn't happen (because it's called in index.html)
-            {
-                await js.InvokeVoidAsync("LoadAppVariables");
-                cache = await js.Utils().GetLocalStorage("platform");
-            }
-
             if (cache.NotEmpty())
             {
                 if (System.Enum.TryParse<Platform>(cache, true, out var platform) && System.Enum.IsDefined(platform))
