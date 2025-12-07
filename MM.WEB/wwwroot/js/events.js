@@ -46,14 +46,20 @@ window.addEventListener("load", function () {
 
 //setTimeout(() => { throw new Error('error test call'); }, 100);
 
-//javascript errors
-window.onerror = function (message, source, lineno, colno, error) {
+window.addEventListener("error", function (event) {
+    const { message, filename, lineno, colno, error } = event;
+
+    if (filename?.includes("blazor.webassembly.js")) {
+        notification.showBrowserWarning();
+        return;
+    }
+
     notification.showError(`error: ${message}`);
 
     const log = {
         Message: `event.message:${message}|error.message:${error?.message}`,
         StackTrace: error?.stack,
-        Origin: `event onerror - source:${source}|url:${location.href}|lineno:${lineno}|colno:${colno}`,
+        Origin: `event error - filename:${filename}|url:${location.href}|lineno:${lineno}|colno:${colno}`,
         OperationSystem: environment.getOperatingSystem(),
         BrowserName: environment.getBrowserName(),
         BrowserVersion: environment.getBrowserVersion(),
@@ -63,79 +69,7 @@ window.onerror = function (message, source, lineno, colno, error) {
     };
 
     notification.sendLog(log);
-};
-
-const origFetch = window.fetch;
-window.fetch = async function (url, options) {
-    const response = await origFetch(url, options);
-
-    if (!response.ok) {
-        const log = {
-            Message: `response.status:${response.status}|response.statusText:${response.statusText}`,
-            Origin: `event fetch - url:${url}`,
-            OperationSystem: environment.getOperatingSystem(),
-            BrowserName: environment.getBrowserName(),
-            BrowserVersion: environment.getBrowserVersion(),
-            Platform: storage.getLocalStorage("platform"),
-            AppVersion: storage.getLocalStorage("app-version"),
-            UserAgent: navigator.userAgent,
-        };
-
-        notification.sendLog(log);
-    }
-
-    return response;
-};
-
-//resources errors
-window.addEventListener(
-    "error",
-    function (event) {
-        const { message, filename, lineno, colno, error, target } = event;
-
-        if (target === window) {
-            return;
-        }
-
-        if (filename?.includes("blazor.webassembly.js")) {
-            notification.showBrowserWarning();
-            return;
-        }
-
-        if (message === undefined || message === "") {
-            const log = {
-                Origin: `event error - url:${location.href}|tag:${target?.tagName}|src:${target?.src}|href:${target?.href}`,
-                OperationSystem: environment.getOperatingSystem(),
-                BrowserName: environment.getBrowserName(),
-                BrowserVersion: environment.getBrowserVersion(),
-                Platform: storage.getLocalStorage("platform"),
-                AppVersion: storage.getLocalStorage("app-version"),
-                UserAgent: navigator.userAgent,
-            };
-
-            notification.sendLog(log);
-
-            return;
-        }
-
-        notification.showError(`error: ${message}`);
-
-        const log = {
-            Message: `event.message:${message}|error.message:${error?.message}`,
-            StackTrace: error?.stack,
-            Origin: `event error - filename:${filename}|url:${location.href}|lineno:${lineno}|colno:${colno}`,
-            OperationSystem: environment.getOperatingSystem(),
-            BrowserName: environment.getBrowserName(),
-            BrowserVersion: environment.getBrowserVersion(),
-            Platform: storage.getLocalStorage("platform"),
-            AppVersion: storage.getLocalStorage("app-version"),
-            UserAgent: navigator.userAgent,
-        };
-
-        notification.sendLog(log);
-    },
-    true
-);
+});
 
 //Promise.reject(new Error('unhandledrejection test call'));
 
