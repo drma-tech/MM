@@ -1,5 +1,6 @@
 "use strict";
 
+import { isDev } from "./main.js";
 import { storage, notification, environment } from "./utils.js";
 import { messaging } from "./firebase.js";
 
@@ -53,8 +54,10 @@ window.addEventListener("error", function (event) {
         return;
     }
 
+    notification.showError(`error: ${message}`);
+
     const log = {
-        Message: `message:${message}|error.message:${error?.message}`,
+        Message: `event.message:${message}|error.message:${error?.message}`,
         StackTrace: error?.stack,
         Origin: `event error - filename:${filename}|url:${location.href}|lineno:${lineno}|colno:${colno}`,
         OperationSystem: environment.getOperatingSystem(),
@@ -66,8 +69,6 @@ window.addEventListener("error", function (event) {
     };
 
     notification.sendLog(log);
-
-    notification.showError(`error: ${message}`);
 });
 
 //Promise.reject(new Error('unhandledrejection test call'));
@@ -92,7 +93,7 @@ function normalizeReason(reason) {
 
         return {
             message:
-                reason.message || reason.name + (extra ? ` (${extra})` : ""),
+                reason?.message || reason?.name + (extra ? ` (${extra})` : ""),
             stack: reason.stack || "No stack trace",
         };
     }
@@ -100,7 +101,7 @@ function normalizeReason(reason) {
     if (typeof reason === "string") {
         return {
             message: reason,
-            stack: reason.stack || "No stack trace",
+            stack: "No stack trace",
         };
     }
 
@@ -120,12 +121,16 @@ function normalizeReason(reason) {
 window.addEventListener("unhandledrejection", function (event) {
     const { message, stack } = normalizeReason(event.reason);
 
-    if (typeof message === "string" && message.includes("Failed to fetch")) {
-        notification.showError(
-            "Connection problem detected. Check your internet connection and try reloading."
-        );
-        return;
+    if (message.includes("Failed to fetch")) {
+        if (!isDev) {
+            notification.showError(
+                "Connection problem detected. Check your internet connection and try reloading."
+            );
+            return;
+        }
     }
+
+    notification.showError(`unhandledrejection: ${message}`);
 
     const log = {
         Message: message,
@@ -140,8 +145,6 @@ window.addEventListener("unhandledrejection", function (event) {
     };
 
     notification.sendLog(log);
-
-    notification.showError(`unhandledrejection: ${message}`);
 });
 
 window.addEventListener("securitypolicyviolation", (event) => {
