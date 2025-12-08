@@ -182,28 +182,28 @@
         if (Navigation.BaseUri.Contains("localhost")) return;
 
         var accesses = await JsRuntime.Utils().GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
-        var hasPreviousAccess = accesses.Count > 0;
-        var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
-        bool isTooSoon = false;
+        // var hasPreviousAccess = accesses.Count > 0;
+        // var lastAccess = hasPreviousAccess ? accesses.Max() : (DateTime?)null;
+        // bool isTooSoon = false;
 
-        if (lastAccess != null)
-        {
-            var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
-            isTooSoon = hoursSinceLast < 12;
-        }
+        // if (lastAccess != null)
+        // {
+        //     var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
+        //     isTooSoon = hoursSinceLast < 12;
+        // }
 
-        if (hasPreviousAccess && !isTooSoon) //starting with the second access (avoid the first 5 minutes)
-        {
-            var rating1 = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
-            if (rating1 == null)
-            {
-                _ = Task.Run(async () =>
-                {
-                    await Task.Delay(5000); //survey starts after 5 seconds
-                    await JsRuntime.InvokeVoidAsync("Userback.openSurvey", "mjj9Ta");
-                });
-            }
-        }
+        // if (hasPreviousAccess && !isTooSoon) //starting with the second access (avoid the first 5 minutes)
+        // {
+        //     var rating1 = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
+        //     if (rating1 == null)
+        //     {
+        //         _ = Task.Run(async () =>
+        //         {
+        //             await Task.Delay(5000); //survey starts after 5 seconds
+        //             await JsRuntime.InvokeVoidAsync("Userback.openSurvey", "mjj9Ta");
+        //         });
+        //     }
+        // }
 
         accesses.Add(DateTime.UtcNow);
 
@@ -224,15 +224,16 @@
 
         if (lastAccess != null)
         {
-            var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
-            isTooSoon = hoursSinceLast < 12;
+            var minutesSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalMinutes;
+            isTooSoon = minutesSinceLast < 10;
         }
 
-        var rating = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
+        // var rating = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");
         var reviewed = await JsRuntime.Utils().GetLocalStorage("store-reviewed");
 
         //ask for app store review if ratings are 4 or 5 stars
-        if (rating != null && rating > 3 && reviewed.Empty() && !isTooSoon)
+        //if (rating != null && rating > 3 && reviewed.Empty() && !isTooSoon)
+        if (reviewed.Empty() && !isTooSoon) //show review popup regardless of rating
         {
             _ = Task.Run(async () =>
             {
