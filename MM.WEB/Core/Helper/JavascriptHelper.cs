@@ -89,6 +89,8 @@ namespace MM.WEB.Core.Helper
 
         public Task ShowCache() => InvokeVoid("storage.showCache");
 
+        public Task ClearLocalStorage() => InvokeVoid("storage.clearLocalStorage");
+
         #endregion STORAGE
 
         #region NOTIFICATION
