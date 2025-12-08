@@ -80,28 +80,31 @@
     bool _isUpdateAvailable = false;
     System.Threading.Timer? _updateCheckTimer;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _isUpdateAvailable = await JsRuntime.InvokeAsync<bool>("checkUpdateReady");
-
-        _updateCheckTimer = new System.Threading.Timer(async _ =>
+        if (firstRender)
         {
-            try
-            {
-                var available = await JsRuntime.InvokeAsync<bool>("checkUpdateReady");
-                if (available && !_isUpdateAvailable)
-                {
-                    _isUpdateAvailable = true;
-                    await InvokeAsync(StateHasChanged);
+            _isUpdateAvailable = await JsRuntime.InvokeAsync<bool>("checkUpdateReady");
 
-                    await _updateCheckTimer!.DisposeAsync();
-                }
-            }
-            catch
+            _updateCheckTimer = new System.Threading.Timer(async _ =>
             {
-                // Ignore errors
-            }
-        }, null, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
+                try
+                {
+                    var available = await JsRuntime.InvokeAsync<bool>("checkUpdateReady");
+                    if (available && !_isUpdateAvailable)
+                    {
+                        _isUpdateAvailable = true;
+                        await InvokeAsync(StateHasChanged);
+
+                        await _updateCheckTimer!.DisposeAsync();
+                    }
+                }
+                catch
+                {
+                    // Ignore errors
+                }
+            }, null, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
+        }
     }
 
     protected override void OnParametersSet()
