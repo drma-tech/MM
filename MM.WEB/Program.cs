@@ -29,6 +29,8 @@ if (builder.RootComponents.Empty())
 
 ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, builder.Configuration);
 
+builder.Services.AddSingleton<ILoggerProvider, CosmosLoggerProvider>();
+
 var app = builder.Build();
 
 await app.Services.SetupErrorHandlingJSInterop();
@@ -92,6 +94,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
     collection.AddScoped<IpInfoServerApi>();
+    collection.AddScoped<LoggerApi>();
     collection.AddScoped<FirebaseApi>();
 }
 
