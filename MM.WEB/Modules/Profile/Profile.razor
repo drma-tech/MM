@@ -40,13 +40,6 @@
     </MudPaper>
 }
 
-@if (AppStateStatic.IsAuthenticated)
-{
-    <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="mb-3">
-        <strong>@GlobalTranslations.BetaVersion</strong> @GlobalTranslations.ProductUnderDevelopment
-    </MudAlert>
-}
-
 <MudGrid Spacing="3" Class="mb-2">
     <MudItem xs="12" sm="6" md="4">
         @if ((principal == null || !principal.PublicProfile) && validation == null)

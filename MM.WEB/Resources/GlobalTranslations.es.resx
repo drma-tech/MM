@@ -126,9 +126,6 @@
   <data name="BasicRequired" xml:space="preserve">
     <value>La sección básica es obligatoria por ahora. Las demás secciones se pueden completar más adelante.</value>
   </data>
-  <data name="BetaVersion" xml:space="preserve">
-    <value>¡Versión beta!</value>
-  </data>
   <data name="BirthdateTip" xml:space="preserve">
     <value>Sólo se publicará tu edad. (Usamos el calendario gregoriano)</value>
   </data>

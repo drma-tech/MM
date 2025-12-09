@@ -88,15 +88,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beta Version!.
-        /// </summary>
-        public static string BetaVersion {
-            get {
-                return ResourceManager.GetString("BetaVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Only your age will be published. (We use the Gregorian calendar).
         /// </summary>
         public static string BirthdateTip {
