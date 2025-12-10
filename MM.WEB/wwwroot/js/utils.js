@@ -7,7 +7,7 @@ export const storage = {
     clearLocalStorage() {
         localStorage.clear();
 
-        if (window.WTN.clearAppCache) {
+        if (window.WTN?.clearAppCache) {
             window.WTN.clearAppCache(true);
         }
     },
@@ -108,7 +108,7 @@ export const notification = {
                 BrowserName: environment.getBrowserName(),
                 BrowserVersion: environment.getBrowserVersion(),
                 Platform: storage.getLocalStorage("platform"),
-                AppVersion: storage.GetLocalStorage("app-version"),
+                AppVersion: storage.getLocalStorage("app-version"),
                 UserAgent: navigator.userAgent,
             };
         } else {
