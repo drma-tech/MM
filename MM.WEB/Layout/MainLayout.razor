@@ -117,11 +117,18 @@
 
         if (firstRender)
         {
-            await ApplyDarkMode();
-            await RedirectToRequestConsentForChina();
-            await ShowCustomerSatisfactionPopup();
-            await AskUSerForReview();
-            await ShowOnBoardingPopup();
+            try
+            {
+                await ApplyDarkMode();
+                await RedirectToRequestConsentForChina();
+                await ShowCustomerSatisfactionPopup();
+                await AskUSerForReview();
+                await ShowOnBoardingPopup();
+            }
+            catch (Exception ex)
+            {
+                ex.ProcessException(Snackbar, Logger);
+            }
         }
     }
 
@@ -179,7 +186,7 @@
 
     private async Task ShowCustomerSatisfactionPopup()
     {
-        if (Navigation.BaseUri.Contains("localhost")) return;
+        // if (Navigation.BaseUri.Contains("localhost")) return;
 
         var accesses = await JsRuntime.Utils().GetLocalStorage<HashSet<DateTime>>("session-accesses") ?? new HashSet<DateTime>();
         // var hasPreviousAccess = accesses.Count > 0;
@@ -224,8 +231,8 @@
 
         if (lastAccess != null)
         {
-            var minutesSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalMinutes;
-            isTooSoon = minutesSinceLast < 10;
+            var hoursSinceLast = (DateTime.UtcNow - lastAccess.Value).TotalHours;
+            isTooSoon = hoursSinceLast < 2;
         }
 
         // var rating = await JsRuntime.Utils().GetLocalStorage<int?>("survey-rating");

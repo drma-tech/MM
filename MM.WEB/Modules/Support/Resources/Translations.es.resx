@@ -136,10 +136,10 @@
     <value>Construye el futuro del emparejamiento</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Fase 1: estamos formando el grupo de emparejamiento, la base de nuestro sistema. Fase 2: el emparejamiento se abre para los clientes a medida que llegamos a los 100.000 usuarios.</value>
+    <value>Fase 1: estamos formando el grupo de emparejamiento, la base de nuestro sistema.|Fase 2: el emparejamiento se abre para los clientes a medida que llegamos a los 100.000 usuarios.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
-    <value>como funciona</value>
+    <value>Como funciona</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
     <value>Únase a nuestro grupo de emparejamiento y participe en la configuración de cómo se descubre la compatibilidad real.</value>
