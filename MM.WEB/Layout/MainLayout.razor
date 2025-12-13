@@ -121,25 +121,14 @@
     {
         try
         {
+            //register new user or new login (need to be last step here)
             if (!AppStateStatic.IsAuthenticated) return;
             if (Navigation.Uri.Contains("/support/")) return;
 
-            //register new user or new login (need to be last step here)
-            var registered = await JsRuntime.Utils().GetSessionStorage<bool?>("registered");
+            var principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
 
-            if (registered == true)
+            if (principal == null)
             {
-                var principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
-
-                if (principal == null)
-                {
-                    registered = false;
-                }
-            }
-
-            if (registered != true)
-            {
-                await JsRuntime.Utils().SetSessionStorage("registered", true.ToString().ToLower());
                 Navigation.NavigateTo("/register-user");
             }
         }
