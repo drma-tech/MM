@@ -22,6 +22,8 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         try
         {
             var userId = await req.GetUserIdAsync(cancellationToken);
+            var ip = req.GetUserIP(true);
+
             client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
 
             var raw = await req.ReadAsStringAsync();
@@ -52,7 +54,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             client.Subscription.Cycle = purchase.product_id!.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
 
             //https://developer.apple.com/documentation/appstorereceipts/status
-            client.Events = client.Events.Union([new Event { Description = $"apple verify || subscription = {purchase.original_transaction_id}, status = {result.status}" }]).ToArray();
+            client.Events = client.Events.Union([new Event("Apple", $"New status ({result.status}) for SubscriptionId ({purchase.original_transaction_id})", ip)]).ToArray();
         }
         catch (Exception ex)
         {
@@ -80,6 +82,8 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
     {
         try
         {
+            var ip = req.GetUserIP(true);
+
             var body = await req.ReadFromJsonAsync<Dictionary<string, string>>(cancellationToken) ?? throw new UnhandledException("body null");
 
             if (!body.TryGetValue("signedPayload", out var signedPayload)) throw new UnhandledException("signedPayload null");
@@ -112,9 +116,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             client.Subscription.Product = transaction.ProductId!.Contains("premium") ? AccountProduct.Premium : AccountProduct.Standard;
             client.Subscription.Cycle = transaction.ProductId!.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
 
-            client.Events = client.Events.Union([new Event {
-                Description = $"apple subscription || subscription = {originalTransactionId}, product = {client.Subscription.Product}, Cycle = {client.Subscription.Cycle}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}, expiresDate = {newExpires}"
-            }]).ToArray();
+            client.Events = client.Events.Union([new Event("Apple (Webhooks)", $"SubscriptionId = {originalTransactionId}, Product = {client.Subscription.Product}, Cycle = {client.Subscription.Cycle}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}, expiresDate = {newExpires}", ip)]).ToArray();
 
             await repo.UpsertItemAsync(client, cancellationToken);
         }
