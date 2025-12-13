@@ -103,7 +103,7 @@ namespace MM.WEB.Core.Helper
 
         #region INTEROP
 
-        public Task DownloadFile(string filename, string contentType, byte[] content) => InvokeVoid("interop.downloadFile", filename, contentType, content);
+        public Task DownloadFile(string filename, string contentType, object? content) => InvokeVoid("interop.downloadFile", filename, contentType, content);
 
         public Task UpdateLocation() => InvokeVoid("interop.updateLocation");
 
