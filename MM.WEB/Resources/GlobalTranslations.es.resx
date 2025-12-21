@@ -168,6 +168,9 @@
   <data name="DarkMode" xml:space="preserve">
     <value>Modo Oscuro</value>
   </data>
+  <data name="DiscoverProducts" xml:space="preserve">
+    <value>Descubra nuestros otros productos</value>
+  </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>Por favor, introduzca la dirección de correo electrónico</value>
   </data>

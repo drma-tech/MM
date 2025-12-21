@@ -1,5 +1,6 @@
 ﻿"use strict";
 
+import { baseApiUrl } from "./main.js";
 import { notification, interop } from "./utils.js";
 
 export const apple = {
@@ -62,6 +63,29 @@ export const google = {
                     }
                 },
             });
+        } catch (e) {
+            notification.showError(`error: ${JSON.stringify(e)}`);
+        }
+    },
+};
+
+export const stripe = {
+    async openCheckout(priceId) {
+        try {
+            const token = await window.auth.currentUser.getIdToken();
+
+            const response = await fetch(
+                `${baseApiUrl}/api/stripe/create-checkout-session/${priceId}?url=${window.location.href}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "X-Auth-Token": `Bearer ${token}`,
+                    },
+                }
+            );
+            const checkoutUrl = await response.text();
+
+            window.location.href = checkoutUrl;
         } catch (e) {
             notification.showError(`error: ${JSON.stringify(e)}`);
         }

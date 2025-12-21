@@ -14,11 +14,6 @@
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
 <PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle">
-    <ActionFragment>
-        <MudTooltip Text="@Modules.Profile.Resources.Translations.Subscription">
-            <MudFab Color="Color.Primary" StartIcon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" IconColor="Color.Warning" Size="AppStateStatic.Size" OnClick="@OpenSubscription" />
-        </MudTooltip>
-    </ActionFragment>
 </PageHeader>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
@@ -412,11 +407,6 @@
         if (value == 1) return Color.Success;
         else if (value == 0) return Color.Default;
         else return Color.Primary;
-    }
-
-    private async Task OpenSubscription()
-    {
-        await DialogService.SubscriptionPopup();
     }
 
     private async Task Login()

@@ -18,7 +18,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
 
             RuleFor(x => x.Description)
                 .MaximumLength(512).WithMessage("Description must be 512 characters or fewer.")
-                .Matches(@"^(?!.*[<>""'\/=;%&\p{Cc}])[\p{L}\p{N}\p{P}\p{S}\p{Z}\r\n]{0,512}$").WithMessage("Description can include letters, numbers, punctuation, emojis, and line breaks — but not code or special symbols.")
+                .Matches(@"^(?!.*[<>""\/=;%&\p{Cc}])[\p{L}\p{N}\p{P}\p{S}\p{Z}\r\n]{0,512}$").WithMessage("Description can include letters, numbers, punctuation, emojis, and line breaks — but not code or special symbols.")
                 .WithName(ProfileBasicModel.Description_Name);
 
             RuleFor(x => x.Nationality)

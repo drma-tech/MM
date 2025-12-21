@@ -9,9 +9,21 @@ namespace MM.WEB.Modules.Subscription.Core
             await PostAsync(Endpoint.AppleVerify, null, receipt);
         }
 
+        public async Task<AuthPrincipal?> StripeCustomer()
+        {
+            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer);
+        }
+
+        public async Task<string?> StripePortalLink()
+        {
+            return await GetValueAsync(Endpoint.StripePortalLink);
+        }
+
         private struct Endpoint
         {
             public const string AppleVerify = "apple/verify";
+            public const string StripeCustomer = "stripe/customer";
+            public const string StripePortalLink = "stripe/portal-link";
         }
     }
 }

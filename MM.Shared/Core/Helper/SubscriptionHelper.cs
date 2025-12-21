@@ -7,7 +7,6 @@ public static class SubscriptionHelper
         return product switch
         {
             AccountProduct.Basic => new BasicRestrictions(),
-            AccountProduct.Standard => new StandardRestrictions(),
             AccountProduct.Premium => new PremiumRestrictions(),
             _ => new BasicRestrictions()
         };
@@ -66,15 +65,6 @@ public class BasicRestrictions : Restrictions
     public override int Watched => 14;
     public override int Watching => 7;
     public override int Wishlist => 7;
-}
-
-public class StandardRestrictions : Restrictions
-{
-    public override int FavoriteProviders => 10;
-    public override int MySuggestions => 14;
-    public override int Watched => 420;
-    public override int Watching => 56;
-    public override int Wishlist => 56;
 }
 
 public class PremiumRestrictions : Restrictions
