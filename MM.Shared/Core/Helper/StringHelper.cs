@@ -71,4 +71,36 @@ public static partial class StringHelper
 
         return Convert.ToHexString(hash, 0, 8);
     }
+
+    /// <summary>
+    /// Removes invisible control characters that can break logs, JSON or storage.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string? RemoveUnsafeControlChars(this string? input)
+    {
+        if (input.Empty()) return null;
+
+        var sb = new StringBuilder(input.Length);
+
+        foreach (var ch in input)
+        {
+            if (!char.IsControl(ch) || ch == '\n' || ch == '\r' || ch == '\t')
+                sb.Append(ch);
+        }
+
+        return sb.ToString();
+    }
+
+    /// <summary>
+    /// Normalizes text so visually identical characters are stored the same way.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string? NormalizeToNfc(this string? input)
+    {
+        if (input.Empty()) return null;
+
+        return input.Normalize(NormalizationForm.FormC);
+    }
 }

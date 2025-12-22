@@ -120,6 +120,12 @@ public class ProfileModel : CosmosDocument
         }
     }
 
+    public void SanitizeOpenTextFields()
+    {
+        NickName = NickName?.RemoveUnsafeControlChars()?.NormalizeToNfc();
+        Description = Description?.RemoveUnsafeControlChars()?.NormalizeToNfc();
+    }
+
     #region BASIC
 
     [Custom(Name = "NickName_Name", Placeholder = "NickName_Placeholder", ResourceType = typeof(ProfileBasicModel))]

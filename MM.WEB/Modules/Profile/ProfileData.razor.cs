@@ -17,7 +17,6 @@ public partial class ProfileData : PageCore<ProfileData>
     private ProfileModel? Profile { get; set; }
     public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
 
-
     protected override void OnInitialized()
     {
         AppStateStatic.LocationChanged += async location =>
@@ -137,6 +136,8 @@ public partial class ProfileData : PageCore<ProfileData>
 
         try
         {
+            Profile.SanitizeOpenTextFields();
+
             var validator = new ProfileValidation();
 
             var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));

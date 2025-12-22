@@ -217,6 +217,8 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
             var body = await req.GetBody<ProfileModel>(cancellationToken);
             var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
+            body.SanitizeOpenTextFields();
+
             if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
             if (body.Id != userId) throw new NotificationException("Invalid Operation");
 
