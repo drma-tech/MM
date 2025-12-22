@@ -103,4 +103,33 @@ public static partial class StringHelper
 
         return input.Normalize(NormalizationForm.FormC);
     }
+
+    private static readonly Regex ObfuscatedLinkRegex = new(@"\b(https?://|hxxp://|hxxps://|www\.)\S+|" + @"\b\w+\s*(\.|\[\.]|\(dot\))\s*\w+\b", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    private static readonly Regex ShortLinkRegex = new(@"(bit\.ly|tinyurl|goo\.gl|t\.co)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    private static readonly Regex MentionRegex = new(@"@\w+", RegexOptions.Compiled);
+    private static readonly Regex RepeatedCharSeqRegex = new(@"(.)\1{10,}", RegexOptions.Compiled);
+    private static readonly Regex SymbolSeqRegex = new(@"[^\p{L}\p{N}\s]{10,}", RegexOptions.Compiled);
+    private static readonly Regex EmojiRegex = new(@"\p{So}", RegexOptions.Compiled);
+
+    public static bool IsLikelySpam(string? text)
+    {
+        text = text.NormalizeToNfc();
+
+        if (string.IsNullOrWhiteSpace(text)) return false;
+
+        if (ObfuscatedLinkRegex.IsMatch(text)) return true;
+        if (ShortLinkRegex.IsMatch(text)) return true;
+        if (MentionRegex.IsMatch(text)) return true;
+
+        var words = Regex.Split(text, @"\W+").Where(w => w.Length > 2).ToArray();
+        if (words.GroupBy(w => w, StringComparer.OrdinalIgnoreCase).Any(g => g.Count() > 4)) return true;
+
+        if (RepeatedCharSeqRegex.IsMatch(text)) return true;
+        if (SymbolSeqRegex.IsMatch(text)) return true;
+        if (EmojiRegex.Matches(text).Count > 5) return true;
+
+        if (text.Count(c => c == '\n') > 10) return true;
+
+        return false;
+    }
 }

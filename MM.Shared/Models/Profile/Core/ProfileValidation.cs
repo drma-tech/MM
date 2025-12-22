@@ -13,12 +13,12 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
             RuleFor(x => x.NickName)
                 .NotEmpty()
                 .MaximumLength(18).WithMessage("Nickname must be 18 characters or fewer.")
-                //.Matches(@"^[\p{L}\p{N}_]+$").WithMessage("Nickname can only include letters, numbers, or underscores.")
+                 .Must(n => !StringHelper.IsLikelySpam(n)).WithMessage("Nickname contains suspicious or spam-like content.")
                 .WithName(ProfileBasicModel.NickName_Name);
 
             RuleFor(x => x.Description)
                 .MaximumLength(512).WithMessage("Description must be 512 characters or fewer.")
-                //.Matches(@"^(?!.*[<>""\/=;%&\p{Cc}])[\p{L}\p{N}\p{P}\p{S}\p{Z}\r\n]{0,512}$").WithMessage("Description can include letters, numbers, punctuation, emojis, and line breaks — but not code or special symbols.")
+                 .Must(d => !StringHelper.IsLikelySpam(d)).WithMessage("Description contains suspicious or spam-like content.")
                 .WithName(ProfileBasicModel.Description_Name);
 
             RuleFor(x => x.Nationality)
