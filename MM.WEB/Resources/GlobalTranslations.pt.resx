@@ -336,11 +336,17 @@
   <data name="WhyImportant" xml:space="preserve">
     <value>Por que isso é importante?</value>
   </data>
-  <data name="WriteReviewMessage" xml:space="preserve">
-    <value>Ajude -nos a alcançar um público maior.</value>
+  <data name="WriteReviewSubtitle" xml:space="preserve">
+    <value>Seu feedback nos ajuda a continuar melhorando e torna mais fácil para novos usuários descobrirem a plataforma.</value>
+  </data>
+  <data name="WriteReviewSubtitleStore" xml:space="preserve">
+    <value>Se o link da loja não funcionar, tente acessar diretamente o site.</value>
+  </data>
+  <data name="WriteReviewSubtitleWebapp" xml:space="preserve">
+    <value>Escolha sua plataforma preferida para deixar um comentário:</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
-    <value>Escreva uma crítica</value>
+    <value>Quer ajudar {0} a crescer?</value>
   </data>
   <data name="Years" xml:space="preserve">
     <value>Anos</value>

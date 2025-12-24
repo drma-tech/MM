@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -155,6 +155,6 @@
 		<CurrentDate>$([System.DateTime]::Now.ToString(yyyy.MM.dd))</CurrentDate>
 	</PropertyGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="echo $(CurrentDate) &gt; &quot;$(ProjectDir)\Resources\BuildDate.txt&quot;" />
+		<WriteLinesToFile File="$(ProjectDir)wwwroot\build-date.txt" Lines="$(CurrentDate)" Overwrite="true" />
 	</Target>
 </Project>
