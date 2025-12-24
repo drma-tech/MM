@@ -1,4 +1,4 @@
-import Cropper from "https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.esm.js";
+import Cropper from "../package/cropperjs/cropper.esm.min.js";
 
 let cropper;
 

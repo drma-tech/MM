@@ -10,5 +10,11 @@
     "inputFiles": [
       "wwwroot/css/custom-app.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/package/cropperjs/cropper.esm.min.js",
+    "inputFiles": [
+      "wwwroot/package/cropperjs/cropper.esm.js"
+    ]
   }
 ]
