@@ -11,6 +11,7 @@
 @using CardHeader = MM.WEB.Resources.CardHeader
 @using Country = MM.Shared.Enums.Country
 @using Height = MM.Shared.Enums.Height
+@using MM.WEB.Modules.Support
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inherits PageCore<Profile>
 
@@ -37,6 +38,18 @@
         <MudText Typo="Typo.caption" Align="Align.Center" Class="my-3 d-block">
             @Translations.HeroNote
         </MudText>
+    </MudPaper>
+}
+else
+{
+    <MudPaper Class="pa-3 mb-3" Outlined="true" Style="text-align: center;">
+        <AskReviewComponent>
+            <CustomHeader>
+                <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mb-3" Style="text-align: center;">
+                    Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy.
+                </MudText>
+            </CustomHeader>
+        </AskReviewComponent>
     </MudPaper>
 }
 
