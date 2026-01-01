@@ -78,7 +78,7 @@
 
             var sub = Principal!.GetActiveSubscription();
 
-            data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);                
+            data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
 
             var fileName = $"{SeoTranslations.AppName.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
             await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes());

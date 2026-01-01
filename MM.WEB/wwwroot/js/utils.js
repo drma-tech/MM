@@ -342,7 +342,7 @@ export const interop = {
             },
             {
                 enableHighAccuracy: true,
-                timeout: 10000, // 10s
+                timeout: 30000, // 30s
                 maximumAge: 0,
             }
         );

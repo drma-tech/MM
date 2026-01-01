@@ -96,34 +96,32 @@ else //webapp
         @GlobalTranslations.WriteReviewSubtitleWebapp
     </MudText>
 
-    <MudGrid Spacing="2" Class="mb-3">
-        <MudItem xs="12" sm="6" md="4" lg="2">
-            <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
-                <MudImage Src="/logo/microsoft-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> Microsoft Store
-            </MudButton>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4" lg="2">
-            <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
-                <MudImage Src="/logo/google-play.png" Class="me-2" Style="max-width: 20px;"></MudImage> Google Play
-            </MudButton>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4" lg="2">
-            <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
-                <MudImage Src="/logo/app-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> App Store
-            </MudButton>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4" lg="2">
-            <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
-                <MudImage Src="/logo/huawei.png" Class="me-2" Style="max-width: 20px;"></MudImage> Huawei AppGallery
-            </MudButton>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4" lg="2">
-            <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
-                <MudImage Src="/logo/xiaomi.png" Class="me-2" Style="max-width: 20px;"></MudImage> Xiaomi GetApps
-            </MudButton>
-        </MudItem>
-    </MudGrid>
+    <div class="store-grid mb-3">
+        <MudButton Href="@_windowsStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
+            <MudImage Src="/logo/microsoft-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> Microsoft Store
+        </MudButton>
+        <MudButton Href="@_googleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
+            <MudImage Src="/logo/google-play.png" Class="me-2" Style="max-width: 20px;"></MudImage> Google Play
+        </MudButton>
+        <MudButton Href="@_appleStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
+            <MudImage Src="/logo/app-store.png" Class="me-2" Style="max-width: 20px;"></MudImage> App Store
+        </MudButton>
+        <MudButton Href="@_huaweiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
+            <MudImage Src="/logo/huawei.png" Class="me-2" Style="max-width: 20px;"></MudImage> Huawei AppGallery
+        </MudButton>
+        <MudButton Href="@_xiaomiStore" Target="_blank" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true">
+            <MudImage Src="/logo/xiaomi.png" Class="me-2" Style="max-width: 20px;"></MudImage> Xiaomi GetApps
+        </MudButton>
+    </div>
 }
+
+<style>
+    .store-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 8px;
+    }
+</style>
 
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
