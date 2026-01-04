@@ -3,7 +3,6 @@
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Subscription.Core
 @using MM.WEB.Modules.Support.Core
-@using MM.WEB.Properties
 @using System.Text.Json
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.JSInterop
@@ -62,7 +61,6 @@
 
             AppStateStatic.DarkModeChanged += dark => { _darkMode = dark; StateHasChanged(); };
             AppStateStatic.ShowError += msg => { Snackbar.Add(msg, Severity.Error); };
-            AppStateStatic.Version += GetAppVersion();
             AppStateStatic.UserStateChanged += async () => await UserStateChanged();
             AppStateStatic.NotificationEnabled += async (string token, string platform) => { await FirebaseApi.Subscribe(token, platform); };
 
@@ -108,7 +106,7 @@
             {
                 await ApplyDarkMode();
                 await RedirectToRequestConsentForChina();
-                // await AskUSerForReview();
+                await AskUSerForReview();
                 await RegisterSessionAccesses();
                 await ShowOnBoardingPopup();
             }
@@ -287,20 +285,6 @@
     public static void LocationChanged(GeoLocation geo)
     {
         AppStateStatic.LocationChanged?.Invoke(geo);
-    }
-
-    [JSInvokable]
-    public static string GetAppVersion()
-    {
-        try
-        {
-            //https://swharden.com/blog/2020-12-29-blazor-build-info/
-            return Properties.Resources.BuildDate.ReplaceLineEndings("").Trim();
-        }
-        catch (Exception)
-        {
-            return "version-error";
-        }
     }
 
     [JSInvokable]

@@ -106,6 +106,15 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete your profile.
+        /// </summary>
+        public static string CompleteYourProfile {
+            get {
+                return ResourceManager.GetString("CompleteYourProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Account.
         /// </summary>
         public static string DeleteAccount {

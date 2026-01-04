@@ -43,7 +43,7 @@
 else
 {
     <MudPaper Class="pa-3 mb-3" Outlined="true" Style="text-align: center;">
-        <AskReviewComponent>
+        <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
             <CustomHeader>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mb-3" Style="text-align: center;">
                     Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy.
@@ -55,9 +55,16 @@ else
 
 <MudGrid Spacing="3" Class="mb-2">
     <MudItem xs="12" sm="6" md="4">
-        @if ((principal == null || !principal.PublicProfile) && validation == null)
+        @if ((principal == null || !principal.PublicProfile) && validation == null) //empty or private profile
         {
             <MudPaper Class="pa-3" Outlined="true">
+                <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("circle-user").Font" Class="me-2" Color="Color.Primary" Style="@($"font-size: {imageSize} !important; width: auto;")"></MudIcon>
+                    <MudText Typo="Typo.h2" Color="Color.Primary" Style="@($"font-size: {titleFontSize}; line-height: 1.2;")">
+                        @Resources.Translations.CompleteYourProfile
+                    </MudText>
+                </MudToolBar>
+
                 <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary">
                     <ChildContent>
                         <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
@@ -293,6 +300,9 @@ else
     private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string MatchesSwiperId = $"swiper-{Guid.NewGuid()}";
+
+    private string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
+    private string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
 
     private bool ProfileValid => profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid;
     private bool FilterValid => filter != null && FilterValidator.Validate(filter).IsValid;

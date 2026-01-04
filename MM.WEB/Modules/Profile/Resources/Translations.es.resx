@@ -132,6 +132,9 @@
   <data name="ClearCache" xml:space="preserve">
     <value>Limpiar cache</value>
   </data>
+  <data name="CompleteYourProfile" xml:space="preserve">
+    <value>Completa tu perfil</value>
+  </data>
   <data name="DeleteAccount" xml:space="preserve">
     <value>Borrar cuenta</value>
   </data>

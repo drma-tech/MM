@@ -129,6 +129,9 @@
   <data name="BirthdateTip" xml:space="preserve">
     <value>Only your age will be published. (We use the Gregorian calendar)</value>
   </data>
+  <data name="CheckOurApps" xml:space="preserve">
+    <value>Or check out our other apps:</value>
+  </data>
   <data name="Cities" xml:space="preserve">
     <value>Cities</value>
   </data>
@@ -168,7 +171,7 @@
   <data name="DarkMode" xml:space="preserve">
     <value>Dark Mode</value>
   </data>
- <data name="DiscoverProducts" xml:space="preserve">
+  <data name="DiscoverProducts" xml:space="preserve">
     <value>Discover our other products</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
@@ -337,13 +340,10 @@
     <value>Why is it important?</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Your feedback helps us keep improving and makes it easier for new users to discover the platform.</value>
+    <value>Leave a review and help us reach more users:</value>
   </data>
   <data name="WriteReviewSubtitleStore" xml:space="preserve">
     <value>If the store link doesn't work, try going directly to the website.</value>
-  </data>
-  <data name="WriteReviewSubtitleWebapp" xml:space="preserve">
-    <value>Choose your preferred platform to leave a review:</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Want to help {0} grow?</value>

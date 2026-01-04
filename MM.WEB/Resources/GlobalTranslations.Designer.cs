@@ -97,6 +97,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Or check out our other apps:.
+        /// </summary>
+        public static string CheckOurApps {
+            get {
+                return ResourceManager.GetString("CheckOurApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cities.
         /// </summary>
         public static string Cities {
@@ -718,7 +727,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your feedback helps us keep improving and makes it easier for new users to discover the platform..
+        ///   Looks up a localized string similar to Leave a review and help us reach more users:.
         /// </summary>
         public static string WriteReviewSubtitle {
             get {
@@ -732,15 +741,6 @@ namespace MM.WEB.Resources {
         public static string WriteReviewSubtitleStore {
             get {
                 return ResourceManager.GetString("WriteReviewSubtitleStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose your preferred platform to leave a review:.
-        /// </summary>
-        public static string WriteReviewSubtitleWebapp {
-            get {
-                return ResourceManager.GetString("WriteReviewSubtitleWebapp", resourceCulture);
             }
         }
         

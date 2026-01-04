@@ -103,6 +103,12 @@ namespace MM.WEB.Core.Helper
 
         #endregion NOTIFICATION
 
+        #region ENVIRONMENT
+
+        public Task<string?> GetAppVersion() => Invoke<string?>("environment.getAppVersion");
+
+        #endregion ENVIRONMENT
+
         #region INTEROP
 
         public Task DownloadFile(string filename, string contentType, object? content) => InvokeVoid("interop.downloadFile", filename, contentType, content);
