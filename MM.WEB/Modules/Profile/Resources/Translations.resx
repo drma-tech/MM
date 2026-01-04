@@ -129,11 +129,11 @@
   <data name="AuthProviders" xml:space="preserve">
     <value>Auth Providers</value>
   </data>
-  <data name="CompleteYourProfile" xml:space="preserve">
-    <value>Complete your profile</value>
-  </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Clear Cache</value>
+  </data>
+  <data name="CompleteYourProfile" xml:space="preserve">
+    <value>Complete your profile</value>
   </data>
   <data name="DeleteAccount" xml:space="preserve">
     <value>Delete Account</value>
