@@ -6,7 +6,7 @@ public class InviteApi(IHttpClientFactory http) : ApiCosmos<InviteRequest>(http,
 {
     public async Task SendInvite(InviteRequest request)
     {
-        await PostAsync(ProfileEndpoint.SendInvite, null, request);
+        await PostAsync(ProfileEndpoint.SendInvite, request);
     }
 
     public struct ProfileEndpoint

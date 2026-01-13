@@ -14,14 +14,14 @@
     [Parameter] public string? Icon { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    [Parameter] public RenderControlCore<T?>? Core { get; set; }
+    [Parameter] public ComponentActions<T?>? Actions { get; set; }
 
     private bool Processing;
 
     protected override void OnInitialized()
     {
-        if (Core != null) Core.ProcessingStarted += () => Processing = true;
-        if (Core != null) Core.ProcessingFinished += obj => Processing = false;
+        if (Actions != null) Actions.StartProcessing += msg => Processing = true;
+        if (Actions != null) Actions.FinishProcessing += obj => Processing = false;
     }
 
 }

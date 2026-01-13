@@ -1,19 +1,18 @@
 ﻿using MM.Shared.Models.Profile;
 using MM.WEB.Api;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
 public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation")
 {
-    public async Task<ValidationModel?> Get(RenderControlCore<ValidationModel?>? core)
+    public async Task<ValidationModel?> Get()
     {
-        return await GetAsync(ProfileEndpoint.Get, core);
+        return await GetAsync(ProfileEndpoint.Get);
     }
 
-    public async Task<ValidationModel?> UploadPhotoValidation(RenderControlCore<ValidationModel?>? core, byte[] bytes)
+    public async Task<ValidationModel?> UploadPhotoValidation(byte[] bytes)
     {
-        return await PutAsync(StorageEndpoint.UploadPhotoValidation, core, new { Stream = bytes });
+        return await PutAsync(StorageEndpoint.UploadPhotoValidation, new { Stream = bytes });
     }
 
     public struct ProfileEndpoint

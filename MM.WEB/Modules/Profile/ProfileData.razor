@@ -28,7 +28,8 @@
 @using WantChildren = MM.Shared.Enums.WantChildren
 @inherits PageCore<ProfileData>
 
-<RenderControl TModel="ProfileModel" Core="Core" Model="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+<NewRenderControl T="ProfileModel" Actions="Actions" Instance="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
+                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudExpansionPanels Elevation="2" Class="mb-3">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
@@ -511,7 +512,7 @@
             </ChildContent>
         </MudExpansionPanel>
     </MudExpansionPanels>
-</RenderControl>
+</NewRenderControl>
 
 <MudButton StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary" Variant="Variant.Filled" Class="me-2" OnClick="SaveHandle"
            Disabled="@(Profile == null || Principal == null || Principal.PublicProfile)" Size="AppStateStatic.Size">

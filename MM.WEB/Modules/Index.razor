@@ -356,7 +356,7 @@
 
     protected override async Task LoadEssentialDataAsync()
     {
-        var cache = await DashboardApi.GetSumUsers(null);
+        var cache = await DashboardApi.GetSumUsers();
         SumUsers = cache?.Data;
     }
 

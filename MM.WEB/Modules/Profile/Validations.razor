@@ -13,7 +13,8 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<RenderControl Core="Core" Model="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null" PrivateContent="true">
+<NewRenderControl Actions="Actions" Instance="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null"
+                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid>
             <MudItem xs="12">
@@ -38,27 +39,27 @@
             </MudItem>
         </MudGrid>
     </MudStack>
-</RenderControl>
+</NewRenderControl>
 
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private ValidationModel? Validation { get; set; }
     private ValidationValidation ValidationValidator { get; set; } = new();
-    public RenderControlCore<ValidationModel?>? Core { get; set; } = new();
+    public ComponentActions<ValidationModel?> Actions { get; set; } = new();
 
     protected override async Task LoadAuthDataAsync()
     {
-        Core?.LoadingStarted?.Invoke();
+        Actions?.StartLoading?.Invoke(null);
 
-        Validation = await ValidationApi.Get(null);
+        Validation = await ValidationApi.Get();
 
         if (Validation == null)
         {
             Validation = new ValidationModel();
         }
 
-        Core?.LoadingFinished?.Invoke(Validation);
+        Actions?.FinishLoading?.Invoke(Validation);
     }
 
 }

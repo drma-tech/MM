@@ -12,7 +12,8 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<RenderControl Core="Core" Model="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null" PrivateContent="true">
+<NewRenderControl Actions="Actions" Instance="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null"
+                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid>
             <MudItem xs="12">
@@ -32,28 +33,28 @@
             @Button.Save
         </MudButton>
     </div>
-</RenderControl>
+</NewRenderControl>
 
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private AuthPrincipal? Principal { get; set; }
     private SettingModel? Setting { get; set; }
-    public RenderControlCore<SettingModel?>? Core { get; set; } = new();
+    public ComponentActions<SettingModel?> Actions { get; set; } = new();
 
     protected override async Task LoadAuthDataAsync()
     {
-        Core?.LoadingStarted?.Invoke();
+        Actions.StartLoading?.Invoke(null);
 
         Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
-        Setting = await SettingApi.Get(null);
+        Setting = await SettingApi.Get();
 
         if (Setting == null)
         {
             Setting = new SettingModel();
         }
 
-        Core?.LoadingFinished?.Invoke(Setting);
+        Actions.FinishLoading?.Invoke(Setting);
     }
 
     private async Task SaveHandle()
@@ -62,13 +63,13 @@
 
         try
         {
-            Core?.ProcessingStarted?.Invoke();
+            Actions?.StartProcessing?.Invoke(null);
 
-            Setting = await SettingApi.Update(null, Setting);
+            Setting = await SettingApi.Update(Setting);
 
             if (Setting!.BlindDate)
             {
-                var profile = await ProfileApi.Get(null);
+                var profile = await ProfileApi.Get();
 
                 if (profile != null && profile.Gallery != null)
                 {
@@ -78,22 +79,22 @@
                     if (profile!.Gallery!.Type != GalleryType.BlindDate)
                     {
                         profile.Gallery.Type = GalleryType.BlindDate;
-                        await ProfileApi.Update(null, profile);
+                        await ProfileApi.Update(profile);
                     }
                 }
             }
             else
             {
-                var profile = await ProfileApi.Get(null);
+                var profile = await ProfileApi.Get();
 
                 if (profile?.Gallery?.Type == GalleryType.BlindDate)
                 {
                     profile.Gallery.Type = GalleryType.NoPictures;
-                    await ProfileApi.Update(null, profile);
+                    await ProfileApi.Update(profile);
                 }
             }
 
-            Core?.ProcessingFinished?.Invoke(Setting);
+            Actions?.FinishProcessing?.Invoke(Setting);
 
             Navigation.NavigateTo("profile");
         }

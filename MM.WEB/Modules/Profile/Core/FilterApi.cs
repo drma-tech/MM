@@ -1,18 +1,17 @@
 ﻿using MM.Shared.Models.Profile;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
 public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter")
 {
-    public async Task<FilterModel?> Get(RenderControlCore<FilterModel?>? core)
+    public async Task<FilterModel?> Get()
     {
-        return await GetAsync(ProfileEndpoint.Get, core);
+        return await GetAsync(ProfileEndpoint.Get);
     }
 
-    public async Task<FilterModel?> Update(RenderControlCore<FilterModel?>? core, FilterModel? obj)
+    public async Task<FilterModel?> Update(FilterModel? obj)
     {
-        return await PutAsync(ProfileEndpoint.UpdateFilter, core, obj);
+        return await PutAsync(ProfileEndpoint.UpdateFilter, obj);
     }
 
     public struct ProfileEndpoint

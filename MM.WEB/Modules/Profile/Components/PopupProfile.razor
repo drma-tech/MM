@@ -13,7 +13,8 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <RenderControl Core="Core" Model="View" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+        <NewRenderControl Actions="Actions" Instance="View" ExpressionEmpty="(ProfileModel? obj) => obj == null"
+                          PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
             <MudGrid>
                 <MudItem xs="12" sm="6" md="4">
                     <MudPaper style="position: relative;" Outlined="true">
@@ -59,12 +60,12 @@
                                     @if (interaction?.Status != InteractionStatus.Explorer)
                                     {
                                         <MudItem xs="12">
-                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Core="CoreEvent">
+                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Actions="EventActions">
                                                 @Button.Like
                                             </DrmaButton>
                                         </MudItem>
                                         <MudItem xs="12">
-                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-down").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Core="CoreEvent">
+                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-down").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Actions="EventActions">
                                                 @Button.Dislike
                                             </DrmaButton>
                                         </MudItem>
@@ -155,7 +156,7 @@
                 </MudItem>
             </MudGrid>
             <ProfileReport @ref="report"></ProfileReport>
-        </RenderControl>
+        </NewRenderControl>
     </DialogContent>
     <DialogActions>
         <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })" Size="AppStateStatic.Size">
@@ -185,11 +186,11 @@
     private ProfileModel? user;
     private FilterModel? filter;
     [Parameter] public ProfileModel? View { get; set; }
-    public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
+    public ComponentActions<ProfileModel?> Actions { get; set; } = new();
 
     private List<AffinityVM> affinities = [];
     private InteractionModel? interaction;
-    public RenderControlCore<InteractionModel?>? CoreEvent { get; set; } = new();
+    public ComponentActions<InteractionModel?> EventActions { get; set; } = new();
 
     private readonly string GallerySwiperId = $"swiper-{Guid.NewGuid()}";
     string[] imageDataUriGallery = [];
@@ -209,31 +210,31 @@
         {
             if (string.IsNullOrEmpty(IdUserView)) return;
 
-            Core?.LoadingStarted?.Invoke();
+            Actions.StartLoading?.Invoke(null);
 
             if (IdUserView == UserId)
             {
-                Core?.ShowError("Something wrong happened.");
+                Actions.ShowError?.Invoke("Something wrong happened.");
                 return;
             }
 
-            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, null);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
-                Core?.ShowError(GlobalTranslations.ProfileNotAvailable);
+                Actions.ShowError?.Invoke(GlobalTranslations.ProfileNotAvailable);
                 return;
             }
 
             principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
-            user = await ProfileApi.Get(null);
-            View ??= await ProfileApi.GetView(IdUserView, null);
+            user = await ProfileApi.Get();
+            View ??= await ProfileApi.GetView(IdUserView);
 
             await MudDialog!.SetTitleAsync(View?.NickName);
 
             if (View == null)
             {
-                Core?.ShowError(GlobalTranslations.PartnerProfileNotAvailable);
+                Actions.ShowError?.Invoke(GlobalTranslations.PartnerProfileNotAvailable);
                 return;
             }
 
@@ -244,15 +245,15 @@
 
             imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-            filter = await FilterApi.Get(null);
+            filter = await FilterApi.Get();
 
             affinities = AffinityCore.GetAffinity(user, filter, View);
 
-            Core?.LoadingFinished?.Invoke(View);
+            Actions.FinishLoading?.Invoke(View);
         }
         catch (Exception ex)
         {
-            Core?.ShowError(ex.Message);
+            Actions.ShowError?.Invoke(ex.Message);
         }
     }
 
@@ -275,7 +276,9 @@
     {
         try
         {
-            interaction = await InteractionApi.Like(Origin, IdUserView, CoreEvent);
+            EventActions.StartProcessing?.Invoke(null);
+            interaction = await InteractionApi.Like(Origin, IdUserView);
+            EventActions.FinishProcessing?.Invoke(interaction);
             Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)
@@ -294,7 +297,9 @@
     {
         try
         {
-            interaction = await InteractionApi.Dislike(Origin, IdUserView, CoreEvent);
+            EventActions.StartProcessing?.Invoke(null);
+            interaction = await InteractionApi.Dislike(Origin, IdUserView);
+            EventActions.FinishProcessing?.Invoke(interaction);
             Disliked?.Invoke();
         }
         catch (Exception ex)

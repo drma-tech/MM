@@ -181,8 +181,9 @@ else
                 </MudTooltip>
             </ActionFragment>
             <BodyFragment>
-                <RenderControl Core="CoreSuggestions" Model="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()" PrivateContent="true" PremiumFeature="true"
-                               PremiumDescription="This feature is only available in phase 2.">
+                <NewRenderControl Actions="SuggestionsActions" Instance="Suggestions" ExpressionEmpty="(List<string> lst) => lst.Empty()"
+                                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated"
+                                  PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser" PremiumDescription="This feature is only available in phase 2.">
                     <div id="@SuggestionsSwiperId" class="swiper mb-2">
                         <div class="swiper-wrapper">
                             @foreach (var item in Suggestions)
@@ -194,7 +195,7 @@ else
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                </RenderControl>
+                </NewRenderControl>
             </BodyFragment>
         </PageSection>
         <PageSection Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
@@ -206,7 +207,8 @@ else
                 </MudTooltip>
             </ActionFragment>
             <BodyFragment>
-                <RenderControl Core="CoreLikes" Model="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
+                <NewRenderControl Actions="LikesActions" Instance="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()"
+                                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                     <div id="@LikesSwiperId" class="swiper mb-2">
                         <div class="swiper-wrapper">
                             @foreach (var item in MyLikes?.Items ?? [])
@@ -226,7 +228,7 @@ else
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                </RenderControl>
+                </NewRenderControl>
             </BodyFragment>
         </PageSection>
         <PageSection Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches">
@@ -241,7 +243,8 @@ else
                 }
             </ActionFragment>
             <BodyFragment>
-                <RenderControl Core="CoreMatches" Model="MyMatches" ExpressionEmpty="(MyMatchesModel? obj) => obj == null || obj.Items.Empty()" PrivateContent="true">
+                <NewRenderControl Actions="MatchesActions" Instance="MyMatches" ExpressionEmpty="(MyMatchesModel? obj) => obj == null || obj.Items.Empty()"
+                                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                     <div id="@MatchesSwiperId" class="swiper mb-2">
                         <div class="swiper-wrapper">
                             @foreach (var item in MyMatches?.Items ?? [])
@@ -261,7 +264,7 @@ else
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                </RenderControl>
+                </NewRenderControl>
             </BodyFragment>
         </PageSection>
     </MudItem>
@@ -275,27 +278,27 @@ else
     private ProfileModel? profile;
 
     private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-    private RenderControlCore<ProfileModel?>? CoreProfile { get; } = new();
+    private ComponentActions<ProfileModel?> ProfileActions { get; } = new();
 
     private FilterValidation FilterValidator { get; } = new();
     private FilterModel? filter;
-    private RenderControlCore<FilterModel?>? CoreFilter { get; } = new();
+    private ComponentActions<FilterModel?> FilterActions { get; } = new();
 
     private PhotoValidation PhotoValidator { get; } = new();
 
     private SettingModel? setting;
-    private RenderControlCore<SettingModel?>? CoreSetting { get; } = new();
+    private ComponentActions<SettingModel?> SettingActions { get; } = new();
 
     private ValidationModel? validation;
 
     private List<string> Suggestions { get; } = [];
-    private RenderControlCore<List<string>>? CoreSuggestions { get; } = new();
+    private ComponentActions<List<string>> SuggestionsActions { get; } = new();
 
     private MyLikesModel? MyLikes { get; set; }
-    private RenderControlCore<MyLikesModel?>? CoreLikes { get; } = new();
+    private ComponentActions<MyLikesModel?> LikesActions { get; } = new();
 
     private MyMatchesModel? MyMatches { get; set; }
-    private RenderControlCore<MyMatchesModel?>? CoreMatches { get; } = new();
+    private ComponentActions<MyMatchesModel?> MatchesActions { get; } = new();
 
     private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
     private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
@@ -345,11 +348,21 @@ else
         {
             if (AppStateStatic.IsAuthenticated)
             {
-                profile = await ProfileApi.Get(CoreProfile);
+                ProfileActions.StartLoading?.Invoke(null);
+                profile = await ProfileApi.Get();
+                ProfileActions.FinishLoading?.Invoke(profile);
+
                 principal = await PrincipalApi.Get(true);
-                filter = await FilterApi.Get(CoreFilter);
-                setting = await SettingApi.Get(CoreSetting);
-                validation = await ValidationApi.Get(null);
+
+                FilterActions.StartLoading?.Invoke(null);
+                filter = await FilterApi.Get();
+                FilterActions.FinishLoading?.Invoke(filter);
+
+                SettingActions.StartLoading?.Invoke(null);
+                setting = await SettingApi.Get();
+                SettingActions.FinishLoading?.Invoke(setting);
+
+                validation = await ValidationApi.Get();
             }
             else
             {
@@ -360,7 +373,7 @@ else
                 validation = null;
             }
 
-            CoreSuggestions?.LoadingFinished?.Invoke(Suggestions);
+            SuggestionsActions.FinishLoading?.Invoke(Suggestions);
 
             await LoadLikes();
             await LoadMatches();
@@ -383,14 +396,16 @@ else
 
     private async Task LoadLikes(bool setNewVersion = false)
     {
-        MyLikes = await MyLikesApi.Get(CoreLikes, AppStateStatic.IsAuthenticated, setNewVersion);
-        CoreLikes?.LoadingFinished?.Invoke(MyLikes);
+        LikesActions.StartLoading?.Invoke(null);
+        MyLikes = await MyLikesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion);
+        LikesActions.FinishLoading?.Invoke(MyLikes);
     }
 
     private async Task LoadMatches(bool setNewVersion = false)
     {
-        MyMatches = await MyMatchesApi.Get(CoreMatches, AppStateStatic.IsAuthenticated, setNewVersion);
-        CoreMatches?.LoadingFinished?.Invoke(MyMatches);
+        MatchesActions.StartLoading?.Invoke(null);
+        MyMatches = await MyMatchesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion);
+        MatchesActions.FinishLoading?.Invoke(MyMatches);
     }
 
     private async Task IsPublicChanged(bool value)
@@ -529,7 +544,7 @@ else
             MyMatches.Items = fakeProfiles.Select(s =>
                 new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
-            CoreMatches?.LoadingFinished?.Invoke(MyMatches);
+            MatchesActions.FinishLoading?.Invoke(MyMatches);
         }
     }
 

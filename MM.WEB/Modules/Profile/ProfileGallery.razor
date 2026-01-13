@@ -22,9 +22,10 @@
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
-                    <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+                    <NewRenderControl Actions="ProfileActions" Instance="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
+                                      PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                         <MudImage Src="@_profile?.GetPhoto(PhotoType.Face)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
-                    </RenderControl>
+                    </NewRenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.FaceId == null)
@@ -56,9 +57,10 @@
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
-                    <RenderControl Core="CoreProfile" Model="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null" PrivateContent="true">
+                    <NewRenderControl Actions="ProfileActions" Instance="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
+                                      PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                         <MudImage Src="@_profile?.GetPhoto(PhotoType.Body)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
-                    </RenderControl>
+                    </NewRenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.BodyId == null)
@@ -123,14 +125,16 @@
 {
     private AuthPrincipal? Principal { get; set; }
     private ProfileModel? _profile = new();
-    public RenderControlCore<ProfileModel?>? CoreProfile { get; set; } = new();
+    public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new();
 
     private MudDialog? MudDialog { get; set; }
 
     protected override async Task LoadAuthDataAsync()
     {
-        _profile = await ProfileApi.Get(CoreProfile);
+        ProfileActions.StartLoading?.Invoke(null);
+        _profile = await ProfileApi.Get();
         Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
+        ProfileActions.FinishLoading?.Invoke(_profile);
     }
 
     private async Task SelectPicture(PhotoType photoType)

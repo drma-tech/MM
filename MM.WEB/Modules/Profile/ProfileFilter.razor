@@ -23,7 +23,8 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
-<RenderControl TModel="FilterModel" Core="Core" Model="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null" PrivateContent="true">
+<NewRenderControl T="FilterModel" Actions="Actions" Instance="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null"
+                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudExpansionPanels Elevation="2">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
@@ -430,7 +431,7 @@
             @Button.Fill
         </MudButton>
     </div>
-</RenderControl>
+</NewRenderControl>
 
 <MudDialog @ref="@MudDialog" Style="width: 100%">
     <DialogContent>
@@ -456,7 +457,7 @@
 @code {
     private ProfileModel? Profile { get; set; }
     private FilterModel? Filter { get; set; }
-    public RenderControlCore<FilterModel?>? Core { get; set; } = new();
+    public ComponentActions<FilterModel?> Actions { get; set; } = new();
     private MudDialog? MudDialog { get; set; }
 
     private Tabs? Tab { get; set; }
@@ -489,14 +490,14 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Core?.LoadingStarted?.Invoke();
+        Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(null);
-        Filter = await FilterApi.Get(null);
+        Profile = await ProfileApi.Get();
+        Filter = await FilterApi.Get();
 
         if (Profile == null)
         {
-            Core?.ShowError(GlobalTranslations.ProfileNotFound);
+            Actions.ShowError?.Invoke(GlobalTranslations.ProfileNotFound);
         }
 
         if (Filter == null)
@@ -514,7 +515,7 @@
             await PopulateFields();
         }
 
-        Core?.LoadingFinished?.Invoke(Filter);
+        Actions?.FinishLoading?.Invoke(Filter);
     }
 
     private async Task SaveHandle()
@@ -529,7 +530,9 @@
 
             if (result.IsValid)
             {
-                Filter = await FilterApi.Update(Core, Filter);
+                Actions.StartProcessing?.Invoke(null);
+                Filter = await FilterApi.Update(Filter);
+                Actions.FinishProcessing?.Invoke(Filter);
 
                 Navigation.NavigateTo("profile");
             }

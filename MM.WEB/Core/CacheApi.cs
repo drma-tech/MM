@@ -1,5 +1,4 @@
 ﻿using MM.Shared.Models.Dashboard;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Core;
 
@@ -10,8 +9,8 @@ public struct Endpoint
 
 public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, ApiType.Anonymous, null)
 {
-    public async Task<CacheDocument<SumUsers>?> GetSumUsers(RenderControlCore<CacheDocument<SumUsers>?>? core)
+    public async Task<CacheDocument<SumUsers>?> GetSumUsers()
     {
-        return await GetAsync(Endpoint.SumUsers, core);
+        return await GetAsync(Endpoint.SumUsers);
     }
 }

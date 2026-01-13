@@ -1,20 +1,19 @@
 ﻿using MM.Shared.Models.Profile;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
 public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile")
 {
-    public async Task<ProfileModel?> Get(RenderControlCore<ProfileModel?>? core)
+    public async Task<ProfileModel?> Get()
     {
-        return await GetAsync(ProfileEndpoint.Get, core);
+        return await GetAsync(ProfileEndpoint.Get);
     }
 
-    public async Task<ProfileModel?> GetView(string? IdUserView, RenderControlCore<ProfileModel?>? core)
+    public async Task<ProfileModel?> GetView(string? IdUserView)
     {
         if (IdUserView == null) return default;
 
-        return await GetAsync(ProfileEndpoint.GetView(IdUserView), core);
+        return await GetAsync(ProfileEndpoint.GetView(IdUserView));
     }
 
     //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()
@@ -22,9 +21,9 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
     //    return await GetListAsync<ProfileSearch>(ProfileEndpoint.ListSearch, false);
     //}
 
-    public async Task<ProfileModel?> Update(RenderControlCore<ProfileModel?>? core, ProfileModel obj)
+    public async Task<ProfileModel?> Update(ProfileModel obj)
     {
-        return await PutAsync(ProfileEndpoint.UpdateData, core, obj);
+        return await PutAsync(ProfileEndpoint.UpdateData, obj);
     }
 
     public struct ProfileEndpoint

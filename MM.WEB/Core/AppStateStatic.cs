@@ -10,6 +10,7 @@ public static class AppStateStatic
 {
     public static string? Token { get; set; }
     public static bool IsAuthenticated { get; set; }
+    public static bool IsPremiumUser { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
 

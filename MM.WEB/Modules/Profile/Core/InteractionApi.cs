@@ -1,31 +1,28 @@
 ﻿using MM.Shared.Models.Profile;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile.Core;
 
 public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction")
 {
-    public async Task<InteractionModel?> GetInteraction(string? IdUserView, RenderControlCore<InteractionModel?>? core)
+    public async Task<InteractionModel?> GetInteraction(string? IdUserView)
     {
         if (IdUserView == null) return default;
 
-        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), core);
+        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView));
     }
 
-    public async Task<InteractionModel?> Like(Origin origin, string? IdUserView,
-        RenderControlCore<InteractionModel?>? core)
+    public async Task<InteractionModel?> Like(Origin origin, string? IdUserView)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), core, null);
+        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), null);
     }
 
-    public async Task<InteractionModel?> Dislike(Origin origin, string? IdUserView,
-        RenderControlCore<InteractionModel?>? core)
+    public async Task<InteractionModel?> Dislike(Origin origin, string? IdUserView)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), core, null);
+        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), null);
     }
 
     public struct ProfileEndpoint

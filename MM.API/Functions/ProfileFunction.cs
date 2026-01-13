@@ -283,26 +283,22 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
         try
         {
             var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
-            var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal,
-                cancellationToken);
+            var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal, cancellationToken);
             var userId = await req.GetUserIdAsync(cancellationToken);
 
             if (partners.Count != 0) //if user already registered, register a like
             {
                 var partner = partners.Single();
-                var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
-                              throw new NotificationException("user not found");
+                var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
                 //add like to partner
                 var partnerLikes = await _repoGen.GetMyLikes(partner.UserId!, cancellationToken);
-                var partnerSettings =
-                    await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
+                var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
 
                 partnerLikes.Items.Add(new PersonModel(profile, partnerSettings?.BlindDate ?? false));
 
                 //create interaction between users
-                await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite,
-                    cancellationToken);
+                await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);
 
                 await _repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
             }
@@ -311,8 +307,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
                 var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
 
                 if (invite == null)
-                    invite = new CacheDocument<InviteModel>($"invite-{request.Email}",
-                        new InviteModel { UserIds = [userId] }, TtlCache.OneMonth);
+                    invite = new CacheDocument<InviteModel>($"invite-{request.Email}", new InviteModel { UserIds = [userId!] }, TtlCache.OneMonth);
                 else
                     invite.Data!.UserIds.Add(userId!);
 

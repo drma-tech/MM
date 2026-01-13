@@ -21,13 +21,13 @@ public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfileModel>(fa
     {
         SetNewVersion("profile");
         SetNewVersion("profile-validation");
-        return await PutAsync(StorageEndpoint.UploadPhoto, null, request);
+        return await PutAsync(StorageEndpoint.UploadPhoto, request);
     }
 
     public async Task<ProfileModel?> DeletePhotoGallery(PhotoType photoType)
     {
         SetNewVersion("profile");
         SetNewVersion("profile-validation");
-        return await DeleteAsync(StorageEndpoint.DeletePhotoGallery(photoType), null);
+        return await DeleteAsync(StorageEndpoint.DeletePhotoGallery(photoType));
     }
 }

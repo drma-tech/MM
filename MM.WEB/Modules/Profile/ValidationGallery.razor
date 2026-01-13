@@ -99,7 +99,6 @@
 @code
 {
     private ValidationModel? Validation { get; set; }
-    private RenderControlCore<ValidationModel?>? Core { get; set; } = new();
     private MudDialog? MudDialog { get; set; }
     private byte[] Picture { get; set; } = [];
 
@@ -115,7 +114,7 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Validation = await ValidationApi.Get(Core);
+        Validation = await ValidationApi.Get();
     }
 
     protected async Task TakeShot()
@@ -153,7 +152,10 @@
     {
         try
         {
-            Validation = await ValidationApi.UploadPhotoValidation(Core, Picture);
+            AppStateStatic.ProcessingStarted?.Invoke();
+            Validation = await ValidationApi.UploadPhotoValidation(Picture);
+            AppStateStatic.ProcessingFinished?.Invoke();
+
             await ShowSuccess("Photo validated successfully!");
             await JsRuntime.Window().HistoryBack();
         }

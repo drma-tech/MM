@@ -4,7 +4,6 @@ using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Profile.Core;
-using MM.WEB.Shared;
 
 namespace MM.WEB.Modules.Profile;
 
@@ -15,7 +14,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
     private AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
-    public RenderControlCore<ProfileModel?>? Core { get; set; } = new();
+    public ComponentActions<ProfileModel?> Actions { get; set; } = new();
 
     protected override void OnInitialized()
     {
@@ -31,10 +30,10 @@ public partial class ProfileData : PageCore<ProfileData>
 
     protected override async Task LoadAuthDataAsync()
     {
-        Core?.LoadingStarted?.Invoke();
+        Actions.StartLoading?.Invoke(null);
 
         Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
-        Profile = await ProfileApi.Get(null);
+        Profile = await ProfileApi.Get();
 
         if (Profile == null)
         {
@@ -91,7 +90,7 @@ public partial class ProfileData : PageCore<ProfileData>
             Diet = Diet.Omnivore
         };
 
-        Core?.LoadingFinished?.Invoke(Profile);
+        Actions.FinishLoading?.Invoke(Profile);
     }
 
     private async Task SetLocation(ProfileModel profile)
@@ -144,7 +143,9 @@ public partial class ProfileData : PageCore<ProfileData>
 
             if (result.IsValid)
             {
-                Profile = await ProfileApi.Update(Core, Profile);
+                Actions.StartProcessing?.Invoke(null);
+                Profile = await ProfileApi.Update(Profile);
+                Actions.FinishProcessing?.Invoke(Profile);
 
                 Navigation.NavigateTo("profile");
             }
