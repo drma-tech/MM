@@ -14,8 +14,9 @@
                 </MudSelect>
             </MudItem>
             <MudItem xs="12">
-                <MudToggleGroup Value="DarkMode" ValueChanged="(bool vl) => DarkModeChanged(vl)" SelectionMode="SelectionMode.SingleSelection" Vertical="false"
-                                Color="Color.Primary" Size="AppStateStatic.Size">
+                <MudText Class="mb-1" Style="font-size: 14px;">App Theme</MudText>
+                <MudToggleGroup Value="DarkMode" ValueChanged="(bool vl) => DarkModeChanged(vl)" SelectionMode="SelectionMode.SingleSelection"
+                                Vertical="false" Color="Color.Primary" Size="AppStateStatic.Size">
                     <MudToggleItem Value="false">
                         <MudIcon Icon="@IconsFA.Solid.Icon("sun").Font" Title="@GlobalTranslations.LightMode" Class="me-1"></MudIcon>
                         @GlobalTranslations.LightMode
@@ -80,14 +81,14 @@
 
     private async Task LoadMessagingToken()
     {
-        MessagingToken = await JsRuntime.Utils().GetLocalStorage("MessagingToken");
+        MessagingToken = await JsRuntime.Utils().GetStorage<string>("MessagingToken");
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)
     {
         Language = value;
 
-        await JsRuntime.Utils().SetLocalStorage("app-language", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetStorage("app-language", value);
 
         Navigation.NavigateTo(Navigation.GetUriWithQueryParameter("app-language", value.ToString()?.ToLower()), true);
     }
@@ -96,7 +97,7 @@
     {
         DarkMode = value;
 
-        await JsRuntime.Utils().SetLocalStorage("dark-mode", value.ToString()!.ToLower());
+        await JsRuntime.Utils().SetStorage("dark-mode", value);
 
         AppStateStatic.ChangeDarkMode(value);
     }
