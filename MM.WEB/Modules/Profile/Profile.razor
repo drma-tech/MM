@@ -29,13 +29,13 @@
 @if (!AppStateStatic.IsAuthenticated)
 {
     <MudPaper Class="pa-3 mb-3 mud-theme-primary" Outlined="true" Style="text-align: center;">
-        <MudText Typo="Typo.h5" Align="Align.Center" Class="my-3">
+        <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
             @Translations.HeroCall
         </MudText>
         <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4" Size="AppStateStatic.Size">
             @Translations.HeroButton
         </MudButton>
-        <MudText Typo="Typo.caption" Align="Align.Center" Class="my-3 d-block">
+        <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
             @Translations.HeroNote
         </MudText>
     </MudPaper>

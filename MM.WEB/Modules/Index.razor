@@ -22,9 +22,15 @@
     @if (!AppStateStatic.IsAuthenticated)
     {
         <MudPaper Elevation="2" Class="pa-4 my-8 mud-theme-primary" Style="text-align: center;">
-            <MudButton Color="Color.Secondary" Variant="Variant.Filled" Size="AppStateStatic.Size" OnClick="Login">
+            <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
+                @Profile.Resources.Translations.HeroCall
+            </MudText>
+            <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4" Size="AppStateStatic.Size">
                 @Button.LoginHero
             </MudButton>
+            <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
+                @Profile.Resources.Translations.HeroNote
+            </MudText>
         </MudPaper>
     }
 
@@ -95,7 +101,7 @@
         <BodyFragment>
             <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline TimelinePosition="@(Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true" >
+                    <MudTimeline TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>

@@ -11,7 +11,6 @@ using MM.WEB.Core.Auth;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Subscription.Core;
-using MM.WEB.Modules.Support.Core;
 using MudBlazor;
 using MudBlazor.Services;
 using Polly;
@@ -98,7 +97,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<IpInfoApi>();
     collection.AddScoped<IpInfoServerApi>();
     collection.AddScoped<LoggerApi>();
-    collection.AddScoped<FirebaseApi>();
 }
 
 static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)
