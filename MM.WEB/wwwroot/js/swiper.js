@@ -8,11 +8,11 @@ export const swiper = {
         const el = document.getElementById(id);
         if (!el) return;
         const posterSize = size ?? (mobile ? 98 : 128);
-        const margin = 8;
+        const margin = mobile ? 8 : 12;
 
         const temp = new Swiper(el, {
             slidesPerView: "auto",
-            spaceBetween: mobile ? 4 : 8,
+            spaceBetween: mobile ? 8 : 12,
             breakpointsBase: "container",
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -47,7 +47,7 @@ export const swiper = {
             centeredSlides: true,
             lazy: true,
             autoplay: {
-                delay: 2500,
+                delay: 5000,
                 disableOnInteraction: false,
             },
             navigation: {

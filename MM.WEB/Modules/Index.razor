@@ -13,19 +13,19 @@
 @inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
-<PageHeader Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle">
-</PageHeader>
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" BodyClass="mb-12">
+</NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
 
 <MudContainer>
     @if (!AppStateStatic.IsAuthenticated)
     {
-        <MudPaper Elevation="2" Class="pa-4 my-8 mud-theme-primary" Style="text-align: center;">
+        <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
             <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
                 @Profile.Resources.Translations.HeroCall
             </MudText>
-            <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4" Size="AppStateStatic.Size">
+            <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4">
                 @Button.LoginHero
             </MudButton>
             <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
@@ -34,9 +34,9 @@
         </MudPaper>
     }
 
-    <PageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" BodyClass="mb-8">
+    <NewPageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" BodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="2" Class="mb-3">
+            <MudGrid Spacing="2">
                 <MudItem xs="12" sm="6" md="3">
                     <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
                         <div class="d-flex" style="align-items: center;">
@@ -95,11 +95,11 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </PageSection>
+    </NewPageSection>
 
-    <PageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" BodyClass="mb-8">
+    <NewPageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" BodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="6" Class="mb-20" Justify="Justify.Center">
+            <MudGrid Spacing="6" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
                     <MudTimeline TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
@@ -248,11 +248,11 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </PageSection>
+    </NewPageSection>
 
-    <PageSection Title="@Landing.OurFeatures" BodyClass="mb-8">
+    <NewPageSection Title="@Landing.OurFeatures" BodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="3" Class="mb-20">
+            <MudGrid Spacing="3">
                 <MudItem xs="12" sm="6" md="4">
                     <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
                         <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
@@ -336,13 +336,13 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </PageSection>
+    </NewPageSection>
 
-    <PageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" BodyClass="mb-8">
+    <NewPageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" BodyClass="mb-12">
         <BodyFragment>
             <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
         </BodyFragment>
-    </PageSection>
+    </NewPageSection>
 </MudContainer>
 
 @code {

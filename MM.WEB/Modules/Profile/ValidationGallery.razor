@@ -33,7 +33,7 @@
                 else if (videoStreamTrack is null)
                 {
                     <div style="text-align: center;">
-                        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Size="AppStateStatic.Size" Class="my-5">
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
                             Load Camera
                         </MudButton>
                     </div>
@@ -57,19 +57,19 @@
             <MudCardActions Class="pt-0">
                 @if (Picture.Empty())
                 {
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2" Size="AppStateStatic.Size"
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2"
                                Disabled="@(videoStreamTrack is null)">
                         Take Shot
                     </MudButton>
                 }
                 else
                 {
-                    <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset" Class="me-2" Size="AppStateStatic.Size">
+                    <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset" Class="me-2">
                         Reset
                     </MudButton>
                 }
                 <MudSpacer></MudSpacer>
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto" Size="AppStateStatic.Size"
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
                     Send
                 </MudButton>
@@ -90,7 +90,9 @@
         </MudList>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">
+            @Button.Close
+        </MudButton>
     </DialogActions>
 </MudDialog>
 

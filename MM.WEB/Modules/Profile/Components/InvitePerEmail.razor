@@ -11,8 +11,12 @@
         <FieldText For="() => Email" @bind-Value="@Email" CssIcon="@IconsFA.Solid.Icon("at").Font" Required="true" />
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(() => { MudDialog!.Close(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
-        <MudButton Color="Color.Primary" OnClick="@SaveHandle" Size="AppStateStatic.Size">@Button.Ok</MudButton>
+        <MudButton OnClick="@(() => { MudDialog!.Close(); })">
+            @Button.Close
+        </MudButton>
+        <MudButton Color="Color.Primary" OnClick="@SaveHandle">
+            @Button.Ok
+        </MudButton>
     </DialogActions>
 </MudDialog>
 

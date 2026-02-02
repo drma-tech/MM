@@ -74,7 +74,7 @@
                                     {
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comments").Font" Style="width: 100%;"
-                                                       OnClick="GoChat" Disabled="true" Size="AppStateStatic.Size">
+                                                       OnClick="GoChat" Disabled="true">
                                                 @Button.Chat
                                             </MudButton>
                                         </MudItem>
@@ -83,7 +83,7 @@
                                     {
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-kiss-heart").Font" Style="width: 100%;"
-                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Dating)" Size="AppStateStatic.Size">
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Dating)">
                                                 @Button.Dating
                                             </MudButton>
                                         </MudItem>
@@ -92,7 +92,7 @@
                                     {
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-grin-heart").Font" Style="width: 100%;"
-                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Relationship)" Size="AppStateStatic.Size">
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Relationship)">
                                                 @Button.Relationship
                                             </MudButton>
                                         </MudItem>
@@ -101,7 +101,7 @@
                                     {
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comment-dots").Font" Style="width: 100%;"
-                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Feedback)" Size="AppStateStatic.Size">
+                                                       OnClick="GoChat" Disabled="ButtonDisabled(EventType.Feedback)">
                                                 @Button.Feedback
                                             </MudButton>
                                         </MudItem>
@@ -112,13 +112,13 @@
                                 <MudGrid Spacing="2">
                                     <MudItem xs="12">
                                         <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("trash").Font" Style="width: 100%;"
-                                                   OnClick="report!.ShowModal" Disabled="true" Size="AppStateStatic.Size">
+                                                   OnClick="report!.ShowModal" Disabled="true">
                                             @Button.Delete
                                         </MudButton>
                                     </MudItem>
                                     <MudItem xs="12">
                                         <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("flag").Font" Style="width: 100%;"
-                                                   OnClick="report!.ShowModal" Disabled="true" Size="AppStateStatic.Size">
+                                                   OnClick="report!.ShowModal" Disabled="true">
                                             @Button.Report
                                         </MudButton>
                                     </MudItem>
@@ -159,10 +159,10 @@
         </NewRenderControl>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })" Size="AppStateStatic.Size">
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
             @Button.Feedback
         </MudButton>
-        <MudButton OnClick="@(async () => { MudDialog!.Close(); })" Size="AppStateStatic.Size">
+        <MudButton OnClick="@(async () => { MudDialog!.Close(); })">
             @Button.Close
         </MudButton>
     </DialogActions>

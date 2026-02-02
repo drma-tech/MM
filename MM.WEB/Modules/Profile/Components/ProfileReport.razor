@@ -3,7 +3,7 @@
 
 <MudDialog @ref="@modal" Style="width: 100%">
     <DialogContent>
-       @*  <RadioGroup TValue="int" Name="report" CheckedValue="@checkedValue" CheckedValueChanged="@OnCheckedValueChanged">
+        @*  <RadioGroup TValue="int" Name="report" CheckedValue="@checkedValue" CheckedValueChanged="@OnCheckedValueChanged">
             @{
                 var previousGroup = "";
                 @foreach (var item in EnumHelper.GetList<ReportType>())
@@ -26,8 +26,12 @@
         </RadioGroup> *@
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true" Size="AppStateStatic.Size">@Button.Confirm</MudButton>
+        <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })">
+            @Button.Cancel
+        </MudButton>
+        <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true">
+            @Button.Confirm
+        </MudButton>
     </DialogActions>
 </MudDialog>
 

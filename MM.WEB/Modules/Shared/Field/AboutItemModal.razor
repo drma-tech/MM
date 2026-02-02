@@ -130,10 +130,10 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })" Size="AppStateStatic.Size">
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
             @Button.Feedback
         </MudButton>
-        <MudButton OnClick="@(() => { MudDialog?.Close(); })" Size="AppStateStatic.Size">
+        <MudButton OnClick="@(() => { MudDialog?.Close(); })">
             @Button.Close
         </MudButton>
     </DialogActions>

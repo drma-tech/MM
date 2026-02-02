@@ -151,7 +151,7 @@
                     </MudStack>
                     <MudStack Spacing="0">
                         <MudButton Color="Color.Warning" Variant="Variant.Outlined" OnClick="@(() => { _BioExpanded = !_BioExpanded; })"
-                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font" Size="AppStateStatic.Size">
+                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font">
                             @CardHeader.ProfileOptionalSection
                         </MudButton>
                         <MudCollapse Expanded="_BioExpanded">
@@ -255,7 +255,7 @@
                     </MudStack>
                     <MudStack Spacing="0">
                         <MudButton Color="Color.Warning" Variant="Variant.Outlined" OnClick="@(() => { _BioExpanded = !_BioExpanded; })"
-                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font" Size="AppStateStatic.Size">
+                                   EndIcon="@IconsFA.Solid.Icon("arrow-down").Font">
                             @CardHeader.ProfileOptionalSection
                         </MudButton>
                         <MudCollapse Expanded="_BioExpanded">
@@ -515,13 +515,13 @@
 </NewRenderControl>
 
 <MudButton StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary" Variant="Variant.Filled" Class="me-2" OnClick="SaveHandle"
-           Disabled="@(Profile == null || Principal == null || Principal.PublicProfile)" Size="AppStateStatic.Size">
+           Disabled="@(Profile == null || Principal == null || Principal.PublicProfile)">
     @Button.Save
 </MudButton>
 
 @if (Profile != null && !Validator.Validate(Profile, options => options.IncludeRuleSets(Tab.ToString())).IsValid)
 {
-    <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)" Size="AppStateStatic.Size">
+    <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)">
         @Button.ShowPendingItems
     </MudButton>
 }
@@ -538,7 +538,9 @@
         </MudList>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })" Size="AppStateStatic.Size">@Button.Close</MudButton>
+        <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">
+            @Button.Close
+        </MudButton>
     </DialogActions>
 </MudDialog>
 
