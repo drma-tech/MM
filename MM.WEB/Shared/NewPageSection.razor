@@ -154,11 +154,11 @@
     {
         if (IsPageHeader)
         {
-            BodyClass = "mb-8";
+            BodyClass ??= "mb-8";
         }
         else
         {
-            BodyClass = $"mb-{margin}";
+            BodyClass ??= $"mb-{margin}";
         }
     }
 
