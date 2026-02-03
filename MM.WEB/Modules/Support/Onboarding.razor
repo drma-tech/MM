@@ -54,9 +54,6 @@
             <MudCarouselItem>
                 <div class="pa-4" style="text-align: center; height: 100%;">
                     <MudImage Src="icon/icon-300.png" Style="height: 200px;"></MudImage>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">
-                        @Resources.Translations.Step5Title
-                    </MudText>
                     <MudText Typo="Typo.h6">
                         @Resources.Translations.Step5Subtitle
                     </MudText>
@@ -67,7 +64,7 @@
             @if (mudCarousel?.SelectedIndex == mudCarousel?.Items.Count - 1)
             {
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" FullWidth="true" StartIcon="@IconsFA.Solid.Icon("right-to-bracket").Font">
-                    @Button.Login
+                    @Resources.Translations.Step5Title
                 </MudButton>
             }
             else
