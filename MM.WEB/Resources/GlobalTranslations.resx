@@ -174,12 +174,6 @@
   <data name="DiscoverProducts" xml:space="preserve">
     <value>Discover our other products</value>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>Please enter the email address</value>
-  </data>
-  <data name="EnterPartnerEmail" xml:space="preserve">
-    <value>Enter your partner's email</value>
-  </data>
   <data name="ExpectedCompatibility" xml:space="preserve">
     <value>Expected Compatibility</value>
   </data>
@@ -200,21 +194,6 @@
   </data>
   <data name="HelpTitle" xml:space="preserve">
     <value>Help</value>
-  </data>
-  <data name="InvitationAccepted" xml:space="preserve">
-    <value>Invitation accepted</value>
-  </data>
-  <data name="InvitationNotAccepted" xml:space="preserve">
-    <value>invitation not accepted</value>
-  </data>
-  <data name="InvitationSent" xml:space="preserve">
-    <value>Invitation sent successfully.</value>
-  </data>
-  <data name="InviteYyourPartnerTitle1" xml:space="preserve">
-    <value>Invite your partner to test your compatibility</value>
-  </data>
-  <data name="InviteYyourPartnerTitle2" xml:space="preserve">
-    <value>This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted.</value>
   </data>
   <data name="ITrustPlataform" xml:space="preserve">
     <value>I trust the platform's compatibility system and will only select what is non-negotiable for me.</value>

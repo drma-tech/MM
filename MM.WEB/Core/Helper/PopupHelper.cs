@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.WEB.Modules.Auth;
 using MM.WEB.Modules.Profile.Components;
@@ -14,18 +13,6 @@ namespace MM.WEB.Core.Helper;
 public static class PopupHelper
 {
     public static readonly EventCallbackFactory Factory = new();
-
-    public static async Task InvitePerEmail(this IDialogService service, AuthPrincipal? principal,
-        EventCallback<string> inviteSent)
-    {
-        var parameters = new DialogParameters<InvitePerEmail>
-        {
-            { x => x.principal, principal },
-            { x => x.InviteSent, inviteSent }
-        };
-
-        await service.ShowAsync<InvitePerEmail>(CardHeader.InvitePartner, parameters, Options(MaxWidth.Small));
-    }
 
     public static async Task SelectPicturePopup(this IDialogService service, PhotoType photoType, EventCallback<(PhotoType, byte[])> pictureChanged)
     {

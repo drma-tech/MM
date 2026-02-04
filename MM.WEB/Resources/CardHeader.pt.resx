@@ -126,9 +126,6 @@
   <data name="Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
-  <data name="InvitePartner" xml:space="preserve">
-    <value>Convidar Parceiro</value>
-  </data>
   <data name="Likes" xml:space="preserve">
     <value>Curtidas</value>
   </data>

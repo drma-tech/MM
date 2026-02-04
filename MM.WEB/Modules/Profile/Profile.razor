@@ -19,7 +19,6 @@
 @inject FilterApi FilterApi
 @inject SettingApi SettingApi
 @inject ValidationApi ValidationApi
-@inject InviteApi InviteApi
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
 
@@ -199,13 +198,6 @@ else
             </BodyFragment>
         </NewPageSection>
         <NewPageSection Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
-            <ActionsFragment>
-                <MudTooltip Text="Invite someone by email">
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="InviteHandle" Disabled="!AppStateStatic.IsAuthenticated">
-                        @Button.InvitePartner
-                    </MudButton>
-                </MudTooltip>
-            </ActionsFragment>
             <BodyFragment>
                 <NewRenderControl Actions="LikesActions" Instance="MyLikes" ExpressionEmpty="(MyLikesModel? obj) => obj == null || obj.Items.Empty()"
                                   PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
@@ -426,26 +418,6 @@ else
         {
             principal = await PrincipalApi.Private();
             await ShowSuccess(GlobalTranslations.ProfilePrivateMode);
-        }
-    }
-
-    private async Task InviteHandle()
-    {
-        var principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
-        await DialogService.InvitePerEmail(principal, new EventCallbackFactory().Create(this, async (string email) => await InvitationSent(email)));
-    }
-
-    private async Task InvitationSent(string email)
-    {
-        try
-        {
-            await InviteApi.SendInvite(new InviteRequest { Email = email });
-
-            await ShowSuccess(GlobalTranslations.InvitationSent);
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
         }
     }
 

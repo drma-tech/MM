@@ -318,7 +318,7 @@
         if (type == EventType.Like)
         {
             var noLike = interaction?.GetMyEvents(UserId).Empty(a => a.Type == EventType.Like) ?? true;
-            var validated = (user?.Validated ?? false) || interaction?.GetMyEvents(View!.Id).FirstOrDefault()?.Origin == MM.Shared.Enums.Origin.Invite;
+            var validated = (user?.Validated ?? false);
 
             return !(noLike && validated);
         }

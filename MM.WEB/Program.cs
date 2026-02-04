@@ -11,7 +11,6 @@ using MM.WEB.Core.Auth;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Modules.Subscription.Core;
-using MudBlazor;
 using MudBlazor.Services;
 using Polly;
 using Polly.Extensions.Http;
@@ -86,7 +85,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<StorageApi>();
     collection.AddScoped<MyLikesApi>();
     collection.AddScoped<MyMatchesApi>();
-    collection.AddScoped<InviteApi>();
     collection.AddScoped<InteractionApi>();
     collection.AddScoped<DashboardApi>();
     collection.AddScoped<ValidationApi>();

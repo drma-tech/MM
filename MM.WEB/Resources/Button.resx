@@ -177,9 +177,6 @@
   <data name="Inactive" xml:space="preserve">
     <value>Inactive</value>
   </data>
-  <data name="InvitePartner" xml:space="preserve">
-    <value>Invite Partner</value>
-  </data>
   <data name="Like" xml:space="preserve">
     <value>Like</value>
   </data>

@@ -97,7 +97,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Or check out our other apps:.
+        ///   Looks up a localized string similar to Explore our other amazing apps:.
         /// </summary>
         public static string CheckOurApps {
             get {
@@ -232,24 +232,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the email address.
-        /// </summary>
-        public static string EmailRequired {
-            get {
-                return ResourceManager.GetString("EmailRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter your partner&apos;s email.
-        /// </summary>
-        public static string EnterPartnerEmail {
-            get {
-                return ResourceManager.GetString("EnterPartnerEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Expected Compatibility.
         /// </summary>
         public static string ExpectedCompatibility {
@@ -309,51 +291,6 @@ namespace MM.WEB.Resources {
         public static string HelpTitle {
             get {
                 return ResourceManager.GetString("HelpTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invitation accepted.
-        /// </summary>
-        public static string InvitationAccepted {
-            get {
-                return ResourceManager.GetString("InvitationAccepted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to invitation not accepted.
-        /// </summary>
-        public static string InvitationNotAccepted {
-            get {
-                return ResourceManager.GetString("InvitationNotAccepted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invitation sent successfully..
-        /// </summary>
-        public static string InvitationSent {
-            get {
-                return ResourceManager.GetString("InvitationSent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invite your partner to test your compatibility.
-        /// </summary>
-        public static string InviteYyourPartnerTitle1 {
-            get {
-                return ResourceManager.GetString("InviteYyourPartnerTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This invitation will not send an email. If this invitation is not accepted within a period of one month, it will be automatically deleted..
-        /// </summary>
-        public static string InviteYyourPartnerTitle2 {
-            get {
-                return ResourceManager.GetString("InviteYyourPartnerTitle2", resourceCulture);
             }
         }
         
@@ -727,7 +664,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leave a review and help us reach more users:.
+        ///   Looks up a localized string similar to Rate the app and share it with your friends!.
         /// </summary>
         public static string WriteReviewSubtitle {
             get {
@@ -745,7 +682,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Want to help {0} grow?.
+        ///   Looks up a localized string similar to Help {0} grow!.
         /// </summary>
         public static string WriteReviewTitle {
             get {

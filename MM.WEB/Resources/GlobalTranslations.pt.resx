@@ -174,12 +174,6 @@
   <data name="DiscoverProducts" xml:space="preserve">
     <value>Conheça nossos outros produtos</value>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>Por favor, insira o endereço de e-mail</value>
-  </data>
-  <data name="EnterPartnerEmail" xml:space="preserve">
-    <value>Insira o e-mail do seu parceiro</value>
-  </data>
   <data name="ExpectedCompatibility" xml:space="preserve">
     <value>Compatibilidade esperada</value>
   </data>
@@ -200,21 +194,6 @@
   </data>
   <data name="HelpTitle" xml:space="preserve">
     <value>Ajuda</value>
-  </data>
-  <data name="InvitationAccepted" xml:space="preserve">
-    <value>Convite aceito</value>
-  </data>
-  <data name="InvitationNotAccepted" xml:space="preserve">
-    <value>Convite não aceito</value>
-  </data>
-  <data name="InvitationSent" xml:space="preserve">
-    <value>Convite enviado com sucesso.</value>
-  </data>
-  <data name="InviteYyourPartnerTitle1" xml:space="preserve">
-    <value>Convide seu parceiro para testar sua compatibilidade</value>
-  </data>
-  <data name="InviteYyourPartnerTitle2" xml:space="preserve">
-    <value>Este convite não enviará um e-mail. Se este convite não for aceito dentro de um período de um mês, ele será automaticamente excluído.</value>
   </data>
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Confio no sistema de compatibilidade da plataforma e selecionarei apenas o que não for negociável para mim.</value>

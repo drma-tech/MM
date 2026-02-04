@@ -6,8 +6,6 @@ public enum Origin
 
     [Custom(Name = "Like")] Like = 2,
 
-    [Custom(Name = "Invite")] Invite = 3,
-
     [Custom(Name = "Match")] Match = 4,
 
     [Custom(Name = "Highlight")] Highlight = 5

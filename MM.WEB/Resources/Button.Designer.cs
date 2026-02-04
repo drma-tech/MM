@@ -241,15 +241,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invite Partner.
-        /// </summary>
-        public static string InvitePartner {
-            get {
-                return ResourceManager.GetString("InvitePartner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Like.
         /// </summary>
         public static string Like {

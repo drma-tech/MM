@@ -151,24 +151,6 @@ namespace MM.WEB.Modules.Support.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Take the compatibility test with your partner and explore your relationship dynamics — privately, outside the pool..
-        /// </summary>
-        public static string Step4Subtitle {
-            get {
-                return ResourceManager.GetString("Step4Subtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to For couples.
-        /// </summary>
-        public static string Step4Title {
-            get {
-                return ResourceManager.GetString("Step4Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Create your profile and help us redefine how people connect..
         /// </summary>
         public static string Step5Subtitle {

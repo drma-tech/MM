@@ -5,7 +5,6 @@ using MM.API.Core.Auth;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
-using MM.Shared.Requests;
 
 namespace MM.API.Functions;
 
@@ -268,51 +267,6 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
             var body = await req.GetBody<SettingModel>(cancellationToken);
 
             return await _repoGen.UpsertItemAsync(body, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
-    [Function("ProfileSendInvite")]
-    public async Task ProfileSendInvite(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/send-invite")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var request = await req.GetPublicBody<InviteRequest>(cancellationToken);
-            var partners = await _repoGen.Query<AuthPrincipal>(x => x.Email == request.Email, DocumentType.Principal, cancellationToken);
-            var userId = await req.GetUserIdAsync(cancellationToken);
-
-            if (partners.Count != 0) //if user already registered, register a like
-            {
-                var partner = partners.Single();
-                var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ?? throw new NotificationException("user not found");
-
-                //add like to partner
-                var partnerLikes = await _repoGen.GetMyLikes(partner.UserId!, cancellationToken);
-                var partnerSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, partner.UserId, cancellationToken);
-
-                partnerLikes.Items.Add(new PersonModel(profile, partnerSettings?.BlindDate ?? false));
-
-                //create interaction between users
-                await _repoGen.SetInteractionNew(userId, partner.UserId, EventType.Like, Origin.Invite, cancellationToken);
-
-                await _repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
-            }
-            else //if not, generate a temporary invite
-            {
-                var invite = await _repoCache.Get<InviteModel>($"invite-{request.Email}", cancellationToken);
-
-                if (invite == null)
-                    invite = new CacheDocument<InviteModel>($"invite-{request.Email}", new InviteModel { UserIds = [userId!] }, TtlCache.OneMonth);
-                else
-                    invite.Data!.UserIds.Add(userId!);
-
-                await _repoCache.UpsertItemAsync(invite, cancellationToken);
-            }
         }
         catch (Exception ex)
         {

@@ -67,34 +67,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
                 _ = repoCache.CreateItemAsync(new DataBlockedCache(new DataBlocked(), $"block-{ip}", TtlCache.OneWeek), cancellationToken);
             }
 
-            //check if user was invited
-            var invite = await repoCache.Get<InviteModel>($"invite-{body.Email}", cancellationToken);
-            if (invite != null)
-            {
-                //add likes from invites
-                var myLikes = new MyLikesModel();
-                myLikes.Initialize(userId);
-
-                foreach (var partnerId in invite.Data?.UserIds.Distinct() ?? [])
-                {
-                    if (userId == partnerId) continue; //avoid self like
-
-                    var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, partnerId, cancellationToken);
-
-                    if (partnerProfile != null)
-                    {
-                        var mySettings = await repo.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
-
-                        myLikes.Items.Add(new PersonModel(partnerProfile, mySettings?.BlindDate ?? false));
-                    }
-
-                    //create interaction between users
-                    await repo.SetInteractionNew(partnerId, userId, EventType.Like, Origin.Invite, cancellationToken);
-                }
-
-                await repo.UpsertItemAsync(myLikes, cancellationToken);
-            }
-
             foreach (var item in body.Events.Where(w => w.Ip.Empty()))
             {
                 item.Ip = ip;
