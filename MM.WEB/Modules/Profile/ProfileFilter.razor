@@ -36,7 +36,7 @@
                 @if (Tab == Tabs.BASIC)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@context.Region"
                                              CssIcon="@IconsFA.Solid.Icon("map-location-dot").Font" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")">
@@ -53,7 +53,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@context.MaritalStatus"
                                              CssIcon="@IconsFA.Solid.Icon("ring").Font" Multiple="true">
@@ -89,7 +89,7 @@
                 @if (Tab == Tabs.BIO)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.Ethnicity)" TValue="HashSet<Ethnicity>" TEnum="Ethnicity" @bind-SelectedValues="@context.Ethnicity"
                                              CssIcon="@IconsFA.Solid.Icon("globe").Font" Multiple="true">
@@ -106,7 +106,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <div class="d-flex" style="align-items: center;">
                                     <MudIcon Icon="@IconsFA.Solid.Icon("cake-candles").Font" Class="me-3"></MudIcon>
@@ -161,7 +161,7 @@
                 @if (Tab == Tabs.LIFESTYLE)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.Drink)" TValue="HashSet<Drink>" TEnum="Drink" @bind-SelectedValues="@context.Drink"
                                              CssIcon="@IconsFA.Solid.Icon("champagne-glasses").Font" Multiple="true">
@@ -193,7 +193,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.HaveChildren)" TValue="HashSet<HaveChildren>" TEnum="HaveChildren" @bind-SelectedValues="@context.HaveChildren"
                                              CssIcon="@IconsFA.Solid.Icon("child").Font" ShowHelper="false" Multiple="true">
@@ -244,7 +244,7 @@
                 @if (Tab == Tabs.PERSONALITY)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSwitch For="@(() => context.MoneyPersonality)" @bind-Value="@context.MoneyPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("wallet").Font">
@@ -261,7 +261,7 @@
                                 </FieldSwitch>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSwitch For="@(() => context.MyersBriggsTypeIndicator)" @bind-Value="@context.MyersBriggsTypeIndicator"
                                              CssIcon="@IconsFA.Solid.Icon("user-tag").Font">
@@ -292,7 +292,7 @@
                 @if (Tab == Tabs.INTEREST)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@context.Food"
                                              CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true">
@@ -314,7 +314,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@context.MusicGenre"
                                              CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true">
@@ -350,7 +350,7 @@
                 @if (Tab == Tabs.RELATIONSHIP)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.SharedFinances)" TValue="HashSet<SharedFinances>" TEnum="SharedFinances" @bind-SelectedValues="@context.SharedFinances"
                                              CssIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font" Multiple="true">
@@ -367,7 +367,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.TimeTogetherPreference)" TValue="HashSet<TimeTogetherPreference>" TEnum="TimeTogetherPreference" @bind-SelectedValues="@context.TimeTogetherPreference"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-hand").Font" Multiple="true">
@@ -393,7 +393,7 @@
                 @if (Tab == Tabs.GOAL)
                 {
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.RelationshipIntentions)" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@context.RelationshipIntentions"
                                              CssIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Multiple="true">
@@ -405,7 +405,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid>
+                        <MudGrid Spacing="@AppStateStatic.Spacing">
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.WantChildren)" TValue="HashSet<WantChildren>" TEnum="WantChildren" @bind-SelectedValues="@context.WantChildren"
                                              CssIcon="@IconsFA.Solid.Icon("baby").Font" ShowHelper="false" Multiple="true">

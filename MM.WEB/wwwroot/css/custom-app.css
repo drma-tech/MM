@@ -9,6 +9,11 @@ body .pwa-updater[b-pwa-updater] {
     height: 64px;
 }
 
+.pwa-updater-updatenow-button[b-pwa-updater] {
+    background-color: var(--mud-palette-secondary) !important;
+    border-color: var(--mud-palette-secondary) !important;
+}
+
 @media (max-width: 599.95px), (max-height: 599.95px) {
     .mud-toolbar-gutters {
         padding-left: 8px !important;
@@ -328,6 +333,11 @@ body .pwa-updater[b-pwa-updater] {
 
 .mud-stepper .mud-stepper-nav .mud-step .mud-step-label .mud-step-label-content-title {
     color: var(--mud-palette-primary);
+}
+
+.mud-chip-content {
+    width: 100%;
+    justify-content: space-between;
 }
 
 .icon-text-button {

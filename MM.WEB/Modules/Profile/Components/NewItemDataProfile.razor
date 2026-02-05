@@ -11,20 +11,40 @@
 {
     foreach (var item in Values)
     {
-        <MudTooltip Text="@For.GetCustomAttribute().Name">
-            <MudChip T="string" Icon="@ClassIcon" Color="GetColor(item)" Variant="Variant.Outlined" OnClick="InstantiateModal" Size="Size.Small">
-                @GetValue(item)
+        <MudItem xs="6" sm="12" md="12" lg="6">
+            <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(item)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
+                <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
+                <div>
+                    <MudTooltip Text="@($"{For.GetCustomAttribute().Name}: {@GetValue(item)}")">
+                        <span style="text-decoration: underline; cursor: help;">
+                            @GetValue(item).Truncate(15)
+                        </span>
+                    </MudTooltip>
+                </div>
+                <MudTooltip Text="Learn more">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("eye").Font" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;" @onclick="InstantiateModal"></MudIcon>
+                </MudTooltip>
             </MudChip>
-        </MudTooltip>
+        </MudItem>
     }
 }
 else
 {
-    <MudTooltip Text="@For.GetCustomAttribute().Name">
-        <MudChip T="string" Icon="@ClassIcon" Color="GetColor(Value)" Variant="Variant.Outlined" OnClick="InstantiateModal" Size="Size.Small">
-            @GetValue(Value)
+    <MudItem xs="6" sm="12" md="12" lg="6">
+        <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(Value)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
+            <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
+            <div>
+                <MudTooltip Text="@($"{For.GetCustomAttribute().Name}: {@GetValue(Value)}")">
+                    <span style="text-decoration: underline; cursor: help;">
+                        @GetValue(Value).Truncate(15)
+                    </span>
+                </MudTooltip>
+            </div>
+            <MudTooltip Text="Learn more">
+                <MudIcon Icon="@IconsFA.Solid.Icon("eye").Font" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;" @onclick="InstantiateModal"></MudIcon>
+            </MudTooltip>
         </MudChip>
-    </MudTooltip>
+    </MudItem>
 }
 
 @code {

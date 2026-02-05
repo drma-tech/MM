@@ -5,7 +5,7 @@
     <div class="@BodyClass">
         @if (IsPageHeader)
         {
-            <MudPaper Class="@($"pa-{margin}")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 4px 4px 0px 0px;" : "")}")" Outlined="true" Elevation="0">
+            <MudPaper Class="@AppStateStatic.SpacingClass("pa")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 4px 4px 0px 0px;" : "")}")" Outlined="true" Elevation="0">
                 <MudToolBar WrapContent="true" Gutters="false" Style="min-height: auto;">
                     @if (!string.IsNullOrEmpty(Icon))
                     {
@@ -36,7 +36,7 @@
                 </MudToolBar>
                 @if (Description.NotEmpty())
                 {
-                    <div style="text-align: justify;" class="mt-@margin">
+                    <div style="text-align: justify;" class="@AppStateStatic.SpacingClass("mt")">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                  Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                             @Description
@@ -46,7 +46,7 @@
             </MudPaper>
             @if (ShowActions && HasActions)
             {
-                <MudPaper Class="@($"pa-{margin}")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 0px 0px 4px 4px;" : "")}")" Outlined="true" Elevation="0">
+                <MudPaper Class="@AppStateStatic.SpacingClass("pa")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 0px 0px 4px 4px;" : "")}")" Outlined="true" Elevation="0">
                     <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
                         @ActionsFragment
                     </MudToolBar>
@@ -57,7 +57,7 @@
         {
             @if (ShowHeader)
             {
-                <div class="mb-@margin">
+                <div class="@AppStateStatic.SpacingClass("mb")">
                     <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
                         @if (!string.IsNullOrEmpty(Icon))
                         {
@@ -88,7 +88,7 @@
                     </MudToolBar>
                     @if (Description.NotEmpty())
                     {
-                        <div style="text-align: justify;" class="mt-@margin">
+                        <div style="text-align: justify;" class="@AppStateStatic.SpacingClass("mt")">
                             <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
                                      Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
                                 @Description
@@ -99,7 +99,7 @@
             }
             @if (ShowActions && HasActions)
             {
-                <MudPaper Class="@($"pa-{margin}")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 4px 4px 0px 0px;" : "")}")" Outlined="true" Elevation="0">
+                <MudPaper Class="@AppStateStatic.SpacingClass("pa")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 4px 4px 0px 0px;" : "")}")" Outlined="true" Elevation="0">
                     <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
                         @ActionsFragment
                     </MudToolBar>
@@ -107,7 +107,7 @@
             }
             @if (HasBody)
             {
-                <MudPaper Class="@($"pa-{margin}")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 0px 0px 4px 4px;" : "")}")" Outlined="true" Elevation="0">
+                <MudPaper Class="@AppStateStatic.SpacingClass("pa")" Style="@($"background-color: transparent; {(HasActions ? "border-radius: 0px 0px 4px 4px;" : "")}")" Outlined="true" Elevation="0">
                     @BodyFragment
                 </MudPaper>
             }
@@ -141,7 +141,6 @@
     private bool IsMobile => Breakpoint <= Breakpoint.Xs;
     private bool IsDesktop => Breakpoint > Breakpoint.Xs;
 
-    private string margin => IsMobile ? "2" : "3";
     private string headerImageSize => IsMobile ? "40px" : "48px";
     private string sectionImageSize => IsMobile ? "20px" : "24px";
     private string titleFontSize => IsMobile ? "20px" : "24px";
@@ -152,7 +151,7 @@
 
     protected override void OnInitialized()
     {
-        BodyClass ??= "mb-8";
+        BodyClass ??= AppStateStatic.SpacingTripleClass("mb");
     }
 
     private string GetImageStyle(bool header)

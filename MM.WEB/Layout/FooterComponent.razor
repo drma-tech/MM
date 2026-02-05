@@ -3,8 +3,8 @@
 
 @if ((Support && Breakpoint <= Breakpoint.Sm) || (!Support && Breakpoint > Breakpoint.Sm))
 {
-    <MudDivider Class="mb-3 mt-10"></MudDivider>
-    <MudGrid Justify="Justify.Center" Style="overflow: auto;" Spacing="4">
+    <MudDivider Class="@($"{AppStateStatic.SpacingClass("mb")} {AppStateStatic.SpacingTripleClass("mt")}")"></MudDivider>
+    <MudGrid Justify="Justify.Center" Style="overflow: auto;" Spacing="@AppStateStatic.Spacing">
         <MudItem xs="12" sm="12" md="3">
             <MudList T="string" Color="Color.Surface" Dense="true" Gutters="false">
                 <MudListSubheader Gutters="false">

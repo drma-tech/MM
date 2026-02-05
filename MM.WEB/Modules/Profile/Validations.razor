@@ -16,7 +16,7 @@
 <NewRenderControl Actions="Actions" Instance="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null"
                   PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-        <MudGrid>
+        <MudGrid Spacing="@AppStateStatic.Spacing">
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@IconsFA.Solid.Icon("images").Font"></FieldActive>
             </MudItem>
@@ -26,7 +26,7 @@
                 </FieldActive>
             </MudItem>
         </MudGrid>
-        <MudGrid>
+        <MudGrid Spacing="@AppStateStatic.Spacing">
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@IconsFA.Solid.Icon("gem").Font"
                              Disabled="true" CustomButtonText="Only available in phase 3">

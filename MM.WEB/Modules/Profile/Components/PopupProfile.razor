@@ -15,7 +15,7 @@
     <DialogContent>
         <NewRenderControl Actions="Actions" Instance="View" ExpressionEmpty="(ProfileModel? obj) => obj == null"
                           PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-            <MudGrid>
+            <MudGrid Spacing="@AppStateStatic.Spacing">
                 <MudItem xs="12" sm="6" md="4">
                     <MudPaper style="position: relative;" Outlined="true">
                         @{
@@ -54,9 +54,9 @@
                                 @View?.Description
                             </MudText>
                         </div>
-                        <MudGrid Spacing="2" Class="pa-2">
+                        <MudGrid Spacing="@AppStateStatic.Spacing" Class="pa-2">
                             <MudItem xs="6">
-                                <MudGrid Spacing="2">
+                                <MudGrid Spacing="@AppStateStatic.Spacing">
                                     @if (interaction?.Status != InteractionStatus.Explorer)
                                     {
                                         <MudItem xs="12">
@@ -109,7 +109,7 @@
                                 </MudGrid>
                             </MudItem>
                             <MudItem xs="6">
-                                <MudGrid Spacing="2">
+                                <MudGrid Spacing="@AppStateStatic.Spacing">
                                     <MudItem xs="12">
                                         <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("trash").Font" Style="width: 100%;"
                                                    OnClick="report!.ShowModal" Disabled="true">
