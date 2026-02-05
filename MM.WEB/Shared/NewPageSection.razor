@@ -132,11 +132,13 @@
     [Parameter] public string? Image { get; set; }
     [Parameter] public string? ImageStyle { get; set; }
     [Parameter] public bool Visible { get; set; } = true;
-    [Parameter] public string? BodyClass { get; set; }
+    [Parameter] public string? CustomBodyClass { get; set; }
 
     //Fragments
     [Parameter] public RenderFragment? ActionsFragment { get; set; }
     [Parameter] public RenderFragment? BodyFragment { get; set; }
+
+    public string? BodyClass { get; set; }
 
     private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
 
@@ -150,7 +152,15 @@
 
     protected override void OnInitialized()
     {
-        BodyClass ??= AppStateStatic.SpacingTripleClass("mb");
+        if (CustomBodyClass.Empty())
+        {
+            BodyClass = AppStateStatic.SpacingTripleClass("mb");
+            AppStateStatic.BreakpointChanged += client => BodyClass = AppStateStatic.SpacingTripleClass("mb");
+        }
+        else
+        {
+            BodyClass = CustomBodyClass;
+        }
     }
 
     private string GetImageStyle(bool header)

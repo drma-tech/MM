@@ -13,7 +13,7 @@
 @inject IpInfoServerApi IpInfoServerApi
 
 <SeoHeader Title="@SeoTranslations.AppSubtitle" Description="@SeoTranslations.AppDescription" Url="/" Keywords="@(["streaming"])"></SeoHeader>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" BodyClass="mb-12">
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppName" Subtitle="@SeoTranslations.AppSubtitle" CustomBodyClass="mb-12">
 </NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Main"></GoogleAdSense>
@@ -34,7 +34,7 @@
         </MudPaper>
     }
 
-    <NewPageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" BodyClass="mb-12">
+    <NewPageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@AppStateStatic.Spacing">
                 <MudItem xs="12" sm="6" md="3">
@@ -97,7 +97,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" BodyClass="mb-12">
+    <NewPageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@AppStateStatic.Spacing" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
@@ -248,7 +248,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="@Landing.OurFeatures" BodyClass="mb-12">
+    <NewPageSection Title="@Landing.OurFeatures" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@AppStateStatic.Spacing">
                 <MudItem xs="12" sm="6" md="4">
@@ -336,7 +336,7 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" BodyClass="mb-12">
+    <NewPageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
         </BodyFragment>

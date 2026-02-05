@@ -56,6 +56,8 @@
 
             AppStateStatic.DarkModeChanged += dark => { _darkMode = dark; StateHasChanged(); };
             AppStateStatic.ShowError += msg => { Snackbar.Add(msg, Severity.Error); };
+            AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
+            AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
 
             // 1 = capture the claims
             AppStateStatic.AuthChanged += (string? token) =>

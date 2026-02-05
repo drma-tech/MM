@@ -102,4 +102,12 @@
 @code {
     [Parameter] public bool Support { get; set; }
     private bool _blockedActions => Navigation.Uri.Contains("register-user") || Navigation.Uri.Contains("ask-consent");
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
+        AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
+    }
 }

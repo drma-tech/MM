@@ -62,8 +62,8 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     {
         try
         {
-            AppStateStatic.BreakpointChanged += client => StateHasChanged();
-            AppStateStatic.BrowserWindowSizeChanged += client => StateHasChanged();
+            AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
+            AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
             AppStateStatic.UserStateChanged += async () => { await LoadAuthDataAsync(); StateHasChanged(); };
 
             await LoadEssentialDataAsync();
