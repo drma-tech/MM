@@ -232,15 +232,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couples: Get detailed relationship analysis.
-        /// </summary>
-        public static string Phase1Opt3 {
-            get {
-                return ResourceManager.GetString("Phase1Opt3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Phase 1 (0-100k users).
         /// </summary>
         public static string Phase1Title {
@@ -255,15 +246,6 @@ namespace MM.WEB.Resources {
         public static string Phase2Opt1 {
             get {
                 return ResourceManager.GetString("Phase2Opt1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All modules of our plataform released.
-        /// </summary>
-        public static string Phase2Opt2 {
-            get {
-                return ResourceManager.GetString("Phase2Opt2", resourceCulture);
             }
         }
         

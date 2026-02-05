@@ -174,17 +174,11 @@
   <data name="Phase1Opt2" xml:space="preserve">
     <value>Explore our compatibility system</value>
   </data>
-  <data name="Phase1Opt3" xml:space="preserve">
-    <value>Couples: Get detailed relationship analysis</value>
-  </data>
   <data name="Phase1Title" xml:space="preserve">
     <value>Phase 1 (0-100k users)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
     <value>Users can apply as matchmaking clients</value>
-  </data>
-  <data name="Phase2Opt2" xml:space="preserve">
-    <value>All modules of our plataform released</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
     <value>MM Coin: US$1 per unit</value>

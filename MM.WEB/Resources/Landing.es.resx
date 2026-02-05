@@ -174,17 +174,11 @@
   <data name="Phase1Opt2" xml:space="preserve">
     <value>Explora nuestro sistema de compatibilidad</value>
   </data>
-  <data name="Phase1Opt3" xml:space="preserve">
-    <value>Parejas: Obtenga un análisis detallado de la relación</value>
-  </data>
   <data name="Phase1Title" xml:space="preserve">
     <value>Fase 1 (0-100k usuarios)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
     <value>Los usuarios pueden postularse como clientes de emparejamiento</value>
-  </data>
-  <data name="Phase2Opt2" xml:space="preserve">
-    <value>Todos los módulos de nuestra plataforma liberados</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
     <value>Moneda MM: US$1 por unidad</value>
