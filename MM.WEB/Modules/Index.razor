@@ -101,7 +101,7 @@
         <BodyFragment>
             <MudGrid Spacing="@AppStateStatic.Spacing" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline TimelinePosition="@(Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
+                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
@@ -110,7 +110,7 @@
                                 <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase1Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
                                     <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase1Title</MudText>
                                 }
@@ -145,7 +145,7 @@
                                 <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase2Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
                                     <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase2Title</MudText>
                                 }
@@ -180,7 +180,7 @@
                                 <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase3Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
                                     <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase3Title</MudText>
                                 }
@@ -215,7 +215,7 @@
                                 <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase4Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
                                     <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase4Title</MudText>
                                 }

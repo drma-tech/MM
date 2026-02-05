@@ -1,7 +1,6 @@
-﻿@using MM.WEB.Modules.Support.Resources
-@inherits ComponentCore<FooterComponent>
+﻿@inject NavigationManager Navigation
 
-@if ((Support && Breakpoint <= Breakpoint.Sm) || (!Support && Breakpoint > Breakpoint.Sm))
+@if ((Support && AppStateStatic.Breakpoint <= Breakpoint.Sm) || (!Support && AppStateStatic.Breakpoint > Breakpoint.Sm))
 {
     <MudDivider Class="@($"{AppStateStatic.SpacingClass("mb")} {AppStateStatic.SpacingTripleClass("mt")}")"></MudDivider>
     <MudGrid Justify="Justify.Center" Style="overflow: auto;" Spacing="@AppStateStatic.Spacing">

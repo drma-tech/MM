@@ -38,7 +38,7 @@
                 {
                     <div style="text-align: justify;" class="@AppStateStatic.SpacingClass("mt")">
                         <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                                 Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                                 Style="@($"line-height: {(IsMobile ?  "1.0" : "1.2" )}; letter-spacing: {(IsMobile ? "normal" : "inherit")};")">
                             @Description
                         </MudText>
                     </div>
@@ -90,7 +90,7 @@
                     {
                         <div style="text-align: justify;" class="@AppStateStatic.SpacingClass("mt")">
                             <MudText Typo="@(AppStateStatic.Size == Size.Small ? Typo.caption : Typo.body1)" Align="Align.Justify"
-                                     Style="@($"line-height: {(IsDesktop ? "1.2" : "1.0")}; letter-spacing: {(IsDesktop ? "inherit" : "normal")};")">
+                                     Style="@($"line-height: {(IsMobile ? "1.0" : "1.2")}; letter-spacing: {(IsMobile ? "normal" : "inherit")};")">
                                 @Description
                             </MudText>
                         </div>
@@ -138,8 +138,7 @@
     [Parameter] public RenderFragment? ActionsFragment { get; set; }
     [Parameter] public RenderFragment? BodyFragment { get; set; }
 
-    private bool IsMobile => Breakpoint <= Breakpoint.Xs;
-    private bool IsDesktop => Breakpoint > Breakpoint.Xs;
+    private bool IsMobile => AppStateStatic.Breakpoint <= Breakpoint.Xs;
 
     private string headerImageSize => IsMobile ? "40px" : "48px";
     private string sectionImageSize => IsMobile ? "20px" : "24px";

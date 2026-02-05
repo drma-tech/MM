@@ -1,16 +1,16 @@
-@inherits ComponentCore<HeadLayout>
-
-@using MM.WEB.Core.Auth
-@using MM.WEB.Modules.Profile.Resources
-@using MM.WEB.Modules.Subscription.Core
 @using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.JSInterop
+
+@inject NavigationManager Navigation
+@inject IDialogService DialogService
+@inject IJSRuntime JsRuntime
 
 @if (_processing)
 {
     <MudProgressLinear Color="Color.Secondary" Indeterminate="true" Style="position: fixed; z-index: 1400;" />
 }
 <MudAppBar Fixed="true" Elevation="1" Color="Color.Dark">
-    @if (Breakpoint <= Breakpoint.Xs) //mobile view
+    @if (AppStateStatic.Breakpoint <= Breakpoint.Xs) //mobile view
     {
         <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button" Disabled="_blockedActions">
             @Menu.Home
@@ -21,7 +21,7 @@
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(() => { _open = true; })" />
     }
-    else if (Breakpoint == Breakpoint.Sm) //tablet view
+    else if (AppStateStatic.Breakpoint == Breakpoint.Sm) //tablet view
     {
         <MudButton StartIcon="@IconsFA.Solid.Icon("house").Font" Color="@GetColor("/")" Href="/" Variant="@GetVariant("/")" Class="icon-text-button" Disabled="_blockedActions">
             @Menu.Home
@@ -98,7 +98,7 @@
     }
 </MudAppBar>
 
-@if (Breakpoint <= Breakpoint.Xs) //mobile menu
+@if (AppStateStatic.Breakpoint <= Breakpoint.Xs) //mobile menu
 {
     <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Elevation="1" OverlayAutoClose="true">
         <MudDrawerHeader>

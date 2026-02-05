@@ -2,7 +2,6 @@
 using Microsoft.JSInterop;
 using MM.WEB.Modules.Auth.Core;
 using MudBlazor;
-using MudBlazor.Services;
 
 namespace MM.WEB.Core;
 
@@ -27,9 +26,6 @@ public abstract class ComponentCore<T> : ComponentBase where T : class
     [Inject] protected IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] protected NavigationManager Navigation { get; set; } = null!;
     [Inject] protected PrincipalApi PrincipalApi { get; set; } = null!;
-
-    protected static Breakpoint Breakpoint => AppStateStatic.Breakpoint;
-    protected static BrowserWindowSize? BrowserWindowSize => AppStateStatic.BrowserWindowSize;
 
     /// <summary>
     /// Mandatory data to fill out the page/component without delay (essential for bots, SEO, etc.)
