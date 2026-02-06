@@ -27,7 +27,7 @@
 
 @if (!AppStateStatic.IsAuthenticated)
 {
-    <MudPaper Class="@($"{AppStateStatic.SpacingDoubleClass("pa")} {AppStateStatic.SpacingTripleClass("mb")} mud-theme-primary")" Outlined="true" Style="text-align: center;">
+    <MudPaper Class="@Css.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
         <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
             @Translations.HeroCall
         </MudText>
@@ -41,7 +41,7 @@
 }
 else
 {
-    <MudPaper Class="@($"{AppStateStatic.SpacingDoubleClass("pa")} {AppStateStatic.SpacingTripleClass("mb")}")" Outlined="true" Style="text-align: center;">
+    <MudPaper Class="@Css.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center;">
         <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
             <CustomHeader>
                 <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mb-3" Style="text-align: center;">
@@ -52,7 +52,7 @@ else
     </MudPaper>
 }
 
-<MudGrid Spacing="@AppStateStatic.Spacing" Class="@AppStateStatic.SpacingClass("mb")">
+<MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
         @if ((principal == null || !principal.PublicProfile) && validation == null) //empty or private profile
         {
@@ -111,7 +111,7 @@ else
         }
         else
         {
-            <MudPaper Class="@AppStateStatic.SpacingClass("pa")" Outlined="true" Style="text-align: center;">
+            <MudPaper Class="@Css.Build().Small("pa")" Outlined="true" Style="text-align: center;">
                 <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
                     <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face) ?? "images/no-picture.png")" FallbackSrc="images/no-picture.png" Fluid="true" />
                 </MudAvatar>
@@ -128,7 +128,7 @@ else
                         @profile?.Description
                     </MudText>
                 </div>
-                <MudGrid Spacing="@AppStateStatic.Spacing">
+                <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="6">
                         <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
                                    Style="width: 100%;" Disabled="@(principal == null || principal.PublicProfile)">

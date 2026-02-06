@@ -15,12 +15,12 @@
 <NewRenderControl Actions="Actions" Instance="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null"
                   PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-        <MudGrid Spacing="@AppStateStatic.Spacing">
+        <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
                 <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@IconsFA.Solid.Icon("eye").Font"></FieldSwitch>
             </MudItem>
         </MudGrid>
-        <MudGrid Spacing="@AppStateStatic.Spacing">
+        <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
 
             </MudItem>

@@ -3,7 +3,7 @@
 @using MM.WEB.Core.Models
 @using CardHeader = MM.WEB.Resources.CardHeader
 
-<MudAlert Severity="@GetSeverity(null)" Icon="@GetIcon(null)" Variant="Variant.Filled" Dense="true" Class="@AppStateStatic.SpacingDoubleClass("mb")">
+<MudAlert Severity="@GetSeverity(null)" Icon="@GetIcon(null)" Variant="Variant.Filled" Dense="true" Class="@Css.Build().Medium("mb")">
     <MudText Typo="Typo.h5" style="font-weight: bold;" Inline="false">
         @GlobalTranslations.GeneralCompatibility (@(Affinities.GetPercentAffinity() + "%"))
     </MudText>
@@ -21,7 +21,7 @@
     }
 </MudAlert>
 
-<MudGrid Spacing="@AppStateStatic.Spacing">
+<MudGrid Spacing="@Css.SpaceSmall">
     <MudItem xs="12" md="6">
         <MudCard Elevation="0" Outlined="true">
             <MudCardHeader Class="pa-0">
@@ -31,10 +31,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.Location)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Location" User="@User" Filter="@Filter" Value="@View.Location" ValueUser="@User?.Location" ClassIcon="@IconsFA.Solid.Icon("map-marker-alt").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Languages)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Language" User="@User" Filter="@Filter" Values="@View.Languages" ValuesUser="@Filter.Languages" ClassIcon="@IconsFA.Solid.Icon("language").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.MaritalStatus)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MaritalStatus" User="@User" Filter="@Filter" Value="@View.MaritalStatus" ValuesUser="@Filter.MaritalStatus" ClassIcon="@IconsFA.Solid.Icon("heart").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -55,10 +55,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.Ethnicity)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Ethnicity" User="@User" Filter="@Filter" Value="@View.Ethnicity" ValuesUser="@Filter.Ethnicity" ClassIcon="@IconsFA.Solid.Icon("globe").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.BodyType)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.BodyType" User="@User" Filter="@Filter" Value="@View.BodyType" ValuesUser="@Filter.BodyType" ClassIcon="@IconsFA.Solid.Icon("weight").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Age)" Type="@CompatibilityType.Range" Item="CompatibilityItem.Age" User="@User" Filter="@Filter" Value="@View.Age" ValueUser="@User.Age" ClassIcon="@IconsFA.Solid.Icon("birthday-cake").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -79,10 +79,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.Drink)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Drink" User="@User" Filter="@Filter" Value="@View.Drink" ValuesUser="@(Filter.Drink.Any() ? Filter.Drink : User?.Drink.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("glass-cheers").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Smoke)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Smoke" User="@User" Filter="@Filter" Value="@View.Smoke" ValuesUser="@(Filter.Smoke.Any() ? Filter.Smoke : User?.Smoke.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("smoking").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Diet)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Diet" User="@User" Filter="@Filter" Value="@View.Diet" ValuesUser="@(Filter.Diet.Any() ? Filter.Diet : User?.Diet.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("utensils").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -110,10 +110,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.Food)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Food" User="@User" Filter="@Filter" Values="@View.Food" ValuesUser="@User?.Food" ClassIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Vacation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Vacation" User="@User" Filter="@Filter" Values="@View.Vacation" ValuesUser="@User?.Vacation" ClassIcon="@IconsFA.Solid.Icon("plane-departure").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Sports)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Sports" User="@User" Filter="@Filter" Values="@View.Sports" ValuesUser="@User?.Sports" ClassIcon="@IconsFA.Solid.Icon("swimmer").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -136,10 +136,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.MoneyPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.MoneyPersonality" User="@User" Filter="@Filter" Value="@View.MoneyPersonality" ValueUser="@User?.MoneyPersonality" ClassIcon="@IconsFA.Solid.Icon("wallet").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.SharedSpendingStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedSpendingStyle" User="@User" Filter="@Filter" Value="@View.SharedSpendingStyle" ValueUser="@User?.SharedSpendingStyle" ClassIcon="@IconsFA.Solid.Icon("hand-holding-usd").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.RelationshipPersonality)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipPersonality" User="@User" Filter="@Filter" Value="@View.RelationshipPersonality" ValueUser="@User?.RelationshipPersonality" ClassIcon="@IconsFA.Solid.Icon("people-arrows").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -163,7 +163,7 @@
             <MudCardContent Class="pa-2">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.SharedFinances)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.SharedFinances" User="@User" Filter="@Filter" Value="@View.SharedFinances" ValuesUser="@(Filter.SharedFinances.Any() ? Filter.SharedFinances : User?.SharedFinances.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.ConflictResolutionStyle)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.ConflictResolutionStyle" User="@User" Filter="@Filter" Value="@View.ConflictResolutionStyle" ValuesUser="@(Filter.ConflictResolutionStyle.Any() ? Filter.ConflictResolutionStyle : User?.ConflictResolutionStyle.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("handshake").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.HouseholdManagement)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.HouseholdManagement" User="@User" Filter="@Filter" Value="@View.HouseholdManagement" ValuesUser="@(Filter.HouseholdManagement.Any() ? Filter.HouseholdManagement : User?.HouseholdManagement.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("broom").Font" Affinities="@Affinities"></NewItemDataProfile>
@@ -183,10 +183,10 @@
                     </MudAlert>
                 </CardHeaderContent>
             </MudCardHeader>
-            <MudCardContent Class="@AppStateStatic.SpacingClass("pa")">
+            <MudCardContent Class="@Css.Build().Small("pa")">
                 @if (User != null && View != null && Filter != null)
                 {
-                    <MudGrid Spacing="@AppStateStatic.Spacing">
+                    <MudGrid Spacing="@Css.SpaceSmall">
                         <NewItemDataProfile For="@(() => View.RelationshipIntentions)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.RelationshipIntentions" User="@User" Filter="@Filter" Values="@View.RelationshipIntentions" ValuesUser="@User?.RelationshipIntentions" ClassIcon="@IconsFA.Solid.Icon("search").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.Relocation)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.Relocation" User="@User" Filter="@Filter" Value="@View.Relocation" ValuesUser="@(Filter.Relocation.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("truck").Font" Affinities="@Affinities"></NewItemDataProfile>
                         <NewItemDataProfile For="@(() => View.WantChildren)" Type="@CompatibilityType.Enum" Item="@CompatibilityItem.WantChildren" User="@User" Filter="@Filter" Value="@View.WantChildren" ValuesUser="@(Filter.WantChildren.Any() ? Filter.WantChildren : User?.WantChildren.ToHashSet())" ClassIcon="@IconsFA.Solid.Icon("baby").Font" Affinities="@Affinities"></NewItemDataProfile>
