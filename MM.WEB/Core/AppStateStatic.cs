@@ -8,11 +8,13 @@ namespace MM.WEB.Core;
 
 public static class AppStateStatic
 {
-    public static string? Token { get; set; }
+    public static string? FirebaseToken { get; set; }
+    public static string? SupabaseToken { get; set; }
     public static bool IsAuthenticated { get; set; }
     public static bool IsPremiumUser { get; set; }
     public static ClaimsPrincipal? User { get; set; }
     public static string? UserId { get; set; }
+    public static DateTimeOffset? LastAccess { get; set; } //control login, so we don't call api too often
 
     public static Breakpoint Breakpoint { get; set; } = Breakpoint.Xs;
     public static Action<Breakpoint>? BreakpointChanged { get; set; }
@@ -102,7 +104,7 @@ public static class AppStateStatic
             }
             else
             {
-                var code = await js.Window().InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
+                var code = await js.Window().InvokeAsync<string>("eval", "navigator.language");
                 code = code[..2].ToLowerInvariant();
 
                 _appLanguage = ConvertAppLanguage(code) ?? AppLanguage.en;
@@ -126,7 +128,9 @@ public static class AppStateStatic
         if (code.Empty()) return null;
 
         if (System.Enum.TryParse<AppLanguage>(code, true, out var language) && System.Enum.IsDefined(language))
+        {
             return language;
+        }
         else
             return null;
     }
@@ -237,7 +241,8 @@ public static class AppStateStatic
 
     #endregion Region Country
 
-    public static Action<string?>? AuthChanged { get; set; }
+    public static Action<string?>? FirebaseAuthChanged { get; set; }
+    public static Action<string?>? SupabaseAuthChanged { get; set; }
     public static Action<GeoLocation>? LocationChanged { get; set; }
     public static Action? UserStateChanged { get; set; }
     public static Action? RegistrationSuccessful { get; set; }

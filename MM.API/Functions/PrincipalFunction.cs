@@ -34,6 +34,23 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
     }
 
+    //[Function("PrincipalGetAll")]
+    //public async Task<HttpResponseData?> PrincipalGetAll(
+    //   [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "principal/get-all")] HttpRequestData req, CancellationToken cancellationToken)
+    //{
+    //    try
+    //    {
+    //        var data = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
+
+    //        return await req.CreateResponse(data, TtlCache.OneDay, cancellationToken);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        req.LogError(ex);
+    //        throw;
+    //    }
+    //}
+
     [Function("PrincipalAdd")]
     public async Task<AuthPrincipal?> PrincipalAdd(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/add")] HttpRequestData req, CancellationToken cancellationToken)
@@ -188,71 +205,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         }
     }
 
-    [Function("PrincipalImport")]
-    public async Task PrincipalImport(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/import")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var users = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
-
-            foreach (var user in users)
-            {
-                var args = new UserRecordArgs()
-                {
-                    Uid = user.Id.Split(":")[1],
-                    Email = user.Email,
-                    DisplayName = user.DisplayName
-                };
-
-                try
-                {
-                    await FirebaseAuth.DefaultInstance.CreateUserAsync(args, CancellationToken.None);
-                }
-                catch (Exception ex)
-                {
-                    req.LogError(ex); //It logs the error, but doesn't stop the import.
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
-    [Function("SubscribeToTopics")]
-    public static async Task SubscribeToTopics(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "firebase/subscribe")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        try
-        {
-            var token = req.GetQueryParameters()["token"];
-            var platform = req.GetQueryParameters()["platform"];
-
-            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], "global");
-            await FirebaseMessaging.DefaultInstance.SubscribeToTopicAsync([token], platform);
-
-            var message = new Message()
-            {
-                Token = token,
-                Data = new Dictionary<string, string>
-                {
-                    { "title", "Streaming Discovery" },
-                    { "body", "Welcome to your personal streaming guide." }
-                }
-            };
-
-            await FirebaseMessaging.DefaultInstance.SendAsync(message, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
-    }
-
     [Function("PrincipalPublicMode")]
     public async Task<AuthPrincipal?> PrincipalPublicMode(
      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
@@ -321,4 +273,80 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
             throw;
         }
     }
+
+    //[Function("PrincipalMigrate")]
+    //public async Task PrincipalMigrate(
+    //    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/migrate/{oldId}/{newId}")] HttpRequestData req, string oldId, string newId, CancellationToken cancellationToken)
+    //{
+    //    try
+    //    {
+    //        var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, oldId, cancellationToken);
+    //        if (myPrincipal != null)
+    //        {
+    //            var model = myPrincipal.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myPrincipal, cancellationToken);
+    //        }
+
+    //        var myLogins = await repo.Get<AuthLogin>(DocumentType.Login, oldId, cancellationToken);
+    //        if (myLogins != null)
+    //        {
+    //            var model = myLogins.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myLogins, cancellationToken);
+    //        }
+
+    //        var myProviders = await repo.Get<MyProviders>(DocumentType.MyProvider, oldId, cancellationToken);
+    //        if (myProviders != null)
+    //        {
+    //            var model = myProviders.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myProviders, cancellationToken);
+    //        }
+
+    //        var mySuggestions = await repo.Get<MySuggestions>(DocumentType.MySuggestions, oldId, cancellationToken);
+    //        if (mySuggestions != null)
+    //        {
+    //            var model = mySuggestions.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(mySuggestions, cancellationToken);
+    //        }
+
+    //        var myWatched = await repo.Get<WatchedList>(DocumentType.WatchedList, oldId, cancellationToken);
+    //        if (myWatched != null)
+    //        {
+    //            var model = myWatched.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myWatched, cancellationToken);
+    //        }
+
+    //        var myWatching = await repo.Get<WatchingList>(DocumentType.WatchingList, oldId, cancellationToken);
+    //        if (myWatching != null)
+    //        {
+    //            var model = myWatching.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myWatching, cancellationToken);
+    //        }
+
+    //        var myWish = await repo.Get<WishList>(DocumentType.WishList, oldId, cancellationToken);
+    //        if (myWish != null)
+    //        {
+    //            var model = myWish.DeepClone();
+    //            model.Initialize(newId);
+    //            await repo.CreateItemAsync(model, cancellationToken);
+    //            await repo.Delete(myWish, cancellationToken);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        req.LogError(ex);
+    //        throw;
+    //    }
+    //}
 }

@@ -15,11 +15,15 @@ export const isLocalhost = location.host.includes("localhost");
 export const isDev = location.hostname.includes("dev.");
 export const isWebview = /webtonative/i.test(navigator.userAgent);
 export const isPrintScreen = location.href.includes("printscreen");
-export const appVersion = (
-    await fetch("/build-date.txt")
-        .then((r) => r.text())
-        .catch(() => "version-error")
-).trim();
+export let appVersion = "loading";
+
+fetch("/build-date.txt")
+    .then((r) => r.text())
+    .then((text) => {
+        appVersion = text.trim();
+    }).catch(() => {
+        appVersion = "version-error";
+    });
 
 export const servicesConfig = {
     AnalyticsCode: "G-P7B5BSBS9S",
@@ -37,6 +41,11 @@ export const firebaseConfig = {
     messagingKey: "BE_cSKMuRPksKGllUQI1ekC_H-Brf6txxHUuLZnG3mYKSvlevJaoWO6S7gWYlXy3vLeIeF3eEzPIP5E1EzHACUo",
     appId: "1:224690707146:web:1a1b235112b69cbaabf233",
     measurementId: "G-ZKC5YQW77C",
+};
+
+export const supabaseConfig = {
+    projectUrl: "https://rwabygidcrhbnvigfwff.supabase.co",
+    supabaseKey: "sb_publishable_pCufBP2wD58v_mRqfzbV7w_V4scD058",
 };
 
 export const baseApiUrl = isLocalhost ? "http://localhost:7091" : "";
