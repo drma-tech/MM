@@ -360,6 +360,10 @@ body .pwa-updater[b-pwa-updater] {
         margin-inline: inherit !important
     }
 
+.mud-badge.mud-badge-top.right.mud-badge-overlap {
+    inset: auto auto calc(100% - 12px) calc(100% - 24px) !important;
+}
+
 @media (max-width: 599.95px), (max-height: 599.95px) {
     .mud-timeline-vertical.mud-timeline-position-start::before {
         left: 31px !important;
