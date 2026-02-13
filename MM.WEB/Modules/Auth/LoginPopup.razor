@@ -32,19 +32,22 @@
                         <MudAlert Variant="Variant.Outlined" Severity="Severity.Warning" Dense="true">
                             Currently in the testing phase, please do not use.
                         </MudAlert>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="@(Platform == MM.Shared.Enums.Platform.ios)">
+                       @*  <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="@(Platform == MM.Shared.Enums.Platform.ios)">
+                            Continue with Google
+                        </MudButton> *@
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithGoogle" StartIcon="@IconsFA.Brands.Icon("google").Font" Disabled="true">
                             Continue with Google
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithApple" StartIcon="@IconsFA.Brands.Icon("apple").Font" Disabled="true">
                             Continue with Apple
                         </MudButton>
-                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font">
+                        <MudButton Variant="Variant.Filled" OnClick="LoginWithMicrosoft" StartIcon="@IconsFA.Brands.Icon("microsoft").Font" Disabled="true">
                             Continue with Microsoft
                         </MudButton>
                         <MudDivider Class="@Css.Build().Small("my")"></MudDivider>
                         @if (!emailSent)
                         {
-                            <MudTextField @bind-Value="@email" Label="Email" Placeholder="Enter your email"
+                            <MudTextField @bind-Value="@email" Label="Email" Placeholder="Enter your email" Disabled="true"
                                           Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Send" OnAdornmentClick="() => LoginWithEmail(email)"></MudTextField>
                         }
                         else
