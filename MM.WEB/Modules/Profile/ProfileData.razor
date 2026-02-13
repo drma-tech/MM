@@ -65,19 +65,19 @@
                                 </Country>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldText For="@(() => context.Location)" Value="@context.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
-                                           ButtomClicked="async () => { await SetLocation(context); }" ButtomCssIcon="@IconsFA.Solid.Icon("map-location-dot").Font"
-                                           ButtomTitle="Retrieve GPS position">
-                                </FieldText>
-                            </MudItem>
-                        </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
-                            <MudItem xs="12">
                                 <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
                                              CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)"
                                              ShowDataSelectDescription="false">
                                 </FieldSelect>
                             </MudItem>
+                        </MudGrid>
+                        <MudGrid Spacing="@Css.SpaceSmall">
+                             <MudItem xs="12">
+                                <FieldText For="@(() => context.Location)" Value="@context.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
+                                           ButtomClicked="async () => { await SetLocation(context); }" ButtomCssIcon="@IconsFA.Solid.Icon("map-location-dot").Font"
+                                           ButtomTitle="Retrieve GPS position">
+                                </FieldText>
+                            </MudItem>                           
                             <MudItem xs="12">
                                 <FieldSelect For="@(() => context.MaritalStatus)" TValue="MaritalStatus?" TEnum="MaritalStatus" @bind-SelectedValue="@context.MaritalStatus"
                                              CssIcon="@IconsFA.Solid.Icon("ring").Font" Required="true">

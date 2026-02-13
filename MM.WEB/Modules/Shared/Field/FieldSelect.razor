@@ -19,7 +19,7 @@
                     {
                         @if (group.NotEmpty())
                         {
-                            <MudSelectItem T="@TEnum" Disabled="true">
+                            <MudSelectItem T="@TEnum" Disabled="true" Value="@((TEnum)(object)(-1))">
                                 <MudText Typo="Typo.subtitle1" Color="Color.Secondary">@group</MudText>
                             </MudSelectItem>
                         }
@@ -60,7 +60,7 @@
                     {
                         @if (group.NotEmpty())
                         {
-                            <MudSelectItem T="@TValue" Disabled="true">
+                            <MudSelectItem T="@TValue" Disabled="true" Value="@((TValue)(object)((TEnum)(object)(-1)))">
                                 <MudText Typo="Typo.subtitle1" Color="Color.Secondary">@group</MudText>
                             </MudSelectItem>
                         }
