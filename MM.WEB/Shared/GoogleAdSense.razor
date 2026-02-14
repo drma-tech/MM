@@ -59,7 +59,7 @@
                 {
                     //todo: implement https://www.baiduadvertising.com/
                 }
-                else if (_BlockedCountries.ContainsKey(country))
+                else if (country.Empty() || _BlockedCountries.ContainsKey(country))
                 {
                     //do not show ads
                 }
