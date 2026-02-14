@@ -352,9 +352,9 @@ export const interop = {
                 }
             },
             {
-                enableHighAccuracy: true,
-                timeout: 30000, // 30s
-                maximumAge: 0,
+                enableHighAccuracy: false,
+                timeout: 20000, // 20s
+                maximumAge: 300000, // 5min
             }
         );
     },
