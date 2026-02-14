@@ -204,7 +204,7 @@ namespace MM.WEB.Core.Helper
 
         public Task InitUserBack(string version) => InvokeVoid("services.initUserBack", version);
 
-        public Task InitAdSense(string adClient, GoogleAdSense.AdUnit adSlot, string? adFormat, string containerId) => InvokeVoid("services.initAdSense", adClient, ((long)adSlot).ToString(), adFormat, containerId);
+        public Task InitAdSense(string adClient, GoogleAdSense.AdUnit adSlot, string containerId) => InvokeVoid("services.initAdSense", adClient, ((long)adSlot).ToString(), containerId);
     }
 
     public class SwiperJs(IJSRuntime js) : JsModuleBase(js, "./js/swiper.js")
