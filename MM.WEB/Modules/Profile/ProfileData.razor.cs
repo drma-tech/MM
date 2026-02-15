@@ -151,7 +151,14 @@ public partial class ProfileData : PageCore<ProfileData>
             }
             else
             {
-                await ShowWarning(result.Errors[0].ErrorMessage);
+                var message = result.Errors[0].ErrorMessage;
+
+                await ShowWarning(message);
+
+                if (message.Contains("spam-like"))
+                {
+                    await ProcessException(new Exception("Description contains suspicious or spam-like content.", new Exception(Profile.Description)), false);
+                }
             }
         }
         catch (Exception ex)

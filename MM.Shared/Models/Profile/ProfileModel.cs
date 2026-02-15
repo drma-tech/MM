@@ -122,8 +122,8 @@ public class ProfileModel : CosmosDocument
 
     public void SanitizeOpenTextFields()
     {
-        NickName = NickName?.RemoveUnsafeControlChars()?.NormalizeToNfc();
-        Description = Description?.RemoveUnsafeControlChars()?.NormalizeToNfc();
+        NickName = NickName?.RemoveUnsafeControlChars()?.NormalizeToNfc()?.Trim();
+        Description = Description?.RemoveUnsafeControlChars()?.NormalizeToNfc()?.Trim();
     }
 
     #region BASIC
