@@ -358,13 +358,13 @@
         { "US", "United States" }
     };
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         var cache = await DashboardApi.GetSumUsers();
         SumUsers = cache?.Data;
     }
 
-    protected override async Task LoadNonEssentialDataAsync()
+    protected override async Task ProcessPageData()
     {
         var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
         var platform = await AppStateStatic.GetPlatform(JsRuntime);

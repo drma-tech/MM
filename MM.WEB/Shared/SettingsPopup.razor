@@ -50,7 +50,7 @@
     public AppLanguage Language { get; set; } = AppLanguage.en;
     public bool DarkMode { get; set; } = false;
 
-    protected override async Task LoadEssentialDataAsync()
+    protected override async Task ProcessInitialData()
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime) ?? false;

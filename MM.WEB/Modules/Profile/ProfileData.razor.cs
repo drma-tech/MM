@@ -3,16 +3,18 @@ using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
+using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 
 namespace MM.WEB.Modules.Profile;
 
 public partial class ProfileData : PageCore<ProfileData>
 {
+    [Inject] protected PrincipalApi PrincipalApi { get; set; } = default!;
     [Inject] protected ProfileApi ProfileApi { get; set; } = default!;
     [Inject] protected MapApi MapApi { get; set; } = default!;
 
-    private AuthPrincipal? Principal { get; set; }
+    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
     public ComponentActions<ProfileModel?> Actions { get; set; } = new();
 
@@ -32,7 +34,6 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         Actions.StartLoading?.Invoke(null);
 
-        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         Profile = await ProfileApi.Get();
 
         if (Profile == null)

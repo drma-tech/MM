@@ -38,7 +38,7 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
-    private AuthPrincipal? Principal { get; set; }
+    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private SettingModel? Setting { get; set; }
     public ComponentActions<SettingModel?> Actions { get; set; } = new();
 
@@ -46,7 +46,6 @@
     {
         Actions.StartLoading?.Invoke(null);
 
-        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         Setting = await SettingApi.Get();
 
         if (Setting == null)

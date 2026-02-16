@@ -125,7 +125,7 @@
 
 @code
 {
-    private AuthPrincipal? Principal { get; set; }
+    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? _profile = new();
     public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new();
 
@@ -135,7 +135,6 @@
     {
         ProfileActions.StartLoading?.Invoke(null);
         _profile = await ProfileApi.Get();
-        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
         ProfileActions.FinishLoading?.Invoke(_profile);
     }
 
