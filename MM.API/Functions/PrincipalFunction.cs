@@ -1,5 +1,3 @@
-using FirebaseAdmin.Auth;
-using FirebaseAdmin.Messaging;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;

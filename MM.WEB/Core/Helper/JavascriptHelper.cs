@@ -41,8 +41,6 @@ namespace MM.WEB.Core.Helper
 
         public static UtilsJs Utils(this IJSRuntime js) => new(js);
 
-        public static FirebaseJs Firebase(this IJSRuntime js) => new(js);
-
         public static SupabaseJs Supabase(this IJSRuntime js) => new(js);
 
         public static ServicesJs Services(this IJSRuntime js) => new(js);
@@ -164,17 +162,6 @@ namespace MM.WEB.Core.Helper
         public Task UpdateLocation() => InvokeVoid("interop.updateLocation");
 
         #endregion INTEROP
-    }
-
-    public class FirebaseJs(IJSRuntime js) : JsModuleBase(js, "./js/firebase.js")
-    {
-        public async Task SignInAsync(string providerName)
-        {
-            ApiCore.ResetCacheVersion();
-            await InvokeVoid("authentication.signIn", providerName);
-        }
-
-        public Task SignOutAsync() => InvokeVoid("authentication.signOut");
     }
 
     public class SupabaseJs(IJSRuntime js) : JsModuleBase(js, "./js/supabase.js")
