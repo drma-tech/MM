@@ -7,7 +7,7 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudTabs Border="true" Outlined="true" PanelClass="pt-2" MinimumTabWidth="100px">
+        <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
             <MudTabPanel Tag="@("Affinity")" Text="@GlobalTranslations.Compatibility">
                 <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="6">
@@ -130,7 +130,7 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService?.ShowMessageBox("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService!.ShowMessageBoxAsync("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
             @Button.Feedback
         </MudButton>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">

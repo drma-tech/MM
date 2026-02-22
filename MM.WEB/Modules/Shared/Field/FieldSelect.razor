@@ -9,10 +9,10 @@
         @if (Multiple)
         {
             <MudSelect SelectedValues="@SelectedValues" AdornmentColor="Color.Primary"
-                       SelectedValuesChanged="async (IEnumerable<TEnum> values) => { SelectedValues = values.ToHashSet(); await SelectedValuesChanged.InvokeAsync(values.ToHashSet()); }"
+                       SelectedValuesChanged="async (IReadOnlyCollection<TEnum> values) => { SelectedValues = values.ToHashSet(); await SelectedValuesChanged.InvokeAsync(values.ToHashSet()); }"
                        Disabled="@Disabled" Required="@Required" FullWidth="true" MultiSelection="true"
                        Label="@For?.GetCustomAttribute()?.Name" HelperText="@Description" Placeholder="@For?.GetCustomAttribute()?.Placeholder"
-                       MultiSelectionTextFunc="@(new Func<List<string>, string>(GetMultiSelectionText))">
+                       MultiSelectionTextFunc="@(new Func<IReadOnlyList<string>, string>(GetMultiSelectionText))">
                 @if (ShowGroup)
                 {
                     @foreach (var group in EnumList.Where(Filter).Select(s => s.Group).Order().Distinct())

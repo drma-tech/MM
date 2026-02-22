@@ -439,7 +439,7 @@ else
             return;
         }
 
-        if (await DialogService.ShowMessageBox(GlobalTranslations.Confirmation, GlobalTranslations.GenerateSimulation, Button.Ok, Button.Cancel) ?? false)
+        if (await DialogService.ShowMessageBoxAsync(GlobalTranslations.Confirmation, GlobalTranslations.GenerateSimulation, Button.Ok, Button.Cancel) ?? false)
         {
             MyMatches = new MyMatchesModel();
 

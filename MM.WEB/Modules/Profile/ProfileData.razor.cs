@@ -49,7 +49,7 @@ public partial class ProfileData : PageCore<ProfileData>
                     "Leia nossa <a href=\"/support/privacy\" target=\"_blank\">Política de Privacidade</a> e nossos <a href=\"/support/terms\" target=\"_blank\">Termos de Uso</a> para mais detalhes."
                 );
 
-                confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
             }
             else if (language == AppLanguage.es)
             {
@@ -59,7 +59,7 @@ public partial class ProfileData : PageCore<ProfileData>
                     "Lee nuestra <a href=\"/support/privacy\" target=\"_blank\">Política de Privacidad</a> y nuestros <a href=\"/support/terms\" target=\"_blank\">Términos de Uso</a> para más información."
                 );
 
-                confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
             }
             else //English
             {
@@ -69,7 +69,7 @@ public partial class ProfileData : PageCore<ProfileData>
                     "Read our <a href=\"/support/privacy\" target=\"_blank\">Privacy Policy</a> and <a href=\"/support/terms\" target=\"_blank\">Terms of Use</a> for full details."
                 );
 
-                confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
             }
 
             if (!confirmed)

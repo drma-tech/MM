@@ -506,7 +506,7 @@
         {
             Filter = new FilterModel();
 
-            var confirmed = await DialogService.ShowMessageBox("Modern Matchmaker", GlobalTranslations.ITrustPlataform, Button.Ok, Button.Cancel) ?? false;
+            var confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", GlobalTranslations.ITrustPlataform, Button.Ok, Button.Cancel) ?? false;
 
             if (!confirmed)
             {
