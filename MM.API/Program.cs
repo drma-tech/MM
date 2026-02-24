@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MM.API.Core.Auth;
 using Stripe;
+using System.Net;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -15,6 +16,16 @@ var app = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(worker =>
     {
         worker.UseMiddleware<ApiMiddleware>();
+    })
+    .ConfigureLogging(logging =>
+    {
+        logging.AddSentry(options =>
+        {
+            options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+            options.DiagnosticLevel = SentryLevel.Warning;
+
+            options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
+        });
     })
     .ConfigureAppConfiguration((hostContext, config) =>
     {
@@ -57,19 +68,21 @@ var app = new HostBuilder()
         }
         catch (Exception ex)
         {
-            var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
+            using var loggerFactory = LoggerFactory.Create(builder =>
             {
-                SerializerOptions = new CosmosSerializationOptions
+                builder.AddSentry(options =>
                 {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
+                    options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+                    options.Debug = true;
+                    options.DiagnosticLevel = SentryLevel.Warning;
+                });
             });
-            var tempRepo = new CosmosLogRepository(tempClient);
-            var provider = new CosmosLoggerProvider(tempRepo);
-            var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
-            var logger = loggerFactory.CreateLogger("ConfigureAppConfiguration");
+
+            var logger = loggerFactory.CreateLogger("StartupConfig");
 
             logger.LogError(ex, "ConfigureAppConfiguration");
+
+            throw;
         }
     })
     .ConfigureServices(ConfigureServices)
@@ -107,13 +120,6 @@ static void ConfigureServices(IServiceCollection services)
         services.AddSingleton<CosmosProfileOffRepository>();
         services.AddSingleton<CosmosProfileOnRepository>();
         services.AddSingleton<StorageHelper>();
-        services.AddSingleton<CosmosLogRepository>();
-
-        services.AddSingleton<ILoggerProvider>(provider =>
-        {
-            var repo = provider.GetRequiredService<CosmosLogRepository>();
-            return new CosmosLoggerProvider(repo);
-        });
 
         //general services
 
@@ -136,18 +142,20 @@ static void ConfigureServices(IServiceCollection services)
     }
     catch (Exception ex)
     {
-        var tempClient = new CosmosClient(ApiStartup.Configurations.CosmosDB?.ConnectionString, new CosmosClientOptions()
+        using var loggerFactory = LoggerFactory.Create(builder =>
         {
-            SerializerOptions = new CosmosSerializationOptions
+            builder.AddSentry(options =>
             {
-                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-            }
+                options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+                options.Debug = true;
+                options.DiagnosticLevel = SentryLevel.Warning;
+            });
         });
-        var tempRepo = new CosmosLogRepository(tempClient);
-        var provider = new CosmosLoggerProvider(tempRepo);
-        var loggerFactory = LoggerFactory.Create(builder => builder.AddProvider(provider));
-        var logger = loggerFactory.CreateLogger("ConfigureServices");
 
-        logger.LogError(ex, "ConfigureServices");
+        var logger = loggerFactory.CreateLogger("StartupConfig");
+
+        logger.LogError(ex, "ConfigureAppConfiguration");
+
+        throw;
     }
 }

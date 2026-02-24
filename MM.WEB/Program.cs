@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
-using MM.WEB;
 using MM.WEB.Api;
 using MM.WEB.Core.Auth;
 using MM.WEB.Modules.Auth.Core;
@@ -19,15 +18,35 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+builder.UseSentry(options =>
+{
+    options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+    options.DiagnosticLevel = SentryLevel.Warning;
+
+    options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
+
+    options.SetBeforeSend(evt =>
+    {
+        evt.SetTag("custom.version", AppStateStatic.Version ?? "error");
+        evt.SetTag("custom.platform", AppStateStatic.GetSavedPlatform()?.ToString() ?? "error");
+
+        evt.SetExtra("browser_name", AppStateStatic.BrowserName);
+        evt.SetExtra("browser_version", AppStateStatic.BrowserVersion);
+        evt.SetExtra("operation_system", AppStateStatic.OperatingSystem);
+
+        return evt;
+    });
+});
+
+builder.Logging.SetMinimumLevel(LogLevel.Warning);
+
 if (builder.RootComponents.Empty())
 {
-    builder.RootComponents.Add<App>("#app");
+    builder.RootComponents.Add<MM.WEB.App>("#app");
     builder.RootComponents.Add<HeadOutlet>("head::after");
 }
 
 ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, builder.Configuration);
-
-builder.Services.AddSingleton<ILoggerProvider, CosmosLoggerProvider>();
 
 var app = builder.Build();
 
@@ -101,7 +120,6 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
     collection.AddScoped<IpInfoServerApi>();
-    collection.AddScoped<LoggerApi>();
 }
 
 static async Task ConfigureCulture(WebAssemblyHost? app, IJSRuntime js)

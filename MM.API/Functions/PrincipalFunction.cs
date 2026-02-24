@@ -278,8 +278,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
     //{
     //    try
     //    {
-    //        //main
-
     //        var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, oldId, cancellationToken);
     //        if (myPrincipal != null)
     //        {
