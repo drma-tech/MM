@@ -26,21 +26,22 @@
                 </CardHeaderActions>
             </MudCardHeader>
             <MudCardContent Class="pa-2">
-                @if (videoStreamTrack is null && Picture.NotEmpty())
+                @if (Picture.NotEmpty())
                 {
                     <img src="data:image/png;base64,@Convert.ToBase64String(Picture)" alt="Captured Photo" width="100%" />
                 }
-                else if (videoStreamTrack is null)
-                {
-                    <div style="text-align: center;">
-                        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
-                            Load Camera
-                        </MudButton>
-                    </div>
-                }
                 else
                 {
-                    <MudSelect Label="Camera" Disabled="Cameras.Empty()" Class="mb-2" Value="@currentCameraId" ValueChanged="@(async (string vl) => { currentCameraId = vl; await SelectDevice(vl); })">
+                    if (!isCameraOpen)
+                    {
+                        <div style="text-align: center;">
+                            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
+                                Load Camera
+                            </MudButton>
+                        </div>
+                    }
+
+                    <MudSelect T="string" Label="Camera" Disabled="Cameras.Empty()" Class="mb-2" Value="@currentCameraId" ValueChanged="@OnCameraChanged">
                         @foreach (var option in Cameras)
                         {
                             <MudSelectItem Value="@option.id">
@@ -175,10 +176,13 @@
                 if (await device.GetKindAsync() is MediaDeviceKind.VideoInput)
                 {
                     Cameras.Add((await device.GetLabelAsync(), await device.GetDeviceIdAsync()));
+                    Cameras.Add((await device.GetLabelAsync(), "asd"));
                 }
             }
 
             currentCameraId = Cameras.FirstOrDefault().id;
+
+            isCameraOpen = true;
         }
         catch (WebIDLException ex)
         {
@@ -192,34 +196,51 @@
         }
     }
 
+    private bool isCameraOpen = false;
+
+    private void OnCameraChanged(string newCameraId)
+    {
+        if (newCameraId == currentCameraId) return;
+
+        _ = ChangeCameraAsync(newCameraId);
+    }
+
+    private async Task ChangeCameraAsync(string? newCameraId)
+    {
+        currentCameraId = newCameraId;
+        await SelectDevice(newCameraId);
+    }
+
     async Task SelectDevice(string? newCameraId)
     {
-        if (currentCameraId != null && newCameraId == currentCameraId)
-            return; // They picked the same device
-
-        var mediaTrackConstraints = new MediaTrackConstraints();
-        if (currentCameraId is not null)
+        if (videoStreamTrack is not null)
         {
-            mediaTrackConstraints.DeviceId = new ConstrainDOMStringParameters() { Exact = currentCameraId };
+            await videoStreamTrack.StopAsync();
+            videoStreamTrack = null;
         }
 
-        await using var mediaStream = await mediaDevices!.GetUserMediaAsync(new MediaStreamConstraints() { Video = mediaTrackConstraints });
+        var mediaTrackConstraints = new MediaTrackConstraints();
+        if (newCameraId is not null)
+        {
+            mediaTrackConstraints.DeviceId = new ConstrainDOMStringParameters() { Exact = newCameraId };
+        }
+
+        var mediaStream = await mediaDevices!.GetUserMediaAsync(new MediaStreamConstraints() { Video = mediaTrackConstraints });
         var videoTracks = await mediaStream.GetVideoTracksAsync();
         videoStreamTrack = videoTracks.FirstOrDefault();
         foreach (var unusedTrack in videoTracks.Skip(1))
         {
             await unusedTrack.DisposeAsync();
         }
-        if (videoStreamTrack is not null)
+
+        if (videoStreamTrack is null)
         {
-            var capabilities = await videoStreamTrack.GetCapabilitiesAsync();
-            currentCameraId = capabilities.DeviceId;
+            await ShowError("No video track found for the selected device.");
+            return;
         }
 
-        StateHasChanged();
-
         // We don't have a wrapper for HtmlMediaElement's yet so we use simple JSInterop for this part.
-        await using var htmlMediaElement = await JsRuntime.InvokeAsync<IJSObjectReference>("getReference", videoElement);
+        var htmlMediaElement = await JsRuntime.InvokeAsync<IJSObjectReference>("getReference", videoElement);
         await JsRuntime.InvokeVoidAsync("setAttribute", htmlMediaElement, "srcObject", mediaStream.JSReference);
     }
 
@@ -228,11 +249,9 @@
         if (videoStreamTrack is not null)
         {
             await videoStreamTrack.StopAsync();
+            videoStreamTrack = null;
         }
-        videoStreamTrack = null;
-        if (mediaDevices is not null)
-            await mediaDevices.DisposeAsync();
-        mediaDevices = null;
+
         currentCameraId = null;
     }
 
