@@ -40,17 +40,14 @@
                 }
                 else
                 {
-                    @if (videoOptions.Count > 0)
-                    {
-                        <MudSelect Label="Camera" Value="@selectedVideoSource" ValueChanged="@(async (string vl) => { selectedVideoSource = vl; await SelectDevice(); })" Class="mb-2">
-                            @foreach (var option in videoOptions)
-                            {
-                                <MudSelectItem Value="@option.id">
-                                    @option.label
-                                </MudSelectItem>
-                            }
-                        </MudSelect>
-                    }
+                    <MudSelect Label="Camera" Disabled="Cameras.Empty()" Class="mb-2" Value="@currentCameraId" ValueChanged="@(async (string vl) => { currentCameraId = vl; await SelectDevice(vl); })">
+                        @foreach (var option in Cameras)
+                        {
+                            <MudSelectItem Value="@option.id">
+                                @option.label
+                            </MudSelectItem>
+                        }
+                    </MudSelect>
                     <video @ref="videoElement" width="100%" autoplay></video>
                 }
             </MudCardContent>
@@ -107,12 +104,8 @@
     private MediaDevices? mediaDevices = default;
     private MediaStreamTrack? videoStreamTrack;
     private ElementReference videoElement;
-    private readonly List<(string label, string id)> videoOptions = new();
-    private string? selectedVideoSource;
-    private string? shownVideoSource;
-    private double? frameRate;
-    private double minimalFrameRate;
-    private double maximumFrameRate;
+    private readonly List<(string label, string id)> Cameras = new();
+    private string? currentCameraId;
 
     protected override async Task LoadAuthDataAsync()
     {
@@ -174,18 +167,18 @@
             if (mediaDevices is null)
                 mediaDevices = await MediaDevicesService.GetMediaDevicesAsync();
 
-            await SelectDevice();
+            await SelectDevice(null);
             var deviceInfos = await mediaDevices.EnumerateDevicesAsync();
-            videoOptions.Clear();
+            Cameras.Clear();
             foreach (var device in deviceInfos)
             {
                 if (await device.GetKindAsync() is MediaDeviceKind.VideoInput)
                 {
-                    videoOptions.Add((await device.GetLabelAsync(), await device.GetDeviceIdAsync()));
+                    Cameras.Add((await device.GetLabelAsync(), await device.GetDeviceIdAsync()));
                 }
             }
 
-            selectedVideoSource = videoOptions.FirstOrDefault().id;
+            currentCameraId = Cameras.FirstOrDefault().id;
         }
         catch (WebIDLException ex)
         {
@@ -199,15 +192,15 @@
         }
     }
 
-    async Task SelectDevice()
+    async Task SelectDevice(string? newCameraId)
     {
-        if (selectedVideoSource != null && shownVideoSource == selectedVideoSource)
+        if (currentCameraId != null && newCameraId == currentCameraId)
             return; // They picked the same device
 
         var mediaTrackConstraints = new MediaTrackConstraints();
-        if (selectedVideoSource is not null)
+        if (currentCameraId is not null)
         {
-            mediaTrackConstraints.DeviceId = new ConstrainDOMStringParameters() { Exact = selectedVideoSource };
+            mediaTrackConstraints.DeviceId = new ConstrainDOMStringParameters() { Exact = currentCameraId };
         }
 
         await using var mediaStream = await mediaDevices!.GetUserMediaAsync(new MediaStreamConstraints() { Video = mediaTrackConstraints });
@@ -220,11 +213,7 @@
         if (videoStreamTrack is not null)
         {
             var capabilities = await videoStreamTrack.GetCapabilitiesAsync();
-            minimalFrameRate = capabilities.FrameRate?.Min ?? 0;
-            maximumFrameRate = capabilities.FrameRate?.Max ?? 0;
-            frameRate = (maximumFrameRate + minimalFrameRate) / 2.0;
-            selectedVideoSource = capabilities.DeviceId;
-            shownVideoSource = selectedVideoSource;
+            currentCameraId = capabilities.DeviceId;
         }
 
         StateHasChanged();
@@ -241,12 +230,10 @@
             await videoStreamTrack.StopAsync();
         }
         videoStreamTrack = null;
-        frameRate = null;
         if (mediaDevices is not null)
             await mediaDevices.DisposeAsync();
         mediaDevices = null;
-        shownVideoSource = null;
-        selectedVideoSource = null;
+        currentCameraId = null;
     }
 
     public override async ValueTask DisposeAsync()

@@ -31,7 +31,7 @@
 
 <NewRenderControl T="ProfileModel" Actions="Actions" Instance="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
                   PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-    <MudExpansionPanels Elevation="2" Class="mb-3">
+    <MudExpansionPanels Elevation="2" Class="@Css.Build().Small("mb")">
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
