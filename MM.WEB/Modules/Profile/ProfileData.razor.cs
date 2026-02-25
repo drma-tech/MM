@@ -174,7 +174,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
         var validator = new ProfileValidation();
 
-        var result = await validator.ValidateAsync(profile, options => options.IncludeRuleSets(Tab.ToString()));
+        var result = await validator.ValidateAsync(profile, options => options.IncludeAllRuleSets());
 
         if (!result.IsValid) await ShowWarning(result.Errors[0].ErrorMessage);
     }
