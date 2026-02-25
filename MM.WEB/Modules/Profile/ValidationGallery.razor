@@ -176,7 +176,6 @@
                 if (await device.GetKindAsync() is MediaDeviceKind.VideoInput)
                 {
                     Cameras.Add((await device.GetLabelAsync(), await device.GetDeviceIdAsync()));
-                    Cameras.Add((await device.GetLabelAsync(), "asd"));
                 }
             }
 
