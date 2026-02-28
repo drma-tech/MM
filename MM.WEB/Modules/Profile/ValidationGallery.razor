@@ -201,7 +201,7 @@
     {
         if (newCameraId == currentCameraId) return;
 
-        _ = ChangeCameraAsync(newCameraId);
+        _ = ChangeCameraAsync(newCameraId); // fire-and-forget
     }
 
     private async Task ChangeCameraAsync(string? newCameraId)

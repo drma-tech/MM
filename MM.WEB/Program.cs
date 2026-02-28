@@ -60,7 +60,6 @@ AppStateStatic.Version = await AppStateStatic.GetAppVersion(js);
 AppStateStatic.BrowserName = await js.Utils().GetBrowserName();
 AppStateStatic.BrowserVersion = await js.Utils().GetBrowserVersion();
 AppStateStatic.OperatingSystem = await js.Utils().GetOperatingSystem();
-AppStateStatic.UserAgent = await js.Window().InvokeAsync<string>("eval", "navigator.userAgent");
 
 await js.Utils().SetStorage("app-version", AppStateStatic.Version);
 await AppStateStatic.GetPlatform(js);
@@ -78,6 +77,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     });
 
     collection.AddPWAUpdater();
+    collection.AddScoped<AppVersionHandler>();
     collection.AddMediaDevicesService();
 
     collection.AddHttpClient("Local", c => { c.BaseAddress = new Uri(baseAddress); });
@@ -86,7 +86,8 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
         (baseAddress.Contains("localhost") || baseAddress.Contains("127.0.0.1") ? throw new UnhandledException($"DownstreamApi:BaseUrl is null.") : $"{baseAddress}api/");
 
     collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(60); })
-       .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
+        .AddHttpMessageHandler<AppVersionHandler>()
+        .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
     collection.AddScoped<AuthenticationStateProvider, CompositeAuthStateProvider>();
     collection.AddScoped<FirebaseAuthStateProvider>();
@@ -95,6 +96,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<CustomAuthorizationHandler>();
     collection.AddHttpClient("Authenticated", (service, options) => { options.BaseAddress = new Uri(apiOrigin); options.Timeout = TimeSpan.FromSeconds(60); })
         .AddHttpMessageHandler<CustomAuthorizationHandler>()
+        .AddHttpMessageHandler<AppVersionHandler>()
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
     collection.AddHttpClient("External", (service, options) => { options.Timeout = TimeSpan.FromSeconds(60); })

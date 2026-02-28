@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MM.API.Core.Auth;
 
-public static class StaticWebAppsAuth
+public static class AuthUsersHelper
 {
     public static async Task<string?> GetUserIdAsync(this HttpRequestData req, CancellationToken cancellationToken, bool required = true)
     {

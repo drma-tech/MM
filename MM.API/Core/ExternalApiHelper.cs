@@ -2,7 +2,7 @@
 
 namespace MM.API.Core;
 
-public static class ApiCore
+public static class ExternalApiHelper
 {
     public static async Task<T?> Get<T>(this HttpClient http, string requestUri, CancellationToken cancellationToken)
         where T : class

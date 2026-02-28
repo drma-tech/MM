@@ -5,6 +5,7 @@
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 @using Button = MM.WEB.Resources.Button
+@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @inherits PageCore<ProfileSetting>
 
@@ -12,8 +13,7 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<NewRenderControl Actions="Actions" Instance="Setting" ExpressionEmpty="(SettingModel? obj) => obj == null"
-                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+<RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
@@ -33,14 +33,14 @@
             @Button.Save
         </MudButton>
     </div>
-</NewRenderControl>
+</RenderControl>
 
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private SettingModel? Setting { get; set; }
-    public ComponentActions<SettingModel?> Actions { get; set; } = new();
+    public ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
 
     protected override async Task LoadAuthDataAsync()
     {

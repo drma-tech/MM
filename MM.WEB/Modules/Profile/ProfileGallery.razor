@@ -5,6 +5,7 @@
 @using MM.WEB.Modules.Profile.Core
 @using static ImageHelper
 @using Button = MM.WEB.Resources.Button
+@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 @inherits PageCore<ProfileGallery>
@@ -22,10 +23,9 @@
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
-                    <NewRenderControl Actions="ProfileActions" Instance="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
-                                      PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+                    <RenderControl Actions="ProfileActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                         <MudImage Src="@_profile?.GetPhoto(PhotoType.Face)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
-                    </NewRenderControl>
+                    </RenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.FaceId == null)
@@ -57,10 +57,9 @@
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
-                    <NewRenderControl Actions="ProfileActions" Instance="_profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
-                                      PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+                    <RenderControl Actions="ProfileActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                         <MudImage Src="@_profile?.GetPhoto(PhotoType.Body)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
-                    </NewRenderControl>
+                    </RenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">
                     @if (_profile?.Gallery?.BodyId == null)
@@ -127,7 +126,7 @@
 {
     [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? _profile = new();
-    public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new();
+    public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new(obj => obj == null);
 
     private MudDialog? MudDialog { get; set; }
 

@@ -13,6 +13,7 @@
 @using Drink = MM.Shared.Enums.Drink
 @using HaveChildren = MM.Shared.Enums.HaveChildren
 @using Height = MM.Shared.Enums.Height
+@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @using Neurodiversity = MM.Shared.Enums.Neurodiversity
 @using Smoke = MM.Shared.Enums.Smoke
@@ -23,8 +24,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
-<NewRenderControl T="FilterModel" Actions="Actions" Instance="Filter" ExpressionEmpty="(FilterModel? obj) => obj == null"
-                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+<RenderControl T="FilterModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudExpansionPanels Elevation="2">
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
             <TitleContent>
@@ -400,7 +400,7 @@
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
-                                <FieldSelect For="@(() => context.Relocation)" TValue="Relocation?" TEnum="Relocation" @bind-SelectedValue="@context.Relocation"
+                                <FieldSelect For="@(() => context.Relocation)" TValue="Relocation ?" TEnum="Relocation" @bind-SelectedValue="@context.Relocation"
                                              CssIcon="@IconsFA.Solid.Icon("truck").Font">
                                 </FieldSelect>
                             </MudItem>
@@ -431,7 +431,7 @@
             @Button.Fill
         </MudButton>
     </div>
-</NewRenderControl>
+</RenderControl>
 
 <MudDialog @ref="@MudDialog" Style="width: 100%">
     <DialogContent>
@@ -459,7 +459,7 @@
 @code {
     private ProfileModel? Profile { get; set; }
     private FilterModel? Filter { get; set; }
-    public ComponentActions<FilterModel?> Actions { get; set; } = new();
+    public ComponentActions<FilterModel?> Actions { get; set; } = new(obj => obj == null);
     private MudDialog? MudDialog { get; set; }
 
     private Tabs? Tab { get; set; }
@@ -556,9 +556,9 @@
             SmartLookingCore.PopulateFields(Profile, Filter);
 
             await ShowInfo(@<div>
-                <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
-            </div>);
-        }
+                    <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
+                </div>);
+            }
         catch (Exception ex)
         {
             await ProcessException(ex);

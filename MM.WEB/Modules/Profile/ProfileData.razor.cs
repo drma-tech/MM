@@ -5,6 +5,7 @@ using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
+using MM.WEB.Shared.Core;
 
 namespace MM.WEB.Modules.Profile;
 
@@ -16,7 +17,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
     [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
-    public ComponentActions<ProfileModel?> Actions { get; set; } = new();
+    public ComponentActions<ProfileModel?> Actions { get; set; } = new(obj => obj == null);
 
     protected override void OnInitialized()
     {

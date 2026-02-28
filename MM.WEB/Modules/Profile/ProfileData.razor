@@ -29,8 +29,7 @@
 
 @inherits PageCore<ProfileData>
 
-<NewRenderControl T="ProfileModel" Actions="Actions" Instance="Profile" ExpressionEmpty="(ProfileModel? obj) => obj == null"
-                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+<RenderControl T="ProfileModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudExpansionPanels Elevation="2" Class="@Css.Build().Small("mb")">
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
@@ -492,7 +491,7 @@
             </ChildContent>
         </MudExpansionPanel>
     </MudExpansionPanels>
-</NewRenderControl>
+</RenderControl>
 
 <MudButton StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary" Variant="Variant.Filled" Class="me-2" OnClick="SaveHandle"
            Disabled="@(Profile == null || Principal == null || Principal.PublicProfile)">

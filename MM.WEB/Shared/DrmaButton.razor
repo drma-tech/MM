@@ -1,4 +1,5 @@
-﻿@typeparam T
+﻿@using MM.WEB.Shared.Core
+@typeparam T where T : class
 
 <MudButton StartIcon="@Icon" Variant="Variant.Filled" Color="Color" OnClick="Clicked" Style="width: 100%;" Disabled="Disabled || Processing">
     <ChildContent>
@@ -20,8 +21,8 @@
 
     protected override void OnInitialized()
     {
-        if (Actions != null) Actions.StartProcessing += msg => Processing = true;
-        if (Actions != null) Actions.FinishProcessing += obj => Processing = false;
+        if (Actions != null) Actions.StartProcessing += async msg => Processing = true;
+        if (Actions != null) Actions.FinishProcessing += async obj => Processing = false;
     }
 
 }

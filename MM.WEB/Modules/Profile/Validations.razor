@@ -6,6 +6,7 @@
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 @using Button = MM.WEB.Resources.Button
+@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @inherits PageCore<Validations>
 
@@ -13,8 +14,7 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<NewRenderControl Actions="Actions" Instance="Validation" ExpressionEmpty="(ValidationModel? obj) => obj == null"
-                  PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+<RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
@@ -39,14 +39,14 @@
             </MudItem>
         </MudGrid>
     </MudStack>
-</NewRenderControl>
+</RenderControl>
 
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
     private ValidationModel? Validation { get; set; }
     private ValidationValidation ValidationValidator { get; set; } = new();
-    public ComponentActions<ValidationModel?> Actions { get; set; } = new();
+    public ComponentActions<ValidationModel?> Actions { get; set; } = new(obj => obj == null);
 
     protected override async Task LoadAuthDataAsync()
     {

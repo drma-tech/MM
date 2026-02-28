@@ -11,12 +11,12 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
+        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined">
             In this initial phase, this feature is disabled. Please check the homepage for more details.
         </MudAlert>
         @* @if (BlockedCountry)
         {
-            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
+            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined">
                 @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_XoloBlockedCountries[CurrentCountry!.ToUpper()]}.")
             </MudAlert>
         }

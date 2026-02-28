@@ -4,6 +4,7 @@
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Profile.Core
 @using Button = MM.WEB.Resources.Button
+@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @inherits ComponentCore<PopupProfile>
 @attribute [Authorize]
@@ -15,8 +16,7 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <NewRenderControl Actions="Actions" Instance="View" ExpressionEmpty="(ProfileModel? obj) => obj == null"
-                          PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+        <RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="12" sm="6" md="4">
                     <MudPaper style="position: relative;" Outlined="true">
@@ -158,7 +158,7 @@
                 </MudItem>
             </MudGrid>
             <ProfileReport @ref="report"></ProfileReport>
-        </NewRenderControl>
+        </RenderControl>
     </DialogContent>
     <DialogActions>
         <MudButton Color="Color.Secondary" OnClick="@(async () => { await DialogService!.ShowMessageBoxAsync("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
@@ -188,11 +188,11 @@
     private ProfileModel? user;
     private FilterModel? filter;
     [Parameter] public ProfileModel? View { get; set; }
-    public ComponentActions<ProfileModel?> Actions { get; set; } = new();
+    public ComponentActions<ProfileModel?> Actions { get; set; } = new(obj => obj == null);
 
     private List<AffinityVM> affinities = [];
     private InteractionModel? interaction;
-    public ComponentActions<InteractionModel?> EventActions { get; set; } = new();
+    public ComponentActions<InteractionModel?> EventActions { get; set; } = new(obj => false);
 
     private readonly string GallerySwiperId = $"swiper-{Guid.NewGuid()}";
     string[] imageDataUriGallery = [];
@@ -212,11 +212,11 @@
         {
             if (string.IsNullOrEmpty(IdUserView)) return;
 
-            Actions.StartLoading?.Invoke(null);
+            await Actions.StartLoading.Invoke(null);
 
             if (IdUserView == UserId)
             {
-                Actions.ShowError?.Invoke("Something wrong happened.");
+                await Actions.ShowError.Invoke("Something wrong happened.");
                 return;
             }
 
@@ -224,7 +224,7 @@
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
-                Actions.ShowError?.Invoke(GlobalTranslations.ProfileNotAvailable);
+                await Actions.ShowError.Invoke(GlobalTranslations.ProfileNotAvailable);
                 return;
             }
 
@@ -236,7 +236,7 @@
 
             if (View == null)
             {
-                Actions.ShowError?.Invoke(GlobalTranslations.PartnerProfileNotAvailable);
+                await Actions.ShowError.Invoke(GlobalTranslations.PartnerProfileNotAvailable);
                 return;
             }
 
@@ -251,11 +251,11 @@
 
             affinities = AffinityCore.GetAffinity(user, filter, View);
 
-            Actions.FinishLoading?.Invoke(View);
+            await Actions.FinishLoading.Invoke(View);
         }
         catch (Exception ex)
         {
-            Actions.ShowError?.Invoke(ex.Message);
+            await Actions.ShowError.Invoke(ex.Message);
         }
     }
 
@@ -278,9 +278,9 @@
     {
         try
         {
-            EventActions.StartProcessing?.Invoke(null);
+            await EventActions.StartProcessing.Invoke(null);
             interaction = await InteractionApi.Like(Origin, IdUserView);
-            EventActions.FinishProcessing?.Invoke(interaction);
+            await EventActions.FinishProcessing.Invoke(interaction);
             Liked?.Invoke();
 
             if (interaction?.Status == InteractionStatus.Match)
@@ -299,9 +299,9 @@
     {
         try
         {
-            EventActions.StartProcessing?.Invoke(null);
+            await EventActions.StartProcessing.Invoke(null);
             interaction = await InteractionApi.Dislike(Origin, IdUserView);
-            EventActions.FinishProcessing?.Invoke(interaction);
+            await EventActions.FinishProcessing.Invoke(interaction);
             Disliked?.Invoke();
         }
         catch (Exception ex)
