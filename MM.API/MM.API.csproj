@@ -22,7 +22,6 @@
 	<ItemGroup>
 		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.14" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.27.0" />
-		<PackageReference Include="FirebaseAdmin" Version="3.4.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.13" />
 		<PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.57.1" />

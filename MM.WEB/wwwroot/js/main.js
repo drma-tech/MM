@@ -33,19 +33,7 @@ export const servicesConfig = {
     AnalyticsCode: "G-P7B5BSBS9S",
     ClarityKey: "r3z34efopo",
     UserBackToken: "A-A2J4M5NKCbDp1QyQe7ogemmmq",
-    UserBackSurveyKey: "kcyhCB",
     SentryDsn: "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712",
-};
-
-export const firebaseConfig = {
-    apiKey: "AIzaSyB2EgEuxbPvK5KMS0v7xWI-HepzaIe0h1c",
-    authDomain: "auth.modern-matchmaker.com",
-    projectId: "modern-matchmaker-a5b31",
-    storageBucket: "modern-matchmaker-a5b31.firebasestorage.app",
-    messagingSenderId: "224690707146",
-    messagingKey: "BE_cSKMuRPksKGllUQI1ekC_H-Brf6txxHUuLZnG3mYKSvlevJaoWO6S7gWYlXy3vLeIeF3eEzPIP5E1EzHACUo",
-    appId: "1:224690707146:web:1a1b235112b69cbaabf233",
-    measurementId: "G-ZKC5YQW77C",
 };
 
 export const supabaseConfig = {

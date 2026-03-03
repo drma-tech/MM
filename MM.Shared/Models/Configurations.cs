@@ -3,7 +3,6 @@
 public class Configurations
 {
     public CosmosDB? CosmosDB { get; set; }
-    public Firebase? Firebase { get; set; }
     public Azure? Azure { get; set; }
     public AWS? AWS { get; set; }
     public Apple? Apple { get; set; }
@@ -15,15 +14,6 @@ public class CosmosDB
 {
     public string? DatabaseId { get; set; }
     public string? ConnectionString { get; set; }
-}
-
-public class Firebase
-{
-    public string? ClientId { get; set; }
-    public string? PrivateKeyId { get; set; }
-    public string? PrivateKey { get; set; }
-    public string? ClientEmail { get; set; }
-    public string? CertUrl { get; set; }
 }
 
 public class Azure

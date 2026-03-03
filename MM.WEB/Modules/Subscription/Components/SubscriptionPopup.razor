@@ -16,7 +16,7 @@
         </MudAlert>
         @* @if (BlockedCountry)
         {
-            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined">
+            <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
                 @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_XoloBlockedCountries[CurrentCountry!.ToUpper()]}.")
             </MudAlert>
         }
