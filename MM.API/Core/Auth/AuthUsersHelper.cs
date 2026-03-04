@@ -48,7 +48,7 @@ public static class AuthUsersHelper
             {
                 var token = authHeader.Substring("Bearer ".Length);
 
-                var projectRef = "rwabygidcrhbnvigfwff";
+                var projectRef = "bbvdyzbbvsffyvnktlno";
                 var audience = "authenticated";
 
                 var principal = await VerifyTokenAsync(token, projectRef, audience, cancellationToken);

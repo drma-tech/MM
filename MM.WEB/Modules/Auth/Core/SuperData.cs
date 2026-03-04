@@ -14,6 +14,5 @@ namespace MM.WEB.Modules.Auth.Core
         public MyMatchesModel? Matches { get; set; }
         //public MyInteractionsModel? Interactions { get; set; }
         public ValidationModel? Validations { get; set; }
-
     }
 }

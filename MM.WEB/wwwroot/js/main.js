@@ -37,8 +37,8 @@ export const servicesConfig = {
 };
 
 export const supabaseConfig = {
-    projectUrl: "https://rwabygidcrhbnvigfwff.supabase.co",
-    supabaseKey: "sb_publishable_pCufBP2wD58v_mRqfzbV7w_V4scD058",
+    projectUrl: "https://bbvdyzbbvsffyvnktlno.supabase.co",
+    supabaseKey: "sb_publishable_5QUdGWH9m1rHAWYehPoivQ_TrEnJeIO",
 };
 
 export const baseApiUrl = isLocalhost ? "http://localhost:7091" : "";
@@ -51,7 +51,7 @@ if (isDev) {
     document.head.appendChild(meta);
 }
 
-// temporary: remove in the end of 2026
+// todo: remove in the end of 2026
 if (typeof Promise.withResolvers !== "function") {
     Promise.withResolvers = function () {
         let resolve, reject;
