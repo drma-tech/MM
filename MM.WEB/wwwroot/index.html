@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#ffffff" />
 
     <base href="/" />
+    <link rel="preload" id="webassembly" />
     <link rel="manifest" href="manifest.webmanifest" />
 
     <link rel="stylesheet" href="css/app.min.css" />
@@ -40,6 +41,8 @@
     <script type="module" src="js/swiper.js"></script>
     <script type="module" src="js/crop-helper.js"></script>
     <script src="js/mediacapture.js"></script>
+
+    <script type="importmap"></script>
 </head>
 
 <body>
@@ -73,7 +76,7 @@
     <script type="module" src="js/payments.js"></script>
 
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
 
     <script type="module" src="js/init.js"></script>
 </body>
