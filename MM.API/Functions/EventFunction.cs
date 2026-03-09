@@ -54,81 +54,57 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
     public async Task<HttpResponseData?> InteractionGet([HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
         HttpRequestData req, string id, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
 
-            var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
+        var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
-            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
     }
 
     [Function("InteractionLike")]
     public async Task<HttpResponseData?> InteractionLike([HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/like/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
-        try
+        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
+        var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
+                          throw new NotificationException("user not found");
+
+        //add like to partner
+        var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
+        var partnerSettings = await repoGen.Get<SettingModel>(DocumentType.Setting, id, cancellationToken);
+
+        partnerLikes.Items.Add(new PersonModel(userProfile, partnerSettings?.BlindDate ?? false));
+
+        //create interaction between users
+        var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, origin, cancellationToken);
+
+        if (interaction.Status == InteractionStatus.Match)
         {
-            var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
-            var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
-                              throw new NotificationException("user not found");
+            var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken) ??
+                                 throw new NotificationException("user not found");
 
-            //add like to partner
-            var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
-            var partnerSettings = await repoGen.Get<SettingModel>(DocumentType.Setting, id, cancellationToken);
+            var userLikes = await repoGen.GetMyLikes(userId, cancellationToken);
+            var userMatches = await repoGen.GetMyMatches(userId, cancellationToken);
 
-            partnerLikes.Items.Add(new PersonModel(userProfile, partnerSettings?.BlindDate ?? false));
+            var partnerMatches = await repoGen.GetMyMatches(id, cancellationToken);
 
-            //create interaction between users
-            var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Like, origin, cancellationToken);
-
-            if (interaction.Status == InteractionStatus.Match)
-            {
-                var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken) ??
-                                     throw new NotificationException("user not found");
-
-                var userLikes = await repoGen.GetMyLikes(userId, cancellationToken);
-                var userMatches = await repoGen.GetMyMatches(userId, cancellationToken);
-
-                var partnerMatches = await repoGen.GetMyMatches(id, cancellationToken);
-
-                await repoGen.SetMyMatches((userProfile, userLikes, userMatches),
-                    (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
-            }
-
-            await repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
-
-            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
+            await repoGen.SetMyMatches((userProfile, userLikes, userMatches),
+                (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
         }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+
+        await repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
+
+        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
     }
 
     [Function("InteractionDislike")]
     public async Task<HttpResponseData?> InteractionDislike([HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/dislike/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
 
-            var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
+        var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
-            return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
     }
 }

@@ -76,89 +76,54 @@ public static class ProfileHelper
     }
 }
 
-public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
-    private readonly CosmosCacheRepository _repoCache = repoCache;
     private readonly CosmosRepository _repoGen = repoGen;
 
     [Function("ProfileGetData")]
     public async Task<HttpResponseData?> ProfileGetData(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
-            return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
     }
 
     [Function("ProfileGetFilter")]
     public async Task<HttpResponseData?> ProfileGetFilter(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
 
     [Function("ProfileGetSetting")]
     public async Task<HttpResponseData?> ProfileGetSetting(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
 
     [Function("ProfileValidation")]
     public async Task<HttpResponseData?> ProfileValidation(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
-            return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
 
     //[Function("ProfileGetView")]
     //public async Task<HttpResponseData?> GetView(
     //    [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     //{
-    //    try
-    //    {
     //        var userId = req.GetUserId();
     //        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
@@ -179,137 +144,85 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosCacheRepository rep
     //        //else profile.ActivityStatus = ActivityStatus.Disabled;
 
     //        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        req.ProcessException(ex);
-    //        throw;
-    //    }
+
     //}
 
     //[Function("ProfileListSearch")]
     //public async Task<List<ProfileSearch>> ListSearch(
     //   [HttpTrigger(AuthorizationLevel.Function, Method.GET, Route = "Profile/ListSearch")] HttpRequestData req, CancellationToken cancellationToken)
     //{
-    //    try
-    //    {
     //        var request = req.BuildRequestQuery<ProfileListSearchCommand, List<ProfileSearch>>();
 
     //        var result = await _mediator.Send(request, source.Token);
 
     //        return new OkObjectResult(result);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        req.ProcessException(ex);
-    //        throw new UnhandledException(ex.BuildException());
-    //    }
+
     //}
 
     [Function("ProfileUpdateData")]
     public async Task<ProfileModel> ProfileUpdateData(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var body = await req.GetBody<ProfileModel>(cancellationToken);
-            var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var body = await req.GetBody<ProfileModel>(cancellationToken);
+        var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
 
-            body.SanitizeOpenTextFields();
+        body.SanitizeOpenTextFields();
 
-            if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
-            if (body.Id != userId) throw new NotificationException("Invalid Operation");
+        if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
+        if (body.Id != userId) throw new NotificationException("Invalid Operation");
 
-            var validator = new ProfileValidation();
-            var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
-            if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
+        var validator = new ProfileValidation();
+        var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
+        if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
-            return await repoOff.UpsertItemAsync(body, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await repoOff.UpsertItemAsync(body, cancellationToken);
     }
 
     [Function("ProfileUpdateFilter")]
     public async Task<FilterModel> ProfileUpdateFilter(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
-            var body = await req.GetBody<FilterModel>(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var body = await req.GetBody<FilterModel>(cancellationToken);
 
-            if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
+        if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
 
-            var validator = new FilterValidation();
-            var result = await validator.ValidateAsync(body);
-            if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
+        var validator = new FilterValidation();
+        var result = await validator.ValidateAsync(body);
+        if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
-            return await _repoGen.UpsertItemAsync(body, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await _repoGen.UpsertItemAsync(body, cancellationToken);
     }
 
     [Function("ProfileUpdateSetting")]
     public async Task<SettingModel> ProfileUpdateSetting(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var body = await req.GetBody<SettingModel>(cancellationToken);
+        var body = await req.GetBody<SettingModel>(cancellationToken);
 
-            return await _repoGen.UpsertItemAsync(body, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await _repoGen.UpsertItemAsync(body, cancellationToken);
     }
 
     [Function("ProfileGetMyLikes")]
     public async Task<HttpResponseData?> ProfileGetMyLikes(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
 
-            var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+        var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
 
-            return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
     }
 
     [Function("ProfileGetMyMatches")]
     public async Task<HttpResponseData?> ProfileGetMyMatches(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mymatches")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        try
-        {
-            var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
 
-            var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
+        var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
 
-            return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
-        }
-        catch (Exception ex)
-        {
-            req.LogError(ex);
-            throw;
-        }
+        return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
     }
 }
