@@ -1,33 +1,60 @@
-﻿using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+﻿using Azure;
+using Azure.AI.Vision.Face;
 
 namespace MM.API.Core.AI;
 
 public static class AzureImageAI
 {
-    /// <summary>
-    ///     still using version 3.2 (old version - year 2021)
-    ///     https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/image-analysis-client-library?pivots=programming-language-csharp&tabs=windows%2Cvisual-studio
-    ///     todo: update (4.0 or more recent) when adult content is available
-    ///     https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis?tabs=4-0
-    /// </summary>
-    /// <param name="url"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public static async Task<ImageAnalysis> AnalyzeImage(Stream stream, CancellationToken cancellationToken)
+    private static readonly string SubscriptionKey = Environment.GetEnvironmentVariable("FACE_APIKEY") ?? "<apikey>";
+    private static readonly string Endpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT") ?? "<endpoint>";
+
+    public static async Task<List<FaceDetectionResult>> AnalyzeImage(BinaryData data, CancellationToken cancellationToken)
     {
-        var client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(ApiStartup.Configurations.Azure!.CognitiveKey))
-        {
-            Endpoint = ApiStartup.Configurations.Azure!.CognitiveEndpoint
-        };
+        //var client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(ApiStartup.Configurations.Azure!.CognitiveKey))
+        //{
+        //    Endpoint = ApiStartup.Configurations.Azure!.CognitiveEndpoint
+        //};
 
-        var features = new List<VisualFeatureTypes?>
-        {
-            VisualFeatureTypes.Faces,
-            VisualFeatureTypes.Adult,
-            VisualFeatureTypes.Objects
-        };
+        //var features = new List<VisualFeatureTypes?>
+        //{
+        //    VisualFeatureTypes.Faces,
+        //    VisualFeatureTypes.Adult,
+        //    VisualFeatureTypes.Objects
+        //};
 
-        return await client.AnalyzeImageInStreamAsync(stream, features, cancellationToken: cancellationToken);
+        FaceRecognitionModel RecognitionModel4 = FaceRecognitionModel.Recognition04;
+
+        FaceClient client = Authenticate(Endpoint, SubscriptionKey);
+
+        //return await client.AnalyzeImageInStreamAsync(stream, features, cancellationToken: cancellationToken);
+        return await DetectFaceRecognize(client, data, RecognitionModel4);
+    }
+
+    public static FaceClient Authenticate(string endpoint, string key)
+    {
+        return new FaceClient(new Uri(endpoint), new AzureKeyCredential(key));
+    }
+
+    private static async Task<List<FaceDetectionResult>> DetectFaceRecognize(FaceClient faceClient, BinaryData data, FaceRecognitionModel recognitionModel)
+    {
+        var attributes = new List<FaceAttributeType>
+        {
+            FaceAttributeType.QualityForRecognition,
+            FaceAttributeType.Glasses,
+            FaceAttributeType.Mask
+        };
+        var response = await faceClient.DetectAsync(data, FaceDetectionModel.Detection03, recognitionModel, true, attributes);
+        IReadOnlyList<FaceDetectionResult> detectedFaces = response.Value;
+        List<FaceDetectionResult> sufficientQualityFaces = [];
+        foreach (FaceDetectionResult detectedFace in detectedFaces)
+        {
+            QualityForRecognition? faceQualityForRecognition = detectedFace.FaceAttributes.QualityForRecognition;
+            if (faceQualityForRecognition.HasValue && (faceQualityForRecognition.Value != QualityForRecognition.Low))
+            {
+                sufficientQualityFaces.Add(detectedFace);
+            }
+        }
+
+        return sufficientQualityFaces;
     }
 }

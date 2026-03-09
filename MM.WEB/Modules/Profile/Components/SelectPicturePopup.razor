@@ -19,7 +19,7 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Primary" OnClick="@SavePictureHandle">
+        <MudButton Color="Color.Primary" OnClick="@SavePictureHandle" Variant="Variant.Filled" Size="AppStateStatic.Size" Disabled="!imageLoaded">
             @Button.Ok
         </MudButton>
     </DialogActions>

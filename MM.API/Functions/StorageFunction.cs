@@ -29,56 +29,38 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
         profile.Gallery.UpdatePictureId(request.PhotoType, photoId); //reset current photo data
 
-        //await faceHelper.DetectFace(profile, stream1, true, cancellationToken); //validates the photo sent and saves data related to it
-        var analysis = await AzureImageAI.AnalyzeImage(stream1, cancellationToken);
+        var responseAdult = await AwsFaceAI.DetectAdultContent(stream1, cancellationToken);
 
-        if (analysis.Adult.RacyScore > 0.8 || analysis.Adult.GoreScore > 0.8 || analysis.Adult.AdultScore > 0.8)
+        if (responseAdult.ModerationLabels.Any(x => x.Confidence >= 80f))
             throw new NotificationException("Image content is inappropriate. Please use another one.");
 
-        var faceObjects = analysis.Faces;
-        if (faceObjects.Count == 0)
+        var responseFace = await AwsFaceAI.DetectFaces(stream1, cancellationToken);
+        var faces = responseFace.FaceDetails;
+
+        if (faces.Count == 0)
             throw new NotificationException("We cannot clearly identify a face in this photo. Please use another one.");
 
-        if (request.PhotoType == PhotoType.Face && faceObjects.Count > 1)
+        if (request.PhotoType == PhotoType.Face && faces.Count > 1)
             throw new NotificationException("Your main photo should only feature you.");
 
-        var personObjects = analysis.Objects.Where(a => a.ObjectProperty == "person" && a.Confidence > 0.85);
-        if (request.PhotoType == PhotoType.Body)
-        {
-            if (!personObjects.Any())
-                throw new NotificationException("We were unable to detect a body in this photo. Please choose a photo that best shows your body.");
+        var face = faces.Single();
 
-            if (personObjects.Count() > 1)
-                throw new NotificationException("We detected more than one person in this photo. Please choose a photo where you are alone.");
+        if (face.FaceOccluded.Value == true && face.FaceOccluded.Confidence >= 80f)
+            throw new NotificationException("Ideally, use a photo where your face is clearly visible.");
 
-            //todo: find a better way to detect a full body
+        ////todo: improve body detection using labels and bounding boxes, to avoid false positives with photos that have a clear face but no body(e.g.selfies, close - ups, etc.)
+        //if (request.PhotoType == PhotoType.Body)
+        //{
+        //    var responseLabels = await AwsFaceAI.DetectLabels(stream1, cancellationToken);
 
-            //var body = personObjects.Single();
-            //var bodyArea = body.Rectangle.H * body.Rectangle.W;
-            //var rect = body.Rectangle;
-            //var aspectRatio = Math.Max(rect.H, rect.W) / (double)Math.Min(rect.H, rect.W);
-            //var faceArea = faceObjects.Sum(face => face.FaceRectangle.Height * face.FaceRectangle.Width);
+        //    var personObjects = responseLabels.Labels.Where(l => l.Name == "Person" && l.Confidence >= 80);
 
-            //if (aspectRatio < 1.3)
-            //{
-            //    throw new NotificationException("We were unable to detect a full body in this photo. Please choose a photo that best shows your entire body.");
-            //}
+        //    if (!personObjects.Any())
+        //        throw new NotificationException("We were unable to detect a body in this photo. Please choose a photo that best shows your body.");
 
-            //var face = faceObjects.FirstOrDefault();
-            //if (face != null)
-            //{
-            //    var faceY = face.FaceRectangle.Left;
-            //    if (faceY < rect.Y + rect.H * 0.25) // The face cannot be too far above the body
-            //    {
-            //        throw new NotificationException("We detected only the head or a partial body. Please choose a photo that best shows your entire body.");
-            //    }
-            //}
-
-            //if (bodyArea < faceArea * 3)
-            //{
-            //    throw new NotificationException("We were unable to detect a full body in this photo. Please choose a photo that best shows your entire body.");
-            //}
-        }
+        //    if (personObjects.Count() > 1)
+        //        throw new NotificationException("We detected more than one person in this photo. Please choose a photo where you are alone.");
+        //}
 
         if (currentPictureId != null) //delete old picture from azure storage
         {
@@ -154,7 +136,6 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
         if (face.Similarity < 95)
         {
-            //throw new NotificationException($"Face match similarity too low: {face.Similarity:F2}%. Must be at least 95%.");
             throw new NotificationException("We were unable to detect a matching face. Make sure both images are clear and show only one person.");
         }
 
