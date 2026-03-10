@@ -363,7 +363,8 @@ else
                 validation = null;
             }
 
-            // await SuggestionsActions.FinishLoading.Invoke(Suggestions);
+            //remove the loading status
+            await SuggestionsActions.FinishLoading.Invoke(null);
 
             await LoadLikes();
             await LoadMatches();
