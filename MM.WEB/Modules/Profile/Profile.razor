@@ -441,6 +441,7 @@ else
         if (await DialogService.ShowMessageBoxAsync(GlobalTranslations.Confirmation, GlobalTranslations.GenerateSimulation, Button.Ok, Button.Cancel) ?? false)
         {
             MyMatches = new MyMatchesModel();
+            await MatchesActions.StartLoading.Invoke(null);
 
             var languages = EnumHelper.GetArray<Language>();
 
@@ -511,8 +512,7 @@ else
                 .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<IdealPlaceToLive>())
                 .GenerateLazy(8).ToHashSet();
 
-            MyMatches.Items = fakeProfiles.Select(s =>
-                new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
+            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
             await MatchesActions.FinishLoading.Invoke(MyMatches);
         }
