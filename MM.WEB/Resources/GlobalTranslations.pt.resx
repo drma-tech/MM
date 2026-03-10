@@ -177,6 +177,9 @@
   <data name="ExpectedCompatibility" xml:space="preserve">
     <value>Compatibilidade esperada</value>
   </data>
+  <data name="ExternalWebsiteNotice" xml:space="preserve">
+    <value>Aviso de site externo</value>
+  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Aguarde novidades...</value>
   </data>
