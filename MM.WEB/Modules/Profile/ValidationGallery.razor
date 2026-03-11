@@ -189,11 +189,11 @@
 
             isCameraOpen = true;
         }
-        // catch (WebIDLException ex)
-        // {
-        //     await ProcessException(new Exception($"{ex.GetType().Name}: {ex.Message}"));
-        //     await StopVideoTrack();
-        // }
+        catch (WebIDLException ex)
+        {
+            await ProcessException(new Exception($"{ex.GetType().Name}: {ex.Message}"));
+            await StopVideoTrack();
+        }
         catch (Exception ex)
         {
             await ProcessException(ex);
