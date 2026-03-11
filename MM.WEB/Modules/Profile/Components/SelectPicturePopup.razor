@@ -14,7 +14,7 @@
         @if (imageLoaded)
         {
             <div class="mt-2">
-                <img id="cropImage" style="max-height: calc(100vh - 200px); max-width: 100%; object-fit: contain;" />
+                <img id="cropImage" style="max-height: calc(100vh - 300px); max-width: 100%; object-fit: contain;" />
             </div>
         }
     </DialogContent>
@@ -24,6 +24,12 @@
         </MudButton>
     </DialogActions>
 </MudDialog>
+
+<style>
+    .mud-file-upload-files {
+        display: none;
+    }
+</style>
 
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
