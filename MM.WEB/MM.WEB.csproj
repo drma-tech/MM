@@ -46,6 +46,7 @@
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
 		<TrimmerRootAssembly Include="MM.WEB" />
 		<TrimmerRootAssembly Include="MM.Shared" />
+		<TrimmerRootAssembly Include="KristofferStrube.Blazor.MediaCaptureStreams" />
 	</ItemGroup>
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
