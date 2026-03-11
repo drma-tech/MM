@@ -44,15 +44,17 @@
                             </MudButton>
                         </div>
                     }
-
-                    <MudSelect T="string" Label="Camera" Disabled="Cameras.Empty()" Class="mb-2" Value="@currentCameraId" ValueChanged="@OnCameraChanged">
-                        @foreach (var option in Cameras)
-                        {
-                            <MudSelectItem Value="@option.id">
-                                @option.label
-                            </MudSelectItem>
-                        }
-                    </MudSelect>
+                    else
+                    {
+                        <MudSelect T="string" Label="Camera" Disabled="Cameras.Empty()" Class="mb-2" Value="@currentCameraId" ValueChanged="@OnCameraChanged">
+                            @foreach (var option in Cameras)
+                            {
+                                <MudSelectItem Value="@option.id">
+                                    @option.label
+                                </MudSelectItem>
+                            }
+                        </MudSelect>
+                    }
                     <video @ref="videoElement" width="100%" autoplay></video>
                 }
             </MudCardContent>

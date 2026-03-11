@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Agregar</value>
   </data>
+  <data name="AutoFill" xml:space="preserve">
+    <value>Autocompletar</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Atrás</value>
   </data>
@@ -141,7 +144,7 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirmar</value>
   </data>
- <data name="ContinueWebsite" xml:space="preserve">
+  <data name="ContinueWebsite" xml:space="preserve">
     <value>Continuar al sitio web</value>
   </data>
   <data name="Dating" xml:space="preserve">
@@ -155,9 +158,6 @@
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>Feedback</value>
-  </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Llenar</value>
   </data>
   <data name="Filters" xml:space="preserve">
     <value>Filtros</value>

@@ -511,6 +511,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only select what is truly non-negotiable. Selecting too many options will limit your matches..
+        /// </summary>
+        public static string ProfileFilterWarning {
+            get {
+                return ResourceManager.GetString("ProfileFilterWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile not available.
         /// </summary>
         public static string ProfileNotAvailable {

@@ -79,6 +79,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto Fill.
+        /// </summary>
+        public static string AutoFill {
+            get {
+                return ResourceManager.GetString("AutoFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Back {
@@ -174,15 +183,6 @@ namespace MM.WEB.Resources {
         public static string Feedback {
             get {
                 return ResourceManager.GetString("Feedback", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fill.
-        /// </summary>
-        public static string Fill {
-            get {
-                return ResourceManager.GetString("Fill", resourceCulture);
             }
         }
         

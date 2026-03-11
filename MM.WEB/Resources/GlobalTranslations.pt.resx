@@ -267,6 +267,9 @@
   <data name="ProfileDataPersonTip1" xml:space="preserve">
     <value>Para personalidades mais complexas, explore testes em sites especializados. Algumas podem ser respondidas apenas lendo as descrições dos itens.</value>
   </data>
+  <data name="ProfileFilterWarning" xml:space="preserve">
+    <value>Selecione apenas o que for realmente inegociável. Selecionar muitas opções limitará suas combinações.</value>
+  </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
     <value>Perfil não disponível</value>
   </data>
