@@ -67,9 +67,9 @@ else
                     </MudText>
                 </MudToolBar>
 
-                <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary">
+                <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary" >
                     <ChildContent>
-                        <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
+                        <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid" >
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
                                        Style="width: 100%;" Disabled="@(Principal == null || Principal.PublicProfile)">
                                 @Button.Profile
@@ -260,6 +260,16 @@ else
         </NewPageSection>
     </MudItem>
 </MudGrid>
+
+<style>
+    .mud-stepper .mud-stepper-nav.mud-stepper-nav-scrollable .mud-step {
+        width: 100%;
+    }
+
+    .mud-stepper .mud-stepper-nav .mud-step .mud-step-label {
+        width: 100%;
+    }
+</style>
 
 @code
 {
