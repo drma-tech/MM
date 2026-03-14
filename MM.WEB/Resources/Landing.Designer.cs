@@ -205,7 +205,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We are constantly evolving! Features may be released earlier for specific countries (once they reach 10k users) or if development is completed ahead of schedule. We welcome your feedback—your suggestions can help shape the future of our platform!.
+        ///   Looks up a localized string similar to We are constantly evolving! Features may be released early if development is completed ahead of schedule. We appreciate your feedback, and your suggestions can help shape the future of our platform!.
         /// </summary>
         public static string OurRoadmapMsg2 {
             get {
