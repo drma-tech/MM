@@ -19,7 +19,7 @@ namespace MM.WEB.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Landing {
@@ -232,7 +232,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phase 1 (0-100k users).
+        ///   Looks up a localized string similar to Phase 1 (0-10k users).
         /// </summary>
         public static string Phase1Title {
             get {
@@ -259,7 +259,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phase 2 (100k-200k users).
+        ///   Looks up a localized string similar to Phase 2 (10k-20k users).
         /// </summary>
         public static string Phase2Title {
             get {
@@ -286,7 +286,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phase 3 (200k-300k users).
+        ///   Looks up a localized string similar to Phase 3 (20k-30k users).
         /// </summary>
         public static string Phase3Title {
             get {
@@ -313,7 +313,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phase 4 (300k-400k users).
+        ///   Looks up a localized string similar to Phase 4 (30k-40k users).
         /// </summary>
         public static string Phase4Title {
             get {

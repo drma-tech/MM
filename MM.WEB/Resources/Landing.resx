@@ -175,7 +175,7 @@
     <value>Explore our compatibility system</value>
   </data>
   <data name="Phase1Title" xml:space="preserve">
-    <value>Phase 1 (0-100k users)</value>
+    <value>Phase 1 (0-10k users)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
     <value>Users can apply as matchmaking clients</value>
@@ -184,7 +184,7 @@
     <value>MM Coin: US$1 per unit</value>
   </data>
   <data name="Phase2Title" xml:space="preserve">
-    <value>Phase 2 (100k-200k users)</value>
+    <value>Phase 2 (10k-20k users)</value>
   </data>
   <data name="Phase3Opt1" xml:space="preserve">
     <value>New features to be announced</value>
@@ -193,7 +193,7 @@
     <value>MM Coin: US$2 per unit</value>
   </data>
   <data name="Phase3Title" xml:space="preserve">
-    <value>Phase 3 (200k-300k users)</value>
+    <value>Phase 3 (20k-30k users)</value>
   </data>
   <data name="Phase4Opt1" xml:space="preserve">
     <value>New features to be announced</value>
@@ -202,7 +202,7 @@
     <value>MM Coin: US$3 per unit</value>
   </data>
   <data name="Phase4Title" xml:space="preserve">
-    <value>Phase 4 (300k-400k users)</value>
+    <value>Phase 4 (30k-40k users)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>

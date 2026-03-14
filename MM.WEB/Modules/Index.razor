@@ -386,21 +386,21 @@
         }
         else if (phase == 2)
         {
-            if (totUsers > 100_000) totUsers -= 100_000;
+            if (totUsers > 10_000) totUsers -= 10_000;
             else return 0;
         }
         else if (phase == 3)
         {
-            if (totUsers > 200_000) totUsers -= 200_000;
+            if (totUsers > 20_000) totUsers -= 20_000;
             else return 0;
         }
         else if (phase == 4)
         {
-            if (totUsers > 300_000) totUsers -= 300_000;
+            if (totUsers > 30_000) totUsers -= 30_000;
             else return 0;
         }
 
-        if (totUsers < 100_000) return (double)totUsers / 100_000;
+        if (totUsers < 10_000) return (double)totUsers / 10_000;
         else return 1;
     }
 

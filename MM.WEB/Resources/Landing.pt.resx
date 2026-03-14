@@ -175,7 +175,7 @@
     <value>Explore nosso sistema de compatibilidade</value>
   </data>
   <data name="Phase1Title" xml:space="preserve">
-    <value>Fase 1 (0-100k usuários)</value>
+    <value>Fase 1 (0-10k usuários)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
     <value>Os usuários podem se candidatar como clientes de matchmaking</value>
@@ -184,7 +184,7 @@
     <value>Moeda MM: US$ 1 por unidade</value>
   </data>
   <data name="Phase2Title" xml:space="preserve">
-    <value>Fase 2 (100k-200k usuários)</value>
+    <value>Fase 2 (10k-20k usuários)</value>
   </data>
   <data name="Phase3Opt1" xml:space="preserve">
     <value>Novos recursos a serem anunciados</value>
@@ -193,7 +193,7 @@
     <value>Moeda MM: US$ 2 por unidade</value>
   </data>
   <data name="Phase3Title" xml:space="preserve">
-    <value>Fase 3 (200k-300k usuários)</value>
+    <value>Fase 3 (20k-30k usuários)</value>
   </data>
   <data name="Phase4Opt1" xml:space="preserve">
     <value>Novos recursos a serem anunciados</value>
@@ -202,7 +202,7 @@
     <value>Moeda MM: US$ 3 por unidade</value>
   </data>
   <data name="Phase4Title" xml:space="preserve">
-    <value>Fase 4 (300k-400k usuários)</value>
+    <value>Fase 4 (30k-40k usuários)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidade</value>

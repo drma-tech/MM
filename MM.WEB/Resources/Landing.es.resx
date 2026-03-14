@@ -175,7 +175,7 @@
     <value>Explora nuestro sistema de compatibilidad</value>
   </data>
   <data name="Phase1Title" xml:space="preserve">
-    <value>Fase 1 (0-100k usuarios)</value>
+    <value>Fase 1 (0-10k usuarios)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
     <value>Los usuarios pueden postularse como clientes de emparejamiento</value>
@@ -184,7 +184,7 @@
     <value>Moneda MM: US$1 por unidad</value>
   </data>
   <data name="Phase2Title" xml:space="preserve">
-    <value>Fase 2 (100.000-200.000 usuarios)</value>
+    <value>Fase 2 (10k-20k usuarios)</value>
   </data>
   <data name="Phase3Opt1" xml:space="preserve">
     <value>Se anunciarán nuevas funciones</value>
@@ -193,7 +193,7 @@
     <value>Moneda MM: US$2 por unidad</value>
   </data>
   <data name="Phase3Title" xml:space="preserve">
-    <value>Fase 3 (200k-300k usuarios)</value>
+    <value>Fase 3 (20k-30k usuarios)</value>
   </data>
   <data name="Phase4Opt1" xml:space="preserve">
     <value>Se anunciarán nuevas funciones</value>
@@ -202,7 +202,7 @@
     <value>Moneda MM: US$3 por unidad</value>
   </data>
   <data name="Phase4Title" xml:space="preserve">
-    <value>Fase 4 (300k-400k usuarios)</value>
+    <value>Fase 4 (30k-40k usuarios)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacidad</value>
