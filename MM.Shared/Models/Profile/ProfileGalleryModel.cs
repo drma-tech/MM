@@ -30,15 +30,4 @@ public class ProfileGalleryModel
         else
             Type = GalleryType.Picures;
     }
-
-    /// <summary>
-    ///     note: cannot update profile after calling this method
-    /// </summary>
-    public void SimulateBlindDate()
-    {
-        Type = GalleryType.BlindDate;
-        FaceId = null;
-        BodyId = null;
-        ValidationId = null;
-    }
 }

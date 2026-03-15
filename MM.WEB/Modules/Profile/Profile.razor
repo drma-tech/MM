@@ -453,22 +453,29 @@ else
 
     private async Task IsPublicChanged(bool value)
     {
-        if (value)
+        try
         {
-            if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationGeral)
+            if (value)
             {
-                await ShowWarning(GlobalTranslations.CompleteAllSteps);
+                if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationGeral)
+                {
+                    await ShowWarning(GlobalTranslations.CompleteAllSteps);
+                }
+                else
+                {
+                    await PrincipalApi.Public();
+                    await ShowSuccess(GlobalTranslations.ProfilePublicMode);
+                }
             }
             else
             {
-                await PrincipalApi.Public();
-                await ShowSuccess(GlobalTranslations.ProfilePublicMode);
+                await PrincipalApi.Private();
+                await ShowSuccess(GlobalTranslations.ProfilePrivateMode);
             }
         }
-        else
+        catch (Exception ex)
         {
-            await PrincipalApi.Private();
-            await ShowSuccess(GlobalTranslations.ProfilePrivateMode);
+            await ProcessException(ex);
         }
     }
 

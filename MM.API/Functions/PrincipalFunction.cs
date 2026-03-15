@@ -197,6 +197,11 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
             throw new NotificationException("Please complete all steps before making your profile public.");
         }
 
+        if (!setting!.BlindDate && profile.Gallery!.ValidationId.Empty()) //there is some situations where user can have validation = true but no validation photo id
+        {
+            throw new NotificationException("An error occurred while publishing your profile. Please re-validate your gallery.");
+        }
+
         await repoOn.UpsertItemAsync(profile, cancellationToken);
         await repoOff.DeleteItemAsync(profile, cancellationToken);
 
