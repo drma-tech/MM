@@ -1,17 +1,48 @@
 ﻿@page "/admin"
 @attribute [Authorize(Roles = "administrator")]
 
+@using MM.Shared.Models.Profile
+@using MM.WEB.Modules.Profile.Core
 @using Microsoft.AspNetCore.Authorization
 @using MM.WEB.Modules.Auth.Core
 
 @inherits PageCore<AdminPage>
 @inject PrincipalImportApi PrincipalImportApi
+@inject ProfileApi ProfileApi
 
 <h3>AdminPage</h3>
 
 <MudButton OnClick="ImportHandle">Import Users</MudButton>
 
+<MudDataGrid T="ProfileModel" Items="@Profiles" ReadOnly="false" Filterable="true" Dense="true" FilterMode="DataGridFilterMode.ColumnFilterMenu" Class="mt-3" RowsPerPage="8">
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="Id" />
+        <PropertyColumn Property="x => x.NickName" Title="NickName" />
+        <PropertyColumn Property="x => x.Description" Title="Description" />
+        <TemplateColumn>
+            <CellTemplate>
+                <MudImage Src="@context.Item.GetPhoto(ImageHelper.PhotoType.Face)" Style="width: 128px;"></MudImage>
+            </CellTemplate>
+        </TemplateColumn>
+        <TemplateColumn>
+            <CellTemplate>
+                <MudImage Src="@context.Item.GetPhoto(ImageHelper.PhotoType.Body)" Style="width: 128px;"></MudImage>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+    <PagerContent>
+        <MudDataGridPager T="ProfileModel" />
+    </PagerContent>
+</MudDataGrid>
+
 @code {
+    public HashSet<ProfileModel> Profiles { get; set; } = [];
+
+    protected override async Task ProcessPageData()
+    {
+        Profiles = await ProfileApi.GetAll();
+    }
+
     private async Task ImportHandle()
     {
         try

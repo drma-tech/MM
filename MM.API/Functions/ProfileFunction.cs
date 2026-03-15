@@ -80,6 +80,16 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 {
     private readonly CosmosRepository _repoGen = repoGen;
 
+    //[Function("ProfileGetAll")]
+    //public async Task<HttpResponseData?> ProfileGetAll(
+    //   [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "profile/get-all")] HttpRequestData req, CancellationToken cancellationToken)
+    //{
+    //    var dataOff = await repoOff.ListAll<ProfileModel>(cancellationToken);
+    //    var dataOn = await repoOn.ListAll<ProfileModel>(cancellationToken);
+
+    //    return await req.CreateResponse(dataOff.Union(dataOn), TtlCache.OneDay, cancellationToken);
+    //}
+
     [Function("ProfileGetData")]
     public async Task<HttpResponseData?> ProfileGetData(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)

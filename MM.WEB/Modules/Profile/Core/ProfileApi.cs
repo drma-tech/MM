@@ -9,6 +9,11 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
         return await GetAsync(ProfileEndpoint.Get);
     }
 
+    public async Task<HashSet<ProfileModel>> GetAll()
+    {
+        return await GetListAsync(ProfileEndpoint.GetAll);
+    }
+
     public async Task<ProfileModel?> GetView(string? IdUserView)
     {
         if (IdUserView == null) return default;
@@ -29,6 +34,7 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
     public struct ProfileEndpoint
     {
         public const string Get = "profile/get-data";
+        public const string GetAll = "profile/get-all";
         public const string UpdateData = "profile/update-data";
 
         public static string GetView(string id)
