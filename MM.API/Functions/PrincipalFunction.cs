@@ -10,7 +10,7 @@ using MM.Shared.Models.Profile.Core;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, StorageHelper storageHelper, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -127,10 +127,24 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         if (myLogins != null) await repo.Delete(myLogins, cancellationToken);
 
         var myProfileOff = await repoOff.Get<ProfileModel>(userId, cancellationToken);
-        if (myProfileOff != null) await repoOff.DeleteItemAsync(myProfileOff, cancellationToken);
+        if (myProfileOff != null)
+        {
+            if (myProfileOff.Gallery?.FaceId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Face, myProfileOff.Gallery.FaceId, cancellationToken);
+            if (myProfileOff.Gallery?.BodyId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Body, myProfileOff.Gallery.BodyId, cancellationToken);
+            if (myProfileOff.Gallery?.ValidationId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Validation, myProfileOff.Gallery.ValidationId, cancellationToken);
+
+            await repoOff.DeleteItemAsync(myProfileOff, cancellationToken);
+        }
 
         var myProfileOn = await repoOn.Get<ProfileModel>(userId, cancellationToken);
-        if (myProfileOn != null) await repoOn.DeleteItemAsync(myProfileOn, cancellationToken);
+        if (myProfileOn != null)
+        {
+            if (myProfileOn.Gallery?.FaceId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Face, myProfileOn.Gallery.FaceId, cancellationToken);
+            if (myProfileOn.Gallery?.BodyId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Body, myProfileOn.Gallery.BodyId, cancellationToken);
+            if (myProfileOn.Gallery?.ValidationId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Validation, myProfileOn.Gallery.ValidationId, cancellationToken);
+
+            await repoOn.DeleteItemAsync(myProfileOn, cancellationToken);
+        }
 
         var myFilter = await repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
         if (myFilter != null) await repo.Delete(myFilter, cancellationToken);

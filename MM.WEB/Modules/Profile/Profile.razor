@@ -116,7 +116,7 @@ else
         {
             <MudPaper Class="@Css.Build().Small("pa")" Outlined="true" Style="text-align: center;">
                 <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
-                    <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face) ?? "images/no-picture.png")" FallbackSrc="images/no-picture.png" Fluid="true" />
+                    <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
                 </MudAvatar>
                 <div class="mb-2" style="text-align: center;">
                     <MudChip T="string" Color="Color.Primary" Label="true">
@@ -415,6 +415,7 @@ else
             }
 
             //remove the loading status
+            await SuggestionsActions.StartLoading.Invoke(null);
             await SuggestionsActions.FinishLoading.Invoke(null);
 
             await LoadLikes();

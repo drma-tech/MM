@@ -122,6 +122,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
         var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
+        var currentPictureId = profile.Gallery?.ValidationId;
 
         using var faceStream = await GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face), cancellationToken);
         using var streamValidation = new MemoryStream(request.Stream);
@@ -144,15 +145,20 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
             throw new NotificationException("More than one face was detected. Please ensure only one person is in the image.");
         }
 
+        if (currentPictureId != null) //delete old picture from azure storage
+        {
+            await storageHelper.DeletePhoto(PhotoType.Validation, currentPictureId, cancellationToken);
+        }
+
         using var streamStorage = new MemoryStream(request.Stream);
 
         var idNewPhoto = Guid.NewGuid().ToString();
         var photoName = idNewPhoto + ".jpg";
 
         await storageHelper.UploadPhoto(PhotoType.Validation, streamStorage, photoName, userId, cancellationToken);
-        if (profile.Gallery.ValidationId.NotEmpty()) await storageHelper.DeletePhoto(PhotoType.Validation, profile.Gallery.ValidationId, cancellationToken);
+        if (profile.Gallery!.ValidationId.NotEmpty()) await storageHelper.DeletePhoto(PhotoType.Validation, profile.Gallery.ValidationId, cancellationToken);
 
-        profile.Gallery.ValidationId = photoName;
+        profile.Gallery!.ValidationId = photoName;
 
         await repo.UpsertItemAsync(profile, cancellationToken);
 

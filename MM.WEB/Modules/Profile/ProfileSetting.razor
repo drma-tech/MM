@@ -17,12 +17,7 @@
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
-                <FieldSwitch For="@(() => Setting!.BlindDate)" @bind-Value="@Setting!.BlindDate" CssIcon="@IconsFA.Solid.Icon("eye").Font"></FieldSwitch>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceSmall">
-            <MudItem xs="12">
-
+                <FieldSwitch For="@(() => Setting.BlindDate)" Value="@Setting.BlindDate" ValueChanged="@((vl) => Setting.BlindDate = vl)" CssIcon="@IconsFA.Solid.Icon("eye").Font"></FieldSwitch>
             </MudItem>
         </MudGrid>
     </MudStack>
@@ -39,12 +34,13 @@
 
 @code {
     [CascadingParameter] public AuthPrincipal? Principal { get; set; }
+
     private SettingModel? Setting { get; set; }
-    public ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
+    private ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
 
     protected override async Task LoadAuthDataAsync()
     {
-        Actions.StartLoading?.Invoke(null);
+        await Actions.StartLoading.Invoke(null);
 
         Setting = await SettingApi.Get();
 
@@ -53,16 +49,16 @@
             Setting = new SettingModel();
         }
 
-        Actions.FinishLoading?.Invoke(Setting);
+        await Actions.FinishLoading.Invoke(Setting);
     }
 
     private async Task SaveHandle()
     {
-        if (Setting == null) throw new InvalidOperationException("Setting is null");
-
         try
         {
-            Actions?.StartProcessing?.Invoke(null);
+            if (Setting == null) throw new InvalidOperationException("Setting is null");
+
+            await Actions.StartProcessing.Invoke(null);
 
             Setting = await SettingApi.Update(Setting);
 
@@ -93,7 +89,7 @@
                 }
             }
 
-            Actions?.FinishProcessing?.Invoke(Setting);
+            await Actions.FinishProcessing.Invoke(Setting);
 
             Navigation.NavigateTo("profile");
         }

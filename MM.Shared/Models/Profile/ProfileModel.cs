@@ -82,11 +82,11 @@ public class ProfileModel : CosmosDocument
 
     public string GetPhoto(PhotoType type, bool fake = false)
     {
-        if (Gallery == null) return GetNoUserPhoto;
+        if (Gallery == null) return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
         if (Gallery.Type == GalleryType.BlindDate) return GetBlindDate;
 
         var id = Gallery.GetPictureId(type);
-        if (id == null) return GetNoUserPhoto;
+        if (id == null) return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
 
         if (fake)
             return id;

@@ -9,7 +9,8 @@ public static class ImageHelper
         Validation = 3
     }
 
-    public static string GetNoUserPhoto => "images/no-picture.png";
+    public static string GetFacePhoto => "images/no-face-photo.png";
+    public static string GetBodyPhoto => "images/no-body-photo.png";
     public static string GetBlindDate => "images/blind-date.png";
 
     public static string GetPhotoContainer(PhotoType type)

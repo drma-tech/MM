@@ -24,9 +24,9 @@ public class PersonModel
 
     public string GetUserPhoto()
     {
-        if (UserPhoto.Empty())
-            return ImageHelper.GetNoUserPhoto;
-        return UserPhoto!;
+        if (UserPhoto.Empty()) return ImageHelper.GetFacePhoto;
+
+        return UserPhoto;
     }
 
     public override bool Equals(object? obj)
