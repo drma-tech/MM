@@ -31,12 +31,12 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
 
     public AuthPurchase GetPurchase(string? id, PaymentProvider provider)
     {
-        var sub = AuthPurchases.SingleOrDefault(s => s.PurchaseId == id);
-        if (sub != null) return sub;
+        var purchase = AuthPurchases.SingleOrDefault(s => s.PurchaseId == id);
+        if (purchase != null) return purchase;
 
-        sub = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException("No subscriptions found.");
-        sub.PurchaseId = id;
-        return sub;
+        purchase = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException($"No purchases found. id={id}");
+        purchase.PurchaseId = id;
+        return purchase;
     }
 
     public void AddPurchase(AuthPurchase purchase)

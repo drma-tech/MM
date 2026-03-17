@@ -233,7 +233,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         if (string.IsNullOrEmpty(Signature?.First())) throw new UnhandledException("Stripe signature missing");
         var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new UnhandledException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
 
-        if (stripeEvent.Type.StartsWith("checkout.session"))
+        if (stripeEvent.Type.StartsWith("checkout.session")) //completed, async_payment_succeeded
         {
             if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new UnhandledException("Stripe session not available");
 
@@ -251,17 +251,25 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
                 return;
             }
 
-            principal.Sparks += int.Parse(qtd);
+            if (session.PaymentStatus == "paid" || stripeEvent.Type == "checkout.session.async_payment_succeeded")
+            {
+                var purchase = principal.GetPurchase(session.Id, PaymentProvider.Stripe);
 
-            var sub = principal.GetPurchase(session.Id, PaymentProvider.Stripe);
+                if (purchase.Sparks == 0)
+                {
+                    if (!int.TryParse(qtd, out int quantity))
+                        throw new UnhandledException("Invalid quantity");
 
-            sub.Sparks = int.Parse(qtd);
+                    purchase.Sparks = quantity;
+                    principal.Sparks += quantity;
 
-            principal.UpdatePurchase(sub);
+                    principal.UpdatePurchase(purchase);
 
-            var ip = req.GetUserIP(true);
-            var type = stripeEvent.Type.Split(".")[2];
-            principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {session.Status}, Qtd = {principal.Sparks} for SessionId = {session.Id}", ip));
+                    var ip = req.GetUserIP(true);
+                    var type = stripeEvent.Type.Split(".")[2];
+                    principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {session.PaymentStatus}, Qtd = {quantity} for SessionId = {session.Id}", ip));
+                }
+            }
 
             await repo.UpsertItemAsync(principal, cancellationToken);
         }
