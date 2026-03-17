@@ -136,9 +136,7 @@
         else
             Principal = null;
 
-        var sub = Principal?.GetActiveSubscription();
-        AppStateStatic.IsPremiumUser = sub?.IsActive() ?? false;
-        AppStateStatic.ActiveProduct = sub?.Product ?? AccountProduct.Basic;
+        AppStateStatic.IsPremiumUser = Principal?.Sparks > 0;
 
         await ProcessUserAccess();
         AppStateStatic.UserStateChanged?.Invoke();

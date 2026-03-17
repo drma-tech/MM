@@ -58,7 +58,7 @@ public static class PopupHelper
     {
         var parameters = new DialogParameters<SubscriptionPopup> { };
 
-        await service.ShowAsync<SubscriptionPopup>(Modules.Subscription.Resources.Translations.MySubscription, parameters, Options(MaxWidth.Medium));
+        await service.ShowAsync<SubscriptionPopup>("My Sparks", parameters, Options(MaxWidth.Small));
     }
 
     public static async Task OnboardingPopup(this IDialogService service)

@@ -77,8 +77,6 @@
         {
             var data = new SuperData() { Principal = Principal };
 
-            var sub = Principal!.GetActiveSubscription();
-
             data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
 
             var fileName = $"{SeoTranslations.AppTitle.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
@@ -94,9 +92,9 @@
     {
         try
         {
-            if (Principal!.GetActiveSubscription() != null)
+            if (Principal!.Sparks > 0)
             {
-                await DialogService.ShowMessageBoxAsync("You still have an active subscription", "Please cancel your subscription before deleting your profile.");
+                await DialogService.ShowMessageBoxAsync("You still have sparks.", "Please request a refund or spend your sparks before deleting your profile.");
                 return;
             }
 

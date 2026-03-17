@@ -210,7 +210,7 @@ namespace MM.WEB.Core.Helper
 
         public Task GoogleOpenCheckout(string? productId, string type) => InvokeVoid("google.openCheckout", productId, type);
 
-        public Task StripeOpenCheckout(string? priceId) => InvokeVoid("stripe.openCheckout", priceId);
+        public Task StripeOpenCheckout(string? priceId, int qtd) => InvokeVoid("stripe.openCheckout", priceId, qtd);
     }
 
     public class CropperJs(IJSRuntime js) : JsModuleBase(js, "./js/crop-helper.js")

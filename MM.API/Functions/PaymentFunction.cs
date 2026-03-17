@@ -25,18 +25,20 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             return new PaymentConfigurations
             {
-                PricePremiumWeek = ApiStartup.Configurations.Apple?.Premium?.PriceWeek,
-                PricePremiumMonth = ApiStartup.Configurations.Apple?.Premium?.PriceMonth,
-                PricePremiumYear = ApiStartup.Configurations.Apple?.Premium?.PriceYear
+                PricePhase1 = ApiStartup.Configurations.Apple?.Phase1?.Price,
+                PricePhase2 = ApiStartup.Configurations.Apple?.Phase2?.Price,
+                PricePhase3 = ApiStartup.Configurations.Apple?.Phase3?.Price,
+                PricePhase4 = ApiStartup.Configurations.Apple?.Phase4?.Price,
             };
         }
         else if (provider == PaymentProvider.Stripe)
         {
             return new PaymentConfigurations
             {
-                PricePremiumWeek = ApiStartup.Configurations.Stripe?.Premium?.PriceWeek,
-                PricePremiumMonth = ApiStartup.Configurations.Stripe?.Premium?.PriceMonth,
-                PricePremiumYear = ApiStartup.Configurations.Stripe?.Premium?.PriceYear
+                PricePhase1 = ApiStartup.Configurations.Stripe?.Phase1?.Price,
+                PricePhase2 = ApiStartup.Configurations.Stripe?.Phase2?.Price,
+                PricePhase3 = ApiStartup.Configurations.Stripe?.Phase3?.Price,
+                PricePhase4 = ApiStartup.Configurations.Stripe?.Phase4?.Price,
             };
         }
         else
@@ -74,18 +76,15 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
             var purchase = result.latest_receipt_info[result.latest_receipt_info.Count - 1];
 
-            var sub = new AuthSubscription
+            var sub = new AuthPurchase
             {
                 Provider = PaymentProvider.Apple,
-                Product = AccountProduct.Premium,
-                Cycle = purchase.product_id!.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly,
-                SessionId = receipt //save receipt before cause it may fail
+                Product = AccountProduct.Phase1,
+                SessionId = receipt, //save receipt before cause it may fail
+                PurchaseId = purchase.original_transaction_id,
             };
 
-            sub.SubscriptionId = purchase.original_transaction_id;
-            sub.ExpiresDate = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(purchase.expires_date_ms ?? "0", CultureInfo.InvariantCulture));
-
-            client.AddSubscription(sub);
+            client.AddPurchase(sub);
 
             //https://developer.apple.com/documentation/appstorereceipts/status
             client.Events.Add(new Event("Apple", $"Subscription created with status = {result.status} and id = {purchase.original_transaction_id}", ip));
@@ -123,7 +122,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         var originalTransactionId = transaction.OriginalTransactionId;
 
-        var results = await repo.Query<AuthPrincipal>(x => x.Subscriptions.Any(p => p.SubscriptionId == originalTransactionId), DocumentType.Principal, cancellationToken);
+        var results = await repo.Query<AuthPrincipal>(x => x.AuthPurchases.Any(p => p.PurchaseId == originalTransactionId), DocumentType.Principal, cancellationToken);
 
         var client = results.LastOrDefault();
 
@@ -133,27 +132,28 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             return;
         }
 
-        var sub = client.GetSubscription(originalTransactionId, PaymentProvider.Apple);
+        var sub = client.GetPurchase(originalTransactionId, PaymentProvider.Apple);
 
         if (notification.NotificationType == "REFUND" || notification.NotificationType == "REVOKE")
         {
-            sub.ExpiresDate = DateTimeOffset.UtcNow; //disable immediately
+            sub.Sparks = 0; //disable immediately
         }
         else
         {
-            var newExpires = DateTimeOffset.FromUnixTimeMilliseconds(transaction.ExpiresDate);
-            if (sub.ExpiresDate == null || newExpires > sub.ExpiresDate)
-            {
-                sub.ExpiresDate = newExpires;
-            }
+            sub.Sparks = 10;
+            //var newExpires = DateTimeOffset.FromUnixTimeMilliseconds(transaction.ExpiresDate);
+            //if (sub.ExpiresDate == null || newExpires > sub.ExpiresDate)
+            //{
+            //    sub.ExpiresDate = newExpires;
+            //}
         }
 
-        var product = transaction.ProductId ?? throw new UnhandledException("product not available");
-        sub.Cycle = product.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
+        //var product = transaction.ProductId ?? throw new UnhandledException("product not available");
+        //sub.Cycle = product.Contains("yearly") ? AccountCycle.Yearly : AccountCycle.Monthly;
 
-        client.UpdateSubscription(sub);
+        client.UpdatePurchase(sub);
 
-        client.Events.Add(new Event("Apple (Webhooks)", $"SubscriptionId = {originalTransactionId}, Cycle = {sub.Cycle}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}, expiresDate = {sub.ExpiresDate}", ip));
+        client.Events.Add(new Event("Apple (Webhooks)", $"SubscriptionId = {originalTransactionId}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}", ip));
 
         await repo.UpsertItemAsync(client, cancellationToken);
     }
@@ -181,7 +181,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
     [Function("CreateCheckoutSession")]
     public async Task<string> CreateCheckoutSession(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}")] HttpRequestData req, string priceId, CancellationToken cancellationToken)
+      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}/{qtd}")] HttpRequestData req, string priceId, int qtd, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
         var ip = req.GetUserIP(true);
@@ -195,9 +195,10 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             Customer = principal.StripeCustomerId,
 
-            LineItems = [new() { Price = priceId, Quantity = 1, },],
-            Mode = "subscription",
+            LineItems = [new() { Price = priceId, Quantity = qtd, },],
+            Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
+            Metadata = new Dictionary<string, string> { { "UserId", principal.Id }, { "Quantity", qtd.ToString() } }
         };
 
         options.AddExtraParam("managed_payments[enabled]", true);
@@ -205,26 +206,17 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         var service = new SessionService();
         Session session = await service.CreateAsync(options, cancellationToken: cancellationToken);
 
-        AccountCycle? cycle = null;
-
-        if (priceId == ApiStartup.Configurations.Stripe!.Premium!.PriceWeek)
-            cycle = AccountCycle.Weekly;
-        else if (priceId == ApiStartup.Configurations.Stripe.Premium.PriceMonth)
-            cycle = AccountCycle.Monthly;
-        else if (priceId == ApiStartup.Configurations.Stripe.Premium.PriceYear)
-            cycle = AccountCycle.Yearly;
-
-        var sub = new AuthSubscription()
+        var purchase = new AuthPurchase()
         {
+            PurchaseId = session.Id,
             Provider = PaymentProvider.Stripe,
-            Product = AccountProduct.Premium,
-            Cycle = cycle,
-            SessionId = session.Id
+            Product = AccountProduct.Phase1,
+            SessionId = session.Id,
         };
 
-        principal.AddSubscription(sub);
+        principal.AddPurchase(purchase);
 
-        principal.Events.Add(new Event("Stripe", $"Session created with cycle = {cycle} and SessionId = {session.Id}", ip));
+        principal.Events.Add(new Event("Stripe", $"Session created with SessionId = {session.Id}", ip));
 
         await repo.UpsertItemAsync(principal, cancellationToken);
 
@@ -241,56 +233,37 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         if (string.IsNullOrEmpty(Signature?.First())) throw new UnhandledException("Stripe signature missing");
         var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new UnhandledException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
 
-        if (stripeEvent.Type.StartsWith("customer.subscription")) //created, updated, deleted, paused, resumed, trial_will_end, pending_update_applied, pending_update_expired
+        if (stripeEvent.Type.StartsWith("checkout.session.completed"))
         {
-            if (stripeEvent.Data.Object is not Stripe.Subscription subscription || subscription.Id.Empty()) throw new UnhandledException("stripe subscription not available");
+            if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new UnhandledException("Stripe session not available");
 
-            var results = await repo.Query<AuthPrincipal>(p => p.StripeCustomerId == subscription.CustomerId, DocumentType.Principal, cancellationToken) ?? throw new UnhandledException("AuthPrincipal null");
-            var principal = results.SingleOrDefault();
+            if (!session.Metadata.TryGetValue("UserId", out var userId) || string.IsNullOrEmpty(userId))
+                throw new UnhandledException("UserId metadata missing in session");
+
+            if (!session.Metadata.TryGetValue("Quantity", out var qtd) || string.IsNullOrEmpty(qtd))
+                throw new UnhandledException("Quantity metadata missing in session");
+
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
             if (principal == null)
             {
-                req.LogError(new UnhandledException($"principal null - subscriptionId:{subscription.Id}"));
+                req.LogError(new UnhandledException($"principal null - userId:{userId}"));
                 return;
             }
 
-            var sub = principal.GetSubscription(subscription.Id, PaymentProvider.Stripe);
+            principal.Sparks += int.Parse(qtd);
 
-            sub.Active = subscription.Status is "active" or "trialing";
+            var sub = principal.GetPurchase(session.Id, PaymentProvider.Stripe);
 
-            sub.Cycle = Enum.Parse<AccountCycle>(subscription.Items.First().Price.Metadata["cycle"]); //if cycle changes, update it
+            sub.Sparks = int.Parse(qtd);
 
-            if (subscription.CancelAt.HasValue)
-            {
-                sub.ExpiresDate = subscription.CancelAt.Value;
-            }
-
-            principal.UpdateSubscription(sub);
+            principal.UpdatePurchase(sub);
 
             var ip = req.GetUserIP(true);
             var type = stripeEvent.Type.Split(".")[2];
-            principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {subscription.Status}, Cycle = {sub.Cycle} for SubscriptionId = {subscription.Id}", ip));
+            principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {session.Status}, Qtd = {principal.Sparks} for SessionId = {session.Id}", ip));
 
             await repo.UpsertItemAsync(principal, cancellationToken);
         }
-    }
-
-    [Function("StripeGePortalLink")]
-    public async Task<string> StripeGePortalLink(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/portal-link")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        var url = req.GetQueryParameters()["url"];
-        var userId = await req.GetUserIdAsync(cancellationToken);
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
-
-        var options = new Stripe.BillingPortal.SessionCreateOptions
-        {
-            Customer = principal.StripeCustomerId,
-            ReturnUrl = url
-        };
-        var service = new Stripe.BillingPortal.SessionService();
-        var session = await service.CreateAsync(options, cancellationToken: cancellationToken);
-
-        return session.Url;
     }
 }

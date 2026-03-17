@@ -11,10 +11,7 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined">
-            In this initial phase, this feature is disabled. Please check the homepage for more details.
-        </MudAlert>
-        @* @if (BlockedCountry)
+        @if (BlockedCountry)
         {
             <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
                 @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in {_XoloBlockedCountries[CurrentCountry!.ToUpper()]}.")
@@ -26,128 +23,103 @@
         }
         else
         {
-            if (Client?.GetActiveSubscription() == null)
-            {
-                <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
-                    <MudItem xs="12" sm="8">
-                        <MudToggleGroup SelectionMode="SelectionMode.SingleSelection" @bind-Value="Cycle" Color="Color.Primary">
-                            <MudToggleItem Value="@AccountCycle.Weekly">
-                                @AccountCycle.Weekly.GetName()
-                            </MudToggleItem>
-                            <MudToggleItem Value="@AccountCycle.Monthly">
-                                @AccountCycle.Monthly.GetName()
-                            </MudToggleItem>
-                            <MudToggleItem Value="@AccountCycle.Yearly">
-                                @AccountCycle.Yearly.GetName()
-                            </MudToggleItem>
-                        </MudToggleGroup>
-                    </MudItem>
-                    <MudItem xs="12" sm="4">
-                        <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Dense="true">
-                            @foreach (var item in Providers)
-                            {
-                                <MudSelectItem T="PaymentProvider" Value="@item">
-                                    @item.GetName()
-                                </MudSelectItem>
-                            }
-                        </MudSelect>
-                    </MudItem>
-                </MudGrid>
-                @if (Provider == PaymentProvider.Microsoft)
-                {
-                    if (Platform == MM.Shared.Enums.Platform.windows)
+            <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
+                <MudItem xs="12" sm="8">
+                    @if (AppStateStatic.ActiveProduct == AccountProduct.Phase1)
                     {
-                        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                            The Microsoft subscription option isn’t available yet. Stay tuned for updates!
+                        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" NoIcon="true">
+                            We’re in pre-launch. Buy Sparks now at the lowest price and use them when we go live.
                         </MudAlert>
                     }
                     else
                     {
-                        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                            The Microsoft subscription option is only available in the Windows application.
+                        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" NoIcon="true">
+                            Get Sparks at the current price. The price increases in the next phase as more users join.
                         </MudAlert>
                     }
-                }
-                else if (Provider == PaymentProvider.Apple)
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Dense="true">
+                        @foreach (var item in Providers)
+                        {
+                            <MudSelectItem T="PaymentProvider" Value="@item">
+                                @item.GetName()
+                            </MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+            @if (Provider == PaymentProvider.Microsoft)
+            {
+                if (Platform == MM.Shared.Enums.Platform.windows)
                 {
-                    if (Platform == MM.Shared.Enums.Platform.ios)
-                    {
-                        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("mb")">
-                            Apple subscription is still in testing. If you run into any issues, please reach out via feedback or email. We’re happy to help.
-                        </MudAlert>
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Microsoft subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
+                }
+                else
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Microsoft subscription option is only available in the Windows application.
+                    </MudAlert>
+                }
+            }
+            else if (Provider == PaymentProvider.Apple)
+            {
+                if (Platform == MM.Shared.Enums.Platform.ios)
+                {
+                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("mb")">
+                        Apple subscription is still in testing. If you run into any issues, please reach out via feedback or email. We’re happy to help.
+                    </MudAlert>
 
-                        <SubscriptionPlans Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
-                    }
-                    else
-                    {
-                        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                            The Apple subscription option is only available on iOS devices.
-                        </MudAlert>
-                    }
+                    <SubscriptionPlans Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
                 }
-                else if (Provider == PaymentProvider.Google)
+                else
                 {
-                    if (Platform == MM.Shared.Enums.Platform.play)
-                    {
-                        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                            The Google subscription option isn’t available yet. Stay tuned for updates!
-                        </MudAlert>
-                    }
-                    else
-                    {
-                        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                            The Google subscription option is only available on Android devices.
-                        </MudAlert>
-                    }
-                }
-                else if (Provider == PaymentProvider.Paddle)
-                {
-                    <FeatureUnavailable></FeatureUnavailable>
-                }
-                else if (Provider == PaymentProvider.Stripe)
-                {
-                    @if (Platform == SD.Shared.Enums.Platform.amazon)
-                    {
-                        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
-                            @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in Amazon devices.")
-                        </MudAlert>
-                    }
-                    else if (CurrentCountry.NotEmpty() && _StripeBlockedCountries.ContainsKey(CurrentCountry.ToUpper()))
-                    {
-                        <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
-                            @($"Unfortunately, due to legal and policy restrictions, Stripe cannot offer payment services in {_StripeBlockedCountries[CurrentCountry!.ToUpper()]}.")
-                        </MudAlert>
-                    }
-                    else
-                    {
-                        <SubscriptionPlans Provider="Provider" Cycle="Cycle" Client="Client"></SubscriptionPlans>
-                    }
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Apple subscription option is only available on iOS devices.
+                    </MudAlert>
                 }
             }
-            else //subscription active
+            else if (Provider == PaymentProvider.Google)
             {
-                @if (Provider == PaymentProvider.Microsoft)
+                if (Platform == MM.Shared.Enums.Platform.play)
                 {
-                    <FeatureUnavailable></FeatureUnavailable>
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Google subscription option isn’t available yet. Stay tuned for updates!
+                    </MudAlert>
                 }
-                else if (Provider == PaymentProvider.Apple)
+                else
                 {
-                    <AppleSubscriptionManager Client="@Client"></AppleSubscriptionManager>
-                }
-                else if (Provider == PaymentProvider.Google)
-                {
-                    <FeatureUnavailable></FeatureUnavailable>
-                }
-                else if (Provider == PaymentProvider.Paddle)
-                {
-                    <FeatureUnavailable></FeatureUnavailable>
-                }
-                else if (Provider == PaymentProvider.Stripe)
-                {
-                    <StripeSubscriptionManager Client="@Client"></StripeSubscriptionManager>
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
+                        The Google subscription option is only available on Android devices.
+                    </MudAlert>
                 }
             }
-        } *@
+            else if (Provider == PaymentProvider.Paddle)
+            {
+                <FeatureUnavailable></FeatureUnavailable>
+            }
+            else if (Provider == PaymentProvider.Stripe)
+            {
+                @if (Platform == MM.Shared.Enums.Platform.amazon)
+                {
+                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
+                        @($"Unfortunately, due to legal and policy restrictions, we are unable to offer our services in Amazon devices.")
+                    </MudAlert>
+                }
+                else if (CurrentCountry.NotEmpty() && _StripeBlockedCountries.ContainsKey(CurrentCountry.ToUpper()))
+                {
+                    <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true">
+                        @($"Unfortunately, due to legal and policy restrictions, Stripe cannot offer payment services in {_StripeBlockedCountries[CurrentCountry!.ToUpper()]}.")
+                    </MudAlert>
+                }
+                else
+                {
+                    <SubscriptionPlans Provider="Provider" Client="Client"></SubscriptionPlans>
+                }
+            }
+        }
     </DialogContent>
     <DialogActions>
         <span class="ma-2">Platform: @Platform</span>
@@ -164,7 +136,6 @@
     private AuthPrincipal? Client { get; set; }
     private List<PaymentProvider> Providers { get; set; } = [];
 
-    private AccountCycle Cycle { get; set; } = AccountCycle.Weekly;
     private MM.Shared.Enums.Platform? Platform { get; set; }
     private PaymentProvider Provider { get; set; } = PaymentProvider.Stripe;
     private string? CurrentCountry { get; set; }
@@ -199,122 +170,121 @@
         { "SY", "Syria" },
     };
 
-    // protected override void OnInitialized()
-    // {
-    //     JsEventDispatcher.Register(nameof(RegistrationSuccessful), async () => await RegistrationSuccessful());
-    //     JsEventDispatcher.Register(nameof(AppleVerify), async (string receipt) => await AppleVerify(receipt));
-    // }
+    protected override void OnInitialized()
+    {
+        BufferedEvent.Register(nameof(RegistrationSuccessful), async () => await RegistrationSuccessful());
+        BufferedEvent.Register(nameof(AppleVerify), async (string receipt) => await AppleVerify(receipt));
+    }
 
     protected override async Task ProcessPopupData()
     {
-        // CurrentCountry = await IpInfoApi.GetCountry();
+        CurrentCountry = await IpInfoApi.GetCountry();
 
-        // if (CurrentCountry.NotEmpty())
-        // {
-        //     BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
+        if (CurrentCountry.NotEmpty())
+        {
+            BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
 
-        //     if (BlockedCountry) return;
-        // }
+            if (BlockedCountry) return;
+        }
 
-        // Providers.Clear();
+        Providers.Clear();
 
         Platform = await AppStateStatic.GetPlatform(JsRuntime);
 
-        // if (Platform == MM.Shared.Enums.Platform.ios)
-        // {
-        //     if (CurrentCountry == "US")
-        //     {
-        //         Providers.Add(PaymentProvider.Apple);
-        //         Providers.Add(PaymentProvider.Stripe);
-        //     }
-        //     else
-        //     {
-        //         Providers.Add(PaymentProvider.Apple);
-        //     }
-        // }
-        // else
-        // {
-        //     Providers.Add(PaymentProvider.Stripe);
-        //     Providers.Add(PaymentProvider.Microsoft);
-        //     Providers.Add(PaymentProvider.Google);
-        //     Providers.Add(PaymentProvider.Apple);
-        // }
+        if (Platform == MM.Shared.Enums.Platform.ios)
+        {
+            if (CurrentCountry == "US")
+            {
+                Providers.Add(PaymentProvider.Apple);
+                Providers.Add(PaymentProvider.Stripe);
+            }
+            else
+            {
+                Providers.Add(PaymentProvider.Apple);
+            }
+        }
+        else
+        {
+            Providers.Add(PaymentProvider.Stripe);
+            Providers.Add(PaymentProvider.Microsoft);
+            Providers.Add(PaymentProvider.Google);
+            Providers.Add(PaymentProvider.Apple);
+        }
 
-        // Provider = Providers[0]; //todo: when implemented, select native provider by default
+        Provider = Providers[0]; //todo: when implemented, select native provider by default
     }
 
-    // protected override async Task LoadAuthDataAsync()
-    // {
-    //     Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
+    protected override async Task LoadAuthDataAsync()
+    {
+        Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
 
-    //     var sub = Client?.GetActiveSubscription();
+        var sub = Client?.GetActivePurchase();
 
-    //     if (sub?.Provider != null && sub.Cycle != null)
-    //     {
-    //         Provider = sub.Provider.Value;
-    //         Cycle = sub.Cycle.Value;
-    //     }
+        if (sub?.Provider != null)
+        {
+            Provider = sub.Provider.Value;
+        }
 
-    //     if (Client != null && Client.StripeCustomerId.Empty())
-    //     {
-    //         Client = await PaymentAuthApi.StripeCustomer();
-    //     }
-    // }
+        if (Client != null && Client.StripeCustomerId.Empty())
+        {
+            Client = await PaymentAuthApi.StripeCustomer();
+        }
+    }
 
-    // private async Task RegistrationSuccessful()
-    // {
-    //     try
-    //     {
-    //         var freshClient = await PrincipalApi.Get(true, true);
-    //         if (freshClient == null) throw new NotificationException("Client null");
+    private async Task RegistrationSuccessful()
+    {
+        try
+        {
+            var freshClient = await PrincipalApi.Get(true, true);
+            if (freshClient == null) throw new NotificationException("Client null");
 
-    //         var sub = freshClient?.GetActiveSubscription();
+            var sub = Client?.GetActivePurchase();
 
-    //         if (sub != null && sub?.Product != null)
-    //         {
-    //             Client = freshClient;
-    //             StateHasChanged();
+            if (sub != null && sub?.Product != null)
+            {
+                Client = freshClient;
+                StateHasChanged();
 
-    //             await ShowSuccess(Translations.RegistrationSuccessful);
-    //         }
-    //         else
-    //         {
-    //             Logger.LogError("RegistrationSuccessful called but subscription is not active.");
-    //             throw new NotificationException("Something went wrong with your subscription. Please contact support.");
-    //         }
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         await ProcessException(ex);
-    //     }
-    // }
+                await ShowSuccess(Translations.RegistrationSuccessful);
+            }
+            else
+            {
+                Logger.LogError("RegistrationSuccessful called but subscription is not active.");
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
 
-    // private async Task AppleVerify(string receipt)
-    // {
-    //     try
-    //     {
-    //         await PaymentAuthApi.AppleVerify(receipt);
+    private async Task AppleVerify(string receipt)
+    {
+        try
+        {
+            await PaymentAuthApi.AppleVerify(receipt);
 
-    //         var freshClient = await PrincipalApi.Get(true, true);
-    //         if (freshClient == null) throw new NotificationException("Client null");
+            var freshClient = await PrincipalApi.Get(true, true);
+            if (freshClient == null) throw new NotificationException("Client null");
 
-    //         var sub = freshClient?.GetActiveSubscription();
+            var sub = Client?.GetActivePurchase();
 
-    //         if (sub != null && sub?.Product != null)
-    //         {
-    //             Client = freshClient;
-    //             StateHasChanged();
+            if (sub != null && sub?.Product != null)
+            {
+                Client = freshClient;
+                StateHasChanged();
 
-    //             await ShowSuccess(Translations.RegistrationSuccessful);
-    //         }
-    //         else
-    //         {
-    //             throw new NotificationException("Something went wrong with your subscription. Please contact support.");
-    //         }
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         await ProcessException(ex);
-    //     }
-    // }
+                await ShowSuccess(Translations.RegistrationSuccessful);
+            }
+            else
+            {
+                throw new NotificationException("Something went wrong with your subscription. Please contact support.");
+            }
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
+        }
+    }
 }

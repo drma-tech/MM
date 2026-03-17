@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Subscription.Core
 {
-    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthSubscription>(factory, ApiType.Authenticated, null)
+    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null)
     {
         public async Task AppleVerify(string receipt)
         {
@@ -14,16 +14,10 @@ namespace MM.WEB.Modules.Subscription.Core
             return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer);
         }
 
-        public async Task<string?> StripePortalLink()
-        {
-            return await GetValueAsync(Endpoint.StripePortalLink);
-        }
-
         private struct Endpoint
         {
             public const string AppleVerify = "apple/verify";
             public const string StripeCustomer = "stripe/customer";
-            public const string StripePortalLink = "stripe/portal-link";
         }
     }
 }

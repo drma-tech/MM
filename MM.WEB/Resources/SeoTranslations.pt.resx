@@ -123,11 +123,11 @@
   <data name="AppDescriptionShort" xml:space="preserve">
     <value>Matchmaking digital: encontre seu parceiro ideal sem perder tempo</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Modern Matchmaker</value>
-  </data>
   <data name="AppSubtitle" xml:space="preserve">
     <value>Find your life partner</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Modern Matchmaker</value>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>

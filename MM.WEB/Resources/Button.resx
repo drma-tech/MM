@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AutoFill" xml:space="preserve">
+    <value>Auto Fill</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -155,9 +158,6 @@
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>Feedback</value>
-  </data>
-  <data name="AutoFill" xml:space="preserve">
-    <value>Auto Fill</value>
   </data>
   <data name="Filters" xml:space="preserve">
     <value>Filters</value>

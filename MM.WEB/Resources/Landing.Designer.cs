@@ -232,6 +232,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sparks: US$1 per unit.
+        /// </summary>
+        public static string Phase1Opt3 {
+            get {
+                return ResourceManager.GetString("Phase1Opt3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phase 1 (0-10k users).
         /// </summary>
         public static string Phase1Title {
@@ -250,7 +259,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MM Coin: US$1 per unit.
+        ///   Looks up a localized string similar to Sparks: US$2 per unit.
         /// </summary>
         public static string Phase2Opt3 {
             get {
@@ -277,7 +286,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MM Coin: US$2 per unit.
+        ///   Looks up a localized string similar to Sparks: US$3 per unit.
         /// </summary>
         public static string Phase3Opt2 {
             get {
@@ -304,7 +313,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MM Coin: US$3 per unit.
+        ///   Looks up a localized string similar to Sparks: US$4 per unit.
         /// </summary>
         public static string Phase4Opt2 {
             get {

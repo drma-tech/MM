@@ -70,7 +70,7 @@ export const google = {
 };
 
 export const stripe = {
-    async openCheckout(priceId) {
+    async openCheckout(priceId, qtd) {
         try {
             const auth = storage.getLocalStorage("auth");
             let response;
@@ -79,7 +79,7 @@ export const stripe = {
                 const { data } = await window.supabase.auth.getSession();
 
                 response = await fetch(
-                    `${baseApiUrl}/api/stripe/create-checkout-session/${priceId}?url=${window.location.href}`,
+                    `${baseApiUrl}/api/stripe/create-checkout-session/${priceId}/${qtd}?url=${window.location.href}`,
                     {
                         method: "POST",
                         headers: {

@@ -4,17 +4,19 @@ public class PaymentConfigurations
 {
     public string? CustomerPortalEndpoint { get; set; }
     public string? Token { get; set; }
-    public string? PricePremiumWeek { get; set; }
-    public string? PricePremiumMonth { get; set; }
-    public string? PricePremiumYear { get; set; }
+    public string? PricePhase1 { get; set; }
+    public string? PricePhase2 { get; set; }
+    public string? PricePhase3 { get; set; }
+    public string? PricePhase4 { get; set; }
 
-    public string? GetPriceId(AccountProduct product, AccountCycle cycle)
+    public string? GetPriceId(AccountProduct product)
     {
-        return (product, cycle) switch
+        return (product) switch
         {
-            (AccountProduct.Premium, AccountCycle.Weekly) => PricePremiumWeek,
-            (AccountProduct.Premium, AccountCycle.Monthly) => PricePremiumMonth,
-            (AccountProduct.Premium, AccountCycle.Yearly) => PricePremiumYear,
+            (AccountProduct.Phase1) => PricePhase1,
+            (AccountProduct.Phase2) => PricePhase2,
+            (AccountProduct.Phase3) => PricePhase3,
+            (AccountProduct.Phase4) => PricePhase4,
             _ => null,
         };
     }

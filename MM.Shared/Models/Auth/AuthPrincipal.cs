@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MM.Shared.Models.Auth;
 
@@ -11,9 +9,10 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
     [DataType(DataType.EmailAddress)] public string? Email { get; set; }
     public string? StripeCustomerId { get; set; }
     public bool PublicProfile { get; set; } = false;
+    public int Sparks { get; set; } = 0;
 
     public string[] AuthProviders { get; set; } = [];
-    public HashSet<AuthSubscription> Subscriptions { get; set; } = [];
+    public HashSet<AuthPurchase> AuthPurchases { get; set; } = [];
     public List<Event> Events { get; set; } = [];
 
     //public long _ts { get; set; }
@@ -25,99 +24,67 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
         UserId = userId;
     }
 
-    public AuthSubscription? GetActiveSubscription()
+    public AuthPurchase? GetActivePurchase()
     {
-        return Subscriptions.SingleOrDefault(p => p.IsActive());
+        return AuthPurchases.LastOrDefault(p => p.Sparks > 0);
     }
 
-    public AuthSubscription GetSubscription(string? id, PaymentProvider provider)
+    public AuthPurchase GetPurchase(string? id, PaymentProvider provider)
     {
-        var sub = Subscriptions.SingleOrDefault(s => s.SubscriptionId == id);
+        var sub = AuthPurchases.SingleOrDefault(s => s.PurchaseId == id);
         if (sub != null) return sub;
 
-        sub = Subscriptions.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException("No subscriptions found.");
-        sub.SubscriptionId = id;
+        sub = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException("No subscriptions found.");
+        sub.PurchaseId = id;
         return sub;
     }
 
-    public void AddSubscription(AuthSubscription subscription)
+    public void AddPurchase(AuthPurchase purchase)
     {
-        if (Subscriptions.Any(p => p.IsActive()))
-        {
-            throw new NotificationException("There is already an active subscription. Please deactivate the old one first before creating a new one.");
-        }
-        else
-        {
-            Subscriptions.Add(subscription);
-        }
+        AuthPurchases.Add(purchase);
     }
 
-    public void UpdateSubscription(AuthSubscription subscription, bool validateId = true)
+    public void UpdatePurchase(AuthPurchase purchase, bool validateId = true)
     {
-        if (validateId && subscription.SubscriptionId.Empty()) throw new UnhandledException("subscription id is null");
+        if (validateId && purchase.PurchaseId.Empty()) throw new UnhandledException("purchase id is null");
 
-        var sub = Subscriptions.SingleOrDefault(sub => sub.SubscriptionId == subscription.SubscriptionId);
+        var sub = AuthPurchases.SingleOrDefault(sub => sub.PurchaseId == purchase.PurchaseId);
 
         if (sub == null)
         {
             throw new NotificationException("Subscription not found.");
         }
-        else if (Subscriptions.Any(p => p.IsActive() && p.SubscriptionId != sub.SubscriptionId))
-        {
-            throw new NotificationException("There is already an active subscription. Please deactivate the old one first before creating a new one.");
-        }
         else
         {
-            sub.SessionId = subscription.SessionId;
-            sub.ExpiresDate = subscription.ExpiresDate;
-            sub.Active = subscription.Active;
-            sub.Provider = subscription.Provider;
-            sub.Product = subscription.Product;
-            sub.Cycle = subscription.Cycle;
+            sub.SessionId = purchase.SessionId;
+            sub.Provider = purchase.Provider;
+            sub.Product = purchase.Product;
+            sub.Sparks = purchase.Sparks;
         }
     }
 }
 
-public class AuthSubscription
+public class AuthPurchase
 {
-    public string? SubscriptionId { get; set; }
+    public string? PurchaseId { get; set; }
     public string? SessionId { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset? ExpiresDate { get; set; }
-    public bool Active { get; set; } = false;
+    public int Sparks { get; set; } = 0;
 
     public PaymentProvider? Provider { get; set; }
     public AccountProduct? Product { get; set; }
-    public AccountCycle? Cycle { get; set; }
-
-    [JsonIgnore]
-    [NotMapped]
-    public AccountProduct ActiveProduct => IsActive() ? Product ?? AccountProduct.Basic : AccountProduct.Basic;
-
-    public bool IsActive()
-    {
-        return Provider switch
-        {
-            PaymentProvider.Paddle => Active,
-            PaymentProvider.Microsoft => false,
-            PaymentProvider.Google => false,
-            PaymentProvider.Apple => ExpiresDate.HasValue && ExpiresDate.Value.AddMinutes(5) > DateTimeOffset.UtcNow,
-            PaymentProvider.Stripe => Active,
-            _ => throw new UnhandledException("invalid provider"),
-        };
-    }
 
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(this, obj)) return true;
-        if (obj is not AuthSubscription other) return false;
+        if (obj is not AuthPurchase other) return false;
 
-        return string.Equals(SubscriptionId, other.SubscriptionId, StringComparison.Ordinal) && string.Equals(SessionId, other.SessionId, StringComparison.Ordinal);
+        return string.Equals(PurchaseId, other.PurchaseId, StringComparison.Ordinal) && string.Equals(SessionId, other.SessionId, StringComparison.Ordinal);
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(SubscriptionId, SessionId);
+        return HashCode.Combine(PurchaseId, SessionId);
     }
 }
 
