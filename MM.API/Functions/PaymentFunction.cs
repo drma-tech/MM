@@ -198,7 +198,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             LineItems = [new() { Price = priceId, Quantity = qtd, },],
             Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
-            Metadata = new Dictionary<string, string> { { "UserId", principal.Id }, { "Quantity", qtd.ToString() } }
+            Metadata = new Dictionary<string, string> { { "UserId", principal.UserId! }, { "Quantity", qtd.ToString() } }
         };
 
         options.AddExtraParam("managed_payments[enabled]", true);
@@ -233,7 +233,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         if (string.IsNullOrEmpty(Signature?.First())) throw new UnhandledException("Stripe signature missing");
         var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new UnhandledException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
 
-        if (stripeEvent.Type.StartsWith("checkout.session.completed"))
+        if (stripeEvent.Type.StartsWith("checkout.session"))
         {
             if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new UnhandledException("Stripe session not available");
 
