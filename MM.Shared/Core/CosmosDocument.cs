@@ -20,7 +20,7 @@ public abstract class CosmosDocument
 
     [JsonProperty(PropertyName = "id")] public string Id { get; set; } = string.Empty;
 
-    [JsonProperty(PropertyName = "_ts")] public long Timestamp { get; set; }
+    [JsonProperty(PropertyName = "_tsCreated")] public long Timestamp { get; set; }
 
     [JsonIgnore] public DateTime DateTime => DateTimeOffset.FromUnixTimeSeconds(Timestamp).UtcDateTime;
 
