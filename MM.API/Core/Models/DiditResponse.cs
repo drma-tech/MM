@@ -21,7 +21,7 @@ namespace MM.API.Core.Models
         public bool is_ongoing_monitoring_enabled { get; set; }
         public object? next_ongoing_monitoring_bill_date { get; set; }
         public string? node_id { get; set; }
-        public int score { get; set; }
+        public double score { get; set; }
         public ScreenedData? screened_data { get; set; }
         public string? status { get; set; }
         public int total_hits { get; set; }
@@ -45,9 +45,9 @@ namespace MM.API.Core.Models
     {
         public string? brightness_issue { get; set; }
         public double brightness_score { get; set; }
-        public int focus_score { get; set; }
+        public double focus_score { get; set; }
         public bool is_document_fully_visible { get; set; }
-        public int overall_score { get; set; }
+        public double overall_score { get; set; }
         public double resolution_score { get; set; }
     }
 
@@ -66,7 +66,7 @@ namespace MM.API.Core.Models
     public class Categories
     {
         public double score { get; set; }
-        public int weightage { get; set; }
+        public double weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
@@ -114,15 +114,15 @@ namespace MM.API.Core.Models
     public class Countries
     {
         public double score { get; set; }
-        public int weightage { get; set; }
+        public double weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
 
     public class Crimes
     {
-        public int score { get; set; }
-        public int weightage { get; set; }
+        public double score { get; set; }
+        public double weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
@@ -195,7 +195,7 @@ namespace MM.API.Core.Models
     public class DistanceFromPoaDocument
     {
         public string? direction { get; set; }
-        public int distance { get; set; }
+        public double distance { get; set; }
     }
 
     public class DocumentLocation
@@ -257,7 +257,7 @@ namespace MM.API.Core.Models
     {
         public string? brightness_issue { get; set; }
         public double brightness_score { get; set; }
-        public int focus_score { get; set; }
+        public double focus_score { get; set; }
         public bool is_document_fully_visible { get; set; }
         public double overall_score { get; set; }
         public double resolution_score { get; set; }
@@ -286,8 +286,8 @@ namespace MM.API.Core.Models
         public RiskView? risk_view { get; set; }
         public DateTime first_seen { get; set; }
         public Properties? properties { get; set; }
-        public int match_score { get; set; }
-        public int risk_score { get; set; }
+        public double match_score { get; set; }
+        public double risk_score { get; set; }
         public string? review_status { get; set; }
         public ScoreBreakdown? score_breakdown { get; set; }
         public List<PepMatch>? pep_matches { get; set; }
@@ -312,7 +312,7 @@ namespace MM.API.Core.Models
         public int age { get; set; }
         public string? back_image { get; set; }
         public string? back_image_camera_front { get; set; }
-        public double back_image_camera_front_face_match_score { get; set; }
+        public double? back_image_camera_front_face_match_score { get; set; }
         public BackImageQualityScore? back_image_quality_score { get; set; }
         public string? back_video { get; set; }
         public string? date_of_birth { get; set; }
@@ -326,7 +326,7 @@ namespace MM.API.Core.Models
         public string? formatted_address { get; set; }
         public string? front_image { get; set; }
         public string? front_image_camera_front { get; set; }
-        public double front_image_camera_front_face_match_score { get; set; }
+        public double? front_image_camera_front_face_match_score { get; set; }
         public FrontImageQualityScore? front_image_quality_score { get; set; }
         public string? front_video { get; set; }
         public string? full_back_image { get; set; }
@@ -647,21 +647,21 @@ namespace MM.API.Core.Models
 
     public class ScoreBreakdown
     {
-        public int name_score { get; set; }
-        public int name_weight { get; set; }
-        public int name_weight_normalized { get; set; }
-        public int name_contribution { get; set; }
-        public int dob_score { get; set; }
-        public int dob_weight { get; set; }
-        public int dob_weight_normalized { get; set; }
-        public int dob_contribution { get; set; }
-        public int country_score { get; set; }
-        public int country_weight { get; set; }
-        public int country_weight_normalized { get; set; }
-        public int country_contribution { get; set; }
+        public double name_score { get; set; }
+        public double name_weight { get; set; }
+        public double name_weight_normalized { get; set; }
+        public double name_contribution { get; set; }
+        public double dob_score { get; set; }
+        public double dob_weight { get; set; }
+        public double dob_weight_normalized { get; set; }
+        public double dob_contribution { get; set; }
+        public double country_score { get; set; }
+        public double country_weight { get; set; }
+        public double country_weight_normalized { get; set; }
+        public double country_contribution { get; set; }
         public string? document_number_match_type { get; set; }
         public string? document_number_effect { get; set; }
-        public int total_score { get; set; }
+        public double total_score { get; set; }
     }
 
     public class ScreenedData
