@@ -21,7 +21,7 @@ namespace MM.API.Core.Models
         public bool is_ongoing_monitoring_enabled { get; set; }
         public object? next_ongoing_monitoring_bill_date { get; set; }
         public string? node_id { get; set; }
-        public double score { get; set; }
+        public double? score { get; set; }
         public ScreenedData? screened_data { get; set; }
         public string? status { get; set; }
         public int total_hits { get; set; }
@@ -44,11 +44,11 @@ namespace MM.API.Core.Models
     public class BackImageQualityScore
     {
         public string? brightness_issue { get; set; }
-        public double brightness_score { get; set; }
-        public double focus_score { get; set; }
+        public double? brightness_score { get; set; }
+        public double? focus_score { get; set; }
         public bool is_document_fully_visible { get; set; }
-        public double overall_score { get; set; }
-        public double resolution_score { get; set; }
+        public double? overall_score { get; set; }
+        public double? resolution_score { get; set; }
     }
 
     public class Bounds
@@ -65,8 +65,8 @@ namespace MM.API.Core.Models
 
     public class Categories
     {
-        public double score { get; set; }
-        public double weightage { get; set; }
+        public double? score { get; set; }
+        public double? weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
@@ -76,7 +76,7 @@ namespace MM.API.Core.Models
         public string? issuer { get; set; }
         public string? not_valid_after { get; set; }
         public string? not_valid_before { get; set; }
-        public double serial_number { get; set; }
+        public double? serial_number { get; set; }
         public string? subject { get; set; }
     }
 
@@ -113,16 +113,16 @@ namespace MM.API.Core.Models
 
     public class Countries
     {
-        public double score { get; set; }
-        public double weightage { get; set; }
+        public double? score { get; set; }
+        public double? weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
 
     public class Crimes
     {
-        public double score { get; set; }
-        public double weightage { get; set; }
+        public double? score { get; set; }
+        public double? weightage { get; set; }
         public string? risk_level { get; set; }
         public RiskScores? risk_scores { get; set; }
     }
@@ -183,25 +183,25 @@ namespace MM.API.Core.Models
     public class DistanceFromIdDocument
     {
         public string? direction { get; set; }
-        public double distance { get; set; }
+        public double? distance { get; set; }
     }
 
     public class DistanceFromIp
     {
         public string? direction { get; set; }
-        public double distance { get; set; }
+        public double? distance { get; set; }
     }
 
     public class DistanceFromPoaDocument
     {
         public string? direction { get; set; }
-        public double distance { get; set; }
+        public double? distance { get; set; }
     }
 
     public class DocumentLocation
     {
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public double? latitude { get; set; }
+        public double? longitude { get; set; }
     }
 
     public class DocumentMetadata
@@ -245,7 +245,7 @@ namespace MM.API.Core.Models
     public class FaceMatch
     {
         public string? node_id { get; set; }
-        public double score { get; set; }
+        public double? score { get; set; }
         public string? source_image { get; set; }
         public object? source_image_session_id { get; set; }
         public string? status { get; set; }
@@ -256,11 +256,11 @@ namespace MM.API.Core.Models
     public class FrontImageQualityScore
     {
         public string? brightness_issue { get; set; }
-        public double brightness_score { get; set; }
-        public double focus_score { get; set; }
+        public double? brightness_score { get; set; }
+        public double? focus_score { get; set; }
         public bool is_document_fully_visible { get; set; }
-        public double overall_score { get; set; }
-        public double resolution_score { get; set; }
+        public double? overall_score { get; set; }
+        public double? resolution_score { get; set; }
     }
 
     public class Geometry
@@ -276,7 +276,7 @@ namespace MM.API.Core.Models
         public string? id { get; set; }
         public string? url { get; set; }
         public bool match { get; set; }
-        public double score { get; set; }
+        public double? score { get; set; }
         public object? target { get; set; }
         public string? caption { get; set; }
         public List<string>? datasets { get; set; }
@@ -286,8 +286,8 @@ namespace MM.API.Core.Models
         public RiskView? risk_view { get; set; }
         public DateTime first_seen { get; set; }
         public Properties? properties { get; set; }
-        public double match_score { get; set; }
-        public double risk_score { get; set; }
+        public double? match_score { get; set; }
+        public double? risk_score { get; set; }
         public string? review_status { get; set; }
         public ScoreBreakdown? score_breakdown { get; set; }
         public List<PepMatch>? pep_matches { get; set; }
@@ -371,8 +371,8 @@ namespace MM.API.Core.Models
         public bool is_data_center { get; set; }
         public bool is_vpn_or_tor { get; set; }
         public string? isp { get; set; }
-        //public double latitude { get; set; }
-        //public double longitude { get; set; }
+        //public double? latitude { get; set; }
+        //public double? longitude { get; set; }
         public string? node_id { get; set; }
         public string? organization { get; set; }
         public string? os_family { get; set; }
@@ -403,21 +403,21 @@ namespace MM.API.Core.Models
     public class Lifecycle
     {
         public Details? details { get; set; }
-        public double fee { get; set; }
+        public double? fee { get; set; }
         public DateTime timestamp { get; set; }
         public string? type { get; set; }
     }
 
     public class LivenessCheck
     {
-        public double age_estimation { get; set; }
+        public double? age_estimation { get; set; }
         public object? face_luminance { get; set; }
         public object? face_quality { get; set; }
         public List<object>? matches { get; set; }
         public string? method { get; set; }
         public string? node_id { get; set; }
         public string? reference_image { get; set; }
-        public double score { get; set; }
+        public double? score { get; set; }
         public string? status { get; set; }
         public object? video_url { get; set; }
         public List<object>? warnings { get; set; }
@@ -425,10 +425,10 @@ namespace MM.API.Core.Models
 
     public class Location
     {
-        public double lat { get; set; }
-        public double lng { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public double? lat { get; set; }
+        public double? lng { get; set; }
+        public double? latitude { get; set; }
+        public double? longitude { get; set; }
     }
 
     public class NavigationPoint
@@ -450,8 +450,8 @@ namespace MM.API.Core.Models
 
     public class Northeast
     {
-        public double lat { get; set; }
-        public double lng { get; set; }
+        public double? lat { get; set; }
+        public double? lng { get; set; }
     }
 
     public class ParsedAddress
@@ -547,7 +547,7 @@ namespace MM.API.Core.Models
         public string? issuer { get; set; }
         public string? issuing_state { get; set; }
         public object? name_match_score_expected_details { get; set; }
-        public double name_match_score_id_verification { get; set; }
+        public double? name_match_score_id_verification { get; set; }
         public string? name_on_document { get; set; }
         public string? node_id { get; set; }
         public string? poa_address { get; set; }
@@ -619,7 +619,7 @@ namespace MM.API.Core.Models
     public class RiskScores
     {
         [JsonProperty("United States")]
-        public double UnitedStates { get; set; }
+        public double? UnitedStates { get; set; }
 
         public int PEP { get; set; }
     }
@@ -647,21 +647,21 @@ namespace MM.API.Core.Models
 
     public class ScoreBreakdown
     {
-        public double name_score { get; set; }
-        public double name_weight { get; set; }
-        public double name_weight_normalized { get; set; }
-        public double name_contribution { get; set; }
-        public double dob_score { get; set; }
-        public double dob_weight { get; set; }
-        public double dob_weight_normalized { get; set; }
-        public double dob_contribution { get; set; }
-        public double country_score { get; set; }
-        public double country_weight { get; set; }
-        public double country_weight_normalized { get; set; }
-        public double country_contribution { get; set; }
+        public double? name_score { get; set; }
+        public double? name_weight { get; set; }
+        public double? name_weight_normalized { get; set; }
+        public double? name_contribution { get; set; }
+        public double? dob_score { get; set; }
+        public double? dob_weight { get; set; }
+        public double? dob_weight_normalized { get; set; }
+        public double? dob_contribution { get; set; }
+        public double? country_score { get; set; }
+        public double? country_weight { get; set; }
+        public double? country_weight_normalized { get; set; }
+        public double? country_contribution { get; set; }
         public string? document_number_match_type { get; set; }
         public string? document_number_effect { get; set; }
-        public double total_score { get; set; }
+        public double? total_score { get; set; }
     }
 
     public class ScreenedData
@@ -696,8 +696,8 @@ namespace MM.API.Core.Models
 
     public class Southwest
     {
-        public double lat { get; set; }
-        public double lng { get; set; }
+        public double? lat { get; set; }
+        public double? lng { get; set; }
     }
 
     public class Validation
