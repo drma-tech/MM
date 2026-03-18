@@ -162,13 +162,21 @@ namespace MM.API.Core.Models
         public List<PhoneVerification>? phone_verifications { get; set; }
         public List<PoaVerification>? poa_verifications { get; set; }
         public List<QuestionnaireResponse>? questionnaire_responses { get; set; }
-        public List<object>? reviews { get; set; }
+        public List<Review>? reviews { get; set; }
         public string? session_id { get; set; }
         public int session_number { get; set; }
         public string? session_url { get; set; }
         public string? status { get; set; }
         public string? vendor_data { get; set; }
         public string? workflow_id { get; set; }
+    }
+
+    public class Review
+    {
+        public string? comment { get; set; }
+        public DateTime created_at { get; set; }
+        public string? new_status { get; set; }
+        public string? user { get; set; }
     }
 
     public class Details

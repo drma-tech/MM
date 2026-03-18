@@ -4,12 +4,13 @@ using MM.API.Core.Auth;
 using MM.API.Core.Models;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
+using MM.Shared.Models.Verification;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class VerificationFunction(CosmosRepository repo, IHttpClientFactory factory)
+public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository repoIds, IHttpClientFactory factory)
 {
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { PropertyNameCaseInsensitive = true };
 
@@ -29,7 +30,7 @@ public class VerificationFunction(CosmosRepository repo, IHttpClientFactory fact
             callback = url
         };
 
-        using var client = new HttpClient();
+        using var client = factory.CreateClient();
         client.DefaultRequestHeaders.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
 
         var response = await client.PostAsJsonAsync("https://verification.didit.me/v3/session/", sessionRequest, cancellationToken);
@@ -80,16 +81,49 @@ public class VerificationFunction(CosmosRepository repo, IHttpClientFactory fact
 
         principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
 
-        var isApproved = payload.decision?.status == "Approved";
-        validation.Identity = isApproved;
+        const string approved = "Approved";
+
+        var decisionStatus = payload.decision?.status == approved;
+        var idStatus = payload.decision?.id_verifications?.LastOrDefault()?.status == approved;
+        var ipStatus = payload.decision?.ip_analyses?.LastOrDefault()?.status == approved;
+        var livenessStatus = payload.decision?.liveness_checks?.LastOrDefault()?.status == approved;
+        var reviewStatus = payload.decision?.reviews?.LastOrDefault()?.new_status == approved || payload.decision?.reviews == null || payload.decision.reviews.Empty();
+
+        var isApproved = decisionStatus && idStatus && ipStatus && livenessStatus && reviewStatus;
+
+        if (isApproved)
+        {
+            validation.Identity = isApproved;
+        }
+        else
+        {
+            req.LogWarning($"verification not succceded (user-id: {payload.vendor_data}): decision={decisionStatus}, id_verifications={idStatus}, ip_analyses={ipStatus}, liveness_checks={livenessStatus}, reviews={reviewStatus}");
+        }
+
+        var user = payload.decision?.id_verifications?.LastOrDefault() ?? throw new UnhandledException("id_verifications not available");
+
+        var id = new IdModel
+        {
+            session_id = payload.session_id,
+            workflow_id = payload.workflow_id,
+            full_name = user.full_name,
+            gender = user.gender,
+            issuing_state = user.issuing_state,
+            date_of_birth = user.date_of_birth,
+            date_of_issue = user.date_of_issue,
+            document_number = user.document_number,
+            document_type = user.document_type,
+            nationality = user.nationality,
+            place_of_birth = user.place_of_birth
+        };
+
+        id.SetIds(payload.vendor_data!);
 
         await Task.WhenAll(
             repo.UpsertItemAsync(principal, cancellationToken),
-            repo.UpsertItemAsync(validation, cancellationToken)
+            repo.UpsertItemAsync(validation, cancellationToken),
+            repoIds.CreateItemAsync(id, cancellationToken)
         );
-
-        var user = payload.decision?.id_verifications?.LastOrDefault();
-        //todo: save user info
 
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
         await response.WriteStringAsync("ok", cancellationToken);
