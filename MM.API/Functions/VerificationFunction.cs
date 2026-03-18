@@ -3,6 +3,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
 using MM.API.Core.Models;
 using MM.Shared.Models.Auth;
+using MM.Shared.Models.Profile;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -50,8 +51,11 @@ public class VerificationFunction(CosmosRepository repo, IHttpClientFactory fact
     public async Task<HttpResponseData> PostDiditWebhook(
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/didit/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        var ip = req.GetUserIP(true);
+
         var bodyRaw = await new StreamReader(req.Body).ReadToEndAsync(cancellationToken);
-        var jsonBody = JsonDocument.Parse(bodyRaw).RootElement;
+        using var document = JsonDocument.Parse(bodyRaw);
+        var jsonBody = document.RootElement;
 
         // Headers (case-insensitive in Azure Functions, but keep exact names)
         var signature = req.Headers.TryGetValues("X-Signature-V2", out var sigValues) ? sigValues.FirstOrDefault() : null;
@@ -64,10 +68,28 @@ public class VerificationFunction(CosmosRepository repo, IHttpClientFactory fact
             return unauthorized;
         }
 
-        var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions);
+        var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new UnhandledException("invalid payload");
 
-        // TODO: handle events properly
-        Console.WriteLine($"Session: {payload?.session_id} Status: {payload?.status}");
+        var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, payload.vendor_data, cancellationToken);
+        var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, payload.vendor_data, cancellationToken);
+
+        await Task.WhenAll(principalTask, validationTask);
+
+        var principal = principalTask.Result ?? throw new UnhandledException("principal null");
+        var validation = validationTask.Result ?? throw new UnhandledException("validation null");
+
+        principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
+
+        var isApproved = payload.decision?.status == "Approved";
+        validation.Identity = isApproved;
+
+        await Task.WhenAll(
+            repo.UpsertItemAsync(principal, cancellationToken),
+            repo.UpsertItemAsync(validation, cancellationToken)
+        );
+
+        var user = payload.decision?.id_verifications?.LastOrDefault();
+        //todo: save user info
 
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
         await response.WriteStringAsync("ok", cancellationToken);

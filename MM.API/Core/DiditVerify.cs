@@ -20,8 +20,8 @@ namespace MM.API.Core
                 return false;
 
             var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            if (Math.Abs(now - ts) > 300)
-                return false;
+            if (ts > now + 60) return false; // futuro inválido
+            if (now - ts > 300) return false; // expirado
 
             // Convert JSON back to canonical form:
             // sort_keys, no indent, unescaped Unicode
@@ -31,11 +31,10 @@ namespace MM.API.Core
             using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secret!));
             byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(canonicalJson));
 
-            string expectedSignature = Convert.ToHexString(hash).ToLowerInvariant();
+            var expectedBytes = hash;
+            var receivedBytes = Convert.FromHexString(signature);
 
-            return CryptographicOperations.FixedTimeEquals(
-                Convert.FromHexString(expectedSignature),
-                Convert.FromHexString(signature));
+            return CryptographicOperations.FixedTimeEquals(expectedBytes, receivedBytes);
         }
 
         // Match shortening behavior from the official Node.js/Python examples
