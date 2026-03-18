@@ -18,12 +18,21 @@ public abstract class CosmosDocument
         _fixedId = true;
     }
 
-    [JsonProperty(PropertyName = "id")] public string Id { get; set; } = string.Empty;
-    [JsonProperty(PropertyName = "_tsCreated")] public long? TimestampCreated { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-    [JsonProperty(PropertyName = "_ts")] public long TimestampUpdated { get; set; }
+    [JsonProperty(PropertyName = "id")]
+    public string Id { get; set; } = string.Empty;
 
-    [JsonIgnore] public DateTime? DateTimeCreated => TimestampCreated.HasValue ? DateTimeOffset.FromUnixTimeSeconds(TimestampCreated.Value).UtcDateTime : null;
-    [JsonIgnore] public DateTime DateTimeUpdated => DateTimeOffset.FromUnixTimeSeconds(TimestampUpdated).UtcDateTime;
+    [System.Text.Json.Serialization.JsonPropertyName("_tsCreated")]
+    [JsonProperty(PropertyName = "_tsCreated")]
+    public long? TimestampCreated { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+    [JsonProperty(PropertyName = "_ts")]
+    public long TimestampUpdated { get; set; }
+
+    [JsonIgnore]
+    public DateTime? DateTimeCreated => TimestampCreated.HasValue ? DateTimeOffset.FromUnixTimeSeconds(TimestampCreated.Value).UtcDateTime : null;
+
+    [JsonIgnore]
+    public DateTime DateTimeUpdated => DateTimeOffset.FromUnixTimeSeconds(TimestampUpdated).UtcDateTime;
 
     public void SetIds(string id)
     {
