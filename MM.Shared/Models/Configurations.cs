@@ -8,6 +8,7 @@ public class Configurations
     public Apple? Apple { get; set; }
     public Stripe? Stripe { get; set; }
     public Here? Here { get; set; }
+    public Didit? Didit { get; set; }
 }
 
 public class CosmosDB
@@ -73,4 +74,9 @@ public class ProductSettings
 public class Here
 {
     public string? ApiKey { get; set; }
+}
+
+public class Didit
+{
+    public string? SecretKey { get; set; }
 }
