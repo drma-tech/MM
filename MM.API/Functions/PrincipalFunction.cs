@@ -92,8 +92,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         };
         model.Initialize(userId);
 
-        model._tsCreated = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
         return await repo.CreateItemAsync(model, cancellationToken);
     }
 

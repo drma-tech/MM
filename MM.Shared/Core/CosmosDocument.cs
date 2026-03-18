@@ -19,7 +19,7 @@ public abstract class CosmosDocument
     }
 
     [JsonProperty(PropertyName = "id")] public string Id { get; set; } = string.Empty;
-    [JsonProperty(PropertyName = "_tsCreated")] public long? TimestampCreated { get; set; }
+    [JsonProperty(PropertyName = "_tsCreated")] public long? TimestampCreated { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     [JsonProperty(PropertyName = "_ts")] public long TimestampUpdated { get; set; }
 
     [JsonIgnore] public DateTime? DateTimeCreated => TimestampCreated.HasValue ? DateTimeOffset.FromUnixTimeSeconds(TimestampCreated.Value).UtcDateTime : null;
