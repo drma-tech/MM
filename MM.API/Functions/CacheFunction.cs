@@ -38,7 +38,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                 obj.Countries = profiles.Select(s => s.Country).Distinct().Count();
                 obj.Cities = profiles.Select(s => s.Location).Distinct().Count();
                 obj.TotalUsers = principals.Count;
-                obj.RecentlyJoined = principals.Count(w => w.DateTime > oneWeekAgo);
+                obj.RecentlyJoined = principals.Count(w => w.DateTimeCreated > oneWeekAgo);
 
                 doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);
             }

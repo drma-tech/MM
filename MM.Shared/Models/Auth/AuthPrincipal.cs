@@ -15,7 +15,6 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
     public HashSet<AuthPurchase> AuthPurchases { get; set; } = [];
     public List<Event> Events { get; set; } = [];
 
-    //public long _ts { get; set; }
     public long? _tsCreated { get; set; }
 
     public override void Initialize(string userId)
