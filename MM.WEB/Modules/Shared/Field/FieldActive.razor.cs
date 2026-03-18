@@ -12,5 +12,7 @@ public partial class FieldActive : FormBase<bool, FieldActive>
 
     [Parameter] public string? CustomButtonText { get; set; }
 
+    [Parameter] public string? Href { get; set; }
+
     private string? Description => For.GetCustomAttribute()?.Description;
 }

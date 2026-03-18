@@ -371,16 +371,16 @@ namespace MM.API.Core.Models
         public bool is_data_center { get; set; }
         public bool is_vpn_or_tor { get; set; }
         public string? isp { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        //public double latitude { get; set; }
+        //public double longitude { get; set; }
         public string? node_id { get; set; }
         public string? organization { get; set; }
         public string? os_family { get; set; }
         public string? platform { get; set; }
         public PoaDocument? poa_document { get; set; }
         public string? status { get; set; }
-        public string? time_zone { get; set; }
-        public int time_zone_offset { get; set; }
+        //public string? time_zone { get; set; }
+        //public int time_zone_offset { get; set; }
         public List<object>? warnings { get; set; }
     }
 

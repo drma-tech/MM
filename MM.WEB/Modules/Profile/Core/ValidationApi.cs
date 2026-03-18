@@ -10,6 +10,11 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
         return await GetAsync(ProfileEndpoint.Get);
     }
 
+    public async Task<string?> CreateVerificationSession()
+    {
+        return await GetValueAsync(ProfileEndpoint.CreateVerificationSession);
+    }
+
     public async Task<ValidationModel?> UploadPhotoValidation(byte[] bytes)
     {
         return await PutAsync(StorageEndpoint.UploadPhotoValidation, new { Stream = bytes });
@@ -18,5 +23,6 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
     public struct ProfileEndpoint
     {
         public const string Get = "profile/get-validation";
+        public const string CreateVerificationSession = "didit/create-verification-session";
     }
 }

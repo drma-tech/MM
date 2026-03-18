@@ -78,5 +78,8 @@ public class Here
 
 public class Didit
 {
+    public string? AppId { get; set; }
+    public string? ApiKey { get; set; }
+    public string? WorkflowId { get; set; }
     public string? SecretKey { get; set; }
 }

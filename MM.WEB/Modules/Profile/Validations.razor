@@ -18,12 +18,12 @@
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
-                <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@IconsFA.Solid.Icon("images").Font"></FieldActive>
+                <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@IconsFA.Solid.Icon("images").Font"
+                             Href="/profile/validation/gallery"></FieldActive>
             </MudItem>
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@IconsFA.Solid.Icon("id-card").Font"
-                             Disabled="true" CustomButtonText="Only available in phase 2">
-                </FieldActive>
+                             Href="/profile/validation/identity"></FieldActive>
             </MudItem>
         </MudGrid>
         <MudGrid Spacing="@Css.SpaceSmall">
