@@ -8,7 +8,7 @@
         public string? gender { get; set; }
         public string? issuing_state { get; set; }
         public string? date_of_birth { get; set; }
-        public object? date_of_issue { get; set; }
+        public string? date_of_issue { get; set; }
         public string? document_number { get; set; }
         public string? document_type { get; set; }
         public string? nationality { get; set; }

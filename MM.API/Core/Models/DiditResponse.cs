@@ -604,7 +604,7 @@ namespace MM.API.Core.Models
         public bool? is_simple_questionnaire { get; set; }
         public List<string>? languages { get; set; }
         public string? node_id { get; set; }
-        public object? published_at { get; set; }
+        public string? published_at { get; set; }
         public string? questionnaire_group_id { get; set; }
         public string? questionnaire_id { get; set; }
         public List<Section>? sections { get; set; }
