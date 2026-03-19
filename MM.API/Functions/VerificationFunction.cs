@@ -20,14 +20,16 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
         var ip = req.GetUserIP(true);
-        var url = req.GetQueryParameters()["url"];
+        var url = req.GetQueryParameters()["url"] ?? throw new NotificationException("callback url not available");
+        var email = req.GetQueryParameters()["email"];
 
         // Cria payload da sessão
         var sessionRequest = new
         {
             workflow_id = ApiStartup.Configurations.Didit?.WorkflowId,
             vendor_data = userId,
-            callback = url
+            callback = url,
+            contact_details = new { email }
         };
 
         using var client = factory.CreateClient();
@@ -81,23 +83,14 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
 
         principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
 
-        const string approved = "Approved";
-
-        var decisionStatus = payload.decision?.status == approved;
-        var idStatus = payload.decision?.id_verifications?.LastOrDefault()?.status == approved;
-        var ipStatus = payload.decision?.ip_analyses?.LastOrDefault()?.status == approved;
-        var livenessStatus = payload.decision?.liveness_checks?.LastOrDefault()?.status == approved;
-        var reviewStatus = payload.decision?.reviews?.LastOrDefault()?.new_status == approved || payload.decision?.reviews == null || payload.decision.reviews.Empty();
-
-        var isApproved = decisionStatus && idStatus && ipStatus && livenessStatus && reviewStatus;
-
-        if (isApproved)
+        if (payload.status == "Approved")
         {
-            validation.Identity = isApproved;
+            validation.Identity = true;
         }
         else
         {
-            req.LogWarning($"verification not succceded (user-id: {payload.vendor_data}): decision={decisionStatus}, id_verifications={idStatus}, ip_analyses={ipStatus}, liveness_checks={livenessStatus}, reviews={reviewStatus}");
+            validation.Identity = false;
+            req.LogWarning($"verification not succceded (user-id: {payload.vendor_data}): status={payload.status}");
         }
 
         var user = payload.decision?.id_verifications?.LastOrDefault() ?? throw new UnhandledException("id_verifications not available");
@@ -122,7 +115,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
         await Task.WhenAll(
             repo.UpsertItemAsync(principal, cancellationToken),
             repo.UpsertItemAsync(validation, cancellationToken),
-            repoIds.CreateItemAsync(id, cancellationToken)
+            repoIds.UpsertItemAsync(id, cancellationToken)
         );
 
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);

@@ -19,11 +19,11 @@ public class CosmosIdsRepository
 
     public Container Container { get; }
 
-    public async Task<T> CreateItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
+    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
     {
         try
         {
-            var response = await Container.CreateItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             if (response.RequestCharge > 15)
                 _logger.LogWarning("CreateItemAsync - Id {Id}, RequestCharge {RequestCharge}", item.Id, response.RequestCharge);
