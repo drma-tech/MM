@@ -90,6 +90,7 @@ static void ConfigureServices(IServiceCollection services)
         services.AddSingleton<CosmosRepository>();
         services.AddSingleton<CosmosCacheRepository>();
         services.AddSingleton<CosmosSafetyRepository>();
+        services.AddSingleton<CosmosTrashRepository>();
         services.AddSingleton<CosmosProfileOffRepository>();
         services.AddSingleton<CosmosProfileOnRepository>();
         services.AddSingleton<StorageHelper>();
