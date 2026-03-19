@@ -3,12 +3,13 @@ using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.AI;
 using MM.API.Core.Auth;
 using MM.Shared.Models.Profile;
+using MM.Shared.Models.Safety;
 using MM.Shared.Requests;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
-public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepository repo, StorageHelper storageHelper)
+public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository repoSafety, CosmosProfileOffRepository repo, StorageHelper storageHelper)
 {
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
@@ -122,32 +123,36 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
 
         var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
-        var currentPictureId = profile.Gallery?.ValidationId;
 
         using var faceStream = await GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face), cancellationToken);
+        using var bodyStream = await GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body), cancellationToken);
         using var streamValidation = new MemoryStream(request.Stream);
-        var response = await AwsFaceAI.CompareFaces(faceStream, streamValidation, cancellationToken);
+        var responsFace = await AwsFaceAI.CompareFaces(faceStream, streamValidation, cancellationToken);
+        var responsBody = await AwsFaceAI.CompareFaces(bodyStream, streamValidation, cancellationToken);
 
-        if (response.FaceMatches.Count == 0)
+        if (responsFace.FaceMatches.Count == 0 || responsBody.FaceMatches.Count == 0)
         {
             throw new NotificationException("We were unable to detect a matching face. Make sure both images are clear and show only one person.");
         }
 
-        var face = response.FaceMatches[0];
+        var face = responsFace.FaceMatches[0];
+        var body = responsBody.FaceMatches[0];
 
-        if (face.Similarity < 95)
+        if (face.Similarity < 95 || body.Similarity < 95)
         {
             throw new NotificationException("We were unable to detect a matching face. Make sure both images are clear and show only one person.");
         }
 
-        if (response.UnmatchedFaces.Count > 0)
+        if (responsFace.UnmatchedFaces.Count > 0)
         {
             throw new NotificationException("More than one face was detected. Please ensure only one person is in the image.");
         }
 
-        if (currentPictureId != null) //delete old picture from azure storage
+        var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        if (safety == null)
         {
-            await storageHelper.DeletePhoto(PhotoType.Validation, currentPictureId, cancellationToken);
+            safety = new SafetyModel();
+            safety.SetIds(userId);
         }
 
         using var streamStorage = new MemoryStream(request.Stream);
@@ -155,12 +160,12 @@ public class StorageFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         var idNewPhoto = Guid.NewGuid().ToString();
         var photoName = idNewPhoto + ".jpg";
 
-        await storageHelper.UploadPhoto(PhotoType.Validation, streamStorage, photoName, userId, cancellationToken);
-        if (profile.Gallery!.ValidationId.NotEmpty()) await storageHelper.DeletePhoto(PhotoType.Validation, profile.Gallery.ValidationId, cancellationToken);
+        await storageHelper.UploadSafetyPhoto(SafetyType.Gallery, streamStorage, photoName, userId, cancellationToken);
+        if (safety.GalleryPhotoId.NotEmpty()) await storageHelper.DeleteSafetyPhoto(SafetyType.Gallery, safety.GalleryPhotoId, cancellationToken);
 
-        profile.Gallery!.ValidationId = photoName;
+        safety.GalleryPhotoId = photoName;
 
-        await repo.UpsertItemAsync(profile, cancellationToken);
+        await repoSafety.UpsertItemAsync(safety, cancellationToken);
 
         var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
         if (validation == null)

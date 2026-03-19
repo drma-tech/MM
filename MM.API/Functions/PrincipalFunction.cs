@@ -7,10 +7,11 @@ using MM.Shared.Models.Auth;
 using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
+using MM.Shared.Models.Safety;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, StorageHelper storageHelper, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -145,7 +146,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         {
             if (myProfileOff.Gallery?.FaceId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Face, myProfileOff.Gallery.FaceId, cancellationToken);
             if (myProfileOff.Gallery?.BodyId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Body, myProfileOff.Gallery.BodyId, cancellationToken);
-            if (myProfileOff.Gallery?.ValidationId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Validation, myProfileOff.Gallery.ValidationId, cancellationToken);
 
             await repoOff.DeleteItemAsync(myProfileOff, cancellationToken);
         }
@@ -155,7 +155,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         {
             if (myProfileOn.Gallery?.FaceId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Face, myProfileOn.Gallery.FaceId, cancellationToken);
             if (myProfileOn.Gallery?.BodyId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Body, myProfileOn.Gallery.BodyId, cancellationToken);
-            if (myProfileOn.Gallery?.ValidationId != null) await storageHelper.DeletePhoto(ImageHelper.PhotoType.Validation, myProfileOn.Gallery.ValidationId, cancellationToken);
 
             await repoOn.DeleteItemAsync(myProfileOn, cancellationToken);
         }
@@ -181,6 +180,9 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
         var myValidations = await repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
         if (myValidations != null) await repo.Delete(myValidations, cancellationToken);
+
+        //var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        //if (safety != null) //todo: delete session and user from didit
     }
 
     [Function("PrincipalPublicMode")]
@@ -209,11 +211,6 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
         {
             throw new NotificationException("Please complete all steps before making your profile public.");
-        }
-
-        if (!setting!.BlindDate && profile.Gallery!.ValidationId.Empty()) //there is some situations where user can have validation = true but no validation photo id
-        {
-            throw new NotificationException("An error occurred while publishing your profile. Please re-validate your gallery.");
         }
 
         await repoOn.UpsertItemAsync(profile, cancellationToken);

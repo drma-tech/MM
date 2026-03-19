@@ -5,8 +5,13 @@ public static class ImageHelper
     public enum PhotoType
     {
         Face = 1,
-        Body = 2,
-        Validation = 3
+        Body = 2
+    }
+
+    public enum SafetyType
+    {
+        Gallery = 1,
+        id = 2
     }
 
     public static string GetFacePhoto => "images/no-face-photo.png";
@@ -19,8 +24,17 @@ public static class ImageHelper
         {
             PhotoType.Face => "photo-face",
             PhotoType.Body => "photo-body",
-            PhotoType.Validation => "photo-validation",
             _ => throw new InvalidOperationException(nameof(PhotoType))
+        };
+    }
+
+    public static string GetSafetyContainer(SafetyType type)
+    {
+        return type switch
+        {
+            SafetyType.Gallery => "safety-gallery",
+            SafetyType.id => "safety-id",
+            _ => throw new InvalidOperationException(nameof(SafetyType))
         };
     }
 }

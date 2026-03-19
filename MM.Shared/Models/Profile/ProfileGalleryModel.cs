@@ -7,7 +7,6 @@ public class ProfileGalleryModel
     public GalleryType Type { get; set; } = GalleryType.NoPictures;
     public string? FaceId { get; set; }
     public string? BodyId { get; set; }
-    public string? ValidationId { get; set; }
 
     public string? GetPictureId(PhotoType type)
     {

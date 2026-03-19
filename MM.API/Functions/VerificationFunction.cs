@@ -4,13 +4,13 @@ using MM.API.Core.Auth;
 using MM.API.Core.Models;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
-using MM.Shared.Models.Verification;
+using MM.Shared.Models.Safety;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository repoIds, IHttpClientFactory factory)
+public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, IHttpClientFactory factory)
 {
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { PropertyNameCaseInsensitive = true };
 
@@ -75,12 +75,13 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
         }
 
         var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new UnhandledException("invalid payload");
+        var userId = payload.vendor_data ?? throw new UnhandledException("vendor_data missing");
 
         if (payload.status == "Not Started") return response;
         if (payload.status == "In Progress") return response;
 
-        var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, payload.vendor_data, cancellationToken);
-        var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, payload.vendor_data, cancellationToken);
+        var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+        var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
 
         await Task.WhenAll(principalTask, validationTask);
 
@@ -96,28 +97,43 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
         else
         {
             validation.Identity = false;
-            req.LogWarning($"verification not succceded (user-id: {payload.vendor_data}): status={payload.status}");
+            req.LogWarning($"verification not succceded (user-id: {userId}): status={payload.status}");
         }
 
         var user = payload.decision?.id_verifications?.LastOrDefault();
+        SafetyModel? safety = null;
 
-        var id = user != null ? new IdModel
+        if (user != null)
         {
-            session_id = payload.session_id,
-            workflow_id = payload.workflow_id,
-            nationality = user.nationality,
-            full_name = user.full_name,
-            gender = user.gender,
-            date_of_birth = user.date_of_birth,
-            place_of_birth = user.place_of_birth
-        } : null;
+            safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+            if (safety == null)
+            {
+                safety = new SafetyModel();
+                safety.SetIds(userId);
+            }
 
-        id?.SetIds(payload.vendor_data!);
+            safety.session_id = payload.session_id;
+            safety.workflow_id = payload.workflow_id;
+            safety.nationality = user.nationality;
+            safety.full_name = user.full_name;
+            safety.gender = user.gender;
+            safety.date_of_birth = user.date_of_birth;
+            safety.place_of_birth = user.place_of_birth;
+
+            var idNewPhoto = Guid.NewGuid().ToString();
+            var photoName = idNewPhoto + ".jpg";
+
+            safety.IdentityPhotoId = photoName;
+
+            //todo: download photo from didit and upload to storage
+            //var photo = payload.decision?.liveness_checks?.LastOrDefault()?.reference_image;
+            //await storageHelper.UploadSafetyPhoto(SafetyType.Gallery, streamStorage, photoName, userId, cancellationToken);
+        }
 
         await Task.WhenAll(
             repo.UpsertItemAsync(principal, cancellationToken),
             repo.UpsertItemAsync(validation, cancellationToken),
-            repoIds.UpsertItemAsync(id, cancellationToken)
+            repoSafety.UpsertItemAsync(safety, cancellationToken)
         );
 
         return response;
