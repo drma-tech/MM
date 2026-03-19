@@ -18,13 +18,13 @@ namespace MM.API.Core.Models
     {
         public string? entity_type { get; set; }
         public List<Hit>? hits { get; set; }
-        public bool is_ongoing_monitoring_enabled { get; set; }
+        public bool? is_ongoing_monitoring_enabled { get; set; }
         public object? next_ongoing_monitoring_bill_date { get; set; }
         public string? node_id { get; set; }
         public double? score { get; set; }
         public ScreenedData? screened_data { get; set; }
         public string? status { get; set; }
-        public int total_hits { get; set; }
+        public int? total_hits { get; set; }
         public List<object>? warnings { get; set; }
     }
 
@@ -37,8 +37,8 @@ namespace MM.API.Core.Models
 
     public class Authenticity
     {
-        public bool dg_integrity { get; set; }
-        public bool sod_integrity { get; set; }
+        public bool? dg_integrity { get; set; }
+        public bool? sod_integrity { get; set; }
     }
 
     public class BackImageQualityScore
@@ -46,7 +46,7 @@ namespace MM.API.Core.Models
         public string? brightness_issue { get; set; }
         public double? brightness_score { get; set; }
         public double? focus_score { get; set; }
-        public bool is_document_fully_visible { get; set; }
+        public bool? is_document_fully_visible { get; set; }
         public double? overall_score { get; set; }
         public double? resolution_score { get; set; }
     }
@@ -164,7 +164,7 @@ namespace MM.API.Core.Models
         public List<QuestionnaireResponse>? questionnaire_responses { get; set; }
         public List<Review>? reviews { get; set; }
         public string? session_id { get; set; }
-        public int session_number { get; set; }
+        public int? session_number { get; set; }
         public string? session_url { get; set; }
         public string? status { get; set; }
         public string? vendor_data { get; set; }
@@ -216,7 +216,7 @@ namespace MM.API.Core.Models
     {
         public string? content_type { get; set; }
         public DateTime creation_date { get; set; }
-        public int file_size { get; set; }
+        public int? file_size { get; set; }
         public DateTime modified_date { get; set; }
     }
 
@@ -224,13 +224,13 @@ namespace MM.API.Core.Models
     {
         public List<object>? breaches { get; set; }
         public string? email { get; set; }
-        public bool is_breached { get; set; }
-        public bool is_disposable { get; set; }
-        public bool is_undeliverable { get; set; }
+        public bool? is_breached { get; set; }
+        public bool? is_disposable { get; set; }
+        public bool? is_undeliverable { get; set; }
         public List<Lifecycle>? lifecycle { get; set; }
         public string? node_id { get; set; }
         public string? status { get; set; }
-        public int verification_attempts { get; set; }
+        public int? verification_attempts { get; set; }
         public DateTime verified_at { get; set; }
         public List<object>? warnings { get; set; }
     }
@@ -266,7 +266,7 @@ namespace MM.API.Core.Models
         public string? brightness_issue { get; set; }
         public double? brightness_score { get; set; }
         public double? focus_score { get; set; }
-        public bool is_document_fully_visible { get; set; }
+        public bool? is_document_fully_visible { get; set; }
         public double? overall_score { get; set; }
         public double? resolution_score { get; set; }
     }
@@ -283,7 +283,7 @@ namespace MM.API.Core.Models
     {
         public string? id { get; set; }
         public string? url { get; set; }
-        public bool match { get; set; }
+        public bool? match { get; set; }
         public double? score { get; set; }
         public object? target { get; set; }
         public string? caption { get; set; }
@@ -317,7 +317,7 @@ namespace MM.API.Core.Models
     public class IdVerification
     {
         public string? address { get; set; }
-        public int age { get; set; }
+        public int? age { get; set; }
         public string? back_image { get; set; }
         public string? back_image_camera_front { get; set; }
         public double? back_image_camera_front_face_match_score { get; set; }
@@ -376,8 +376,8 @@ namespace MM.API.Core.Models
         public string? ip_country { get; set; }
         public string? ip_country_code { get; set; }
         public string? ip_state { get; set; }
-        public bool is_data_center { get; set; }
-        public bool is_vpn_or_tor { get; set; }
+        public bool? is_data_center { get; set; }
+        public bool? is_vpn_or_tor { get; set; }
         public string? isp { get; set; }
         //public double? latitude { get; set; }
         //public double? longitude { get; set; }
@@ -388,7 +388,7 @@ namespace MM.API.Core.Models
         public PoaDocument? poa_document { get; set; }
         public string? status { get; set; }
         //public string? time_zone { get; set; }
-        //public int time_zone_offset { get; set; }
+        //public int? time_zone_offset { get; set; }
         public List<object>? warnings { get; set; }
     }
 
@@ -398,7 +398,7 @@ namespace MM.API.Core.Models
         public List<Choice>? choices { get; set; }
         public object? description { get; set; }
         public string? element_type { get; set; }
-        public bool is_required { get; set; }
+        public bool? is_required { get; set; }
         public int? max_files { get; set; }
         public object? placeholder { get; set; }
         public object? repeatable_config { get; set; }
@@ -470,7 +470,7 @@ namespace MM.API.Core.Models
         public string? country { get; set; }
         public DocumentLocation? document_location { get; set; }
         public string? formatted_address { get; set; }
-        public bool is_verified { get; set; }
+        public bool? is_verified { get; set; }
         public string? label { get; set; }
         public string? postal_code { get; set; }
         public RawResults? raw_results { get; set; }
@@ -500,14 +500,14 @@ namespace MM.API.Core.Models
         public string? country_code { get; set; }
         public string? country_name { get; set; }
         public string? full_number { get; set; }
-        public bool is_disposable { get; set; }
-        public bool is_virtual { get; set; }
+        public bool? is_disposable { get; set; }
+        public bool? is_virtual { get; set; }
         public List<Lifecycle>? lifecycle { get; set; }
         public string? node_id { get; set; }
         public string? phone_number { get; set; }
         public string? phone_number_prefix { get; set; }
         public string? status { get; set; }
-        public int verification_attempts { get; set; }
+        public int? verification_attempts { get; set; }
         public string? verification_method { get; set; }
         public DateTime verified_at { get; set; }
         public List<object>? warnings { get; set; }
@@ -529,8 +529,8 @@ namespace MM.API.Core.Models
         public DocumentLocation? document_location { get; set; }
         public string? formatted_address { get; set; }
         public string? id { get; set; }
-        public bool is_best_match { get; set; }
-        public bool is_verified { get; set; }
+        public bool? is_best_match { get; set; }
+        public bool? is_verified { get; set; }
         public string? label { get; set; }
         public string? postal_code { get; set; }
         public RawResults? raw_results { get; set; }
@@ -600,8 +600,8 @@ namespace MM.API.Core.Models
     {
         public string? default_language { get; set; }
         public string? description { get; set; }
-        public bool is_active { get; set; }
-        public bool is_simple_questionnaire { get; set; }
+        public bool? is_active { get; set; }
+        public bool? is_simple_questionnaire { get; set; }
         public List<string>? languages { get; set; }
         public string? node_id { get; set; }
         public object? published_at { get; set; }
@@ -610,7 +610,7 @@ namespace MM.API.Core.Models
         public List<Section>? sections { get; set; }
         public string? status { get; set; }
         public string? title { get; set; }
-        public int version { get; set; }
+        public int? version { get; set; }
     }
 
     public class RawResults
@@ -619,7 +619,7 @@ namespace MM.API.Core.Models
         public string? formatted_address { get; set; }
         public Geometry? geometry { get; set; }
         public List<NavigationPoint>? navigation_points { get; set; }
-        public bool partial_match { get; set; }
+        public bool? partial_match { get; set; }
         public string? place_id { get; set; }
         public List<string>? types { get; set; }
     }
@@ -629,7 +629,7 @@ namespace MM.API.Core.Models
         [JsonProperty("United States")]
         public double? UnitedStates { get; set; }
 
-        public int PEP { get; set; }
+        public int? PEP { get; set; }
     }
 
     public class RiskView
@@ -642,15 +642,15 @@ namespace MM.API.Core.Models
 
     public class DiditResponse
     {
-        public int created_at { get; set; }
+        public int? created_at { get; set; }
         public Decision? decision { get; set; }
         public string? session_id { get; set; }
         public string? status { get; set; }
-        public int timestamp { get; set; }
+        public int? timestamp { get; set; }
         public string? vendor_data { get; set; }
         public string? webhook_type { get; set; }
         public string? workflow_id { get; set; }
-        public int workflow_version { get; set; }
+        public int? workflow_version { get; set; }
     }
 
     public class ScoreBreakdown
