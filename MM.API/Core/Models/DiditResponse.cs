@@ -324,7 +324,7 @@ namespace MM.API.Core.Models
         public BackImageQualityScore? back_image_quality_score { get; set; }
         public string? back_video { get; set; }
         public string? date_of_birth { get; set; }
-        public object? date_of_issue { get; set; }
+        public string? date_of_issue { get; set; }
         public string? document_number { get; set; }
         public string? document_type { get; set; }
         public string? expiration_date { get; set; }
