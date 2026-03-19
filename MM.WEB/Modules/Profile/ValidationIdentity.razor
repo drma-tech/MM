@@ -11,21 +11,13 @@
     This module is still under development. If you wish to report a bug, please contact us via the feedback button.
 </MudAlert>
 
-<MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
-    <MudItem xs="12" sm="10" md="8" lg="6">
-        <span>url: @url</span>
-    </MudItem>
-</MudGrid>
-
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code
 {
-    private string? url { get; set; }
-
     protected override async Task LoadAuthDataAsync()
     {
-        url = await ValidationApi.CreateVerificationSession();
+        var url = await ValidationApi.CreateVerificationSession();
+        Navigation.NavigateTo($"{url}?url={Navigation.BaseUri}/profile");
     }
-   
 }
