@@ -56,6 +56,9 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
     {
         var ip = req.GetUserIP(true);
 
+        var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
+        await response.WriteStringAsync("ok", cancellationToken);
+
         var bodyRaw = await new StreamReader(req.Body).ReadToEndAsync(cancellationToken);
         using var document = JsonDocument.Parse(bodyRaw);
         var jsonBody = document.RootElement;
@@ -72,6 +75,9 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
         }
 
         var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new UnhandledException("invalid payload");
+
+        if (payload.status == "Not Started") return response;
+        if (payload.status == "In Progress") return response;
 
         var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, payload.vendor_data, cancellationToken);
         var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, payload.vendor_data, cancellationToken);
@@ -93,21 +99,21 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
             req.LogWarning($"verification not succceded (user-id: {payload.vendor_data}): status={payload.status}");
         }
 
-        var user = payload.decision?.id_verifications?.LastOrDefault() ?? throw new UnhandledException("id_verifications not available");
+        var user = payload.decision?.id_verifications?.LastOrDefault();
 
         var id = new IdModel
         {
             session_id = payload.session_id,
             workflow_id = payload.workflow_id,
-            full_name = user.full_name,
-            gender = user.gender,
-            issuing_state = user.issuing_state,
-            date_of_birth = user.date_of_birth,
-            date_of_issue = user.date_of_issue,
-            document_number = user.document_number,
-            document_type = user.document_type,
-            nationality = user.nationality,
-            place_of_birth = user.place_of_birth
+            full_name = user?.full_name,
+            gender = user?.gender,
+            issuing_state = user?.issuing_state,
+            date_of_birth = user?.date_of_birth,
+            date_of_issue = user?.date_of_issue,
+            document_number = user?.document_number,
+            document_type = user?.document_type,
+            nationality = user?.nationality,
+            place_of_birth = user?.place_of_birth
         };
 
         id.SetIds(payload.vendor_data!);
@@ -117,9 +123,6 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
             repo.UpsertItemAsync(validation, cancellationToken),
             repoIds.UpsertItemAsync(id, cancellationToken)
         );
-
-        var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
-        await response.WriteStringAsync("ok", cancellationToken);
 
         return response;
     }
