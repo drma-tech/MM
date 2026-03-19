@@ -19,10 +19,12 @@ public class CosmosIdsRepository
 
     public Container Container { get; }
 
-    public async Task<T> UpsertItemAsync<T>(T item, CancellationToken cancellationToken) where T : CosmosDocument, new()
+    public async Task<T> UpsertItemAsync<T>(T? item, CancellationToken cancellationToken) where T : CosmosDocument, new()
     {
         try
         {
+            if (item == null) return new T();
+
             var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
 
             if (response.RequestCharge > 15)

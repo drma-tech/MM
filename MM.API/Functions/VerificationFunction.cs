@@ -101,18 +101,18 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
 
         var user = payload.decision?.id_verifications?.LastOrDefault();
 
-        var id = new IdModel
+        var id = user != null ? new IdModel
         {
             session_id = payload.session_id,
             workflow_id = payload.workflow_id,
-            nationality = user?.nationality,
-            full_name = user?.full_name,
-            gender = user?.gender,
-            date_of_birth = user?.date_of_birth,
-            place_of_birth = user?.place_of_birth
-        };
+            nationality = user.nationality,
+            full_name = user.full_name,
+            gender = user.gender,
+            date_of_birth = user.date_of_birth,
+            place_of_birth = user.place_of_birth
+        } : null;
 
-        id.SetIds(payload.vendor_data!);
+        id?.SetIds(payload.vendor_data!);
 
         await Task.WhenAll(
             repo.UpsertItemAsync(principal, cancellationToken),
