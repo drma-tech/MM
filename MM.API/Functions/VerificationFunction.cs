@@ -105,14 +105,10 @@ public class VerificationFunction(CosmosRepository repo, CosmosIdsRepository rep
         {
             session_id = payload.session_id,
             workflow_id = payload.workflow_id,
+            nationality = user?.nationality,
             full_name = user?.full_name,
             gender = user?.gender,
-            issuing_state = user?.issuing_state,
             date_of_birth = user?.date_of_birth,
-            date_of_issue = user?.date_of_issue,
-            document_number = user?.document_number,
-            document_type = user?.document_type,
-            nationality = user?.nationality,
             place_of_birth = user?.place_of_birth
         };
 
