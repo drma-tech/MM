@@ -8,10 +8,13 @@ using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.Shared.Models.Safety;
+using System.Text;
+using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosSafetyRepository repoSafety, StorageHelper storageHelper,
+    CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, IHttpClientFactory factory)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -136,10 +139,18 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         var userId = await req.GetUserIdAsync(cancellationToken);
 
         var myPrincipal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
-        if (myPrincipal != null) await repo.Delete(myPrincipal, cancellationToken);
+        if (myPrincipal != null)
+        {
+            await repoTrash.UpsertItemAsync(myPrincipal, cancellationToken);
+            await repo.Delete(myPrincipal, cancellationToken);
+        }
 
         var myLogins = await repo.Get<AuthLogin>(DocumentType.Login, userId, cancellationToken);
-        if (myLogins != null) await repo.Delete(myLogins, cancellationToken);
+        if (myLogins != null)
+        {
+            await repoTrash.UpsertItemAsync(myLogins, cancellationToken);
+            await repo.Delete(myLogins, cancellationToken);
+        }
 
         var myProfileOff = await repoOff.Get<ProfileModel>(userId, cancellationToken);
         if (myProfileOff != null)
@@ -181,8 +192,38 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         var myValidations = await repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
         if (myValidations != null) await repo.Delete(myValidations, cancellationToken);
 
-        //var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
-        //if (safety != null) //todo: delete session and user from didit
+        //delete didit data if exists
+        var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        if (safety != null)
+        {
+            using var http = factory.CreateClient();
+
+            if (safety.session_id.NotEmpty())
+            {
+                var sessionUrl = $"https://verification.didit.me/v3/session/{safety.session_id}/delete/";
+                using var sessionRequest = new HttpRequestMessage(HttpMethod.Delete, sessionUrl);
+
+                sessionRequest.Headers.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
+
+                await http.SendAsync(sessionRequest, cancellationToken);
+            }
+
+            if (safety.Id.NotEmpty())
+            {
+                var userUrl = "https://verification.didit.me/v3/users/delete/";
+                var payload = new
+                {
+                    vendor_data_list = new[] { safety.Id }
+                };
+
+                using var userRequest = new HttpRequestMessage(HttpMethod.Post, userUrl);
+
+                userRequest.Headers.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
+                userRequest.Content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
+
+                await http.SendAsync(userRequest, cancellationToken);
+            }
+        }
     }
 
     [Function("PrincipalPublicMode")]

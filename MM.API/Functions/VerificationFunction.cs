@@ -7,6 +7,7 @@ using MM.Shared.Models.Profile;
 using MM.Shared.Models.Safety;
 using System.Net.Http.Json;
 using System.Text.Json;
+using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
@@ -125,9 +126,22 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
 
             safety.IdentityPhotoId = photoName;
 
-            //todo: download photo from didit and upload to storage
-            //var photo = payload.decision?.liveness_checks?.LastOrDefault()?.reference_image;
-            //await storageHelper.UploadSafetyPhoto(SafetyType.Gallery, streamStorage, photoName, userId, cancellationToken);
+            var photo = payload.decision?.liveness_checks?.LastOrDefault()?.reference_image;
+            if (photo.NotEmpty())
+            {
+                using var http = factory.CreateClient();
+                using var responsePhoto = await http.GetAsync(photo, cancellationToken);
+                await using var stream = await responsePhoto.Content.ReadAsStreamAsync(cancellationToken);
+
+                await storageHelper.UploadSafetyPhoto(SafetyType.id, stream, photoName, userId, cancellationToken);
+            }
+
+            var ipAnalyse = payload?.decision?.ip_analyses?.LastOrDefault();
+
+            if (ipAnalyse != null)
+            {
+                safety.ip_address = ipAnalyse.ip_address;
+            }
         }
 
         await Task.WhenAll(

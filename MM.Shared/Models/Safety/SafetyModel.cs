@@ -17,5 +17,8 @@
         public string? date_of_birth { get; set; }
         public string? place_of_birth { get; set; }
         public string? IdentityPhotoId { get; set; }
+
+        //additional info
+        public string? ip_address { get; set; }
     }
 }
