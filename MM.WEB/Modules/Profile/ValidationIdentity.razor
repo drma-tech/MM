@@ -21,7 +21,8 @@
 {
     protected override async Task LoadAuthDataAsync()
     {
-        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile");
+        var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
+        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email);
         Navigation.NavigateTo(url!);
     }
 }
