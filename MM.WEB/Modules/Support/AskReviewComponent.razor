@@ -14,7 +14,7 @@ else
 @if (Platform != MM.Shared.Enums.Platform.webapp)
 {
     <div class="@Css.Build().Raw("store-grid").Small("mb")">
-        @if (Platform == SD.Shared.Enums.Platform.windows)
+        @if (Platform == MM.Shared.Enums.Platform.windows)
         {
             <MudButton Href="@_windowsReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
                 <MudImage Src="/logo/microsoft-store.png" Style="max-width: 35px;"></MudImage> Microsoft Store (Store)
@@ -23,7 +23,7 @@ else
                 <MudImage Src="/logo/microsoft-store.png" Style="max-width: 35px;"></MudImage> Microsoft Store (Site)
             </MudButton>
         }
-        else if (Platform == SD.Shared.Enums.Platform.play)
+        else if (Platform == MM.Shared.Enums.Platform.play)
         {
             <MudButton Href="@_googleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
                 <MudImage Src="/logo/google-play.png" Style="max-width: 35px;"></MudImage> Google Play (Store)
@@ -32,7 +32,7 @@ else
                 <MudImage Src="/logo/google-play.png" Style="max-width: 35px;"></MudImage> Google Play (Site)
             </MudButton>
         }
-        else if (Platform == SD.Shared.Enums.Platform.ios)
+        else if (Platform == MM.Shared.Enums.Platform.ios)
         {
 
             <MudButton Href="@_appleReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
@@ -42,7 +42,7 @@ else
                 <MudImage Src="/logo/app-store.png" Style="max-width: 35px;"></MudImage> App Store (Site)
             </MudButton>
         }
-        else if (Platform == SD.Shared.Enums.Platform.huawei)
+        else if (Platform == MM.Shared.Enums.Platform.huawei)
         {
 
             <MudButton Href="@_huaweiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
@@ -52,7 +52,7 @@ else
                 <MudImage Src="/logo/huawei.png" Style="max-width: 35px;"></MudImage> Huawei AppGallery (Site)
             </MudButton>
         }
-        else if (Platform == SD.Shared.Enums.Platform.xiaomi)
+        else if (Platform == MM.Shared.Enums.Platform.xiaomi)
         {
 
             <MudButton Href="@_xiaomiReview" OnClick="Reviewed" Variant="Variant.Filled" FullWidth="true" Color="ActionColor" Class="vertical-button">
