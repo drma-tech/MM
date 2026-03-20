@@ -277,7 +277,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New features to be announced.
+        ///   Looks up a localized string similar to Spotlight - Boost your profile on the platform..
         /// </summary>
         public static string Phase3Opt1 {
             get {
