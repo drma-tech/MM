@@ -35,11 +35,15 @@
         <MudSpacer />
         @if (AppStateStatic.IsAuthenticated)
         {
-            <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("gem").Font" Class="me-2" OnClick="@OpenSubscription" />
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
+                <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
+            </MudButton>
         }
         else
         {
-            <MudIconButton Variant="Variant.Filled" Color="Color.Warning" Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" Class="me-2" OnClick="@OpenSubscription" />
+            <MudButton Variant="Variant.Filled" Color="Color.Warning" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
+                <MudIcon Icon="@IconsFA.Solid.Icon("fire").WithAnimation(IconAnimation.Fade).Font"></MudIcon>@(Principal?.Sparks ?? 0)
+            </MudButton>
         }
         <AuthorizeView>
             <Authorized>
@@ -111,14 +115,14 @@
         <MudNavMenu>
             @if (AppStateStatic.IsAuthenticated)
             {
-                <MudNavLink IconColor="Color.Primary" Icon="@IconsFA.Solid.Icon("gem").Font" OnClick="@OpenSubscription">
-                    Subscription
+                <MudNavLink IconColor="Color.Primary" Icon="@IconsFA.Solid.Icon("fire").Font" OnClick="@OpenSubscription">
+                    @(Principal?.Sparks ?? 0) Sparks
                 </MudNavLink>
             }
             else
             {
-                <MudNavLink IconColor="Color.Warning" Icon="@IconsFA.Solid.Icon("gem").WithAnimation(IconAnimation.Fade).Font" OnClick="@OpenSubscription">
-                    Subscription
+                <MudNavLink IconColor="Color.Warning" Icon="@IconsFA.Solid.Icon("fire").WithAnimation(IconAnimation.Fade).Font" OnClick="@OpenSubscription">
+                    @(Principal?.Sparks ?? 0) Sparks
                 </MudNavLink>
             }
             <AuthorizeView>

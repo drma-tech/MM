@@ -14,8 +14,6 @@ public class ProfileModel : CosmosDocument
         City
     }
 
-    private readonly string BlobPath = "https://drmammstorage.blob.core.windows.net";
-
     public bool Validated { get; set; }
 
     public ProfileGalleryModel? Gallery { get; set; }

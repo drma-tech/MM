@@ -59,6 +59,17 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
             sub.Sparks = purchase.Sparks;
         }
     }
+
+    public void ConsumesSparks(int qtd)
+    {
+        if (Sparks < qtd) throw new NotificationException("There are not enough sparks for this operation");
+        Sparks -= qtd;
+    }
+
+    public bool HasSparks(int qtd)
+    {
+        return Sparks >= qtd;
+    }
 }
 
 public class AuthPurchase

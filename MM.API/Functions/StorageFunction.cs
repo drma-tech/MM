@@ -9,7 +9,7 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
-public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository repoSafety, CosmosProfileOffRepository repo, StorageHelper storageHelper)
+public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository repoSafety, CosmosProfileOffRepository repo, StorageHelper storageHelper, IHttpClientFactory factory)
 {
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
@@ -124,8 +124,9 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
 
-        using var faceStream = await GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face), cancellationToken);
-        using var bodyStream = await GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body), cancellationToken);
+        using var http = factory.CreateClient();
+        using var faceStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face), cancellationToken);
+        using var bodyStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body), cancellationToken);
         using var streamValidation = new MemoryStream(request.Stream);
         var responsFace = await AwsFaceAI.CompareFaces(faceStream, streamValidation, cancellationToken);
         var responsBody = await AwsFaceAI.CompareFaces(bodyStream, streamValidation, cancellationToken);
@@ -138,7 +139,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         var face = responsFace.FaceMatches[0];
         var body = responsBody.FaceMatches[0];
 
-        if (face.Similarity < 95 || body.Similarity < 95)
+        if (face.Similarity < 90 || body.Similarity < 90)
         {
             throw new NotificationException("We were unable to detect a matching face. Make sure both images are clear and show only one person.");
         }
@@ -164,6 +165,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         if (safety.GalleryPhotoId.NotEmpty()) await storageHelper.DeleteSafetyPhoto(SafetyType.Gallery, safety.GalleryPhotoId, cancellationToken);
 
         safety.GalleryPhotoId = photoName;
+        safety.Email = request.Email;
 
         await repoSafety.UpsertItemAsync(safety, cancellationToken);
 
@@ -180,15 +182,6 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
     public class UploadPhotoValidationCommand
     {
         public byte[] Stream { get; set; } = [];
-    }
-
-    public static async Task<MemoryStream> GetImageStreamFromUrlAsync(string url, CancellationToken cancellationToken)
-    {
-        using var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync(url, cancellationToken);
-        response.EnsureSuccessStatusCode();
-
-        var imageBytes = await response.Content.ReadAsByteArrayAsync(cancellationToken);
-        return new MemoryStream(imageBytes);
+        public string? Email { get; set; }
     }
 }

@@ -19,11 +19,11 @@
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.Gallery)" @bind-Value="@Validation!.Gallery" CssIcon="@IconsFA.Solid.Icon("images").Font"
-                             Href="/profile/validation/gallery"></FieldActive>
+                             Click="GalleryClick"></FieldActive>
             </MudItem>
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.Identity)" @bind-Value="@Validation!.Identity" CssIcon="@IconsFA.Solid.Icon("id-card").Font"
-                             Href="/profile/validation/identity"></FieldActive>
+                             Click="IdentityClick" Sparks="1"></FieldActive>
             </MudItem>
         </MudGrid>
         <MudGrid Spacing="@Css.SpaceSmall">
@@ -44,6 +44,8 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
+    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
+
     private ValidationModel? Validation { get; set; }
     private ValidationValidation ValidationValidator { get; set; } = new();
     public ComponentActions<ValidationModel?> Actions { get; set; } = new(obj => obj == null);
@@ -60,6 +62,22 @@
         }
 
         Actions?.FinishLoading?.Invoke(Validation);
+    }
+
+    private async Task GalleryClick()
+    {
+        Navigation.NavigateTo("/profile/validation/gallery");
+    }
+
+    private async Task IdentityClick()
+    {
+        if (!Principal!.HasSparks(1))
+        {
+            await ShowWarning("You need at least 1 spark to validate your identity");
+            return;
+        }
+
+        Navigation.NavigateTo("/profile/validation/identity");
     }
 
 }

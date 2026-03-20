@@ -134,15 +134,14 @@ else
                 <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationGallery)" Overlap="true" Color="GetButtonColor(ValidationGallery)" Style="width: 100%;">
-                            <MudButton StartIcon="@IconsFA.Solid.Icon("images").Font" Variant="Variant.Outlined" Style="width: 100%;" Class="vertical-button">
+                            <MudButton StartIcon="@IconsFA.Solid.Icon("images").Font" Variant="Variant.Outlined" Style="width: 100%; cursor: unset;" Class="vertical-button">
                                 Gallery
                             </MudButton>
                         </MudBadge>
                     </MudItem>
                     <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationIdentity)" Overlap="true" Color="GetButtonColor(ValidationIdentity)" Style="width: 100%;">
-                            <MudButton StartIcon="@IconsFA.Solid.Icon("id-card").Font" Variant="Variant.Outlined" Style="width: 100%;" Class="vertical-button"
-                                       OnClick="@(()=>ShowInfo("This feature is only available in phase 2."))">
+                            <MudButton StartIcon="@IconsFA.Solid.Icon("id-card").Font" Variant="Variant.Outlined" Style="width: 100%; cursor: unset;" Class="vertical-button">
                                 Identity
                             </MudButton>
                         </MudBadge>
@@ -488,13 +487,13 @@ else
     {
         if (profile == null)
         {
-            await ShowWarning("Profile data is required to simulate matches.");
+            await ShowWarning("You need to complete your profile first. (Step 1)");
             return;
         }
 
         if (filter == null)
         {
-            await ShowWarning("Filter data is required to simulate matches.");
+            await ShowWarning("You need to define your filters first. (Step 2)");
             return;
         }
 

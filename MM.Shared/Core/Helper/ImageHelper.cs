@@ -2,6 +2,8 @@
 
 public static class ImageHelper
 {
+    public static string BlobPath = "https://drmammstorage.blob.core.windows.net";
+
     public enum PhotoType
     {
         Face = 1,

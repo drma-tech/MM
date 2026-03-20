@@ -73,10 +73,12 @@
         </MudCardContent>
         <MudCardActions>
             <MudToolBar>
-                <MudNumericField T="int" @bind-Value="@_total" Label="Total" Class="me-2"></MudNumericField>
-                <MudTextField T="string" Label="Final Price" Class="me-2" ReadOnly="true" Value="@((GetPrice(AppStateStatic.ActiveProduct) * _total).ToString("C", CultureInfo.GetCultureInfo("en-US")))" />
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@(() => OpenCheckout(AppStateStatic.ActiveProduct, _total))"
-                           Disabled="@((Provider == PaymentProvider.Stripe && Client != null && Client.StripeCustomerId.Empty()) || _processing)">
+                <MudNumericField T="int" Label="Total" Class="me-2" Variant="Variant.Filled"
+                                 @bind-Value="@_total"></MudNumericField>
+                <MudTextField T="string" Label="Final Price" Class="me-2" Variant="Variant.Filled" ReadOnly="true"
+                              Value="@((GetPrice(AppStateStatic.ActiveProduct) * _total).ToString("C", CultureInfo.GetCultureInfo("en-US")))" />
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Style="height: 100%;" FullWidth="true" OnClick="@(() => OpenCheckout(AppStateStatic.ActiveProduct, _total))"
+                           Disabled="@((Provider == PaymentProvider.Stripe && Client != null && Client.StripeCustomerId.Empty()) || _processing || true)">
                     @if (_processing)
                     {
                         <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -153,7 +155,7 @@
         else return 1;
     }
 
-    protected async Task OpenCheckout(AccountProduct product,  int qtd)
+    protected async Task OpenCheckout(AccountProduct product, int qtd)
     {
         try
         {

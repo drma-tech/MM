@@ -2,15 +2,15 @@
 
 public class ValidationModel() : PrivateMainDocument(DocumentType.Validation)
 {
-    [Custom(Name = "Gallery", Description = "Validates all photos in the gallery (all photos must contain you and only you and be easily identifiable)")]
+    [Custom(Name = "Gallery", Description = "A photo of you will be taken to compare with your gallery", WhyImportant = "It is necessary before you publish your profile.")]
     public bool Gallery { get; set; }
 
-    [Custom(Name = "Identity", Description = "Identity validation (must be done before any interaction on the platform)")]
+    [Custom(Name = "Identity", Description = "A specialized and independent platform will be used", WhyImportant = "It is necessary before any interaction with another user.")]
     public bool Identity { get; set; }
 
-    [Custom(Name = "Net Worth", Description = "Validation required to use this field in your filters")]
+    [Custom(Name = "Net Worth", Description = "A specialized and independent platform will be used", WhyImportant = "It's necessary if you want to use this field as a filter.")]
     public bool NetWorth { get; set; }
 
-    [Custom(Name = "Annual Income", Description = "Validation required to use this field in your filters")]
+    [Custom(Name = "Annual Income", Description = "A specialized and independent platform will be used", WhyImportant = "It's necessary if you want to use this field as a filter.")]
     public bool AnnualIncome { get; set; }
 }

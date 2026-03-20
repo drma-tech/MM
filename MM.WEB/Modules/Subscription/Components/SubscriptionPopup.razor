@@ -23,7 +23,7 @@
         }
         else
         {
-            <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
+            <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")" Style="align-items: end;">
                 <MudItem xs="12" sm="8">
                     @if (AppStateStatic.ActiveProduct == AccountProduct.Phase1)
                     {
@@ -39,7 +39,7 @@
                     }
                 </MudItem>
                 <MudItem xs="12" sm="4">
-                    <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Dense="true">
+                    <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Variant="Variant.Outlined" Dense="true">
                         @foreach (var item in Providers)
                         {
                             <MudSelectItem T="PaymentProvider" Value="@item">

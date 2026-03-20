@@ -30,6 +30,19 @@ public class StorageHelper(IConfiguration configuration)
             await blob.DeleteAsync(DeleteSnapshotsOption.IncludeSnapshots, cancellationToken: cancellationToken);
     }
 
+    public async Task<Stream> GetSafetyPhoto(SafetyType type, string? fileName, CancellationToken cancellationToken)
+    {
+        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));
+        var client = container.GetBlobClient(fileName);
+
+        if (!await client.ExistsAsync(cancellationToken))
+            throw new FileNotFoundException(fileName);
+
+        var response = await client.DownloadStreamingAsync(cancellationToken: cancellationToken);
+
+        return response.Value.Content;
+    }
+
     public async Task UploadSafetyPhoto(SafetyType type, Stream stream, string fileName, string userId, CancellationToken cancellationToken)
     {
         var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));

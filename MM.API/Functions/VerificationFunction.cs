@@ -5,6 +5,7 @@ using MM.API.Core.Models;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Safety;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using static MM.Shared.Core.Helper.ImageHelper;
@@ -14,6 +15,22 @@ namespace MM.API.Functions;
 public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, IHttpClientFactory factory)
 {
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { PropertyNameCaseInsensitive = true };
+
+    [Function("GetSafetyGalleryPhoto")]
+    public async Task<HttpResponseData> GetSafetyGalleryPhoto(
+    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "safety/get-photo-gallery")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
+        var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+
+        using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken);
+
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Headers.Add("Content-Type", "image/jpeg");
+        await faceStream.CopyToAsync(response.Body, cancellationToken);
+
+        return response;
+    }
 
     [Function("CreateVerificationSession")]
     public async Task<string> CreateVerificationSession(
@@ -124,8 +141,6 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
             var idNewPhoto = Guid.NewGuid().ToString();
             var photoName = idNewPhoto + ".jpg";
 
-            safety.IdentityPhotoId = photoName;
-
             var photo = payload.decision?.liveness_checks?.LastOrDefault()?.reference_image;
             if (photo.NotEmpty())
             {
@@ -134,7 +149,10 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
                 await using var stream = await responsePhoto.Content.ReadAsStreamAsync(cancellationToken);
 
                 await storageHelper.UploadSafetyPhoto(SafetyType.id, stream, photoName, userId, cancellationToken);
+                if (safety.IdentityPhotoId.NotEmpty()) await storageHelper.DeleteSafetyPhoto(SafetyType.id, safety.IdentityPhotoId, cancellationToken);
             }
+
+            safety.IdentityPhotoId = photoName;
 
             var ipAnalyse = payload?.decision?.ip_analyses?.LastOrDefault();
 

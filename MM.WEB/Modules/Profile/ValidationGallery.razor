@@ -3,6 +3,7 @@
 @using KristofferStrube.Blazor.MediaCaptureStreams.Exceptions
 @using KristofferStrube.Blazor.WebIDL.Exceptions
 @using MM.Shared.Models.Profile
+@using MM.Shared.Models.Safety
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 @using Microsoft.AspNetCore.Authorization
@@ -40,8 +41,14 @@
                     {
                         <div style="text-align: center;">
                             <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
-                                Load Camera
+                                Start new validation
                             </MudButton>
+                            @if (PriorPicture != null)
+                            {
+                                <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(()=>SendPhoto(PriorPicture))" Class="my-5 ms-2">
+                                    Use prior validation
+                                </MudButton>
+                            }
                         </div>
                     }
                     else
@@ -73,7 +80,7 @@
                     </MudButton>
                 }
                 <MudSpacer></MudSpacer>
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="SendPhoto"
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="@(() => SendPhoto(null))"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
                     Send
                 </MudButton>
@@ -107,6 +114,7 @@
     private ValidationModel? Validation { get; set; }
     private MudDialog? MudDialog { get; set; }
     private byte[] Picture { get; set; } = [];
+    private byte[]? PriorPicture { get; set; } = [];
 
     private MediaDevices? mediaDevices = default;
     private MediaStreamTrack? videoStreamTrack;
@@ -117,6 +125,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         Validation = await ValidationApi.Get();
+        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto();
     }
 
     protected async Task TakeShot()
@@ -150,12 +159,13 @@
         }
     }
 
-    protected async Task SendPhoto()
+    protected async Task SendPhoto(byte[]? picture = null)
     {
         try
         {
             AppStateStatic.ProcessingStarted?.Invoke();
-            Validation = await ValidationApi.UploadPhotoValidation(Picture);
+            var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
+            Validation = await ValidationApi.UploadPhotoValidation(picture ?? Picture, email);
             AppStateStatic.ProcessingFinished?.Invoke();
 
             await ShowSuccess("Photo validated successfully!");

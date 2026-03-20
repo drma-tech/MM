@@ -7,7 +7,6 @@ namespace MM.WEB.Api;
 public struct StorageEndpoint
 {
     public const string UploadPhoto = "storage/upload-photo";
-    public const string UploadPhotoValidation = "storage/upload-photo-validation";
 
     public static string DeletePhotoGallery(PhotoType photoType)
     {

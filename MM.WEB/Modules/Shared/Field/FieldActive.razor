@@ -2,30 +2,45 @@
 
 @if (Visible)
 {
-    <div class="d-flex" style="align-items: center;">
-        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
-        <MudText Style="width: 50%;" Class="me-3">@For.GetCustomAttribute().Name</MudText>
-        <MudButton Variant="Variant.Filled" Href="@Href" Style="width: 100%" Disabled="Disabled || Value"
-                   StartIcon="@(Value ? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)"
-                   Color="@(Value ? Color.Success : Color.Warning)">
-            @if (Value)
-            {
-                <span>Done</span>
-            }
-            else if (CustomButtonText.NotEmpty())
-            {
-                <span>@CustomButtonText</span>
-            }
-            else
-            {
-                <span>Pending</span>
-            }
-        </MudButton>
-    </div>
-    @if (Description.NotEmpty())
+    <MudGrid Spacing="@Css.SpaceSmall">
+        <MudItem xs="12">
+            <MudIcon Icon="@CssIcon" Color="Color.Primary" Class="me-2"></MudIcon>
+            <MudText Typo="Typo.h6" Color="Color.Primary" Inline="true">
+                @For.GetCustomAttribute().Name
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                @For.GetCustomAttribute().Description
+            </MudText>
+        </MudItem>
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Filled" Style="width: 100%" Disabled="Disabled || Value" OnClick="@Click"
+                       Color="@(Value ? Color.Success : Color.Warning)">
+                <MudIcon Icon="@(Value? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Class="me-2"></MudIcon>
+                @if (Value)
+                {
+                    <span>Done</span>
+                }
+                else if (CustomButtonText.NotEmpty())
+                {
+                    <span>@CustomButtonText</span>
+                }
+                else
+                {
+                    <span>Pending</span>
+                }
+                @if (Sparks.HasValue)
+                {
+                    <MudChip T="string" Color="Color.Info" Label="true" Size="Size.Small" Icon="@IconsFA.Solid.Icon("fire").Font" Style="position: absolute; right: 4px;">
+                        @Sparks.Value
+                    </MudChip>
+                }
+            </MudButton>
+        </MudItem>
+    </MudGrid>
+    @if (For.GetCustomAttribute().WhyImportant.NotEmpty())
     {
         <MudText Typo="Typo.caption">
-            @Description
+            @For.GetCustomAttribute().WhyImportant
         </MudText>
     }
 }
