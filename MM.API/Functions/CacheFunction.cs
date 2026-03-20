@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache distributedCache)
+public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache cache)
 {
     [Function("Dashboard")]
     public async Task<HttpResponseData?> Dashboard(
@@ -16,7 +16,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
     {
         var cacheKey = "dashboard";
 
-        var doc = await distributedCache.Get<SumUsers>(cacheKey, cancellationToken);
+        var doc = await cache.Get<SumUsers>(cacheKey, cancellationToken);
 
         if (doc == null)
         {
@@ -43,18 +43,18 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                 doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.HalfDay);
+            await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
         }
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
 
-    private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl) where TData : class, new()
+    private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()
     {
         if (doc != null)
         {
             var bytes = JsonSerializer.SerializeToUtf8Bytes(doc);
-            await distributedCache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) });
+            await cache.SetAsync(cacheKey, bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds((int)ttl) }, cancellationToken);
         }
     }
 }
