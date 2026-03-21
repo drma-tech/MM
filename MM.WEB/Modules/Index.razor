@@ -37,61 +37,87 @@
     <NewPageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
-                <MudItem xs="12" sm="6" md="3">
-                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                        <div class="d-flex" style="align-items: center;">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                <MudItem xs="6" md="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <MudText Typo="Typo.h6">
                                 @GlobalTranslations.Countries
                             </MudText>
-                            <MudSpacer></MudSpacer>
-                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        </MudCardHeader>
+                        <MudCardContent Class="py-0">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
+                            <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.Countries ?? 0)
-                            </MudChip>
-                        </div>
-                    </MudPaper>
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
+                                       OnClick="@(async () => await DialogCountries!.ShowAsync("Users from countries registered so far", PopupHelper.Options(MaxWidth.Small)))">
+                                Learn more
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
                 </MudItem>
-                <MudItem xs="12" sm="6" md="3">
-                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                        <div class="d-flex" style="align-items: center;">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                <MudItem xs="6" md="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <MudText Typo="Typo.h6">
                                 @GlobalTranslations.Cities
                             </MudText>
-                            <MudSpacer></MudSpacer>
-                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        </MudCardHeader>
+                        <MudCardContent Class="py-0">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
+                            <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.Cities ?? 0)
-                            </MudChip>
-                        </div>
-                    </MudPaper>
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
+                                       OnClick="@(async () => await DialogCities!.ShowAsync("Users from cities registered so far", PopupHelper.Options(MaxWidth.Small)))">
+                                Learn more
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
                 </MudItem>
-                <MudItem xs="12" sm="6" md="3">
-                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                        <div class="d-flex" style="align-items: center;">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                <MudItem xs="6" md="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <MudText Typo="Typo.h6">
                                 @Landing.TotalUsers
                             </MudText>
-                            <MudSpacer></MudSpacer>
-                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        </MudCardHeader>
+                        <MudCardContent Class="py-0">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
+                            <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.TotalUsers ?? 0)
-                            </MudChip>
-                        </div>
-                    </MudPaper>
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
+                                Learn more
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
                 </MudItem>
-                <MudItem xs="12" sm="6" md="3">
-                    <MudPaper Outlined="true" Class="pa-1" Style="height: 100%; align-content: center;">
-                        <div class="d-flex" style="align-items: center;">
-                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("user-plus").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" />
-                            <MudText Typo="Typo.subtitle1" Color="Color.Primary" Style="text-transform: uppercase;">
+                <MudItem xs="6" md="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <MudText Typo="Typo.h6">
                                 @Landing.RecentlyJoined
                             </MudText>
-                            <MudSpacer></MudSpacer>
-                            <MudChip T="string" Color="Color.Secondary" Label="true" Size="Size.Large" Style="padding: 0.2rem; height: auto;">
+                        </MudCardHeader>
+                        <MudCardContent Class="py-0">
+                            <MudChip T="string" Icon="@IconsFA.Solid.Icon("user-plus").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
+                            <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.RecentlyJoined ?? 0)
-                            </MudChip>
-                        </div>
-                    </MudPaper>
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
+                                Learn more
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
                 </MudItem>
             </MudGrid>
         </BodyFragment>
@@ -101,7 +127,7 @@
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
+                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
@@ -344,12 +370,47 @@
     </NewPageSection>
 </MudContainer>
 
+<MudDialog @ref="@DialogCountries" Style="width: 100%">
+    <DialogContent>
+        @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
+        {
+            <MudChip T="string" Label="true" Color="Color.Primary">@region.Name</MudChip>
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await DialogCountries!.CloseAsync(); })">
+            @Button.Close
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+<MudDialog @ref="@DialogCities" Style="width: 100%">
+    <DialogContent>
+        @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
+        {
+            <MudChip T="string" Label="true" Color="Color.Primary">@region.Name</MudChip>
+            @foreach (var city in region.Cities.Order().ToList() ?? [])
+            {
+                <MudChip T="string" Label="true" Color="Color.Secondary">@city</MudChip>
+            }
+            <br />
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="@(async () => { await DialogCities!.CloseAsync(); })">
+            @Button.Close
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
 @code {
 
     [Parameter]
     [SupplyParameterFromQuery(Name = "language")]
     public string? Language { get; set; }
 
+    private MudDialog? DialogCountries { get; set; }
+    private MudDialog? DialogCities { get; set; }
     public SumUsers? SumUsers { get; set; }
 
     private bool SubscriptionAllowed { get; set; } = true;

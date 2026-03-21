@@ -40,6 +40,14 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                 obj.TotalUsers = principals.Count;
                 obj.RecentlyJoined = principals.Count(w => w.DateTimeCreated > oneWeekAgo);
 
+                obj.Regions = profiles
+                    .GroupBy(g => g.Country)
+                    .Select(s => new Shared.Models.Dashboard.Region
+                    {
+                        Name = s.Key,
+                        Cities = s.Select(s => s.City!).Distinct().ToList()
+                    }).ToList();
+
                 doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);
             }
 
