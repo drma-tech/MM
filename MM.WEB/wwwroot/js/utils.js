@@ -285,7 +285,7 @@ export const interop = {
 
         if (status.state === "denied") {
             notification.showError(
-                "Location access is blocked. Enable it in your browser settings."
+                "Location access was blocked. Please enable it to continue."
             );
             return;
         }
@@ -314,19 +314,19 @@ export const interop = {
 
                 if (code === err.PERMISSION_DENIED) {
                     notification.showError(
-                        "User denied the request for Geolocation."
+                        "Location access was blocked. Please enable it to continue."
                     );
                 } else if (code === err.POSITION_UNAVAILABLE) {
                     notification.showError(
-                        "Location information is unavailable."
+                        "We couldn’t determine your location. Check your GPS or connection and try again."
                     );
                 } else if (code === err.TIMEOUT) {
                     notification.showError(
-                        "The request to obtain a location timed out."
+                        "Getting your location is taking too long. Please try again."
                     );
                 } else {
                     notification.showError(
-                        "An unexpected error occurred while retrieving location."
+                        "Something went wrong while getting your location. Please try again."
                     );
                 }
             },
