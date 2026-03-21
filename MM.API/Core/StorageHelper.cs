@@ -30,8 +30,10 @@ public class StorageHelper(IConfiguration configuration)
             await blob.DeleteAsync(DeleteSnapshotsOption.IncludeSnapshots, cancellationToken: cancellationToken);
     }
 
-    public async Task<Stream> GetSafetyPhoto(SafetyType type, string? fileName, CancellationToken cancellationToken)
+    public async Task<Stream?> GetSafetyPhoto(SafetyType type, string? fileName, CancellationToken cancellationToken)
     {
+        if (fileName.Empty()) return null;
+
         var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));
         var client = container.GetBlobClient(fileName);
 

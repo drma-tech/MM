@@ -27,7 +27,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
 
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "image/jpeg");
-        await faceStream.CopyToAsync(response.Body, cancellationToken);
+        if (faceStream != null) await faceStream.CopyToAsync(response.Body, cancellationToken);
 
         return response;
     }
