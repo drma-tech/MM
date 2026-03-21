@@ -72,7 +72,7 @@
                             </MudText>
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
+                            <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true"
                                        OnClick="@(async () => await DialogCities!.ShowAsync("Users from cities registered so far", PopupHelper.Options(MaxWidth.Small)))">
                                 Learn more
                             </MudButton>
@@ -374,7 +374,7 @@
     <DialogContent>
         @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
         {
-            <MudChip T="string" Label="true" Color="Color.Primary">@region.Name</MudChip>
+            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">@region.Name</MudChip>
         }
     </DialogContent>
     <DialogActions>
@@ -388,10 +388,10 @@
     <DialogContent>
         @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
         {
-            <MudChip T="string" Label="true" Color="Color.Primary">@region.Name</MudChip>
+            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">@region.Name</MudChip>
             @foreach (var city in region.Cities.Order().ToList() ?? [])
             {
-                <MudChip T="string" Label="true" Color="Color.Secondary">@city</MudChip>
+                <MudChip T="string" Label="true" Color="Color.Secondary" Size="Size.Small">@city</MudChip>
             }
             <br />
         }
