@@ -39,18 +39,18 @@
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" md="3">
                     <MudCard>
-                        <MudCardHeader>
-                            <MudText Typo="Typo.h6">
+                        <MudCardHeader Class="pa-3">
+                            <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
                                 @GlobalTranslations.Countries
                             </MudText>
                         </MudCardHeader>
-                        <MudCardContent Class="py-0">
+                        <MudCardContent Class="py-0 px-3">
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("earth-americas").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
                             <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.Countries ?? 0)
                             </MudText>
                         </MudCardContent>
-                        <MudCardActions>
+                        <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
                                        OnClick="@(async () => await DialogCountries!.ShowAsync("Users from countries registered so far", PopupHelper.Options(MaxWidth.Small)))">
                                 Learn more
@@ -60,18 +60,18 @@
                 </MudItem>
                 <MudItem xs="6" md="3">
                     <MudCard>
-                        <MudCardHeader>
-                            <MudText Typo="Typo.h6">
+                        <MudCardHeader Class="pa-3">
+                            <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
                                 @GlobalTranslations.Cities
                             </MudText>
                         </MudCardHeader>
-                        <MudCardContent Class="py-0">
+                        <MudCardContent Class="py-0 px-3">
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("city").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
                             <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.Cities ?? 0)
                             </MudText>
                         </MudCardContent>
-                        <MudCardActions>
+                        <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true"
                                        OnClick="@(async () => await DialogCities!.ShowAsync("Users from cities registered so far", PopupHelper.Options(MaxWidth.Small)))">
                                 Learn more
@@ -81,18 +81,18 @@
                 </MudItem>
                 <MudItem xs="6" md="3">
                     <MudCard>
-                        <MudCardHeader>
-                            <MudText Typo="Typo.h6">
+                        <MudCardHeader Class="pa-3">
+                            <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
                                 @Landing.TotalUsers
                             </MudText>
                         </MudCardHeader>
-                        <MudCardContent Class="py-0">
+                        <MudCardContent Class="py-0 px-3">
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("users").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
                             <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.TotalUsers ?? 0)
                             </MudText>
                         </MudCardContent>
-                        <MudCardActions>
+                        <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
                                 Learn more
                             </MudButton>
@@ -101,18 +101,18 @@
                 </MudItem>
                 <MudItem xs="6" md="3">
                     <MudCard>
-                        <MudCardHeader>
-                            <MudText Typo="Typo.h6">
+                        <MudCardHeader Class="pa-3">
+                            <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
                                 @Landing.RecentlyJoined
                             </MudText>
                         </MudCardHeader>
-                        <MudCardContent Class="py-0">
+                        <MudCardContent Class="py-0 px-3">
                             <MudChip T="string" Icon="@IconsFA.Solid.Icon("user-plus").Font" Color="Color.Primary" Label="true" Class="chip-no-text-lg" Style="vertical-align: top;" />
                             <MudText Typo="Typo.h4" Inline="true">
                                 @(SumUsers?.RecentlyJoined ?? 0)
                             </MudText>
                         </MudCardContent>
-                        <MudCardActions>
+                        <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
                                 Learn more
                             </MudButton>
