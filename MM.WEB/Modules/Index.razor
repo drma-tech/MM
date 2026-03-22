@@ -13,8 +13,7 @@
 @inject IpInfoServerApi IpInfoServerApi
 
 <SeoMeta Title="@SeoTranslations.AppTitle" Description="@SeoTranslations.AppDescription" Url="/" Index="true" ForceTitle="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppTitle" Subtitle="@SeoTranslations.AppSubtitle" CustomBodyClass="mb-12">
-</NewPageSection>
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@SeoTranslations.AppTitle" Subtitle="@SeoTranslations.AppSubtitle" CustomBodyClass="mb-12"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
@@ -368,6 +367,68 @@
             <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
         </BodyFragment>
     </NewPageSection>
+
+    <MudGrid Spacing="@Css.SpaceSmall">
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader Class="pa-3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                        How It Works
+                    </MudText>
+                </MudCardHeader>
+                <MudCardContent Class="py-0 px-3">
+                    <MudText Typo="Typo.body1" Align="Align.Justify">
+                        Modern Matchmaker is not just another dating app. Our service connects people with compatibility and genuine intentions.
+                        Using advanced algorithms and user preferences, each match suggestion is meaningful and aligned with relationship goals.
+                    </MudText>
+                </MudCardContent>
+                <MudCardActions Class="pa-3">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/how-it-works">
+                        Learn More
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader Class="pa-3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                        Who Is It For
+                    </MudText>
+                </MudCardHeader>
+                <MudCardContent Class="py-0 px-3">
+                    <MudText Typo="Typo.body1" Align="Align.Justify">
+                        Modern Matchmaker is not for everyone. It is designed for people who want meaningful relationships and who value real compatibility over casual interactions.
+                        If you are tired of dating apps that prioritize volume, or traditional matchmaking services that are expensive and limited, this platform offers a different approach focused on personality, lifestyle, values, and compatibility.
+                    </MudText>
+                </MudCardContent>
+                <MudCardActions Class="pa-3">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/who-its-for">
+                        Learn More
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+       @*  <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader Class="pa-3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                        Compare
+                    </MudText>
+                </MudCardHeader>
+                <MudCardContent Class="py-0 px-3">
+                    <MudText Typo="Typo.body1" Align="Align.Justify">
+                        ...
+                    </MudText>
+                </MudCardContent>
+                <MudCardActions Class="pa-3">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/compare" Disabled="true">
+                        Learn More
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem> *@
+    </MudGrid>
 </MudContainer>
 
 <MudDialog @ref="@DialogCountries" Style="width: 100%">
