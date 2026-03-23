@@ -150,7 +150,8 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
 
             RuleFor(x => x.SexPersonalityPreference)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.SexPersonalityPreferences_Name);
+                .Must(value => value.Count <= 3)
+                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileLifestyleModel.SexPersonalityPreferences_Name));
         });
 
         RuleSet("INTEREST", () =>

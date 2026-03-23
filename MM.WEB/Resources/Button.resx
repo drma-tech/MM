@@ -225,6 +225,9 @@
   <data name="Report" xml:space="preserve">
     <value>Report</value>
   </data>
+  <data name="RetrieveGPSPosition" xml:space="preserve">
+    <value>Retrieve GPS position</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>

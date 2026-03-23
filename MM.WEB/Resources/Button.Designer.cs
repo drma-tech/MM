@@ -385,6 +385,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retrieve GPS position.
+        /// </summary>
+        public static string RetrieveGPSPosition {
+            get {
+                return ResourceManager.GetString("RetrieveGPSPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
