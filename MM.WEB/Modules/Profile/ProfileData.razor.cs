@@ -149,6 +149,8 @@ public partial class ProfileData : PageCore<ProfileData>
                 Profile = await ProfileApi.Update(Profile);
                 Actions.FinishProcessing?.Invoke(Profile);
 
+                _PendingAction = false; StateHasChanged();
+
                 Navigation.NavigateTo("profile");
             }
             else

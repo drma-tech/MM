@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.JSInterop;
 using MM.WEB.Modules.Subscription.Core;
 using MudBlazor;
 using MudBlazor.Services;
@@ -249,4 +250,31 @@ public static class AppStateStatic
     public static Action? UserStateChanged { get; set; }
     public static Action? ProcessingStarted { get; set; }
     public static Action? ProcessingFinished { get; set; }
+
+    public static NavigationLock? NavigationLock { get; set; }
+    public static bool ConfirmNavigationAnswer { get; set; }
+    public static Action? ConfirmNavigationAnswerChanged { get; set; }
+
+    public static async Task<bool> ConfirmNavigation(IDialogService dialog, string? customMessage)
+    {
+        if (ConfirmNavigationAnswer) return true;
+
+        //There are pending actions
+        ConfirmNavigationAnswer = await dialog.ShowMessageBoxAsync(SeoTranslations.AppTitle, customMessage ?? "You may lose unsaved changes. Do you want to continue?", Button.Ok, Button.Cancel) ?? false;
+
+        //keeps the user's answer to avoid asking multiple times
+        if (ConfirmNavigationAnswer)
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(3000);
+
+                ConfirmNavigationAnswer = false;
+
+                ConfirmNavigationAnswerChanged?.Invoke();
+            });
+
+        ConfirmNavigationAnswerChanged?.Invoke();
+
+        return ConfirmNavigationAnswer;
+    }
 }

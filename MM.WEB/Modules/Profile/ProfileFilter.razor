@@ -24,6 +24,8 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
+<CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
+
 <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
     @GlobalTranslations.ProfileFilterWarning
 </MudAlert>
@@ -450,6 +452,8 @@
 
     private Tabs? Tab { get; set; }
 
+    bool _PendingAction = true;
+
     private enum Tabs
     {
         BASIC,
@@ -521,6 +525,8 @@
                 Actions.StartProcessing?.Invoke(null);
                 Filter = await FilterApi.Update(Filter);
                 Actions.FinishProcessing?.Invoke(Filter);
+
+                _PendingAction = false; StateHasChanged();
 
                 Navigation.NavigateTo("profile");
             }

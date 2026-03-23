@@ -29,6 +29,8 @@
 
 @inherits PageCore<ProfileData>
 
+<CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
+
 <RenderControl T="ProfileModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudExpansionPanels Elevation="2" Class="@Css.Build().Small("mb")">
         <MudExpansionPanel HeaderClass="mud-primary-text">
@@ -550,6 +552,8 @@
 
     bool _BioExpanded = false;
     bool _LifeExpanded = false;
+
+    bool _PendingAction = true;
 
     private void CountryChanged(Country? country)
     {
