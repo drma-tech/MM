@@ -4,8 +4,10 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter")
 {
-    public async Task<FilterModel?> Get()
+    public async Task<FilterModel?> Get(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return null;
+
         return await GetAsync(ProfileEndpoint.Get);
     }
 

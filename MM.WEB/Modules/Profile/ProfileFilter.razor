@@ -484,15 +484,15 @@
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get();
-        Filter = await FilterApi.Get();
+        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+        Filter = await FilterApi.Get(AppStateStatic.IsAuthenticated);
 
-        if (Profile == null)
+        if (Profile == null && AppStateStatic.IsAuthenticated)
         {
             Actions.ShowError?.Invoke(GlobalTranslations.ProfileNotFound);
         }
 
-        if (Filter == null)
+        if (Filter == null && AppStateStatic.IsAuthenticated)
         {
             Filter = new FilterModel();
 

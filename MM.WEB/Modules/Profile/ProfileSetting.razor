@@ -42,7 +42,7 @@
     {
         await Actions.StartLoading.Invoke(null);
 
-        Setting = await SettingApi.Get();
+        Setting = await SettingApi.Get(AppStateStatic.IsAuthenticated);
 
         if (Setting == null)
         {
@@ -64,7 +64,7 @@
 
             if (Setting!.BlindDate)
             {
-                var profile = await ProfileApi.Get();
+                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
 
                 if (profile != null && profile.Gallery != null)
                 {
@@ -80,7 +80,7 @@
             }
             else
             {
-                var profile = await ProfileApi.Get();
+                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
 
                 if (profile?.Gallery?.Type == GalleryType.BlindDate)
                 {

@@ -40,7 +40,7 @@
 
     protected override async Task ProcessPageData()
     {
-        Profiles = await ProfileApi.GetAll();
+        Profiles = await ProfileApi.GetAll(AppStateStatic.IsAuthenticated);
     }
 
     private async Task ImportHandle()

@@ -124,8 +124,8 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Validation = await ValidationApi.Get();
-        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto();
+        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated);
+        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(AppStateStatic.IsAuthenticated);
     }
 
     protected async Task TakeShot()

@@ -4,17 +4,21 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile")
 {
-    public async Task<ProfileModel?> Get()
+    public async Task<ProfileModel?> Get(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return null;
+
         return await GetAsync(ProfileEndpoint.Get);
     }
 
-    public async Task<HashSet<ProfileModel>> GetAll()
+    public async Task<HashSet<ProfileModel>> GetAll(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return [];
+
         return await GetListAsync(ProfileEndpoint.GetAll);
     }
 
-    public async Task<ProfileModel?> GetView(string? IdUserView)
+    public async Task<ProfileModel?> GetView(string? IdUserView, bool isUserAuthenticated)
     {
         if (IdUserView == null) return default;
 

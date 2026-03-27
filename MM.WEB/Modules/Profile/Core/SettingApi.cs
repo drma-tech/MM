@@ -4,8 +4,10 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting")
 {
-    public async Task<SettingModel?> Get()
+    public async Task<SettingModel?> Get(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return null;
+
         return await GetAsync(ProfileEndpoint.Get);
     }
 

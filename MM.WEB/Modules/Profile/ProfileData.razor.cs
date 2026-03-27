@@ -35,9 +35,9 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get();
+        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
 
-        if (Profile == null)
+        if (Profile == null && AppStateStatic.IsAuthenticated)
         {
             bool confirmed;
             var language = await AppStateStatic.GetAppLanguage(JsRuntime);

@@ -4,9 +4,10 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction")
 {
-    public async Task<InteractionModel?> GetInteraction(string? IdUserView)
+    public async Task<InteractionModel?> GetInteraction(string? IdUserView, bool isUserAuthenticated)
     {
         if (IdUserView == null) return default;
+        if (!isUserAuthenticated) return default;
 
         return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView));
     }

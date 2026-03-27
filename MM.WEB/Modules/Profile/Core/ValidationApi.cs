@@ -4,13 +4,17 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation")
 {
-    public async Task<ValidationModel?> Get()
+    public async Task<ValidationModel?> Get(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return null;
+
         return await GetAsync(ProfileEndpoint.Get);
     }
 
-    public async Task<byte[]?> GetSafetyGalleryPhoto()
+    public async Task<byte[]?> GetSafetyGalleryPhoto(bool isUserAuthenticated)
     {
+        if (!isUserAuthenticated) return null;
+
         return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto);
     }
 

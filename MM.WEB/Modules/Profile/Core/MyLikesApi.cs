@@ -4,8 +4,7 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, ApiType.Authenticated, "profile-mylikes")
 {
-    public async Task<MyLikesModel?> Get(bool isAuthenticated,
-        bool setNewVersion = false)
+    public async Task<MyLikesModel?> Get(bool isAuthenticated, bool setNewVersion = false)
     {
         if (!isAuthenticated) return null;
 

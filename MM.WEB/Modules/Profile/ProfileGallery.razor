@@ -137,7 +137,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         ProfileActions.StartLoading?.Invoke(null);
-        _profile = await ProfileApi.Get();
+        _profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
         ProfileActions.FinishLoading?.Invoke(_profile);
     }
 
