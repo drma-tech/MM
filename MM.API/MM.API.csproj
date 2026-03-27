@@ -21,7 +21,7 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.17" />
+		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.18" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.27.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.14" />
 		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.58.0" />
@@ -30,7 +30,7 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.14" />
 		<PackageReference Include="Sentry.AspNetCore" Version="6.2.0" />
-		<PackageReference Include="Stripe.net" Version="50.2.0-beta.1" />
+		<PackageReference Include="Stripe.net" Version="51.1.0-beta.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
