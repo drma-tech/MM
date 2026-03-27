@@ -75,11 +75,13 @@
     {
         try
         {
+            if (Principal == null) return;
+
             var data = new SuperData() { Principal = Principal };
 
             data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated);
 
-            var fileName = $"{SeoTranslations.AppTitle.ToSlug()}_{Principal!.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
+            var fileName = $"{SeoTranslations.AppTitle.ToSlug()}_{Principal.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
             await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes());
         }
         catch (Exception ex)
@@ -92,7 +94,9 @@
     {
         try
         {
-            if (Principal!.Sparks > 0)
+            if (Principal == null) return;
+
+            if (Principal.Sparks > 0)
             {
                 await DialogService.ShowMessageBoxAsync("You still have sparks.", "Please request a refund or spend your sparks before deleting your profile.");
                 return;
@@ -106,7 +110,7 @@
                 //TODO: remove data from supabase table
 
                 //close popup
-                MudDialog?.Close();
+                MudDialog!.Close();
 
                 //close current login session
                 await Logout();

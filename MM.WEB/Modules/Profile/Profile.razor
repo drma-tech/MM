@@ -579,7 +579,7 @@ else
 
     private async Task Login()
     {
-        Navigation.NavigateTo("/login");
+        Navigation.NavigateTo($"/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
     }
 
     // private string GetSuggestionTitle()

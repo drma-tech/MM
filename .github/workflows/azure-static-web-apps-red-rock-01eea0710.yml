@@ -8,10 +8,12 @@ on:
   push:
     branches:
       - master
+      - develop
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - master
+      - develop
 
 jobs:
   build_and_deploy_job:
@@ -30,6 +32,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_RED_ROCK_01EEA0710 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
+          production_branch: "master"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "MM.WEB" # App source code path
