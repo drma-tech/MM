@@ -25,7 +25,8 @@
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
 
-<SeoMeta Title="Profile" Description="@SeoTranslations.AppDescription" Url="/profile" Index="false"></SeoMeta>
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url="/profile" Index="false"></SeoMeta>
+
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile"></GoogleAdSense>
 
 @if (!AppStateStatic.IsAuthenticated)

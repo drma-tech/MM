@@ -118,10 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching.</value>
-  </data>
-  <data name="AppDescriptionShort" xml:space="preserve">
-    <value>Digital Matchmaking: Find your ideal partner without wasting time</value>
+    <value>The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping.</value>
   </data>
   <data name="AppSubtitle" xml:space="preserve">
     <value>Find your life partner</value>

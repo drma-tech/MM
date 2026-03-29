@@ -61,20 +61,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding love is here. Smarter, faster, and more affordable than traditional matchmaking. Our advanced compatibility system finds your ideal partner with precision – no swiping, no endless searching..
+        ///   Looks up a localized string similar to The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping..
         /// </summary>
         public static string AppDescription {
             get {
                 return ResourceManager.GetString("AppDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digital Matchmaking: Find your ideal partner without wasting time.
-        /// </summary>
-        public static string AppDescriptionShort {
-            get {
-                return ResourceManager.GetString("AppDescriptionShort", resourceCulture);
             }
         }
         
