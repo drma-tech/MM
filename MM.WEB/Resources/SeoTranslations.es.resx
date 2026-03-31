@@ -120,12 +120,6 @@
   <data name="AppDescription" xml:space="preserve">
     <value>El futuro de encontrar una pareja para toda la vida ya está aquí. Más inteligente y accesible que el matchmaking tradicional, con compatibilidad precisa y sin deslizamientos interminables.</value>
   </data>
-  <data name="AppSubtitle" xml:space="preserve">
-    <value>Find your life partner</value>
-  </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Modern Matchmaker</value>
-  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>

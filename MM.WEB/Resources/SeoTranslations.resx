@@ -120,12 +120,6 @@
   <data name="AppDescription" xml:space="preserve">
     <value>The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping.</value>
   </data>
-  <data name="AppSubtitle" xml:space="preserve">
-    <value>Find your life partner</value>
-  </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Modern Matchmaker</value>
-  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Profile</value>
   </data>

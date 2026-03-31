@@ -223,15 +223,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover our other products.
-        /// </summary>
-        public static string DiscoverProducts {
-            get {
-                return ResourceManager.GetString("DiscoverProducts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Expected Compatibility.
         /// </summary>
         public static string ExpectedCompatibility {

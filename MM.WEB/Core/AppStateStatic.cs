@@ -260,7 +260,7 @@ public static class AppStateStatic
         if (ConfirmNavigationAnswer) return true;
 
         //There are pending actions
-        ConfirmNavigationAnswer = await dialog.ShowMessageBoxAsync(SeoTranslations.AppTitle, customMessage ?? "You may lose unsaved changes. Do you want to continue?", Button.Ok, Button.Cancel) ?? false;
+        ConfirmNavigationAnswer = await dialog.ShowMessageBoxAsync(AppInfo.Title, customMessage ?? "You may lose unsaved changes. Do you want to continue?", Button.Ok, Button.Cancel) ?? false;
 
         //keeps the user's answer to avoid asking multiple times
         if (ConfirmNavigationAnswer)

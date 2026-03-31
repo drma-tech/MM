@@ -8,7 +8,7 @@
     {
         <h1 class="support-title">Política de Segurança Infantil</h1>
         <div class="support-subtitle">
-            Compromisso do <b>@ProjectTitle</b> com a proteção de crianças e adolescentes.
+            Compromisso do <b>@AppInfo.Title</b> com a proteção de crianças e adolescentes.
         </div>
         <div class="support-section">
             <h2>1. Conteúdo Proibido</h2>
@@ -16,7 +16,7 @@
         </div>
         <div class="support-section">
             <h2>2. Moderação e Denúncia</h2>
-            <p>Todos os relatórios de conteúdo suspeito são tratados com prioridade. O <b>@ProjectTitle</b> possui mecanismos de moderação automática e manual, além de canais claros de denúncia para usuários.</p>
+            <p>Todos os relatórios de conteúdo suspeito são tratados com prioridade. O <b>@AppInfo.Title</b> possui mecanismos de moderação automática e manual, além de canais claros de denúncia para usuários.</p>
         </div>
         <div class="support-section">
             <h2>3. Educação e Conscientização</h2>
@@ -38,7 +38,7 @@
     {
         <h1 class="support-title">Política de Seguridad Infantil</h1>
         <div class="support-subtitle">
-            Compromiso de <b>@ProjectTitle</b> con la protección de niños y adolescentes.
+            Compromiso de <b>@AppInfo.Title</b> con la protección de niños y adolescentes.
         </div>
         <div class="support-section">
             <h2>1. Contenido Prohibido</h2>
@@ -46,7 +46,7 @@
         </div>
         <div class="support-section">
             <h2>2. Moderación y Denuncia</h2>
-            <p>Todos los informes de contenido sospechoso se manejan con prioridad. <b>@ProjectTitle</b> tiene mecanismos de moderación automática y manual, así como canales claros para denuncias de usuarios.</p>
+            <p>Todos los informes de contenido sospechoso se manejan con prioridad. <b>@AppInfo.Title</b> tiene mecanismos de moderación automática y manual, así como canales claros para denuncias de usuarios.</p>
         </div>
         <div class="support-section">
             <h2>3. Educación y Conciencia</h2>
@@ -68,7 +68,7 @@
     {
         <h1 class="support-title">Child Safety Policy</h1>
         <div class="support-subtitle">
-            <b>@ProjectTitle</b>'s commitment to protecting children and teenagers.
+            <b>@AppInfo.Title</b>'s commitment to protecting children and teenagers.
         </div>
         <div class="support-section">
             <h2>1. Prohibited Content</h2>
@@ -76,7 +76,7 @@
         </div>
         <div class="support-section">
             <h2>2. Moderation and Reporting</h2>
-            <p>All reports of suspicious content are handled with priority. <b>@ProjectTitle</b> has automated and manual moderation mechanisms, as well as clear reporting channels for users.</p>
+            <p>All reports of suspicious content are handled with priority. <b>@AppInfo.Title</b> has automated and manual moderation mechanisms, as well as clear reporting channels for users.</p>
         </div>
         <div class="support-section">
             <h2>3. Education and Awareness</h2>
@@ -97,8 +97,6 @@
 </div>
 
 @code {
-    public string? ProjectTitle => SeoTranslations.AppTitle;
-
     public AppLanguage Language { get; set; } = AppLanguage.en;
 
     protected override async Task OnInitializedAsync()

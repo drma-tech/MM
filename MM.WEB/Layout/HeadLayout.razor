@@ -18,7 +18,9 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
+
         <MudSpacer />
+
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(() => { _open = true; })" />
     }
     else if (AppStateStatic.Breakpoint == Breakpoint.Sm) //tablet view
@@ -29,28 +31,19 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="icon-text-button" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
-        <MudButton StartIcon="@IconsFA.Solid.Icon("headset").Font" Color="@GetColor("/support")" Href="/support" Variant="@GetVariant("/support")" Class="icon-text-button" Disabled="_blockedActions">
-            @Menu.Support
-        </MudButton>
+
         <MudSpacer />
-        @if (AppStateStatic.IsAuthenticated)
-        {
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-                <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
-            </MudButton>
-        }
-        else
-        {
-            <MudButton Variant="Variant.Filled" Color="Color.Warning" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-                <MudIcon Icon="@IconsFA.Solid.Icon("fire").WithAnimation(IconAnimation.Fade).Font"></MudIcon>@(Principal?.Sparks ?? 0)
-            </MudButton>
-        }
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
+            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
+        </MudButton>
         <AuthorizeView>
             <Authorized>
                 <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("user-gear").Font" Class="me-2" OnClick="@MyAccount" />
             </Authorized>
         </AuthorizeView>
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
+        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("headset").Font" Class="me-2" OnClick="@(() => Navigation.NavigateTo("/support/help"))" />
         <AuthorizeView>
             <Authorized>
                 <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@Logout" Disabled="_blockedActions">
@@ -72,25 +65,19 @@
         <MudButton StartIcon="@IconsFA.Solid.Icon("circle-user").Font" Color="@GetColor("/profile")" Href="/profile" Variant="@GetVariant("/profile")" Class="px-3" Disabled="_blockedActions" Target="_self" Rel="noindex, nofollow">
             @Menu.Profile
         </MudButton>
+
         <MudSpacer />
-        @if (AppStateStatic.IsAuthenticated)
-        {
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-                <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
-            </MudButton>
-        }
-        else
-        {
-            <MudButton Variant="Variant.Filled" Color="Color.Warning" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-                <MudIcon Icon="@IconsFA.Solid.Icon("fire").WithAnimation(IconAnimation.Fade).Font"></MudIcon>@(Principal?.Sparks ?? 0)
-            </MudButton>
-        }
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
+            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
+        </MudButton>
         <AuthorizeView>
             <Authorized>
                 <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("user-gear").Font" Class="me-2" OnClick="@MyAccount" />
             </Authorized>
         </AuthorizeView>
         <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("cog").Font" Class="me-2" OnClick="@OpenConfigurations" />
+        <MudIconButton Variant="Variant.Filled" Color="Color.Primary" Icon="@IconsFA.Solid.Icon("headset").Font" Class="me-2" OnClick="@(() => Navigation.NavigateTo("/support/help"))" />
         <AuthorizeView>
             <Authorized>
                 <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@Logout" Disabled="_blockedActions">
@@ -110,21 +97,12 @@
 {
     <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Elevation="1" OverlayAutoClose="true">
         <MudDrawerHeader>
-            <MudText Typo="Typo.h6">@SeoTranslations.AppTitle</MudText>
+            <MudText Typo="Typo.h6">@AppInfo.Title</MudText>
         </MudDrawerHeader>
         <MudNavMenu>
-            @if (AppStateStatic.IsAuthenticated)
-            {
-                <MudNavLink IconColor="Color.Primary" Icon="@IconsFA.Solid.Icon("fire").Font" OnClick="@OpenSubscription">
-                    @(Principal?.Sparks ?? 0) Sparks
-                </MudNavLink>
-            }
-            else
-            {
-                <MudNavLink IconColor="Color.Warning" Icon="@IconsFA.Solid.Icon("fire").WithAnimation(IconAnimation.Fade).Font" OnClick="@OpenSubscription">
-                    @(Principal?.Sparks ?? 0) Sparks
-                </MudNavLink>
-            }
+            <MudNavLink IconColor="Color.Primary" Icon="@IconsFA.Solid.Icon("fire").Font" OnClick="@OpenSubscription">
+                @(Principal?.Sparks ?? 0) Sparks
+            </MudNavLink>
             <AuthorizeView>
                 <Authorized>
                     <MudNavLink Icon="@IconsFA.Solid.Icon("user-gear").Font" OnClick="@MyAccount">
@@ -135,8 +113,8 @@
             <MudNavLink Icon="@IconsFA.Solid.Icon("cog").Font" OnClick="@OpenConfigurations">
                 Settings
             </MudNavLink>
-            <MudNavLink Icon="@IconsFA.Solid.Icon("headset").Font" Href="/support">
-                Support
+            <MudNavLink Icon="@IconsFA.Solid.Icon("headset").Font" Href="/support/help">
+                Help Center
             </MudNavLink>
             <MudDivider></MudDivider>
             <AuthorizeView>

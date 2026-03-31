@@ -8,7 +8,7 @@
     {
         <h1 class="support-title">Política de Privacidade</h1>
         <div class="support-subtitle">
-            Proteger seus dados é uma prioridade para <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Proteger seus dados é uma prioridade para <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política está em conformidade com o Regulamento Geral de Proteção de Dados (GDPR - UE), a Lei Geral de Proteção de Dados (LGPD - Brasil) e a Lei de Privacidade do Consumidor da Califórnia (CCPA/CPRA - EUA).<br />
             Recomendamos a leitura atenta desta política para entender como suas informações são coletadas, utilizadas e protegidas.
         </div>
@@ -92,7 +92,7 @@
     {
         <h1 class="support-title">Política de Privacidad</h1>
         <div class="support-subtitle">
-            Proteger tus datos es una prioridad para <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operado por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Proteger tus datos es una prioridad para <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política cumple con el Reglamento General de Protección de Datos (GDPR – UE), la Ley General de Protección de Datos (LGPD – Brasil) y la Ley de Privacidad del Consumidor de California (CCPA/CPRA – EE.UU.).<br />
             Recomendamos leer detenidamente esta política para comprender cómo se recopila, utiliza y protege tu información.
         </div>
@@ -176,7 +176,7 @@
     {
         <h1 class="support-title">隐私政策</h1>
         <div class="support-subtitle">
-            保护您的数据是 <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>) 的首要任务，该平台由 DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) 运营。<br />
+            保护您的数据是 <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>) 的首要任务，该平台由 DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) 运营。<br />
             本政策遵守《通用数据保护条例》（GDPR - 欧盟）、《巴西通用数据保护法》（LGPD - 巴西）以及《加州消费者隐私法案》（CCPA/CPRA - 美国）。<br />
             我们建议您仔细阅读本政策，以了解您的信息如何被收集、使用和保护。
         </div>
@@ -260,7 +260,7 @@
     {
         <h1 class="support-title">Privacy Policy</h1>
         <div class="support-subtitle">
-            Protecting your data is a priority for <b>@ProjectTitle</b> (<a href="https://@ProjectDomain" target="_blank">@ProjectDomain</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Protecting your data is a priority for <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             This policy complies with the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA - USA).<br />
             We recommend reading this policy carefully to understand how your information is collected, used, and protected.
         </div>
@@ -343,9 +343,6 @@
 </div>
 
 @code {
-    public string? ProjectTitle => SeoTranslations.AppTitle;
-    public string ProjectDomain => "www.modern-matchmaker.com";
-
     public AppLanguage Language { get; set; } = AppLanguage.en;
 
     protected override async Task OnInitializedAsync()

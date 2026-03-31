@@ -171,9 +171,6 @@
   <data name="DarkMode" xml:space="preserve">
     <value>Modo Oscuro</value>
   </data>
-  <data name="DiscoverProducts" xml:space="preserve">
-    <value>Descubra nuestros otros productos</value>
-  </data>
   <data name="ExpectedCompatibility" xml:space="preserve">
     <value>Compatibilidad esperada</value>
   </data>

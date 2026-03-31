@@ -79,7 +79,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 return;
             }
 
-            await PrincipalApi.Event(SeoTranslations.AppTitle, "Data processing granted");
+            await PrincipalApi.Event(AppInfo.Title, "Data processing granted");
 
             await ShowWarning(GlobalTranslations.BasicRequired);
         }
