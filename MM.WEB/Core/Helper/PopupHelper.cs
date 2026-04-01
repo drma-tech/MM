@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Profile;
 using MM.WEB.Modules.Auth;
+using MM.WEB.Modules.Help;
 using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
-using MM.WEB.Modules.Support;
 using MM.WEB.Shared;
 using MudBlazor;
 using static MM.Shared.Core.Helper.ImageHelper;
