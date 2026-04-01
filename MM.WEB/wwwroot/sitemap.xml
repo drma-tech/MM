@@ -2,46 +2,30 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://www.modern-matchmaker.com/</loc>
-		<lastmod>2026-03-29</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://www.modern-matchmaker.com/support</loc>
-		<lastmod>2026-03-29</lastmod>
+		<loc>https://www.modern-matchmaker.com/help</loc>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
 		<loc>https://www.modern-matchmaker.com/how-it-works</loc>
-		<lastmod>2026-03-29</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
 		<loc>https://www.modern-matchmaker.com/who-its-for</loc>
-		<lastmod>2026-03-29</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
 		<loc>https://www.modern-matchmaker.com/compare</loc>
-		<lastmod>2026-03-29</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://www.modern-matchmaker.com/support/about-us</loc>
-		<lastmod>2026-03-29</lastmod>
+		<loc>https://www.modern-matchmaker.com/help/faq</loc>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://www.modern-matchmaker.com/support/faq</loc>
-		<lastmod>2026-03-29</lastmod>
-	</url>
-	<url>
-		<loc>https://www.modern-matchmaker.com/support/terms</loc>
-		<lastmod>2026-03-29</lastmod>
-	</url>
-	<url>
-		<loc>https://www.modern-matchmaker.com/support/privacy</loc>
-		<lastmod>2026-03-29</lastmod>
-	</url>
-	<url>
-		<loc>https://www.modern-matchmaker.com/support/child-safety</loc>
-		<lastmod>2026-03-29</lastmod>
-	</url>
-	<url>
-		<loc>https://www.modern-matchmaker.com/support/credits</loc>
-		<lastmod>2026-03-29</lastmod>
+		<loc>https://www.modern-matchmaker.com/company/about-us</loc>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 </urlset>
