@@ -237,7 +237,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (session.Mode == "subscription") //probably a test from Stripe dashboard, ignore
+            if (session.Mode == "subscription") //mm use only payment mode, so ignore subscription events (stripe test probably)
                 return;
 
             if (!session.Metadata.TryGetValue("UserId", out var userId) || string.IsNullOrEmpty(userId))

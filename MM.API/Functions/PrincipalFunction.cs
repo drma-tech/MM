@@ -236,6 +236,13 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         var ProfileValidator = new ProfileValidation();
         var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
 
+        if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
+        {
+            throw new NotificationException(
+                "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
+            );
+        }
+
         var filter = await repo.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken) ?? throw new NotificationException("filter not found");
         var FilterValidator = new FilterValidation();
         var FilterValid = filter != null && FilterValidator.Validate(filter).IsValid;
@@ -257,7 +264,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         await repoOn.UpsertItemAsync(profile, cancellationToken);
         await repoOff.DeleteItemAsync(profile, cancellationToken);
 
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal null");
+        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
         principal.PublicProfile = true;
 
         return await repo.UpsertItemAsync(principal, cancellationToken);
@@ -273,7 +280,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         await repoOff.UpsertItemAsync(profile, cancellationToken);
         await repoOn.DeleteItemAsync(profile, cancellationToken);
 
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal null");
+        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
         principal.PublicProfile = false;
 
         return await repo.UpsertItemAsync(principal, cancellationToken);

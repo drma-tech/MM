@@ -95,7 +95,7 @@ else
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
-                        <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="ValidationGeral">
+                        <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepValidationDesc" Completed="ValidationGeral">
                             <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href="/profile/validation"
                                        Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                                 @Button.Validations
@@ -432,7 +432,7 @@ else
         return valid ? Color.Success : Color.Warning;
     }
 
-    private string GetButtonIcon(bool valid)
+    private string? GetButtonIcon(bool valid)
     {
         return valid ? IconsFA.Solid.Icon("check").Font : IconsFA.Solid.Icon("circle-question").Font;
     }
