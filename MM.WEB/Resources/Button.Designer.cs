@@ -277,15 +277,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find your ideal match.
-        /// </summary>
-        public static string LoginHero {
-            get {
-                return ResourceManager.GetString("LoginHero", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Logout {

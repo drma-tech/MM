@@ -189,9 +189,6 @@
   <data name="Login" xml:space="preserve">
     <value>Conecte-se</value>
   </data>
-  <data name="LoginHero" xml:space="preserve">
-    <value>Encontre seu par ideal</value>
-  </data>
   <data name="Logout" xml:space="preserve">
     <value>Sair</value>
   </data>

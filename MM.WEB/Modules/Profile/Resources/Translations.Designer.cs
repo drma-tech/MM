@@ -19,7 +19,7 @@ namespace MM.WEB.Modules.Profile.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Translations {
@@ -142,7 +142,7 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find your true partner today — it’s free!.
+        ///   Looks up a localized string similar to Start your journey to find your ideal partner.
         /// </summary>
         public static string HeroCall {
             get {
@@ -151,7 +151,7 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note: This is not a dating app. It&apos;s a digital matchmaking service designed for meaningful connections..
+        ///   Looks up a localized string similar to Note: Not a dating app. A curated matchmaking experience focused on real compatibility..
         /// </summary>
         public static string HeroNote {
             get {
