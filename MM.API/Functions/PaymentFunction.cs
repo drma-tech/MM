@@ -230,24 +230,27 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         var json = await new StreamReader(req.Body).ReadToEndAsync(cancellationToken);
 
         req.Headers.TryGetValues("Stripe-Signature", out var Signature);
-        if (string.IsNullOrEmpty(Signature?.First())) throw new UnhandledException("Stripe signature missing");
-        var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new UnhandledException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
+        if (string.IsNullOrEmpty(Signature?.First())) throw new NotificationException("Stripe signature missing");
+        var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new NotificationException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
 
         if (stripeEvent.Type.StartsWith("checkout.session")) //completed, async_payment_succeeded
         {
-            if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new UnhandledException("Stripe session not available");
+            if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new NotificationException("Stripe session not available");
+
+            if (session.Mode == "subscription") //probably a test from Stripe dashboard, ignore
+                return;
 
             if (!session.Metadata.TryGetValue("UserId", out var userId) || string.IsNullOrEmpty(userId))
-                throw new UnhandledException("UserId metadata missing in session");
+                throw new NotificationException("UserId metadata missing in session");
 
             if (!session.Metadata.TryGetValue("Quantity", out var qtd) || string.IsNullOrEmpty(qtd))
-                throw new UnhandledException("Quantity metadata missing in session");
+                throw new NotificationException("Quantity metadata missing in session");
 
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
 
             if (principal == null)
             {
-                req.LogError(new UnhandledException($"principal null - userId:{userId}"));
+                req.LogError(new NotificationException($"principal null - userId:{userId}"));
                 return;
             }
 
@@ -258,7 +261,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
                 if (purchase.Sparks == 0)
                 {
                     if (!int.TryParse(qtd, out int quantity))
-                        throw new UnhandledException("Invalid quantity");
+                        throw new NotificationException("Invalid quantity");
 
                     purchase.Sparks = quantity;
                     principal.Sparks += quantity;
