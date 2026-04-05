@@ -203,6 +203,13 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
                 { "app", "mm" },
                 { "UserId", principal.UserId! },
                 { "Quantity", qtd.ToString() }
+            },
+            SubscriptionData = new SessionSubscriptionDataOptions
+            {
+                Metadata = new Dictionary<string, string> {
+                    { "app", "mm" },
+                    { "UserId", principal.UserId! },
+                }
             }
         };
 
