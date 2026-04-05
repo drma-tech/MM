@@ -6,6 +6,7 @@ using MM.Shared.Models.Auth;
 using MM.Shared.Models.Subscription;
 using Stripe.Checkout;
 using System.Globalization;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
@@ -228,7 +229,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
     }
 
     [Function("PostStripeWebhook")]
-    public async Task PostStripeWebhook(
+    public async Task<HttpResponseData> PostStripeWebhook(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/stripe/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var json = await new StreamReader(req.Body).ReadToEndAsync(cancellationToken);
@@ -242,7 +243,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new NotificationException("Stripe session not available");
 
             if (!session.Metadata.TryGetValue("app", out var app) || app != "mm")
-                return; //session not created by mm, ignore it
+                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
 
             if (!session.Metadata.TryGetValue("UserId", out var userId) || userId.Empty())
                 throw new NotificationException("UserId metadata missing in session");
@@ -254,8 +255,8 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
             if (principal == null)
             {
-                req.LogError(new NotificationException($"principal null - userId:{userId}"));
-                return;
+                req.LogError(new NotificationException($"stripe webhook - principal is null - userId:{userId}"));
+                return await req.CreateResponse(HttpStatusCode.OK, $"stripe webhook - principal is null - userId:{userId}");
             }
 
             if (session.PaymentStatus == "paid" || stripeEvent.Type == "checkout.session.async_payment_succeeded")
@@ -280,5 +281,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
             await repo.UpsertItemAsync(principal, cancellationToken);
         }
+
+        return await req.CreateResponse(HttpStatusCode.OK, "webhook received");
     }
 }
