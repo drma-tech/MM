@@ -198,7 +198,11 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             LineItems = [new() { Price = priceId, Quantity = qtd, },],
             Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
-            Metadata = new Dictionary<string, string> { { "UserId", principal.UserId! }, { "Quantity", qtd.ToString() } }
+            Metadata = new Dictionary<string, string> {
+                { "app", "mm" },
+                { "UserId", principal.UserId! },
+                { "Quantity", qtd.ToString() }
+            }
         };
 
         options.AddExtraParam("managed_payments[enabled]", true);
@@ -237,13 +241,13 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (session.Mode == "subscription") //mm use only payment mode, so ignore subscription events (stripe test probably)
-                return;
+            if (!session.Metadata.TryGetValue("app", out var app) || app != "mm")
+                return; //session not created by mm, ignore it
 
-            if (!session.Metadata.TryGetValue("UserId", out var userId) || string.IsNullOrEmpty(userId))
+            if (!session.Metadata.TryGetValue("UserId", out var userId) || userId.Empty())
                 throw new NotificationException("UserId metadata missing in session");
 
-            if (!session.Metadata.TryGetValue("Quantity", out var qtd) || string.IsNullOrEmpty(qtd))
+            if (!session.Metadata.TryGetValue("Quantity", out var qtd) || qtd.Empty())
                 throw new NotificationException("Quantity metadata missing in session");
 
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
