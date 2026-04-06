@@ -61,20 +61,110 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authenticity.
+        ///   Looks up a localized string similar to Compatibility System.
         /// </summary>
-        public static string Authenticity {
+        public static string Approach01 {
             get {
-                return ResourceManager.GetString("Authenticity", resourceCulture);
+                return ResourceManager.GetString("Approach01", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before any interaction, identity and photo verification are mandatory. Users can provide private or public feedback at any time..
+        ///   Looks up a localized string similar to We suggest matches using our compatibility system that evaluates values, lifestyle, and relationship goals..
         /// </summary>
-        public static string AuthenticityDesc {
+        public static string Approach01Desc {
             get {
-                return ResourceManager.GetString("AuthenticityDesc", resourceCulture);
+                return ResourceManager.GetString("Approach01Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intentional Connections.
+        /// </summary>
+        public static string Approach02 {
+            get {
+                return ResourceManager.GetString("Approach02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our platform is designed to support serious relationships by focusing on meaningful introductions rather than casual browsing..
+        /// </summary>
+        public static string Approach02Desc {
+            get {
+                return ResourceManager.GetString("Approach02Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verified Profiles.
+        /// </summary>
+        public static string Approach03 {
+            get {
+                return ResourceManager.GetString("Approach03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identity and photo verification are required before interaction to help ensure authenticity and trust..
+        /// </summary>
+        public static string Approach03Desc {
+            get {
+                return ResourceManager.GetString("Approach03Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy and Security.
+        /// </summary>
+        public static string Approach04 {
+            get {
+                return ResourceManager.GetString("Approach04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our platform protects your data and provides a secure environment for all users, giving you confidence while connecting..
+        /// </summary>
+        public static string Approach04Desc {
+            get {
+                return ResourceManager.GetString("Approach04Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sparks Currency.
+        /// </summary>
+        public static string Approach05 {
+            get {
+                return ResourceManager.GetString("Approach05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sparks are our virtual currency used to access premium actions and features across the platform..
+        /// </summary>
+        public static string Approach05Desc {
+            get {
+                return ResourceManager.GetString("Approach05Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Future Features Ahead.
+        /// </summary>
+        public static string Approach06 {
+            get {
+                return ResourceManager.GetString("Approach06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As the platform grows, new matchmaking features and enhancements will be unlocked for more ways to connect..
+        /// </summary>
+        public static string Approach06Desc {
+            get {
+                return ResourceManager.GetString("Approach06Desc", resourceCulture);
             }
         }
         
@@ -115,47 +205,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couple Compatibility.
+        ///   Looks up a localized string similar to Our Approach.
         /// </summary>
-        public static string CoupleCompatibility {
+        public static string OurApproach {
             get {
-                return ResourceManager.GetString("CoupleCompatibility", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couples can test their compatibility and receive a detailed report with personalized insights and areas for growth..
-        /// </summary>
-        public static string CoupleCompatibilityDesc {
-            get {
-                return ResourceManager.GetString("CoupleCompatibilityDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MM Coin.
-        /// </summary>
-        public static string MMCoin {
-            get {
-                return ResourceManager.GetString("MMCoin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Our virtual currency. It will be used for all premium operations, including receiving match suggestions. New features will be developed and announced soon..
-        /// </summary>
-        public static string MMCoinDesc {
-            get {
-                return ResourceManager.GetString("MMCoinDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Our Features.
-        /// </summary>
-        public static string OurFeatures {
-            get {
-                return ResourceManager.GetString("OurFeatures", resourceCulture);
+                return ResourceManager.GetString("OurApproach", resourceCulture);
             }
         }
         
@@ -331,42 +385,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Privacy.
-        /// </summary>
-        public static string Privacy {
-            get {
-                return ResourceManager.GetString("Privacy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We care about everyone&apos;s privacy. We have several mechanisms and settings in place to protect your privacy in a way that best suits you..
-        /// </summary>
-        public static string PrivacyDesc {
-            get {
-                return ResourceManager.GetString("PrivacyDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        public static string Profile {
-            get {
-                return ResourceManager.GetString("Profile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We develop a complete and scientifically relevant profile to detect true compatibilities within a stable and long-term relationship..
-        /// </summary>
-        public static string ProfileDesc {
-            get {
-                return ResourceManager.GetString("ProfileDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Recently Joined.
         /// </summary>
         public static string RecentlyJoined {
@@ -376,47 +394,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Security.
-        /// </summary>
-        public static string Security {
-            get {
-                return ResourceManager.GetString("Security", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We do not store or exchange information with third parties (or in any other way) that may compromise your security or your data..
-        /// </summary>
-        public static string SecurityDesc {
-            get {
-                return ResourceManager.GetString("SecurityDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Total Users.
         /// </summary>
         public static string TotalUsers {
             get {
                 return ResourceManager.GetString("TotalUsers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tracking.
-        /// </summary>
-        public static string Tracking {
-            get {
-                return ResourceManager.GetString("Tracking", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We support you at every step of your matchmaking journey — including first meetings — ensuring a safe and meaningful path to a lasting relationship..
-        /// </summary>
-        public static string TrackingDesc {
-            get {
-                return ResourceManager.GetString("TrackingDesc", resourceCulture);
             }
         }
     }

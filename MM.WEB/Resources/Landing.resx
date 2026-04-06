@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Authenticity" xml:space="preserve">
-    <value>Authenticity</value>
+  <data name="Approach01" xml:space="preserve">
+    <value>Compatibility System</value>
   </data>
-  <data name="AuthenticityDesc" xml:space="preserve">
-    <value>Before any interaction, identity and photo verification are mandatory. Users can provide private or public feedback at any time.</value>
+  <data name="Approach01Desc" xml:space="preserve">
+    <value>We suggest matches using our compatibility system that evaluates values, lifestyle, and relationship goals.</value>
+  </data>
+  <data name="Approach02" xml:space="preserve">
+    <value>Intentional Connections</value>
+  </data>
+  <data name="Approach02Desc" xml:space="preserve">
+    <value>Our platform is designed to support serious relationships by focusing on meaningful introductions rather than casual browsing.</value>
+  </data>
+  <data name="Approach03" xml:space="preserve">
+    <value>Verified Profiles</value>
+  </data>
+  <data name="Approach03Desc" xml:space="preserve">
+    <value>Identity and photo verification are required before interaction to help ensure authenticity and trust.</value>
+  </data>
+  <data name="Approach04" xml:space="preserve">
+    <value>Privacy and Security</value>
+  </data>
+  <data name="Approach04Desc" xml:space="preserve">
+    <value>Our platform protects your data and provides a secure environment for all users, giving you confidence while connecting.</value>
+  </data>
+  <data name="Approach05" xml:space="preserve">
+    <value>Sparks Currency</value>
+  </data>
+  <data name="Approach05Desc" xml:space="preserve">
+    <value>Sparks are our virtual currency used to access premium actions and features across the platform.</value>
+  </data>
+  <data name="Approach06" xml:space="preserve">
+    <value>Future Features Ahead</value>
+  </data>
+  <data name="Approach06Desc" xml:space="preserve">
+    <value>As the platform grows, new matchmaking features and enhancements will be unlocked for more ways to connect.</value>
   </data>
   <data name="CompatibilityReport" xml:space="preserve">
     <value>Compatibility Report</value>
@@ -135,20 +165,8 @@
   <data name="CompatibilitySystemDesc" xml:space="preserve">
     <value>We have developed the most advanced and scientifically backed compatibility system to create meaningful, long-lasting relationships.</value>
   </data>
-  <data name="CoupleCompatibility" xml:space="preserve">
-    <value>Couple Compatibility</value>
-  </data>
-  <data name="CoupleCompatibilityDesc" xml:space="preserve">
-    <value>Couples can test their compatibility and receive a detailed report with personalized insights and areas for growth.</value>
-  </data>
-  <data name="MMCoin" xml:space="preserve">
-    <value>MM Coin</value>
-  </data>
-  <data name="MMCoinDesc" xml:space="preserve">
-    <value>Our virtual currency. It will be used for all premium operations, including receiving match suggestions. New features will be developed and announced soon.</value>
-  </data>
-  <data name="OurFeatures" xml:space="preserve">
-    <value>Our Features</value>
+  <data name="OurApproach" xml:space="preserve">
+    <value>Our Approach</value>
   </data>
   <data name="OurNumbers" xml:space="preserve">
     <value>Our Numbers</value>
@@ -207,34 +225,10 @@
   <data name="Phase4Title" xml:space="preserve">
     <value>Phase 4 (30k-40k users)</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacy</value>
-  </data>
-  <data name="PrivacyDesc" xml:space="preserve">
-    <value>We care about everyone's privacy. We have several mechanisms and settings in place to protect your privacy in a way that best suits you.</value>
-  </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="ProfileDesc" xml:space="preserve">
-    <value>We develop a complete and scientifically relevant profile to detect true compatibilities within a stable and long-term relationship.</value>
-  </data>
   <data name="RecentlyJoined" xml:space="preserve">
     <value>Recently Joined</value>
   </data>
-  <data name="Security" xml:space="preserve">
-    <value>Security</value>
-  </data>
-  <data name="SecurityDesc" xml:space="preserve">
-    <value>We do not store or exchange information with third parties (or in any other way) that may compromise your security or your data.</value>
-  </data>
   <data name="TotalUsers" xml:space="preserve">
     <value>Total Users</value>
-  </data>
-  <data name="Tracking" xml:space="preserve">
-    <value>Tracking</value>
-  </data>
-  <data name="TrackingDesc" xml:space="preserve">
-    <value>We support you at every step of your matchmaking journey — including first meetings — ensuring a safe and meaningful path to a lasting relationship.</value>
   </data>
 </root>

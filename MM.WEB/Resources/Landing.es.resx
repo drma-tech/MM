@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Authenticity" xml:space="preserve">
-    <value>Autenticidad</value>
+  <data name="Approach01" xml:space="preserve">
+    <value>Sistema de compatibilidad</value>
   </data>
-  <data name="AuthenticityDesc" xml:space="preserve">
-    <value>Antes de cualquier interacción, es obligatorio verificar la identidad y la foto. Los usuarios pueden proporcionar comentarios privados o públicos en cualquier momento.</value>
+  <data name="Approach01Desc" xml:space="preserve">
+    <value>Sugerimos coincidencias utilizando nuestro sistema de compatibilidad que evalúa valores, estilo de vida y objetivos de relación.</value>
+  </data>
+  <data name="Approach02" xml:space="preserve">
+    <value>Conexiones intencionales</value>
+  </data>
+  <data name="Approach02Desc" xml:space="preserve">
+    <value>Nuestra plataforma está diseñada para respaldar relaciones serias centrándose en presentaciones significativas en lugar de una navegación informal.</value>
+  </data>
+  <data name="Approach03" xml:space="preserve">
+    <value>Perfiles verificados</value>
+  </data>
+  <data name="Approach03Desc" xml:space="preserve">
+    <value>Se requiere verificación de identidad y fotografía antes de la interacción para ayudar a garantizar la autenticidad y la confianza.</value>
+  </data>
+  <data name="Approach04" xml:space="preserve">
+    <value>Privacidad y seguridad</value>
+  </data>
+  <data name="Approach04Desc" xml:space="preserve">
+    <value>Nuestra plataforma protege sus datos y proporciona un entorno seguro para todos los usuarios, brindándole confianza mientras se conecta.</value>
+  </data>
+  <data name="Approach05" xml:space="preserve">
+    <value>Moneda Sparks</value>
+  </data>
+  <data name="Approach05Desc" xml:space="preserve">
+    <value>Sparks es nuestra moneda virtual que se utiliza para acceder a acciones y funciones premium en toda la plataforma.</value>
+  </data>
+  <data name="Approach06" xml:space="preserve">
+    <value>Funciones futuras por delante</value>
+  </data>
+  <data name="Approach06Desc" xml:space="preserve">
+    <value>A medida que la plataforma crezca, se desbloquearán nuevas funciones y mejoras de emparejamiento para obtener más formas de conectarse.</value>
   </data>
   <data name="CompatibilityReport" xml:space="preserve">
     <value>Informe de compatibilidad</value>
@@ -135,20 +165,8 @@
   <data name="CompatibilitySystemDesc" xml:space="preserve">
     <value>Hemos desarrollado el sistema de compatibilidad más avanzado y respaldado científicamente para crear relaciones significativas y duraderas.</value>
   </data>
-  <data name="CoupleCompatibility" xml:space="preserve">
-    <value>Compatibilidad de pareja</value>
-  </data>
-  <data name="CoupleCompatibilityDesc" xml:space="preserve">
-    <value>Las parejas pueden probar su compatibilidad y recibir un informe detallado con información personalizada y áreas de crecimiento.</value>
-  </data>
-  <data name="MMCoin" xml:space="preserve">
-    <value>Moneda MM</value>
-  </data>
-  <data name="MMCoinDesc" xml:space="preserve">
-    <value>Nuestra moneda virtual. Se utilizará para todas las operaciones premium, incluyendo la recepción de sugerencias de matches. Próximamente se desarrollarán y anunciarán nuevas funciones.</value>
-  </data>
-  <data name="OurFeatures" xml:space="preserve">
-    <value>Nuestras características</value>
+  <data name="OurApproach" xml:space="preserve">
+    <value>Nuestro enfoque</value>
   </data>
   <data name="OurNumbers" xml:space="preserve">
     <value>Nuestros números</value>
@@ -207,34 +225,10 @@
   <data name="Phase4Title" xml:space="preserve">
     <value>Fase 4 (30k-40k usuarios)</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidad</value>
-  </data>
-  <data name="PrivacyDesc" xml:space="preserve">
-    <value>Nos preocupamos por la privacidad de todos. Contamos con diversos mecanismos y configuraciones para protegerla de la forma que mejor se adapte a sus necesidades.</value>
-  </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Perfil</value>
-  </data>
-  <data name="ProfileDesc" xml:space="preserve">
-    <value>Desarrollamos un perfil completo y científicamente relevante para detectar compatibilidades reales dentro de una relación estable y de largo plazo.</value>
-  </data>
   <data name="RecentlyJoined" xml:space="preserve">
     <value>Se unió recientemente</value>
   </data>
-  <data name="Security" xml:space="preserve">
-    <value>Seguridad</value>
-  </data>
-  <data name="SecurityDesc" xml:space="preserve">
-    <value>No almacenamos ni intercambiamos información con terceros (ni de ninguna otra forma) que pueda comprometer su seguridad o sus datos.</value>
-  </data>
   <data name="TotalUsers" xml:space="preserve">
     <value>Usuarios totales</value>
-  </data>
-  <data name="Tracking" xml:space="preserve">
-    <value>Seguimiento</value>
-  </data>
-  <data name="TrackingDesc" xml:space="preserve">
-    <value>Lo apoyamos en cada paso de su proceso de emparejamiento, incluidos los primeros encuentros, garantizando un camino seguro y significativo hacia una relación duradera.</value>
   </data>
 </root>

@@ -274,89 +274,122 @@
         </BodyFragment>
     </NewPageSection>
 
-    <NewPageSection Title="@Landing.OurFeatures" CustomBodyClass="mb-12">
+    <NewPageSection Title="@Landing.OurApproach" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("sliders").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilitySystem</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilitySystemDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("heart-pulse").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach01
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach01Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("people-arrows").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CoupleCompatibility</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CoupleCompatibilityDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("handshake").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach02
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach02Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("id-badge").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Profile</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.ProfileDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach03
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach03Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("book").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.CompatibilityReport</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.CompatibilityReportDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("shield-halved").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach04
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach04Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Security</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.SecurityDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach05
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach05Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("user-lock").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Privacy</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.PrivacyDesc</MudText>
-                        </div>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("user-check").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Authenticity</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.AuthenticityDesc</MudText>
-                        </div>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("shuffle").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.Tracking</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.TrackingDesc</MudText>
-                        </div>
-                    </MudPaper>
-                </MudItem>
-                <MudItem xs="12" sm="6" md="4">
-                    <MudPaper Elevation="2" class="d-flex pa-2" Style="height: 100%;">
-                        <MudIcon Icon="@IconsFA.Solid.Icon("coins").Font" Color="Color.Secondary" Size="Size.Large" Class="me-2 mt-2"></MudIcon>
-                        <div>
-                            <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">@Landing.MMCoin</MudText>
-                            <MudText Typo="Typo.body1" Align="Align.Justify">@Landing.MMCoinDesc</MudText>
-                        </div>
-                    </MudPaper>
+                    <MudCard Style="height: 100%;">
+                        <MudCardHeader Class="pa-3">
+                            <CardHeaderAvatar>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("rocket").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
+                                    @Landing.Approach06
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-3">
+                            <MudText Typo="Typo.body1" Align="Align.Justify">
+                                @Landing.Approach06Desc
+                            </MudText>
+                        </MudCardContent>
+                    </MudCard>
                 </MudItem>
             </MudGrid>
         </BodyFragment>
@@ -378,8 +411,7 @@
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        Modern Matchmaker goes beyond typical dating apps. We connect individuals based on compatibility and genuine intentions.
-                        Advanced algorithms and user preferences ensure that every suggested match is thoughtful and aligned with your relationship goals.
+                        See how we match you with people who fit your lifestyle, values, and goals. Learn about the step-by-step process and how Sparks help you engage meaningfully.
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
@@ -398,8 +430,7 @@
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        This platform is for those seeking meaningful relationships and real compatibility, not casual encounters.
-                        If you are frustrated by high-volume dating apps or costly traditional matchmaking services, Modern Matchmaker offers a thoughtful approach focused on personality, values, and lifestyle alignment.
+                        Discover if Modern Matchmaker is right for you and your relationship goals. Understand who benefits most from our intentional approach to serious dating.
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
@@ -418,8 +449,7 @@
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        Platforms for meeting people vary widely. Dating apps, traditional matchmaking services, and modern compatibility-based solutions each take a different approach.
-                        Understanding these differences helps you choose the method that best matches your goals and preferences.
+                        Compare us with typical dating apps and see what makes our approach different. Explore the key features that set us apart and create more meaningful connections.
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
