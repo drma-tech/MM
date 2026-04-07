@@ -20,7 +20,7 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
 
     public async Task<string?> CreateVerificationSession(string url, string? email)
     {
-        return await GetValueAsync(ProfileEndpoint.CreateVerificationSession(url, email));
+        return await GetStringAsync(ProfileEndpoint.CreateVerificationSession(url, email));
     }
 
     public async Task<ValidationModel?> UploadPhotoValidation(byte[] bytes, string? email)

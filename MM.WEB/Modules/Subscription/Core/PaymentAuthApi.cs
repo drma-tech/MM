@@ -2,6 +2,19 @@
 
 namespace MM.WEB.Modules.Subscription.Core
 {
+    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null)
+    {
+        public async Task<bool> StripeValidateSession(string id)
+        {
+            return await GetAsync<bool>(Endpoint.StripeValidateSession(id));
+        }
+
+        private struct Endpoint
+        {
+            public static string StripeValidateSession(string id) => $"public/stripe/validate-session/{id}";
+        }
+    }
+
     public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null)
     {
         public async Task AppleVerify(string receipt)

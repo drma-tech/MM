@@ -224,11 +224,6 @@
         {
             Provider = sub.Provider.Value;
         }
-
-        if (Client != null && Client.StripeCustomerId.Empty())
-        {
-            Client = await PaymentAuthApi.StripeCustomer(AppStateStatic.IsAuthenticated);
-        }
     }
 
     private async Task RegistrationSuccessful()
@@ -238,7 +233,7 @@
             var freshClient = await PrincipalApi.Get(true, true);
             if (freshClient == null) throw new NotificationException("Client null");
 
-            var sub = Client?.GetActivePurchase();
+            var sub = freshClient?.GetActivePurchase();
 
             if (sub != null && sub?.Product != null)
             {
@@ -268,7 +263,7 @@
             var freshClient = await PrincipalApi.Get(true, true);
             if (freshClient == null) throw new NotificationException("Client null");
 
-            var sub = Client?.GetActivePurchase();
+            var sub = freshClient?.GetActivePurchase();
 
             if (sub != null && sub?.Product != null)
             {

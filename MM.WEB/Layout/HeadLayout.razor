@@ -1,9 +1,13 @@
+@using MM.WEB.Modules.Subscription.Core
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.JSInterop
+
+@inject PaymentPublicApi PaymentPublicApi
 
 @inject NavigationManager Navigation
 @inject IDialogService DialogService
 @inject IJSRuntime JsRuntime
+@inject ISnackbar Snackbar
 
 @if (_processing)
 {
@@ -174,7 +178,16 @@
         {
             if (stripe_session_id.NotEmpty())
             {
-                //todo: animate sparks
+                var success = await PaymentPublicApi.StripeValidateSession(stripe_session_id);
+
+                if (success)
+                {
+                    await ShowSuccess("Subscription successful!");
+                }
+                else
+                {
+                    await ShowError("Something didn’t go as expected. If your payment wasn’t completed, please try again. You can also contact support for assistance.");
+                }
             }
         }
 
@@ -227,6 +240,22 @@
     {
         _open = false;
         await DialogService.SubscriptionPopup();
+    }
+
+    protected async Task ShowSuccess(string message)
+    {
+        Snackbar.Add(message, Severity.Success);
+
+        await JsRuntime.Utils().PlayBeep(880, 100, "sine");
+        await JsRuntime.Utils().Vibrate([40]);
+    }
+
+    protected async Task ShowError(string message)
+    {
+        Snackbar.Add(message, Severity.Error);
+
+        await JsRuntime.Utils().PlayBeep(220, 400, "square");
+        await JsRuntime.Utils().Vibrate([200, 100, 200]);
     }
 
 }
