@@ -15,6 +15,8 @@ namespace MM.API.Functions;
 
 public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 {
+    private const string APP = "mm";
+
     [Function("PaymentConfigurations")]
     public static PaymentConfigurations PaymentConfigurations(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/payment/configurations")] HttpRequestData req)
@@ -161,7 +163,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
     [Function("StripeCreateCustomer")]
     public async Task<AuthPrincipal> StripeCreateCustomer(
-   [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/customer")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/customer")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
         var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
@@ -170,6 +172,10 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         {
             Name = principal.DisplayName,
             Email = principal.Email,
+            Metadata = new Dictionary<string, string> {
+                { "app", APP },
+                { "userId", principal.UserId! },
+            },
         }, cancellationToken: cancellationToken);
 
         principal.StripeCustomerId = customer.Id;
@@ -182,7 +188,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
     [Function("CreateCheckoutSession")]
     public async Task<string> CreateCheckoutSession(
-      [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}/{qtd}")] HttpRequestData req, string priceId, int qtd, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}/{qtd}")] HttpRequestData req, string priceId, int qtd, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
         var ip = req.GetUserIP(true);
@@ -195,20 +201,26 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         var options = new SessionCreateOptions
         {
             Customer = principal.StripeCustomerId,
+            //CustomerUpdate = new SessionCustomerUpdateOptions
+            //{
+            //    Name = "never",
+            //    Address = "never",
+            //    Shipping = "never"
+            //},
 
             LineItems = [new() { Price = priceId, Quantity = qtd, },],
             Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
             Metadata = new Dictionary<string, string> {
-                { "app", "mm" },
-                { "UserId", principal.UserId! },
+                { "app", APP },
+                { "userId", principal.UserId! },
                 { "Quantity", qtd.ToString() }
             },
             SubscriptionData = new SessionSubscriptionDataOptions
             {
                 Metadata = new Dictionary<string, string> {
-                    { "app", "mm" },
-                    { "UserId", principal.UserId! },
+                    { "app", APP },
+                    { "userId", principal.UserId! },
                 }
             }
         };
@@ -237,7 +249,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
     [Function("PostStripeWebhook")]
     public async Task<HttpResponseData> PostStripeWebhook(
-       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/stripe/webhook")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/stripe/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var json = await new StreamReader(req.Body).ReadToEndAsync(cancellationToken);
 
@@ -247,15 +259,15 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         if (stripeEvent.Type.StartsWith("checkout.session")) //completed, async_payment_succeeded
         {
-            if (stripeEvent.Data.Object is not Session session || session.Id.Empty()) throw new NotificationException("Stripe session not available");
+            if (stripeEvent.Data.Object is not Session obj || obj.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (!session.Metadata.TryGetValue("app", out var app) || app != "mm")
+            if (!obj.Metadata.TryGetValue("app", out var app) || app != APP)
                 return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
 
-            if (!session.Metadata.TryGetValue("UserId", out var userId) || userId.Empty())
-                throw new NotificationException("UserId metadata missing in session");
+            if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
+                throw new NotificationException("userId metadata missing in session");
 
-            if (!session.Metadata.TryGetValue("Quantity", out var qtd) || qtd.Empty())
+            if (!obj.Metadata.TryGetValue("Quantity", out var qtd) || qtd.Empty())
                 throw new NotificationException("Quantity metadata missing in session");
 
             var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
@@ -266,9 +278,9 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
                 return await req.CreateResponse(HttpStatusCode.OK, $"stripe webhook - principal is null - userId:{userId}");
             }
 
-            if (session.PaymentStatus == "paid" || stripeEvent.Type == "checkout.session.async_payment_succeeded")
+            if (obj.PaymentStatus == "paid" || stripeEvent.Type == "checkout.session.async_payment_succeeded")
             {
-                var purchase = principal.GetPurchase(session.Id, PaymentProvider.Stripe);
+                var purchase = principal.GetPurchase(obj.Id, PaymentProvider.Stripe);
 
                 if (purchase.Sparks == 0)
                 {
@@ -282,13 +294,46 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
                     var ip = req.GetUserIP(true);
                     var type = stripeEvent.Type.Split(".")[2];
-                    principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {session.PaymentStatus}, Qtd = {quantity} for SessionId = {session.Id}", ip));
+                    principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {obj.PaymentStatus}, Qtd = {quantity} for SessionId = {obj.Id}", ip));
                 }
             }
 
             await repo.UpsertItemAsync(principal, cancellationToken);
         }
+        else if (stripeEvent.Type == "customer.deleted")
+        {
+            if (stripeEvent.Data.Object is not Stripe.Customer obj || obj.Id.Empty()) throw new NotificationException("stripe customer not available");
+
+            if (!obj.Metadata.TryGetValue("app", out var app) || app != APP)
+                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
+
+            if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
+                return await req.CreateResponse(HttpStatusCode.OK, "userId metadata missing");
+
+            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+
+            if (principal != null)
+            {
+                principal.StripeCustomerId = null;
+                await repo.UpsertItemAsync(principal, cancellationToken);
+            }
+        }
 
         return await req.CreateResponse(HttpStatusCode.OK, "webhook received");
+    }
+
+    [Function("StripeValidateSession")]
+    public async Task<HttpResponseData> StripeValidateSession(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/stripe/validate-session/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+            return await req.CreateResponse(HttpStatusCode.OK, false);
+
+        var service = new SessionService();
+
+        var session = await service.GetAsync(id, cancellationToken: cancellationToken);
+
+        var result = session != null && session.PaymentStatus == "paid" && session.Status == "complete";
+        return await req.CreateResponse(HttpStatusCode.OK, result);
     }
 }
