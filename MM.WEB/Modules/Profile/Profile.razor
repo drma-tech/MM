@@ -1,4 +1,5 @@
-﻿@page "/profile"
+﻿@page "/{culture}/profile"
+
 @using Bogus
 @using FluentValidation
 @using MM.Shared.Models.Profile
@@ -26,7 +27,7 @@
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url="/profile" Index="false"></SeoMeta>
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile") Index="false"></SeoMeta>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile"></GoogleAdSense>
 
@@ -72,32 +73,32 @@ else
                 <MudStepper Vertical="true" NonLinear="true" CompletedStepColor="Color.Success" CurrentStepColor="Color.Primary">
                     <ChildContent>
                         <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
-                            <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
+                            <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
                                        Style="width: 100%;" Disabled="@(Principal == null || Principal.PublicProfile)">
                                 @Button.Profile
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepFilter" SecondaryText="@Resources.Translations.StepFilterDesc" Completed="FilterValid">
-                            <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter"
+                            <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/filter")
                                        Style="width: 100%;" Disabled="profile == null">
                                 @Button.Filters
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">
-                            <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
+                            <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
                                        Style="width: 100%;" Disabled="profile == null || Principal == null || Principal.PublicProfile">
                                 @Button.Settings
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepGallery" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="GalleryValid">
-                            <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
+                            <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
                                        Style="width: 100%;"
                                        Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || Principal == null || Principal.PublicProfile">
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepValidation" SecondaryText="@Resources.Translations.StepValidationDesc" Completed="ValidationGeral">
-                            <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href="/profile/validation"
+                            <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/validation")
                                        Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                                 @Button.Validations
                             </MudButton>
@@ -178,31 +179,31 @@ else
                         </MudBadge>
                     </MudItem> *@
                     <MudItem xs="6">
-                        <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href="/profile/data"
+                        <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
                                    Style="width: 100%;" Disabled="@(Principal == null || Principal.PublicProfile)">
                             @Button.Profile
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
-                        <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href="/profile/filter"
+                        <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/filter")
                                    Style="width: 100%;" Disabled="profile == null">
                             @Button.Filters
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
-                        <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href="/profile/setting"
+                        <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
                                    Style="width: 100%;" Disabled="profile == null || Principal == null || Principal.PublicProfile">
                             @Button.Settings
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
-                        <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href="/profile/gallery"
+                        <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
                                    Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || Principal == null || Principal.PublicProfile">
                             @Button.Gallery
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
-                        <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href="/profile/validation"
+                        <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/validation")
                                    Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate">
                             @Button.Validations
                         </MudButton>

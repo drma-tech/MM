@@ -1,14 +1,14 @@
-﻿@page "/legal/terms"
+﻿@page "/{culture}/legal/terms"
 @inherits PageCore<Terms>
 
-<SeoMeta Title="Terms of Use" Url=@($"/legal/terms") Index="false"></SeoMeta>
+<SeoMeta Title="Terms of Use" Url=@($"/{Culture}/legal/terms") Index="false"></SeoMeta>
 
 <div class="support-container">
     @if (Language == AppLanguage.pt)
     {
         <h1 class="support-title">Termos de Uso</h1>
         <div class="support-subtitle">
-            Bem-vindo ao <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            Bem-vindo ao <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
             Ao acessar ou usar este serviço, você concorda com estes Termos de Uso e nossa Política de Privacidade, que cumprem o Regulamento Geral de Proteção de Dados (GDPR - UE), a Lei Geral de Proteção de Dados (LGPD - Brasil) e a Lei de Privacidade do Consumidor da Califórnia (CCPA/CPRA - EUA).
         </div>
         <div class="support-section">
@@ -21,7 +21,7 @@
             <h2>2. Elegibilidade e Verificação</h2>
             <p>Este serviço está disponível apenas para indivíduos com 18 anos ou mais, ou a idade mínima legal em sua jurisdição — prevalecendo a maior. Contas de usuários menores de idade serão deletadas sem aviso.</p>
             <p>A verificação de identidade é obrigatória para todos os usuários antes de iniciar ou receber interações. A verificação é realizada por terceiros certificados (ex.: Didit) usando documentos oficiais e checagem de presença. Os dados coletados são limitados, armazenados com segurança e processados apenas conforme a legislação aplicável pelo período legal ou operacional necessário.</p>
-            <p>Os usuários devem fornecer informações precisas e verdadeiras durante o registro e uso da plataforma. Os dados pessoais são processados conforme nossa <a href="/legal/privacy">Política de Privacidade</a>.</p>
+            <p>Os usuários devem fornecer informações precisas e verdadeiras durante o registro e uso da plataforma. Os dados pessoais são processados conforme nossa <a href="/@Culture/legal/privacy">Política de Privacidade</a>.</p>
             <p>A Didit retém dados de verificação de identidade por até 6 meses em armazenamento ativo e até 12 meses em arquivo para defesa legal, prevenção de fraudes ou suporte. Após esse período, os dados são excluídos de forma irreversível ou anonimizados. Os usuários podem solicitar exclusão antecipada quando permitido por lei.</p>
             <p><b>Observação:</b> A verificação de identidade não garante autenticidade, intenções ou segurança do usuário.</p>
         </div>
@@ -107,14 +107,14 @@
         </div>
         <div class="support-footer">
             <p>Última atualização: 4 de abril de 2026</p>
-            <p>Ao usar a plataforma, você concorda com estes Termos de Uso e a <a href="/legal/privacy">Política de Privacidade</a>.</p>
+            <p>Ao usar a plataforma, você concorda com estes Termos de Uso e a <a href="/@Culture/legal/privacy">Política de Privacidade</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.es)
     {
         <h1 class="support-title">Términos de Uso</h1>
         <div class="support-subtitle">
-            ¡Bienvenido a <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            ¡Bienvenido a <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
             Al acceder o usar este servicio, aceptas estos Términos de Uso y nuestra Política de Privacidad, que cumplen con el Reglamento General de Protección de Datos (GDPR - UE), la Ley General de Protección de Datos (LGPD - Brasil) y la Ley de Privacidad del Consumidor de California (CCPA/CPRA - EE.UU.).
         </div>
         <div class="support-section">
@@ -127,7 +127,7 @@
             <h2>2. Elegibilidad y Verificación</h2>
             <p>Este servicio está disponible solo para individuos de 18 años o más, o la edad mínima legal en su jurisdicción, lo que sea mayor. Las cuentas de usuarios menores de edad serán eliminadas sin aviso.</p>
             <p>La verificación de identidad es obligatoria para todos los usuarios antes de iniciar o recibir interacciones. La verificación la realizan terceros certificados (por ejemplo, Didit) usando documentos oficiales y verificación de presencia. Los datos recopilados son limitados, almacenados de forma segura y procesados únicamente según la legislación aplicable durante el período legal u operativo necesario.</p>
-            <p>Los usuarios deben proporcionar información precisa y veraz durante el registro y uso de la plataforma. Los datos personales se procesan de acuerdo con nuestra <a href="/legal/privacy">Política de Privacidad</a>.</p>
+            <p>Los usuarios deben proporcionar información precisa y veraz durante el registro y uso de la plataforma. Los datos personales se procesan de acuerdo con nuestra <a href="/@Culture/legal/privacy">Política de Privacidad</a>.</p>
             <p>Didit retiene los datos de verificación de identidad hasta 6 meses en almacenamiento activo y hasta 12 meses en archivo para defensa legal, prevención de fraude o soporte. Después de este período, los datos se eliminan de forma irreversible o se anonimizan. Los usuarios pueden solicitar eliminación anticipada cuando lo permita la ley.</p>
             <p><b>Nota:</b> La verificación de identidad no garantiza la autenticidad, intenciones o seguridad del usuario.</p>
         </div>
@@ -213,14 +213,14 @@
         </div>
         <div class="support-footer">
             <p>Última actualización: 4 de abril de 2026</p>
-            <p>Al usar la plataforma, aceptas estos Términos de Uso y la <a href="/legal/privacy">Política de Privacidad</a>.</p>
+            <p>Al usar la plataforma, aceptas estos Términos de Uso y la <a href="/@Culture/legal/privacy">Política de Privacidad</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.zh)
     {
         <h1 class="support-title">使用条款</h1>
         <div class="support-subtitle">
-            欢迎使用 <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)！<br />
+            欢迎使用 <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)！<br />
             访问或使用本服务即表示您同意这些使用条款及我们的隐私政策，这些政策符合《通用数据保护条例》（GDPR - 欧盟）、《巴西通用数据保护法》（LGPD - 巴西）以及《加州消费者隐私法》（CCPA/CPRA - 美国）。
         </div>
         <div class="support-section">
@@ -233,7 +233,7 @@
             <h2>2. 资格与身份验证</h2>
             <p>本服务仅向18岁及以上用户或其司法辖区内法定最低年龄（以较高者为准）开放。未成年用户的账户将被删除且不另行通知。</p>
             <p>所有用户在开始或接受互动前必须进行身份验证。验证由认证第三方（如 Didit）使用官方文件和活体检测执行。收集的数据有限、安全存储，仅根据适用数据保护法律处理，保留期为法律或运营所需的时间。</p>
-            <p>用户在注册和使用平台时必须提供准确真实的信息。个人数据根据我们的 <a href="/legal/privacy">隐私政策</a> 处理。</p>
+            <p>用户在注册和使用平台时必须提供准确真实的信息。个人数据根据我们的 <a href="/@Culture/legal/privacy">隐私政策</a> 处理。</p>
             <p>Didit 在活动存储中保留身份验证数据最长6个月，在归档中最长12个月，用于法律辩护、防止欺诈或支持目的。超过该期限后，数据将被不可逆删除或匿名化。用户可在法律允许范围内申请提前删除。</p>
             <p><b>注意：</b>身份验证不保证用户真实性、意图或安全性。</p>
         </div>
@@ -319,14 +319,14 @@
         </div>
         <div class="support-footer">
             <p>最后更新：2026年4月4日</p>
-            <p>使用本平台即表示您同意本使用条款及 <a href="/legal/privacy">隐私政策</a>。</p>
+            <p>使用本平台即表示您同意本使用条款及 <a href="/@Culture/legal/privacy">隐私政策</a>。</p>
         </div>
     }
     else
     {
         <h1 class="support-title">Terms of Use</h1>
         <div class="support-subtitle">
-            Welcome to <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            Welcome to <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
             By accessing or using this service, you agree to these Terms of Use and our Privacy Policy, which comply with the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA - USA).
         </div>
         <div class="support-section">
@@ -339,7 +339,7 @@
             <h2>2. Eligibility and Verification</h2>
             <p>This service is available only to individuals aged 18 or older, or the legal minimum age in their jurisdiction—whichever is higher. Accounts of underage users will be deleted without notice.</p>
             <p>Identity verification is mandatory for all users before initiating or receiving interactions. Verification is performed by certified third parties (e.g., Didit) using official documents and liveness checks. Collected data is limited, stored securely, and processed only under applicable data protection laws for the period legally or operationally required.</p>
-            <p>Users must provide accurate and truthful information during registration and platform use. Personal data is processed according to our <a href="/legal/privacy">Privacy Policy</a>.</p>
+            <p>Users must provide accurate and truthful information during registration and platform use. Personal data is processed according to our <a href="/@Culture/legal/privacy">Privacy Policy</a>.</p>
             <p>Didit retains identity verification data for up to 6 months in active storage and up to 12 months in archive for legal defense, fraud prevention, or support purposes. After this period, data is irreversibly deleted or anonymized. Users may request earlier deletion where permitted by law.</p>
             <p><b>Note:</b> Identity verification does not guarantee user authenticity, intentions, or safety.</p>
         </div>
@@ -425,18 +425,13 @@
         </div>
         <div class="support-footer">
             <p>Last updated: April 4, 2026</p>
-            <p>By using the platform, you agree to this Terms of Use and the <a href="/legal/privacy">Privacy Policy</a>.</p>
+            <p>By using the platform, you agree to this Terms of Use and the <a href="/@Culture/legal/privacy">Privacy Policy</a>.</p>
         </div>
     }
 </div>
 
 @code {
-    public AppLanguage Language { get; set; } = AppLanguage.en;
-
-    protected override async Task OnInitializedAsync()
-    {
-        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
-    }
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
 
     // País/Região Exigência de Tradução   Base Legal Principal
     // China   Explícita e obrigatória PIPL, CSL

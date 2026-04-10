@@ -8,7 +8,7 @@
         public string? GalleryPhotoId { get; set; }
 
         //identity validation
-        
+
         public string? session_id { get; set; }
         public string? workflow_id { get; set; }
         public string? nationality { get; set; }

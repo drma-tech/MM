@@ -5,7 +5,6 @@ using MM.API.Core.Models;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Subscription;
 using Stripe.Checkout;
-using System.Globalization;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text;

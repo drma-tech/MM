@@ -1,5 +1,4 @@
-﻿@page "/"
-@page "/index"
+﻿@page "/{culture}/"
 
 @using MM.Shared.Models.Dashboard
 @using Button = MM.WEB.Resources.Button
@@ -12,7 +11,7 @@
 @inject IpInfoApi IpInfoApi
 @inject IpInfoServerApi IpInfoServerApi
 
-<SeoMeta Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url="/" Index="true" ForceTitle="true"></SeoMeta>
+<SeoMeta Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}/") Index="true" ForceTitle="true"></SeoMeta>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.Subtitle" CustomBodyClass="mb-12"></NewPageSection>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
@@ -415,7 +414,7 @@
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
-                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/how-it-works">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/how-it-works")>
                         Learn More
                     </MudButton>
                 </MudCardActions>
@@ -434,7 +433,7 @@
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
-                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/who-its-for">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/who-its-for")>
                         Learn More
                     </MudButton>
                 </MudCardActions>
@@ -453,7 +452,7 @@
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
-                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href="/compare">
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/compare")>
                         Learn More
                     </MudButton>
                 </MudCardActions>
@@ -569,7 +568,7 @@
 
     private async Task Login()
     {
-        Navigation.NavigateTo($"/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
+        Navigation.NavigateTo($"/{Culture}/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
     }
 
 }

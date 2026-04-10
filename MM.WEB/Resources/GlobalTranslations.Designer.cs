@@ -79,6 +79,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App Theme.
+        /// </summary>
+        public static string AppTheme {
+            get {
+                return ResourceManager.GetString("AppTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
         /// </summary>
         public static string BasicRequired {
@@ -277,6 +286,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get the App.
+        /// </summary>
+        public static string GetTheApp {
+            get {
+                return ResourceManager.GetString("GetTheApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser..
         /// </summary>
         public static string GpsNotAccurate {
@@ -318,6 +336,15 @@ namespace MM.WEB.Resources {
         public static string LightMode {
             get {
                 return ResourceManager.GetString("LightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More from DRMA Tech.
+        /// </summary>
+        public static string MorefromDRMATech {
+            get {
+                return ResourceManager.GetString("MorefromDRMATech", resourceCulture);
             }
         }
         

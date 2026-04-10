@@ -123,6 +123,9 @@
   <data name="AppLanguageDesc" xml:space="preserve">
     <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
   </data>
+  <data name="AppTheme" xml:space="preserve">
+    <value>Tema de la App</value>
+  </data>
   <data name="BasicRequired" xml:space="preserve">
     <value>La sección básica es obligatoria por ahora. Las demás secciones se pueden completar más adelante.</value>
   </data>
@@ -201,8 +204,14 @@
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="GetTheApp" xml:space="preserve">
+    <value>Descarga la aplicación</value>
+  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modo Claro</value>
+  </data>
+  <data name="MorefromDRMATech" xml:space="preserve">
+    <value>Más de DRMA Tech</value>
   </data>
   <data name="MyRelationship" xml:space="preserve">
     <value>Mi relación</value>

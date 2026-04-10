@@ -1,14 +1,14 @@
-﻿@page "/legal/privacy"
+﻿@page "/{culture}/legal/privacy"
 @inherits PageCore<Privacy>
 
-<SeoMeta Title="Privacy Policy" Url=@($"/legal/privacy") Index="false"></SeoMeta>
+<SeoMeta Title="Privacy Policy" Url=@($"/{Culture}/legal/privacy") Index="false"></SeoMeta>
 
 <div class="support-container">
     @if (Language == AppLanguage.pt)
     {
         <h1 class="support-title">Política de Privacidade</h1>
         <div class="support-subtitle">
-            Proteger seus dados é uma prioridade para <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Proteger seus dados é uma prioridade para <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política está em conformidade com o Regulamento Geral de Proteção de Dados (GDPR - UE), a Lei Geral de Proteção de Dados (LGPD - Brasil) e a California Consumer Privacy Act (CCPA/CPRA - EUA).<br />
             Recomendamos a leitura cuidadosa desta política para entender como suas informações são coletadas, usadas e protegidas.
         </div>
@@ -55,7 +55,7 @@
                 <li>Here – dados de localização aproximada.</li>
                 <li>Azure e AWS – hospedagem na nuvem e validação de dados de usuários.</li>
             </ul>
-            <p>Residentes da Califórnia podem optar por não compartilhar seus dados na página <a href="/legal/do-not-sell">Não Vender ou Compartilhar Minhas Informações Pessoais</a>. Usuários da UE ou Brasil podem exercer direitos via configurações de conta ou entrando em contato com <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+            <p>Residentes da Califórnia podem optar por não compartilhar seus dados na página <a href="/@Culture/legal/do-not-sell">Não Vender ou Compartilhar Minhas Informações Pessoais</a>. Usuários da UE ou Brasil podem exercer direitos via configurações de conta ou entrando em contato com <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
         </div>
         <div class="support-section">
             <h2>5. Cookies, Rastreamento e Publicidade</h2>
@@ -91,14 +91,14 @@
         </div>
         <div class="support-footer">
             <p>Última atualização: 4 de abril de 2026</p>
-            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e os <a href="/legal/terms">Termos de Uso</a>.</p>
+            <p>Ao usar a plataforma, você concorda com esta Política de Privacidade e os <a href="/@Culture/legal/terms">Termos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.es)
     {
         <h1 class="support-title">Política de Privacidad</h1>
         <div class="support-subtitle">
-            Proteger sus datos es una prioridad para <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Proteger sus datos es una prioridad para <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operado por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             Esta política cumple con el Reglamento General de Protección de Datos (GDPR - UE), la Ley General de Protección de Datos (LGPD - Brasil) y la Ley de Privacidad del Consumidor de California (CCPA/CPRA - EE. UU.).<br />
             Recomendamos leer esta política detenidamente para entender cómo se recopila, usa y protege su información.
         </div>
@@ -145,7 +145,7 @@
                 <li>Here – datos de ubicación aproximada.</li>
                 <li>Azure y AWS – alojamiento en la nube y validación de datos de usuarios.</li>
             </ul>
-            <p>Los residentes de California pueden optar por no compartir sus datos en la página <a href="/legal/do-not-sell">No Vender o Compartir Mi Información Personal</a>. Los usuarios en la UE o Brasil pueden ejercer sus derechos a través de la configuración de la cuenta o contactando a <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+            <p>Los residentes de California pueden optar por no compartir sus datos en la página <a href="/@Culture/legal/do-not-sell">No Vender o Compartir Mi Información Personal</a>. Los usuarios en la UE o Brasil pueden ejercer sus derechos a través de la configuración de la cuenta o contactando a <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
         </div>
         <div class="support-section">
             <h2>5. Cookies, Seguimiento y Publicidad</h2>
@@ -181,14 +181,14 @@
         </div>
         <div class="support-footer">
             <p>Última actualización: 4 de abril de 2026</p>
-            <p>Al usar la plataforma, usted acepta esta Política de Privacidad y los <a href="/legal/terms">Términos de Uso</a>.</p>
+            <p>Al usar la plataforma, usted acepta esta Política de Privacidad y los <a href="/@Culture/legal/terms">Términos de Uso</a>.</p>
         </div>
     }
     else if (Language == AppLanguage.zh)
     {
         <h1 class="support-title">隐私政策</h1>
         <div class="support-subtitle">
-            保护您的数据是 <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>) 的首要任务，本平台由 DRMA Tech（Delivering Reliable Modern Apps Tech OÜ）运营。<br />
+            保护您的数据是 <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>) 的首要任务，本平台由 DRMA Tech（Delivering Reliable Modern Apps Tech OÜ）运营。<br />
             本政策遵守《通用数据保护条例》(GDPR - 欧盟)、《巴西通用数据保护法》(LGPD - 巴西) 以及《加州消费者隐私法》(CCPA/CPRA - 美国)。<br />
             建议仔细阅读本政策，以了解您的信息如何被收集、使用和保护。
         </div>
@@ -235,7 +235,7 @@
                 <li>Here – 近似位置数据。</li>
                 <li>Azure 和 AWS – 云托管及用户数据验证。</li>
             </ul>
-            <p>加州居民可通过 <a href="/legal/do-not-sell">“不出售或共享我的个人信息”</a> 页面选择不共享数据。欧盟或巴西用户可通过账户设置或联系 <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a> 行使权利。</p>
+            <p>加州居民可通过 <a href="/@Culture/legal/do-not-sell">“不出售或共享我的个人信息”</a> 页面选择不共享数据。欧盟或巴西用户可通过账户设置或联系 <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a> 行使权利。</p>
         </div>
         <div class="support-section">
             <h2>5. Cookie、追踪与广告</h2>
@@ -271,14 +271,14 @@
         </div>
         <div class="support-footer">
             <p>最后更新：2026 年 4 月 4 日</p>
-            <p>使用本平台即表示您同意本隐私政策及 <a href="/legal/terms">使用条款</a>。</p>
+            <p>使用本平台即表示您同意本隐私政策及 <a href="/@Culture/legal/terms">使用条款</a>。</p>
         </div>
     }
     else
     {
         <h1 class="support-title">Privacy Policy</h1>
         <div class="support-subtitle">
-            Protecting your data is a priority for <b>@AppInfo.Title</b> (<a href="https://@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
+            Protecting your data is a priority for <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>), operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).<br />
             This policy complies with the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA - USA).<br />
             We recommend reading this policy carefully to understand how your information is collected, used, and protected.
         </div>
@@ -325,7 +325,7 @@
                 <li>Here – approximate location data.</li>
                 <li>Azure and AWS – cloud hosting and validation of user data.</li>
             </ul>
-            <p>California residents may opt out of sharing via our <a href="/legal/do-not-sell">Do Not Sell or Share My Personal Information</a> page. Users in EU or Brazil may exercise rights via account settings or by contacting <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+            <p>California residents may opt out of sharing via our <a href="/@Culture/legal/do-not-sell">Do Not Sell or Share My Personal Information</a> page. Users in EU or Brazil may exercise rights via account settings or by contacting <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
         </div>
         <div class="support-section">
             <h2>5. Cookies, Tracking, and Advertising</h2>
@@ -361,16 +361,11 @@
         </div>
         <div class="support-footer">
             <p>Last updated: April 4, 2026</p>
-            <p>By using the platform, you agree to this Privacy Policy and the <a href="/legal/terms">Terms of Use</a>.</p>
+            <p>By using the platform, you agree to this Privacy Policy and the <a href="/@Culture/legal/terms">Terms of Use</a>.</p>
         </div>
     }
 </div>
 
 @code {
-    public AppLanguage Language { get; set; } = AppLanguage.en;
-
-    protected override async Task OnInitializedAsync()
-    {
-        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
-    }
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
 }
