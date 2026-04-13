@@ -2,15 +2,15 @@
 
 public class ValidationModel() : PrivateMainDocument(DocumentType.Validation)
 {
-    [Custom(Name = "Gallery", Description = "A photo of you will be taken to compare with your gallery", WhyImportant = "It is necessary before you publish your profile.")]
+    [Custom(Name = "Gallery", Description = "GalleryDesc", WhyImportant = "GalleryWhy", ResourceType = typeof(Resources.ProfileValidation))]
     public bool Gallery { get; set; }
 
-    [Custom(Name = "Identity", Description = "A specialized and independent platform will be used", WhyImportant = "It is necessary before any interaction with another user.")]
+    [Custom(Name = "Identity", Description = "IdentityDesc", WhyImportant = "IdentityWhy", ResourceType = typeof(Resources.ProfileValidation))]
     public bool Identity { get; set; }
 
-    [Custom(Name = "Net Worth", Description = "A specialized and independent platform will be used", WhyImportant = "It's necessary if you want to use this field as a filter.")]
+    [Custom(Name = "NetWorth", Description = "NetWorthDesc", WhyImportant = "NetWorthWhy", ResourceType = typeof(Resources.ProfileValidation))]
     public bool NetWorth { get; set; }
 
-    [Custom(Name = "Annual Income", Description = "A specialized and independent platform will be used", WhyImportant = "It's necessary if you want to use this field as a filter.")]
+    [Custom(Name = "AnnualIncome", Description = "AnnualIncomeDesc", WhyImportant = "AnnualIncomeWhy", ResourceType = typeof(Resources.ProfileValidation))]
     public bool AnnualIncome { get; set; }
 }

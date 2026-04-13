@@ -206,6 +206,16 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>ProfileRelationshipModel.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Models\Profile\Resources\ProfileSetting.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ProfileSetting.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Models\Profile\Resources\ProfileValidation.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ProfileValidation.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Models\Support\Resources\TicketModel.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -573,6 +583,26 @@
 		<EmbeddedResource Update="Models\Profile\Resources\ProfileRelationshipModel.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>ProfileRelationshipModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileSetting.es.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileSetting.pt.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileSetting.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ProfileSetting.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileValidation.es.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileValidation.pt.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Models\Profile\Resources\ProfileValidation.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ProfileValidation.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Models\Support\Resources\TicketModel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

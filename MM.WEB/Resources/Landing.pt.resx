@@ -153,6 +153,21 @@
   <data name="Approach06Desc" xml:space="preserve">
     <value>À medida que a plataforma cresce, novos recursos e melhorias de matchmaking serão desbloqueados para mais formas de conexão.</value>
   </data>
+  <data name="CompareCall" xml:space="preserve">
+    <value>Compare-nos com aplicativos de namoro típicos e veja o que torna nossa abordagem diferente. Explore os principais recursos que nos diferenciam e crie conexões mais significativas.</value>
+  </data>
+  <data name="CompareCall2" xml:space="preserve">
+    <value>Veja você mesmo a diferença e descubra correspondências baseadas em compatibilidade real.</value>
+  </data>
+  <data name="CompareDesc" xml:space="preserve">
+    <value>Compare aplicativos de namoro, serviços tradicionais de matchmaking e Modern Matchmaker. Entenda as diferenças em compatibilidade, custo, personalização e resultados.</value>
+  </data>
+  <data name="CompareTitle" xml:space="preserve">
+    <value>Comparar</value>
+  </data>
+  <data name="CompareTitle2" xml:space="preserve">
+    <value>Compare aplicativos de namoro, matchmaking e Modern Matchmaker</value>
+  </data>
   <data name="CompatibilityReport" xml:space="preserve">
     <value>Relatório de compatibilidade</value>
   </data>
@@ -164,6 +179,21 @@
   </data>
   <data name="CompatibilitySystemDesc" xml:space="preserve">
     <value>Desenvolvemos o sistema de compatibilidade mais avançado e cientificamente respaldado para criar relacionamentos significativos e duradouros.</value>
+  </data>
+  <data name="CountriesRegistered" xml:space="preserve">
+    <value>Países onde os usuários se registraram até agora</value>
+  </data>
+  <data name="HowItWorksCall" xml:space="preserve">
+    <value>Veja como combinamos você com pessoas que se adaptam ao seu estilo de vida, valores e objetivos. Aprenda sobre o processo passo a passo e como o Sparks ajuda você a se envolver de forma significativa.</value>
+  </data>
+  <data name="HowItWorksCall2" xml:space="preserve">
+    <value>Agora que você sabe como funciona, dê o primeiro passo para encontrar sua alma gêmea.</value>
+  </data>
+  <data name="HowItWorksDesc" xml:space="preserve">
+    <value>Aprenda como o Modern Matchmaker avalia a compatibilidade, sugere combinações relevantes e oferece uma alternativa mais inteligente aos métodos tradicionais de namoro e casamento.</value>
+  </data>
+  <data name="HowItWorksTitle" xml:space="preserve">
+    <value>Como funciona</value>
   </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Nossa abordagem</value>
@@ -230,5 +260,17 @@
   </data>
   <data name="TotalUsers" xml:space="preserve">
     <value>Total de usuários</value>
+  </data>
+  <data name="WhoIsItForCall" xml:space="preserve">
+    <value>Descubra se o Modern Matchmaker é ideal para você e seus objetivos de relacionamento. Entenda quem se beneficia mais com nossa abordagem intencional ao namoro sério.</value>
+  </data>
+  <data name="WhoIsItForCall2" xml:space="preserve">
+    <value>Agora que você sabe que esta plataforma foi feita para você, dê o primeiro passo para encontrar sua alma gêmea.</value>
+  </data>
+  <data name="WhoIsItForDesc" xml:space="preserve">
+    <value>O Modern Matchmaker é para pessoas que buscam relacionamentos significativos e duradouros, sem as limitações dos aplicativos de namoro ou o alto custo dos serviços matrimoniais tradicionais.</value>
+  </data>
+  <data name="WhoIsItForTitle" xml:space="preserve">
+    <value>Para quem é</value>
   </data>
 </root>

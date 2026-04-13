@@ -153,6 +153,21 @@
   <data name="Approach06Desc" xml:space="preserve">
     <value>A medida que la plataforma crezca, se desbloquearán nuevas funciones y mejoras de emparejamiento para obtener más formas de conectarse.</value>
   </data>
+  <data name="CompareCall" xml:space="preserve">
+    <value>Compáranos con las típicas aplicaciones de citas y descubre qué hace que nuestro enfoque sea diferente. Explore las características clave que nos diferencian y cree conexiones más significativas.</value>
+  </data>
+  <data name="CompareCall2" xml:space="preserve">
+    <value>Vea la diferencia usted mismo y descubra coincidencias basadas en compatibilidad real.</value>
+  </data>
+  <data name="CompareDesc" xml:space="preserve">
+    <value>Compare aplicaciones de citas, servicios de búsqueda de pareja tradicionales y Modern Matchmaker. Comprenda las diferencias en compatibilidad, costo, personalización y resultados.</value>
+  </data>
+  <data name="CompareTitle" xml:space="preserve">
+    <value>Comparar</value>
+  </data>
+  <data name="CompareTitle2" xml:space="preserve">
+    <value>Compara aplicaciones de citas, emparejamiento y Modern Matchmaker</value>
+  </data>
   <data name="CompatibilityReport" xml:space="preserve">
     <value>Informe de compatibilidad</value>
   </data>
@@ -164,6 +179,21 @@
   </data>
   <data name="CompatibilitySystemDesc" xml:space="preserve">
     <value>Hemos desarrollado el sistema de compatibilidad más avanzado y respaldado científicamente para crear relaciones significativas y duraderas.</value>
+  </data>
+  <data name="CountriesRegistered" xml:space="preserve">
+    <value>Países donde los usuarios se han registrado hasta el momento</value>
+  </data>
+  <data name="HowItWorksCall" xml:space="preserve">
+    <value>Vea cómo lo conectamos con personas que se adaptan a su estilo de vida, valores y objetivos. Conozca el proceso paso a paso y cómo Sparks lo ayuda a participar de manera significativa.</value>
+  </data>
+  <data name="HowItWorksCall2" xml:space="preserve">
+    <value>Ahora que sabes cómo funciona, da el primer paso para encontrar a tu alma gemela.</value>
+  </data>
+  <data name="HowItWorksDesc" xml:space="preserve">
+    <value>Descubre cómo Modern Matchmaker evalúa la compatibilidad, sugiere parejas adecuadas y ofrece una alternativa más inteligente a las citas y los servicios de búsqueda de pareja tradicionales.</value>
+  </data>
+  <data name="HowItWorksTitle" xml:space="preserve">
+    <value>Cómo funciona</value>
   </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Nuestro enfoque</value>
@@ -230,5 +260,17 @@
   </data>
   <data name="TotalUsers" xml:space="preserve">
     <value>Usuarios totales</value>
+  </data>
+  <data name="WhoIsItForCall" xml:space="preserve">
+    <value>Descubra si Modern Matchmaker es adecuado para usted y los objetivos de su relación. Comprenda quién se beneficia más de nuestro enfoque intencional hacia las citas serias.</value>
+  </data>
+  <data name="WhoIsItForCall2" xml:space="preserve">
+    <value>Ahora que sabes que esta plataforma fue hecha para ti, da el primer paso para encontrar a tu alma gemela.</value>
+  </data>
+  <data name="WhoIsItForDesc" xml:space="preserve">
+    <value>Modern Matchmaker está dirigido a personas que buscan relaciones significativas y duraderas sin las limitaciones de las aplicaciones de citas ni el alto coste de los servicios tradicionales de búsqueda de pareja.</value>
+  </data>
+  <data name="WhoIsItForTitle" xml:space="preserve">
+    <value>Para quién es</value>
   </data>
 </root>

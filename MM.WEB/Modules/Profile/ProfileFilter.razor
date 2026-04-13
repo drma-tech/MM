@@ -24,6 +24,8 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/filter") Index="false"></SeoMeta>
+
 <CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
 
 <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">

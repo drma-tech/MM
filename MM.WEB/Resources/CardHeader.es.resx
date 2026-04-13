@@ -138,6 +138,9 @@
   <data name="MyConnections" xml:space="preserve">
     <value>Mis conexiones</value>
   </data>
+  <data name="PrivacyTerms" xml:space="preserve">
+    <value>Términos de privacidad</value>
+  </data>
   <data name="ProfileData" xml:space="preserve">
     <value>Perfil</value>
   </data>

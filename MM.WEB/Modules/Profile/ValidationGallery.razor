@@ -14,8 +14,10 @@
 @inject ValidationApi ValidationApi
 @inject IMediaDevicesService MediaDevicesService;
 
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></SeoMeta>
+
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    This module is still under development. If you wish to report a bug, please contact us via the feedback button.
+    @GlobalTranslations.ModuleUnderDevelopment
 </MudAlert>
 
 <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
@@ -23,11 +25,11 @@
         <MudCard Outlined="true">
             <MudCardHeader Class="pa-2">
                 <CardHeaderContent>
-                    <MudText Typo="Typo.h6">Main photo validation</MudText>
+                    <MudText Typo="Typo.h6">@Resources.Translations.GalleryValidation</MudText>
                 </CardHeaderContent>
                 <CardHeaderActions>
                     <MudIconButton Icon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Default"
-                                   OnClick="@(async() => await MudDialog!.ShowAsync("Privacy Terms", PopupHelper.Options(MaxWidth.ExtraSmall)))" />
+                                   OnClick="@(async() => await MudDialog!.ShowAsync(CardHeader.PrivacyTerms, PopupHelper.Options(MaxWidth.ExtraSmall)))" />
                 </CardHeaderActions>
             </MudCardHeader>
             <MudCardContent Class="pa-2">
@@ -41,12 +43,12 @@
                     {
                         <div style="text-align: center;">
                             <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
-                                Start new validation
+                                @Button.StartNewValidation
                             </MudButton>
                             @if (PriorPicture != null && PriorPicture.NotEmpty())
                             {
                                 <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => SendPhoto(PriorPicture))" Class="my-5 ms-2">
-                                    Use prior validation
+                                    @Button.UsePriorValidation
                                 </MudButton>
                             }
                         </div>
@@ -70,19 +72,19 @@
                 {
                     <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("camera").Font" OnClick="TakeShot" Class="me-2"
                                Disabled="@(videoStreamTrack is null)">
-                        Take Shot
+                        @Button.TakeShot
                     </MudButton>
                 }
                 else
                 {
                     <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("rotate").Font" OnClick="Reset" Class="me-2">
-                        Reset
+                        @Button.Reset
                     </MudButton>
                 }
                 <MudSpacer></MudSpacer>
                 <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("share-square").Font" OnClick="@(() => SendPhoto(null))"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
-                    Send
+                    @Button.Send
                 </MudButton>
             </MudCardActions>
         </MudCard>
@@ -93,10 +95,10 @@
     <DialogContent>
         <MudList T="string" Dense="true">
             <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
-                The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary.
+                @Resources.Translations.GalleryTerm1
             </MudListItem>
             <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
-                The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process.
+                @Resources.Translations.GalleryTerm2
             </MudListItem>
         </MudList>
     </DialogContent>

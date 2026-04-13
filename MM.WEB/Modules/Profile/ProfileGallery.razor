@@ -13,8 +13,10 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
+<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/gallery") Index="false"></SeoMeta>
+
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    This module is still under development. If you wish to report a bug, please contact us via the feedback button.
+    @GlobalTranslations.ModuleUnderDevelopment
 </MudAlert>
 
 <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
@@ -23,7 +25,7 @@
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h6" Color="Color.Primary">Face Photo</MudText>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">@GlobalTranslations.FacePhoto</MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
@@ -57,7 +59,7 @@
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h6" Color="Color.Primary">Body Photo</MudText>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">@GlobalTranslations.BodyPhoto</MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">

@@ -50,8 +50,8 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
-                                       OnClick="@(async () => await DialogCountries!.ShowAsync("Users from countries registered so far", PopupHelper.Options(MaxWidth.Small)))">
-                                Learn more
+                                       OnClick="@(async () => await DialogCountries!.ShowAsync(Landing.CountriesRegistered, PopupHelper.Options(MaxWidth.Small)))">
+                                @Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -72,7 +72,7 @@
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true"
                                        OnClick="@(async () => await DialogCities!.ShowAsync("Users from cities registered so far", PopupHelper.Options(MaxWidth.Small)))">
-                                Learn more
+                                @Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -92,7 +92,7 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
-                                Learn more
+                                @Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -112,7 +112,7 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
-                                Learn more
+                                @Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -405,17 +405,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        How It Works
+                        @WEB.Resources.Landing.HowItWorksTitle
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        See how we match you with people who fit your lifestyle, values, and goals. Learn about the step-by-step process and how Sparks help you engage meaningfully.
+                        @WEB.Resources.Landing.HowItWorksCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/how-it-works")>
-                        Learn More
+                        @WEB.Resources.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>
@@ -424,17 +424,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        Who Is It For
+                        @WEB.Resources.Landing.WhoIsItForTitle
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        Discover if Modern Matchmaker is right for you and your relationship goals. Understand who benefits most from our intentional approach to serious dating.
+                        @WEB.Resources.Landing.WhoIsItForCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/who-its-for")>
-                        Learn More
+                        @WEB.Resources.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>
@@ -443,17 +443,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        Compare
+                        @WEB.Resources.Landing.CompareTitle
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        Compare us with typical dating apps and see what makes our approach different. Explore the key features that set us apart and create more meaningful connections.
+                        @WEB.Resources.Landing.CompareCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/compare")>
-                        Learn More
+                        @WEB.Resources.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>

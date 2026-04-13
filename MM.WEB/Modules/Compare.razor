@@ -1,265 +1,753 @@
 ﻿@page "/{culture}/compare"
 @inherits PageCore<Compare>
 
-<SeoMeta Title="Compare Dating Apps, Matchmaking & Modern Matchmaker" ForceTitle="true" Description="Compare dating apps, traditional matchmaking services, and Modern Matchmaker. Understand the differences in compatibility, cost, personalization, and results." Url=@($"/{Culture}/compare") Index="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="Compare Dating Apps, Matchmaking & Modern Matchmaker" Description="Compare dating apps, traditional matchmaking services, and Modern Matchmaker. Understand the differences in compatibility, cost, personalization, and results." CustomBodyClass="mb-12"></NewPageSection>
+<SeoMeta Title="@WEB.Resources.Landing.CompareTitle2" ForceTitle="true" Description="@WEB.Resources.Landing.CompareDesc" Url=@($"/{Culture}/compare") Index="true"></SeoMeta>
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.CompareTitle2" Description="@WEB.Resources.Landing.CompareDesc" CustomBodyClass="mb-12"></NewPageSection>
 
-<NewPageSection Title="Introduction">
-    <BodyFragment>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            Not all platforms for meeting people are created equal. Dating apps, traditional matchmaking services, and modern compatibility-based platforms follow very different approaches.
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            Some prioritize speed and volume. Others focus on human curation at a high cost. Modern Matchmaker introduces a third approach: structured compatibility driven by data and user intent.
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            Below is a direct comparison to help you understand which model fits your goals.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Comparison Overview" Subtitle="Each approach has strengths and limitations depending on your goals.">
-    <BodyFragment>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.h6" Color="Color.Primary">Feature</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudText Typo="Typo.h6" Color="Color.Primary">Dating Apps</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudText Typo="Typo.h6" Color="Color.Primary">Traditional Matchmaking</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudText Typo="Typo.h6" Color="Color.Primary">Modern Matchmaker</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Matching Approach</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Swipe-based discovery</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Human selection and interviews</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Structured, data-driven matching</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Quality of Matches</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">High volume, limited filters</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Highly selective, but limited</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">High compatibility, structured filtering</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Profile Depth & Matching Criteria</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Basic profiles, few criteria</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">In-depth interviews and manual evaluation</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Structured data across lifestyle and goals</MudText>
-            </MudItem>  
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Initial Setup Time</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Low (quick profile creation)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Medium (interviews and detailed intake)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Medium (extensive profile registration)</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Ongoing Time Investment</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">High (continuous swiping and browsing)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Medium (waiting and typical meetings)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Low (curated matching and meetings)</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Geographic Reach</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Mostly local</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Limited network</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Global</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Transparency</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Limited (no clear explanation)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Low</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Visible compatibility scoring</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Safety & Verification</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Basic tools (varies by platform)</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Moderate</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Profile, identity, and behavior verification</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
-            <MudItem xs="3">
-                <MudText Typo="Typo.body1">Cost Model</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Subscription, ongoing cost</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">High upfront fees</MudText>
-            </MudItem>
-            <MudItem xs="3">
-                <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
-                <MudText Typo="Typo.body1" Inline="true">Pay per use, no commitment</MudText>
-            </MudItem>
-        </MudGrid>
-        <MudText Typo="Typo.caption">
-            * Comparison based on typical platform behavior. Icons represent general strengths and limitations.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Detailed Breakdown">
-    <BodyFragment>
-        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
-            Dating Apps
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify">
-            Dating apps are designed for speed and volume. Matches are usually based on photos, short bios, and simple filters. While they provide access to many people, they often lack depth, compatibility, and clear relationship intent.
-        </MudText>
-
-        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
-            Traditional Matchmaking
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify">
-            Traditional matchmaking services rely on human experts who interview clients and manually select matches. This approach can be highly personalized, but it is expensive, slow, and limited in scale and geographic reach.
-        </MudText>
-
-        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
-            Modern Matchmaker
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify">
-            Modern Matchmaker combines the scalability of technology with the depth of structured compatibility data. Instead of relying on swipes or human intuition alone, it evaluates lifestyle, personality, goals, and preferences to generate meaningful matches.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Why Modern Matchmaker is Different">
-    <BodyFragment>
-        <div class="support-section mb-0">
-            <ul>
-                <li>
-                    <MudText Typo="Typo.body1">
-                        Data-driven compatibility instead of appearance-based matching
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1">
-                        Global reach without geographic limitations
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1">
-                        Transparent compatibility scoring
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1">
-                        No reliance on expensive human intermediaries
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1">
-                        Designed for serious relationships and real intentions
-                    </MudText>
-                </li>
-            </ul>
-        </div>
-    </BodyFragment>
-</NewPageSection>
+@if (Language == AppLanguage.pt)
+{
+    <NewPageSection Title="Introdução">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Nem todas as plataformas para conhecer pessoas são iguais. Aplicativos de namoro, serviços tradicionais de matchmaking e plataformas modernas baseadas em compatibilidade seguem abordagens muito diferentes.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Algumas priorizam velocidade e volume. Outras focam em curadoria humana com alto custo. O Modern Matchmaker apresenta uma terceira abordagem: compatibilidade estruturada orientada por dados e intenção do usuário.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Abaixo está uma comparação direta para ajudar você a entender qual modelo se encaixa melhor nos seus objetivos.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Visão Geral da Comparação" Subtitle="Cada abordagem tem pontos fortes e limitações dependendo dos seus objetivos.">
+        <BodyFragment>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Recurso</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Aplicativos de Namoro</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Matchmaking Tradicional</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Modern Matchmaker</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Abordagem de Matching</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Descoberta baseada em swipe</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Seleção humana e entrevistas</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Matching estruturado orientado por dados</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Qualidade dos Matches</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alto volume, filtros limitados</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Altamente seletivo, mas limitado</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alta compatibilidade, filtragem estruturada</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Profundidade de Perfil e Critérios</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Perfis básicos, poucos critérios</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Entrevistas detalhadas e avaliação manual</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Dados estruturados de estilo de vida e objetivos</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Tempo Inicial de Configuração</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Baixo (criação rápida de perfil)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Médio (entrevistas e coleta detalhada)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Médio (cadastro detalhado)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Tempo Contínuo Necessário</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alto (uso contínuo e navegação)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Médio (espera e encontros)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Baixo (matches curados e encontros)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Alcance Geográfico</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Principalmente local</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Rede limitada</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Global</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Transparência</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Limitada (sem explicação clara)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Baixa</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Pontuação de compatibilidade visível</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Segurança e Verificação</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Ferramentas básicas (varia por plataforma)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Moderado</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Verificação de perfil, identidade e comportamento</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Modelo de Custo</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Assinatura, custo contínuo</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Altas taxas iniciais</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Pagamento por uso, sem compromisso</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudText Typo="Typo.caption">
+                * Comparação baseada no comportamento típico das plataformas. Os ícones representam forças e limitações gerais.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Análise Detalhada">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
+                Aplicativos de Namoro
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Aplicativos de namoro são projetados para velocidade e volume. Os matches geralmente são baseados em fotos, biografias curtas e filtros simples. Embora ofereçam acesso a muitas pessoas, frequentemente carecem de profundidade, compatibilidade e intenção clara de relacionamento.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Matchmaking Tradicional
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Serviços tradicionais de matchmaking dependem de especialistas humanos que entrevistam clientes e selecionam matches manualmente. Essa abordagem pode ser altamente personalizada, mas é cara, lenta e limitada em escala e alcance geográfico.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Modern Matchmaker
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                O Modern Matchmaker combina a escalabilidade da tecnologia com a profundidade de dados estruturados de compatibilidade. Em vez de depender apenas de swipes ou intuição humana, ele avalia estilo de vida, personalidade, objetivos e preferências para gerar matches significativos.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Por que o Modern Matchmaker é Diferente">
+        <BodyFragment>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Compatibilidade orientada por dados em vez de matching baseado em aparência
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Alcance global sem limitações geográficas
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Pontuação de compatibilidade transparente
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Sem dependência de intermediários humanos caros
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Projetado para relacionamentos sérios e intenções reais
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
+else if (Language == AppLanguage.es)
+{
+    <NewPageSection Title="Introducción">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                No todas las plataformas para conocer personas son iguales. Las aplicaciones de citas, los servicios tradicionales de matchmaking y las plataformas modernas basadas en compatibilidad siguen enfoques muy diferentes.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Algunas priorizan la velocidad y el volumen. Otras se centran en la curación humana con un alto coste. Modern Matchmaker introduce un tercer enfoque: compatibilidad estructurada impulsada por datos e intención del usuario.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                A continuación se muestra una comparación directa para ayudarte a entender qué modelo se adapta mejor a tus objetivos.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Resumen de la Comparación" Subtitle="Cada enfoque tiene fortalezas y limitaciones según tus objetivos.">
+        <BodyFragment>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Característica</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Aplicaciones de citas</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Matchmaking tradicional</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Modern Matchmaker</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Enfoque de coincidencia</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Descubrimiento basado en swipes</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Selección humana y entrevistas</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Coincidencia estructurada basada en datos</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Calidad de las coincidencias</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alto volumen, filtros limitados</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Muy selectivo, pero limitado</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alta compatibilidad, filtrado estructurado</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Profundidad del perfil y criterios</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Perfiles básicos, pocos criterios</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Entrevistas profundas y evaluación manual</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Datos estructurados de estilo de vida y objetivos</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Tiempo de configuración inicial</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Bajo (creación rápida de perfil)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Medio (entrevistas e ingreso detallado)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Medio (registro de perfil extenso)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Inversión de tiempo continua</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Alta (uso continuo y swiping)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Media (espera y reuniones típicas)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Baja (coincidencias y encuentros curados)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Alcance geográfico</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Mayormente local</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Red limitada</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Global</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Transparencia</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Limitada (sin explicación clara)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Baja</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Puntuación de compatibilidad visible</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Seguridad y verificación</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Herramientas básicas (varía según la plataforma)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Moderado</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Verificación de perfil, identidad y comportamiento</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Modelo de coste</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Suscripción, coste continuo</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Altas tarifas iniciales</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Pago por uso, sin compromiso</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudText Typo="Typo.caption">
+                * Comparación basada en el comportamiento típico de las plataformas. Los iconos representan fortalezas y limitaciones generales.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Desglose Detallado">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
+                Aplicaciones de citas
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Las aplicaciones de citas están diseñadas para la velocidad y el volumen. Las coincidencias suelen basarse en fotos, biografías cortas y filtros simples. Aunque ofrecen acceso a muchas personas, a menudo carecen de profundidad, compatibilidad e intención clara de relación.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Matchmaking tradicional
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Los servicios tradicionales de matchmaking dependen de expertos humanos que entrevistan a los clientes y seleccionan coincidencias manualmente. Este enfoque puede ser altamente personalizado, pero es costoso, lento y limitado en escala y alcance geográfico.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Modern Matchmaker
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Modern Matchmaker combina la escalabilidad de la tecnología con la profundidad de los datos estructurados de compatibilidad. En lugar de depender solo de swipes o de la intuición humana, evalúa estilo de vida, personalidad, objetivos y preferencias para generar coincidencias significativas.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Por qué Modern Matchmaker es diferente">
+        <BodyFragment>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Compatibilidad basada en datos en lugar de coincidencias basadas en apariencia
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Alcance global sin limitaciones geográficas
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Puntuación de compatibilidad transparente
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Sin dependencia de intermediarios humanos costosos
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Diseñado para relaciones serias e intenciones reales
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
+else
+{
+    <NewPageSection Title="Introduction">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Not all platforms for meeting people are created equal. Dating apps, traditional matchmaking services, and modern compatibility-based platforms follow very different approaches.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Some prioritize speed and volume. Others focus on human curation at a high cost. Modern Matchmaker introduces a third approach: structured compatibility driven by data and user intent.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Below is a direct comparison to help you understand which model fits your goals.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Comparison Overview" Subtitle="Each approach has strengths and limitations depending on your goals.">
+        <BodyFragment>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Feature</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Dating Apps</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Traditional Matchmaking</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary">Modern Matchmaker</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Matching Approach</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Swipe-based discovery</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Human selection and interviews</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Structured, data-driven matching</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Quality of Matches</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">High volume, limited filters</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Highly selective, but limited</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">High compatibility, structured filtering</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Profile Depth & Matching Criteria</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Basic profiles, few criteria</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">In-depth interviews and manual evaluation</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Structured data across lifestyle and goals</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Initial Setup Time</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Low (quick profile creation)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Medium (interviews and detailed intake)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Medium (extensive profile registration)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Ongoing Time Investment</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">High (continuous swiping and browsing)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Medium (waiting and typical meetings)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Low (curated matching and meetings)</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Geographic Reach</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Mostly local</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Limited network</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Global</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Transparency</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Limited (no clear explanation)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Low</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Visible compatibility scoring</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Small("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Safety & Verification</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Basic tools (varies by platform)</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Moderate</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Profile, identity, and behavior verification</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
+                <MudItem xs="3">
+                    <MudText Typo="Typo.body1">Cost Model</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-meh").Font" Color="Color.Warning" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Subscription, ongoing cost</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-frown").Font" Color="Color.Error" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">High upfront fees</MudText>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudIcon Icon="@IconsFA.Solid.Icon("face-smile").Font" Color="Color.Success" Style="vertical-align: top;"></MudIcon>
+                    <MudText Typo="Typo.body1" Inline="true">Pay per use, no commitment</MudText>
+                </MudItem>
+            </MudGrid>
+            <MudText Typo="Typo.caption">
+                * Comparison based on typical platform behavior. Icons represent general strengths and limitations.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Detailed Breakdown">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
+                Dating Apps
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Dating apps are designed for speed and volume. Matches are usually based on photos, short bios, and simple filters. While they provide access to many people, they often lack depth, compatibility, and clear relationship intent.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Traditional Matchmaking
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Traditional matchmaking services rely on human experts who interview clients and manually select matches. This approach can be highly personalized, but it is expensive, slow, and limited in scale and geographic reach.
+            </MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-4 mb-2">
+                Modern Matchmaker
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Modern Matchmaker combines the scalability of technology with the depth of structured compatibility data. Instead of relying on swipes or human intuition alone, it evaluates lifestyle, personality, goals, and preferences to generate meaningful matches.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Why Modern Matchmaker is Different">
+        <BodyFragment>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Data-driven compatibility instead of appearance-based matching
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Global reach without geographic limitations
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Transparent compatibility scoring
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            No reliance on expensive human intermediaries
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1">
+                            Designed for serious relationships and real intentions
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
 
 @if (!AppStateStatic.IsAuthenticated)
 {
     <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
         <MudText Typo="Typo.h6" Align="Align.Center" Class="my-3">
-            See the difference for yourself and discover matches based on real compatibility.
+            @WEB.Resources.Landing.CompareCall2
         </MudText>
         <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4">
-            Create Your Profile
+            @Profile.Resources.Translations.HeroButton
         </MudButton>
     </MudPaper>
 }
@@ -267,6 +755,8 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
+
     private async Task Login()
     {
         Navigation.NavigateTo($"/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");

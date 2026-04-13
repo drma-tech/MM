@@ -141,6 +141,18 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="GalleryTerm1" xml:space="preserve">
+    <value>A foto tirada pela sua câmera será mantida em sigilo (não estará acessível dentro da plataforma) para verificação futura, se necessário.</value>
+  </data>
+  <data name="GalleryTerm2" xml:space="preserve">
+    <value>Os dados resultantes desta validação (atributos do seu rosto) não serão mantidos nos nossos servidores e apenas existirão durante o processo de deteção.</value>
+  </data>
+  <data name="GalleryValidation" xml:space="preserve">
+    <value>Validação da Galeria</value>
+  </data>
+  <data name="HelpUsUnlock" xml:space="preserve">
+    <value>Ajude-nos a desbloquear a próxima fase mais rápido! Deixe um comentário para nos ajudar a crescer. Quanto mais pessoas conhecerem o aplicativo e se inscreverem, mais cedo todos os recursos estarão disponíveis para você aproveitar.</value>
+  </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Criar conta gratuita</value>
   </data>

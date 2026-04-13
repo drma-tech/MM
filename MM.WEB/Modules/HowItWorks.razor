@@ -1,132 +1,375 @@
 ﻿@page "/{culture}/how-it-works"
 @inherits PageCore<HowItWorks>
 
-<SeoMeta Title="How It Works" Description="Learn how Modern Matchmaker evaluates compatibility, suggests meaningful matches, and offers a smarter alternative to traditional dating and matchmaking." Url=@($"/{Culture}/how-it-works") Index="true"></SeoMeta>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="How It Works" Description="Learn how Modern Matchmaker evaluates compatibility, suggests meaningful matches, and offers a smarter alternative to traditional dating and matchmaking." CustomBodyClass="mb-12"></NewPageSection>
+<SeoMeta Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" Url=@($"/{Culture}/how-it-works") Index="true"></SeoMeta>
+<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" CustomBodyClass="mb-12"></NewPageSection>
 
-<NewPageSection Title="Introduction">
-    <BodyFragment>
-        <MudText Typo="Typo.body1" Align="Align.Justify">
-            Modern Matchmaker is not just another dating app. Our service connects people with compatibility and genuine intentions.
-            Using advanced algorithms and user preferences, each match suggestion is meaningful and aligned with relationship goals.
-            Here, you’ll learn how the platform works and how matches are selected to maximize compatibility.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="How Matchmaking Works">
-    <BodyFragment>
-        <MudText Typo="Typo.subtitle1" Class="mb-3">
-            Our matchmaking process is carefully designed to prioritize quality over quantity. Here’s how it works:
-        </MudText>
-        <div class="support-section mb-3">
-            <ul>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        (1) Profile creation – Users fill out detailed profile, including lifestyle, personality, interests, behaviors, and relationship goals.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        (2) Preferences & Priorities – Users define non-negotiable characteristics in their ideal partner.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        (3) Algorithmic Analysis – Our system evaluates compatibility factors, identifying potential matches with the highest likelihood of success.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        (4) Match Suggestions – The algorithm generates a personalized list of matches, filtered by user preferences and ranked by compatibility score.
-                    </MudText>
-                </li>
-            </ul>
-        </div>
-        <MudText Typo="Typo.caption">
-            Match suggestions are automatically recalculated as users update their profiles or preferences.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Compatibility Score">
-    <BodyFragment>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            Our entire form consists of dozens of questions separated into groups: Basic, Bio, Lifestyle, Personality, Interest, Relationship, Goal.
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            Each of these groups is compared with the groups of other users, and this generates a compatibility score (ranging from 0% to 100%). This value can even be different between the two people because it also takes personal preferences into account.
-            If User A scores 85% with User B, but User B scores 80% with User A, this reflects how personal preferences affect compatibility for each side.
-        </MudText>
-        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-            After that, a weighted calculation is made on all the groups to generate a single score (Basic - 10, Bio - 5, Lifestyle - 25, Personality - 25, Interest - 5, Relationship -  20, Goal - 10). This is the overall compatibility between two people.
-        </MudText>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Features & Platform Tools">
-    <BodyFragment>
-        <MudText Typo="Typo.subtitle1" Class="mb-3">
-            Our platform includes tools to support the matchmaking process:
-        </MudText>
-        <div class="support-section mb-0">
-            <ul>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Secure environment - before any interaction, all users are required to verify their photos and identity. Ensuring an environment free from scams, spam, and any other threats.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Matchmaking suggestions – By combining our compatibility system and our clients' preferences, we suggest the most compatible profiles available.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Meeting tracking tools - We have optional tools for recording meetings (location, date and time) and for notifying friends or family about them.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Spotlight - An alternative way to find potential matches by promoting yourself within the platform to your city, your country, or the entire world.
-                    </MudText>
-                </li>
-            </ul>
-        </div>
-    </BodyFragment>
-</NewPageSection>
-
-<NewPageSection Title="Why Modern Matchmaker is Different">
-    <BodyFragment>
-        <MudText Typo="Typo.subtitle1" Class="mb-3">
-            Unlike traditional dating apps or traditional matchmaking services, Modern Matchmaker values your time, your money, and your relationship goals.
-        </MudText>
-        <div class="support-section mb-0">
-            <ul>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Quality over quantity - only truly compatible candidates are suggested, unlike traditional matchmaking that is manual and limited, or dating apps that prioritize volume.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Real compatibility - deeper alignment in values, lifestyle, and intentions, rather than just shared interests.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Safe and trusted - We monitor interactions and have tools to ensure a secure environment.
-                    </MudText>
-                </li>
-                <li>
-                    <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
-                        Automated matchmaking – Our fully automated system delivers high-quality matches at a fraction of the cost of traditional matchmaking services.
-                    </MudText>
-                </li>
-            </ul>
-        </div>
-    </BodyFragment>
-</NewPageSection>
+@if (Language == AppLanguage.pt)
+{
+    <NewPageSection Title="Introdução">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                O Modern Matchmaker não é apenas mais um aplicativo de relacionamento. Nosso serviço conecta pessoas com base em compatibilidade e intenções genuínas.
+                Utilizando algoritmos avançados e preferências dos usuários, cada sugestão de match é significativa e alinhada aos objetivos de relacionamento.
+                Aqui, você aprenderá como a plataforma funciona e como os matches são selecionados para maximizar a compatibilidade.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Como o Matchmaking Funciona">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Nosso processo de matchmaking é cuidadosamente projetado para priorizar qualidade em vez de quantidade. Veja como funciona:
+            </MudText>
+            <div class="support-section mb-3">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (1) Criação de perfil – Os usuários preenchem um perfil detalhado, incluindo estilo de vida, personalidade, interesses, comportamentos e objetivos de relacionamento.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (2) Preferências e prioridades – Os usuários definem características indispensáveis em seu parceiro ideal.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (3) Análise algorítmica – Nosso sistema avalia fatores de compatibilidade, identificando possíveis matches com maior probabilidade de sucesso.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (4) Sugestões de matches – O algoritmo gera uma lista personalizada de matches, filtrada pelas preferências do usuário e classificada pela pontuação de compatibilidade.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+            <MudText Typo="Typo.caption">
+                As sugestões de matches são recalculadas automaticamente conforme os usuários atualizam seus perfis ou preferências.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Pontuação de Compatibilidade">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Todo o nosso formulário consiste em dezenas de perguntas separadas em grupos: Básico, Bio, Estilo de vida, Personalidade, Interesses, Relacionamento e Objetivo.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Cada um desses grupos é comparado com os grupos de outros usuários, gerando uma pontuação de compatibilidade (variando de 0% a 100%). Esse valor pode inclusive ser diferente entre as duas pessoas, pois também leva em consideração as preferências pessoais.
+                Se o Usuário A tem 85% com o Usuário B, mas o Usuário B tem 80% com o Usuário A, isso reflete como as preferências pessoais afetam a compatibilidade de cada lado.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Depois disso, é feito um cálculo ponderado entre todos os grupos para gerar uma pontuação única (Básico - 10, Bio - 5, Estilo de vida - 25, Personalidade - 25, Interesses - 5, Relacionamento - 20, Objetivo - 10). Essa é a compatibilidade geral entre duas pessoas.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Recursos e Ferramentas da Plataforma">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Nossa plataforma inclui ferramentas para apoiar o processo de matchmaking:
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Ambiente seguro - antes de qualquer interação, todos os usuários devem verificar suas fotos e identidade, garantindo um ambiente livre de golpes, spam e outras ameaças.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Sugestões de matchmaking – Ao combinar nosso sistema de compatibilidade com as preferências dos clientes, sugerimos os perfis mais compatíveis disponíveis.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Ferramentas de acompanhamento de encontros - Possuímos ferramentas opcionais para registrar encontros (local, data e hora) e para notificar amigos ou familiares sobre eles.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Spotlight - Uma forma alternativa de encontrar possíveis matches promovendo seu perfil dentro da plataforma para sua cidade, seu país ou para o mundo inteiro.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Por que o Modern Matchmaker é Diferente">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Diferente dos aplicativos de relacionamento tradicionais ou dos serviços tradicionais de matchmaking, o Modern Matchmaker valoriza seu tempo, seu dinheiro e seus objetivos de relacionamento.
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Qualidade em vez de quantidade - apenas candidatos realmente compatíveis são sugeridos, diferente do matchmaking tradicional que é manual e limitado, ou dos aplicativos que priorizam volume.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Compatibilidade real - maior alinhamento em valores, estilo de vida e intenções, e não apenas interesses em comum.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Seguro e confiável - Monitoramos interações e temos ferramentas para garantir um ambiente seguro.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Matchmaking automatizado – Nosso sistema totalmente automatizado oferece matches de alta qualidade a uma fração do custo dos serviços tradicionais.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
+else if (Language == AppLanguage.es)
+{
+    <NewPageSection Title="Introducción">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Modern Matchmaker no es solo otra aplicación de citas. Nuestro servicio conecta personas basándose en la compatibilidad y en intenciones genuinas.
+                Utilizando algoritmos avanzados y las preferencias de los usuarios, cada sugerencia de coincidencia es significativa y está alineada con los objetivos de relación.
+                Aquí aprenderás cómo funciona la plataforma y cómo se seleccionan las coincidencias para maximizar la compatibilidad.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Cómo Funciona el Matchmaking">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Nuestro proceso de matchmaking está cuidadosamente diseñado para priorizar la calidad sobre la cantidad. Así es como funciona:
+            </MudText>
+            <div class="support-section mb-3">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (1) Creación de perfil – Los usuarios completan un perfil detallado, incluyendo estilo de vida, personalidad, intereses, comportamientos y objetivos de relación.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (2) Preferencias y prioridades – Los usuarios definen características no negociables en su pareja ideal.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (3) Análisis algorítmico – Nuestro sistema evalúa factores de compatibilidad, identificando posibles coincidencias con mayor probabilidad de éxito.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (4) Sugerencias de coincidencias – El algoritmo genera una lista personalizada de coincidencias, filtrada por las preferencias del usuario y clasificada según la puntuación de compatibilidad.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+            <MudText Typo="Typo.caption">
+                Las sugerencias de coincidencias se recalculan automáticamente a medida que los usuarios actualizan sus perfiles o preferencias.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Puntuación de Compatibilidad">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Todo nuestro formulario consta de decenas de preguntas separadas en grupos: Básico, Bio, Estilo de vida, Personalidad, Intereses, Relación y Objetivo.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Cada uno de estos grupos se compara con los de otros usuarios, generando una puntuación de compatibilidad (que va del 0% al 100%). Este valor incluso puede ser diferente entre dos personas, ya que también tiene en cuenta las preferencias personales.
+                Si el Usuario A obtiene un 85% con el Usuario B, pero el Usuario B obtiene un 80% con el Usuario A, esto refleja cómo las preferencias personales afectan la compatibilidad de cada lado.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Después de eso, se realiza un cálculo ponderado entre todos los grupos para generar una puntuación única (Básico - 10, Bio - 5, Estilo de vida - 25, Personalidad - 25, Intereses - 5, Relación - 20, Objetivo - 10). Esta es la compatibilidad general entre dos personas.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Funciones y Herramientas de la Plataforma">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Nuestra plataforma incluye herramientas para apoyar el proceso de matchmaking:
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Entorno seguro - antes de cualquier interacción, todos los usuarios deben verificar sus fotos e identidad, garantizando un entorno libre de estafas, spam y otras amenazas.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Sugerencias de matchmaking – Al combinar nuestro sistema de compatibilidad con las preferencias de nuestros clientes, sugerimos los perfiles más compatibles disponibles.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Herramientas de seguimiento de encuentros - Contamos con herramientas opcionales para registrar encuentros (ubicación, fecha y hora) y para notificar a amigos o familiares sobre ellos.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Spotlight - Una forma alternativa de encontrar posibles coincidencias promocionando tu perfil dentro de la plataforma en tu ciudad, tu país o en todo el mundo.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Por Qué Modern Matchmaker es Diferente">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                A diferencia de las aplicaciones de citas tradicionales o los servicios tradicionales de matchmaking, Modern Matchmaker valora tu tiempo, tu dinero y tus objetivos de relación.
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Calidad sobre cantidad - solo se sugieren candidatos realmente compatibles, a diferencia del matchmaking tradicional que es manual y limitado, o de las aplicaciones que priorizan el volumen.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Compatibilidad real - mayor alineación en valores, estilo de vida e intenciones, y no solo intereses compartidos.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Seguro y confiable - Supervisamos las interacciones y contamos con herramientas para garantizar un entorno seguro.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Matchmaking automatizado – Nuestro sistema totalmente automatizado ofrece coincidencias de alta calidad a una fracción del costo de los servicios tradicionales.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
+else
+{
+    <NewPageSection Title="Introduction">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify">
+                Modern Matchmaker is not just another dating app. Our service connects people with compatibility and genuine intentions.
+                Using advanced algorithms and user preferences, each match suggestion is meaningful and aligned with relationship goals.
+                Here, you’ll learn how the platform works and how matches are selected to maximize compatibility.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="How Matchmaking Works">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Our matchmaking process is carefully designed to prioritize quality over quantity. Here’s how it works:
+            </MudText>
+            <div class="support-section mb-3">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (1) Profile creation – Users fill out detailed profile, including lifestyle, personality, interests, behaviors, and relationship goals.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (2) Preferences & Priorities – Users define non-negotiable characteristics in their ideal partner.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (3) Algorithmic Analysis – Our system evaluates compatibility factors, identifying potential matches with the highest likelihood of success.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            (4) Match Suggestions – The algorithm generates a personalized list of matches, filtered by user preferences and ranked by compatibility score.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+            <MudText Typo="Typo.caption">
+                Match suggestions are automatically recalculated as users update their profiles or preferences.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Compatibility Score">
+        <BodyFragment>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Our entire form consists of dozens of questions separated into groups: Basic, Bio, Lifestyle, Personality, Interest, Relationship, Goal.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                Each of these groups is compared with the groups of other users, and this generates a compatibility score (ranging from 0% to 100%). This value can even be different between the two people because it also takes personal preferences into account.
+                If User A scores 85% with User B, but User B scores 80% with User A, this reflects how personal preferences affect compatibility for each side.
+            </MudText>
+            <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                After that, a weighted calculation is made on all the groups to generate a single score (Basic - 10, Bio - 5, Lifestyle - 25, Personality - 25, Interest - 5, Relationship -  20, Goal - 10). This is the overall compatibility between two people.
+            </MudText>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Features & Platform Tools">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Our platform includes tools to support the matchmaking process:
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Secure environment - before any interaction, all users are required to verify their photos and identity. Ensuring an environment free from scams, spam, and any other threats.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Matchmaking suggestions – By combining our compatibility system and our clients' preferences, we suggest the most compatible profiles available.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Meeting tracking tools - We have optional tools for recording meetings (location, date and time) and for notifying friends or family about them.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Spotlight - An alternative way to find potential matches by promoting yourself within the platform to your city, your country, or the entire world.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+    <NewPageSection Title="Why Modern Matchmaker is Different">
+        <BodyFragment>
+            <MudText Typo="Typo.subtitle1" Class="mb-3">
+                Unlike traditional dating apps or traditional matchmaking services, Modern Matchmaker values your time, your money, and your relationship goals.
+            </MudText>
+            <div class="support-section mb-0">
+                <ul>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Quality over quantity - only truly compatible candidates are suggested, unlike traditional matchmaking that is manual and limited, or dating apps that prioritize volume.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Real compatibility - deeper alignment in values, lifestyle, and intentions, rather than just shared interests.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Safe and trusted - We monitor interactions and have tools to ensure a secure environment.
+                        </MudText>
+                    </li>
+                    <li>
+                        <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
+                            Automated matchmaking – Our fully automated system delivers high-quality matches at a fraction of the cost of traditional matchmaking services.
+                        </MudText>
+                    </li>
+                </ul>
+            </div>
+        </BodyFragment>
+    </NewPageSection>
+}
 
 <FloatingButton Template="Template.Back"></FloatingButton>
 
@@ -134,15 +377,17 @@
 {
     <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
         <MudText Typo="Typo.h6" Align="Align.Center" Class="my-3">
-            Now that you know how it works, take the first step towards finding your soulmate.
+            @WEB.Resources.Landing.HowItWorksCall2
         </MudText>
         <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4">
-            Create Your Profile
+            @Profile.Resources.Translations.HeroButton
         </MudButton>
     </MudPaper>
 }
 
 @code {
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
+
     private async Task Login()
     {
         Navigation.NavigateTo($"/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");

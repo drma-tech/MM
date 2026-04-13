@@ -133,6 +133,42 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary..
+        /// </summary>
+        public static string GalleryTerm1 {
+            get {
+                return ResourceManager.GetString("GalleryTerm1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process..
+        /// </summary>
+        public static string GalleryTerm2 {
+            get {
+                return ResourceManager.GetString("GalleryTerm2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gallery Validation.
+        /// </summary>
+        public static string GalleryValidation {
+            get {
+                return ResourceManager.GetString("GalleryValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy..
+        /// </summary>
+        public static string HelpUsUnlock {
+            get {
+                return ResourceManager.GetString("HelpUsUnlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Free Account.
         /// </summary>
         public static string HeroButton {

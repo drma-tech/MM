@@ -29,12 +29,12 @@
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.NetWorth)" @bind-Value="@Validation!.NetWorth" CssIcon="@IconsFA.Solid.Icon("gem").Font"
-                             Disabled="true" CustomButtonText="Only available in phase 3">
+                             Disabled="true" CustomButtonText="@GlobalTranslations.FeatureNotAvailable.Format(3)">
                 </FieldActive>
             </MudItem>
             <MudItem xs="12">
                 <FieldActive For="@(() => Validation!.AnnualIncome)" @bind-Value="@Validation!.AnnualIncome" CssIcon="@IconsFA.Solid.Icon("money-bill").Font"
-                             Disabled="true" CustomButtonText="Only available in phase 3">
+                             Disabled="true" CustomButtonText="@GlobalTranslations.FeatureNotAvailable.Format(3)">
                 </FieldActive>
             </MudItem>
         </MudGrid>

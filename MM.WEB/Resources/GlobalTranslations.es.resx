@@ -132,6 +132,9 @@
   <data name="BirthdateTip" xml:space="preserve">
     <value>Sólo se publicará tu edad. (Usamos el calendario gregoriano)</value>
   </data>
+  <data name="BodyPhoto" xml:space="preserve">
+    <value>Foto del cuerpo</value>
+  </data>
   <data name="CheckOurApps" xml:space="preserve">
     <value>Explora nuestras otras increíbles aplicaciones:</value>
   </data>
@@ -180,6 +183,12 @@
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Aviso del sitio web externo</value>
   </data>
+  <data name="FacePhoto" xml:space="preserve">
+    <value>Foto de la cara</value>
+  </data>
+  <data name="FeatureNotAvailable" xml:space="preserve">
+    <value>Esta función solo está disponible en la fase {0}</value>
+  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Espera noticias...</value>
   </data>
@@ -191,6 +200,9 @@
   </data>
   <data name="GenerateSimulation" xml:space="preserve">
     <value>¿Quieres generar una simulación de conexiones? Esto es solo para demostrar cómo funciona nuestro sistema de compatibilidad.</value>
+  </data>
+  <data name="GetTheApp" xml:space="preserve">
+    <value>Descarga la aplicación</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
     <value>La posición del GPS no es precisa y puede dar como resultado una ubicación incorrecta. Si la ciudad no es la correcta, inténtelo de nuevo más tarde o pruebe en otro dispositivo o navegador.</value>
@@ -204,11 +216,11 @@
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
-  <data name="GetTheApp" xml:space="preserve">
-    <value>Descarga la aplicación</value>
-  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modo Claro</value>
+  </data>
+  <data name="ModuleUnderDevelopment" xml:space="preserve">
+    <value>Este módulo aún está en desarrollo. Si desea informar un error, contáctenos a través del botón de comentarios.</value>
   </data>
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>Más de DRMA Tech</value>

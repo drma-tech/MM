@@ -47,11 +47,11 @@
 }
 else
 {
-    <MudPaper Class="@Css.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center;">
+    <MudPaper Class="@Css.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center; padding-bottom: 12px !important;">
         <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
             <CustomHeader>
                 <MudAlert Variant="Variant.Outlined" Severity="MudBlazor.Severity.Warning" Class="mb-3" Style="text-align: center;">
-                    Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy.
+                    @Resources.Translations.HelpUsUnlock
                 </MudAlert>
             </CustomHeader>
         </AskReviewComponent>
@@ -138,14 +138,14 @@ else
                     <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationGallery)" Overlap="true" Color="GetButtonColor(ValidationGallery)" Style="width: 100%;">
                             <MudButton StartIcon="@IconsFA.Solid.Icon("images").Font" Variant="Variant.Outlined" Style="width: 100%; cursor: unset;" Class="vertical-button">
-                                Gallery
+                                @WEB.Resources.Button.Gallery
                             </MudButton>
                         </MudBadge>
                     </MudItem>
                     <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationIdentity)" Overlap="true" Color="GetButtonColor(ValidationIdentity)" Style="width: 100%;">
                             <MudButton StartIcon="@IconsFA.Solid.Icon("id-card").Font" Variant="Variant.Outlined" Style="width: 100%; cursor: unset;" Class="vertical-button">
-                                Identity
+                                @WEB.Resources.Button.Identity
                             </MudButton>
                         </MudBadge>
                     </MudItem>
@@ -165,7 +165,7 @@ else
                     @* <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationNetWorth)" Overlap="true" Color="GetButtonColor(ValidationNetWorth)" Style="width: 100%;">
                             <MudButton StartIcon="@IconsFA.Solid.Icon("gem").Font" Variant="Variant.Outlined" Style="width: 100%;" Class="vertical-button"
-                                       OnClick="@(()=>ShowInfo("This feature is only available in phase 3"))">
+                                       OnClick="@(()=>ShowInfo(GlobalTranslations.FeatureNotAvailable.Format(3)))">
                                 Wealth
                             </MudButton>
                         </MudBadge>
@@ -173,7 +173,7 @@ else
                     @*  <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationAnnualIncome)" Overlap="true" Color="GetButtonColor(ValidationAnnualIncome)" Style="width: 100%;">
                             <MudButton StartIcon="@IconsFA.Solid.Icon("money-bill").Font" Variant="Variant.Outlined" Style="width: 100%;" Class="vertical-button"
-                                       OnClick="@(()=>ShowInfo("This feature is only available in phase 3"))">
+                                       OnClick="@(()=>ShowInfo(GlobalTranslations.FeatureNotAvailable.Format(3)))">
                                 Income
                             </MudButton>
                         </MudBadge>
@@ -365,7 +365,7 @@ else
             StateHasChanged();
         };
 
-        SuggestionsActions.CustomPremiumDescription = "This feature is only available in phase 2.";
+        SuggestionsActions.CustomPremiumDescription = GlobalTranslations.FeatureNotAvailable.Format(2);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -483,7 +483,7 @@ else
 
     private async Task GenerateSuggestions()
     {
-        await ShowWarning("This feature is only available in phase 2.");
+        await ShowWarning(GlobalTranslations.FeatureNotAvailable.Format(2));
     }
 
     private async Task SimulateMatches()

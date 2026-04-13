@@ -120,7 +120,13 @@
   <data name="AppDescription" xml:space="preserve">
     <value>The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping.</value>
   </data>
+  <data name="HelpCenter" xml:space="preserve">
+    <value>Help Center</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="HelpCenterDesc" xml:space="preserve">
+    <value>Get detailed guides, troubleshooting tips, FAQs, and contact support for {0}. Solve issues and discover features easily.</value>
   </data>
 </root>

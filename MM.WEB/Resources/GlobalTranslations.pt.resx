@@ -132,6 +132,9 @@
   <data name="BirthdateTip" xml:space="preserve">
     <value>Apenas sua idade ficará publica. (Utilizamos o calendario gregoriano)</value>
   </data>
+  <data name="BodyPhoto" xml:space="preserve">
+    <value>Foto do corpo</value>
+  </data>
   <data name="CheckOurApps" xml:space="preserve">
     <value>Explore nossos outros aplicativos incríveis:</value>
   </data>
@@ -180,6 +183,12 @@
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>Aviso de site externo</value>
   </data>
+  <data name="FacePhoto" xml:space="preserve">
+    <value>Foto de rosto</value>
+  </data>
+  <data name="FeatureNotAvailable" xml:space="preserve">
+    <value>Este recurso está disponível apenas na fase {0}</value>
+  </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
     <value>Aguarde novidades...</value>
   </data>
@@ -191,6 +200,9 @@
   </data>
   <data name="GenerateSimulation" xml:space="preserve">
     <value>Você quer gerar uma simulação de conexões? Isso é só para demonstrar como nosso sistema de compatibilidade funciona.</value>
+  </data>
+  <data name="GetTheApp" xml:space="preserve">
+    <value>Baixe o aplicativo</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
     <value>A posição do GPS não é precisa e pode resultar em uma localização incorreta. Se sua cidade estiver errada, tente novamente mais tarde ou teste em outro dispositivo ou navegador.</value>
@@ -204,11 +216,11 @@
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
-  <data name="GetTheApp" xml:space="preserve">
-    <value>Baixe o aplicativo</value>
-  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modo Claro</value>
+  </data>
+  <data name="ModuleUnderDevelopment" xml:space="preserve">
+    <value>Este módulo ainda está em desenvolvimento. Se você deseja relatar um bug, entre em contato conosco através do botão de feedback.</value>
   </data>
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>Mais de DRMA Tech</value>

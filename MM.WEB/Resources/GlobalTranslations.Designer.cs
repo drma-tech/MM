@@ -106,6 +106,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Body Photo.
+        /// </summary>
+        public static string BodyPhoto {
+            get {
+                return ResourceManager.GetString("BodyPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Explore our other amazing apps:.
         /// </summary>
         public static string CheckOurApps {
@@ -250,6 +259,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Face Photo.
+        /// </summary>
+        public static string FacePhoto {
+            get {
+                return ResourceManager.GetString("FacePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This feature is only available in phase {0}.
+        /// </summary>
+        public static string FeatureNotAvailable {
+            get {
+                return ResourceManager.GetString("FeatureNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wait for news....
         /// </summary>
         public static string FeatureUnavailableDescription {
@@ -336,6 +363,15 @@ namespace MM.WEB.Resources {
         public static string LightMode {
             get {
                 return ResourceManager.GetString("LightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This module is still under development. If you wish to report a bug, please contact us via the feedback button..
+        /// </summary>
+        public static string ModuleUnderDevelopment {
+            get {
+                return ResourceManager.GetString("ModuleUnderDevelopment", resourceCulture);
             }
         }
         

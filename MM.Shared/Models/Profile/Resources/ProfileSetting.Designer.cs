@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MM.WEB.Resources {
+namespace MM.Shared.Models.Profile.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MM.WEB.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SeoTranslations {
+    public class ProfileSetting {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SeoTranslations() {
+        internal ProfileSetting() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MM.WEB.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Resources.SeoTranslations", typeof(SeoTranslations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.Shared.Models.Profile.Resources.ProfileSetting", typeof(ProfileSetting).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,20 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping..
+        ///   Looks up a localized string similar to Blind Date.
         /// </summary>
-        public static string AppDescription {
+        public static string BlindDate {
             get {
-                return ResourceManager.GetString("AppDescription", resourceCulture);
+                return ResourceManager.GetString("BlindDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help Center.
+        ///   Looks up a localized string similar to Hide all photos (yours and theirs), creating an air of mystery until the meeting..
         /// </summary>
-        public static string HelpCenter {
+        public static string BlindDateDesc {
             get {
-                return ResourceManager.GetString("HelpCenter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Get detailed guides, troubleshooting tips, FAQs, and contact support for {0}. Solve issues and discover features easily..
-        /// </summary>
-        public static string HelpCenterDesc {
-            get {
-                return ResourceManager.GetString("HelpCenterDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        public static string ProfileTitle {
-            get {
-                return ResourceManager.GetString("ProfileTitle", resourceCulture);
+                return ResourceManager.GetString("BlindDateDesc", resourceCulture);
             }
         }
     }

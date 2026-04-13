@@ -18,7 +18,7 @@
                 <MudIcon Icon="@(Value? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Class="me-2"></MudIcon>
                 @if (Value)
                 {
-                    <span>Done</span>
+                    <span>@Button.Done</span>
                 }
                 else if (CustomButtonText.NotEmpty())
                 {
@@ -26,7 +26,7 @@
                 }
                 else
                 {
-                    <span>Pending</span>
+                    <span>@Button.Pending</span>
                 }
                 @if (Sparks.HasValue)
                 {

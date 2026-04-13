@@ -169,6 +169,51 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compare us with typical dating apps and see what makes our approach different. Explore the key features that set us apart and create more meaningful connections..
+        /// </summary>
+        public static string CompareCall {
+            get {
+                return ResourceManager.GetString("CompareCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See the difference for yourself and discover matches based on real compatibility..
+        /// </summary>
+        public static string CompareCall2 {
+            get {
+                return ResourceManager.GetString("CompareCall2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare dating apps, traditional matchmaking services, and Modern Matchmaker. Understand the differences in compatibility, cost, personalization, and results..
+        /// </summary>
+        public static string CompareDesc {
+            get {
+                return ResourceManager.GetString("CompareDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare.
+        /// </summary>
+        public static string CompareTitle {
+            get {
+                return ResourceManager.GetString("CompareTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare Dating Apps, Matchmaking &amp; Modern Matchmaker.
+        /// </summary>
+        public static string CompareTitle2 {
+            get {
+                return ResourceManager.GetString("CompareTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compatibility Report.
         /// </summary>
         public static string CompatibilityReport {
@@ -201,6 +246,51 @@ namespace MM.WEB.Resources {
         public static string CompatibilitySystemDesc {
             get {
                 return ResourceManager.GetString("CompatibilitySystemDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countries where users have registered so far.
+        /// </summary>
+        public static string CountriesRegistered {
+            get {
+                return ResourceManager.GetString("CountriesRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See how we match you with people who fit your lifestyle, values, and goals. Learn about the step-by-step process and how Sparks help you engage meaningfully..
+        /// </summary>
+        public static string HowItWorksCall {
+            get {
+                return ResourceManager.GetString("HowItWorksCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now that you know how it works, take the first step towards finding your soulmate..
+        /// </summary>
+        public static string HowItWorksCall2 {
+            get {
+                return ResourceManager.GetString("HowItWorksCall2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn how Modern Matchmaker evaluates compatibility, suggests meaningful matches, and offers a smarter alternative to traditional dating and matchmaking..
+        /// </summary>
+        public static string HowItWorksDesc {
+            get {
+                return ResourceManager.GetString("HowItWorksDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How It Works.
+        /// </summary>
+        public static string HowItWorksTitle {
+            get {
+                return ResourceManager.GetString("HowItWorksTitle", resourceCulture);
             }
         }
         
@@ -399,6 +489,42 @@ namespace MM.WEB.Resources {
         public static string TotalUsers {
             get {
                 return ResourceManager.GetString("TotalUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover if Modern Matchmaker is right for you and your relationship goals. Understand who benefits most from our intentional approach to serious dating..
+        /// </summary>
+        public static string WhoIsItForCall {
+            get {
+                return ResourceManager.GetString("WhoIsItForCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now that you know this platform was made for you, take the first step towards finding your soulmate..
+        /// </summary>
+        public static string WhoIsItForCall2 {
+            get {
+                return ResourceManager.GetString("WhoIsItForCall2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modern Matchmaker is for people seeking meaningful, long-term relationships without the limits of dating apps or the high cost of traditional matchmaking..
+        /// </summary>
+        public static string WhoIsItForDesc {
+            get {
+                return ResourceManager.GetString("WhoIsItForDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Who Is It For.
+        /// </summary>
+        public static string WhoIsItForTitle {
+            get {
+                return ResourceManager.GetString("WhoIsItForTitle", resourceCulture);
             }
         }
     }

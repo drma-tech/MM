@@ -120,6 +120,12 @@
   <data name="AppDescription" xml:space="preserve">
     <value>El futuro de encontrar una pareja para toda la vida ya está aquí. Más inteligente y accesible que el matchmaking tradicional, con compatibilidad precisa y sin deslizamientos interminables.</value>
   </data>
+  <data name="HelpCenter" xml:space="preserve">
+    <value>Centro de ayuda</value>
+  </data>
+  <data name="HelpCenterDesc" xml:space="preserve">
+    <value>Obtenga guías detalladas, sugerencias para la solución de problemas, preguntas frecuentes y comuníquese con el soporte técnico de {0}. Resuelva problemas y descubra funciones fácilmente.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>

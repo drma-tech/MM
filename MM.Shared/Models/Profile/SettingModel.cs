@@ -6,6 +6,6 @@ public class SettingModel : PrivateMainDocument
     {
     }
 
-    [Custom(Name = "Blind Date", Description = "Hide all photos (yours and theirs), creating an air of mystery until the meeting.")]
+    [Custom(Name = "BlindDate", Description = "BlindDateDesc", ResourceType = typeof(Profile.Resources.ProfileSetting))]
     public bool BlindDate { get; set; }
 }
