@@ -93,7 +93,7 @@
 
             await Actions.FinishProcessing.Invoke(Setting);
 
-            Navigation.NavigateTo("profile");
+            Navigation.NavigateTo($"/{Culture}/profile");
         }
         catch (Exception ex)
         {

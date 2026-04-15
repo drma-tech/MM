@@ -75,7 +75,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
             if (!confirmed)
             {
-                Navigation.NavigateTo("profile");
+                Navigation.NavigateTo($"/{Culture}/profile");
                 return;
             }
 
@@ -151,7 +151,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 _PendingAction = false; StateHasChanged();
 
-                Navigation.NavigateTo("profile");
+                Navigation.NavigateTo($"/{Culture}/profile");
             }
             else
             {

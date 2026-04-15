@@ -66,7 +66,7 @@
 
     private async Task GalleryClick()
     {
-        Navigation.NavigateTo("/profile/validation/gallery");
+        Navigation.NavigateTo($"/{Culture}/profile/validation/gallery");
     }
 
     private async Task IdentityClick()
@@ -77,7 +77,7 @@
             return;
         }
 
-        Navigation.NavigateTo("/profile/validation/identity");
+        Navigation.NavigateTo($"/{Culture}/profile/validation/identity");
     }
 
 }

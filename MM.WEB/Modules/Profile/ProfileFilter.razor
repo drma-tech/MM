@@ -502,7 +502,7 @@
 
             if (!confirmed)
             {
-                Navigation.NavigateTo("profile");
+                Navigation.NavigateTo($"/{Culture}/profile");
                 return;
             }
 
@@ -530,7 +530,7 @@
 
                 _PendingAction = false; StateHasChanged();
 
-                Navigation.NavigateTo("profile");
+                Navigation.NavigateTo($"/{Culture}/profile");
             }
             else
             {
