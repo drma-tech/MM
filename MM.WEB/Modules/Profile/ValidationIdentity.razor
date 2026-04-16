@@ -7,7 +7,7 @@
 
 @inject ValidationApi ValidationApi
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/identity") Index="false"></SeoMeta>
+<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/identity") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
     @GlobalTranslations.ModuleUnderDevelopment

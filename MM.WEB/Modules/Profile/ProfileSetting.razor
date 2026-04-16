@@ -13,7 +13,7 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/setting") Index="false"></SeoMeta>
+<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/setting") Index="false"></HeadComponent>
 
 <RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">

@@ -24,7 +24,7 @@
 @inject ProfileApi ProfileApi
 @inject FilterApi FilterApi
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/filter") Index="false"></SeoMeta>
+<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/filter") Index="false"></HeadComponent>
 
 <CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
 

@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/who-its-for"
 @inherits PageCore<WhoItsFor>
 
-<SeoMeta Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" Url=@($"/{Culture}/who-its-for") Index="true"></SeoMeta>
+<HeadComponent Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" Url=@($"/{Culture}/who-its-for") Index="true"></HeadComponent>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" CustomBodyClass="mb-12"></NewPageSection>
 
 @if (Language == AppLanguage.pt)

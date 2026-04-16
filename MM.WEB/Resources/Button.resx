@@ -258,6 +258,9 @@
   <data name="ShowCache" xml:space="preserve">
     <value>Show Cache</value>
   </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Show pending items</value>
   </data>

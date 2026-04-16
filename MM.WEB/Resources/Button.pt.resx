@@ -246,6 +246,9 @@
   <data name="Search" xml:space="preserve">
     <value>Procurar</value>
   </data>
+  <data name="Share" xml:space="preserve">
+    <value>Compartilhar</value>
+  </data>
   <data name="SelectPhoto" xml:space="preserve">
     <value>Selecione sua foto</value>
   </data>

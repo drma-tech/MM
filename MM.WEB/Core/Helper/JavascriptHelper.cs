@@ -165,6 +165,8 @@ namespace MM.WEB.Core.Helper
 
         public Task DownloadFile(string filename, string contentType, object? content) => InvokeVoid("interop.downloadFile", filename, contentType, content);
 
+        public Task Share(string? title, string? text, string? url) => InvokeVoid("interop.share", title, text, url);
+
         public Task UpdateLocation() => InvokeVoid("interop.updateLocation");
 
         #endregion INTEROP

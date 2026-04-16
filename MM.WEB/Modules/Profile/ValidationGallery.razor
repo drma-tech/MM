@@ -14,7 +14,7 @@
 @inject ValidationApi ValidationApi
 @inject IMediaDevicesService MediaDevicesService;
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></SeoMeta>
+<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
     @GlobalTranslations.ModuleUnderDevelopment

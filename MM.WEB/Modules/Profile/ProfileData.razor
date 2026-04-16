@@ -29,7 +29,7 @@
 
 @inherits PageCore<ProfileData>
 
-<SeoMeta Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/data") Index="false"></SeoMeta>
+<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/data") Index="false"></HeadComponent>
 
 <CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
 

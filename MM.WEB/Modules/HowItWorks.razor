@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/how-it-works"
 @inherits PageCore<HowItWorks>
 
-<SeoMeta Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" Url=@($"/{Culture}/how-it-works") Index="true"></SeoMeta>
+<HeadComponent Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" Url=@($"/{Culture}/how-it-works") Index="true"></HeadComponent>
 <NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" CustomBodyClass="mb-12"></NewPageSection>
 
 @if (Language == AppLanguage.pt)
