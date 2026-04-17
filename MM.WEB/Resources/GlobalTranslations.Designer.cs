@@ -349,15 +349,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
-        /// </summary>
-        public static string Language {
-            get {
-                return ResourceManager.GetString("Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Light Mode.
         /// </summary>
         public static string LightMode {
@@ -385,24 +376,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Relationship.
-        /// </summary>
-        public static string MyRelationship {
-            get {
-                return ResourceManager.GetString("MyRelationship", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There are no pending invitations.
-        /// </summary>
-        public static string NoPendingInvitations {
-            get {
-                return ResourceManager.GetString("NoPendingInvitations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Not answered.
         /// </summary>
         public static string NotAnswered {
@@ -417,33 +390,6 @@ namespace MM.WEB.Resources {
         public static string OperationCanceled {
             get {
                 return ResourceManager.GetString("OperationCanceled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Operation completed successfully!.
-        /// </summary>
-        public static string OperationCompleted {
-            get {
-                return ResourceManager.GetString("OperationCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Option not yet available.
-        /// </summary>
-        public static string OptionNotAvailable {
-            get {
-                return ResourceManager.GetString("OptionNotAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Partner Email.
-        /// </summary>
-        public static string PartnerEmail {
-            get {
-                return ResourceManager.GetString("PartnerEmail", resourceCulture);
             }
         }
         
@@ -520,24 +466,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private.
-        /// </summary>
-        public static string Private {
-            get {
-                return ResourceManager.GetString("Private", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The product is still under development. If you have any suggestions or find any bugs, please contact us through our feedback section..
-        /// </summary>
-        public static string ProductUnderDevelopment {
-            get {
-                return ResourceManager.GetString("ProductUnderDevelopment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately..
         /// </summary>
         public static string ProfileDataBioTip1 {
@@ -592,15 +520,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This section does not work as a filter, it only complements the profile compatibility calculation..
-        /// </summary>
-        public static string ProfilePreferPersonTip1 {
-            get {
-                return ResourceManager.GetString("ProfilePreferPersonTip1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone.
         /// </summary>
         public static string ProfilePrivateMode {
@@ -615,15 +534,6 @@ namespace MM.WEB.Resources {
         public static string ProfilePublicMode {
             get {
                 return ResourceManager.GetString("ProfilePublicMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Public.
-        /// </summary>
-        public static string Public {
-            get {
-                return ResourceManager.GetString("Public", resourceCulture);
             }
         }
         
@@ -709,15 +619,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Validation errors were detected.
-        /// </summary>
-        public static string ValidationErrorsDetected {
-            get {
-                return ResourceManager.GetString("ValidationErrorsDetected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Welcome to {0}.
         /// </summary>
         public static string WelcomeTo {
@@ -745,15 +646,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the store link doesn&apos;t work, try going directly to the website..
-        /// </summary>
-        public static string WriteReviewSubtitleStore {
-            get {
-                return ResourceManager.GetString("WriteReviewSubtitleStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Help {0} grow!.
         /// </summary>
         public static string WriteReviewTitle {
@@ -768,15 +660,6 @@ namespace MM.WEB.Resources {
         public static string Years {
             get {
                 return ResourceManager.GetString("Years", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You must be logged in.
-        /// </summary>
-        public static string YouMustLogged {
-            get {
-                return ResourceManager.GetString("YouMustLogged", resourceCulture);
             }
         }
         

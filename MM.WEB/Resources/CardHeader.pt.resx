@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EventAvailableEvents" xml:space="preserve">
-    <value>Eventos Disponíveis ({0})</value>
-  </data>
-  <data name="EventMyEvents" xml:space="preserve">
-    <value>Meus Eventos</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ajuda</value>
-  </data>
   <data name="Likes" xml:space="preserve">
     <value>Curtidas</value>
   </data>
@@ -135,40 +126,13 @@
   <data name="Maximum3Items" xml:space="preserve">
     <value>Escolha um máximo de 3 itens para cada campo</value>
   </data>
-  <data name="MyConnections" xml:space="preserve">
-    <value>Minhas conexões</value>
-  </data>
   <data name="PrivacyTerms" xml:space="preserve">
     <value>Termos de privacidade</value>
-  </data>
-  <data name="ProfileData" xml:space="preserve">
-    <value>Perfil</value>
-  </data>
-  <data name="ProfileGaleryMainPhoto" xml:space="preserve">
-    <value>Foto Principal</value>
-  </data>
-  <data name="ProfileGaleryPhotoGallery" xml:space="preserve">
-    <value>Galeria de Fotos</value>
-  </data>
-  <data name="ProfileIndexAchievements" xml:space="preserve">
-    <value>Conquistas</value>
-  </data>
-  <data name="ProfileIndexInteractions" xml:space="preserve">
-    <value>Interações</value>
   </data>
   <data name="ProfileOptionalSection" xml:space="preserve">
     <value>Outro (seção opcional)</value>
   </data>
-  <data name="ProfilePreferences" xml:space="preserve">
-    <value>Preferências</value>
-  </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Sugestões</value>
-  </data>
-  <data name="SupportErrors" xml:space="preserve">
-    <value>Erros</value>
-  </data>
-  <data name="SupportImprovementSuggestions" xml:space="preserve">
-    <value>Sugestões de Melhoria</value>
   </data>
 </root>

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Active" xml:space="preserve">
-    <value>Active</value>
-  </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -171,9 +168,6 @@
   <data name="Generate" xml:space="preserve">
     <value>Generate</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <data name="IAgree" xml:space="preserve">
     <value>I agree</value>
   </data>
@@ -183,17 +177,11 @@
   <data name="IDoNotAgree" xml:space="preserve">
     <value>I do not agree</value>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>Inactive</value>
-  </data>
   <data name="LearnMore" xml:space="preserve">
     <value>Learn More</value>
   </data>
   <data name="Like" xml:space="preserve">
     <value>Like</value>
-  </data>
-  <data name="LoadMore" xml:space="preserve">
-    <value>Load More</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -201,29 +189,17 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>New</value>
-  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Open" xml:space="preserve">
-    <value>Open</value>
-  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacy</value>
-  </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
-  </data>
-  <data name="ReadMore" xml:space="preserve">
-    <value>Read More</value>
   </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relationship</value>
@@ -242,9 +218,6 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search</value>
   </data>
   <data name="SelectPhoto" xml:space="preserve">
     <value>Select your photo</value>

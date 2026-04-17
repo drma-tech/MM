@@ -117,20 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessInformation" xml:space="preserve">
-    <value>Informacion de acceso</value>
-  </data>
-  <data name="Account" xml:space="preserve">
-    <value>Cuenta</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Acciones</value>
-  </data>
   <data name="AuthProviders" xml:space="preserve">
     <value>Proveedores de autenticación</value>
-  </data>
-  <data name="ClearCache" xml:space="preserve">
-    <value>Limpiar cache</value>
   </data>
   <data name="CompleteYourProfile" xml:space="preserve">
     <value>Completa tu perfil</value>
@@ -165,23 +153,11 @@
   <data name="Identification" xml:space="preserve">
     <value>Identificación</value>
   </data>
-  <data name="IdentityProvider" xml:space="preserve">
-    <value>Proveedor de identidad</value>
-  </data>
-  <data name="MyProfile" xml:space="preserve">
-    <value>Mi perfil</value>
-  </data>
-  <data name="MySuggestions" xml:space="preserve">
-    <value>Mis sugerencias</value>
-  </data>
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Público</value>
-  </data>
-  <data name="RegionsApplied" xml:space="preserve">
-    <value>Las regiones se han aplicado automáticamente para sus proveedores favoritos. Si están equivocados, retírelos y agréguelos nuevamente.</value>
   </data>
   <data name="StepFilter" xml:space="preserve">
     <value>Establecer filtros</value>
@@ -212,8 +188,5 @@
   </data>
   <data name="StepValidationDesc" xml:space="preserve">
     <value>El sistema verificará su información antes de que su perfil se haga público.</value>
-  </data>
-  <data name="Subscription" xml:space="preserve">
-    <value>Suscripción</value>
   </data>
 </root>

@@ -61,33 +61,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available Events ({0}).
-        /// </summary>
-        public static string EventAvailableEvents {
-            get {
-                return ResourceManager.GetString("EventAvailableEvents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Events.
-        /// </summary>
-        public static string EventMyEvents {
-            get {
-                return ResourceManager.GetString("EventMyEvents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string Help {
-            get {
-                return ResourceManager.GetString("Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Likes.
         /// </summary>
         public static string Likes {
@@ -115,65 +88,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Connections.
-        /// </summary>
-        public static string MyConnections {
-            get {
-                return ResourceManager.GetString("MyConnections", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Privacy Terms.
         /// </summary>
         public static string PrivacyTerms {
             get {
                 return ResourceManager.GetString("PrivacyTerms", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        public static string ProfileData {
-            get {
-                return ResourceManager.GetString("ProfileData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Main Photo.
-        /// </summary>
-        public static string ProfileGaleryMainPhoto {
-            get {
-                return ResourceManager.GetString("ProfileGaleryMainPhoto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Photo Gallery.
-        /// </summary>
-        public static string ProfileGaleryPhotoGallery {
-            get {
-                return ResourceManager.GetString("ProfileGaleryPhotoGallery", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Achievements.
-        /// </summary>
-        public static string ProfileIndexAchievements {
-            get {
-                return ResourceManager.GetString("ProfileIndexAchievements", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Interactions.
-        /// </summary>
-        public static string ProfileIndexInteractions {
-            get {
-                return ResourceManager.GetString("ProfileIndexInteractions", resourceCulture);
             }
         }
         
@@ -187,38 +106,11 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preferences.
-        /// </summary>
-        public static string ProfilePreferences {
-            get {
-                return ResourceManager.GetString("ProfilePreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Suggestions.
         /// </summary>
         public static string Suggestions {
             get {
                 return ResourceManager.GetString("Suggestions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Errors.
-        /// </summary>
-        public static string SupportErrors {
-            get {
-                return ResourceManager.GetString("SupportErrors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Improvement Suggestions.
-        /// </summary>
-        public static string SupportImprovementSuggestions {
-            get {
-                return ResourceManager.GetString("SupportImprovementSuggestions", resourceCulture);
             }
         }
     }

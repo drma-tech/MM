@@ -213,9 +213,6 @@
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Confío en el sistema de compatibilidad de la plataforma y solo seleccionaré lo que para mí no es negociable.</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Idioma</value>
-  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Modo Claro</value>
   </data>
@@ -225,26 +222,11 @@
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>Más de DRMA Tech</value>
   </data>
-  <data name="MyRelationship" xml:space="preserve">
-    <value>Mi relación</value>
-  </data>
-  <data name="NoPendingInvitations" xml:space="preserve">
-    <value>No hay invitaciones pendientes</value>
-  </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>No respondido</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operación cancelada!</value>
-  </data>
-  <data name="OperationCompleted" xml:space="preserve">
-    <value>¡La operación se realizó con éxito!</value>
-  </data>
-  <data name="OptionNotAvailable" xml:space="preserve">
-    <value>Opción aún no disponible</value>
-  </data>
-  <data name="PartnerEmail" xml:space="preserve">
-    <value>Correo de la pareja</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>El perfil de tu pareja aún no está disponible</value>
@@ -270,12 +252,6 @@
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>Políticas de privacidad</value>
   </data>
-  <data name="Private" xml:space="preserve">
-    <value>Privado</value>
-  </data>
-  <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>El producto aún está en desarrollo. Si tiene alguna sugerencia o encuentra algún error, contáctenos a través de nuestra sección de comentarios.</value>
-  </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>Para garantizar un ambiente positivo, nos tomamos muy en serio el acoso y los prejuicios. Si detecta este tipo de comportamiento, por favor, reporte el perfil inmediatamente.</value>
   </data>
@@ -294,17 +270,11 @@
   <data name="ProfileNotFound" xml:space="preserve">
     <value>Perfil no encontrado o aún no registrado correctamente.</value>
   </data>
-  <data name="ProfilePreferPersonTip1" xml:space="preserve">
-    <value>Esta sección no funciona como filtro, solo complementa el cálculo de compatibilidad de perfiles.</value>
-  </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
     <value>Tu perfil ahora está en modo privado y no será visto ni compartido con nadie</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
     <value>Su perfil ahora es público y puede estar disponible para nuestros clientes</value>
-  </data>
-  <data name="Public" xml:space="preserve">
-    <value>Público</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>ACTUALIZA AHORA</value>
@@ -333,9 +303,6 @@
   <data name="Undefined" xml:space="preserve">
     <value>Indefinido</value>
   </data>
-  <data name="ValidationErrorsDetected" xml:space="preserve">
-    <value>Se detectaron errores de validación</value>
-  </data>
   <data name="WelcomeTo" xml:space="preserve">
     <value>Bienvenido a {0}</value>
   </data>
@@ -345,17 +312,11 @@
   <data name="WriteReviewSubtitle" xml:space="preserve">
     <value>¡Califica la aplicación y compártela con tus amigos!</value>
   </data>
-  <data name="WriteReviewSubtitleStore" xml:space="preserve">
-    <value>Si el enlace de la tienda no funciona, intenta ir directamente al sitio web.</value>
-  </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>¡Ayuda a {0} a crecer!</value>
   </data>
   <data name="Years" xml:space="preserve">
     <value>Años</value>
-  </data>
-  <data name="YouMustLogged" xml:space="preserve">
-    <value>Debes estar conectado</value>
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
     <value>Debes iniciar sesión para suscribirte</value>

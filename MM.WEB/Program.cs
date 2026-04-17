@@ -153,7 +153,7 @@ static async Task ConfigureCulture(NavigationManager? nav, IJSRuntime js)
 
     var uri = new Uri(nav!.Uri);
 
-    var appLanguage = await ExtensionMethodsWeb.GetRouteLanguage(js, uri);
+    var appLanguage = await ExtensionMethodsWeb.GetRouteLanguage(js, uri.AbsolutePath);
 
     if (appLanguage.NotEmpty())
     {

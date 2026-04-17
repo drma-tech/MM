@@ -168,12 +168,6 @@
   <data name="CompareTitle2" xml:space="preserve">
     <value>Compare aplicativos de namoro, matchmaking e Modern Matchmaker</value>
   </data>
-  <data name="CompatibilityReport" xml:space="preserve">
-    <value>Relatório de compatibilidade</value>
-  </data>
-  <data name="CompatibilityReportDesc" xml:space="preserve">
-    <value>Para cada match (ou casal), temos uma análise completa de cada uma das nossas categorias, com dicas, sugestões de melhorias e como lidar melhor com seu parceiro.</value>
-  </data>
   <data name="CompatibilitySystem" xml:space="preserve">
     <value>Sistema de compatibilidade</value>
   </data>

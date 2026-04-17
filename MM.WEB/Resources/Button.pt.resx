@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Active" xml:space="preserve">
-    <value>Ativo</value>
-  </data>
   <data name="Add" xml:space="preserve">
     <value>Adicionar</value>
   </data>
@@ -171,9 +168,6 @@
   <data name="Generate" xml:space="preserve">
     <value>Gerar</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ajuda</value>
-  </data>
   <data name="IAgree" xml:space="preserve">
     <value>Concordo</value>
   </data>
@@ -183,17 +177,11 @@
   <data name="IDoNotAgree" xml:space="preserve">
     <value>Eu não concordo</value>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>Inativo</value>
-  </data>
   <data name="LearnMore" xml:space="preserve">
     <value>Saiba mais</value>
   </data>
   <data name="Like" xml:space="preserve">
     <value>Gostar</value>
-  </data>
-  <data name="LoadMore" xml:space="preserve">
-    <value>Carregar mais</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Conecte-se</value>
@@ -201,29 +189,17 @@
   <data name="Logout" xml:space="preserve">
     <value>Sair</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Novo</value>
-  </data>
   <data name="Next" xml:space="preserve">
     <value>Próximo</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Open" xml:space="preserve">
-    <value>Abrir</value>
-  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pendente</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Privacidade</value>
-  </data>
   <data name="Profile" xml:space="preserve">
     <value>Perfil</value>
-  </data>
-  <data name="ReadMore" xml:space="preserve">
-    <value>Leia mais</value>
   </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relação</value>
@@ -243,12 +219,6 @@
   <data name="Save" xml:space="preserve">
     <value>Salvar</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Procurar</value>
-  </data>
-  <data name="Share" xml:space="preserve">
-    <value>Compartilhar</value>
-  </data>
   <data name="SelectPhoto" xml:space="preserve">
     <value>Selecione sua foto</value>
   </data>
@@ -260,6 +230,9 @@
   </data>
   <data name="ShowCache" xml:space="preserve">
     <value>Mostrar cache</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Compartilhar</value>
   </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Mostrar itens pendentes</value>

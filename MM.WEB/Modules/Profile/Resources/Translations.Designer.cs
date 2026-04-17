@@ -61,47 +61,11 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access Information.
-        /// </summary>
-        public static string AccessInformation {
-            get {
-                return ResourceManager.GetString("AccessInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Account.
-        /// </summary>
-        public static string Account {
-            get {
-                return ResourceManager.GetString("Account", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actions.
-        /// </summary>
-        public static string Actions {
-            get {
-                return ResourceManager.GetString("Actions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Auth Providers.
         /// </summary>
         public static string AuthProviders {
             get {
                 return ResourceManager.GetString("AuthProviders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clear Cache.
-        /// </summary>
-        public static string ClearCache {
-            get {
-                return ResourceManager.GetString("ClearCache", resourceCulture);
             }
         }
         
@@ -205,33 +169,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Identity Provider.
-        /// </summary>
-        public static string IdentityProvider {
-            get {
-                return ResourceManager.GetString("IdentityProvider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Profile.
-        /// </summary>
-        public static string MyProfile {
-            get {
-                return ResourceManager.GetString("MyProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Suggestions.
-        /// </summary>
-        public static string MySuggestions {
-            get {
-                return ResourceManager.GetString("MySuggestions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Private.
         /// </summary>
         public static string Private {
@@ -246,15 +183,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         public static string Public {
             get {
                 return ResourceManager.GetString("Public", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Regions have been automatically applied for your favorite providers. If they are wrong, please remove and add them again..
-        /// </summary>
-        public static string RegionsApplied {
-            get {
-                return ResourceManager.GetString("RegionsApplied", resourceCulture);
             }
         }
         
@@ -345,15 +273,6 @@ namespace MM.WEB.Modules.Profile.Resources {
         public static string StepValidationDesc {
             get {
                 return ResourceManager.GetString("StepValidationDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Subscription.
-        /// </summary>
-        public static string Subscription {
-            get {
-                return ResourceManager.GetString("Subscription", resourceCulture);
             }
         }
     }

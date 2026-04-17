@@ -213,9 +213,6 @@
   <data name="ITrustPlataform" xml:space="preserve">
     <value>I trust the platform's compatibility system and will only select what is non-negotiable for me.</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Language</value>
-  </data>
   <data name="LightMode" xml:space="preserve">
     <value>Light Mode</value>
   </data>
@@ -225,26 +222,11 @@
   <data name="MorefromDRMATech" xml:space="preserve">
     <value>More from DRMA Tech</value>
   </data>
-  <data name="MyRelationship" xml:space="preserve">
-    <value>My Relationship</value>
-  </data>
-  <data name="NoPendingInvitations" xml:space="preserve">
-    <value>There are no pending invitations</value>
-  </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>Not answered</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operation cancelled!</value>
-  </data>
-  <data name="OperationCompleted" xml:space="preserve">
-    <value>Operation completed successfully!</value>
-  </data>
-  <data name="OptionNotAvailable" xml:space="preserve">
-    <value>Option not yet available</value>
-  </data>
-  <data name="PartnerEmail" xml:space="preserve">
-    <value>Partner Email</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>Your partner's profile is not yet available</value>
@@ -270,12 +252,6 @@
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>
-  <data name="Private" xml:space="preserve">
-    <value>Private</value>
-  </data>
-  <data name="ProductUnderDevelopment" xml:space="preserve">
-    <value>The product is still under development. If you have any suggestions or find any bugs, please contact us through our feedback section.</value>
-  </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
     <value>To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately.</value>
   </data>
@@ -294,17 +270,11 @@
   <data name="ProfileNotFound" xml:space="preserve">
     <value>Profile not found or not yet registered properly.</value>
   </data>
-  <data name="ProfilePreferPersonTip1" xml:space="preserve">
-    <value>This section does not work as a filter, it only complements the profile compatibility calculation.</value>
-  </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
     <value>Your profile is now in private mode and will not be seen or shared with anyone</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
     <value>Your profile is now public and can be made available to our customers</value>
-  </data>
-  <data name="Public" xml:space="preserve">
-    <value>Public</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
     <value>UPDATE NOW</value>
@@ -333,9 +303,6 @@
   <data name="Undefined" xml:space="preserve">
     <value>Undefined</value>
   </data>
-  <data name="ValidationErrorsDetected" xml:space="preserve">
-    <value>Validation errors were detected</value>
-  </data>
   <data name="WelcomeTo" xml:space="preserve">
     <value>Welcome to {0}</value>
   </data>
@@ -345,17 +312,11 @@
   <data name="WriteReviewSubtitle" xml:space="preserve">
     <value>Rate the app and share it with your friends!</value>
   </data>
-  <data name="WriteReviewSubtitleStore" xml:space="preserve">
-    <value>If the store link doesn't work, try going directly to the website.</value>
-  </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Help {0} grow!</value>
   </data>
   <data name="Years" xml:space="preserve">
     <value>Years</value>
-  </data>
-  <data name="YouMustLogged" xml:space="preserve">
-    <value>You must be logged in</value>
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
     <value>You must be logged in to subscribe</value>

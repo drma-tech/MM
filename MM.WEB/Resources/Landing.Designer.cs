@@ -214,24 +214,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compatibility Report.
-        /// </summary>
-        public static string CompatibilityReport {
-            get {
-                return ResourceManager.GetString("CompatibilityReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to For each match (or couple), we have a complete analysis of each of our categories, with tips, suggestions for improvements and how to deal with your partner in a better way..
-        /// </summary>
-        public static string CompatibilityReportDesc {
-            get {
-                return ResourceManager.GetString("CompatibilityReportDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Compatibility System.
         /// </summary>
         public static string CompatibilitySystem {
