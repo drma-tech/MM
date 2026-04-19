@@ -243,5 +243,103 @@ public class FilterValidation : AbstractValidator<FilterModel>
             .Must(value => value.Count <= 3)
             .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Ideal Place to Live"))
             .WithName("Ideal Place to Live");
+
+        RuleFor(x => x).Must(LimitFilters)
+              .WithMessage("Choose up to 8 filters");
+    }
+
+    private static bool LimitFilters(FilterModel model)
+    {
+        return GetTotalFilters(model, null) <= 8;
+    }
+
+    public enum Tabs
+    {
+        BASIC,
+        BIO,
+        LIFESTYLE,
+        PERSONALITY,
+        INTEREST,
+        RELATIONSHIP,
+        GOAL
+    }
+
+    public static int GetTotalFilters(FilterModel? model, Tabs? tab)
+    {
+        if (model == null) return 0;
+        var total = 0;
+
+        if (tab == Tabs.BASIC || tab == null)
+        {
+            total++; //Region
+            if (model.Nationality.Count > 0) total++;
+            if (model.Languages.Count > 0) total++;
+            if (model.MaritalStatus.Count > 0) total++;
+            if (model.BiologicalSex.Count > 0) total++;
+            if (model.GenderIdentities.Count > 0) total++;
+            if (model.SexualOrientations.Count > 0) total++;
+        }
+        if (tab == Tabs.BIO || tab == null)
+        {
+            if (model.Ethnicity.Count > 0) total++;
+            if (model.BodyType.Count > 0) total++;
+            if (model.MinimalAge.HasValue || model.MaxAge.HasValue) total++;
+            if (model.MinimalHeight.HasValue || model.MaxHeight.HasValue) total++;
+            if (model.Neurodiversity.Count > 0) total++;
+            if (model.Disabilities.Count > 0) total++;
+        }
+        if (tab == Tabs.LIFESTYLE || tab == null)
+        {
+            if (model.Drink.Count > 0) total++;
+            if (model.Smoke.Count > 0) total++;
+            if (model.Diet.Count > 0) total++;
+            if (model.Religion.Count > 0) total++;
+            if (model.FamilyInvolvement.Count > 0) total++;
+            if (model.NetWorth.Count > 0) total++;
+            if (model.HaveChildren.Count > 0) total++;
+            if (model.HavePets.Count > 0) total++;
+            if (model.EducationLevel.Count > 0) total++;
+            if (model.CareerCluster.Count > 0) total++;
+            if (model.LivingSituation.Count > 0) total++;
+            if (model.TravelFrequency.Count > 0) total++;
+            if (model.AnnualIncome.Count > 0) total++;
+        }
+        if (tab == Tabs.PERSONALITY || tab == null)
+        {
+            if (model.MoneyPersonality == true) total++;
+            if (model.SharedSpendingStyle == true) total++;
+            if (model.RelationshipPersonality == true) total++;
+            if (model.MyersBriggsTypeIndicator == true) total++;
+            if (model.LoveLanguage == true) total++;
+            if (model.SexPersonality == true) total++;
+        }
+        if (tab == Tabs.INTEREST || tab == null)
+        {
+            if (model.Food.Count > 0) total++;
+            if (model.Vacation.Count > 0) total++;
+            if (model.Sports.Count > 0) total++;
+            if (model.LeisureActivities.Count > 0) total++;
+            if (model.MusicGenre.Count > 0) total++;
+            if (model.MovieGenre.Count > 0) total++;
+            if (model.TVGenre.Count > 0) total++;
+            if (model.ReadingGenre.Count > 0) total++;
+        }
+        if (tab == Tabs.RELATIONSHIP || tab == null)
+        {
+            if (model.SharedFinances.Count > 0) total++;
+            if (model.ConflictResolutionStyle.Count > 0) total++;
+            if (model.HouseholdManagement.Count > 0) total++;
+            if (model.TimeTogetherPreference.Count > 0) total++;
+            if (model.OppositeSexFriendships.Count > 0) total++;
+        }
+        if (tab == Tabs.GOAL || tab == null)
+        {
+            if (model.RelationshipIntentions.Count > 0) total++;
+            if (model.Relocation.HasValue) total++;
+            if (model.WantChildren.Count > 0) total++;
+            if (model.IdealPlaceToLive.Count > 0) total++;
+        }
+
+        return total;
     }
 }

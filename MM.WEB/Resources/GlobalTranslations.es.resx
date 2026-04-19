@@ -262,7 +262,7 @@
     <value>Para personalidades más complejas, explore las pruebas en sitios especializados. Algunos se pueden responder simplemente leyendo las descripciones de los artículos.</value>
   </data>
   <data name="ProfileFilterWarning" xml:space="preserve">
-    <value>Selecciona solo lo que no sea negociable. Seleccionar demasiadas opciones limitará tus coincidencias.</value>
+    <value>Seleccione sólo lo que realmente importa. Puede elegir hasta 8 filtros para mantener las coincidencias relevantes.</value>
   </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
     <value>Perfil no disponible</value>

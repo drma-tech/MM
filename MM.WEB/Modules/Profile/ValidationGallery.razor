@@ -126,6 +126,13 @@
 
     protected override async Task LoadAuthDataAsync()
     {
+        if (AppStateStatic.Principal == null)
+        {
+            await ShowWarning("Invalid operation");
+            Navigation.NavigateTo($"/{Culture}/profile");
+            return;
+        }
+
         Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated);
         PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(AppStateStatic.IsAuthenticated);
     }

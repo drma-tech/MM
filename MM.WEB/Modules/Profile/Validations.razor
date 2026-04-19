@@ -44,8 +44,6 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
-
     private ValidationModel? Validation { get; set; }
     private ValidationValidation ValidationValidator { get; set; } = new();
     public ComponentActions<ValidationModel?> Actions { get; set; } = new(obj => obj == null);
@@ -71,7 +69,7 @@
 
     private async Task IdentityClick()
     {
-        if (!Principal!.HasSparks(1))
+        if (!AppStateStatic.Principal!.HasSparks(1))
         {
             await ShowWarning("You need at least 1 spark to validate your identity");
             return;

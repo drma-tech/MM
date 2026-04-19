@@ -60,7 +60,7 @@ else
 
 <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
-        @if ((Principal == null || !Principal.PublicProfile) && validation == null) //empty or private profile
+        @if ((AppStateStatic.Principal == null || !AppStateStatic.Principal.PublicProfile) && validation == null) //empty or private profile
         {
             <MudPaper Class="pa-3" Outlined="true">
                 <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
@@ -74,7 +74,7 @@ else
                     <ChildContent>
                         <MudStep Title="@Resources.Translations.StepProfile" SecondaryText="@Resources.Translations.StepProfileDesc" Completed="ProfileValid">
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                                       Style="width: 100%;" Disabled="@(Principal == null || Principal.PublicProfile)">
+                                       Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                                 @Button.Profile
                             </MudButton>
                         </MudStep>
@@ -86,14 +86,14 @@ else
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">
                             <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                                       Style="width: 100%;" Disabled="profile == null || Principal == null || Principal.PublicProfile">
+                                       Style="width: 100%;" Disabled="profile == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                                 @Button.Settings
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepGallery" SecondaryText="@Resources.Translations.StepGalleryDesc" Completed="GalleryValid">
                             <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
                                        Style="width: 100%;"
-                                       Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || Principal == null || Principal.PublicProfile">
+                                       Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                                 @Button.Gallery
                             </MudButton>
                         </MudStep>
@@ -106,8 +106,8 @@ else
                     </ChildContent>
                     <ActionContent></ActionContent>
                     <CompletedContent>
-                        <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        FixedContent="true" Disabled="Principal == null">
+                        <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                        FixedContent="true" Disabled="AppStateStatic.Principal == null">
                             <MudToggleItem Value="false" Text="@Resources.Translations.Private" />
                             <MudToggleItem Value="true" Text="@Resources.Translations.Public" />
                         </MudToggleGroup>
@@ -150,8 +150,8 @@ else
                         </MudBadge>
                     </MudItem>
                     <MudItem xs="6">
-                        <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                        FixedContent="true" Disabled="Principal == null" Style="height: 100%;">
+                        <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                        FixedContent="true" Disabled="AppStateStatic.Principal == null" Style="height: 100%;">
                             <MudToggleItem Value="false" Class="vertical-button">
                                 <MudIcon Icon="@IconsFA.Solid.Icon("eye-slash").Font"></MudIcon>
                                 @Resources.Translations.Private
@@ -180,7 +180,7 @@ else
                     </MudItem> *@
                     <MudItem xs="6">
                         <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                                   Style="width: 100%;" Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Profile
                         </MudButton>
                     </MudItem>
@@ -192,13 +192,13 @@ else
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                                   Style="width: 100%;" Disabled="profile == null || Principal == null || Principal.PublicProfile">
+                                   Style="width: 100%;" Disabled="profile == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                             @Button.Settings
                         </MudButton>
                     </MudItem>
                     <MudItem xs="6">
                         <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
-                                   Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || Principal == null || Principal.PublicProfile">
+                                   Style="width: 100%;" Disabled="profile == null || profile.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                             @Button.Gallery
                         </MudButton>
                     </MudItem>
@@ -312,8 +312,6 @@ else
 
 @code
 {
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
-
     private ProfileValidation ProfileValidator { get; } = new();
     private ProfileModel? profile;
 

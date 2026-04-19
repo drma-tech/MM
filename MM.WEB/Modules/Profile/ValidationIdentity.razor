@@ -23,6 +23,19 @@
 {
     protected override async Task LoadAuthDataAsync()
     {
+        if (AppStateStatic.Principal == null)
+        {
+            await ShowWarning("Invalid operation");
+            Navigation.NavigateTo($"/{Culture}/profile");
+            return;
+        }
+
+        if (!AppStateStatic.Principal.HasSparks(1))
+        {
+            await ShowWarning("You need at least 1 spark to validate your identity");
+            return;
+        }
+
         var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
         var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email);
         Navigation.NavigateTo(url!);

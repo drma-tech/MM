@@ -1,8 +1,10 @@
+@using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Subscription.Core
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.JSInterop
 
 @inject PaymentPublicApi PaymentPublicApi
+@inject PrincipalApi PrincipalApi
 
 @inject NavigationManager Navigation
 @inject IDialogService DialogService
@@ -39,7 +41,7 @@
         <MudSpacer />
 
         <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
+            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(AppStateStatic.Principal?.Sparks ?? 0)
         </MudButton>
         <AuthorizeView>
             <Authorized>
@@ -73,7 +75,7 @@
         <MudSpacer />
 
         <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="me-2" Style="padding: 6px; min-width: auto;" OnClick="@OpenSubscription">
-            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(Principal?.Sparks ?? 0)
+            <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font"></MudIcon>@(AppStateStatic.Principal?.Sparks ?? 0)
         </MudButton>
         <AuthorizeView>
             <Authorized>
@@ -105,7 +107,7 @@
         </MudDrawerHeader>
         <MudNavMenu>
             <MudNavLink Icon="@IconsFA.Solid.Icon("fire").Font" OnClick="@OpenSubscription">
-                @(Principal?.Sparks ?? 0) Sparks
+                @(AppStateStatic.Principal?.Sparks ?? 0) Sparks
             </MudNavLink>
             <AuthorizeView>
                 <Authorized>
@@ -141,8 +143,6 @@
     [Parameter][SupplyParameterFromQuery(Name = "stripe_session_id")] public string? stripe_session_id { get; set; }
     private string Culture => Navigation.GetCulture();
 
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
-
     private bool _open = false;
 
     private int _processingCount = 0;
@@ -153,8 +153,11 @@
     protected override void OnInitialized()
     {
         Navigation.LocationChanged += delegate { StateHasChanged(); };
+
         AppStateStatic.BreakpointChanged += breakpoint => StateHasChanged();
         AppStateStatic.BrowserWindowSizeChanged += size => StateHasChanged();
+
+        PrincipalApi.DataChanged += principal => StateHasChanged(); ;
 
         AppStateStatic.ProcessingStarted += () =>
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.JSInterop;
+using MM.Shared.Models.Auth;
 using MM.WEB.Modules.Subscription.Core;
 using MudBlazor;
 using MudBlazor.Services;
@@ -15,6 +16,7 @@ public static class AppStateStatic
     public static bool IsPremiumUser { get; set; }
     public static AccountProduct ActiveProduct { get; } = AccountProduct.Phase1;
     public static ClaimsPrincipal? User { get; set; }
+    public static AuthPrincipal? Principal { get; set; }
     public static string? UserId { get; set; }
     public static DateTimeOffset? LastAccess { get; set; } //control login, so we don't call api too often
 

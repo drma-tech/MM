@@ -262,7 +262,7 @@
     <value>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</value>
   </data>
   <data name="ProfileFilterWarning" xml:space="preserve">
-    <value>Only select what is truly non-negotiable. Selecting too many options will limit your matches.</value>
+    <value>Select only what really matters. You can choose up to 8 filters to keep matches relevant.</value>
   </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
     <value>Profile not available</value>

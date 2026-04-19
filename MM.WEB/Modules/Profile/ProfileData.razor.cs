@@ -15,7 +15,6 @@ public partial class ProfileData : PageCore<ProfileData>
     [Inject] protected ProfileApi ProfileApi { get; set; } = default!;
     [Inject] protected MapApi MapApi { get; set; } = default!;
 
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? Profile { get; set; }
     public ComponentActions<ProfileModel?> Actions { get; set; } = new(obj => obj == null);
 

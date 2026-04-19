@@ -14,14 +14,12 @@
 }
 
 @code {
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
-
     [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
     [Parameter][EditorRequired] public AdUnit Section { get; set; } = AdUnit.Index;
 
     private bool IsMobile => AppStateStatic.BrowserWindowSize?.Width <= 600 || AppStateStatic.BrowserWindowSize?.Height <= 600;
     private bool IsLocalhost => Navigation.BaseUri.Contains("localhost") || Navigation.BaseUri.Contains("develop");
-    private bool ActiveSubscription => Principal?.Sparks > 0;
+    private bool ActiveSubscription => AppStateStatic.Principal?.Sparks > 0;
 
     private const string AdClientId = "5145928155833172";
     private readonly string _containerId = $"ad-container-{Guid.NewGuid()}";

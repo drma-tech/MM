@@ -26,7 +26,7 @@
 
     <div class="d-flex mt-6">
         <MudButton StartIcon="@IconsFA.Solid.Icon("floppy-disk").Font" Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveHandle" Class="me-2"
-                   Disabled="@(Setting == null || Principal == null || Principal.PublicProfile)">
+                   Disabled="@(Setting == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
             @Button.Save
         </MudButton>
     </div>
@@ -35,8 +35,6 @@
 <FloatingButton Template="Template.Back"></FloatingButton>
 
 @code {
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
-
     private SettingModel? Setting { get; set; }
     private ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
 

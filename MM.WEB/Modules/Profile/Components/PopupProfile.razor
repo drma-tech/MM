@@ -184,7 +184,6 @@
     [Parameter] public string? IdUserView { get; set; }
     [Parameter] public bool Fake { get; set; }
 
-    private AuthPrincipal? principal;
     private ProfileModel? user;
     private FilterModel? filter;
     [Parameter] public ProfileModel? View { get; set; }
@@ -228,7 +227,6 @@
                 return;
             }
 
-            principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated);
             user = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
             View ??= await ProfileApi.GetView(IdUserView, AppStateStatic.IsAuthenticated);
 

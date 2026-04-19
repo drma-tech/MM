@@ -493,7 +493,7 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only select what is truly non-negotiable. Selecting too many options will limit your matches..
+        ///   Looks up a localized string similar to Select only what really matters. You can choose up to 8 filters to keep matches relevant..
         /// </summary>
         public static string ProfileFilterWarning {
             get {

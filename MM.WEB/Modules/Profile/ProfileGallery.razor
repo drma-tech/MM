@@ -37,18 +37,18 @@
                     @if (_profile?.Gallery?.FaceId == null)
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Add
                         </MudButton>
                     }
                     else
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Update
                         </MudButton>
                         <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Face))"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Remove
                         </MudButton>
                     }
@@ -71,18 +71,18 @@
                     @if (_profile?.Gallery?.BodyId == null)
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Add
                         </MudButton>
                     }
                     else
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Update
                         </MudButton>
                         <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Body))"
-                                   Disabled="@(Principal == null || Principal.PublicProfile)">
+                                   Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Button.Remove
                         </MudButton>
                     }
@@ -130,7 +130,6 @@
 
 @code
 {
-    [CascadingParameter] public AuthPrincipal? Principal { get; set; }
     private ProfileModel? _profile = new();
     public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new(obj => obj == null);
 

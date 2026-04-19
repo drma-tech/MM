@@ -41,8 +41,8 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         if (faces.Count == 0)
             throw new NotificationException("We cannot clearly identify a face in this photo. Please use another one.");
 
-        if (request.PhotoType == PhotoType.Face && faces.Count > 1)
-            throw new NotificationException("Your main photo should only feature you.");
+        if (faces.Count > 1)
+            throw new NotificationException("Your photo should only feature you.");
 
         var face = faces.Single();
 

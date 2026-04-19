@@ -1,5 +1,6 @@
 ﻿@page "/{culture}/profile/filter"
 @attribute [Authorize]
+@using FluentValidation
 @using MM.Shared.Enums.Resources
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
@@ -19,6 +20,7 @@
 @using Smoke = MM.Shared.Enums.Smoke
 @using TravelFrequency = MM.Shared.Enums.TravelFrequency
 @using WantChildren = MM.Shared.Enums.WantChildren
+@using static MM.Shared.Models.Profile.Core.FilterValidation
 @inherits PageCore<ProfileFilter>
 
 @inject ProfileApi ProfileApi
@@ -29,7 +31,7 @@
 <CustomNavigationLock PendingAction="_PendingAction"></CustomNavigationLock>
 
 <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    @GlobalTranslations.ProfileFilterWarning
+    @GlobalTranslations.ProfileFilterWarning.Format(8)
 </MudAlert>
 
 <RenderControl T="FilterModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
@@ -38,59 +40,58 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Basic</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.BASIC)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
-                @if (Tab == Tabs.BASIC)
-                {
-                    <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@context.Region"
-                                             CssIcon="@IconsFA.Solid.Icon("map-location-dot").Font" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")">
-                                </FieldSelect>
-                            </MudItem>
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.Nationality)" TValue="HashSet<Country>" TEnum="Country" @bind-SelectedValues="@context.Nationality"
-                                             CssIcon="@IconsFA.Solid.Icon("earth-americas").Font" Multiple="true">
-                                </FieldSelect>
-                            </MudItem>
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
-                                             CssIcon="@IconsFA.Solid.Icon("language").Font" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false">
-                                </FieldSelect>
-                            </MudItem>
-                        </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@context.MaritalStatus"
-                                             CssIcon="@IconsFA.Solid.Icon("ring").Font" Multiple="true">
-                                </FieldSelect>
-                            </MudItem>
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@context.BiologicalSex"
-                                             CssIcon="@IconsFA.Solid.Icon("person-half-dress").Font" Multiple="true">
-                                </FieldSelect>
-                            </MudItem>
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
-                                             CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" ShowGroup="true" Multiple="true">
-                                </FieldSelect>
-                            </MudItem>
-                            <MudItem xs="12">
-                                <FieldSelect For="@(() => context.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
-                                             CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Multiple="true">
-                                </FieldSelect>
-                            </MudItem>
-                        </MudGrid>
-                    </MudStack>
-                }
+                <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
+                    <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.Region)" TValue="Region" TEnum="Region" @bind-SelectedValue="@context.Region"
+                                         CssIcon="@IconsFA.Solid.Icon("map-location-dot").Font" ShowHelper="false" Required="true" CustomInfo="@($"{GlobalTranslations.YourCurrentLocation} {Profile?.Location}")">
+                            </FieldSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.Nationality)" TValue="HashSet<Country>" TEnum="Country" @bind-SelectedValues="@context.Nationality"
+                                         CssIcon="@IconsFA.Solid.Icon("earth-americas").Font" Multiple="true">
+                            </FieldSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
+                                         CssIcon="@IconsFA.Solid.Icon("language").Font" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false">
+                            </FieldSelect>
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.MaritalStatus)" TValue="HashSet<MaritalStatus>" TEnum="MaritalStatus" @bind-SelectedValues="@context.MaritalStatus"
+                                         CssIcon="@IconsFA.Solid.Icon("ring").Font" Multiple="true">
+                            </FieldSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.BiologicalSex)" TValue="HashSet<BiologicalSex>" TEnum="BiologicalSex" @bind-SelectedValues="@context.BiologicalSex"
+                                         CssIcon="@IconsFA.Solid.Icon("person-half-dress").Font" Multiple="true">
+                            </FieldSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
+                                         CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" ShowGroup="true" Multiple="true">
+                            </FieldSelect>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <FieldSelect For="@(() => context.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
+                                         CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Multiple="true">
+                            </FieldSelect>
+                        </MudItem>
+                    </MudGrid>
+                </MudStack>
             </ChildContent>
         </MudExpansionPanel>
         <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BIO)" HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Bio</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.BIO)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -160,6 +161,7 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Lifestyle</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.LIFESTYLE)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -240,6 +242,7 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Personality</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.PERSONALITY)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -285,6 +288,7 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Interest</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.INTEREST)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -340,6 +344,7 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Relationship</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.RELATIONSHIP)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -380,6 +385,7 @@
             <TitleContent>
                 <div class="d-flex">
                     <MudText Color="Color.Primary" Typo="Typo.button">@Section.Goals</MudText>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.GOAL)</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -451,21 +457,10 @@
     private FilterModel? Filter { get; set; }
     public ComponentActions<FilterModel?> Actions { get; set; } = new(obj => obj == null);
     private MudDialog? MudDialog { get; set; }
-
+        
     private Tabs? Tab { get; set; }
 
     bool _PendingAction = true;
-
-    private enum Tabs
-    {
-        BASIC,
-        BIO,
-        LIFESTYLE,
-        PERSONALITY,
-        INTEREST,
-        RELATIONSHIP,
-        GOAL
-    }
 
     public List<MM.Shared.Enums.Height> Heights { get; set; } = [];
 
@@ -549,10 +544,12 @@
         {
             SmartLookingCore.PopulateFields(Profile, Filter);
 
-            await ShowInfo(@<div>
-                <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
-            </div>);
-            }
+            await ShowInfo(
+                @<div>
+                    <span style="font-weight: bold;" class="me-2">@GlobalTranslations.PopulateFilterTitle</span>@GlobalTranslations.PopulateFilterDescription
+                </div>
+            );
+        }
         catch (Exception ex)
         {
             await ProcessException(ex);
