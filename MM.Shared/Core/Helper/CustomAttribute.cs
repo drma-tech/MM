@@ -79,6 +79,11 @@ public static class CustomAttributeHelper
         return value.GetCustomAttribute(translate)?.Name;
     }
 
+    public static string? GetPlaceholder(this Enum value, bool translate = true)
+    {
+        return value.GetCustomAttribute(translate)?.Placeholder;
+    }
+
     public static string GetDescription(this Enum value, bool translate = true)
     {
         return value.GetCustomAttribute(translate)?.Description ??

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AgricultureFoodNaturalResources_Description" xml:space="preserve">
+    <value>Systèmes agroalimentaires ; Systèmes animaux ; Systèmes de ressources environnementales et naturelles ; Produits alimentaires et systèmes de transformation ; Systèmes d'usine ; Systèmes électriques, structurels et techniques ;</value>
+  </data>
+  <data name="AgricultureFoodNaturalResources_Group" xml:space="preserve">
+    <value>Agriculture, alimentation et ressources naturelles</value>
+  </data>
+  <data name="AgricultureFoodNaturalResources_Name" xml:space="preserve">
+    <value>Agriculture, alimentation et ressources naturelles</value>
+  </data>
+  <data name="ArchitectureConstruction_Description" xml:space="preserve">
+    <value>Construction; Conception et pré-construction ; Entretien et opérations ;</value>
+  </data>
+  <data name="ArchitectureConstruction_Group" xml:space="preserve">
+    <value>Sciences qualifiées et techniques</value>
+  </data>
+  <data name="ArchitectureConstruction_Name" xml:space="preserve">
+    <value>Architecture et construction</value>
+  </data>
+  <data name="BusinessManagementAdministration_Description" xml:space="preserve">
+    <value>Services administratifs ; Gestion des informations commerciales ; Gestion des opérations ; Gestion des ressources humaines ; Gestion;</value>
+  </data>
+  <data name="BusinessManagementAdministration_Group" xml:space="preserve">
+    <value>Affaires, marketing et gestion</value>
+  </data>
+  <data name="BusinessManagementAdministration_Name" xml:space="preserve">
+    <value>Gestion et administration des affaires</value>
+  </data>
+  <data name="CommunicationArts_Description" xml:space="preserve">
+    <value>Technologie audio/vidéo et cinéma ; Conception graphique; Journalisme et radiodiffusion ; Arts du spectacle ; Technologie d'impression ; Arts visuels ; Communications Web et numériques ;</value>
+  </data>
+  <data name="CommunicationArts_Group" xml:space="preserve">
+    <value>Systèmes de communication et d'information</value>
+  </data>
+  <data name="CommunicationArts_Name" xml:space="preserve">
+    <value>Arts de la communication</value>
+  </data>
+  <data name="EducationTraining_Description" xml:space="preserve">
+    <value>Administration et soutien administratif ; Services de soutien professionnel ; Enseignement/Formation ;</value>
+  </data>
+  <data name="EducationTraining_Group" xml:space="preserve">
+    <value>Sciences humaines et éducation</value>
+  </data>
+  <data name="EducationTraining_Name" xml:space="preserve">
+    <value>Éducation et formation</value>
+  </data>
+  <data name="EnergyEngineering_Description" xml:space="preserve">
+    <value>Ingénierie et technologie ; Énergie;</value>
+  </data>
+  <data name="EnergyEngineering_Group" xml:space="preserve">
+    <value>Sciences qualifiées et techniques</value>
+  </data>
+  <data name="EnergyEngineering_Name" xml:space="preserve">
+    <value>Énergie et ingénierie</value>
+  </data>
+  <data name="Finance_Description" xml:space="preserve">
+    <value>Comptabilité; Services bancaires ; Financement des entreprises ; Valeurs mobilières et investissements ; Assurance;</value>
+  </data>
+  <data name="Finance_Group" xml:space="preserve">
+    <value>Affaires, marketing et gestion</value>
+  </data>
+  <data name="Finance_Name" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="GovernmentPublicAdministration_Description" xml:space="preserve">
+    <value>Service extérieur ; Gouvernance ; Sécurité nationale ; Planification; Gestion et administration publiques ; Règlement; Recettes et fiscalité ;</value>
+  </data>
+  <data name="GovernmentPublicAdministration_Group" xml:space="preserve">
+    <value>Sciences humaines et éducation</value>
+  </data>
+  <data name="GovernmentPublicAdministration_Name" xml:space="preserve">
+    <value>Gouvernement et administration publique</value>
+  </data>
+  <data name="HealthScience_Description" xml:space="preserve">
+    <value>Recherche et développement en biotechnologie ; Services de diagnostic ; Informatique de santé ; Services de soutien ; Services thérapeutiques ;</value>
+  </data>
+  <data name="HealthScience_Group" xml:space="preserve">
+    <value>Sciences de la santé</value>
+  </data>
+  <data name="HealthScience_Name" xml:space="preserve">
+    <value>Sciences de la santé</value>
+  </data>
+  <data name="HospitalityTourism_Description" xml:space="preserve">
+    <value>Hébergement; Loisirs, divertissements et attractions ; Restaurants et services de restauration ; Voyages et tourisme ;</value>
+  </data>
+  <data name="HospitalityTourism_Group" xml:space="preserve">
+    <value>Affaires, marketing et gestion</value>
+  </data>
+  <data name="HospitalityTourism_Name" xml:space="preserve">
+    <value>Hôtellerie et tourisme</value>
+  </data>
+  <data name="HumanServices_Description" xml:space="preserve">
+    <value>Services aux consommateurs ; Services de conseil et de santé mentale ; Développement et services de la petite enfance ; Services familiaux et communautaires ; Services de soins personnels ;</value>
+  </data>
+  <data name="HumanServices_Group" xml:space="preserve">
+    <value>Sciences humaines et éducation</value>
+  </data>
+  <data name="HumanServices_Name" xml:space="preserve">
+    <value>Services à la personne</value>
+  </data>
+  <data name="InformationTechnology_Description" xml:space="preserve">
+    <value>Science des données ; L'informatique; Administration de bases de données ; Support et services d'information ; Systèmes de réseau ; Programmation et développement de logiciels ; Conception et développement de sites Web ;</value>
+  </data>
+  <data name="InformationTechnology_Group" xml:space="preserve">
+    <value>Systèmes de communication et d'information</value>
+  </data>
+  <data name="InformationTechnology_Name" xml:space="preserve">
+    <value>Informatique</value>
+  </data>
+  <data name="LawPublicSafetyCorrectionsSecurity_Description" xml:space="preserve">
+    <value>Services correctionnels ; Services de gestion des urgences et des incendies ; Services d'application de la loi ; Services juridiques ; Services de sécurité et de protection ;</value>
+  </data>
+  <data name="LawPublicSafetyCorrectionsSecurity_Group" xml:space="preserve">
+    <value>Sciences humaines et éducation</value>
+  </data>
+  <data name="LawPublicSafetyCorrectionsSecurity_Name" xml:space="preserve">
+    <value>Droit, sécurité publique, services correctionnels et sécurité</value>
+  </data>
+  <data name="Manufacturing_Description" xml:space="preserve">
+    <value>Assurance santé, sécurité et environnement ; Logistique et contrôle des stocks ; Développement de processus de production manufacturière ; Entretien, installation et réparation ; Production; Assurance qualité;</value>
+  </data>
+  <data name="Manufacturing_Group" xml:space="preserve">
+    <value>Sciences qualifiées et techniques</value>
+  </data>
+  <data name="Manufacturing_Name" xml:space="preserve">
+    <value>Fabrication</value>
+  </data>
+  <data name="Marketing_Description" xml:space="preserve">
+    <value>Communications marketing ; Gestion du marketing ; Recherche marketing ; Marchandisage ; Vente professionnelle ;</value>
+  </data>
+  <data name="Marketing_Group" xml:space="preserve">
+    <value>Affaires, marketing et gestion</value>
+  </data>
+  <data name="Marketing_Name" xml:space="preserve">
+    <value>Commercialisation</value>
+  </data>
+  <data name="NoCareer_Description" xml:space="preserve">
+    <value>Au début de leur carrière, stagiaire, étudiant juste ou même ne travaillant pas en ce moment.</value>
+  </data>
+  <data name="NoCareer_Name" xml:space="preserve">
+    <value>Pas de carrière consolidée</value>
+  </data>
+  <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
+    <value>Entretien des installations et des équipements mobiles ; Gestion de la santé, de la sécurité et de l'environnement ; Services de planification et de gestion logistiques ; Ventes et services ; Opérations de transport ; Planification, gestion et réglementation des infrastructures de transport/systèmes ; Opérations d'entreposage et de centre de distribution ;</value>
+  </data>
+  <data name="TransportationDistributionLogistics_Group" xml:space="preserve">
+    <value>Sciences qualifiées et techniques</value>
+  </data>
+  <data name="TransportationDistributionLogistics_Name" xml:space="preserve">
+    <value>Transport, distribution et logistique</value>
+  </data>
+</root>

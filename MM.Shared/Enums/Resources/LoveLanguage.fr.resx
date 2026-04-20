@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActsOfServices_Description" xml:space="preserve">
+    <value>Pour ceux dont le langage de l’amour est constitué d’actes de service, les actions sont plus éloquentes que les mots. Ils se sentent pris en charge lorsque leur partenaire les aide à accomplir des tâches ou fait quelque chose de réfléchi, comme préparer un repas, préparer quelque chose ou faire des courses. Cela montre leur dévouement et leur volonté d’alléger leur charge.</value>
+  </data>
+  <data name="ActsOfServices_Name" xml:space="preserve">
+    <value>Actes de services</value>
+  </data>
+  <data name="PhysicalTouch_Description" xml:space="preserve">
+    <value>Pour les personnes dont le langage d’amour principal est le contact physique, la proximité et la sécurité passent par le contact physique. Ils se sentent plus aimés en se tenant la main, en les câlinant, en les embrassant ou en les touchant doucement. Il ne s’agit pas de démonstrations publiques d’affection, mais de connexion physique qui rassure et crée du lien.</value>
+  </data>
+  <data name="PhysicalTouch_Name" xml:space="preserve">
+    <value>Toucher physique</value>
+  </data>
+  <data name="QualityTime_Description" xml:space="preserve">
+    <value>Ce langage d’amour se concentre sur toute l’attention. Ceux qui préfèrent passer du temps de qualité veulent que leur partenaire soit pleinement présent – ​​pas de téléphone, pas de distractions – juste concentré sur le partage de moments ensemble. Il s’agit de se sentir prioritaire et véritablement connecté pendant cette période.</value>
+  </data>
+  <data name="QualityTime_Name" xml:space="preserve">
+    <value>Temps de qualité</value>
+  </data>
+  <data name="ReceivingGifts_Description" xml:space="preserve">
+    <value>Les personnes qui résonnent avec ce langage d’amour se sentent aimées lorsqu’elles reçoivent des symboles tangibles d’affection. Il ne s’agit pas de matérialisme mais de prévenance derrière le cadeau. Un petit cadeau significatif – comme une collation préférée après une journée difficile – peut leur donner le sentiment d’être profondément apprécié.</value>
+  </data>
+  <data name="ReceivingGifts_Name" xml:space="preserve">
+    <value>Recevoir des cadeaux</value>
+  </data>
+  <data name="WordsOfAffirmation_Description" xml:space="preserve">
+    <value>Ce langage d’amour consiste à exprimer son affection par des mots parlés ou écrits. Les personnes qui apprécient cela se sentent plus aimées lorsqu’elles reçoivent des compliments sincères, des encouragements et des paroles aimables. Même des déclarations simples comme « Je vous apprécie » ou « Vous avez fait un excellent travail » ont un grand impact.</value>
+  </data>
+  <data name="WordsOfAffirmation_Name" xml:space="preserve">
+    <value>Mots d’affirmation</value>
+  </data>
+</root>

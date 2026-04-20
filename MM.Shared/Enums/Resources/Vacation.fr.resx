@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdventureTravel" xml:space="preserve">
+    <value>Voyage d'aventure</value>
+  </data>
+  <data name="AdventureTravel_Description" xml:space="preserve">
+    <value>Expériences riches en énergie et en quête de sensations fortes (par exemple, escalade, tyrolienne, parachutisme, parapente)</value>
+  </data>
+  <data name="ArtsFestivals" xml:space="preserve">
+    <value>Arts et festivals</value>
+  </data>
+  <data name="ArtsFestivals_Description" xml:space="preserve">
+    <value>Assister à des événements artistiques et de divertissement locaux (par exemple, festivals de musique, expositions d'art, représentations théâtrales, festivals de films)</value>
+  </data>
+  <data name="BeachWaterActivities" xml:space="preserve">
+    <value>Activités de plage et nautiques</value>
+  </data>
+  <data name="BeachWaterActivities_Description" xml:space="preserve">
+    <value>Détente ou aventure près de l'eau (par exemple, journées à la plage, plongée en apnée, plongée sous-marine, surf)</value>
+  </data>
+  <data name="CitySightseeing" xml:space="preserve">
+    <value>Visites de la ville</value>
+  </data>
+  <data name="CitySightseeing_Description" xml:space="preserve">
+    <value>Profiter des attractions urbaines et des expériences spécifiques à la ville (par exemple, visiter des monuments, dîner dans des restaurants locaux, faire du shopping)</value>
+  </data>
+  <data name="CruisesBoatTours" xml:space="preserve">
+    <value>Croisières et excursions en bateau</value>
+  </data>
+  <data name="CruisesBoatTours_Description" xml:space="preserve">
+    <value>Explorer les zones côtières ou les îles par la mer (par exemple, croisières fluviales, location de yachts, visites d'île en île, croisières au coucher du soleil)</value>
+  </data>
+  <data name="CulturalExploration" xml:space="preserve">
+    <value>Exploration culturelle</value>
+  </data>
+  <data name="CulturalExploration_Description" xml:space="preserve">
+    <value>Expériences immersives dans les cultures et les histoires locales (par exemple, visites de musées, visites historiques, festivals locaux, sites patrimoniaux)</value>
+  </data>
+  <data name="EcoTourism" xml:space="preserve">
+    <value>Écotourisme</value>
+  </data>
+  <data name="EcoTourism_Description" xml:space="preserve">
+    <value>Voyage durable axé sur la conservation (par exemple, écolodges, visites guidées dans la nature, visite de réserves fauniques)</value>
+  </data>
+  <data name="FamilyFriendlyActivities" xml:space="preserve">
+    <value>Activités familiales</value>
+  </data>
+  <data name="FamilyFriendlyActivities_Description" xml:space="preserve">
+    <value>Activités pour tous les âges, souvent axées sur le plaisir en famille (par exemple, parcs à thème, aquariums, zoos, journées familiales à la plage)</value>
+  </data>
+  <data name="FoodCulinaryTourism" xml:space="preserve">
+    <value>Tourisme gastronomique et culinaire</value>
+  </data>
+  <data name="FoodCulinaryTourism_Description" xml:space="preserve">
+    <value>Découvrir de nouvelles cuisines et expériences culinaires (par exemple, visites gastronomiques, marchés locaux, cours de cuisine, dégustations de vins et de fromages)</value>
+  </data>
+  <data name="LearningEnrichment" xml:space="preserve">
+    <value>Apprentissage et enrichissement</value>
+  </data>
+  <data name="LearningEnrichment_Description" xml:space="preserve">
+    <value>Voyages axés sur la croissance personnelle et les compétences (par exemple, immersion linguistique, ateliers de photographie, cours d'histoire)</value>
+  </data>
+  <data name="NatureWildlife" xml:space="preserve">
+    <value>Nature et faune</value>
+  </data>
+  <data name="NatureWildlife_Description" xml:space="preserve">
+    <value>Activités centrées sur la nature et la faune (ex. : safaris, randonnées dans les parcs nationaux, observation des oiseaux, camping)</value>
+  </data>
+  <data name="RelaxationWellness" xml:space="preserve">
+    <value>Détente &amp; Bien-être</value>
+  </data>
+  <data name="RelaxationWellness_Description" xml:space="preserve">
+    <value>Mettre l'accent sur la relaxation et le rajeunissement (par exemple, retraites spa, retraites de yoga, méditation, sources thermales)</value>
+  </data>
+  <data name="RoadTrips" xml:space="preserve">
+    <value>Voyages en voiture</value>
+  </data>
+  <data name="RoadTrips_Description" xml:space="preserve">
+    <value>Explorer plusieurs destinations en voiture, souvent avec des itinéraires panoramiques (par exemple, voyages à travers le pays, routes côtières, exploration de la campagne)</value>
+  </data>
+  <data name="VolunteeringVacations" xml:space="preserve">
+    <value>Vacances de bénévolat</value>
+  </data>
+  <data name="VolunteeringVacations_Description" xml:space="preserve">
+    <value>Voyager dans le but d'aider les communautés ou la nature (par exemple, restauration de l'habitat, conservation de la faune, soutien communautaire)</value>
+  </data>
+  <data name="WinterSports" xml:space="preserve">
+    <value>Sports d'hiver</value>
+  </data>
+  <data name="WinterSports_Description" xml:space="preserve">
+    <value>Profiter des sports saisonniers et des paysages hivernaux (ex. ski, planche à neige, patinage sur glace, raquette)</value>
+  </data>
+</root>

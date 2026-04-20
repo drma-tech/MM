@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Decompresser_Description" xml:space="preserve">
+    <value>Utilise le sexe principalement pour soulager le stress et se détendre. Après une journée difficile ou une pression élevée, ils recherchent l’intimité pour se détendre, se vider l’esprit et souvent mieux dormir. Le sexe est un moyen de décompresser émotionnellement et physiquement.</value>
+  </data>
+  <data name="Decompresser_Name" xml:space="preserve">
+    <value>Décompresseur</value>
+  </data>
+  <data name="Explorer_Description" xml:space="preserve">
+    <value>Curieux et aventureux au lit. Aime essayer de nouvelles choses, repousser les limites et ne prend pas le sexe trop au sérieux. Ludique, ouvert d'esprit et aime l'exploration intellectuelle et physique pendant l'intimité.</value>
+  </data>
+  <data name="Explorer_Name" xml:space="preserve">
+    <value>Explorateur</value>
+  </data>
+  <data name="FairTrader_Description" xml:space="preserve">
+    <value>Valorise l’équilibre et la réciprocité. Ouvert à discuter de ses désirs, prêt à faire des compromis et se concentre sur le fait de donner et de recevoir du plaisir de manière égale. La communication sur les goûts et les dégoûts est essentielle pour eux.</value>
+  </data>
+  <data name="FairTrader_Name" xml:space="preserve">
+    <value>Commerçant équitable</value>
+  </data>
+  <data name="Giver_Description" xml:space="preserve">
+    <value>Trouve du plaisir avant tout à faire du bien à son partenaire. Plus concentré sur le plaisir de son partenaire que sur le sien, parfois même inconfortable de recevoir du plaisir. Très attentif et attentionné dans le sexe.</value>
+  </data>
+  <data name="Giver_Name" xml:space="preserve">
+    <value>Donneur</value>
+  </data>
+  <data name="Guardian_Description" xml:space="preserve">
+    <value>A besoin de relations sexuelles pour se sentir en sécurité et consensuel. Donne la priorité à la confiance, au confort et à la sécurité émotionnelle avant l’intimité. Peut avoir un traumatisme passé ou simplement valoriser une connexion sécurisée et qui se construit lentement.</value>
+  </data>
+  <data name="Guardian_Name" xml:space="preserve">
+    <value>Tuteur</value>
+  </data>
+  <data name="PassionPursuer_Description" xml:space="preserve">
+    <value>Recherche des expériences sexuelles intenses, animales et lubriques. Perdu dans une passion et une énergie brutes, où le temps semble suspendu. Très physique et décomplexé, visant la connexion euphorique.</value>
+  </data>
+  <data name="PassionPursuer_Name" xml:space="preserve">
+    <value>Poursuivant la passion</value>
+  </data>
+  <data name="PleasureSeeker_Description" xml:space="preserve">
+    <value>Enjoys sex for the pure physical sensations. Ne nécessite pas nécessairement de connexion émotionnelle, veut juste s’amuser et éprouver du plaisir. Axé sur les aspects tactiles et érotiques.</value>
+  </data>
+  <data name="PleasureSeeker_Name" xml:space="preserve">
+    <value>Jouisseur</value>
+  </data>
+  <data name="Prioritizer_Description" xml:space="preserve">
+    <value>Fait du sexe une priorité quotidienne non négociable. Indépendamment de la fatigue ou des horaires chargés, les relations sexuelles doivent avoir lieu régulièrement. Préfère la routine et la cohérence dans sa vie sexuelle.</value>
+  </data>
+  <data name="Prioritizer_Name" xml:space="preserve">
+    <value>Priorisateur</value>
+  </data>
+  <data name="Romantic_Description" xml:space="preserve">
+    <value>Le sexe est profondément émotionnel et significatif. Préfère une intimité lente et sensuelle avec un contact visuel, des préliminaires et des mots affirmatifs. La connexion émotionnelle est essentielle à la satisfaction sexuelle.</value>
+  </data>
+  <data name="Romantic_Name" xml:space="preserve">
+    <value>Romantique</value>
+  </data>
+  <data name="Spiritualist_Description" xml:space="preserve">
+    <value>Considère le sexe comme une expérience transcendante, presque sacrée. Combine une connexion physique, émotionnelle et spirituelle. Des pratiques comme le sexe tantrique illustrent ce type, se concentrant sur l’énergie et une unité plus profonde.</value>
+  </data>
+  <data name="Spiritualist_Name" xml:space="preserve">
+    <value>Spiritualiste</value>
+  </data>
+  <data name="ThrillSeeker_Description" xml:space="preserve">
+    <value>Attiré par les expériences taboues et intenses. Aime le BDSM, les pervers, les fétiches et repousser les limites sexuelles. Aime l’excitation des activités interdites ou non conventionnelles.</value>
+  </data>
+  <data name="ThrillSeeker_Name" xml:space="preserve">
+    <value>Chercheur de sensations fortes</value>
+  </data>
+</root>

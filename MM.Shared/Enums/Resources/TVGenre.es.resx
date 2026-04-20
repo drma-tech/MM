@@ -101,7 +101,7 @@
     <value>Animación y anime</value>
   </data>
   <data name="AnimatedAnime_Description" xml:space="preserve">
-    <value>Incluye dibujos animados, series animadas y anime japonés.</value>
+    <value>Incluye dibujos animados, series animadas y anime japonés</value>
   </data>
   <data name="CookingFood" xml:space="preserve">
     <value>Cocina y comida</value>
@@ -137,7 +137,7 @@
     <value>Estilo de vida y hogar</value>
   </data>
   <data name="LifestyleHome_Description" xml:space="preserve">
-    <value>Programas que exploran temas de estilo de vida, incluidos el diseño, los viajes y el bienestar (por ejemplo, programas de mejoras para el hogar y de viajes).</value>
+    <value>Programas que exploran temas de estilo de vida, incluidos el diseño, los viajes y el bienestar (por ejemplo, programas de mejoras para el hogar y de viajes)</value>
   </data>
   <data name="MusicPerformances" xml:space="preserve">
     <value>Música y actuaciones</value>
@@ -149,7 +149,7 @@
     <value>Noticias y actualidad</value>
   </data>
   <data name="NewsCurrentAffairs_Description" xml:space="preserve">
-    <value>Informes de noticias, programas de entrevistas y análisis en profundidad de acontecimientos actuales.</value>
+    <value>Informes de noticias, programas de entrevistas y análisis en profundidad de acontecimientos actuales</value>
   </data>
   <data name="SoapOperasDramas" xml:space="preserve">
     <value>Telenovelas y dramas</value>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthProviders" xml:space="preserve">
+    <value>Fournisseurs d'authentification</value>
+  </data>
+  <data name="CompleteYourProfile" xml:space="preserve">
+    <value>Complétez votre profil</value>
+  </data>
+  <data name="DeleteAccount" xml:space="preserve">
+    <value>Supprimer le compte</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="GalleryTerm1" xml:space="preserve">
+    <value>La photo prise par votre appareil photo restera privée (elle ne sera pas accessible au sein de la plateforme) pour vérification ultérieure, si nécessaire.</value>
+  </data>
+  <data name="GalleryTerm2" xml:space="preserve">
+    <value>Les données issues de cette validation (attributs de votre visage) ne seront pas conservées sur nos serveurs et n'existeront que pendant le processus de détection.</value>
+  </data>
+  <data name="GalleryValidation" xml:space="preserve">
+    <value>Validation de la galerie</value>
+  </data>
+  <data name="HelpUsUnlock" xml:space="preserve">
+    <value>Aidez-nous à débloquer la prochaine phase plus rapidement ! Laissez un commentaire pour nous aider à grandir. Plus il y aura de personnes qui connaîtront l'application et s'inscriront, plus tôt toutes les fonctionnalités seront disponibles pour que vous puissiez en profiter.</value>
+  </data>
+  <data name="HeroButton" xml:space="preserve">
+    <value>Créer un compte gratuit</value>
+  </data>
+  <data name="HeroCall" xml:space="preserve">
+    <value>Commencez votre voyage pour trouver votre partenaire idéal</value>
+  </data>
+  <data name="HeroNote" xml:space="preserve">
+    <value>Remarque : Il ne s'agit pas d'une application de rencontres. Une expérience de matchmaking organisée axée sur une réelle compatibilité.</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privé</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Publique</value>
+  </data>
+  <data name="StepFilter" xml:space="preserve">
+    <value>Définir des filtres</value>
+  </data>
+  <data name="StepFilterDesc" xml:space="preserve">
+    <value>Définissez vos préférences non négociables.</value>
+  </data>
+  <data name="StepGallery" xml:space="preserve">
+    <value>Galerie de photos</value>
+  </data>
+  <data name="StepGalleryDesc" xml:space="preserve">
+    <value>Téléchargez et organisez vos photos.</value>
+  </data>
+  <data name="StepProfile" xml:space="preserve">
+    <value>Créer un profil</value>
+  </data>
+  <data name="StepProfileDesc" xml:space="preserve">
+    <value>Remplissez vos coordonnées : base, biographie, style de vie, personnalité, intérêts, relations et objectifs.</value>
+  </data>
+  <data name="StepSettings" xml:space="preserve">
+    <value>Ajuster les paramètres</value>
+  </data>
+  <data name="StepSettingsDesc" xml:space="preserve">
+    <value>Contrôlez les options de votre profil et le comportement de votre plateforme.</value>
+  </data>
+  <data name="StepValidation" xml:space="preserve">
+    <value>Validation du profil</value>
+  </data>
+  <data name="StepValidationDesc" xml:space="preserve">
+    <value>Le système vérifiera vos informations avant que votre profil ne soit rendu public.</value>
+  </data>
+</root>

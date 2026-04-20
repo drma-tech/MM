@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NoRelocations_Description" xml:space="preserve">
-    <value>No estoy abierto a mudarme y no tengo planes ni deseo de reubicarme.</value>
+    <value>No estoy abierto a mudarme y no tengo planes ni deseo de reubicarme</value>
   </data>
   <data name="NoRelocations_Name" xml:space="preserve">
     <value>No estoy dispuesto a mudarme</value>
   </data>
   <data name="OpenMovingCities_Description" xml:space="preserve">
-    <value>Estoy dispuesto a mudarme a otra ciudad o región dentro de mi país si surge la oportunidad.</value>
+    <value>Estoy dispuesto a mudarme a otra ciudad o región dentro de mi país si surge la oportunidad</value>
   </data>
   <data name="OpenMovingCities_Name" xml:space="preserve">
     <value>Estoy abierto a cambiar de ciudad</value>
   </data>
   <data name="OpenMovingCountries_Description" xml:space="preserve">
-    <value>Estoy abierto a mudarme a otro país en un futuro cercano o si se presenta la situación adecuada.</value>
+    <value>Estoy abierto a mudarme a otro país en un futuro cercano o si se presenta la situación adecuada</value>
   </data>
   <data name="OpenMovingCountries_Name" xml:space="preserve">
     <value>Estoy abierto a cambiar de país</value>

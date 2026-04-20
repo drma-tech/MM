@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Hearing_Description" xml:space="preserve">
+    <value>Couvre la perte auditive partielle ou totale. Ils peuvent utiliser des appareils auditifs, lire sur les lèvres ou utiliser la langue des signes. Les conversations de groupe, les endroits bruyants ou les appels téléphoniques peuvent être difficiles. Exemples : une personne sourde de naissance ou qui a perdu l'audition plus tard dans sa vie (devenue sourde).</value>
+  </data>
+  <data name="Hearing_Name" xml:space="preserve">
+    <value>Audience</value>
+  </data>
+  <data name="Intellectual_Description" xml:space="preserve">
+    <value>Implique des difficultés importantes d’apprentissage, de raisonnement ou de résolution de problèmes. La personne peut avoir besoin de plus de temps pour comprendre des concepts abstraits ou suivre des conversations complexes. Les conditions incluent le syndrome de Down ou d’autres handicaps cognitifs.</value>
+  </data>
+  <data name="Intellectual_Name" xml:space="preserve">
+    <value>Intellectuel</value>
+  </data>
+  <data name="Learning_Description" xml:space="preserve">
+    <value>Décrit les différences dans la façon dont le cerveau traite les informations. Les types courants incluent la dyslexie (lecture), la dyscalculie (mathématiques) ou le TDAH (concentration). Ils peuvent sembler désorganisés ou oublieux, mais il s’agit là de problèmes de traitement et non d’un manque d’intelligence ou d’intérêt.</value>
+  </data>
+  <data name="Learning_Name" xml:space="preserve">
+    <value>Apprentissage</value>
+  </data>
+  <data name="MentalHealth_Description" xml:space="preserve">
+    <value>Fait référence à des conditions diagnostiquées comme l'anxiété, la dépression, le trouble bipolaire ou le SSPT. Ceux-ci peuvent affecter l’énergie, l’humeur ou la communication. Il peut y avoir de bons et de mauvais jours, un besoin de compréhension de la régulation émotionnelle ou des routines thérapeutiques/médicamenteuses.</value>
+  </data>
+  <data name="MentalHealth_Name" xml:space="preserve">
+    <value>Santé mentale</value>
+  </data>
+  <data name="Physical_Description" xml:space="preserve">
+    <value>Comprend les conditions qui affectent le mouvement, la force, la coordination ou l'endurance. Exemples : utilisation d'un fauteuil roulant, douleur chronique, dystrophie musculaire ou mobilité limitée suite à une blessure. La personne peut avoir besoin d’environnements accessibles et être confrontée à des limitations physiques dans ses activités quotidiennes ou partagées.</value>
+  </data>
+  <data name="Physical_Name" xml:space="preserve">
+    <value>Physique</value>
+  </data>
+  <data name="Visual_Description" xml:space="preserve">
+    <value>S'applique aux personnes malvoyantes ou aveugles. La plupart ne sont pas totalement aveugles, mais peuvent avoir du mal à lire les panneaux, à reconnaître les visages ou à utiliser les écrans sans technologie d'assistance. Attendez-vous à l’utilisation possible de lecteurs d’écran, de chiens-guides ou à une planification supplémentaire dans des situations visuelles lourdes.</value>
+  </data>
+  <data name="Visual_Name" xml:space="preserve">
+    <value>Visuel</value>
+  </data>
+</root>
