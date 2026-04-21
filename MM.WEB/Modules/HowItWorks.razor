@@ -2,11 +2,11 @@
 @inherits PageCore<HowItWorks>
 
 <HeadComponent Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" Url=@($"/{Culture}/how-it-works") Index="true"></HeadComponent>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" CustomBodyClass="mb-12"></NewPageSection>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.HowItWorksTitle" Description="@WEB.Resources.Landing.HowItWorksDesc" CustomBodyClass="mb-12"></PageSectionComponent>
 
 @if (Language == AppLanguage.pt)
 {
-    <NewPageSection Title="Introdução">
+    <PageSectionComponent Title="Introdução">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify">
                 O Modern Matchmaker não é apenas mais um aplicativo de relacionamento. Nosso serviço conecta pessoas com base em compatibilidade e intenções genuínas.
@@ -14,8 +14,8 @@
                 Aqui, você aprenderá como a plataforma funciona e como os matches são selecionados para maximizar a compatibilidade.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Como o Matchmaking Funciona">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Como o Matchmaking Funciona">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Nosso processo de matchmaking é cuidadosamente projetado para priorizar qualidade em vez de quantidade. Veja como funciona:
@@ -48,8 +48,8 @@
                 As sugestões de matches são recalculadas automaticamente conforme os usuários atualizam seus perfis ou preferências.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Pontuação de Compatibilidade">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Pontuação de Compatibilidade">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Todo o nosso formulário consiste em dezenas de perguntas separadas em grupos: Básico, Bio, Estilo de vida, Personalidade, Interesses, Relacionamento e Objetivo.
@@ -62,8 +62,8 @@
                 Depois disso, é feito um cálculo ponderado entre todos os grupos para gerar uma pontuação única (Básico - 10, Bio - 5, Estilo de vida - 25, Personalidade - 25, Interesses - 5, Relacionamento - 20, Objetivo - 10). Essa é a compatibilidade geral entre duas pessoas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Recursos e Ferramentas da Plataforma">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Recursos e Ferramentas da Plataforma">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Nossa plataforma inclui ferramentas para apoiar o processo de matchmaking:
@@ -93,8 +93,8 @@
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Por que o Modern Matchmaker é Diferente">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Por que o Modern Matchmaker é Diferente">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Diferente dos aplicativos de relacionamento tradicionais ou dos serviços tradicionais de matchmaking, o Modern Matchmaker valoriza seu tempo, seu dinheiro e seus objetivos de relacionamento.
@@ -124,11 +124,11 @@
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else if (Language == AppLanguage.es)
 {
-    <NewPageSection Title="Introducción">
+    <PageSectionComponent Title="Introducción">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify">
                 Modern Matchmaker no es solo otra aplicación de citas. Nuestro servicio conecta personas basándose en la compatibilidad y en intenciones genuinas.
@@ -136,8 +136,8 @@ else if (Language == AppLanguage.es)
                 Aquí aprenderás cómo funciona la plataforma y cómo se seleccionan las coincidencias para maximizar la compatibilidad.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Cómo Funciona el Matchmaking">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Cómo Funciona el Matchmaking">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Nuestro proceso de matchmaking está cuidadosamente diseñado para priorizar la calidad sobre la cantidad. Así es como funciona:
@@ -170,8 +170,8 @@ else if (Language == AppLanguage.es)
                 Las sugerencias de coincidencias se recalculan automáticamente a medida que los usuarios actualizan sus perfiles o preferencias.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Puntuación de Compatibilidad">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Puntuación de Compatibilidad">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Todo nuestro formulario consta de decenas de preguntas separadas en grupos: Básico, Bio, Estilo de vida, Personalidad, Intereses, Relación y Objetivo.
@@ -184,8 +184,8 @@ else if (Language == AppLanguage.es)
                 Después de eso, se realiza un cálculo ponderado entre todos los grupos para generar una puntuación única (Básico - 10, Bio - 5, Estilo de vida - 25, Personalidad - 25, Intereses - 5, Relación - 20, Objetivo - 10). Esta es la compatibilidad general entre dos personas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Funciones y Herramientas de la Plataforma">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Funciones y Herramientas de la Plataforma">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Nuestra plataforma incluye herramientas para apoyar el proceso de matchmaking:
@@ -215,8 +215,8 @@ else if (Language == AppLanguage.es)
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Por Qué Modern Matchmaker es Diferente">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Por Qué Modern Matchmaker es Diferente">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 A diferencia de las aplicaciones de citas tradicionales o los servicios tradicionales de matchmaking, Modern Matchmaker valora tu tiempo, tu dinero y tus objetivos de relación.
@@ -246,11 +246,11 @@ else if (Language == AppLanguage.es)
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else
 {
-    <NewPageSection Title="Introduction">
+    <PageSectionComponent Title="Introduction">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify">
                 Modern Matchmaker is not just another dating app. Our service connects people with compatibility and genuine intentions.
@@ -258,8 +258,8 @@ else
                 Here, you’ll learn how the platform works and how matches are selected to maximize compatibility.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="How Matchmaking Works">
+    </PageSectionComponent>
+    <PageSectionComponent Title="How Matchmaking Works">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Our matchmaking process is carefully designed to prioritize quality over quantity. Here’s how it works:
@@ -292,8 +292,8 @@ else
                 Match suggestions are automatically recalculated as users update their profiles or preferences.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Compatibility Score">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Compatibility Score">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Our entire form consists of dozens of questions separated into groups: Basic, Bio, Lifestyle, Personality, Interest, Relationship, Goal.
@@ -306,8 +306,8 @@ else
                 After that, a weighted calculation is made on all the groups to generate a single score (Basic - 10, Bio - 5, Lifestyle - 25, Personality - 25, Interest - 5, Relationship -  20, Goal - 10). This is the overall compatibility between two people.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Features & Platform Tools">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Features & Platform Tools">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Our platform includes tools to support the matchmaking process:
@@ -337,8 +337,8 @@ else
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Why Modern Matchmaker is Different">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Why Modern Matchmaker is Different">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Class="mb-3">
                 Unlike traditional dating apps or traditional matchmaking services, Modern Matchmaker values your time, your money, and your relationship goals.
@@ -368,7 +368,7 @@ else
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 
 <FloatingButton Template="Template.Back"></FloatingButton>

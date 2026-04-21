@@ -3,7 +3,6 @@
 
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
-@inject IpInfoServerApi IpInfoServerApi
 
 @if (!Printscreen && !ActiveSubscription && !IsLocalhost)
 {
@@ -38,7 +37,7 @@
         {
             if (firstRender && !IsLocalhost && !ActiveSubscription)
             {
-                var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+                var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
 
                 if (country == "CN")
                 {

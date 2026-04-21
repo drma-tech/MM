@@ -213,7 +213,7 @@ else
         }
     </MudItem>
     <MudItem xs="12" sm="6" md="8">
-        <NewPageSection Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
+        <PageSectionComponent Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@CardHeader.Suggestions">
             <ActionsFragment>
                 <MudTooltip Text="Generate new suggestion list">
                     <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="GenerateSuggestions" Disabled="!AppStateStatic.IsAuthenticated">
@@ -236,8 +236,8 @@ else
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </NewPageSection>
-        <NewPageSection Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
+        </PageSectionComponent>
+        <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
             <BodyFragment>
                 <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
                     <div id="@LikesSwiperId" class="swiper mb-2">
@@ -261,8 +261,8 @@ else
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </NewPageSection>
-        <NewPageSection Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches" ShowActions="MyMatches == null || MyMatches.Items.Empty()">
+        </PageSectionComponent>
+        <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@CardHeader.Matches" ShowActions="MyMatches == null || MyMatches.Items.Empty()">
             <ActionsFragment>
                 @if (MyMatches == null || MyMatches.Items.Empty())
                 {
@@ -296,7 +296,7 @@ else
                     </div>
                 </RenderControl>
             </BodyFragment>
-        </NewPageSection>
+        </PageSectionComponent>
     </MudItem>
 </MudGrid>
 

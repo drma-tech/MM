@@ -9,10 +9,9 @@
 @inject DashboardApi DashboardApi
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
-@inject IpInfoServerApi IpInfoServerApi
 
 <HeadComponent Title="@AppInfo.Title" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="true" ForceTitle="true" Shared="true"></HeadComponent>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.Subtitle" CustomBodyClass="mb-12"></NewPageSection>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.Subtitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
 <GoogleAdSense Section="@GoogleAdSense.AdUnit.Index"></GoogleAdSense>
 
@@ -32,7 +31,7 @@
         </MudPaper>
     }
 
-    <NewPageSection Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" md="3">
@@ -119,9 +118,9 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
@@ -271,9 +270,9 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@Landing.OurApproach" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Landing.OurApproach" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="12" sm="6" md="4">
@@ -392,13 +391,13 @@
                 </MudItem>
             </MudGrid>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
-    <NewPageSection Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudImage Src="screenshots/match_desktop.png" Fluid="true"></MudImage>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 
     <MudGrid Spacing="@Css.SpaceSmall">
         <MudItem xs="12" md="4">
@@ -519,7 +518,7 @@
 
     protected override async Task ProcessPageData()
     {
-        var country = await AppStateStatic.GetCountry(IpInfoApi, IpInfoServerApi, JsRuntime);
+        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
         var platform = await AppStateStatic.GetPlatform(JsRuntime);
 
         if (country.NotEmpty() && platform == MM.Shared.Enums.Platform.ios)

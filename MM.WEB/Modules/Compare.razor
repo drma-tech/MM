@@ -2,11 +2,11 @@
 @inherits PageCore<Compare>
 
 <HeadComponent Title="@WEB.Resources.Landing.CompareTitle2" ForceTitle="true" Description="@WEB.Resources.Landing.CompareDesc" Url=@($"/{Culture}/compare") Index="true"></HeadComponent>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.CompareTitle2" Description="@WEB.Resources.Landing.CompareDesc" CustomBodyClass="mb-12"></NewPageSection>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.CompareTitle2" Description="@WEB.Resources.Landing.CompareDesc" CustomBodyClass="mb-12"></PageSectionComponent>
 
 @if (Language == AppLanguage.pt)
 {
-    <NewPageSection Title="Introdução">
+    <PageSectionComponent Title="Introdução">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Nem todas as plataformas para conhecer pessoas são iguais. Aplicativos de namoro, serviços tradicionais de matchmaking e plataformas modernas baseadas em compatibilidade seguem abordagens muito diferentes.
@@ -18,8 +18,8 @@
                 Abaixo está uma comparação direta para ajudar você a entender qual modelo se encaixa melhor nos seus objetivos.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Visão Geral da Comparação" Subtitle="Cada abordagem tem pontos fortes e limitações dependendo dos seus objetivos.">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Visão Geral da Comparação" Subtitle="Cada abordagem tem pontos fortes e limitações dependendo dos seus objetivos.">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
                 <MudItem xs="3">
@@ -192,8 +192,8 @@
                 * Comparação baseada no comportamento típico das plataformas. Os ícones representam forças e limitações gerais.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Análise Detalhada">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Análise Detalhada">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
                 Aplicativos de Namoro
@@ -214,8 +214,8 @@
                 O Modern Matchmaker combina a escalabilidade da tecnologia com a profundidade de dados estruturados de compatibilidade. Em vez de depender apenas de swipes ou intuição humana, ele avalia estilo de vida, personalidade, objetivos e preferências para gerar matches significativos.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Por que o Modern Matchmaker é Diferente">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Por que o Modern Matchmaker é Diferente">
         <BodyFragment>
             <div class="support-section mb-0">
                 <ul>
@@ -247,11 +247,11 @@
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else if (Language == AppLanguage.es)
 {
-    <NewPageSection Title="Introducción">
+    <PageSectionComponent Title="Introducción">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 No todas las plataformas para conocer personas son iguales. Las aplicaciones de citas, los servicios tradicionales de matchmaking y las plataformas modernas basadas en compatibilidad siguen enfoques muy diferentes.
@@ -263,8 +263,8 @@ else if (Language == AppLanguage.es)
                 A continuación se muestra una comparación directa para ayudarte a entender qué modelo se adapta mejor a tus objetivos.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Resumen de la Comparación" Subtitle="Cada enfoque tiene fortalezas y limitaciones según tus objetivos.">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Resumen de la Comparación" Subtitle="Cada enfoque tiene fortalezas y limitaciones según tus objetivos.">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
                 <MudItem xs="3">
@@ -437,8 +437,8 @@ else if (Language == AppLanguage.es)
                 * Comparación basada en el comportamiento típico de las plataformas. Los iconos representan fortalezas y limitaciones generales.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Desglose Detallado">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Desglose Detallado">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
                 Aplicaciones de citas
@@ -459,8 +459,8 @@ else if (Language == AppLanguage.es)
                 Modern Matchmaker combina la escalabilidad de la tecnología con la profundidad de los datos estructurados de compatibilidad. En lugar de depender solo de swipes o de la intuición humana, evalúa estilo de vida, personalidad, objetivos y preferencias para generar coincidencias significativas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Por qué Modern Matchmaker es diferente">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Por qué Modern Matchmaker es diferente">
         <BodyFragment>
             <div class="support-section mb-0">
                 <ul>
@@ -492,11 +492,11 @@ else if (Language == AppLanguage.es)
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else
 {
-    <NewPageSection Title="Introduction">
+    <PageSectionComponent Title="Introduction">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Not all platforms for meeting people are created equal. Dating apps, traditional matchmaking services, and modern compatibility-based platforms follow very different approaches.
@@ -508,8 +508,8 @@ else
                 Below is a direct comparison to help you understand which model fits your goals.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Comparison Overview" Subtitle="Each approach has strengths and limitations depending on your goals.">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Comparison Overview" Subtitle="Each approach has strengths and limitations depending on your goals.">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceMedium" Class="@Css.Build().Medium("mb")">
                 <MudItem xs="3">
@@ -682,8 +682,8 @@ else
                 * Comparison based on typical platform behavior. Icons represent general strengths and limitations.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Detailed Breakdown">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Detailed Breakdown">
         <BodyFragment>
             <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mb-2">
                 Dating Apps
@@ -704,8 +704,8 @@ else
                 Modern Matchmaker combines the scalability of technology with the depth of structured compatibility data. Instead of relying on swipes or human intuition alone, it evaluates lifestyle, personality, goals, and preferences to generate meaningful matches.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Why Modern Matchmaker is Different">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Why Modern Matchmaker is Different">
         <BodyFragment>
             <div class="support-section mb-0">
                 <ul>
@@ -737,7 +737,7 @@ else
                 </ul>
             </div>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 
 @if (!AppStateStatic.IsAuthenticated)

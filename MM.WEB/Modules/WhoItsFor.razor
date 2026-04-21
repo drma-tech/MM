@@ -2,11 +2,11 @@
 @inherits PageCore<WhoItsFor>
 
 <HeadComponent Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" Url=@($"/{Culture}/who-its-for") Index="true"></HeadComponent>
-<NewPageSection IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" CustomBodyClass="mb-12"></NewPageSection>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" CustomBodyClass="mb-12"></PageSectionComponent>
 
 @if (Language == AppLanguage.pt)
 {
-    <NewPageSection Title="Introdução">
+    <PageSectionComponent Title="Introdução">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 O Modern Matchmaker não é para todos. Ele foi projetado para pessoas que buscam relacionamentos significativos e que valorizam a compatibilidade real em vez de interações casuais.
@@ -14,8 +14,8 @@
                 Abaixo estão alguns dos tipos de pessoas que mais se beneficiam do Modern Matchmaker, e como seus perfis e preferências orientam matches significativos.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Profissionais e Empreendedores">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Profissionais e Empreendedores">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Profissionais ocupados e empreendedores frequentemente têm carreiras exigentes, alto nível educacional e necessidades específicas de estilo de vida. O Modern Matchmaker avalia sua carreira, renda, patrimônio líquido, nível educacional, situação de moradia e frequência de viagens para conectá-lo a parceiros que entendem seu ritmo e ambições.
@@ -24,8 +24,8 @@
                 Ao utilizar esses fatores reais de compatibilidade, você pode focar em construir conexões alinhadas com seus objetivos de vida, em vez de gastar tempo com interações incompatíveis.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Nômades Digitais e Cidadãos Globais">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Nômades Digitais e Cidadãos Globais">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Se você vive em várias cidades, viaja com frequência ou planeja se mudar internacionalmente, encontrar parceiros compatíveis pode ser desafiador. O Modern Matchmaker leva em consideração sua localização atual, hábitos de viagem, preferências de mudança, lugares ideais para viver e nacionalidade para sugerir matches que se encaixem no seu estilo de vida global.
@@ -34,8 +34,8 @@
                 Isso garante que suas conexões sejam compatíveis tanto na personalidade quanto em aspectos práticos, ajudando você a construir relacionamentos significativos além de fronteiras.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Pessoas com Alto Poder Aquisitivo e Compatibilidade Financeira">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Pessoas com Alto Poder Aquisitivo e Compatibilidade Financeira">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Indivíduos com recursos financeiros significativos frequentemente buscam parceiros que compartilhem níveis semelhantes de riqueza, renda e expectativas de estilo de vida. O Modern Matchmaker considera patrimônio líquido, renda anual, perfil financeiro, estilo de gastos, carreira, educação e preferências de estilo de vida para conectá-lo a parceiros alinhados com seus objetivos de vida e financeiros de longo prazo.
@@ -44,8 +44,8 @@
                 Essa abordagem reduz conflitos relacionados a finanças e padrões de estilo de vida, criando alinhamento tanto no aspecto pessoal quanto no prático.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Introvertidos / Pessoas Reflexivas">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Introvertidos / Pessoas Reflexivas">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Para aqueles que preferem conexões significativas em vez de interações superficiais, o Modern Matchmaker avalia personalidade, estilo de relacionamento, qualidade de tempo preferida, tipo MBTI e linguagem do amor para identificar parceiros que complementem suas preferências sociais e emocionais.
@@ -54,8 +54,8 @@
                 Isso garante matches mais conscientes e alinhados com seu estilo de comunicação e abordagem de relacionamento, permitindo que você foque na compatibilidade real em vez da quantidade de conexões.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Pessoas Orientadas à Família">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Pessoas Orientadas à Família">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Para quem planeja casamento ou filhos, valores compartilhados e objetivos familiares são essenciais. O Modern Matchmaker analisa o envolvimento familiar, se você tem ou deseja filhos, e expectativas financeiras compartilhadas para conectá-lo a parceiros cujas intenções de vida doméstica e parental estejam alinhadas com as suas.
@@ -64,8 +64,8 @@
                 Isso cria relacionamentos significativos onde a compatibilidade familiar é considerada desde o início.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Foco em Estilo de Vida e Saúde">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Foco em Estilo de Vida e Saúde">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Hábitos de estilo de vida, saúde e rotinas influenciam fortemente a satisfação em um relacionamento. O Modern Matchmaker considera dieta, atividade física, hábitos de consumo de álcool e tabaco, tipo físico, deficiências, neurodiversidade, posse de animais de estimação e religião para conectá-lo a pessoas cujas rotinas e valores de vida sejam compatíveis com os seus.
@@ -74,8 +74,8 @@
                 Seja você alguém focado em saúde, vegano, voltado para fitness ou com preferências específicas de estilo de vida, isso garante que suas conexões se alinhem naturalmente ao seu modo de vida.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="LGBTQ+ e Diversidade de Gênero">
+    </PageSectionComponent>
+    <PageSectionComponent Title="LGBTQ+ e Diversidade de Gênero">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Respeitar identidade e orientação é essencial para relacionamentos significativos. O Modern Matchmaker utiliza identidades de gênero e orientações sexuais para criar matches seguros e inclusivos, ajudando você a se conectar com parceiros que entendem e valorizam sua perspectiva.
@@ -84,8 +84,8 @@
                 Isso promove confiança, segurança e inclusão na sua experiência de relacionamento.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Alinhamento de Hobbies e Interesses">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Alinhamento de Hobbies e Interesses">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Hobbies e interesses compartilhados fortalecem conexões. O Modern Matchmaker avalia preferências de música, filmes, TV, livros, esportes, atividades de lazer, viagens e alimentação para conectar você a pessoas que apreciam estilos de vida semelhantes.
@@ -94,11 +94,11 @@
                 Isso garante compatibilidade nas atividades recreativas e rotinas diárias, resultando em relacionamentos mais satisfatórios e agradáveis.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else if (Language == AppLanguage.es)
 {
-    <NewPageSection Title="Introducción">
+    <PageSectionComponent Title="Introducción">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Modern Matchmaker no es para todos. Está diseñado para personas que buscan relaciones significativas y que valoran la compatibilidad real por encima de interacciones casuales.
@@ -106,8 +106,8 @@ else if (Language == AppLanguage.es)
                 A continuación se presentan algunos de los tipos de personas que más se benefician de Modern Matchmaker, y cómo sus perfiles y preferencias guían coincidencias significativas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Profesionales y Emprendedores">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Profesionales y Emprendedores">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Los profesionales ocupados y los emprendedores suelen tener carreras exigentes, altos niveles educativos y necesidades específicas de estilo de vida. Modern Matchmaker evalúa tu carrera, ingresos, patrimonio neto, nivel educativo, situación de vivienda y frecuencia de viajes para conectarte con parejas que comprendan tu ritmo y tus ambiciones.
@@ -116,8 +116,8 @@ else if (Language == AppLanguage.es)
                 Al utilizar estos factores reales de compatibilidad, puedes centrarte en construir conexiones alineadas con tus objetivos de vida en lugar de perder tiempo en interacciones incompatibles.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Nómadas Digitales y Ciudadanos Globales">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Nómadas Digitales y Ciudadanos Globales">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Si vives en varias ciudades, viajas con frecuencia o planeas mudarte internacionalmente, encontrar parejas compatibles puede ser un desafío. Modern Matchmaker tiene en cuenta tu ubicación actual, hábitos de viaje, preferencias de reubicación, lugares ideales para vivir y nacionalidad para sugerir coincidencias que se ajusten a tu estilo de vida global.
@@ -126,8 +126,8 @@ else if (Language == AppLanguage.es)
                 Esto garantiza que tus conexiones sean compatibles tanto en personalidad como en términos prácticos, ayudándote a construir relaciones significativas a través de fronteras.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Personas con Alto Poder Adquisitivo y Compatibilidad Financiera">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Personas con Alto Poder Adquisitivo y Compatibilidad Financiera">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Las personas con recursos financieros significativos suelen buscar parejas que compartan niveles similares de riqueza, ingresos y expectativas de estilo de vida. Modern Matchmaker considera el patrimonio neto, los ingresos anuales, la personalidad financiera, el estilo de gasto compartido, la carrera, la educación y las preferencias de estilo de vida para conectarte con parejas alineadas con tus objetivos de vida y financieros a largo plazo.
@@ -136,8 +136,8 @@ else if (Language == AppLanguage.es)
                 Este enfoque reduce los conflictos relacionados con las finanzas y los estándares de vida, creando alineación tanto en dimensiones personales como prácticas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Introvertidos / Personas Reflexivas">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Introvertidos / Personas Reflexivas">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Para quienes prefieren conexiones significativas en lugar de interacciones superficiales, Modern Matchmaker evalúa la personalidad, el estilo de relación, el tiempo de calidad preferido, el tipo MBTI y el lenguaje del amor para identificar parejas que complementen tus preferencias sociales y emocionales.
@@ -146,8 +146,8 @@ else if (Language == AppLanguage.es)
                 Esto garantiza coincidencias más reflexivas y alineadas con tu estilo de comunicación y enfoque de relación, permitiéndote centrarte en la compatibilidad real en lugar de la cantidad de conexiones.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Personas Orientadas a la Familia">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Personas Orientadas a la Familia">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Para quienes planean matrimonio o tener hijos, los valores compartidos y los objetivos familiares son esenciales. Modern Matchmaker analiza la implicación familiar, si tienes o deseas hijos y las expectativas financieras compartidas para conectarte con parejas cuyas intenciones de vida doméstica y crianza estén alineadas con las tuyas.
@@ -156,8 +156,8 @@ else if (Language == AppLanguage.es)
                 Esto crea relaciones significativas donde la compatibilidad familiar se integra desde el principio.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Enfoque en Estilo de Vida y Salud">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Enfoque en Estilo de Vida y Salud">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Los hábitos de estilo de vida, la salud y las rutinas influyen fuertemente en la satisfacción de una relación. Modern Matchmaker considera la dieta, la actividad física, los hábitos de consumo de alcohol y tabaco, el tipo de cuerpo, las discapacidades, la neurodiversidad, la tenencia de mascotas y la religión para conectarte con personas cuyas rutinas diarias y valores de vida sean compatibles con los tuyos.
@@ -166,8 +166,8 @@ else if (Language == AppLanguage.es)
                 Ya seas una persona consciente de la salud, vegana, orientada al fitness o con preferencias específicas de estilo de vida, esto garantiza que tus conexiones se alineen naturalmente con tu forma de vida.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="LGBTQ+ y Diversidad de Género">
+    </PageSectionComponent>
+    <PageSectionComponent Title="LGBTQ+ y Diversidad de Género">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Respetar la identidad y la orientación es clave para relaciones significativas. Modern Matchmaker utiliza identidades de género y orientaciones sexuales para crear coincidencias seguras e inclusivas, ayudándote a conectar con parejas que comprendan y valoren tu perspectiva.
@@ -176,8 +176,8 @@ else if (Language == AppLanguage.es)
                 Esto fomenta la confianza, la seguridad y la inclusión en tu experiencia de citas.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Alineación de Hobbies e Intereses">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Alineación de Hobbies e Intereses">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Los hobbies y los intereses compartidos fortalecen las conexiones. Modern Matchmaker evalúa música, películas, TV, libros, deportes, actividades de ocio, viajes y preferencias gastronómicas para conectarte con personas que disfrutan estilos de vida similares.
@@ -186,11 +186,11 @@ else if (Language == AppLanguage.es)
                 Esto garantiza compatibilidad en actividades recreativas y rutinas diarias, lo que conduce a relaciones más satisfactorias y agradables.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 else
 {
-    <NewPageSection Title="Introduction">
+    <PageSectionComponent Title="Introduction">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Modern Matchmaker is not for everyone. It is designed for people who want meaningful relationships and who value real compatibility over casual interactions.
@@ -198,8 +198,8 @@ else
                 Below are some of the types of people who benefit most from Modern Matchmaker, and how their profiles and preferences guide meaningful matches.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Professionals & Entrepreneurs">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Professionals & Entrepreneurs">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Busy professionals and entrepreneurs often have demanding careers, high educational achievements, and specific lifestyle needs. Modern Matchmaker evaluates your career, income, net worth, education level, living situation, and travel frequency to connect you with partners who understand your pace and ambitions.
@@ -208,8 +208,8 @@ else
                 By using these real-life compatibility factors, you can focus on building connections that align with your life goals rather than spending time on mismatched interactions.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Digital Nomads & Global Citizens">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Digital Nomads & Global Citizens">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 If you live in multiple cities, travel frequently, or plan to relocate internationally, finding compatible partners can be challenging. Modern Matchmaker takes into account your current location, travel habits, relocation preferences, ideal places to live, and nationality to suggest matches who fit your global lifestyle.
@@ -218,8 +218,8 @@ else
                 This ensures that your connections are compatible both in personality and in practical terms, helping you build meaningful relationships across borders.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Affluent & Financially Compatible">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Affluent & Financially Compatible">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Individuals with significant financial resources often seek partners who share similar wealth, income levels, and lifestyle expectations. Modern Matchmaker considers net worth, annual income, money personality, shared spending style, career, education, and lifestyle preferences to connect you with partners aligned with your long-term life and financial goals.
@@ -228,8 +228,8 @@ else
                 This approach reduces conflicts around finances and lifestyle standards, creating alignment in both personal and practical dimensions.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Introverts / Thoughtful Daters">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Introverts / Thoughtful Daters">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 For those who prefer meaningful connections over casual swiping, Modern Matchmaker evaluates personality, relationship style, preferred quality time, MBTI type, and love language to identify partners who complement your social and emotional preferences.
@@ -238,8 +238,8 @@ else
                 This ensures matches are thoughtful and aligned with your communication style and relationship approach, allowing you to focus on genuine compatibility rather than quantity of connections.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Family-Oriented Individuals">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Family-Oriented Individuals">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 For those planning marriage or children, shared values and family goals are essential. Modern Matchmaker analyzes family involvement, whether you have or want children, and shared financial expectations to connect you with partners whose domestic life and parenting intentions align with yours.
@@ -248,8 +248,8 @@ else
                 This creates meaningful relationships where family compatibility is integrated from the start.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Lifestyle & Health Focused">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Lifestyle & Health Focused">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Lifestyle habits, health, and routines strongly affect relationship satisfaction. Modern Matchmaker considers diet, fitness, drinking and smoking habits, body type, disabilities, neurodiversity, pet ownership, and religion to connect you with people whose daily routines and lifestyle values are compatible with yours.
@@ -258,8 +258,8 @@ else
                 Whether you are health-conscious, vegan, fitness-oriented, or have specific lifestyle preferences, this ensures your connections naturally align with your way of life.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="LGBTQ+ & Gender Diverse">
+    </PageSectionComponent>
+    <PageSectionComponent Title="LGBTQ+ & Gender Diverse">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Respecting identity and orientation is key to meaningful relationships. Modern Matchmaker uses gender identities and sexual orientations to create safe, inclusive matches, helping you connect with partners who understand and value your perspective.
@@ -268,8 +268,8 @@ else
                 This fosters confidence, security, and inclusivity in your dating experience.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
-    <NewPageSection Title="Hobby / Interest Aligned">
+    </PageSectionComponent>
+    <PageSectionComponent Title="Hobby / Interest Aligned">
         <BodyFragment>
             <MudText Typo="Typo.body1" Align="Align.Justify" Class="mb-2">
                 Shared hobbies and interests strengthen connections. Modern Matchmaker evaluates music, movies, TV, books, sports, leisure activities, travel, and food preferences to match you with people who enjoy similar lifestyles.
@@ -278,7 +278,7 @@ else
                 This ensures compatibility in recreational and daily routines, leading to more fulfilling and enjoyable relationships.
             </MudText>
         </BodyFragment>
-    </NewPageSection>
+    </PageSectionComponent>
 }
 
 <FloatingButton Template="Template.Back"></FloatingButton>
