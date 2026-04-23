@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Collecting" xml:space="preserve">
+    <value>Sammeln</value>
+  </data>
+  <data name="Collecting_Description" xml:space="preserve">
+    <value>Aktivitäten zum Sammeln und Organisieren von Gegenständen von persönlichem Interesse (z. B. Briefmarkensammeln, Vintage-Artikel, Münzsammlung)</value>
+  </data>
+  <data name="CookingCulinaryExploration" xml:space="preserve">
+    <value>Kochen und kulinarische Entdeckungen</value>
+  </data>
+  <data name="CookingCulinaryExploration_Description" xml:space="preserve">
+    <value>Kulinarische Aktivitäten zum Kreieren und Entdecken neuer Geschmacksrichtungen (z. B. Backen, Experimentieren mit neuen Rezepten, Weinprobe)</value>
+  </data>
+  <data name="CreativeArtistic" xml:space="preserve">
+    <value>Kreativ und künstlerisch</value>
+  </data>
+  <data name="CreativeArtistic_Description" xml:space="preserve">
+    <value>Aktivitäten im Zusammenhang mit künstlerischem Schaffen und Ausdruck (z. B. Malen, Basteln, Fotografieren, Bildhauerei)</value>
+  </data>
+  <data name="DIYHobbies" xml:space="preserve">
+    <value>Heimwerken und Hobbys</value>
+  </data>
+  <data name="DIYHobbies_Description" xml:space="preserve">
+    <value>Praktische Aktivitäten, die selbstständiges Lernen und Schaffen beinhalten (z. B. Gartenarbeit, Holzbearbeitung, Stricken, Heimwerken)</value>
+  </data>
+  <data name="EducationalSelfImprovement" xml:space="preserve">
+    <value>Bildung und Selbstverbesserung</value>
+  </data>
+  <data name="EducationalSelfImprovement_Description" xml:space="preserve">
+    <value>Aktivitäten zum Lernen und zur persönlichen Weiterentwicklung (z. B. Online-Kurse, Kompetenzaufbau, Sprachenlernen)</value>
+  </data>
+  <data name="GamingEntertainment" xml:space="preserve">
+    <value>Gaming und Unterhaltung</value>
+  </data>
+  <data name="GamingEntertainment_Description" xml:space="preserve">
+    <value>Aktivitäten im Zusammenhang mit Spielen und digitaler Unterhaltung (z. B. Videospiele, Brettspiele, Puzzles, VR-Erlebnisse)</value>
+  </data>
+  <data name="MindfulnessWellness" xml:space="preserve">
+    <value>Achtsamkeit und Wellness</value>
+  </data>
+  <data name="MindfulnessWellness_Description" xml:space="preserve">
+    <value>Aktivitäten, die sich auf das geistige und körperliche Wohlbefinden konzentrieren (z. B. Meditation, Spa-Tage, Atemübungen, Spaziergänge in der Natur)</value>
+  </data>
+  <data name="MusicPerformingArts" xml:space="preserve">
+    <value>Musik und darstellende Kunst</value>
+  </data>
+  <data name="MusicPerformingArts_Description" xml:space="preserve">
+    <value>Aktivitäten im Zusammenhang mit Musik und darstellenden Künsten (z. B. Instrumentenspielen, Singen, Tanzen, Theater)</value>
+  </data>
+  <data name="OutdoorNature" xml:space="preserve">
+    <value>Outdoor &amp; Natur</value>
+  </data>
+  <data name="OutdoorNature_Description" xml:space="preserve">
+    <value>Aktivitäten im Freien und in der Natur (z. B. Wandern, Camping, Vogelbeobachtung, Strandtage)</value>
+  </data>
+  <data name="ReadingWriting" xml:space="preserve">
+    <value>Lesen und Schreiben</value>
+  </data>
+  <data name="ReadingWriting_Description" xml:space="preserve">
+    <value>Literarische Aktivitäten zum Vergnügen oder zum persönlichen Ausdruck (z. B. Bücher lesen, Tagebuch schreiben, kreatives Schreiben, Poesie)</value>
+  </data>
+  <data name="SocialCultural" xml:space="preserve">
+    <value>Soziales und Kulturelles</value>
+  </data>
+  <data name="SocialCultural_Description" xml:space="preserve">
+    <value>Freizeitaktivitäten zum geselligen Beisammensein oder zur kulturellen Bereicherung (z. B. Essen gehen, Konzerte, Theater, Museumsbesuche)</value>
+  </data>
+  <data name="SportsFitness" xml:space="preserve">
+    <value>Sport &amp; Fitness</value>
+  </data>
+  <data name="SportsFitness_Description" xml:space="preserve">
+    <value>Körperliche Aktivitäten für Gesundheit oder Spaß, alleine oder im Team (z. B. Laufen, Yoga, Mannschaftssport, Kampfsport)</value>
+  </data>
+  <data name="TravelExploration" xml:space="preserve">
+    <value>Reisen und Erkundung</value>
+  </data>
+  <data name="TravelExploration_Description" xml:space="preserve">
+    <value>Entdeckungs- und Abenteueraktivitäten an neuen Orten (z. B. Roadtrips, Erkundung neuer Städte, kultureller Austausch)</value>
+  </data>
+  <data name="VolunteeringCommunityService" xml:space="preserve">
+    <value>Freiwilligenarbeit und gemeinnützige Arbeit</value>
+  </data>
+  <data name="VolunteeringCommunityService_Description" xml:space="preserve">
+    <value>Hilfsaktivitäten und gemeinschaftliche Unterstützung (z. B. ehrenamtliche Arbeit im Tierheim, Aufräumarbeiten in der Gemeinde, Nachhilfe)</value>
+  </data>
+</root>

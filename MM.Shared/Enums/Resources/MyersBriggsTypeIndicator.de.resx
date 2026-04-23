@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ENFJ_Description" xml:space="preserve">
+    <value>Die Protagonisten fühlen sich in Beziehungen zu Hause und engagieren sich eifrig für ihre gewählten Partner. Sie nehmen das Dating ernst und wählen Partner eher mit einer langfristigen Perspektive als beiläufig. Es macht ihnen große Freude, die Ziele ihres Partners zu unterstützen und ihr Leben in einer festen Beziehung zu verknüpfen.</value>
+  </data>
+  <data name="ENFJ_Group" xml:space="preserve">
+    <value>Diplomaten</value>
+  </data>
+  <data name="ENFJ_Name" xml:space="preserve">
+    <value>Protagonist (ENFJ)</value>
+  </data>
+  <data name="ENFP_Description" xml:space="preserve">
+    <value>Aktivisten freuen sich darauf, die Erkenntnisse und Erfahrungen des Lebens mit ihren Partnern zu teilen. Für sie sind Beziehungen eine freudige, gemeinsame Erkundung und eine Chance, sich tief zu verbinden. Sie nehmen Beziehungen ernst und sind für ihre hemmungslose und unerschütterliche Hingabe an diejenigen bekannt, die sie lieben.</value>
+  </data>
+  <data name="ENFP_Group" xml:space="preserve">
+    <value>Diplomaten</value>
+  </data>
+  <data name="ENFP_Name" xml:space="preserve">
+    <value>Aktivist (ENFP)</value>
+  </data>
+  <data name="ENTJ_Description" xml:space="preserve">
+    <value>Kommandanten gehen Dating und Beziehungen mit klaren Zielen und viel Energie an. Sie übernehmen gerne schon früh in einer Beziehung die Führung, übernehmen die Verantwortung dafür, wie die Dinge laufen, und arbeiten aktiv daran, für beide ein lohnendes Erlebnis zu schaffen. Romantik ist für sie ein ernstes Geschäft und sie bringen jede Menge Erfahrung mit.</value>
+  </data>
+  <data name="ENTJ_Group" xml:space="preserve">
+    <value>Analysten</value>
+  </data>
+  <data name="ENTJ_Name" xml:space="preserve">
+    <value>Kommandant (ENTJ)</value>
+  </data>
+  <data name="ENTP_Description" xml:space="preserve">
+    <value>Debattierer zeichnen sich dadurch aus, dass sie sich endlose Ideen einfallen lassen, um Beziehungen voranzutreiben. Für sie ist Wachstum der Schlüssel zum Erfolg und schon vor der Verabredung überlegen sie sich, wie sie gemeinsam neue Wege erforschen und weiterentwickeln können. Das kann überwältigend sein, wenn der Partner nicht mithält, aber wenn sie jemanden finden, der ihre Liebe zu intellektuellen Abenteuern teilt, werden sie zu einem aufregenden Partner.</value>
+  </data>
+  <data name="ENTP_Group" xml:space="preserve">
+    <value>Analysten</value>
+  </data>
+  <data name="ENTP_Name" xml:space="preserve">
+    <value>Debattierer (ENTP)</value>
+  </data>
+  <data name="ESFJ_Description" xml:space="preserve">
+    <value>Konsuln legen großen Wert auf soziale Anerkennung und ein Zugehörigkeitsgefühl. Romantische Beziehungen bieten erhebliche emotionale Unterstützung und Sicherheit. Für Konsuln bringen starke romantische Bindungen Wärme, Hingabe und ein Gefühl der Stabilität.</value>
+  </data>
+  <data name="ESFJ_Group" xml:space="preserve">
+    <value>Wächter</value>
+  </data>
+  <data name="ESFJ_Name" xml:space="preserve">
+    <value>Konsul (ESFJ)</value>
+  </data>
+  <data name="ESFP_Description" xml:space="preserve">
+    <value>Entertainer sind kontaktfreudig, lebenslustig und freigeistig. Sie leben im Moment und extrahieren Emotionen aus allem. In ihren Beziehungen geht es nicht um langfristige Planung, sondern darum, sprudelnde, unvorhersehbare Erlebnisse zu genießen, solange es Spaß macht.</value>
+  </data>
+  <data name="ESFP_Group" xml:space="preserve">
+    <value>Entdecker</value>
+  </data>
+  <data name="ESFP_Name" xml:space="preserve">
+    <value>Entertainer (ESFP)</value>
+  </data>
+  <data name="ESTJ_Description" xml:space="preserve">
+    <value>Führungskräfte bewahren Kontinuität von der Datierung bis hin zu langfristigen Beziehungen und der Ehe. Sie legen Wert auf Ehrlichkeit und Offenheit, sind sich von Anfang an über ihre Ziele im Klaren und erwarten von ihren Partnern, dass sie diese auch umsetzen. Dies führt zu äußerst stabilen und verlässlichen Beziehungen.</value>
+  </data>
+  <data name="ESTJ_Group" xml:space="preserve">
+    <value>Wächter</value>
+  </data>
+  <data name="ESTJ_Name" xml:space="preserve">
+    <value>Geschäftsführer (ESTJ)</value>
+  </data>
+  <data name="ESTP_Description" xml:space="preserve">
+    <value>Unternehmer leben ein Leben voller Spaß und Überraschungen und genießen alles im Augenblick. Sie planen vielleicht nicht weit im Voraus, aber ihr Enthusiasmus und ihre Unberechenbarkeit machen sie zu spannenden Dating-Partnern. Sie geben traditionellen Hochzeitsplänen oft keine Priorität.</value>
+  </data>
+  <data name="ESTP_Group" xml:space="preserve">
+    <value>Entdecker</value>
+  </data>
+  <data name="ESTP_Name" xml:space="preserve">
+    <value>Unternehmer (ESTP)</value>
+  </data>
+  <data name="INFJ_Description" xml:space="preserve">
+    <value>Befürworter neigen dazu, die Suche nach einem romantischen Partner ernst zu nehmen. Sie suchen nach Tiefe und Sinn in Beziehungen und weigern sich, sich mit weniger als der wahren Liebe zufrieden zu geben. Es kann einige Zeit dauern, einen kompatiblen Partner zu finden. Befürworter werden möglicherweise als anspruchsvoll oder mit unrealistischen Erwartungen angesehen und hoffen manchmal auf einen „perfekten“ Partner oder eine „perfekte“ Beziehung, die es in Wirklichkeit nicht gibt.</value>
+  </data>
+  <data name="INFJ_Group" xml:space="preserve">
+    <value>Diplomaten</value>
+  </data>
+  <data name="INFJ_Name" xml:space="preserve">
+    <value>Anwalt (INFJ)</value>
+  </data>
+  <data name="INFP_Description" xml:space="preserve">
+    <value>Vermittler sind Träumer und Idealisten in der Romantik. Die Idee der wahren Liebe ist bei ihnen tief verankert und es ist unwahrscheinlich, dass sie mit weniger zufrieden sein werden. Sie träumen oft von einer perfekten Beziehung und stellen sich vor, ihr Innerstes mit einer anderen Person zu teilen.</value>
+  </data>
+  <data name="INFP_Group" xml:space="preserve">
+    <value>Diplomaten</value>
+  </data>
+  <data name="INFP_Name" xml:space="preserve">
+    <value>Mediator (INFP)</value>
+  </data>
+  <data name="INTJ_Description" xml:space="preserve">
+    <value>Architekten gehen Romantik wie die meisten Herausforderungen an: strategisch, mit klaren Zielen und einem Plan, diese zu erreichen. In einer rein rationalen Welt würde das perfekt funktionieren. Allerdings ist Liebe selten rational, und Architekten übersehen oder interpretieren möglicherweise die Unvorhersehbarkeit menschlicher Emotionen und Zuneigung falsch.</value>
+  </data>
+  <data name="INTJ_Group" xml:space="preserve">
+    <value>Analysten</value>
+  </data>
+  <data name="INTJ_Name" xml:space="preserve">
+    <value>Architekt (INTJ)</value>
+  </data>
+  <data name="INTP_Description" xml:space="preserve">
+    <value>Logiker haben in romantischen Beziehungen eine einzigartige Mischung von Eigenschaften, die ihre Partner oft angenehm überraschen. Sie sind voller Ideen, kommen aber selten ihren romantischen Gedanken nach. Wenn sie jemanden finden, zu dem Romantik passt, werden sie aufgeregt, enthusiastisch und verspielt und genießen intellektuelle Flirts und Wortspiele.</value>
+  </data>
+  <data name="INTP_Group" xml:space="preserve">
+    <value>Analysten</value>
+  </data>
+  <data name="INTP_Name" xml:space="preserve">
+    <value>Logiker (INTP)</value>
+  </data>
+  <data name="ISFJ_Description" xml:space="preserve">
+    <value>Verteidiger drücken Freundlichkeit aus, indem sie sich intensiv um Familie und Zuhause kümmern. Sie leisten bei Bedarf emotionale und praktische Unterstützung. Für Defenders ist das Zuhause dort, wo das Herz ist, und sie streben danach, Harmonie und Schönheit in ihrem Privatleben zu schaffen.</value>
+  </data>
+  <data name="ISFJ_Group" xml:space="preserve">
+    <value>Wächter</value>
+  </data>
+  <data name="ISFJ_Name" xml:space="preserve">
+    <value>Verteidiger (ISFJ)</value>
+  </data>
+  <data name="ISFP_Description" xml:space="preserve">
+    <value>Abenteurer sind geheimnisvoll und emotional, achten aber sorgfältig auf ihren sensiblen Kern. Sie hören lieber zu, als Gefühle auszudrücken. Sie konzentrieren sich auf ihre Partner, anstatt die Stimmung zu kontrollieren. Wenn Abenteurer so akzeptiert werden, wie sie sind, erweisen sie sich als herzliche und enthusiastische Partner.</value>
+  </data>
+  <data name="ISFP_Group" xml:space="preserve">
+    <value>Entdecker</value>
+  </data>
+  <data name="ISFP_Name" xml:space="preserve">
+    <value>Abenteurer (ISFP)</value>
+  </data>
+  <data name="ISTJ_Description" xml:space="preserve">
+    <value>Gerade in Liebesbeziehungen sind Logistiker äußerst vertrauenswürdig. Sie verkörpern oft traditionelle Familienwerte, fühlen sich mit klaren Erwartungen und Ehrlichkeit wohl und fördern möglicherweise traditionelle Familien- und Geschlechterrollen. Obwohl sie zurückhaltend sind, sind sie engagierte Partner, die Gedanken und Energie in stabile, für beide Seiten zufriedenstellende Beziehungen investieren.</value>
+  </data>
+  <data name="ISTJ_Group" xml:space="preserve">
+    <value>Wächter</value>
+  </data>
+  <data name="ISTJ_Name" xml:space="preserve">
+    <value>Logistiker (ISTJ)</value>
+  </data>
+  <data name="ISTP_Description" xml:space="preserve">
+    <value>Romantische Beziehungen mit Virtuosen sind komplex und dynamisch, als würde man Gelee an einen Baum nageln. Sie schwanken zwischen Kälte und Distanziertheit sowie Leidenschaft, Spontaneität und Freude am Augenblick. Nichts kann erzwungen werden; Sie brauchen Raum, um sie selbst zu sein, werden aber den Komfort eines stabilen Partners fürs Leben genießen.</value>
+  </data>
+  <data name="ISTP_Group" xml:space="preserve">
+    <value>Entdecker</value>
+  </data>
+  <data name="ISTP_Name" xml:space="preserve">
+    <value>Virtuose (ISTP)</value>
+  </data>
+</root>

@@ -118,216 +118,216 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppLanguage" xml:space="preserve">
-    <value>Langue de l'application</value>
+    <value>App-Sprache</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Traduit l'interface de l'application. Des traductions partielles peuvent s'appliquer pour certaines langues.</value>
+    <value>Übersetzt die App-Oberfläche. Für einige Sprachen kann es zu Teilübersetzungen kommen.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
-    <value>Thème de l'application</value>
+    <value>App-Theme</value>
   </data>
   <data name="BasicRequired" xml:space="preserve">
-    <value>La section de base est obligatoire pour le moment. Les autres sections pourront être remplies ultérieurement.</value>
+    <value>Der Basisabschnitt ist vorerst obligatorisch. Die anderen Abschnitte können später ausgefüllt werden.</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>Seul votre âge sera publié. (Nous utilisons le calendrier grégorien)</value>
+    <value>Es wird nur Ihr Alter veröffentlicht. (Wir verwenden den gregorianischen Kalender)</value>
   </data>
   <data name="BodyPhoto" xml:space="preserve">
-    <value>Photo du corps</value>
+    <value>Körperfoto</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Découvrez nos autres applications étonnantes :</value>
+    <value>Entdecken Sie unsere anderen tollen Apps:</value>
   </data>
   <data name="Cities" xml:space="preserve">
-    <value>Villes</value>
+    <value>Städte</value>
   </data>
   <data name="Compatibility" xml:space="preserve">
-    <value>Compatibilité</value>
+    <value>Kompatibilität</value>
   </data>
   <data name="CompatibilityDeveloping" xml:space="preserve">
-    <value>Notre système de compatibilité est encore en développement. Si vous avez des suggestions ou des commentaires, veuillez soumettre un ticket d'assistance ou nous envoyer un e-mail.</value>
+    <value>Unser Kompatibilitätssystem befindet sich noch in der Entwicklung. Wenn Sie Vorschläge oder Feedback haben, reichen Sie bitte ein Support-Ticket ein oder senden Sie uns eine E-Mail.</value>
   </data>
   <data name="CompatibilityHigh" xml:space="preserve">
-    <value>Félicitations, vous êtes faits l'un pour l'autre. Cette relation a un bel avenir devant elle.</value>
+    <value>Herzlichen Glückwunsch, ihr seid füreinander geschaffen. Diese Beziehung hat eine glänzende Zukunft vor sich.</value>
   </data>
   <data name="CompatibilityLow" xml:space="preserve">
-    <value>Malheureusement, vous n'avez pas grand-chose en commun. Nous vous souhaitons à tous deux bonne chance, car ce ne sera pas une tâche facile.</value>
+    <value>Leider habt ihr nicht viel gemeinsam. Wir wünschen Ihnen beiden viel Glück, denn es wird keine leichte Aufgabe sein.</value>
   </data>
   <data name="CompatibilityMedium" xml:space="preserve">
-    <value>Vous n’êtes pas un couple parfait, mais cela ne veut pas dire que la relation échouera. Lisez attentivement notre rapport et résolvez ensemble ces différences.</value>
+    <value>Ihr seid kein perfektes Paar, aber das bedeutet nicht, dass die Beziehung scheitern wird. Lesen Sie unseren Bericht sorgfältig durch und arbeiten Sie diese Unterschiede gemeinsam durch.</value>
   </data>
   <data name="CompleteAllSteps" xml:space="preserve">
-    <value>Pour rendre votre profil public, suivez d'abord toutes les étapes</value>
+    <value>Um Ihr Profil öffentlich zu machen, führen Sie zunächst alle Schritte aus</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
-    <value>Confirmation</value>
+    <value>Bestätigung</value>
   </data>
   <data name="Countries" xml:space="preserve">
-    <value>Pays</value>
+    <value>Länder</value>
   </data>
   <data name="CustomVisibilityInvalid" xml:space="preserve">
-    <value>Opération invalide. Veuillez réessayer.</value>
+    <value>Ungültiger Vorgang. Bitte versuchen Sie es erneut.</value>
   </data>
   <data name="CustomVisibilityLoading" xml:space="preserve">
-    <value>Chargement...</value>
+    <value>Laden...</value>
   </data>
   <data name="CustomVisibilityNoData" xml:space="preserve">
-    <value>Données non disponibles</value>
+    <value>Daten nicht verfügbar</value>
   </data>
   <data name="DarkMode" xml:space="preserve">
-    <value>Mode sombre</value>
+    <value>Dunkler Modus</value>
   </data>
   <data name="ExpectedCompatibility" xml:space="preserve">
-    <value>Compatibilité attendue</value>
+    <value>Erwartete Kompatibilität</value>
   </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
-    <value>Avis de site Web externe</value>
+    <value>Hinweis zur externen Website</value>
   </data>
   <data name="FacePhoto" xml:space="preserve">
-    <value>Photo du visage</value>
+    <value>Gesichtsfoto</value>
   </data>
   <data name="FeatureNotAvailable" xml:space="preserve">
-    <value>Cette fonctionnalité n'est disponible que dans la phase {0}</value>
+    <value>Diese Funktion ist nur in Phase {0} verfügbar</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
-    <value>Attends des nouvelles...</value>
+    <value>Warten Sie auf Neuigkeiten...</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
-    <value>En développement</value>
+    <value>In Entwicklung</value>
   </data>
   <data name="GeneralCompatibility" xml:space="preserve">
-    <value>Compatibilité générale</value>
+    <value>Allgemeine Kompatibilität</value>
   </data>
   <data name="GenerateSimulation" xml:space="preserve">
-    <value>Vous souhaitez générer une simulation de match ? Ceci est juste pour démontrer comment fonctionne notre système de compatibilité.</value>
+    <value>Möchten Sie eine Spielsimulation erstellen? Dies dient nur dazu, die Funktionsweise unseres Kompatibilitätssystems zu veranschaulichen.</value>
   </data>
   <data name="GetTheApp" xml:space="preserve">
-    <value>Obtenez l'application</value>
+    <value>Holen Sie sich die App</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
-    <value>La position GPS n'est pas précise et peut entraîner une localisation incorrecte. Si votre ville est erronée, veuillez réessayer plus tard ou tester sur un autre appareil ou navigateur.</value>
+    <value>Die GPS-Position ist nicht genau und kann zu einem falschen Standort führen. Wenn Ihre Stadt falsch ist, versuchen Sie es später noch einmal oder testen Sie es auf einem anderen Gerät oder Browser.</value>
   </data>
   <data name="HelpTitle" xml:space="preserve">
-    <value>Aide</value>
+    <value>Helfen</value>
   </data>
   <data name="ITrustPlataform" xml:space="preserve">
-    <value>Je fais confiance au système de compatibilité de la plateforme et ne sélectionnerai que ce qui n'est pas négociable pour moi.</value>
+    <value>Ich vertraue dem Kompatibilitätssystem der Plattform und wähle nur das aus, was für mich nicht verhandelbar ist.</value>
   </data>
   <data name="LightMode" xml:space="preserve">
-    <value>Mode lumière</value>
+    <value>Lichtmodus</value>
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
-    <value>Ce module est encore en développement. Si vous souhaitez signaler un bug, veuillez nous contacter via le bouton commentaires.</value>
+    <value>Dieses Modul befindet sich noch in der Entwicklung. Wenn Sie einen Fehler melden möchten, kontaktieren Sie uns bitte über den Feedback-Button.</value>
   </data>
   <data name="MorefromDRMATech" xml:space="preserve">
-    <value>Plus de DRMA Tech</value>
+    <value>Mehr von DRMA Tech</value>
   </data>
   <data name="NotAnswered" xml:space="preserve">
-    <value>Pas de réponse</value>
+    <value>Nicht beantwortet</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
-    <value>Opération annulée !</value>
+    <value>Aktion abgebrochen!</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
-    <value>Le profil de votre partenaire n'est pas encore disponible</value>
+    <value>Das Profil Ihres Partners ist noch nicht verfügbar</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
-    <value>Ce processus est en constante évolution. Si vous souhaitez signaler une erreur ou une amélioration, veuillez ouvrir un ticket auprès de notre équipe d'assistance.</value>
+    <value>Dieser Prozess entwickelt sich ständig weiter. Wenn Sie einen Fehler oder eine Verbesserung melden möchten, eröffnen Sie bitte ein Ticket bei unserem Support-Team.</value>
   </data>
   <data name="PopulateFilterTitle" xml:space="preserve">
-    <value>Champs renseignés automatiquement</value>
+    <value>Felder werden automatisch ausgefüllt</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
-    <value>Ici vous pouvez définir votre type de profil idéal, afin que nous puissions calculer correctement votre indice de compatibilité</value>
+    <value>Hier können Sie Ihren idealen Profiltyp definieren, damit wir Ihren Kompatibilitätsindex richtig berechnen können</value>
   </data>
   <data name="PreferHelpTopic2" xml:space="preserve">
-    <value>Plus vous êtes précis dans les filtres, moins vous aurez d'options de profil disponibles</value>
+    <value>Je spezifischer Sie in den Filtern sind, desto weniger Profiloptionen stehen Ihnen zur Verfügung</value>
   </data>
   <data name="PremiumFeature" xml:space="preserve">
-    <value>Fonctionnalité Premium</value>
+    <value>Premium-Funktion</value>
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Confidentialité</value>
+    <value>Privatsphäre</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
-    <value>politique de confidentialité</value>
+    <value>Datenschutzrichtlinie</value>
   </data>
   <data name="ProfileDataBioTip1" xml:space="preserve">
-    <value>Pour garantir un environnement positif, nous prenons au sérieux le harcèlement et les préjugés. Si vous rencontrez ce type de comportement, veuillez signaler immédiatement le profil.</value>
+    <value>Um ein positives Umfeld zu gewährleisten, nehmen wir Belästigung und Voreingenommenheit ernst. Wenn Sie auf ein solches Verhalten stoßen, melden Sie das Profil bitte umgehend.</value>
   </data>
   <data name="ProfileDataBioTip2" xml:space="preserve">
-    <value>Si vous avez du mal à interagir ou à reconnaître des intentions nuisibles, envisagez de demander de l’aide à vos amis ou à votre famille.</value>
+    <value>Wenn Sie Schwierigkeiten haben, mit anderen zu interagieren oder schädliche Absichten zu erkennen, sollten Sie Freunde oder Familie um Unterstützung bitten.</value>
   </data>
   <data name="ProfileDataPersonTip1" xml:space="preserve">
-    <value>Pour les personnalités plus complexes, explorez les tests sur les sites spécialisés. On peut répondre à certaines en lisant simplement les descriptions des articles.</value>
+    <value>Für komplexere Persönlichkeiten erkunden Sie Tests auf speziellen Websites. Einige können durch einfaches Lesen der Artikelbeschreibungen beantwortet werden.</value>
   </data>
   <data name="ProfileFilterWarning" xml:space="preserve">
-    <value>Sélectionnez uniquement ce qui compte vraiment. Vous pouvez choisir jusqu'à 8 filtres pour que les correspondances restent pertinentes.</value>
+    <value>Wählen Sie nur das aus, was wirklich wichtig ist. Sie können bis zu 8 Filter auswählen, um Übereinstimmungen relevant zu halten.</value>
   </data>
   <data name="ProfileNotAvailable" xml:space="preserve">
-    <value>Profil non disponible</value>
+    <value>Profil nicht verfügbar</value>
   </data>
   <data name="ProfileNotFound" xml:space="preserve">
-    <value>Profil introuvable ou pas encore enregistré correctement.</value>
+    <value>Profil nicht gefunden oder noch nicht ordnungsgemäß registriert.</value>
   </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
-    <value>Votre profil est désormais en mode privé et ne sera ni vu ni partagé avec qui que ce soit</value>
+    <value>Ihr Profil befindet sich jetzt im privaten Modus und wird weder angezeigt noch mit anderen geteilt</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
-    <value>Votre profil est désormais public et peut être mis à disposition de nos clients</value>
+    <value>Ihr Profil ist nun öffentlich und kann unseren Kunden zur Verfügung gestellt werden</value>
   </data>
   <data name="PWAUpdaterButton" xml:space="preserve">
-    <value>METTRE À JOUR MAINTENANT</value>
+    <value>JETZT AKTUALISIEREN</value>
   </data>
   <data name="PWAUpdaterText" xml:space="preserve">
-    <value>Une nouvelle version est disponible</value>
+    <value>Eine neue Version ist verfügbar</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Paramètres</value>
+    <value>Einstellungen</value>
   </data>
   <data name="SureDeleteAccount" xml:space="preserve">
-    <value>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action ne peut pas être annulée.</value>
+    <value>Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.</value>
   </data>
   <data name="TermTopic1" xml:space="preserve">
-    <value>Soyez honnête dans les réponses données sur ce formulaire. Toutes les informations contenues dans ce document sont susceptibles de dénonciations et peuvent être évaluées ;</value>
+    <value>Seien Sie bei den Antworten auf diesem Formular ehrlich. Alle hierin enthaltenen Informationen sind anfechtbar und können ausgewertet werden;</value>
   </data>
   <data name="TermTopic2" xml:space="preserve">
-    <value>Pour savoir comment vos données seront traitées, nous vous demandons de lire notre</value>
+    <value>Um zu erfahren, wie mit Ihren Daten umgegangen wird, bitten wir Sie, unsere zu lesen</value>
   </data>
   <data name="Tips" xml:space="preserve">
-    <value>Conseils</value>
+    <value>Tipps</value>
   </data>
   <data name="UnableDetectGps" xml:space="preserve">
-    <value>Nous n'avons pas pu détecter de système GPS sur votre appareil. Veuillez réessayer ou libérer l'accès au GPS de votre appareil.</value>
+    <value>Wir konnten auf Ihrem Gerät kein GPS-System erkennen. Bitte versuchen Sie es erneut oder geben Sie den Zugriff auf das GPS Ihres Geräts frei.</value>
   </data>
   <data name="Undefined" xml:space="preserve">
-    <value>Indéfini</value>
+    <value>Undefiniert</value>
   </data>
   <data name="WelcomeTo" xml:space="preserve">
-    <value>Bienvenue à {0}</value>
+    <value>Willkommen bei {0}</value>
   </data>
   <data name="WhyImportant" xml:space="preserve">
-    <value>Pourquoi est-ce important ?</value>
+    <value>Warum ist es wichtig?</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Notez l'application et partagez-la avec vos amis !</value>
+    <value>Bewerten Sie die App und teilen Sie sie mit Ihren Freunden!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
-    <value>Aidez {0} à grandir !</value>
+    <value>Helfen Sie {0} zu wachsen!</value>
   </data>
   <data name="Years" xml:space="preserve">
-    <value>Années</value>
+    <value>Jahre</value>
   </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
-    <value>Vous devez être connecté pour vous abonner</value>
+    <value>Sie müssen angemeldet sein, um sich anzumelden</value>
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
-    <value>Votre emplacement actuel :</value>
+    <value>Ihr aktueller Standort:</value>
   </data>
   <data name="YourPartnerProfile" xml:space="preserve">
-    <value>Le profil de votre partenaire</value>
+    <value>Das Profil Ihres Partners</value>
   </data>
   <data name="YourProfile" xml:space="preserve">
-    <value>Votre profil (ou préférences)</value>
+    <value>Ihr Profil (oder Ihre Vorlieben)</value>
   </data>
 </root>
