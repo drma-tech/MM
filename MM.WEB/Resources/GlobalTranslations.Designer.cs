@@ -394,6 +394,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation in progress. Please wait....
+        /// </summary>
+        public static string OperationProgress {
+            get {
+                return ResourceManager.GetString("OperationProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your partner&apos;s profile is not yet available.
         /// </summary>
         public static string PartnerProfileNotAvailable {

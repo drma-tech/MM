@@ -228,6 +228,9 @@
   <data name="OperationCanceled" xml:space="preserve">
     <value>Opération annulée !</value>
   </data>
+  <data name="OperationProgress" xml:space="preserve">
+    <value>Opération en cours. S'il vous plaît, attendez...</value>
+  </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>Le profil de votre partenaire n'est pas encore disponible</value>
   </data>
