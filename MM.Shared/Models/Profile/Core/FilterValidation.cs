@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MM.Shared.Models.Profile.Resources;
 using MM.Shared.Resources;
+using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.Shared.Models.Profile.Core;
 
@@ -248,20 +249,9 @@ public class FilterValidation : AbstractValidator<FilterModel>
               .WithMessage("Choose up to 8 filters");
     }
 
-    private static bool LimitFilters(FilterModel model)
+    public static bool LimitFilters(FilterModel model)
     {
         return GetTotalFilters(model, null) <= 8;
-    }
-
-    public enum Tabs
-    {
-        BASIC,
-        BIO,
-        LIFESTYLE,
-        PERSONALITY,
-        INTEREST,
-        RELATIONSHIP,
-        GOAL
     }
 
     public static int GetTotalFilters(FilterModel? model, Tabs? tab)

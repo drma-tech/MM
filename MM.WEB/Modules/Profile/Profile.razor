@@ -76,12 +76,18 @@ else
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
                                        Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                                 @Button.Profile
+                                <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
+                                    @profile.GetOverallCompletionPercentage().ToString("P0")
+                                </MudChip>
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepFilter" SecondaryText="@Resources.Translations.StepFilterDesc" Completed="FilterValid">
                             <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/filter")
                                        Style="width: 100%;" Disabled="profile == null">
                                 @Button.Filters
+                                <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
+                                    @FilterValidation.GetTotalFilters(filter, null).ToString("N0")
+                                </MudChip>
                             </MudButton>
                         </MudStep>
                         <MudStep Title="@Resources.Translations.StepSettings" SecondaryText="@Resources.Translations.StepSettingsDesc" Completed="SettingValid">

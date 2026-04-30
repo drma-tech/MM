@@ -1,5 +1,6 @@
 ﻿@page "/{culture}/profile/data"
 @attribute [Authorize]
+
 @using FluentValidation
 @using MM.Shared.Enums.Resources
 @using MM.Shared.Models.Profile
@@ -26,6 +27,7 @@
 @using Smoke = MM.Shared.Enums.Smoke
 @using TravelFrequency = MM.Shared.Enums.TravelFrequency
 @using WantChildren = MM.Shared.Enums.WantChildren
+@using static MM.Shared.Core.Helper.ProfileHelper
 
 @inherits PageCore<ProfileData>
 
@@ -38,7 +40,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.BASIC))
+                    @if (Profile.IsValid(Tabs.BASIC))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -47,7 +49,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Basic</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.BASIC).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.BASIC).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -107,7 +109,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.BIO))
+                    @if (Profile.IsValid(Tabs.BIO))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -116,7 +118,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Bio</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.BIO).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.BIO).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -177,7 +179,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.LIFESTYLE))
+                    @if (Profile.IsValid(Tabs.LIFESTYLE))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -186,7 +188,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Lifestyle</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.LIFESTYLE).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.LIFESTYLE).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -281,7 +283,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.PERSONALITY))
+                    @if (Profile.IsValid(Tabs.PERSONALITY))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -290,7 +292,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Personality</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.PERSONALITY).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.PERSONALITY).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -343,7 +345,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.INTEREST))
+                    @if (Profile.IsValid(Tabs.INTEREST))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -352,7 +354,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Interest</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.INTEREST).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.INTEREST).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -410,7 +412,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.RELATIONSHIP))
+                    @if (Profile.IsValid(Tabs.RELATIONSHIP))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -419,7 +421,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Relationship</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.RELATIONSHIP).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.RELATIONSHIP).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -459,7 +461,7 @@
         <MudExpansionPanel HeaderClass="mud-primary-text">
             <TitleContent>
                 <div class="d-flex">
-                    @if (IsValid(Tabs.GOAL))
+                    @if (Profile.IsValid(Tabs.GOAL))
                     {
                         <MudIcon Icon="@IconsFA.Solid.Icon("check").Font" Color="Color.Success" class="me-3"></MudIcon>
                     }
@@ -468,7 +470,7 @@
                         <MudIcon Icon="@IconsFA.Solid.Icon("triangle-exclamation").Font" Color="Color.Warning" class="me-3"></MudIcon>
                     }
                     <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Goals</MudText>
-                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@GetCompletionPercentage(Tabs.GOAL).ToString("P0")</MudChip>
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@Profile.GetCompletionPercentage(Tabs.GOAL).ToString("P0")</MudChip>
                 </div>
             </TitleContent>
             <ChildContent>
@@ -506,9 +508,12 @@
 <MudButton StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary" Variant="Variant.Filled" Class="me-2" OnClick="SaveHandle"
            Disabled="@(Profile == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
     @Button.Save
+    <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
+        @Profile.GetOverallCompletionPercentage().ToString("P0")
+    </MudChip>
 </MudButton>
 
-@if (Profile != null && !Validator.Validate(Profile, options => options.IncludeAllRuleSets()).IsValid)
+@if (Profile != null && !ProfileHelper.Validator.Validate(Profile, options => options.IncludeAllRuleSets()).IsValid)
 {
     <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)">
         @Button.ShowPendingItems
@@ -541,17 +546,6 @@
 @code {
     private MudDialog? MudDialog { get; set; }
 
-    private enum Tabs
-    {
-        BASIC,
-        BIO,
-        LIFESTYLE,
-        PERSONALITY,
-        INTEREST,
-        RELATIONSHIP,
-        GOAL
-    }
-
     bool _BioExpanded = false;
     bool _LifeExpanded = false;
 
@@ -564,75 +558,4 @@
         Profile.Nationality = country;
         Profile.AddLanguages(country);
     }
-
-    public ProfileValidation Validator { get; set; } = new();
-
-    private bool IsValid(Tabs tab)
-    {
-        if (Profile == null) return false;
-
-        var result = new FluentValidation.Results.ValidationResult();
-        var ruleSet = tab.ToString();
-
-        return Validator.Validate(Profile, o => o.IncludeRuleSets(ruleSet)).IsValid;
-    }
-
-    private static readonly Dictionary<Tabs, int> TotalRules = new()
-    {
-        { Tabs.BASIC, 9 },
-        { Tabs.BIO, 4 },
-        { Tabs.LIFESTYLE, 11 },
-        { Tabs.PERSONALITY, 7 },
-        { Tabs.INTEREST, 3 },
-        { Tabs.RELATIONSHIP, 5 },
-        { Tabs.GOAL, 4 }
-    };
-
-    private (int total, int failed) GetCompletion(Tabs tab)
-    {
-        if (Profile == null) return (0, 0);
-
-        if (tab == Tabs.INTEREST)
-        {
-            var filled = 0;
-
-            if (Profile.Food.Count != 0) filled++;
-            if (Profile.Vacation.Count != 0) filled++;
-            if (Profile.Sports.Count != 0) filled++;
-            if (Profile.LeisureActivities.Count != 0) filled++;
-            if (Profile.MusicGenre.Count != 0) filled++;
-            if (Profile.MovieGenre.Count != 0) filled++;
-            if (Profile.TVGenre.Count != 0) filled++;
-            if (Profile.ReadingGenre.Count != 0) filled++;
-
-            const int minimum = 3;
-
-            int failed = Math.Max(minimum - filled, 0);
-
-            return (minimum, failed);
-        }
-
-        var ruleSet = tab.ToString();
-
-        var result = Validator.Validate(Profile, o => o.IncludeRuleSets(ruleSet));
-
-        var totalRules = TotalRules[tab];
-
-        var failedRules = result.Errors
-            .Select(e => e.PropertyName)
-            .Distinct()
-            .Count();
-
-        return (totalRules, failedRules);
-    }
-
-    private double GetCompletionPercentage(Tabs tab)
-    {
-        var result = GetCompletion(tab);
-
-        var completed = result.total - result.failed;
-
-        return (double)completed / result.total;
-    }
-
 }

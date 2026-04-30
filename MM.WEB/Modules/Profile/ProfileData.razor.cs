@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 using MM.WEB.Shared.Core;
+using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.WEB.Modules.Profile;
 
