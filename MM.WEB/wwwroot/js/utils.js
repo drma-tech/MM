@@ -232,7 +232,7 @@ export const environment = {
 
         for (const url of urls) {
             try {
-                await fetch(url);
+                await fetch(url, { mode: 'no-cors', cache: 'no-store' });
             } catch {
                 return true;
             }
