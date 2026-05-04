@@ -225,20 +225,23 @@ export const environment = {
     getAppVersion() {
         return appVersion;
     },
+    testUrl(url) {
+        return new Promise((resolve) => {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url, true);
+
+            xhr.onload = () => resolve(true);   // success
+            xhr.onerror = () => resolve(false); // blocked or failed
+
+            xhr.send();
+        });
+    },
     async isAdBlocked() {
-        const urls = [
+        const fundingOk = await testUrl(
             'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
-        ];
-
-        for (const url of urls) {
-            try {
-                await fetch(url, { mode: 'no-cors', cache: 'no-store' });
-            } catch {
-                return true;
-            }
-        }
-
-        return false;
+        );
+        return !fundingOk;
     }
 };
 
