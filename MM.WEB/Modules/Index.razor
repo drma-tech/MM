@@ -124,7 +124,7 @@
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint<Breakpoint.Sm? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
+                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
@@ -525,6 +525,15 @@
         {
             //https://developer.apple.com/app-store/review/guidelines/#link-to-other-purchase-methods
             SubscriptionAllowed = _iosAllowedCountries.ContainsKey(country);
+        }
+
+        if (!Navigation.BaseUri.Contains("localhost"))
+        {
+            var blocked = await JsRuntime.Utils().IsAdBlocked();
+            if (blocked)
+            {
+                await ShowError("AdBlocker detected. Please consider whitelisting our website to support us. Thank you!");
+            }
         }
     }
 

@@ -225,6 +225,21 @@ export const environment = {
     getAppVersion() {
         return appVersion;
     },
+    async isAdBlocked() {
+        const urls = [
+            'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
+        ];
+
+        for (const url of urls) {
+            try {
+                await fetch(url);
+            } catch {
+                return true;
+            }
+        }
+
+        return false;
+    }
 };
 
 export const interop = {
