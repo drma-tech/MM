@@ -527,13 +527,11 @@
             SubscriptionAllowed = _iosAllowedCountries.ContainsKey(country);
         }
 
-        if (!Navigation.BaseUri.Contains("localhost"))
+        var blocked = await JsRuntime.Utils().IsAdBlocked();
+
+        if (blocked)
         {
-            var blocked = await JsRuntime.Utils().IsAdBlocked();
-            if (blocked)
-            {
-                await ShowError("AdBlocker detected. Please consider whitelisting our website to support us. Thank you!");
-            }
+            await ShowWarning(GlobalTranslations.AdBlockerDetected);
         }
     }
 
