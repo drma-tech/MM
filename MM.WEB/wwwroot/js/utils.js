@@ -238,7 +238,7 @@ export const environment = {
         });
     },
     async isAdBlocked() {
-        const fundingOk = await testUrl(
+        const fundingOk = await environment.testUrl(
             'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
         );
         return !fundingOk;
