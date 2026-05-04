@@ -227,14 +227,16 @@ export const environment = {
     },
     testUrl(url) {
         return new Promise((resolve) => {
-            const xhr = new XMLHttpRequest();
+            const script = document.createElement('script');
 
-            xhr.open('GET', url, true);
+            script.src = url;
 
-            xhr.onload = () => resolve(true);   // success
-            xhr.onerror = () => resolve(false); // blocked or failed
+            script.onload = () => resolve(true);
+            script.onerror = () => resolve(false);
 
-            xhr.send();
+            document.head.appendChild(script);
+
+            setTimeout(() => resolve(false), 2000);
         });
     },
     async isAdBlocked() {
