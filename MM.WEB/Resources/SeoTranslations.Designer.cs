@@ -70,6 +70,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find a Compatible Partner Through Smart Matching.
+        /// </summary>
+        public static string AppIndexTitle {
+            get {
+                return ResourceManager.GetString("AppIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help Center.
         /// </summary>
         public static string HelpCenter {

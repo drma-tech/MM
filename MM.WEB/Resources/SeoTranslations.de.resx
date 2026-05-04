@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Die Zukunft der Suche nach einem Lebenspartner ist da. Intelligenter und günstiger als herkömmliches Matchmaking, mit präziser Kompatibilität und ohne endloses Wischen.</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Finden Sie einen kompatiblen Partner durch Smart Matching</value>
+  </data>
   <data name="HelpCenter" xml:space="preserve">
     <value>Hilfecenter</value>
   </data>

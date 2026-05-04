@@ -120,6 +120,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>O futuro de encontrar um parceiro para a vida toda chegou. Mais inteligente e acessível que o matchmaking tradicional, com compatibilidade precisa e sem deslizes intermináveis.</value>
   </data>
+  <data name="AppIndexTitle" xml:space="preserve">
+    <value>Encontre um parceiro compatível através do Smart Matching.</value>
+  </data>
   <data name="HelpCenter" xml:space="preserve">
     <value>Central de Ajuda</value>
   </data>
