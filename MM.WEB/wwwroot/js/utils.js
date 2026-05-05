@@ -226,108 +226,82 @@ export const environment = {
         return appVersion;
     },
     inspectAdElement(el) {
-        if (!el) return { state: 'unfilled' };
+        if (!el) return { rendered: false, hasSize: false };
 
         const iframe = el.querySelector('iframe');
-        const status = el.getAttribute('data-ad-status');
         const rect = el.getBoundingClientRect();
+
+        const rendered = !!iframe;
         const hasSize = rect.width > 0 && rect.height > 0;
 
-        const scriptPresent = !!window.adsbygoogle;
-
-        // 1. success case
-        if (iframe && hasSize) {
-            return { state: 'filled' };
-        }
-
-        // 2. clear failure signals
-        if (iframe && !hasSize) {
-            return { state: 'blocked' };
-        }
-
-        if (!iframe && status === 'unfilled' && !scriptPresent) {
-            return { state: 'blocked' };
-        }
-
-        // 3. everything else = no ad served
-        return { state: 'unfilled' };
+        return { rendered, hasSize };
     },
     async waitForAds(els, timeout = 4000) {
+        const start = Date.now();
+
         return new Promise((resolve) => {
-            const start = Date.now();
-
             const interval = setInterval(() => {
-                let hasBlocked = false;
-
                 for (const el of els) {
-                    const result = environment.inspectAdElement(el);
+                    const { rendered, hasSize } = environment.inspectAdElement(el);
 
-                    if (result.state === 'filled') {
+                    if (rendered && hasSize) {
                         clearInterval(interval);
-                        resolve({ state: 'filled' });
-                        return;
-                    }
-
-                    if (result.state === 'blocked') {
-                        hasBlocked = true;
+                        return resolve('filled');
                     }
                 }
 
                 if (Date.now() - start > timeout) {
                     clearInterval(interval);
-
-                    resolve({
-                        state: hasBlocked ? 'blocked' : 'unfilled'
-                    });
+                    resolve('suspected_blocked');
                 }
             }, 200);
         });
     },
     testUrl(url) {
         return new Promise((resolve) => {
-            const script = document.createElement('script');
             let done = false;
 
-            const cleanup = (result) => {
+            const script = document.createElement('script');
+
+            const finish = (result) => {
                 if (done) return;
                 done = true;
-
                 script.remove();
                 resolve(result);
             };
 
             script.src = url;
-
-            script.onload = () => cleanup(true);
-            script.onerror = () => cleanup(false);
+            script.onload = () => finish(true);
+            script.onerror = () => finish(false);
 
             document.head.appendChild(script);
 
-            setTimeout(() => cleanup(false), 2000);
+            setTimeout(() => finish(false), 2000);
         });
     },
     async isAdBlocked() {
-        if (window.location.hostname === 'localhost') return false;
-
-        const els = document.querySelectorAll('.adsbygoogle');
-
-        if (!els.length) return false;
-
-        const result = await environment.waitForAds(els);
-
-        if (result.state === 'blocked') {
-            return true;
-        }
-
-        if (result.state === 'filled') {
+        if (window.location.hostname === 'localhost') {
             return false;
         }
 
-        const urlWorks = await environment.testUrl(
-            'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
-        );
+        const els = document.querySelectorAll('.adsbygoogle');
+        if (!els.length) return false;
 
-        return !urlWorks;
+        const state = await environment.waitForAds(els);
+
+        if (state === 'filled') {
+            return false;
+        }
+
+        if (state === 'suspected_blocked') {
+            const adsNetworkWorks = await environment.testUrl(
+                'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
+            );
+
+            return !adsNetworkWorks;
+        }
+
+        return false;
     }
 };
 
