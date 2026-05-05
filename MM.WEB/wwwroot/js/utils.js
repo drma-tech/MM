@@ -225,25 +225,106 @@ export const environment = {
     getAppVersion() {
         return appVersion;
     },
+    inspectAdElement(el) {
+        if (!el) return { state: 'not_found' };
+
+        const iframe = el.querySelector('iframe');
+        const status = el.getAttribute('data-ad-status');
+        const rect = el.getBoundingClientRect();
+        const hasSize = rect.width > 0 && rect.height > 0;
+
+        const scriptPresent = !!window.adsbygoogle;
+
+        if (iframe && hasSize) { return { state: 'filled' }; }
+
+        if (status === 'unfilled') {
+            if (!iframe || !scriptPresent || !hasSize) { return { state: 'likely_blocked_or_interfered' }; }
+
+            return { state: 'unfilled_legit' };
+        }
+
+        if (iframe && !hasSize) { return { state: 'blocked_or_collapsed' }; }
+
+        return { state: 'unknown' };
+    },
+    async waitForAds(els, timeout = 4000) {
+        return new Promise((resolve) => {
+            const start = Date.now();
+
+            const interval = setInterval(() => {
+                let finalState = 'unknown';
+
+                for (const el of els) {
+                    const result = environment.inspectAdElement(el);
+
+                    if (result.state === 'filled') {
+                        clearInterval(interval);
+                        resolve({ state: 'filled' });
+                        return;
+                    }
+
+                    if (result.state === 'likely_blocked_or_interfered') { finalState = 'blocked'; }
+                    if (result.state === 'blocked_or_collapsed') { finalState = 'blocked'; }
+                    if (result.state === 'unfilled') { finalState = 'unfilled'; }
+                }
+
+                const elapsed = Date.now() - start;
+
+                if (elapsed > timeout) {
+                    clearInterval(interval);
+
+                    const priority = ['blocked', 'unfilled', 'timeout'];
+
+                    const state = priority.includes(finalState) ? finalState : 'timeout';
+
+                    resolve({ state });
+                }
+            }, 200);
+        });
+    },
     testUrl(url) {
         return new Promise((resolve) => {
             const script = document.createElement('script');
+            let done = false;
+
+            const cleanup = (result) => {
+                if (done) return;
+                done = true;
+
+                script.remove();
+                resolve(result);
+            };
 
             script.src = url;
 
-            script.onload = () => resolve(true);
-            script.onerror = () => resolve(false);
+            script.onload = () => cleanup(true);
+            script.onerror = () => cleanup(false);
 
             document.head.appendChild(script);
 
-            setTimeout(() => resolve(false), 2000);
+            setTimeout(() => cleanup(false), 2000);
         });
     },
     async isAdBlocked() {
-        const fundingOk = await environment.testUrl(
+        if (window.location.hostname === 'localhost') return false;
+
+        const els = document.querySelectorAll('.adsbygoogle');
+
+        if (!els.length) {
+            return false; // no ads ≠ adblock
+        }
+
+        const result = await environment.waitForAds(els);
+
+        if (result.state === 'filled') return false;
+        if (result.state === 'blocked') return true;
+        if (result.state === 'unfilled') return false;
+
+        const allowed = await environment.testUrl(
             'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
         );
-        return !fundingOk;
+
+        return !allowed;
     }
 };
 
