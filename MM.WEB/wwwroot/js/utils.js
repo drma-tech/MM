@@ -293,15 +293,19 @@ export const environment = {
             return false;
         }
 
-        if (state === 'suspected_blocked') {
-            const adsNetworkWorks = await environment.testUrl(
-                'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
-            );
+        const googlesyndication = await environment.testUrl(
+            'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+        );
 
-            return !adsNetworkWorks;
+        if (!googlesyndication) {
+            return true;
         }
 
-        return false;
+        const fundingchoicesmessages = await environment.testUrl(
+            'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
+        );
+
+        return !fundingchoicesmessages;
     }
 };
 
