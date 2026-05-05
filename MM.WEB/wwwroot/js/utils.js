@@ -237,9 +237,16 @@ export const environment = {
 
         if (iframe && hasSize) { return { state: 'filled' }; }
 
-        if (status === 'unfilled') {
-            if (!iframe || !scriptPresent || !hasSize) { return { state: 'likely_blocked_or_interfered' }; }
+        if (!iframe && status === 'unfilled') {
+            return {
+                state: scriptPresent ? 'unfilled_no_iframe' : 'blocked_or_interfered'
+            };
+        }
 
+        if (status === 'unfilled') {
+            if (!hasSize) {
+                return { state: 'collapsed_or_failed' };
+            }
             return { state: 'unfilled_legit' };
         }
 
