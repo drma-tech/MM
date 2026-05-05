@@ -252,6 +252,8 @@ export const environment = {
 
                 if (Date.now() - start > timeout) {
                     clearInterval(interval);
+                    const elapsed = Date.now() - start;
+                    console.log('ads timeout in', elapsed, 'ms');
                     resolve('suspected_blocked');
                 }
             }, 200);
