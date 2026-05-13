@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Extensions.Http;
 using Stripe;
 
 var app = new HostBuilder()
@@ -74,10 +76,11 @@ static void ConfigureServices(IServiceCollection services)
     {
         //http clients
 
-        services.AddHttpClient("paddle");
         services.AddHttpClient("apple");
-        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(60); });
-        services.AddHttpClient("ipinfo");
+        services.AddHttpClient("auth", client => { client.Timeout = TimeSpan.FromSeconds(30); });
+
+        services.AddHttpClient("ipinfo")
+            .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
         //repositories
 
@@ -127,4 +130,12 @@ static void ConfigureServices(IServiceCollection services)
 
         throw;
     }
+}
+
+//https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory
+static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+{
+    return HttpPolicyExtensions
+        .HandleTransientHttpError() // 408,5xx
+        .WaitAndRetryAsync([TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2)]);
 }

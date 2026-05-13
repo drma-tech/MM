@@ -1,6 +1,5 @@
 ﻿@page "/{culture}/profile/filter"
 @attribute [Authorize]
-@using FluentValidation
 @using MM.Shared.Enums.Resources
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
@@ -21,7 +20,6 @@
 @using TravelFrequency = MM.Shared.Enums.TravelFrequency
 @using WantChildren = MM.Shared.Enums.WantChildren
 @using static MM.Shared.Core.Helper.ProfileHelper
-@using static MM.Shared.Models.Profile.Core.FilterValidation
 @inherits PageCore<ProfileFilter>
 
 @inject ProfileApi ProfileApi
