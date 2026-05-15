@@ -35,8 +35,6 @@
     {
         try
         {
-            await base.OnAfterRenderAsync(firstRender);
-
             if (firstRender && !IsLocalhost && !ActiveSubscription)
             {
                 var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
@@ -54,6 +52,8 @@
                     await JsRuntime.Services().InitAdSense($"ca-pub-{AdClientId}", Section, _containerId);
                 }
             }
+
+            await base.OnAfterRenderAsync(firstRender);
         }
         catch (Exception ex)
         {
