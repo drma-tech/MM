@@ -525,21 +525,6 @@
             //https://developer.apple.com/app-store/review/guidelines/#link-to-other-purchase-methods
             SubscriptionAllowed = _iosAllowedCountries.ContainsKey(country);
         }
-
-        _ = DetectAdBlockAsync();
-    }
-
-    private async Task DetectAdBlockAsync()
-    {
-        var blocked = await JsRuntime.Utils().IsAdBlocked();
-
-        if (blocked)
-        {
-            await InvokeAsync(async () =>
-            {
-                await ShowWarning(GlobalTranslations.AdBlockerDetected);
-            });
-        }
     }
 
     private double GetPhaseValue(int phase)

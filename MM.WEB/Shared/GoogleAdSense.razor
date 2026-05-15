@@ -59,6 +59,24 @@
         }
     }
 
+    protected override async Task ProcessComponentData()
+    {
+        _ = DetectAdBlockAsync();
+    }
+
+    private async Task DetectAdBlockAsync()
+    {
+        var blocked = await JsRuntime.Utils().IsAdBlocked();
+
+        if (blocked)
+        {
+            await InvokeAsync(async () =>
+            {
+                await ShowWarning(GlobalTranslations.AdBlockerDetected);
+            });
+        }
+    }
+
     private async Task OpenSubscription()
     {
         await DialogService.SubscriptionPopup();

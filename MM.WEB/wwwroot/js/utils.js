@@ -297,15 +297,7 @@ export const environment = {
             'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
         );
 
-        if (!googlesyndication) {
-            return true;
-        }
-
-        const fundingchoicesmessages = await environment.testUrl(
-            'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
-        );
-
-        return !fundingchoicesmessages;
+        return !googlesyndication;
     }
 };
 
