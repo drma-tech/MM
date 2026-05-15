@@ -35,6 +35,8 @@
     {
         try
         {
+            await base.OnAfterRenderAsync(firstRender);
+
             if (firstRender && !IsLocalhost && !ActiveSubscription)
             {
                 var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime);
