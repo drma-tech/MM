@@ -250,3 +250,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
         return tot >= 3;
     }
 }
+
+//todo: validacao de maior de idade
+//https://worldpopulationreview.com/country-rankings/age-of-consent-by-country
+//https://worldpopulationreview.com/country-rankings/age-of-majority-by-country
