@@ -201,6 +201,9 @@
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relationship</value>
   </data>
