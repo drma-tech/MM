@@ -97,7 +97,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
     public async Task<HttpResponseData> LoginEmailWebHook(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        using var reader = new StreamReader(req.Body);
+        using var reader = new StreamReader(req.Body, leaveOpen: true);
 
         var rawBody = await reader.ReadToEndAsync(cancellationToken);
         var signature = req.Headers.GetValues("producer-signature").FirstOrDefault();
