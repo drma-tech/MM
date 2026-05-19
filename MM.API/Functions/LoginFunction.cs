@@ -97,6 +97,25 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
     public async Task<HttpResponseData> LoginEmailWebHook(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        using var reader = new StreamReader(req.Body);
+
+        var rawBody = await reader.ReadToEndAsync(cancellationToken);
+        var signature = req.Headers.GetValues("producer-signature").FirstOrDefault();
+
+        var valid = ZeptoMailVerify.VerifyZeptoWebhook(rawBody, signature!, ApiStartup.Configurations.ZeptoMail!.SecrectWebhook!);
+
+        if (!valid)
+        {
+            return await req.CreateResponse(HttpStatusCode.Unauthorized, "invalid webhook signature");
+        }
+
+        var app = req.Headers.GetValues("app").FirstOrDefault();
+
+        if (app != "mm")
+        {
+            return await req.CreateResponse(HttpStatusCode.NotAcceptable, $"webhook ignored -> app={app ?? "null"}");
+        }
+
         var body = await req.GetPublicBody<ZeptoMailWebHook>(cancellationToken);
 
         var eventMessage = body.event_message?.FirstOrDefault();
