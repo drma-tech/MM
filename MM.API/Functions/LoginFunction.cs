@@ -116,9 +116,9 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
             return await req.CreateResponse(HttpStatusCode.NotAcceptable, $"webhook ignored -> app={app ?? "null"}");
         }
 
-        var body = await req.GetPublicBody<ZeptoMailWebHook>(cancellationToken);
+        var body = JsonSerializer.Deserialize<ZeptoMailWebHook>(rawBody);
 
-        var eventMessage = body.event_message?.FirstOrDefault();
+        var eventMessage = body?.event_message?.FirstOrDefault();
         var eventData = eventMessage?.event_data?.FirstOrDefault();
 
         var reference = eventMessage?.email_info?.client_reference;
