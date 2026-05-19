@@ -104,7 +104,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 
         var reference = eventMessage?.email_info?.client_reference;
         var message = eventData?.details?.FirstOrDefault()?.diagnostic_message;
-        var bytes = JsonSerializer.SerializeToUtf8Bytes(body);
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(message);
 
         await cache.SetAsync($"login:{reference}", bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5) }, cancellationToken);
 
@@ -112,7 +112,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
     }
 
     [Function("LoginEmailStatus")]
-    public async Task<ZeptoMailWebHook?> LoginEmailStatus(
+    public async Task<string?> LoginEmailStatus(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/login/status")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var reference = req.GetQueryParameters()["reference"];
@@ -122,7 +122,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 
         if (cachedBytes is { Length: > 0 })
         {
-            return JsonSerializer.Deserialize<ZeptoMailWebHook>(cachedBytes);
+            return JsonSerializer.Deserialize<string>(cachedBytes);
         }
         else
         {
