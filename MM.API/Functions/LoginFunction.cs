@@ -94,7 +94,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
     }
 
     [Function("LoginEmailWebHook")]
-    public async Task LoginEmailWebHook(
+    public async Task<HttpResponseData> LoginEmailWebHook(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var body = await req.GetPublicBody<ZeptoMailWebHook>(cancellationToken);
@@ -107,6 +107,8 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
         var bytes = JsonSerializer.SerializeToUtf8Bytes(body);
 
         await cache.SetAsync($"login:{reference}", bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5) }, cancellationToken);
+
+        return await req.CreateResponse(HttpStatusCode.OK, "webhook received");
     }
 
     [Function("LoginEmailStatus")]
