@@ -105,7 +105,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 
     [Function("LoginEmailStatus")]
     public async Task<ZeptoMailWebHook?> LoginEmailStatus(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/status/{reference}")] HttpRequestData req, string reference, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/login/status/{reference}")] HttpRequestData req, string reference, CancellationToken cancellationToken)
     {
         var cachedBytes = await cache.GetAsync($"login:{reference}", cancellationToken);
 
