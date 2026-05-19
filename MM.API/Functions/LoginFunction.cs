@@ -1,12 +1,16 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Caching.Distributed;
 using MM.API.Core.Auth;
 using MM.Shared.Models.Auth;
+using MM.Shared.Models.ZeptoMail;
+using Supabase.Gotrue;
 using System.Net;
+using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class LoginFunction(CosmosRepository repo)
+public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 {
     [Function("LoginGet")]
     public async Task<AuthLogin?> LoginGet(
@@ -60,6 +64,58 @@ public class LoginFunction(CosmosRepository repo)
                 .ToArray();
 
             await repo.UpsertItemAsync(login, cancellationToken);
+        }
+    }
+
+    [Function("LoginEmailAuth")]
+    public async Task LoginEmailAuth(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/{email}/{reference}")] HttpRequestData req, string email, string reference, CancellationToken cancellationToken)
+    {
+        //generate a magic link and return the OTP to the client
+
+        var client = new Supabase.Client(ApiStartup.Configurations.SupabaseAuth!.Url!, ApiStartup.Configurations.SupabaseAuth.Key);
+        var admin = client.AdminAuth(ApiStartup.Configurations.SupabaseAuth!.ServiceKey!);
+
+        var options = new GenerateLinkOptions(GenerateLinkOptions.LinkType.MagicLink, email);
+
+        var response = await admin.GenerateLink(options);
+
+        //send email using zeptomail
+
+        var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.ApiKey!);
+
+        await zepto.SendOtpEmail(email, reference, response?.EmailOtp, cancellationToken);
+    }
+
+    [Function("LoginEmailWebHook")]
+    public async Task LoginEmailWebHook(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/webhook")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var body = await req.GetPublicBody<ZeptoMailWebHook>(cancellationToken);
+
+        var eventMessage = body.event_message?.FirstOrDefault();
+        var eventData = eventMessage?.event_data?.FirstOrDefault();
+
+        var reference = eventMessage?.email_info?.client_reference;
+        var message = eventData?.details?.FirstOrDefault()?.diagnostic_message;
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(body);
+
+        await cache.SetAsync($"login:{reference}", bytes, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5) }, cancellationToken);
+    }
+
+    [Function("LoginEmailStatus")]
+    public async Task<ZeptoMailWebHook?> LoginEmailStatus(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/status/{reference}")] HttpRequestData req, string reference, CancellationToken cancellationToken)
+    {
+        var cachedBytes = await cache.GetAsync($"login:{reference}", cancellationToken);
+
+        if (cachedBytes is { Length: > 0 })
+        {
+            return JsonSerializer.Deserialize<ZeptoMailWebHook>(cachedBytes);
+        }
+        else
+        {
+            return null;
         }
     }
 
