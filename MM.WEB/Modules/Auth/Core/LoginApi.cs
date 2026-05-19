@@ -11,7 +11,7 @@ public class LoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(factory
         return null;
     }
 
-    public async Task Add(MM.Shared.Enums.Platform platform, string? country)
+    public async Task Add(Platform platform, string? country)
     {
         await PostAsync<AuthLogin>(Endpoint.Add(platform.ToString(), country), null);
     }
@@ -23,6 +23,32 @@ public class LoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(factory
         public static string Add(string platform, string? country)
         {
             return $"login/add?platform={platform}&country={(country ?? "error")}";
+        }
+    }
+}
+
+public class PublicLoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(factory, ApiType.Anonymous, null)
+{
+    public async Task SendEmail(string? email, string? reference)
+    {
+        await PostAsync<AuthLogin>(Endpoint.SendEmail(email, reference), null);
+    }
+
+    public async Task<string?> StatusEmail(string? reference)
+    {
+        return await GetAsync<string>(Endpoint.StatusEmail(reference));
+    }
+
+    private struct Endpoint
+    {
+        public static string SendEmail(string? email, string? reference)
+        {
+            return $"public/login/email?email={email}&reference={(reference ?? "error")}";
+        }
+
+        public static string StatusEmail(string? reference)
+        {
+            return $"public/login/status?reference={(reference ?? "error")}";
         }
     }
 }

@@ -126,6 +126,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<PrincipalApi>();
     collection.AddScoped<PrincipalImportApi>();
     collection.AddScoped<LoginApi>();
+    collection.AddScoped<PublicLoginApi>();
     collection.AddScoped<ProfileApi>();
     collection.AddScoped<FilterApi>();
     collection.AddScoped<SettingApi>();
