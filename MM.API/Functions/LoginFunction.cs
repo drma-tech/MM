@@ -69,8 +69,14 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 
     [Function("LoginEmailAuth")]
     public async Task LoginEmailAuth(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email/{email}/{reference}")] HttpRequestData req, string email, string reference, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        var email = req.GetQueryParameters()["email"];
+        var reference = req.GetQueryParameters()["reference"];
+
+        if (email.Empty()) return;
+        if (reference.Empty()) return;
+
         //generate a magic link and return the OTP to the client
 
         var client = new Supabase.Client(ApiStartup.Configurations.SupabaseAuth!.Url!, ApiStartup.Configurations.SupabaseAuth.Key);
@@ -105,8 +111,11 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
 
     [Function("LoginEmailStatus")]
     public async Task<ZeptoMailWebHook?> LoginEmailStatus(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/login/status/{reference}")] HttpRequestData req, string reference, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/login/status")] HttpRequestData req, CancellationToken cancellationToken)
     {
+        var reference = req.GetQueryParameters()["reference"];
+        if (reference.Empty()) return null;
+
         var cachedBytes = await cache.GetAsync($"login:{reference}", cancellationToken);
 
         if (cachedBytes is { Length: > 0 })
