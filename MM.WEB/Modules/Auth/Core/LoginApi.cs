@@ -36,7 +36,7 @@ public class PublicLoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(f
 
     public async Task<string?> StatusEmail(string? reference)
     {
-        return await GetAsync<string>(Endpoint.StatusEmail(reference));
+        return await GetStringAsync(Endpoint.StatusEmail(reference));
     }
 
     private struct Endpoint
