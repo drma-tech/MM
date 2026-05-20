@@ -149,6 +149,7 @@
 
     private async Task MonitorEmailStatus(string reference)
     {
+        Console.WriteLine($"Starting email status monitoring...: _processingInProgress {_processingInProgress}");
         for (int i = 0; i < 12 && !_processingInProgress; i++)
         {
             var message = await PublicLoginApi.StatusEmail(reference);
