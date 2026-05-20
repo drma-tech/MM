@@ -113,7 +113,6 @@
                 }
 
                 await PublicLoginApi.SendEmail(email, reference);
-                Console.WriteLine($"Email sent: {email}");
                 success = true;
             }
             else
@@ -149,23 +148,28 @@
 
     private async Task MonitorEmailStatus(string reference)
     {
-        Console.WriteLine($"Starting email status monitoring...: _processingInProgress {_processingInProgress}");
-        for (int i = 0; i < 12 && !_processingInProgress; i++)
+        try
         {
-            var message = await PublicLoginApi.StatusEmail(reference);
-            Console.WriteLine($"Email status check {i + 1}/12: {message}");
-
-            if (message.NotEmpty())
+            for (int i = 0; i < 12 && !_processingInProgress; i++)
             {
-                await ShowError(message);
-                emailProbablySent = false;
-                StateHasChanged();
-                break;
+                var message = await PublicLoginApi.StatusEmail(reference);
+
+                if (message.NotEmpty())
+                {
+                    await ShowError(message);
+                    emailProbablySent = false;
+                    StateHasChanged();
+                    break;
+                }
+
+                if (_processingInProgress) break;
+
+                await Task.Delay(5000);
             }
-
-            if (_processingInProgress) break;
-
-            await Task.Delay(5000);
+        }
+        catch (Exception ex)
+        {
+            await ProcessException(ex);
         }
     }
 
