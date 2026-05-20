@@ -111,7 +111,7 @@
                     _processingInProgress = false; StateHasChanged();
                     return;
                 }
-                
+
                 await PublicLoginApi.SendEmail(email, reference);
                 success = true;
             }
@@ -154,9 +154,12 @@
 
             if (message.NotEmpty())
             {
-                await ShowError(message);
-                emailProbablySent = false;
-                StateHasChanged();
+                await InvokeAsync(async () =>
+                {
+                    await ShowError(message);
+                    emailProbablySent = false;
+                    StateHasChanged();
+                });
                 break;
             }
 
