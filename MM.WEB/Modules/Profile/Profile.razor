@@ -25,8 +25,6 @@
 
 <HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile") Index="false"></HeadComponent>
 
-<GoogleAdSense Section="@GoogleAdSense.AdUnit.Profile"></GoogleAdSense>
-
 @if (!AppStateStatic.IsAuthenticated)
 {
     <MudPaper Class="@Css.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
