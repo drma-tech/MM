@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Shared.Field;
 
-public partial class FieldSelect<TValue, TEnum> : FormBase<TValue, FieldSelect<TValue, TEnum>>
+public partial class FieldSelect<TValue, TEnum> : FormBase<TValue>
     where TEnum : struct, Enum, IConvertible
 {
     [Parameter] public string? CssIcon { get; set; }

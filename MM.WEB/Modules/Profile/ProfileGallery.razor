@@ -138,7 +138,7 @@
     protected override async Task LoadAuthDataAsync()
     {
         ProfileActions.StartLoading?.Invoke(null);
-        _profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+        _profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
         ProfileActions.FinishLoading?.Invoke(_profile);
     }
 
@@ -152,7 +152,7 @@
     {
         try
         {
-            _profile = await StorageApi.DeletePhotoGallery(type);
+            _profile = await StorageApi.DeletePhotoGallery(type, cts.Token);
         }
         catch (Exception ex)
         {
@@ -166,7 +166,7 @@
         {
             var request = new PhotoRequest { PhotoType = type, Buffer = buffer };
 
-            _profile = await StorageApi.UploadPhoto(request);
+            _profile = await StorageApi.UploadPhoto(request, cts.Token);
 
             StateHasChanged();
         }

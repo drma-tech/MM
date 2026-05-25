@@ -178,7 +178,7 @@
 
     protected override async Task ProcessPopupData()
     {
-        CurrentCountry = await IpInfoApi.GetCountry();
+        CurrentCountry = await IpInfoApi.GetCountry(cts.Token);
 
         if (CurrentCountry.NotEmpty())
         {
@@ -189,7 +189,7 @@
 
         Providers.Clear();
 
-        Platform = await AppStateStatic.GetPlatform(JsRuntime);
+        Platform = await AppStateStatic.GetPlatform(JsRuntime, cts.Token);
 
         if (Platform == MM.Shared.Enums.Platform.ios)
         {
@@ -216,7 +216,7 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true);
+        Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true, cts.Token);
 
         var sub = Client?.GetActivePurchase();
 
@@ -230,7 +230,7 @@
     {
         try
         {
-            var freshClient = await PrincipalApi.Get(true, true);
+            var freshClient = await PrincipalApi.Get(true, true, cts.Token);
             if (freshClient == null) throw new NotificationException("Client null");
 
             var sub = freshClient?.GetActivePurchase();
@@ -258,9 +258,9 @@
     {
         try
         {
-            await PaymentAuthApi.AppleVerify(receipt);
+            await PaymentAuthApi.AppleVerify(receipt, cts.Token);
 
-            var freshClient = await PrincipalApi.Get(true, true);
+            var freshClient = await PrincipalApi.Get(true, true, cts.Token);
             if (freshClient == null) throw new NotificationException("Client null");
 
             var sub = freshClient?.GetActivePurchase();

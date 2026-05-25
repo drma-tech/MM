@@ -37,7 +37,7 @@
         }
 
         var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
-        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email);
+        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email, cts.Token);
         Navigation.NavigateTo(url!);
     }
 }

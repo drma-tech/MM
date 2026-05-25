@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Shared.Field;
 
-public partial class FieldSwitch : FormBase<bool, FieldSwitch>
+public partial class FieldSwitch : FormBase<bool>
 {
     [Parameter] public bool Value { get; set; }
     [Parameter] public EventCallback<bool> ValueChanged { get; set; }

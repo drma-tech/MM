@@ -1,4 +1,8 @@
-﻿@inherits BaseCustomField<DateTime?, Birthdate>
+﻿@using Microsoft.JSInterop
+@inherits BaseCustomField<DateTime?>
+
+@inject IJSRuntime JsRuntime
+@inject ISnackbar Snackbar
 
 <div class="d-flex" style="align-items: center;">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
@@ -88,6 +92,16 @@
         {
             await ShowError("An error occurred while processing the date");
         }
+    }
+
+    protected async Task ShowError(string message)
+    {
+        if (!message.CanShowSnackbar()) return;
+
+        Snackbar.Add(message, Severity.Error);
+
+        await JsRuntime.Utils().PlayBeep(220, 400, "square", CancellationToken.None);
+        await JsRuntime.Utils().Vibrate([200, 100, 200], CancellationToken.None);
     }
 
 }

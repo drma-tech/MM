@@ -101,6 +101,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Language = await AppStateStatic.GetAppLanguage(JsRuntime);
+        Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
     }
 }

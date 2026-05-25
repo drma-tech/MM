@@ -4,8 +4,6 @@ using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
-using MM.WEB.Shared.Core;
-using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.WEB.Modules.Profile;
 
@@ -20,26 +18,26 @@ public partial class ProfileData : PageCore<ProfileData>
 
     protected override void OnInitialized()
     {
-        AppStateStatic.LocationChanged += async location =>
+        AppStateStatic.LocationChanged.Subscribe(async location =>
         {
             if (location is GeoLocation geoLocation)
             {
                 await UpdateLocation(Profile!, geoLocation);
                 StateHasChanged();
             }
-        };
+        }, cts.Token);
     }
 
     protected override async Task LoadAuthDataAsync()
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {
             bool confirmed;
-            var language = await AppStateStatic.GetAppLanguage(JsRuntime);
+            var language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
 
             if (language == AppLanguage.pt)
             {
@@ -78,7 +76,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 return;
             }
 
-            await PrincipalApi.Event(AppInfo.Title, "Data processing granted");
+            await PrincipalApi.Event(AppInfo.Title, "Data processing granted", cts.Token);
 
             await ShowWarning(GlobalTranslations.BasicRequired);
         }
@@ -100,7 +98,7 @@ public partial class ProfileData : PageCore<ProfileData>
         {
             if (profile != null)
             {
-                await JsRuntime.Utils().UpdateLocation();
+                await JsRuntime.Utils().UpdateLocation(cts.Token);
             }
         }
         catch (Exception ex)
@@ -113,7 +111,7 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         if (gps != null)
         {
-            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude);
+            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, cts.Token);
             if (here != null && here.items.Count != 0)
             {
                 var address = here.items[0].address;
@@ -140,12 +138,12 @@ public partial class ProfileData : PageCore<ProfileData>
 
             var validator = new ProfileValidation();
 
-            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(Tabs.BASIC.ToString()));
+            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(ProfileHelper.Tabs.BASIC.ToString()));
 
             if (result.IsValid)
             {
                 Actions.StartProcessing?.Invoke(null);
-                Profile = await ProfileApi.Update(Profile);
+                Profile = await ProfileApi.Update(Profile, cts.Token);
                 Actions.FinishProcessing?.Invoke(Profile);
 
                 _PendingAction = false; StateHasChanged();

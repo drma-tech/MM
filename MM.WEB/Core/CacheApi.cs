@@ -7,10 +7,10 @@ public struct Endpoint
     public static string SumUsers => "public/cache/sum-users";
 }
 
-public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, ApiType.Anonymous, null)
+public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentSumUsers)
 {
-    public async Task<CacheDocument<SumUsers>?> GetSumUsers()
+    public async Task<CacheDocument<SumUsers>?> GetSumUsers(CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.SumUsers);
+        return await GetAsync(Endpoint.SumUsers, false, cancellationToken);
     }
 }

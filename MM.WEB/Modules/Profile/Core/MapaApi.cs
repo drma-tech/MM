@@ -2,16 +2,16 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, ApiType.Anonymous, null)
+public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, ApiType.Anonymous, null, ApiContext.Default.HereJson)
 {
-    public async Task<HereJson?> GetLocationHere(double Latitude, double Longitude)
+    public async Task<HereJson?> GetLocationHere(double Latitude, double Longitude, CancellationToken cancellationToken)
     {
-        return await GetAsync(MapEndpoint.GetLocationHere(Latitude, Longitude));
+        return await GetAsync(MapEndpoint.GetLocationHere(Latitude, Longitude), false, cancellationToken);
     }
 
-    public async Task<GoogleJson?> GetLocationGoogle(double Latitude, double Longitude)
+    public async Task<GoogleJson?> GetLocationGoogle(double Latitude, double Longitude, CancellationToken cancellationToken)
     {
-        return await GetAsync<GoogleJson>(MapEndpoint.GetLocationGoogle(Latitude, Longitude));
+        return await GetAsync<GoogleJson>(MapEndpoint.GetLocationGoogle(Latitude, Longitude), false, cancellationToken);
     }
 
     public struct MapEndpoint

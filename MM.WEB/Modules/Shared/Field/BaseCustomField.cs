@@ -13,7 +13,7 @@ public enum FieldType
     SelectMultiple
 }
 
-public class BaseCustomField<TValue, TClass> : ComponentCore<TClass> where TClass : class
+public class BaseCustomField<TValue> : ComponentBase
 {
     [Parameter] public FieldType Type { get; set; }
     [Parameter] public string? CssIcon { get; set; }

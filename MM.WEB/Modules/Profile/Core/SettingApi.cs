@@ -2,18 +2,18 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting")
+public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting", ApiContext.Default.SettingModel)
 {
-    public async Task<SettingModel?> Get(bool isUserAuthenticated)
+    public async Task<SettingModel?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
     {
         if (!isUserAuthenticated) return null;
 
-        return await GetAsync(ProfileEndpoint.Get);
+        return await GetAsync(ProfileEndpoint.Get, false, cancellationToken);
     }
 
-    public async Task<SettingModel?> Update(SettingModel? obj)
+    public async Task<SettingModel?> Update(SettingModel? obj, CancellationToken cancellationToken)
     {
-        return await PutAsync(ProfileEndpoint.UpdateFilter, obj);
+        return await PutAsync(ProfileEndpoint.UpdateFilter, obj, ApiContext.Default.SettingModel, cancellationToken);
     }
 
     public struct ProfileEndpoint

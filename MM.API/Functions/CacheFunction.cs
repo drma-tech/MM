@@ -42,7 +42,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                 obj.Regions = profiles
                     .GroupBy(g => g.Country)
-                    .Select(s => new Shared.Models.Dashboard.Region
+                    .Select(s => new Shared.Models.Dashboard.SumUsersRegion
                     {
                         Name = s.Key,
                         //Cities = s.Select(s => s.City!).Distinct().ToList()

@@ -2,11 +2,11 @@
 
 namespace MM.WEB.Modules.Subscription.Core
 {
-    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null)
+    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null, ApiContext.Default.AuthPurchase)
     {
-        public async Task<bool> StripeValidateSession(string id)
+        public async Task<bool> StripeValidateSession(string id, CancellationToken cancellationToken)
         {
-            return await GetAsync<bool>(Endpoint.StripeValidateSession(id));
+            return await GetAsync<bool>(Endpoint.StripeValidateSession(id), true, cancellationToken);
         }
 
         private struct Endpoint
@@ -15,18 +15,18 @@ namespace MM.WEB.Modules.Subscription.Core
         }
     }
 
-    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null)
+    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null, ApiContext.Default.AuthPurchase)
     {
-        public async Task AppleVerify(string receipt)
+        public async Task AppleVerify(string receipt, CancellationToken cancellationToken)
         {
-            await PostAsync(Endpoint.AppleVerify, receipt);
+            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, cancellationToken);
         }
 
-        public async Task<AuthPrincipal?> StripeCustomer(bool isUserAuthenticated)
+        public async Task<AuthPrincipal?> StripeCustomer(bool isUserAuthenticated, CancellationToken cancellationToken)
         {
             if (!isUserAuthenticated) return null;
 
-            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer);
+            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, true, cancellationToken);
         }
 
         private struct Endpoint

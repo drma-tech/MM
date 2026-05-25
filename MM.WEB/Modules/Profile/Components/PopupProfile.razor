@@ -201,7 +201,7 @@
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        await JsRuntime.Swiper().InitGallery(GallerySwiperId);
+        await JsRuntime.Swiper().InitGallery(GallerySwiperId, cts.Token);
     }
 
     protected override async Task LoadAuthDataAsync()
@@ -218,7 +218,7 @@
                 return;
             }
 
-            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, AppStateStatic.IsAuthenticated);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, AppStateStatic.IsAuthenticated, cts.Token);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
@@ -226,8 +226,8 @@
                 return;
             }
 
-            user = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
-            View ??= await ProfileApi.GetView(IdUserView, AppStateStatic.IsAuthenticated);
+            user = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+            View ??= await ProfileApi.GetView(IdUserView, AppStateStatic.IsAuthenticated, cts.Token);
 
             await MudDialog!.SetTitleAsync(View?.NickName);
 
@@ -244,7 +244,7 @@
 
             imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-            filter = await FilterApi.Get(AppStateStatic.IsAuthenticated);
+            filter = await FilterApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
             affinities = AffinityCore.GetAffinity(user, filter, View);
 
@@ -276,7 +276,7 @@
         try
         {
             await EventActions.StartProcessing.Invoke(null);
-            interaction = await InteractionApi.Like(Origin, IdUserView);
+            interaction = await InteractionApi.Like(Origin, IdUserView, cts.Token);
             await EventActions.FinishProcessing.Invoke(interaction);
             Liked?.Invoke();
 
@@ -297,7 +297,7 @@
         try
         {
             await EventActions.StartProcessing.Invoke(null);
-            interaction = await InteractionApi.Dislike(Origin, IdUserView);
+            interaction = await InteractionApi.Dislike(Origin, IdUserView, cts.Token);
             await EventActions.FinishProcessing.Invoke(interaction);
             Disliked?.Invoke();
         }

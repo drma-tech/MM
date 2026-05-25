@@ -42,7 +42,7 @@
     {
         await Actions.StartLoading.Invoke(null);
 
-        Setting = await SettingApi.Get(AppStateStatic.IsAuthenticated);
+        Setting = await SettingApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
         if (Setting == null)
         {
@@ -60,32 +60,32 @@
 
             await Actions.StartProcessing.Invoke(null);
 
-            Setting = await SettingApi.Update(Setting);
+            Setting = await SettingApi.Update(Setting, cts.Token);
 
             if (Setting!.BlindDate)
             {
-                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
                 if (profile != null && profile.Gallery != null)
                 {
-                    if (profile.Gallery.FaceId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Face);
-                    if (profile!.Gallery!.BodyId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Body);
+                    if (profile.Gallery.FaceId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Face, cts.Token);
+                    if (profile!.Gallery!.BodyId != null) profile = await StorageApi.DeletePhotoGallery(ImageHelper.PhotoType.Body, cts.Token);
 
                     if (profile!.Gallery!.Type != GalleryType.BlindDate)
                     {
                         profile.Gallery.Type = GalleryType.BlindDate;
-                        await ProfileApi.Update(profile);
+                        await ProfileApi.Update(profile, cts.Token);
                     }
                 }
             }
             else
             {
-                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+                var profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
                 if (profile?.Gallery?.Type == GalleryType.BlindDate)
                 {
                     profile.Gallery.Type = GalleryType.NoPictures;
-                    await ProfileApi.Update(profile);
+                    await ProfileApi.Update(profile, cts.Token);
                 }
             }
 

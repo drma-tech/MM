@@ -483,8 +483,8 @@
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
-        Filter = await FilterApi.Get(AppStateStatic.IsAuthenticated);
+        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+        Filter = await FilterApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {
@@ -522,7 +522,7 @@
             if (result.IsValid)
             {
                 Actions.StartProcessing?.Invoke(null);
-                Filter = await FilterApi.Update(Filter);
+                Filter = await FilterApi.Update(Filter, cts.Token);
                 Actions.FinishProcessing?.Invoke(Filter);
 
                 _PendingAction = false; StateHasChanged();

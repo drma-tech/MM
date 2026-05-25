@@ -2,13 +2,13 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, ApiType.Authenticated, "profile-mylikes")
+public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, ApiType.Authenticated, "profile-mylikes", ApiContext.Default.MyLikesModel)
 {
-    public async Task<MyLikesModel?> Get(bool isAuthenticated, bool setNewVersion = false)
+    public async Task<MyLikesModel?> Get(bool isAuthenticated, bool setNewVersion, CancellationToken cancellationToken)
     {
         if (!isAuthenticated) return null;
 
-        return await GetAsync(ProfileEndpoint.Get, setNewVersion);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion, cancellationToken);
     }
 
     public struct ProfileEndpoint

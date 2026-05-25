@@ -119,7 +119,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
-        var request = await req.GetPublicBody<UploadPhotoValidationCommand>(cancellationToken);
+        var request = await req.GetPublicBody<PhotoValidationRequest>(cancellationToken);
 
         var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
@@ -177,11 +177,5 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         }
         validation.Gallery = true;
         return await repoGen.UpsertItemAsync(validation, cancellationToken);
-    }
-
-    public class UploadPhotoValidationCommand
-    {
-        public byte[] Stream { get; set; } = [];
-        public string? Email { get; set; }
     }
 }

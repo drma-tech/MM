@@ -2,28 +2,28 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction")
+public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction", ApiContext.Default.InteractionModel)
 {
-    public async Task<InteractionModel?> GetInteraction(string? IdUserView, bool isUserAuthenticated)
+    public async Task<InteractionModel?> GetInteraction(string? IdUserView, bool isUserAuthenticated, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
         if (!isUserAuthenticated) return default;
 
-        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView));
+        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), false, cancellationToken);
     }
 
-    public async Task<InteractionModel?> Like(Origin origin, string? IdUserView)
+    public async Task<InteractionModel?> Like(Origin origin, string? IdUserView, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), null);
+        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), null, cancellationToken);
     }
 
-    public async Task<InteractionModel?> Dislike(Origin origin, string? IdUserView)
+    public async Task<InteractionModel?> Dislike(Origin origin, string? IdUserView, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), null);
+        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), null, cancellationToken);
     }
 
     public struct ProfileEndpoint

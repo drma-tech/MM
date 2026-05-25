@@ -379,9 +379,9 @@ else
         //     }
         // }
 
-        await JsRuntime.Swiper().InitLists(SuggestionsSwiperId);
-        await JsRuntime.Swiper().InitLists(LikesSwiperId);
-        await JsRuntime.Swiper().InitLists(MatchesSwiperId);
+        await JsRuntime.Swiper().InitLists(SuggestionsSwiperId, cts.Token);
+        await JsRuntime.Swiper().InitLists(LikesSwiperId, cts.Token);
+        await JsRuntime.Swiper().InitLists(MatchesSwiperId, cts.Token);
 
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -393,18 +393,18 @@ else
             if (AppStateStatic.IsAuthenticated)
             {
                 await ProfileActions.StartLoading.Invoke(null);
-                profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated);
+                profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
                 await ProfileActions.FinishLoading.Invoke(profile);
 
                 await FilterActions.StartLoading.Invoke(null);
-                filter = await FilterApi.Get(AppStateStatic.IsAuthenticated);
+                filter = await FilterApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
                 await FilterActions.FinishLoading.Invoke(filter);
 
                 await SettingActions.StartLoading.Invoke(null);
-                setting = await SettingApi.Get(AppStateStatic.IsAuthenticated);
+                setting = await SettingApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
                 await SettingActions.FinishLoading.Invoke(setting);
 
-                validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated);
+                validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
             }
             else
             {
@@ -440,14 +440,14 @@ else
     private async Task LoadLikes(bool setNewVersion = false)
     {
         await LikesActions.StartLoading.Invoke(null);
-        MyLikes = await MyLikesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion);
+        MyLikes = await MyLikesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion, cts.Token);
         await LikesActions.FinishLoading.Invoke(MyLikes);
     }
 
     private async Task LoadMatches(bool setNewVersion = false)
     {
         await MatchesActions.StartLoading.Invoke(null);
-        MyMatches = await MyMatchesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion);
+        MyMatches = await MyMatchesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion, cts.Token);
         await MatchesActions.FinishLoading.Invoke(MyMatches);
     }
 
@@ -463,13 +463,13 @@ else
                 }
                 else
                 {
-                    await PrincipalApi.Public();
+                    await PrincipalApi.Public(cts.Token);
                     await ShowSuccess(GlobalTranslations.ProfilePublicMode);
                 }
             }
             else
             {
-                await PrincipalApi.Private();
+                await PrincipalApi.Private(cts.Token);
                 await ShowSuccess(GlobalTranslations.ProfilePrivateMode);
             }
         }
@@ -580,7 +580,7 @@ else
 
     private async Task Login()
     {
-        Navigation.NavigateTo($"/{Culture}/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
+        Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
     }
 
     // private string GetSuggestionTitle()

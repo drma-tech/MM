@@ -51,7 +51,7 @@
     {
         Actions?.StartLoading?.Invoke(null);
 
-        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated);
+        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
 
         if (Validation == null)
         {

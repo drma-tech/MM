@@ -6,10 +6,10 @@ public class SumUsers
     public int Cities { get; set; }
     public int TotalUsers { get; set; }
     public int RecentlyJoined { get; set; }
-    public List<Region> Regions { get; set; } = [];
+    public List<SumUsersRegion> Regions { get; set; } = [];
 }
 
-public class Region
+public class SumUsersRegion
 {
     public string? Name { get; set; }
     public List<string> Cities { get; set; } = [];

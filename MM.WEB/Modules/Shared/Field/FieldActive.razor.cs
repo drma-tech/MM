@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace MM.WEB.Modules.Shared.Field;
 
-public partial class FieldActive : FormBase<bool, FieldActive>
+public partial class FieldActive : FormBase<bool>
 {
     [Parameter] public bool Value { get; set; }
     [Parameter] public EventCallback<bool> ValueChanged { get; set; }

@@ -1,31 +1,32 @@
 ﻿using MM.Shared.Models.Profile;
+using MM.Shared.Requests;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation")
+public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation", ApiContext.Default.ValidationModel)
 {
-    public async Task<ValidationModel?> Get(bool isUserAuthenticated)
+    public async Task<ValidationModel?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
     {
         if (!isUserAuthenticated) return null;
 
-        return await GetAsync(ProfileEndpoint.Get);
+        return await GetAsync(ProfileEndpoint.Get, false, cancellationToken);
     }
 
-    public async Task<byte[]?> GetSafetyGalleryPhoto(bool isUserAuthenticated)
+    public async Task<byte[]?> GetSafetyGalleryPhoto(bool isUserAuthenticated, CancellationToken cancellationToken)
     {
         if (!isUserAuthenticated) return null;
 
-        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto);
+        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto, cancellationToken);
     }
 
-    public async Task<string?> CreateVerificationSession(string url, string? email)
+    public async Task<string?> CreateVerificationSession(string url, string? email, CancellationToken cancellationToken)
     {
-        return await GetStringAsync(ProfileEndpoint.CreateVerificationSession(url, email));
+        return await GetStringAsync(ProfileEndpoint.CreateVerificationSession(url, email), cancellationToken);
     }
 
-    public async Task<ValidationModel?> UploadPhotoValidation(byte[] bytes, string? email)
+    public async Task<ValidationModel?> UploadPhotoValidation(PhotoValidationRequest request, CancellationToken cancellationToken)
     {
-        return await PutAsync(ProfileEndpoint.UploadPhotoValidation, new { Stream = bytes, Email = email });
+        return await PutAsync(ProfileEndpoint.UploadPhotoValidation, request, ApiContext.Default.PhotoValidationRequest, cancellationToken);
     }
 
     public struct ProfileEndpoint

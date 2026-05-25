@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Shared.Field;
 
-public partial class FieldText : FormBase<string, FieldText>
+public partial class FieldText : FormBase<string>
 {
     [Parameter] public string? Value { get; set; }
     [Parameter] public EventCallback<string> ValueChanged { get; set; }

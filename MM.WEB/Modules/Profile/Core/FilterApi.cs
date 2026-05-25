@@ -2,18 +2,18 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter")
+public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter", ApiContext.Default.FilterModel)
 {
-    public async Task<FilterModel?> Get(bool isUserAuthenticated)
+    public async Task<FilterModel?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
     {
         if (!isUserAuthenticated) return null;
 
-        return await GetAsync(ProfileEndpoint.Get);
+        return await GetAsync(ProfileEndpoint.Get, false, cancellationToken);
     }
 
-    public async Task<FilterModel?> Update(FilterModel? obj)
+    public async Task<FilterModel?> Update(FilterModel? obj, CancellationToken cancellationToken)
     {
-        return await PutAsync(ProfileEndpoint.UpdateFilter, obj);
+        return await PutAsync(ProfileEndpoint.UpdateFilter, obj, ApiContext.Default.FilterModel, cancellationToken);
     }
 
     public struct ProfileEndpoint

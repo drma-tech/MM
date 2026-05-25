@@ -130,8 +130,8 @@
             return;
         }
 
-        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated);
-        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(AppStateStatic.IsAuthenticated);
+        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(AppStateStatic.IsAuthenticated, cts.Token);
     }
 
     protected async Task TakeShot()
@@ -169,10 +169,10 @@
     {
         try
         {
-            AppStateStatic.ProcessingStarted?.Invoke();
+            await AppStateStatic.ProcessingStarted.PublishAsync();
             var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
-            Validation = await ValidationApi.UploadPhotoValidation(picture ?? Picture, email);
-            AppStateStatic.ProcessingFinished?.Invoke();
+            Validation = await ValidationApi.UploadPhotoValidation(new MM.Shared.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, cts.Token);
+            await AppStateStatic.ProcessingFinished.PublishAsync();
 
             await ShowSuccess("Photo validated successfully!");
             await JsRuntime.Window().HistoryBack();
