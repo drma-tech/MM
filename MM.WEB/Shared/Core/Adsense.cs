@@ -1,17 +1,16 @@
 ﻿namespace MM.WEB.Shared.Core
 {
-    public enum AdSlot : long
+    public enum AdNetwork
     {
-        MmHeader = 8351984535,
-        MmMiddle = 7038902869,
-        MmFooter = 6631708756,
+        None = 0,
+        Adsense = 1,
+        Yandex = 2
     }
 
-    public enum AdFormat
+    public enum AdSlot
     {
-        Auto,
-        Horizontal,
-        Vertical,
-        Rectangle
+        Header,
+        Middle,
+        Footer
     }
 }
