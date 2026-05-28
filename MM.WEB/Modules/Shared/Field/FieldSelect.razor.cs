@@ -41,6 +41,6 @@ public partial class FieldSelect<TValue, TEnum> : FormBase<TValue>
 
     private static string GetMultiSelectionText(IReadOnlyList<string> selectedValues)
     {
-        return string.Join(", ", selectedValues.Select(x => Enum.Parse<TEnum>(x).GetName()));
+        return string.Join(", ", selectedValues.Select(x => x.ParseToEnum<TEnum>().GetName()));
     }
 }

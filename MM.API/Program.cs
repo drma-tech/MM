@@ -17,9 +17,12 @@ var app = new HostBuilder()
         logging.AddSentry(options =>
         {
             options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+
+            options.MinimumEventLevel = LogLevel.Warning;
+            options.MinimumBreadcrumbLevel = LogLevel.Warning;
             options.DiagnosticLevel = SentryLevel.Warning;
 
-            options.Release = $"mm-api@{DateTime.Now:yyyy.MM.dd}";
+            options.Release = $"mm-api@{DateTime.UtcNow:yyyy.MM.dd}";
             options.Environment = context.HostingEnvironment.EnvironmentName;
 
             options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
@@ -49,9 +52,12 @@ var app = new HostBuilder()
                 builder.AddSentry(options =>
                 {
                     options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+
+                    options.MinimumEventLevel = LogLevel.Warning;
+                    options.MinimumBreadcrumbLevel = LogLevel.Warning;
                     options.DiagnosticLevel = SentryLevel.Warning;
 
-                    options.Release = $"sd-api@{DateTime.Now:yyyy.MM.dd}";
+                    options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
                     //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                     options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
@@ -115,9 +121,12 @@ static void ConfigureServices(IServiceCollection services)
             builder.AddSentry(options =>
             {
                 options.Dsn = "https://ed1ba47e2afd2ee2d3425e67475ac829@o4510938040041472.ingest.us.sentry.io/4510942977523712";
+
+                options.MinimumEventLevel = LogLevel.Warning;
+                options.MinimumBreadcrumbLevel = LogLevel.Warning;
                 options.DiagnosticLevel = SentryLevel.Warning;
 
-                options.Release = $"sd-api@{DateTime.Now:yyyy.MM.dd}";
+                options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
                 //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                 options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
