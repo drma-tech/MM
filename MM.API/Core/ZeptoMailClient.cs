@@ -122,16 +122,16 @@ namespace MM.API.Core
             <!-- APP STORES -->
             <div class=""footer-apps"">
                 <a href=""https://apps.microsoft.com/detail/9n8h01jxft99"" target=""_blank"">
-                    <img src=""https://www.streamingdiscovery.com/logo/microsoft-store.png"" alt=""Microsoft Store"">Microsoft Store
+                    <img src=""https://www.{domain}.com/logo/microsoft-store.png"" alt=""Microsoft Store"">Microsoft Store
                 </a>
                 <a href=""https://play.google.com/store/apps/details?id=com.modern_matchmaker.www.twa"" target=""_blank"">
-                    <img src=""https://www.streamingdiscovery.com/logo/google-play.png"" alt=""Google Play"">Google Play
+                    <img src=""https://www.{domain}.com/logo/google-play.png"" alt=""Google Play"">Google Play
                 </a>
                 <a href=""https://apps.apple.com/us/app/id6756202435"" target=""_blank"">
-                    <img src=""https://www.streamingdiscovery.com/logo/app-store.png"" alt=""App Store"">App Store
+                    <img src=""https://www.{domain}.com/logo/app-store.png"" alt=""App Store"">App Store
                 </a>
-                <a href=""https://www.streamingdiscovery.com/en/help#get-the-app"" target=""_blank"">
-                    <img src=""https://www.streamingdiscovery.com/logo/website-logo.png"" alt=""More"">More
+                <a href=""https://www.{domain}.com/en/help#get-the-app"" target=""_blank"">
+                    <img src=""https://www.{domain}.com/logo/website-logo.png"" alt=""More"">More
                 </a>
             </div>
 
@@ -279,16 +279,16 @@ namespace MM.API.Core
                                         Explore {appName}
                                     </div>
                                     <div class=""link-grid"">
-                                        <a href=""https://www.modern-matchmaker.com/how-it-works"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/how-it-works"" class=""link-card"" target=""_blank"">
                                             How It Works
                                         </a>
-                                        <a href=""https://www.modern-matchmaker.com/who-its-for"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/who-its-for"" class=""link-card"" target=""_blank"">
                                             Who Is It For
                                         </a>
-                                        <a href=""https://www.modern-matchmaker.com/compare"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/compare"" class=""link-card"" target=""_blank"">
                                             Compare Services
                                         </a>
-                                        <a href=""https://www.modern-matchmaker.com/help"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/help"" class=""link-card"" target=""_blank"">
                                             Help Center
                                         </a>
                                     </div>
