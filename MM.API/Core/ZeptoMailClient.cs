@@ -268,10 +268,7 @@ namespace MM.API.Core
                                     <span class=""email-highlight"">{appName}</span>.
                                 </p>
                                 <p class=""email-text"">
-                                    Keep track of your streaming platforms,
-                                    manage your viewing progress, and discover
-                                    what to watch next with curated lists,
-                                    award winners, and critical recommendations.
+                                    The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping.
                                 </p>
                                 <!-- QUICK LINKS -->
                                 <div class=""email-section"">
