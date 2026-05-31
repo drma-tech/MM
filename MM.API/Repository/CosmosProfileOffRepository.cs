@@ -29,8 +29,7 @@ public class CosmosProfileOffRepository
 
         try
         {
-            var response = await Container.ReadItemAsync<T>(id, new PartitionKey(id),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.ReadItemAsync<T>(id, new PartitionKey(id), null, cancellationToken);
 
             if (response.RequestCharge > 1.7)
                 _logger.LogWarning("Get - ID {Id}, RequestCharge {RequestCharge}", id, response.RequestCharge);
@@ -74,8 +73,7 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<List<T>> QueryAsync<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
-        where T : CosmosDocument
+    public async Task<List<T>> QueryAsync<T>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken) where T : CosmosDocument
     {
         try
         {
@@ -108,8 +106,7 @@ public class CosmosProfileOffRepository
     {
         try
         {
-            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), null, cancellationToken);
 
             if (response.RequestCharge > 15)
                 _logger.LogWarning("Upsert - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);
@@ -122,15 +119,13 @@ public class CosmosProfileOffRepository
         }
     }
 
-    public async Task<T> PatchItemAsync<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken)
-        where T : CosmosDocument, new()
+    public async Task<T> PatchItemAsync<T>(string? id, List<PatchOperation> operations, CancellationToken cancellationToken) where T : CosmosDocument, new()
     {
         //https://learn.microsoft.com/en-us/azure/cosmos-db/partial-document-update-getting-started?tabs=dotnet
 
         try
         {
-            var response = await Container.PatchItemAsync<T>(id, new PartitionKey(id), operations,
-                CosmosRepositoryExtensions.GetPatchItemRequestOptions(), cancellationToken);
+            var response = await Container.PatchItemAsync<T>(id, new PartitionKey(id), operations, null, cancellationToken);
 
             if (response.RequestCharge > 12)
                 _logger.LogWarning("PatchItem - ID {Id}, RequestCharge {Charges}", id, response.RequestCharge);
@@ -147,8 +142,7 @@ public class CosmosProfileOffRepository
     {
         try
         {
-            var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey(item.Id),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.DeleteItemAsync<T>(item.Id, new PartitionKey(item.Id), null, cancellationToken);
 
             if (response.RequestCharge > 12)
                 _logger.LogWarning("Delete - ID {Id}, RequestCharge {Charges}", item.Id, response.RequestCharge);

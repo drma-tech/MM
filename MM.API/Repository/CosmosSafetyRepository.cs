@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
-using MM.API.Repository.Core;
 using System.Net;
 
 namespace MM.API.Repository;
@@ -27,7 +26,7 @@ public class CosmosSafetyRepository
         try
         {
             var response = await Container.ReadItemAsync<T>(id, new PartitionKey(id),
-                CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+                null, cancellationToken);
 
             if (response.RequestCharge > 1.7)
                 _logger.LogWarning("Get - ID {Id}, RequestCharge {RequestCharge}", id, response.RequestCharge);
@@ -50,7 +49,7 @@ public class CosmosSafetyRepository
         {
             if (item == null) return new T();
 
-            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), null, cancellationToken);
 
             if (response.RequestCharge > 15)
                 _logger.LogWarning("CreateItemAsync - Id {Id}, RequestCharge {RequestCharge}", item.Id, response.RequestCharge);

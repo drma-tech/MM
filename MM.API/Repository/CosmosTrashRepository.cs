@@ -25,7 +25,7 @@ public class CosmosTrashRepository
         {
             if (item == null) return new T();
 
-            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), CosmosRepositoryExtensions.GetItemRequestOptions(), cancellationToken);
+            var response = await Container.UpsertItemAsync(item, new PartitionKey(item.Id), null, cancellationToken);
 
             if (response.RequestCharge > 15)
                 _logger.LogWarning("CreateItemAsync - Id {Id}, RequestCharge {RequestCharge}", item.Id, response.RequestCharge);
