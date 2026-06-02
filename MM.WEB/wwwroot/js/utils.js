@@ -232,7 +232,7 @@ export const environment = {
         const rect = el.getBoundingClientRect();
 
         const rendered = !!iframe;
-        const hasSize = rect.width > 0 && rect.height > 0;
+        const hasSize = rect.width > 2 && rect.height > 2;
 
         return { rendered, hasSize };
     },
