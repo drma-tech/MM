@@ -145,7 +145,7 @@
 
                 StateHasChanged(); //re-render to create ad container
             }
-            else
+            else if (Network != AdNetwork.None)
             {
                 if (_adInitialized)
                     return;
