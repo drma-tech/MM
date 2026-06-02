@@ -306,18 +306,12 @@ export const environment = {
             return true;
         }
 
-        //test browser brave as adsbygoogle works normally
-        const isBrave = navigator.brave && typeof navigator.brave.isBrave === 'function' && await navigator.brave.isBrave();
+        const fundingchoicesmessages = await environment.testUrl(
+            'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
+        );
 
-        if (isBrave) {
-            const fundingchoicesmessages =
-                await environment.testUrl(
-                    'https://fundingchoicesmessages.google.com/i/pub-5145928155833172?ers=1'
-                );
-
-            if (!fundingchoicesmessages) {
-                return true;
-            }
+        if (!fundingchoicesmessages) {
+            return true;
         }
 
         Sentry.captureMessage("ad blocked - Ads failed but no blocker detected", "error");
