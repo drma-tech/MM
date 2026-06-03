@@ -682,6 +682,15 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have selected more than {0} options.
+        /// </summary>
+        public static string YouHaveSelected {
+            get {
+                return ResourceManager.GetString("YouHaveSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must be logged in to subscribe.
         /// </summary>
         public static string YouMustLoggedSubscribe {

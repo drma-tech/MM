@@ -324,6 +324,9 @@
   <data name="Years" xml:space="preserve">
     <value>Años</value>
   </data>
+  <data name="YouHaveSelected" xml:space="preserve">
+    <value>Has seleccionado más de {0} opciones</value>
+  </data>
   <data name="YouMustLoggedSubscribe" xml:space="preserve">
     <value>Debes iniciar sesión para suscribirte</value>
   </data>

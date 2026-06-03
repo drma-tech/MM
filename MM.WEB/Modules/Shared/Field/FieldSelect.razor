@@ -100,17 +100,20 @@
     </div>
     @if (!string.IsNullOrEmpty(HelpLink))
     {
-        <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
+        <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 14px)">
             <MudLink href="@HelpLink" target="_blank" rel="nofollow" Typo="Typo.caption">@(new Uri(HelpLink).Host)</MudLink>
         </MudText>
+    }    
+    @if (!string.IsNullOrEmpty(CustomInfo))
+    {
+        <MudText Typo="Typo.caption" Color="Color.Info" Style="margin-left: calc(1.5rem + 14px)">
+            @CustomInfo
+        </MudText>
     }
-
-    @*
-        @if (!string.IsNullOrEmpty(CustomInfo))
-        {
-            <Column>
-                <FieldHelp Style="color: #17a2b8 !important">@CustomInfo</FieldHelp>
-            </Column>
-        }
-    *@
+    @if (!string.IsNullOrEmpty(CustomWarning))
+    {
+        <MudText Typo="Typo.caption" Color="Color.Warning" Style="margin-left: calc(1.5rem + 14px)">
+            @CustomWarning
+        </MudText>
+    }
 }

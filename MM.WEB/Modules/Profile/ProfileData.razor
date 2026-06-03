@@ -69,7 +69,8 @@
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.Languages)" TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
-                                         CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false">
+                                         CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false"
+                                         CustomWarning="@(context.Languages.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>
@@ -92,12 +93,14 @@
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.GenderIdentities)" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
-                                         CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Required="true" Multiple="true">
+                                         CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Required="true" Multiple="true"
+                                         CustomWarning="@(context.GenderIdentities.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.SexualOrientations)" TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
-                                         CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Required="true" Multiple="true">
+                                         CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Required="true" Multiple="true"
+                                         CustomWarning="@(context.SexualOrientations.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>
@@ -333,7 +336,8 @@
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.SexPersonalityPreference)" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@context.SexPersonalityPreference"
-                                         CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true">
+                                         CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true"
+                                         CustomWarning="@(context.SexPersonalityPreference.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>
@@ -363,44 +367,52 @@
                     <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.Food)" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@context.Food"
-                                         CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.Food.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.Vacation)" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@context.Vacation"
-                                         CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.Vacation.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.Sports)" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@context.Sports"
-                                         CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.Sports.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.LeisureActivities)" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@context.LeisureActivities"
-                                         CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.LeisureActivities.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>
                     <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.MusicGenre)" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@context.MusicGenre"
-                                         CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.MusicGenre.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.MovieGenre)" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@context.MovieGenre"
-                                         CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.MovieGenre.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.TVGenre)" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@context.TVGenre"
-                                         CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.TVGenre.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect For="@(() => context.ReadingGenre)" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@context.ReadingGenre"
-                                         CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true" Order="o => o.Name">
+                                         CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true" Order="o => o.Name"
+                                         CustomWarning="@(context.ReadingGenre.Count > 3 ? GlobalTranslations.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>

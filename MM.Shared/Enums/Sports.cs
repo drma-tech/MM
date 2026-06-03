@@ -8,8 +8,7 @@ public enum Sports
     [Custom(Name = "WaterSports", Description = "WaterSports_Description", ResourceType = typeof(Resources.Sports))]
     WaterSports = 2,
 
-    [Custom(Name = "AdventureExtremeSports", Description = "AdventureExtremeSports_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "AdventureExtremeSports", Description = "AdventureExtremeSports_Description", ResourceType = typeof(Resources.Sports))]
     AdventureExtremeSports = 3,
 
     [Custom(Name = "CombatSports", Description = "CombatSports_Description", ResourceType = typeof(Resources.Sports))]
@@ -24,27 +23,22 @@ public enum Sports
     [Custom(Name = "Motorsports", Description = "Motorsports_Description", ResourceType = typeof(Resources.Sports))]
     Motorsports = 7,
 
-    [Custom(Name = "FitnessConditioning", Description = "FitnessConditioning_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "FitnessConditioning", Description = "FitnessConditioning_Description", ResourceType = typeof(Resources.Sports))]
     FitnessConditioning = 8,
 
-    [Custom(Name = "OutdoorRecreation", Description = "OutdoorRecreation_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "OutdoorRecreation", Description = "OutdoorRecreation_Description", ResourceType = typeof(Resources.Sports))]
     OutdoorRecreation = 9,
 
-    [Custom(Name = "GymnasticsAesthetics", Description = "GymnasticsAesthetics_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "GymnasticsAesthetics", Description = "GymnasticsAesthetics_Description", ResourceType = typeof(Resources.Sports))]
     GymnasticsAesthetics = 10,
 
     [Custom(Name = "MindSports", Description = "MindSports_Description", ResourceType = typeof(Resources.Sports))]
     MindSports = 11,
 
-    [Custom(Name = "ShootingSports", Description = "ShootingSports_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "ShootingSports", Description = "ShootingSports_Description", ResourceType = typeof(Resources.Sports))]
     ShootingSports = 12,
 
-    [Custom(Name = "EquestrianSports", Description = "EquestrianSports_Description",
-        ResourceType = typeof(Resources.Sports))]
+    [Custom(Name = "EquestrianSports", Description = "EquestrianSports_Description", ResourceType = typeof(Resources.Sports))]
     EquestrianSports = 13,
 
     [Custom(Name = "Athletics", Description = "Athletics_Description", ResourceType = typeof(Resources.Sports))]
