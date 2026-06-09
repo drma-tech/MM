@@ -22,7 +22,9 @@
                     </MudTooltip>
                 </div>
                 <MudTooltip Text="Learn more">
-                    <MudIcon Icon="@IconsFA.Solid.Icon("eye").Font" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;" @onclick="InstantiateModal"></MudIcon>
+                    <div @onclick="InstantiateModal">
+                        <MudIcon Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;"></MudIcon>
+                    </div>
                 </MudTooltip>
             </MudChip>
         </MudItem>
@@ -41,7 +43,9 @@ else
                 </MudTooltip>
             </div>
             <MudTooltip Text="Learn more">
-                <MudIcon Icon="@IconsFA.Solid.Icon("eye").Font" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;" @onclick="InstantiateModal"></MudIcon>
+                <div @onclick="InstantiateModal">
+                    <MudIcon Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Primary" Style="margin-inline: -6px; cursor: pointer; vertical-align: middle;"></MudIcon>
+                </div>
             </MudTooltip>
         </MudChip>
     </MudItem>

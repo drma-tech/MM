@@ -12,7 +12,7 @@
 
 <HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="true" Shared="true"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle" CustomBodyClass="mb-12"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.webp" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
 <MudContainer>
     @if (!AppStateStatic.IsAuthenticated)
@@ -354,7 +354,7 @@
                     <MudCard Style="height: 100%;">
                         <MudCardHeader Class="pa-3">
                             <CardHeaderAvatar>
-                                <MudIcon Icon="@IconsFA.Solid.Icon("fire").Font" Color="Color.Secondary" Size="Size.Large"></MudIcon>
+                                <MudIcon Icon="@Icons.Material.Filled.LocalFireDepartment" Color="Color.Secondary" Size="Size.Large"></MudIcon>
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">

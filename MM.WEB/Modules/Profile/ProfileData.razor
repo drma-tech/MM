@@ -525,7 +525,7 @@
 
 @if (Profile != null && !ProfileHelper.Validator.Validate(Profile, options => options.IncludeAllRuleSets()).IsValid)
 {
-    <MudButton StartIcon="@IconsFA.Solid.Icon("bug").Font" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)">
+    <MudButton StartIcon="@Icons.Material.Filled.BugReport" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => ShowErrors(Profile)">
         @Button.ShowPendingItems
     </MudButton>
 }
@@ -533,10 +533,10 @@
 <MudDialog @ref="@MudDialog" Style="width: 100%">
     <DialogContent>
         <MudList T="string" Dense="true">
-            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+            <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
                 @GlobalTranslations.TermTopic1
             </MudListItem>
-            <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+            <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
                 @GlobalTranslations.TermTopic2 <MudLink Href="@($"/{Culture}/legal/privacy")" Target="_blank" Typo="Typo.body2">@GlobalTranslations.PrivacyPolicy</MudLink>;
             </MudListItem>
         </MudList>
@@ -548,7 +548,7 @@
     </DialogActions>
 </MudDialog>
 
-<FloatingButton StartIcon="@IconsFA.Solid.Icon("user-shield").Font" Color="Color.Info" Side="Side.Right" Position="2"
+<FloatingButton StartIcon="@Icons.Material.Filled.PrivacyTip" Color="Color.Info" Side="Side.Right" Position="2"
                 OnClick="async () => await MudDialog!.ShowAsync(GlobalTranslations.Privacy, PopupHelper.Options(MaxWidth.ExtraSmall))">
 </FloatingButton>
 <FloatingButton Template="Template.Back"></FloatingButton>

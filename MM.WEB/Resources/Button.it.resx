@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Aggiungere</value>
   </data>
-  <data name="AutoFill" xml:space="preserve">
-    <value>Compilazione automatica</value>
-  </data>
   <data name="Back" xml:space="preserve">
     <value>Indietro</value>
   </data>

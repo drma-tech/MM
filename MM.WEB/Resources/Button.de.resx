@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
-  <data name="AutoFill" xml:space="preserve">
-    <value>Automatisches Ausfüllen</value>
-  </data>
   <data name="Back" xml:space="preserve">
     <value>Zurück</value>
   </data>

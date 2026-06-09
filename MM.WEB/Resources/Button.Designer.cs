@@ -70,15 +70,6 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto Fill.
-        /// </summary>
-        public static string AutoFill {
-            get {
-                return ResourceManager.GetString("AutoFill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Back {

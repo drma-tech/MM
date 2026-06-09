@@ -223,42 +223,25 @@ else
             </ActionsFragment>
             <BodyFragment>
                 <RenderControl Actions="SuggestionsActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser">
-                    <div id="@SuggestionsSwiperId" class="swiper mb-2">
-                        <div class="swiper-wrapper">
-                            @foreach (var item in Suggestions)
-                            {
-                                <div class="swiper-slide">
-                                </div>
-                            }
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
+                    <Slider List="Suggestions" Context="item">
+                        <FeatureUnavailable></FeatureUnavailable>
+                    </Slider>
                 </RenderControl>
             </BodyFragment>
         </PageSectionComponent>
         <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@CardHeader.Likes">
             <BodyFragment>
                 <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-                    <div id="@LikesSwiperId" class="swiper mb-2">
-                        <div class="swiper-wrapper">
-                            @foreach (var item in MyLikes?.Items ?? [])
-                            {
-                                <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;"
-                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
-                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
-                                            @item.UserName
-                                        </MudChip>
-                                        <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
-                                                  Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
-                                    </div>
-                                </div>
-                            }
+                    <Slider List="MyLikes?.Items ?? []" Context="item">
+                        <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
+                             @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
+                            <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
+                                @item.UserName
+                            </MudChip>
+                            <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
+                                      Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
+                    </Slider>
                 </RenderControl>
             </BodyFragment>
         </PageSectionComponent>
@@ -275,25 +258,16 @@ else
             </ActionsFragment>
             <BodyFragment>
                 <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-                    <div id="@MatchesSwiperId" class="swiper mb-2">
-                        <div class="swiper-wrapper">
-                            @foreach (var item in MyMatches?.Items ?? [])
-                            {
-                                <div class="swiper-slide" style="height: auto !important;">
-                                    <div style="position: relative; cursor: pointer;"
-                                         @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
-                                        <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
-                                            @item.UserName
-                                        </MudChip>
-                                        <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-image.png" Alt="@item.UserName"
-                                                  Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
-                                    </div>
-                                </div>
-                            }
+                    <Slider List="MyMatches?.Items ?? []" Context="item">
+                        <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
+                             @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
+                            <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
+                                @item.UserName
+                            </MudChip>
+                            <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
+                                      Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
+                    </Slider>
                 </RenderControl>
             </BodyFragment>
         </PageSectionComponent>
@@ -338,10 +312,6 @@ else
     private MyMatchesModel? MyMatches { get; set; }
     private ComponentActions<MyMatchesModel?> MatchesActions { get; } = new(obj => obj == null || obj.Items.Empty());
 
-    private readonly string SuggestionsSwiperId = $"swiper-{Guid.NewGuid()}";
-    private readonly string LikesSwiperId = $"swiper-{Guid.NewGuid()}";
-    private readonly string MatchesSwiperId = $"swiper-{Guid.NewGuid()}";
-
     private string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
     private string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
 
@@ -354,6 +324,8 @@ else
     private bool ValidationIdentity => validation != null && validation.Identity;
     private bool ValidationNetWorth => validation != null && validation.NetWorth;
     private bool ValidationAnnualIncome => validation != null && validation.AnnualIncome;
+
+    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
     protected override void OnInitialized()
     {
@@ -378,10 +350,6 @@ else
         //         await SetLocalStorage("subscription-popup", true.ToString().ToLower());
         //     }
         // }
-
-        await JsRuntime.Swiper().InitLists(SuggestionsSwiperId, cts.Token);
-        await JsRuntime.Swiper().InitLists(LikesSwiperId, cts.Token);
-        await JsRuntime.Swiper().InitLists(MatchesSwiperId, cts.Token);
 
         await base.OnAfterRenderAsync(firstRender);
     }

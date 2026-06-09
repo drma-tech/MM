@@ -4,7 +4,7 @@ namespace MM.WEB.Core;
 
 public static class SmartLookingCore
 {
-    public static void PopulateFields(ProfileModel? profile, FilterModel? filter)
+    public static FilterModel PopulateFields(ProfileModel? profile, FilterModel? filter)
     {
         if (profile == null) throw new NotificationException("Profile needs to be filled out first");
         filter ??= new FilterModel();
@@ -46,5 +46,7 @@ public static class SmartLookingCore
         //preference.EducationLevel = GetEducationLevel(profile);
         //preference.CareerCluster = GetCareerCluster(profile);
         //preference.TravelFrequency = AffinityCore.GetTravelFrequency(profile, preference);
+
+        return filter;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SD.Shared.Core.Models;
+﻿namespace MM.Shared.Core.Models;
 
 public enum JobType
 {

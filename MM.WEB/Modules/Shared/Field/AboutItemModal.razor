@@ -121,7 +121,7 @@
                 <MudList T="string" Dense="true">
                     @foreach (var item in GetTips())
                     {
-                        <MudListItem Icon="@IconsFA.Solid.Icon("check").Font" Style="text-align: justify;">
+                        <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
                             <span class="me-2" style="font-weight: bold;">@item.Key</span><span>@item.Value</span>
                         </MudListItem>
                     }

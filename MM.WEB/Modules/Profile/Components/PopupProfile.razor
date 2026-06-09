@@ -26,22 +26,25 @@
                             @(totPercAff + "%")
                         </MudChip>
                         <MudChip T="string" Color="Color.Dark" Label="true" Class="poster-chip" Style="top: 5px; right: 5px; z-index: 2;"
-                                 Icon="@IconsFA.Solid.Icon("camera").WithSize(IconSize.sm).Font" Size="AppStateStatic.Size">
+                                 Icon="@Icons.Material.Filled.PhotoCamera" Size="AppStateStatic.Size">
                             @imageDataUriGallery.Count()
                         </MudChip>
-                        <div id="@GallerySwiperId" class="swiper">
-                            <div class="swiper-wrapper">
+                        <MudCarousel Class="mud-width-full" Style="height: 500px;" AutoCycle="true" ShowBullets="false" TData="string" ArrowsColor="Color.Primary">
+                            <PreviousButtonTemplate>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-left").Font" Color="Color.Primary" Size="Size.Large" Class="ms-2" Style="cursor: pointer;"></MudIcon>
+                            </PreviousButtonTemplate>
+                            <NextButtonTemplate>
+                                <MudIcon Icon="@IconsFA.Solid.Icon("circle-chevron-right").Font" Color="Color.Primary" Size="Size.Large" Class="me-2" Style="cursor: pointer;"></MudIcon>
+                            </NextButtonTemplate>
+                            <ChildContent>
                                 @foreach (var item in imageDataUriGallery)
                                 {
-                                    <div class="swiper-slide">
-                                        <MudImage Src="@item" FallbackSrc="images/no-image.png" Style="max-height: 400px !important; width: 100% !important;"></MudImage>
-                                    </div>
+                                    <MudCarouselItem>
+                                        <MudImage Src="@item" FallbackSrc="images/no-face-photo.webp" Style="max-height: 400px !important; width: 100% !important;"></MudImage>
+                                    </MudCarouselItem>
                                 }
-                            </div>
-                            <div class="swiper-pagination"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                        </div>
+                            </ChildContent>
+                        </MudCarousel>
                         <div class="mb-2" style="text-align: center;">
                             <MudChip T="string" Color="Color.Primary" Label="true" Size="AppStateStatic.Size">
                                 @(View?.NickName ?? "NickName")
@@ -61,12 +64,12 @@
                                     @if (interaction?.Status != InteractionStatus.Explorer)
                                     {
                                         <MudItem xs="12">
-                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Actions="EventActions">
+                                            <DrmaButton Icon="@Icons.Material.Filled.ThumbUp" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Actions="EventActions">
                                                 @Button.Like
                                             </DrmaButton>
                                         </MudItem>
                                         <MudItem xs="12">
-                                            <DrmaButton Icon="@IconsFA.Solid.Icon("thumbs-down").Font" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Actions="EventActions">
+                                            <DrmaButton Icon="@Icons.Material.Filled.ThumbDown" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Actions="EventActions">
                                                 @Button.Dislike
                                             </DrmaButton>
                                         </MudItem>
@@ -74,7 +77,7 @@
                                     @if (interaction?.Status == InteractionStatus.Match || interaction?.Status == InteractionStatus.Dating)
                                     {
                                         <MudItem xs="12">
-                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comments").Font" Style="width: 100%;"
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Chat" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="true">
                                                 @Button.Chat
                                             </MudButton>
@@ -83,7 +86,7 @@
                                     @if (interaction?.Status == InteractionStatus.Match)
                                     {
                                         <MudItem xs="12">
-                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-kiss-heart").Font" Style="width: 100%;"
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.PeopleAlt" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Dating)">
                                                 @Button.Dating
                                             </MudButton>
@@ -92,7 +95,7 @@
                                     @if (interaction?.Status == InteractionStatus.Dating)
                                     {
                                         <MudItem xs="12">
-                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("face-grin-heart").Font" Style="width: 100%;"
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Favorite" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Relationship)">
                                                 @Button.Relationship
                                             </MudButton>
@@ -101,7 +104,7 @@
                                     @if (interaction?.Status == InteractionStatus.Dating || interaction?.Status == InteractionStatus.Relationship)
                                     {
                                         <MudItem xs="12">
-                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("comment-dots").Font" Style="width: 100%;"
+                                            <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Feedback" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Feedback)">
                                                 @Button.Feedback
                                             </MudButton>
@@ -112,13 +115,13 @@
                             <MudItem xs="6">
                                 <MudGrid Spacing="@Css.SpaceSmall">
                                     <MudItem xs="12">
-                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("trash").Font" Style="width: 100%;"
+                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Style="width: 100%;"
                                                    OnClick="report!.ShowModal" Disabled="true">
                                             @Button.Delete
                                         </MudButton>
                                     </MudItem>
                                     <MudItem xs="12">
-                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@IconsFA.Solid.Icon("flag").Font" Style="width: 100%;"
+                                        <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Flag" Style="width: 100%;"
                                                    OnClick="report!.ShowModal" Disabled="true">
                                             @Button.Report
                                         </MudButton>
@@ -192,17 +195,9 @@
     private InteractionModel? interaction;
     public ComponentActions<InteractionModel?> EventActions { get; set; } = new(obj => false);
 
-    private readonly string GallerySwiperId = $"swiper-{Guid.NewGuid()}";
     string[] imageDataUriGallery = [];
 
     private ProfileReport? report;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-
-        await JsRuntime.Swiper().InitGallery(GallerySwiperId, cts.Token);
-    }
 
     protected override async Task LoadAuthDataAsync()
     {

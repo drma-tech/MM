@@ -13,9 +13,8 @@
             </MudText>
         </MudItem>
         <MudItem xs="12">
-            <MudButton Variant="Variant.Filled" Style="width: 100%" Disabled="Disabled || Value" OnClick="@Click"
-                       Color="@(Value ? Color.Success : Color.Warning)">
-                <MudIcon Icon="@(Value? IconsFA.Solid.Icon("circle-check").Font : IconsFA.Solid.Icon("circle-xmark").Font)" Class="me-2"></MudIcon>
+            <MudButton Variant="Variant.Filled" Style="width: 100%" Disabled="Disabled || Value" OnClick="@Click" Color="@(Value ? Color.Success : Color.Warning)">
+                <MudIcon Icon="@(Value ? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Cancel)" Class="me-2"></MudIcon>
                 @if (Value)
                 {
                     <span>@Button.Done</span>
@@ -30,7 +29,7 @@
                 }
                 @if (Sparks.HasValue)
                 {
-                    <MudChip T="string" Color="Color.Info" Label="true" Size="Size.Small" Icon="@IconsFA.Solid.Icon("fire").Font" Style="position: absolute; right: 4px;">
+                    <MudChip T="string" Color="Color.Info" Label="true" Size="Size.Small" Icon="@Icons.Material.Filled.LocalFireDepartment" Style="position: absolute; right: 4px;">
                         @Sparks.Value
                     </MudChip>
                 }

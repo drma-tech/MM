@@ -12,6 +12,24 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/package/fa/releases/v7.2.0/js/kit.min.js",
+    "inputFiles": [
+      "wwwroot/package/fa/releases/v7.2.0/js/kit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/package/fa/releases/v7.2.0/js/free.min.js",
+    "inputFiles": [
+      "wwwroot/package/fa/releases/v7.2.0/js/free.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/package/fa/releases/v7.2.0/js/free-v4-shims.min.js",
+    "inputFiles": [
+      "wwwroot/package/fa/releases/v7.2.0/js/free-v4-shims.js"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/package/cropperjs/cropper.esm.min.js",
     "inputFiles": [
       "wwwroot/package/cropperjs/cropper.esm.js"
