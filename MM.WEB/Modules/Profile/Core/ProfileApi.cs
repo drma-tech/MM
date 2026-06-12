@@ -4,26 +4,21 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile", ApiContext.Default.ProfileModel)
 {
-    public async Task<ProfileModel?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<ProfileModel?> Get(ComponentActions<ProfileModel?>? actions, CancellationToken cancellationToken)
     {
-        if (!isUserAuthenticated) return null;
-
-        return await GetAsync(ProfileEndpoint.Get, false, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
     }
 
-    public async Task<HashSet<ProfileModel>> GetAll(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<HashSet<ProfileModel>> GetAll(ComponentActions<HashSet<ProfileModel>>? actions, CancellationToken cancellationToken)
     {
-        if (!isUserAuthenticated) return [];
-
-        return await GetListAsync(ProfileEndpoint.GetAll, cancellationToken);
+        return await GetListAsync(ProfileEndpoint.GetAll, actions, cancellationToken);
     }
 
-    public async Task<ProfileModel?> GetView(string? IdUserView, bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<ProfileModel?> GetView(string? IdUserView, ComponentActions<ProfileModel?>? actions, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
-        if (!isUserAuthenticated) return default;
 
-        return await GetAsync(ProfileEndpoint.GetView(IdUserView), false, cancellationToken);
+        return await GetAsync(ProfileEndpoint.GetView(IdUserView), false, actions, cancellationToken);
     }
 
     //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()

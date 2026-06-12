@@ -130,8 +130,8 @@
             return;
         }
 
-        Validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(AppStateStatic.IsAuthenticated, cts.Token);
+        Validation = await ValidationApi.Get(cts.Token);
+        PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(cts.Token);
     }
 
     protected async Task TakeShot()

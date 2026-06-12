@@ -137,9 +137,7 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        ProfileActions.StartLoading?.Invoke(null);
-        _profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-        ProfileActions.FinishLoading?.Invoke(_profile);
+        _profile = await ProfileApi.Get(ProfileActions, cts.Token);
     }
 
     private async Task SelectPicture(PhotoType photoType)

@@ -4,11 +4,9 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http, ApiType.Authenticated, "profile-mylikes", ApiContext.Default.MyLikesModel)
 {
-    public async Task<MyLikesModel?> Get(bool isAuthenticated, bool setNewVersion, CancellationToken cancellationToken)
+    public async Task<MyLikesModel?> Get(bool setNewVersion, ComponentActions<MyLikesModel?> actions, CancellationToken cancellationToken)
     {
-        if (!isAuthenticated) return null;
-
-        return await GetAsync(ProfileEndpoint.Get, setNewVersion, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion, actions, cancellationToken);
     }
 
     public struct ProfileEndpoint

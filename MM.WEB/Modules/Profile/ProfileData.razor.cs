@@ -32,7 +32,7 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+        Profile = await ProfileApi.Get(null, cts.Token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {

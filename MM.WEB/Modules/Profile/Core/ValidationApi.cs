@@ -5,18 +5,14 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation", ApiContext.Default.ValidationModel)
 {
-    public async Task<ValidationModel?> Get(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<ValidationModel?> Get(CancellationToken cancellationToken)
     {
-        if (!isUserAuthenticated) return null;
-
-        return await GetAsync(ProfileEndpoint.Get, false, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, false, null, cancellationToken);
     }
 
-    public async Task<byte[]?> GetSafetyGalleryPhoto(bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<byte[]?> GetSafetyGalleryPhoto(CancellationToken cancellationToken)
     {
-        if (!isUserAuthenticated) return null;
-
-        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto, cancellationToken);
+        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto, null, cancellationToken);
     }
 
     public async Task<string?> CreateVerificationSession(string url, string? email, CancellationToken cancellationToken)

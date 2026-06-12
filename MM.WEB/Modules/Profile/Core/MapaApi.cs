@@ -6,12 +6,12 @@ public class MapApi(IHttpClientFactory http) : ApiCosmos<HereJson>(http, ApiType
 {
     public async Task<HereJson?> GetLocationHere(double Latitude, double Longitude, CancellationToken cancellationToken)
     {
-        return await GetAsync(MapEndpoint.GetLocationHere(Latitude, Longitude), false, cancellationToken);
+        return await GetAsync(MapEndpoint.GetLocationHere(Latitude, Longitude), false, null, cancellationToken);
     }
 
     public async Task<GoogleJson?> GetLocationGoogle(double Latitude, double Longitude, CancellationToken cancellationToken)
     {
-        return await GetAsync<GoogleJson>(MapEndpoint.GetLocationGoogle(Latitude, Longitude), false, cancellationToken);
+        return await GetAsync<GoogleJson>(MapEndpoint.GetLocationGoogle(Latitude, Longitude), false, null, cancellationToken);
     }
 
     public struct MapEndpoint

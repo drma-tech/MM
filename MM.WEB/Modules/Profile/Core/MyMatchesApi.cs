@@ -4,11 +4,9 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class MyMatchesApi(IHttpClientFactory http) : ApiCosmos<MyMatchesModel>(http, ApiType.Authenticated, "profile-mymatches", ApiContext.Default.MyMatchesModel)
 {
-    public async Task<MyMatchesModel?> Get(bool isAuthenticated, bool setNewVersion, CancellationToken cancellationToken)
+    public async Task<MyMatchesModel?> Get(bool setNewVersion, ComponentActions<MyMatchesModel?> actions, CancellationToken cancellationToken)
     {
-        if (!isAuthenticated) return null;
-
-        return await GetAsync(ProfileEndpoint.Get, setNewVersion, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion, actions, cancellationToken);
     }
 
     public struct ProfileEndpoint

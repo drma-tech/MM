@@ -44,7 +44,7 @@
             </MudItem>
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/compare")>
-                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Info"></MudIcon>
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Checklist"></MudIcon>
                     @WEB.Resources.Landing.CompareTitle
                 </MudButton>
             </MudItem>
@@ -181,7 +181,7 @@
 
     protected override async Task ProcessPopupData()
     {
-        Principal = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true, cts.Token);
+        Principal = await PrincipalApi.Get(true, cts.Token);
     }
 
     private async Task DownloadData()
@@ -192,7 +192,7 @@
 
             var data = new SuperData() { Principal = Principal };
 
-            data.Login = await LoginApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+            data.Login = await LoginApi.Get(cts.Token);
 
             var fileName = $"{AppInfo.Title.ToSlug()}_{Principal.AuthProviders[0]}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json";
             await JsRuntime.Utils().DownloadFile(fileName, "application/json", data.ConvertFromObjectToBytes(), cts.Token);

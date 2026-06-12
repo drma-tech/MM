@@ -4,12 +4,11 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction", ApiContext.Default.InteractionModel)
 {
-    public async Task<InteractionModel?> GetInteraction(string? IdUserView, bool isUserAuthenticated, CancellationToken cancellationToken)
+    public async Task<InteractionModel?> GetInteraction(string? IdUserView, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
-        if (!isUserAuthenticated) return default;
 
-        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), false, cancellationToken);
+        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), false, null, cancellationToken);
     }
 
     public async Task<InteractionModel?> Like(Origin origin, string? IdUserView, CancellationToken cancellationToken)

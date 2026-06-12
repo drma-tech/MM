@@ -11,6 +11,6 @@ public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<Sum
 {
     public async Task<CacheDocument<SumUsers>?> GetSumUsers(CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.SumUsers, false, cancellationToken);
+        return await GetAsync(Endpoint.SumUsers, false, null, cancellationToken);
     }
 }

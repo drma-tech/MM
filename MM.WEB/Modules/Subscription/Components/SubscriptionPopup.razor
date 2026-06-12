@@ -216,7 +216,7 @@
 
     protected override async Task LoadAuthDataAsync()
     {
-        Client = await PrincipalApi.Get(AppStateStatic.IsAuthenticated, true, cts.Token);
+        Client = await PrincipalApi.Get(true, cts.Token);
 
         var sub = Client?.GetActivePurchase();
 
@@ -230,7 +230,7 @@
     {
         try
         {
-            var freshClient = await PrincipalApi.Get(true, true, cts.Token);
+            var freshClient = await PrincipalApi.Get(true, cts.Token);
             if (freshClient == null) throw new NotificationException("Client null");
 
             var sub = freshClient?.GetActivePurchase();
@@ -260,7 +260,7 @@
         {
             await PaymentAuthApi.AppleVerify(receipt, cts.Token);
 
-            var freshClient = await PrincipalApi.Get(true, true, cts.Token);
+            var freshClient = await PrincipalApi.Get(true, cts.Token);
             if (freshClient == null) throw new NotificationException("Client null");
 
             var sub = freshClient?.GetActivePurchase();

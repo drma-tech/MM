@@ -358,29 +358,10 @@ else
     {
         try
         {
-            if (AppStateStatic.IsAuthenticated)
-            {
-                await ProfileActions.StartLoading.Invoke(null);
-                profile = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-                await ProfileActions.FinishLoading.Invoke(profile);
-
-                await FilterActions.StartLoading.Invoke(null);
-                filter = await FilterApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-                await FilterActions.FinishLoading.Invoke(filter);
-
-                await SettingActions.StartLoading.Invoke(null);
-                setting = await SettingApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-                await SettingActions.FinishLoading.Invoke(setting);
-
-                validation = await ValidationApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-            }
-            else
-            {
-                profile = null;
-                filter = null;
-                setting = null;
-                validation = null;
-            }
+            profile = await ProfileApi.Get(ProfileActions, cts.Token);
+            filter = await FilterApi.Get(FilterActions, cts.Token);
+            setting = await SettingApi.Get(SettingActions, cts.Token);
+            validation = await ValidationApi.Get(cts.Token);
 
             //remove the loading status
             await SuggestionsActions.StartLoading.Invoke(null);
@@ -407,16 +388,12 @@ else
 
     private async Task LoadLikes(bool setNewVersion = false)
     {
-        await LikesActions.StartLoading.Invoke(null);
-        MyLikes = await MyLikesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion, cts.Token);
-        await LikesActions.FinishLoading.Invoke(MyLikes);
+        MyLikes = await MyLikesApi.Get(setNewVersion, LikesActions, cts.Token);
     }
 
     private async Task LoadMatches(bool setNewVersion = false)
     {
-        await MatchesActions.StartLoading.Invoke(null);
-        MyMatches = await MyMatchesApi.Get(AppStateStatic.IsAuthenticated, setNewVersion, cts.Token);
-        await MatchesActions.FinishLoading.Invoke(MyMatches);
+        MyMatches = await MyMatchesApi.Get(setNewVersion, MatchesActions, cts.Token);
     }
 
     private async Task IsPublicChanged(bool value)

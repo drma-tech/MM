@@ -213,7 +213,7 @@
                 return;
             }
 
-            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, AppStateStatic.IsAuthenticated, cts.Token);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, cts.Token);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
@@ -221,8 +221,8 @@
                 return;
             }
 
-            user = await ProfileApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
-            View ??= await ProfileApi.GetView(IdUserView, AppStateStatic.IsAuthenticated, cts.Token);
+            user = await ProfileApi.Get(null, cts.Token);
+            View ??= await ProfileApi.GetView(IdUserView, null, cts.Token);
 
             await MudDialog!.SetTitleAsync(View?.NickName);
 
@@ -239,7 +239,7 @@
 
             imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-            filter = await FilterApi.Get(AppStateStatic.IsAuthenticated, cts.Token);
+            filter = await FilterApi.Get(null, cts.Token);
 
             affinities = AffinityCore.GetAffinity(user, filter, View);
 
