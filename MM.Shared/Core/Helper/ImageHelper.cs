@@ -16,9 +16,9 @@ public static class ImageHelper
         id = 2
     }
 
-    public static string GetFacePhoto => "images/no-face-photo.png";
-    public static string GetBodyPhoto => "images/no-body-photo.png";
-    public static string GetBlindDate => "images/blind-date.png";
+    public static string GetFacePhoto => "images/no-face-photo.webp";
+    public static string GetBodyPhoto => "images/no-body-photo.webp";
+    public static string GetBlindDate => "images/blind-date.webp";
 
     public static string GetPhotoContainer(PhotoType type)
     {
