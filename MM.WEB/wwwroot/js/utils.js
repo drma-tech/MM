@@ -262,7 +262,7 @@ export const environment = {
 
             document.head.appendChild(script);
 
-            setTimeout(() => finish(false), 3000);
+            setTimeout(() => finish(false), 10000);
         });
     },
     async isAdBlocked() {
@@ -304,6 +304,23 @@ export const environment = {
             if (!fundingchoicesmessages) {
                 return true;
             }
+        }
+
+        //other blockers block other urls
+        const sentry = await environment.testUrl(
+            'https://js.sentry-cdn.com/ed1ba47e2afd2ee2d3425e67475ac829.min.js'
+        );
+
+        if (!sentry) {
+            return true;
+        }
+
+        const clarity = await environment.testUrl(
+            'https://www.clarity.ms/tag/r3z34efopo'
+        );
+
+        if (!clarity) {
+            return true;
         }
 
         Sentry.captureMessage("ad blocked - Ads failed but no blocker detected", "error");
