@@ -199,7 +199,7 @@
 
     private ProfileReport? report;
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         try
         {
@@ -213,7 +213,7 @@
                 return;
             }
 
-            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, cts.Token);
+            if (!Fake) interaction = await InteractionApi.GetInteraction(IdUserView, token);
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
@@ -221,8 +221,8 @@
                 return;
             }
 
-            user = await ProfileApi.Get(null, cts.Token);
-            View ??= await ProfileApi.GetView(IdUserView, null, cts.Token);
+            user = await ProfileApi.Get(null, token);
+            View ??= await ProfileApi.GetView(IdUserView, null, token);
 
             await MudDialog!.SetTitleAsync(View?.NickName);
 
@@ -239,7 +239,7 @@
 
             imageDataUriGallery = imageDataUriGallery.Distinct().ToArray();
 
-            filter = await FilterApi.Get(null, cts.Token);
+            filter = await FilterApi.Get(null, token);
 
             affinities = AffinityCore.GetAffinity(user, filter, View);
 

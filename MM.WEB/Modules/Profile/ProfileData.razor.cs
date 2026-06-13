@@ -28,16 +28,16 @@ public partial class ProfileData : PageCore<ProfileData>
         }, cts.Token);
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(null, cts.Token);
+        Profile = await ProfileApi.Get(null, token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {
             bool confirmed;
-            var language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
+            var language = await AppStateStatic.GetAppLanguage(JsRuntime, token);
 
             if (language == AppLanguage.pt)
             {
@@ -76,7 +76,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 return;
             }
 
-            await PrincipalApi.Event(AppInfo.Title, "Data processing granted", cts.Token);
+            await PrincipalApi.Event(AppInfo.Title, "Data processing granted", token);
 
             await ShowWarning(GlobalTranslations.BasicRequired);
         }

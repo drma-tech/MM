@@ -21,7 +21,7 @@
 
 @code
 {
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         if (AppStateStatic.Principal == null)
         {
@@ -37,7 +37,7 @@
         }
 
         var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
-        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email, cts.Token);
+        var url = await ValidationApi.CreateVerificationSession($"{Navigation.BaseUri}profile", email, token);
         Navigation.NavigateTo(url!);
     }
 }

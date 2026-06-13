@@ -329,6 +329,8 @@ else
 
     protected override void OnInitialized()
     {
+        base.OnInitialized();
+
         ProfileApi.DataChanged += model =>
         {
             profile = model;
@@ -338,42 +340,35 @@ else
         SuggestionsActions.CustomPremiumDescription = GlobalTranslations.FeatureNotAvailable.Format(2);
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (AppStateStatic.IsAuthenticated)
+    //     {
+    //         var subscription = await GetLocalStorage("subscription-popup");
+
+    //         if (subscription.Empty())
+    //         {
+    //             await DialogService.SubscriptionPopup(AppStateStatic.IsAuthenticated);
+    //             await SetLocalStorage("subscription-popup", true.ToString().ToLower());
+    //         }
+    //     }
+
+    //     await base.OnAfterRenderAsync(firstRender);
+    // }
+
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        // if (AppStateStatic.IsAuthenticated)
-        // {
-        //     var subscription = await GetLocalStorage("subscription-popup");
+        profile = await ProfileApi.Get(ProfileActions, token);
+        filter = await FilterApi.Get(FilterActions, token);
+        setting = await SettingApi.Get(SettingActions, token);
+        validation = await ValidationApi.Get(token);
 
-        //     if (subscription.Empty())
-        //     {
-        //         await DialogService.SubscriptionPopup(AppStateStatic.IsAuthenticated);
-        //         await SetLocalStorage("subscription-popup", true.ToString().ToLower());
-        //     }
-        // }
+        //remove the loading status
+        await SuggestionsActions.StartLoading.Invoke(null);
+        await SuggestionsActions.FinishLoading.Invoke(null);
 
-        await base.OnAfterRenderAsync(firstRender);
-    }
-
-    protected override async Task LoadAuthDataAsync()
-    {
-        try
-        {
-            profile = await ProfileApi.Get(ProfileActions, cts.Token);
-            filter = await FilterApi.Get(FilterActions, cts.Token);
-            setting = await SettingApi.Get(SettingActions, cts.Token);
-            validation = await ValidationApi.Get(cts.Token);
-
-            //remove the loading status
-            await SuggestionsActions.StartLoading.Invoke(null);
-            await SuggestionsActions.FinishLoading.Invoke(null);
-
-            await LoadLikes();
-            await LoadMatches();
-        }
-        catch (Exception ex)
-        {
-            await ProcessException(ex);
-        }
+        await LoadLikes(token);
+        await LoadMatches(token);
     }
 
     private Color GetButtonColor(bool valid)
@@ -386,14 +381,14 @@ else
         return valid ? IconsFA.Solid.Icon("check").Font : IconsFA.Solid.Icon("circle-question").Font;
     }
 
-    private async Task LoadLikes(bool setNewVersion = false)
+    private async Task LoadLikes(CancellationToken token)
     {
-        MyLikes = await MyLikesApi.Get(setNewVersion, LikesActions, cts.Token);
+        MyLikes = await MyLikesApi.Get(false, LikesActions, token);
     }
 
-    private async Task LoadMatches(bool setNewVersion = false)
+    private async Task LoadMatches(CancellationToken token)
     {
-        MyMatches = await MyMatchesApi.Get(setNewVersion, MatchesActions, cts.Token);
+        MyMatches = await MyMatchesApi.Get(false, MatchesActions, token);
     }
 
     private async Task IsPublicChanged(bool value)

@@ -38,11 +38,11 @@
     private SettingModel? Setting { get; set; }
     private ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         await Actions.StartLoading.Invoke(null);
 
-        Setting = await SettingApi.Get(null, cts.Token);
+        Setting = await SettingApi.Get(null, token);
 
         if (Setting == null)
         {

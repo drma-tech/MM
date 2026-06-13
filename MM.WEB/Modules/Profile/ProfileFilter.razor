@@ -518,12 +518,12 @@
             Tab = null;
     }
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(null, cts.Token);
-        Filter = await FilterApi.Get(null, cts.Token);
+        Profile = await ProfileApi.Get(null, token);
+        Filter = await FilterApi.Get(null, token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {

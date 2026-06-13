@@ -47,11 +47,11 @@
     private ValidationValidation ValidationValidator { get; set; } = new();
     public ComponentActions<ValidationModel?> Actions { get; set; } = new(obj => obj == null);
 
-    protected override async Task LoadAuthDataAsync()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
         Actions?.StartLoading?.Invoke(null);
 
-        Validation = await ValidationApi.Get(cts.Token);
+        Validation = await ValidationApi.Get(token);
 
         if (Validation == null)
         {
