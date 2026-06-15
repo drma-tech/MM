@@ -173,8 +173,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
 
             RuleFor(x => x.LeisureActivities)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3,
-                    ProfileInterestModel.LeisureActivities));
+                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.LeisureActivities));
 
             RuleFor(x => x.MusicGenre)
                 .Must(value => value == null || value.Count <= 3)
