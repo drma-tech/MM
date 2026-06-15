@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using MM.API.Core.Auth;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Blocked;
+using MM.Shared.Models.Job;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MM.Shared.Models.Safety;
@@ -14,7 +15,7 @@ using System.Text.Json;
 namespace MM.API.Functions;
 
 public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repoCache, CosmosSafetyRepository repoSafety, StorageHelper storageHelper,
-    CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, IHttpClientFactory factory)
+    CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, CosmosJobRepository repoJob, IHttpClientFactory factory)
 {
     [Function("PrincipalGet")]
     public async Task<HttpResponseData?> PrincipalGet(
@@ -86,6 +87,15 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         {
             item.Ip = ip;
         }
+
+        var job = new GoPublicModel
+        {
+            RunAt = DateTimeOffset.UtcNow.AddDays(7),
+            Email = body.Email
+        };
+        job.Initialize(userId);
+
+        await repoJob.CreateItemAsync(job, cancellationToken);
 
         var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
         if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
