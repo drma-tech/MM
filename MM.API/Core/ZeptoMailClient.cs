@@ -382,7 +382,7 @@ namespace MM.API.Core
                                     Once all the steps are completed, your profile will become public and visible to other members of the platform.
                                 </p>
 
-                                <a href=""https://www.modern-matchmaker.com/en/profile"" class=""email-button"" target=""_blank"">
+                                <a href=""https://www.{domain}.com/default/profile"" class=""email-button"" target=""_blank"">
                                     Complete Your Profile
                                 </a>
 
@@ -478,7 +478,7 @@ namespace MM.API.Core
                                     Once all requirements are met, you can return to Public Mode and continue connecting with other members.
                                 </p>
 
-                                <a href=""https://www.modern-matchmaker.com/en/profile"" class=""email-button"" target=""_blank"">
+                                <a href=""https://www.{domain}.com/default/profile"" class=""email-button"" target=""_blank"">
                                     Review Your Profile
                                 </a>
                                 <hr class=""email-divider"">
