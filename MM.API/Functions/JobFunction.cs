@@ -5,12 +5,33 @@ using MM.Shared.Models.Job;
 
 namespace MM.API.Functions;
 
-public class JobFunction(CosmosJobRepository repo, CosmosRepository repoMain)
+public class JobFunction(CosmosRepository repoMain, CosmosJobRepository repoJob)
 {
+    //[Function("GoPublicTransfer")]
+    //public async Task GoPublicTransfer([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic-transfer")] HttpRequestData req, CancellationToken cancellationToken)
+    //{
+    //    var users = await repoMain.Query<AuthPrincipal>(job => job.PublicProfile == false, DocumentType.Principal, cancellationToken);
+
+    //    var hour = 0;
+    //    foreach (var user in users)
+    //    {
+    //        hour++;
+
+    //        var job = new GoPublicModel
+    //        {
+    //            RunAt = DateTimeOffset.UtcNow.AddHours(hour),
+    //            Email = user.Email
+    //        };
+    //        job.Initialize(user.UserId);
+
+    //        await repoJob.CreateItemAsync(job, cancellationToken);
+    //    }
+    //}
+
     [Function("GoPublic")]
     public async Task GoPublic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var jobs = await repo.Query<GoPublicModel>(job => job.RunAt <= DateTimeOffset.UtcNow, JobType.GoPublic, cancellationToken);
+        var jobs = await repoJob.Query<GoPublicModel>(job => job.RunAt <= DateTimeOffset.UtcNow, JobType.GoPublic, cancellationToken);
         var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
 
         foreach (var job in jobs)
@@ -24,7 +45,7 @@ public class JobFunction(CosmosJobRepository repo, CosmosRepository repoMain)
                 await zepto.SendGoPublicEmail(job.Email, userId, cancellationToken);
             }
 
-            await repo.Delete(job, cancellationToken);
+            await repoJob.Delete(job, cancellationToken);
         }
     }
 }
