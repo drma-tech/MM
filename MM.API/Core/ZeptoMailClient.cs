@@ -424,5 +424,100 @@ namespace MM.API.Core
                 throw new NotificationException($"ZeptoMail error: {response.StatusCode} - {body}");
             }
         }
+
+        public async Task SendGoPublicAgainEmail(string toEmail, string reference, CancellationToken cancellationToken)
+        {
+            var payload = new
+            {
+                from = new { address = "noreply@drma-tech.com", name = "DRMA Tech" },
+                to = new[] { new { email_address = new { address = toEmail, name = "" } } },
+                subject = $"{appName} - Your profile requires attention",
+                htmlbody = @$"
+                 <!DOCTYPE html>
+                <html lang=""en"">
+                <head>
+                    <meta charset=""utf-8"">
+                    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                    <style>
+                        {CssBase}
+                        {CssSections}
+                        {CssQuickLinks}
+                        {CssProducts}
+                    </style>
+                </head>
+                <body>
+                    <div class=""email-wrapper"">
+                        <div class=""email-container"">
+
+                            <!-- HEADER -->
+                            {HtmlHeader}
+
+                            <!-- CONTENT -->
+                            <div class=""email-content"">
+                                <h2 class=""email-title"">
+                                    Your profile needs a quick review
+                                </h2>
+
+                                <p class=""email-text"">
+                                    Thank you for being part of <span class=""email-highlight"">{appName}</span>.
+                                </p>
+
+                                <p class=""email-text"">
+                                    Your profile was previously public and visible to other members, but it has been temporarily moved to <span class=""email-highlight"">Private Mode</span>.
+                                </p>
+
+                                <p class=""email-text"">
+                                    This may be due to an internal profile review or updates to our platform requirements.
+                                </p>
+
+                                <p class=""email-text"">
+                                    Visit your profile to review any information, photos, preferences, or verification details that may require attention.
+                                </p>
+
+                                <p class=""email-text"">
+                                    Once all requirements are met, you can return to Public Mode and continue connecting with other members.
+                                </p>
+
+                                <a href=""https://www.modern-matchmaker.com/en/profile"" class=""email-button"" target=""_blank"">
+                                    Review Your Profile
+                                </a>
+                                <hr class=""email-divider"">
+                                <div class=""email-support"">
+                                    Questions? Contact
+                                    <a href=""mailto:{supportEmail}"">
+                                        {supportEmail}
+                                    </a>
+                                </div>
+                                <div class=""email-signature"">
+                                    <small>Have a great day,</small>
+                                    <strong>Team DRMA Tech</strong>
+                                </div>
+                            </div>
+
+                            <!-- FOOTER -->
+                            {HtmlFooter}
+                        </div>
+                    </div>
+                </body>
+                </html>",
+                client_reference = reference
+            };
+
+            var json = JsonSerializer.Serialize(payload);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, _uri);
+
+            request.Headers.Add("Authorization", _apiKey);
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.SendAsync(request, cancellationToken);
+
+            var body = await response.Content.ReadAsStringAsync(cancellationToken);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new NotificationException($"ZeptoMail error: {response.StatusCode} - {body}");
+            }
+        }
     }
 }

@@ -285,7 +285,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
     [Function("PrincipalPrivateMode")]
     public async Task<AuthPrincipal?> PrincipalPrivateMode(
-    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
 
@@ -298,6 +298,23 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
 
         return await repo.UpsertItemAsync(principal, cancellationToken);
     }
+
+    //[Function("PrincipalPrivateModeUser")]
+    //public async Task<AuthPrincipal?> PrincipalPrivateModeUser(
+    //    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private/{userId}")] HttpRequestData req, string userId, CancellationToken cancellationToken)
+    //{
+    //    var profile = await repoOn.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("profile not found");
+    //    await repoOff.UpsertItemAsync(profile, cancellationToken);
+    //    await repoOn.DeleteItemAsync(profile, cancellationToken);
+
+    //    var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
+    //    principal.PublicProfile = false;
+
+    //    var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
+    //    await zepto.SendGoPublicAgainEmail(principal.Email, userId, cancellationToken);
+
+    //    return await repo.UpsertItemAsync(principal, cancellationToken);
+    //}
 
     //[Function("PrincipalMigrate")]
     //public async Task PrincipalMigrate(

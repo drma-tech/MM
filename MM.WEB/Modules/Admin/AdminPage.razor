@@ -9,72 +9,93 @@
 @inherits PageCore<AdminPage>
 @inject PrincipalImportApi PrincipalImportApi
 @inject ProfileApi ProfileApi
+@inject PrincipalApi PrincipalApi
 
 <h3>AdminPage</h3>
 
-<MudButton OnClick="ImportHandle">Import Users</MudButton>
+@* <MudButton OnClick="ImportHandle">Import Users</MudButton> *@
 
-<MudDataGrid T="ProfileModel" Items="@Profiles" ReadOnly="false" Filterable="true" Dense="true" FilterMode="DataGridFilterMode.ColumnFilterMenu" Class="mt-3" RowsPerPage="8">
+<MudDataGrid T="ProfileManage" Items="@Profiles" ReadOnly="false" Filterable="true" Dense="true" FilterMode="DataGridFilterMode.ColumnFilterMenu" Class="mt-3" RowsPerPage="25">
     <Columns>
-        <PropertyColumn Property="x => x.Id" Title="Id" />
-        <PropertyColumn Property="x => x.NickName" Title="NickName" />
-        <PropertyColumn Property="x => x.Description" Title="Description" />
+        <PropertyColumn Property="x => x.Principal.UserId" Title="UserId" />
+        <PropertyColumn Property="x => x.Principal.DateTimeCreated" Title="Created" />
+        <PropertyColumn Property="x => x.Profile.Country" Title="Country" />
+        <PropertyColumn Property="x => x.Profile.Description" Title="Description" />
+        <PropertyColumn Property="x => x.Principal.PublicProfile" Title="Public" />
         <TemplateColumn>
             <CellTemplate>
-                <MudImage Src="@context.Item.GetPhoto(ImageHelper.PhotoType.Face)" Style="width: 128px;"></MudImage>
+                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Face)" Style="width: 128px;"></MudImage>
             </CellTemplate>
         </TemplateColumn>
         <TemplateColumn>
             <CellTemplate>
-                <MudImage Src="@context.Item.GetPhoto(ImageHelper.PhotoType.Body)" Style="width: 128px;"></MudImage>
+                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Body)" Style="width: 128px;"></MudImage>
+            </CellTemplate>
+        </TemplateColumn>
+        <TemplateColumn>
+            <CellTemplate>
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="@(!context.Item.Principal!.PublicProfile)" OnClick="@( () => MakePrivate(context.Item) )">make private</MudButton>
             </CellTemplate>
         </TemplateColumn>
     </Columns>
     <PagerContent>
-        <MudDataGridPager T="ProfileModel" />
+        <MudDataGridPager T="ProfileManage" />
     </PagerContent>
 </MudDataGrid>
 
 @code {
-    public HashSet<ProfileModel> Profiles { get; set; } = [];
+    public HashSet<ProfileManage> Profiles { get; set; } = [];
 
-    protected override async Task ProcessPageData()
+    protected override async Task LoadAuthDataAsync(CancellationToken token)
     {
-        Profiles = await ProfileApi.GetAll(null, cts.Token);
+        Profiles = await ProfileApi.GetAll(null, token);
     }
 
-    private async Task ImportHandle()
+    private async Task MakePrivate(ProfileManage item)
     {
         try
         {
-            var list = await PrincipalImportApi.GetAll(cts.Token);
-
-            foreach (var item in list)
-            {
-                try
-                {
-                    await JsRuntime.Supabase().CreateUserAsync(item.UserId, item.Email, item.DisplayName, cts.Token);
-                }
-                catch (Exception ex)
-                {
-                    if (ex.Message.Contains("uuid v4 format"))
-                    {
-                        var newid = await JsRuntime.Supabase().CreateUserAsync(null, item.Email, item.DisplayName, cts.Token);
-
-                        await PrincipalImportApi.Migrate(item.UserId, newid, cts.Token);
-                    }
-                    else
-                    {
-                        await ProcessException(ex);
-                    }
-                }
-            }
-
-            await ShowSuccess("import complete");
+            await PrincipalApi.PrivateManage(item.Principal.UserId, cts.Token);
+            item.Principal.PublicProfile = false;
         }
         catch (Exception ex)
         {
             await ProcessException(ex);
         }
     }
+
+    // private async Task ImportHandle()
+    // {
+    //     try
+    //     {
+    //         var list = await PrincipalImportApi.GetAll(cts.Token);
+
+    //         foreach (var item in list)
+    //         {
+    //             try
+    //             {
+    //                 await JsRuntime.Supabase().CreateUserAsync(item.UserId, item.Email, item.DisplayName, cts.Token);
+    //             }
+    //             catch (Exception ex)
+    //             {
+    //                 if (ex.Message.Contains("uuid v4 format"))
+    //                 {
+    //                     var newid = await JsRuntime.Supabase().CreateUserAsync(null, item.Email, item.DisplayName, cts.Token);
+
+    //                     await PrincipalImportApi.Migrate(item.UserId, newid, cts.Token);
+    //                 }
+    //                 else
+    //                 {
+    //                     await ProcessException(ex);
+    //                 }
+    //             }
+    //         }
+
+    //         await ShowSuccess("import complete");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         await ProcessException(ex);
+    //     }
+    // }
 }

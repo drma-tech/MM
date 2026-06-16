@@ -9,7 +9,7 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
         return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
     }
 
-    public async Task<HashSet<ProfileModel>> GetAll(ComponentActions<HashSet<ProfileModel>>? actions, CancellationToken cancellationToken)
+    public async Task<HashSet<ProfileManage>> GetAll(ComponentActions<HashSet<ProfileManage>>? actions, CancellationToken cancellationToken)
     {
         return await GetListAsync(ProfileEndpoint.GetAll, actions, cancellationToken);
     }

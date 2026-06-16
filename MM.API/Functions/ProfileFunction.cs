@@ -84,10 +84,18 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     //public async Task<HttpResponseData?> ProfileGetAll(
     //   [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "profile/get-all")] HttpRequestData req, CancellationToken cancellationToken)
     //{
+    //    var dataPrincipal = await repoGen.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
     //    var dataOff = await repoOff.ListAll<ProfileModel>(cancellationToken);
     //    var dataOn = await repoOn.ListAll<ProfileModel>(cancellationToken);
+    //    var merge = dataOff.Union(dataOn);
 
-    //    return await req.CreateResponse(dataOff.Union(dataOn), TtlCache.OneDay, cancellationToken);
+    //    HashSet<ProfileManage> profileManages = [];
+    //    foreach (var item in dataPrincipal.OrderByDescending(p => p.DateTimeCreated))
+    //    {
+    //        profileManages.Add(new ProfileManage { Principal = item, Profile = merge.SingleOrDefault(p => p.Id == item.UserId) });
+    //    }
+
+    //    return await req.CreateResponse(profileManages, TtlCache.OneDay, cancellationToken);
     //}
 
     [Function("ProfileGetData")]

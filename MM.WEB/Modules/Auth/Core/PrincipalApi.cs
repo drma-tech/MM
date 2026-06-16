@@ -45,6 +45,11 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>
         return await PutAsync(Endpoint.Private, null, ApiContext.Default.AuthPrincipal, cancellationToken);
     }
 
+    public async Task<AuthPrincipal?> PrivateManage(string userId, CancellationToken cancellationToken)
+    {
+        return await PutAsync(Endpoint.PrivateManage(userId), null, ApiContext.Default.AuthPrincipal, cancellationToken);
+    }
+
     private struct Endpoint
     {
         public const string Get = "principal/get";
@@ -53,6 +58,8 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>
         public const string Remove = "principal/remove";
         public const string Public = "principal/public";
         public const string Private = "principal/private";
+
+        public static string PrivateManage(string userId) => $"principal/private/{userId}";
 
         public static string Event(string app, string msg) => $"principal/event?app={app}&msg={msg}";
     }
