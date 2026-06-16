@@ -276,16 +276,16 @@ namespace MM.API.Core
                                         Explore {appName}
                                     </div>
                                     <div class=""link-grid"">
-                                        <a href=""https://www.{domain}.com/how-it-works"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/how-it-works"" class=""link-card"" target=""_blank"">
                                             How It Works
                                         </a>
-                                        <a href=""https://www.{domain}.com/who-its-for"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/who-its-for"" class=""link-card"" target=""_blank"">
                                             Who Is It For
                                         </a>
-                                        <a href=""https://www.{domain}.com/compare"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/compare"" class=""link-card"" target=""_blank"">
                                             Compare Services
                                         </a>
-                                        <a href=""https://www.{domain}.com/help"" class=""link-card"" target=""_blank"">
+                                        <a href=""https://www.{domain}.com/default/help"" class=""link-card"" target=""_blank"">
                                             Help Center
                                         </a>
                                     </div>
