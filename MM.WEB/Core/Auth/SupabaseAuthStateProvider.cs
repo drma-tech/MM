@@ -46,7 +46,11 @@ namespace MM.WEB.Core.Auth
                         claims.Add(new Claim("idp", "email"));
                     }
 
-                    if (doc.RootElement.TryGetProperty("full_name", out var name))
+                    if (doc.RootElement.TryGetProperty("full_name", out var full_name))
+                    {
+                        claims.Add(new Claim("name", full_name.GetString() ?? ""));
+                    }
+                    else if (doc.RootElement.TryGetProperty("name", out var name))
                     {
                         claims.Add(new Claim("name", name.GetString() ?? ""));
                     }
