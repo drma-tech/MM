@@ -34,9 +34,9 @@ namespace MM.WEB.Core.Auth
                     {
                         if (iss.GetString()?.Contains("apple") ?? false)
                             claims.Add(new Claim("idp", "apple"));
-                        if (iss.GetString()?.Contains("google") ?? false)
+                        else if (iss.GetString()?.Contains("google") ?? false)
                             claims.Add(new Claim("idp", "google"));
-                        if (iss.GetString()?.Contains("microsoft") ?? false)
+                        else if (iss.GetString()?.Contains("microsoft") ?? false)
                             claims.Add(new Claim("idp", "microsoft"));
                         else
                             claims.Add(new Claim("idp", iss.GetString() ?? "email"));
@@ -49,6 +49,11 @@ namespace MM.WEB.Core.Auth
                     if (doc.RootElement.TryGetProperty("full_name", out var name))
                     {
                         claims.Add(new Claim("name", name.GetString() ?? ""));
+                    }
+
+                    if (doc.RootElement.TryGetProperty("avatar_url", out var avatar_url))
+                    {
+                        claims.Add(new Claim("avatar", avatar_url.GetString() ?? ""));
                     }
                 }
 
