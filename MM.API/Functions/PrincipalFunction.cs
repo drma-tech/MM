@@ -95,7 +95,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         };
         job.Initialize(userId);
 
-        await repoJob.CreateItemAsync(job, cancellationToken);
+        await repoJob.UpsertItemAsync(job, cancellationToken);
 
         var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
         if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
