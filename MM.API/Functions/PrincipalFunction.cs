@@ -88,14 +88,23 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
             item.Ip = ip;
         }
 
-        var job = new GoPublicModel
+        var job7 = new GoPublicModel
         {
             RunAt = DateTimeOffset.UtcNow.AddDays(7),
             Email = body.Email
         };
-        job.Initialize(userId);
+        job7.Initialize(userId);
 
-        await repoJob.UpsertItemAsync(job, cancellationToken);
+        await repoJob.UpsertItemAsync(job7, cancellationToken);
+
+        var job30 = new GoPublicModel
+        {
+            RunAt = DateTimeOffset.UtcNow.AddDays(30),
+            Email = body.Email
+        };
+        job30.Initialize(userId);
+
+        await repoJob.UpsertItemAsync(job30, cancellationToken);
 
         var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
         if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
