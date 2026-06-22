@@ -69,7 +69,7 @@ public static partial class StringHelper
         var bytes = Encoding.UTF8.GetBytes(text);
         var hash = SHA256.HashData(bytes);
 
-        return Convert.ToHexString(hash, 0, 16);
+        return Convert.ToHexString(hash);
     }
 
     /// <summary>
