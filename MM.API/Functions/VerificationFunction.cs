@@ -50,6 +50,8 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
             contact_details = new { email }
         };
 
+        //todo: implement: portrait_image
+
         using var client = factory.CreateClient();
         client.DefaultRequestHeaders.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
 
@@ -111,6 +113,15 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         if (payload.status == "Approved")
         {
             validation.Identity = true;
+
+            //delete session (required by privacy laws)
+            var sessionUrl = $"https://verification.didit.me/v3/session/{payload.session_id}/delete/";
+            using var sessionRequest = new HttpRequestMessage(HttpMethod.Delete, sessionUrl);
+
+            sessionRequest.Headers.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
+
+            using var http = factory.CreateClient();
+            await http.SendAsync(sessionRequest, cancellationToken);
         }
         else
         {
@@ -121,45 +132,29 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         var user = payload.decision?.id_verifications?.LastOrDefault();
         SafetyModel? safety = null;
 
-        if (user != null)
+        if (user == null) throw new UnhandledException("user not found");
+        if (user.nationality == null) throw new UnhandledException("nationality not found");
+        if (user.date_of_birth == null) throw new UnhandledException("date_of_birth not found");
+        if (user.full_name == null) throw new UnhandledException("full_name not found");
+
+        safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        if (safety == null)
         {
-            safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
-            if (safety == null)
-            {
-                safety = new SafetyModel();
-                safety.SetIds(userId);
-            }
+            safety = new SafetyModel();
+            safety.SetIds(userId);
+        }
 
-            safety.session_id = payload.session_id;
-            safety.workflow_id = payload.workflow_id;
-            safety.nationality = user.nationality;
-            safety.full_name = user.full_name;
-            safety.gender = user.gender;
-            safety.date_of_birth = user.date_of_birth;
-            safety.place_of_birth = user.place_of_birth;
+        safety.provider = "didit";
+        safety.session_id = payload.session_id;
+        safety.workflow_id = payload.workflow_id;
 
-            var idNewPhoto = Guid.NewGuid().ToString();
-            var photoName = idNewPhoto + ".jpg";
+        safety.ComposeHash(user.nationality, user.date_of_birth, user.full_name);
 
-            var photo = payload.decision?.liveness_checks?.LastOrDefault()?.reference_image;
-            if (photo.NotEmpty())
-            {
-                using var http = factory.CreateClient();
-                using var responsePhoto = await http.GetAsync(photo, cancellationToken);
-                await using var stream = await responsePhoto.Content.ReadAsStreamAsync(cancellationToken);
+        var ipAnalyse = payload?.decision?.ip_analyses?.LastOrDefault();
 
-                await storageHelper.UploadSafetyPhoto(SafetyType.id, stream, photoName, userId, cancellationToken);
-                if (safety.IdentityPhotoId.NotEmpty()) await storageHelper.DeleteSafetyPhoto(SafetyType.id, safety.IdentityPhotoId, cancellationToken);
-            }
-
-            safety.IdentityPhotoId = photoName;
-
-            var ipAnalyse = payload?.decision?.ip_analyses?.LastOrDefault();
-
-            if (ipAnalyse != null)
-            {
-                safety.ip_address = ipAnalyse.ip_address;
-            }
+        if (ipAnalyse != null)
+        {
+            safety.ip_address = ipAnalyse.ip_address;
         }
 
         await Task.WhenAll(

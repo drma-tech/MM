@@ -165,7 +165,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         if (safety.GalleryPhotoId.NotEmpty()) await storageHelper.DeleteSafetyPhoto(SafetyType.Gallery, safety.GalleryPhotoId, cancellationToken);
 
         safety.GalleryPhotoId = photoName;
-        safety.Email = request.Email;
+        safety.email = request.Email;
 
         await repoSafety.UpsertItemAsync(safety, cancellationToken);
 

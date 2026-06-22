@@ -220,16 +220,7 @@ public class PrincipalFunction(CosmosRepository repo, CosmosCacheRepository repo
         {
             using var http = factory.CreateClient();
 
-            if (safety.session_id.NotEmpty())
-            {
-                var sessionUrl = $"https://verification.didit.me/v3/session/{safety.session_id}/delete/";
-                using var sessionRequest = new HttpRequestMessage(HttpMethod.Delete, sessionUrl);
-
-                sessionRequest.Headers.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
-
-                await http.SendAsync(sessionRequest, cancellationToken);
-            }
-
+            //todo: delete only after 6/12 months
             if (safety.Id.NotEmpty())
             {
                 var userUrl = "https://verification.didit.me/v3/users/delete/";

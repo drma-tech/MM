@@ -67,9 +67,9 @@ public static partial class StringHelper
         if (text.Empty()) return null;
 
         var bytes = Encoding.UTF8.GetBytes(text);
-        var hash = MD5.HashData(bytes);
+        var hash = SHA256.HashData(bytes);
 
-        return Convert.ToHexString(hash, 0, 8);
+        return Convert.ToHexString(hash, 0, 16);
     }
 
     /// <summary>

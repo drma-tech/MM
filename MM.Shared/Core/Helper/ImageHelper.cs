@@ -13,7 +13,6 @@ public static class ImageHelper
     public enum SafetyType
     {
         Gallery = 1,
-        id = 2
     }
 
     public static string GetFacePhoto => "images/no-face-photo.webp";
@@ -35,7 +34,6 @@ public static class ImageHelper
         return type switch
         {
             SafetyType.Gallery => "safety-gallery",
-            SafetyType.id => "safety-id",
             _ => throw new InvalidOperationException(nameof(SafetyType))
         };
     }
