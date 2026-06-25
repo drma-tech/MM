@@ -41,21 +41,25 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         var url = req.GetQueryParameters()["url"] ?? throw new NotificationException("callback url not available");
         var email = req.GetQueryParameters()["email"];
 
-        // Cria payload da sessão
+        //var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        //using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken) ?? throw new NotificationException("validation photo not available");
+        //var image64 = await faceStream.ConvertFromStreamToBase64Async();
+
+        // create session payload
         var sessionRequest = new
         {
             workflow_id = ApiStartup.Configurations.Didit?.WorkflowId,
             vendor_data = userId,
             callback = url,
-            contact_details = new { email }
+            contact_details = new { email },
+            //portrait_image = image64
         };
-
-        //todo: implement: portrait_image
 
         using var client = factory.CreateClient();
         client.DefaultRequestHeaders.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
 
         var response = await client.PostAsJsonAsync("https://verification.didit.me/v3/session/", sessionRequest, cancellationToken);
+        //var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
         response.EnsureSuccessStatusCode();
 
         var data = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);

@@ -113,8 +113,8 @@ public static class AppStateStatic
 
     #region AppLanguage
 
-    public static string[] SupportedLanguages => ["en", "pt", "es", "zh", "fr", "it", "de"];
-    public static string[] SitemapTranslations => ["en", "pt", "es"];
+    public static string[] SupportedLanguages => ["en", "pt", "es", "fr", "it", "de", "zh"];
+    public static string[] SitemapTranslations => ["en", "pt", "es", "fr", "it", "de"];
 
     private static AppLanguage? _appLanguage;
     private static readonly SemaphoreSlim _appLanguageSemaphore = new(1, 1);

@@ -51,10 +51,8 @@ public class Result
     public string GetLocation()
     {
         var country = address_components.Find(f => f.types.Contains("country"))?.long_name;
-        var area_level_1 =
-            address_components.Find(f => f.types.Contains("administrative_area_level_1"))?.long_name; //state or county
-        var area_level_2 =
-            address_components.Find(f => f.types.Contains("administrative_area_level_2"))?.long_name; //city
+        var area_level_1 = address_components.Find(f => f.types.Contains("administrative_area_level_1"))?.long_name; //state or county
+        var area_level_2 = address_components.Find(f => f.types.Contains("administrative_area_level_2"))?.long_name; //city
 
         if (area_level_2.Empty())
             return $"{country} - {area_level_1}";
