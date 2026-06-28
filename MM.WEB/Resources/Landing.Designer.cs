@@ -277,6 +277,24 @@ namespace MM.WEB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Users.
+        /// </summary>
+        public static string LastUsers {
+            get {
+                return ResourceManager.GetString("LastUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users who recently registered on the platform.
+        /// </summary>
+        public static string LastUsersSubtitle {
+            get {
+                return ResourceManager.GetString("LastUsersSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our Approach.
         /// </summary>
         public static string OurApproach {

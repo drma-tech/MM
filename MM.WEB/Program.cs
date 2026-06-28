@@ -134,6 +134,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<MyMatchesApi>();
     collection.AddScoped<InteractionApi>();
     collection.AddScoped<DashboardApi>();
+    collection.AddScoped<LastUsersApi>();
     collection.AddScoped<ValidationApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();

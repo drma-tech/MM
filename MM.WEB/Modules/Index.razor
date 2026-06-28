@@ -7,6 +7,7 @@
 @inherits PageCore<Index>
 
 @inject DashboardApi DashboardApi
+@inject LastUsersApi LastUsersApi
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 
@@ -116,6 +117,22 @@
                     </MudCard>
                 </MudItem>
             </MudGrid>
+        </BodyFragment>
+    </PageSectionComponent>
+
+    <PageSectionComponent Title="@Landing.LastUsers" Subtitle="@Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
+        <BodyFragment>
+            <Slider List="LastUsers?.Items ?? []" Context="item">
+                <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative;")">
+                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
+                        @item.Country.GetName()
+                    </MudChip>
+                    <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
+                        @item.Created.Humanize()
+                    </MudChip>
+                    <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                </div>
+            </Slider>
         </BodyFragment>
     </PageSectionComponent>
 
@@ -504,7 +521,10 @@
     private MudDialog? DialogCities { get; set; }
     public SumUsers? SumUsers { get; set; }
 
+    public LastUsers? LastUsers { get; set; }
+
     private bool SubscriptionAllowed { get; set; } = true;
+    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
 
     private readonly Dictionary<string, string> _iosAllowedCountries = new()
     {
@@ -515,6 +535,9 @@
     {
         var cache = await DashboardApi.GetSumUsers(cts.Token);
         SumUsers = cache?.Data;
+
+        var cache2 = await LastUsersApi.GetSumUsers(cts.Token);
+        LastUsers = cache2?.Data;
     }
 
     protected override async Task ProcessPageData()

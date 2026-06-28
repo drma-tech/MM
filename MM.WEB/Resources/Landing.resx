@@ -189,6 +189,12 @@
   <data name="HowItWorksTitle" xml:space="preserve">
     <value>How It Works</value>
   </data>
+  <data name="LastUsers" xml:space="preserve">
+    <value>Last Users</value>
+  </data>
+  <data name="LastUsersSubtitle" xml:space="preserve">
+    <value>Users who recently registered on the platform</value>
+  </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Our Approach</value>
   </data>

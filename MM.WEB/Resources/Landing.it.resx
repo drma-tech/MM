@@ -189,6 +189,12 @@
   <data name="HowItWorksTitle" xml:space="preserve">
     <value>Come funziona</value>
   </data>
+  <data name="LastUsers" xml:space="preserve">
+    <value>Ultimi utenti</value>
+  </data>
+  <data name="LastUsersSubtitle" xml:space="preserve">
+    <value>Utenti che si sono recentemente registrati sulla piattaforma</value>
+  </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Il nostro approccio</value>
   </data>

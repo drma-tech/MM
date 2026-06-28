@@ -1,3 +1,4 @@
+using Amazon.Auth.AccessControlPolicy;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
@@ -49,6 +50,45 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                     }).ToList();
 
                 doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(obj, cacheKey), cancellationToken);
+            }
+
+            await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
+        }
+
+        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+    }
+
+    [Function("LastUsers")]
+    public async Task<HttpResponseData?> LastUsers(
+       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/last-users")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var cacheKey = "last-users";
+
+        var doc = await cache.Get<LastUsers>(cacheKey, cancellationToken);
+
+        if (doc == null)
+        {
+            doc = await cacheRepo.Get<LastUsers>(cacheKey, cancellationToken);
+
+            if (doc == null)
+            {
+                var obj = new LastUsers();
+
+                var principals = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
+                var logins = await repo.ListAll<AuthLogin>(DocumentType.Login, cancellationToken);
+                var countries = EnumHelper.GetArray<Country>();
+
+                foreach (var principal in principals.OrderByDescending(p => p.DateTimeCreated).Take(20))
+                {
+                    var login = logins.SingleOrDefault(p => p.UserId == principal.UserId);
+
+                    var loginCountry = login?.Accesses.FirstOrDefault()?.Country?.ToLower();
+                    var enumCountry = countries.FirstOrDefault(p => p.GetCustomAttribute(false)?.Tips?.ToLower() == loginCountry);
+
+                    obj.Items.Add(new LastUsersItem { Created = principal.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
+                }
+
+                doc = await cacheRepo.UpsertItemAsync(new LastUsersCache(obj, cacheKey), cancellationToken);
             }
 
             await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
