@@ -103,6 +103,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
 
         if (payload.status == "Not Started") return response;
         if (payload.status == "In Progress") return response;
+        if (payload.status == "Expired") return response;
 
         var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
         var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
