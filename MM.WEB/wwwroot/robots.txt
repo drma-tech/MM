@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Disallow: /_framework/
 
-﻿Sitemap: https://www.modern-matchmaker.com/sitemap.xml
+﻿Sitemap: https://modern-matchmaker.com/sitemap.xml

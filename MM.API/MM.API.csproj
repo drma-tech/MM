@@ -21,7 +21,7 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.4.8" />
+		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.17" />
 		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.61.0" />
