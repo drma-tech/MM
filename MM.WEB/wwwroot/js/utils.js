@@ -224,8 +224,9 @@ export const environment = {
 
         const iframe = el.querySelector('iframe');
         const rect = el.getBoundingClientRect();
+        const src = iframe?.getAttribute('src');
 
-        const rendered = !!iframe;
+        const rendered = !!iframe && !!src && src !== '' && src !== 'about:blank';
         const hasSize = rect.width > 5 && rect.height > 5;
 
         return { rendered, hasSize };
