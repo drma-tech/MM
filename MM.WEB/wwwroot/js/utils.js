@@ -220,6 +220,9 @@ export const environment = {
         return window.browser?.getOSName() ?? "no bowser loaded";
     },
     inspectAdElement(el) {
+        // If the div is completely hidden, it's AdBlock.
+        // If two broken divs (csp error) appear, it's uBlock.
+        // If one broken div (csp error) appears, it's Brave.
         if (!el) return { rendered: false, hasSize: false };
 
         const iframe = el.querySelector('iframe');
