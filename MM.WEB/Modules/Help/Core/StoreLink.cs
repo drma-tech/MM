@@ -1,4 +1,4 @@
-﻿namespace MM.WEB.Modules.Support.Core
+﻿namespace MM.WEB.Modules.Help.Core
 {
     public class StoreLink(MM.Shared.Enums.Platform platform, string store, string url, string logo)
     {

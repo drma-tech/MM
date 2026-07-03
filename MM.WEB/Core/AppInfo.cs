@@ -1,4 +1,4 @@
-﻿using MM.WEB.Modules.Support.Core;
+﻿using MM.WEB.Modules.Help.Core;
 
 namespace MM.WEB.Core
 {
