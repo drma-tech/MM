@@ -18,6 +18,11 @@ function testBrowserVersion(rules, ignore = false, fallback = false) {
 }
 
 const wasmSupported = typeof WebAssembly === "object";
+const isLocalhost = window.location.hostname === "localhost";
+const isPrerendering = window.location.hostname === "127.0.0.1"
+const isDev = location.hostname.includes("develop");
+const isWebview = /webtonative/i.test(ua);
+const isPrintScreen = location.href.includes("printscreen");
 
 //browser versions not compatible with SIMD
 const simdNotSupported = testBrowserVersion(
@@ -44,15 +49,9 @@ const disableServiceWorker = testBrowserVersion(
         safari: "<16.4", //mar 23
         opera: "<77", //jun 21
     },
-    false,
+    isWebview,
     true // uncertain environment → disable
 );
-
-const isLocalhost = window.location.hostname === "localhost";
-const isPrerendering = window.location.hostname === "127.0.0.1"
-const isDev = location.hostname.includes("develop");
-const isWebview = /webtonative/i.test(ua);
-const isPrintScreen = location.href.includes("printscreen");
 
 const servicesConfig = {
     AnalyticsCode: "G-P7B5BSBS9S",
