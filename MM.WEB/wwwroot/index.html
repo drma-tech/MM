@@ -42,7 +42,16 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7B5BSBS9S"></script>
 
     <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172" crossorigin="anonymous"></script>
+    <script>
+        if (window.appConfig.blazorSupported) {
+            const script = document.createElement("script");
+            script.async = true;
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5145928155833172";
+            script.crossOrigin = "anonymous";
+
+            document.head.appendChild(script);
+        }
+    </script>
 
     <!-- Yandex.RTB -->
     <!--<script>window.yaContextCb = window.yaContextCb || []</script>-->
@@ -102,7 +111,7 @@
     <script src="https://js.sentry-cdn.com/ed1ba47e2afd2ee2d3425e67475ac829.min.js" crossorigin="anonymous"></script>
     <script>
         try {
-            if (!window.appConfig.hideBlazorIndex) {
+            if (window.appConfig.blazorSupported) {
                 Blazor.start({
                     configureRuntime: runtime => runtime.withConfig({
                         loadAllSatelliteResources: window.appConfig.isPrerendering

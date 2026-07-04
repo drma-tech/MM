@@ -201,10 +201,7 @@ export const environment = {
         storage.setLocalStorage("platform", platform);
     },
     async validateBrowserAndPlatform() {
-        const wasmSupported = typeof WebAssembly === "object";
-
-        //The browser does not support WASM or SIMD.
-        if (!wasmSupported || window.appConfig.hideBlazorIndex) {
+        if (!window.appConfig.blazorSupported) {
             notification.showBrowserWarning();
         }
     },
@@ -278,7 +275,7 @@ export const environment = {
     async isAdBlocked() {
         if (window.appConfig.isLocalhost) { return false; }
         if (window.appConfig.isBot) { return false; }
-        if (window.appConfig.hideBlazorIndex) { return false; }
+        if (!window.appConfig.blazorSupported) { return false; }
         if (window.isAdBlocked === false) { return false; }
 
         //detect if adsense exists

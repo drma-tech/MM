@@ -17,8 +17,10 @@ function testBrowserVersion(rules, ignore = false, fallback = false) {
     }
 }
 
+const wasmSupported = typeof WebAssembly === "object";
+
 //browser versions not compatible with SIMD
-const hideBlazorIndex = testBrowserVersion(
+const simdNotSupported = testBrowserVersion(
     {
         chrome: "<91", //may 21
         edge: "<91", //may 21
@@ -29,6 +31,9 @@ const hideBlazorIndex = testBrowserVersion(
     /Mediapartners-Google/i.test(ua),
     false // uncertain environment → allow
 );
+
+//The browser does not support WASM or SIMD.
+const blazorSupported = wasmSupported && !simdNotSupported;
 
 //probably a bot, so doesnt support sw
 const disableServiceWorker = testBrowserVersion(
@@ -65,7 +70,7 @@ const baseApiUrl = isLocalhost ? "http://localhost:7091" : "";
 
 window.appConfig = {
     isBot,
-    hideBlazorIndex,
+    blazorSupported,
     disableServiceWorker,
     isLocalhost,
     isPrerendering,

@@ -4,7 +4,6 @@ import { storage, notification } from "./utils.js";
 
 export const services = {
     initGoogleAnalytics(version) {
-        if (window.appConfig.isBot) return;
         if (window.appConfig.isLocalhost) return;
         if (window.appConfig.isDev) return;
 
@@ -24,7 +23,6 @@ export const services = {
         gtag("config", window.appConfig.servicesConfig.AnalyticsCode, config);
     },
     initMicrosoftClarity(code) {
-        if (window.appConfig.isBot) return;
         if (window.appConfig.isLocalhost) return;
         if (window.appConfig.isDev) return;
 
@@ -44,6 +42,7 @@ export const services = {
     },
     initUserBack(version) {
         if (window.appConfig.isBot) return;
+        if (!window.appConfig.blazorSupported) return;
 
         const browserLang = navigator.language || navigator.userLanguage;
 
@@ -70,6 +69,7 @@ export const services = {
         if (window.appConfig.isBot) return;
         if (window.appConfig.isLocalhost) return;
         if (window.appConfig.isDev) return;
+        if (!window.appConfig.blazorSupported) return;
 
         try {
             const container = document.getElementById(containerId);
@@ -92,6 +92,11 @@ export const services = {
         }
     },
     initYandex(id) {
+        if (window.appConfig.isBot) return;
+        if (window.appConfig.isLocalhost) return;
+        if (window.appConfig.isDev) return;
+        if (!window.appConfig.blazorSupported) return;
+
         window.yaContextCb = window.yaContextCb || [];
         window.yaContextCb.push(() => {
             Ya.Context.AdvManager.render({
