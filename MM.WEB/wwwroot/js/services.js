@@ -1,13 +1,12 @@
 "use strict";
 
-import { isBot, isLocalhost, isDev, servicesConfig } from "./main.js";
 import { storage, notification } from "./utils.js";
 
 export const services = {
     initGoogleAnalytics(version) {
-        if (isBot) return;
-        if (isLocalhost) return;
-        if (isDev) return;
+        if (window.appConfig.isBot) return;
+        if (window.appConfig.isLocalhost) return;
+        if (window.appConfig.isDev) return;
 
         const PLATFORM = storage.getLocalStorage("platform");
 
@@ -22,12 +21,12 @@ export const services = {
             platform: PLATFORM,
         };
 
-        gtag("config", servicesConfig.AnalyticsCode, config);
+        gtag("config", window.appConfig.servicesConfig.AnalyticsCode, config);
     },
     initMicrosoftClarity(code) {
-        if (isBot) return;
-        if (isLocalhost) return;
-        if (isDev) return;
+        if (window.appConfig.isBot) return;
+        if (window.appConfig.isLocalhost) return;
+        if (window.appConfig.isDev) return;
 
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -44,13 +43,13 @@ export const services = {
         }, 5000);
     },
     initUserBack(version) {
-        if (isBot) return;
+        if (window.appConfig.isBot) return;
 
         const browserLang = navigator.language || navigator.userLanguage;
 
         window.Userback = window.Userback || {};
 
-        window.Userback.access_token = servicesConfig.UserBackToken;
+        window.Userback.access_token = window.appConfig.servicesConfig.UserBackToken;
 
         window.Userback.widget_settings = {
             language: storage.getLocalStorage("language") ?? browserLang.slice(0, 2),
@@ -68,9 +67,9 @@ export const services = {
         })(document);
     },
     initAdSense(adClient, adSlot, containerId) {
-        if (isBot) return;
-        if (isLocalhost) return;
-        if (isDev) return;
+        if (window.appConfig.isBot) return;
+        if (window.appConfig.isLocalhost) return;
+        if (window.appConfig.isDev) return;
 
         try {
             const container = document.getElementById(containerId);
@@ -103,4 +102,4 @@ export const services = {
     }
 };
 
-services.initMicrosoftClarity(servicesConfig.ClarityKey);
+services.initMicrosoftClarity(window.appConfig.servicesConfig.ClarityKey);
