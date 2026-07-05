@@ -10,8 +10,6 @@ const ignoredErrors = [
     /failed to fetch/i,
     /failed to register/i,
     /failed to start/i,
-    // /wasm simd/i,
-    // /unexpected token/i,
     /token has expired/i,
 ];
 
