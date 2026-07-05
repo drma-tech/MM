@@ -121,8 +121,8 @@
                 }
                 else {
                     const os = window.browser?.getOSName();
-                    const browser = window.browser?.getBrowserVersion();
-                    const version = environment.getBrowserVersion();
+                    const browser = window.browser?.getBrowserName();
+                    const version = window.browser?.getBrowserVersion();
 
                     document.body.innerHTML = `
                         <div style="display:flex; align-items:center; justify-content:center; min-height:100vh; background:#f0f2f5; font-family:'Segoe UI', Roboto, sans-serif; padding:1rem;">
