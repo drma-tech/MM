@@ -308,11 +308,11 @@ body .pwa-updater[b-pwa-updater] {
 /* SUPPORT */
 
 p a {
-    color: var(--mud-palette-secondary);
+    color: var(--mud-palette-tertiary);
 }
 
 .support-subtitle a {
-    color: var(--mud-palette-primary);
+    color: var(--mud-palette-tertiary);
 }
 
 .support-container {
