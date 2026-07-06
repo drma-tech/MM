@@ -11,10 +11,10 @@
 @inject ValidationApi ValidationApi
 @inject IMediaDevicesService MediaDevicesService;
 
-<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    @GlobalTranslations.ModuleUnderDevelopment
+    @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 
 <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
@@ -22,11 +22,11 @@
         <MudCard Outlined="true">
             <MudCardHeader Class="pa-2">
                 <CardHeaderContent>
-                    <MudText Typo="Typo.h6">@Resources.Translations.GalleryValidation</MudText>
+                    <MudText Typo="Typo.h6">@Translations.Module.Profile.GalleryValidation</MudText>
                 </CardHeaderContent>
                 <CardHeaderActions>
                     <MudIconButton Icon="@Icons.Material.Filled.PrivacyTip" Color="Color.Default"
-                                   OnClick="@(async() => await MudDialog!.ShowAsync(CardHeader.PrivacyTerms, PopupHelper.Options(MaxWidth.ExtraSmall)))" />
+                                   OnClick="@(async() => await MudDialog!.ShowAsync(Translations.Module.Legal.PrivacyTerms, PopupHelper.Options(MaxWidth.ExtraSmall)))" />
                 </CardHeaderActions>
             </MudCardHeader>
             <MudCardContent Class="pa-2">
@@ -40,12 +40,12 @@
                     {
                         <div style="text-align: center;">
                             <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="OpenVideo" Class="my-5">
-                                @Button.StartNewValidation
+                                @Translations.Button.StartNewValidation
                             </MudButton>
                             @if (PriorPicture != null && PriorPicture.NotEmpty())
                             {
                                 <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => SendPhoto(PriorPicture))" Class="my-5 ms-2">
-                                    @Button.UsePriorValidation
+                                    @Translations.Button.UsePriorValidation
                                 </MudButton>
                             }
                         </div>
@@ -69,19 +69,19 @@
                 {
                     <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.PhotoCamera" OnClick="TakeShot" Class="me-2"
                                Disabled="@(videoStreamTrack is null)">
-                        @Button.TakeShot
+                        @Translations.Button.TakeShot
                     </MudButton>
                 }
                 else
                 {
                     <MudButton Color="Color.Secondary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Cameraswitch" OnClick="Reset" Class="me-2">
-                        @Button.Reset
+                        @Translations.Button.Reset
                     </MudButton>
                 }
                 <MudSpacer></MudSpacer>
                 <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Send" OnClick="@(() => SendPhoto(null))"
                            Disabled="Picture.Empty() || Validation == null || Validation.Gallery">
-                    @Button.Send
+                    @Translations.Button.Send
                 </MudButton>
             </MudCardActions>
         </MudCard>
@@ -92,16 +92,16 @@
     <DialogContent>
         <MudList T="string" Dense="true">
             <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
-                @Resources.Translations.GalleryTerm1
+                @Translations.Module.Profile.GalleryTerm1
             </MudListItem>
             <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
-                @Resources.Translations.GalleryTerm2
+                @Translations.Module.Profile.GalleryTerm2
             </MudListItem>
         </MudList>
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>

@@ -4,19 +4,19 @@
 
 <MudAlert Severity="@GetSeverity(null)" Icon="@GetIcon(null)" Variant="Variant.Filled" Dense="true" Class="@Css.Build().Medium("mb")">
     <MudText Typo="Typo.h5" style="font-weight: bold;" Inline="false">
-        @GlobalTranslations.GeneralCompatibility (@(Affinities.GetPercentAffinity() + "%"))
+        @Translations.Module.Profile.GeneralCompatibility (@(Affinities.GetPercentAffinity() + "%"))
     </MudText>
     @if (totPercAff <= 60)
     {
-        @GlobalTranslations.CompatibilityLow
+        @Translations.Module.Profile.CompatibilityLow
     }
     else if (totPercAff <= 80)
     {
-        @GlobalTranslations.CompatibilityMedium
+        @Translations.Module.Profile.CompatibilityMedium
     }
     else
     {
-        @GlobalTranslations.CompatibilityHigh
+        @Translations.Module.Profile.CompatibilityHigh
     }
 </MudAlert>
 

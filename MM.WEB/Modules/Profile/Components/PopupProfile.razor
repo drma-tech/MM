@@ -2,7 +2,6 @@
 @using MM.WEB.Core.Models
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Profile.Core
-@using Button = MM.WEB.Resources.Button
 @using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @inherits ComponentCore<PopupProfile>
@@ -65,12 +64,12 @@
                                     {
                                         <MudItem xs="12">
                                             <DrmaButton Icon="@Icons.Material.Filled.ThumbUp" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Actions="EventActions">
-                                                @Button.Like
+                                                @Translations.Button.Like
                                             </DrmaButton>
                                         </MudItem>
                                         <MudItem xs="12">
                                             <DrmaButton Icon="@Icons.Material.Filled.ThumbDown" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Actions="EventActions">
-                                                @Button.Dislike
+                                                @Translations.Button.Dislike
                                             </DrmaButton>
                                         </MudItem>
                                     }
@@ -79,7 +78,7 @@
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Chat" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="true">
-                                                @Button.Chat
+                                                @Translations.Button.Chat
                                             </MudButton>
                                         </MudItem>
                                     }
@@ -88,7 +87,7 @@
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.PeopleAlt" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Dating)">
-                                                @Button.Dating
+                                                @Translations.Button.Dating
                                             </MudButton>
                                         </MudItem>
                                     }
@@ -97,7 +96,7 @@
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Favorite" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Relationship)">
-                                                @Button.Relationship
+                                                @Translations.Button.Relationship
                                             </MudButton>
                                         </MudItem>
                                     }
@@ -106,7 +105,7 @@
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Feedback" Style="width: 100%;"
                                                        OnClick="GoChat" Disabled="ButtonDisabled(EventType.Feedback)">
-                                                @Button.Feedback
+                                                @Translations.Button.Feedback
                                             </MudButton>
                                         </MudItem>
                                     }
@@ -117,13 +116,13 @@
                                     <MudItem xs="12">
                                         <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Style="width: 100%;"
                                                    OnClick="report!.ShowModal" Disabled="true">
-                                            @Button.Delete
+                                            @Translations.Button.Delete
                                         </MudButton>
                                     </MudItem>
                                     <MudItem xs="12">
                                         <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Flag" Style="width: 100%;"
                                                    OnClick="report!.ShowModal" Disabled="true">
-                                            @Button.Report
+                                            @Translations.Button.Report
                                         </MudButton>
                                     </MudItem>
                                 </MudGrid>
@@ -163,11 +162,11 @@
         </RenderControl>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(async () => { await DialogService!.ShowMessageBoxAsync("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
-            @Button.Feedback
+        <MudButton Color="Color.Secondary" OnClick="@(async () => { await DialogService!.ShowMessageBoxAsync("Feedback", Translations.Module.Profile.CompatibilityDeveloping); })">
+            @Translations.Button.Feedback
         </MudButton>
         <MudButton OnClick="@(async () => { MudDialog!.Close(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>
@@ -217,7 +216,7 @@
 
             if (interaction?.Status == InteractionStatus.Blocked)
             {
-                await Actions.ShowError.Invoke(GlobalTranslations.ProfileNotAvailable);
+                await Actions.ShowError.Invoke(Translations.Module.Profile.ProfileNotAvailable);
                 return;
             }
 
@@ -228,7 +227,7 @@
 
             if (View == null)
             {
-                await Actions.ShowError.Invoke(GlobalTranslations.PartnerProfileNotAvailable);
+                await Actions.ShowError.Invoke(Translations.Module.Profile.PartnerProfileNotAvailable);
                 return;
             }
 

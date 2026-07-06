@@ -8,10 +8,10 @@
                 <div class="pa-4" style="text-align: center; height: 100%;">
                     <MudImage Src="images/onboarding-step-1.webp" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">
-                        @Resources.Translations.Step1Title
+                        @Translations.Module.Help.Step1Title
                     </MudText>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step1Subtitle
+                        @Translations.Module.Help.Step1Subtitle
                     </MudText>
                 </div>
             </MudCarouselItem>
@@ -19,13 +19,13 @@
                 <div class="pa-4" style="text-align: center; height: 100%;">
                     <MudImage Src="images/onboarding-step-2.webp" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">
-                        @Resources.Translations.Step2Title
+                        @Translations.Module.Help.Step2Title
                     </MudText>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step2Subtitle.Split("|")[0]
+                        @Translations.Module.Help.Step2Subtitle.Split("|")[0]
                     </MudText>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step2Subtitle.Split("|")[1]
+                        @Translations.Module.Help.Step2Subtitle.Split("|")[1]
                     </MudText>
                 </div>
             </MudCarouselItem>
@@ -33,10 +33,10 @@
                 <div class="pa-4" style="text-align: center; height: 100%;">
                     <MudImage Src="images/onboarding-step-3.webp" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">
-                        @Resources.Translations.Step3Title
+                        @Translations.Module.Help.Step3Title
                     </MudText>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step3Subtitle
+                        @Translations.Module.Help.Step3Subtitle
                     </MudText>
                 </div>
             </MudCarouselItem>
@@ -44,7 +44,7 @@
                 <div class="pa-4" style="text-align: center; height: 100%;">
                     <MudImage Src="icon/icon-300.png" Style="height: 200px;"></MudImage>
                     <MudText Typo="Typo.h6">
-                        @Resources.Translations.Step5Subtitle
+                        @Translations.Module.Help.Step5Subtitle
                     </MudText>
                 </div>
             </MudCarouselItem>
@@ -53,10 +53,10 @@
             @if (mudCarousel?.SelectedIndex == mudCarousel?.Items.Count - 1) //last step
             {
                 <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="@(() => { mudCarousel?.Previous(); StateHasChanged(); })" Class="@Css.Build().Small("me")">
-                    @WEB.Resources.Button.Back
+                    @Translations.Button.Back
                 </MudButton>
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" IconColor="Color.Secondary" OnClick="Login" FullWidth="true" StartIcon="@Icons.Material.Filled.KeyboardArrowRight">
-                    @Resources.Translations.Step5Title
+                    @Translations.Module.Help.Step5Title
                 </MudButton>
             }
             else
@@ -64,18 +64,18 @@
                 @if (mudCarousel?.SelectedIndex == 0)
                 {
                     <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="() => MudDialog?.Close()">
-                        @WEB.Resources.Button.Close
+                        @Translations.Button.Close
                     </MudButton>
                 }
                 else
                 {
                     <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="@(() => { mudCarousel?.Previous(); StateHasChanged(); })">
-                        @WEB.Resources.Button.Back
+                        @Translations.Button.Back
                     </MudButton>
                 }
                 <MudChip T="string" Text="@($"{mudCarousel?.SelectedIndex + 1} - {mudCarousel?.Items.Count}")" Class="mx-3" Style="height: auto;"></MudChip>
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => { mudCarousel?.Next(); StateHasChanged(); })">
-                    @WEB.Resources.Button.Next
+                    @Translations.Button.Next
                 </MudButton>
             }
         </div>

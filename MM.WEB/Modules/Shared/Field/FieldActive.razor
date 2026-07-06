@@ -17,7 +17,7 @@
                 <MudIcon Icon="@(Value ? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Cancel)" Class="me-2"></MudIcon>
                 @if (Value)
                 {
-                    <span>@Button.Done</span>
+                    <span>@Translations.Button.Done</span>
                 }
                 else if (CustomButtonText.NotEmpty())
                 {
@@ -25,7 +25,7 @@
                 }
                 else
                 {
-                    <span>@Button.Pending</span>
+                    <span>@Translations.Button.Pending</span>
                 }
                 @if (Sparks.HasValue)
                 {

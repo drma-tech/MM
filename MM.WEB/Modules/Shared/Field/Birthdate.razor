@@ -27,11 +27,11 @@
             <MudSelectItem Value="@item">@item</MudSelectItem>
         }
     </MudSelect>
-    <MudTextField T="string" Label="Age" Text="@($"{Value.GetAge()} {GlobalTranslations.Years}")"
+    <MudTextField T="string" Label="Age" Text="@($"{Value.GetAge()} {Translations.Module.Profile.Years}")"
                   Disabled="true" FullWidth="true"></MudTextField>
 </div>
 <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
-    @GlobalTranslations.BirthdateTip
+    @Translations.Module.Profile.BirthdateTip
 </MudText>
 
 @code {

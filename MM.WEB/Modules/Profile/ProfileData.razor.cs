@@ -47,7 +47,7 @@ public partial class ProfileData : PageCore<ProfileData>
                     $"Consulte nossa <a href=\"/{Culture}/legal/privacy\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Política de Privacidade</a> e nossos <a href=\"/{Culture}/legal/terms\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Termos de Uso</a>."
                 );
 
-                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Translations.Button.IAgree, Translations.Button.IDoNotAgree) ?? false;
             }
             else if (language == AppLanguage.es)
             {
@@ -57,7 +57,7 @@ public partial class ProfileData : PageCore<ProfileData>
                     $"Consulte nuestra <a href=\"/{Culture}/legal/privacy\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Política de Privacidad</a> y nuestros <a href=\"/{Culture}/legal/terms\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Términos de Uso</a>."
                 );
 
-                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Translations.Button.IAgree, Translations.Button.IDoNotAgree) ?? false;
             }
             else //English
             {
@@ -67,7 +67,7 @@ public partial class ProfileData : PageCore<ProfileData>
                      $"See our <a href=\"/{Culture}/legal/privacy\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Privacy Policy</a> and <a href=\"/{Culture}/legal/terms\" target=\"_blank\" style=\"color: var(--mud-palette-primary)\">Terms of Use</a>."
                  );
 
-                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Button.IAgree, Button.IDoNotAgree) ?? false;
+                confirmed = await DialogService.ShowMessageBoxAsync("Modern Matchmaker", message, Translations.Button.IAgree, Translations.Button.IDoNotAgree) ?? false;
             }
 
             if (!confirmed)
@@ -78,7 +78,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
             await PrincipalApi.Event(AppInfo.Title, "Data processing granted", token);
 
-            await ShowWarning(GlobalTranslations.BasicRequired);
+            await ShowWarning(Translations.Module.Profile.BasicRequired);
         }
 
         Profile ??= new ProfileModel
@@ -120,11 +120,11 @@ public partial class ProfileData : PageCore<ProfileData>
                 profile.City = address?.GetCity();
             }
 
-            if (gps.Accuracy > 1000) await ShowInfo(GlobalTranslations.GpsNotAccurate);
+            if (gps.Accuracy > 1000) await ShowInfo(Translations.Module.Profile.GpsNotAccurate);
         }
         else
         {
-            await ShowWarning(GlobalTranslations.UnableDetectGps);
+            await ShowWarning(Translations.Module.Profile.UnableDetectGps);
         }
     }
 
@@ -158,7 +158,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 if (message.Contains("spam-like"))
                 {
-                    await ProcessException(new Exception("Description contains suspicious or spam-like content.", new Exception(Profile.Description)), false);
+                    await ProcessException(new Exception(Translations.Notification.SpamLike, new Exception(Profile.Description)), false);
                 }
             }
         }

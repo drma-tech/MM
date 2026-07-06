@@ -2,7 +2,6 @@
 @page "/{culture}"
 
 @using MM.Shared.Models.Dashboard
-@using Button = MM.WEB.Resources.Button
 @using MM.WEB.Modules.Subscription.Core
 @inherits PageCore<Index>
 
@@ -11,34 +10,34 @@
 @inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@SeoTranslations.AppIndexTitle" Description="@SeoTranslations.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="@Translations.Title.AppSubtitle" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@SeoTranslations.AppIndexTitle" CustomBodyClass="mb-12"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
 <MudContainer>
     @if (!AppStateStatic.IsAuthenticated)
     {
         <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
             <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
-                @Profile.Resources.Translations.HeroCall
+                @Translations.Module.Profile.HeroCall
             </MudText>
             <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4">
-                @Profile.Resources.Translations.HeroButton
+                @Translations.Module.Profile.HeroButton
             </MudButton>
             <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
-                @Profile.Resources.Translations.HeroNote
+                @Translations.Module.Profile.HeroNote
             </MudText>
         </MudPaper>
     }
 
-    <PageSectionComponent Title="@Landing.OurNumbers" Subtitle="@Landing.OurNumbersMsg1" Description="@Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Translations.Module.Landing.OurNumbers" Subtitle="@Translations.Module.Landing.OurNumbersMsg1" Description="@Translations.Module.Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="6" md="3">
                     <MudCard>
                         <MudCardHeader Class="pa-3">
                             <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
-                                @GlobalTranslations.Countries
+                                @Translations.Module.Landing.Countries
                             </MudText>
                         </MudCardHeader>
                         <MudCardContent Class="py-0 px-3">
@@ -49,8 +48,8 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size"
-                                       OnClick="@(async () => await DialogCountries!.ShowAsync(Landing.CountriesRegistered, PopupHelper.Options(MaxWidth.Small)))">
-                                @Button.LearnMore
+                                       OnClick="@(async () => await DialogCountries!.ShowAsync(Translations.Module.Landing.CountriesRegistered, PopupHelper.Options(MaxWidth.Small)))">
+                                @Translations.Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -59,7 +58,7 @@
                     <MudCard>
                         <MudCardHeader Class="pa-3">
                             <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
-                                @GlobalTranslations.Cities
+                                @Translations.Module.Landing.Cities
                             </MudText>
                         </MudCardHeader>
                         <MudCardContent Class="py-0 px-3">
@@ -71,7 +70,7 @@
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true"
                                        OnClick="@(async () => await DialogCities!.ShowAsync("Users from cities registered so far", PopupHelper.Options(MaxWidth.Small)))">
-                                @Button.LearnMore
+                                @Translations.Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -80,7 +79,7 @@
                     <MudCard>
                         <MudCardHeader Class="pa-3">
                             <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
-                                @Landing.TotalUsers
+                                @Translations.Module.Landing.TotalUsers
                             </MudText>
                         </MudCardHeader>
                         <MudCardContent Class="py-0 px-3">
@@ -91,7 +90,7 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
-                                @Button.LearnMore
+                                @Translations.Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -100,7 +99,7 @@
                     <MudCard>
                         <MudCardHeader Class="pa-3">
                             <MudText Typo="Typo.h6" Style="font-size: 1.1rem;">
-                                @Landing.RecentlyJoined
+                                @Translations.Module.Landing.RecentlyJoined
                             </MudText>
                         </MudCardHeader>
                         <MudCardContent Class="py-0 px-3">
@@ -111,7 +110,7 @@
                         </MudCardContent>
                         <MudCardActions Class="pa-3">
                             <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Disabled="true">
-                                @Button.LearnMore
+                                @Translations.Button.LearnMore
                             </MudButton>
                         </MudCardActions>
                     </MudCard>
@@ -120,7 +119,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@Landing.LastUsers" Subtitle="@Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Translations.Module.Landing.LastUsers" Subtitle="@Translations.Module.Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
         <BodyFragment>
             <Slider List="LastUsers?.Items ?? []" Context="item">
                 <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative;")">
@@ -136,7 +135,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@Landing.OurRoadmap" Subtitle="@Landing.OurRoadmapMsg1" Description="@Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Translations.Module.Landing.OurRoadmap" Subtitle="@Translations.Module.Landing.OurRoadmapMsg1" Description="@Translations.Module.Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
@@ -146,12 +145,12 @@
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
                             </ItemDot>
                             <ItemOpposite>
-                                <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase1Title</MudText>
+                                <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase1Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
                                 @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
-                                    <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase1Title</MudText>
+                                    <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase1Title</MudText>
                                 }
                                 <MudCard Elevation="25">
                                     <MudCardContent>
@@ -169,9 +168,9 @@
                                                     }
                                                 </div>
                                             </MudListSubheader>
-                                            <MudListItem>@Landing.Phase1Opt1</MudListItem>
-                                            <MudListItem>@Landing.Phase1Opt2</MudListItem>
-                                            <MudListItem>@Landing.Phase1Opt3</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase1Opt1</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase1Opt2</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase1Opt3</MudListItem>
                                         </MudList>
                                     </MudCardContent>
                                 </MudCard>
@@ -182,12 +181,12 @@
                                 <MudIcon Icon="@IconsFA.Solid.Icon("2").Font" Style="text-align: center;"></MudIcon>
                             </ItemDot>
                             <ItemOpposite>
-                                <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase2Title</MudText>
+                                <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase2Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
                                 @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
-                                    <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase2Title</MudText>
+                                    <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase2Title</MudText>
                                 }
                                 <MudCard Elevation="25">
                                     <MudCardContent>
@@ -205,8 +204,8 @@
                                                     }
                                                 </div>
                                             </MudListSubheader>
-                                            <MudListItem>@Landing.Phase2Opt1</MudListItem>
-                                            <MudListItem>@Landing.Phase2Opt3</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase2Opt1</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase2Opt3</MudListItem>
                                         </MudList>
                                     </MudCardContent>
                                 </MudCard>
@@ -217,12 +216,12 @@
                                 <MudIcon Icon="@IconsFA.Solid.Icon("3").Font" Style="text-align: center;"></MudIcon>
                             </ItemDot>
                             <ItemOpposite>
-                                <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase3Title</MudText>
+                                <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase3Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
                                 @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
-                                    <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase3Title</MudText>
+                                    <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase3Title</MudText>
                                 }
                                 <MudCard Elevation="25">
                                     <MudCardContent>
@@ -240,8 +239,8 @@
                                                     }
                                                 </div>
                                             </MudListSubheader>
-                                            <MudListItem>@Landing.Phase3Opt1</MudListItem>
-                                            <MudListItem>@Landing.Phase3Opt2</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase3Opt1</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase3Opt2</MudListItem>
                                         </MudList>
                                     </MudCardContent>
                                 </MudCard>
@@ -252,12 +251,12 @@
                                 <MudIcon Icon="@IconsFA.Solid.Icon("4").Font" Style="text-align: center;"></MudIcon>
                             </ItemDot>
                             <ItemOpposite>
-                                <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Landing.Phase4Title</MudText>
+                                <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase4Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
                                 @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
                                 {
-                                    <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Landing.Phase4Title</MudText>
+                                    <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase4Title</MudText>
                                 }
                                 <MudCard Elevation="25">
                                     <MudCardContent>
@@ -275,8 +274,8 @@
                                                     }
                                                 </div>
                                             </MudListSubheader>
-                                            <MudListItem>@Landing.Phase4Opt1</MudListItem>
-                                            <MudListItem>@Landing.Phase4Opt2</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase4Opt1</MudListItem>
+                                            <MudListItem>@Translations.Module.Landing.Phase4Opt2</MudListItem>
                                         </MudList>
                                     </MudCardContent>
                                 </MudCard>
@@ -288,7 +287,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <PageSectionComponent Title="@Landing.OurApproach" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Translations.Module.Landing.OurApproach" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall">
                 <MudItem xs="12" sm="6" md="4">
@@ -299,13 +298,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach01
+                                    @Translations.Module.Landing.Approach01
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach01Desc
+                                @Translations.Module.Landing.Approach01Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -318,13 +317,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach02
+                                    @Translations.Module.Landing.Approach02
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach02Desc
+                                @Translations.Module.Landing.Approach02Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -337,13 +336,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach03
+                                    @Translations.Module.Landing.Approach03
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach03Desc
+                                @Translations.Module.Landing.Approach03Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -356,13 +355,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach04
+                                    @Translations.Module.Landing.Approach04
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach04Desc
+                                @Translations.Module.Landing.Approach04Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -375,13 +374,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach05
+                                    @Translations.Module.Landing.Approach05
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach05Desc
+                                @Translations.Module.Landing.Approach05Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -394,13 +393,13 @@
                             </CardHeaderAvatar>
                             <CardHeaderContent>
                                 <MudText Typo="Typo.h3" Color="Color.Secondary" Class="custom-h3-features">
-                                    @Landing.Approach06
+                                    @Translations.Module.Landing.Approach06
                                 </MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent Class="pa-3">
                             <MudText Typo="Typo.body1" Align="Align.Justify">
-                                @Landing.Approach06Desc
+                                @Translations.Module.Landing.Approach06Desc
                             </MudText>
                         </MudCardContent>
                     </MudCard>
@@ -411,7 +410,7 @@
 
     <Advertising Slot="@AdSlot.Middle"></Advertising>
 
-    <PageSectionComponent Title="@Landing.CompatibilitySystem" Description="@Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
+    <PageSectionComponent Title="@Translations.Module.Landing.CompatibilitySystem" Description="@Translations.Module.Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
         <BodyFragment>
             <MudImage Src="screenshots/match_desktop.webp" Fluid="true"></MudImage>
         </BodyFragment>
@@ -422,17 +421,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        @WEB.Resources.Landing.HowItWorksTitle
+                        @Translations.Title.HowItWorks
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        @WEB.Resources.Landing.HowItWorksCall
+                        @Translations.Module.Landing.HowItWorksCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/how-it-works")>
-                        @WEB.Resources.Button.LearnMore
+                        @Translations.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>
@@ -441,17 +440,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        @WEB.Resources.Landing.WhoIsItForTitle
+                        @Translations.Title.WhoIsItFor
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        @WEB.Resources.Landing.WhoIsItForCall
+                        @Translations.Module.Landing.WhoIsItForCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/who-its-for")>
-                        @WEB.Resources.Button.LearnMore
+                        @Translations.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>
@@ -460,17 +459,17 @@
             <MudCard>
                 <MudCardHeader Class="pa-3">
                     <MudText Typo="Typo.h6" Color="Color.Primary">
-                        @WEB.Resources.Landing.CompareTitle
+                        @Translations.Title.Compare
                     </MudText>
                 </MudCardHeader>
                 <MudCardContent Class="py-0 px-3">
                     <MudText Typo="Typo.body1" Align="Align.Justify">
-                        @WEB.Resources.Landing.CompareCall
+                        @Translations.Module.Landing.CompareCall
                     </MudText>
                 </MudCardContent>
                 <MudCardActions Class="pa-3">
                     <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="AppStateStatic.Size" Href=@($"/{Culture}/compare")>
-                        @WEB.Resources.Button.LearnMore
+                        @Translations.Button.LearnMore
                     </MudButton>
                 </MudCardActions>
             </MudCard>
@@ -487,7 +486,7 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(async () => { await DialogCountries!.CloseAsync(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>
@@ -506,7 +505,7 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(async () => { await DialogCities!.CloseAsync(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>

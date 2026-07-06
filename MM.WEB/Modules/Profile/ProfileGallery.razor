@@ -4,7 +4,6 @@
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
 @using static ImageHelper
-@using Button = MM.WEB.Resources.Button
 @using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
@@ -13,10 +12,10 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/gallery") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile/gallery") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    @GlobalTranslations.ModuleUnderDevelopment
+    @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 
 <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
@@ -25,7 +24,7 @@
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h6" Color="Color.Primary">@GlobalTranslations.FacePhoto</MudText>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">@Translations.Module.Profile.FacePhoto</MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
@@ -38,18 +37,18 @@
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Add
+                            @Translations.Button.Add
                         </MudButton>
                     }
                     else
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Face))" Class="me-2"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Update
+                            @Translations.Button.Update
                         </MudButton>
                         <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Face))"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Remove
+                            @Translations.Button.Remove
                         </MudButton>
                     }
                 </MudCardActions>
@@ -59,7 +58,7 @@
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h6" Color="Color.Primary">@GlobalTranslations.BodyPhoto</MudText>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">@Translations.Module.Profile.BodyPhoto</MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
@@ -72,18 +71,18 @@
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Add
+                            @Translations.Button.Add
                         </MudButton>
                     }
                     else
                     {
                         <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(() => SelectPicture(PhotoType.Body))" Class="me-2"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Update
+                            @Translations.Button.Update
                         </MudButton>
                         <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeletePhotoGallery(PhotoType.Body))"
                                    Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
-                            @Button.Remove
+                            @Translations.Button.Remove
                         </MudButton>
                     }
                 </MudCardActions>
@@ -118,13 +117,13 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(async () => { await MudDialog!.CloseAsync(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>
 
 <FloatingButton StartIcon="@Icons.Material.Filled.Info" Color="Color.Info" Side="Side.Right" Position="2"
-                OnClick="async() => await MudDialog!.ShowAsync(GlobalTranslations.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
+                OnClick="async() => await MudDialog!.ShowAsync(Translations.Module.Help.HelpTitle, PopupHelper.Options(MaxWidth.ExtraSmall))">
 </FloatingButton>
 <FloatingButton Template="Template.Back"></FloatingButton>
 

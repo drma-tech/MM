@@ -1,4 +1,3 @@
-using Amazon.Auth.AccessControlPolicy;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
@@ -55,7 +54,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
     }
 
     [Function("LastUsers")]
@@ -94,7 +93,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
             await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
         }
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocument<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()

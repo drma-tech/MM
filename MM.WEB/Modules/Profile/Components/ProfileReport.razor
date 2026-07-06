@@ -1,6 +1,4 @@
-﻿@using Button = MM.WEB.Resources.Button
-
-<MudDialog @ref="@modal" Style="width: 100%">
+﻿<MudDialog @ref="@modal" Style="width: 100%">
     <DialogContent>
         @*  <RadioGroup TValue="int" Name="report" CheckedValue="@checkedValue" CheckedValueChanged="@OnCheckedValueChanged">
             @{
@@ -26,10 +24,10 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(async () => { await modal!.CloseAsync(); })">
-            @Button.Cancel
+            @Translations.Button.Cancel
         </MudButton>
         <MudButton Color="Color.Primary" OnClick="@Confirmar" Disabled="true">
-            @Button.Confirm
+            @Translations.Button.Confirm
         </MudButton>
     </DialogActions>
 </MudDialog>

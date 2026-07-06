@@ -7,10 +7,10 @@
 
 @inject ValidationApi ValidationApi
 
-<HeadComponent Title="@SeoTranslations.ProfileTitle" Url=@($"/{Culture}/profile/validation/identity") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile/validation/identity") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
-    @GlobalTranslations.ModuleUnderDevelopment
+    @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 
 <MudAlert Variant="Variant.Filled" Severity="Severity.Warning" Dense="true" Icon="@IconsFA.Solid.Icon("spinner").Animation(IconAnimation.Spin).Font">

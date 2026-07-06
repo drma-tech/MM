@@ -3,7 +3,6 @@
 @using MM.Shared.Models.Dashboard
 @using MM.Shared.Models.Subscription
 @using MM.WEB.Modules.Subscription.Core
-@using MM.WEB.Modules.Subscription.Resources
 @using System.Globalization
 
 @inject PaymentConfigurationApi ConfigurationApi
@@ -16,19 +15,19 @@
             <MudText Typo="Typo.subtitle1" Align="Align.Center">
                 @if (AppStateStatic.ActiveProduct == AccountProduct.Phase1)
                 {
-                    @Landing.Phase1Title
+                    @Translations.Module.Landing.Phase1Title
                 }
                 else if (AppStateStatic.ActiveProduct == AccountProduct.Phase2)
                 {
-                    @Landing.Phase2Title
+                    @Translations.Module.Landing.Phase2Title
                 }
                 else if (AppStateStatic.ActiveProduct == AccountProduct.Phase3)
                 {
-                    @Landing.Phase3Title
+                    @Translations.Module.Landing.Phase3Title
                 }
                 else
                 {
-                    @Landing.Phase4Title
+                    @Translations.Module.Landing.Phase4Title
                 }
             </MudText>
             <div class="mb-3">
@@ -48,7 +47,7 @@
             </MudText>
             <MudGrid Spacing="1" Justify="Justify.SpaceBetween">
                 <MudItem xs="10">
-                    <MudText>@Translations.NoAds</MudText>
+                    <MudText>@Translations.Module.Subscription.NoAds</MudText>
                 </MudItem>
                 <MudItem>
                     <MudChip T="string" Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Success" Size="Size.Small" Label="true" Class="chip-no-text" />
@@ -89,7 +88,7 @@
     </MudOverlay>
 </MudStack>
 <MudText Typo="Typo.caption">
-    @Translations.PricesDisplayedDollars
+    @Translations.Module.Subscription.PricesDisplayedDollars
 </MudText>
 
 @code {
@@ -191,7 +190,7 @@
             }
             else
             {
-                await ShowWarning(GlobalTranslations.YouMustLoggedSubscribe);
+                await ShowWarning(Translations.Module.Subscription.YouMustLoggedSubscribe);
                 _processing = false; StateHasChanged();
             }
         }

@@ -8,11 +8,11 @@
 <MudDialog Style="width: 100%">
     <DialogContent>
         <MudTabs Border="true" Outlined="true" TabPanelsClass="pt-2" MinimumTabWidth="100px">
-            <MudTabPanel Tag="@("Affinity")" Text="@GlobalTranslations.Compatibility">
+            <MudTabPanel Tag="@("Affinity")" Text="@Translations.Module.Profile.Compatibility">
                 <MudGrid Spacing="@Css.SpaceSmall">
                     <MudItem xs="6">
                         <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
-                            @GlobalTranslations.YourProfile
+                            @Translations.Module.Profile.YourProfile
                         </MudAlert>
                         @if (PreferenceValues.Any())
                         {
@@ -26,13 +26,13 @@
                         else
                         {
                             <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
-                                @GlobalTranslations.NotAnswered
+                                @Translations.Module.Profile.NotAnswered
                             </MudChip>
                         }
                     </MudItem>
                     <MudItem xs="6">
                         <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
-                            @GlobalTranslations.ExpectedCompatibility
+                            @Translations.Module.Profile.ExpectedCompatibility
                         </MudAlert>
                         @if (ExpectedValues.Any())
                         {
@@ -60,13 +60,13 @@
                         else
                         {
                             <MudChip T="string" Color="Color.Default" Variant="Variant.Outlined">
-                                @GlobalTranslations.Undefined
+                                @Translations.Module.Profile.Undefined
                             </MudChip>
                         }
                     </MudItem>
                 </MudGrid>
                 <MudAlert Severity="Severity.Info" Variant="Variant.Filled" Dense="true" Class="my-2">
-                    @GlobalTranslations.YourPartnerProfile
+                    @Translations.Module.Profile.YourPartnerProfile
                 </MudAlert>
                 @if (ViewValues.Any())
                 {
@@ -100,7 +100,7 @@
                         else
                         {
                             <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
-                                @GlobalTranslations.NotAnswered
+                                @Translations.Module.Profile.NotAnswered
                             </MudAlert>
                         }
                     }
@@ -108,16 +108,16 @@
                 else
                 {
                     <MudAlert Severity="@GetSeverity()" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
-                        @GlobalTranslations.NotAnswered
+                        @Translations.Module.Profile.NotAnswered
                     </MudAlert>
                 }
             </MudTabPanel>
-            <MudTabPanel Tag="@("WhyImportant")" Text="@GlobalTranslations.WhyImportant" Disabled="WhyImportant.Empty()">
+            <MudTabPanel Tag="@("WhyImportant")" Text="@Translations.Module.Profile.WhyImportant" Disabled="WhyImportant.Empty()">
                 <MudText Class="my-2" Typo="Typo.body1" Align="Align.Justify">
                     @WhyImportant
                 </MudText>
             </MudTabPanel>
-            <MudTabPanel Tag="@("Tips")" Text="@GlobalTranslations.Tips" Disabled="GetTips().Empty()">
+            <MudTabPanel Tag="@("Tips")" Text="@Translations.Module.Profile.Tips" Disabled="GetTips().Empty()">
                 <MudList T="string" Dense="true">
                     @foreach (var item in GetTips())
                     {
@@ -130,11 +130,11 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService!.ShowMessageBoxAsync("Feedback", GlobalTranslations.CompatibilityDeveloping); })">
-            @Button.Feedback
+        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService!.ShowMessageBoxAsync("Feedback", Translations.Module.Profile.CompatibilityDeveloping); })">
+            @Translations.Button.Feedback
         </MudButton>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>

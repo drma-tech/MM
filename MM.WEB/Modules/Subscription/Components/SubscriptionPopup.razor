@@ -2,7 +2,6 @@
 
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Subscription.Core
-@using MM.WEB.Modules.Subscription.Resources
 
 @inject PaymentAuthApi PaymentAuthApi
 @inject PrincipalApi PrincipalApi
@@ -39,7 +38,7 @@
                     }
                 </MudItem>
                 <MudItem xs="12" sm="4">
-                    <MudSelect @bind-Value="@Provider" Label="@Modules.Subscription.Resources.Translations.PaymentProvider" Variant="Variant.Outlined" Dense="true">
+                    <MudSelect @bind-Value="@Provider" Label="@Translations.Module.Subscription.PaymentProvider" Variant="Variant.Outlined" Dense="true">
                         @foreach (var item in Providers)
                         {
                             <MudSelectItem T="PaymentProvider" Value="@item">
@@ -125,7 +124,7 @@
         <span class="ma-2">Platform: @Platform</span>
         <MudSpacer></MudSpacer>
         <MudButton OnClick="@(() => { MudDialog?.Close(); })">
-            @Button.Close
+            @Translations.Button.Close
         </MudButton>
     </DialogActions>
 </MudDialog>
@@ -240,7 +239,7 @@
                 Client = freshClient;
                 StateHasChanged();
 
-                await ShowSuccess(Translations.RegistrationSuccessful);
+                await ShowSuccess(Translations.Module.Subscription.RegistrationSuccessful);
             }
             else
             {
@@ -270,7 +269,7 @@
                 Client = freshClient;
                 StateHasChanged();
 
-                await ShowSuccess(Translations.RegistrationSuccessful);
+                await ShowSuccess(Translations.Module.Subscription.RegistrationSuccessful);
             }
             else
             {

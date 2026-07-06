@@ -1,8 +1,8 @@
 ﻿@page "/{culture}/who-its-for"
 @inherits PageCore<WhoItsFor>
 
-<HeadComponent Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" Url=@($"/{Culture}/who-its-for") Index="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@WEB.Resources.Landing.WhoIsItForTitle" Description="@WEB.Resources.Landing.WhoIsItForDesc" CustomBodyClass="mb-12"></PageSectionComponent>
+<HeadComponent Title="@Translations.Title.WhoIsItFor" Description="@Translations.Description.WhoIsItFor" Url=@($"/{Culture}/who-its-for") Index="true"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@Translations.Title.WhoIsItFor" Description="@Translations.Description.WhoIsItFor" CustomBodyClass="mb-12"></PageSectionComponent>
 
 @if (Language == AppLanguage.pt)
 {
@@ -287,10 +287,10 @@ else
 {
     <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
         <MudText Typo="Typo.h6" Align="Align.Center" Class="my-3">
-            @WEB.Resources.Landing.WhoIsItForCall2
+            @Translations.Module.Landing.WhoIsItForCall2
         </MudText>
         <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="Login" Class="my-4">
-            @Profile.Resources.Translations.HeroButton
+            @Translations.Module.Profile.HeroButton
         </MudButton>
     </MudPaper>
 }
