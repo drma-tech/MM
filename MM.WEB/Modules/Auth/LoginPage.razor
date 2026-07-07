@@ -57,7 +57,7 @@
         <div style="text-align: center;" class="@Css.Build().Large("mt").Medium("mb")">
             <MudIcon Icon="@Icons.Material.Filled.CheckBox" Size="Size.Small" Style="vertical-align: sub;" />
             <MudText Inline="true">
-                @((MarkupString)string.Format(MM.WEB.Translations.Module.Auth.Terms1, $"<a href='/{Culture}/legal/terms' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.TermsUse}</a>", $"<a href='/{Culture}/legal/privacy' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.PrivacyPolicy}</a>"))
+                @((MarkupString)string.Format(Translations.Module.Auth.Terms1, $"<a href='/{Culture}/legal/terms' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.TermsUse}</a>", $"<a href='/{Culture}/legal/privacy' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.PrivacyPolicy}</a>"))
             </MudText>
         </div>
         <MudOverlay Visible="_processingInProgress" DarkBackground="true" Absolute="true" Style="text-align: center;">
@@ -114,7 +114,7 @@
             {
                 if (!IsValidEmail(email ?? ""))
                 {
-                    await ShowError(MM.WEB.Translations.Module.Auth.EnterEmail);
+                    await ShowError(Translations.Module.Auth.EnterEmail);
                     _processingInProgress = false; StateHasChanged();
                     return;
                 }
@@ -147,7 +147,7 @@
 
             if (provider == "email" && success)
             {
-                await ShowInfo(MM.WEB.Translations.Module.Auth.CodeSent.Format(email));
+                await ShowInfo(Translations.Module.Auth.CodeSent.Format(email));
                 await txtOTP!.FocusAsync();
                 _ = MonitorEmailStatus(reference);
             }
@@ -198,7 +198,7 @@
 
             if (code.Empty())
             {
-                await ShowError(MM.WEB.Translations.Module.Auth.EnterCode);
+                await ShowError(Translations.Module.Auth.EnterCode);
                 _processingInProgress = false; StateHasChanged();
                 return;
             }
