@@ -61,7 +61,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner through Smart Matchmaking.
+        ///   Looks up a localized string similar to Find a compatible partner through Matchmaking.
         /// </summary>
         internal static string AppSubtitle {
             get {
