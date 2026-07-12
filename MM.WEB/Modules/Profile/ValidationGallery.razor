@@ -121,7 +121,7 @@
     private readonly List<(string label, string id)> Cameras = new();
     private string? currentCameraId;
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         if (AppStateStatic.Principal == null)
         {

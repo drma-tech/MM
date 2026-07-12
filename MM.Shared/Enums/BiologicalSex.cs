@@ -2,12 +2,12 @@
 
 public enum BiologicalSex
 {
-    [Custom(Name = "MaleName", Description = "MaleDescription", ResourceType = typeof(Resources.BiologicalSex))]
+    [FieldSettings("MaleName", Description = "MaleDescription", ResourceType = typeof(Translations.Enum.BiologicalSex))]
     Male = 1,
 
-    [Custom(Name = "FemaleName", Description = "FemaleDescription", ResourceType = typeof(Resources.BiologicalSex))]
+    [FieldSettings("FemaleName", Description = "FemaleDescription", ResourceType = typeof(Translations.Enum.BiologicalSex))]
     Female = 2,
 
-    [Custom(Name = "OtherName", Description = "OtherDescription", ResourceType = typeof(Resources.BiologicalSex))]
+    [FieldSettings("OtherName", Description = "OtherDescription", ResourceType = typeof(Translations.Enum.BiologicalSex))]
     Other = 99
 }

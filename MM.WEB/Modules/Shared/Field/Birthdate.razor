@@ -1,27 +1,27 @@
 ﻿@using Microsoft.JSInterop
-@inherits BaseCustomField<DateTime?>
+@inherits FormBase
 
 @inject IJSRuntime JsRuntime
 @inject ISnackbar Snackbar
 
-<div class="d-flex" style="align-items: center;">
+<div class="d-flex @CssClass" style="align-items: center; @Style">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
     <MudSelect Label="Year" Value="@year" ValueChanged="(int value) => SetYear(value)" AdornmentColor="Color.Primary"
-               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+               Required="@Required" Placeholder="@Placeholder" FullWidth="true" Class="me-3">
         @foreach (var item in years)
         {
             <MudSelectItem Value="@item">@item</MudSelectItem>
         }
     </MudSelect>
     <MudSelect Label="Month" Value="@month" ValueChanged="(int value) => SetMonth(value)" AdornmentColor="Color.Primary"
-               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+               Required="@Required" Placeholder="@Placeholder" FullWidth="true" Class="me-3">
         @foreach (var item in months)
         {
             <MudSelectItem Value="@item">@item</MudSelectItem>
         }
     </MudSelect>
     <MudSelect Label="Day" Value="@day" ValueChanged="(int value) => SetDay(value)" AdornmentColor="Color.Primary"
-               Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true" Class="me-3">
+               Required="@Required" Placeholder="@Placeholder" FullWidth="true" Class="me-3">
         @foreach (var item in days)
         {
             <MudSelectItem Value="@item">@item</MudSelectItem>
@@ -37,7 +37,6 @@
 @code {
     [Parameter] public DateTime? Value { get; set; }
     [Parameter] public EventCallback<DateTime?> ValueChanged { get; set; }
-    [Parameter] public bool Required { get; set; }
 
     private int year = DateTime.Now.Year;
     private int month = DateTime.Now.Month;

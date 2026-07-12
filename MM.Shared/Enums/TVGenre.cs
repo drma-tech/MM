@@ -2,42 +2,42 @@
 
 public enum TVGenre
 {
-    [Custom(Name = "AnimatedAnime", Description = "AnimatedAnime_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("AnimatedAnime", Description = "AnimatedAnime_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     AnimatedAnime = 1,
 
-    [Custom(Name = "CookingFood", Description = "CookingFood_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("CookingFood", Description = "CookingFood_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     CookingFood = 2,
 
-    [Custom(Name = "DocumentaryReality", Description = "DocumentaryReality_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("DocumentaryReality", Description = "DocumentaryReality_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     DocumentaryReality = 3,
 
-    [Custom(Name = "EducationalScience", Description = "EducationalScience_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("EducationalScience", Description = "EducationalScience_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     EducationalScience = 4,
 
-    [Custom(Name = "GameShowsCompetitions", Description = "GameShowsCompetitions_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("GameShowsCompetitions", Description = "GameShowsCompetitions_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     GameShowsCompetitions = 5,
 
-    [Custom(Name = "KidsFamily", Description = "KidsFamily_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("KidsFamily", Description = "KidsFamily_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     KidsFamily = 6,
 
-    [Custom(Name = "LifestyleHome", Description = "LifestyleHome_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("LifestyleHome", Description = "LifestyleHome_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     LifestyleHome = 7,
 
-    [Custom(Name = "MusicPerformances", Description = "MusicPerformances_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("MusicPerformances", Description = "MusicPerformances_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     MusicPerformances = 8,
 
-    [Custom(Name = "NewsCurrentAffairs", Description = "NewsCurrentAffairs_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("NewsCurrentAffairs", Description = "NewsCurrentAffairs_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     NewsCurrentAffairs = 9,
 
-    [Custom(Name = "SoapOperasDramas", Description = "SoapOperasDramas_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("SoapOperasDramas", Description = "SoapOperasDramas_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     SoapOperasDramas = 10,
 
-    [Custom(Name = "SportsOutdoors", Description = "SportsOutdoors_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("SportsOutdoors", Description = "SportsOutdoors_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     SportsOutdoors = 11,
 
-    [Custom(Name = "TalkShowsInterviews", Description = "TalkShowsInterviews_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("TalkShowsInterviews", Description = "TalkShowsInterviews_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     TalkShowsInterviews = 12,
 
-    [Custom(Name = "VarietyComedy", Description = "VarietyComedy_Description", ResourceType = typeof(Resources.TVGenre))]
+    [FieldSettings("VarietyComedy", Description = "VarietyComedy_Description", ResourceType = typeof(Translations.Enum.TVGenre))]
     VarietyComedy = 13
 }

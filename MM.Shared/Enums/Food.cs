@@ -2,63 +2,63 @@
 
 public enum Food
 {
-    [Custom(Name = "AsianCuisine", Description = "AsianCuisine_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("AsianCuisine", Description = "AsianCuisine_Description", ResourceType = typeof(Translations.Enum.Food))]
     AsianCuisine = 1,
 
-    [Custom(Name = "EuropeanCuisine", Description = "EuropeanCuisine_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("EuropeanCuisine", Description = "EuropeanCuisine_Description", ResourceType = typeof(Translations.Enum.Food))]
     EuropeanCuisine = 2,
 
-    [Custom(Name = "MiddleEasternNorthAfrican", Description = "MiddleEasternNorthAfrican_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("MiddleEasternNorthAfrican", Description = "MiddleEasternNorthAfrican_Description", ResourceType = typeof(Translations.Enum.Food))]
     MiddleEasternNorthAfrican = 3,
 
-    [Custom(Name = "LatinAmerican", Description = "LatinAmerican_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("LatinAmerican", Description = "LatinAmerican_Description", ResourceType = typeof(Translations.Enum.Food))]
     LatinAmerican = 4,
 
-    [Custom(Name = "AfricanCuisine", Description = "AfricanCuisine_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("AfricanCuisine", Description = "AfricanCuisine_Description", ResourceType = typeof(Translations.Enum.Food))]
     AfricanCuisine = 5,
 
-    [Custom(Name = "IndianSouthAsian", Description = "IndianSouthAsian_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("IndianSouthAsian", Description = "IndianSouthAsian_Description", ResourceType = typeof(Translations.Enum.Food))]
     IndianSouthAsian = 6,
 
-    [Custom(Name = "NorthAmerican", Description = "NorthAmerican_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("NorthAmerican", Description = "NorthAmerican_Description", ResourceType = typeof(Translations.Enum.Food))]
     NorthAmerican = 7,
 
-    [Custom(Name = "Mediterranean", Description = "Mediterranean_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("Mediterranean", Description = "Mediterranean_Description", ResourceType = typeof(Translations.Enum.Food))]
     Mediterranean = 8,
 
-    [Custom(Name = "Seafood", Description = "Seafood_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("Seafood", Description = "Seafood_Description", ResourceType = typeof(Translations.Enum.Food))]
     Seafood = 9,
 
-    [Custom(Name = "Vegetarian", Description = "Vegetarian_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("Vegetarian", Description = "Vegetarian_Description", ResourceType = typeof(Translations.Enum.Food))]
     Vegetarian = 10,
 
-    [Custom(Name = "Vegan", Description = "Vegan_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("Vegan", Description = "Vegan_Description", ResourceType = typeof(Translations.Enum.Food))]
     Vegan = 11,
 
-    [Custom(Name = "StreetFood", Description = "StreetFood_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("StreetFood", Description = "StreetFood_Description", ResourceType = typeof(Translations.Enum.Food))]
     StreetFood = 12,
 
-    [Custom(Name = "FastFoodComfort", Description = "FastFoodComfort_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("FastFoodComfort", Description = "FastFoodComfort_Description", ResourceType = typeof(Translations.Enum.Food))]
     FastFoodComfort = 13,
 
-    [Custom(Name = "FusionCuisine", Description = "FusionCuisine_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("FusionCuisine", Description = "FusionCuisine_Description", ResourceType = typeof(Translations.Enum.Food))]
     FusionCuisine = 14,
 
-    [Custom(Name = "DessertsSweets", Description = "DessertsSweets_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("DessertsSweets", Description = "DessertsSweets_Description", ResourceType = typeof(Translations.Enum.Food))]
     DessertsSweets = 15,
 
-    [Custom(Name = "SpicyFood", Description = "SpicyFood_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("SpicyFood", Description = "SpicyFood_Description", ResourceType = typeof(Translations.Enum.Food))]
     SpicyFood = 16,
 
-    [Custom(Name = "SavorySnacksSmallPlates", Description = "SavorySnacksSmallPlates_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("SavorySnacksSmallPlates", Description = "SavorySnacksSmallPlates_Description", ResourceType = typeof(Translations.Enum.Food))]
     SavorySnacksSmallPlates = 17,
 
-    [Custom(Name = "HomeCookedTraditional", Description = "HomeCookedTraditional_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("HomeCookedTraditional", Description = "HomeCookedTraditional_Description", ResourceType = typeof(Translations.Enum.Food))]
     HomeCookedTraditional = 18,
 
-    [Custom(Name = "GrilledBarbecue", Description = "GrilledBarbecue_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("GrilledBarbecue", Description = "GrilledBarbecue_Description", ResourceType = typeof(Translations.Enum.Food))]
     GrilledBarbecue = 19,
 
-    [Custom(Name = "BakedGoods", Description = "BakedGoods_Description", ResourceType = typeof(Resources.Food))]
+    [FieldSettings("BakedGoods", Description = "BakedGoods_Description", ResourceType = typeof(Translations.Enum.Food))]
     BakedGoods = 20
 }

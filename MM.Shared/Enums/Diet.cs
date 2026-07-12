@@ -5,27 +5,27 @@
 /// </summary>
 public enum Diet
 {
-    [Custom(Name = "Omnivore_Name", Description = "Omnivore_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("Omnivore", Description = "Omnivore_Description", ResourceType = typeof(Translations.Enum.Diet))]
     Omnivore = 1,
 
-    [Custom(Name = "Flexitarian_Name", Description = "Flexitarian_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("Flexitarian", Description = "Flexitarian_Description", ResourceType = typeof(Translations.Enum.Diet))]
     Flexitarian = 2,
 
-    [Custom(Name = "Vegetarian_Name", Description = "Vegetarian_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("Vegetarian", Description = "Vegetarian_Description", ResourceType = typeof(Translations.Enum.Diet))]
     Vegetarian = 3,
 
-    [Custom(Name = "Vegan_Name", Description = "Vegan_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("Vegan", Description = "Vegan_Description", ResourceType = typeof(Translations.Enum.Diet))]
     Vegan = 4,
 
-    [Custom(Name = "RawFood_Name", Description = "RawFood_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("RawFood", Description = "RawFood_Description", ResourceType = typeof(Translations.Enum.Diet))]
     RawFood = 5,
 
-    [Custom(Name = "GlutenFree_Name", Description = "GlutenFree_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("GlutenFree", Description = "GlutenFree_Description", ResourceType = typeof(Translations.Enum.Diet))]
     GlutenFree = 6,
 
-    [Custom(Name = "OrganicAllnaturalLocal_Name", Description = "OrganicAllnaturalLocal_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("OrganicAllnaturalLocal", Description = "OrganicAllnaturalLocal_Description", ResourceType = typeof(Translations.Enum.Diet))]
     OrganicAllnaturalLocal = 7,
 
-    [Custom(Name = "DetoxWeightLoss_Name", Description = "DetoxWeightLoss_Description", ResourceType = typeof(Resources.Diet))]
+    [FieldSettings("DetoxWeightLoss", Description = "DetoxWeightLoss_Description", ResourceType = typeof(Translations.Enum.Diet))]
     DetoxWeightLoss = 8
 }

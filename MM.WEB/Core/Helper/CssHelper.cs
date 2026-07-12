@@ -1,6 +1,4 @@
-﻿using MudBlazor;
-
-namespace MM.WEB.Core.Helper
+﻿namespace MM.WEB.Core.Helper
 {
     public sealed class Css
     {
@@ -34,8 +32,8 @@ namespace MM.WEB.Core.Helper
 
         public static Css Build() => new();
 
-        public static int SpaceSmall => AppStateStatic.Breakpoint == Breakpoint.Xs ? 2 : 3;
-        public static int SpaceMedium => AppStateStatic.Breakpoint == Breakpoint.Xs ? 4 : 6;
-        public static int SpaceLarge => AppStateStatic.Breakpoint == Breakpoint.Xs ? 6 : 9;
+        public static int SpaceSmall => AppStateStatic.IsMobile ? 2 : 3;
+        public static int SpaceMedium => AppStateStatic.IsMobile ? 4 : 6;
+        public static int SpaceLarge => AppStateStatic.IsMobile ? 6 : 9;
     }
 }

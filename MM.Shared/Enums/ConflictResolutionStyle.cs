@@ -2,12 +2,12 @@
 
 public enum ConflictResolutionStyle
 {
-    [Custom(Name = "DirectResolution", Description = "DirectResolution_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
+    [FieldSettings("DirectResolution", Description = "DirectResolution_Description", ResourceType = typeof(Translations.Enum.ConflictResolutionStyle))]
     DirectResolution = 1,
 
-    [Custom(Name = "ReflectiveApproach", Description = "ReflectiveApproach_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
+    [FieldSettings("ReflectiveApproach", Description = "ReflectiveApproach_Description", ResourceType = typeof(Translations.Enum.ConflictResolutionStyle))]
     ReflectiveApproach = 2,
 
-    [Custom(Name = "AvoidanceDenial", Description = "AvoidanceDenial_Description", ResourceType = typeof(Resources.ConflictResolutionStyle))]
+    [FieldSettings("AvoidanceDenial", Description = "AvoidanceDenial_Description", ResourceType = typeof(Translations.Enum.ConflictResolutionStyle))]
     AvoidanceDenial = 3
 }

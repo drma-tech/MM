@@ -5,9 +5,9 @@
 /// </summary>
 public enum Neurodiversity
 {
-    [Custom(Name = "Neurotypical_Name", Description = "Neurotypical_Description", ResourceType = typeof(Resources.Neurodiversity))]
+    [FieldSettings("Neurotypical_Name", Description = "Neurotypical_Description", ResourceType = typeof(Translations.Enum.Neurodiversity))]
     Neurotypical = 1,
 
-    [Custom(Name = "Neurodivergent_Name", Description = "Neurodivergent_Description", ResourceType = typeof(Resources.Neurodiversity))]
+    [FieldSettings("Neurodivergent_Name", Description = "Neurodivergent_Description", ResourceType = typeof(Translations.Enum.Neurodiversity))]
     Neurodivergent = 2
 }

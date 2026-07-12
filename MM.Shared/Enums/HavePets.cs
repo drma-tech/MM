@@ -2,24 +2,24 @@
 
 public enum HavePets
 {
-    [Custom(Name = "IDontHave", Description = "IDontHave_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("IDontHave", Description = "IDontHave_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     IDontHave = 1,
 
-    [Custom(Name = "IDontWant", Description = "IDontWant_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("IDontWant", Description = "IDontWant_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     IDontWant = 2,
 
-    [Custom(Name = "Dog", Description = "Dog_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("Dog", Description = "Dog_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     Dog = 3,
 
-    [Custom(Name = "Cat", Description = "Cat_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("Cat", Description = "Cat_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     Cat = 4,
 
-    [Custom(Name = "DogCat", Description = "DogCat_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("DogCat", Description = "DogCat_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     DogCat = 5,
 
-    [Custom(Name = "SmallPets", Description = "SmallPets_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("SmallPets", Description = "SmallPets_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     SmallPets = 6,
 
-    [Custom(Name = "ExoticPets", Description = "ExoticPets_Description", ResourceType = typeof(Resources.HavePets))]
+    [FieldSettings("ExoticPets", Description = "ExoticPets_Description", ResourceType = typeof(Translations.Enum.HavePets))]
     ExoticPets = 7
 }

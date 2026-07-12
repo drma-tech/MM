@@ -2,27 +2,27 @@
 
 public enum Religion
 {
-    [Custom(Name = "Christianity", Description = "Christianity_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Christianity", Description = "Christianity_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Christianity = 1,
 
-    [Custom(Name = "Islam", Description = "Islam_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Islam", Description = "Islam_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Islam = 2,
 
-    [Custom(Name = "Hinduism", Description = "Hinduism_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Hinduism", Description = "Hinduism_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Hinduism = 3,
 
-    [Custom(Name = "NonReligious", Description = "NonReligious_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("NonReligious", Description = "NonReligious_Description", ResourceType = typeof(Translations.Enum.Religion))]
     NonReligious = 4,
 
-    [Custom(Name = "Buddhism", Description = "Buddhism_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Buddhism", Description = "Buddhism_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Buddhism = 5,
 
-    [Custom(Name = "Sikhism", Description = "Sikhism_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Sikhism", Description = "Sikhism_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Sikhism = 6,
 
-    [Custom(Name = "Judaism", Description = "Judaism_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Judaism", Description = "Judaism_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Judaism = 7,
 
-    [Custom(Name = "Other", Description = "Other_Description", ResourceType = typeof(Resources.Religion))]
+    [FieldSettings("Other", Description = "Other_Description", ResourceType = typeof(Translations.Enum.Religion))]
     Other = 8
 }

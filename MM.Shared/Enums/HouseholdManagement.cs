@@ -2,12 +2,12 @@
 
 public enum HouseholdManagement
 {
-    [Custom(Name = "SharedResponsibilities", Description = "SharedResponsibilities_Description", ResourceType = typeof(Resources.HouseholdManagement))]
+    [FieldSettings("SharedResponsibilities", Description = "SharedResponsibilities_Description", ResourceType = typeof(Translations.Enum.HouseholdManagement))]
     SharedResponsibilities = 1,
 
-    [Custom(Name = "PrimaryResponsibilities", Description = "PrimaryResponsibilities_Description", ResourceType = typeof(Resources.HouseholdManagement))]
+    [FieldSettings("PrimaryResponsibilities", Description = "PrimaryResponsibilities_Description", ResourceType = typeof(Translations.Enum.HouseholdManagement))]
     PrimaryResponsibilities = 2,
 
-    [Custom(Name = "ExternalSupport", Description = "ExternalSupport_Description", ResourceType = typeof(Resources.HouseholdManagement))]
+    [FieldSettings("ExternalSupport", Description = "ExternalSupport_Description", ResourceType = typeof(Translations.Enum.HouseholdManagement))]
     ExternalSupport = 3
 }

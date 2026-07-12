@@ -134,7 +134,7 @@
 
     private MudDialog? MudDialog { get; set; }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         _profile = await ProfileApi.Get(ProfileActions, token);
     }

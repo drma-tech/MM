@@ -2,12 +2,12 @@
 
 public enum FamilyInvolvement
 {
-    [Custom(Name = "NotInvolved_Name", Description = "NotInvolved_Description", ResourceType = typeof(Resources.FamilyInvolvement))]
+    [FieldSettings("NotInvolved", Description = "NotInvolved_Description", ResourceType = typeof(Translations.Enum.FamilyInvolvement))]
     NotInvolved = 1,
 
-    [Custom(Name = "SomeInvolvement_Name", Description = "SomeInvolvement_Description", ResourceType = typeof(Resources.FamilyInvolvement))]
+    [FieldSettings("SomeInvolvement", Description = "SomeInvolvement_Description", ResourceType = typeof(Translations.Enum.FamilyInvolvement))]
     SomeInvolvement = 2,
 
-    [Custom(Name = "HeavilyInvolved_Name", Description = "HeavilyInvolved_Description", ResourceType = typeof(Resources.FamilyInvolvement))]
+    [FieldSettings("HeavilyInvolved", Description = "HeavilyInvolved_Description", ResourceType = typeof(Translations.Enum.FamilyInvolvement))]
     HeavilyInvolved = 3
 }

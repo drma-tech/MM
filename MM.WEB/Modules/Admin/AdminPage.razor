@@ -34,7 +34,9 @@
         </TemplateColumn>
         <TemplateColumn>
             <CellTemplate>
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="@(!context.Item.Principal!.PublicProfile)" OnClick="@( () => MakePrivate(context.Item) )">make private</MudButton>
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" Disabled="@(!context.Item.Principal!.PublicProfile)" OnClick="@(() => MakePrivate(context.Item))">
+                    Make Private
+                </MudButton>
             </CellTemplate>
         </TemplateColumn>
     </Columns>
@@ -46,7 +48,7 @@
 @code {
     public HashSet<ProfileManage> Profiles { get; set; } = [];
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         Profiles = await ProfileApi.GetAll(null, token);
     }
@@ -55,7 +57,7 @@
     {
         try
         {
-            await PrincipalApi.PrivateManage(item.Principal.UserId, cts.Token);
+            await PrincipalApi.PrivateManage(item.Principal!.UserId!, cts.Token);
             item.Principal.PublicProfile = false;
         }
         catch (Exception ex)

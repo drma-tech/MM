@@ -2,24 +2,24 @@
 
 public enum Section
 {
-    [Custom(Name = "Basic", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Basic", ResourceType = typeof(Translations.Enum.Section))]
     Basic,
 
-    [Custom(Name = "Bio", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Bio", ResourceType = typeof(Translations.Enum.Section))]
     Bio,
 
-    [Custom(Name = "Lifestyle", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Lifestyle", ResourceType = typeof(Translations.Enum.Section))]
     Lifestyle,
 
-    [Custom(Name = "Personality", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Personality", ResourceType = typeof(Translations.Enum.Section))]
     Personality,
 
-    [Custom(Name = "Interest", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Interest", ResourceType = typeof(Translations.Enum.Section))]
     Interest,
 
-    [Custom(Name = "Relationship", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Relationship", ResourceType = typeof(Translations.Enum.Section))]
     Relationship,
 
-    [Custom(Name = "Goals", ResourceType = typeof(Resources.Section))]
+    [FieldSettings("Goals", ResourceType = typeof(Translations.Enum.Section))]
     Goals
 }

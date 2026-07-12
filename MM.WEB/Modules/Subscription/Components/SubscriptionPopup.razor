@@ -42,7 +42,7 @@
                         @foreach (var item in Providers)
                         {
                             <MudSelectItem T="PaymentProvider" Value="@item">
-                                @item.GetName()
+                                @item.GetFieldSettings(EnumFields.Name).Name
                             </MudSelectItem>
                         }
                     </MudSelect>
@@ -175,7 +175,7 @@
         BufferedEvent.Register(nameof(AppleVerify), async (string receipt) => await AppleVerify(receipt));
     }
 
-    protected override async Task ProcessPopupData()
+    protected override async Task<bool> LoadInteropDataAsync()
     {
         CurrentCountry = await IpInfoApi.GetCountry(cts.Token);
 
@@ -183,7 +183,7 @@
         {
             BlockedCountry = _XoloBlockedCountries.ContainsKey(CurrentCountry.ToUpper());
 
-            if (BlockedCountry) return;
+            if (BlockedCountry) return true;
         }
 
         Providers.Clear();
@@ -211,9 +211,11 @@
         }
 
         Provider = Providers[0]; //todo: when implemented, select native provider by default
+
+        return true;
     }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         Client = await PrincipalApi.Get(true, token);
 

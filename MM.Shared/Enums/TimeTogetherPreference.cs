@@ -2,12 +2,12 @@
 
 public enum TimeTogetherPreference
 {
-    [Custom(Name = "AloneTime", Description = "AloneTime_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
+    [FieldSettings("AloneTime", Description = "AloneTime_Description", ResourceType = typeof(Translations.Enum.TimeTogetherPreference))]
     AloneTime = 1,
 
-    [Custom(Name = "BalancedTime", Description = "BalancedTime_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
+    [FieldSettings("BalancedTime", Description = "BalancedTime_Description", ResourceType = typeof(Translations.Enum.TimeTogetherPreference))]
     BalancedTime = 2,
 
-    [Custom(Name = "QualityTogether", Description = "QualityTogether_Description", ResourceType = typeof(Resources.TimeTogetherPreference))]
+    [FieldSettings("QualityTogether", Description = "QualityTogether_Description", ResourceType = typeof(Translations.Enum.TimeTogetherPreference))]
     QualityTogether = 3
 }

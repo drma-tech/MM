@@ -1,11 +1,11 @@
-﻿@inherits FormBase<string>
+﻿@inherits FormBase
 
 @if (Visible)
 {
-    <div class="d-flex" style="align-items: center;">
+    <div class="d-flex @CssClass" style="align-items: center; @Style">
         <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
         <MudTextField Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Lines="@Rows" Required="@Required" ReadOnly="@ReadOnly" Immediate="true"
-                      Label="@For.GetCustomAttribute()?.Name" HelperText="@Description" Placeholder="@For?.GetCustomAttribute()?.Placeholder" />
+                      Label="@Name" HelperText="@Description" Placeholder="@Placeholder" />
         @if (ButtomClicked.HasDelegate)
         {
             <MudTooltip Text="@ButtomTitle">

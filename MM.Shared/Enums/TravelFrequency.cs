@@ -2,12 +2,12 @@
 
 public enum TravelFrequency
 {
-    [Custom(Name = "NeverRarely_Name", Description = "NeverRarely_Description", ResourceType = typeof(Resources.TravelFrequency))]
+    [FieldSettings("NeverRarely_Name", Description = "NeverRarely_Description", ResourceType = typeof(Translations.Enum.TravelFrequency))]
     NeverRarely = 1,
 
-    [Custom(Name = "SometimesFrequently_Name", Description = "SometimesFrequently_Description", ResourceType = typeof(Resources.TravelFrequency))]
+    [FieldSettings("SometimesFrequently_Name", Description = "SometimesFrequently_Description", ResourceType = typeof(Translations.Enum.TravelFrequency))]
     SometimesFrequently = 2,
 
-    [Custom(Name = "UsuallyAlwaysNomad_Name", Description = "UsuallyAlwaysNomad_Description", ResourceType = typeof(Resources.TravelFrequency))]
+    [FieldSettings("UsuallyAlwaysNomad_Name", Description = "UsuallyAlwaysNomad_Description", ResourceType = typeof(Translations.Enum.TravelFrequency))]
     UsuallyAlwaysNomad = 3
 }

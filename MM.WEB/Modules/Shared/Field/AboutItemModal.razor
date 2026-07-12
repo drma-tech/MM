@@ -74,11 +74,12 @@
                     {
                         if (item is Enum resultE)
                         {
-                            var desc = resultE.GetCustomAttribute()?.Description;
-                            var show = resultE.GetCustomAttribute()?.ShowDescription ?? false;
-                            var name = resultE.GetName();
+                            var att = resultE.GetFieldSettings(EnumFields.Name | EnumFields.Description);
 
-                            if (desc.NotEmpty() && show)
+                            var name = att.Name;
+                            var desc = att.Description;
+
+                            if (desc.NotEmpty() && ShowDescription)
                             {
                                 <MudAlert Severity="@GetSeverity(item)" Variant="Variant.Outlined" Dense="true" Class="mb-2" Style="text-align: justify;">
                                     <span class="me-2" style="font-weight: bold;">@name</span>@desc
@@ -130,10 +131,10 @@
         </MudTabs>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="Color.Secondary" OnClick="@(() => { DialogService!.ShowMessageBoxAsync("Feedback", Translations.Module.Profile.CompatibilityDeveloping); })">
+        <MudButton Color="Color.Secondary" OnClick="FeedbackClick">
             @Translations.Button.Feedback
         </MudButton>
-        <MudButton OnClick="@(() => { MudDialog?.Close(); })">
+        <MudButton OnClick="CloseClick">
             @Translations.Button.Close
         </MudButton>
     </DialogActions>
@@ -155,6 +156,8 @@
     [Parameter] public string? WhyImportant { get; set; }
     [Parameter] public string? Tips { get; set; }
 
+    [Parameter, EditorRequired] public bool ShowDescription { get; set; }
+
     private Severity GetSeverity(TValue? value = default)
     {
         if (!Affinities.Any(s => s.Item == Item)) //if the attribute is not mapped to affinity, it remains neutral
@@ -171,7 +174,7 @@
 
             if (value is Enum result && Type == CompatibilityType.Enum)
             {
-                if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetName()!))
+                if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetFieldSettings(EnumFields.Name).Name))
                     return Severity.Success;
                 return Severity.Warning;
             }
@@ -197,4 +200,13 @@
         return result;
     }
 
+    private void FeedbackClick()
+    {
+        DialogService!.ShowMessageBoxAsync("Feedback", Translations.Module.Profile.CompatibilityDeveloping);
+    }
+
+    private void CloseClick()
+    {
+        MudDialog?.Close();
+    }
 }

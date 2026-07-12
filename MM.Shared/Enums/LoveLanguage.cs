@@ -5,18 +5,18 @@
 /// </summary>
 public enum LoveLanguage
 {
-    [Custom(Name = "WordsOfAffirmation_Name", Description = "WordsOfAffirmation_Description", ResourceType = typeof(Resources.LoveLanguage))]
+    [FieldSettings("WordsOfAffirmation_Name", Description = "WordsOfAffirmation_Description", ResourceType = typeof(Translations.Enum.LoveLanguage))]
     WordsOfAffirmation = 1,
 
-    [Custom(Name = "ActsOfServices_Name", Description = "ActsOfServices_Description", ResourceType = typeof(Resources.LoveLanguage))]
+    [FieldSettings("ActsOfServices_Name", Description = "ActsOfServices_Description", ResourceType = typeof(Translations.Enum.LoveLanguage))]
     ActsOfServices = 2,
 
-    [Custom(Name = "ReceivingGifts_Name", Description = "ReceivingGifts_Description", ResourceType = typeof(Resources.LoveLanguage))]
+    [FieldSettings("ReceivingGifts_Name", Description = "ReceivingGifts_Description", ResourceType = typeof(Translations.Enum.LoveLanguage))]
     ReceivingGifts = 3,
 
-    [Custom(Name = "QualityTime_Name", Description = "QualityTime_Description", ResourceType = typeof(Resources.LoveLanguage))]
+    [FieldSettings("QualityTime_Name", Description = "QualityTime_Description", ResourceType = typeof(Translations.Enum.LoveLanguage))]
     QualityTime = 4,
 
-    [Custom(Name = "PhysicalTouch_Name", Description = "PhysicalTouch_Description", ResourceType = typeof(Resources.LoveLanguage))]
+    [FieldSettings("PhysicalTouch_Name", Description = "PhysicalTouch_Description", ResourceType = typeof(Translations.Enum.LoveLanguage))]
     PhysicalTouch = 5
 }

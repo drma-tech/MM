@@ -28,7 +28,7 @@ public partial class ProfileData : PageCore<ProfileData>
         }, cts.Token);
     }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         Actions.StartLoading?.Invoke(null);
 

@@ -2,12 +2,12 @@
 
 public enum OppositeSexFriendships
 {
-    [Custom(Name = "Comfortable", Description = "Comfortable_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
+    [FieldSettings("Comfortable", Description = "Comfortable_Description", ResourceType = typeof(Translations.Enum.OppositeSexFriendships))]
     Comfortable = 1,
 
-    [Custom(Name = "BoundariesNeeded", Description = "BoundariesNeeded_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
+    [FieldSettings("BoundariesNeeded", Description = "BoundariesNeeded_Description", ResourceType = typeof(Translations.Enum.OppositeSexFriendships))]
     BoundariesNeeded = 2,
 
-    [Custom(Name = "Uncomfortable", Description = "Uncomfortable_Description", ResourceType = typeof(Resources.OppositeSexFriendships))]
+    [FieldSettings("Uncomfortable", Description = "Uncomfortable_Description", ResourceType = typeof(Translations.Enum.OppositeSexFriendships))]
     Uncomfortable = 3
 }

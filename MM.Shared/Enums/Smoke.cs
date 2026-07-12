@@ -2,12 +2,12 @@
 
 public enum Smoke
 {
-    [Custom(Name = "No", ResourceType = typeof(Resources.Smoke))]
+    [FieldSettings("No", ResourceType = typeof(Translations.Enum.Smoke))]
     No = 1,
 
-    [Custom(Name = "YesOccasionally", ResourceType = typeof(Resources.Smoke))]
+    [FieldSettings("YesOccasionally", ResourceType = typeof(Translations.Enum.Smoke))]
     YesOccasionally = 2,
 
-    [Custom(Name = "YesOften", ResourceType = typeof(Resources.Smoke))]
+    [FieldSettings("YesOften", ResourceType = typeof(Translations.Enum.Smoke))]
     YesOften = 3
 }

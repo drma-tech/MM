@@ -2,21 +2,21 @@
 
 public enum LivingSituation
 {
-    [Custom(Name = "Alone_Name", Description = "Alone_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("Alone_Name", Description = "Alone_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     Alone = 1,
 
-    [Custom(Name = "WithFamily_Name", Description = "WithFamily_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("WithFamily_Name", Description = "WithFamily_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithFamily = 2,
 
-    [Custom(Name = "WithFriends_Name", Description = "WithFriends_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("WithFriends_Name", Description = "WithFriends_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithFriends = 3,
 
-    [Custom(Name = "WithExPartner_Name", Description = "WithExPartner_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("WithExPartner_Name", Description = "WithExPartner_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithExPartner = 4,
 
-    [Custom(Name = "WithRoommates_Name", Description = "WithRoommates_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("WithRoommates_Name", Description = "WithRoommates_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithRoommates = 5,
 
-    [Custom(Name = "Other_Name", Description = "Other_Description", ResourceType = typeof(Resources.LivingSituation))]
+    [FieldSettings("Other_Name", Description = "Other_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
     Other = 9
 }

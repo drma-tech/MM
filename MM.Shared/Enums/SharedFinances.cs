@@ -2,12 +2,12 @@
 
 public enum SharedFinances
 {
-    [Custom(Name = "JointAccounts", Description = "JointAccounts_Description", ResourceType = typeof(Resources.SharedFinances))]
+    [FieldSettings("JointAccounts", Description = "JointAccounts_Description", ResourceType = typeof(Translations.Enum.SharedFinances))]
     JointAccounts = 1,
 
-    [Custom(Name = "SeparateAccounts", Description = "SeparateAccounts_Description", ResourceType = typeof(Resources.SharedFinances))]
+    [FieldSettings("SeparateAccounts", Description = "SeparateAccounts_Description", ResourceType = typeof(Translations.Enum.SharedFinances))]
     SeparateAccounts = 2,
 
-    [Custom(Name = "HybridApproach", Description = "HybridApproach_Description", ResourceType = typeof(Resources.SharedFinances))]
+    [FieldSettings("HybridApproach", Description = "HybridApproach_Description", ResourceType = typeof(Translations.Enum.SharedFinances))]
     HybridApproach = 3
 }

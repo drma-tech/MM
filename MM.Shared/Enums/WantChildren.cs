@@ -2,12 +2,12 @@
 
 public enum WantChildren
 {
-    [Custom(Name = "No", ResourceType = typeof(Resources.WantChildren))]
+    [FieldSettings("No", ResourceType = typeof(Translations.Enum.WantChildren))]
     No = 1,
 
-    [Custom(Name = "Maybe", ResourceType = typeof(Resources.WantChildren))]
+    [FieldSettings("Maybe", ResourceType = typeof(Translations.Enum.WantChildren))]
     Maybe = 2,
 
-    [Custom(Name = "Yes", ResourceType = typeof(Resources.WantChildren))]
+    [FieldSettings("Yes", ResourceType = typeof(Translations.Enum.WantChildren))]
     Yes = 3
 }

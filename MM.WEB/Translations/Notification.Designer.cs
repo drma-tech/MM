@@ -203,5 +203,14 @@ namespace MM.WEB.Translations {
                 return ResourceManager.GetString("SpamLike", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
     }
 }

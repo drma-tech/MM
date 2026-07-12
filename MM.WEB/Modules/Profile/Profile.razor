@@ -219,7 +219,7 @@ else
                 </MudTooltip>
             </ActionsFragment>
             <BodyFragment>
-                <RenderControl Actions="SuggestionsActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser">
+                <RenderControl Actions="SuggestionsActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser" LoadingHeight="130px">
                     <Slider List="Suggestions" Context="item">
                         <FeatureUnavailable></FeatureUnavailable>
                     </Slider>
@@ -228,9 +228,9 @@ else
         </PageSectionComponent>
         <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Likes">
             <BodyFragment>
-                <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+                <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
                     <Slider List="MyLikes?.Items ?? []" Context="item">
-                        <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
+                        <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
                              @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                 @item.UserName
@@ -254,9 +254,9 @@ else
                 }
             </ActionsFragment>
             <BodyFragment>
-                <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+                <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
                     <Slider List="MyMatches?.Items ?? []" Context="item">
-                        <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
+                        <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
                              @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                 @item.UserName
@@ -322,8 +322,6 @@ else
     private bool ValidationNetWorth => validation != null && validation.NetWorth;
     private bool ValidationAnnualIncome => validation != null && validation.AnnualIncome;
 
-    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
-
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -353,7 +351,7 @@ else
     //     await base.OnAfterRenderAsync(firstRender);
     // }
 
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         profile = await ProfileApi.Get(ProfileActions, token);
         filter = await FilterApi.Get(FilterActions, token);
@@ -364,8 +362,8 @@ else
         await SuggestionsActions.StartLoading.Invoke(null);
         await SuggestionsActions.FinishLoading.Invoke(null);
 
-        await LoadLikes(token);
-        await LoadMatches(token);
+        MyLikes = await MyLikesApi.Get(false, LikesActions, token);
+        MyMatches = await MyMatchesApi.Get(false, MatchesActions, token);
     }
 
     private Color GetButtonColor(bool valid)
@@ -376,16 +374,6 @@ else
     private string? GetButtonIcon(bool valid)
     {
         return valid ? IconsFA.Solid.Icon("check").Font : IconsFA.Solid.Icon("circle-question").Font;
-    }
-
-    private async Task LoadLikes(CancellationToken token)
-    {
-        MyLikes = await MyLikesApi.Get(false, LikesActions, token);
-    }
-
-    private async Task LoadMatches(CancellationToken token)
-    {
-        MyMatches = await MyMatchesApi.Get(false, MatchesActions, token);
     }
 
     private async Task IsPublicChanged(bool value)
@@ -440,7 +428,7 @@ else
             MyMatches = new MyMatchesModel();
             await MatchesActions.StartLoading.Invoke(null);
 
-            var languages = EnumHelper.GetArray<Language>();
+            var languages = EnumHelper.GetValues<Language>();
 
             fakeProfiles = new Faker<ProfileModel>()
                 .RuleFor(x => x.Id, f => f.Random.Guid().ToString())

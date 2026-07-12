@@ -1,11 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
 
 namespace MM.WEB.Modules.Shared.Field;
 
-public class FormBase<TValue> : ComponentBase
+public class FormBase : ComponentBase
 {
-    [Parameter] public Expression<Func<TValue>>? For { get; set; }
+    [Parameter] public string? Name { get; set; }
+    [Parameter] public string? Description { get; set; }
+    [Parameter] public string? Placeholder { get; set; }
+
+    [Parameter] public string? CssIcon { get; set; }
+    [Parameter] public string? CssClass { get; set; }
+    [Parameter] public string? Style { get; set; }
+
     [Parameter] public bool Disabled { get; set; }
     [Parameter] public bool ReadOnly { get; set; }
+    [Parameter] public bool Required { get; set; }
+    [Parameter] public bool Visible { get; set; } = true;
 }

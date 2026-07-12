@@ -21,7 +21,7 @@
 
 @code
 {
-    protected override async Task LoadAuthDataAsync(CancellationToken token)
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         if (AppStateStatic.Principal == null)
         {

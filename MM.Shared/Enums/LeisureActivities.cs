@@ -2,45 +2,45 @@
 
 public enum LeisureActivities
 {
-    [Custom(Name = "OutdoorNature", Description = "OutdoorNature_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("OutdoorNature", Description = "OutdoorNature_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     OutdoorNature = 1,
 
-    [Custom(Name = "SportsFitness", Description = "SportsFitness_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("SportsFitness", Description = "SportsFitness_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     SportsFitness = 2,
 
-    [Custom(Name = "CreativeArtistic", Description = "CreativeArtistic_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("CreativeArtistic", Description = "CreativeArtistic_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     CreativeArtistic = 3,
 
-    [Custom(Name = "SocialCultural", Description = "SocialCultural_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("SocialCultural", Description = "SocialCultural_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     SocialCultural = 4,
 
-    [Custom(Name = "GamingEntertainment", Description = "GamingEntertainment_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("GamingEntertainment", Description = "GamingEntertainment_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     GamingEntertainment = 5,
 
-    [Custom(Name = "ReadingWriting", Description = "ReadingWriting_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("ReadingWriting", Description = "ReadingWriting_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     ReadingWriting = 6,
 
-    [Custom(Name = "DIYHobbies", Description = "DIYHobbies_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("DIYHobbies", Description = "DIYHobbies_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     DIYHobbies = 7,
 
-    [Custom(Name = "MusicPerformingArts", Description = "MusicPerformingArts_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("MusicPerformingArts", Description = "MusicPerformingArts_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     MusicPerformingArts = 8,
 
-    [Custom(Name = "CookingCulinaryExploration", Description = "CookingCulinaryExploration_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("CookingCulinaryExploration", Description = "CookingCulinaryExploration_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     CookingCulinaryExploration = 9,
 
-    [Custom(Name = "MindfulnessWellness", Description = "MindfulnessWellness_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("MindfulnessWellness", Description = "MindfulnessWellness_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     MindfulnessWellness = 10,
 
-    [Custom(Name = "TravelExploration", Description = "TravelExploration_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("TravelExploration", Description = "TravelExploration_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     TravelExploration = 11,
 
-    [Custom(Name = "VolunteeringCommunityService", Description = "VolunteeringCommunityService_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("VolunteeringCommunityService", Description = "VolunteeringCommunityService_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     VolunteeringCommunityService = 12,
 
-    [Custom(Name = "EducationalSelfImprovement", Description = "EducationalSelfImprovement_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("EducationalSelfImprovement", Description = "EducationalSelfImprovement_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     EducationalSelfImprovement = 13,
 
-    [Custom(Name = "Collecting", Description = "Collecting_Description", ResourceType = typeof(Resources.LeisureActivities))]
+    [FieldSettings("Collecting", Description = "Collecting_Description", ResourceType = typeof(Translations.Enum.LeisureActivities))]
     Collecting = 14
 }

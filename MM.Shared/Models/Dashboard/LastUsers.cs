@@ -8,6 +8,7 @@
     public class LastUsersItem
     {
         public Country Country { get; set; }
+        public EnumFieldObject<Country>? CountryObj { get; set; }
         public DateTime Created { get; set; }
     }
 }

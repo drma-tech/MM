@@ -1,17 +1,17 @@
-﻿@inherits BaseCustomField<MM.Shared.Enums.Country?>
+﻿@inherits FormBase
 
 
-<div class="d-flex" style="align-items: center;">
+<div class="d-flex @CssClass" style="align-items: center; @Style">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
     <MudSelect Label="Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
-               Disabled="@Disabled" Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true">
+               Disabled="@Disabled" Required="@Required"  FullWidth="true">
         @foreach (var group in Countries.Select(s => s.Group).Order().Distinct())
         {
             <MudSelectItem Value="@group">@group</MudSelectItem>
         }
     </MudSelect>
-    <MudSelect Label="@For?.GetCustomAttribute().Name" Value="@SelectedValue" ValueChanged="@SelectedValueChanged" AdornmentColor="Color.Primary"
-               Disabled="@(Disabled || FilteredCountries.Empty())" Required="@Required" Placeholder="@For?.GetCustomAttribute()?.Placeholder" FullWidth="true">
+    <MudSelect Label="@Name" Value="@SelectedValue" ValueChanged="@SelectedValueChanged" AdornmentColor="Color.Primary"
+               Disabled="@(Disabled || FilteredCountries.Empty())" Required="@Required"  FullWidth="true">
         @foreach (var item in FilteredCountries)
         {
             <MudSelectItem Value="@((MM.Shared.Enums.Country?)item.Value)">@item.Name</MudSelectItem>
@@ -22,17 +22,16 @@
 @code {
     [Parameter] public MM.Shared.Enums.Country? SelectedValue { get; set; }
     [Parameter] public EventCallback<MM.Shared.Enums.Country?> SelectedValueChanged { get; set; }
-    [Parameter] public bool Required { get; set; }
 
-    public List<EnumObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
-    public List<EnumObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name).ToList();
+    public List<EnumFieldObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
+    public List<EnumFieldObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name).ToList();
 
     public string? Continent { get; set; }
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>();
-        Continent = SelectedValue?.GetCustomAttribute()?.Group;
+        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>(EnumFields.Group);
+        Continent = SelectedValue?.GetFieldSettings(EnumFields.Group).Group;
     }
 
 }

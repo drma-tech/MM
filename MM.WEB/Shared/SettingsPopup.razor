@@ -6,9 +6,9 @@
             <MudItem xs="12">
                 <MudSelect Value="@Language" ValueChanged="@((AppLanguage vl) => AppLanguageValueChanged(vl))" Label="@Translations.Module.Help.AppLanguage"
                            HelperText="@Translations.Module.Help.AppLanguageDesc" FullWidth="true">
-                    @foreach (var item in appLanguages.OrderBy(p => p.GetName()))
+                    @foreach (var item in appLanguages.OrderBy(p => p.GetFieldSettings(EnumFields.Name).Name))
                     {
-                        <MudSelectItem Value="@item">@item.GetName()</MudSelectItem>
+                        <MudSelectItem Value="@item">@item.GetFieldSettings(EnumFields.Name).Name</MudSelectItem>
                     }
                 </MudSelect>
             </MudItem>
@@ -44,10 +44,12 @@
     public AppLanguage Language { get; set; } = AppLanguage.en;
     public bool DarkMode { get; set; } = false;
 
-    protected override async Task ProcessInitialData()
+    protected override async Task<bool> LoadInteropDataAsync()
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token) ?? false;
+        
+        return true;
     }
 
     protected async Task AppLanguageValueChanged(AppLanguage value)

@@ -165,4 +165,7 @@
   <data name="SpamLike" xml:space="preserve">
     <value>Die Beschreibung enthält verdächtige oder Spam-ähnliche Inhalte.</value>
   </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
 </root>

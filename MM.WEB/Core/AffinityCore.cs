@@ -525,7 +525,7 @@ public static class AffinityCore
 
         return profile.HavePets switch
         {
-            HavePets.IDontHave => EnumHelper.GetArray<HavePets>().ToHashSet(),
+            HavePets.IDontHave => EnumHelper.GetValues<HavePets>().ToHashSet(),
             HavePets.IDontWant => [HavePets.IDontHave, HavePets.IDontWant],
             HavePets.Dog => [HavePets.Dog, HavePets.DogCat],
             HavePets.Cat => [HavePets.Cat, HavePets.DogCat],
@@ -550,19 +550,19 @@ public static class AffinityCore
         if (filter != null && filter.CareerCluster.Count != 0) return filter.CareerCluster;
 
         if (!profile.CareerCluster.HasValue) return [];
-        var group = profile.CareerCluster?.GetCustomAttribute()?.Group;
+        var group = profile.CareerCluster?.GetFieldSettings(EnumFields.Group).Group;
         if (group.Empty()) return [CareerCluster.NoCareer];
 
-        return EnumHelper.GetArray<CareerCluster>().Where(w => w.GetCustomAttribute()?.Group == group).ToHashSet();
+        return EnumHelper.GetValues<CareerCluster>().Where(w => w.GetFieldSettings(EnumFields.Group).Group == group).ToHashSet();
     }
 
     public static HashSet<LivingSituation> GetLivingSituation(ProfileModel profile, FilterModel? filter = null)
     {
         if (filter != null && filter.LivingSituation.Count != 0) return filter.LivingSituation;
 
-        var groupAll = EnumHelper.GetArray<LivingSituation>().ToHashSet();
-        var groupExcExPar = EnumHelper.GetArray<LivingSituation>().Except([LivingSituation.WithExPartner]).ToHashSet();
-        var groupExcFam = EnumHelper.GetArray<LivingSituation>().Except([LivingSituation.WithFamily]).ToHashSet();
+        var groupAll = EnumHelper.GetValues<LivingSituation>().ToHashSet();
+        var groupExcExPar = EnumHelper.GetValues<LivingSituation>().Except([LivingSituation.WithExPartner]).ToHashSet();
+        var groupExcFam = EnumHelper.GetValues<LivingSituation>().Except([LivingSituation.WithFamily]).ToHashSet();
 
         return profile.LivingSituation switch
         {
@@ -599,7 +599,7 @@ public static class AffinityCore
 
         var pos = (int)profile.NetWorth - 1;
 
-        var list = EnumHelper.GetArray<NetWorth>();
+        var list = EnumHelper.GetValues<NetWorth>();
         var before = pos == 0 ? null : (NetWorth?)list.GetValue(pos - 1);
         var after = pos == list.Length - 1 ? null : (NetWorth?)list.GetValue(pos + 1);
 
@@ -614,7 +614,7 @@ public static class AffinityCore
 
         var pos = (int)profile.AnnualIncome - 1;
 
-        var list = EnumHelper.GetArray<AnnualIncome>();
+        var list = EnumHelper.GetValues<AnnualIncome>();
         var before = pos == 0 ? null : (AnnualIncome?)list.GetValue(pos - 1);
         var after = pos == list.Length - 1 ? null : (AnnualIncome?)list.GetValue(pos + 1);
 

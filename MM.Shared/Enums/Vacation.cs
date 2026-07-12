@@ -2,48 +2,48 @@
 
 public enum Vacation
 {
-    [Custom(Name = "BeachWaterActivities", Description = "BeachWaterActivities_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("BeachWaterActivities", Description = "BeachWaterActivities_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     BeachWaterActivities = 1,
 
-    [Custom(Name = "AdventureTravel", Description = "AdventureTravel_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("AdventureTravel", Description = "AdventureTravel_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     AdventureTravel = 2,
 
-    [Custom(Name = "CulturalExploration", Description = "CulturalExploration_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("CulturalExploration", Description = "CulturalExploration_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     CulturalExploration = 3,
 
-    [Custom(Name = "NatureWildlife", Description = "NatureWildlife_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("NatureWildlife", Description = "NatureWildlife_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     NatureWildlife = 4,
 
-    [Custom(Name = "RoadTrips", Description = "RoadTrips_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("RoadTrips", Description = "RoadTrips_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     RoadTrips = 5,
 
-    [Custom(Name = "CitySightseeing", Description = "CitySightseeing_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("CitySightseeing", Description = "CitySightseeing_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     CitySightseeing = 6,
 
-    [Custom(Name = "FoodCulinaryTourism", Description = "FoodCulinaryTourism_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("FoodCulinaryTourism", Description = "FoodCulinaryTourism_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     FoodCulinaryTourism = 7,
 
-    [Custom(Name = "RelaxationWellness", Description = "RelaxationWellness_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("RelaxationWellness", Description = "RelaxationWellness_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     RelaxationWellness = 8,
 
-    [Custom(Name = "WinterSports", Description = "WinterSports_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("WinterSports", Description = "WinterSports_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     WinterSports = 9,
 
-    [Custom(Name = "FamilyFriendlyActivities", Description = "FamilyFriendlyActivities_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("FamilyFriendlyActivities", Description = "FamilyFriendlyActivities_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     FamilyFriendlyActivities = 10,
 
-    [Custom(Name = "CruisesBoatTours", Description = "CruisesBoatTours_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("CruisesBoatTours", Description = "CruisesBoatTours_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     CruisesBoatTours = 11,
 
-    [Custom(Name = "VolunteeringVacations", Description = "VolunteeringVacations_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("VolunteeringVacations", Description = "VolunteeringVacations_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     VolunteeringVacations = 12,
 
-    [Custom(Name = "ArtsFestivals", Description = "ArtsFestivals_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("ArtsFestivals", Description = "ArtsFestivals_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     ArtsFestivals = 13,
 
-    [Custom(Name = "EcoTourism", Description = "EcoTourism_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("EcoTourism", Description = "EcoTourism_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     EcoTourism = 14,
 
-    [Custom(Name = "LearningEnrichment", Description = "LearningEnrichment_Description", ResourceType = typeof(Resources.Vacation))]
+    [FieldSettings("LearningEnrichment", Description = "LearningEnrichment_Description", ResourceType = typeof(Translations.Enum.Vacation))]
     LearningEnrichment = 15
 }

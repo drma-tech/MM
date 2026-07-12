@@ -2,15 +2,15 @@
 
 public enum Region
 {
-    [Custom(Name = "City", ResourceType = typeof(Resources.Region))]
+    [FieldSettings("City", ResourceType = typeof(Translations.Enum.Region))]
     City = 1,
 
-    [Custom(Name = "State", ResourceType = typeof(Resources.Region))]
+    [FieldSettings("State", ResourceType = typeof(Translations.Enum.Region))]
     State = 2,
 
-    [Custom(Name = "Country", ResourceType = typeof(Resources.Region))]
+    [FieldSettings("Country", ResourceType = typeof(Translations.Enum.Region))]
     Country = 3,
 
-    [Custom(Name = "World", ResourceType = typeof(Resources.Region))]
+    [FieldSettings("World", ResourceType = typeof(Translations.Enum.Region))]
     World = 4
 }

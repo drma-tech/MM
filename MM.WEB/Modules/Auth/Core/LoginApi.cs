@@ -9,7 +9,7 @@ public class LoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(factory
         return await GetAsync(Endpoint.Get, true, null, cancellationToken);
     }
 
-    public async Task Add(MM.Shared.Enums.Platform platform, string? country, CancellationToken cancellationToken)
+    public async Task Add(Platform platform, string? country, CancellationToken cancellationToken)
     {
         await PostAsync(Endpoint.Add(platform.ToString(), country), null, ApiContext.Default.AuthLogin, cancellationToken);
     }

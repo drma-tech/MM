@@ -75,14 +75,14 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
 
                 var principals = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
                 var logins = await repo.ListAll<AuthLogin>(DocumentType.Login, cancellationToken);
-                var countries = EnumHelper.GetArray<Country>();
+                var countries = EnumHelper.GetValues<Country>();
 
                 foreach (var principal in principals.OrderByDescending(p => p.DateTimeCreated).Take(20))
                 {
                     var login = logins.SingleOrDefault(p => p.UserId == principal.UserId);
 
                     var loginCountry = login?.Accesses.FirstOrDefault()?.Country?.ToLower();
-                    var enumCountry = countries.FirstOrDefault(p => p.GetCustomAttribute(false)?.Tips?.ToLower() == loginCountry);
+                    var enumCountry = countries.FirstOrDefault(p => p.GetFieldSettings(EnumFields.Tips, false)?.Tips?.ToLower() == loginCountry);
 
                     obj.Items.Add(new LastUsersItem { Created = principal.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
                 }

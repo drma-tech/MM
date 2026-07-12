@@ -2,45 +2,45 @@
 
 public enum MusicGenre
 {
-    [Custom(Name = "PopMainstream", Description = "PopMainstream_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("PopMainstream", Description = "PopMainstream_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     PopMainstream = 1,
 
-    [Custom(Name = "RockAlternative", Description = "RockAlternative_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("RockAlternative", Description = "RockAlternative_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     RockAlternative = 2,
 
-    [Custom(Name = "RBSoul", Description = "RBSoul_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("RBSoul", Description = "RBSoul_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     RBSoul = 3,
 
-    [Custom(Name = "HipHopRap", Description = "HipHopRap_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("HipHopRap", Description = "HipHopRap_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     HipHopRap = 4,
 
-    [Custom(Name = "JazzBlues", Description = "JazzBlues_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("JazzBlues", Description = "JazzBlues_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     JazzBlues = 5,
 
-    [Custom(Name = "ClassicalOpera", Description = "ClassicalOpera_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("ClassicalOpera", Description = "ClassicalOpera_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     ClassicalOpera = 6,
 
-    [Custom(Name = "ElectronicDance", Description = "ElectronicDance_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("ElectronicDance", Description = "ElectronicDance_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     ElectronicDance = 7,
 
-    [Custom(Name = "FolkAcoustic", Description = "FolkAcoustic_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("FolkAcoustic", Description = "FolkAcoustic_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     FolkAcoustic = 8,
 
-    [Custom(Name = "Country", Description = "Country_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("Country", Description = "Country_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     Country = 9,
 
-    [Custom(Name = "ReggaeWorldMusic", Description = "ReggaeWorldMusic_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("ReggaeWorldMusic", Description = "ReggaeWorldMusic_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     ReggaeWorldMusic = 10,
 
-    [Custom(Name = "MetalHardRock", Description = "MetalHardRock_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("MetalHardRock", Description = "MetalHardRock_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     MetalHardRock = 11,
 
-    [Custom(Name = "GospelReligious", Description = "GospelReligious_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("GospelReligious", Description = "GospelReligious_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     GospelReligious = 12,
 
-    [Custom(Name = "ExperimentalAvantGarde", Description = "ExperimentalAvantGarde_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("ExperimentalAvantGarde", Description = "ExperimentalAvantGarde_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     ExperimentalAvantGarde = 13,
 
-    [Custom(Name = "SoundtracksScores", Description = "SoundtracksScores_Description", ResourceType = typeof(Resources.MusicGenre))]
+    [FieldSettings("SoundtracksScores", Description = "SoundtracksScores_Description", ResourceType = typeof(Translations.Enum.MusicGenre))]
     SoundtracksScores = 14
 }

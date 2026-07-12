@@ -9,81 +9,81 @@
 /// </summary>
 public enum CareerCluster
 {
-    [Custom(Name = "NoCareer_Name", Description = "NoCareer_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("NoCareer_Name", Description = "NoCareer_Description", ResourceType = typeof(Translations.Enum.CareerCluster))]
     NoCareer = -1,
 
     //AGRICULTURE, FOOD & NATURAL RESOURCES
 
-    [Custom(Group = "AgricultureFoodNaturalResources_Group", Name = "AgricultureFoodNaturalResources_Name", Description = "AgricultureFoodNaturalResources_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("AgricultureFoodNaturalResources_Name", Group = "AgricultureFoodNaturalResources_Group", Description = "AgricultureFoodNaturalResources_Description", ResourceType = typeof(Translations.Enum.CareerCluster))]
     AgricultureFoodNaturalResources = 1,
 
     //COMMUNICATION & INFORMATION SYSTEMS
 
-    [Custom(Group = "CommunicationArts_Group", Name = "CommunicationArts_Name", Description = "CommunicationArts_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("CommunicationArts_Name", Group = "CommunicationArts_Group", Description = "CommunicationArts_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     CommunicationArts = 2,
 
-    [Custom(Group = "InformationTechnology_Group", Name = "InformationTechnology_Name", Description = "InformationTechnology_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("InformationTechnology_Name", Group = "InformationTechnology_Group", Description = "InformationTechnology_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     InformationTechnology = 3,
 
     //BUSINESS, MARKETING AND MANAGEMENT
 
-    [Custom(Group = "BusinessManagementAdministration_Group", Name = "BusinessManagementAdministration_Name", Description = "BusinessManagementAdministration_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("BusinessManagementAdministration_Name", Group = "BusinessManagementAdministration_Group", Description = "BusinessManagementAdministration_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     BusinessManagementAdministration = 4,
 
-    [Custom(Group = "Finance_Group", Name = "Finance_Name", Description = "Finance_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("Finance_Name", Group = "Finance_Group", Description = "Finance_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     Finance = 5,
 
-    [Custom(Group = "HospitalityTourism_Group", Name = "HospitalityTourism_Name", Description = "HospitalityTourism_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("HospitalityTourism_Name", Group = "HospitalityTourism_Group", Description = "HospitalityTourism_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     HospitalityTourism = 6,
 
-    [Custom(Group = "Marketing_Group", Name = "Marketing_Name", Description = "Marketing_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("Marketing_Name", Group = "Marketing_Group", Description = "Marketing_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     Marketing = 7,
 
     //HUMAN SCIENCES AND EDUCATION
 
-    [Custom(Group = "EducationTraining_Group", Name = "EducationTraining_Name", Description = "EducationTraining_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("EducationTraining_Name", Group = "EducationTraining_Group", Description = "EducationTraining_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     EducationTraining = 8,
 
-    [Custom(Group = "GovernmentPublicAdministration_Group", Name = "GovernmentPublicAdministration_Name", Description = "GovernmentPublicAdministration_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("GovernmentPublicAdministration_Name", Group = "GovernmentPublicAdministration_Group", Description = "GovernmentPublicAdministration_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     GovernmentPublicAdministration = 9,
 
-    [Custom(Group = "HumanServices_Group", Name = "HumanServices_Name", Description = "HumanServices_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("HumanServices_Name", Group = "HumanServices_Group", Description = "HumanServices_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     HumanServices = 10,
 
-    [Custom(Group = "LawPublicSafetyCorrectionsSecurity_Group", Name = "LawPublicSafetyCorrectionsSecurity_Name", Description = "LawPublicSafetyCorrectionsSecurity_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("LawPublicSafetyCorrectionsSecurity_Name", Group = "LawPublicSafetyCorrectionsSecurity_Group", Description = "LawPublicSafetyCorrectionsSecurity_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     LawPublicSafetyCorrectionsSecurity = 11,
 
     //HEALTH SCIENCES
 
-    [Custom(Group = "HealthScience_Group", Name = "HealthScience_Name", Description = "HealthScience_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("HealthScience_Name", Group = "HealthScience_Group", Description = "HealthScience_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     HealthScience = 12,
 
     //SKILLED & TECHNICAL SCIENCES
 
-    [Custom(Group = "ArchitectureConstruction_Group", Name = "ArchitectureConstruction_Name", Description = "ArchitectureConstruction_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("ArchitectureConstruction_Name", Group = "ArchitectureConstruction_Group", Description = "ArchitectureConstruction_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     ArchitectureConstruction = 13,
 
-    [Custom(Group = "EnergyEngineering_Group", Name = "EnergyEngineering_Name", Description = "EnergyEngineering_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("EnergyEngineering_Name", Group = "EnergyEngineering_Group", Description = "EnergyEngineering_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     EnergyEngineering = 14,
 
-    [Custom(Group = "Manufacturing_Group", Name = "Manufacturing_Name", Description = "Manufacturing_Description",
-        ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("Manufacturing_Name", Group = "Manufacturing_Group", Description = "Manufacturing_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     Manufacturing = 15,
 
-    [Custom(Group = "TransportationDistributionLogistics_Group", Name = "TransportationDistributionLogistics_Name",
-        Description = "TransportationDistributionLogistics_Description", ResourceType = typeof(Resources.CareerCluster))]
+    [FieldSettings("TransportationDistributionLogistics_Name", Group = "TransportationDistributionLogistics_Group", Description = "TransportationDistributionLogistics_Description",
+        ResourceType = typeof(Translations.Enum.CareerCluster))]
     TransportationDistributionLogistics = 16
 }

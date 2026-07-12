@@ -1,4 +1,4 @@
-﻿@inherits FormBase<bool>
+﻿@inherits FormBase
 
 @if (Visible)
 {
@@ -6,10 +6,10 @@
         <MudItem xs="12">
             <MudIcon Icon="@CssIcon" Color="Color.Primary" Class="me-2"></MudIcon>
             <MudText Typo="Typo.h6" Color="Color.Primary" Inline="true">
-                @For.GetCustomAttribute().Name
+                @Name
             </MudText>
             <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
-                @For.GetCustomAttribute().Description
+                @Description
             </MudText>
         </MudItem>
         <MudItem xs="12">
@@ -36,10 +36,10 @@
             </MudButton>
         </MudItem>
     </MudGrid>
-    @if (For.GetCustomAttribute().WhyImportant.NotEmpty())
+    @if (WhyImportant.NotEmpty())
     {
         <MudText Typo="Typo.caption">
-            @For.GetCustomAttribute().WhyImportant
+            @WhyImportant
         </MudText>
     }
 }

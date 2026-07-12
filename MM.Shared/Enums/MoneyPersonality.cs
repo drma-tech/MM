@@ -5,18 +5,18 @@
 /// </summary>
 public enum MoneyPersonality
 {
-    [Custom(Name = "Visionary_Name", Description = "Visionary_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    [FieldSettings("Visionary_Name", Description = "Visionary_Description", ResourceType = typeof(Translations.Enum.MoneyPersonality))]
     Visionary = 1,
 
-    [Custom(Name = "Nurturer_Name", Description = "Nurturer_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    [FieldSettings("Nurturer_Name", Description = "Nurturer_Description", ResourceType = typeof(Translations.Enum.MoneyPersonality))]
     Nurturer = 2,
 
-    [Custom(Name = "Independent_Name", Description = "Independent_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    [FieldSettings("Independent_Name", Description = "Independent_Description", ResourceType = typeof(Translations.Enum.MoneyPersonality))]
     Independent = 3,
 
-    [Custom(Name = "Connoisseur_Name", Description = "Connoisseur_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    [FieldSettings("Connoisseur_Name", Description = "Connoisseur_Description", ResourceType = typeof(Translations.Enum.MoneyPersonality))]
     Connoisseur = 4,
 
-    [Custom(Name = "Producer_Name", Description = "Producer_Description", ResourceType = typeof(Resources.MoneyPersonality))]
+    [FieldSettings("Producer_Name", Description = "Producer_Description", ResourceType = typeof(Translations.Enum.MoneyPersonality))]
     Producer = 5
 }

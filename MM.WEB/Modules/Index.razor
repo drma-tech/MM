@@ -121,17 +121,19 @@
 
     <PageSectionComponent Title="@Translations.Module.Landing.LastUsers" Subtitle="@Translations.Module.Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
         <BodyFragment>
-            <Slider List="LastUsers?.Items ?? []" Context="item">
-                <div style="@($"width: {(IsMobile ? "110" : "130")}px; position: relative;")">
-                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
-                        @item.Country.GetName()
-                    </MudChip>
-                    <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
-                        @item.Created.Humanize()
-                    </MudChip>
-                    <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
-                </div>
-            </Slider>
+            <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+                <Slider List="LastUsers?.Items ?? []" Context="item">
+                    <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
+                        <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
+                            @item.CountryObj?.Name
+                        </MudChip>
+                        <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
+                            @item.Created.Humanize()
+                        </MudChip>
+                        <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                    </div>
+                </Slider>
+            </RenderControl>
         </BodyFragment>
     </PageSectionComponent>
 
@@ -139,7 +141,7 @@
         <BodyFragment>
             <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
-                    <MudTimeline TimelinePosition="@(AppStateStatic.Breakpoint < Breakpoint.Sm ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
+                    <MudTimeline TimelinePosition="@(AppStateStatic.IsMobile ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
                             <ItemDot>
                                 <MudIcon Icon="@IconsFA.Solid.Icon("1").Font" Style="text-align: center;"></MudIcon>
@@ -148,7 +150,7 @@
                                 <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase1Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.IsMobile)
                                 {
                                     <MudText Color="GetPhaseColor(1)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase1Title</MudText>
                                 }
@@ -184,7 +186,7 @@
                                 <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase2Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.IsMobile)
                                 {
                                     <MudText Color="GetPhaseColor(2)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase2Title</MudText>
                                 }
@@ -219,7 +221,7 @@
                                 <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase3Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.IsMobile)
                                 {
                                     <MudText Color="GetPhaseColor(3)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase3Title</MudText>
                                 }
@@ -254,7 +256,7 @@
                                 <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="custom-h3-roadmap">@Translations.Module.Landing.Phase4Title</MudText>
                             </ItemOpposite>
                             <ItemContent>
-                                @if (AppStateStatic.Breakpoint < Breakpoint.Sm)
+                                @if (AppStateStatic.IsMobile)
                                 {
                                     <MudText Color="GetPhaseColor(4)" Typo="Typo.h3" Class="my-2 custom-h3-roadmap">@Translations.Module.Landing.Phase4Title</MudText>
                                 }
@@ -485,7 +487,7 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await DialogCountries!.CloseAsync(); })">
+        <MudButton OnClick="@DialogCountriesCloseClick">
             @Translations.Button.Close
         </MudButton>
     </DialogActions>
@@ -504,7 +506,7 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="@(async () => { await DialogCities!.CloseAsync(); })">
+        <MudButton OnClick="@DialogCitiesCloseClick">
             @Translations.Button.Close
         </MudButton>
     </DialogActions>
@@ -520,34 +522,22 @@
     private MudDialog? DialogCities { get; set; }
     public SumUsers? SumUsers { get; set; }
 
+    private ComponentActions<LastUsers> LastUsersActions { get; } = new(obj => obj == null || obj.Items.Empty());
     public LastUsers? LastUsers { get; set; }
 
-    private bool SubscriptionAllowed { get; set; } = true;
-    private bool IsMobile => AppStateStatic.Breakpoint == Breakpoint.Xs;
-
-    private readonly Dictionary<string, string> _iosAllowedCountries = new()
-    {
-        { "US", "United States" }
-    };
-
-    protected override async Task ProcessInitialData()
+    protected override async Task LoadStaticDataAsync()
     {
         var cache = await DashboardApi.GetSumUsers(cts.Token);
         SumUsers = cache?.Data;
 
         var cache2 = await LastUsersApi.GetSumUsers(cts.Token);
         LastUsers = cache2?.Data;
-    }
 
-    protected override async Task ProcessPageData()
-    {
-        var country = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
-        var platform = await AppStateStatic.GetPlatform(JsRuntime, cts.Token);
+        await LastUsersActions.FinishLoading.Invoke(LastUsers);
 
-        if (country.NotEmpty() && platform == MM.Shared.Enums.Platform.ios)
+        foreach (var item in LastUsers?.Items ?? [])
         {
-            //https://developer.apple.com/app-store/review/guidelines/#link-to-other-purchase-methods
-            SubscriptionAllowed = _iosAllowedCountries.ContainsKey(country);
+            item.CountryObj = item.Country.GetFieldSettings(EnumFields.Name);
         }
     }
 
@@ -591,6 +581,16 @@
     private async Task Login()
     {
         Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
+    }
+
+    private async Task DialogCountriesCloseClick()
+    {
+        await DialogCountries!.CloseAsync();
+    }
+
+    private async Task DialogCitiesCloseClick()
+    {
+        await DialogCities!.CloseAsync();
     }
 
 }

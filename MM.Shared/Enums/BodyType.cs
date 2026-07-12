@@ -2,18 +2,18 @@
 
 public enum BodyType
 {
-    [Custom(Name = "Slim", ResourceType = typeof(Resources.BodyType))]
+    [FieldSettings("Slim", ResourceType = typeof(Translations.Enum.BodyType))]
     Slim = 1,
 
-    [Custom(Name = "Average", ResourceType = typeof(Resources.BodyType))]
+    [FieldSettings("Average", ResourceType = typeof(Translations.Enum.BodyType))]
     Average = 2,
 
-    [Custom(Name = "Athletic", ResourceType = typeof(Resources.BodyType))]
+    [FieldSettings("Athletic", ResourceType = typeof(Translations.Enum.BodyType))]
     Athletic = 3,
 
-    [Custom(Name = "Curvy", ResourceType = typeof(Resources.BodyType))]
+    [FieldSettings("Curvy", ResourceType = typeof(Translations.Enum.BodyType))]
     Curvy = 4,
 
-    [Custom(Name = "Heavyset", ResourceType = typeof(Resources.BodyType))]
+    [FieldSettings("Heavyset", ResourceType = typeof(Translations.Enum.BodyType))]
     Heavyset = 5
 }

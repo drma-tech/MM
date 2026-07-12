@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using MM.Shared.Models.Profile.Resources;
-using MM.Shared.Resources;
+using MM.Shared.Translations.Model;
+using MM.Shared.Translations.Validation;
 
 namespace MM.Shared.Models.Profile.Core;
 

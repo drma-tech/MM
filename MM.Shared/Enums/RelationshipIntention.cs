@@ -1,15 +1,15 @@
-﻿using MM.Shared.Enums.Resources;
+﻿using MM.Shared.Translations.Enum;
 
 namespace MM.Shared.Enums;
 
 public enum RelationshipIntention
 {
-    [Custom(Name = "Serious_Name", Description = "Serious_Description", ResourceType = typeof(Intentions))]
+    [FieldSettings("Serious_Name", Description = "Serious_Description", ResourceType = typeof(Intentions))]
     Serious = 1,
 
-    [Custom(Name = "LiveTogether_Name", Description = "LiveTogether_Description", ResourceType = typeof(Intentions))]
+    [FieldSettings("LiveTogether_Name", Description = "LiveTogether_Description", ResourceType = typeof(Intentions))]
     LiveTogether = 2,
 
-    [Custom(Name = "Married_Name", Description = "Married_Description", ResourceType = typeof(Intentions))]
+    [FieldSettings("Married_Name", Description = "Married_Description", ResourceType = typeof(Intentions))]
     Married = 3
 }
