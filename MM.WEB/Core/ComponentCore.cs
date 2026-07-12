@@ -182,7 +182,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
         }
         catch (Exception ex)
         {
-            await ProcessException(ex, false);
+            await ProcessException(ex, ShowExceptions);
         }
     }
 
@@ -195,7 +195,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
         }
         catch (Exception ex)
         {
-            await ProcessException(ex, false);
+            await ProcessException(ex, ShowExceptions);
         }
     }
 
@@ -271,10 +271,14 @@ public abstract class PageCore<T> : ComponentCore<T>, IBrowserViewportObserver, 
 
     protected override bool ShowExceptions => true;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnInitializedAsync();
-        await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+        }
     }
 
     #region BrowserViewportObserver
