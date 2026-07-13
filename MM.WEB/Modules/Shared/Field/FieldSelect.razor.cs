@@ -34,7 +34,7 @@ public partial class FieldSelect<TValue, TEnum> : FormBase
 
     protected override void OnInitialized()
     {
-        EnumList = EnumHelper.GetList<TEnum>(EnumFields.Name | EnumFields.Description | EnumFields.Group);
+        EnumList = EnumHelper.GetList<TEnum>();
 
         EnumListRaw = [.. EnumList.Where(Filter).OrderBy(Order)];
 
@@ -46,6 +46,6 @@ public partial class FieldSelect<TValue, TEnum> : FormBase
 
     private static string GetMultiSelectionText(IReadOnlyList<string> selectedValues)
     {
-        return string.Join(", ", selectedValues.Select(x => x.ParseToEnum<TEnum>().GetFieldSettings(EnumFields.Name).Name));
+        return string.Join(", ", selectedValues.Select(x => x.ParseToEnum<TEnum>().GetFieldSettings().Name));
     }
 }

@@ -7,14 +7,14 @@ public static class EnumHelper
         return Enum.GetValues<T>();
     }
 
-    public static List<EnumFieldObject<T>> GetList<T>(EnumFields fields, bool accessResources = true) where T : struct, Enum
+    public static List<EnumFieldObject<T>> GetList<T>(bool translate = true) where T : struct, Enum
     {
         var values = GetValues<T>();
         var result = new List<EnumFieldObject<T>>(values.Length);
 
         foreach (var val in values)
         {
-            result.Add(val.GetFieldSettings(fields, accessResources));
+            result.Add(val.GetFieldSettings(translate));
         }
 
         return result;

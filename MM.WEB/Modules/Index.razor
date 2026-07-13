@@ -537,7 +537,7 @@
 
         foreach (var item in LastUsers?.Items ?? [])
         {
-            item.CountryObj = item.Country.GetFieldSettings(EnumFields.Name);
+            item.CountryObj = item.Country.GetFieldSettings();
         }
     }
 

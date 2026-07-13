@@ -42,7 +42,7 @@
                         @foreach (var item in Providers)
                         {
                             <MudSelectItem T="PaymentProvider" Value="@item">
-                                @item.GetFieldSettings(EnumFields.Name).Name
+                                @item.GetFieldSettings().Name
                             </MudSelectItem>
                         }
                     </MudSelect>
@@ -175,7 +175,7 @@
         BufferedEvent.Register(nameof(AppleVerify), async (string receipt) => await AppleVerify(receipt));
     }
 
-    protected override async Task<bool> LoadInteropDataAsync()
+    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
         CurrentCountry = await IpInfoApi.GetCountry(cts.Token);
 

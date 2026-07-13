@@ -6,9 +6,9 @@
             <MudItem xs="12">
                 <MudSelect Value="@Language" ValueChanged="@((AppLanguage vl) => AppLanguageValueChanged(vl))" Label="@Translations.Module.Help.AppLanguage"
                            HelperText="@Translations.Module.Help.AppLanguageDesc" FullWidth="true">
-                    @foreach (var item in appLanguages.OrderBy(p => p.GetFieldSettings(EnumFields.Name).Name))
+                    @foreach (var item in appLanguages.OrderBy(p => p.Name))
                     {
-                        <MudSelectItem Value="@item">@item.GetFieldSettings(EnumFields.Name).Name</MudSelectItem>
+                        <MudSelectItem Value="@item.Value">@item.Name</MudSelectItem>
                     }
                 </MudSelect>
             </MudItem>
@@ -39,12 +39,12 @@
 
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
 
-    private readonly AppLanguage[] appLanguages = Enum.GetValues<AppLanguage>();
+    private readonly List<EnumFieldObject<AppLanguage>> appLanguages = EnumHelper.GetList<AppLanguage>();
 
     public AppLanguage Language { get; set; } = AppLanguage.en;
     public bool DarkMode { get; set; } = false;
 
-    protected override async Task<bool> LoadInteropDataAsync()
+    protected override async Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token) ?? false;

@@ -15,7 +15,7 @@
             <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(item)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
                 <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
                 <div>
-                    <MudTooltip Text="@($"{For.GetFieldSettings(EnumFields.Name).Name}: {GetValue(item)}")">
+                    <MudTooltip Text="@($"{For.GetFieldSettings().Name}: {GetValue(item)}")">
                         <span style="text-decoration: underline; cursor: help;">
                             @GetValue(item).Truncate(15)
                         </span>
@@ -36,7 +36,7 @@ else
         <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(Value)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
             <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
             <div>
-                <MudTooltip Text="@($"{For.GetFieldSettings(EnumFields.Name).Name}: {GetValue(Value)}")">
+                <MudTooltip Text="@($"{For.GetFieldSettings().Name}: {GetValue(Value)}")">
                     <span style="text-decoration: underline; cursor: help;">
                         @GetValue(Value).Truncate(15)
                     </span>
@@ -86,7 +86,7 @@ else
 
         if (value is Enum resultE)
         {
-            var result = resultE.GetFieldSettings(EnumFields.Name).Name;
+            var result = resultE.GetFieldSettings().Name;
 
             if (string.IsNullOrEmpty(result))
                 return "Not Answered";
@@ -112,7 +112,7 @@ else
 
             if (value is Enum result && Type == CompatibilityType.Enum)
             {
-                if (!GetExpectedValue().Any() || GetExpectedValue().Contains(result.GetFieldSettings(EnumFields.Name).Name))
+                if (!GetExpectedValue().Any() || GetExpectedValue().Contains(result.GetFieldSettings().Name))
                     return Color.Success;
                 return Color.Warning;
             }
@@ -138,11 +138,11 @@ else
             { x => x.Profile, User },
             { x => x.Type, Type },
             { x => x.Item, Item },
-            { x => x.WhyImportant, For.GetFieldSettings(EnumFields.WhyImportant).WhyImportant },
-            { x => x.Tips, For.GetFieldSettings(EnumFields.Tips).Tips },
+            { x => x.WhyImportant, For.GetFieldSettings().WhyImportant },
+            { x => x.Tips, For.GetFieldSettings().Tips },
         };
 
-        return DialogService.ShowAsync<AboutItemModal<TValue>>(For.GetFieldSettings(EnumFields.Name).Name, parameters, PopupHelper.Options(MaxWidth.Medium));
+        return DialogService.ShowAsync<AboutItemModal<TValue>>(For.GetFieldSettings().Name, parameters, PopupHelper.Options(MaxWidth.Medium));
     }
 
     private IEnumerable<string> GetPreferenceValues()
@@ -151,7 +151,7 @@ else
         {
             if (item is Enum resultE)
             {
-                yield return resultE.GetFieldSettings(EnumFields.Name).Name;
+                yield return resultE.GetFieldSettings().Name;
             }
             else if (item != null)
             {
@@ -170,59 +170,59 @@ else
         {
             //BASIC
             CompatibilityItem.Location => AffinityCore.GetLocation(Filter, User.Location).loc.ToArray(),
-            CompatibilityItem.Language => AffinityCore.GetLanguages(Filter, User.Languages).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.MaritalStatus => AffinityCore.GetMaritalStatus(Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.GenderIdentities => AffinityCore.GetGenderIdentities(Filter, User.GenderIdentities).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.SexualOrientations => AffinityCore.GetSexualOrientations(Filter, User.SexualOrientations).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.Language => AffinityCore.GetLanguages(Filter, User.Languages).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.MaritalStatus => AffinityCore.GetMaritalStatus(Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.BiologicalSex => AffinityCore.GetBiologicalSex(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.GenderIdentities => AffinityCore.GetGenderIdentities(Filter, User.GenderIdentities).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.SexualOrientations => AffinityCore.GetSexualOrientations(Filter, User.SexualOrientations).Select(s => s.GetFieldSettings().Name),
             //BIO
-            CompatibilityItem.Ethnicity => AffinityCore.GetEthnicity(Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.BodyType => AffinityCore.GetBodyType(Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.Ethnicity => AffinityCore.GetEthnicity(Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.BodyType => AffinityCore.GetBodyType(Filter).Select(s => s.GetFieldSettings().Name),
             CompatibilityItem.Age => AffinityCore.GetAge(Filter, User.BirthDate).Select(s => s.ToString()),
-            CompatibilityItem.Height => AffinityCore.GetHeight(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Disabilities => AffinityCore.GetDisability(Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.Height => AffinityCore.GetHeight(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Neurodiversity => AffinityCore.GetNeurodiversity(Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Disabilities => AffinityCore.GetDisability(Filter).Select(s => s.GetFieldSettings().Name),
             //LIFESTYLE
-            CompatibilityItem.Drink => AffinityCore.GetDrink(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Diet => AffinityCore.GetDiet(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Religion => AffinityCore.GetReligion(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.FamilyInvolvement => AffinityCore.GetFamilyInvolvement(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.HavePets => AffinityCore.GetHavePets(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.LivingSituation => AffinityCore.GetLivingSituation(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.NetWorth => AffinityCore.GetNetWorth(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.AnnualIncome => AffinityCore.GetAnnualIncome(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.Drink => AffinityCore.GetDrink(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Smoke => AffinityCore.GetSmoke(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Diet => AffinityCore.GetDiet(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Religion => AffinityCore.GetReligion(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.FamilyInvolvement => AffinityCore.GetFamilyInvolvement(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.HaveChildren => AffinityCore.GetHaveChildren(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.HavePets => AffinityCore.GetHavePets(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.EducationLevel => AffinityCore.GetEducationLevel(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.CareerCluster => AffinityCore.GetCareerCluster(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.LivingSituation => AffinityCore.GetLivingSituation(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.TravelFrequency => AffinityCore.GetTravelFrequency(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.NetWorth => AffinityCore.GetNetWorth(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.AnnualIncome => AffinityCore.GetAnnualIncome(User, Filter).Select(s => s.GetFieldSettings().Name),
             //PERSONALITY
-            CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.RelationshipPersonality => AffinityCore.GetRelationshipPersonality(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.MyersBriggsTypeIndicator => AffinityCore.GetMyersBriggsTypeIndicator(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.LoveLanguage => AffinityCore.GetLoveLanguage(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.SexPersonality => AffinityCore.GetSexPersonality(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.MoneyPersonality => AffinityCore.GetMoneyPersonality(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.SharedSpendingStyle => AffinityCore.GetSharedSpendingStyle(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.RelationshipPersonality => AffinityCore.GetRelationshipPersonality(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.MyersBriggsTypeIndicator => AffinityCore.GetMyersBriggsTypeIndicator(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.LoveLanguage => AffinityCore.GetLoveLanguage(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.SexPersonality => AffinityCore.GetSexPersonality(User).Select(s => s.GetFieldSettings().Name),
             //INTEREST
-            CompatibilityItem.Food => AffinityCore.GetFood(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Vacation => AffinityCore.GetVacation(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Sports => AffinityCore.GetSports(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.LeisureActivities => AffinityCore.GetLeisureActivities(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.MusicGenre => AffinityCore.GetMusicGenre(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.MovieGenre => AffinityCore.GetMovieGenre(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.TVGenre => AffinityCore.GetTVGenre(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.ReadingGenre => AffinityCore.GetReadingGenre(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.Food => AffinityCore.GetFood(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Vacation => AffinityCore.GetVacation(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Sports => AffinityCore.GetSports(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.LeisureActivities => AffinityCore.GetLeisureActivities(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.MusicGenre => AffinityCore.GetMusicGenre(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.MovieGenre => AffinityCore.GetMovieGenre(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.TVGenre => AffinityCore.GetTVGenre(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.ReadingGenre => AffinityCore.GetReadingGenre(User, Filter).Select(s => s.GetFieldSettings().Name),
             //RELATIONSHIP
-            CompatibilityItem.SharedFinances => AffinityCore.GetSharedFinances(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.ConflictResolutionStyle => AffinityCore.GetConflictResolutionStyle(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.HouseholdManagement => AffinityCore.GetHouseholdManagement(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.TimeTogetherPreference => AffinityCore.GetTimeTogetherPreference(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.OppositeSexFriendships => AffinityCore.GetOppositeSexFriendships(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.SharedFinances => AffinityCore.GetSharedFinances(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.ConflictResolutionStyle => AffinityCore.GetConflictResolutionStyle(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.HouseholdManagement => AffinityCore.GetHouseholdManagement(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.TimeTogetherPreference => AffinityCore.GetTimeTogetherPreference(User).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.OppositeSexFriendships => AffinityCore.GetOppositeSexFriendships(User).Select(s => s.GetFieldSettings().Name),
             //GOALS
-            CompatibilityItem.RelationshipIntentions => AffinityCore.GetRelationshipIntentions(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.Relocation => AffinityCore.GetRelocation(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, Filter).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
-            CompatibilityItem.IdealPlaceToLive => AffinityCore.GetIdealPlaceToLive(User).Select(s => s.GetFieldSettings(EnumFields.Name).Name),
+            CompatibilityItem.RelationshipIntentions => AffinityCore.GetRelationshipIntentions(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.Relocation => AffinityCore.GetRelocation(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.WantChildren => AffinityCore.GetWantChildren(User, Filter).Select(s => s.GetFieldSettings().Name),
+            CompatibilityItem.IdealPlaceToLive => AffinityCore.GetIdealPlaceToLive(User).Select(s => s.GetFieldSettings().Name),
 
             _ => throw new InvalidOperationException("invalid CompatibilityItem: " + Item)
         };

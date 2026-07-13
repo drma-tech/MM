@@ -12,6 +12,7 @@ public abstract class BaseComponentCore<T> : ComponentBase, IDisposable where T 
 {
     [Inject] private ILogger<T> Logger { get; set; } = null!;
     [Inject] private ISnackbar Snackbar { get; set; } = null!;
+
     [Inject] protected IDialogService DialogService { get; set; } = null!;
     [Inject] protected IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] protected NavigationManager Navigation { get; set; } = null!;
@@ -148,7 +149,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
     /// Note: Returns true when the component state changed and a re-render is required.
     /// </summary>
     /// <returns></returns>
-    protected virtual Task<bool> LoadInteropDataAsync()
+    protected virtual Task<bool> LoadInteropDataAsync(Microsoft.JSInterop.IJSRuntime JsRuntime)
     {
         return Task.FromResult(false);
     }
@@ -191,6 +192,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
         try
         {
             await base.OnParametersSetAsync();
+
             await LoadParameterDataAsync();
         }
         catch (Exception ex)
@@ -205,7 +207,7 @@ public abstract class ComponentCore<T> : BaseComponentCore<T> where T : class
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            if (firstRender && await LoadInteropDataAsync())
+            if (firstRender && await LoadInteropDataAsync(JsRuntime))
             {
                 StateHasChanged();
             }

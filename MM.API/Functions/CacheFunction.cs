@@ -82,7 +82,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosRepository rep
                     var login = logins.SingleOrDefault(p => p.UserId == principal.UserId);
 
                     var loginCountry = login?.Accesses.FirstOrDefault()?.Country?.ToLower();
-                    var enumCountry = countries.FirstOrDefault(p => p.GetFieldSettings(EnumFields.Tips, false)?.Tips?.ToLower() == loginCountry);
+                    var enumCountry = countries.FirstOrDefault(p => p.GetFieldSettings(false)?.Tips?.ToLower() == loginCountry);
 
                     obj.Items.Add(new LastUsersItem { Created = principal.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
                 }

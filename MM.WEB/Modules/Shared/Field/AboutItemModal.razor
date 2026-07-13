@@ -74,7 +74,7 @@
                     {
                         if (item is Enum resultE)
                         {
-                            var att = resultE.GetFieldSettings(EnumFields.Name | EnumFields.Description);
+                            var att = resultE.GetFieldSettings();
 
                             var name = att.Name;
                             var desc = att.Description;
@@ -174,7 +174,7 @@
 
             if (value is Enum result && Type == CompatibilityType.Enum)
             {
-                if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetFieldSettings(EnumFields.Name).Name))
+                if (!ExpectedValues.Any() || ExpectedValues.Contains(result.GetFieldSettings().Name))
                     return Severity.Success;
                 return Severity.Warning;
             }

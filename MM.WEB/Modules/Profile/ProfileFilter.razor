@@ -124,9 +124,9 @@
                         <MudItem xs="12">
                             <div class="d-flex" style="align-items: center;">
                                 <MudIcon Icon="@IconsFA.Solid.Icon("cake-candles").Font" Class="me-3"></MudIcon>
-                                <MudNumericField Label="@AttributeHelper.GetFieldSettings(() => Filter!.MinimalAge, EnumFields.Name).Name" @bind-Value="@Filter!.MinimalAge"
+                                <MudNumericField Label="@AttributeHelper.GetFieldSettings(() => Filter!.MinimalAge).Name" @bind-Value="@Filter!.MinimalAge"
                                                  Min="18" Class="me-3" AdornmentColor="Color.Primary"></MudNumericField>
-                                <MudNumericField Label="@AttributeHelper.GetFieldSettings(() => Filter!.MaxAge, EnumFields.Name).Name" @bind-Value="@Filter!.MaxAge"
+                                <MudNumericField Label="@AttributeHelper.GetFieldSettings(() => Filter!.MaxAge).Name" @bind-Value="@Filter!.MaxAge"
                                                  AdornmentColor="Color.Primary"></MudNumericField>
                             </div>
                             @*   <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 12px)">
@@ -136,18 +136,18 @@
                         <MudItem xs="12">
                             <div class="d-flex" style="align-items: center;">
                                 <MudIcon Icon="@IconsFA.Solid.Icon("ruler").Font" Class="me-3"></MudIcon>
-                                <MudSelect Label="@AttributeHelper.GetFieldSettings(() => Filter!.MinimalHeight, EnumFields.Name).Name" @bind-Value="@Filter!.MinimalHeight"
+                                <MudSelect Label="@AttributeHelper.GetFieldSettings(() => Filter!.MinimalHeight).Name" @bind-Value="@Filter!.MinimalHeight"
                                            AdornmentColor="Color.Primary" FullWidth="true" Class="me-3">
                                     @foreach (var item in Heights)
                                     {
-                                        <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings(EnumFields.Name).Name</MudSelectItem>
+                                        <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings().Name</MudSelectItem>
                                     }
                                 </MudSelect>
-                                <MudSelect Label="@AttributeHelper.GetFieldSettings(() => Filter!.MaxHeight, EnumFields.Name).Name" @bind-Value="@Filter!.MaxHeight"
+                                <MudSelect Label="@AttributeHelper.GetFieldSettings(() => Filter!.MaxHeight).Name" @bind-Value="@Filter!.MaxHeight"
                                            AdornmentColor="Color.Primary" FullWidth="true" Class="me-3">
                                     @foreach (var item in Heights)
                                     {
-                                        <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings(EnumFields.Name).Name</MudSelectItem>
+                                        <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings().Name</MudSelectItem>
                                     }
                                 </MudSelect>
                             </div>

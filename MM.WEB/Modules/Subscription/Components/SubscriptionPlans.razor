@@ -164,7 +164,7 @@
 
                 if (Provider == PaymentProvider.Paddle)
                 {
-                    await ShowWarning($"Provider not available: {Provider.GetFieldSettings(EnumFields.Name).Name}");
+                    await ShowWarning($"Provider not available: {Provider.GetFieldSettings().Name}");
                     _processing = false; StateHasChanged();
                 }
                 else if (Provider == PaymentProvider.Apple)
@@ -187,7 +187,7 @@
                 }
                 else
                 {
-                    await ShowWarning($"Provider not implemented: {Provider.GetFieldSettings(EnumFields.Name).Name}");
+                    await ShowWarning($"Provider not implemented: {Provider.GetFieldSettings().Name}");
                     _processing = false; StateHasChanged();
                 }
             }

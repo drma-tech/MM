@@ -30,8 +30,8 @@
 
     protected override void OnInitialized()
     {
-        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>(EnumFields.Group);
-        Continent = SelectedValue?.GetFieldSettings(EnumFields.Group).Group;
+        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>();
+        Continent = SelectedValue?.GetFieldSettings().Group;
     }
 
 }

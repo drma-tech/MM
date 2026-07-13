@@ -550,10 +550,10 @@ public static class AffinityCore
         if (filter != null && filter.CareerCluster.Count != 0) return filter.CareerCluster;
 
         if (!profile.CareerCluster.HasValue) return [];
-        var group = profile.CareerCluster?.GetFieldSettings(EnumFields.Group).Group;
+        var group = profile.CareerCluster?.GetFieldSettings().Group;
         if (group.Empty()) return [CareerCluster.NoCareer];
 
-        return EnumHelper.GetValues<CareerCluster>().Where(w => w.GetFieldSettings(EnumFields.Group).Group == group).ToHashSet();
+        return EnumHelper.GetValues<CareerCluster>().Where(w => w.GetFieldSettings().Group == group).ToHashSet();
     }
 
     public static HashSet<LivingSituation> GetLivingSituation(ProfileModel profile, FilterModel? filter = null)
