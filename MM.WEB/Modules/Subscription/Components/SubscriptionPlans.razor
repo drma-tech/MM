@@ -1,4 +1,4 @@
-﻿@inherits ComponentCore<SubscriptionPlans>
+﻿@inherits ComponentParameterCore<SubscriptionPlans>
 
 @using MM.Shared.Models.Dashboard
 @using MM.Shared.Models.Subscription
@@ -105,6 +105,14 @@
     {
         var cache = await DashboardApi.GetSumUsers(cts.Token);
         SumUsers = cache?.Data;
+    }
+
+    protected override object GetParameterKey()
+    {
+        return new
+        {
+            Provider
+        };
     }
 
     protected override async Task LoadParameterDataAsync()
