@@ -32,7 +32,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
         if (ip.NotEmpty() && ip != "127.0.0.1")
         {
             var result = await client.GetStringAsync($"https://ipinfo.io/{ip}/country", cancellationToken);
-            return await req.CreateResponse(result.RemoveUnsafeControlChars(), TtlCache.OneMinute, cancellationToken);
+            return await req.CreateResponse(result, TtlCache.OneMinute, cancellationToken);
         }
 
         return await req.CreateResponse(null, TtlCache.OneMinute, cancellationToken);

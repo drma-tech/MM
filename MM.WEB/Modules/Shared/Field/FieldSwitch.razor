@@ -3,12 +3,8 @@
 @if (Visible)
 {
     <div class="d-flex @CssClass" style="align-items: center; @Style">
-        @if (CssIcon.NotEmpty())
-        {
-            <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
-        }
-        <MudSwitch Value="Value" ValueChanged="ValueChanged" ThumbIcon="@(Value ? Icons.Material.Filled.Done : Icons.Material.Filled.Close)" ThumbIconColor="@(Value ? Color.Success : Color.Error)"
-                   Disabled="@Disabled">
+        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        <MudSwitch Value="Value" ValueChanged="ValueChanged" ThumbIcon="@(Value? Icons.Material.Filled.Done : Icons.Material.Filled.Close)" ThumbIconColor="@(Value? Color.Success: Color.Error)">
             @Name
         </MudSwitch>
     </div>
