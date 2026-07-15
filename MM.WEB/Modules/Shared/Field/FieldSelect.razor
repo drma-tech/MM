@@ -5,7 +5,10 @@
 @if (Visible)
 {
     <div class="d-flex @CssClass" style="align-items: center; @Style">
-        <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        @if (CssIcon.NotEmpty())
+        {
+            <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
+        }
         @if (Multiple)
         {
             <MudSelect SelectedValues="@SelectedValues" AdornmentColor="Color.Primary"
@@ -105,7 +108,7 @@
         <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 14px)">
             <MudLink href="@HelpLink" target="_blank" rel="nofollow" Typo="Typo.caption">@(new Uri(HelpLink).Host)</MudLink>
         </MudText>
-    }    
+    }
     @if (!string.IsNullOrEmpty(CustomInfo))
     {
         <MudText Typo="Typo.caption" Color="Color.Info" Style="margin-left: calc(1.5rem + 14px)">
