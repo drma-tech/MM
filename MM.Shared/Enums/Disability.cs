@@ -5,21 +5,21 @@
 /// </summary>
 public enum Disability
 {
-    [FieldSettings("Physical", Description = "Physical_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("Physical_Name", Description = "Physical_Description", ResourceType = typeof(Translations.Enum.Disability))]
     Physical = 1,
 
-    [FieldSettings("Visual", Description = "Visual_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("Visual_Name", Description = "Visual_Description", ResourceType = typeof(Translations.Enum.Disability))]
     Visual = 2,
 
-    [FieldSettings("Hearing", Description = "Hearing_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("Hearing_Name", Description = "Hearing_Description", ResourceType = typeof(Translations.Enum.Disability))]
     Hearing = 3,
 
-    [FieldSettings("MentalHealth", Description = "MentalHealth_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("MentalHealth_Name", Description = "MentalHealth_Description", ResourceType = typeof(Translations.Enum.Disability))]
     MentalHealth = 4,
 
-    [FieldSettings("Intellectual", Description = "Intellectual_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("Intellectual_Name", Description = "Intellectual_Description", ResourceType = typeof(Translations.Enum.Disability))]
     Intellectual = 5,
 
-    [FieldSettings("Learning", Description = "Learning_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings("Learning_Name", Description = "Learning_Description", ResourceType = typeof(Translations.Enum.Disability))]
     Learning = 6
 }

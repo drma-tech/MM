@@ -245,7 +245,7 @@
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect Name="@MM.Shared.Translations.Model.ProfileLifestyleModel.TravelFrequency_Name" TValue="HashSet<TravelFrequency>" TEnum="TravelFrequency" @bind-SelectedValues="@context.TravelFrequency"
-                                         CssIcon="@IconsFA.Solid.Icon("plane").Font" ShowGroup="true" Multiple="true"
+                                         CssIcon="@IconsFA.Solid.Icon("plane").Font" Multiple="true"
                                          CustomWarning="@(context.TravelFrequency.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
