@@ -35,7 +35,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
             return await req.CreateResponse(result.Trim(), TtlCache.OneMinute, cancellationToken);
         }
 
-        return await req.CreateResponse(null, TtlCache.OneMinute, cancellationToken);
+        return await req.CreateResponse((string?)null, TtlCache.OneMinute, cancellationToken);
     }
 
     public string? HereApiKey { get; set; } = config.GetValue<string>("Here:ApiKey");
