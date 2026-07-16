@@ -77,7 +77,7 @@
                         </MudItem>
                         <MudItem xs="12">
                             <FieldSelect Name="@MM.Shared.Translations.Model.ProfileBasicModel.GenderIdentity_Name" TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
-                                         CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" ShowGroup="true" Multiple="true"
+                                         CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Multiple="true"
                                          CustomWarning="@(context.GenderIdentities.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>
                         </MudItem>
