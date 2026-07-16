@@ -27,7 +27,7 @@ public class LoginFunction(CosmosRepository repo, IDistributedCache cache)
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "login/add")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var platform = req.GetQueryParameters()["platform"] ?? "error";
-        var country = req.GetQueryParameters()["country"]?.Trim() ?? "error";
+        var country = req.GetQueryParameters()["country"] ?? "error";
         var ip = req.GetUserIP(true);
         var userId = await req.GetUserIdAsync(cancellationToken);
         if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("unauthenticated user");
