@@ -120,11 +120,23 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Biologisches Geschlecht</value>
   </data>
+  <data name="BiologicalSex_Tips" xml:space="preserve">
+    <value>Beide Partner haben das gleiche biologische Geschlecht?|Besprechen Sie alle spezifischen Gesundheits- oder Intimitätsaspekte offen, um die Bedürfnisse des anderen zu unterstützen.|Partner haben unterschiedliche biologische Geschlechter?|Feiern Sie Unterschiede und kommunizieren Sie offen über körperliche und emotionale Erwartungen.|Einer oder beide identifizieren sich als intersexuell?|Respektieren Sie ihre einzigartige Erfahrung und fragen Sie, wie sie in Bezug auf Intimität und Gesundheit unterstützt werden möchten.|Vermeiden Sie Annahmen.|Das biologische Geschlecht definiert nicht die Geschlechtsidentität oder sexuelle Orientierung – kommunizieren Sie immer respektvoll.|Berücksichtigen Sie kulturelle Aspekte Empfindlichkeiten|Verschiedene Kulturen betrachten biologischen Sex und seine Auswirkungen auf Beziehungen unterschiedlich – seien Sie achtsam und offen.</value>
+  </data>
+  <data name="BiologicalSex_Why" xml:space="preserve">
+    <value>Das biologische Geschlecht beeinflusst die körperliche Verträglichkeit, gesundheitliche Aspekte und manchmal auch die soziale oder kulturelle Dynamik in Beziehungen. Dieses Wissen hilft Partnern, potenzielle biologische Faktoren zu verstehen, die für Intimität, Fortpflanzung und persönliche Identität relevant sind.</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
   <data name="Description_Placeholder" xml:space="preserve">
     <value>Versuchen Sie, keine persönlichen Kontaktdaten (wie Telefonnummern oder E-Mails) anzugeben und auch nicht die genauen Orte zu erwähnen, an denen Sie leben oder sich aufhalten. Dies trägt dazu bei, Ihr Profil zu schützen. 💛\n\nAußerdem ist das Teilen oder Bewerben von sozialen Konten, Produkten, Dienstleistungen oder allem, was die Rechte anderer verletzt, nicht erlaubt und kann zur Entfernung führen.</value>
+  </data>
+  <data name="GenderIdentities_Tips" xml:space="preserve">
+    <value>Ihr Partner ist transgender, nicht-binär oder genderqueer?|Fragen Sie, welche Pronomen er verwendet, und verwenden Sie sie konsequent. Kleine Gesten des Respekts tragen viel dazu bei, Vertrauen und emotionale Sicherheit aufzubauen.|Ihr Partner ist genderfluid oder bigender?|Verstehen Sie, dass die Art und Weise, wie er sich präsentiert oder ausdrückt, unterschiedlich sein kann. Seien Sie offen und vermeiden Sie es, ihre Stimmung oder Identität aufgrund ihres Aussehens zu vermuten.|Ihr Partner stellt Fragen?|Geben Sie ihm emotionalen Raum, um herauszufinden, wer er ist. Vermeiden Sie den Druck auf Klarheit – Unterstützung ist wichtiger als Gewissheit.|Sie identifizieren sich anders?|Sprechen Sie offen darüber, wie Ihre Geschlechtsidentität Ihre Rollen, Dynamiken und Ihr Wohlbefinden in der Beziehung beeinflusst.|Geschlechtsidentität unterscheidet sich von Ihrer?|Bleiben Sie neugierig und mitfühlend. Stellen Sie Fragen respektvoll und erkennen Sie, dass sich ihre Erfahrungen möglicherweise stark von Ihren unterscheiden.|Sie kennen die Identitätsbezeichnung Ihres Partners nicht?|Schlagen Sie nach, fragen Sie höflich oder bitten Sie ihn, zu erklären, was sich sinnvoll anfühlt – Lernen zeigt, dass er sich darum kümmert.|Kultureller Kontext ist wichtig?|Manche Identitäten (wie Two-Spirit) sind kulturspezifisch. Erkennen und respektieren Sie ihre kulturelle Bedeutung, die über das Geschlecht hinausgeht.</value>
+  </data>
+  <data name="GenderIdentities_Why" xml:space="preserve">
+    <value>Die Geschlechtsidentität prägt, wie eine Person sich selbst versteht und in der Beziehung gesehen werden möchte. Wenn Sie die Identität Ihres Partners kennen, können Sie eine authentischere Verbindung herstellen und vermeiden, seine Erfahrungen zu entkräften – insbesondere in Beziehungen, in denen Geschlechtervielfalt vorhanden ist.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>Die häufigste Option wird automatisch ausgewählt (gilt für die meisten Menschen)</value>
@@ -138,6 +150,12 @@
   <data name="Languages_Name" xml:space="preserve">
     <value>Sprachen</value>
   </data>
+  <data name="Languages_Tips" xml:space="preserve">
+    <value>Fließend dieselbe Sprache sprechen?|Nutzen Sie dies, um die Verbindung durch bedeutungsvolle Gespräche und gemeinsamen Humor zu vertiefen. Gehen Sie nicht davon aus, dass Sie verstehen, sondern klären Sie immer die emotionale Bedeutung.|Ihr Partner spricht weniger fließend als Sie?|Sprechen Sie langsam und deutlich, vermeiden Sie Redewendungen und seien Sie geduldig. Ermutigen Sie sie zu Anstrengungen und feiern Sie kleine Fortschritte.|Sie sprechen weniger fließend als Ihr Partner?|Seien Sie ehrlich über Ihre Grenzen. Lassen Sie sie wissen, wenn Sie etwas nicht verstehen, und bitten Sie sie, bei Bedarf einfacher zu sprechen.|Keiner von Ihnen spricht fließend die Sprache des anderen?|Verwenden Sie frühzeitig Übersetzungstools und Gesten, aber bauen Sie nach und nach gemeinsame Wörter oder Sätze auf, um emotionale Nähe zu schaffen.|Der Partner spricht mehr Sprachen als Sie?|Bitten Sie ihn, Ihnen grundlegende Sätze in der anderen Sprache beizubringen. Es zeigt Sorgfalt und Neugier gegenüber ihrem Hintergrund.|Sprachlücken verursachen Frustration?|Machen Sie Pausen, wenn sich die Kommunikation ermüdend anfühlt. Konzentrieren Sie sich auf nonverbale Hinweise – Berührung, Tonfall und Augenkontakt können viel aussagen.|Verschiedene Muttersprachen, dieselbe Zweitsprache?|Verwenden Sie die gemeinsame Zweitsprache als neutralen Grund. Es kann Machtungleichgewichte reduzieren und eine neue gemeinsame Bedeutung schaffen.</value>
+  </data>
+  <data name="Languages_Why" xml:space="preserve">
+    <value>Das Teilen einer gemeinsamen Sprache – oder das Verstehen des Sprachniveaus des anderen – hilft dabei, eine emotionale Verbindung aufzubauen, Missverständnisse zu vermeiden und Konflikte zu bewältigen. Selbst in multikulturellen Beziehungen oder Fernbeziehungen kann das Wissen darüber, wie jeder kommuniziert, emotionale Intimität herstellen oder zerstören.</value>
+  </data>
   <data name="Location_Description" xml:space="preserve">
     <value>Wir speichern nicht Ihren GPS-Standort, sondern nur Ihre Stadt. (Der Zugriff auf den Gerätestandort muss aktiviert sein.)</value>
   </data>
@@ -147,8 +165,20 @@
   <data name="Location_Placeholder" xml:space="preserve">
     <value>Bitte klicken Sie auf den Button daneben</value>
   </data>
+  <data name="Location_Tips" xml:space="preserve">
+    <value>Ferndating?|Absichten klären. Sind beide offen für eine Fernverbindung, eine Reise oder einen eventuellen Umzug?|Gleiches Land, andere Regionen?|Besprechen Sie regionale Gewohnheiten, Werte oder Unterschiede bei den Lebenshaltungskosten – sie können sich auf die Wahl Ihres Lebensstils auswirken.|Gleiche Stadt oder in der Nähe?|Nutzen Sie die Nähe für eine einfachere persönliche Bindung – aber beeilen Sie sich nicht, nur weil es bequem ist.|Der kulturelle Kontext ist wichtig?|Auch im selben Land können die lokalen Bräuche unterschiedlich sein – seien Sie neugierig auf die Umgebung Ihres Partners.|Andere Zeit Zonen?|Bewusst koordinieren. Regelmäßige Kommunikation erfordert Aufwand und Planung.|Der eine ist offen für einen Umzug, der andere nicht?|Erwartungen frühzeitig aufeinander abstimmen. Standortflexibilität kann über die langfristige Rentabilität entscheiden.|Sicherheits- oder Mobilitätseinschränkungen?|Seien Sie transparent. Nicht jeder kann umziehen oder frei reisen – respektieren Sie diese Einschränkungen.</value>
+  </data>
+  <data name="Location_Why" xml:space="preserve">
+    <value>Der Standort beeinflusst Zeitzonen, Sprache, Kultur, tägliche Gewohnheiten und die Möglichkeit einer persönlichen Interaktion. Bei globalen Matchups kann sogar eine kompatible Verbindung unter Druck geraten, wenn physische Distanz und kulturelle Kontexte nicht frühzeitig berücksichtigt werden.</value>
+  </data>
   <data name="MaritalStatus_Name" xml:space="preserve">
     <value>Familienstand</value>
+  </data>
+  <data name="MaritalStatus_Tips" xml:space="preserve">
+    <value>Beide Singles?|Sie sind wahrscheinlich beide offen für neue Beziehungen ohne vorherige Verpflichtungen – konzentrieren Sie sich auf den Aufbau von Vertrauen und Bindung.|Einer ist verheiratet oder lebt zusammen?|Besprechen Sie Grenzen und Erwartungen klar, um Missverständnisse und emotionale Konflikte zu vermeiden.|Getrennt oder geschieden?|Respektieren Sie den Heilungsprozess; Seien Sie geduldig, während Ihr Partner über die Beendigung der Beziehung hinwegkommt.|Annulliert oder Scheinehe?|Erklären Sie, was dies für Ihren Partner und seine aktuellen Beziehungsziele bedeutet, um Überraschungen zu vermeiden.|Verschiedene Status, aber offen?|Kommunizieren Sie ehrlich darüber, was jeder Status bedeutet und wie er sich auf Ihre Erwartungen auswirkt.|Der Familienstand hat Auswirkungen auf rechtliche Angelegenheiten?|Wenn Sie eine ernsthafte Bindung anstreben, verstehen Sie, wie sich der frühere Familienstand auf Finanzen, Kinder oder gesetzliche Rechte auswirkt.|Achten Sie auf kulturelle Unterschiede.|Bedeutungen des Familienstandes und Die Auswirkungen variieren weltweit. Berücksichtigen Sie immer den kulturellen Kontext.</value>
+  </data>
+  <data name="MaritalStatus_Why" xml:space="preserve">
+    <value>Das Verständnis des Familienstands hilft dabei, Erwartungen hinsichtlich der Verfügbarkeit einer Beziehung, der emotionalen Bereitschaft und rechtlichen Überlegungen festzulegen. Unterschiedliche Status können ein unterschiedliches Maß an Engagement, Ballast oder Offenheit für neue Beziehungen bedeuten, was sich auf Kompatibilität und Kommunikation auswirkt.</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modalität</value>
@@ -161,6 +191,12 @@
   </data>
   <data name="NickName_Placeholder" xml:space="preserve">
     <value>Bsp.: Paul</value>
+  </data>
+  <data name="SexualOrientations_Tips" xml:space="preserve">
+    <value>Partner ist heterosexuell?|Wenn Sie ein anderes Geschlecht haben, passt das wahrscheinlich gut zusammen. Aber gehen Sie nicht davon aus, dass die Kompatibilität nur auf der Orientierung basiert – die emotionalen und körperlichen Bedürfnisse sind immer noch unterschiedlich.|Der Partner fühlt sich homosexuell oder gleichgeschlechtlich angezogen?|Verfolgen Sie die Beziehung nur, wenn Ihre Geschlechtsidentität mit seiner Anziehung übereinstimmt. Vermeiden Sie es, emotionalen Druck auf jemanden auszuüben, der sich nicht zu Ihrem Geschlecht hingezogen fühlt.|Der Partner ist bisexuell, pansexuell oder polysexuell?|Verstehen Sie, dass die Anziehung zu mehreren Geschlechtern nicht bedeutet, dass er weniger loyal ist. Vertrauen und Kommunikation sind wichtiger als Etiketten.|Der Partner ist demisexuell oder grausexuell?|Er verspürt möglicherweise erst nach tiefen emotionalen Bindungen sexuelle Anziehung. Seien Sie geduldig und bauen Sie langsam Vertrauen auf – überstürzen Sie die Intimität nicht.|Der Partner ist asexuell oder autosexuell?|Sie suchen möglicherweise keinen sexuellen Kontakt oder bevorzugen möglicherweise selbstgesteuerte Erfahrungen. Sprechen Sie offen über Grenzen und darüber, was Intimität für Sie beide bedeutet.|Der Partner ist sapiosexuell?|Sie fühlen sich wahrscheinlich zuerst zum Intellekt hingezogen – pflegen Sie eine mentale Verbindung und sinnvolle Gespräche.|Sie kennen die Orientierung Ihres Partners nicht?|Fragen Sie respektvoll oder recherchieren Sie selbst – vermeiden Sie Urteile und Annahmen, um Vertrauen aufzubauen.|Die Orientierung fühlt sich komplex oder fließend an?|Manche Menschen widersetzen sich strengen Bezeichnungen (z. B. pomosexuell). Am wichtigsten ist, was sie für Sie empfinden – kommunizieren Sie direkt.</value>
+  </data>
+  <data name="SexualOrientations_Why" xml:space="preserve">
+    <value>Die sexuelle Orientierung spiegelt wider, zu wem sich eine Person romantisch und sexuell hingezogen fühlt, was für die Vereinbarkeit einer Beziehung von grundlegender Bedeutung ist. Die Orientierung des anderen zu kennen und zu respektieren hilft dabei, klare Erwartungen in Bezug auf Anziehung, Intimität und Beziehungsstruktur zu setzen – insbesondere in heterogenen oder nicht-traditionellen Dynamiken.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Die häufigste Option wird automatisch ausgewählt (gilt für die meisten Menschen)</value>

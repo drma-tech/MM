@@ -79,11 +79,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Talk about lifestyle expectations|Even with love, different income levels can lead to mismatched spending habits or priorities—discuss openly.|Balance contributions fairly|If incomes differ, focus on proportional contribution rather than splitting everything 50/50.|Avoid assumptions about money roles|Don’t assume the higher earner will always pay, or the lower earner should feel indebted—define your own rules.|Be honest about financial pressure|If one partner feels financial strain, talk about it early—sile [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AnnualIncome_Tips {
+            get {
+                return ResourceManager.GetString("AnnualIncome_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual income influences daily lifestyle, short-term choices, and how easily partners can contribute to shared goals like travel, housing, or starting a family. While income alone doesn&apos;t define compatibility, major differences—if not discussed—can create friction around spending, fairness, and expectations. Financial strain or imbalance can also affect how responsibilities are divided, especially when one partner feels overburdened or undervalued. Compatibility in income makes it easier to make joint decis [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AnnualIncome_Why {
+            get {
+                return ResourceManager.GetString("AnnualIncome_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Career.
         /// </summary>
         public static string CareerCluster_Name {
             get {
                 return ResourceManager.GetString("CareerCluster_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Careers in related fields?|Use your shared experiences to empathize and support each other through work-related stress and opportunities.|Careers in different fields?|Be curious and open to learning about your partner’s professional world to build respect.|One has a stable routine, the other irregular hours?|Set clear expectations for quality time and communication.|Frequent travel or possible relocation?|Discuss long-term plans and how to stay connected despite distance.|Significant income or status differ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string CareerCluster_Tips {
+            get {
+                return ResourceManager.GetString("CareerCluster_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Having different careers doesn’t necessarily cause conflicts in a relationship. However, when partners work in similar fields or industries, they often better understand each other’s challenges, such as irregular work hours, pressure to perform, public exposure, frequent travel, or the need to relocate. This shared understanding can reduce potential friction and create opportunities for mutual support..
+        /// </summary>
+        public static string CareerCluster_Why {
+            get {
+                return ResourceManager.GetString("CareerCluster_Why", resourceCulture);
             }
         }
         
@@ -106,6 +142,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have different diets?|Be flexible in shared meals—find dishes that meet both needs without turning meals into conflict.|Partner is vegan/vegetarian and you&apos;re not?|Respect their reasons. Avoid teasing, and be open to trying their food preferences occasionally.|One has health-based or restrictive diet (e.g., gluten-free, detox)?|Take it seriously. Understand it&apos;s not just a \&quot;trend\&quot;—it may be vital for their wellbeing.|Both value organic/local eating?|Celebrate that alignment—plan trips to markets, cook [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Diet_Tips {
+            get {
+                return ResourceManager.GetString("Diet_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dietary choices often reflect personal values, health needs, culture, or lifestyle. They affect daily routines, cooking, eating out, and even long-term compatibility if raising children is part of the plan. Aligning—or respectfully navigating differences—helps avoid friction and supports mutual care..
+        /// </summary>
+        public static string Diet_Why {
+            get {
+                return ResourceManager.GetString("Diet_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Drink.
         /// </summary>
         public static string Drink_Name {
@@ -115,11 +169,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One partner doesn&apos;t drink at all?|Respect their choice without pressure or teasing. Opt for alcohol-free activities and drinks when together.|One drinks lightly/moderately and the other heavily?|Talk openly about how drinking affects your time together. Set boundaries if it impacts communication or mood.|Both drink socially?|Celebrate the alignment, but also agree on limits and safe behavior in public or when hosting guests.|Your partner drinks to cope?|Support them without judgment, but encourage healthy c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Drink_Tips {
+            get {
+                return ResourceManager.GetString("Drink_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drinking habits can influence lifestyle, social settings, health, and values. Misalignment—like one partner drinking heavily and the other being sober—can create friction over priorities, routines, and boundaries. Understanding each other’s drinking habits helps avoid future conflicts and supports respectful compromise..
+        /// </summary>
+        public static string Drink_Why {
+            get {
+                return ResourceManager.GetString("Drink_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Education.
         /// </summary>
         public static string EducationLevel_Name {
             get {
                 return ResourceManager.GetString("EducationLevel_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One has a higher level of education?|Avoid assumptions—education doesn&apos;t guarantee emotional maturity or compatibility. Respect each other&apos;s knowledge and strengths.|Different academic backgrounds?|Stay curious. Learn from each other&apos;s perspectives rather than viewing differences as gaps.|Similar education levels?|This can support smoother communication and aligned life plans—but don&apos;t mistake similarity for compatibility in other areas.|Education vs. ambition?|One might not have a degree but is still drive [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EducationLevel_Tips {
+            get {
+                return ResourceManager.GetString("EducationLevel_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Education level can reflect someone&apos;s values, communication style, life experiences, and career trajectory. While it doesn’t define intelligence or character, differing educational backgrounds may influence lifestyle expectations, conversation dynamics, or shared goals..
+        /// </summary>
+        public static string EducationLevel_Why {
+            get {
+                return ResourceManager.GetString("EducationLevel_Why", resourceCulture);
             }
         }
         
@@ -142,11 +232,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One of you is heavily involved with family?|Discuss boundaries early. What’s loving for one may feel intrusive to the other.|You have different levels of involvement?|Talk about expectations—how often will you visit or communicate with families, and how much influence will they have?|Both are not very involved?|That may simplify logistics but talk about how you’ll build your own support system or traditions.|One partner values independence?|Respect their space. Don’t force family interactions they aren’t co [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string FamilyInvolvement_Tips {
+            get {
+                return ResourceManager.GetString("FamilyInvolvement_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The level of family involvement can shape daily routines, boundaries, holidays, decision-making, and conflict resolution. Compatibility here helps prevent stress caused by differing expectations around privacy, loyalty, or independence..
+        /// </summary>
+        public static string FamilyInvolvement_Why {
+            get {
+                return ResourceManager.GetString("FamilyInvolvement_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Have Children.
         /// </summary>
         public static string HaveChildren_Name {
             get {
                 return ResourceManager.GetString("HaveChildren_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One of you has children?|Talk openly about what role, if any, the new partner would play. Be patient and respectful of parenting responsibilities.|Children don’t live with the parent?|Understand that even if not present daily, parenting still affects availability, emotional focus, and long-term planning.|You both don’t have children?|Discuss future intentions—if one of you plans to have kids and the other doesn’t, that’s essential to clarify early.|Different views about parenting involvement?|One may want a [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HaveChildren_Tips {
+            get {
+                return ResourceManager.GetString("HaveChildren_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Having children—whether they live with the parent or not—affects time, priorities, emotional energy, and long-term planning. It also impacts how a new partner may fit into the family dynamic and future life decisions..
+        /// </summary>
+        public static string HaveChildren_Why {
+            get {
+                return ResourceManager.GetString("HaveChildren_Why", resourceCulture);
             }
         }
         
@@ -160,6 +286,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One of you has pets and the other doesn&apos;t?|Clarify comfort levels—does the partner mind living with or caring for animals? Allergies or lifestyle clashes can arise.|One loves pets, the other doesn&apos;t want them?|Be honest about long-term compatibility. A strong pet preference can signal deeper lifestyle differences.|Different types of pets involved?|Discuss logistics—dogs may require walks and time, while cats or small pets might not. Exotic pets may come with unique care needs.|Both have pets?|Great, but sti [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HavePets_Tips {
+            get {
+                return ResourceManager.GetString("HavePets_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pets influence lifestyle, daily routines, finances, travel flexibility, and even living arrangements. They can be a strong emotional bond—or a source of conflict if one partner isn&apos;t aligned with the other&apos;s preferences or values toward animals..
+        /// </summary>
+        public static string HavePets_Why {
+            get {
+                return ResourceManager.GetString("HavePets_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I live with.
         /// </summary>
         public static string LivingSituation_Name {
@@ -169,56 +313,20 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have any doubts, you can take a test on the original website (English and Spanish).
+        ///   Looks up a localized string similar to Living alone?|Appreciate their need for privacy and independence. Respect their space while building connection.|Living with family?|Be aware of family dynamics and possible influences on your relationship. Support their need to balance both.|Living with friends?|Social environment may be lively—discuss how much time you’ll spend together versus with roommates.|Living with an ex-partner?|This can be complex; talk openly about boundaries, trust, and emotional safety.|Living with roommates?|Set clear expectat [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string LoveLanguage_Description {
+        public static string LivingSituation_Tips {
             get {
-                return ResourceManager.GetString("LoveLanguage_Description", resourceCulture);
+                return ResourceManager.GetString("LivingSituation_Tips", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Love Language.
+        ///   Looks up a localized string similar to Living arrangements affect daily routines, privacy, social interactions, and boundaries. Compatibility here helps partners understand each other’s comfort levels, expectations for personal space, and how they balance independence with companionship..
         /// </summary>
-        public static string LoveLanguage_Name {
+        public static string LivingSituation_Why {
             get {
-                return ResourceManager.GetString("LoveLanguage_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It is necessary to test on a third-party site (multi-language).
-        /// </summary>
-        public static string MBTI_Description {
-            get {
-                return ResourceManager.GetString("MBTI_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MBTI Personality.
-        /// </summary>
-        public static string MBTI_Name {
-            get {
-                return ResourceManager.GetString("MBTI_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you have any doubts, you can take a test on the original website (English only).
-        /// </summary>
-        public static string MoneyPersonality_Description {
-            get {
-                return ResourceManager.GetString("MoneyPersonality_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Money Personality.
-        /// </summary>
-        public static string MoneyPersonality_Name {
-            get {
-                return ResourceManager.GetString("MoneyPersonality_Name", resourceCulture);
+                return ResourceManager.GetString("LivingSituation_Why", resourceCulture);
             }
         }
         
@@ -241,20 +349,20 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If in doubt, you can take a test on a third-party site (English only).
+        ///   Looks up a localized string similar to Discuss financial values early|Being open about what money means to each of you can prevent misunderstandings and build trust.|Respect differences in wealth|Avoid assumptions or judgments based on net worth alone—focus on how you manage money and make decisions.|Align on lifestyle expectations|Talk about daily spending habits and what kind of lifestyle you both want to maintain.|Plan for the future together|Share your financial goals and how you envision reaching them as a team.|Address financial stress ope [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string RelationshipPersonality_Description {
+        public static string NetWorth_Tips {
             get {
-                return ResourceManager.GetString("RelationshipPersonality_Description", resourceCulture);
+                return ResourceManager.GetString("NetWorth_Tips", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Personality in Relationship.
+        ///   Looks up a localized string similar to Financial harmony plays a crucial role in relationship stability and satisfaction. When partners have similar net worth levels, it often means their lifestyle expectations, spending habits, and financial goals are aligned or easier to negotiate. Large discrepancies in net worth can lead to imbalances in power, decision-making, or feelings of insecurity, which may cause tension or misunderstandings. Being compatible in this area helps couples build trust, share plans for the future, and avoid conflicts relat [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string RelationshipPersonality_Name {
+        public static string NetWorth_Why {
             get {
-                return ResourceManager.GetString("RelationshipPersonality_Name", resourceCulture);
+                return ResourceManager.GetString("NetWorth_Why", resourceCulture);
             }
         }
         
@@ -268,47 +376,20 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have any doubts, you can take a test on the original website (English only).
+        ///   Looks up a localized string similar to You share the same religion?|Explore shared practices together—attending services, celebrating holidays, or praying as a couple can strengthen your bond.|Partner is religious and you&apos;re not?|Respect their beliefs without pretending. Be curious, not dismissive.|Different religions?|Have open talks early—discuss boundaries, important holidays, and whether faith will play a role in family life.|Religion is very important to one of you?|Understand how it shapes their values and daily life. Ask how you can suppo [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string SexPersonality_Description {
+        public static string Religion_Tips {
             get {
-                return ResourceManager.GetString("SexPersonality_Description", resourceCulture);
+                return ResourceManager.GetString("Religion_Tips", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sex Personality.
+        ///   Looks up a localized string similar to Religious beliefs can deeply influence values, lifestyle, traditions, family expectations, and long-term decisions like marriage or raising children. Understanding each other’s spiritual views (or lack thereof) helps avoid hidden tensions and fosters mutual respect..
         /// </summary>
-        public static string SexPersonality_Name {
+        public static string Religion_Why {
             get {
-                return ResourceManager.GetString("SexPersonality_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unlike other personalities, this one&apos;s compatibility is a personal preference..
-        /// </summary>
-        public static string SexPersonalityPreferences_Description {
-            get {
-                return ResourceManager.GetString("SexPersonalityPreferences_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sex Personality (preferences).
-        /// </summary>
-        public static string SexPersonalityPreferences_Name {
-            get {
-                return ResourceManager.GetString("SexPersonalityPreferences_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shared Spending Style.
-        /// </summary>
-        public static string SharedSpendingStyle_Name {
-            get {
-                return ResourceManager.GetString("SharedSpendingStyle_Name", resourceCulture);
+                return ResourceManager.GetString("Religion_Why", resourceCulture);
             }
         }
         
@@ -322,11 +403,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One partner doesn&apos;t smoke?|Be mindful of their preferences—avoid smoking near them, and don’t assume occasional smoking is “no big deal.”|Both smoke occasionally?|Set boundaries together (e.g., where and when it’s okay), and talk about possible changes in habit over time.|One smokes often?|Check in about how it affects your connection—especially around shared living space, finances, or children.|Dislike the smell or health effects?|Be upfront. Suggest compromises like outdoor-only smoking or designated clot [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Smoke_Tips {
+            get {
+                return ResourceManager.GetString("Smoke_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smoking habits affect lifestyle, health, physical closeness, and even shared spaces. Whether due to personal preference, health reasons, or cultural norms, smoking compatibility can influence everyday comfort and long-term satisfaction..
+        /// </summary>
+        public static string Smoke_Why {
+            get {
+                return ResourceManager.GetString("Smoke_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Travel Frequency.
         /// </summary>
         public static string TravelFrequency_Name {
             get {
                 return ResourceManager.GetString("TravelFrequency_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both travel rarely or never?|Enjoy predictable routines and easy planning. Use your shared stability to build a grounded relationship.|One travels frequently, the other rarely?|Discuss expectations for time apart and how to maintain connection during travel.|Both travel often?|Plan quality time intentionally to stay connected despite busy schedules.|One is a frequent nomad?|Clarify long-term goals—can the relationship support a highly mobile lifestyle?|Travel is work-related for one or both?|Support their c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string TravelFrequency_Tips {
+            get {
+                return ResourceManager.GetString("TravelFrequency_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel habits affect how much time partners spend together, lifestyle compatibility, and openness to change or adventure. Differences in travel frequency can impact communication, planning, and relationship stability, especially in long-term commitments..
+        /// </summary>
+        public static string TravelFrequency_Why {
+            get {
+                return ResourceManager.GetString("TravelFrequency_Why", resourceCulture);
             }
         }
         

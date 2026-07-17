@@ -126,32 +126,32 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
         {
             RuleFor(x => x.MoneyPersonality)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.MoneyPersonality_Name);
+                .WithName(ProfilePersonalityModel.MoneyPersonality_Name);
 
             RuleFor(x => x.SharedSpendingStyle)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.SharedSpendingStyle_Name);
+                .WithName(ProfilePersonalityModel.SharedSpendingStyle_Name);
 
             RuleFor(x => x.RelationshipPersonality)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.SharedSpendingStyle_Name);
+                .WithName(ProfilePersonalityModel.SharedSpendingStyle_Name);
 
             RuleFor(x => x.MBTI)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.MBTI_Name);
+                .WithName(ProfilePersonalityModel.MBTI_Name);
 
             RuleFor(x => x.LoveLanguage)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.LoveLanguage_Name);
+                .WithName(ProfilePersonalityModel.LoveLanguage_Name);
 
             RuleFor(x => x.SexPersonality)
                 .NotEmpty()
-                .WithName(ProfileLifestyleModel.SexPersonality_Name);
+                .WithName(ProfilePersonalityModel.SexPersonality_Name);
 
             RuleFor(x => x.SexPersonalityPreference)
                 .NotEmpty()
                 .Must(value => value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileLifestyleModel.SexPersonalityPreferences_Name));
+                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfilePersonalityModel.SexPersonalityPreferences_Name));
         });
 
         RuleSet("INTEREST", () =>

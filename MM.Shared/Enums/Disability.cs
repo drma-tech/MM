@@ -5,21 +5,21 @@
 /// </summary>
 public enum Disability
 {
-    [FieldSettings("Physical_Name", Description = "Physical_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.Physical_Name), Description = nameof(Translations.Enum.Disability.Physical_Description), ResourceType = typeof(Translations.Enum.Disability))]
     Physical = 1,
 
-    [FieldSettings("Visual_Name", Description = "Visual_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.Visual_Name), Description = nameof(Translations.Enum.Disability.Visual_Description), ResourceType = typeof(Translations.Enum.Disability))]
     Visual = 2,
 
-    [FieldSettings("Hearing_Name", Description = "Hearing_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.Hearing_Name), Description = nameof(Translations.Enum.Disability.Hearing_Description), ResourceType = typeof(Translations.Enum.Disability))]
     Hearing = 3,
 
-    [FieldSettings("MentalHealth_Name", Description = "MentalHealth_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.MentalHealth_Name), Description = nameof(Translations.Enum.Disability.MentalHealth_Description), ResourceType = typeof(Translations.Enum.Disability))]
     MentalHealth = 4,
 
-    [FieldSettings("Intellectual_Name", Description = "Intellectual_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.Intellectual_Name), Description = nameof(Translations.Enum.Disability.Intellectual_Description), ResourceType = typeof(Translations.Enum.Disability))]
     Intellectual = 5,
 
-    [FieldSettings("Learning_Name", Description = "Learning_Description", ResourceType = typeof(Translations.Enum.Disability))]
+    [FieldSettings(nameof(Translations.Enum.Disability.Learning_Name), Description = nameof(Translations.Enum.Disability.Learning_Description), ResourceType = typeof(Translations.Enum.Disability))]
     Learning = 6
 }

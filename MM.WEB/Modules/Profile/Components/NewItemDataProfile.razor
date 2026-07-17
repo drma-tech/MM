@@ -1,5 +1,4 @@
 ﻿@typeparam TValue
-@using System.Linq.Expressions
 @using MM.Shared.Models.Profile
 @using MM.WEB.Core.Enum
 @using MM.WEB.Core.Models
@@ -15,7 +14,7 @@
             <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(item)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
                 <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
                 <div>
-                    <MudTooltip Text="@($"{For.GetFieldSettings().Name}: {GetValue(item)}")">
+                    <MudTooltip Text="@($"{Name}: {GetValue(item)}")">
                         <span style="text-decoration: underline; cursor: help;">
                             @GetValue(item).Truncate(15)
                         </span>
@@ -36,7 +35,7 @@ else
         <MudChip T="string" Variant="Variant.Outlined" Size="AppStateStatic.Size" Color="GetColor(Value)" Class="ma-0" Style="width: 100%; justify-content: space-between;">
             <MudIcon Icon="@ClassIcon" Style="margin-inline: -6px;"></MudIcon>
             <div>
-                <MudTooltip Text="@($"{For.GetFieldSettings().Name}: {GetValue(Value)}")">
+                <MudTooltip Text="@($"{Name}: {GetValue(Value)}")">
                     <span style="text-decoration: underline; cursor: help;">
                         @GetValue(Value).Truncate(15)
                     </span>
@@ -52,7 +51,10 @@ else
 }
 
 @code {
-    [Parameter] public Expression<Func<object>>? For { get; set; }
+    [Parameter] public string? Name { get; set; }
+    [Parameter] public string? WhyImportant { get; set; }
+    [Parameter] public string? Tips { get; set; }
+
     [Parameter] public TValue? Value { get; set; }
     [Parameter] public IEnumerable<TValue>? Values { get; set; }
     [Parameter] public TValueUser? ValueUser { get; set; }
@@ -138,11 +140,11 @@ else
             { x => x.Profile, User },
             { x => x.Type, Type },
             { x => x.Item, Item },
-            { x => x.WhyImportant, For.GetFieldSettings().WhyImportant },
-            { x => x.Tips, For.GetFieldSettings().Tips },
+            { x => x.WhyImportant, WhyImportant },
+            { x => x.Tips, Tips },
         };
 
-        return DialogService.ShowAsync<AboutItemModal<TValue>>(For.GetFieldSettings().Name, parameters, PopupHelper.Options(MaxWidth.Medium));
+        return DialogService.ShowAsync<AboutItemModal<TValue>>(Name, parameters, PopupHelper.Options(MaxWidth.Medium));
     }
 
     private IEnumerable<string> GetPreferenceValues()

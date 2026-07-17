@@ -70,11 +70,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Urban|If your partner loves city life, support their need for access to culture, nightlife, and convenience, even if it means more noise or crowds.|Suburban|If they prefer suburbs, respect their desire for space, safety, and community feel. Balance this with social activities outside the neighborhood.|Rural|For rural lovers, acknowledge the need for nature, quiet, and simplicity. Discuss how to manage distance from services or social opportunities.|Flexible|If one or both are flexible, leverage this as a st [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string IdealPlaceToLive_Tips {
+            get {
+                return ResourceManager.GetString("IdealPlaceToLive_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where you want to live shapes your daily lifestyle, social opportunities, and long-term satisfaction. Differences in preferences—whether urban bustle, quiet suburbs, or rural calm—can affect everything from commute times to social life to access to amenities. If partners have conflicting ideas about their ideal environment, it can lead to compromises that leave one or both unhappy. Understanding this helps set expectations and avoid frustration, especially when planning for the future..
+        /// </summary>
+        public static string IdealPlaceToLive_Why {
+            get {
+                return ResourceManager.GetString("IdealPlaceToLive_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Relationship Intentions.
         /// </summary>
         public static string RelationshipIntentions {
             get {
                 return ResourceManager.GetString("RelationshipIntentions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Align goals early|Talk openly about your long-term goals early in the relationship—don&apos;t assume you&apos;re on the same page.|Respect different timelines|Even if your intentions match, your pace might differ. Be patient and find a rhythm that works for both.|Avoid pressure|If one person wants marriage and the other isn&apos;t ready, discuss openly rather than pushing for immediate decisions.|“Live Together” ≠ “Marriage prep”|Some people see cohabitation as a step toward marriage; others see it as an end goal. Clarify [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string RelationshipIntentions_Tips {
+            get {
+                return ResourceManager.GetString("RelationshipIntentions_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship alignment starts with shared intentions. Whether someone is seeking a long-term commitment, cohabitation, or marriage, clarity here prevents emotional mismatches and wasted time. Mismatched intentions—like one partner wanting to live together while the other envisions marriage—can lead to frustration, miscommunication, or heartbreak. Knowing your partner’s vision for the future helps both sides decide if they&apos;re investing in the same type of relationship journey..
+        /// </summary>
+        public static string RelationshipIntentions_Why {
+            get {
+                return ResourceManager.GetString("RelationshipIntentions_Why", resourceCulture);
             }
         }
         
@@ -88,11 +124,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local now, future global?|Even if you&apos;re in the same location today, talk about whether one of you plans to move in the future.|Different views on moving?|Be honest. If one is rooted and the other is restless, find middle ground or reconsider long-term fit.|Willing to move for love?|Make sure you&apos;re not ignoring your own goals or values just to match someone else&apos;s life plan.|Long-distance match?|Clarify early if either of you is truly open to relocating, or if it’s a casual preference.|City vs. country?|So [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Relocation_Tips {
+            get {
+                return ResourceManager.GetString("Relocation_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relocation preferences significantly impact the long-term feasibility of a relationship, especially in global or long-distance matches. Even for local matches, knowing whether someone is open—or resistant—to moving helps clarify if shared life plans are possible. One partner may dream of living abroad or in a different city, while the other feels deeply rooted where they are. These preferences affect career decisions, family planning, and lifestyle choices. Discussing relocation early reduces the risk of fu [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Relocation_Why {
+            get {
+                return ResourceManager.GetString("Relocation_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Want Kids.
         /// </summary>
         public static string WantChildren {
             get {
                 return ResourceManager.GetString("WantChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both want kids?|You can start discussing timelines, parenting values, and what kind of family life you both envision.|One wants, one doesn’t?|This is a core mismatch. Avoid assuming either of you will \&quot;change your mind\&quot;—talk openly and honestly.|One is unsure?|Explore what&apos;s behind the uncertainty: life stage, past experiences, fears, or practical concerns.|Similar goals, different timing?|Make sure you&apos;re aligned on when you’d like to have kids—years apart can create pressure later.|Already have children [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string WantChildren_Tips {
+            get {
+                return ResourceManager.GetString("WantChildren_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desire for children is one of the most foundational topics in long-term relationships. It influences lifestyle, values, priorities, finances, and even where and how a couple chooses to live. A mismatch in this area—such as one partner being certain they want kids while the other is firmly opposed—often leads to heartbreak, even if everything else aligns. Understanding each other’s stance early helps avoid building emotional investment on incompatible goals. Even if someone is undecided, that uncertainty its [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string WantChildren_Why {
+            get {
+                return ResourceManager.GetString("WantChildren_Why", resourceCulture);
             }
         }
     }

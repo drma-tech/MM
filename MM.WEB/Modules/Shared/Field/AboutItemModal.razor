@@ -123,7 +123,7 @@
                     @foreach (var item in GetTips())
                     {
                         <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
-                            <span class="me-2" style="font-weight: bold;">@item.Key</span><span>@item.Value</span>
+                            <span class="me-2" style="font-weight: bold; color: var(--mud-palette-secondary);">@item.Key</span><span>@item.Value</span>
                         </MudListItem>
                     }
                 </MudList>
@@ -194,7 +194,17 @@
         var result = new Dictionary<string, string>();
         for (var i = 0; i < values.Length; i += 2)
         {
-            result.Add(values[i], values[i + 1]);
+            var key = values[i]?.Trim();
+            if (string.IsNullOrEmpty(key))
+                continue;
+
+            // If a value is missing (odd number of tokens), indicate it instead of throwing
+            var val = (i + 1) < values.Length && !string.IsNullOrEmpty(values[i + 1])
+                ? values[i + 1].Trim()
+                : Translations.Module.Profile.Undefined;
+
+            // Use indexer to avoid exception on duplicate keys
+            result[key] = val;
         }
 
         return result;

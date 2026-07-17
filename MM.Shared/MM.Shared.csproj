@@ -43,10 +43,10 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Country.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Translations\Enum\CurrentSituation.Designer.cs">
+		<Compile Update="Translations\Enum\MaritalStatus.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
-		  <DependentUpon>CurrentSituation.resx</DependentUpon>
+		  <DependentUpon>MaritalStatus.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Translations\Enum\Diet.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -108,10 +108,10 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>IdealPlaceToLive.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Translations\Enum\Intentions.Designer.cs">
+		<Compile Update="Translations\Enum\RelationshipIntention.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Intentions.resx</DependentUpon>
+		  <DependentUpon>RelationshipIntention.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Translations\Enum\Language.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -273,6 +273,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>ProfileLifestyleModel.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Translations\Model\ProfilePersonalityModel.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ProfilePersonalityModel.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Translations\Model\ProfileRelationshipModel.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -333,9 +338,9 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Country.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Enum\CurrentSituation.resx">
+		<EmbeddedResource Update="Translations\Enum\MaritalStatus.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>CurrentSituation.Designer.cs</LastGenOutput>
+			<LastGenOutput>MaritalStatus.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\EducationLevel.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -551,6 +556,10 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>FilterModel.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Model\ProfilePersonalityModel.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>ProfilePersonalityModel.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Model\ProfileRelationshipModel.es.resx">
 			<Generator></Generator>
 		</EmbeddedResource>
@@ -617,9 +626,9 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>HaveChildren.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Enum\Intentions.resx">
+		<EmbeddedResource Update="Translations\Enum\RelationshipIntention.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Intentions.Designer.cs</LastGenOutput>
+			<LastGenOutput>RelationshipIntention.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\LoveLanguage.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

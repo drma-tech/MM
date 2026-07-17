@@ -1,6 +1,4 @@
-﻿using MM.Shared.Translations.Model;
-
-namespace MM.Shared.Models.Profile;
+﻿namespace MM.Shared.Models.Profile;
 
 public class SettingModel : PrivateMainDocument
 {
@@ -8,6 +6,5 @@ public class SettingModel : PrivateMainDocument
     {
     }
 
-    [FieldSettings("BlindDate", Description = "BlindDateDesc", ResourceType = typeof(ProfileSetting))]
     public bool BlindDate { get; set; }
 }

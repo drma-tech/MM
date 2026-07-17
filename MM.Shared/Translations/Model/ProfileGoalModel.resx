@@ -120,13 +120,37 @@
   <data name="IdealPlaceToLive" xml:space="preserve">
     <value>Ideal Place to Live</value>
   </data>
+  <data name="IdealPlaceToLive_Tips" xml:space="preserve">
+    <value>Urban|If your partner loves city life, support their need for access to culture, nightlife, and convenience, even if it means more noise or crowds.|Suburban|If they prefer suburbs, respect their desire for space, safety, and community feel. Balance this with social activities outside the neighborhood.|Rural|For rural lovers, acknowledge the need for nature, quiet, and simplicity. Discuss how to manage distance from services or social opportunities.|Flexible|If one or both are flexible, leverage this as a strength to explore compromises and adapt to life changes together.|Discuss expectations|Talk about how often you want to visit friends, family, or cultural venues to find a place that suits both.|Consider future needs|Think about work, children, health, and aging—what suits you now might change over time.|Try before deciding|If possible, spend time in different settings together before committing to one lifestyle.</value>
+  </data>
+  <data name="IdealPlaceToLive_Why" xml:space="preserve">
+    <value>Where you want to live shapes your daily lifestyle, social opportunities, and long-term satisfaction. Differences in preferences—whether urban bustle, quiet suburbs, or rural calm—can affect everything from commute times to social life to access to amenities. If partners have conflicting ideas about their ideal environment, it can lead to compromises that leave one or both unhappy. Understanding this helps set expectations and avoid frustration, especially when planning for the future.</value>
+  </data>
   <data name="RelationshipIntentions" xml:space="preserve">
     <value>Relationship Intentions</value>
+  </data>
+  <data name="RelationshipIntentions_Tips" xml:space="preserve">
+    <value>Align goals early|Talk openly about your long-term goals early in the relationship—don't assume you're on the same page.|Respect different timelines|Even if your intentions match, your pace might differ. Be patient and find a rhythm that works for both.|Avoid pressure|If one person wants marriage and the other isn't ready, discuss openly rather than pushing for immediate decisions.|“Live Together” ≠ “Marriage prep”|Some people see cohabitation as a step toward marriage; others see it as an end goal. Clarify what it means for you both.|Intentions can evolve|Be open to change—but don’t stay in a mismatched relationship hoping the other person will “come around.”|Be honest with yourself|Don’t downplay your true desires to fit someone else’s plan—it usually backfires long-term.|Revisit the conversation|Even if aligned at the start, revisit intentions regularly. People’s needs and priorities can shift over time.</value>
+  </data>
+  <data name="RelationshipIntentions_Why" xml:space="preserve">
+    <value>Relationship alignment starts with shared intentions. Whether someone is seeking a long-term commitment, cohabitation, or marriage, clarity here prevents emotional mismatches and wasted time. Mismatched intentions—like one partner wanting to live together while the other envisions marriage—can lead to frustration, miscommunication, or heartbreak. Knowing your partner’s vision for the future helps both sides decide if they're investing in the same type of relationship journey.</value>
   </data>
   <data name="Relocation" xml:space="preserve">
     <value>Relocation</value>
   </data>
+  <data name="Relocation_Tips" xml:space="preserve">
+    <value>Local now, future global?|Even if you're in the same location today, talk about whether one of you plans to move in the future.|Different views on moving?|Be honest. If one is rooted and the other is restless, find middle ground or reconsider long-term fit.|Willing to move for love?|Make sure you're not ignoring your own goals or values just to match someone else's life plan.|Long-distance match?|Clarify early if either of you is truly open to relocating, or if it’s a casual preference.|City vs. country?|Some people are okay with changing cities but not countries. Clarify what \"relocation\" really means to you both.|Family and career ties?|Consider how children, jobs, or family responsibilities might affect your ability—or willingness—to move.|Test the waters together|If relocation is a possibility, plan short trips or temporary stays together before making major moves.</value>
+  </data>
+  <data name="Relocation_Why" xml:space="preserve">
+    <value>Relocation preferences significantly impact the long-term feasibility of a relationship, especially in global or long-distance matches. Even for local matches, knowing whether someone is open—or resistant—to moving helps clarify if shared life plans are possible. One partner may dream of living abroad or in a different city, while the other feels deeply rooted where they are. These preferences affect career decisions, family planning, and lifestyle choices. Discussing relocation early reduces the risk of future conflict over where and how you’ll build a life together.</value>
+  </data>
   <data name="WantChildren" xml:space="preserve">
     <value>Want Kids</value>
+  </data>
+  <data name="WantChildren_Tips" xml:space="preserve">
+    <value>Both want kids?|You can start discussing timelines, parenting values, and what kind of family life you both envision.|One wants, one doesn’t?|This is a core mismatch. Avoid assuming either of you will \"change your mind\"—talk openly and honestly.|One is unsure?|Explore what's behind the uncertainty: life stage, past experiences, fears, or practical concerns.|Similar goals, different timing?|Make sure you're aligned on when you’d like to have kids—years apart can create pressure later.|Already have children?|If only one of you is a parent, clarify whether the other is open to parenting stepchildren or adding more.|Don't want kids?|Make sure you're both on the same page about living a child-free lifestyle and what that means long-term.|Cultural or family pressure?|Share how external expectations may be influencing your decision—and respect each other's boundaries.</value>
+  </data>
+  <data name="WantChildren_Why" xml:space="preserve">
+    <value>Desire for children is one of the most foundational topics in long-term relationships. It influences lifestyle, values, priorities, finances, and even where and how a couple chooses to live. A mismatch in this area—such as one partner being certain they want kids while the other is firmly opposed—often leads to heartbreak, even if everything else aligns. Understanding each other’s stance early helps avoid building emotional investment on incompatible goals. Even if someone is undecided, that uncertainty itself should be taken seriously.</value>
   </data>
 </root>

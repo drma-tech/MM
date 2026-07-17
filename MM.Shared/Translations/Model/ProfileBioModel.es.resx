@@ -120,22 +120,58 @@
   <data name="Age_Name" xml:space="preserve">
     <value>Edad</value>
   </data>
+  <data name="Age_Tips" xml:space="preserve">
+    <value>¿Tienes una edad similar?|Es posible que te identifiques más fácilmente con experiencias generacionales compartidas, referencias culturales y ritmo de vida; úsalo para crear conexión.|¿Hay una diferencia de edad notable?|Habla temprano sobre objetivos de vida, cronogramas y expectativas, especialmente en torno al compromiso, los hijos o el estilo de vida.|¿Eres la pareja mayor?|Ten en cuenta las dinámicas de poder. Fomente la independencia y la toma de decisiones mutua para mantener el equilibrio.|¿Es usted la pareja más joven?|Afirme su voz en la relación y hable sobre sus necesidades. No dejes que la edad defina la madurez o la capacidad.|¿Alguno de ustedes se encuentra en una etapa diferente de la vida?|Ya sea en su carrera, paternidad o jubilación, sean honestos acerca de lo que pueden y no pueden alinear en este momento.|¿Las opiniones culturales sobre la diferencia de edad les afectan?|Algunas familias o sociedades tienen opiniones firmes; decidan juntos cuánto importa eso para su relación.|¿Le preocupa la percepción o el juicio?|Concéntrese en lo que funciona entre ustedes. Una relación saludable entre edades se basa en el respeto, la confianza y la visión compartida, no en la aprobación de los demás.</value>
+  </data>
+  <data name="Age_Why" xml:space="preserve">
+    <value>La edad puede influir en la etapa de la vida, la madurez, los niveles de energía y los objetivos a largo plazo como el matrimonio, los hijos o la jubilación. Si bien los números por sí solos no determinan la compatibilidad, estar alineados en cuanto a tiempos, valores y expectativas ayuda a evitar futuras desconexiones.</value>
+  </data>
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
   <data name="BodyType_Name" xml:space="preserve">
     <value>Tipo de cuerpo</value>
   </data>
+  <data name="BodyType_Tips" xml:space="preserve">
+    <value>¿Tú y tu pareja prefieren tipos de cuerpo similares? | Esto puede aumentar la atracción inicial, pero recuerda que la conexión a largo plazo también depende de la compatibilidad emocional. | ¿El tipo de cuerpo de tu pareja es diferente a tu "tipo" habitual? | Céntrate en cómo te hace sentir, no solo en los rasgos físicos; la atracción inesperada puede surgir con la intimidad emocional. | ¿Tu pareja es atlética o muy activa? | Si tú eres menos activo/a, respeta su estilo de vida y mantente abierto/a a participar, pero también habla sobre los límites personales. | ¿Tu pareja tiene curvas o es de complexión robusta? | Evita convertir el cuerpo en un tema delicado a menos que esa persona saque el asunto a colación. Afirma su atractivo de manera genuina y evita comentarios que sugieran la necesidad de "arreglar" algo. | ¿Tu pareja es delgada o de complexión pequeña? | Ten cuidado de no proyectar inseguridades o estereotipos sobre el tamaño. Deja que esa persona defina su zona de confort respecto al afecto físico. | ¿La imagen corporal es un tema sensible? | Pregunta cómo se siente tu pareja respecto a su cuerpo y escucha sin juzgar. Sentirse seguro/a y comprendido/a es más poderoso que los cumplidos. | ¿Influyen los diferentes tipos de cuerpo en el sexo y el afecto? | La comunicación abierta ayuda. Habla sobre qué se siente bien, qué no y qué genera confianza para ambos.</value>
+  </data>
+  <data name="BodyType_Why" xml:space="preserve">
+    <value>El tipo de cuerpo puede influir en la atracción física, la compatibilidad con el estilo de vida e incluso en cómo se siente alguien acerca de sí mismo en una relación. Si bien es solo una parte de una persona, sentirse aceptado y deseado en su cuerpo es clave para la intimidad física y emocional.</value>
+  </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Discapacidades</value>
+  </data>
+  <data name="Disabilities_Tips" xml:space="preserve">
+    <value>¿Tu pareja tiene una discapacidad física? Pregúntale qué tipo de ayuda (si la hay) aprecia y no asumas que la necesita. Concéntrese en el acceso y la comodidad, no en las limitaciones.|¿Su pareja tiene una discapacidad visual o auditiva?|Aprenda cómo prefiere comunicarse. Esto podría incluir texto, lenguaje de señas o herramientas específicas, y la paciencia es clave.|¿Tu pareja tiene una condición de salud mental?|Hazlo con cuidado y constantemente. El apoyo puede parecer una rutina, una conversación tranquila o simplemente no presionarlos para que “arreglen” nada.|¿Su pareja tiene una discapacidad intelectual o de aprendizaje?|Sea claro, paciente y evite la condescendencia. Celebre sus fortalezas y adapte la comunicación cuando sea necesario.|¿No está familiarizado con su condición?|Infórmese de forma independiente para evitar cargarles todo el trabajo emocional.|¿La discapacidad afecta la intimidad o la vida diaria?|Tenga conversaciones honestas sobre la comodidad, el acceso y los límites. La intimidad puede verse diferente pero ser igual de significativa.|¿La discapacidad es invisible o fluctuante?|No asuma que alguien está “bien” sólo porque no es visible. Confía en lo que dicen sobre sus límites y necesidades.</value>
+  </data>
+  <data name="Disabilities_Why" xml:space="preserve">
+    <value>Las discapacidades pueden afectar la forma en que una persona se mueve, se comunica, procesa la información o navega en la vida diaria, pero no definen a una persona ni su capacidad para amar y ser amado. Ser consciente de la discapacidad de la pareja fomenta la empatía, la accesibilidad y la seguridad emocional en la relación.</value>
   </data>
   <data name="Ethnicity_Name" xml:space="preserve">
     <value>Etnicidad</value>
   </data>
+  <data name="Ethnicity_Tips" xml:space="preserve">
+    <value>¿Compartes el mismo origen étnico?|Es posible que hayas compartido valores culturales, tradiciones o expectativas familiares; úsalo como base para crear vínculos, pero no asumas una alineación total.|¿Vienes de diferentes orígenes?|Esté abierto a aprender sobre la herencia de su pareja. Haga preguntas, pruebe sus comidas y participe en sus tradiciones culturales cuando lo inviten.|¿El origen étnico de su pareja es nuevo para usted?|Acérquese con curiosidad, no con estereotipos. Aprenda de ellos, no solo en línea; pregúnteles qué partes de su cultura son importantes para ellos. |¿La identidad étnica es importante para su pareja? |Reconozca eso y respételo, incluso si no le importa tanto. El orgullo cultural a menudo está ligado a la familia y la identidad.|¿Usted o su pareja son multirraciales/mixtos?|Explore cómo esto moldeó su visión del mundo. La identidad puede ser compleja; evite forzar definiciones simples.|¿La familia tiene opiniones firmes sobre el origen étnico?|Hable sobre ello temprano. Los prejuicios culturales o generacionales pueden crear presión: saber cuál es la posición de cada persona evita conflictos futuros.</value>
+  </data>
+  <data name="Ethnicity_Why" xml:space="preserve">
+    <value>La etnia puede influir en los valores, las tradiciones, los estilos de comunicación, las expectativas familiares y las experiencias de vida. Si bien no determina la compatibilidad, el conocimiento de los antecedentes culturales de cada uno fomenta el respeto mutuo y ayuda a navegar las posibles diferencias culturales en las relaciones.</value>
+  </data>
   <data name="Height_Name" xml:space="preserve">
     <value>Altura</value>
   </data>
+  <data name="Height_Tips" xml:space="preserve">
+    <value>¿A ti o a tu pareja les importa mucho la altura? Habla abiertamente sobre ello. La atracción es válida, pero no permitas que un rasgo eclipse una compatibilidad más profunda.|¿Hay una diferencia de altura significativa?|Apóyate en ella con confianza. Muchas parejas adoptan este contraste; incluso puede ser divertido o entrañable. | ¿Eres más alto que tu pareja y no estás acostumbrado? Evite los chistes o las comparaciones sobre la altura, especialmente en público.|¿La altura aparece mucho en su dinámica?|Pregunte si se trata de una preferencia física o si está ligada a necesidades más profundas (por ejemplo, dominio, protección, confianza).|¿No tiene preferencia por la altura?|Sea claro al respecto: algunas personas asumen que importa más de lo que realmente importa.|¿Las opiniones culturales afectan la forma en que ve la altura?|Reconozca eso, pero defina sus propios estándares. Lo que importa es cómo se tratan y se apoyan mutuamente.</value>
+  </data>
+  <data name="Height_Why" xml:space="preserve">
+    <value>La altura a menudo juega un papel en la atracción física y la percepción social, pero su importancia varía ampliamente según el individuo y la cultura. Para algunos, es una preferencia; para otros, tiene un significado simbólico (por ejemplo, sentirse protegido o femenino/masculino). Comprender cuánto le importa a su pareja ayuda a evitar tensiones o inseguridades innecesarias.</value>
+  </data>
   <data name="Neurodiversity_Name" xml:space="preserve">
     <value>Neurodiversidad</value>
+  </data>
+  <data name="Neurodiversity_Tips" xml:space="preserve">
+    <value>¿Tu pareja es neurodivergente? Pregúntale cómo funciona mejor su cerebro, ya sea en la comunicación, las rutinas o la regulación emocional. Respete sus límites y apoye sus fortalezas.|¿Usted es neurodivergente y ellos no?|Ayúdelos a comprender sus necesidades claramente, especialmente en torno a preferencias sensoriales, límites de energía o situaciones sociales.|¿Ambos son neurodivergentes?|Celebre sus diferencias compartidas mientras discute dónde podrían chocar sus necesidades. La rutina, la flexibilidad o el ritmo de comunicación pueden diferir.|¿Tu pareja tiene TDAH?|Puede olvidar cosas, distraerse o hiperconcentrarse. No lo tomes como algo personal: la estructura y la paciencia son de gran ayuda.|¿Tu pareja está en el espectro del autismo?|Es posible que valore la comunicación directa, la rutina y los entornos tranquilos. Sea consciente de la sobrecarga sensorial y la fatiga social.|¿No comprende completamente la neurodivergencia?|Pregunte respetuosamente y haga su propia investigación; esto demuestra compromiso y cuidado.|¿Diferentes velocidades de procesamiento o expresión emocional?|Dense espacio y tiempo unos a otros. Lo que parece desinterés puede en realidad ser abrumador o concentrado.</value>
+  </data>
+  <data name="Neurodiversity_Why" xml:space="preserve">
+    <value>La neurodiversidad reconoce que las personas experimentan y procesan el mundo de manera diferente, a través de variaciones como el TDAH, el autismo, la dislexia y más. Comprender si alguien es neurodivergente ayuda a los socios a generar empatía, ajustar expectativas y comunicarse de manera que respeten los estilos y necesidades cognitivos de cada uno.</value>
   </data>
 </root>

@@ -2,21 +2,21 @@
 
 public enum LivingSituation
 {
-    [FieldSettings("Alone_Name", Description = "Alone_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.Alone_Name), Description = nameof(Translations.Enum.LivingSituation.Alone_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     Alone = 1,
 
-    [FieldSettings("WithFamily_Name", Description = "WithFamily_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.WithFamily_Name), Description = nameof(Translations.Enum.LivingSituation.WithFamily_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithFamily = 2,
 
-    [FieldSettings("WithFriends_Name", Description = "WithFriends_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.WithFriends_Name), Description = nameof(Translations.Enum.LivingSituation.WithFriends_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithFriends = 3,
 
-    [FieldSettings("WithExPartner_Name", Description = "WithExPartner_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.WithExPartner_Name), Description = nameof(Translations.Enum.LivingSituation.WithExPartner_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithExPartner = 4,
 
-    [FieldSettings("WithRoommates_Name", Description = "WithRoommates_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.WithRoommates_Name), Description = nameof(Translations.Enum.LivingSituation.WithRoommates_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     WithRoommates = 5,
 
-    [FieldSettings("Other_Name", Description = "Other_Description", ResourceType = typeof(Translations.Enum.LivingSituation))]
+    [FieldSettings(nameof(Translations.Enum.LivingSituation.Other_Name), Description = nameof(Translations.Enum.LivingSituation.Other_Description), ResourceType = typeof(Translations.Enum.LivingSituation))]
     Other = 9
 }

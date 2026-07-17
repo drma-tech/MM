@@ -120,22 +120,58 @@
   <data name="Age_Name" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="Age_Tips" xml:space="preserve">
+    <value>You're close in age?|You may relate more easily to shared generational experiences, cultural references, and life pacing—use that to build connection.|There's a noticeable age gap?|Talk early about life goals, timelines, and expectations—especially around commitment, children, or lifestyle.|You're the older partner?|Be mindful of power dynamics. Encourage independence and mutual decision-making to maintain balance.|You're the younger partner?|Assert your voice in the relationship and speak up about your needs. Don’t let age define maturity or capability.|One of you is at a different life stage?|Whether it’s career, parenting, or retirement, be honest about what you can and can’t align on right now.|Cultural views on age difference affect you?|Some families or societies have strong opinions—decide together how much that matters to your relationship.|Worried about perception or judgment?|Focus on what works between you. A healthy age-gap relationship thrives on respect, trust, and shared vision—not approval from others.</value>
+  </data>
+  <data name="Age_Why" xml:space="preserve">
+    <value>Age can influence life stage, maturity, energy levels, and long-term goals such as marriage, children, or retirement. While numbers alone don’t determine compatibility, being aligned on timing, values, and expectations helps avoid future disconnects.</value>
+  </data>
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Birth Date</value>
   </data>
   <data name="BodyType_Name" xml:space="preserve">
     <value>Body Type</value>
   </data>
+  <data name="BodyType_Tips" xml:space="preserve">
+    <value>You and your partner prefer similar body types?|This can increase initial attraction, but remember long-term connection depends on emotional compatibility too.|Your partner’s body type is different from your usual “type”?|Focus on how they make you feel, not just physical traits—unexpected attraction can grow with emotional intimacy.|Your partner is athletic or very active?|If you’re less active, respect their lifestyle and be open to joining in—but also talk about personal boundaries.|Your partner is curvy or heavyset?|Avoid making body a sensitive topic unless they bring it up. Affirm their attractiveness genuinely and avoid “fixing” language.|Your partner is slim or small-framed?|Be mindful not to project insecurities or stereotypes about size. Let them define their comfort zone around physical affection.|Body image is a sensitive topic?|Ask how your partner feels about their body, and listen without judgment. Feeling safe and seen is more powerful than compliments.|Different body types affect sex and affection?|Open communication helps. Talk about what feels good, what doesn’t, and what builds confidence for both of you.</value>
+  </data>
+  <data name="BodyType_Why" xml:space="preserve">
+    <value>Body type can influence physical attraction, lifestyle compatibility, and even how someone feels about themselves in a relationship. While it's just one part of a person, feeling accepted and desired in your body is key to emotional and physical intimacy.</value>
+  </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Disabilities</value>
+  </data>
+  <data name="Disabilities_Tips" xml:space="preserve">
+    <value>Your partner has a physical disability?|Ask what kind of help (if any) they appreciate, and don’t assume they need assistance. Focus on access and comfort, not limitations.|Your partner has a visual or hearing disability?|Learn how they prefer to communicate. This could include text, sign language, or specific tools—and patience is key.|Your partner has a mental health condition?|Check in gently and consistently. Support can look like routine, calm conversation, or simply not pressuring them to “fix” anything.|Your partner has a learning or intellectual disability?|Be clear, patient, and avoid condescension. Celebrate their strengths and adapt communication when needed.|You’re not familiar with their condition?|Educate yourself independently to avoid putting all the emotional labor on them.|Disability impacts intimacy or daily life?|Have honest conversations about comfort, access, and boundaries. Intimacy can look different but be just as meaningful.|Disability is invisible or fluctuating?|Don’t assume someone is “fine” just because it isn’t visible. Trust what they say about their limits and needs.</value>
+  </data>
+  <data name="Disabilities_Why" xml:space="preserve">
+    <value>Disabilities can affect how someone moves, communicates, processes information, or navigates daily life—but they don’t define a person or their ability to love and be loved. Being aware of a partner’s disability fosters empathy, accessibility, and emotional safety in the relationship.</value>
   </data>
   <data name="Ethnicity_Name" xml:space="preserve">
     <value>Ethnicity</value>
   </data>
+  <data name="Ethnicity_Tips" xml:space="preserve">
+    <value>You share the same ethnic background?|You may have shared cultural values, traditions, or family expectations—use that as a foundation for bonding, but don’t assume full alignment.|You come from different backgrounds?|Be open to learning about your partner’s heritage. Ask questions, try their foods, and participate in their cultural traditions when invited.|Partner's ethnicity is new to you?|Approach with curiosity, not stereotypes. Learn from them, not just online—ask what parts of their culture are important to them.|Ethnic identity is important to your partner?|Acknowledge and respect that—even if it doesn’t matter as much to you. Cultural pride is often tied to family and identity.|You or your partner are multiracial/mixed?|Explore how this shaped your/their worldview. Identity may be complex—avoid forcing simple definitions.|Family has strong views about ethnicity?|Talk about it early. Cultural or generational biases can create pressure—knowing where each person stands avoids future conflict.|Ethnicity plays a role in dating history?|Some people have experienced fetishization or discrimination—approach with empathy, not defensiveness.</value>
+  </data>
+  <data name="Ethnicity_Why" xml:space="preserve">
+    <value>Ethnicity can influence values, traditions, communication styles, family expectations, and life experiences. While it doesn’t determine compatibility, awareness of each other’s cultural background fosters mutual respect and helps navigate potential cultural differences in relationships.</value>
+  </data>
   <data name="Height_Name" xml:space="preserve">
     <value>Height</value>
   </data>
+  <data name="Height_Tips" xml:space="preserve">
+    <value>You or your partner care a lot about height?|Talk openly about it. Attraction is valid, but don’t let one trait overshadow deeper compatibility.|There’s a significant height difference?|Lean into it with confidence. Many couples embrace this contrast—it can even be playful or endearing.|You’re taller than your partner and not used to it?|Focus on how they make you feel emotionally and physically—not just how you look together.|Your partner is shorter and insecure about it?|Affirm them sincerely. Avoid height jokes or comparisons, especially in public.|Height comes up a lot in your dynamic?|Ask whether it’s about physical preference or tied to deeper needs (e.g., dominance, protection, confidence).|You have no height preference?|Be clear about that—some people assume it matters more than it actually does.|Cultural views affect how you see height?|Acknowledge that, but define your own standards. What matters is how you treat and support each other.</value>
+  </data>
+  <data name="Height_Why" xml:space="preserve">
+    <value>Height often plays a role in physical attraction and social perception, but its importance varies widely by individual and culture. For some, it's a preference; for others, it holds symbolic meaning (e.g., feeling protected or feminine/masculine). Understanding how much it matters to your partner helps avoid unnecessary tension or insecurity.</value>
+  </data>
   <data name="Neurodiversity_Name" xml:space="preserve">
     <value>Neurodiversity</value>
+  </data>
+  <data name="Neurodiversity_Tips" xml:space="preserve">
+    <value>Your partner is neurodivergent?|Ask how their brain works best—whether it’s in communication, routines, or emotional regulation. Respect their boundaries and support their strengths.|You’re neurodivergent and they’re not?|Help them understand your needs clearly, especially around sensory preferences, energy limits, or social situations.|You’re both neurodivergent?|Celebrate your shared differences while discussing where your needs might clash. Routine, flexibility, or communication pacing may differ.|Your partner has ADHD?|They may forget things, get distracted, or hyperfocus. Don’t take it personally—structure and patience go a long way.|Your partner is on the autism spectrum?|They might value direct communication, routine, and quiet environments. Be mindful of sensory overload and social fatigue.|You don’t fully understand neurodivergence?|Ask respectfully and do your own research—it shows commitment and care.|Different processing speeds or emotional expression?|Give each other space and time. What looks like disinterest may actually be overwhelm or focus.</value>
+  </data>
+  <data name="Neurodiversity_Why" xml:space="preserve">
+    <value>Neurodiversity acknowledges that people experience and process the world differently—through variations such as ADHD, autism, dyslexia, and more. Understanding if someone is neurodivergent helps partners build empathy, adjust expectations, and communicate in ways that respect each other’s cognitive styles and needs.</value>
   </data>
 </root>

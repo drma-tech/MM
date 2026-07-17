@@ -120,11 +120,23 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Biological Sex</value>
   </data>
+  <data name="BiologicalSex_Tips" xml:space="preserve">
+    <value>Both partners share same biological sex?|Discuss any specific health or intimacy considerations openly to support each other’s needs.|Partners have different biological sexes?|Celebrate differences and openly communicate about physical and emotional expectations.|One or both identify as intersex?|Respect their unique experience and ask how they want to be supported regarding intimacy and health.|Avoid assumptions|Biological sex does not define gender identity or sexual orientation—always communicate respectfully.|Consider cultural sensitivities|Different cultures view biological sex and its implications in relationships differently—be mindful and open.</value>
+  </data>
+  <data name="BiologicalSex_Why" xml:space="preserve">
+    <value>Biological sex influences physical compatibility, health considerations, and sometimes social or cultural dynamics in relationships. Knowing this helps partners understand potential biological factors relevant to intimacy, reproduction, and personal identity.</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="Description_Placeholder" xml:space="preserve">
     <value>Try not to include personal contact details (like phone numbers or emails) or mention the exact places you live or hang out. This helps keep your profile safe. 💛\n\nAlso, sharing or advertising social accounts, products, services, or anything that breaks someone else’s rights isn’t allowed and can lead to removal.</value>
+  </data>
+  <data name="GenderIdentities_Tips" xml:space="preserve">
+    <value>Your partner is transgender, nonbinary, or genderqueer?|Ask which pronouns they use and use them consistently. Small gestures of respect go a long way in building trust and emotional safety.|Your partner is genderfluid or bigender?|Understand that how they present or express themselves may vary. Be open and avoid assuming their mood or identity based on appearance.|Your partner is questioning?|Give them emotional space to explore who they are. Avoid pressuring for clarity—support is more important than certainty.|You identify differently?|Talk openly about how your gender identities influence your roles, dynamics, and comfort levels in the relationship.|Gender identity differs from yours?|Stay curious and compassionate. Ask questions respectfully and recognize that their experience may be very different from yours.|Not familiar with your partner's identity label?|Look it up, ask politely, or invite them to explain what feels meaningful—learning shows care.|Cultural context matters?|Some identities (like Two-Spirit) are culture-specific. Acknowledge and respect their cultural meaning beyond gender alone.</value>
+  </data>
+  <data name="GenderIdentities_Why" xml:space="preserve">
+    <value>Gender identity shapes how a person understands themselves and wants to be seen in the relationship. Knowing your partner's identity helps you connect more authentically and avoid invalidating their experience—especially in relationships where gender diversity is present.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>
@@ -138,6 +150,12 @@
   <data name="Languages_Name" xml:space="preserve">
     <value>Languages</value>
   </data>
+  <data name="Languages_Tips" xml:space="preserve">
+    <value>Speak the same language fluently?|Use that to deepen connection through meaningful conversations and shared humor. Don't assume understanding—always clarify emotional meaning.|Your partner is less fluent than you?|Speak slowly and clearly, avoid idioms, and be patient. Encourage their effort and celebrate small progress.|You’re less fluent than your partner?|Be honest about your limits. Let them know when you don’t understand and ask them to speak more simply when needed.|Neither of you is fluent in the other's language?|Use translation tools and gestures early on, but gradually build shared words or phrases to form emotional closeness.|Partner speaks more languages than you?|Ask them to teach you basic phrases in their other languages. It shows care and curiosity about their background.|Language gaps cause frustration?|Take breaks if communication feels tiring. Focus on nonverbal cues—touch, tone, and eye contact can say a lot.|Different native languages, same second language?|Use the shared second language as neutral ground. It can reduce power imbalances and create new shared meaning.</value>
+  </data>
+  <data name="Languages_Why" xml:space="preserve">
+    <value>Sharing a common language—or understanding each other’s fluency levels—helps build emotional connection, avoid miscommunication, and navigate conflict. Even in multicultural or long-distance relationships, knowing how each person communicates can make or break emotional intimacy.</value>
+  </data>
   <data name="Location_Description" xml:space="preserve">
     <value>We do not store your GPS location, only your city. (Device location access must be enabled)</value>
   </data>
@@ -147,8 +165,20 @@
   <data name="Location_Placeholder" xml:space="preserve">
     <value>Please click the button next to it</value>
   </data>
+  <data name="Location_Tips" xml:space="preserve">
+    <value>Long-distance dating?|Clarify intentions. Are both open to remote connection, travel, or eventual relocation?|Same country, different regions?|Discuss regional habits, values, or cost of living differences—they might affect lifestyle choices.|Same city or close by?|Leverage proximity for easier in-person bonding—but don’t rush just because it’s convenient.|Cultural context matters?|Even in the same country, local customs can vary—be curious about your partner’s environment.|Different time zones?|Coordinate intentionally. Regular communication requires effort and planning.|One is open to moving, the other not?|Align expectations early. Location flexibility can determine long-term viability.|Safety or mobility constraints?|Be transparent. Not everyone can relocate or travel freely—respect those limitations.</value>
+  </data>
+  <data name="Location_Why" xml:space="preserve">
+    <value>Location impacts time zones, language, culture, daily habits, and the feasibility of in-person interaction. In global matchups, even a compatible connection can face strain if physical distance and cultural contexts aren’t addressed early.</value>
+  </data>
   <data name="MaritalStatus_Name" xml:space="preserve">
     <value>Marital Status</value>
+  </data>
+  <data name="MaritalStatus_Tips" xml:space="preserve">
+    <value>Both single?|You’re likely both open to new relationships without prior commitments—focus on building trust and connection.|One married or cohabiting?|Discuss boundaries and expectations clearly to avoid misunderstandings and emotional conflicts.|Separated or divorced?|Respect the healing process; be patient as your partner navigates past relationship closure.|Annulled or marriage of convenience?|Clarify what this means to your partner and their current relationship goals to avoid surprises.|Different statuses but open?|Communicate honestly about what each status means and how it impacts your expectations.|Marital status impacts legal matters?|If moving towards serious commitment, understand how previous marital status affects finances, children, or legal rights.|Be mindful of cultural differences|Marital status meanings and implications vary globally; always consider cultural context.</value>
+  </data>
+  <data name="MaritalStatus_Why" xml:space="preserve">
+    <value>Understanding marital status helps set expectations about relationship availability, emotional readiness, and legal considerations. Different statuses can imply varying levels of commitment history, baggage, or openness to new relationships, which affects compatibility and communication.</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modality</value>
@@ -161,6 +191,12 @@
   </data>
   <data name="NickName_Placeholder" xml:space="preserve">
     <value>Ex: Paul</value>
+  </data>
+  <data name="SexualOrientations_Tips" xml:space="preserve">
+    <value>Partner is heterosexual?|If you're of a different sex, this likely aligns well. But don’t assume compatibility based only on orientation—emotional and physical needs still vary.|Partner is homosexual or same-sex attracted?|Only pursue the relationship if your gender identity aligns with their attraction. Avoid putting emotional pressure on someone who isn’t attracted to your gender.|Partner is bisexual, pansexual, or polysexual?|Understand that attraction to multiple genders doesn’t mean they’re less loyal. Trust and communication matter more than labels.|Partner is demisexual or graysexual?|They may only feel sexual attraction after deep emotional bonds. Be patient and build trust slowly—don’t rush intimacy.|Partner is asexual or autosexual?|They may not seek sexual contact or may prefer self-directed experiences. Talk openly about boundaries and what intimacy means to both of you.|Partner is sapiosexual?|They’re likely drawn to intellect first—nurture mental connection and meaningful conversation.|Not familiar with your partner’s orientation?|Ask respectfully or do your own research—avoiding judgment and assumptions builds trust.|Orientation feels complex or fluid?|Some people resist strict labels (e.g., pomosexual). What matters most is how they feel about you—communicate directly.</value>
+  </data>
+  <data name="SexualOrientations_Why" xml:space="preserve">
+    <value>Sexual orientation reflects who a person is romantically and sexually attracted to, which is fundamental for relationship compatibility. Knowing and respecting each other’s orientation helps set clear expectations around attraction, intimacy, and relationship structure—especially in diverse or nontraditional dynamics.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>

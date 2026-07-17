@@ -120,11 +120,23 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Sesso biologico</value>
   </data>
+  <data name="BiologicalSex_Tips" xml:space="preserve">
+    <value>Entrambi i partner condividono lo stesso sesso biologico?|Discutere apertamente eventuali considerazioni specifiche sulla salute o sull'intimità per supportare i reciproci bisogni.|I partner hanno sessi biologici diversi?|Celebrare le differenze e comunicare apertamente sulle aspettative fisiche ed emotive.|Uno o entrambi si identificano come intersessuali?|Rispetta la loro esperienza unica e chiedi come vogliono essere supportati riguardo all'intimità e alla salute.|Evita supposizioni|Il sesso biologico non definisce l'identità di genere o l'orientamento sessuale: comunica sempre con rispetto.|Considera i fattori culturali sensibilità | Culture diverse vedono il sesso biologico e le sue implicazioni nelle relazioni in modo diverso: sii consapevole e aperto.</value>
+  </data>
+  <data name="BiologicalSex_Why" xml:space="preserve">
+    <value>Il sesso biologico influenza la compatibilità fisica, le considerazioni sulla salute e talvolta le dinamiche sociali o culturali nelle relazioni. Sapere questo aiuta i partner a comprendere i potenziali fattori biologici rilevanti per l’intimità, la riproduzione e l’identità personale.</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Descrizione</value>
   </data>
   <data name="Description_Placeholder" xml:space="preserve">
     <value>Cerca di non includere dettagli di contatto personali (come numeri di telefono o e-mail) o di menzionare i luoghi esatti in cui vivi o frequenti. Questo aiuta a mantenere il tuo profilo sicuro. 💛\n\nInoltre, non è consentito condividere o pubblicizzare account, prodotti, servizi o qualsiasi cosa che violi i diritti di qualcun altro sui social e può portare alla rimozione.</value>
+  </data>
+  <data name="GenderIdentities_Tips" xml:space="preserve">
+    <value>Il tuo partner è transgender, non binario o genderqueer?|Chiedi quali pronomi usa e usali in modo coerente. Piccoli gesti di rispetto contribuiscono notevolmente a creare fiducia e sicurezza emotiva.|Il tuo partner è genderfluid o bigender?|Renditi conto che il modo in cui si presenta o si esprime può variare. Sii aperto ed evita di assumere il suo umore o la sua identità in base all'apparenza.|Il tuo partner ha delle domande?|Dagli spazio emotivo per esplorare chi è. Evita di fare pressioni per avere chiarezza: il sostegno è più importante della certezza.|Ti identifichi in modo diverso?|Parla apertamente di come la tua identità di genere influenza i tuoi ruoli, le dinamiche e il livello di comfort nella relazione.|L'identità di genere è diversa dalla tua?|Rimani curioso e compassionevole. Fai domande con rispetto e riconosci che la sua esperienza potrebbe essere molto diversa dalla tua.|Non hai familiarità con l'etichetta di identità del tuo partner?|Cercala, chiedi educatamente o invitalo a spiegare ciò che ritiene significativo: l'apprendimento dimostra attenzione.|Il contesto culturale è importante?|Alcune identità (come il Due Spiriti) sono specifiche della cultura. Riconoscere e rispettare il loro significato culturale al di là del solo genere.</value>
+  </data>
+  <data name="GenderIdentities_Why" xml:space="preserve">
+    <value>L’identità di genere modella il modo in cui una persona comprende se stessa e vuole essere vista nella relazione. Conoscere l'identità del tuo partner ti aiuta a connetterti in modo più autentico ed evitare di invalidare la sua esperienza, specialmente nelle relazioni in cui è presente la diversità di genere.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>Opzione più comune selezionata automaticamente (applicabile alla maggior parte delle persone)</value>
@@ -138,6 +150,12 @@
   <data name="Languages_Name" xml:space="preserve">
     <value>Lingue</value>
   </data>
+  <data name="Languages_Tips" xml:space="preserve">
+    <value>Parli fluentemente la stessa lingua?|Utilizzalo per approfondire il legame attraverso conversazioni significative e umorismo condiviso. Non dare per scontato la comprensione: chiarisci sempre il significato emotivo.|Il tuo partner parla meno fluentemente di te?|Parla lentamente e chiaramente, evita gli idiomi e sii paziente. Incoraggia i loro sforzi e celebra i piccoli progressi.|Parli meno fluentemente del tuo partner?|Sii onesto riguardo ai tuoi limiti. Fai sapere loro quando non capisci e chiedi loro di parlare in modo più semplice quando necessario.|Nessuno di voi parla fluentemente la lingua dell'altro?|Utilizza strumenti e gesti di traduzione fin dall'inizio, ma costruisci gradualmente parole o frasi condivise per creare vicinanza emotiva.|Il partner parla più lingue di te?|Chiedi loro di insegnarti frasi di base nelle loro altre lingue. Dimostra attenzione e curiosità riguardo al proprio background.|Le lacune linguistiche causano frustrazione?|Fai delle pause se la comunicazione ti sembra stancante. Concentrati sui segnali non verbali: il tatto, il tono e il contatto visivo possono dire molto.|Lingue native diverse, stessa seconda lingua?|Utilizzare la seconda lingua condivisa come terreno neutro. Può ridurre gli squilibri di potere e creare nuovi significati condivisi.</value>
+  </data>
+  <data name="Languages_Why" xml:space="preserve">
+    <value>Condividere un linguaggio comune o comprendere i livelli di fluidità degli altri aiuta a costruire una connessione emotiva, evitare problemi di comunicazione e superare i conflitti. Anche nelle relazioni multiculturali o a distanza, sapere come ogni persona comunica può creare o distruggere l’intimità emotiva.</value>
+  </data>
   <data name="Location_Description" xml:space="preserve">
     <value>Non memorizziamo la tua posizione GPS, solo la tua città. (L'accesso alla posizione del dispositivo deve essere abilitato)</value>
   </data>
@@ -147,8 +165,20 @@
   <data name="Location_Placeholder" xml:space="preserve">
     <value>Fare clic sul pulsante accanto ad esso</value>
   </data>
+  <data name="Location_Tips" xml:space="preserve">
+    <value>Incontri a distanza?|Chiarire le intenzioni. Sono entrambi aperti a connessioni remote, viaggi o eventuali trasferimenti?|Stesso Paese, regioni diverse?|Discutere abitudini regionali, valori o differenze nel costo della vita: potrebbero influenzare le scelte di vita.|Stessa città o vicine?|Sfrutta la vicinanza per creare legami più facili di persona, ma non avere fretta solo perché è conveniente.|Il contesto culturale è importante?|Anche nello stesso Paese, le usanze locali possono variare: sii curioso riguardo all'ambiente del tuo partner.|Tempi diversi zone?|Coordinare intenzionalmente. Una comunicazione regolare richiede impegno e pianificazione.|Uno è disponibile a muoversi, l'altro no?|Allineare tempestivamente le aspettative. La flessibilità della localizzazione può determinare la sostenibilità a lungo termine.|Vincoli di sicurezza o mobilità?|Siate trasparenti. Non tutti possono trasferirsi o viaggiare liberamente: rispetta queste limitazioni.</value>
+  </data>
+  <data name="Location_Why" xml:space="preserve">
+    <value>La posizione influisce sui fusi orari, sulla lingua, sulla cultura, sulle abitudini quotidiane e sulla fattibilità dell'interazione di persona. Negli incontri globali, anche una connessione compatibile può essere messa a dura prova se la distanza fisica e i contesti culturali non vengono affrontati tempestivamente.</value>
+  </data>
   <data name="MaritalStatus_Name" xml:space="preserve">
     <value>Stato civile</value>
+  </data>
+  <data name="MaritalStatus_Tips" xml:space="preserve">
+    <value>Entrambi single?|Probabilmente siete entrambi aperti a nuove relazioni senza impegni precedenti: concentratevi sulla creazione di fiducia e legami.|Uno sposato o convivente?|Discutete chiaramente limiti e aspettative per evitare incomprensioni e conflitti emotivi.|Separati o divorziati?|Rispettare il processo di guarigione; sii paziente mentre il tuo partner supera la chiusura della relazione.|Annullamento o matrimonio di convenienza?|Chiarisci cosa significa per il tuo partner e i suoi attuali obiettivi di relazione per evitare sorprese.|Stati diversi ma aperti?|Comunica onestamente sul significato di ogni stato e su come influisce sulle tue aspettative.|Lo stato civile influisce sulle questioni legali?|Se ti muovi verso un impegno serio, comprendi in che modo lo stato civile precedente influisce sulle finanze, sui figli o sui diritti legali.|Sii consapevole delle differenze culturali|I significati dello stato civile e le implicazioni variano a livello globale; considerare sempre il contesto culturale.</value>
+  </data>
+  <data name="MaritalStatus_Why" xml:space="preserve">
+    <value>Comprendere lo stato civile aiuta a definire le aspettative sulla disponibilità della relazione, sulla prontezza emotiva e sulle considerazioni legali. Status diversi possono implicare diversi livelli di impegno storico, bagaglio o apertura a nuove relazioni, che influiscono sulla compatibilità e sulla comunicazione.</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modalità</value>
@@ -161,6 +191,12 @@
   </data>
   <data name="NickName_Placeholder" xml:space="preserve">
     <value>Es: Paolo</value>
+  </data>
+  <data name="SexualOrientations_Tips" xml:space="preserve">
+    <value>Il tuo partner è eterosessuale?|Se sei di sesso diverso, probabilmente è una buona idea. Ma non dare per scontato che la compatibilità sia basata solo sull'orientamento: i bisogni emotivi e fisici variano ancora.|Il partner è omosessuale o attratto da persone dello stesso sesso?|Promuovi la relazione solo se la tua identità di genere è in linea con la sua attrazione. Evita di esercitare pressione emotiva su qualcuno che non è attratto dal tuo genere.|Il partner è bisessuale, pansessuale o polisessuale?|Comprendi che l'attrazione per più sessi non significa che sia meno leale. La fiducia e la comunicazione contano più delle etichette.|Il partner è demisessuale o grigiosessuale?|Possono provare attrazione sessuale solo dopo legami emotivi profondi. Sii paziente e costruisci lentamente la fiducia: non affrettare l'intimità.|Il partner è asessuale o autosessuale?|Potrebbe non cercare il contatto sessuale o preferire esperienze autodirette. Parla apertamente dei confini e di cosa significa l'intimità per entrambi.|Il partner è sapiosessuale?|Probabilmente è attratto innanzitutto dall'intelletto: coltiva la connessione mentale e le conversazioni significative.|Non hai familiarità con l'orientamento del tuo partner?|Chiedi con rispetto o fai le tue ricerche: evitare giudizi e supposizioni crea fiducia.|L'orientamento sembra complesso o fluido?|Alcune persone resistono alle etichette rigide (ad esempio, pomosessuale). Ciò che conta di più è ciò che provano per te: comunica direttamente.</value>
+  </data>
+  <data name="SexualOrientations_Why" xml:space="preserve">
+    <value>L'orientamento sessuale riflette da chi una persona è attratta romanticamente e sessualmente, il che è fondamentale per la compatibilità relazionale. Conoscere e rispettare l’orientamento reciproco aiuta a stabilire aspettative chiare sull’attrazione, sull’intimità e sulla struttura della relazione, specialmente in dinamiche diverse o non tradizionali.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Opzione più comune selezionata automaticamente (applicabile alla maggior parte delle persone)</value>

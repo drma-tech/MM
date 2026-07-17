@@ -120,22 +120,58 @@
   <data name="Age_Name" xml:space="preserve">
     <value>Età</value>
   </data>
+  <data name="Age_Tips" xml:space="preserve">
+    <value>Hai un'età simile?|Potresti identificarti più facilmente con esperienze generazionali, riferimenti culturali e ritmi di vita condivisi: sfruttali per creare legami.|C'è un notevole divario di età?|Parla presto di obiettivi di vita, tempistiche e aspettative, in particolare riguardo all'impegno, ai figli o allo stile di vita.|Sei il partner più anziano?|Sii consapevole delle dinamiche di potere. Incoraggia l'indipendenza e il processo decisionale reciproco per mantenere l'equilibrio.|Sei il partner più giovane?|Fai valere la tua voce nella relazione e parla apertamente delle tue esigenze. Non lasciare che l'età definisca la maturità o le capacità.|Uno di voi è in una fase diversa della vita?|Che si tratti di carriera, genitorialità o pensione, sii onesto su ciò su cui puoi e non puoi allinearti in questo momento.|Le opinioni culturali sulla differenza di età ti influenzano?|Alcune famiglie o società hanno opinioni forti: decidete insieme quanto conta per la vostra relazione.|Preoccupato per la percezione o il giudizio?|Concentrati su ciò che funziona tra voi. Una relazione sana basata sulla differenza di età si basa sul rispetto, sulla fiducia e sulla visione condivisa, non sull’approvazione degli altri.</value>
+  </data>
+  <data name="Age_Why" xml:space="preserve">
+    <value>L’età può influenzare la fase della vita, la maturità, i livelli di energia e gli obiettivi a lungo termine come il matrimonio, i figli o la pensione. Sebbene i numeri da soli non determinino la compatibilità, essere allineati su tempistiche, valori e aspettative aiuta a evitare future disconnessioni.</value>
+  </data>
   <data name="BirthDate_Name" xml:space="preserve">
     <value>Data di nascita</value>
   </data>
   <data name="BodyType_Name" xml:space="preserve">
     <value>Tipo di corporatura</value>
   </data>
+  <data name="BodyType_Tips" xml:space="preserve">
+    <value>Tu e il tuo partner preferite fisici simili?|Questo può aumentare l'attrazione iniziale, ma ricorda che il legame a lungo termine dipende anche dalla compatibilità emotiva.|Il fisico del tuo partner è diverso dal tuo "tipo" abituale?|Concentrati su come ti fa sentire, non solo sui tratti fisici: un'attrazione inaspettata può nascere dall'intimità emotiva.|Il tuo partner è atletico o molto attivo?|Se tu sei meno attivo, rispetta il suo stile di vita e sii aperto a condividere le attività, ma parla anche dei tuoi confini personali.|Il tuo partner è formoso o di corporatura robusta?|Evita di rendere il corpo un argomento delicato, a meno che non sia lui o lei a parlarne. Conferma sinceramente la sua attrattiva ed evita espressioni che suggeriscano la necessità di "correggere" il suo aspetto.|Il tuo partner è magro o di corporatura minuta?|Fai attenzione a non proiettare insicurezze o stereotipi legati alla corporatura. Lascia che sia lui o lei a definire la propria zona di comfort riguardo all'affetto fisico.|L'immagine corporea è un argomento delicato?|Chiedi al tuo partner come vive il proprio corpo e ascolta senza giudicare. Sentirsi al sicuro e compresi conta più dei complimenti.|Le differenze fisiche influiscono sul sesso e sull'affetto?|Una comunicazione aperta è d'aiuto. Parlate di ciò che vi fa stare bene, di ciò che non vi piace e di cosa accresce la sicurezza di entrambi.</value>
+  </data>
+  <data name="BodyType_Why" xml:space="preserve">
+    <value>Il tipo di corporatura può influenzare l'attrazione fisica, la compatibilità dello stile di vita e persino il modo in cui qualcuno si sente riguardo a se stesso in una relazione. Sebbene sia solo una parte di una persona, sentirsi accettati e desiderati nel proprio corpo è la chiave dell'intimità emotiva e fisica.</value>
+  </data>
   <data name="Disabilities_Name" xml:space="preserve">
     <value>Disabilità</value>
+  </data>
+  <data name="Disabilities_Tips" xml:space="preserve">
+    <value>Il tuo partner ha una disabilità fisica?|Chiedi che tipo di aiuto (se presente) apprezza e non dare per scontato che abbia bisogno di assistenza. Concentrati sull'accesso e sulla comodità, non sulle limitazioni.|Il tuo partner ha una disabilità visiva o uditiva?|Scopri come preferisce comunicare. Ciò potrebbe includere testo, linguaggio dei segni o strumenti specifici e la pazienza è fondamentale.|Il tuo partner ha un problema di salute mentale?|Fai il check-in con delicatezza e coerenza. Il supporto può sembrare routine, conversazione tranquilla o semplicemente non fare pressione affinché "aggiusti" qualcosa.|Il tuo partner ha una disabilità intellettiva o di apprendimento?|Sii chiaro, paziente ed evita la condiscendenza. Celebra i loro punti di forza e adatta la comunicazione quando necessario.|Non conosci la loro condizione?|Educati in modo indipendente per evitare di scaricare su di loro tutto il peso emotivo.|La disabilità ha un impatto sull'intimità o sulla vita quotidiana?|Conversare onestamente su comfort, accesso e confini. L'intimità può sembrare diversa ma essere altrettanto significativa.|La disabilità è invisibile o fluttuante?|Non dare per scontato che qualcuno stia "bene" solo perché non è visibile. Fidati di ciò che dicono sui loro limiti e bisogni.</value>
+  </data>
+  <data name="Disabilities_Why" xml:space="preserve">
+    <value>Le disabilità possono influenzare il modo in cui qualcuno si muove, comunica, elabora informazioni o affronta la vita quotidiana, ma non definiscono una persona o la sua capacità di amare ed essere amata. Essere consapevoli della disabilità del partner favorisce l’empatia, l’accessibilità e la sicurezza emotiva nella relazione.</value>
   </data>
   <data name="Ethnicity_Name" xml:space="preserve">
     <value>Etnia</value>
   </data>
+  <data name="Ethnicity_Tips" xml:space="preserve">
+    <value>Condividi la stessa origine etnica?|Potresti condividere valori culturali, tradizioni o aspettative familiari: usali come base per il legame, ma non dare per scontato un completo allineamento.|Provieni da contesti diversi?|Sii aperto a conoscere le origini del tuo partner. Fai domande, prova i loro cibi e partecipa alle loro tradizioni culturali quando invitato.|L'etnia del partner è nuova per te?|Avvicinati con curiosità, senza stereotipi. Impara da loro, non solo online: chiedi quali aspetti della loro cultura sono importanti per loro.|L'identità etnica è importante per il tuo partner?|Riconoscila e rispettala, anche se per te non è così importante. L'orgoglio culturale è spesso legato alla famiglia e all'identità.|Tu o il tuo partner siete multirazziali/misti?|Scopri come questo ha plasmato la tua/loro visione del mondo. L'identità può essere complessa: evita di forzare definizioni semplici.|La famiglia ha opinioni forti sull'etnia?|Parlane presto. I pregiudizi culturali o generazionali possono creare pressione: sapere a che punto si trova ogni persona evita conflitti futuri.|L'etnia gioca un ruolo nella storia degli appuntamenti?|Alcune persone hanno sperimentato feticizzazione o discriminazione: avvicinati con empatia, non con atteggiamento difensivo.</value>
+  </data>
+  <data name="Ethnicity_Why" xml:space="preserve">
+    <value>L’etnia può influenzare valori, tradizioni, stili di comunicazione, aspettative familiari ed esperienze di vita. Anche se non determina la compatibilità, la consapevolezza del background culturale dell’altro favorisce il rispetto reciproco e aiuta a superare le potenziali differenze culturali nelle relazioni.</value>
+  </data>
   <data name="Height_Name" xml:space="preserve">
     <value>Altezza</value>
   </data>
+  <data name="Height_Tips" xml:space="preserve">
+    <value>Tu o il tuo partner date molta importanza all'altezza?|Parlatene apertamente. L'attrazione è valida, ma non lasciare che una caratteristica offuschi una compatibilità più profonda.|C'è una differenza di altezza significativa?|Appoggiati con sicurezza. Molte coppie abbracciano questo contrasto: può anche essere giocoso o tenero.|Sei più alto del tuo partner e non ci sei abituato?|Concentrati su come ti fanno sentire emotivamente e fisicamente, non solo su come apparite insieme.|Il tuo partner è più basso e insicuro al riguardo?|Affermalo sinceramente. Evita battute o paragoni sull'altezza, soprattutto in pubblico.|L'altezza è un elemento importante nelle tue dinamiche?|Chiedi se si tratta di preferenze fisiche o è legata a bisogni più profondi (ad es. dominio, protezione, sicurezza).|Non hai preferenze di altezza?|Sii chiaro al riguardo: alcune persone danno per scontato che sia più importante di quanto non lo sia in realtà.|Le opinioni culturali influenzano il modo in cui vedi l'altezza?|Ammettilo, ma definisci i tuoi standard. Ciò che conta è il modo in cui vi trattate e vi sostenete a vicenda.</value>
+  </data>
+  <data name="Height_Why" xml:space="preserve">
+    <value>L’altezza gioca spesso un ruolo nell’attrazione fisica e nella percezione sociale, ma la sua importanza varia ampiamente a seconda dell’individuo e della cultura. Per alcuni è una preferenza; per altri ha un significato simbolico (ad esempio, sentirsi protetto o femminile/maschile). Capire quanto è importante per il tuo partner aiuta a evitare tensioni o insicurezze inutili.</value>
+  </data>
   <data name="Neurodiversity_Name" xml:space="preserve">
     <value>Neurodiversità</value>
+  </data>
+  <data name="Neurodiversity_Tips" xml:space="preserve">
+    <value>Il tuo partner è neurodivergente?|Chiedi come funziona meglio il suo cervello, sia nella comunicazione, nella routine o nella regolazione emotiva. Rispetta i loro confini e sostieni i loro punti di forza.|Sei neurodivergente e loro no?|Aiutali a comprendere chiaramente le tue esigenze, soprattutto riguardo alle preferenze sensoriali, ai limiti energetici o alle situazioni sociali.|Siete entrambi neurodivergenti?|Celebra le vostre differenze condivise mentre discutete dove i vostri bisogni potrebbero scontrarsi. La routine, la flessibilità o il ritmo della comunicazione possono variare.|Il tuo partner soffre di ADHD?|Potrebbe dimenticare le cose, distrarsi o iperconcentrarsi. Non prenderla sul personale: la struttura e la pazienza sono importanti.|Il tuo partner è nello spettro autistico?|Potrebbe apprezzare la comunicazione diretta, la routine e gli ambienti tranquilli. Fai attenzione al sovraccarico sensoriale e all'affaticamento sociale.|Non comprendi appieno la neurodivergenza?|Chiedi rispettosamente e fai le tue ricerche: dimostra impegno e cura.|Diverse velocità di elaborazione o espressione emotiva?|Concedetevi spazio e tempo a vicenda. Ciò che sembra disinteresse potrebbe in realtà essere sopraffatto o concentrato.</value>
+  </data>
+  <data name="Neurodiversity_Why" xml:space="preserve">
+    <value>La neurodiversità riconosce che le persone sperimentano ed elaborano il mondo in modo diverso, attraverso variazioni come l’ADHD, l’autismo, la dislessia e altro ancora. Capire se qualcuno è neurodivergente aiuta i partner a creare empatia, ad adattare le aspettative e a comunicare in modi che rispettino gli stili e i bisogni cognitivi reciproci.</value>
   </data>
 </root>

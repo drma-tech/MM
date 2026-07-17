@@ -70,6 +70,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;re close in age?|You may relate more easily to shared generational experiences, cultural references, and life pacing—use that to build connection.|There&apos;s a noticeable age gap?|Talk early about life goals, timelines, and expectations—especially around commitment, children, or lifestyle.|You&apos;re the older partner?|Be mindful of power dynamics. Encourage independence and mutual decision-making to maintain balance.|You&apos;re the younger partner?|Assert your voice in the relationship and speak up about your nee [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Age_Tips {
+            get {
+                return ResourceManager.GetString("Age_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age can influence life stage, maturity, energy levels, and long-term goals such as marriage, children, or retirement. While numbers alone don’t determine compatibility, being aligned on timing, values, and expectations helps avoid future disconnects..
+        /// </summary>
+        public static string Age_Why {
+            get {
+                return ResourceManager.GetString("Age_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birth Date.
         /// </summary>
         public static string BirthDate_Name {
@@ -88,11 +106,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You and your partner prefer similar body types?|This can increase initial attraction, but remember long-term connection depends on emotional compatibility too.|Your partner’s body type is different from your usual “type”?|Focus on how they make you feel, not just physical traits—unexpected attraction can grow with emotional intimacy.|Your partner is athletic or very active?|If you’re less active, respect their lifestyle and be open to joining in—but also talk about personal boundaries.|Your partner is curvy [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string BodyType_Tips {
+            get {
+                return ResourceManager.GetString("BodyType_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Body type can influence physical attraction, lifestyle compatibility, and even how someone feels about themselves in a relationship. While it&apos;s just one part of a person, feeling accepted and desired in your body is key to emotional and physical intimacy..
+        /// </summary>
+        public static string BodyType_Why {
+            get {
+                return ResourceManager.GetString("BodyType_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabilities.
         /// </summary>
         public static string Disabilities_Name {
             get {
                 return ResourceManager.GetString("Disabilities_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner has a physical disability?|Ask what kind of help (if any) they appreciate, and don’t assume they need assistance. Focus on access and comfort, not limitations.|Your partner has a visual or hearing disability?|Learn how they prefer to communicate. This could include text, sign language, or specific tools—and patience is key.|Your partner has a mental health condition?|Check in gently and consistently. Support can look like routine, calm conversation, or simply not pressuring them to “fix” anythi [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Disabilities_Tips {
+            get {
+                return ResourceManager.GetString("Disabilities_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabilities can affect how someone moves, communicates, processes information, or navigates daily life—but they don’t define a person or their ability to love and be loved. Being aware of a partner’s disability fosters empathy, accessibility, and emotional safety in the relationship..
+        /// </summary>
+        public static string Disabilities_Why {
+            get {
+                return ResourceManager.GetString("Disabilities_Why", resourceCulture);
             }
         }
         
@@ -106,6 +160,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You share the same ethnic background?|You may have shared cultural values, traditions, or family expectations—use that as a foundation for bonding, but don’t assume full alignment.|You come from different backgrounds?|Be open to learning about your partner’s heritage. Ask questions, try their foods, and participate in their cultural traditions when invited.|Partner&apos;s ethnicity is new to you?|Approach with curiosity, not stereotypes. Learn from them, not just online—ask what parts of their culture are import [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Ethnicity_Tips {
+            get {
+                return ResourceManager.GetString("Ethnicity_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ethnicity can influence values, traditions, communication styles, family expectations, and life experiences. While it doesn’t determine compatibility, awareness of each other’s cultural background fosters mutual respect and helps navigate potential cultural differences in relationships..
+        /// </summary>
+        public static string Ethnicity_Why {
+            get {
+                return ResourceManager.GetString("Ethnicity_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Height.
         /// </summary>
         public static string Height_Name {
@@ -115,11 +187,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You or your partner care a lot about height?|Talk openly about it. Attraction is valid, but don’t let one trait overshadow deeper compatibility.|There’s a significant height difference?|Lean into it with confidence. Many couples embrace this contrast—it can even be playful or endearing.|You’re taller than your partner and not used to it?|Focus on how they make you feel emotionally and physically—not just how you look together.|Your partner is shorter and insecure about it?|Affirm them sincerely. Avoid heigh [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Height_Tips {
+            get {
+                return ResourceManager.GetString("Height_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height often plays a role in physical attraction and social perception, but its importance varies widely by individual and culture. For some, it&apos;s a preference; for others, it holds symbolic meaning (e.g., feeling protected or feminine/masculine). Understanding how much it matters to your partner helps avoid unnecessary tension or insecurity..
+        /// </summary>
+        public static string Height_Why {
+            get {
+                return ResourceManager.GetString("Height_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Neurodiversity.
         /// </summary>
         public static string Neurodiversity_Name {
             get {
                 return ResourceManager.GetString("Neurodiversity_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner is neurodivergent?|Ask how their brain works best—whether it’s in communication, routines, or emotional regulation. Respect their boundaries and support their strengths.|You’re neurodivergent and they’re not?|Help them understand your needs clearly, especially around sensory preferences, energy limits, or social situations.|You’re both neurodivergent?|Celebrate your shared differences while discussing where your needs might clash. Routine, flexibility, or communication pacing may differ.|Your p [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Neurodiversity_Tips {
+            get {
+                return ResourceManager.GetString("Neurodiversity_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neurodiversity acknowledges that people experience and process the world differently—through variations such as ADHD, autism, dyslexia, and more. Understanding if someone is neurodivergent helps partners build empathy, adjust expectations, and communicate in ways that respect each other’s cognitive styles and needs..
+        /// </summary>
+        public static string Neurodiversity_Why {
+            get {
+                return ResourceManager.GetString("Neurodiversity_Why", resourceCulture);
             }
         }
     }

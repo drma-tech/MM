@@ -2,12 +2,12 @@
 
 public enum EducationLevel
 {
-    [FieldSettings("Basic_Name", Description = "Basic_Description", ResourceType = typeof(Translations.Enum.EducationLevel))]
+    [FieldSettings(nameof(Translations.Enum.EducationLevel.Basic_Name), Description = nameof(Translations.Enum.EducationLevel.Basic_Description), ResourceType = typeof(Translations.Enum.EducationLevel))]
     Basic = 1,
 
-    [FieldSettings("Intermediary_Name", Description = "Intermediary_Description", ResourceType = typeof(Translations.Enum.EducationLevel))]
+    [FieldSettings(nameof(Translations.Enum.EducationLevel.Intermediary_Name), Description = nameof(Translations.Enum.EducationLevel.Intermediary_Description), ResourceType = typeof(Translations.Enum.EducationLevel))]
     Intermediary = 2,
 
-    [FieldSettings("Advanced_Name", Description = "Advanced_Description", ResourceType = typeof(Translations.Enum.EducationLevel))]
+    [FieldSettings(nameof(Translations.Enum.EducationLevel.Advanced_Name), Description = nameof(Translations.Enum.EducationLevel.Advanced_Description), ResourceType = typeof(Translations.Enum.EducationLevel))]
     Advanced = 3
 }

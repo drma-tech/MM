@@ -70,6 +70,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both partners share same biological sex?|Discuss any specific health or intimacy considerations openly to support each other’s needs.|Partners have different biological sexes?|Celebrate differences and openly communicate about physical and emotional expectations.|One or both identify as intersex?|Respect their unique experience and ask how they want to be supported regarding intimacy and health.|Avoid assumptions|Biological sex does not define gender identity or sexual orientation—always communicate respect [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string BiologicalSex_Tips {
+            get {
+                return ResourceManager.GetString("BiologicalSex_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biological sex influences physical compatibility, health considerations, and sometimes social or cultural dynamics in relationships. Knowing this helps partners understand potential biological factors relevant to intimacy, reproduction, and personal identity..
+        /// </summary>
+        public static string BiologicalSex_Why {
+            get {
+                return ResourceManager.GetString("BiologicalSex_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description_Name {
@@ -84,6 +102,24 @@ namespace MM.Shared.Translations.Model {
         public static string Description_Placeholder {
             get {
                 return ResourceManager.GetString("Description_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner is transgender, nonbinary, or genderqueer?|Ask which pronouns they use and use them consistently. Small gestures of respect go a long way in building trust and emotional safety.|Your partner is genderfluid or bigender?|Understand that how they present or express themselves may vary. Be open and avoid assuming their mood or identity based on appearance.|Your partner is questioning?|Give them emotional space to explore who they are. Avoid pressuring for clarity—support is more important than cert [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string GenderIdentities_Tips {
+            get {
+                return ResourceManager.GetString("GenderIdentities_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender identity shapes how a person understands themselves and wants to be seen in the relationship. Knowing your partner&apos;s identity helps you connect more authentically and avoid invalidating their experience—especially in relationships where gender diversity is present..
+        /// </summary>
+        public static string GenderIdentities_Why {
+            get {
+                return ResourceManager.GetString("GenderIdentities_Why", resourceCulture);
             }
         }
         
@@ -124,6 +160,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Speak the same language fluently?|Use that to deepen connection through meaningful conversations and shared humor. Don&apos;t assume understanding—always clarify emotional meaning.|Your partner is less fluent than you?|Speak slowly and clearly, avoid idioms, and be patient. Encourage their effort and celebrate small progress.|You’re less fluent than your partner?|Be honest about your limits. Let them know when you don’t understand and ask them to speak more simply when needed.|Neither of you is fluent in the oth [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Languages_Tips {
+            get {
+                return ResourceManager.GetString("Languages_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sharing a common language—or understanding each other’s fluency levels—helps build emotional connection, avoid miscommunication, and navigate conflict. Even in multicultural or long-distance relationships, knowing how each person communicates can make or break emotional intimacy..
+        /// </summary>
+        public static string Languages_Why {
+            get {
+                return ResourceManager.GetString("Languages_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We do not store your GPS location, only your city. (Device location access must be enabled).
         /// </summary>
         public static string Location_Description {
@@ -151,11 +205,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Long-distance dating?|Clarify intentions. Are both open to remote connection, travel, or eventual relocation?|Same country, different regions?|Discuss regional habits, values, or cost of living differences—they might affect lifestyle choices.|Same city or close by?|Leverage proximity for easier in-person bonding—but don’t rush just because it’s convenient.|Cultural context matters?|Even in the same country, local customs can vary—be curious about your partner’s environment.|Different time zones?|Coordinate  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Location_Tips {
+            get {
+                return ResourceManager.GetString("Location_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location impacts time zones, language, culture, daily habits, and the feasibility of in-person interaction. In global matchups, even a compatible connection can face strain if physical distance and cultural contexts aren’t addressed early..
+        /// </summary>
+        public static string Location_Why {
+            get {
+                return ResourceManager.GetString("Location_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marital Status.
         /// </summary>
         public static string MaritalStatus_Name {
             get {
                 return ResourceManager.GetString("MaritalStatus_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both single?|You’re likely both open to new relationships without prior commitments—focus on building trust and connection.|One married or cohabiting?|Discuss boundaries and expectations clearly to avoid misunderstandings and emotional conflicts.|Separated or divorced?|Respect the healing process; be patient as your partner navigates past relationship closure.|Annulled or marriage of convenience?|Clarify what this means to your partner and their current relationship goals to avoid surprises.|Different statu [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MaritalStatus_Tips {
+            get {
+                return ResourceManager.GetString("MaritalStatus_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Understanding marital status helps set expectations about relationship availability, emotional readiness, and legal considerations. Different statuses can imply varying levels of commitment history, baggage, or openness to new relationships, which affects compatibility and communication..
+        /// </summary>
+        public static string MaritalStatus_Why {
+            get {
+                return ResourceManager.GetString("MaritalStatus_Why", resourceCulture);
             }
         }
         
@@ -210,6 +300,24 @@ namespace MM.Shared.Translations.Model {
         public static string SexualOrientation_Name {
             get {
                 return ResourceManager.GetString("SexualOrientation_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partner is heterosexual?|If you&apos;re of a different sex, this likely aligns well. But don’t assume compatibility based only on orientation—emotional and physical needs still vary.|Partner is homosexual or same-sex attracted?|Only pursue the relationship if your gender identity aligns with their attraction. Avoid putting emotional pressure on someone who isn’t attracted to your gender.|Partner is bisexual, pansexual, or polysexual?|Understand that attraction to multiple genders doesn’t mean they’re less loyal. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SexualOrientations_Tips {
+            get {
+                return ResourceManager.GetString("SexualOrientations_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sexual orientation reflects who a person is romantically and sexually attracted to, which is fundamental for relationship compatibility. Knowing and respecting each other’s orientation helps set clear expectations around attraction, intimacy, and relationship structure—especially in diverse or nontraditional dynamics..
+        /// </summary>
+        public static string SexualOrientations_Why {
+            get {
+                return ResourceManager.GetString("SexualOrientations_Why", resourceCulture);
             }
         }
     }

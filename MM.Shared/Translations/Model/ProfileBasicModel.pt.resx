@@ -120,11 +120,23 @@
   <data name="BiologicalSex_Name" xml:space="preserve">
     <value>Sexo Biológico</value>
   </data>
+  <data name="BiologicalSex_Tips" xml:space="preserve">
+    <value>Ambos os parceiros compartilham o mesmo sexo biológico? | Discuta abertamente quaisquer considerações específicas de saúde ou intimidade para apoiar as necessidades um do outro. | Os parceiros têm sexos biológicos diferentes? sensibilidades|Culturas diferentes veem o sexo biológico e suas implicações nos relacionamentos de maneira diferente – esteja atento e aberto.</value>
+  </data>
+  <data name="BiologicalSex_Why" xml:space="preserve">
+    <value>O sexo biológico influencia a compatibilidade física, as considerações de saúde e, por vezes, a dinâmica social ou cultural nos relacionamentos. Saber disso ajuda os parceiros a compreender potenciais fatores biológicos relevantes para a intimidade, reprodução e identidade pessoal.</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Descrição</value>
   </data>
   <data name="Description_Placeholder" xml:space="preserve">
     <value>Tente não incluir detalhes de contato pessoal (como números de telefone ou e-mails) ou mencionar os lugares exatos onde você mora ou frequenta. Isso ajuda a manter seu perfil seguro. 💛\n\nAlém disso, não é permitido compartilhar ou anunciar contas sociais, produtos, serviços ou qualquer coisa que viole os direitos de outra pessoa e pode levar à remoção.</value>
+  </data>
+  <data name="GenderIdentities_Tips" xml:space="preserve">
+    <value>Seu parceiro é transgênero, não binário ou gênero queer? | Pergunte quais pronomes ele usa e use-os de forma consistente. Pequenos gestos de respeito ajudam muito na construção de confiança e segurança emocional.|Seu parceiro é de gênero fluido ou bigênero?|Entenda que a forma como ele se apresenta ou se expressa pode variar. Esteja aberto e evite assumir seu humor ou identidade com base na aparência.|Seu parceiro está questionando?|Dê-lhe espaço emocional para explorar quem ele é. Evite pressionar por clareza – o apoio é mais importante do que a certeza.|Você se identifica de maneira diferente?|Fale abertamente sobre como suas identidades de gênero influenciam seus papéis, dinâmica e níveis de conforto no relacionamento.|A identidade de gênero difere da sua?|Fique curioso e compassivo. Faça perguntas com respeito e reconheça que a experiência dele pode ser muito diferente da sua.|Não está familiarizado com o rótulo de identidade do seu parceiro?|Procure, pergunte educadamente ou convide-o a explicar o que parece significativo - aprender mostra cuidado.|O contexto cultural é importante?|Algumas identidades (como Dois Espíritos) são específicas da cultura. Reconhecer e respeitar o seu significado cultural para além apenas do género.</value>
+  </data>
+  <data name="GenderIdentities_Why" xml:space="preserve">
+    <value>A identidade de gênero molda a forma como uma pessoa se entende e deseja ser vista no relacionamento. Conhecer a identidade do seu parceiro ajuda você a se conectar de forma mais autêntica e a evitar invalidar a experiência dele – especialmente em relacionamentos onde a diversidade de gênero está presente.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
     <value>Opção mais comum selecionada automaticamente (aplicável para a maioria das pessoas)</value>
@@ -138,6 +150,12 @@
   <data name="Languages_Name" xml:space="preserve">
     <value>Idiomas</value>
   </data>
+  <data name="Languages_Tips" xml:space="preserve">
+    <value>Falar o mesmo idioma fluentemente?|Use isso para aprofundar a conexão por meio de conversas significativas e humor compartilhado. Não presuma compreensão - sempre esclareça o significado emocional. | Seu parceiro é menos fluente que você? | Fale devagar e claramente, evite expressões idiomáticas e seja paciente. Incentive o esforço deles e comemore os pequenos progressos.|Você é menos fluente que seu parceiro?|Seja honesto sobre seus limites. Deixe-os saber quando você não entende e peça-lhes que falem de forma mais simples quando necessário.|Nenhum de vocês é fluente no idioma do outro?|Use ferramentas e gestos de tradução desde o início, mas gradualmente construa palavras ou frases compartilhadas para formar proximidade emocional.|O parceiro fala mais idiomas do que você?|Peça-lhes para lhe ensinarem frases básicas em seus outros idiomas. Mostra cuidado e curiosidade sobre sua formação.|Lacunas no idioma causam frustração?|Faça pausas se a comunicação parecer cansativa. Concentre-se em dicas não-verbais – toque, tom e contato visual podem dizer muito.|Línguas nativas diferentes, o mesmo segundo idioma?|Use o segundo idioma compartilhado como terreno neutro. Pode reduzir os desequilíbrios de poder e criar um novo significado partilhado.</value>
+  </data>
+  <data name="Languages_Why" xml:space="preserve">
+    <value>Compartilhar uma linguagem comum – ou compreender os níveis de fluência uns dos outros – ajuda a construir conexões emocionais, evitar falhas de comunicação e navegar em conflitos. Mesmo em relacionamentos multiculturais ou à distância, saber como cada pessoa se comunica pode fazer ou quebrar a intimidade emocional.</value>
+  </data>
   <data name="Location_Description" xml:space="preserve">
     <value>Não armazenamos sua localização GPS, apenas sua cidade. (O acesso à localização do dispositivo deve estar ativado)</value>
   </data>
@@ -147,8 +165,20 @@
   <data name="Location_Placeholder" xml:space="preserve">
     <value>Por favor, clique no botão ao lado</value>
   </data>
+  <data name="Location_Tips" xml:space="preserve">
+    <value>Namoro à distância? | Esclarecer intenções. Ambos estão abertos a conexões remotas, viagens ou eventual relocação?|Mesmo país, regiões diferentes?|Discuta hábitos regionais, valores ou diferenças de custo de vida - eles podem afetar as escolhas de estilo de vida.|Mesma cidade ou perto?|Aproveite a proximidade para facilitar o vínculo pessoal - mas não se apresse só porque é conveniente.|O contexto cultural é importante?|Mesmo no mesmo país, os costumes locais podem variar - tenha curiosidade sobre o ambiente do seu parceiro.|Fusos horários diferentes?|Coordenar intencionalmente. A comunicação regular requer esforço e planejamento.|Um está aberto a mudanças, o outro não?|Alinhe as expectativas antecipadamente. A flexibilidade de localização pode determinar a viabilidade a longo prazo.|Restrições de segurança ou mobilidade?|Seja transparente. Nem todos podem mudar-se ou viajar livremente – respeite essas limitações.</value>
+  </data>
+  <data name="Location_Why" xml:space="preserve">
+    <value>A localização afeta os fusos horários, o idioma, a cultura, os hábitos diários e a viabilidade da interação pessoal. Em confrontos globais, mesmo uma conexão compatível pode enfrentar tensões se a distância física e os contextos culturais não forem abordados precocemente.</value>
+  </data>
   <data name="MaritalStatus_Name" xml:space="preserve">
     <value>Estado civil</value>
+  </data>
+  <data name="MaritalStatus_Tips" xml:space="preserve">
+    <value>Ambos solteiros?|Provavelmente ambos estão abertos a novos relacionamentos sem compromissos prévios - concentre-se em construir confiança e conexão.|Um casado ou coabitando?|Discuta limites e expectativas claramente para evitar mal-entendidos e conflitos emocionais.|Separados ou divorciados?|Respeite o processo de cura; seja paciente enquanto seu parceiro supera o encerramento do relacionamento. | Casamento anulado ou de conveniência? | Esclareça o que isso significa para seu parceiro e seus objetivos de relacionamento atuais para evitar surpresas. | Status diferentes, mas abertos? | Comunique-se honestamente sobre o que cada status significa e como isso afeta suas expectativas. globalmente; sempre considere o contexto cultural.</value>
+  </data>
+  <data name="MaritalStatus_Why" xml:space="preserve">
+    <value>Compreender o estado civil ajuda a definir expectativas sobre a disponibilidade do relacionamento, a preparação emocional e as considerações legais. Diferentes status podem implicar diferentes níveis de histórico de compromisso, bagagem ou abertura para novos relacionamentos, o que afeta a compatibilidade e a comunicação.</value>
   </data>
   <data name="Modality_Name" xml:space="preserve">
     <value>Modalidade</value>
@@ -161,6 +191,12 @@
   </data>
   <data name="NickName_Placeholder" xml:space="preserve">
     <value>Ex: Paul</value>
+  </data>
+  <data name="SexualOrientations_Tips" xml:space="preserve">
+    <value>O parceiro é heterossexual? |Se você é de um sexo diferente, isso provavelmente se alinha bem. Mas não presuma a compatibilidade com base apenas na orientação - as necessidades emocionais e físicas ainda variam. | O parceiro é homossexual ou tem atração pelo mesmo sexo? | Só busque o relacionamento se sua identidade de gênero estiver alinhada com a atração dele. Evite colocar pressão emocional sobre alguém que não se sente atraído pelo seu gênero.|O parceiro é bissexual, pansexual ou polissexual?|Entenda que a atração por vários gêneros não significa que ele seja menos leal. Confiança e comunicação são mais importantes do que rótulos. | O parceiro é semissexual ou cinzasexual? | Eles só podem sentir atração sexual após laços emocionais profundos. Seja paciente e construa confiança lentamente - não apresse a intimidade. | O parceiro é assexuado ou autossexual? | Eles podem não buscar contato sexual ou podem preferir experiências autodirigidas. Fale abertamente sobre os limites e o que a intimidade significa para vocês dois. | O parceiro é sapiossexual? | Eles provavelmente são atraídos pelo intelecto primeiro - nutrir a conexão mental e uma conversa significativa. O que mais importa é como eles se sentem em relação a você – comunique-se diretamente.</value>
+  </data>
+  <data name="SexualOrientations_Why" xml:space="preserve">
+    <value>A orientação sexual reflete por quem uma pessoa se sente atraída romântica e sexualmente, o que é fundamental para a compatibilidade do relacionamento. Conhecer e respeitar a orientação um do outro ajuda a definir expectativas claras em torno da atração, intimidade e estrutura de relacionamento – especialmente em dinâmicas diversas ou não tradicionais.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
     <value>Opção mais comum selecionada automaticamente (aplicável para a maioria das pessoas)</value>

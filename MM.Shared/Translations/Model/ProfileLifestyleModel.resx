@@ -123,8 +123,20 @@
   <data name="AnnualIncome_Name" xml:space="preserve">
     <value>Annual Income</value>
   </data>
+  <data name="AnnualIncome_Tips" xml:space="preserve">
+    <value>Talk about lifestyle expectations|Even with love, different income levels can lead to mismatched spending habits or priorities—discuss openly.|Balance contributions fairly|If incomes differ, focus on proportional contribution rather than splitting everything 50/50.|Avoid assumptions about money roles|Don’t assume the higher earner will always pay, or the lower earner should feel indebted—define your own rules.|Be honest about financial pressure|If one partner feels financial strain, talk about it early—silence can build resentment.|Value non-monetary contributions|Earning more doesn’t mean giving more emotionally—respect each other’s overall contributions.|Plan financial goals together|Agree on how you’ll save, spend, and invest—especially if income levels shift over time.|Respect ambition and comfort zones|Some prioritize career growth, others value work-life balance—recognize and support both perspectives.</value>
+  </data>
+  <data name="AnnualIncome_Why" xml:space="preserve">
+    <value>Annual income influences daily lifestyle, short-term choices, and how easily partners can contribute to shared goals like travel, housing, or starting a family. While income alone doesn't define compatibility, major differences—if not discussed—can create friction around spending, fairness, and expectations. Financial strain or imbalance can also affect how responsibilities are divided, especially when one partner feels overburdened or undervalued. Compatibility in income makes it easier to make joint decisions, avoid resentment, and build a relationship on transparency and mutual respect.</value>
+  </data>
   <data name="CareerCluster_Name" xml:space="preserve">
     <value>Career</value>
+  </data>
+  <data name="CareerCluster_Tips" xml:space="preserve">
+    <value>Careers in related fields?|Use your shared experiences to empathize and support each other through work-related stress and opportunities.|Careers in different fields?|Be curious and open to learning about your partner’s professional world to build respect.|One has a stable routine, the other irregular hours?|Set clear expectations for quality time and communication.|Frequent travel or possible relocation?|Discuss long-term plans and how to stay connected despite distance.|Significant income or status differences?|Focus on mutual respect and support, not comparison.|One partner is currently unemployed or in transition?|Offer patience and encouragement without pressure.|Careers with public exposure or high stress?|Check in regularly to support mental health and work-life balance.</value>
+  </data>
+  <data name="CareerCluster_Why" xml:space="preserve">
+    <value>Having different careers doesn’t necessarily cause conflicts in a relationship. However, when partners work in similar fields or industries, they often better understand each other’s challenges, such as irregular work hours, pressure to perform, public exposure, frequent travel, or the need to relocate. This shared understanding can reduce potential friction and create opportunities for mutual support.</value>
   </data>
   <data name="Diet_Description" xml:space="preserve">
     <value>Most common option selected automatically (applicable to most people)</value>
@@ -132,11 +144,29 @@
   <data name="Diet_Name" xml:space="preserve">
     <value>Diet</value>
   </data>
+  <data name="Diet_Tips" xml:space="preserve">
+    <value>You have different diets?|Be flexible in shared meals—find dishes that meet both needs without turning meals into conflict.|Partner is vegan/vegetarian and you're not?|Respect their reasons. Avoid teasing, and be open to trying their food preferences occasionally.|One has health-based or restrictive diet (e.g., gluten-free, detox)?|Take it seriously. Understand it's not just a \"trend\"—it may be vital for their wellbeing.|Both value organic/local eating?|Celebrate that alignment—plan trips to markets, cook together, and explore healthy food culture.|Food is cultural or emotional for one of you?|Talk about what food means to each other, especially during holidays or family events.|Planning to live together?|Discuss grocery shopping, meal prep, and kitchen habits early.|One partner is very strict, the other flexible?|Be honest about how that dynamic feels, and find ways to compromise (e.g., shared meals vs. individual prep).</value>
+  </data>
+  <data name="Diet_Why" xml:space="preserve">
+    <value>Dietary choices often reflect personal values, health needs, culture, or lifestyle. They affect daily routines, cooking, eating out, and even long-term compatibility if raising children is part of the plan. Aligning—or respectfully navigating differences—helps avoid friction and supports mutual care.</value>
+  </data>
   <data name="Drink_Name" xml:space="preserve">
     <value>Drink</value>
   </data>
+  <data name="Drink_Tips" xml:space="preserve">
+    <value>One partner doesn't drink at all?|Respect their choice without pressure or teasing. Opt for alcohol-free activities and drinks when together.|One drinks lightly/moderately and the other heavily?|Talk openly about how drinking affects your time together. Set boundaries if it impacts communication or mood.|Both drink socially?|Celebrate the alignment, but also agree on limits and safe behavior in public or when hosting guests.|Your partner drinks to cope?|Support them without judgment, but encourage healthy coping mechanisms and talk about how it affects the relationship.|Different cultural or religious views on alcohol?|Be open about expectations and avoid environments that make either partner uncomfortable.|Discomfort with alcohol in the relationship?|Be honest early on. It’s okay to set non-negotiables around alcohol use.|Special occasions or travel involve drinking?|Plan ahead—agree on what feels balanced and respectful for both.</value>
+  </data>
+  <data name="Drink_Why" xml:space="preserve">
+    <value>Drinking habits can influence lifestyle, social settings, health, and values. Misalignment—like one partner drinking heavily and the other being sober—can create friction over priorities, routines, and boundaries. Understanding each other’s drinking habits helps avoid future conflicts and supports respectful compromise.</value>
+  </data>
   <data name="EducationLevel_Name" xml:space="preserve">
     <value>Education</value>
+  </data>
+  <data name="EducationLevel_Tips" xml:space="preserve">
+    <value>One has a higher level of education?|Avoid assumptions—education doesn't guarantee emotional maturity or compatibility. Respect each other's knowledge and strengths.|Different academic backgrounds?|Stay curious. Learn from each other's perspectives rather than viewing differences as gaps.|Similar education levels?|This can support smoother communication and aligned life plans—but don't mistake similarity for compatibility in other areas.|Education vs. ambition?|One might not have a degree but is still driven and capable—don’t equate lack of formal education with lack of potential.|Feeling insecure about your education?|Focus on your lived experience and emotional intelligence. Relationships thrive on mutual respect, not diplomas.|Discussing complex topics?|Gauge comfort levels. Use open dialogue to ensure both feel included without condescension or pressure.|Cultural or systemic barriers to education?|Be compassionate. Not everyone had equal access—understand the journey, not just the outcome.</value>
+  </data>
+  <data name="EducationLevel_Why" xml:space="preserve">
+    <value>Education level can reflect someone's values, communication style, life experiences, and career trajectory. While it doesn’t define intelligence or character, differing educational backgrounds may influence lifestyle expectations, conversation dynamics, or shared goals.</value>
   </data>
   <data name="FamilyInvolvement_Description" xml:space="preserve">
     <value>In some cultures, family plays a key role in relationship decisions. How involved is your family?</value>
@@ -144,32 +174,38 @@
   <data name="FamilyInvolvement_Name" xml:space="preserve">
     <value>Family Involvement</value>
   </data>
+  <data name="FamilyInvolvement_Tips" xml:space="preserve">
+    <value>One of you is heavily involved with family?|Discuss boundaries early. What’s loving for one may feel intrusive to the other.|You have different levels of involvement?|Talk about expectations—how often will you visit or communicate with families, and how much influence will they have?|Both are not very involved?|That may simplify logistics but talk about how you’ll build your own support system or traditions.|One partner values independence?|Respect their space. Don’t force family interactions they aren’t comfortable with.|Family is part of decision-making for one of you?|Be clear about limits—partners need to feel like their voice comes first.|Planning holidays or big life events?|Discuss how families will be included to avoid future resentment.</value>
+  </data>
+  <data name="FamilyInvolvement_Why" xml:space="preserve">
+    <value>The level of family involvement can shape daily routines, boundaries, holidays, decision-making, and conflict resolution. Compatibility here helps prevent stress caused by differing expectations around privacy, loyalty, or independence.</value>
+  </data>
   <data name="HaveChildren_Name" xml:space="preserve">
     <value>Have Children</value>
+  </data>
+  <data name="HaveChildren_Tips" xml:space="preserve">
+    <value>One of you has children?|Talk openly about what role, if any, the new partner would play. Be patient and respectful of parenting responsibilities.|Children don’t live with the parent?|Understand that even if not present daily, parenting still affects availability, emotional focus, and long-term planning.|You both don’t have children?|Discuss future intentions—if one of you plans to have kids and the other doesn’t, that’s essential to clarify early.|Different views about parenting involvement?|One may want a more hands-on role than the other is ready for—set boundaries and go at a comfortable pace.|Already a parent and dating someone without kids?|Help them understand that parenting comes with responsibilities, unpredictability, and a need for flexibility.|Introducing a new partner to children?|Take it slow. Make sure trust is built before involving the kids emotionally.|One of you is unsure about having a role with stepchildren?|Honest discussions prevent confusion later—there’s no one-size-fits-all for blended families.</value>
+  </data>
+  <data name="HaveChildren_Why" xml:space="preserve">
+    <value>Having children—whether they live with the parent or not—affects time, priorities, emotional energy, and long-term planning. It also impacts how a new partner may fit into the family dynamic and future life decisions.</value>
   </data>
   <data name="HavePets_Name" xml:space="preserve">
     <value>Pets</value>
   </data>
+  <data name="HavePets_Tips" xml:space="preserve">
+    <value>One of you has pets and the other doesn't?|Clarify comfort levels—does the partner mind living with or caring for animals? Allergies or lifestyle clashes can arise.|One loves pets, the other doesn't want them?|Be honest about long-term compatibility. A strong pet preference can signal deeper lifestyle differences.|Different types of pets involved?|Discuss logistics—dogs may require walks and time, while cats or small pets might not. Exotic pets may come with unique care needs.|Both have pets?|Great, but still talk about introductions—how will the animals get along, and who will be responsible for what?|Neither has pets but one wants them?|Talk future plans early. Some people see pets as family, others prefer a pet-free home.|Strong attachment to a pet?|Respect it. They may see the pet as a companion or emotional support—don't minimize that bond.|Travel or sleep habits impacted by pets?|Discuss flexibility—who’ll stay home with pets, and whether pets sleep in the bed or not.</value>
+  </data>
+  <data name="HavePets_Why" xml:space="preserve">
+    <value>Pets influence lifestyle, daily routines, finances, travel flexibility, and even living arrangements. They can be a strong emotional bond—or a source of conflict if one partner isn't aligned with the other's preferences or values toward animals.</value>
+  </data>
   <data name="LivingSituation_Name" xml:space="preserve">
     <value>I live with</value>
   </data>
-  <data name="LoveLanguage_Description" xml:space="preserve">
-    <value>If you have any doubts, you can take a test on the original website (English and Spanish)</value>
+  <data name="LivingSituation_Tips" xml:space="preserve">
+    <value>Living alone?|Appreciate their need for privacy and independence. Respect their space while building connection.|Living with family?|Be aware of family dynamics and possible influences on your relationship. Support their need to balance both.|Living with friends?|Social environment may be lively—discuss how much time you’ll spend together versus with roommates.|Living with an ex-partner?|This can be complex; talk openly about boundaries, trust, and emotional safety.|Living with roommates?|Set clear expectations about shared spaces, guests, and communication.|Other living situations?|Clarify what works for them and how you can adapt to create a comfortable home environment.|Different living situations?|Respect each other’s lifestyle and negotiate how to spend quality time without discomfort.</value>
   </data>
-  <data name="LoveLanguage_Name" xml:space="preserve">
-    <value>Love Language</value>
-  </data>
-  <data name="MBTI_Description" xml:space="preserve">
-    <value>It is necessary to test on a third-party site (multi-language)</value>
-  </data>
-  <data name="MBTI_Name" xml:space="preserve">
-    <value>MBTI Personality</value>
-  </data>
-  <data name="MoneyPersonality_Description" xml:space="preserve">
-    <value>If you have any doubts, you can take a test on the original website (English only)</value>
-  </data>
-  <data name="MoneyPersonality_Name" xml:space="preserve">
-    <value>Money Personality</value>
+  <data name="LivingSituation_Why" xml:space="preserve">
+    <value>Living arrangements affect daily routines, privacy, social interactions, and boundaries. Compatibility here helps partners understand each other’s comfort levels, expectations for personal space, and how they balance independence with companionship.</value>
   </data>
   <data name="NetWorth_Description" xml:space="preserve">
     <value>Total value of all assets minus the total of all liabilities (in US dollars).</value>
@@ -177,35 +213,38 @@
   <data name="NetWorth_Name" xml:space="preserve">
     <value>Net Worth</value>
   </data>
-  <data name="RelationshipPersonality_Description" xml:space="preserve">
-    <value>If in doubt, you can take a test on a third-party site (English only)</value>
+  <data name="NetWorth_Tips" xml:space="preserve">
+    <value>Discuss financial values early|Being open about what money means to each of you can prevent misunderstandings and build trust.|Respect differences in wealth|Avoid assumptions or judgments based on net worth alone—focus on how you manage money and make decisions.|Align on lifestyle expectations|Talk about daily spending habits and what kind of lifestyle you both want to maintain.|Plan for the future together|Share your financial goals and how you envision reaching them as a team.|Address financial stress openly|Money worries can affect emotional health; support each other and seek advice if needed.|Avoid power imbalances|Ensure financial differences don’t translate into control or resentment.|Celebrate what you have|Focus on shared goals and mutual support rather than comparing net worth.</value>
   </data>
-  <data name="RelationshipPersonality_Name" xml:space="preserve">
-    <value>Personality in Relationship</value>
+  <data name="NetWorth_Why" xml:space="preserve">
+    <value>Financial harmony plays a crucial role in relationship stability and satisfaction. When partners have similar net worth levels, it often means their lifestyle expectations, spending habits, and financial goals are aligned or easier to negotiate. Large discrepancies in net worth can lead to imbalances in power, decision-making, or feelings of insecurity, which may cause tension or misunderstandings. Being compatible in this area helps couples build trust, share plans for the future, and avoid conflicts related to money—one of the leading causes of relationship stress globally.</value>
   </data>
   <data name="Religion_Name" xml:space="preserve">
     <value>Religion</value>
   </data>
-  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>Unlike other personalities, this one's compatibility is a personal preference.</value>
+  <data name="Religion_Tips" xml:space="preserve">
+    <value>You share the same religion?|Explore shared practices together—attending services, celebrating holidays, or praying as a couple can strengthen your bond.|Partner is religious and you're not?|Respect their beliefs without pretending. Be curious, not dismissive.|Different religions?|Have open talks early—discuss boundaries, important holidays, and whether faith will play a role in family life.|Religion is very important to one of you?|Understand how it shapes their values and daily life. Ask how you can support them even if you don’t share the same beliefs.|You’re both non-religious?|Discuss your values around ethics, traditions, and life purpose to ensure you're still aligned.|Religion impacts family involvement?|Be honest about how you’ll handle pressure from families if your beliefs differ.|Avoid future conflict?|Clarify early if religion must play a role in weddings, raising kids, or moral decisions.</value>
   </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Sex Personality (preferences)</value>
-  </data>
-  <data name="SexPersonality_Description" xml:space="preserve">
-    <value>If you have any doubts, you can take a test on the original website (English only)</value>
-  </data>
-  <data name="SexPersonality_Name" xml:space="preserve">
-    <value>Sex Personality</value>
-  </data>
-  <data name="SharedSpendingStyle_Name" xml:space="preserve">
-    <value>Shared Spending Style</value>
+  <data name="Religion_Why" xml:space="preserve">
+    <value>Religious beliefs can deeply influence values, lifestyle, traditions, family expectations, and long-term decisions like marriage or raising children. Understanding each other’s spiritual views (or lack thereof) helps avoid hidden tensions and fosters mutual respect.</value>
   </data>
   <data name="Smoke_Name" xml:space="preserve">
     <value>Smoke</value>
   </data>
+  <data name="Smoke_Tips" xml:space="preserve">
+    <value>One partner doesn't smoke?|Be mindful of their preferences—avoid smoking near them, and don’t assume occasional smoking is “no big deal.”|Both smoke occasionally?|Set boundaries together (e.g., where and when it’s okay), and talk about possible changes in habit over time.|One smokes often?|Check in about how it affects your connection—especially around shared living space, finances, or children.|Dislike the smell or health effects?|Be upfront. Suggest compromises like outdoor-only smoking or designated clothes.|Trying to quit?|Support them without nagging. Celebrate progress, and ask how you can help.|Smoking is cultural or social for one partner?|Understand its context before judging. Ask what it means to them.|Concerned about long-term compatibility?|Have an honest conversation early—don’t wait for frustration to build.</value>
+  </data>
+  <data name="Smoke_Why" xml:space="preserve">
+    <value>Smoking habits affect lifestyle, health, physical closeness, and even shared spaces. Whether due to personal preference, health reasons, or cultural norms, smoking compatibility can influence everyday comfort and long-term satisfaction.</value>
+  </data>
   <data name="TravelFrequency_Name" xml:space="preserve">
     <value>Travel Frequency</value>
+  </data>
+  <data name="TravelFrequency_Tips" xml:space="preserve">
+    <value>Both travel rarely or never?|Enjoy predictable routines and easy planning. Use your shared stability to build a grounded relationship.|One travels frequently, the other rarely?|Discuss expectations for time apart and how to maintain connection during travel.|Both travel often?|Plan quality time intentionally to stay connected despite busy schedules.|One is a frequent nomad?|Clarify long-term goals—can the relationship support a highly mobile lifestyle?|Travel is work-related for one or both?|Support their career needs while balancing personal time.|Travel preferences differ?|Be flexible and compromise on trips and time spent together.|Worry about distance during travel?|Establish communication habits and reassure each other of commitment.</value>
+  </data>
+  <data name="TravelFrequency_Why" xml:space="preserve">
+    <value>Travel habits affect how much time partners spend together, lifestyle compatibility, and openness to change or adventure. Differences in travel frequency can impact communication, planning, and relationship stability, especially in long-term commitments.</value>
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Want Kids</value>

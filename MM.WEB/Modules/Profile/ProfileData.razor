@@ -307,39 +307,39 @@
                 <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
                     <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.MoneyPersonality_Name" Description="@ProfileLifestyleModel.MoneyPersonality_Description" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@context.MoneyPersonality"
+                            <FieldSelect Name="@ProfilePersonalityModel.MoneyPersonality_Name" Description="@ProfilePersonalityModel.MoneyPersonality_Description" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@context.MoneyPersonality"
                                          CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://moneytype.hermoney.com/">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.SharedSpendingStyle_Name" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@context.SharedSpendingStyle"
+                            <FieldSelect Name="@ProfilePersonalityModel.SharedSpendingStyle_Name" TValue="SharedSpendingStyle?" TEnum="SharedSpendingStyle" @bind-SelectedValue="@context.SharedSpendingStyle"
                                          CssIcon="@IconsFA.Solid.Icon("hand-holding-dollar").Font">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.RelationshipPersonality_Name" Description="@ProfileLifestyleModel.RelationshipPersonality_Description" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@context.RelationshipPersonality"
+                            <FieldSelect Name="@ProfilePersonalityModel.RelationshipPersonality_Name" Description="@ProfilePersonalityModel.RelationshipPersonality_Description" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@context.RelationshipPersonality"
                                          CssIcon="@IconsFA.Solid.Icon("people-pulling").Font" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.MBTI_Name" Description="@ProfileLifestyleModel.MBTI_Description" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@context.MBTI"
+                            <FieldSelect Name="@ProfilePersonalityModel.MBTI_Name" Description="@ProfilePersonalityModel.MBTI_Description" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@context.MBTI"
                                          CssIcon="@IconsFA.Solid.Icon("user-tag").Font" HelpLink="https://www.16personalities.com/" ShowGroup="true">
                             </FieldSelect>
                         </MudItem>
                     </MudGrid>
                     <MudGrid Spacing="@Css.SpaceSmall">
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.LoveLanguage_Name" Description="@ProfileLifestyleModel.LoveLanguage_Description" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@context.LoveLanguage"
+                            <FieldSelect Name="@ProfilePersonalityModel.LoveLanguage_Name" Description="@ProfilePersonalityModel.LoveLanguage_Description" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@context.LoveLanguage"
                                          CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.SexPersonality_Name" Description="@ProfileLifestyleModel.SexPersonality_Description" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@context.SexPersonality"
+                            <FieldSelect Name="@ProfilePersonalityModel.SexPersonality_Name" Description="@ProfilePersonalityModel.SexPersonality_Description" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@context.SexPersonality"
                                          CssIcon="@IconsFA.Solid.Icon("heart").Font" HelpLink="https://vmtherapy.com/sex-personality-type">
                             </FieldSelect>
                         </MudItem>
                         <MudItem xs="12">
-                            <FieldSelect Name="@ProfileLifestyleModel.SexPersonalityPreferences_Name" Description="@ProfileLifestyleModel.SexPersonalityPreferences_Description" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@context.SexPersonalityPreference"
+                            <FieldSelect Name="@ProfilePersonalityModel.SexPersonalityPreferences_Name" Description="@ProfilePersonalityModel.SexPersonalityPreferences_Description" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@context.SexPersonalityPreference"
                                          CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true"
                                          CustomWarning="@(context.SexPersonalityPreference.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
                             </FieldSelect>

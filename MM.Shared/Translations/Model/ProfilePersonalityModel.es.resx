@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="aehh" xml:space="preserve">
+    <value>casa</value>
+  </data>
+  <data name="LoveLanguage_Description" xml:space="preserve">
+    <value>Si tienes alguna duda puedes realizar un test en la web original (inglés y español)</value>
+  </data>
+  <data name="LoveLanguage_Name" xml:space="preserve">
+    <value>Lenguaje del amor</value>
+  </data>
+  <data name="LoveLanguage_Tips" xml:space="preserve">
+    <value>Si su pareja valora las palabras de afirmación | Exprese aprecio, aliento o afecto con regularidad. Incluso los pequeños cumplidos o los mensajes de texto reflexivos pueden ser de gran ayuda. El silencio o las palabras duras pueden herir más de lo que esperas. Si tu pareja valora los actos de servicio, las acciones hablan más que las palabras. Ayúdelos con su carga de trabajo, haga pequeñas cosas sin que se lo pidan y cumpla sus promesas. La inconsistencia puede parecer negligencia.|Si su pareja valora recibir obsequios|No se trata de precio, se trata de consideración. Las pequeñas y significativas fichas o sorpresas demuestran que estabas pensando en ellas. Olvidar ocasiones especiales puede parecer muy personal. Si tu pareja valora el tiempo de calidad, estar completamente presente es la clave. Deje de lado las distracciones, participe en actividades compartidas y priorice el tiempo que pasan juntos intencionalmente. Cancelar planes puede parecer un rechazo. Si tu pareja valora el contacto físico, el contacto es su conector emocional. Abrazos, besos, tomarse de la mano o sentarse cerca los hacen sentir amados. La distancia física durante un conflicto puede ser profundamente perturbadora.|Tu lenguaje de amor no es el de ellos|No asumas que lo que funciona para ti funciona para ellos. Aprenda a hablar su idioma, no solo el suyo.|¿No coinciden los estilos?|Sea intencional. Puede parecer antinatural al principio, pero el esfuerzo constante crea nuevos hábitos y cercanía emocional. Utilice lenguajes del amor para reducir el conflicto. A veces la frustración proviene de necesidades emocionales no satisfechas. Reconectarse de la manera que prefieran puede calmar la tensión. Es posible que tengan más de uno. La mayoría de las personas tienen un lenguaje de amor primario y secundario. Observe patrones y haga preguntas para satisfacer mejor sus necesidades.|Los lenguajes del amor pueden cambiar con el tiempo|Las etapas de la vida o el estrés pueden cambiar lo que alguien más necesita. Continúe revisando a medida que evoluciona la relación.</value>
+  </data>
+  <data name="LoveLanguage_Why" xml:space="preserve">
+    <value>Comprender cómo su pareja da y recibe amor puede afectar profundamente cuán conectados y valorados se sienten en la relación. Las personas suelen expresar el amor en la forma en que desean recibirlo, por lo que si sus lenguajes del amor no coinciden, es posible que ambos estén demostrando amor pero extrañándose emocionalmente. Los malentendidos a menudo surgen no de una falta de afecto, sino de una falta de coincidencia en la forma en que se comunica. Aprender y adaptarse al lenguaje del amor de su pareja es una forma práctica de fortalecer la intimidad, generar confianza y reducir los conflictos. También ayuda a prevenir la sensación de "Estoy dando mucho, pero no es suficiente", asegurándose de que el esfuerzo se alinee con lo que realmente le importa a su pareja.</value>
+  </data>
+  <data name="MBTI_Description" xml:space="preserve">
+    <value>Es necesario probar en un sitio de terceros (multilingüe)</value>
+  </data>
+  <data name="MBTI_Name" xml:space="preserve">
+    <value>Personalidad MBTI</value>
+  </data>
+  <data name="MBTI_Tips" xml:space="preserve">
+    <value>Si tu pareja es un ISTJ | Son prácticos, responsables y estructurados. Valoran las tradiciones y la estabilidad. Deles tiempo para abrirse emocionalmente y respetar su necesidad de planificación y rutinas. Si su pareja es un ISFJ, son leales, afectuosos y detallistas. A menudo ponen a los demás en primer lugar. Muestre aprecio con frecuencia y no tome su silencio como desinterés. Si su pareja es un INFJ, son pensadores profundos, empáticos y centrados en el futuro. Necesitan una conversación significativa y un propósito. Sea auténtico y déles espacio para recargar energías. Si su pareja es un INTJ, son estratégicos, independientes y, a menudo, privados. Valoran la inteligencia y la eficiencia. Evite el drama emocional; en su lugar, utilice la lógica y la franqueza al discutir sus inquietudes. Si su pareja es un ISTP, son independientes, espontáneos y analíticos. No les gusta que los microgestionen. Dales libertad y confía en su enfoque de resolución de problemas.|Si tu pareja es un ISFP|Son artísticos, pacíficos y sensibles. Viven el momento y valoran la seguridad emocional. Evite las críticas duras y ofrezca apoyo amable. Si su pareja es un INFP, son idealistas, imaginativos y profundamente emocionales. Se preocupan por los valores y el significado. Sea honesto y abierto, no descarte sus emociones como irracionales. Si su pareja es un INTP, son curiosos, inventivos y se guían por la lógica. Les encanta explorar ideas, no emociones. Sea paciente con las conversaciones emocionales y no exija afirmación constante. Si su pareja es un ESTP, son enérgicos, orientados a la acción y audaces. Prosperan en el presente y no les gusta planificar demasiado. Iguala su energía o dales espacio para expresarla.|Si tu pareja es un ESFP|Son animados, divertidos y centrados en las personas. Buscan emoción y conexión. Sea solidario sin ser demasiado rígido o serio todo el tiempo. Si su pareja es un ENFP, es entusiasta, creativo y expresivo. Valoran la autenticidad. Fomenta sus ideas y no las frenes con demasiadas reglas.|Si tu pareja es un ENTP|Son ingeniosos, audaces e intelectualmente curiosos. Disfrutan de los debates y de las nuevas experiencias. Mantenga las cosas frescas y no se tome sus desafíos como algo personal. Si su pareja es un ESTJ, son organizados, decisivos y están orientados a objetivos. Les gusta la estructura y la responsabilidad. Respete su estilo de liderazgo y comuníquese con claridad. Si su pareja es un ESFJ, son cariñosos, sociables y confiables. Se preocupan por la armonía del grupo. Aprecia sus esfuerzos e inclúyelo en tus planes.|Si tu pareja es un ENFJ|Son carismáticos, empáticos e idealistas. Son cuidadores naturales. Sea honesto, encuéntrelos emocionalmente y muéstreles aprecio. Si su pareja es un ENTJ, son asertivos, estratégicos y ambiciosos. A menudo se hacen cargo. Comuníquese con confianza y no tome la intensidad como falta de cuidado.|Aprenda su dinámica con el tiempo|Incluso los tipos "incompatibles" pueden prosperar si comprenden el cableado mental y las necesidades emocionales de cada uno.|Utilice MBTI como una herramienta, no como una etiqueta|La gente crece y se adapta. La personalidad es fluida en la vida real. Mantenga las conversaciones abiertas, no fijadas en estereotipos.|Equilibre similitudes y diferencias|Algunos tipos hacen clic debido a estilos compartidos, otros se complementan a través del contraste. Lo que más importa es el esfuerzo mutuo y el respeto.</value>
+  </data>
+  <data name="MBTI_Why" xml:space="preserve">
+    <value>El MBTI (Myers-Briggs Type Indicator) es uno de los modelos de personalidad más utilizados en el mundo, basado en cómo las personas perciben el mundo y toman decisiones. Los 16 tipos reflejan diferencias en cómo las personas procesan información, gestionan la energía, resuelven problemas, expresan emociones y navegan en las relaciones. Si bien ninguna combinación es inherentemente "incompatible", ciertas parejas pueden requerir una comunicación más intencional, un compromiso o un espacio para la individualidad. Comprender el MBTI de su pareja puede ayudarlos a evitar malas interpretaciones y apoyarse mutuamente de maneras más constructivas y personalizadas. La gente suele asumir que la compatibilidad proviene de la similitud, pero en muchos casos, los rasgos complementarios (como un pensador con sensibilidad o un planificador con un tipo espontáneo) pueden crear equilibrio, siempre que exista respeto mutuo. Conocer el tipo de cada uno también puede resaltar tensiones recurrentes, como que uno de los dos necesita tiempo a solas (I) mientras que el otro busca un compromiso constante (E), o uno necesita claridad (J) mientras el otro prospera en la flexibilidad (P).</value>
+  </data>
+  <data name="MoneyPersonality_Description" xml:space="preserve">
+    <value>Si tiene alguna duda, puede realizar una prueba en el sitio web original (solo en inglés)</value>
+  </data>
+  <data name="MoneyPersonality_Name" xml:space="preserve">
+    <value>Personalidad Monetaria</value>
+  </data>
+  <data name="MoneyPersonality_Tips" xml:space="preserve">
+    <value>Comprenda la mentalidad de su pareja|Cada personalidad (por ejemplo, visionaria, protectora) aporta fortalezas: aprenda cómo ve su pareja las decisiones monetarias.|Unya diferentes estilos|Si uno ahorra y el otro gasta, establezca objetivos compartidos que respeten ambas tendencias.|Evite juzgar el comportamiento|Llamar a alguien “tacaño” o “imprudente” cierra el diálogo; céntrese en el “por qué” detrás de sus hábitos.|Cree un sistema financiero conjunto|Incluso con diferentes personalidades, puedes co-crear reglas para ahorrar, hacer presupuestos y hacer grandes compras.|Comunícate antes de que llegue el estrés financiero|Habla sobre valores, prioridades y miedos con regularidad, no solo durante los conflictos.|Celebra las fortalezas complementarias|Un socio puede planificar a largo plazo, el otro puede administrar los gastos diarios; usa ambos a tu favor.|No evites el tema|El silencio en torno al dinero a menudo causa más daño que los desacuerdos: normaliza los controles regulares.</value>
+  </data>
+  <data name="MoneyPersonality_Why" xml:space="preserve">
+    <value>El dinero es uno de los principales factores que contribuyen a los conflictos en las relaciones y al divorcio en todo el mundo, no sólo por cuánto gana alguien, sino por cómo se relaciona con el dinero. La personalidad monetaria de una persona influye en cómo ahorra, gasta, invierte y aborda el riesgo. Cuando dos personas tienen actitudes muy diferentes hacia el dinero y no entienden ni respetan esas diferencias, a menudo esto genera tensión, desconfianza o discusiones recurrentes. Ser consciente de la mentalidad financiera de cada uno permite a las parejas comunicarse más claramente, reducir las luchas de poder y tomar decisiones conjuntas que parezcan justas y equilibradas.</value>
+  </data>
+  <data name="RelationshipPersonality_Description" xml:space="preserve">
+    <value>En caso de duda, puede realizar una prueba en un sitio de terceros (solo en inglés)</value>
+  </data>
+  <data name="RelationshipPersonality_Name" xml:space="preserve">
+    <value>Personalidad en la relación</value>
+  </data>
+  <data name="RelationshipPersonality_Tips" xml:space="preserve">
+    <value>Si tu pareja es un explorador, es espontáneo, curioso, buscador de emociones y enérgico. Aportan diversión y aventura a la relación, pero pueden tener dificultades con la coherencia o la rutina a largo plazo. Ofrece estabilidad sin limitar su libertad.|Si tu pareja es Constructora|Es leal, responsable, tradicional y valora la estructura y la planificación a largo plazo. Son excelentes socios para quienes buscan compromiso, pero pueden resistirse al cambio o ser demasiado cautelosos. Respeta sus rutinas y ofrécele pequeños cambios de forma paulatina.|Si tu pareja es Director|Es analítico, confiado, competitivo y directo. Valoran la lógica y la competencia. Pueden parecer emocionalmente distantes o impacientes en las discusiones emocionales. Concéntrese en una comunicación clara y no se tome la franqueza como algo personal. Si su pareja es un negociador, es empático, intuitivo, idealista y emocionalmente expresivo. A menudo valoran la armonía y los vínculos emocionales profundos. Es posible que eviten los conflictos o analicen demasiado los sentimientos. Ofrezca tranquilidad y dé espacio para procesar las emociones.|Busque rasgos complementarios|Los constructores y exploradores pueden equilibrar la seguridad y la emoción. Los directores y negociadores pueden alinearse a través del intelecto y la profundidad emocional. Los opuestos pueden ser fortalezas si se aprecian.|Hable abiertamente sobre las diferencias|Si chocan en ritmo o necesidades emocionales, haga espacio para hablar sobre lo que les da energía o estresa a cada uno de ustedes. El entendimiento mutuo previene el resentimiento.|No se encasillen unos a otros|Todos contienen elementos de múltiples tipos. Utilice estos conocimientos como guías (no como definiciones estrictas) y deje espacio para crecer con el tiempo.</value>
+  </data>
+  <data name="RelationshipPersonality_Why" xml:space="preserve">
+    <value>El modelo de personalidad de Helen Fisher ayuda a explicar cómo se comportan las personas en las relaciones románticas basadas en sistemas biológicos vinculados a la química del cerebro. Cada tipo: Explorador (impulsado por la dopamina), Constructor (serotonina), Director (testosterona) y Negociador (estrógeno), tiene distintos patrones de comunicación, atracción, toma de decisiones y necesidades emocionales. Los malentendidos a menudo no surgen de la falta de amor, sino de una mala interpretación o infravaloración de la personalidad central de la pareja. Conocer el tipo de tu pareja da una idea de su comportamiento y permite un mejor trabajo en equipo, empatía y seguridad emocional en la relación.</value>
+  </data>
+  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
+    <value>A diferencia de otras personalidades, la compatibilidad de esta es una preferencia personal.</value>
+  </data>
+  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
+    <value>Personalidad Sexual (preferencias)</value>
+  </data>
+  <data name="SexPersonality_Description" xml:space="preserve">
+    <value>Si tiene alguna duda, puede realizar una prueba en el sitio web original (solo en inglés)</value>
+  </data>
+  <data name="SexPersonality_Name" xml:space="preserve">
+    <value>Personalidad Sexual</value>
+  </data>
+  <data name="SexPersonality_Tips" xml:space="preserve">
+    <value>Descompresor|Utilizan el sexo para relajarse y descansar. Evite hacerlos sentir presionados a actuar o demasiado románticos en todo momento. Un espacio tranquilo y libre de juicios genera conexión.|Explorador|Curioso y abierto a probar cosas nuevas. Mantenga una mente abierta, fomente la experimentación, pero establezca límites claros juntos.|Comerciante Justo|Busca el equilibrio: si dan, esperan recibir. Garantice una comunicación abierta y justa sobre las necesidades, o podrían sentir que se dan por sentado.|Dador|Obtiene satisfacción del placer de su pareja. Aprecie su generosidad, pero también asegúrese de que se sienta valorado y no sólo útil.|Guardián|Cauteloso y protector. Necesitan tiempo, confianza y seguridad emocional. Evite la intimidad apresurada o malinterprete la lentitud como desinterés.|Passion Pursuer|Anhela intensidad y cercanía. Haga coincidir su energía cuando sea posible, pero también ayude a equilibrar la pasión con la regulación emocional.|Buscador de placer|Se centra en el disfrute y la estimulación. Mantenga las cosas divertidas y atractivas, pero analice los límites si su enfoque en las sensaciones anula la intimidad emocional.|Priorizador|El sexo es fundamental para su identidad y bienestar. Trate sus necesidades con seriedad y no minimice el papel que juega la intimidad en su vida.|Romántico|Conecta el sexo con el amor y los vínculos emocionales. Si eres más casual o espontáneo, muestra afecto de maneras que aún apoyen la cercanía emocional.|Espiritualista|Ve el sexo como trascendente o sagrado. Respete su forma de pensar, incluso si no la comparte, y cree un espacio para una conexión significativa.|Buscador de emociones|Emocionado por la novedad y el riesgo. Equilibra su deseo de aventura con seguridad mutua y consentimiento claro: la variedad es importante, pero también lo es la confianza.|Tienes prioridades diferentes|Utiliza la curiosidad, no la crítica, para explorar tus diferencias. Concéntrese en las experiencias compartidas y la satisfacción mutua.|Pueden ocurrir malentendidos|Hable abiertamente sobre las motivaciones detrás de la intimidad. A menudo, el problema no es el sexo en sí, sino cómo se interpreta. Las personalidades pueden evolucionar. Lo que alguien necesita sexualmente puede cambiar con la edad, el estrés o los acontecimientos de la vida. Sigan controlándose y sean flexibles juntos.|Ningún tipo es “mejor”|Evite clasificar o juzgar estilos. La compatibilidad se trata de respeto mutuo, apertura y voluntad de adaptarse.</value>
+  </data>
+  <data name="SexPersonality_Why" xml:space="preserve">
+    <value>La compatibilidad sexual no se trata sólo de preferencias o frecuencia: se trata de los patrones emocionales, psicológicos y de comportamiento que cada persona aporta a la intimidad. Las personas tienen diferentes motivaciones, prioridades y estilos de comunicación cuando se trata de sexo. Algunos lo usan para conectarse, otros para exploración, alivio del estrés, afirmación emocional o vínculo espiritual. Si estas necesidades no están alineadas o se malinterpretan, puede generar frustración, vergüenza o desconexión. Comprender la personalidad sexual de cada uno ayuda a fomentar la empatía, mejora la comunicación, reduce la presión y abre la puerta a una vida íntima más satisfactoria y respetuosa, algo fuertemente vinculado al éxito de las relaciones a largo plazo.</value>
+  </data>
+  <data name="SharedSpendingStyle_Name" xml:space="preserve">
+    <value>Estilo de gasto compartido</value>
+  </data>
+  <data name="SharedSpendingStyle_Tips" xml:space="preserve">
+    <value>Aclare las expectativas temprano|A menudo surgen malentendidos cuando uno asume que los costos compartidos se dividirán en partes iguales, mientras que el otro espera apoyo total.|Evite la vergüenza o el juicio|No existe un rol “incorrecto”; lo que importa es que ambos socios se sientan cómodos y estén de acuerdo.|Equilibre la dinámica de poder|Si uno aporta financieramente, el otro aún puede contribuir emocional o logísticamente; ambos roles merecen respeto.|Discuta cómo es la justicia|Si es 50/50, proporcional, o unilateral: decidan juntos lo que se siente correcto y sostenible.|Revise el acuerdo a lo largo del tiempo|Las situaciones cambian—esté abierto a renegociar roles debido a cambios de carrera, salud u objetivos de vida.|Reconozca el trabajo oculto|Los partidarios o dependientes a menudo contribuyen de maneras no financieras (por ejemplo, cuidado, apoyo emocional): no pase por alto esto.|El estrés del proveedor es real|Si usted es el principal proveedor financiero, exprese también sus límites y necesidades emocionales.</value>
+  </data>
+  <data name="SharedSpendingStyle_Why" xml:space="preserve">
+    <value>Este campo refleja cómo cada socio espera que se dividan las responsabilidades financieras, desde ser un proveedor total hasta recibir apoyo total. Estas expectativas afectan los gastos diarios, la planificación a largo plazo y la dinámica emocional en una relación. Los desequilibrios en las contribuciones financieras no son necesariamente problemáticos, pero las expectativas desalineadas sobre quién paga qué a menudo generan tensión, resentimiento o luchas de poder. Muchos divorcios y rupturas no tienen su origen en los ingresos en sí, sino en cómo se comparte y percibe la responsabilidad financiera. Comprender y alinearse con esta dinámica ayuda a las parejas a generar claridad, confianza y respeto mutuo.</value>
+  </data>
+</root>

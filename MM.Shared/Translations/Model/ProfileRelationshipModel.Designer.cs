@@ -70,11 +70,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direct Resolution|If you or your partner prefer direct communication, make sure timing and tone are respectful—being clear doesn’t mean being harsh.|Reflective Approach|These partners need time to process before responding. Give them space—but don’t confuse this with avoidance.|Avoidance/Denial|Avoiders often want peace, not disconnection. Help them feel safe discussing uncomfortable topics without pressure or blame.|Respect pacing|If one wants to solve the issue now and the other needs time, agree on a pau [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ConflictResolutionStyle_Tips {
+            get {
+                return ResourceManager.GetString("ConflictResolutionStyle_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How each person handles conflict can either strengthen or erode a relationship over time. Some prefer to address issues head-on, others need space to process, and some avoid conflict altogether. These differences can cause major misunderstandings—what feels like “handling it” to one may feel like “attacking” or “withdrawing” to the other. Recognizing and respecting each other’s conflict style helps prevent escalation, improves emotional safety, and builds trust. Even incompatible styles can work together wh [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ConflictResolutionStyle_Why {
+            get {
+                return ResourceManager.GetString("ConflictResolutionStyle_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Household Management.
         /// </summary>
         public static string HouseholdManagement {
             get {
                 return ResourceManager.GetString("HouseholdManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shared Responsibilities|If both partners contribute equally, revisit task distribution periodically to keep things fair and balanced as circumstances change.|Primary Responsibilities|When one person manages most tasks, express appreciation and regularly check if they&apos;re feeling overwhelmed or need support.|External Support|If you rely on hired help (e.g., cleaners, nannies), make sure both agree on costs, roles, and boundaries.|Avoid silent resentment|Don’t assume your partner “should just notice” what need [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HouseholdManagement_Tips {
+            get {
+                return ResourceManager.GetString("HouseholdManagement_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How household tasks are managed reflects each partner’s expectations about roles, time, and fairness. Misalignment in this area—like one person feeling overburdened or another feeling left out—can lead to long-term resentment and imbalance. Whether a couple shares chores equally, one takes on more, or they hire outside help, what matters most is clarity and agreement. Aligning expectations here contributes to daily harmony and avoids unnecessary friction..
+        /// </summary>
+        public static string HouseholdManagement_Why {
+            get {
+                return ResourceManager.GetString("HouseholdManagement_Why", resourceCulture);
             }
         }
         
@@ -97,6 +133,24 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comfortable|If you&apos;re both comfortable, maintain transparency. Introduce close friends to your partner and include them in your social circle when appropriate to reinforce trust.|Boundaries Needed|Clarify what boundaries look like—Is it frequency of contact? Private time alone? Type of conversations? Agreeing on mutual respect keeps things balanced.|Uncomfortable|If one of you feels uneasy, don’t dismiss it as jealousy. Explore the root of the discomfort and see if there’s a compromise that respects both pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string OppositeSexFriendships_Tips {
+            get {
+                return ResourceManager.GetString("OppositeSexFriendships_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People have different comfort levels when it comes to their partner having close friendships with members of the opposite sex. These boundaries are shaped by past experiences, cultural values, personality, and trust levels. If unspoken, mismatched expectations can lead to jealousy, insecurity, or even accusations. Being upfront about what each person is comfortable with builds trust and helps prevent misunderstandings or emotional tension later on..
+        /// </summary>
+        public static string OppositeSexFriendships_Why {
+            get {
+                return ResourceManager.GetString("OppositeSexFriendships_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shared Finances.
         /// </summary>
         public static string SharedFinances {
@@ -106,11 +160,47 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Joint Accounts|This setup promotes transparency and unity, but it requires high trust and aligned spending habits—regular check-ins help avoid surprises.|Separate Accounts|Maintains personal autonomy, useful if you both value independence—but can lead to a sense of separation if emotional investment in shared expenses is low.|Hybrid Approach|Allows balance: shared expenses are managed jointly, while personal purchases remain separate—helps prevent conflict over differing habits.|Talk early, talk often|Even  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SharedFinances_Tips {
+            get {
+                return ResourceManager.GetString("SharedFinances_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How a couple handles shared finances can significantly affect daily decision-making, autonomy, and long-term stability. It&apos;s not just about who pays what, but about how each partner views money, control, trust, and fairness. Some people prefer full transparency, while others need financial independence to feel secure. If not aligned, these differences can cause stress, resentment, or power imbalance. Clarity around money management styles helps set expectations, prevent conflict, and foster mutual respect.  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SharedFinances_Why {
+            get {
+                return ResourceManager.GetString("SharedFinances_Why", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time Together Preference.
         /// </summary>
         public static string TimeTogetherPreference {
             get {
                 return ResourceManager.GetString("TimeTogetherPreference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alone Time|If your partner values alone time, it doesn&apos;t mean they love you less—they may just recharge better in solitude. Respecting that space avoids pressure and allows them to show up more fully when you&apos;re together.|Balanced Time|This preference often requires active communication. Regularly check in to maintain a healthy rhythm between togetherness and independence, especially during life changes.|Quality Together|If your partner thrives on shared time, be intentional when you&apos;re together—put away di [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string TimeTogetherPreference_Tips {
+            get {
+                return ResourceManager.GetString("TimeTogetherPreference_Tips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How much time each person wants to spend with their partner can deeply affect the emotional connection and rhythm of the relationship. While some people thrive on near-constant companionship, others need regular time alone to recharge. If mismatched, one partner may feel neglected while the other feels smothered. Discussing these needs early on helps prevent misunderstandings and allows each person to feel secure, respected, and emotionally fulfilled..
+        /// </summary>
+        public static string TimeTogetherPreference_Why {
+            get {
+                return ResourceManager.GetString("TimeTogetherPreference_Why", resourceCulture);
             }
         }
     }

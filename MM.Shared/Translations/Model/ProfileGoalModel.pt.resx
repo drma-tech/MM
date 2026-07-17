@@ -120,13 +120,37 @@
   <data name="IdealPlaceToLive" xml:space="preserve">
     <value>Lugar ideal para viver</value>
   </data>
+  <data name="IdealPlaceToLive_Tips" xml:space="preserve">
+    <value>Urbano|Se o seu parceiro adora a vida na cidade, apoie sua necessidade de acesso à cultura, vida noturna e conveniência, mesmo que isso signifique mais barulho ou multidões.|Suburbano|Se ele prefere subúrbios, respeite seu desejo por espaço, segurança e sentimento de comunidade. Equilibre isso com atividades sociais fora do bairro.|Rural|Para os amantes do campo, reconheça a necessidade de natureza, tranquilidade e simplicidade. Discuta como gerenciar a distância de serviços ou oportunidades sociais.|Flexível|Se um ou ambos forem flexíveis, aproveite isso como um ponto forte para explorar compromissos e se adaptar às mudanças da vida juntos.|Discuta as expectativas|Fale sobre com que frequência você deseja visitar amigos, familiares ou locais culturais para encontrar um lugar que atenda a ambos.|Considere as necessidades futuras|Pense no trabalho, nos filhos, na saúde e no envelhecimento - o que combina com você agora pode mudar com o tempo.|Tente antes de decidir|Se possível, passem algum tempo juntos em ambientes diferentes antes de se comprometerem com um estilo de vida.</value>
+  </data>
+  <data name="IdealPlaceToLive_Why" xml:space="preserve">
+    <value>O local onde você deseja morar molda seu estilo de vida diário, oportunidades sociais e satisfação a longo prazo. As diferenças nas preferências – seja a agitação urbana, os subúrbios tranquilos ou a calma rural – podem afectar tudo, desde os tempos de deslocação até à vida social e ao acesso a comodidades. Se os parceiros tiverem ideias contraditórias sobre o seu ambiente ideal, isso pode levar a compromissos que deixam um ou ambos infelizes. Compreender isso ajuda a definir expectativas e evitar frustrações, principalmente ao planejar o futuro.</value>
+  </data>
   <data name="RelationshipIntentions" xml:space="preserve">
     <value>Intenções de relacionamento</value>
+  </data>
+  <data name="RelationshipIntentions_Tips" xml:space="preserve">
+    <value>Alinhe metas desde o início | Fale abertamente sobre seus objetivos de longo prazo no início do relacionamento - não presuma que você está na mesma página. | Respeite cronogramas diferentes | Mesmo que suas intenções correspondam, seu ritmo pode ser diferente. Seja paciente e encontre um ritmo que funcione para ambos.|Evite pressão|Se uma pessoa deseja o casamento e a outra não está pronta, discuta abertamente em vez de pressionar por decisões imediatas.|“Viver Juntos” ≠ “Preparação para o casamento”|Algumas pessoas veem a coabitação como um passo em direção ao casamento; outros vêem isso como um objetivo final. Esclareça o que isso significa para vocês dois. | As intenções podem evoluir | Esteja aberto a mudanças - mas não permaneça em um relacionamento incompatível esperando que a outra pessoa "mude de acordo". As necessidades e prioridades das pessoas podem mudar com o tempo.</value>
+  </data>
+  <data name="RelationshipIntentions_Why" xml:space="preserve">
+    <value>O alinhamento do relacionamento começa com intenções compartilhadas. Quer alguém esteja buscando um compromisso de longo prazo, coabitação ou casamento, a clareza aqui evita desencontros emocionais e perda de tempo. Intenções incompatíveis – como um parceiro querer viver junto enquanto o outro imagina o casamento – podem levar à frustração, falta de comunicação ou desgosto. Conhecer a visão do seu parceiro para o futuro ajuda ambos os lados a decidir se estão investindo no mesmo tipo de jornada de relacionamento.</value>
   </data>
   <data name="Relocation" xml:space="preserve">
     <value>Realocação</value>
   </data>
+  <data name="Relocation_Tips" xml:space="preserve">
+    <value>Local agora, futuro global?|Mesmo que vocês estejam no mesmo local hoje, conversem sobre se um de vocês planeja se mudar no futuro.|Diferentes pontos de vista sobre mudança?|Seja honesto. Se um está enraizado e o outro inquieto, encontre um meio-termo ou reconsidere a adaptação a longo prazo. Esclareça o que "relocação" realmente significa para vocês dois.|Laços familiares e profissionais?|Considere como os filhos, o trabalho ou as responsabilidades familiares podem afetar sua capacidade - ou vontade - de se mudar.|Testem o cenário juntos|Se a relocação for uma possibilidade, planejem viagens curtas ou estadias temporárias juntos antes de fazer grandes mudanças.</value>
+  </data>
+  <data name="Relocation_Why" xml:space="preserve">
+    <value>As preferências de realocação impactam significativamente a viabilidade de um relacionamento a longo prazo, especialmente em partidas globais ou de longa distância. Mesmo para jogos locais, saber se alguém está aberto – ou resistente – à mudança ajuda a esclarecer se planos de vida partilhados são possíveis. Um parceiro pode sonhar em viver no estrangeiro ou numa cidade diferente, enquanto o outro se sente profundamente enraizado onde está. Essas preferências afetam as decisões de carreira, o planejamento familiar e as escolhas de estilo de vida. Discutir a mudança antecipadamente reduz o risco de conflitos futuros sobre onde e como vocês construirão uma vida juntos.</value>
+  </data>
   <data name="WantChildren" xml:space="preserve">
     <value>Quero filhos</value>
+  </data>
+  <data name="WantChildren_Tips" xml:space="preserve">
+    <value>Ambos querem filhos? | Você pode começar a discutir cronogramas, valores parentais e que tipo de vida familiar vocês dois imaginam. | Um quer, outro não? | Esta é uma incompatibilidade fundamental. Evite presumir que algum de vocês vai "mudar de ideia" - fale aberta e honestamente. | Alguém não tem certeza? | Explore o que está por trás da incerteza: estágio da vida, experiências passadas, medos ou preocupações práticas. | Objetivos semelhantes, momento diferente? | Certifique-se de estar alinhado sobre quando gostaria de ter filhos - anos de diferença podem criar pressão mais tarde. | Já tem filhos? | Se apenas um de vocês for pai, esclareça se o outro está aberto a ser pai de enteados ou adicionar mais.|Não quer filhos?|Certifique-se de que ambos estão na mesma página sobre como viver um estilo de vida sem filhos e o que isso significa a longo prazo.|Pressão cultural ou familiar?|Compartilhe como as expectativas externas podem estar influenciando sua decisão - e respeitem os limites um do outro.</value>
+  </data>
+  <data name="WantChildren_Why" xml:space="preserve">
+    <value>O desejo de ter filhos é um dos tópicos mais fundamentais nos relacionamentos de longo prazo. Influencia o estilo de vida, os valores, as prioridades, as finanças e até mesmo onde e como um casal escolhe viver. Uma incompatibilidade nesta área – como um parceiro ter certeza de que quer filhos enquanto o outro se opõe firmemente – muitas vezes leva ao desgosto, mesmo que todo o resto esteja alinhado. Compreender antecipadamente a posição de cada um ajuda a evitar a construção de investimento emocional em objetivos incompatíveis. Mesmo que alguém esteja indeciso, essa própria incerteza deve ser levada a sério.</value>
   </data>
 </root>

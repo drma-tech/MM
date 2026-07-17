@@ -2,30 +2,30 @@
 
 public enum ReadingGenre
 {
-    [FieldSettings("FictionLiterature", Description = "FictionLiterature_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.FictionLiterature), Description = nameof(Translations.Enum.ReadingGenre.FictionLiterature_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     FictionLiterature = 1,
 
-    [FieldSettings("SpeculativeAdventure", Description = "SpeculativeAdventure_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.SpeculativeAdventure), Description = nameof(Translations.Enum.ReadingGenre.SpeculativeAdventure_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     SpeculativeAdventure = 2,
 
-    [FieldSettings("RomanceRelationships", Description = "RomanceRelationships_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.RomanceRelationships), Description = nameof(Translations.Enum.ReadingGenre.RomanceRelationships_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     RomanceRelationships = 3,
 
-    [FieldSettings("HistoryBiographical", Description = "HistoryBiographical_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.HistoryBiographical), Description = nameof(Translations.Enum.ReadingGenre.HistoryBiographical_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     HistoryBiographical = 4,
 
-    [FieldSettings("SelfImprovementMindfulness", Description = "SelfImprovementMindfulness_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.SelfImprovementMindfulness), Description = nameof(Translations.Enum.ReadingGenre.SelfImprovementMindfulness_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     SelfImprovementMindfulness = 5,
 
-    [FieldSettings("ScienceNatureExploration", Description = "ScienceNatureExploration_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.ScienceNatureExploration), Description = nameof(Translations.Enum.ReadingGenre.ScienceNatureExploration_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     ScienceNatureExploration = 6,
 
-    [FieldSettings("SocietyCurrentAffairs", Description = "SocietyCurrentAffairs_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.SocietyCurrentAffairs), Description = nameof(Translations.Enum.ReadingGenre.SocietyCurrentAffairs_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     SocietyCurrentAffairs = 7,
 
-    [FieldSettings("EducationReference", Description = "EducationReference_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.EducationReference), Description = nameof(Translations.Enum.ReadingGenre.EducationReference_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     EducationReference = 8,
 
-    [FieldSettings("VisualStorytelling", Description = "VisualStorytelling_Description", ResourceType = typeof(Translations.Enum.ReadingGenre))]
+    [FieldSettings(nameof(Translations.Enum.ReadingGenre.VisualStorytelling), Description = nameof(Translations.Enum.ReadingGenre.VisualStorytelling_Description), ResourceType = typeof(Translations.Enum.ReadingGenre))]
     VisualStorytelling = 9
 }

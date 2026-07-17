@@ -123,8 +123,20 @@
   <data name="AnnualIncome_Name" xml:space="preserve">
     <value>Revenu annuel</value>
   </data>
+  <data name="AnnualIncome_Tips" xml:space="preserve">
+    <value>Parlez de vos attentes en matière de style de vie|Même avec amour, différents niveaux de revenu peuvent conduire à des habitudes de dépenses ou à des priorités inadéquates. Discutez-en ouvertement.|Équilibrez équitablement les cotisations|Si les revenus diffèrent, concentrez-vous sur une contribution proportionnelle plutôt que de tout diviser à 50/50.|Évitez les hypothèses sur les rôles financiers|Ne présumez pas que le revenu le plus élevé paiera toujours ou que le revenu le plus faible devrait se sentir endetté : définissez vos propres règles.|Soyez honnête à propos de la pression financière|Si l'un des partenaires ressent des difficultés financières, parlez-en. dès le début, le silence peut susciter du ressentiment.</value>
+  </data>
+  <data name="AnnualIncome_Why" xml:space="preserve">
+    <value>Le revenu annuel influence le mode de vie quotidien, les choix à court terme et la facilité avec laquelle les partenaires peuvent contribuer à des objectifs communs comme voyager, se loger ou fonder une famille. Même si le revenu à lui seul ne définit pas la compatibilité, des différences majeures, si elles ne sont pas discutées, peuvent créer des frictions autour des dépenses, de l'équité et des attentes. Les tensions ou déséquilibres financiers peuvent également affecter la manière dont les responsabilités sont réparties, en particulier lorsqu'un partenaire se sent surchargé ou sous-évalué. La compatibilité des revenus permet de prendre plus facilement des décisions communes, d'éviter les ressentiments et de construire une relation fondée sur la transparence et le respect mutuel.</value>
+  </data>
   <data name="CareerCluster_Name" xml:space="preserve">
     <value>Carrière</value>
+  </data>
+  <data name="CareerCluster_Tips" xml:space="preserve">
+    <value>Carrières dans des domaines connexes ?|Utilisez vos expériences communes pour faire preuve d'empathie et vous soutenir mutuellement face au stress et aux opportunités liés au travail.|Carrières dans différents domaines ?|Soyez curieux et ouvert à l'apprentissage du monde professionnel de votre partenaire pour renforcer le respect.|L'un a une routine stable, l'autre des horaires irréguliers ?|Fixez des attentes claires en matière de temps et de communication de qualité.|Déplacements fréquents ou déménagement possible ?|Discutez de vos projets à long terme et de la façon de rester en contact malgré la distance.|Des différences de revenu ou de statut importantes ?|Se concentrer sur l'autre respect et soutien, pas comparaison.|Un partenaire est actuellement au chômage ou en transition ?|Offrir de la patience et des encouragements sans pression.|Carrières exposées au public ou très stressées ?|Rapportez-vous régulièrement pour soutenir la santé mentale et l'équilibre travail-vie personnelle.</value>
+  </data>
+  <data name="CareerCluster_Why" xml:space="preserve">
+    <value>Avoir des carrières différentes ne provoque pas nécessairement des conflits dans une relation. Cependant, lorsque les partenaires travaillent dans des domaines ou des industries similaires, ils comprennent souvent mieux les défis de chacun, tels que les horaires de travail irréguliers, la pression du travail, l’exposition du public, les déplacements fréquents ou la nécessité de déménager. Cette compréhension partagée peut réduire les frictions potentielles et créer des opportunités de soutien mutuel.</value>
   </data>
   <data name="Diet_Description" xml:space="preserve">
     <value>Option la plus courante sélectionnée automatiquement (applicable à la plupart des personnes)</value>
@@ -132,11 +144,29 @@
   <data name="Diet_Name" xml:space="preserve">
     <value>Régime</value>
   </data>
+  <data name="Diet_Tips" xml:space="preserve">
+    <value>Vous avez des régimes alimentaires différents ?|Soyez flexible dans les repas partagés : trouvez des plats qui répondent aux deux besoins sans transformer les repas en conflit.|Le partenaire est végétalien/végétarien et vous ne l'êtes pas ?|Respectez ses raisons. Évitez les taquineries et soyez ouvert à essayer ses préférences alimentaires de temps en temps.|On a un régime alimentaire basé sur la santé ou restrictif (par exemple, sans gluten, détox) ?|Le prendre au sérieux. Comprenez qu'il ne s'agit pas seulement d'une « tendance » : elle peut être vitale pour leur bien-être.|Les deux apprécient l'alimentation biologique/locale ?|Célébrez cet alignement : planifiez des sorties au marché, cuisinez ensemble et explorez la culture alimentaire saine.|La nourriture est culturelle ou émotionnelle pour l'un de vous ?|Parlez de ce que la nourriture signifie pour l'autre, en particulier pendant les vacances ou les événements familiaux.|Vous envisagez de vivre ensemble ?|Discutez tôt des courses, de la préparation des repas et des habitudes de cuisine.|L'un des partenaires est très strict, l'autre flexible ?|Soyez honnête sur ce que ressent cette dynamique et trouvez des moyens de faire des compromis (par exemple, repas partagés ou préparation individuelle).</value>
+  </data>
+  <data name="Diet_Why" xml:space="preserve">
+    <value>Les choix alimentaires reflètent souvent des valeurs personnelles, des besoins en matière de santé, une culture ou un mode de vie. Ils affectent les routines quotidiennes, la cuisine, les repas au restaurant et même la compatibilité à long terme si élever des enfants fait partie du plan. L’alignement – ​​ou la gestion respectueuse des différences – permet d’éviter les frictions et favorise l’attention mutuelle.</value>
+  </data>
   <data name="Drink_Name" xml:space="preserve">
     <value>Boire</value>
   </data>
+  <data name="Drink_Tips" xml:space="preserve">
+    <value>Un partenaire ne boit pas du tout ?|Respecter son choix sans pression ni taquinerie. Optez pour des activités et des boissons sans alcool lorsque vous êtes ensemble.|L’un boit légèrement/modérément et l’autre beaucoup ?|Parlez ouvertement de la façon dont la consommation d’alcool affecte votre temps ensemble. Fixez des limites si cela a un impact sur la communication ou l'humeur.|Les deux boivent socialement ?|Célébrez l'alignement, mais convenez également des limites et d'un comportement sûr en public ou lorsque vous recevez des invités.|Votre partenaire boit pour faire face ?|Soutenez-le sans jugement, mais encouragez des mécanismes d'adaptation sains et parlez de la façon dont cela affecte la relation.|Différentes opinions culturelles ou religieuses sur l'alcool ?|Soyez ouvert sur les attentes et évitez les environnements qui mettent l'un ou l'autre des partenaires mal à l'aise.|Gêne avec l'alcool dans la relation ?|Soyez honnête dès le début. Il est normal de définir des éléments non négociables concernant la consommation d'alcool.|Les occasions spéciales ou les voyages impliquent de boire ?|Planifiez à l'avance : convenez de ce qui semble équilibré et respectueux pour les deux.</value>
+  </data>
+  <data name="Drink_Why" xml:space="preserve">
+    <value>Les habitudes de consommation d’alcool peuvent influencer le mode de vie, les milieux sociaux, la santé et les valeurs. Un mauvais alignement, comme un partenaire buvant beaucoup et l'autre étant sobre, peut créer des frictions sur les priorités, les routines et les limites. Comprendre les habitudes de consommation d’alcool de chacun permet d’éviter de futurs conflits et favorise un compromis respectueux.</value>
+  </data>
   <data name="EducationLevel_Name" xml:space="preserve">
     <value>Éducation</value>
+  </data>
+  <data name="EducationLevel_Tips" xml:space="preserve">
+    <value>On a un niveau d'éducation plus élevé ? |Évitez les hypothèses : l'éducation ne garantit pas la maturité émotionnelle ou la compatibilité. Respectez les connaissances et les forces de chacun.|Des parcours académiques différents ?|Restez curieux. Apprenez des points de vue de chacun plutôt que de considérer les différences comme des écarts.|Des niveaux d'éducation similaires ?|Cela peut favoriser une communication plus fluide et des projets de vie alignés, mais ne confondez pas similarité avec compatibilité dans d'autres domaines.|Éducation contre ambition ?|On n'a peut-être pas de diplôme, mais on est toujours motivé et capable – n'assimilez pas le manque d'éducation formelle à un manque de potentiel.|Vous ne vous sentez pas sûr de votre éducation ?|Concentrez-vous sur votre expérience vécue et votre intelligence émotionnelle. Les relations prospèrent sur le respect mutuel, pas sur les diplômes.|Vous discutez de sujets complexes ?|Évaluez votre niveau de confort. Utilisez un dialogue ouvert pour garantir que les deux se sentent inclus, sans condescendance ni pression.|Obstacles culturels ou systémiques à l'éducation ?|Faites preuve de compassion. Tout le monde n’a pas eu un accès égal : comprenez le parcours, pas seulement le résultat.</value>
+  </data>
+  <data name="EducationLevel_Why" xml:space="preserve">
+    <value>Le niveau d'éducation peut refléter les valeurs, le style de communication, les expériences de vie et le parcours professionnel d'une personne. Même si cela ne définit pas l’intelligence ou le caractère, des formations différentes peuvent influencer les attentes en matière de style de vie, la dynamique des conversations ou les objectifs partagés.</value>
   </data>
   <data name="FamilyInvolvement_Description" xml:space="preserve">
     <value>Dans certaines cultures, la famille joue un rôle clé dans les décisions relationnelles. Dans quelle mesure votre famille est-elle impliquée ?</value>
@@ -144,32 +174,38 @@
   <data name="FamilyInvolvement_Name" xml:space="preserve">
     <value>Implication familiale</value>
   </data>
+  <data name="FamilyInvolvement_Tips" xml:space="preserve">
+    <value>L’un de vous est très impliqué dans la vie familiale ?|Discutez des limites dès le début. Ce qu’est l’amour pour l’un peut sembler intrusif pour l’autre.|Vous avez différents niveaux d’implication ?|Parlez des attentes : à quelle fréquence allez-vous rendre visite ou communiquer avec les familles, et quelle influence auront-elles ?|Les deux ne sont pas très impliqués ?|Cela peut simplifier la logistique, mais parlez de la façon dont vous construirez votre propre système de soutien ou vos propres traditions.|L’un des partenaires valorise l’indépendance ?|Respectez son espace. Ne forcez pas les interactions familiales avec lesquelles ils ne sont pas à l'aise.|La famille fait partie de la prise de décision pour l'un d'entre vous ?|Soyez clair sur les limites : les partenaires doivent avoir l'impression que leur voix passe en premier.|Vous planifiez des vacances ou de grands événements de la vie ?|Discutez de la manière dont les familles seront incluses pour éviter de futurs ressentiments.</value>
+  </data>
+  <data name="FamilyInvolvement_Why" xml:space="preserve">
+    <value>Le niveau d’implication familiale peut façonner les routines quotidiennes, les limites, les vacances, la prise de décision et la résolution des conflits. La compatibilité permet ici d'éviter le stress causé par des attentes différentes en matière de confidentialité, de loyauté ou d'indépendance.</value>
+  </data>
   <data name="HaveChildren_Name" xml:space="preserve">
     <value>Avoir des enfants</value>
+  </data>
+  <data name="HaveChildren_Tips" xml:space="preserve">
+    <value>L'un de vous a des enfants ?|Parlez ouvertement du rôle, le cas échéant, que jouerait le nouveau partenaire. Soyez patient et respectueux des responsabilités parentales.|Les enfants ne vivent pas avec le parent ?|Comprenez que même s'ils ne sont pas présents quotidiennement, le rôle parental affecte toujours la disponibilité, la concentration émotionnelle et la planification à long terme.|Vous n'avez pas tous les deux d'enfants ?|Discutez de vos intentions futures. limites et avancez à un rythme confortable.|Vous êtes déjà parent et vous sortez avec quelqu'un sans enfants ?|Aidez-les à comprendre que la parentalité s'accompagne de responsabilités, d'imprévisibilité et d'un besoin de flexibilité.|Présenter un nouveau partenaire aux enfants ?|Allez-y doucement. Assurez-vous d'établir un climat de confiance avant d'impliquer émotionnellement les enfants.</value>
+  </data>
+  <data name="HaveChildren_Why" xml:space="preserve">
+    <value>Avoir des enfants, qu'ils vivent ou non avec leurs parents, affecte le temps, les priorités, l'énergie émotionnelle et la planification à long terme. Cela a également un impact sur la manière dont un nouveau partenaire peut s'intégrer dans la dynamique familiale et dans les décisions de vie futures.</value>
   </data>
   <data name="HavePets_Name" xml:space="preserve">
     <value>Animaux de compagnie</value>
   </data>
+  <data name="HavePets_Tips" xml:space="preserve">
+    <value>L'un de vous a des animaux de compagnie et l'autre pas ?|Clarifiez les niveaux de confort : le partenaire est-il gêné de vivre avec ou de prendre soin d'animaux ? Des allergies ou des conflits de style de vie peuvent survenir.|L’un aime les animaux, l’autre n’en veut pas ?|Soyez honnête sur la compatibilité à long terme. Une forte préférence pour les animaux de compagnie peut signaler des différences de style de vie plus profondes. Les animaux exotiques peuvent avoir des besoins de soins uniques.|Les deux ont des animaux de compagnie ?|Excellent, mais ils parlent quand même de présentations : comment les animaux s'entendront-ils et qui sera responsable de quoi ?|L'un ni l'autre n'a d'animaux de compagnie mais l'un d'entre eux en veut ?|Parlez tôt des projets d'avenir. Certaines personnes considèrent les animaux de compagnie comme une famille, d'autres préfèrent un foyer sans animaux.|Fort attachement à un animal de compagnie ?|Le respecter. Ils peuvent considérer l'animal comme un compagnon ou un soutien émotionnel. Ne minimisez pas ce lien.</value>
+  </data>
+  <data name="HavePets_Why" xml:space="preserve">
+    <value>Les animaux de compagnie influencent le mode de vie, les routines quotidiennes, les finances, la flexibilité des voyages et même les conditions de vie. Ils peuvent constituer un lien émotionnel fort ou une source de conflit si l'un des partenaires n'est pas en phase avec les préférences ou les valeurs de l'autre envers les animaux.</value>
+  </data>
   <data name="LivingSituation_Name" xml:space="preserve">
     <value>je vis avec</value>
   </data>
-  <data name="LoveLanguage_Description" xml:space="preserve">
-    <value>Si vous avez des doutes, vous pouvez passer un test sur le site original (anglais et espagnol)</value>
+  <data name="LivingSituation_Tips" xml:space="preserve">
+    <value>Vivre seul ?|Appréciez leur besoin d’intimité et d’indépendance. Respectez leur espace tout en établissant des liens.|Vivre en famille?|Soyez conscient de la dynamique familiale et des influences possibles sur votre relation. Soutenez leur besoin d’équilibrer les deux.|Vivre avec des amis ?|L’environnement social peut être animé : discutez du temps que vous passerez ensemble plutôt qu’avec des colocataires.|Vivre avec un ex-partenaire ?|Cela peut être complexe ; parlez ouvertement des limites, de la confiance et de la sécurité émotionnelle.|Vivre avec des colocataires ?|Définissez des attentes claires concernant les espaces partagés, les invités et la communication.|Autres situations de vie ?|Clarifiez ce qui fonctionne pour eux et comment vous pouvez vous adapter pour créer un environnement familial confortable.|Différentes situations de vie ?|Respectez le style de vie de chacun et négociez comment passer du temps de qualité sans inconfort.</value>
   </data>
-  <data name="LoveLanguage_Name" xml:space="preserve">
-    <value>Langue d'amour</value>
-  </data>
-  <data name="MBTI_Description" xml:space="preserve">
-    <value>Il est nécessaire de tester sur un site tiers (multi-langue)</value>
-  </data>
-  <data name="MBTI_Name" xml:space="preserve">
-    <value>Personnalité MBTI</value>
-  </data>
-  <data name="MoneyPersonality_Description" xml:space="preserve">
-    <value>Si vous avez des doutes, vous pouvez passer un test sur le site d'origine (en anglais uniquement)</value>
-  </data>
-  <data name="MoneyPersonality_Name" xml:space="preserve">
-    <value>Personnalité financière</value>
+  <data name="LivingSituation_Why" xml:space="preserve">
+    <value>Les conditions de vie affectent les routines quotidiennes, la vie privée, les interactions sociales et les limites. La compatibilité ici aide les partenaires à comprendre les niveaux de confort de chacun, leurs attentes en matière d’espace personnel et la manière dont ils équilibrent indépendance et camaraderie.</value>
   </data>
   <data name="NetWorth_Description" xml:space="preserve">
     <value>Valeur totale de tous les actifs moins le total de tous les passifs (en dollars américains).</value>
@@ -177,35 +213,38 @@
   <data name="NetWorth_Name" xml:space="preserve">
     <value>Valeur nette</value>
   </data>
-  <data name="RelationshipPersonality_Description" xml:space="preserve">
-    <value>En cas de doute, vous pouvez passer un test sur un site tiers (anglais uniquement)</value>
+  <data name="NetWorth_Tips" xml:space="preserve">
+    <value>Discutez tôt des valeurs financières|Être ouvert sur ce que l'argent signifie pour chacun de vous peut éviter les malentendus et renforcer la confiance.|Respectez les différences de richesse|Évitez les hypothèses ou les jugements basés uniquement sur la valeur nette : concentrez-vous sur la façon dont vous gérez l'argent et prenez des décisions.|Alignez-vous sur les attentes en matière de style de vie|Parlez des habitudes de dépenses quotidiennes et du type de style de vie que vous souhaitez tous les deux maintenir.|Planifiez l'avenir ensemble|Partagez vos objectifs financiers et la manière dont vous envisagez de les atteindre en équipe.|Abordez ouvertement le stress financier|Argent les soucis peuvent affecter la santé émotionnelle ; Soutenez-vous les uns les autres et demandez conseil si nécessaire.|Évitez les déséquilibres de pouvoir|Assurez-vous que les différences financières ne se traduisent pas par du contrôle ou du ressentiment.|Célébrez ce que vous avez|Concentrez-vous sur les objectifs communs et le soutien mutuel plutôt que de comparer la valeur nette.</value>
   </data>
-  <data name="RelationshipPersonality_Name" xml:space="preserve">
-    <value>Personnalité en relation</value>
+  <data name="NetWorth_Why" xml:space="preserve">
+    <value>L'harmonie financière joue un rôle crucial dans la stabilité et la satisfaction des relations. Lorsque les partenaires ont des niveaux de valeur nette similaires, cela signifie souvent que leurs attentes en matière de style de vie, leurs habitudes de dépenses et leurs objectifs financiers sont alignés ou plus faciles à négocier. Des écarts importants dans la valeur nette peuvent entraîner des déséquilibres dans le pouvoir, la prise de décision ou un sentiment d’insécurité, susceptibles de provoquer des tensions ou des malentendus. Être compatible dans ce domaine aide les couples à établir un climat de confiance, à partager des projets d'avenir et à éviter les conflits liés à l'argent, l'une des principales causes de stress relationnel à l'échelle mondiale.</value>
   </data>
   <data name="Religion_Name" xml:space="preserve">
     <value>Religion</value>
   </data>
-  <data name="SexPersonalityPreferences_Description" xml:space="preserve">
-    <value>Contrairement à d’autres personnalités, la compatibilité de celle-ci est une préférence personnelle.</value>
+  <data name="Religion_Tips" xml:space="preserve">
+    <value>Vous partagez la même religion ?|Explorez ensemble des pratiques communes : assister à des offices, célébrer des fêtes ou prier en couple peut renforcer votre lien.|Le partenaire est religieux et vous ne l'êtes pas ?|Respectez ses croyances sans faire semblant. Soyez curieux, pas dédaigneux.|Différentes religions ?|Parlez ouvertement dès le début : discutez des limites, des fêtes importantes et de la question de savoir si la foi jouera un rôle dans la vie de famille.|La religion est très importante pour l'un d'entre vous ?|Comprenez comment elle façonne ses valeurs et sa vie quotidienne. Demandez comment vous pouvez les soutenir même si vous ne partagez pas les mêmes croyances.|Vous êtes tous les deux non religieux ?|Discutez de vos valeurs en matière d'éthique, de traditions et de but de la vie pour vous assurer que vous êtes toujours alignés.|La religion a un impact sur l'implication familiale ?|Soyez honnête sur la façon dont vous gérerez la pression des familles si vos croyances diffèrent.|Évitez de futurs conflits ?|Clarifiez tôt si la religion doit jouer un rôle dans les mariages, l'éducation des enfants ou les décisions morales.</value>
   </data>
-  <data name="SexPersonalityPreferences_Name" xml:space="preserve">
-    <value>Personnalité sexuelle (préférences)</value>
-  </data>
-  <data name="SexPersonality_Description" xml:space="preserve">
-    <value>Si vous avez des doutes, vous pouvez passer un test sur le site d'origine (en anglais uniquement)</value>
-  </data>
-  <data name="SexPersonality_Name" xml:space="preserve">
-    <value>Personnalité sexuelle</value>
-  </data>
-  <data name="SharedSpendingStyle_Name" xml:space="preserve">
-    <value>Style de dépenses partagé</value>
+  <data name="Religion_Why" xml:space="preserve">
+    <value>Les croyances religieuses peuvent profondément influencer les valeurs, le mode de vie, les traditions, les attentes familiales et les décisions à long terme comme le mariage ou l’éducation des enfants. Comprendre les opinions spirituelles de chacun (ou leur absence) permet d’éviter les tensions cachées et favorise le respect mutuel.</value>
   </data>
   <data name="Smoke_Name" xml:space="preserve">
     <value>Fumée</value>
   </data>
+  <data name="Smoke_Tips" xml:space="preserve">
+    <value>L'un des partenaires ne fume pas ?|Soyez attentif à ses préférences : évitez de fumer à proximité de lui et ne présumez pas que fumer occasionnellement n'est « pas grave ». Suggérez des compromis comme fumer uniquement à l'extérieur ou porter des vêtements désignés.|Vous essayez d'arrêter ?|Soutenez-les sans les harceler. Célébrez les progrès et demandez comment vous pouvez aider.|Fumer est culturel ou social pour un partenaire ?|Comprenez son contexte avant de juger. Demandez-leur ce que cela signifie pour eux.|Vous vous souciez de la compatibilité à long terme ?|Ayez une conversation honnête dès le début, n'attendez pas que la frustration s'installe.</value>
+  </data>
+  <data name="Smoke_Why" xml:space="preserve">
+    <value>Les habitudes tabagiques affectent le mode de vie, la santé, la proximité physique et même les espaces partagés. Que ce soit pour des raisons de préférences personnelles, de santé ou de normes culturelles, la compatibilité avec le tabagisme peut influencer le confort quotidien et la satisfaction à long terme.</value>
+  </data>
   <data name="TravelFrequency_Name" xml:space="preserve">
     <value>Fréquence de voyage</value>
+  </data>
+  <data name="TravelFrequency_Tips" xml:space="preserve">
+    <value>Les deux voyagent rarement ou jamais ?|Profitez de routines prévisibles et d’une planification facile. Utilisez votre stabilité commune pour construire une relation solide.|L'un voyage fréquemment, l'autre rarement ?|Discutez de vos attentes en matière de temps séparé et de la manière de maintenir le lien pendant le voyage.|Les deux voyagent souvent ?|Planifiez intentionnellement du temps de qualité pour rester en contact malgré des horaires chargés.|L'un est un nomade fréquent ?|Clarifiez vos objectifs à long terme : la relation peut-elle prendre en charge un mode de vie très mobile ?|Les voyages sont liés au travail pour l'un ou les deux ?|Soutenir leurs besoins professionnels tout en équilibrant leur temps personnel.|Les préférences de voyage diffèrent ?|Être flexible et faire des compromis sur voyages et temps passés ensemble.|Vous vous inquiétez de la distance pendant les déplacements ?|Établissez des habitudes de communication et rassurez-vous mutuellement sur votre engagement.</value>
+  </data>
+  <data name="TravelFrequency_Why" xml:space="preserve">
+    <value>Les habitudes de voyage affectent le temps que les partenaires passent ensemble, la compatibilité du style de vie et l'ouverture au changement ou à l'aventure. Les différences de fréquence des voyages peuvent avoir un impact sur la communication, la planification et la stabilité des relations, en particulier dans le cadre d'engagements à long terme.</value>
   </data>
   <data name="WantChildren_Name" xml:space="preserve">
     <value>Je veux des enfants</value>
