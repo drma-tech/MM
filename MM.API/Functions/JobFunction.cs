@@ -31,7 +31,7 @@ public class JobFunction(CosmosRepository repoMain, CosmosJobRepository repoJob)
     [Function("GoPublic")]
     public async Task GoPublic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var jobs = await repoJob.Query<GoPublicModel>(job => job.RunAt <= DateTimeOffset.UtcNow, JobType.GoPublic, cancellationToken);
+        var jobs = await repoJob.Query<GoPublicModel>(JobType.GoPublic, job => job.RunAt <= DateTimeOffset.UtcNow, null, cancellationToken);
         var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
 
         foreach (var job in jobs)

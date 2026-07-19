@@ -48,7 +48,7 @@
     {
         Language = await AppStateStatic.GetAppLanguage(JsRuntime, cts.Token);
         DarkMode = await AppStateStatic.GetDarkMode(JsRuntime, cts.Token) ?? false;
-        
+
         return true;
     }
 
