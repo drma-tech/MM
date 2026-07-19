@@ -22,7 +22,7 @@ namespace MM.WEB.Translations.Module {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Profile {
+    public class Profile {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MM.WEB.Translations.Module {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Translations.Module.Profile", typeof(Profile).Assembly);
@@ -51,7 +51,7 @@ namespace MM.WEB.Translations.Module {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Auth Providers.
         /// </summary>
-        internal static string AuthProviders {
+        public static string AuthProviders {
             get {
                 return ResourceManager.GetString("AuthProviders", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
         /// </summary>
-        internal static string BasicRequired {
+        public static string BasicRequired {
             get {
                 return ResourceManager.GetString("BasicRequired", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Only your age will be published. (We use the Gregorian calendar).
         /// </summary>
-        internal static string BirthdateTip {
+        public static string BirthdateTip {
             get {
                 return ResourceManager.GetString("BirthdateTip", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Body Photo.
         /// </summary>
-        internal static string BodyPhoto {
+        public static string BodyPhoto {
             get {
                 return ResourceManager.GetString("BodyPhoto", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Compatibility.
         /// </summary>
-        internal static string Compatibility {
+        public static string Compatibility {
             get {
                 return ResourceManager.GetString("Compatibility", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Our compatibility system is still developing. If you have any suggestions or feedback, please submit a support ticket or email us..
         /// </summary>
-        internal static string CompatibilityDeveloping {
+        public static string CompatibilityDeveloping {
             get {
                 return ResourceManager.GetString("CompatibilityDeveloping", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Congratulations, you two are made for each other. This relationship has a bright future ahead of it..
         /// </summary>
-        internal static string CompatibilityHigh {
+        public static string CompatibilityHigh {
             get {
                 return ResourceManager.GetString("CompatibilityHigh", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Unfortunately, you don&apos;t have much in common. We wish you both the best of luck, as it won&apos;t be an easy task..
         /// </summary>
-        internal static string CompatibilityLow {
+        public static string CompatibilityLow {
             get {
                 return ResourceManager.GetString("CompatibilityLow", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to You are not a perfect couple, but that doesn&apos;t mean that the relationship will fail. Review our report carefully and work through these differences together..
         /// </summary>
-        internal static string CompatibilityMedium {
+        public static string CompatibilityMedium {
             get {
                 return ResourceManager.GetString("CompatibilityMedium", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to To make your profile public, first complete all the steps.
         /// </summary>
-        internal static string CompleteAllSteps {
+        public static string CompleteAllSteps {
             get {
                 return ResourceManager.GetString("CompleteAllSteps", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Complete your profile.
         /// </summary>
-        internal static string CompleteYourProfile {
+        public static string CompleteYourProfile {
             get {
                 return ResourceManager.GetString("CompleteYourProfile", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Delete Account.
         /// </summary>
-        internal static string DeleteAccount {
+        public static string DeleteAccount {
             get {
                 return ResourceManager.GetString("DeleteAccount", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string Email {
+        public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Expected Compatibility.
         /// </summary>
-        internal static string ExpectedCompatibility {
+        public static string ExpectedCompatibility {
             get {
                 return ResourceManager.GetString("ExpectedCompatibility", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Face Photo.
         /// </summary>
-        internal static string FacePhoto {
+        public static string FacePhoto {
             get {
                 return ResourceManager.GetString("FacePhoto", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to This feature is only available in phase {0}.
         /// </summary>
-        internal static string FeatureNotAvailable {
+        public static string FeatureNotAvailable {
             get {
                 return ResourceManager.GetString("FeatureNotAvailable", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary..
         /// </summary>
-        internal static string GalleryTerm1 {
+        public static string GalleryTerm1 {
             get {
                 return ResourceManager.GetString("GalleryTerm1", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process..
         /// </summary>
-        internal static string GalleryTerm2 {
+        public static string GalleryTerm2 {
             get {
                 return ResourceManager.GetString("GalleryTerm2", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Gallery Validation.
         /// </summary>
-        internal static string GalleryValidation {
+        public static string GalleryValidation {
             get {
                 return ResourceManager.GetString("GalleryValidation", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to General Compatibility.
         /// </summary>
-        internal static string GeneralCompatibility {
+        public static string GeneralCompatibility {
             get {
                 return ResourceManager.GetString("GeneralCompatibility", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works..
         /// </summary>
-        internal static string GenerateSimulation {
+        public static string GenerateSimulation {
             get {
                 return ResourceManager.GetString("GenerateSimulation", resourceCulture);
             }
@@ -252,16 +252,16 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser..
         /// </summary>
-        internal static string GpsNotAccurate {
+        public static string GpsNotAccurate {
             get {
                 return ResourceManager.GetString("GpsNotAccurate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy..
+        ///   Looks up a localized string similar to Help us grow by leaving a review in the app store. Every new user brings us closer to unlocking the next phase and all the features we&apos;re building for you..
         /// </summary>
-        internal static string HelpUsUnlock {
+        public static string HelpUsUnlock {
             get {
                 return ResourceManager.GetString("HelpUsUnlock", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Create Free Account.
         /// </summary>
-        internal static string HeroButton {
+        public static string HeroButton {
             get {
                 return ResourceManager.GetString("HeroButton", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Start your journey to find your ideal partner.
         /// </summary>
-        internal static string HeroCall {
+        public static string HeroCall {
             get {
                 return ResourceManager.GetString("HeroCall", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Note: Not a dating app. A curated matchmaking experience focused on real compatibility..
         /// </summary>
-        internal static string HeroNote {
+        public static string HeroNote {
             get {
                 return ResourceManager.GetString("HeroNote", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Identification.
         /// </summary>
-        internal static string Identification {
+        public static string Identification {
             get {
                 return ResourceManager.GetString("Identification", resourceCulture);
             }
@@ -306,16 +306,25 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to I trust the platform&apos;s compatibility system and will only select what is non-negotiable for me..
         /// </summary>
-        internal static string ITrustPlataform {
+        public static string ITrustPlataform {
             get {
                 return ResourceManager.GetString("ITrustPlataform", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest users registered in your region ({0}).
+        /// </summary>
+        public static string LatestUsersRegion {
+            get {
+                return ResourceManager.GetString("LatestUsersRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Likes.
         /// </summary>
-        internal static string Likes {
+        public static string Likes {
             get {
                 return ResourceManager.GetString("Likes", resourceCulture);
             }
@@ -324,7 +333,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Matches.
         /// </summary>
-        internal static string Matches {
+        public static string Matches {
             get {
                 return ResourceManager.GetString("Matches", resourceCulture);
             }
@@ -333,7 +342,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Choose a maximum of 3 items for each field.
         /// </summary>
-        internal static string Maximum3Items {
+        public static string Maximum3Items {
             get {
                 return ResourceManager.GetString("Maximum3Items", resourceCulture);
             }
@@ -342,16 +351,34 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Not answered.
         /// </summary>
-        internal static string NotAnswered {
+        public static string NotAnswered {
             get {
                 return ResourceManager.GetString("NotAnswered", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No one has joined from your region yet. Create your profile and be the first..
+        /// </summary>
+        public static string NoUsersYetOff {
+            get {
+                return ResourceManager.GetString("NoUsersYetOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No profiles are available in your region yet. Leave a review in the app store to help more people discover the app..
+        /// </summary>
+        public static string NoUsersYetOn {
+            get {
+                return ResourceManager.GetString("NoUsersYetOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Other (optional section).
         /// </summary>
-        internal static string OptionalSection {
+        public static string OptionalSection {
             get {
                 return ResourceManager.GetString("OptionalSection", resourceCulture);
             }
@@ -360,7 +387,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your partner&apos;s profile is not yet available.
         /// </summary>
-        internal static string PartnerProfileNotAvailable {
+        public static string PartnerProfileNotAvailable {
             get {
                 return ResourceManager.GetString("PartnerProfileNotAvailable", resourceCulture);
             }
@@ -369,7 +396,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team..
         /// </summary>
-        internal static string PopulateFilterDescription {
+        public static string PopulateFilterDescription {
             get {
                 return ResourceManager.GetString("PopulateFilterDescription", resourceCulture);
             }
@@ -378,7 +405,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Fields automatically populated.
         /// </summary>
-        internal static string PopulateFilterTitle {
+        public static string PopulateFilterTitle {
             get {
                 return ResourceManager.GetString("PopulateFilterTitle", resourceCulture);
             }
@@ -387,7 +414,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Here you can define your ideal profile type, so that we can properly calculate your compatibility index.
         /// </summary>
-        internal static string PreferHelpTopic1 {
+        public static string PreferHelpTopic1 {
             get {
                 return ResourceManager.GetString("PreferHelpTopic1", resourceCulture);
             }
@@ -396,7 +423,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The more specific you are in the filters, the less profile options you will have available.
         /// </summary>
-        internal static string PreferHelpTopic2 {
+        public static string PreferHelpTopic2 {
             get {
                 return ResourceManager.GetString("PreferHelpTopic2", resourceCulture);
             }
@@ -405,7 +432,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Private.
         /// </summary>
-        internal static string Private {
+        public static string Private {
             get {
                 return ResourceManager.GetString("Private", resourceCulture);
             }
@@ -414,7 +441,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately..
         /// </summary>
-        internal static string ProfileDataBioTip1 {
+        public static string ProfileDataBioTip1 {
             get {
                 return ResourceManager.GetString("ProfileDataBioTip1", resourceCulture);
             }
@@ -423,7 +450,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support..
         /// </summary>
-        internal static string ProfileDataBioTip2 {
+        public static string ProfileDataBioTip2 {
             get {
                 return ResourceManager.GetString("ProfileDataBioTip2", resourceCulture);
             }
@@ -432,7 +459,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions..
         /// </summary>
-        internal static string ProfileDataPersonTip1 {
+        public static string ProfileDataPersonTip1 {
             get {
                 return ResourceManager.GetString("ProfileDataPersonTip1", resourceCulture);
             }
@@ -441,7 +468,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Select only what really matters. You can choose up to 8 filters to keep matches relevant..
         /// </summary>
-        internal static string ProfileFilterWarning {
+        public static string ProfileFilterWarning {
             get {
                 return ResourceManager.GetString("ProfileFilterWarning", resourceCulture);
             }
@@ -450,7 +477,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Profile not available.
         /// </summary>
-        internal static string ProfileNotAvailable {
+        public static string ProfileNotAvailable {
             get {
                 return ResourceManager.GetString("ProfileNotAvailable", resourceCulture);
             }
@@ -459,7 +486,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Profile not found or not yet registered properly..
         /// </summary>
-        internal static string ProfileNotFound {
+        public static string ProfileNotFound {
             get {
                 return ResourceManager.GetString("ProfileNotFound", resourceCulture);
             }
@@ -468,7 +495,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone.
         /// </summary>
-        internal static string ProfilePrivateMode {
+        public static string ProfilePrivateMode {
             get {
                 return ResourceManager.GetString("ProfilePrivateMode", resourceCulture);
             }
@@ -477,7 +504,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your profile is now public and can be made available to our customers.
         /// </summary>
-        internal static string ProfilePublicMode {
+        public static string ProfilePublicMode {
             get {
                 return ResourceManager.GetString("ProfilePublicMode", resourceCulture);
             }
@@ -486,7 +513,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Public.
         /// </summary>
-        internal static string Public {
+        public static string Public {
             get {
                 return ResourceManager.GetString("Public", resourceCulture);
             }
@@ -495,7 +522,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Set Filters.
         /// </summary>
-        internal static string StepFilter {
+        public static string StepFilter {
             get {
                 return ResourceManager.GetString("StepFilter", resourceCulture);
             }
@@ -504,7 +531,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Define your non-negotiable preferences..
         /// </summary>
-        internal static string StepFilterDesc {
+        public static string StepFilterDesc {
             get {
                 return ResourceManager.GetString("StepFilterDesc", resourceCulture);
             }
@@ -513,7 +540,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Photo Gallery.
         /// </summary>
-        internal static string StepGallery {
+        public static string StepGallery {
             get {
                 return ResourceManager.GetString("StepGallery", resourceCulture);
             }
@@ -522,7 +549,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Upload and organize your photos..
         /// </summary>
-        internal static string StepGalleryDesc {
+        public static string StepGalleryDesc {
             get {
                 return ResourceManager.GetString("StepGalleryDesc", resourceCulture);
             }
@@ -531,7 +558,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Create Profile.
         /// </summary>
-        internal static string StepProfile {
+        public static string StepProfile {
             get {
                 return ResourceManager.GetString("StepProfile", resourceCulture);
             }
@@ -540,7 +567,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Fill in your details: Basic, Bio, Lifestyle, Personality, Interests, Relationship, and Goals..
         /// </summary>
-        internal static string StepProfileDesc {
+        public static string StepProfileDesc {
             get {
                 return ResourceManager.GetString("StepProfileDesc", resourceCulture);
             }
@@ -549,7 +576,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Adjust Settings.
         /// </summary>
-        internal static string StepSettings {
+        public static string StepSettings {
             get {
                 return ResourceManager.GetString("StepSettings", resourceCulture);
             }
@@ -558,7 +585,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Control your profile options and platform behavior..
         /// </summary>
-        internal static string StepSettingsDesc {
+        public static string StepSettingsDesc {
             get {
                 return ResourceManager.GetString("StepSettingsDesc", resourceCulture);
             }
@@ -567,7 +594,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Profile Validation.
         /// </summary>
-        internal static string StepValidation {
+        public static string StepValidation {
             get {
                 return ResourceManager.GetString("StepValidation", resourceCulture);
             }
@@ -576,7 +603,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to The system will verify your information before your profile goes public..
         /// </summary>
-        internal static string StepValidationDesc {
+        public static string StepValidationDesc {
             get {
                 return ResourceManager.GetString("StepValidationDesc", resourceCulture);
             }
@@ -585,7 +612,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Suggestions.
         /// </summary>
-        internal static string Suggestions {
+        public static string Suggestions {
             get {
                 return ResourceManager.GetString("Suggestions", resourceCulture);
             }
@@ -594,7 +621,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;.
         /// </summary>
-        internal static string TermTopic1 {
+        public static string TermTopic1 {
             get {
                 return ResourceManager.GetString("TermTopic1", resourceCulture);
             }
@@ -603,7 +630,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to To be aware of how your data will be treated, we ask you to read our.
         /// </summary>
-        internal static string TermTopic2 {
+        public static string TermTopic2 {
             get {
                 return ResourceManager.GetString("TermTopic2", resourceCulture);
             }
@@ -612,7 +639,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Tips.
         /// </summary>
-        internal static string Tips {
+        public static string Tips {
             get {
                 return ResourceManager.GetString("Tips", resourceCulture);
             }
@@ -621,7 +648,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to We were unable to detect a GPS system on your device. Please try again or release access to your device&apos;s GPS..
         /// </summary>
-        internal static string UnableDetectGps {
+        public static string UnableDetectGps {
             get {
                 return ResourceManager.GetString("UnableDetectGps", resourceCulture);
             }
@@ -630,7 +657,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Undefined.
         /// </summary>
-        internal static string Undefined {
+        public static string Undefined {
             get {
                 return ResourceManager.GetString("Undefined", resourceCulture);
             }
@@ -639,7 +666,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Why is it important?.
         /// </summary>
-        internal static string WhyImportant {
+        public static string WhyImportant {
             get {
                 return ResourceManager.GetString("WhyImportant", resourceCulture);
             }
@@ -648,7 +675,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Years.
         /// </summary>
-        internal static string Years {
+        public static string Years {
             get {
                 return ResourceManager.GetString("Years", resourceCulture);
             }
@@ -657,7 +684,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to You have selected more than {0} options.
         /// </summary>
-        internal static string YouHaveSelected {
+        public static string YouHaveSelected {
             get {
                 return ResourceManager.GetString("YouHaveSelected", resourceCulture);
             }
@@ -666,7 +693,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your current location:.
         /// </summary>
-        internal static string YourCurrentLocation {
+        public static string YourCurrentLocation {
             get {
                 return ResourceManager.GetString("YourCurrentLocation", resourceCulture);
             }
@@ -675,7 +702,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your partner&apos;s profile.
         /// </summary>
-        internal static string YourPartnerProfile {
+        public static string YourPartnerProfile {
             get {
                 return ResourceManager.GetString("YourPartnerProfile", resourceCulture);
             }
@@ -684,7 +711,7 @@ namespace MM.WEB.Translations.Module {
         /// <summary>
         ///   Looks up a localized string similar to Your profile (or preferences).
         /// </summary>
-        internal static string YourProfile {
+        public static string YourProfile {
             get {
                 return ResourceManager.GetString("YourProfile", resourceCulture);
             }

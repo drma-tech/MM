@@ -570,6 +570,6 @@
         if (Profile == null) return;
 
         Profile.Nationality = country;
-        Profile.AddLanguages(country);
+        Profile.Languages = country.GetLanguages().ToHashSet();
     }
 }

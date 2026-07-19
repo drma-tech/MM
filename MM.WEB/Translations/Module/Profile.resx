@@ -184,7 +184,7 @@
     <value>The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
-    <value>Help us unlock the next phase faster! Leave a review to help us grow. The more people who know about the app and sign up, the sooner all the features will be available for you to enjoy.</value>
+    <value>Help us grow by leaving a review in the app store. Every new user brings us closer to unlocking the next phase and all the features we're building for you.</value>
   </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Create Free Account</value>
@@ -201,6 +201,9 @@
   <data name="ITrustPlataform" xml:space="preserve">
     <value>I trust the platform's compatibility system and will only select what is non-negotiable for me.</value>
   </data>
+  <data name="LatestUsersRegion" xml:space="preserve">
+    <value>Latest users registered in your region ({0})</value>
+  </data>
   <data name="Likes" xml:space="preserve">
     <value>Likes</value>
   </data>
@@ -212,6 +215,12 @@
   </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>Not answered</value>
+  </data>
+  <data name="NoUsersYetOff" xml:space="preserve">
+    <value>No one has joined from your region yet. Create your profile and be the first.</value>
+  </data>
+  <data name="NoUsersYetOn" xml:space="preserve">
+    <value>No profiles are available in your region yet. Leave a review in the app store to help more people discover the app.</value>
   </data>
   <data name="OptionalSection" xml:space="preserve">
     <value>Other (optional section)</value>

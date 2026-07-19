@@ -184,7 +184,7 @@
     <value>A posição do GPS não é precisa e pode resultar em uma localização incorreta. Se sua cidade estiver errada, tente novamente mais tarde ou teste em outro dispositivo ou navegador.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
-    <value>Ajude-nos a desbloquear a próxima fase mais rápido! Deixe um comentário para nos ajudar a crescer. Quanto mais pessoas conhecerem o aplicativo e se inscreverem, mais cedo todos os recursos estarão disponíveis para você aproveitar.</value>
+    <value>Ajude-nos a crescer deixando um comentário na app store. Cada novo usuário nos deixa mais perto de desbloquear a próxima fase e todos os recursos que estamos construindo para você.</value>
   </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Criar conta gratuita</value>
@@ -201,6 +201,9 @@
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Confio no sistema de compatibilidade da plataforma e selecionarei apenas o que não for negociável para mim.</value>
   </data>
+  <data name="LatestUsersRegion" xml:space="preserve">
+    <value>Últimos usuários registrados em sua região ({0})</value>
+  </data>
   <data name="Likes" xml:space="preserve">
     <value>Curtidas</value>
   </data>
@@ -212,6 +215,12 @@
   </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>Não respondido</value>
+  </data>
+  <data name="NoUsersYetOff" xml:space="preserve">
+    <value>Ninguém da sua região se juntou ainda. Crie seu perfil e seja o primeiro.</value>
+  </data>
+  <data name="NoUsersYetOn" xml:space="preserve">
+    <value>Ainda não há perfis disponíveis em sua região. Deixe um comentário na app store para ajudar mais pessoas a descobrir o aplicativo.</value>
   </data>
   <data name="OptionalSection" xml:space="preserve">
     <value>Outro (seção opcional)</value>

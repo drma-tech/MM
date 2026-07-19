@@ -33,7 +33,7 @@ public static class PopupHelper
     }
 
     public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
-        ProfileModel? fakeView = null)
+        ProfileModel? fakeView = null, bool onlyCompatibility = false)
     {
         var parameters = new DialogParameters<PopupProfile>
         {
@@ -42,6 +42,7 @@ public static class PopupHelper
             { x => x.IdUserView, idUserView },
             { x => x.View, fakeView },
             { x => x.Fake, fakeView != null },
+            { x => x.OnlyCompatibility, onlyCompatibility },
             //{ x => x.Liked, await LoadLikes(true) },
             //{ x => x.Matched, await LoadMatches(true) }
         };

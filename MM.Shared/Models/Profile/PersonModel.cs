@@ -12,7 +12,7 @@ public class PersonModel
     {
         UserId = profile.Id;
         UserName = profile.NickName;
-        UserPhoto = forceBlindDate ? ImageHelper.GetBlindDate : profile.GetPhoto(ImageHelper.PhotoType.Face);
+        UserPhoto = forceBlindDate ? ImageHelper.GetBlindDate : profile.GetPhoto(ImageHelper.PhotoType.Face, true);
     }
 
     public string? UserId { get; init; }

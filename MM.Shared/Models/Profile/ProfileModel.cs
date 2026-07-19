@@ -1,5 +1,4 @@
-﻿using MM.Shared.Translations.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile;
@@ -78,16 +77,22 @@ public class ProfileModel : CosmosDocument
         Gallery = obj;
     }
 
-    public string GetPhoto(PhotoType type, bool fake = false)
+    public string GetPhoto(PhotoType type, bool live, bool fake = false)
     {
         if (Gallery == null) return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
         if (Gallery.Type == GalleryType.BlindDate) return GetBlindDate;
 
         var id = Gallery.GetPictureId(type);
-        if (id == null) return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
+        if (id == null)
+        {
+            if (live)
+                return "";
+            else
+                return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
+        }
 
-        if (fake)
-            return id;
+        if (fake) return id;
+
         return $"{BlobPath}/{GetPhotoContainer(type)}/{id}";
     }
 

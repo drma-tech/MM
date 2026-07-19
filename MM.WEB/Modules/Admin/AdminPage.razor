@@ -24,12 +24,12 @@
         <PropertyColumn Property="x => x.Principal.PublicProfile" Title="Public" />
         <TemplateColumn>
             <CellTemplate>
-                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Face)" Style="width: 128px;"></MudImage>
+                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Face, true)" Style="width: 128px;"></MudImage>
             </CellTemplate>
         </TemplateColumn>
         <TemplateColumn>
             <CellTemplate>
-                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Body)" Style="width: 128px;"></MudImage>
+                <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Body, true)" Style="width: 128px;"></MudImage>
             </CellTemplate>
         </TemplateColumn>
         <TemplateColumn>

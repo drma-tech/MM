@@ -138,32 +138,34 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
 
-    //[Function("ProfileGetView")]
-    //public async Task<HttpResponseData?> GetView(
-    //    [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
-    //{
-    //        var userId = req.GetUserId();
-    //        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
+    [Function("ProfileGetView")]
+    public async Task<HttpResponseData?> GetView(
+        [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
+    {
+        //var userId = await req.GetUserIdAsync(cancellationToken);
+        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
 
-    //        if (profile == null) return null;
+        if (profile == null) return null;
 
-    //        profile.Age = profile.BirthDate.GetAge();
-    //        profile.BirthDate = null;
+        profile.Age = profile.BirthDate.GetAge();
+        profile.BirthDate = null;
 
-    //        var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+        profile.Gallery = null; //todo: temporary
 
-    //        if (userSettings?.BlindDate ?? false) profile.Gallery?.SimulateBlindDate();
+        //var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
-    //        //profile.ActivityStatus = ActivityStatus.Today;
+        //if (userSettings?.BlindDate ?? false) profile.Gallery?.SimulateBlindDate();
 
-    //        //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
-    //        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
-    //        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
-    //        //else profile.ActivityStatus = ActivityStatus.Disabled;
+        //profile.ActivityStatus = ActivityStatus.Today;
 
-    //        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
+        //if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-1)) profile.ActivityStatus = ActivityStatus.Today;
+        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddDays(-7)) profile.ActivityStatus = ActivityStatus.Week;
+        //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
+        //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-    //}
+        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
+
+    }
 
     //[Function("ProfileListSearch")]
     //public async Task<List<ProfileSearch>> ListSearch(

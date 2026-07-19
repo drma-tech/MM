@@ -135,6 +135,7 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<InteractionApi>();
     collection.AddScoped<DashboardApi>();
     collection.AddScoped<LastUsersApi>();
+    collection.AddScoped<LastRegionUsersApi>();
     collection.AddScoped<ValidationApi>();
 
     collection.AddScoped<PaymentConfigurationApi>();

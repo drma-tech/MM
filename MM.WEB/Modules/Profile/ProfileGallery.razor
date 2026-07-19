@@ -29,7 +29,7 @@
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
                     <RenderControl Actions="ProfileActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Face)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
+                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Face, false)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
                     </RenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">
@@ -63,7 +63,7 @@
                 </MudCardHeader>
                 <MudCardContent Style="padding: 0;">
                     <RenderControl Actions="ProfileActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Body)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
+                        <MudImage Src="@_profile?.GetPhoto(PhotoType.Body, false)" Fluid="true" ObjectFit="ObjectFit.Contain" Style="max-height: 300px !important;" />
                     </RenderControl>
                 </MudCardContent>
                 <MudCardActions Style="align-self: center;">

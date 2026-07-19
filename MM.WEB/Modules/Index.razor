@@ -530,8 +530,9 @@
         var cache = await DashboardApi.GetSumUsers(cts.Token);
         SumUsers = cache?.Data;
 
-        var cache2 = await LastUsersApi.GetSumUsers(cts.Token);
-        LastUsers = cache2?.Data;
+        //todo: show again in the future
+        // var cache2 = await LastUsersApi.GetLastUsers(cts.Token);
+        // LastUsers = cache2?.Data;
 
         await LastUsersActions.FinishLoading.Invoke(LastUsers);
 

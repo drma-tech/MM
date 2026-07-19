@@ -1,15 +1,18 @@
 ﻿@page "/{culture}/profile"
 
 @using Bogus
+@using Country = MM.Shared.Enums.Country
 @using FluentValidation
+@using Height = MM.Shared.Enums.Height
+@using MM.Shared.Models.Dashboard
 @using MM.Shared.Models.Profile
 @using MM.Shared.Models.Profile.Core
 @using MM.WEB.Modules.Auth.Core
 @using MM.WEB.Modules.Help
 @using MM.WEB.Modules.Profile.Core
-@using Country = MM.Shared.Enums.Country
-@using Height = MM.Shared.Enums.Height
+@using MM.WEB.Modules.Subscription.Core
 @using MM.WEB.Shared.Core
+@using Microsoft.JSInterop
 @inherits PageCore<Profile>
 
 @inject ProfileApi ProfileApi
@@ -19,6 +22,8 @@
 @inject ValidationApi ValidationApi
 @inject MyLikesApi MyLikesApi
 @inject MyMatchesApi MyMatchesApi
+@inject LastRegionUsersApi LastRegionUsersApi
+@inject IpInfoApi IpInfoApi
 
 <HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile") Index="false"></HeadComponent>
 
@@ -48,6 +53,30 @@ else
         </AskReviewComponent>
     </MudPaper>
 }
+
+<PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
+    <BodyFragment>
+        <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+            <Slider List="LastUsers?.Items ?? []" Context="item">
+                <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
+                    <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
+                        @(item.Nickname ?? "no profile")
+                    </MudChip>
+                    @if (item.State.NotEmpty())
+                    {
+                        <MudChip T="string" Color="Color.Tertiary" Label="true" Style="padding: 0.2rem; position: absolute; top: 25px; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
+                            @(item.State)
+                        </MudChip>
+                    }
+                    <MudIconButton Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Secondary" Variant="Variant.Filled"
+                                   Style="position: absolute; bottom: 10px; right: 10px; z-index: 1;" Size="Size.Small" Disabled="@item.Nickname.Empty()"
+                                   OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, item.Id, null, true))"></MudIconButton>
+                    <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                </div>
+            </Slider>
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>
 
 <MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
@@ -116,7 +145,7 @@ else
         {
             <MudPaper Class="@Css.Build().Small("pa")" Outlined="true" Style="text-align: center;">
                 <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
-                    <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
+                    <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face, true) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
                 </MudAvatar>
                 <div class="mb-2" style="text-align: center;">
                     <MudChip T="string" Color="Color.Primary" Label="true">
@@ -256,11 +285,13 @@ else
             <BodyFragment>
                 <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
                     <Slider List="MyMatches?.Items ?? []" Context="item">
-                        <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
-                             @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
+                        <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                 @item.UserName
                             </MudChip>
+                            <MudIconButton Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Secondary" Variant="Variant.Filled"
+                                           Style="position: absolute; bottom: 10px; right: 10px; z-index: 1;" Size="Size.Small"
+                                           OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))"></MudIconButton>
                             <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
                                       Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
                         </div>
@@ -283,6 +314,10 @@ else
 
 @code
 {
+    private ComponentActions<LastRegionUsers> LastUsersActions { get; } = new(obj => obj == null || obj.Items.Empty());
+    public LastRegionUsers? LastUsers { get; set; }
+    private Country? CountryEnum;
+
     private ProfileValidation ProfileValidator { get; } = new();
     private ProfileModel? profile;
 
@@ -350,6 +385,31 @@ else
 
     //     await base.OnAfterRenderAsync(firstRender);
     // }
+
+    protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
+    {
+        var countryStr = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+
+        if (countryStr.NotEmpty())
+        {
+            CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
+
+            var cache2 = await LastRegionUsersApi.LastRegionUsers(countryStr, cts.Token);
+            LastUsers = cache2?.Data;
+        }
+
+        await LastUsersActions.FinishLoading.Invoke(LastUsers);
+
+        if (countryStr.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
+        {
+            if (AppStateStatic.IsAuthenticated)
+                await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
+            else
+                await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
+        }
+
+        return true;
+    }
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {

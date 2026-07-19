@@ -125,8 +125,8 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
 
         using var http = factory.CreateClient();
-        using var faceStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face), cancellationToken);
-        using var bodyStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body), cancellationToken);
+        using var faceStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face, false), cancellationToken);
+        using var bodyStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body, false), cancellationToken);
         using var streamValidation = new MemoryStream(request.Stream);
         var responsFace = await AwsFaceAI.CompareFaces(faceStream, streamValidation, cancellationToken);
         var responsBody = await AwsFaceAI.CompareFaces(bodyStream, streamValidation, cancellationToken);

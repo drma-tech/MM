@@ -184,7 +184,7 @@
     <value>La posizione GPS non è precisa e potrebbe risultare in una posizione errata. Se la tua città è sbagliata, riprova più tardi o prova su un altro dispositivo o browser.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
-    <value>Aiutaci a sbloccare la fase successiva più velocemente! Lascia una recensione per aiutarci a crescere. Più persone conoscono l'app e si iscrivono, prima tutte le funzionalità saranno disponibili per il tuo divertimento.</value>
+    <value>Aiutaci a crescere lasciando una recensione nell'app store. Ogni nuovo utente ci avvicina allo sblocco della fase successiva e di tutte le funzionalità che stiamo creando per te.</value>
   </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Crea un account gratuito</value>
@@ -201,6 +201,9 @@
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Mi fido del sistema di compatibilità della piattaforma e selezionerò solo ciò che per me non è negoziabile.</value>
   </data>
+  <data name="LatestUsersRegion" xml:space="preserve">
+    <value>Ultimi utenti registrati nella tua regione ({0})</value>
+  </data>
   <data name="Likes" xml:space="preserve">
     <value>Mi piace</value>
   </data>
@@ -212,6 +215,12 @@
   </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>Non ho risposto</value>
+  </data>
+  <data name="NoUsersYetOff" xml:space="preserve">
+    <value>Nessuno si è ancora iscritto dalla tua regione. Crea il tuo profilo e sii il primo.</value>
+  </data>
+  <data name="NoUsersYetOn" xml:space="preserve">
+    <value>Nessun profilo è ancora disponibile nella tua regione. Lascia una recensione nell'app store per aiutare più persone a scoprire l'app.</value>
   </data>
   <data name="OptionalSection" xml:space="preserve">
     <value>Altro (sezione facoltativa)</value>

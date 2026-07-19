@@ -37,6 +37,7 @@ namespace MM.WEB.Core.Api
     [JsonSerializable(typeof(PhotoValidationRequest))]
     [JsonSerializable(typeof(CacheDocument<SumUsers>))]
     [JsonSerializable(typeof(CacheDocument<LastUsers>))]
+    [JsonSerializable(typeof(CacheDocument<LastRegionUsers>))]
     internal partial class ApiContext : JsonSerializerContext
     {
     }
