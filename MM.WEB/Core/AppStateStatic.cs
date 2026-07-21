@@ -306,6 +306,7 @@ public static class AppStateStatic
     public static TaskDispatcher UserStateChanged { get; } = new();
     public static TaskDispatcher ProcessingStarted { get; } = new();
     public static TaskDispatcher ProcessingFinished { get; } = new();
+    public static ActionDispatcher<bool> HideAdvertising { get; } = new();
 
     public static TaskDispatcher<GeoLocation> LocationChanged { get; } = new();
 }
