@@ -207,6 +207,9 @@
   <data name="Remove" xml:space="preserve">
     <value>Rimuovere</value>
   </data>
+  <data name="RemoveAdvertising" xml:space="preserve">
+    <value>Rimuovi la pubblicità</value>
+  </data>
   <data name="Report" xml:space="preserve">
     <value>Rapporto</value>
   </data>

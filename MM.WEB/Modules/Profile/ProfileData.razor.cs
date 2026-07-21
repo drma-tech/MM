@@ -168,13 +168,13 @@ public partial class ProfileData : PageCore<ProfileData>
         }
     }
 
-    private async Task ShowErrors(ProfileModel? profile)
+    private async Task ShowErrors(ProfileModel? model)
     {
-        if (profile == null) return;
+        if (model == null) return;
 
         var validator = new ProfileValidation();
 
-        var result = await validator.ValidateAsync(profile, options => options.IncludeAllRuleSets());
+        var result = await validator.ValidateAsync(model, options => options.IncludeAllRuleSets(), cts.Token);
 
         if (!result.IsValid) await ShowWarning(result.Errors[0].ErrorMessage);
     }

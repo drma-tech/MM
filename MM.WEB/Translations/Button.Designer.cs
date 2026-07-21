@@ -331,6 +331,15 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Advertising.
+        /// </summary>
+        public static string RemoveAdvertising {
+            get {
+                return ResourceManager.GetString("RemoveAdvertising", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report.
         /// </summary>
         public static string Report {
