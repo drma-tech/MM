@@ -97,7 +97,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     }
     else
     {
-        apiUri = new Uri($"{AppInfo.WebSite}/api");
+        apiUri = new Uri($"{AppInfo.WebSite}/api/");
     }
 
     //Local (json files and other assets, not the API)
