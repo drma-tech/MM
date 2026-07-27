@@ -103,7 +103,7 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        var cache = await DashboardApi.GetSumUsers(cts.Token);
+        var cache = await DashboardApi.GetSumUsers(null, cts.Token);
         SumUsers = cache?.Data;
     }
 

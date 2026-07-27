@@ -22,7 +22,7 @@ namespace MM.WEB.Translations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Title {
+    public class Title {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MM.WEB.Translations {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Translations.Title", typeof(Title).Assembly);
@@ -51,7 +51,7 @@ namespace MM.WEB.Translations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Find a compatible partner through Matchmaking.
         /// </summary>
-        internal static string AppSubtitle {
+        public static string AppSubtitle {
             get {
                 return ResourceManager.GetString("AppSubtitle", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Compare.
         /// </summary>
-        internal static string Compare {
+        public static string Compare {
             get {
                 return ResourceManager.GetString("Compare", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Dating Apps vs Modern Matchmaker.
         /// </summary>
-        internal static string Compare2 {
+        public static string Compare2 {
             get {
                 return ResourceManager.GetString("Compare2", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to FAQ.
         /// </summary>
-        internal static string FAQ {
+        public static string FAQ {
             get {
                 return ResourceManager.GetString("FAQ", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Help Center.
         /// </summary>
-        internal static string HelpCenter {
+        public static string HelpCenter {
             get {
                 return ResourceManager.GetString("HelpCenter", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to How It Works.
         /// </summary>
-        internal static string HowItWorks {
+        public static string HowItWorks {
             get {
                 return ResourceManager.GetString("HowItWorks", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Main.
         /// </summary>
-        internal static string Main {
+        public static string Main {
             get {
                 return ResourceManager.GetString("Main", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
-        internal static string Profile {
+        public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Who Is It For.
         /// </summary>
-        internal static string WhoIsItFor {
+        public static string WhoIsItFor {
             get {
                 return ResourceManager.GetString("WhoIsItFor", resourceCulture);
             }

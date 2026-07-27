@@ -17,11 +17,11 @@
 
 <MudDataGrid T="ProfileManage" Items="@Profiles" ReadOnly="false" Filterable="true" Dense="true" FilterMode="DataGridFilterMode.ColumnFilterMenu" Class="mt-3" RowsPerPage="25">
     <Columns>
-        <PropertyColumn Property="x => x.Principal.UserId" Title="UserId" />
-        <PropertyColumn Property="x => x.Principal.DateTimeCreated" Title="Created" />
-        <PropertyColumn Property="x => x.Profile.Country" Title="Country" />
-        <PropertyColumn Property="x => x.Profile.Description" Title="Description" />
-        <PropertyColumn Property="x => x.Principal.PublicProfile" Title="Public" />
+        <PropertyColumn Property="x => x.Principal!.UserId" Title="UserId" />
+        <PropertyColumn Property="x => x.Principal!.DateTimeCreated" Title="Created" />
+        <PropertyColumn Property="x => x.Profile!.Country" Title="Country" />
+        <PropertyColumn Property="x => x.Profile!.Description" Title="Description" />
+        <PropertyColumn Property="x => x.Principal!.PublicProfile" Title="Public" />
         <TemplateColumn>
             <CellTemplate>
                 <MudImage Src="@context.Item.Profile?.GetPhoto(ImageHelper.PhotoType.Face, true)" Style="width: 128px;"></MudImage>

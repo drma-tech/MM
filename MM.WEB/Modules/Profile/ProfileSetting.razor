@@ -18,7 +18,7 @@
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@Css.SpaceSmall">
             <MudItem xs="12">
-                <FieldSwitch Name="@MM.Shared.Translations.Model.ProfileSetting.BlindDate" Value="@Setting.BlindDate" ValueChanged="@((vl) => Setting.BlindDate = vl)" CssIcon="@IconsFA.Solid.Icon("eye-low-vision").Font"></FieldSwitch>
+                <FieldSwitch Name="@MM.Shared.Translations.Model.ProfileSetting.BlindDate" Value="@context.BlindDate" ValueChanged="@((vl) => context.BlindDate = vl)" CssIcon="@IconsFA.Solid.Icon("eye-low-vision").Font"></FieldSwitch>
             </MudItem>
         </MudGrid>
     </MudStack>
@@ -35,7 +35,7 @@
 
 @code {
     private SettingModel? Setting { get; set; }
-    private ComponentActions<SettingModel?> Actions { get; set; } = new(obj => obj == null);
+    private ComponentActions<SettingModel> Actions { get; set; } = new(obj => obj == null);
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {

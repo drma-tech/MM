@@ -22,7 +22,7 @@ namespace MM.WEB.Translations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Notification {
+    public class Notification {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MM.WEB.Translations {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM.WEB.Translations.Notification", typeof(Notification).Assembly);
@@ -51,7 +51,7 @@ namespace MM.WEB.Translations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to AdBlocker detected. Please consider whitelisting our app to support us. Thank you!.
         /// </summary>
-        internal static string AdBlockerDetected {
+        public static string AdBlockerDetected {
             get {
                 return ResourceManager.GetString("AdBlockerDetected", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Explore our other amazing apps:.
         /// </summary>
-        internal static string CheckOurApps {
+        public static string CheckOurApps {
             get {
                 return ResourceManager.GetString("CheckOurApps", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Confirmation.
         /// </summary>
-        internal static string Confirmation {
+        public static string Confirmation {
             get {
                 return ResourceManager.GetString("Confirmation", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
-        internal static string ExternalWebsiteNotice {
+        public static string ExternalWebsiteNotice {
             get {
                 return ResourceManager.GetString("ExternalWebsiteNotice", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Wait for news....
         /// </summary>
-        internal static string FeatureUnavailableDescription {
+        public static string FeatureUnavailableDescription {
             get {
                 return ResourceManager.GetString("FeatureUnavailableDescription", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Under development.
         /// </summary>
-        internal static string FeatureUnavailableMessage {
+        public static string FeatureUnavailableMessage {
             get {
                 return ResourceManager.GetString("FeatureUnavailableMessage", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to This module is still under development. If you wish to report a bug, please contact us via the feedback button..
         /// </summary>
-        internal static string ModuleUnderDevelopment {
+        public static string ModuleUnderDevelopment {
             get {
                 return ResourceManager.GetString("ModuleUnderDevelopment", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Operation cancelled!.
         /// </summary>
-        internal static string OperationCanceled {
+        public static string OperationCanceled {
             get {
                 return ResourceManager.GetString("OperationCanceled", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Operation in progress. Please wait....
         /// </summary>
-        internal static string OperationProgress {
+        public static string OperationProgress {
             get {
                 return ResourceManager.GetString("OperationProgress", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Premium Feature.
         /// </summary>
-        internal static string PremiumFeature {
+        public static string PremiumFeature {
             get {
                 return ResourceManager.GetString("PremiumFeature", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to UPDATE NOW.
         /// </summary>
-        internal static string PWAUpdaterButton {
+        public static string PWAUpdaterButton {
             get {
                 return ResourceManager.GetString("PWAUpdaterButton", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to A new version is available.
         /// </summary>
-        internal static string PWAUpdaterText {
+        public static string PWAUpdaterText {
             get {
                 return ResourceManager.GetString("PWAUpdaterText", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Invalid operation. Please try again..
         /// </summary>
-        internal static string RenderControlInvalid {
+        public static string RenderControlInvalid {
             get {
                 return ResourceManager.GetString("RenderControlInvalid", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
-        internal static string RenderControlLoading {
+        public static string RenderControlLoading {
             get {
                 return ResourceManager.GetString("RenderControlLoading", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Data not available.
         /// </summary>
-        internal static string RenderControlNoData {
+        public static string RenderControlNoData {
             get {
                 return ResourceManager.GetString("RenderControlNoData", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Description contains suspicious or spam-like content..
         /// </summary>
-        internal static string SpamLike {
+        public static string SpamLike {
             get {
                 return ResourceManager.GetString("SpamLike", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace MM.WEB.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
-        internal static string Version {
+        public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
             }

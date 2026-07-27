@@ -314,7 +314,7 @@ else
 
 @code
 {
-    private ComponentActions<LastRegionUsers> LastUsersActions { get; } = new(obj => obj == null || obj.Items.Empty());
+    private ComponentActions<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
     public LastRegionUsers? LastUsers { get; set; }
     private Country? CountryEnum;
 
@@ -394,11 +394,9 @@ else
         {
             CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
 
-            var cache2 = await LastRegionUsersApi.LastRegionUsers(countryStr, cts.Token);
+            var cache2 = await LastRegionUsersApi.LastRegionUsers(countryStr, LastUsersActions, cts.Token);
             LastUsers = cache2?.Data;
         }
-
-        await LastUsersActions.FinishLoading.Invoke(LastUsers);
 
         if (countryStr.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
         {

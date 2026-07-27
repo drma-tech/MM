@@ -118,18 +118,17 @@
             </MudGrid>
         </BodyFragment>
     </PageSectionComponent>
-
     <PageSectionComponent Title="@Translations.Module.Landing.LastUsers" Subtitle="@Translations.Module.Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
         <BodyFragment>
             <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
-                <Slider List="LastUsers?.Items ?? []" Context="item">
+                <Slider List="context?.Data?.Items ?? []" Context="item">
                     <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                         <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
                             @item.CountryObj?.Name
                         </MudChip>
-                       @*  <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
+                        <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
                             @item.Created.Humanize()
-                        </MudChip> *@
+                        </MudChip>
                         <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
                     </div>
                 </Slider>
@@ -520,22 +519,19 @@
 
     private MudDialog? DialogCountries { get; set; }
     private MudDialog? DialogCities { get; set; }
+
     public SumUsers? SumUsers { get; set; }
 
-    private ComponentActions<LastUsers> LastUsersActions { get; } = new(obj => obj == null || obj.Items.Empty());
-    public LastUsers? LastUsers { get; set; }
+    private ComponentActions<LastUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
 
     protected override async Task LoadStaticDataAsync()
     {
-        var cache = await DashboardApi.GetSumUsers(cts.Token);
+        var cache = await DashboardApi.GetSumUsers(null, cts.Token);
         SumUsers = cache?.Data;
 
-        var cache2 = await LastUsersApi.GetLastUsers(cts.Token);
-        LastUsers = cache2?.Data;
+        var cache2 = await LastUsersApi.GetLastUsers(LastUsersActions, cts.Token);
 
-        await LastUsersActions.FinishLoading.Invoke(LastUsers);
-
-        foreach (var item in LastUsers?.Items ?? [])
+        foreach (var item in cache2?.Data?.Items ?? [])
         {
             item.CountryObj = item.Country?.GetFieldSettings();
         }
@@ -592,5 +588,4 @@
     {
         await DialogCities!.CloseAsync();
     }
-
 }

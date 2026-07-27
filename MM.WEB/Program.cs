@@ -88,27 +88,16 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddScoped<AppVersionHandler>();
     collection.AddMediaDevicesService();
 
-    var isLocal = baseAddress.Contains("localhost") || baseAddress.Contains("127.0.0.1");
-    Uri? webUri = null;
+    Uri webUri = new(baseAddress);
     Uri? apiUri = null;
 
-    if (isLocal)
+    if (baseAddress.Contains("localhost"))
     {
-        webUri = new Uri(baseAddress);
-        apiUri = new Uri(configuration["DownstreamApi:BaseUrl"] ?? throw new UnhandledException("BaseUrl not defined"));
+        apiUri = new Uri(configuration["ApiBaseAddress"] ?? throw new UnhandledException("ApiBaseAddress not defined"));
     }
     else
     {
-        var builder = new UriBuilder(baseAddress);
-
-        //force apex domain
-        //if (builder.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
-        //{
-        //    builder.Host = builder.Host[4..];
-        //}
-
-        webUri = builder.Uri;
-        apiUri = new Uri(webUri, "api/");
+        apiUri = new Uri($"{AppInfo.WebSite}/api");
     }
 
     //Local (json files and other assets, not the API)

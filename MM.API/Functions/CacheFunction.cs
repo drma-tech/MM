@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache cache, IHttpClientFactory factory)
+public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, IDistributedCache cache)
 {
     [Function("Dashboard")]
     public async Task<HttpResponseData?> Dashboard(
