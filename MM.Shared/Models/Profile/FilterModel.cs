@@ -1,13 +1,9 @@
-﻿using MM.Shared.Translations.Model;
+﻿using MM.Shared.Core.Types;
 
 namespace MM.Shared.Models.Profile;
 
-public class FilterModel : PrivateMainDocument
+public class FilterModel(string? id) : MainDocument(new MainIdentity(MainType.Filter, id))
 {
-    public FilterModel() : base(DocumentType.Filter)
-    {
-    }
-
     #region BASIC
 
     public Region Region { get; set; }

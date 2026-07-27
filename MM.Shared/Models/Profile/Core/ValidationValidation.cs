@@ -8,7 +8,7 @@ public class ValidationValidation : AbstractValidator<ValidationModel>
     {
         RuleSet("GALLERY", () => { RuleFor(x => x.Gallery).Equal(true); });
 
-        RuleSet("IDENTITY", () => { RuleFor(x => x.Identity).Equal(true); });
+        RuleSet("IDENTITY", () => { RuleFor(x => x.Kyc).Equal(true); });
 
         RuleSet("NETWORTH", () => { RuleFor(x => x.NetWorth).Equal(true); });
 

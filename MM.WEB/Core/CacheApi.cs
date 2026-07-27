@@ -10,25 +10,25 @@ public struct Endpoint
     public static string LastRegionUsers(string region) => $"public/cache/last-region-users/{region}";
 }
 
-public class DashboardApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<SumUsers>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentSumUsers)
+public class DashboardApi(IHttpClientFactory http) : ApiCosmos<SumUsersCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.SumUsersCache)
 {
-    public async Task<CacheDocument<SumUsers>?> GetSumUsers(CancellationToken cancellationToken)
+    public async Task<SumUsersCache?> GetSumUsers(CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.SumUsers, false, null, cancellationToken);
     }
 }
 
-public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<LastUsers>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentLastUsers)
+public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<LastUsersCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.LastUsersCache)
 {
-    public async Task<CacheDocument<LastUsers>?> GetLastUsers(CancellationToken cancellationToken)
+    public async Task<LastUsersCache?> GetLastUsers(CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.LastUsers, false, null, cancellationToken);
     }
 }
 
-public class LastRegionUsersApi(IHttpClientFactory http) : ApiCosmos<CacheDocument<LastRegionUsers>>(http, ApiType.Anonymous, null, ApiContext.Default.CacheDocumentLastRegionUsers)
+public class LastRegionUsersApi(IHttpClientFactory http) : ApiCosmos<LastRegionUsersCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.LastRegionUsersCache)
 {
-    public async Task<CacheDocument<LastRegionUsers>?> LastRegionUsers(string? region, CancellationToken cancellationToken)
+    public async Task<LastRegionUsersCache?> LastRegionUsers(string? region, CancellationToken cancellationToken)
     {
         if (region == null) return null;
 

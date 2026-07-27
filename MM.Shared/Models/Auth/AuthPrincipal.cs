@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MM.Shared.Core.Types;
+using System.ComponentModel.DataAnnotations;
 
 namespace MM.Shared.Models.Auth;
 
-public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
+public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.Principal, id))
 {
-    public string? UserId { get; set; }
+    public string? UserId { get; set; } = id;
     public string? DisplayName { get; set; }
     [DataType(DataType.EmailAddress)] public string? Email { get; set; }
     public string? StripeCustomerId { get; set; }
@@ -13,13 +14,7 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
 
     public string[] AuthProviders { get; set; } = [];
     public HashSet<AuthPurchase> AuthPurchases { get; set; } = [];
-    public List<Event> Events { get; set; } = [];
-
-    public override void Initialize(string userId)
-    {
-        base.Initialize(userId);
-        UserId = userId;
-    }
+    public HashSet<Event> Events { get; set; } = [];
 
     public AuthPurchase? GetActivePurchase()
     {
@@ -72,7 +67,7 @@ public class AuthPrincipal() : PrivateMainDocument(DocumentType.Principal)
     }
 }
 
-public class AuthPurchase
+public class AuthPurchase : EqualityBase<AuthPurchase>
 {
     public string? PurchaseId { get; set; }
     public string? SessionId { get; set; }
@@ -82,24 +77,15 @@ public class AuthPurchase
     public PaymentProvider? Provider { get; set; }
     public AccountProduct? Product { get; set; }
 
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj is not AuthPurchase other) return false;
-
-        return string.Equals(PurchaseId, other.PurchaseId, StringComparison.Ordinal) && string.Equals(SessionId, other.SessionId, StringComparison.Ordinal);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(PurchaseId, SessionId);
-    }
+    protected override object?[] EqualityValues => [PurchaseId, SessionId];
 }
 
-public class Event(string? origin, string? description, string? ip)
+public class Event(string? origin, string? description, string? ip) : EqualityBase<Event>
 {
     public string? Origin { get; set; } = origin;
     public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
     public string? Description { get; set; } = description;
     public string? Ip { get; set; } = ip;
+
+    protected override object?[] EqualityValues => [Origin, Date];
 }

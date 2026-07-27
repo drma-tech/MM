@@ -21,7 +21,7 @@
                              Click="GalleryClick"></FieldActive>
             </MudItem>
             <MudItem xs="12">
-                <FieldActive Name="@MM.Shared.Translations.Model.ProfileValidation.Identity" @bind-Value="@Validation!.Identity" CssIcon="@IconsFA.Solid.Icon("id-card").Font"
+                <FieldActive Name="@MM.Shared.Translations.Model.ProfileValidation.Identity" @bind-Value="@Validation!.Kyc" CssIcon="@IconsFA.Solid.Icon("id-card").Font"
                              Click="IdentityClick" Sparks="1"></FieldActive>
             </MudItem>
         </MudGrid>
@@ -55,7 +55,7 @@
 
         if (Validation == null)
         {
-            Validation = new ValidationModel();
+            Validation = new ValidationModel(AppStateStatic.UserId);
         }
 
         Actions?.FinishLoading?.Invoke(Validation);

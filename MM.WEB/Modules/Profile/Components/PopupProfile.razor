@@ -65,7 +65,7 @@
                                 </MudChip>
                                 <MudTooltip Text="@View?.Location">
                                     <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment" Size="AppStateStatic.Size">
-                                        @(View?.GetLocation(ProfileModel.LocationType.City) ?? "City")
+                                        @(View?.GetLocation(LocationType.City) ?? "City")
                                     </MudChip>
                                 </MudTooltip>
                                 <MudText Typo="Typo.body1" Align="Align.Justify" Class="ma-2">

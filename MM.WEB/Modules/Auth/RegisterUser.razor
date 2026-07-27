@@ -22,7 +22,7 @@
 
                 <MudCheckBox @bind-Value="_terms1" Color="Color.Primary" Class="@Css.Build().Small("mb")">
                     <MudText Inline="true">
-                        @((MarkupString)string.Format(MM.WEB.Translations.Module.Auth.Terms1, $"<a href='/{Culture}/legal/terms' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.TermsUse}</a>", $"<a href='/{Culture}/legal/privacy' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.PrivacyPolicy}</a>"))
+                        @((MarkupString)string.Format(Translations.Module.Auth.Terms1, $"<a href='/{Culture}/legal/terms' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.TermsUse}</a>", $"<a href='/{Culture}/legal/privacy' target='_blank' rel='noopener' class='mud-link mud-primary-text mud-link-underline-hover'>{Translations.Module.Legal.PrivacyPolicy}</a>"))
                     </MudText>
                 </MudCheckBox>
                 <MudCheckBox @bind-Value="_terms2" Color="Color.Primary" Class="@Css.Build().Small("mb")">
@@ -90,7 +90,7 @@
             if (AppStateStatic.Principal != null) throw new InvalidOperationException("Principal is already set.");
             if (AppStateStatic.User == null) throw new InvalidOperationException("User is null.");
 
-            AppStateStatic.Principal = new AuthPrincipal
+            AppStateStatic.Principal = new AuthPrincipal(AppStateStatic.UserId)
             {
                 AuthProviders = [AppStateStatic.User.FindFirst("idp")!.Value],
                 DisplayName = AppStateStatic.User.FindFirst("name")?.Value,

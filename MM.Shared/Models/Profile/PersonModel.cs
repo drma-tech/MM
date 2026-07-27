@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Profile;
 
-public class PersonModel
+public class PersonModel : EqualityBase<PersonModel>
 {
     public PersonModel()
     {
@@ -29,21 +29,5 @@ public class PersonModel
         return UserPhoto;
     }
 
-    public override bool Equals(object? obj)
-    {
-        return Equals(obj as PersonModel);
-    }
-
-    private bool Equals(PersonModel? other)
-    {
-        if (other is null || other.UserId is null) return false;
-        if (UserId is null) return false;
-
-        return UserId.Equals(other.UserId);
-    }
-
-    public override int GetHashCode()
-    {
-        return UserId?.GetHashCode() ?? 0;
-    }
+    protected override object?[] EqualityValues => [UserId];
 }

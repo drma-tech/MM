@@ -1,27 +1,24 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Profile;
 
 namespace MM.API.Functions;
 
 public static class EventHelper
 {
-    public static async Task<InteractionModel> GetInteractionModel(this CosmosRepository repo, string? userId, string? partnerId, CancellationToken cancellationToken)
+    public static async Task<InteractionModel> GetInteractionModel(this CosmosMainRepository repo, string? userId, string? partnerId, CancellationToken cancellationToken)
     {
         var intId = InteractionModel.FormatId($"{userId}:{partnerId}");
-        var interaction = await repo.Get<InteractionModel>(DocumentType.Interaction, intId, cancellationToken);
+        var interaction = await repo.ReadItemAsync<InteractionModel>(new MainIdentity(MainType.Interaction, intId), cancellationToken);
 
-        if (interaction == null)
-        {
-            interaction = new InteractionModel();
-            interaction.Initialize(intId);
-        }
+        interaction ??= new InteractionModel(intId);
 
         return interaction;
     }
 
-    public static async Task<InteractionModel> SetInteractionNew(this CosmosRepository repo, string? trigguerUserId, string? passiveUserId, EventType type, Origin origin, CancellationToken cancellationToken)
+    public static async Task<InteractionModel> SetInteractionNew(this CosmosMainRepository repo, string? trigguerUserId, string? passiveUserId, EventType type, Origin origin, CancellationToken cancellationToken)
     {
         if (trigguerUserId == passiveUserId) throw new NotificationException("cannot interact with yourself");
 
@@ -44,11 +41,11 @@ public static class EventHelper
                 throw new NotificationException("cannot dislike this user");
         }
 
-        return await repo.UpsertItemAsync(interaction, cancellationToken);
+        return await repo.UpsertItemAsync(interaction);
     }
 }
 
-public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
     [Function("InteractionGet")]
     public async Task<HttpResponseData?> InteractionGet([HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]
@@ -71,7 +68,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
 
         //add like to partner
         var partnerLikes = await repoGen.GetMyLikes(id, cancellationToken);
-        var partnerSettings = await repoGen.Get<SettingModel>(DocumentType.Setting, id, cancellationToken);
+        var partnerSettings = await repoGen.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, id), cancellationToken);
 
         partnerLikes.Items.Add(new PersonModel(userProfile, partnerSettings?.BlindDate ?? false));
 
@@ -92,7 +89,7 @@ public class EventFunction(CosmosRepository repoGen, CosmosProfileOffRepository 
                 (partnerProfile, partnerLikes, partnerMatches), cancellationToken);
         }
 
-        await repoGen.UpsertItemAsync(partnerLikes, cancellationToken);
+        await repoGen.UpsertItemAsync(partnerLikes);
 
         return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
     }

@@ -2,9 +2,9 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile", ApiContext.Default.ProfileModel)
+public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile", [], ApiContext.Default.ProfileModel)
 {
-    public async Task<ProfileModel?> Get(ComponentActions<ProfileModel?>? actions, CancellationToken cancellationToken)
+    public async Task<ProfileModel?> Get(ComponentActions<ProfileModel>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
     }
@@ -14,7 +14,7 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
         return await GetListAsync(ProfileEndpoint.GetAll, actions, cancellationToken);
     }
 
-    public async Task<ProfileModel?> GetView(string? IdUserView, ComponentActions<ProfileModel?>? actions, CancellationToken cancellationToken)
+    public async Task<ProfileModel?> GetView(string? IdUserView, ComponentActions<ProfileModel>? actions, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
 

@@ -1,11 +1,9 @@
-﻿namespace MM.Shared.Models.Profile;
+﻿using MM.Shared.Core.Types;
 
-public class MySuggestionsModel : PrivateMainDocument
+namespace MM.Shared.Models.Profile;
+
+public class MySuggestionsModel(string? id) : MainDocument(new MainIdentity(MainType.Suggestions, id))
 {
-    public MySuggestionsModel() : base(DocumentType.Suggestions)
-    {
-    }
-
     public HashSet<PersonModel> Items { get; set; } = [];
 
     public override bool Equals(object? obj)

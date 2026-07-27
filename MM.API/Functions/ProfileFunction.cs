@@ -2,6 +2,7 @@ using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
@@ -15,40 +16,30 @@ public static class ProfileHelper
     {
         //todo: on second phase, exchange to ON by default
 
-        var profile = await repoOff.Get<ProfileModel>(userId, cancellationToken);
+        var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken);
 
-        profile ??= await repoOn.Get<ProfileModel>(userId, cancellationToken);
+        profile ??= await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken);
 
         return profile;
     }
 
-    public static async Task<MyLikesModel> GetMyLikes(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
+    public static async Task<MyLikesModel> GetMyLikes(this CosmosMainRepository repo, string userId, CancellationToken cancellationToken)
     {
-        var myLikes = await repo.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
-
-        if (myLikes == null)
-        {
-            myLikes = new MyLikesModel();
-            myLikes.Initialize(userId);
-        }
+        var myLikes = await repo.ReadItemAsync<MyLikesModel>(new MainIdentity(MainType.Likes, userId), cancellationToken);
+        myLikes ??= new MyLikesModel(userId);
 
         return myLikes;
     }
 
-    public static async Task<MyMatchesModel> GetMyMatches(this CosmosRepository repo, string userId, CancellationToken cancellationToken)
+    public static async Task<MyMatchesModel> GetMyMatches(this CosmosMainRepository repo, string userId, CancellationToken cancellationToken)
     {
-        var myLikes = await repo.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
-
-        if (myLikes == null)
-        {
-            myLikes = new MyMatchesModel();
-            myLikes.Initialize(userId);
-        }
+        var myLikes = await repo.ReadItemAsync<MyMatchesModel>(new MainIdentity(MainType.Matches, userId), cancellationToken);
+        myLikes ??= new MyMatchesModel(userId);
 
         return myLikes;
     }
 
-    public static async Task SetMyMatches(this CosmosRepository repo,
+    public static async Task SetMyMatches(this CosmosMainRepository repo,
         (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
         (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
     {
@@ -59,8 +50,8 @@ public static class ProfileHelper
         if (user.matches.Id == partner.matches.Id)
             throw new NotificationException("invalid operation. matches are the same.");
 
-        var userSettings = await repo.Get<SettingModel>(DocumentType.Setting, user.profile.Id, cancellationToken);
-        var partnerSettings = await repo.Get<SettingModel>(DocumentType.Setting, partner.profile.Id, cancellationToken);
+        var userSettings = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, user.profile.Id), cancellationToken);
+        var partnerSettings = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, partner.profile.Id), cancellationToken);
 
         user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
         user.matches.Items.Add(new PersonModel(partner.profile, userSettings?.BlindDate ?? false));
@@ -68,17 +59,17 @@ public static class ProfileHelper
         partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
         partner.matches.Items.Add(new PersonModel(user.profile, partnerSettings?.BlindDate ?? false));
 
-        await repo.UpsertItemAsync(user.likes, cancellationToken);
-        await repo.UpsertItemAsync(user.matches, cancellationToken);
+        await repo.UpsertItemAsync(user.likes);
+        await repo.UpsertItemAsync(user.matches);
 
-        await repo.UpsertItemAsync(partner.likes, cancellationToken);
-        await repo.UpsertItemAsync(partner.matches, cancellationToken);
+        await repo.UpsertItemAsync(partner.likes);
+        await repo.UpsertItemAsync(partner.matches);
     }
 }
 
-public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
 {
-    private readonly CosmosRepository _repoGen = repoGen;
+    private readonly CosmosMainRepository _repoGen = repoGen;
 
     //[Function("ProfileGetAll")]
     //public async Task<HttpResponseData?> ProfileGetAll(
@@ -113,7 +104,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var doc = await _repoGen.Get<FilterModel>(DocumentType.Filter, userId, cancellationToken);
+        var doc = await _repoGen.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
@@ -123,7 +114,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var doc = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
+        var doc = await _repoGen.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
@@ -133,7 +124,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var doc = await _repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+        var doc = await _repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
     }
@@ -164,7 +155,6 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         //else profile.ActivityStatus = ActivityStatus.Disabled;
 
         return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
-
     }
 
     //[Function("ProfileListSearch")]
@@ -184,8 +174,8 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetBody<ProfileModel>(cancellationToken);
-        var principal = await _repoGen.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new NotificationException("user not found");
+        var body = await req.GetUserBody<ProfileModel>(cancellationToken);
+        var principal = await _repoGen.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new NotificationException("user not found");
 
         body.SanitizeOpenTextFields();
 
@@ -196,7 +186,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
         if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
-        return await repoOff.UpsertItemAsync(body, cancellationToken);
+        return await repoOff.UpsertItemAsync(body);
     }
 
     [Function("ProfileUpdateFilter")]
@@ -204,7 +194,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetBody<FilterModel>(cancellationToken);
+        var body = await req.GetUserBody<FilterModel>(cancellationToken);
 
         if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
 
@@ -212,16 +202,16 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
         var result = await validator.ValidateAsync(body);
         if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
-        return await _repoGen.UpsertItemAsync(body, cancellationToken);
+        return await _repoGen.UpsertItemAsync(body);
     }
 
     [Function("ProfileUpdateSetting")]
     public async Task<SettingModel> ProfileUpdateSetting(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var body = await req.GetBody<SettingModel>(cancellationToken);
+        var body = await req.GetPublicBody<SettingModel>(cancellationToken);
 
-        return await _repoGen.UpsertItemAsync(body, cancellationToken);
+        return await _repoGen.UpsertItemAsync(body);
     }
 
     [Function("ProfileGetMyLikes")]
@@ -230,7 +220,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
 
-        var obj = await _repoGen.Get<MyLikesModel>(DocumentType.Likes, userId, cancellationToken);
+        var obj = await _repoGen.ReadItemAsync<MyLikesModel>(new MainIdentity(MainType.Likes, userId), cancellationToken);
 
         return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
     }
@@ -241,7 +231,7 @@ public class ProfileFunction(CosmosRepository repoGen, CosmosProfileOffRepositor
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
 
-        var obj = await _repoGen.Get<MyMatchesModel>(DocumentType.Matches, userId, cancellationToken);
+        var obj = await _repoGen.ReadItemAsync<MyMatchesModel>(new MainIdentity(MainType.Matches, userId), cancellationToken);
 
         return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
     }

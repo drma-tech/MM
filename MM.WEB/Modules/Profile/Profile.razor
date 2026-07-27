@@ -153,7 +153,7 @@ else
                     </MudChip>
                     <MudTooltip Text="@profile?.Location">
                         <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
-                            @(profile?.GetLocation(ProfileModel.LocationType.City) ?? "City")
+                            @(profile?.GetLocation(LocationType.City) ?? "City")
                         </MudChip>
                     </MudTooltip>
                     <MudText Typo="Typo.body1" Align="Align.Justify">
@@ -322,16 +322,16 @@ else
     private ProfileModel? profile;
 
     private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-    private ComponentActions<ProfileModel?> ProfileActions { get; } = new(obj => obj == null);
+    private ComponentActions<ProfileModel> ProfileActions { get; } = new(obj => obj == null);
 
     private FilterValidation FilterValidator { get; } = new();
     private FilterModel? filter;
-    private ComponentActions<FilterModel?> FilterActions { get; } = new(obj => obj == null);
+    private ComponentActions<FilterModel> FilterActions { get; } = new(obj => obj == null);
 
     private PhotoValidation PhotoValidator { get; } = new();
 
     private SettingModel? setting;
-    private ComponentActions<SettingModel?> SettingActions { get; } = new(obj => obj == null);
+    private ComponentActions<SettingModel> SettingActions { get; } = new(obj => obj == null);
 
     private ValidationModel? validation;
 
@@ -339,10 +339,10 @@ else
     private ComponentActions<List<string>> SuggestionsActions { get; } = new(lst => lst == null || lst.Empty());
 
     private MyLikesModel? MyLikes { get; set; }
-    private ComponentActions<MyLikesModel?> LikesActions { get; } = new(obj => obj == null || obj.Items.Empty());
+    private ComponentActions<MyLikesModel> LikesActions { get; } = new(obj => obj == null || obj.Items.Empty());
 
     private MyMatchesModel? MyMatches { get; set; }
-    private ComponentActions<MyMatchesModel?> MatchesActions { get; } = new(obj => obj == null || obj.Items.Empty());
+    private ComponentActions<MyMatchesModel> MatchesActions { get; } = new(obj => obj == null || obj.Items.Empty());
 
     private string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
     private string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
@@ -353,7 +353,7 @@ else
     private bool GalleryValid => profile?.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
     private bool ValidationGeral => validation != null && validation.Gallery; //todo: implement the others when available
     private bool ValidationGallery => validation != null && validation.Gallery;
-    private bool ValidationIdentity => validation != null && validation.Identity;
+    private bool ValidationIdentity => validation != null && validation.Kyc;
     private bool ValidationNetWorth => validation != null && validation.NetWorth;
     private bool ValidationAnnualIncome => validation != null && validation.AnnualIncome;
 
@@ -485,13 +485,13 @@ else
 
         if (await DialogService.ShowMessageBoxAsync(Translations.Notification.Confirmation, Translations.Module.Profile.GenerateSimulation, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
         {
-            MyMatches = new MyMatchesModel();
+            MyMatches = new MyMatchesModel(AppStateStatic.UserId);
             await MatchesActions.StartLoading.Invoke(null);
 
             var languages = EnumHelper.GetValues<Language>();
 
             fakeProfiles = new Faker<ProfileModel>()
-                .RuleFor(x => x.Id, f => f.Random.Guid().ToString())
+                .CustomInstantiator(f => new ProfileModel(f.Random.Guid().ToString()))
                 .RuleFor(u => u.Gallery, f => new ProfileGalleryModel { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid().ToString()}" })
                 //BASIC
                 .RuleFor(x => x.NickName, f => f.Name.FirstName())

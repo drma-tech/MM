@@ -2,7 +2,7 @@
 
 namespace MM.Shared.Models.Safety
 {
-    public class SafetyModel : CosmosDocument
+    public class SafetyModel(string? id) : SafetyDocument(new SafetyIdentity(id), TtlCache.SixMonths)
     {
         /// <summary>
         /// gallery validation photo

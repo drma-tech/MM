@@ -1,30 +1,23 @@
-﻿namespace MM.Shared.Models.Profile;
+﻿using MM.Shared.Core.Types;
 
-public class InteractionModel : ProtectedMainDocument
+namespace MM.Shared.Models.Profile;
+
+public class InteractionModel(string? id) : MainDocument(new MainIdentity(MainType.Interaction, FormatId(id)))
 {
-    public InteractionModel() : base(DocumentType.Interaction)
-    {
-    }
-
     public List<InteractionEvent> EventsUserA { get; set; } = [];
     public List<InteractionEvent> EventsUserB { get; set; } = [];
 
     public InteractionStatus Status { get; set; } = InteractionStatus.Explorer;
-
-    public new void Initialize(string? idUsers)
-    {
-        if (string.IsNullOrEmpty(idUsers)) throw new ArgumentNullException(nameof(idUsers));
-
-        base.Initialize(FormatId(idUsers));
-    }
 
     /// <summary>
     ///     Format the id of the InteractionModel
     /// </summary>
     /// <param name="idUsers">guid:guid</param>
     /// <returns></returns>
-    public static string FormatId(string idUsers)
+    public static string FormatId(string? idUsers)
     {
+        ArgumentNullException.ThrowIfNull(idUsers);
+
         var ids = idUsers.Split(':');
         return string.Join("-", ids.Order());
     }

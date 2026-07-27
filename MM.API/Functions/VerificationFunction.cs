@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
 using MM.API.Core.Models;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Safety;
@@ -12,7 +13,7 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
-public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, IHttpClientFactory factory)
+public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyRepository repoSafety, StorageHelper storageHelper, IHttpClientFactory factory)
 {
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { PropertyNameCaseInsensitive = true };
 
@@ -21,7 +22,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "safety/get-photo-gallery")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
-        var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        var safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
 
         using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken);
 
@@ -65,11 +66,11 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         var data = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
         var verificationUrl = data.GetProperty("url").GetString() ?? throw new UnhandledException("url missing");
 
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
         principal.Events.Add(new Event("Didit", $"Session created with URL = {verificationUrl}", ip));
 
-        await repo.UpsertItemAsync(principal, cancellationToken);
+        await repo.UpsertItemAsync(principal);
 
         return verificationUrl;
     }
@@ -105,8 +106,8 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         if (payload.status == "In Progress") return response;
         if (payload.status == "Expired") return response;
 
-        var principalTask = repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
-        var validationTask = repo.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+        var principalTask = repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
+        var validationTask = repo.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
 
         await Task.WhenAll(principalTask, validationTask);
 
@@ -117,7 +118,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
 
         if (payload.status == "Approved")
         {
-            validation.Identity = true;
+            validation.Kyc = true;
 
             //delete session (required by privacy laws)
             var sessionUrl = $"https://verification.didit.me/v3/session/{payload.session_id}/delete/";
@@ -130,7 +131,7 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         }
         else
         {
-            validation.Identity = false;
+            validation.Kyc = false;
             req.LogWarning($"verification not succceded (user-id: {userId}): status={payload.status}");
         }
 
@@ -142,12 +143,8 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         if (user.date_of_birth == null) throw new UnhandledException("date_of_birth not found");
         if (user.full_name == null) throw new UnhandledException("full_name not found");
 
-        safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
-        if (safety == null)
-        {
-            safety = new SafetyModel();
-            safety.SetIds(userId);
-        }
+        safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
+        safety ??= new SafetyModel(userId);
 
         safety.provider = "didit";
         safety.session_id = payload.session_id;
@@ -163,9 +160,9 @@ public class VerificationFunction(CosmosRepository repo, CosmosSafetyRepository 
         }
 
         await Task.WhenAll(
-            repo.UpsertItemAsync(principal, cancellationToken),
-            repo.UpsertItemAsync(validation, cancellationToken),
-            repoSafety.UpsertItemAsync(safety, cancellationToken)
+            repo.UpsertItemAsync(principal),
+            repo.UpsertItemAsync(validation),
+            repoSafety.UpsertItemAsync(safety)
         );
 
         return response;

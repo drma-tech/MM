@@ -7,7 +7,7 @@ public static class SmartLookingCore
     public static FilterModel PopulateFields(ProfileModel? profile, FilterModel? filter)
     {
         if (profile == null) throw new NotificationException("Profile needs to be filled out first");
-        filter ??= new FilterModel();
+        filter ??= new FilterModel(AppStateStatic.UserId);
 
         //BASIC
         filter.Region = AffinityCore.GetRegion(profile.Relocation);

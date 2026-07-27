@@ -81,7 +81,7 @@ public partial class ProfileData : PageCore<ProfileData>
             await ShowWarning(Translations.Module.Profile.BasicRequired);
         }
 
-        Profile ??= new ProfileModel
+        Profile ??= new ProfileModel(AppStateStatic.UserId)
         {
             GenderIdentities = [GenderIdentity.Cisgender],
             SexualOrientations = [SexualOrientation.Heterosexual],
@@ -146,7 +146,7 @@ public partial class ProfileData : PageCore<ProfileData>
                 Profile = await ProfileApi.Update(Profile, cts.Token);
                 Actions.FinishProcessing?.Invoke(Profile);
 
-                _PendingAction = false; StateHasChanged();
+                IsDirty = false; StateHasChanged();
 
                 Navigation.NavigateTo($"/{Culture}/profile");
             }

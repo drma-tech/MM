@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
 using MM.API.Core.Models;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Subscription;
 using Stripe.Checkout;
@@ -12,7 +13,7 @@ using System.Text.Json;
 
 namespace MM.API.Functions;
 
-public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
+public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory factory)
 {
     private const string APP = "mm";
 
@@ -59,7 +60,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             var userId = await req.GetUserIdAsync(cancellationToken);
             var ip = req.GetUserIP(true);
 
-            client = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
+            client = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
             var raw = await req.ReadAsStringAsync();
             var receipt = JsonSerializer.Deserialize<string>(raw ?? throw new UnhandledException("body not present"));
@@ -93,7 +94,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         }
         finally
         {
-            if (client != null) await repo.UpsertItemAsync(client, cancellationToken);
+            if (client != null) await repo.UpsertItemAsync(client);
         }
     }
 
@@ -124,7 +125,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         var originalTransactionId = transaction.OriginalTransactionId;
 
-        var results = await repo.Query<AuthPrincipal>(DocumentType.Principal, x => x.AuthPurchases.Any(p => p.PurchaseId == originalTransactionId), null, cancellationToken);
+        var results = await repo.Query<AuthPrincipal>(MainType.Principal, x => x.AuthPurchases.Any(p => p.PurchaseId == originalTransactionId), null, cancellationToken);
 
         var client = results.LastOrDefault();
 
@@ -157,7 +158,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         client.Events.Add(new Event("Apple (Webhooks)", $"SubscriptionId = {originalTransactionId}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}", ip));
 
-        await repo.UpsertItemAsync(client, cancellationToken);
+        await repo.UpsertItemAsync(client);
     }
 
     [Function("StripeCreateCustomer")]
@@ -165,7 +166,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "stripe/customer")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
         var customer = await new Stripe.CustomerService().CreateAsync(new Stripe.CustomerCreateOptions
         {
@@ -182,7 +183,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         var ip = req.GetUserIP(true);
         principal.Events.Add(new Event("Stripe", $"User registered with id:{customer.Id}", ip));
 
-        return await repo.UpsertItemAsync(principal, cancellationToken);
+        return await repo.UpsertItemAsync(principal);
     }
 
     [Function("CreateCheckoutSession")]
@@ -193,7 +194,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
         var ip = req.GetUserIP(true);
         var url = req.GetQueryParameters()["url"];
 
-        var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
         if (principal.StripeCustomerId.Empty()) throw new NotificationException("Stripe customer not available");
 
@@ -241,7 +242,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
 
         principal.Events.Add(new Event("Stripe", $"Session created with SessionId = {session.Id}", ip));
 
-        await repo.UpsertItemAsync(principal, cancellationToken);
+        await repo.UpsertItemAsync(principal);
 
         return session.Url;
     }
@@ -269,7 +270,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             if (!obj.Metadata.TryGetValue("Quantity", out var qtd) || qtd.Empty())
                 throw new NotificationException("Quantity metadata missing in session");
 
-            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
             if (principal == null)
             {
@@ -297,7 +298,7 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
                 }
             }
 
-            await repo.UpsertItemAsync(principal, cancellationToken);
+            await repo.UpsertItemAsync(principal);
         }
         else if (stripeEvent.Type == "customer.deleted")
         {
@@ -306,13 +307,13 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
             {
                 //if no metadada, try to find the user with the StripeCustomerId
-                var list = await repo.Query<AuthPrincipal>(DocumentType.Principal, p => p.StripeCustomerId == obj.Id, null, cancellationToken);
+                var list = await repo.Query<AuthPrincipal>(MainType.Principal, p => p.StripeCustomerId == obj.Id, null, cancellationToken);
 
                 if (list.Count > 0)
                 {
                     var item = list[0];
                     item.StripeCustomerId = null;
-                    await repo.UpsertItemAsync(item, cancellationToken);
+                    await repo.UpsertItemAsync(item);
                 }
 
                 return await req.CreateResponse(HttpStatusCode.OK, "userId metadata missing");
@@ -321,12 +322,12 @@ public class PaymentFunction(CosmosRepository repo, IHttpClientFactory factory)
             if (!obj.Metadata.TryGetValue("app", out var app) || app != APP)
                 return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
 
-            var principal = await repo.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
             if (principal != null)
             {
                 principal.StripeCustomerId = null;
-                await repo.UpsertItemAsync(principal, cancellationToken);
+                await repo.UpsertItemAsync(principal);
             }
         }
 

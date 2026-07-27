@@ -1,11 +1,12 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Job;
 
 namespace MM.API.Functions;
 
-public class JobFunction(CosmosRepository repoMain, CosmosJobRepository repoJob)
+public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repoJob)
 {
     //[Function("GoPublicTransfer")]
     //public async Task GoPublicTransfer([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic-transfer")] HttpRequestData req, CancellationToken cancellationToken)
@@ -38,14 +39,14 @@ public class JobFunction(CosmosRepository repoMain, CosmosJobRepository repoJob)
         {
             var userId = job.Id.Split(":")[1];
 
-            var principal = await repoMain.Get<AuthPrincipal>(DocumentType.Principal, userId, cancellationToken);
+            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
             if (!principal!.PublicProfile && job.Email.NotEmpty())
             {
                 await zepto.SendGoPublicEmail(job.Email, userId, cancellationToken);
             }
 
-            await repoJob.Delete(job, cancellationToken);
+            await repoJob.DeleteItemAsync<GoPublicModel>(new JobIdentity(JobType.GoPublic, job.Id));
         }
     }
 }

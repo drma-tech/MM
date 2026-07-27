@@ -103,7 +103,7 @@ static void ConfigureServices(IServiceCollection services)
         });
         services.AddHostedService<CosmosWarmupService>();
 
-        services.AddSingleton<CosmosRepository>();
+        services.AddSingleton<CosmosMainRepository>();
         services.AddSingleton<CosmosCacheRepository>();
         services.AddSingleton<CosmosJobRepository>();
         services.AddSingleton<CosmosSafetyRepository>();

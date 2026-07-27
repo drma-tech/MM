@@ -1,11 +1,9 @@
-﻿namespace MM.Shared.Models.Profile;
+﻿using MM.Shared.Core.Types;
 
-public class MyLikesModel : PrivateMainDocument
+namespace MM.Shared.Models.Profile;
+
+public class MyLikesModel(string? id) : MainDocument(new MainIdentity(MainType.Likes, id))
 {
-    public MyLikesModel() : base(DocumentType.Likes)
-    {
-    }
-
     public HashSet<PersonModel> Items { get; set; } = [];
 
     public override bool Equals(object? obj)

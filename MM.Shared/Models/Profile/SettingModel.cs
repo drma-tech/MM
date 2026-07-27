@@ -1,10 +1,8 @@
-﻿namespace MM.Shared.Models.Profile;
+﻿using MM.Shared.Core.Types;
 
-public class SettingModel : PrivateMainDocument
+namespace MM.Shared.Models.Profile;
+
+public class SettingModel(string? id) : MainDocument(new MainIdentity(MainType.Setting, id))
 {
-    public SettingModel() : base(DocumentType.Setting)
-    {
-    }
-
     public bool BlindDate { get; set; }
 }

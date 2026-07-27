@@ -129,7 +129,7 @@
 
 @code
 {
-    private ProfileModel? _profile = new();
+    private ProfileModel? _profile = new(AppStateStatic.UserId);
     public ComponentActions<ProfileModel?> ProfileActions { get; set; } = new(obj => obj == null);
 
     private MudDialog? MudDialog { get; set; }

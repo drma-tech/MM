@@ -1,11 +1,9 @@
-﻿namespace MM.Shared.Models.Profile;
+﻿using MM.Shared.Core.Types;
 
-public class MyMatchesModel : PrivateMainDocument
+namespace MM.Shared.Models.Profile;
+
+public class MyMatchesModel(string? id) : MainDocument(new MainIdentity(MainType.Matches, id))
 {
-    public MyMatchesModel() : base(DocumentType.Matches)
-    {
-    }
-
     public HashSet<PersonModel> Items { get; set; } = [];
 
     public override bool Equals(object? obj)

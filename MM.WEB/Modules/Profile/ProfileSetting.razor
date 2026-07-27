@@ -45,7 +45,7 @@
 
         if (Setting == null)
         {
-            Setting = new SettingModel();
+            Setting = new SettingModel(AppStateStatic.UserId);
         }
 
         await Actions.FinishLoading.Invoke(Setting);

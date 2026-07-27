@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Subscription.Core
 {
-    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null, ApiContext.Default.AuthPurchase)
+    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null, [], ApiContext.Default.AuthPurchase)
     {
         public async Task<bool> StripeValidateSession(string id, CancellationToken cancellationToken)
         {
@@ -15,7 +15,7 @@ namespace MM.WEB.Modules.Subscription.Core
         }
     }
 
-    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null, ApiContext.Default.AuthPurchase)
+    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null, [], ApiContext.Default.AuthPurchase)
     {
         public async Task AppleVerify(string receipt, CancellationToken cancellationToken)
         {

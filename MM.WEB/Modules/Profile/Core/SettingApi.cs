@@ -2,9 +2,9 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting", ApiContext.Default.SettingModel)
+public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting", [], ApiContext.Default.SettingModel)
 {
-    public async Task<SettingModel?> Get(ComponentActions<SettingModel?>? actions, CancellationToken cancellationToken)
+    public async Task<SettingModel?> Get(ComponentActions<SettingModel>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
     }

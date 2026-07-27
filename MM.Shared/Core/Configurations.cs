@@ -1,4 +1,4 @@
-﻿namespace MM.Shared.Core.Models;
+﻿namespace MM.Shared.Core;
 
 public class Configurations
 {

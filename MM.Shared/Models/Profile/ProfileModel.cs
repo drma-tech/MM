@@ -3,16 +3,16 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.Shared.Models.Profile;
 
-public class ProfileModel : CosmosDocument
+public enum LocationType
 {
-    public enum LocationType
-    {
-        Full,
-        Country,
-        State,
-        City
-    }
+    Full,
+    Country,
+    State,
+    City
+}
 
+public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
+{
     public bool Validated { get; set; }
 
     public ProfileGalleryModel? Gallery { get; set; }

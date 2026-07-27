@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.AI;
 using MM.API.Core.Auth;
+using MM.Shared.Core.Types;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Safety;
 using MM.Shared.Requests;
@@ -9,7 +10,7 @@ using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions;
 
-public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository repoSafety, CosmosProfileOffRepository repo, StorageHelper storageHelper, IHttpClientFactory factory)
+public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepository repoSafety, CosmosProfileOffRepository repo, StorageHelper storageHelper, IHttpClientFactory factory)
 {
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
@@ -19,7 +20,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
         var request = await req.GetPublicBody<PhotoRequest>(cancellationToken);
 
-        var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
+        var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
         var currentPictureId = profile.Gallery?.GetPictureId(request.PhotoType);
 
         using var stream1 = new MemoryStream(request.Buffer);
@@ -69,11 +70,11 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
             await storageHelper.DeletePhoto(request.PhotoType, currentPictureId, cancellationToken);
 
             //reset validation flag
-            var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+            var validation = await repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
             if (validation != null)
             {
                 validation.Gallery = false;
-                await repoGen.UpsertItemAsync(validation, cancellationToken);
+                await repoGen.UpsertItemAsync(validation);
             }
         }
 
@@ -83,17 +84,17 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
 
         profile.UpdatePhoto(profile.Gallery);
 
-        return await repo.UpsertItemAsync(profile, cancellationToken);
+        return await repo.UpsertItemAsync(profile);
     }
 
     [Function("StorageDeletePhoto")]
     public async Task<ProfileModel> StorageDeletePhoto(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Delete, Route = "storage/delete-photo/{photoType}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/delete-photo/{photoType}")]
         HttpRequestData req, PhotoType photoType, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
 
-        var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
+        var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
 
         profile.Gallery ??= new ProfileGalleryModel();
 
@@ -104,14 +105,14 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         profile.UpdatePhoto(profile.Gallery);
 
         //reset validation flag
-        var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
+        var validation = await repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
         if (validation != null)
         {
             validation.Gallery = false;
-            await repoGen.UpsertItemAsync(validation, cancellationToken);
+            await repoGen.UpsertItemAsync(validation);
         }
 
-        return await repo.UpsertItemAsync(profile, cancellationToken);
+        return await repo.UpsertItemAsync(profile);
     }
 
     [Function("StorageUploadPhotoValidation")]
@@ -121,7 +122,7 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
         var request = await req.GetPublicBody<PhotoValidationRequest>(cancellationToken);
 
-        var profile = await repo.Get<ProfileModel>(userId, cancellationToken) ?? throw new NotificationException("Profile not found");
+        var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
 
         using var http = factory.CreateClient();
@@ -149,11 +150,10 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
             throw new NotificationException("More than one face was detected. Please ensure only one person is in the image.");
         }
 
-        var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
+        var safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
         if (safety == null)
         {
-            safety = new SafetyModel();
-            safety.SetIds(userId);
+            safety = new SafetyModel(userId);
         }
 
         using var streamStorage = new MemoryStream(request.Stream);
@@ -167,15 +167,12 @@ public class StorageFunction(CosmosRepository repoGen, CosmosSafetyRepository re
         safety.GalleryPhotoId = photoName;
         safety.email = request.Email;
 
-        await repoSafety.UpsertItemAsync(safety, cancellationToken);
+        _ = await repoSafety.UpsertItemAsync(safety);
 
-        var validation = await repoGen.Get<ValidationModel>(DocumentType.Validation, userId, cancellationToken);
-        if (validation == null)
-        {
-            validation = new ValidationModel();
-            validation.Initialize(userId);
-        }
+        var validation = await repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
+        validation ??= new ValidationModel(userId);
         validation.Gallery = true;
-        return await repoGen.UpsertItemAsync(validation, cancellationToken);
+
+        return await repoGen.UpsertItemAsync(validation);
     }
 }

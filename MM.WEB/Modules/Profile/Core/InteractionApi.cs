@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction", ApiContext.Default.InteractionModel)
+public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionModel>(http, ApiType.Authenticated, "interaction", [], ApiContext.Default.InteractionModel)
 {
     public async Task<InteractionModel?> GetInteraction(string? IdUserView, CancellationToken cancellationToken)
     {

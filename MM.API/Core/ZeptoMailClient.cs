@@ -13,6 +13,8 @@ namespace MM.API.Core
         private const string appName = "Modern Matchmaker";
         private const string supportEmail = $"support@{domain}.com";
         private static string year => DateTime.Now.Year.ToString();
+        
+        //todo: img css must be inside img tag
 
         private static readonly string CssBase = @"
         /* BASE */

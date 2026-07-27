@@ -3,7 +3,7 @@ using MM.Shared.Requests;
 
 namespace MM.WEB.Modules.Profile.Core;
 
-public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation", ApiContext.Default.ValidationModel)
+public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation", [], ApiContext.Default.ValidationModel)
 {
     public async Task<ValidationModel?> Get(CancellationToken cancellationToken)
     {
