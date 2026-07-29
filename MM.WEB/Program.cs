@@ -115,7 +115,7 @@ static void ConfigureServices(IServiceCollection collection, string baseAddress,
     collection.AddHttpClient("Local", c => { c.BaseAddress = webUri; });
 
     //Anonymous
-    collection.AddHttpClient("Anonymous", (service, options) => { options.BaseAddress = apiUri; options.Timeout = TimeSpan.FromSeconds(30); })
+    collection.AddHttpClient("Anonymous", (service, options) => { options.Timeout = TimeSpan.FromSeconds(30); })
         .AddHttpMessageHandler<AppVersionHandler>()
         .AddPolicyHandler(request => request.Method == HttpMethod.Get ? GetRetryPolicy() : Policy.NoOpAsync().AsAsyncPolicy<HttpResponseMessage>());
 
