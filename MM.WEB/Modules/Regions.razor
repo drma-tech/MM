@@ -57,8 +57,6 @@
         Options.Add("en");
         Options.Add("pt");
         Options.Add("es");
-
-        Options.AddRange(RegionsList?.Select(p => p.Group).Distinct().ToList() ?? []);
     }
 
     public List<EnumFieldObject<Country>> GetRegions()
@@ -79,13 +77,9 @@
 
             return RegionsList.Where(p => spanish.Contains(p.Value)).ToList();
         }
-        else if (filter.NotEmpty())
-        {
-            return RegionsList.Where(p => p.Group == filter).ToList();
-        }
         else
         {
-            return RegionsList;
+            return [];
         }
     }
 }
