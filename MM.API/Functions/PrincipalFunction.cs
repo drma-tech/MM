@@ -23,7 +23,6 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "principal/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        if (string.IsNullOrEmpty(userId)) throw new InvalidOperationException("GetUserId null");
 
         var model = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
@@ -60,9 +59,11 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         //note: its called once per user (first access)
 
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetUserBody<AuthPrincipal>(cancellationToken);
+        var body = await req.GetBody<AuthPrincipal>(cancellationToken);
+        var platform = req.GetQueryParameters()["platform"];
+        var country = req.GetQueryParameters()["country"];
 
-        if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
+        await req.ValidateUser(body.UserId, cancellationToken);
 
         //check if user ip is blocked for insert
         var ip = req.GetUserIP(false) ?? throw new UnhandledException("Failed to retrieve IP");
@@ -114,7 +115,20 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
             Events = body.Events
         };
 
-        return await repo.CreateItemAsync(principal);
+        principal = await repo.CreateItemAsync(principal);
+
+        if (platform.NotEmpty())
+        {
+            var newLogin = new AuthLogin(userId)
+            {
+                UserId = userId,
+                Accesses = [new Access { Date = DateTimeOffset.UtcNow, Platform = platform, Ip = ip, Country = country?.ToLower() }]
+            };
+
+            await repo.CreateItemAsync(newLogin);
+        }
+
+        return principal;
     }
 
     [Function("PrincipalUpdate")]
@@ -122,9 +136,9 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/update")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetUserBody<AuthPrincipal>(cancellationToken);
+        var body = await req.GetBody<AuthPrincipal>(cancellationToken);
 
-        if (userId.Empty()) throw new InvalidOperationException("unauthenticated user");
+        await req.ValidateUser(body.UserId, cancellationToken);
 
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 

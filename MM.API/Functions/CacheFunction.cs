@@ -49,7 +49,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
                         //Cities = s.Select(s => s.City!).Distinct().ToList()
                     }).ToList();
 
-                doc = await cacheRepo.UpsertItemAsync(new SumUsersCache(cacheKey, obj));
+                doc = await cacheRepo.CreateItemAsync(new SumUsersCache(cacheKey, obj));
             }
 
             await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
@@ -87,7 +87,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
                     obj.Items.Add(new LastUsersItem { Created = login.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
                 }
 
-                doc = await cacheRepo.UpsertItemAsync(new LastUsersCache(cacheKey, obj));
+                doc = await cacheRepo.CreateItemAsync(new LastUsersCache(cacheKey, obj));
             }
 
             await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
@@ -130,7 +130,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
                     }
                 }
 
-                doc = await cacheRepo.UpsertItemAsync(new LastRegionUsersCache(cacheKey, obj));
+                doc = await cacheRepo.CreateItemAsync(new LastRegionUsersCache(cacheKey, obj));
             }
 
             await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);

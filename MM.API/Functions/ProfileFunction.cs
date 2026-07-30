@@ -174,13 +174,13 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetUserBody<ProfileModel>(cancellationToken);
+        var body = await req.GetBody<ProfileModel>(cancellationToken);
         var principal = await _repoGen.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new NotificationException("user not found");
 
+        await req.ValidateUser(body.Identity.RawId, cancellationToken);
         body.SanitizeOpenTextFields();
 
         if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
-        if (body.Id != userId) throw new NotificationException("Invalid Operation");
 
         var validator = new ProfileValidation();
         var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
@@ -193,13 +193,12 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<FilterModel> ProfileUpdateFilter(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetUserBody<FilterModel>(cancellationToken);
+        var body = await req.GetBody<FilterModel>(cancellationToken);
 
-        if (body.Id.Split(":")[1] != userId) throw new NotificationException("Invalid Operation");
+        await req.ValidateUser(body.Identity.RawId, cancellationToken);
 
         var validator = new FilterValidation();
-        var result = await validator.ValidateAsync(body);
+        var result = await validator.ValidateAsync(body, cancellationToken);
         if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
         return await _repoGen.UpsertItemAsync(body);
@@ -209,7 +208,9 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<SettingModel> ProfileUpdateSetting(
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var body = await req.GetPublicBody<SettingModel>(cancellationToken);
+        var body = await req.GetBody<SettingModel>(cancellationToken);
+
+        await req.ValidateUser(body.Identity.RawId, cancellationToken);
 
         return await _repoGen.UpsertItemAsync(body);
     }

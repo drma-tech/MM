@@ -190,7 +190,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
     public async Task<string> CreateCheckoutSession(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}/{qtd}")] HttpRequestData req, string priceId, int qtd, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
+        var userId = await req.GetUserIdAsync(cancellationToken);
         var ip = req.GetUserIP(true);
         var url = req.GetQueryParameters()["url"];
 

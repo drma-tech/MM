@@ -17,8 +17,8 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
-        var request = await req.GetPublicBody<PhotoRequest>(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var request = await req.GetBody<PhotoRequest>(cancellationToken);
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
         var currentPictureId = profile.Gallery?.GetPictureId(request.PhotoType);
@@ -92,7 +92,7 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
         [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/delete-photo/{photoType}")]
         HttpRequestData req, PhotoType photoType, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
+        var userId = await req.GetUserIdAsync(cancellationToken);
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
 
@@ -119,8 +119,8 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
     public async Task<ValidationModel> UploadPhotoValidation(
        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("Invalid user");
-        var request = await req.GetPublicBody<PhotoValidationRequest>(cancellationToken);
+        var userId = await req.GetUserIdAsync(cancellationToken);
+        var request = await req.GetBody<PhotoValidationRequest>(cancellationToken);
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");

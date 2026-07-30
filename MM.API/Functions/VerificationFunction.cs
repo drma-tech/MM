@@ -21,7 +21,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
     public async Task<HttpResponseData> GetSafetyGalleryPhoto(
     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "safety/get-photo-gallery")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
+        var userId = await req.GetUserIdAsync(cancellationToken);
         var safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
 
         using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken);
@@ -37,7 +37,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
     public async Task<string> CreateVerificationSession(
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "didit/create-verification-session")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user not available");
+        var userId = await req.GetUserIdAsync(cancellationToken);
         var ip = req.GetUserIP(true);
         var url = req.GetQueryParameters()["url"] ?? throw new NotificationException("callback url not available");
         var email = req.GetQueryParameters()["email"];

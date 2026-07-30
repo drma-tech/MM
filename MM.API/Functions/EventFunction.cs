@@ -62,7 +62,7 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
     public async Task<HttpResponseData?> InteractionLike([HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "interaction/like/{origin}/{id}")]
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken) ?? throw new NotificationException("user id null");
+        var userId = await req.GetUserIdAsync(cancellationToken);
         var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
                           throw new NotificationException("user not found");
 
