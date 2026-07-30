@@ -135,6 +135,9 @@
   <data name="HowItWorks" xml:space="preserve">
     <value>Cómo funciona</value>
   </data>
+  <data name="LastUsers" xml:space="preserve">
+    <value>Encuentra a tu pareja de vida en tu país ({0})</value>
+  </data>
   <data name="Main" xml:space="preserve">
     <value>Principal</value>
   </data>

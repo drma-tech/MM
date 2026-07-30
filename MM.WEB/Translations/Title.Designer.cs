@@ -115,6 +115,15 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find your life partner in your country ({0}).
+        /// </summary>
+        public static string LastUsers {
+            get {
+                return ResourceManager.GetString("LastUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main.
         /// </summary>
         public static string Main {

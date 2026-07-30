@@ -153,6 +153,9 @@
   <data name="Approach06Desc" xml:space="preserve">
     <value>Man mano che la piattaforma cresce, nuove funzionalità e miglioramenti del matchmaking verranno sbloccati per ulteriori modi di connettersi.</value>
   </data>
+  <data name="AvailableYourDevices" xml:space="preserve">
+    <value>Disponibile su tutti i tuoi dispositivi</value>
+  </data>
   <data name="Cities" xml:space="preserve">
     <value>Città</value>
   </data>
@@ -185,6 +188,12 @@
   </data>
   <data name="LastUsersSubtitle" xml:space="preserve">
     <value>Utenti che si sono recentemente registrati sulla piattaforma</value>
+  </data>
+  <data name="LearnMoreAboutMM" xml:space="preserve">
+    <value>Scopri di più su Modern Matchmaker</value>
+  </data>
+  <data name="NoProfile" xml:space="preserve">
+    <value>Nessun profilo</value>
   </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Il nostro approccio</value>

@@ -12,7 +12,7 @@
 @inject ProfileApi ProfileApi
 @inject StorageApi StorageApi
 
-<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile/setting") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/setting") Index="false"></HeadComponent>
 
 <RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">

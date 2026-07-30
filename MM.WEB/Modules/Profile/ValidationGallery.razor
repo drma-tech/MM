@@ -11,7 +11,7 @@
 @inject ValidationApi ValidationApi
 @inject IMediaDevicesService MediaDevicesService;
 
-<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
 
 <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
     @Translations.Notification.ModuleUnderDevelopment

@@ -97,11 +97,11 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching..
         /// </summary>
-        internal static string Profile {
+        internal static string LastUsers {
             get {
-                return ResourceManager.GetString("Profile", resourceCulture);
+                return ResourceManager.GetString("LastUsers", resourceCulture);
             }
         }
         

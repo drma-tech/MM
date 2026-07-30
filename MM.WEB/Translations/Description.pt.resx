@@ -129,6 +129,9 @@
   <data name="HowItWorks" xml:space="preserve">
     <value>Saiba como o Modern Matchmaker avalia a compatibilidade, sugere combinações significativas e oferece uma alternativa mais inteligente ao namoro e matchmaking tradicional.</value>
   </data>
+  <data name="LastUsers" xml:space="preserve">
+    <value>Encontre o seu parceiro de vida no seu país ({0}) com o Modern Matchmaker. Descubra membros compatíveis por meio de um sistema de combinação inteligente.</value>
+  </data>
   <data name="WhoIsItFor" xml:space="preserve">
     <value>Modern Matchmaker é para pessoas que buscam relacionamentos significativos e de longo prazo, sem os limites dos aplicativos de namoro ou o alto custo da combinação tradicional.</value>
   </data>

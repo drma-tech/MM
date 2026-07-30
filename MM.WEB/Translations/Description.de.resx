@@ -129,6 +129,9 @@
   <data name="HowItWorks" xml:space="preserve">
     <value>Erfahren Sie, wie Modern Matchmaker die Kompatibilität bewertet, sinnvolle Übereinstimmungen vorschlägt und eine intelligentere Alternative zum herkömmlichen Dating und Matchmaking bietet.</value>
   </data>
+  <data name="LastUsers" xml:space="preserve">
+    <value>Finden Sie Ihren Lebenspartner in Ihrem Land ({0}) mit Modern Matchmaker. Entdecken Sie passende Mitglieder durch intelligentes Matching.</value>
+  </data>
   <data name="WhoIsItFor" xml:space="preserve">
     <value>Modern Matchmaker richtet sich an Menschen, die sinnvolle, langfristige Beziehungen suchen, ohne die Einschränkungen von Dating-Apps oder die hohen Kosten traditioneller Partnervermittlung.</value>
   </data>

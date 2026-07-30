@@ -286,6 +286,15 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No profile.
+        /// </summary>
+        public static string NoProfile {
+            get {
+                return ResourceManager.GetString("NoProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our Approach.
         /// </summary>
         public static string OurApproach {

@@ -8,12 +8,11 @@
 
 @inject LastRegionUsersApi LastRegionUsersApi
 
-<HeadComponent Title="@("Find your life partner in your country ({0})".Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown"))"
-               Description="@("Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching, designed for meaningful, long term relationships.".Format(CountryEnum?.GetFieldSettings()?.Name))"
+<HeadComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
                Url=@($"/{Culture}/last-users/{Region}") Index="true"></HeadComponent>
 
-<PageSectionComponent Title="@("Find your life partner in your country ({0})".Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown"))"
-                      Description="@("Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching, designed for meaningful, long term relationships.".Format(CountryEnum?.GetFieldSettings()?.Name))" CustomBodyClass="mb-12">
+<PageSectionComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
+                      CustomBodyClass="mb-12">
     <BodyFragment>
         <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
             <MudGrid Spacing="@Css.SpaceSmall" Class="mb-2">
@@ -23,11 +22,11 @@
                         <MudLink OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, item.Id, null, true))"
                                  style="display: flex; gap: 8px;" Disabled="@item.Nickname.Empty()">
                             <MudAvatar Size="Size.Large" Style="width: 66px; height: 66px;">
-                                <MudImage Src="images/no-face-photo.webp" Alt="@(item.Nickname ?? "no profile")" FallbackSrc="images/no-face-photo.webp" Style="width: 66px;">
+                                <MudImage Src="images/no-face-photo.webp" Alt="@(item.Nickname ?? Translations.Module.Landing.NoProfile)" FallbackSrc="images/no-face-photo.webp" Style="width: 66px;">
                                 </MudImage>
                             </MudAvatar>
                             <div style="align-content: center;">
-                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">@(item.Nickname ?? "no profile")</MudText>
+                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">@(item.Nickname ?? Translations.Module.Landing.NoProfile)</MudText>
                                 <MudText Typo="Typo.body1" Color=Color.Tertiary Style="line-height: normal; font-size: small;">@(item.State)</MudText>
                             </div>
                         </MudLink>
