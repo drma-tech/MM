@@ -1,0 +1,91 @@
+﻿@page "/{culture}/regions"
+
+@inherits PageCore<Regions>
+
+@using Country = MM.Shared.Enums.Country;
+
+<HeadComponent Title="Regions" Url=@($"/{Culture}/regions") Index="false"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Title="Regions"></PageSectionComponent>
+
+<PageSectionComponent ShowHeader="false">
+    <ActionsFragment>
+        <MudSelect Label="Filter" FitContent="!AppStateStatic.IsMobile" Clearable="true" Dense="true" Class="me-2" Variant="Variant.Text"
+                   Value="filter" ValueChanged="@((string? vl) => { filter = vl; StateHasChanged(); })">
+            @foreach (var item in Options)
+            {
+                <MudSelectItem Value="item">@item</MudSelectItem>
+            }
+        </MudSelect>
+    </ActionsFragment>
+    <BodyFragment>
+        <MudGrid Spacing="@Css.SpaceSmall">
+            @foreach (var item in GetRegions())
+            {
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudCard>
+                        <MudCardHeader Class="pa-2">
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h6" Color="Color.Primary">
+                                    @item.Name
+                                </MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardActions Class="pa-2">
+                            <MudButton Variant="Variant.Text" Href="@($"/{Culture}/last-users/{item.Value.ToString().ToLower()}")">
+                                @($"Last Users")
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </BodyFragment>
+</PageSectionComponent>
+
+@code {
+    public List<EnumFieldObject<Country>> RegionsList { get; set; } = [];
+
+    private List<string?> Options { get; set; } = [];
+    private string? filter;
+
+    protected override async Task LoadStaticDataAsync()
+    {
+        filter = Culture;
+
+        RegionsList = EnumHelper.GetList<Country>();
+
+        Options.Add("en");
+        Options.Add("pt");
+        Options.Add("es");
+
+        Options.AddRange(RegionsList?.Select(p => p.Group).Distinct().ToList() ?? []);
+    }
+
+    public List<EnumFieldObject<Country>> GetRegions()
+    {
+        if (filter == "en")
+        {
+            return RegionsList;
+        }
+        else if (filter == "pt")
+        {
+            var portuguese = new HashSet<Country> { Country.BR, Country.PT };
+
+            return RegionsList.Where(p => portuguese.Contains(p.Value)).ToList();
+        }
+        else if (filter == "es")
+        {
+            var spanish = new HashSet<Country> { Country.ES, Country.MX, Country.AR, Country.CL, Country.CO };
+
+            return RegionsList.Where(p => spanish.Contains(p.Value)).ToList();
+        }
+        else if (filter.NotEmpty())
+        {
+            return RegionsList.Where(p => p.Group == filter).ToList();
+        }
+        else
+        {
+            return RegionsList;
+        }
+    }
+}

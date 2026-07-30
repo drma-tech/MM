@@ -7,7 +7,7 @@ public struct Endpoint
     public static string SumUsers => "public/cache/sum-users";
     public static string LastUsers => "public/cache/last-users";
 
-    public static string LastRegionUsers(string region) => $"public/cache/last-region-users/{region}";
+    public static string LastRegionUsers(string mode, string region) => $"public/cache/last-region-users/{mode}/{region}";
 }
 
 public class DashboardApi(IHttpClientFactory http) : ApiCosmos<SumUsersCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.SumUsersCache)
@@ -28,10 +28,10 @@ public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<LastUsersCache>(h
 
 public class LastRegionUsersApi(IHttpClientFactory http) : ApiCosmos<LastRegionUsersCache>(http, ApiType.Anonymous, null, [], ApiContext.Default.LastRegionUsersCache)
 {
-    public async Task<LastRegionUsersCache?> LastRegionUsers(string? region, ComponentActions<LastRegionUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<LastRegionUsersCache?> LastRegionUsers(string mode, string? region, ComponentActions<LastRegionUsersCache>? actions, CancellationToken cancellationToken)
     {
         if (region == null) return null;
 
-        return await GetAsync(Endpoint.LastRegionUsers(region), false, actions, cancellationToken);
+        return await GetAsync(Endpoint.LastRegionUsers(mode, region), false, actions, cancellationToken);
     }
 }

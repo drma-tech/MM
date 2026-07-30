@@ -6,7 +6,7 @@
 @inject PrincipalApi PrincipalApi
 @inject LoginApi LoginApi
 
-<HeadComponent Title="@Translations.Title.HelpCenter" Description="@Translations.Description.HelpCenter.Format(AppInfo.Title)" Url=@($"/{Culture}/help") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.HelpCenter" Description="@Translations.Description.HelpCenter.Format(AppInfo.Title)" Url=@($"/{Culture}/help") Index="true"></HeadComponent>
 <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.HelpCenter" Description="@Translations.Description.HelpCenter.Format(AppInfo.Title)"></PageSectionComponent>
 
 <PageSectionComponent Title="Quick Actions">
@@ -65,6 +65,12 @@
                 <MudButton Variant="Variant.Filled" FullWidth="true" OnClick="@ClearCacheClick">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Clear"></MudIcon>
                     @Translations.Button.ClearCache
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/regions")>
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Language"></MudIcon>
+                    Browse by Region
                 </MudButton>
             </MudItem>
         </MudGrid>

@@ -1,0 +1,130 @@
+﻿@page "/{culture}/last-users/{region}"
+
+@using Country = MM.Shared.Enums.Country
+@using MM.Shared.Models.Dashboard
+@using Microsoft.JSInterop
+
+@inherits PageCore<LastUsersPage>
+
+@inject LastRegionUsersApi LastRegionUsersApi
+
+<HeadComponent Title="@("Find your life partner in your country ({0})".Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown"))"
+               Description="@("Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching, designed for meaningful, long term relationships.".Format(CountryEnum?.GetFieldSettings()?.Name))"
+               Url=@($"/{Culture}/last-users/{Region}") Index="true"></HeadComponent>
+
+<PageSectionComponent Title="@("Find your life partner in your country ({0})".Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown"))"
+                      Description="@("Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching, designed for meaningful, long term relationships.".Format(CountryEnum?.GetFieldSettings()?.Name))" CustomBodyClass="mb-12">
+    <BodyFragment>
+        <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+            <MudGrid Spacing="@Css.SpaceSmall" Class="mb-2">
+                @foreach (var item in LastUsers?.Items ?? [])
+                {
+                    <MudItem xs="6" sm="4" md="3" lg="2">
+                        <MudLink OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, item.Id, null, true))"
+                                 style="display: flex; gap: 8px;" Disabled="@item.Nickname.Empty()">
+                            <MudAvatar Size="Size.Large" Style="width: 66px; height: 66px;">
+                                <MudImage Src="images/no-face-photo.webp" Alt="@(item.Nickname ?? "no profile")" FallbackSrc="images/no-face-photo.webp" Style="width: 66px;">
+                                </MudImage>
+                            </MudAvatar>
+                            <div style="align-content: center;">
+                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">@(item.Nickname ?? "no profile")</MudText>
+                                <MudText Typo="Typo.body1" Color=Color.Tertiary Style="line-height: normal; font-size: small;">@(item.State)</MudText>
+                            </div>
+                        </MudLink>
+                    </MudItem>
+                }
+            </MudGrid>
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>
+
+<PageSectionComponent Title="@Translations.Module.Landing.LearnMoreAboutMM">
+    <BodyFragment>
+        <MudGrid Spacing="@Css.SpaceSmall">
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/help/faq") rel="nofollow">
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Chat"></MudIcon>
+                    Browse FAQ
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/how-it-works")>
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Info"></MudIcon>
+                    @Translations.Title.HowItWorks
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/who-its-for")>
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Info"></MudIcon>
+                    @Translations.Title.WhoIsItFor
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/compare")>
+                    <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Checklist"></MudIcon>
+                    @Translations.Title.Compare
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </BodyFragment>
+</PageSectionComponent>
+
+<PageSectionComponent Title="@Translations.Module.Landing.AvailableYourDevices">
+    <BodyFragment>
+        <MudGrid Spacing="@Css.SpaceSmall">
+            @foreach (var store in AppInfo.Stores)
+            {
+                if (CurrentPlatform == MM.Shared.Enums.Platform.ios)
+                {
+                    if (store.Platform == MM.Shared.Enums.Platform.play)
+                    {
+                        continue;
+                    }
+                }
+
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudButton Variant="Variant.Filled" FullWidth="true" Href="@store.Url" Target="_blank" rel="noopener">
+                        <MudImage Src="@store.Logo" Class="me-2" Style="width: 20px; vertical-align: top;" Alt="@store.Store" />
+                        @store.Store
+                    </MudButton>
+                </MudItem>
+            }
+        </MudGrid>
+    </BodyFragment>
+</PageSectionComponent>
+
+@code {
+    [Parameter] public string? Region { get; set; }
+
+    private MM.Shared.Enums.Platform? CurrentPlatform;
+
+    private ComponentActions<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+    public LastRegionUsers? LastUsers { get; set; }
+    private Country? CountryEnum;
+
+    // protected override async Task LoadStaticDataAsync()
+    // {
+    //     if (Region.NotEmpty())
+    //     {
+    //         CountryEnum = EnumHelper.ParseToEnum<Country>(Region);
+
+    //         var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, cts.Token);
+    //         LastUsers = cache2?.Data;
+    //     }
+
+    //     if (Region.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
+    //     {
+    //         if (AppStateStatic.IsAuthenticated)
+    //             await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
+    //         else
+    //             await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
+    //     }
+    // }
+
+    protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
+    {
+        CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, cts.Token);
+
+        return true;
+    }
+}

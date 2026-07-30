@@ -98,9 +98,9 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
 
     [Function("LastRegionUsers")]
     public async Task<HttpResponseData?> LastRegionUsers(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/last-region-users/{country}")] HttpRequestData req, string country, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/last-region-users/{mode}/{country}")] HttpRequestData req, string mode, string country, CancellationToken cancellationToken)
     {
-        var cacheKey = $"last-region-users-{country.ToLowerInvariant()}";
+        var cacheKey = $"last-region-users-{mode}-{country.ToLowerInvariant()}";
         var doc = await cache.Get<LastRegionUsersCache>(cacheKey, cancellationToken);
 
         if (doc == null)
@@ -113,7 +113,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
 
                 var logins = await repo.Query<AuthLogin>(MainType.Login,
                     p => p.Accesses.Any(x => x.Country == country),
-                    p => p.OrderByDescending(x => x.TimestampCreated).Take(20),
+                    p => p.OrderByDescending(x => x.TimestampCreated).Take(mode == "compact" ? 20 : 40),
                     cancellationToken);
 
                 foreach (var login in logins)

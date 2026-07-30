@@ -169,6 +169,15 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available on All Your Devices.
+        /// </summary>
+        public static string AvailableYourDevices {
+            get {
+                return ResourceManager.GetString("AvailableYourDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cities.
         /// </summary>
         public static string Cities {
@@ -264,6 +273,15 @@ namespace MM.WEB.Translations.Module {
         public static string LastUsersSubtitle {
             get {
                 return ResourceManager.GetString("LastUsersSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn More About Modern Matchmaker.
+        /// </summary>
+        public static string LearnMoreAboutMM {
+            get {
+                return ResourceManager.GetString("LearnMoreAboutMM", resourceCulture);
             }
         }
         

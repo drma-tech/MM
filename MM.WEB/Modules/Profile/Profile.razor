@@ -394,7 +394,7 @@ else
         {
             CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
 
-            var cache2 = await LastRegionUsersApi.LastRegionUsers(countryStr, LastUsersActions, cts.Token);
+            var cache2 = await LastRegionUsersApi.LastRegionUsers("compact", countryStr, LastUsersActions, cts.Token);
             LastUsers = cache2?.Data;
         }
 
