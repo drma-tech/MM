@@ -102,24 +102,24 @@
     public LastRegionUsers? LastUsers { get; set; }
     private Country? CountryEnum;
 
-    // protected override async Task LoadStaticDataAsync()
-    // {
-    //     if (Region.NotEmpty())
-    //     {
-    //         CountryEnum = EnumHelper.ParseToEnum<Country>(Region);
+    protected override async Task LoadStaticDataAsync()
+    {
+        if (Region.NotEmpty())
+        {
+            CountryEnum = EnumHelper.ParseToEnum<Country>(Region);
 
-    //         var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, cts.Token);
-    //         LastUsers = cache2?.Data;
-    //     }
+            var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, cts.Token);
+            LastUsers = cache2?.Data;
+        }
 
-    //     if (Region.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
-    //     {
-    //         if (AppStateStatic.IsAuthenticated)
-    //             await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
-    //         else
-    //             await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
-    //     }
-    // }
+        if (Region.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
+        {
+            if (AppStateStatic.IsAuthenticated)
+                await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
+            else
+                await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
+        }
+    }
 
     protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
     {
