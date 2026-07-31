@@ -9,7 +9,7 @@
 @inject LastRegionUsersApi LastRegionUsersApi
 
 <HeadComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
-               Url=@($"/{Culture}/last-users/{Region}") Index="true"></HeadComponent>
+               Url=@($"/{Culture}/last-users/{Region}") Index="true" FixedAlternateLanguage="@Culture"></HeadComponent>
 
 <PageSectionComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
                       CustomBodyClass="mb-12">
