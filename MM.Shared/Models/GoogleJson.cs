@@ -4,7 +4,7 @@ public class AddressComponent
 {
     public string? long_name { get; set; }
     public string? short_name { get; set; }
-    public IReadOnlyList<string> types { get; set; } = [];
+    public IReadOnlyCollection<string> types { get; set; } = [];
 }
 
 public class Bounds
@@ -41,12 +41,12 @@ public class PlusCode
 
 public class Result
 {
-    public IReadOnlyList<AddressComponent> address_components { get; set; } = [];
+    public IReadOnlyCollection<AddressComponent> address_components { get; set; } = [];
     public string? formatted_address { get; set; }
     public Geometry? geometry { get; set; }
     public string? place_id { get; set; }
     public PlusCode? plus_code { get; set; }
-    public IReadOnlyList<string> types { get; set; } = [];
+    public IReadOnlyCollection<string> types { get; set; } = [];
 
     public string GetLocation()
     {
@@ -63,7 +63,7 @@ public class Result
 public class GoogleJson
 {
     public PlusCode? plus_code { get; set; }
-    public IReadOnlyList<Result> results { get; set; } = [];
+    public IReadOnlyCollection<Result> results { get; set; } = [];
     public string? status { get; set; }
 }
 

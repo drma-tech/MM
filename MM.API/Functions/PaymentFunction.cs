@@ -16,7 +16,9 @@ namespace MM.API.Functions;
 
 public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory factory)
 {
-    private const string APP = "mm";
+    private const string APP_CODE = "mm";
+    private const string APP = "app";
+    private const string USERAPI = "userId";
 
     [Function("PaymentConfigurations")]
     public static PaymentConfigurations PaymentConfigurations(
@@ -173,8 +175,8 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             Name = principal.DisplayName,
             Email = principal.Email,
             Metadata = new Dictionary<string, string>(StringComparer.Ordinal) {
-                { "app", APP },
-                { "userId", principal.UserId! },
+                { APP, APP_CODE },
+                { USERAPI, principal.UserId! },
             },
         }, cancellationToken: cancellationToken);
 
@@ -212,15 +214,15 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
             Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
-                { "app", APP },
-                { "userId", principal.UserId! },
+                { APP, APP_CODE },
+                { USERAPI, principal.UserId! },
                 { "Quantity", qtd.ToString(CultureInfo.InvariantCulture) },
             },
             SubscriptionData = new SessionSubscriptionDataOptions
             {
                 Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
-                    { "app", APP },
-                    { "userId", principal.UserId! },
+                    { APP, APP_CODE },
+                    { USERAPI, principal.UserId! },
                 },
             },
         };
@@ -261,7 +263,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         {
             if (stripeEvent.Data.Object is not Session obj || obj.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP, StringComparison.OrdinalIgnoreCase))
+            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP_CODE, StringComparison.OrdinalIgnoreCase))
                 return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}", cancellationToken);
 
             if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
@@ -311,7 +313,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 
                 if (list.Count > 0)
                 {
-                    var item = list[0];
+                    var item = list.Single();
                     item.StripeCustomerId = null;
                     await repo.UpsertItemAsync(item);
                 }
@@ -319,7 +321,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
                 return await req.CreateResponse(HttpStatusCode.OK, "userId metadata missing", cancellationToken);
             }
 
-            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP, StringComparison.OrdinalIgnoreCase))
+            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP_CODE, StringComparison.OrdinalIgnoreCase))
                 return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}", cancellationToken);
 
             var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
@@ -335,7 +337,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
     }
 
     [Function("StripeValidateSession")]
-    public async static Task<HttpResponseData> StripeValidateSession(
+    public static async Task<HttpResponseData> StripeValidateSession(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/stripe/validate-session/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(id))

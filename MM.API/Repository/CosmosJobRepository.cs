@@ -10,7 +10,7 @@ namespace MM.API.Repository;
 public class CosmosJobRepository(CosmosClient CosmosClient, ILogger<CosmosJobRepository> logger)
      : BaseRepository<CosmosJobRepository, JobDocument, JobIdentity>(CosmosClient, logger, "job")
 {
-    public async Task<IReadOnlyList<T>> Query<T>(JobType type, Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<T>> Query<T>(JobType type, Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
         where T : JobDocument
     {
         try

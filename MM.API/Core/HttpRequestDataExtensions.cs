@@ -128,7 +128,7 @@ public static class HttpRequestDataExtensions
             Ip = req.GetUserIP(includePort: false),
         };
 
-        logger.LogError(ex, "params:{Custom_Params}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Params, log.AppVersion, log.Ip);
+        logger.Error(ex, log.Params, log.AppVersion, log.Ip);
     }
 
     public static void LogWarning(this HttpRequestData req, string? message)
@@ -146,7 +146,7 @@ public static class HttpRequestDataExtensions
             Ip = req.GetUserIP(includePort: false),
         };
 
-        logger.LogWarning("message:{Custom_Message}, params:{Custom_Params}, version:{Custom_AppVersion}, ip:{Custom_Ip}", log.Message, log.Params, log.AppVersion, log.Ip);
+        logger.Warning(log.Message, log.Params, log.AppVersion, log.Ip);
     }
 
     /// <summary>

@@ -115,7 +115,7 @@ public partial class ProfileData : PageCore<ProfileData>
             var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, Cts.Token);
             if (here != null && here.items.Count != 0)
             {
-                var address = here.items[0].address;
+                var address = here.items.First().address;
                 profile.Country = address?.GetCountry();
                 profile.State = address?.GetState();
                 profile.City = address?.GetCity();

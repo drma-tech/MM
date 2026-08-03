@@ -6,7 +6,6 @@ using MM.WEB.Modules.Profile.Components;
 using MM.WEB.Modules.Subscription.Components;
 using MM.WEB.Shared;
 using MudBlazor;
-using System.Globalization;
 using static MM.Shared.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Core.Helper;

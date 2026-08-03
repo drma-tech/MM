@@ -30,7 +30,7 @@ public partial class FieldSelect<TValue, TEnum> : FormBase
 
     public IEnumerable<EnumFieldObject<TEnum>> EnumList { get; set; } = [];
     public IEnumerable<EnumFieldObject<TEnum>> EnumListRaw { get; set; } = [];
-    public IEnumerable<string> EnumListGroup { get; set; } = [];    
+    public IEnumerable<string> EnumListGroup { get; set; } = [];
 
     protected override void OnInitialized()
     {

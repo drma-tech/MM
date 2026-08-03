@@ -258,7 +258,7 @@ else
         <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Likes">
             <BodyFragment>
                 <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
-                    <Slider List="MyLikes?.Items ?? []" Context="item">
+                    <Slider List="MyLikes?.Items ?? new HashSet<PersonModel>()" Context="item">
                         <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
                              @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
@@ -284,7 +284,7 @@ else
             </ActionsFragment>
             <BodyFragment>
                 <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
-                    <Slider List="MyMatches?.Items ?? []" Context="item">
+                    <Slider List="MyMatches?.Items ?? new HashSet<PersonModel>()" Context="item">
                         <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
                                 @item.UserName
@@ -555,7 +555,7 @@ else
                 .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<IdealPlaceToLive>())
                 .GenerateLazy(8).ToHashSet();
 
-            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToList();
+            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
             await MatchesActions.FinishLoading.Invoke(MyMatches);
         }

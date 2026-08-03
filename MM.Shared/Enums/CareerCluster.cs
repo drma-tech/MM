@@ -14,7 +14,7 @@ public enum CareerCluster
 
     //AGRICULTURE, FOOD & NATURAL RESOURCES
 
-    [FieldSettings(nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Name), Group = nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Group), Description = nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Description), 
+    [FieldSettings(nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Name), Group = nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Group), Description = nameof(Translations.Enum.CareerCluster.AgricultureFoodNaturalResources_Description),
         ResourceType = typeof(Translations.Enum.CareerCluster))]
     AgricultureFoodNaturalResources = 1,
 

@@ -9,7 +9,7 @@ namespace MM.API.Repository;
 public class CosmosProfileOffRepository(CosmosClient CosmosClient, ILogger<CosmosProfileOffRepository> logger)
     : BaseRepository<CosmosProfileOffRepository, ProfileDocument, ProfileIdentity>(CosmosClient, logger, "profile-off")
 {
-    public async Task<IReadOnlyList<T>> Query<T>(Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<T>> Query<T>(Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
         where T : ProfileDocument
     {
         try

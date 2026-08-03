@@ -65,7 +65,7 @@ public class LoginFunction(CosmosMainRepository repo, IDistributedCache cache)
     }
 
     [Function("LoginEmailAuth")]
-    public async static Task LoginEmailAuth(
+    public static async Task LoginEmailAuth(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/login/email")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var email = req.GetQueryParameters()["email"];

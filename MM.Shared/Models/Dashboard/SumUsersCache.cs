@@ -10,11 +10,11 @@ public class SumUsers
     public int Cities { get; set; }
     public int TotalUsers { get; set; }
     public int RecentlyJoined { get; set; }
-    public IReadOnlyList<SumUsersRegion> Regions { get; set; } = [];
+    public ICollection<SumUsersRegion> Regions { get; set; } = [];
 }
 
 public class SumUsersRegion
 {
     public string? Name { get; set; }
-    public IReadOnlyList<string> Cities { get; set; } = [];
+    public ICollection<string> Cities { get; set; } = [];
 }

@@ -3,7 +3,7 @@
 namespace MM.WEB.Core.Api;
 
 /// <summary>
-/// 
+///
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="factory"></param>
