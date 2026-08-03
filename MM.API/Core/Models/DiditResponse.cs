@@ -4,20 +4,20 @@ namespace MM.API.Core.Models
 {
     public class AdditionalInformation
     {
-        public List<object>? flag_summary { get; set; }
+        public IReadOnlyList<object>? flag_summary { get; set; }
     }
 
     public class AddressComponent
     {
         public string? long_name { get; set; }
         public string? short_name { get; set; }
-        public List<string>? types { get; set; }
+        public IReadOnlyList<string>? types { get; set; }
     }
 
     public class AmlScreening
     {
         public string? entity_type { get; set; }
-        public List<Hit>? hits { get; set; }
+        public IReadOnlyList<Hit>? hits { get; set; }
         public bool? is_ongoing_monitoring_enabled { get; set; }
         public object? next_ongoing_monitoring_bill_date { get; set; }
         public string? node_id { get; set; }
@@ -25,14 +25,14 @@ namespace MM.API.Core.Models
         public ScreenedData? screened_data { get; set; }
         public string? status { get; set; }
         public int? total_hits { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Answer
     {
         public string? value { get; set; }
         public string? text { get; set; }
-        public List<string>? files { get; set; }
+        public IReadOnlyList<string>? files { get; set; }
     }
 
     public class Authenticity
@@ -86,7 +86,7 @@ namespace MM.API.Core.Models
         public string? birth_date { get; set; }
         public string? birth_date_hash { get; set; }
         public string? country { get; set; }
-        public List<string>? dgs { get; set; }
+        public IReadOnlyList<string>? dgs { get; set; }
         public string? document_number { get; set; }
         public string? document_number_hash { get; set; }
         public string? document_type { get; set; }
@@ -137,32 +137,32 @@ namespace MM.API.Core.Models
         public string? issuing_state { get; set; }
         public string? validation_type { get; set; }
         public ScreenedData? screened_data { get; set; }
-        public List<Validation>? validations { get; set; }
+        public IReadOnlyList<Validation>? validations { get; set; }
         public string? match_type { get; set; }
         public string? status { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Decision
     {
-        public List<AmlScreening>? aml_screenings { get; set; }
+        public IReadOnlyList<AmlScreening>? aml_screenings { get; set; }
         public string? callback { get; set; }
         public object? contact_details { get; set; }
         public DateTime created_at { get; set; }
-        public List<DatabaseValidation>? database_validations { get; set; }
-        public List<EmailVerification>? email_verifications { get; set; }
+        public IReadOnlyList<DatabaseValidation>? database_validations { get; set; }
+        public IReadOnlyList<EmailVerification>? email_verifications { get; set; }
         public object? expected_details { get; set; }
-        public List<FaceMatch>? face_matches { get; set; }
-        public List<string>? features { get; set; }
-        public List<IdVerification>? id_verifications { get; set; }
-        public List<IpAnalysis>? ip_analyses { get; set; }
-        public List<LivenessCheck>? liveness_checks { get; set; }
+        public IReadOnlyList<FaceMatch>? face_matches { get; set; }
+        public IReadOnlyList<string>? features { get; set; }
+        public IReadOnlyList<IdVerification>? id_verifications { get; set; }
+        public IReadOnlyList<IpAnalysis>? ip_analyses { get; set; }
+        public IReadOnlyList<LivenessCheck>? liveness_checks { get; set; }
         public object? metadata { get; set; }
-        public List<NfcVerification>? nfc_verifications { get; set; }
-        public List<PhoneVerification>? phone_verifications { get; set; }
-        public List<PoaVerification>? poa_verifications { get; set; }
-        public List<QuestionnaireResponse>? questionnaire_responses { get; set; }
-        public List<Review>? reviews { get; set; }
+        public IReadOnlyList<NfcVerification>? nfc_verifications { get; set; }
+        public IReadOnlyList<PhoneVerification>? phone_verifications { get; set; }
+        public IReadOnlyList<PoaVerification>? poa_verifications { get; set; }
+        public IReadOnlyList<QuestionnaireResponse>? questionnaire_responses { get; set; }
+        public IReadOnlyList<Review>? reviews { get; set; }
         public string? session_id { get; set; }
         public int? session_number { get; set; }
         public string? session_url { get; set; }
@@ -222,24 +222,24 @@ namespace MM.API.Core.Models
 
     public class EmailVerification
     {
-        public List<object>? breaches { get; set; }
+        public IReadOnlyList<object>? breaches { get; set; }
         public string? email { get; set; }
         public bool? is_breached { get; set; }
         public bool? is_disposable { get; set; }
         public bool? is_undeliverable { get; set; }
-        public List<Lifecycle>? lifecycle { get; set; }
+        public IReadOnlyList<Lifecycle>? lifecycle { get; set; }
         public string? node_id { get; set; }
         public string? status { get; set; }
         public int? verification_attempts { get; set; }
         public DateTime verified_at { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class ExtraFields
     {
         public string? first_surname { get; set; }
         public string? second_surname { get; set; }
-        public List<object>? additional_names { get; set; }
+        public IReadOnlyList<object>? additional_names { get; set; }
         public object? bank_account_number { get; set; }
         public object? bank_branch_address { get; set; }
         public object? bank_branch_name { get; set; }
@@ -258,7 +258,7 @@ namespace MM.API.Core.Models
         public object? source_image_session_id { get; set; }
         public string? status { get; set; }
         public string? target_image { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class FrontImageQualityScore
@@ -287,7 +287,7 @@ namespace MM.API.Core.Models
         public double? score { get; set; }
         public object? target { get; set; }
         public string? caption { get; set; }
-        public List<string>? datasets { get; set; }
+        public IReadOnlyList<string>? datasets { get; set; }
         public object? features { get; set; }
         public string? rca_name { get; set; }
         public DateTime last_seen { get; set; }
@@ -298,12 +298,12 @@ namespace MM.API.Core.Models
         public double? risk_score { get; set; }
         public string? review_status { get; set; }
         public ScoreBreakdown? score_breakdown { get; set; }
-        public List<PepMatch>? pep_matches { get; set; }
-        public List<object>? linked_entities { get; set; }
-        public List<object>? warning_matches { get; set; }
-        public List<object>? sanction_matches { get; set; }
+        public IReadOnlyList<PepMatch>? pep_matches { get; set; }
+        public IReadOnlyList<object>? linked_entities { get; set; }
+        public IReadOnlyList<object>? warning_matches { get; set; }
+        public IReadOnlyList<object>? sanction_matches { get; set; }
         public object? adverse_media_details { get; set; }
-        public List<object>? adverse_media_matches { get; set; }
+        public IReadOnlyList<object>? adverse_media_matches { get; set; }
         public AdditionalInformation? additional_information { get; set; }
     }
 
@@ -329,7 +329,7 @@ namespace MM.API.Core.Models
         public string? document_type { get; set; }
         public string? expiration_date { get; set; }
         public ExtraFields? extra_fields { get; set; }
-        public List<object>? extra_files { get; set; }
+        public IReadOnlyList<object>? extra_files { get; set; }
         public string? first_name { get; set; }
         public string? formatted_address { get; set; }
         public string? front_image { get; set; }
@@ -345,7 +345,7 @@ namespace MM.API.Core.Models
         public string? issuing_state_name { get; set; }
         public string? last_name { get; set; }
         public string? marital_status { get; set; }
-        public List<object>? matches { get; set; }
+        public IReadOnlyList<object>? matches { get; set; }
         public string? nationality { get; set; }
         public string? node_id { get; set; }
         public ParsedAddress? parsed_address { get; set; }
@@ -353,7 +353,7 @@ namespace MM.API.Core.Models
         public string? place_of_birth { get; set; }
         public string? portrait_image { get; set; }
         public string? status { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Ip
@@ -389,13 +389,13 @@ namespace MM.API.Core.Models
         public string? status { get; set; }
         //public string? time_zone { get; set; }
         //public int? time_zone_offset { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Item
     {
         public Answer? answer { get; set; }
-        public List<Choice>? choices { get; set; }
+        public IReadOnlyList<Choice>? choices { get; set; }
         public object? description { get; set; }
         public string? element_type { get; set; }
         public bool? is_required { get; set; }
@@ -421,14 +421,14 @@ namespace MM.API.Core.Models
         public double? age_estimation { get; set; }
         public object? face_luminance { get; set; }
         public object? face_quality { get; set; }
-        public List<object>? matches { get; set; }
+        public IReadOnlyList<object>? matches { get; set; }
         public string? method { get; set; }
         public string? node_id { get; set; }
         public string? reference_image { get; set; }
         public double? score { get; set; }
         public string? status { get; set; }
         public object? video_url { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Location
@@ -453,7 +453,7 @@ namespace MM.API.Core.Models
         public string? portrait_image { get; set; }
         public string? signature_image { get; set; }
         public string? status { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Northeast
@@ -481,8 +481,8 @@ namespace MM.API.Core.Models
 
     public class PepMatch
     {
-        public List<string>? aliases { get; set; }
-        public List<object>? education { get; set; }
+        public IReadOnlyList<string>? aliases { get; set; }
+        public IReadOnlyList<object>? education { get; set; }
         public string? list_name { get; set; }
         public string? publisher { get; set; }
         public string? source_url { get; set; }
@@ -490,7 +490,7 @@ namespace MM.API.Core.Models
         public string? matched_name { get; set; }
         public string? pep_position { get; set; }
         public string? date_of_birth { get; set; }
-        public List<object>? other_sources { get; set; }
+        public IReadOnlyList<object>? other_sources { get; set; }
         public string? place_of_birth { get; set; }
     }
 
@@ -502,7 +502,7 @@ namespace MM.API.Core.Models
         public string? full_number { get; set; }
         public bool? is_disposable { get; set; }
         public bool? is_virtual { get; set; }
-        public List<Lifecycle>? lifecycle { get; set; }
+        public IReadOnlyList<Lifecycle>? lifecycle { get; set; }
         public string? node_id { get; set; }
         public string? phone_number { get; set; }
         public string? phone_number_prefix { get; set; }
@@ -510,7 +510,7 @@ namespace MM.API.Core.Models
         public int? verification_attempts { get; set; }
         public string? verification_method { get; set; }
         public DateTime verified_at { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class PoaDocument
@@ -550,7 +550,7 @@ namespace MM.API.Core.Models
         public object? expected_details_parsed_address { get; set; }
         public string? expiration_date { get; set; }
         public ExtraFields? extra_fields { get; set; }
-        public List<object>? extra_files { get; set; }
+        public IReadOnlyList<object>? extra_files { get; set; }
         public string? issue_date { get; set; }
         public string? issuer { get; set; }
         public string? issuing_state { get; set; }
@@ -562,38 +562,38 @@ namespace MM.API.Core.Models
         public string? poa_formatted_address { get; set; }
         public PoaParsedAddress? poa_parsed_address { get; set; }
         public string? status { get; set; }
-        public List<object>? warnings { get; set; }
+        public IReadOnlyList<object>? warnings { get; set; }
     }
 
     public class Properties
     {
-        public List<string>? name { get; set; }
-        public List<string>? alias { get; set; }
-        public List<string>? notes { get; set; }
+        public IReadOnlyList<string>? name { get; set; }
+        public IReadOnlyList<string>? alias { get; set; }
+        public IReadOnlyList<string>? notes { get; set; }
         public object? title { get; set; }
-        public List<string>? gender { get; set; }
+        public IReadOnlyList<string>? gender { get; set; }
         public object? height { get; set; }
         public object? topics { get; set; }
         public object? weight { get; set; }
         public object? address { get; set; }
-        public List<string>? country { get; set; }
+        public IReadOnlyList<string>? country { get; set; }
         public object? website { get; set; }
         public object? eyeColor { get; set; }
         public object? keywords { get; set; }
-        public List<string>? lastName { get; set; }
-        public List<string>? position { get; set; }
+        public IReadOnlyList<string>? lastName { get; set; }
+        public IReadOnlyList<string>? position { get; set; }
         public object? religion { get; set; }
-        public List<string>? birthDate { get; set; }
-        public List<object>? education { get; set; }
+        public IReadOnlyList<string>? birthDate { get; set; }
+        public IReadOnlyList<object>? education { get; set; }
         public object? ethnicity { get; set; }
-        public List<string>? firstName { get; set; }
+        public IReadOnlyList<string>? firstName { get; set; }
         public object? hairColor { get; set; }
         public object? weakAlias { get; set; }
-        public List<string>? birthPlace { get; set; }
+        public IReadOnlyList<string>? birthPlace { get; set; }
         public object? modifiedAt { get; set; }
         public object? wikidataId { get; set; }
         public object? citizenship { get; set; }
-        public List<string>? nationality { get; set; }
+        public IReadOnlyList<string>? nationality { get; set; }
     }
 
     public class QuestionnaireResponse
@@ -602,12 +602,12 @@ namespace MM.API.Core.Models
         public string? description { get; set; }
         public bool? is_active { get; set; }
         public bool? is_simple_questionnaire { get; set; }
-        public List<string>? languages { get; set; }
+        public IReadOnlyList<string>? languages { get; set; }
         public string? node_id { get; set; }
         public string? published_at { get; set; }
         public string? questionnaire_group_id { get; set; }
         public string? questionnaire_id { get; set; }
-        public List<Section>? sections { get; set; }
+        public IReadOnlyList<Section>? sections { get; set; }
         public string? status { get; set; }
         public string? title { get; set; }
         public int? version { get; set; }
@@ -615,13 +615,13 @@ namespace MM.API.Core.Models
 
     public class RawResults
     {
-        public List<AddressComponent>? address_components { get; set; }
+        public IReadOnlyList<AddressComponent>? address_components { get; set; }
         public string? formatted_address { get; set; }
         public Geometry? geometry { get; set; }
-        public List<NavigationPoint>? navigation_points { get; set; }
+        public IReadOnlyList<NavigationPoint>? navigation_points { get; set; }
         public bool? partial_match { get; set; }
         public string? place_id { get; set; }
-        public List<string>? types { get; set; }
+        public IReadOnlyList<string>? types { get; set; }
     }
 
     public class RiskScores
@@ -688,7 +688,7 @@ namespace MM.API.Core.Models
     public class Section
     {
         public object? description { get; set; }
-        public List<Item>? items { get; set; }
+        public IReadOnlyList<Item>? items { get; set; }
         public object? title { get; set; }
     }
 

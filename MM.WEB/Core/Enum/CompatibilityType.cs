@@ -3,5 +3,5 @@
 public enum CompatibilityType
 {
     Range,
-    Enum
+    Enum,
 }

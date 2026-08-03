@@ -25,7 +25,7 @@ namespace MM.Shared.Core.Helper
             return new
             {
                 TotalMs = _total.ElapsedMilliseconds,
-                Steps = _steps
+                Steps = _steps,
             };
         }
 

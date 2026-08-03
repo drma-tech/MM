@@ -4,7 +4,7 @@ public class AddressComponent
 {
     public string? long_name { get; set; }
     public string? short_name { get; set; }
-    public List<string> types { get; set; } = [];
+    public IReadOnlyList<string> types { get; set; } = [];
 }
 
 public class Bounds
@@ -41,18 +41,18 @@ public class PlusCode
 
 public class Result
 {
-    public List<AddressComponent> address_components { get; set; } = [];
+    public IReadOnlyList<AddressComponent> address_components { get; set; } = [];
     public string? formatted_address { get; set; }
     public Geometry? geometry { get; set; }
     public string? place_id { get; set; }
     public PlusCode? plus_code { get; set; }
-    public List<string> types { get; set; } = [];
+    public IReadOnlyList<string> types { get; set; } = [];
 
     public string GetLocation()
     {
-        var country = address_components.Find(f => f.types.Contains("country"))?.long_name;
-        var area_level_1 = address_components.Find(f => f.types.Contains("administrative_area_level_1"))?.long_name; //state or county
-        var area_level_2 = address_components.Find(f => f.types.Contains("administrative_area_level_2"))?.long_name; //city
+        var country = address_components.FirstOrDefault(f => f.types.Contains("country", StringComparer.OrdinalIgnoreCase))?.long_name;
+        var area_level_1 = address_components.FirstOrDefault(f => f.types.Contains("administrative_area_level_1", StringComparer.OrdinalIgnoreCase))?.long_name; //state or county
+        var area_level_2 = address_components.FirstOrDefault(f => f.types.Contains("administrative_area_level_2", StringComparer.OrdinalIgnoreCase))?.long_name; //city
 
         if (area_level_2.Empty())
             return $"{country} - {area_level_1}";
@@ -63,7 +63,7 @@ public class Result
 public class GoogleJson
 {
     public PlusCode? plus_code { get; set; }
-    public List<Result> results { get; set; } = [];
+    public IReadOnlyList<Result> results { get; set; } = [];
     public string? status { get; set; }
 }
 

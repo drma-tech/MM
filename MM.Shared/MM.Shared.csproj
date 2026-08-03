@@ -4,20 +4,21 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Enums\EventType.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.138">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="Translations\Enum\AnnualIncome.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>AnnualIncome.resx</DependentUpon>
-		</Compile>
 		<Compile Update="Translations\Enum\BiologicalSex.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -152,11 +153,6 @@
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>MyersBriggsTypeIndicator.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Translations\Enum\NetWorth.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>NetWorth.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Translations\Enum\Neurodiversity.Designer.cs">
 		  <DesignTime>True</DesignTime>
@@ -310,10 +306,6 @@
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Update="Translations\Enum\AnnualIncome.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>AnnualIncome.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\BodyType.es.resx">
 			<Generator></Generator>
 		</EmbeddedResource>
@@ -441,10 +433,6 @@
 		<EmbeddedResource Update="Translations\Enum\MusicGenre.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>MusicGenre.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Enum\NetWorth.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>NetWorth.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\OppositeSexFriendships.es.resx">
 			<Generator></Generator>

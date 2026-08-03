@@ -97,7 +97,8 @@ namespace MM.Shared.Translations.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Try not to include personal contact details (like phone numbers or emails) or mention the exact places you live or hang out. This helps keep your profile safe. 💛\n\nAlso, sharing or advertising social accounts, products, services, or anything that breaks someone else’s rights isn’t allowed and can lead to removal..
+        ///   Looks up a localized string similar to Avoid including personal contact details (such as phone numbers or email addresses) or mentioning exact locations where you live or frequently visit. This helps keep your profile secure. 💛
+        ///Additionally, sharing or promoting social media profiles, products, services, or any content that violates third-party rights is not permitted; such actions may result in the deletion of your profile..
         /// </summary>
         public static string Description_Placeholder {
             get {

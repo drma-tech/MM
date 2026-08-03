@@ -60,7 +60,7 @@ else
     [Parameter] public TValueUser? ValueUser { get; set; }
     [Parameter] public IEnumerable<TValueUser>? ValuesUser { get; set; }
     [Parameter] public string? ClassIcon { get; set; }
-    [Parameter] public List<AffinityVM> Affinities { get; set; } = [];
+    [Parameter] public IReadOnlyCollection<AffinityVM> Affinities { get; set; } = [];
 
     [Parameter] public CompatibilityType Type { get; set; }
     [Parameter] public CompatibilityItem Item { get; set; }

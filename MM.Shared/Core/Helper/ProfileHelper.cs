@@ -33,10 +33,10 @@ public static class ProfileHelper
         PERSONALITY,
         INTEREST,
         RELATIONSHIP,
-        GOAL
+        GOAL,
     }
 
-    public static readonly Dictionary<Tabs, int> TotalRules = new()
+    public static readonly IReadOnlyDictionary<Tabs, int> TotalRules = new Dictionary<Tabs, int>
     {
         { Tabs.BASIC, 9 },
         { Tabs.BIO, 4 },
@@ -44,7 +44,7 @@ public static class ProfileHelper
         { Tabs.PERSONALITY, 7 },
         { Tabs.INTEREST, 3 },
         { Tabs.RELATIONSHIP, 5 },
-        { Tabs.GOAL, 4 }
+        { Tabs.GOAL, 4 },
     };
 
     public static bool IsValid(this ProfileModel? profile, Tabs tab)
@@ -88,7 +88,7 @@ public static class ProfileHelper
 
         var failedRules = result.Errors
             .Select(e => e.PropertyName)
-            .Distinct()
+            .Distinct(StringComparer.OrdinalIgnoreCase)
             .Count();
 
         return (totalRules, failedRules);

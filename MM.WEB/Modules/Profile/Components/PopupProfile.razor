@@ -15,13 +15,13 @@
 <MudDialog Style="width: 100%">
     <DialogContent>
         <RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
-            <MudGrid Spacing="@Css.SpaceSmall">
+            <MudGrid Spacing="@CssHelper.SpaceSmall">
                 @if (OnlyCompatibility)
                 {
                     <MudItem xs="12" sm="6" md="4" Style="vertical-align: central;">
                         <MudPaper style="height: 100%;" Outlined="true">
                             <MudAlert Severity="Severity.Info" Variant="Variant.Outlined">
-                                @Translations.Module.Profile.FeatureNotAvailable.Format(2)
+                                @Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2)
                             </MudAlert>
                         </MudPaper>
                     </MudItem>
@@ -72,9 +72,9 @@
                                     @View?.Description
                                 </MudText>
                             </div>
-                            <MudGrid Spacing="@Css.SpaceSmall" Class="pa-2">
+                            <MudGrid Spacing="@CssHelper.SpaceSmall" Class="pa-2">
                                 <MudItem xs="6">
-                                    <MudGrid Spacing="@Css.SpaceSmall">
+                                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                                         @if (interaction?.Status != InteractionStatus.Explorer)
                                         {
                                             <MudItem xs="12">
@@ -127,7 +127,7 @@
                                     </MudGrid>
                                 </MudItem>
                                 <MudItem xs="6">
-                                    <MudGrid Spacing="@Css.SpaceSmall">
+                                    <MudGrid Spacing="@CssHelper.SpaceSmall">
                                         <MudItem xs="12">
                                             <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Style="width: 100%;"
                                                        OnClick="report!.ShowModal" Disabled="true">
@@ -208,7 +208,7 @@
     [Parameter] public ProfileModel? View { get; set; }
     public ComponentActions<ProfileModel?> Actions { get; set; } = new(obj => obj == null);
 
-    private List<AffinityVM> affinities = [];
+    private IReadOnlyCollection<AffinityVM> affinities = [];
     private InteractionModel? interaction;
     public ComponentActions<InteractionModel?> EventActions { get; set; } = new(obj => false);
 
@@ -288,7 +288,7 @@
         try
         {
             await EventActions.StartProcessing.Invoke(null);
-            interaction = await InteractionApi.Like(Origin, IdUserView, cts.Token);
+            interaction = await InteractionApi.Like(Origin, IdUserView, Cts.Token);
             await EventActions.FinishProcessing.Invoke(interaction);
             Liked?.Invoke();
 
@@ -309,7 +309,7 @@
         try
         {
             await EventActions.StartProcessing.Invoke(null);
-            interaction = await InteractionApi.Dislike(Origin, IdUserView, cts.Token);
+            interaction = await InteractionApi.Dislike(Origin, IdUserView, Cts.Token);
             await EventActions.FinishProcessing.Invoke(interaction);
             Disliked?.Invoke();
         }

@@ -6,7 +6,7 @@ public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, A
 {
     public async Task<FilterModel?> Get(ComponentActions<FilterModel>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
     public async Task<FilterModel?> Update(FilterModel? obj, CancellationToken cancellationToken)

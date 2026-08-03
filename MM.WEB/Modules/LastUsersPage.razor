@@ -8,14 +8,14 @@
 
 @inject LastRegionUsersApi LastRegionUsersApi
 
-<HeadComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
+<HeadComponent Title="@(Translations.Title.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
                Url=@($"/{Culture}/last-users/{Region}") Index="true" FixedAlternateLanguage="@Culture"></HeadComponent>
 
-<PageSectionComponent Title="@(Translations.Title.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.Format(CountryEnum?.GetFieldSettings().Name))"
+<PageSectionComponent Title="@(Translations.Title.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
                       CustomBodyClass="mb-12">
     <BodyFragment>
         <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
-            <MudGrid Spacing="@Css.SpaceSmall" Class="mb-2">
+            <MudGrid Spacing="@CssHelper.SpaceSmall" Class="mb-2">
                 @foreach (var item in LastUsers?.Items ?? [])
                 {
                     <MudItem xs="6" sm="4" md="3" lg="2">
@@ -39,7 +39,7 @@
 
 <PageSectionComponent Title="@Translations.Module.Landing.LearnMoreAboutMM">
     <BodyFragment>
-        <MudGrid Spacing="@Css.SpaceSmall">
+        <MudGrid Spacing="@CssHelper.SpaceSmall">
             <MudItem xs="12" sm="6" md="4" lg="3">
                 <MudButton Variant="Variant.Filled" FullWidth="true" Href=@($"/{Culture}/help/faq") rel="nofollow">
                     <MudIcon Class="me-2" Icon="@Icons.Material.Filled.Chat"></MudIcon>
@@ -70,7 +70,7 @@
 
 <PageSectionComponent Title="@Translations.Module.Landing.AvailableYourDevices">
     <BodyFragment>
-        <MudGrid Spacing="@Css.SpaceSmall">
+        <MudGrid Spacing="@CssHelper.SpaceSmall">
             @foreach (var store in AppInfo.Stores)
             {
                 if (CurrentPlatform == MM.Shared.Enums.Platform.ios)
@@ -107,7 +107,7 @@
         {
             CountryEnum = EnumHelper.ParseToEnum<Country>(Region);
 
-            var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, cts.Token);
+            var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, Cts.Token);
             LastUsers = cache2?.Data;
         }
 
@@ -122,7 +122,7 @@
 
     protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
     {
-        CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, cts.Token);
+        CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, Cts.Token);
 
         return true;
     }

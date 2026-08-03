@@ -9,7 +9,7 @@
 
 <HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/validation/identity") Index="false"></HeadComponent>
 
-<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
+<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("my")">
     @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 

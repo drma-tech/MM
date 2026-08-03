@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
+using MM.WEB.Core.Component;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
 
@@ -25,14 +26,14 @@ public partial class ProfileData : PageCore<ProfileData>
                 await UpdateLocation(Profile!, geoLocation);
                 StateHasChanged();
             }
-        }, cts.Token);
+        }, Cts.Token);
     }
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
         Actions.StartLoading?.Invoke(null);
 
-        Profile = await ProfileApi.Get(null, token);
+        Profile = await ProfileApi.Get(actions: null, token);
 
         if (Profile == null && AppStateStatic.IsAuthenticated)
         {
@@ -86,7 +87,7 @@ public partial class ProfileData : PageCore<ProfileData>
             GenderIdentities = [GenderIdentity.Cisgender],
             SexualOrientations = [SexualOrientation.Heterosexual],
             //BirthDate = DateTime.UtcNow.Date,
-            Diet = Diet.Omnivore
+            Diet = Diet.Omnivore,
         };
 
         Actions.FinishLoading?.Invoke(Profile);
@@ -98,7 +99,7 @@ public partial class ProfileData : PageCore<ProfileData>
         {
             if (profile != null)
             {
-                await JsRuntime.Utils().UpdateLocation(cts.Token);
+                await JsRuntime.Utils().UpdateLocation(Cts.Token);
             }
         }
         catch (Exception ex)
@@ -111,7 +112,7 @@ public partial class ProfileData : PageCore<ProfileData>
     {
         if (gps != null)
         {
-            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, cts.Token);
+            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, Cts.Token);
             if (here != null && here.items.Count != 0)
             {
                 var address = here.items[0].address;
@@ -138,12 +139,12 @@ public partial class ProfileData : PageCore<ProfileData>
 
             var validator = new ProfileValidation();
 
-            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(ProfileHelper.Tabs.BASIC.ToString()));
+            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(nameof(ProfileHelper.Tabs.BASIC)), Cts.Token);
 
             if (result.IsValid)
             {
                 Actions.StartProcessing?.Invoke(null);
-                Profile = await ProfileApi.Update(Profile, cts.Token);
+                Profile = await ProfileApi.Update(Profile, Cts.Token);
                 Actions.FinishProcessing?.Invoke(Profile);
 
                 IsDirty = false; StateHasChanged();
@@ -156,9 +157,9 @@ public partial class ProfileData : PageCore<ProfileData>
 
                 await ShowWarning(message);
 
-                if (message.Contains("spam-like"))
+                if (message.Contains("spam-like", StringComparison.OrdinalIgnoreCase))
                 {
-                    await ProcessException(new Exception(Translations.Notification.SpamLike, new Exception(Profile.Description)), false);
+                    await ProcessException(new NotificationException(Translations.Notification.SpamLike, new ValidationException(Profile.Description)), showMessage: false);
                 }
             }
         }
@@ -174,7 +175,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
         var validator = new ProfileValidation();
 
-        var result = await validator.ValidateAsync(model, options => options.IncludeAllRuleSets(), cts.Token);
+        var result = await validator.ValidateAsync(model, options => options.IncludeAllRuleSets(), Cts.Token);
 
         if (!result.IsValid) await ShowWarning(result.Errors[0].ErrorMessage);
     }

@@ -1,21 +1,11 @@
 ﻿using System.Collections.Concurrent;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Reflection;
 using System.Resources;
 
 namespace MM.Shared.Core.Helper
 {
-    public sealed class EnumFieldObject<T>(string name, T value) where T : Enum
-    {
-        public T Value { get; set; } = value;
-        public string Name { get; set; } = name;
-        public string? Group { get; set; }
-        public string? Placeholder { get; set; }
-        public string? Description { get; set; }
-        public string? WhyImportant { get; set; }
-        public string? Tips { get; set; }
-    }
-
     public static class AttributeHelper
     {
         private static readonly ConcurrentDictionary<MemberInfo, FieldSettingsAttribute> AttributeCache = new();
@@ -25,7 +15,7 @@ namespace MM.Shared.Core.Helper
 
         public static EnumFieldObject<T> GetFieldSettings<T>(this T value, bool translate = true) where T : Enum
         {
-            var fieldInfo = value.GetType().GetField(value.ToString()) ?? throw new UnhandledException($"{value} field info is null");
+            var fieldInfo = value.GetType().GetField(value.ToString()) ?? throw new UnhandledException(string.Create(CultureInfo.InvariantCulture, $"{value} field info is null"));
 
             return fieldInfo.GetFieldSettings(value, translate);
         }
@@ -40,7 +30,7 @@ namespace MM.Shared.Core.Helper
                 Placeholder = attr.Placeholder,
                 Description = attr.Description,
                 WhyImportant = attr.WhyImportant,
-                Tips = attr.Tips
+                Tips = attr.Tips,
             };
 
             ApplyTranslations(obj, attr, translate);
@@ -56,16 +46,16 @@ namespace MM.Shared.Core.Helper
 
                 obj.Name = rm.GetResourceString(attr.Name) ?? throw new InvalidOperationException($"Resource not found for key: {attr.Name}");
                 if (attr.Group.NotEmpty()) obj.Group = rm.GetResourceString(attr.Group);
-                if (attr.Placeholder.NotEmpty()) obj.Placeholder = rm.GetResourceString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine);
+                if (attr.Placeholder.NotEmpty()) obj.Placeholder = rm.GetResourceString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine, StringComparison.OrdinalIgnoreCase);
                 if (attr.Description.NotEmpty()) obj.Description = rm.GetResourceString(attr.Description);
-                if (attr.WhyImportant.NotEmpty()) obj.WhyImportant = rm.GetResourceString(attr.WhyImportant)?.Replace(@"\n", Environment.NewLine);
+                if (attr.WhyImportant.NotEmpty()) obj.WhyImportant = rm.GetResourceString(attr.WhyImportant)?.Replace(@"\n", Environment.NewLine, StringComparison.OrdinalIgnoreCase);
                 if (attr.Tips.NotEmpty()) obj.Tips = rm.GetResourceString(attr.Tips);
             }
         }
 
         private static string GetResourceString(this ResourceManager rm, string resourceKey)
         {
-            return rm.GetString(resourceKey) ?? resourceKey + IncompleteTranslationSuffix;
+            return rm.GetString(resourceKey, CultureInfo.DefaultThreadCurrentCulture) ?? resourceKey + IncompleteTranslationSuffix;
         }
     }
 }

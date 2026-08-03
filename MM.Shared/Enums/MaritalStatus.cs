@@ -21,5 +21,5 @@ public enum MaritalStatus
     Annulled = 6,
 
     [FieldSettings(nameof(Translations.Enum.MaritalStatus.MarriageConvenience_Name), Description = nameof(Translations.Enum.MaritalStatus.MarriageConvenience_Description), ResourceType = typeof(Translations.Enum.MaritalStatus))]
-    MarriageConvenience = 7
+    MarriageConvenience = 7,
 }

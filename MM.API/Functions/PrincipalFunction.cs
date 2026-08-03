@@ -66,7 +66,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         await req.ValidateUser(body.UserId, cancellationToken);
 
         //check if user ip is blocked for insert
-        var ip = req.GetUserIP(false) ?? throw new UnhandledException("Failed to retrieve IP");
+        var ip = req.GetUserIP(includePort: false) ?? throw new UnhandledException("Failed to retrieve IP");
         var blockedIp = await repoCache.ReadItemAsync<DataBlockedCache>(new CacheIdentity($"block-{ip}"), cancellationToken);
         if (blockedIp?.Data != null)
         {
@@ -92,14 +92,14 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         var job7 = new GoPublicModel(userId, DateTimeOffset.UtcNow.AddDays(7))
         {
-            Email = body.Email
+            Email = body.Email,
         };
 
         await repoJob.UpsertItemAsync(job7);
 
         var job30 = new GoPublicModel(userId, DateTimeOffset.UtcNow.AddDays(30))
         {
-            Email = body.Email
+            Email = body.Email,
         };
 
         await repoJob.UpsertItemAsync(job30);
@@ -112,7 +112,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
             AuthProviders = body.AuthProviders,
             DisplayName = body.DisplayName,
             Email = body.Email,
-            Events = body.Events
+            Events = body.Events,
         };
 
         principal = await repo.CreateItemAsync(principal);
@@ -122,7 +122,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
             var newLogin = new AuthLogin(userId)
             {
                 UserId = userId,
-                Accesses = [new Access { Date = DateTimeOffset.UtcNow, Platform = platform, Ip = ip, Country = country?.ToLower() }]
+                Accesses = new HashSet<Access> { new() { Date = DateTimeOffset.UtcNow, Platform = platform, Ip = ip, Country = country } },
             };
 
             await repo.CreateItemAsync(newLogin);
@@ -152,7 +152,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/event")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
 
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("Client null");
 
@@ -226,7 +226,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
                 var userUrl = "https://verification.didit.me/v3/users/delete/";
                 var payload = new
                 {
-                    vendor_data_list = new[] { safety.Id }
+                    vendor_data_list = new[] { safety.Id },
                 };
 
                 using var userRequest = new HttpRequestMessage(HttpMethod.Post, userUrl);
@@ -258,13 +258,13 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         var filter = await repo.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken) ?? throw new NotificationException("filter not found");
         var FilterValidator = new FilterValidation();
-        var FilterValid = filter != null && FilterValidator.Validate(filter).IsValid;
+        var FilterValid = filter != null && (await FilterValidator.ValidateAsync(filter, cancellationToken)).IsValid;
 
         var setting = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken) ?? throw new NotificationException("setting not found");
         var SettingValid = setting != null;
 
         var PhotoValidator = new PhotoValidation();
-        var GalleryValid = profile.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
+        var GalleryValid = profile.Gallery != null && (await PhotoValidator.ValidateAsync(profile.Gallery, cancellationToken)).IsValid;
 
         var validation = await repo.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken) ?? throw new NotificationException("validation not found");
         var ValidationsValid = validation != null && validation.Gallery;

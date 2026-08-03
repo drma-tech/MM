@@ -13,11 +13,11 @@
 
 <HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/validation/gallery") Index="false"></HeadComponent>
 
-<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
+<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("my")">
     @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 
-<MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
+<MudGrid Spacing="@CssHelper.SpaceSmall" Justify="Justify.Center">
     <MudItem xs="12" sm="10" md="8" lg="6">
         <MudCard Outlined="true">
             <MudCardHeader Class="pa-2">
@@ -171,7 +171,7 @@
         {
             await AppStateStatic.ProcessingStarted.PublishAsync();
             var email = AppStateStatic.User?.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
-            Validation = await ValidationApi.UploadPhotoValidation(new MM.Shared.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, cts.Token);
+            Validation = await ValidationApi.UploadPhotoValidation(new MM.Shared.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, Cts.Token);
             await AppStateStatic.ProcessingFinished.PublishAsync();
 
             await ShowSuccess("Photo validated successfully!");

@@ -29,7 +29,7 @@
 
 @if (!AppStateStatic.IsAuthenticated)
 {
-    <MudPaper Class="@Css.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
+    <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
         <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
             @Translations.Module.Profile.HeroCall
         </MudText>
@@ -43,7 +43,7 @@
 }
 else
 {
-    <MudPaper Class="@Css.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center; padding-bottom: 12px !important;">
+    <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center; padding-bottom: 12px !important;">
         <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
             <CustomHeader>
                 <MudAlert Variant="Variant.Outlined" Severity="MudBlazor.Severity.Warning" Class="mb-3" Style="text-align: center;">
@@ -54,7 +54,7 @@ else
     </MudPaper>
 }
 
-<PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.Format(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
+<PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.CustomFormat(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
     <BodyFragment>
         <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
             <Slider List="LastUsers?.Items ?? []" Context="item">
@@ -78,7 +78,7 @@ else
     </BodyFragment>
 </PageSectionComponent>
 
-<MudGrid Spacing="@Css.SpaceSmall" Class="@Css.Build().Small("mb")">
+<MudGrid Spacing="@CssHelper.SpaceSmall" Class="@CssHelper.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
         @if ((AppStateStatic.Principal == null || !AppStateStatic.Principal.PublicProfile) && validation == null) //empty or private profile
         {
@@ -143,7 +143,7 @@ else
         }
         else
         {
-            <MudPaper Class="@Css.Build().Small("pa")" Outlined="true" Style="text-align: center;">
+            <MudPaper Class="@CssHelper.Build().Small("pa")" Outlined="true" Style="text-align: center;">
                 <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
                     <MudImage Src="@(profile?.GetPhoto(ImageHelper.PhotoType.Face, true) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
                 </MudAvatar>
@@ -160,7 +160,7 @@ else
                         @profile?.Description
                     </MudText>
                 </div>
-                <MudGrid Spacing="@Css.SpaceSmall">
+                <MudGrid Spacing="@CssHelper.SpaceSmall">
                     <MudItem xs="3">
                         <MudBadge Icon="@GetButtonIcon(ValidationGallery)" Overlap="true" Color="GetButtonColor(ValidationGallery)" Style="width: 100%;">
                             <MudButton StartIcon="@IconsFA.Solid.Icon("images").Font" Variant="Variant.Outlined" Style="width: 100%; cursor: unset;" Class="vertical-button">
@@ -367,7 +367,7 @@ else
             StateHasChanged();
         };
 
-        SuggestionsActions.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.Format(2);
+        SuggestionsActions.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
     }
 
     // protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -388,13 +388,13 @@ else
 
     protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
     {
-        var countryStr = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, cts.Token);
+        var countryStr = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
 
         if (countryStr.NotEmpty())
         {
             CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
 
-            var cache2 = await LastRegionUsersApi.LastRegionUsers("compact", countryStr, LastUsersActions, cts.Token);
+            var cache2 = await LastRegionUsersApi.LastRegionUsers("compact", countryStr, LastUsersActions, Cts.Token);
             LastUsers = cache2?.Data;
         }
 
@@ -446,13 +446,13 @@ else
                 }
                 else
                 {
-                    await PrincipalApi.Public(cts.Token);
+                    await PrincipalApi.Public(Cts.Token);
                     await ShowSuccess(Translations.Module.Profile.ProfilePublicMode);
                 }
             }
             else
             {
-                await PrincipalApi.Private(cts.Token);
+                await PrincipalApi.Private(Cts.Token);
                 await ShowSuccess(Translations.Module.Profile.ProfilePrivateMode);
             }
         }
@@ -464,7 +464,7 @@ else
 
     private async Task GenerateSuggestions()
     {
-        await ShowWarning(Translations.Module.Profile.FeatureNotAvailable.Format(2));
+        await ShowWarning(Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2));
     }
 
     private async Task SimulateMatches()
@@ -555,7 +555,7 @@ else
                 .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<IdealPlaceToLive>())
                 .GenerateLazy(8).ToHashSet();
 
-            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
+            MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToList();
 
             await MatchesActions.FinishLoading.Invoke(MyMatches);
         }

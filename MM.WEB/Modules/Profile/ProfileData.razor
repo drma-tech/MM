@@ -32,7 +32,7 @@
 
 <CustomNavigationLock IsDirty="IsDirty"></CustomNavigationLock>
 
-<RenderControl T="ProfileModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="400px" Class="@Css.Build().Small("mb")">
+<RenderControl T="ProfileModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="400px" Class="@CssHelper.Build().Small("mb")">
     <MudForm @ref="_form" FieldChanged="OnFieldChanged">
         <MudExpansionPanels Elevation="2">
             <MudExpansionPanel HeaderClass="mud-primary-text">
@@ -52,7 +52,7 @@
                 </TitleContent>
                 <ChildContent>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldText Name="@ProfileBasicModel.NickName_Name" Placeholder="@ProfileBasicModel.NickName_Placeholder"
                                            @bind-Value="@context.NickName" CssIcon="@IconsFA.Solid.Icon("user").Font" Required="true"></FieldText>
@@ -71,11 +71,11 @@
                                 <FieldSelect Name="@ProfileBasicModel.Languages_Name" Description="@ProfileBasicModel.Languages_Description"
                                              TValue="HashSet<Language>" TEnum="Language" @bind-SelectedValues="@context.Languages"
                                              CssIcon="@IconsFA.Solid.Icon("language").Font" Required="true" Multiple="true" Order="@(o => o.Name)" ShowDataSelectDescription="false"
-                                             CustomWarning="@(context.Languages.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.Languages.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldText Name="@ProfileBasicModel.Location_Name" Description="@ProfileBasicModel.Location_Description" Placeholder="@ProfileBasicModel.Location_Placeholder"
                                            Value="@context.Location" CssIcon="@IconsFA.Solid.Icon("location-dot").Font" Required="true" ReadOnly="true"
@@ -99,14 +99,14 @@
                                 <FieldSelect Name="@ProfileBasicModel.GenderIdentity_Name" Description="@ProfileBasicModel.GenderIdentity_Description"
                                              TValue="HashSet<GenderIdentity>" TEnum="GenderIdentity" @bind-SelectedValues="@context.GenderIdentities"
                                              CssIcon="@IconsFA.Solid.Icon("mars-and-venus").Font" Required="true" Multiple="true"
-                                             CustomWarning="@(context.GenderIdentities.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.GenderIdentities.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileBasicModel.SexualOrientation_Name" Description="@ProfileBasicModel.SexualOrientation_Description"
                                              TValue="HashSet<SexualOrientation>" TEnum="SexualOrientation" @bind-SelectedValues="@context.SexualOrientations"
                                              CssIcon="@IconsFA.Solid.Icon("heart-pulse").Font" Required="true" Multiple="true"
-                                             CustomWarning="@(context.SexualOrientations.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.SexualOrientations.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
@@ -133,7 +133,7 @@
                         @Translations.Module.Profile.ProfileDataBioTip1
                     </MudAlert>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileBioModel.Ethnicity_Name" TValue="Ethnicity?" TEnum="Ethnicity" @bind-SelectedValue="@context.Ethnicity"
                                              CssIcon="@IconsFA.Solid.Icon("globe").Font">
@@ -145,7 +145,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <Birthdate Name="@ProfileBioModel.BirthDate_Name" @bind-Value="@context.BirthDate"
                                            CssIcon="@IconsFA.Solid.Icon("cake-candles").Font">
@@ -167,7 +167,7 @@
                             <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="my-4">
                                 @Translations.Module.Profile.ProfileDataBioTip2
                             </MudAlert>
-                            <MudGrid Spacing="@Css.SpaceSmall">
+                            <MudGrid Spacing="@CssHelper.SpaceSmall">
                                 <MudItem xs="12" sm="6">
                                     <FieldSelect Name="@ProfileBioModel.Neurodiversity_Name" TValue="Neurodiversity?" TEnum="Neurodiversity" @bind-SelectedValue="@context.Neurodiversity"
                                                  CssIcon="@IconsFA.Solid.Icon("brain").Font">
@@ -200,7 +200,7 @@
                 </TitleContent>
                 <ChildContent>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs" Class="mb-4">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileLifestyleModel.Drink_Name" TValue="Drink?" TEnum="Drink" @bind-SelectedValue="@context.Drink"
                                              CssIcon="@IconsFA.Solid.Icon("champagne-glasses").Font">
@@ -227,7 +227,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileLifestyleModel.HaveChildren_Name" TValue="HaveChildren?" TEnum="HaveChildren" @bind-SelectedValue="@context.HaveChildren"
                                              CssIcon="@IconsFA.Solid.Icon("child").Font" ShowHelper="false">
@@ -269,7 +269,7 @@
                             <MudAlert Dense="true" Variant="Variant.Outlined" Severity="MudBlazor.Severity.Info" Class="my-4">
                                 Due to the sensitive nature of this information, it will only be visible to candidates after the match is made.
                             </MudAlert>
-                            <MudGrid Spacing="@Css.SpaceSmall">
+                            <MudGrid Spacing="@CssHelper.SpaceSmall">
                                 <MudItem xs="12" sm="6">
                                     <FieldSelect Name="@ProfileLifestyleModel.NetWorth_Name" Description="@ProfileLifestyleModel.NetWorth_Description" TValue="NetWorth?" TEnum="NetWorth" @bind-SelectedValue="@Profile!.NetWorth"
                                                  CssIcon="@IconsFA.Solid.Icon("gem").Font" ShowHelper="false"
@@ -307,7 +307,7 @@
                         @Translations.Module.Profile.ProfileDataPersonTip1
                     </MudAlert>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.MoneyPersonality_Name" Description="@ProfilePersonalityModel.MoneyPersonality_Description" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@context.MoneyPersonality"
                                              CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://moneytype.hermoney.com/">
@@ -329,7 +329,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.LoveLanguage_Name" Description="@ProfilePersonalityModel.LoveLanguage_Description" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@context.LoveLanguage"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language">
@@ -343,7 +343,7 @@
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.SexPersonalityPreferences_Name" Description="@ProfilePersonalityModel.SexPersonalityPreferences_Description" TValue="HashSet<SexPersonality>" TEnum="SexPersonality" @bind-SelectedValues="@context.SexPersonalityPreference"
                                              CssIcon="@IconsFA.Solid.Icon("heart-circle-check").Font" Multiple="true"
-                                             CustomWarning="@(context.SexPersonalityPreference.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.SexPersonalityPreference.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
@@ -370,55 +370,55 @@
                         @Translations.Module.Profile.Maximum3Items
                     </MudAlert>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.Food" TValue="HashSet<Food>" TEnum="Food" @bind-SelectedValues="@context.Food"
                                              CssIcon="@IconsFA.Solid.Icon("pizza-slice").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.Food.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.Food.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.Vacation" TValue="HashSet<Vacation>" TEnum="Vacation" @bind-SelectedValues="@context.Vacation"
                                              CssIcon="@IconsFA.Solid.Icon("plane-departure").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.Vacation.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.Vacation.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.Sports" TValue="HashSet<Sports>" TEnum="Sports" @bind-SelectedValues="@context.Sports"
                                              CssIcon="@IconsFA.Solid.Icon("person-swimming").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.Sports.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.Sports.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.LeisureActivities" TValue="HashSet<LeisureActivities>" TEnum="LeisureActivities" @bind-SelectedValues="@context.LeisureActivities"
                                              CssIcon="@IconsFA.Solid.Icon("umbrella-beach").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.LeisureActivities.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.LeisureActivities.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.MusicGenre" TValue="HashSet<MusicGenre>" TEnum="MusicGenre" @bind-SelectedValues="@context.MusicGenre"
                                              CssIcon="@IconsFA.Solid.Icon("music").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.MusicGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.MusicGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.MovieGenre" TValue="HashSet<MovieGenre>" TEnum="MovieGenre" @bind-SelectedValues="@context.MovieGenre"
                                              CssIcon="@IconsFA.Solid.Icon("film").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.MovieGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.MovieGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.TVGenre" TValue="HashSet<TVGenre>" TEnum="TVGenre" @bind-SelectedValues="@context.TVGenre"
                                              CssIcon="@IconsFA.Solid.Icon("tv").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.TVGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.TVGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileInterestModel.ReadingGenre" TValue="HashSet<ReadingGenre>" TEnum="ReadingGenre" @bind-SelectedValues="@context.ReadingGenre"
                                              CssIcon="@IconsFA.Solid.Icon("book-open-reader").Font" Multiple="true" Order="o => o.Name"
-                                             CustomWarning="@(context.ReadingGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.Format(3) : null)">
+                                             CustomWarning="@(context.ReadingGenre.Count > 3 ? Translations.Module.Profile.YouHaveSelected.CustomFormat(3) : null)">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
@@ -442,7 +442,7 @@
                 </TitleContent>
                 <ChildContent>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileRelationshipModel.SharedFinances" TValue="SharedFinances?" TEnum="SharedFinances" @bind-SelectedValue="@Profile!.SharedFinances"
                                              CssIcon="@IconsFA.Solid.Icon("money-bill-transfer").Font">
@@ -459,7 +459,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileRelationshipModel.TimeTogetherPreference" TValue="TimeTogetherPreference?" TEnum="TimeTogetherPreference" @bind-SelectedValue="@Profile!.TimeTogetherPreference"
                                              CssIcon="@IconsFA.Solid.Icon("hand-holding-hand").Font">
@@ -491,7 +491,7 @@
                 </TitleContent>
                 <ChildContent>
                     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileGoalModel.RelationshipIntentions" TValue="HashSet<RelationshipIntention>" TEnum="RelationshipIntention" @bind-SelectedValues="@Profile!.RelationshipIntentions"
                                              CssIcon="@IconsFA.Solid.Icon("magnifying-glass").Font" Multiple="true">
@@ -503,7 +503,7 @@
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
-                        <MudGrid Spacing="@Css.SpaceSmall">
+                        <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfileGoalModel.WantChildren" TValue="WantChildren?" TEnum="WantChildren" @bind-SelectedValue="@Profile!.WantChildren"
                                              CssIcon="@IconsFA.Solid.Icon("baby").Font" ShowHelper="false">
@@ -544,7 +544,7 @@
                 @Translations.Module.Profile.TermTopic1
             </MudListItem>
             <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
-                @Translations.Module.Profile.TermTopic2 <MudLink Href="@($"/{Culture}/legal/privacy")" Target="_blank" Typo="Typo.body2">@Translations.Module.Legal.PrivacyPolicy</MudLink>;
+                @Translations.Module.Profile.TermTopic2 <MudLink Href="@($"/{Culture}/legal/privacy")" Target="_blank" Typo="Typo.body2" Color="Color.Tertiary">@Translations.Module.Legal.PrivacyPolicy</MudLink>;
             </MudListItem>
         </MudList>
     </DialogContent>

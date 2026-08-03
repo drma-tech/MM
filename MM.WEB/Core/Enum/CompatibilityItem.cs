@@ -69,5 +69,5 @@ public enum CompatibilityItem
     RelationshipIntentions,
     Relocation,
     WantChildren,
-    IdealPlaceToLive
+    IdealPlaceToLive,
 }

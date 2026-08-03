@@ -1,64 +1,82 @@
 ﻿using FluentValidation;
 using MM.Shared.Translations.Model;
 using MM.Shared.Translations.Validation;
+using System.Globalization;
+using System.Text;
 using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.Shared.Models.Profile.Core;
 
 public class FilterValidation : AbstractValidator<FilterModel>
 {
+    private static readonly CompositeFormat ChooseMaximumOptions = CompositeFormat.Parse(Validations.ChooseMaximumOptions);
+
     public FilterValidation()
     {
-        //BASIC
+        BasicRules();
 
+        BioRules();
+
+        LifestyleRules();
+
+        InterestRules();
+
+        RelationshipRules();
+
+        GoalsRules();
+    }
+
+    private void BasicRules()
+    {
         RuleFor(x => x.Region)
             .NotEmpty();
 
         RuleFor(x => x.Nationality)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Nationality"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Nationality"))
             .WithName("Nationality");
 
         RuleFor(x => x.Languages)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileBasicModel.Languages_Name))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileBasicModel.Languages_Name))
             .WithName(ProfileBasicModel.Languages_Name);
 
         RuleFor(x => x.MaritalStatus)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Marital Status"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Marital Status"))
             .WithName("Marital Status");
 
         RuleFor(x => x.BiologicalSex)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Biological Sex"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Biological Sex"))
             .WithName("Biological Sex");
 
         RuleFor(x => x.GenderIdentities)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Gender Identities"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Gender Identities"))
             .WithName("Gender Identities");
 
         RuleFor(x => x.SexualOrientations)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Sexual Orientations"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Sexual Orientations"))
             .WithName("Sexual Orientations");
+    }
 
-        //BIO
-
+    private void BioRules()
+    {
         RuleFor(x => x.Ethnicity)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Ethnicity"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Ethnicity"))
             .WithName("Ethnicity");
 
         RuleFor(x => x.BodyType)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Body Type"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Body Type"))
             .WithName("Body Type");
 
         RuleFor(x => x.Neurodiversity)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Neurodiversity"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Neurodiversity"))
             .WithName("Neurodiversity");
 
         RuleFor(x => x.MinimalAge)
@@ -89,169 +107,173 @@ public class FilterValidation : AbstractValidator<FilterModel>
 
         RuleFor(x => x.Disabilities)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Disabilities"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Disabilities"))
             .WithName("Disabilities");
+    }
 
-        //LIFESTYLE
-
+    private void LifestyleRules()
+    {
         RuleFor(x => x.Drink)
-            .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Drink"))
-            .WithName("Drink");
+             .Must(value => value.Count <= 3)
+             .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Drink"))
+             .WithName("Drink");
 
         RuleFor(x => x.Smoke)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Smoke"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Smoke"))
             .WithName("Smoke");
 
         RuleFor(x => x.Diet)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Diet"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Diet"))
             .WithName("Diet");
 
         RuleFor(x => x.Religion)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Religion"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Religion"))
             .WithName("Religion");
 
         RuleFor(x => x.FamilyInvolvement)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Family Involvement"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Family Involvement"))
             .WithName("Family Involvement");
 
         RuleFor(x => x.NetWorth)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Net Worth"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Net Worth"))
             .WithName("Net Worth");
 
         RuleFor(x => x.HaveChildren)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Have Children"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Have Children"))
             .WithName("Have Children");
 
         RuleFor(x => x.HavePets)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Have Pets"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Have Pets"))
             .WithName("Have Pets");
 
         RuleFor(x => x.EducationLevel)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Education Level"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Education Level"))
             .WithName("Education Level");
 
         RuleFor(x => x.CareerCluster)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Career Cluster"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Career Cluster"))
             .WithName("Career Cluster");
 
         RuleFor(x => x.LivingSituation)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Living Situation"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Living Situation"))
             .WithName("Living Situation");
 
         RuleFor(x => x.TravelFrequency)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Travel Frequency"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Travel Frequency"))
             .WithName("Travel Frequency");
 
         RuleFor(x => x.AnnualIncome)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Annual Income"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Annual Income"))
             .WithName("Annual Income");
+    }
 
-        //INTEREST
-
+    private void InterestRules()
+    {
         RuleFor(x => x.Food)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Food"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Food"))
             .WithName("Food");
 
         RuleFor(x => x.Vacation)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Vacation"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Vacation"))
             .WithName("Vacation");
 
         RuleFor(x => x.Sports)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Sports"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Sports"))
             .WithName("Sports");
 
         RuleFor(x => x.LeisureActivities)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Leisure Activities"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Leisure Activities"))
             .WithName("Leisure Activities");
 
         RuleFor(x => x.MusicGenre)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Music Genre"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Music Genre"))
             .WithName("Music Genre");
 
         RuleFor(x => x.MovieGenre)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Movie Genre"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Movie Genre"))
             .WithName("Movie Genre");
 
         RuleFor(x => x.TVGenre)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "TV Genre"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "TV Genre"))
             .WithName("TV Genre");
 
         RuleFor(x => x.ReadingGenre)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Reading Genre"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Reading Genre"))
             .WithName("Reading Genre");
+    }
 
-        //RELATIONSHIP
-
+    private void RelationshipRules()
+    {
         RuleFor(x => x.SharedFinances)
-            .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Shared Finances"))
-            .WithName("Shared Finances");
+             .Must(value => value.Count <= 3)
+             .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Shared Finances"))
+             .WithName("Shared Finances");
 
         RuleFor(x => x.ConflictResolutionStyle)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Conflict Resolution Style"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Conflict Resolution Style"))
             .WithName("Conflict Resolution Style");
 
         RuleFor(x => x.HouseholdManagement)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Household Management"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Household Management"))
             .WithName("Household Management");
 
         RuleFor(x => x.TimeTogetherPreference)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Time Together Preference"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Time Together Preference"))
             .WithName("Time Together Preference");
 
         RuleFor(x => x.OppositeSexFriendships)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Opposite-Sex Friendships"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Opposite-Sex Friendships"))
             .WithName("Opposite-Sex Friendships");
+    }
 
-        //GOALS
-
+    private void GoalsRules()
+    {
         RuleFor(x => x.RelationshipIntentions)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Relationship Intentions"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Relationship Intentions"))
             .WithName("Relationship Intentions");
 
         RuleFor(x => x.WantChildren)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Want Children"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Want Children"))
             .WithName("Want Children");
 
         RuleFor(x => x.IdealPlaceToLive)
             .Must(value => value.Count <= 3)
-            .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, "Ideal Place to Live"))
+            .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, "Ideal Place to Live"))
             .WithName("Ideal Place to Live");
 
         RuleFor(x => x).Must(LimitFilters)
               .WithMessage("Choose up to 8 filters");
     }
 
-    public static bool LimitFilters(FilterModel model)
+    private static bool LimitFilters(FilterModel model)
     {
-        return GetTotalFilters(model, null) <= 8;
+        return GetTotalFilters(model, tab: null) <= 8;
     }
 
     public static int GetTotalFilters(FilterModel? model, Tabs? tab)

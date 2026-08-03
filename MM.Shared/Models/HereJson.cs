@@ -45,5 +45,5 @@ public class HereRoot
 
 public class HereJson
 {
-    public List<HereRoot> items { get; set; } = [];
+    public IReadOnlyList<HereRoot> items { get; set; } = [];
 }

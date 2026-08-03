@@ -23,8 +23,8 @@
     [Parameter] public MM.Shared.Enums.Country? SelectedValue { get; set; }
     [Parameter] public EventCallback<MM.Shared.Enums.Country?> SelectedValueChanged { get; set; }
 
-    public List<EnumFieldObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
-    public List<EnumFieldObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name).ToList();
+    public IEnumerable<EnumFieldObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
+    public IEnumerable<EnumFieldObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name);
 
     public string? Continent { get; set; }
 

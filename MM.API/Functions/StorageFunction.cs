@@ -100,7 +100,7 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
 
         await storageHelper.DeletePhoto(photoType, profile.Gallery.GetPictureId(photoType), cancellationToken);
 
-        profile.Gallery.UpdatePictureId(photoType, null); //reset current photo data
+        profile.Gallery.UpdatePictureId(photoType, pictureId: null); //reset current photo data
 
         profile.UpdatePhoto(profile.Gallery);
 
@@ -126,8 +126,8 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
         if (profile == null || string.IsNullOrEmpty(profile.Gallery?.FaceId)) throw new NotificationException("Validation photo not found. Please insert your face photo first.");
 
         using var http = factory.CreateClient();
-        using var faceStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face, false), cancellationToken);
-        using var bodyStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body, false), cancellationToken);
+        using var faceStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Face, live: false), cancellationToken);
+        using var bodyStream = await http.GetImageStreamFromUrlAsync(profile.GetPhoto(PhotoType.Body, live: false), cancellationToken);
         using var streamValidation = new MemoryStream(request.Stream);
         var responsFace = await AwsFaceAI.CompareFaces(faceStream, streamValidation, cancellationToken);
         var responsBody = await AwsFaceAI.CompareFaces(bodyStream, streamValidation, cancellationToken);

@@ -46,7 +46,7 @@
 </MudDataGrid>
 
 @code {
-    public HashSet<ProfileManage> Profiles { get; set; } = [];
+    public IEnumerable<ProfileManage> Profiles { get; set; } = [];
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
@@ -57,7 +57,7 @@
     {
         try
         {
-            await PrincipalApi.PrivateManage(item.Principal!.UserId!, cts.Token);
+            await PrincipalApi.PrivateManage(item.Principal!.UserId!, Cts.Token);
             item.Principal.PublicProfile = false;
         }
         catch (Exception ex)

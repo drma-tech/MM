@@ -32,7 +32,7 @@
 
     <PageSectionComponent Title="@Translations.Module.Landing.OurNumbers" Subtitle="@Translations.Module.Landing.OurNumbersMsg1" Description="@Translations.Module.Landing.OurNumbersMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall">
+            <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="6" md="3">
                     <MudCard>
                         <MudCardHeader Class="pa-3">
@@ -138,7 +138,7 @@
 
     <PageSectionComponent Title="@Translations.Module.Landing.OurRoadmap" Subtitle="@Translations.Module.Landing.OurRoadmapMsg1" Description="@Translations.Module.Landing.OurRoadmapMsg2" CustomBodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall" Justify="Justify.Center">
+            <MudGrid Spacing="@CssHelper.SpaceSmall" Justify="Justify.Center">
                 <MudItem xs="12" md="10">
                     <MudTimeline TimelinePosition="@(AppStateStatic.IsMobile ? TimelinePosition.Start : TimelinePosition.Alternate)" Modifiers="true">
                         <MudTimelineItem Color="GetPhaseColor(1)" Size="Size.Medium">
@@ -290,7 +290,7 @@
 
     <PageSectionComponent Title="@Translations.Module.Landing.OurApproach" CustomBodyClass="mb-12">
         <BodyFragment>
-            <MudGrid Spacing="@Css.SpaceSmall">
+            <MudGrid Spacing="@CssHelper.SpaceSmall">
                 <MudItem xs="12" sm="6" md="4">
                     <MudCard Style="height: 100%;">
                         <MudCardHeader Class="pa-3">
@@ -417,7 +417,7 @@
         </BodyFragment>
     </PageSectionComponent>
 
-    <MudGrid Spacing="@Css.SpaceSmall">
+    <MudGrid Spacing="@CssHelper.SpaceSmall">
         <MudItem xs="12" md="4">
             <MudCard>
                 <MudCardHeader Class="pa-3">
@@ -526,10 +526,10 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        var cache = await DashboardApi.GetSumUsers(null, cts.Token);
+        var cache = await DashboardApi.GetSumUsers(null, Cts.Token);
         SumUsers = cache?.Data;
 
-        var cache2 = await LastUsersApi.GetLastUsers(LastUsersActions, cts.Token);
+        var cache2 = await LastUsersApi.GetLastUsers(LastUsersActions, Cts.Token);
 
         foreach (var item in cache2?.Data?.Items ?? [])
         {

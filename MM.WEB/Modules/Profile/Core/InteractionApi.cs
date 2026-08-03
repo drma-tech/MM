@@ -8,7 +8,7 @@ public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionMode
     {
         if (IdUserView == null) return default;
 
-        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), false, null, cancellationToken);
+        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), setNewVersion: false, actions: null, cancellationToken);
     }
 
     public async Task<InteractionModel?> Like(Origin origin, string? IdUserView, CancellationToken cancellationToken)

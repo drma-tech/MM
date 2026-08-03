@@ -14,12 +14,12 @@
 
 <HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/gallery") Index="false"></HeadComponent>
 
-<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@Css.Build().Small("my")">
+<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("my")">
     @Translations.Notification.ModuleUnderDevelopment
 </MudAlert>
 
 <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
-    <MudGrid Spacing="@Css.SpaceSmall">
+    <MudGrid Spacing="@CssHelper.SpaceSmall">
         <MudItem xs="12" sm="6" md="3">
             <MudCard>
                 <MudCardHeader>
@@ -149,7 +149,7 @@
     {
         try
         {
-            _profile = await StorageApi.DeletePhotoGallery(type, cts.Token);
+            _profile = await StorageApi.DeletePhotoGallery(type, Cts.Token);
         }
         catch (Exception ex)
         {
@@ -163,7 +163,7 @@
         {
             var request = new PhotoRequest { PhotoType = type, Buffer = buffer };
 
-            _profile = await StorageApi.UploadPhoto(request, cts.Token);
+            _profile = await StorageApi.UploadPhoto(request, Cts.Token);
 
             StateHasChanged();
         }

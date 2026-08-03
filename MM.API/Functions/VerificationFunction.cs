@@ -24,7 +24,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var userId = await req.GetUserIdAsync(cancellationToken);
         var safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
 
-        using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken);
+        await using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken);
 
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "image/jpeg");
@@ -38,7 +38,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "didit/create-verification-session")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
         var url = req.GetQueryParameters()["url"] ?? throw new NotificationException("callback url not available");
         var email = req.GetQueryParameters()["email"];
 
@@ -79,7 +79,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
     public async Task<HttpResponseData> PostDiditWebhook(
       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/didit/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
 
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
         await response.WriteStringAsync("ok", cancellationToken);
@@ -102,21 +102,21 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new UnhandledException("invalid payload");
         var userId = payload.vendor_data ?? throw new UnhandledException("vendor_data missing");
 
-        if (payload.status == "Not Started") return response;
-        if (payload.status == "In Progress") return response;
-        if (payload.status == "Expired") return response;
+        if (string.Equals(payload.status, "Not Started", StringComparison.OrdinalIgnoreCase)) return response;
+        if (string.Equals(payload.status, "In Progress", StringComparison.OrdinalIgnoreCase)) return response;
+        if (string.Equals(payload.status, "Expired", StringComparison.OrdinalIgnoreCase)) return response;
 
         var principalTask = repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
         var validationTask = repo.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
 
         await Task.WhenAll(principalTask, validationTask);
 
-        var principal = principalTask.Result ?? throw new UnhandledException("principal null");
-        var validation = validationTask.Result ?? throw new UnhandledException("validation null");
+        var principal = await principalTask ?? throw new UnhandledException("principal null");
+        var validation = await validationTask ?? throw new UnhandledException("validation null");
 
         principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
 
-        if (payload.status == "Approved")
+        if (string.Equals(payload.status, "Approved", StringComparison.OrdinalIgnoreCase))
         {
             validation.Kyc = true;
 

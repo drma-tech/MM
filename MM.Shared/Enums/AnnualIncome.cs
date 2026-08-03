@@ -2,54 +2,54 @@
 
 public enum AnnualIncome
 {
-    [FieldSettings("_0_500", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _0_500 = 1,
+    [FieldSettings("$0 - $500")]
+    From0To500 = 1,
 
-    [FieldSettings("_500_750", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _500_750 = 2,
+    [FieldSettings("$500 - $750")]
+    From500To750 = 2,
 
-    [FieldSettings("_750_1K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _750_1K = 3,
+    [FieldSettings("$750 - $1,000")]
+    From750To1K = 3,
 
-    [FieldSettings("_1K_1_6K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _1K_1_6K = 4,
+    [FieldSettings("$1,000 - $1,600")]
+    From1KTo1Point6K = 4,
 
-    [FieldSettings("_1_6K_2_5K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _1_6K_2_5K = 5,
+    [FieldSettings("$1,600 - $2,500")]
+    From1Point6KTo2Point5K = 5,
 
-    [FieldSettings("_2_5K_3_8K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _2_5K_3_8K = 6,
+    [FieldSettings("$2,500 - $3,800")]
+    From2Point5KTo3Point8K = 6,
 
-    [FieldSettings("_3_8K_5_7K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _3_8K_5_7K = 7,
+    [FieldSettings("$3,800 - $5,700")]
+    From3Point8KTo5Point7K = 7,
 
-    [FieldSettings("_5_7K_8_5K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _5_7K_8_5K = 8,
+    [FieldSettings("$5,700 - $8,500")]
+    From5Point7KTo8Point5K = 8,
 
-    [FieldSettings("_8_5K_12_8K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _8_5K_12_8K = 9,
+    [FieldSettings("$8,500 - $12,800")]
+    From8Point5KTo12Point8K = 9,
 
-    [FieldSettings("_12_8K_19_2K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _12_8K_19_2K = 10,
+    [FieldSettings("$12,800 - $19,200")]
+    From12Point8KTo19Point2K = 10,
 
-    [FieldSettings("_19_2K_28_8K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _19_2K_28_8K = 11,
+    [FieldSettings("$19,200 - $28,800")]
+    From19Point2KTo28Point8K = 11,
 
-    [FieldSettings("_28_8K_43_2K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _28_8K_43_2K = 12,
+    [FieldSettings("$28,800 - $43,200")]
+    From28Point8KTo43Point2K = 12,
 
-    [FieldSettings("_43_2K_64_8K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _43_2K_64_8K = 13,
+    [FieldSettings("$43,200 - $64,800")]
+    From43Point2KTo64Point8K = 13,
 
-    [FieldSettings("_64_8K_97_3K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _64_8K_97_3K = 14,
+    [FieldSettings("$64,800 - $97,300")]
+    From64Point8KTo97Point3K = 14,
 
-    [FieldSettings("_97_3K_145_9K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _97_3K_145_9K = 15,
+    [FieldSettings("$97,300 - $145,900")]
+    From97Point3KTo145Point9K = 15,
 
-    [FieldSettings("_145_9K_218_9K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _145_9K_218_9K = 16,
+    [FieldSettings("$145,900 - $218,900")]
+    From145Point9KTo218Point9K = 16,
 
-    [FieldSettings("_218_9K", ResourceType = typeof(Translations.Enum.AnnualIncome))]
-    _218_9K = 17
+    [FieldSettings("$218,900+")]
+    Over218Point9K = 17,
 }

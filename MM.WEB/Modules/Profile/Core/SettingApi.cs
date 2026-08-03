@@ -6,7 +6,7 @@ public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http,
 {
     public async Task<SettingModel?> Get(ComponentActions<SettingModel>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
     public async Task<SettingModel?> Update(SettingModel? obj, CancellationToken cancellationToken)

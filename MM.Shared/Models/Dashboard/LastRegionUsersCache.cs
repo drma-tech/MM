@@ -6,7 +6,7 @@ public class LastRegionUsersCache(string id, LastRegionUsers data) : CacheDocume
 
 public class LastRegionUsers
 {
-    public List<LastRegionUsersItem> Items { get; set; } = [];
+    public IList<LastRegionUsersItem> Items { get; set; } = [];
 }
 
 public class LastRegionUsersItem

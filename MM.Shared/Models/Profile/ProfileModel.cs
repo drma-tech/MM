@@ -8,7 +8,7 @@ public enum LocationType
     Full,
     Country,
     State,
-    City
+    City,
 }
 
 public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
@@ -82,18 +82,18 @@ public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
         if (Gallery == null) return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
         if (Gallery.Type == GalleryType.BlindDate) return GetBlindDate;
 
-        var id = Gallery.GetPictureId(type);
-        if (id == null)
+        var picId = Gallery.GetPictureId(type);
+        if (picId == null)
         {
             if (live)
                 return "";
-            else
-                return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
+
+            return type == PhotoType.Face ? GetFacePhoto : GetBodyPhoto;
         }
 
-        if (fake) return id;
+        if (fake) return picId;
 
-        return $"{BlobPath}/{GetPhotoContainer(type)}/{id}";
+        return $"{BlobPath}/{GetPhotoContainer(type)}/{picId}";
     }
 
     public string? GetLocation(LocationType type)
@@ -142,11 +142,11 @@ public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
     public string? State { get; set; }
     public string? City { get; set; }
 
-    public HashSet<Language> Languages { get; set; } = [];
+    public IReadOnlyCollection<Language> Languages { get; set; } = [];
     public MaritalStatus? MaritalStatus { get; set; }
     public BiologicalSex? BiologicalSex { get; set; }
-    public HashSet<GenderIdentity> GenderIdentities { get; set; } = [];
-    public HashSet<SexualOrientation> SexualOrientations { get; set; } = [];
+    public IReadOnlyCollection<GenderIdentity> GenderIdentities { get; set; } = [];
+    public IReadOnlyCollection<SexualOrientation> SexualOrientations { get; set; } = [];
 
     #endregion BASIC
 
@@ -161,7 +161,7 @@ public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
 
     public Height? Height { get; set; }
     public Neurodiversity? Neurodiversity { get; set; }
-    public HashSet<Disability> Disabilities { get; set; } = [];
+    public IReadOnlyCollection<Disability> Disabilities { get; set; } = [];
 
     #endregion BIO
 
@@ -203,20 +203,20 @@ public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
     //https://www.bustle.com/articles/59610-17-sex-tips-for-couples-in-long-term-relationships-because-keeping-it-fresh-takes-more-than-a
     public SexPersonality? SexPersonality { get; set; }
 
-    public HashSet<SexPersonality> SexPersonalityPreference { get; set; } = [];
+    public IReadOnlyCollection<SexPersonality> SexPersonalityPreference { get; set; } = [];
 
     #endregion PERSONALITY
 
     #region INTEREST
 
-    public HashSet<Food> Food { get; set; } = [];
-    public HashSet<Vacation> Vacation { get; set; } = [];
-    public HashSet<Sports> Sports { get; set; } = [];
-    public HashSet<LeisureActivities> LeisureActivities { get; set; } = [];
-    public HashSet<MusicGenre> MusicGenre { get; set; } = [];
-    public HashSet<MovieGenre> MovieGenre { get; set; } = [];
-    public HashSet<TVGenre> TVGenre { get; set; } = [];
-    public HashSet<ReadingGenre> ReadingGenre { get; set; } = [];
+    public IReadOnlyCollection<Food> Food { get; set; } = [];
+    public IReadOnlyCollection<Vacation> Vacation { get; set; } = [];
+    public IReadOnlyCollection<Sports> Sports { get; set; } = [];
+    public IReadOnlyCollection<LeisureActivities> LeisureActivities { get; set; } = [];
+    public IReadOnlyCollection<MusicGenre> MusicGenre { get; set; } = [];
+    public IReadOnlyCollection<MovieGenre> MovieGenre { get; set; } = [];
+    public IReadOnlyCollection<TVGenre> TVGenre { get; set; } = [];
+    public IReadOnlyCollection<ReadingGenre> ReadingGenre { get; set; } = [];
 
     #endregion INTEREST
 
@@ -232,10 +232,12 @@ public class ProfileModel(string? id) : ProfileDocument(new ProfileIdentity(id))
 
     #region GOAL
 
-    public HashSet<RelationshipIntention> RelationshipIntentions { get; set; } = [];
+    public IReadOnlyCollection<RelationshipIntention> RelationshipIntentions { get; set; } = [];
     public WantChildren? WantChildren { get; set; }
     public Relocation? Relocation { get; set; }
     public IdealPlaceToLive? IdealPlaceToLive { get; set; }
 
     #endregion GOAL
+
+    protected override object?[] EqualityValues => [Id];
 }

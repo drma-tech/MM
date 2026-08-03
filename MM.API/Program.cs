@@ -97,8 +97,8 @@ static void ConfigureServices(IServiceCollection services)
                 ConnectionMode = ConnectionMode.Direct,
                 SerializerOptions = new CosmosSerializationOptions
                 {
-                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                }
+                    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase,
+                },
             });
         });
         services.AddHostedService<CosmosWarmupService>();

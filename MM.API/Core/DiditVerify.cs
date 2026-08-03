@@ -16,7 +16,7 @@ namespace MM.API.Core
             signature = signature.ToLowerInvariant();
 
             // Replay protection (5 min)
-            if (!long.TryParse(timestamp, out var ts))
+            if (!long.TryParse(timestamp, System.Globalization.CultureInfo.InvariantCulture, out var ts))
                 return false;
 
             var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -43,7 +43,7 @@ namespace MM.API.Core
             switch (element.ValueKind)
             {
                 case JsonValueKind.Object:
-                    var sorted = new SortedDictionary<string, object?>();
+                    var sorted = new SortedDictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
                     foreach (var prop in element.EnumerateObject())
                     {
                         sorted[prop.Name] = ShortenFloats(prop.Value);

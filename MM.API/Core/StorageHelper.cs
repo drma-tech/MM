@@ -7,23 +7,25 @@ namespace MM.API.Core;
 
 public class StorageHelper(IConfiguration configuration)
 {
+    private const string BlobConnectionString = "Azure:BlobConnectionString";
+
     public IConfiguration Configuration { get; } = configuration;
 
     public async Task UploadPhoto(PhotoType type, Stream stream, string fileName, string userId, CancellationToken cancellationToken)
     {
-        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetPhotoContainer(type));
+        var container = new BlobContainerClient(Configuration.GetValue<string>(BlobConnectionString), GetPhotoContainer(type));
         var client = container.GetBlobClient(fileName);
 
         var headers = new BlobHttpHeaders { ContentType = "image/jpeg" };
 
-        await client.UploadAsync(stream, headers, new Dictionary<string, string> { { "id", userId } }, cancellationToken: cancellationToken);
+        await client.UploadAsync(stream, headers, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) { { "id", userId } }, cancellationToken: cancellationToken);
     }
 
     public async Task DeletePhoto(PhotoType type, string? pictureId, CancellationToken cancellationToken)
     {
         if (pictureId.Empty()) throw new ArgumentNullException(nameof(pictureId));
 
-        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetPhotoContainer(type));
+        var container = new BlobContainerClient(Configuration.GetValue<string>(BlobConnectionString), GetPhotoContainer(type));
         var blob = container.GetBlobClient(pictureId);
 
         if (await blob.ExistsAsync(cancellationToken))
@@ -34,7 +36,7 @@ public class StorageHelper(IConfiguration configuration)
     {
         if (fileName.Empty()) return null;
 
-        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));
+        var container = new BlobContainerClient(Configuration.GetValue<string>(BlobConnectionString), GetSafetyContainer(type));
         var client = container.GetBlobClient(fileName);
 
         if (!await client.ExistsAsync(cancellationToken))
@@ -47,19 +49,19 @@ public class StorageHelper(IConfiguration configuration)
 
     public async Task UploadSafetyPhoto(SafetyType type, Stream stream, string fileName, string userId, CancellationToken cancellationToken)
     {
-        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));
+        var container = new BlobContainerClient(Configuration.GetValue<string>(BlobConnectionString), GetSafetyContainer(type));
         var client = container.GetBlobClient(fileName);
 
         var headers = new BlobHttpHeaders { ContentType = "image/jpeg" };
 
-        await client.UploadAsync(stream, headers, new Dictionary<string, string> { { "id", userId } }, cancellationToken: cancellationToken);
+        await client.UploadAsync(stream, headers, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) { { "id", userId } }, cancellationToken: cancellationToken);
     }
 
     public async Task DeleteSafetyPhoto(SafetyType type, string? pictureId, CancellationToken cancellationToken)
     {
         if (pictureId.Empty()) throw new ArgumentNullException(nameof(pictureId));
 
-        var container = new BlobContainerClient(Configuration.GetValue<string>("Azure:BlobConnectionString"), GetSafetyContainer(type));
+        var container = new BlobContainerClient(Configuration.GetValue<string>(BlobConnectionString), GetSafetyContainer(type));
         var blob = container.GetBlobClient(pictureId);
 
         if (await blob.ExistsAsync(cancellationToken))

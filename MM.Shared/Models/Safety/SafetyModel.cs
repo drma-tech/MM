@@ -49,5 +49,7 @@ namespace MM.Shared.Models.Safety
 
             hash = $"{countryCode}|{birthDate.Trim()}|{normalizedName}".ToHash();
         }
+
+        protected override object?[] EqualityValues => [Id];
     }
 }

@@ -15,7 +15,7 @@ namespace MM.API.Core.AI
             var request = new DetectFacesRequest
             {
                 Image = image,
-                Attributes = ["ALL"]
+                Attributes = ["ALL"],
             };
 
             return await rekognitionClient.DetectFacesAsync(request, cancellationToken);
@@ -31,7 +31,7 @@ namespace MM.API.Core.AI
             {
                 Image = image,
                 MaxLabels = 20,
-                MinConfidence = 70F
+                MinConfidence = 70F,
             };
 
             return await rekognitionClient.DetectLabelsAsync(request, cancellationToken);
@@ -46,7 +46,7 @@ namespace MM.API.Core.AI
             var request = new DetectModerationLabelsRequest
             {
                 Image = image,
-                MinConfidence = 80F
+                MinConfidence = 80F,
             };
 
             return await rekognitionClient.DetectModerationLabelsAsync(request, cancellationToken);
@@ -63,7 +63,7 @@ namespace MM.API.Core.AI
             {
                 SourceImage = sourceImage,
                 TargetImage = targetImage,
-                SimilarityThreshold = 80F //80% similarity threshold
+                SimilarityThreshold = 80F, //80% similarity threshold
             };
 
             return await rekognitionClient.CompareFacesAsync(compareFacesRequest, cancellationToken);

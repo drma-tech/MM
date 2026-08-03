@@ -6,10 +6,10 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
 {
     public async Task<ProfileModel?> Get(ComponentActions<ProfileModel>? actions, CancellationToken cancellationToken)
     {
-        return await GetAsync(ProfileEndpoint.Get, false, actions, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, actions, cancellationToken);
     }
 
-    public async Task<HashSet<ProfileManage>> GetAll(ComponentActions<HashSet<ProfileManage>>? actions, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ProfileManage>> GetAll(ComponentActions<IEnumerable<ProfileManage>>? actions, CancellationToken cancellationToken)
     {
         return await GetListAsync(ProfileEndpoint.GetAll, actions, cancellationToken);
     }
@@ -18,7 +18,7 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
     {
         if (IdUserView == null) return default;
 
-        return await GetAsync(ProfileEndpoint.GetView(IdUserView), false, actions, cancellationToken);
+        return await GetAsync(ProfileEndpoint.GetView(IdUserView), setNewVersion: false, actions, cancellationToken);
     }
 
     //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()

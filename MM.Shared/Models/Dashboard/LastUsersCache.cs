@@ -6,7 +6,7 @@ public class LastUsersCache(string id, LastUsers data) : CacheDocumentData<LastU
 
 public class LastUsers
 {
-    public List<LastUsersItem> Items { get; set; } = [];
+    public IList<LastUsersItem> Items { get; set; } = [];
 }
 
 public class LastUsersItem

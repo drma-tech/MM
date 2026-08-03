@@ -103,7 +103,7 @@
 
     protected override async Task LoadStaticDataAsync()
     {
-        var cache = await DashboardApi.GetSumUsers(null, cts.Token);
+        var cache = await DashboardApi.GetSumUsers(null, Cts.Token);
         SumUsers = cache?.Data;
     }
 
@@ -114,7 +114,7 @@
 
     protected override async Task LoadParameterDataAsync()
     {
-        Config = await ConfigurationApi.GetConfigurations(Provider, cts.Token);
+        Config = await ConfigurationApi.GetConfigurations(Provider, Cts.Token);
     }
 
     public decimal GetPrice(AccountProduct product)
@@ -174,21 +174,21 @@
                 }
                 else if (Provider == PaymentProvider.Apple)
                 {
-                    await JsRuntime.Payments().AppleOpenCheckout(priceId, cts.Token);
+                    await JsRuntime.Payments().AppleOpenCheckout(priceId, Cts.Token);
                 }
                 else if (Provider == PaymentProvider.Google)
                 {
-                    await JsRuntime.Payments().GoogleOpenCheckout(priceId, "type", cts.Token);
+                    await JsRuntime.Payments().GoogleOpenCheckout(priceId, "type", Cts.Token);
                 }
                 else if (Provider == PaymentProvider.Stripe)
                 {
                     if (Client != null && Client.StripeCustomerId.Empty())
                     {
-                        Client = await PaymentAuthApi.StripeCustomer(cts.Token);
+                        Client = await PaymentAuthApi.StripeCustomer(Cts.Token);
                     }
 
                     //create session and redirect to checkout
-                    await JsRuntime.Payments().StripeOpenCheckout(priceId, qtd, cts.Token);
+                    await JsRuntime.Payments().StripeOpenCheckout(priceId, qtd, Cts.Token);
                 }
                 else
                 {

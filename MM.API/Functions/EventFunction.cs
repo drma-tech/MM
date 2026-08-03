@@ -20,7 +20,7 @@ public static class EventHelper
 
     public static async Task<InteractionModel> SetInteractionNew(this CosmosMainRepository repo, string? trigguerUserId, string? passiveUserId, EventType type, Origin origin, CancellationToken cancellationToken)
     {
-        if (trigguerUserId == passiveUserId) throw new NotificationException("cannot interact with yourself");
+        if (string.Equals(trigguerUserId, passiveUserId, StringComparison.OrdinalIgnoreCase)) throw new NotificationException("cannot interact with yourself");
 
         var interaction = await repo.GetInteractionModel(trigguerUserId, passiveUserId, cancellationToken);
 

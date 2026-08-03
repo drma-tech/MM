@@ -6,6 +6,7 @@ using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
 using MM.Shared.Models.Subscription;
 using Stripe.Checkout;
+using System.Globalization;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text;
@@ -34,7 +35,8 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
                 PricePhase4 = ApiStartup.Configurations.Apple?.Phase4?.Price,
             };
         }
-        else if (provider == PaymentProvider.Stripe)
+
+        if (provider == PaymentProvider.Stripe)
         {
             return new PaymentConfigurations
             {
@@ -44,10 +46,8 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
                 PricePhase4 = ApiStartup.Configurations.Stripe?.Phase4?.Price,
             };
         }
-        else
-        {
-            throw new UnhandledException("provider not implemented");
-        }
+
+        throw new UnhandledException("provider not implemented");
     }
 
     [Function("PostAppleVerify")]
@@ -58,7 +58,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         try
         {
             var userId = await req.GetUserIdAsync(cancellationToken);
-            var ip = req.GetUserIP(true);
+            var ip = req.GetUserIP(includePort: true);
 
             client = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
@@ -74,10 +74,10 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
                 result = await VerifyReceipt("https://sandbox.itunes.apple.com/", receipt, cancellationToken) ?? throw new UnhandledException("AppleResponseReceipt null");
             }
 
-            if (result.status != 0) throw new UnhandledException($"invalid status: {result.status}");
-            if (result.receipt!.bundle_id != bundleId) throw new UnhandledException("invalid receipt");
+            if (result.status != 0) throw new UnhandledException(string.Create(CultureInfo.InvariantCulture, $"invalid status: {result.status}"));
+            if (!string.Equals(result.receipt!.bundle_id, bundleId, StringComparison.OrdinalIgnoreCase)) throw new UnhandledException("invalid receipt");
 
-            var purchase = result.latest_receipt_info[result.latest_receipt_info.Count - 1];
+            var purchase = result.latest_receipt_info[^1];
 
             var sub = new AuthPurchase
             {
@@ -90,7 +90,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             client.AddPurchase(sub);
 
             //https://developer.apple.com/documentation/appstorereceipts/status
-            client.Events.Add(new Event("Apple", $"Subscription created with status = {result.status} and id = {purchase.original_transaction_id}", ip));
+            client.Events.Add(new Event("Apple", string.Create(CultureInfo.InvariantCulture, $"Subscription created with status = {result.status} and id = {purchase.original_transaction_id}"), ip));
         }
         finally
         {
@@ -111,7 +111,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
     public async Task PostAppleWebhook(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "public/apple/webhook")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
 
         var body = await req.ReadFromJsonAsync<Dictionary<string, string>>(cancellationToken) ?? throw new UnhandledException("body null");
 
@@ -125,7 +125,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 
         var originalTransactionId = transaction.OriginalTransactionId;
 
-        var results = await repo.Query<AuthPrincipal>(MainType.Principal, x => x.AuthPurchases.Any(p => p.PurchaseId == originalTransactionId), null, cancellationToken);
+        var results = await repo.Query<AuthPrincipal>(MainType.Principal, x => x.AuthPurchases.Any(p => p.PurchaseId == originalTransactionId), transform: null, cancellationToken);
 
         var client = results.LastOrDefault();
 
@@ -137,7 +137,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 
         var sub = client.GetPurchase(originalTransactionId, PaymentProvider.Apple);
 
-        if (notification.NotificationType == "REFUND" || notification.NotificationType == "REVOKE")
+        if (string.Equals(notification.NotificationType, "REFUND", StringComparison.OrdinalIgnoreCase) || string.Equals(notification.NotificationType, "REVOKE", StringComparison.OrdinalIgnoreCase))
         {
             sub.Sparks = 0; //disable immediately
         }
@@ -172,7 +172,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         {
             Name = principal.DisplayName,
             Email = principal.Email,
-            Metadata = new Dictionary<string, string> {
+            Metadata = new Dictionary<string, string>(StringComparer.Ordinal) {
                 { "app", APP },
                 { "userId", principal.UserId! },
             },
@@ -180,7 +180,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 
         principal.StripeCustomerId = customer.Id;
 
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
         principal.Events.Add(new Event("Stripe", $"User registered with id:{customer.Id}", ip));
 
         return await repo.UpsertItemAsync(principal);
@@ -191,7 +191,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "stripe/create-checkout-session/{priceId}/{qtd}")] HttpRequestData req, string priceId, int qtd, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync(cancellationToken);
-        var ip = req.GetUserIP(true);
+        var ip = req.GetUserIP(includePort: true);
         var url = req.GetQueryParameters()["url"];
 
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
@@ -211,21 +211,21 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             LineItems = [new() { Price = priceId, Quantity = qtd, },],
             Mode = "payment",
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
-            Metadata = new Dictionary<string, string> {
+            Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
                 { "app", APP },
                 { "userId", principal.UserId! },
-                { "Quantity", qtd.ToString() }
+                { "Quantity", qtd.ToString(CultureInfo.InvariantCulture) },
             },
             SubscriptionData = new SessionSubscriptionDataOptions
             {
-                Metadata = new Dictionary<string, string> {
+                Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
                     { "app", APP },
                     { "userId", principal.UserId! },
-                }
-            }
+                },
+            },
         };
 
-        options.AddExtraParam("managed_payments[enabled]", true);
+        options.AddExtraParam("managed_payments[enabled]", value: true);
 
         var service = new SessionService();
         Session session = await service.CreateAsync(options, cancellationToken: cancellationToken);
@@ -257,12 +257,12 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         if (string.IsNullOrEmpty(Signature?.First())) throw new NotificationException("Stripe signature missing");
         var stripeEvent = Stripe.EventUtility.ConstructEvent(json, Signature?.First(), ApiStartup.Configurations.Stripe?.SigningSecret ?? throw new NotificationException("Stripe SigningSecret not configured"), throwOnApiVersionMismatch: false);
 
-        if (stripeEvent.Type.StartsWith("checkout.session")) //completed, async_payment_succeeded
+        if (stripeEvent.Type.StartsWith("checkout.session", StringComparison.OrdinalIgnoreCase)) //completed, async_payment_succeeded
         {
             if (stripeEvent.Data.Object is not Session obj || obj.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (!obj.Metadata.TryGetValue("app", out var app) || app != APP)
-                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
+            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP, StringComparison.OrdinalIgnoreCase))
+                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}", cancellationToken);
 
             if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
                 throw new NotificationException("userId metadata missing in session");
@@ -275,16 +275,16 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             if (principal == null)
             {
                 req.LogError(new NotificationException($"stripe webhook - principal is null - userId:{userId}"));
-                return await req.CreateResponse(HttpStatusCode.OK, $"stripe webhook - principal is null - userId:{userId}");
+                return await req.CreateResponse(HttpStatusCode.OK, $"stripe webhook - principal is null - userId:{userId}", cancellationToken);
             }
 
-            if (obj.PaymentStatus == "paid" || stripeEvent.Type == "checkout.session.async_payment_succeeded")
+            if (string.Equals(obj.PaymentStatus, "paid", StringComparison.OrdinalIgnoreCase) || string.Equals(stripeEvent.Type, "checkout.session.async_payment_succeeded", StringComparison.OrdinalIgnoreCase))
             {
                 var purchase = principal.GetPurchase(obj.Id, PaymentProvider.Stripe);
 
                 if (purchase.Sparks == 0)
                 {
-                    if (!int.TryParse(qtd, out int quantity))
+                    if (!int.TryParse(qtd, System.Globalization.CultureInfo.InvariantCulture, out int quantity))
                         throw new NotificationException("Invalid quantity");
 
                     purchase.Sparks = quantity;
@@ -292,22 +292,22 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 
                     principal.UpdatePurchase(purchase);
 
-                    var ip = req.GetUserIP(true);
+                    var ip = req.GetUserIP(includePort: true);
                     var type = stripeEvent.Type.Split(".")[2];
-                    principal.Events.Add(new Event("Stripe (Webhooks)", $"Type = {type}, Status = {obj.PaymentStatus}, Qtd = {quantity} for SessionId = {obj.Id}", ip));
+                    principal.Events.Add(new Event("Stripe (Webhooks)", string.Create(CultureInfo.InvariantCulture, $"Type = {type}, Status = {obj.PaymentStatus}, Qtd = {quantity} for SessionId = {obj.Id}"), ip));
                 }
             }
 
             await repo.UpsertItemAsync(principal);
         }
-        else if (stripeEvent.Type == "customer.deleted")
+        else if (string.Equals(stripeEvent.Type, "customer.deleted", StringComparison.OrdinalIgnoreCase))
         {
             if (stripeEvent.Data.Object is not Stripe.Customer obj || obj.Id.Empty()) throw new NotificationException("stripe customer not available");
 
             if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
             {
                 //if no metadada, try to find the user with the StripeCustomerId
-                var list = await repo.Query<AuthPrincipal>(MainType.Principal, p => p.StripeCustomerId == obj.Id, null, cancellationToken);
+                var list = await repo.Query<AuthPrincipal>(MainType.Principal, p => p.StripeCustomerId == obj.Id, transform: null, cancellationToken);
 
                 if (list.Count > 0)
                 {
@@ -316,11 +316,11 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
                     await repo.UpsertItemAsync(item);
                 }
 
-                return await req.CreateResponse(HttpStatusCode.OK, "userId metadata missing");
+                return await req.CreateResponse(HttpStatusCode.OK, "userId metadata missing", cancellationToken);
             }
 
-            if (!obj.Metadata.TryGetValue("app", out var app) || app != APP)
-                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}");
+            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP, StringComparison.OrdinalIgnoreCase))
+                return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}", cancellationToken);
 
             var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
@@ -331,21 +331,21 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             }
         }
 
-        return await req.CreateResponse(HttpStatusCode.OK, "webhook received");
+        return await req.CreateResponse(HttpStatusCode.OK, "webhook received", cancellationToken);
     }
 
     [Function("StripeValidateSession")]
-    public async Task<HttpResponseData> StripeValidateSession(
+    public async static Task<HttpResponseData> StripeValidateSession(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/stripe/validate-session/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(id))
-            return await req.CreateResponse(HttpStatusCode.OK, false);
+            return await req.CreateResponse(HttpStatusCode.OK, value: false, cancellationToken);
 
         var service = new SessionService();
 
         var session = await service.GetAsync(id, cancellationToken: cancellationToken);
 
-        var result = session != null && session.PaymentStatus == "paid" && session.Status == "complete";
-        return await req.CreateResponse(HttpStatusCode.OK, result);
+        var result = session != null && string.Equals(session.PaymentStatus, "paid", StringComparison.OrdinalIgnoreCase) && string.Equals(session.Status, "complete", StringComparison.OrdinalIgnoreCase);
+        return await req.CreateResponse(HttpStatusCode.OK, result, cancellationToken);
     }
 }

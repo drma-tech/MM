@@ -2,12 +2,12 @@
 
 public static class ImageHelper
 {
-    public static string BlobPath = "https://drmammstorage.blob.core.windows.net";
+    public const string BlobPath = "https://drmammstorage.blob.core.windows.net";
 
     public enum PhotoType
     {
         Face = 1,
-        Body = 2
+        Body = 2,
     }
 
     public enum SafetyType
@@ -25,7 +25,7 @@ public static class ImageHelper
         {
             PhotoType.Face => "photo-face",
             PhotoType.Body => "photo-body",
-            _ => throw new InvalidOperationException(nameof(PhotoType))
+            _ => throw new InvalidOperationException(nameof(PhotoType)),
         };
     }
 
@@ -34,7 +34,7 @@ public static class ImageHelper
         return type switch
         {
             SafetyType.Gallery => "safety-gallery",
-            _ => throw new InvalidOperationException(nameof(SafetyType))
+            _ => throw new InvalidOperationException(nameof(SafetyType)),
         };
     }
 }

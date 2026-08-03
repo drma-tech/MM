@@ -43,20 +43,20 @@ public static class ProfileHelper
         (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) user,
         (ProfileModel profile, MyLikesModel likes, MyMatchesModel matches) partner, CancellationToken cancellationToken)
     {
-        if (user.profile.Id == partner.profile.Id)
+        if (string.Equals(user.profile.Id, partner.profile.Id, StringComparison.OrdinalIgnoreCase))
             throw new NotificationException("invalid operation. profiles are the same.");
-        if (user.likes.Id == partner.likes.Id)
+        if (string.Equals(user.likes.Id, partner.likes.Id, StringComparison.OrdinalIgnoreCase))
             throw new NotificationException("invalid operation. likes are the same.");
-        if (user.matches.Id == partner.matches.Id)
+        if (string.Equals(user.matches.Id, partner.matches.Id, StringComparison.OrdinalIgnoreCase))
             throw new NotificationException("invalid operation. matches are the same.");
 
         var userSettings = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, user.profile.Id), cancellationToken);
         var partnerSettings = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, partner.profile.Id), cancellationToken);
 
-        user.likes.Items.RemoveWhere(w => w.UserId == partner.profile.Id);
+        user.likes.Items.Remove(new PersonModel() { UserId = partner.profile.Id });
         user.matches.Items.Add(new PersonModel(partner.profile, userSettings?.BlindDate ?? false));
 
-        partner.likes.Items.RemoveWhere(w => w.UserId == user.profile.Id);
+        partner.likes.Items.Remove(new PersonModel() { UserId = user.profile.Id });
         partner.matches.Items.Add(new PersonModel(user.profile, partnerSettings?.BlindDate ?? false));
 
         await repo.UpsertItemAsync(user.likes);

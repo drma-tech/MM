@@ -4,8 +4,8 @@ namespace MM.Shared.Models.Profile;
 
 public class InteractionModel(string? id) : MainDocument(new MainIdentity(MainType.Interaction, FormatId(id)))
 {
-    public List<InteractionEvent> EventsUserA { get; set; } = [];
-    public List<InteractionEvent> EventsUserB { get; set; } = [];
+    public ISet<InteractionEvent> EventsUserA { get; set; } = new HashSet<InteractionEvent>();
+    public ISet<InteractionEvent> EventsUserB { get; set; } = new HashSet<InteractionEvent>();
 
     public InteractionStatus Status { get; set; } = InteractionStatus.Explorer;
 
@@ -19,15 +19,15 @@ public class InteractionModel(string? id) : MainDocument(new MainIdentity(MainTy
         ArgumentNullException.ThrowIfNull(idUsers);
 
         var ids = idUsers.Split(':');
-        return string.Join("-", ids.Order());
+        return string.Join('-', ids.Order(StringComparer.OrdinalIgnoreCase));
     }
 
-    public List<InteractionEvent> GetMyEvents(string? userId)
+    public ISet<InteractionEvent> GetMyEvents(string? userId)
     {
         var ids = Id.Split(":")[1];
         var arrIds = ids.Split('-');
 
-        if (arrIds[0] == userId)
+        if (string.Equals(arrIds[0], userId, StringComparison.OrdinalIgnoreCase))
             return EventsUserA;
         return EventsUserB;
     }
@@ -39,11 +39,13 @@ public class InteractionModel(string? id) : MainDocument(new MainIdentity(MainTy
         var ids = Id.Split(":")[1];
         var arrIds = ids.Split('-');
 
-        if (arrIds[0] == triggerUserId)
+        if (string.Equals(arrIds[0], triggerUserId, StringComparison.OrdinalIgnoreCase))
             EventsUserA.Add(new InteractionEvent { Type = type, Origin = origin });
         else
             EventsUserB.Add(new InteractionEvent { Type = type, Origin = origin });
     }
+
+    protected override object?[] EqualityValues => [Id];
 }
 
 public class InteractionEvent
@@ -62,5 +64,5 @@ public enum EventType
     Relationship = 5,
 
     Delete = 8,
-    Report = 9
+    Report = 9,
 }

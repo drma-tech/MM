@@ -1,11 +1,15 @@
 ﻿using FluentValidation;
 using MM.Shared.Translations.Model;
 using MM.Shared.Translations.Validation;
+using System.Globalization;
+using System.Text;
 
 namespace MM.Shared.Models.Profile.Core;
 
 public class ProfileValidation : AbstractValidator<ProfileModel>
 {
+    private static readonly CompositeFormat ChooseMaximumOptions = CompositeFormat.Parse(Validations.ChooseMaximumOptions);
+
     public ProfileValidation()
     {
         RuleSet("BASIC", () =>
@@ -32,7 +36,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
             RuleFor(x => x.Languages)
                 .NotEmpty()
                 .Must(value => value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileBasicModel.Languages_Name))
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileBasicModel.Languages_Name))
                 .WithName(ProfileBasicModel.Languages_Name);
 
             RuleFor(x => x.MaritalStatus)
@@ -46,13 +50,13 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
             RuleFor(x => x.GenderIdentities)
                 .NotEmpty()
                 .Must(value => value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileBasicModel.GenderIdentity_Name))
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileBasicModel.GenderIdentity_Name))
                 .WithName(ProfileBasicModel.GenderIdentity_Name);
 
             RuleFor(x => x.SexualOrientations)
                 .NotEmpty()
                 .Must(value => value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileBasicModel.SexualOrientation_Name))
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileBasicModel.SexualOrientation_Name))
                 .WithName(ProfileBasicModel.SexualOrientation_Name);
         });
 
@@ -151,7 +155,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
             RuleFor(x => x.SexPersonalityPreference)
                 .NotEmpty()
                 .Must(value => value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfilePersonalityModel.SexPersonalityPreferences_Name));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfilePersonalityModel.SexPersonalityPreferences_Name));
         });
 
         RuleSet("INTEREST", () =>
@@ -161,35 +165,35 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
 
             RuleFor(x => x.Food)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.Food));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.Food));
 
             RuleFor(x => x.Vacation)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.Vacation));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.Vacation));
 
             RuleFor(x => x.Sports)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.Sports));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.Sports));
 
             RuleFor(x => x.LeisureActivities)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.LeisureActivities));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.LeisureActivities));
 
             RuleFor(x => x.MusicGenre)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.MusicGenre));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.MusicGenre));
 
             RuleFor(x => x.MovieGenre)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.MovieGenre));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.MovieGenre));
 
             RuleFor(x => x.TVGenre)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.TVGenre));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.TVGenre));
 
             RuleFor(x => x.ReadingGenre)
                 .Must(value => value == null || value.Count <= 3)
-                .WithMessage(string.Format(Validations.ChooseMaximumOptions, 3, ProfileInterestModel.ReadingGenre));
+                .WithMessage(string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 3, ProfileInterestModel.ReadingGenre));
         });
 
         RuleSet("RELATIONSHIP", () =>
@@ -216,7 +220,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
                 .NotEmpty()
                 .Must(value => value.Count <= 2)
                 .WithMessage(
-                    string.Format(Validations.ChooseMaximumOptions, 2, ProfileGoalModel.RelationshipIntentions))
+                    string.Format(CultureInfo.CurrentCulture, ChooseMaximumOptions, 2, ProfileGoalModel.RelationshipIntentions))
                 .WithName(ProfileGoalModel.RelationshipIntentions);
 
             RuleFor(x => x.WantChildren)

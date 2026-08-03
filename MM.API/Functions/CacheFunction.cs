@@ -27,27 +27,25 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
             {
                 var obj = new SumUsers();
 
-                var offProfiles = await repoOff.Query<ProfileModel>(null, null, cancellationToken);
-                var onProfiles = await repoOn.Query<ProfileModel>(null, null, cancellationToken);
+                var offProfiles = await repoOff.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
+                var onProfiles = await repoOn.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
                 var profiles = offProfiles.Union(onProfiles);
                 var oneWeekAgo = DateTime.UtcNow.AddDays(-7);
 
-                var principals = await repo.Query<AuthPrincipal>(MainType.Principal, null, null, cancellationToken);
+                var principals = await repo.Query<AuthPrincipal>(MainType.Principal, predicate: null, transform: null, cancellationToken);
 
-                //var relationships = await repo.Query<InteractionModel>(x => x.Status == InteractionStatus.Relationship, DocumentType.Interaction, cancellationToken);
-
-                obj.Countries = profiles.Select(s => s.Country).Distinct().Count();
-                obj.Cities = profiles.Select(s => s.Location).Distinct().Count();
+                obj.Countries = profiles.Select(s => s.Country).Distinct(StringComparer.OrdinalIgnoreCase).Count();
+                obj.Cities = profiles.Select(s => s.Location).Distinct(StringComparer.OrdinalIgnoreCase).Count();
                 obj.TotalUsers = principals.Count;
                 obj.RecentlyJoined = principals.Count(w => w.DateTimeCreated > oneWeekAgo);
 
-                obj.Regions = profiles
-                    .GroupBy(g => g.Country)
+                obj.Regions = [.. profiles
+                    .GroupBy(g => g.Country, StringComparer.OrdinalIgnoreCase)
                     .Select(s => new SumUsersRegion
                     {
                         Name = s.Key,
                         //Cities = s.Select(s => s.City!).Distinct().ToList()
-                    }).ToList();
+                    })];
 
                 doc = await cacheRepo.CreateItemAsync(new SumUsersCache(cacheKey, obj));
             }
@@ -75,13 +73,13 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
                 var obj = new LastUsers();
 
                 var logins = await repo.Query<AuthLogin>(MainType.Login,
-                   null,
-                   p => p.OrderByDescending(x => x.TimestampCreated).Take(20),
-                   cancellationToken);
+                    predicate: null,
+                    p => p.OrderByDescending(x => x.TimestampCreated).Take(20),
+                    cancellationToken);
 
                 foreach (var login in logins)
                 {
-                    var loginCountry = login.Accesses.LastOrDefault()?.Country?.ToLower();
+                    var loginCountry = login.Accesses.LastOrDefault()?.Country;
                     var enumCountry = loginCountry.NotEmpty() ? EnumHelper.ParseToEnum<Shared.Enums.Country>(loginCountry) : (Country?)null;
 
                     obj.Items.Add(new LastUsersItem { Created = login.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
@@ -113,18 +111,18 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
 
                 var logins = await repo.Query<AuthLogin>(MainType.Login,
                     p => p.Accesses.Any(x => x.Country == country),
-                    p => p.OrderByDescending(x => x.TimestampCreated).Take(mode == "compact" ? 20 : 40),
+                    p => p.OrderByDescending(x => x.TimestampCreated).Take(string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase) ? 20 : 40),
                     cancellationToken);
 
                 foreach (var login in logins)
                 {
-                    if (login?.Accesses.LastOrDefault()?.Country?.ToLower() == country)
+                    if (string.Equals(login.Accesses.LastOrDefault()?.Country, country, StringComparison.OrdinalIgnoreCase))
                     {
                         var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
 
                         profile ??= await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
 
-                        if (profile?.NickName == "drma-tech") continue;
+                        if (string.Equals(profile?.NickName, "drma-tech", StringComparison.OrdinalIgnoreCase)) continue;
 
                         obj.Items.Add(new LastRegionUsersItem { Id = login.UserId, Nickname = profile?.NickName, State = profile?.State });
                     }
