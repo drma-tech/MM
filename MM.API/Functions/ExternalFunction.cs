@@ -29,7 +29,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
 
         var client = factory.CreateClient("ipinfo");
 
-        if (ip.NotEmpty() && !string.Equals(ip, "127.0.0.1", StringComparison.OrdinalIgnoreCase))
+        if (ip.NotEmpty() && !string.Equals(ip, "127.0.0.1", StringComparison.Ordinal))
         {
             var result = await client.GetStringAsync($"https://ipinfo.io/{ip}/country", cancellationToken);
             return await req.CreateResponse(result.Trim().ToLowerInvariant(), TtlCache.OneMinute, cancellationToken);

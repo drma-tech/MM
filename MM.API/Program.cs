@@ -58,7 +58,6 @@ var app = new HostBuilder()
                     options.DiagnosticLevel = SentryLevel.Warning;
 
                     options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
-                    //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                     options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
                 });
@@ -66,7 +65,7 @@ var app = new HostBuilder()
 
             var logger = loggerFactory.CreateLogger("StartupConfig");
 
-            logger.LogError(ex, "ConfigureAppConfiguration");
+            logger.Error(ex, "ConfigureAppConfiguration", null, null);
 
             throw;
         }
@@ -129,7 +128,6 @@ static void ConfigureServices(IServiceCollection services)
                 options.DiagnosticLevel = SentryLevel.Warning;
 
                 options.Release = $"sd-api@{DateTime.UtcNow:yyyy.MM.dd}";
-                //options.Environment = context.HostingEnvironment.EnvironmentName;
 
                 options.TracePropagationTargets = []; //Disable tracing because it breaks communication with external APIs.
             });
@@ -137,7 +135,7 @@ static void ConfigureServices(IServiceCollection services)
 
         var logger = loggerFactory.CreateLogger("StartupConfig");
 
-        logger.LogError(ex, "ConfigureAppConfiguration");
+        logger.Error(ex, "ConfigureServices", null, null);
 
         throw;
     }

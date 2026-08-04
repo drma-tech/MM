@@ -43,8 +43,8 @@ public static class ExtensionMethods
         var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(value ?? string.Empty));
 
         return base64
-            .Replace("+", "-", StringComparison.OrdinalIgnoreCase)
-            .Replace("/", "_", StringComparison.OrdinalIgnoreCase)
+            .Replace("+", "-", StringComparison.Ordinal)
+            .Replace("/", "_", StringComparison.Ordinal)
             .TrimEnd('=');
     }
 
@@ -54,8 +54,8 @@ public static class ExtensionMethods
             return string.Empty;
 
         string padded = encoded
-            .Replace("-", "+", StringComparison.OrdinalIgnoreCase)
-            .Replace("_", "/", StringComparison.OrdinalIgnoreCase);
+            .Replace("-", "+", StringComparison.Ordinal)
+            .Replace("_", "/", StringComparison.Ordinal);
 
         switch (padded.Length % 4)
         {
@@ -72,15 +72,5 @@ public static class ExtensionMethods
         if (instance == null) return null;
         var json = JsonSerializer.Serialize(instance);
         return JsonSerializer.Deserialize<T>(json) ?? throw new InvalidOperationException("Clone failed");
-    }
-
-    public static T? FirstOrDefault<T>(this IReadOnlyList<T>? list)
-    {
-        return list is { Count: > 0 } ? list[0] : default;
-    }
-
-    public static T? LastOrDefault<T>(this IReadOnlyList<T>? list)
-    {
-        return list is { Count: > 0 } ? list[^1] : default;
     }
 }

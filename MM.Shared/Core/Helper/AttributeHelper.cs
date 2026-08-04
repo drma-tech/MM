@@ -46,7 +46,7 @@ namespace MM.Shared.Core.Helper
 
                 obj.Name = rm.GetResourceString(attr.Name) ?? throw new InvalidOperationException($"Resource not found for key: {attr.Name}");
                 if (attr.Group.NotEmpty()) obj.Group = rm.GetResourceString(attr.Group);
-                if (attr.Placeholder.NotEmpty()) obj.Placeholder = rm.GetResourceString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine, StringComparison.OrdinalIgnoreCase);
+                if (attr.Placeholder.NotEmpty()) obj.Placeholder = rm.GetResourceString(attr.Placeholder)?.Replace(@"\n", Environment.NewLine, StringComparison.Ordinal);
                 if (attr.Description.NotEmpty()) obj.Description = rm.GetResourceString(attr.Description);
                 if (attr.WhyImportant.NotEmpty()) obj.WhyImportant = rm.GetResourceString(attr.WhyImportant)?.Replace(@"\n", Environment.NewLine, StringComparison.OrdinalIgnoreCase);
                 if (attr.Tips.NotEmpty()) obj.Tips = rm.GetResourceString(attr.Tips);

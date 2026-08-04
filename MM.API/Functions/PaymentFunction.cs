@@ -18,7 +18,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
 {
     private const string APP_CODE = "mm";
     private const string APP = "app";
-    private const string USERAPI = "userId";
+    private const string USERID = "userId";
 
     [Function("PaymentConfigurations")]
     public static PaymentConfigurations PaymentConfigurations(
@@ -176,7 +176,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             Email = principal.Email,
             Metadata = new Dictionary<string, string>(StringComparer.Ordinal) {
                 { APP, APP_CODE },
-                { USERAPI, principal.UserId! },
+                { USERID, principal.UserId! },
             },
         }, cancellationToken: cancellationToken);
 
@@ -215,14 +215,14 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
             SuccessUrl = url + "?stripe_session_id={CHECKOUT_SESSION_ID}",
             Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
                 { APP, APP_CODE },
-                { USERAPI, principal.UserId! },
+                { USERID, principal.UserId! },
                 { "Quantity", qtd.ToString(CultureInfo.InvariantCulture) },
             },
             SubscriptionData = new SessionSubscriptionDataOptions
             {
                 Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
                     { APP, APP_CODE },
-                    { USERAPI, principal.UserId! },
+                    { USERID, principal.UserId! },
                 },
             },
         };
@@ -263,10 +263,10 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         {
             if (stripeEvent.Data.Object is not Session obj || obj.Id.Empty()) throw new NotificationException("Stripe session not available");
 
-            if (!obj.Metadata.TryGetValue("app", out var app) || !string.Equals(app, APP_CODE, StringComparison.OrdinalIgnoreCase))
+            if (!obj.Metadata.TryGetValue(APP, out var app) || !string.Equals(app, APP_CODE, StringComparison.OrdinalIgnoreCase))
                 return await req.CreateResponse(HttpStatusCode.OK, $"webhook ignored -> app={app ?? "null"}", cancellationToken);
 
-            if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
+            if (!obj.Metadata.TryGetValue(USERID, out var userId) || userId.Empty())
                 throw new NotificationException("userId metadata missing in session");
 
             if (!obj.Metadata.TryGetValue("Quantity", out var qtd) || qtd.Empty())
@@ -306,7 +306,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         {
             if (stripeEvent.Data.Object is not Stripe.Customer obj || obj.Id.Empty()) throw new NotificationException("stripe customer not available");
 
-            if (!obj.Metadata.TryGetValue("userId", out var userId) || userId.Empty())
+            if (!obj.Metadata.TryGetValue(USERID, out var userId) || userId.Empty())
             {
                 //if no metadada, try to find the user with the StripeCustomerId
                 var list = await repo.Query<AuthPrincipal>(MainType.Principal, p => p.StripeCustomerId == obj.Id, transform: null, cancellationToken);

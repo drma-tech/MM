@@ -10,7 +10,7 @@ public static class UriParameterHelper
         if (parameters == null || parameters.Count == 0) return uri;
 
         var sb = new StringBuilder(uri);
-        var started = uri.Contains('?', StringComparison.OrdinalIgnoreCase);
+        var started = uri.Contains('?', StringComparison.Ordinal);
 
         for (var i = 0; i < parameters.Count; i++)
         {
