@@ -30,7 +30,7 @@ public class CosmosProfileOnRepository(CosmosClient CosmosClient, ILogger<Cosmos
                 results.AddRange(response.Resource);
             }
 
-            if (charges > 10d)
+            if (charges > 10d + extra)
                 LogMessages.RequestCharge(Logger, "Query", "", charges);
 
             return results;
