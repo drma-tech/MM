@@ -146,9 +146,9 @@ public static partial class StringHelper
     private static readonly Regex ObfuscatedRegex = new(@"\b/([a-z0-9- ]{2,}\s*)((?:\.|\[\.]|\(.\))|\[\s*dot\s*\]|\(\s*dot\s*\)|\s*dot\s*)\s*(com|net|org|io|co|dev|app|me)/gm\b", RegexOptions.Compiled | RegexOptions.IgnoreCase, TimeSpan.FromSeconds(1));
     private static readonly Regex ShortLinkRegex = new(@"(bit\.ly|tinyurl|goo\.gl|t\.co)", RegexOptions.Compiled | RegexOptions.IgnoreCase, TimeSpan.FromSeconds(1));
     private static readonly Regex MentionRegex = new(@"@\w+", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
-    private static readonly Regex RepeatedCharSeqRegex = new(@"(?<c>.)\k<c>{10,}", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
+    private static readonly Regex RepeatedCharSeqRegex = new(@"(.)\1{10,}", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
     private static readonly Regex SymbolSeqRegex = new(@"[^\p{L}\p{N}\s]{10,}", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
-    private static readonly Regex EmojiRegex = new(@"\p{So}", RegexOptions.Compiled e, TimeSpan.FromSeconds(1));
+    private static readonly Regex EmojiRegex = new(@"\p{So}", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
 
     /// <summary>
     /// Heuristically determines whether a text is likely to be spam based on patterns such as URLs, repeated characters, excessive symbols, mentions, or emoji spam.
@@ -235,7 +235,7 @@ public static partial class StringHelper
         if (!match.Success)
             return null;
 
-        int value = int.Parse(match.Groups[1].Value, NumberStyles.Integer, CultureInfo.DefaultThreadCurrentCulture);
+        int value = int.Parse(match.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture);
         string unit = match.Groups[2].Value;
 
         return unit switch
