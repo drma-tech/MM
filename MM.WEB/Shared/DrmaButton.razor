@@ -1,5 +1,4 @@
-﻿@using MM.WEB.Shared.Core
-@typeparam T where T : class
+﻿@typeparam T where T : class
 
 <MudButton StartIcon="@Icon" Variant="Variant.Filled" Color="Color" OnClick="Clicked" Style="width: 100%;" Disabled="Disabled || Processing">
     <ChildContent>
@@ -15,7 +14,7 @@
     [Parameter] public string? Icon { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    [Parameter] public ComponentActions<T?>? Actions { get; set; }
+    [Parameter] public RenderControlState<T>? Actions { get; set; }
 
     private bool Processing;
 
@@ -24,5 +23,4 @@
         if (Actions != null) Actions.StartProcessing += async msg => Processing = true;
         if (Actions != null) Actions.FinishProcessing += async obj => Processing = false;
     }
-
 }

@@ -3,7 +3,6 @@
 
 @using BiologicalSex = MM.Shared.Enums.BiologicalSex
 @using CareerCluster = MM.Shared.Enums.CareerCluster
-@using Country = MM.Shared.Enums.Country
 @using Diet = MM.Shared.Enums.Diet
 @using Disability = MM.Shared.Enums.Disability
 @using Drink = MM.Shared.Enums.Drink
@@ -15,7 +14,6 @@
 @using MM.Shared.Translations.Model
 @using Microsoft.AspNetCore.Authorization
 @using MoneyPersonality = MM.Shared.Enums.MoneyPersonality
-@using MudBlazor.Utilities
 @using MyersBriggsTypeIndicator = MM.Shared.Enums.MyersBriggsTypeIndicator
 @using Neurodiversity = MM.Shared.Enums.Neurodiversity
 @using RelationshipPersonality = MM.Shared.Enums.RelationshipPersonality
@@ -559,26 +557,3 @@
                 OnClick="async () => await MudDialog!.ShowAsync(Translations.Module.Legal.PrivacyTerms, PopupHelper.Options(MaxWidth.ExtraSmall))">
 </FloatingButton>
 <FloatingButton Template="Template.Back"></FloatingButton>
-
-@code {
-    private MudDialog? MudDialog { get; set; }
-
-    bool _BioExpanded = false;
-    bool _LifeExpanded = false;
-
-    private MudForm? _form;
-    private bool IsDirty { get; set; } = false;
-
-    private void OnFieldChanged(FormFieldChangedEventArgs args)
-    {
-        IsDirty = true;
-    }
-
-    private void CountryChanged(Country? country)
-    {
-        if (Profile == null) return;
-
-        Profile.Nationality = country;
-        Profile.Languages = country.GetLanguages().ToHashSet();
-    }
-}

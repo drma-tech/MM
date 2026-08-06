@@ -5,6 +5,8 @@ using MM.Shared.Models.Profile.Core;
 using MM.WEB.Core.Component;
 using MM.WEB.Modules.Auth.Core;
 using MM.WEB.Modules.Profile.Core;
+using MudBlazor;
+using MudBlazor.Utilities;
 
 namespace MM.WEB.Modules.Profile;
 
@@ -15,7 +17,16 @@ public partial class ProfileData : PageCore<ProfileData>
     [Inject] protected MapApi MapApi { get; set; } = default!;
 
     private ProfileModel? Profile { get; set; }
-    public ComponentActions<ProfileModel?> Actions { get; set; } = new(obj => obj == null);
+    public RenderControlState<ProfileModel> Actions { get; set; } = new(obj => obj == null);
+
+    private MudDialog? MudDialog { get; set; }
+
+    private bool _BioExpanded;
+
+    private bool _LifeExpanded;
+
+    private MudForm? _form;
+    private bool IsDirty { get; set; }
 
     protected override void OnInitialized()
     {
@@ -178,5 +189,18 @@ public partial class ProfileData : PageCore<ProfileData>
         var result = await validator.ValidateAsync(model, options => options.IncludeAllRuleSets(), Cts.Token);
 
         if (!result.IsValid) await ShowWarning(result.Errors[0].ErrorMessage);
+    }
+
+    private void OnFieldChanged(FormFieldChangedEventArgs args)
+    {
+        IsDirty = true;
+    }
+
+    private void CountryChanged(Country? country)
+    {
+        if (Profile == null) return;
+
+        Profile.Nationality = country;
+        Profile.Languages = country.GetLanguages().ToHashSet();
     }
 }

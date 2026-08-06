@@ -4,7 +4,7 @@ namespace MM.WEB.Modules.Profile.Core;
 
 public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, ApiType.Authenticated, "profile-filter", [], ApiContext.Default.FilterModel)
 {
-    public async Task<FilterModel?> Get(ComponentActions<FilterModel>? actions, CancellationToken cancellationToken)
+    public async Task<FilterModel?> Get(RenderControlState<FilterModel>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, actions, cancellationToken);
     }

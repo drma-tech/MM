@@ -1,11 +1,8 @@
 ﻿@page "/{culture}/profile/validation"
 
 @attribute [Authorize]
-@using MM.Shared.Models.Profile
-@using MM.Shared.Models.Profile.Core
 @using MM.WEB.Api
 @using MM.WEB.Modules.Profile.Core
-@using MM.WEB.Shared.Core
 @using Microsoft.AspNetCore.Authorization
 @inherits PageCore<Validations>
 
@@ -41,40 +38,3 @@
 </RenderControl>
 
 <FloatingButton Template="Template.Back"></FloatingButton>
-
-@code {
-    private ValidationModel? Validation { get; set; }
-    private ValidationValidation ValidationValidator { get; set; } = new();
-    public ComponentActions<ValidationModel?> Actions { get; set; } = new(obj => obj == null);
-
-    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
-    {
-        Actions?.StartLoading?.Invoke(null);
-
-        Validation = await ValidationApi.Get(token);
-
-        if (Validation == null)
-        {
-            Validation = new ValidationModel(AppStateStatic.UserId);
-        }
-
-        Actions?.FinishLoading?.Invoke(Validation);
-    }
-
-    private async Task GalleryClick()
-    {
-        Navigation.NavigateTo($"/{Culture}/profile/validation/gallery");
-    }
-
-    private async Task IdentityClick()
-    {
-        if (!AppStateStatic.Principal!.HasSparks(1))
-        {
-            await ShowWarning("You need at least 1 spark to validate your identity");
-            return;
-        }
-
-        Navigation.NavigateTo($"/{Culture}/profile/validation/identity");
-    }
-
-}

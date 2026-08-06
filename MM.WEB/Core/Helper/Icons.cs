@@ -97,7 +97,7 @@
                 IconAnimation.Spin => "fa-spin",
                 IconAnimation.SpinReverse => "fa-spin-reverse",
                 IconAnimation.SpinPulse => "fa-spin-pulse",
-                _ => ""
+                _ => "",
             };
 
             return $"{icon.Category} fa-{icon.Name} {animationClass}".Trim();

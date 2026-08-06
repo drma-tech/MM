@@ -12,7 +12,7 @@ public struct Endpoint
 
 public class DashboardApi(IHttpClientFactory http) : ApiCosmos<SumUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.SumUsersCache)
 {
-    public async Task<SumUsersCache?> GetSumUsers(ComponentActions<SumUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<SumUsersCache?> GetSumUsers(RenderControlState<SumUsersCache>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.SumUsers, setNewVersion: false, actions, cancellationToken);
     }
@@ -20,7 +20,7 @@ public class DashboardApi(IHttpClientFactory http) : ApiCosmos<SumUsersCache>(ht
 
 public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<LastUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.LastUsersCache)
 {
-    public async Task<LastUsersCache?> GetLastUsers(ComponentActions<LastUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<LastUsersCache?> GetLastUsers(RenderControlState<LastUsersCache>? actions, CancellationToken cancellationToken)
     {
         return await GetAsync(Endpoint.LastUsers, setNewVersion: false, actions, cancellationToken);
     }
@@ -28,7 +28,7 @@ public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<LastUsersCache>(h
 
 public class LastRegionUsersApi(IHttpClientFactory http) : ApiCosmos<LastRegionUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.LastRegionUsersCache)
 {
-    public async Task<LastRegionUsersCache?> LastRegionUsers(string mode, string? region, ComponentActions<LastRegionUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<LastRegionUsersCache?> LastRegionUsers(string mode, string? region, RenderControlState<LastRegionUsersCache>? actions, CancellationToken cancellationToken)
     {
         if (region == null) return null;
 

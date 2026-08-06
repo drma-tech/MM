@@ -1,6 +1,5 @@
 ﻿@inherits FormBase
 
-
 <div class="d-flex @CssClass" style="align-items: center; @Style">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
     <MudSelect Label="Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
@@ -18,20 +17,3 @@
         }
     </MudSelect>
 </div>
-
-@code {
-    [Parameter] public MM.Shared.Enums.Country? SelectedValue { get; set; }
-    [Parameter] public EventCallback<MM.Shared.Enums.Country?> SelectedValueChanged { get; set; }
-
-    public IEnumerable<EnumFieldObject<MM.Shared.Enums.Country>> Countries { get; set; } = [];
-    public IEnumerable<EnumFieldObject<MM.Shared.Enums.Country>> FilteredCountries => Countries.Where(w => w.Group == Continent).OrderBy(o => o.Name);
-
-    public string? Continent { get; set; }
-
-    protected override void OnInitialized()
-    {
-        Countries = EnumHelper.GetList<MM.Shared.Enums.Country>();
-        Continent = SelectedValue?.GetFieldSettings().Group;
-    }
-
-}

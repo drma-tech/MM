@@ -31,29 +31,3 @@
         </MudButton>
     </DialogActions>
 </MudDialog>
-
-@code {
-
-    private MudDialog? modal;
-    private int checkedValue = 1;
-
-    public void ShowModal()
-    {
-        modal?.ShowAsync("Report Profile");
-    }
-
-    void OnCheckedValueChanged(int value)
-    {
-        checkedValue = value;
-    }
-
-    private void Confirmar()
-    {
-        //report
-
-        //delete match
-
-        modal?.CloseAsync();
-    }
-
-}
