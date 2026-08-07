@@ -22,18 +22,9 @@ internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunction
                 return;
             }
 
-            var model = new LogModel();
+            var originalUrl = req.Headers.TryGetValues("X-MS-Original-Url", out var urls) ? urls.FirstOrDefault() : null;
 
-            foreach (var header in req.Headers)
-            {
-                model.Logs.Add($"{header.Key}: {string.Join(',', header.Value)}");
-                SentrySdk.Logger.LogInfo($"{header.Key}: {string.Join(',', header.Value)}");
-            }
-
-            var log = new LogCache(Guid.NewGuid().ToString(), model);
-            await cacheRepo.CreateItemAsync(log);
-
-            if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+            if (originalUrl?.Contains("www.", StringComparison.OrdinalIgnoreCase) == true)
             {
                 await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, Shared.Translations.Validation.Validations.DomainDeactivated);
 
@@ -52,7 +43,7 @@ internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunction
                 return;
             }
 
-            var version = req.Headers.TryGetValues("X-App-Version", out var values) ? values.FirstOrDefault() : null;
+            var version = req.Headers.TryGetValues("X-App-Version", out var versions) ? versions.FirstOrDefault() : null;
 
             if (HttpRequestDataExtensions.IsOutdated(version))
             {
