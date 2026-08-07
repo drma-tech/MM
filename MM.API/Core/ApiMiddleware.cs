@@ -21,6 +21,13 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 return;
             }
 
+            if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+            {
+                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, Shared.Translations.Validation.Validations.DomainDeactivated);
+
+                return;
+            }
+
             if (req.Url.AbsolutePath.Contains("webhook", StringComparison.OrdinalIgnoreCase))
             {
                 await next(context);
@@ -39,18 +46,7 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
             {
                 await context.SetHttpResponseStatusCode(
                     HttpStatusCode.UpgradeRequired,
-                    $"An outdated version has been detected ({version ?? "error"}). Please update to the latest version to continue using the platform. If you cannot update, try clearing your browser or app cache and reopen it."
-                );
-                return;
-            }
-
-            if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
-            {
-                await context.SetHttpResponseStatusCode(
-                    HttpStatusCode.Gone,
-                    "This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the 'www'."
-                );
-
+                    string.Format(System.Globalization.CultureInfo.CurrentCulture, Shared.Translations.Validation.Validations.OutdatedVersion, version ?? "error"));
                 return;
             }
 

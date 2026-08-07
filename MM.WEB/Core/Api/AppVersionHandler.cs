@@ -10,7 +10,7 @@
 
             if (request.RequestUri?.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase) == true)
             {
-                throw new UnhandledException("This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the 'www'.");
+                throw new UnhandledException(MM.Shared.Translations.Validation.Validations.DomainDeactivated);
             }
 
             return await base.SendAsync(request, cancellationToken);

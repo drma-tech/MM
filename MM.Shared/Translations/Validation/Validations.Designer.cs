@@ -70,11 +70,29 @@ namespace MM.Shared.Translations.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the &apos;www&apos;..
+        /// </summary>
+        public static string DomainDeactivated {
+            get {
+                return ResourceManager.GetString("DomainDeactivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must be 18 or older to register.
         /// </summary>
         public static string OlderToRegister {
             get {
                 return ResourceManager.GetString("OlderToRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An outdated version has been detected ({0}}). Please update to the latest version to continue using the platform. If you cannot update, try clearing your browser or app cache and reopen it..
+        /// </summary>
+        public static string OutdatedVersion {
+            get {
+                return ResourceManager.GetString("OutdatedVersion", resourceCulture);
             }
         }
     }
