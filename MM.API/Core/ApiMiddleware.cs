@@ -1,12 +1,13 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Middleware;
+using MM.Shared.Models.Blocked;
 using System.Diagnostics;
 using System.Net;
 
 namespace MM.API.Core;
 
-internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
+internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunctionsWorkerMiddleware
 {
     public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
     {
@@ -21,44 +22,15 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 return;
             }
 
-            //req.LogWarning($"Url: {req.Url}");
-            //req.LogWarning($"Url.Host: {req.Url.Host}");
-            //req.LogWarning($"Url.Authority: {req.Url.Authority}");
-
-            //if (req.Headers.TryGetValues("Host", out var hostHeaders))
-            //{
-            //    req.LogWarning($"Host header: {string.Join(",", hostHeaders)}");
-            //}
-
-            //if (req.Headers.TryGetValues("X-Forwarded-Host", out var forwardedHosts))
-            //{
-            //    req.LogWarning($"X-Forwarded-Host: {string.Join(",", forwardedHosts)}");
-            //}
-
-            //if (req.Headers.TryGetValues("X-Original-Host", out var originalHosts))
-            //{
-            //    req.LogWarning($"X-Original-Host: {string.Join(",", originalHosts)}");
-            //}
-
-            //if (req.Headers.TryGetValues("Forwarded", out var forwarded))
-            //{
-            //    req.LogWarning($"Forwarded: {string.Join(",", forwarded)}");
-            //}
-
-            //if (req.Headers.TryGetValues("Origin", out var origins))
-            //{
-            //    req.LogWarning($"Origin: {string.Join(",", origins)}");
-            //}
-
-            //if (req.Headers.TryGetValues("Referer", out var referers))
-            //{
-            //    req.LogWarning($"Referer: {string.Join(",", referers)}");
-            //}
+            var model = new LogModel();
 
             foreach (var header in req.Headers)
             {
-                SentrySdk.CaptureMessage($"{header.Key}: {string.Join(",", header.Value)}", SentryLevel.Warning);
+                model.Logs.Add($"{header.Key}: {string.Join(',', header.Value)}");
             }
+
+            var log = new LogCache(Guid.NewGuid().ToString(), model);
+            await cacheRepo.CreateItemAsync(log);
 
             if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
             {
