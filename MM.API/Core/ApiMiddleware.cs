@@ -44,6 +44,16 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 return;
             }
 
+            if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+            {
+                await context.SetHttpResponseStatusCode(
+                    HttpStatusCode.Gone,
+                    "This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the 'www'."
+                );
+
+                return;
+            }
+
             await next(context);
         }
         catch (CosmosException ex)
