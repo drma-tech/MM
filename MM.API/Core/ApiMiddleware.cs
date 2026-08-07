@@ -39,8 +39,8 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 if (hasAllowedOrigin)
                 {
                     resOptions.Headers.Add("Access-Control-Allow-Origin", origin);
-                    resOptions.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                    resOptions.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-App-Version");
+                    resOptions.Headers.Add("Access-Control-Allow-Methods", "*");
+                    resOptions.Headers.Add("Access-Control-Allow-Headers", "*");
                     resOptions.Headers.Add("Vary", "Origin");
                 }
 
