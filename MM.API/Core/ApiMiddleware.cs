@@ -1,13 +1,20 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using System.Diagnostics;
 using System.Net;
 
 namespace MM.API.Core;
 
-internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
+internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
 {
+    private static readonly HashSet<string> AllowedOrigins =
+    [
+        "https://modern-matchmaker.com",
+        "https://www.modern-matchmaker.com",
+    ];
+
     public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
     {
         var req = await context.GetHttpRequestDataAsync();
@@ -18,6 +25,26 @@ internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
             if (req is null)
             {
                 await next(context);
+                return;
+            }
+
+            var origin = req.Headers.TryGetValues("Origin", out var origins) ? origins.FirstOrDefault() : null;
+
+            var hasAllowedOrigin = origin is not null && AllowedOrigins.Contains(origin, StringComparer.OrdinalIgnoreCase);
+
+            if (string.Equals(req.Method, "OPTIONS", StringComparison.OrdinalIgnoreCase))
+            {
+                var resOptions = req.CreateResponse(HttpStatusCode.OK);
+
+                if (hasAllowedOrigin)
+                {
+                    resOptions.Headers.Add("Access-Control-Allow-Origin", origin);
+                    resOptions.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                    resOptions.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-App-Version");
+                    resOptions.Headers.Add("Vary", "Origin");
+                }
+
+                context.GetInvocationResult().Value = resOptions;
                 return;
             }
 
@@ -45,6 +72,14 @@ internal sealed class ApiMiddleware() : IFunctionsWorkerMiddleware
             }
 
             await next(context);
+
+            var response = context.GetHttpResponseData();
+
+            if (response is not null && hasAllowedOrigin)
+            {
+                response.Headers.Add("Access-Control-Allow-Origin", origin);
+                response.Headers.Add("Vary", "Origin");
+            }
         }
         catch (CosmosException ex)
         {
