@@ -26,12 +26,10 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
 
             if (originalUrl?.Contains("www.", StringComparison.OrdinalIgnoreCase) == true)
             {
-                req.Headers.TryGetValues("Referer", out var referers);
-                var referer = referers.FirstOrDefault();
                 var culture = req.GetUserCulture();
                 var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.DomainDeactivated), culture);
 
-                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, msg + referer);
+                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, msg);
                 return;
             }
 
