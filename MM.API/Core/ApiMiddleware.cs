@@ -1,13 +1,13 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Middleware;
-using MM.Shared.Models.Blocked;
+using MM.API.Core.Auth;
 using System.Diagnostics;
 using System.Net;
 
 namespace MM.API.Core;
 
-internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunctionsWorkerMiddleware
+internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
 {
     public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
     {
@@ -26,8 +26,10 @@ internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunction
 
             if (originalUrl?.Contains("www.", StringComparison.OrdinalIgnoreCase) == true)
             {
-                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, Shared.Translations.Validation.Validations.DomainDeactivated);
+                var culture = req.GetUserCulture();
+                var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.DomainDeactivated), culture);
 
+                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, msg);
                 return;
             }
 
@@ -47,9 +49,10 @@ internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunction
 
             if (HttpRequestDataExtensions.IsOutdated(version))
             {
-                await context.SetHttpResponseStatusCode(
-                    HttpStatusCode.UpgradeRequired,
-                    string.Format(System.Globalization.CultureInfo.CurrentCulture, Shared.Translations.Validation.Validations.OutdatedVersion, version ?? "error"));
+                var culture = req.GetUserCulture();
+                var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.OutdatedVersion), culture);
+
+                await context.SetHttpResponseStatusCode(HttpStatusCode.UpgradeRequired, string.Format(culture, msg, version ?? "error"));
                 return;
             }
 

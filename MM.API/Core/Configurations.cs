@@ -1,4 +1,4 @@
-﻿namespace MM.Shared.Core;
+﻿namespace MM.API.Core;
 
 public class Configurations
 {
