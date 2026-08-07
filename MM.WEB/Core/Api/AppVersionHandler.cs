@@ -8,11 +8,6 @@
 
             request.Headers.Add("X-App-Version", AppStateStatic.Version);
 
-            if (request.RequestUri?.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase) == true)
-            {
-                throw new UnhandledException(MM.Shared.Translations.Validation.Validations.DomainDeactivated);
-            }
-
             return await base.SendAsync(request, cancellationToken);
         }
     }
