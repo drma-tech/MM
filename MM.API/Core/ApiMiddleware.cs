@@ -57,7 +57,8 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
 
             foreach (var header in req.Headers)
             {
-                req.LogWarning($"{header.Key}: {string.Join(",", header.Value)}");
+                //req.LogWarning($"{header.Key}: {string.Join(",", header.Value)}");
+                SentrySdk.Logger.LogWarning($"{header.Key}: {string.Join(",", header.Value)}");
             }
 
             if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
