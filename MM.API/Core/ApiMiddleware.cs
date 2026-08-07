@@ -27,6 +27,7 @@ internal sealed class ApiMiddleware(CosmosCacheRepository cacheRepo) : IFunction
             foreach (var header in req.Headers)
             {
                 model.Logs.Add($"{header.Key}: {string.Join(',', header.Value)}");
+                SentrySdk.Logger.LogInfo($"{header.Key}: {string.Join(',', header.Value)}");
             }
 
             var log = new LogCache(Guid.NewGuid().ToString(), model);
