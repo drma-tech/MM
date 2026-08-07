@@ -21,38 +21,43 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 return;
             }
 
-            req.LogWarning($"Url: {req.Url}");
-            req.LogWarning($"Url.Host: {req.Url.Host}");
-            req.LogWarning($"Url.Authority: {req.Url.Authority}");
+            //req.LogWarning($"Url: {req.Url}");
+            //req.LogWarning($"Url.Host: {req.Url.Host}");
+            //req.LogWarning($"Url.Authority: {req.Url.Authority}");
 
-            if (req.Headers.TryGetValues("Host", out var hostHeaders))
-            {
-                req.LogWarning($"Host header: {string.Join(",", hostHeaders)}");
-            }
+            //if (req.Headers.TryGetValues("Host", out var hostHeaders))
+            //{
+            //    req.LogWarning($"Host header: {string.Join(",", hostHeaders)}");
+            //}
 
-            if (req.Headers.TryGetValues("X-Forwarded-Host", out var forwardedHosts))
-            {
-                req.LogWarning($"X-Forwarded-Host: {string.Join(",", forwardedHosts)}");
-            }
+            //if (req.Headers.TryGetValues("X-Forwarded-Host", out var forwardedHosts))
+            //{
+            //    req.LogWarning($"X-Forwarded-Host: {string.Join(",", forwardedHosts)}");
+            //}
 
-            if (req.Headers.TryGetValues("X-Original-Host", out var originalHosts))
-            {
-                req.LogWarning($"X-Original-Host: {string.Join(",", originalHosts)}");
-            }
+            //if (req.Headers.TryGetValues("X-Original-Host", out var originalHosts))
+            //{
+            //    req.LogWarning($"X-Original-Host: {string.Join(",", originalHosts)}");
+            //}
 
-            if (req.Headers.TryGetValues("Forwarded", out var forwarded))
-            {
-                req.LogWarning($"Forwarded: {string.Join(",", forwarded)}");
-            }
+            //if (req.Headers.TryGetValues("Forwarded", out var forwarded))
+            //{
+            //    req.LogWarning($"Forwarded: {string.Join(",", forwarded)}");
+            //}
 
-            if (req.Headers.TryGetValues("Origin", out var origins))
-            {
-                req.LogWarning($"Origin: {string.Join(",", origins)}");
-            }
+            //if (req.Headers.TryGetValues("Origin", out var origins))
+            //{
+            //    req.LogWarning($"Origin: {string.Join(",", origins)}");
+            //}
 
-            if (req.Headers.TryGetValues("Referer", out var referers))
+            //if (req.Headers.TryGetValues("Referer", out var referers))
+            //{
+            //    req.LogWarning($"Referer: {string.Join(",", referers)}");
+            //}
+
+            foreach (var header in req.Headers)
             {
-                req.LogWarning($"Referer: {string.Join(",", referers)}");
+                req.LogWarning($"{header.Key}: {string.Join(",", header.Value)}");
             }
 
             if (req.Url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
