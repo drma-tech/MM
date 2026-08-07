@@ -29,7 +29,7 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 var culture = req.GetUserCulture();
                 var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.DomainDeactivated), culture);
 
-                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, msg);
+                await context.SetHttpResponseStatusCode(HttpStatusCode.Gone, msg!);
                 return;
             }
 
@@ -52,7 +52,7 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
                 var culture = req.GetUserCulture();
                 var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.OutdatedVersion), culture);
 
-                await context.SetHttpResponseStatusCode(HttpStatusCode.UpgradeRequired, string.Format(culture, msg, version ?? "error"));
+                await context.SetHttpResponseStatusCode(HttpStatusCode.UpgradeRequired, string.Format(culture, msg!, version ?? "error"));
                 return;
             }
 
