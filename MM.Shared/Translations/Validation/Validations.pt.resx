@@ -127,6 +127,6 @@
     <value>Você deve ter 18 anos ou mais para se registrar</value>
   </data>
   <data name="OutdatedVersion" xml:space="preserve">
-    <value>Uma versão desatualizada foi detectada ({0}}). Atualize para a versão mais recente para continuar usando a plataforma. Se você não conseguir atualizar, tente limpar o cache do navegador ou do aplicativo e reabri-lo.</value>
+    <value>Uma versão desatualizada foi detectada ({0}). Atualize para a versão mais recente para continuar usando a plataforma. Se você não conseguir atualizar, tente limpar o cache do navegador ou do aplicativo e reabri-lo.</value>
   </data>
 </root>

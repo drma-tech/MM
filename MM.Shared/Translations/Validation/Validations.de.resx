@@ -127,6 +127,6 @@
     <value>Sie müssen mindestens 18 Jahre alt sein, um sich registrieren zu können</value>
   </data>
   <data name="OutdatedVersion" xml:space="preserve">
-    <value>Es wurde eine veraltete Version erkannt ({0}}). Bitte aktualisieren Sie auf die neueste Version, um die Plattform weiterhin nutzen zu können. Wenn Sie nicht aktualisieren können, leeren Sie den Browser- oder App-Cache und öffnen Sie ihn erneut.</value>
+    <value>Es wurde eine veraltete Version erkannt ({0}). Bitte aktualisieren Sie auf die neueste Version, um die Plattform weiterhin nutzen zu können. Wenn Sie nicht aktualisieren können, leeren Sie den Browser- oder App-Cache und öffnen Sie ihn erneut.</value>
   </data>
 </root>
