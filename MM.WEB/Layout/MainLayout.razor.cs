@@ -298,6 +298,12 @@ namespace MM.WEB.Layout
             _ = BufferedEvent.Invoke(nameof(SupabaseAuthChanged), token);
         }
 
+        [JSInvokable]
+        public static void LocationChanged(GeoLocation geo)
+        {
+            _ = AppStateStatic.LocationChanged.PublishAsync(geo);
+        }
+
         private bool isDisposed;
 
         public void Dispose()
