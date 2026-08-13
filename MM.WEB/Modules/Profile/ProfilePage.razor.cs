@@ -10,9 +10,9 @@ namespace MM.WEB.Modules.Profile
 {
     public partial class ProfilePage
     {
-        private RenderControlState<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
-        public LastRegionUsers? LastUsers { get; set; }
-        private Country? CountryEnum;
+        //private RenderControlState<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+        //public LastRegionUsers? LastUsers { get; set; }
+        //private Country? CountryEnum;
 
         private ProfileValidation ProfileValidator { get; } = new();
         private ProfileModel? profile;
@@ -82,32 +82,32 @@ namespace MM.WEB.Modules.Profile
         //     await base.OnAfterRenderAsync(firstRender);
         // }
 
-        protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
-        {
-            var countryStr = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
+        //protected override async Task<bool> LoadInteropDataAsync(IJSRuntime JsRuntime)
+        //{
+        //    var countryStr = await AppStateStatic.GetCountry(IpInfoApi, JsRuntime, Cts.Token);
 
-            if (countryStr.NotEmpty())
-            {
-                CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
+        //    if (countryStr.NotEmpty())
+        //    {
+        //        CountryEnum = EnumHelper.ParseToEnum<Country>(countryStr);
 
-                var cache2 = await LastRegionUsersApi.LastRegionUsers("compact", countryStr, LastUsersActions, Cts.Token);
-                LastUsers = cache2?.Data;
-            }
-            else
-            {
-                await LastUsersActions.ShowError("It was not possible to determine your location.");
-            }
+        //        var cache2 = await LastRegionUsersApi.LastRegionUsers("compact", countryStr, LastUsersActions, Cts.Token);
+        //        LastUsers = cache2?.Data;
+        //    }
+        //    else
+        //    {
+        //        await LastUsersActions.ShowError("It was not possible to determine your location.");
+        //    }
 
-            if (countryStr.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
-            {
-                if (AppStateStatic.IsAuthenticated)
-                    await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
-                else
-                    await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
-            }
+        //    if (countryStr.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
+        //    {
+        //        if (AppStateStatic.IsAuthenticated)
+        //            await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
+        //        else
+        //            await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
@@ -153,7 +153,7 @@ namespace MM.WEB.Modules.Profile
                 else
                 {
                     await PrincipalApi.Private(Cts.Token);
-                    await ShowSuccess(Translations.Module.Profile.ProfilePrivateMode);
+                    await ShowInfo(Translations.Module.Profile.ProfilePrivateMode);
                 }
             }
             catch (Exception ex)

@@ -48,7 +48,7 @@ else
     </MudPaper>
 }
 
-<PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.CustomFormat(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
+@* <PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.CustomFormat(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
     <BodyFragment>
         <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
             <Slider List="LastUsers?.Items ?? []" Context="item">
@@ -70,7 +70,7 @@ else
             </Slider>
         </RenderControl>
     </BodyFragment>
-</PageSectionComponent>
+</PageSectionComponent> *@
 
 <MudGrid Spacing="@CssHelper.SpaceSmall" Class="@CssHelper.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
