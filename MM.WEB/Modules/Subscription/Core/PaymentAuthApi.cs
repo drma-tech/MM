@@ -2,7 +2,7 @@
 
 namespace MM.WEB.Modules.Subscription.Core
 {
-    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, null, [], ApiContext.Default.AuthPurchase)
+    public class PaymentPublicApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Anonymous, key: null, [], ApiContext.Default.AuthPurchase)
     {
         public async Task<bool> StripeValidateSession(string id, CancellationToken cancellationToken)
         {
@@ -15,16 +15,16 @@ namespace MM.WEB.Modules.Subscription.Core
         }
     }
 
-    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, null, [], ApiContext.Default.AuthPurchase)
+    public class PaymentAuthApi(IHttpClientFactory factory) : ApiCosmos<AuthPurchase>(factory, ApiType.Authenticated, key: null, [], ApiContext.Default.AuthPurchase)
     {
         public async Task AppleVerify(string receipt, CancellationToken cancellationToken)
         {
-            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, cancellationToken);
+            await PostAsync(Endpoint.AppleVerify, receipt, ApiContext.Default.String, state: null, cancellationToken);
         }
 
         public async Task<AuthPrincipal?> StripeCustomer(CancellationToken cancellationToken)
         {
-            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, setNewVersion: true, actions: null, cancellationToken);
+            return await GetAsync<AuthPrincipal>(Endpoint.StripeCustomer, setNewVersion: true, state: null, cancellationToken);
         }
 
         private struct Endpoint

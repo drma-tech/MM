@@ -10,7 +10,7 @@
 <PageSectionComponent Title="@(Translations.Title.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
                       CustomBodyClass="mb-12">
     <BodyFragment>
-        <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+        <RenderControl State="LastUsersState" LoadingHeight="130px">
             <MudGrid Spacing="@CssHelper.SpaceSmall" Class="mb-2">
                 @foreach (var item in LastUsers?.Items ?? [])
                 {

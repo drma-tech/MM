@@ -1,7 +1,5 @@
 using Bogus;
 using FluentValidation;
-using Microsoft.JSInterop;
-using MM.Shared.Models.Dashboard;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MudBlazor;
@@ -18,27 +16,27 @@ namespace MM.WEB.Modules.Profile
         private ProfileModel? profile;
 
         private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-        private RenderControlState<ProfileModel> ProfileActions { get; } = new(obj => obj == null);
+        private RenderControlState<ProfileModel> ProfileState { get; } = new(obj => obj == null);
 
         private FilterValidation FilterValidator { get; } = new();
         private FilterModel? filter;
-        private RenderControlState<FilterModel> FilterActions { get; } = new(obj => obj == null);
+        private RenderControlState<FilterModel> FilterState { get; } = new(obj => obj == null);
 
         private PhotoValidation PhotoValidator { get; } = new();
 
         private SettingModel? setting;
-        private RenderControlState<SettingModel> SettingActions { get; } = new(obj => obj == null);
+        private RenderControlState<SettingModel> SettingState { get; } = new(obj => obj == null);
 
         private ValidationModel? validation;
 
         private List<string> Suggestions { get; } = [];
-        private RenderControlState<List<string>> SuggestionsActions { get; } = new(lst => lst == null || lst.Empty());
+        private RenderControlState<List<string>> SuggestionsState { get; } = new(lst => lst == null || lst.Empty());
 
         private MyLikesModel? MyLikes { get; set; }
-        private RenderControlState<MyLikesModel> LikesActions { get; } = new(obj => obj == null || obj.Items.Empty());
+        private RenderControlState<MyLikesModel> LikesState { get; } = new(obj => obj == null || obj.Items.Empty());
 
         private MyMatchesModel? MyMatches { get; set; }
-        private RenderControlState<MyMatchesModel> MatchesActions { get; } = new(obj => obj == null || obj.Items.Empty());
+        private RenderControlState<MyMatchesModel> MatchesState { get; } = new(obj => obj == null || obj.Items.Empty());
 
         private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
         private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
@@ -63,7 +61,7 @@ namespace MM.WEB.Modules.Profile
                 StateHasChanged();
             };
 
-            SuggestionsActions.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
+            SuggestionsState.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
         }
 
         // protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -111,17 +109,17 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            profile = await ProfileApi.Get(ProfileActions, token);
-            filter = await FilterApi.Get(FilterActions, token);
-            setting = await SettingApi.Get(SettingActions, token);
+            profile = await ProfileApi.Get(ProfileState, token);
+            filter = await FilterApi.Get(FilterState, token);
+            setting = await SettingApi.Get(SettingState, token);
             validation = await ValidationApi.Get(token);
 
             //remove the loading status
-            await SuggestionsActions.StartLoading.Invoke(null);
-            await SuggestionsActions.FinishLoading.Invoke(null);
+            await SuggestionsState.StartLoading.Invoke(null);
+            await SuggestionsState.FinishLoading.Invoke(null);
 
-            MyLikes = await MyLikesApi.Get(setNewVersion: false, LikesActions, token);
-            MyMatches = await MyMatchesApi.Get(setNewVersion: false, MatchesActions, token);
+            MyLikes = await MyLikesApi.Get(setNewVersion: false, LikesState, token);
+            MyMatches = await MyMatchesApi.Get(setNewVersion: false, MatchesState, token);
         }
 
         private static Color GetButtonColor(bool valid)
@@ -184,7 +182,7 @@ namespace MM.WEB.Modules.Profile
             if (await DialogService.ShowMessageBoxAsync(Translations.Notification.Confirmation, Translations.Module.Profile.GenerateSimulation, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
             {
                 MyMatches = new MyMatchesModel(AppStateStatic.UserId);
-                await MatchesActions.StartLoading.Invoke(null);
+                await MatchesState.StartLoading.Invoke(null);
 
                 fakeProfiles = [.. new Faker<ProfileModel>()
                     .CustomInstantiator(f => new ProfileModel(f.Random.Guid().ToString()))
@@ -255,7 +253,7 @@ namespace MM.WEB.Modules.Profile
 
                 MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
-                await MatchesActions.FinishLoading.Invoke(MyMatches);
+                await MatchesState.FinishLoading.Invoke(MyMatches);
             }
         }
 

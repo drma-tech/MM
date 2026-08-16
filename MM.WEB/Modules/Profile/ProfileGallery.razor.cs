@@ -9,13 +9,13 @@ namespace MM.WEB.Modules.Profile
     public partial class ProfileGallery
     {
         private ProfileModel? _profile = new(AppStateStatic.UserId);
-        public RenderControlState<ProfileModel> ProfileActions { get; set; } = new(obj => obj == null);
+        public RenderControlState<ProfileModel> ProfileState { get; set; } = new(obj => obj == null);
 
         private MudDialog? MudDialog { get; set; }
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            _profile = await ProfileApi.Get(ProfileActions, token);
+            _profile = await ProfileApi.Get(ProfileState, token);
         }
 
         private async Task SelectPicture(PhotoType photoType)

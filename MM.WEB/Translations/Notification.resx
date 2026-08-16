@@ -126,9 +126,6 @@
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>
-  <data name="RenderControlNoData" xml:space="preserve">
-    <value>Data not available</value>
-  </data>
   <data name="ExternalWebsiteNotice" xml:space="preserve">
     <value>External Website Notice</value>
   </data>
@@ -140,6 +137,9 @@
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
     <value>This module is still under development. If you wish to report a bug, please contact us via the feedback button.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="OperationCanceled" xml:space="preserve">
     <value>Operation cancelled!</value>
@@ -156,16 +156,22 @@
   <data name="PWAUpdaterText" xml:space="preserve">
     <value>A new version is available</value>
   </data>
+  <data name="RenderControlInvalid" xml:space="preserve">
+    <value>Invalid operation. Please try again.</value>
+  </data>
+  <data name="RenderControlLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="RenderControlNoData" xml:space="preserve">
+    <value>Data not available</value>
+  </data>
   <data name="SpamLike" xml:space="preserve">
     <value>Description contains suspicious or spam-like content.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="RenderControlLoading" xml:space="preserve">
-    <value>Loading...</value>
-  </data>
-  <data name="RenderControlInvalid" xml:space="preserve">
-    <value>Invalid operation. Please try again.</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

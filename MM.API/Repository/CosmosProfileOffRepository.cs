@@ -6,8 +6,8 @@ using System.Linq.Expressions;
 
 namespace MM.API.Repository;
 
-public class CosmosProfileOffRepository(CosmosClient CosmosClient, ILogger<CosmosProfileOffRepository> logger)
-    : BaseRepository<CosmosProfileOffRepository, ProfileDocument, ProfileIdentity>(CosmosClient, logger, "profile-off")
+public class CosmosProfileOffRepository(CosmosClient client, ILogger<CosmosProfileOffRepository> logger)
+    : BaseRepository<CosmosProfileOffRepository, ProfileDocument, ProfileIdentity>(client, logger, "profile-off")
 {
     public async Task<IReadOnlyCollection<T>> Query<T>(Expression<Func<T, bool>>? predicate, Func<IQueryable<T>, IQueryable<T>>? transform, CancellationToken cancellationToken)
         where T : ProfileDocument

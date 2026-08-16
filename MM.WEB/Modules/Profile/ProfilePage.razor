@@ -50,7 +50,7 @@ else
 
 @* <PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.CustomFormat(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">
     <BodyFragment>
-        <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+        <RenderControl State="LastUsersActions" LoadingHeight="130px">
             <Slider List="LastUsers?.Items ?? []" Context="item">
                 <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                     <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">
@@ -242,7 +242,7 @@ else
                 </MudTooltip>
             </ActionsFragment>
             <BodyFragment>
-                <RenderControl Actions="SuggestionsActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser" LoadingHeight="130px">
+                <RenderControl State="SuggestionsState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser" LoadingHeight="130px">
                     <Slider List="Suggestions" Context="item">
                         <FeatureUnavailable></FeatureUnavailable>
                     </Slider>
@@ -251,7 +251,7 @@ else
         </PageSectionComponent>
         <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Likes">
             <BodyFragment>
-                <RenderControl Actions="LikesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
+                <RenderControl State="LikesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
                     <Slider List="MyLikes?.Items ?? new HashSet<PersonModel>()" Context="item">
                         <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
                              @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
@@ -277,7 +277,7 @@ else
                 }
             </ActionsFragment>
             <BodyFragment>
-                <RenderControl Actions="MatchesActions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
+                <RenderControl State="MatchesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px">
                     <Slider List="MyMatches?.Items ?? new HashSet<PersonModel>()" Context="item">
                         <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                             <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">

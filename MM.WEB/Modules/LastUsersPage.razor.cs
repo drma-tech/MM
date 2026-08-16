@@ -10,7 +10,7 @@ namespace MM.WEB.Modules
 
         private Platform? CurrentPlatform;
 
-        private RenderControlState<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+        private RenderControlState<LastRegionUsersCache> LastUsersState { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
         public LastRegionUsers? LastUsers { get; set; }
         private Country? CountryEnum;
 
@@ -20,16 +20,16 @@ namespace MM.WEB.Modules
             {
                 CountryEnum = EnumHelper.ParseToEnum<Country>(Region);
 
-                var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersActions, Cts.Token);
+                var cache2 = await LastRegionUsersApi.LastRegionUsers("full", Region, LastUsersState, Cts.Token);
                 LastUsers = cache2?.Data;
             }
 
             if (Region.NotEmpty() && (LastUsers?.Items.Empty() ?? true))
             {
                 if (AppStateStatic.IsAuthenticated)
-                    await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
+                    await LastUsersState.ShowWarning(Translations.Module.Profile.NoUsersYetOn);
                 else
-                    await LastUsersActions.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
+                    await LastUsersState.ShowWarning(Translations.Module.Profile.NoUsersYetOff);
             }
         }
 

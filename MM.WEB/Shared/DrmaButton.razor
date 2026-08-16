@@ -14,13 +14,13 @@
     [Parameter] public string? Icon { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    [Parameter] public RenderControlState<T>? Actions { get; set; }
+    [Parameter] public RenderControlState<T>? State { get; set; }
 
     private bool Processing;
 
     protected override void OnInitialized()
     {
-        if (Actions != null) Actions.StartProcessing += async msg => Processing = true;
-        if (Actions != null) Actions.FinishProcessing += async obj => Processing = false;
+        if (State != null) State.StartProcessing += async msg => Processing = true;
+        if (State != null) State.FinishProcessing += async obj => Processing = false;
     }
 }

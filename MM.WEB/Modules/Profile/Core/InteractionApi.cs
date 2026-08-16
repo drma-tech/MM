@@ -8,21 +8,21 @@ public class InteractionApi(IHttpClientFactory http) : ApiCosmos<InteractionMode
     {
         if (IdUserView == null) return default;
 
-        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), setNewVersion: false, actions: null, cancellationToken);
+        return await GetAsync(ProfileEndpoint.GetInteraction(IdUserView), setNewVersion: false, state: null, cancellationToken);
     }
 
     public async Task<InteractionModel?> Like(Origin origin, string? IdUserView, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), null, cancellationToken);
+        return await PostAsync(ProfileEndpoint.Like(origin, IdUserView), null, state: null, cancellationToken);
     }
 
     public async Task<InteractionModel?> Dislike(Origin origin, string? IdUserView, CancellationToken cancellationToken)
     {
         if (IdUserView == null) return default;
 
-        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), null, cancellationToken);
+        return await PostAsync(ProfileEndpoint.Dislike(origin, IdUserView), null, state: null, cancellationToken);
     }
 
     public struct ProfileEndpoint

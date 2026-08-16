@@ -25,7 +25,7 @@
 	<ItemGroup>
 		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.8" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.1" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.151">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.158">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

@@ -10,7 +10,7 @@ namespace MM.WEB.Modules.Profile
     {
         private ProfileModel? Profile { get; set; }
         private FilterModel? Filter { get; set; }
-        public RenderControlState<FilterModel> Actions { get; set; } = new(obj => obj == null);
+        public RenderControlState<FilterModel> State { get; set; } = new(obj => obj == null);
         private MudDialog? MudDialog { get; set; }
 
         private Tabs? Tab { get; set; }
@@ -40,14 +40,14 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            Actions.StartLoading?.Invoke(null);
+            State.StartLoading?.Invoke(null);
 
             Profile = await ProfileApi.Get(actions: null, token);
             Filter = await FilterApi.Get(actions: null, token);
 
             if (Profile == null && AppStateStatic.IsAuthenticated)
             {
-                Actions.ShowError?.Invoke(Translations.Module.Profile.ProfileNotFound);
+                State.ShowError?.Invoke(Translations.Module.Profile.ProfileNotFound);
             }
 
             if (Filter == null && AppStateStatic.IsAuthenticated)
@@ -65,7 +65,7 @@ namespace MM.WEB.Modules.Profile
                 await PopulateFields(forceReset: false);
             }
 
-            Actions?.FinishLoading?.Invoke(Filter);
+            State?.FinishLoading?.Invoke(Filter);
         }
 
         private async Task SaveHandle()
@@ -80,9 +80,9 @@ namespace MM.WEB.Modules.Profile
 
                 if (result.IsValid)
                 {
-                    Actions.StartProcessing?.Invoke(null);
+                    State.StartProcessing?.Invoke(null);
                     Filter = await FilterApi.Update(Filter, Cts.Token);
-                    Actions.FinishProcessing?.Invoke(Filter);
+                    State.FinishProcessing?.Invoke(Filter);
 
                     IsDirty = false; StateHasChanged();
 

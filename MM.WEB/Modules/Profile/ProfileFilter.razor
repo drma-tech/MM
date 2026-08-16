@@ -30,7 +30,7 @@
     @Translations.Module.Profile.ProfileFilterWarning.CustomFormat(8)
 </MudAlert>
 
-<RenderControl T="FilterModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+<RenderControl T="FilterModel" State="State" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudForm @ref="_form" FieldChanged="OnFieldChanged">
         <MudExpansionPanels Elevation="2">
             <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
@@ -500,7 +500,7 @@
         {
             if (forceReset) Filter = new FilterModel(AppStateStatic.UserId);
             Filter = SmartLookingCore.PopulateFields(Profile, Filter);
-            Actions?.FinishLoading?.Invoke(Filter);
+            State?.FinishLoading?.Invoke(Filter);
 
             await ShowInfo(
                 @<div>

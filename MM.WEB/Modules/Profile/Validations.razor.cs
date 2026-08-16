@@ -5,17 +5,17 @@ namespace MM.WEB.Modules.Profile
     public partial class Validations
     {
         private ValidationModel? Validation { get; set; }
-        public RenderControlState<ValidationModel> Actions { get; set; } = new(obj => obj == null);
+        public RenderControlState<ValidationModel> State { get; set; } = new(obj => obj == null);
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            Actions?.StartLoading?.Invoke(null);
+            State?.StartLoading?.Invoke(null);
 
             Validation = await ValidationApi.Get(token);
 
             Validation ??= new ValidationModel(AppStateStatic.UserId);
 
-            Actions?.FinishLoading?.Invoke(Validation);
+            State?.FinishLoading?.Invoke(Validation);
         }
 
         private async Task GalleryClick()

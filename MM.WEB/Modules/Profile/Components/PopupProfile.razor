@@ -12,7 +12,7 @@
 
 <MudDialog Style="width: 100%">
     <DialogContent>
-        <RenderControl Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
+        <RenderControl State="State" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
             <MudGrid Spacing="@CssHelper.SpaceSmall">
                 @if (OnlyCompatibility)
                 {
@@ -76,12 +76,12 @@
                                         @if (interaction?.Status != InteractionStatus.Explorer)
                                         {
                                             <MudItem xs="12">
-                                                <DrmaButton Icon="@Icons.Material.Filled.ThumbUp" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" Actions="EventActions">
+                                                <DrmaButton Icon="@Icons.Material.Filled.ThumbUp" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Like)" State="EventState">
                                                     @Translations.Button.Like
                                                 </DrmaButton>
                                             </MudItem>
                                             <MudItem xs="12">
-                                                <DrmaButton Icon="@Icons.Material.Filled.ThumbDown" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" Actions="EventActions">
+                                                <DrmaButton Icon="@Icons.Material.Filled.ThumbDown" Color="Color.Primary" Clicked="Like" Disabled="true || ButtonDisabled(EventType.Dislike)" State="EventState">
                                                     @Translations.Button.Dislike
                                                 </DrmaButton>
                                             </MudItem>

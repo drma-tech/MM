@@ -30,7 +30,7 @@
 
 <CustomNavigationLock IsDirty="IsDirty"></CustomNavigationLock>
 
-<RenderControl T="ProfileModel" Actions="Actions" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="400px" Class="@CssHelper.Build().Small("mb")">
+<RenderControl T="ProfileModel" State="State" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="400px" Class="@CssHelper.Build().Small("mb")">
     <MudForm @ref="_form" FieldChanged="OnFieldChanged">
         <MudExpansionPanels Elevation="2">
             <MudExpansionPanel HeaderClass="mud-primary-text">

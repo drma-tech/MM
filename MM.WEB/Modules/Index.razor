@@ -119,7 +119,7 @@
     </PageSectionComponent>
     <PageSectionComponent Title="@Translations.Module.Landing.LastUsers" Subtitle="@Translations.Module.Landing.LastUsersSubtitle" CustomBodyClass="mb-12">
         <BodyFragment>
-            <RenderControl Actions="LastUsersActions" LoadingHeight="130px">
+            <RenderControl State="LastUsersState" LoadingHeight="130px">
                 <Slider List="context?.Data?.Items ?? []" Context="item">
                     <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
                         <MudChip T="string" Color="Color.Primary" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1; white-space: break-spaces;" Size="Size.Small">

@@ -17,7 +17,7 @@ public partial class ProfileData : PageCore<ProfileData>
     [Inject] protected MapApi MapApi { get; set; } = default!;
 
     private ProfileModel? Profile { get; set; }
-    public RenderControlState<ProfileModel> Actions { get; set; } = new(obj => obj == null);
+    public RenderControlState<ProfileModel> State { get; set; } = new(obj => obj == null);
 
     private MudDialog? MudDialog { get; set; }
 
@@ -42,7 +42,7 @@ public partial class ProfileData : PageCore<ProfileData>
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
-        Actions.StartLoading?.Invoke(null);
+        State.StartLoading?.Invoke(null);
 
         Profile = await ProfileApi.Get(actions: null, token);
 
@@ -101,7 +101,7 @@ public partial class ProfileData : PageCore<ProfileData>
             Diet = Diet.Omnivore,
         };
 
-        Actions.FinishLoading?.Invoke(Profile);
+        State.FinishLoading?.Invoke(Profile);
     }
 
     private async Task SetLocation(ProfileModel profile)
@@ -154,9 +154,9 @@ public partial class ProfileData : PageCore<ProfileData>
 
             if (result.IsValid)
             {
-                Actions.StartProcessing?.Invoke(null);
+                State.StartProcessing?.Invoke(null);
                 Profile = await ProfileApi.Update(Profile, Cts.Token);
-                Actions.FinishProcessing?.Invoke(Profile);
+                State.FinishProcessing?.Invoke(Profile);
 
                 IsDirty = false; StateHasChanged();
 

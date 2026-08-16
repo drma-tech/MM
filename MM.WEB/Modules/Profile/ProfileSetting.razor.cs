@@ -5,17 +5,17 @@ namespace MM.WEB.Modules.Profile
     public partial class ProfileSetting
     {
         private SettingModel? Setting { get; set; }
-        private RenderControlState<SettingModel> Actions { get; set; } = new(obj => obj == null);
+        private RenderControlState<SettingModel> State { get; set; } = new(obj => obj == null);
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            await Actions.StartLoading.Invoke(null);
+            await State.StartLoading.Invoke(null);
 
             Setting = await SettingApi.Get(actions: null, token);
 
             Setting ??= new SettingModel(AppStateStatic.UserId);
 
-            await Actions.FinishLoading.Invoke(Setting);
+            await State.FinishLoading.Invoke(Setting);
         }
 
         private async Task SaveHandle()
@@ -24,7 +24,7 @@ namespace MM.WEB.Modules.Profile
             {
                 if (Setting == null) throw new InvalidOperationException("Setting is null");
 
-                await Actions.StartProcessing.Invoke(null);
+                await State.StartProcessing.Invoke(null);
 
                 Setting = await SettingApi.Update(Setting, Cts.Token);
 
@@ -55,7 +55,7 @@ namespace MM.WEB.Modules.Profile
                     }
                 }
 
-                await Actions.FinishProcessing.Invoke(Setting);
+                await State.FinishProcessing.Invoke(Setting);
 
                 Navigation.NavigateTo($"/{Culture}/profile");
             }

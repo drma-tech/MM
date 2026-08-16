@@ -7,12 +7,12 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
 {
     public async Task<ValidationModel?> Get(CancellationToken cancellationToken)
     {
-        return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, actions: null, cancellationToken);
+        return await GetAsync(ProfileEndpoint.Get, setNewVersion: false, state: null, cancellationToken);
     }
 
     public async Task<byte[]?> GetSafetyGalleryPhoto(CancellationToken cancellationToken)
     {
-        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto, actions: null, cancellationToken);
+        return await GetBytesAsync(ProfileEndpoint.GetSafetyGalleryPhoto, state: null, cancellationToken);
     }
 
     public async Task<string?> CreateVerificationSession(string url, string? email, CancellationToken cancellationToken)
@@ -22,7 +22,7 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
 
     public async Task<ValidationModel?> UploadPhotoValidation(PhotoValidationRequest request, CancellationToken cancellationToken)
     {
-        return await PutAsync(ProfileEndpoint.UploadPhotoValidation, request, ApiContext.Default.PhotoValidationRequest, cancellationToken);
+        return await PutAsync(ProfileEndpoint.UploadPhotoValidation, request, ApiContext.Default.PhotoValidationRequest, state: null, cancellationToken);
     }
 
     public struct ProfileEndpoint

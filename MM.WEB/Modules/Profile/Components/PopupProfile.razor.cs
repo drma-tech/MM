@@ -25,11 +25,11 @@ namespace MM.WEB.Modules.Profile.Components
         private ProfileModel? user;
         private FilterModel? filter;
         [Parameter] public ProfileModel? View { get; set; }
-        public RenderControlState<ProfileModel> Actions { get; set; } = new(obj => obj == null);
+        public RenderControlState<ProfileModel> State { get; set; } = new(obj => obj == null);
 
         private IReadOnlyCollection<AffinityVM> affinities = [];
         private InteractionModel? interaction;
-        public RenderControlState<InteractionModel> EventActions { get; set; } = new(obj => false);
+        public RenderControlState<InteractionModel> EventState { get; set; } = new(obj => false);
 
         string[] imageDataUriGallery = [];
 
@@ -41,11 +41,11 @@ namespace MM.WEB.Modules.Profile.Components
             {
                 if (string.IsNullOrEmpty(IdUserView)) return;
 
-                await Actions.StartLoading.Invoke(null);
+                await State.StartLoading.Invoke(null);
 
                 if (string.Equals(IdUserView, UserId, StringComparison.Ordinal))
                 {
-                    await Actions.ShowError.Invoke("Something wrong happened.");
+                    await State.ShowError.Invoke("Something wrong happened.");
                     return;
                 }
 
@@ -53,7 +53,7 @@ namespace MM.WEB.Modules.Profile.Components
 
                 if (interaction?.Status == InteractionStatus.Blocked)
                 {
-                    await Actions.ShowError.Invoke(Translations.Module.Profile.ProfileNotAvailable);
+                    await State.ShowError.Invoke(Translations.Module.Profile.ProfileNotAvailable);
                     return;
                 }
 
@@ -64,7 +64,7 @@ namespace MM.WEB.Modules.Profile.Components
 
                 if (View == null)
                 {
-                    await Actions.ShowError.Invoke(Translations.Module.Profile.PartnerProfileNotAvailable);
+                    await State.ShowError.Invoke(Translations.Module.Profile.PartnerProfileNotAvailable);
                     return;
                 }
 
@@ -79,11 +79,11 @@ namespace MM.WEB.Modules.Profile.Components
 
                 affinities = AffinityCore.GetAffinity(user, filter, View);
 
-                await Actions.FinishLoading.Invoke(View);
+                await State.FinishLoading.Invoke(View);
             }
             catch (Exception ex)
             {
-                await Actions.ShowError.Invoke(ex.Message);
+                await State.ShowError.Invoke(ex.Message);
             }
         }
 
@@ -106,9 +106,9 @@ namespace MM.WEB.Modules.Profile.Components
         {
             try
             {
-                await EventActions.StartProcessing.Invoke(null);
+                await EventState.StartProcessing.Invoke(null);
                 interaction = await InteractionApi.Like(Origin, IdUserView, Cts.Token);
-                await EventActions.FinishProcessing.Invoke(interaction);
+                await EventState.FinishProcessing.Invoke(interaction);
                 Liked?.Invoke();
 
                 if (interaction?.Status == InteractionStatus.Match)
@@ -127,9 +127,9 @@ namespace MM.WEB.Modules.Profile.Components
         {
             try
             {
-                await EventActions.StartProcessing.Invoke(null);
+                await EventState.StartProcessing.Invoke(null);
                 interaction = await InteractionApi.Dislike(Origin, IdUserView, Cts.Token);
-                await EventActions.FinishProcessing.Invoke(interaction);
+                await EventState.FinishProcessing.Invoke(interaction);
                 Disliked?.Invoke();
             }
             catch (Exception ex)

@@ -28,7 +28,7 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
 
     public async Task<ProfileModel?> Update(ProfileModel obj, CancellationToken cancellationToken)
     {
-        return await PutAsync(ProfileEndpoint.UpdateData, obj, ApiContext.Default.ProfileModel, cancellationToken);
+        return await PutAsync(ProfileEndpoint.UpdateData, obj, ApiContext.Default.ProfileModel, state: null, cancellationToken);
     }
 
     public struct ProfileEndpoint
