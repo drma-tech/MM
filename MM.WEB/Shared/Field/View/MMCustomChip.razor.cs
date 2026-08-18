@@ -5,9 +5,9 @@ using MM.WEB.Core.Models;
 using MM.WEB.Modules.Shared.Field;
 using MudBlazor;
 
-namespace MM.WEB.Modules.Profile.Components
+namespace MM.WEB.Shared.Field.View
 {
-    public partial class NewItemDataProfile<TValue, TValueUser>
+    public partial class MMCustomChip<TValue, TValueUser>
     {
         [Parameter] public string? Name { get; set; }
         [Parameter] public string? WhyImportant { get; set; }
@@ -92,17 +92,17 @@ namespace MM.WEB.Modules.Profile.Components
             if (Values == null && Value == null) Values = [];
 
             var parameters = new DialogParameters<AboutItemModal<TValue>>
-        {
-            { x => x.PreferenceValues, GetPreferenceValues() },
-            { x => x.ExpectedValues, GetExpectedValue() },
-            { x => x.ViewValues, Values },
-            { x => x.Affinities, Affinities },
-            { x => x.Profile, User },
-            { x => x.Type, Type },
-            { x => x.Item, Item },
-            { x => x.WhyImportant, WhyImportant },
-            { x => x.Tips, Tips },
-        };
+            {
+                { x => x.PreferenceValues, GetPreferenceValues() },
+                { x => x.ExpectedValues, GetExpectedValue() },
+                { x => x.ViewValues, Values },
+                { x => x.Affinities, Affinities },
+                { x => x.Profile, User },
+                { x => x.Type, Type },
+                { x => x.Item, Item },
+                { x => x.WhyImportant, WhyImportant },
+                { x => x.Tips, Tips },
+            };
 
             return DialogService.ShowAsync<AboutItemModal<TValue>>(Name, parameters, PopupHelper.Options(MaxWidth.Medium));
         }

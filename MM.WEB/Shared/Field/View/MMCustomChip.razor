@@ -1,0 +1,29 @@
+﻿@using MM.WEB.Shared.Field.View
+@typeparam TValue
+@typeparam TValueUser
+
+@inject IDialogService DialogService
+
+@if (Values != null && Values.Any())
+{
+    foreach (var item in Values)
+    {
+        <MudItem xs="6" sm="12" md="12" lg="6">
+            <CustomChip ValueChipClass="ma-0" ValueChipStyle="width: 100%; justify-content: space-between;" Size="AppStateStatic.Size" ColorValue="GetColor(item)"
+                        Icon="@ClassIcon" IconTooltip="@Name"
+                        Value="@GetValue(item).Truncate(15)" ValueTooltip="@GetValue(item)"
+                        ButtonClick="InstantiateModal" ButtonIcon="@Icons.Material.Filled.RemoveRedEye" ColorButton="Color.Primary" ButtonTooltip="@Translations.Button.LearnMore">
+            </CustomChip>
+        </MudItem>
+    }
+}
+else
+{
+    <MudItem xs="6" sm="12" md="12" lg="6">
+        <CustomChip ValueChipClass="ma-0" ValueChipStyle="width: 100%; justify-content: space-between;" Size="AppStateStatic.Size" ColorValue="GetColor(Value)"
+                    Icon="@ClassIcon" IconTooltip="@Name"
+                    Value="@GetValue(Value).Truncate(15)" ValueTooltip="@GetValue(Value)"
+                    ButtonClick="InstantiateModal" ButtonIcon="@Icons.Material.Filled.RemoveRedEye" ColorButton="Color.Primary" ButtonTooltip="@Translations.Button.LearnMore">
+        </CustomChip>
+    </MudItem>
+}
