@@ -22,8 +22,12 @@
                                 </MudImage>
                             </MudAvatar>
                             <div style="align-content: center;">
-                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">@(item.Nickname ?? Translations.Module.Landing.NoProfile)</MudText>
-                                <MudText Typo="Typo.body1" Color=Color.Tertiary Style="line-height: normal; font-size: small;">@(item.State)</MudText>
+                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Style="line-height: normal;">
+                                    @(item.Nickname ?? Translations.Module.Landing.NoProfile)
+                                </MudText>
+                                <MudText Typo="Typo.body1" Color=Color.Tertiary Style="line-height: normal; font-size: small;">
+                                    @(item.State)
+                                </MudText>
                             </div>
                         </MudLink>
                     </MudItem>

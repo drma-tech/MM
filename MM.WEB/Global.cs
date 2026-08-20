@@ -7,5 +7,5 @@ global using MM.Shared.Models;
 global using MM.WEB.Core;
 global using MM.WEB.Core.Api;
 global using MM.WEB.Core.Helper;
-global using MM.WEB.Core.Helper.Javascript;
+global using MM.WEB.Core.Javascript;
 global using MM.WEB.Shared;

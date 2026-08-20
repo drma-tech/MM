@@ -24,7 +24,9 @@
                         @if (group.NotEmpty())
                         {
                             <MudSelectItem T="@TEnum" Disabled="true" Value="@((TEnum)(object)(-1))">
-                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">@group</MudText>
+                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                                    @group
+                                </MudText>
                             </MudSelectItem>
                         }
                         @foreach (var item in listGroup)
@@ -33,7 +35,9 @@
                                 <MudText Inline="false">@item.Name</MudText>
                                 @if (item.Description.NotEmpty() && ShowDataSelectDescription)
                                 {
-                                    <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">@item.Description</MudText>
+                                    <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">
+                                        @item.Description
+                                    </MudText>
                                 }
                             </MudSelectItem>
                         }
@@ -47,7 +51,9 @@
                             <MudText Inline="false">@item.Name</MudText>
                             @if (item.Description.NotEmpty() && ShowDataSelectDescription)
                             {
-                                <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">@item.Description</MudText>
+                                <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">
+                                    @item.Description
+                                </MudText>
                             }
                         </MudSelectItem>
                     }
@@ -66,7 +72,9 @@
                         @if (group.NotEmpty())
                         {
                             <MudSelectItem T="@TValue" Disabled="true" Value="@((TValue)(object)((TEnum)(object)(-1)))">
-                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">@group</MudText>
+                                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                                    @group
+                                </MudText>
                             </MudSelectItem>
                         }
                         @foreach (var item in listGroup)
@@ -75,7 +83,9 @@
                                 <MudText Inline="false">@item.Name</MudText>
                                 @if (item.Description.NotEmpty() && ShowDataSelectDescription)
                                 {
-                                    <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">@item.Description</MudText>
+                                    <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">
+                                        @item.Description
+                                    </MudText>
                                 }
                             </MudSelectItem>
                         }
@@ -89,7 +99,9 @@
                             <MudText Inline="false">@item.Name</MudText>
                             @if (item.Description.NotEmpty() && ShowDataSelectDescription)
                             {
-                                <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">@item.Description</MudText>
+                                <MudText Typo="Typo.caption" Class="d-block mt-2" Style="text-wrap: auto; line-height: 1.1;">
+                                    @item.Description
+                                </MudText>
                             }
                         </MudSelectItem>
                     }

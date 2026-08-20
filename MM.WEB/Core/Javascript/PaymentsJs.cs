@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace MM.WEB.Core.Helper.Javascript
+namespace MM.WEB.Core.Javascript
 {
     public class PaymentsJs(IJSRuntime js) : JsModuleBase(js, "./js/payments.js")
     {

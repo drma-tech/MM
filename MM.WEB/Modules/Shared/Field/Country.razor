@@ -3,17 +3,21 @@
 <div class="d-flex @CssClass" style="align-items: center; @Style">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
     <MudSelect Label="Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
-               Disabled="@Disabled" Required="@Required"  FullWidth="true">
+               Disabled="@Disabled" Required="@Required" FullWidth="true">
         @foreach (var group in Countries.Select(s => s.Group).Order().Distinct())
         {
-            <MudSelectItem Value="@group">@group</MudSelectItem>
+            <MudSelectItem Value="@group">
+                @group
+            </MudSelectItem>
         }
     </MudSelect>
     <MudSelect Label="@Name" Value="@SelectedValue" ValueChanged="@SelectedValueChanged" AdornmentColor="Color.Primary"
-               Disabled="@(Disabled || FilteredCountries.Empty())" Required="@Required"  FullWidth="true">
+               Disabled="@(Disabled || FilteredCountries.Empty())" Required="@Required" FullWidth="true">
         @foreach (var item in FilteredCountries)
         {
-            <MudSelectItem Value="@((MM.Shared.Enums.Country?)item.Value)">@item.Name</MudSelectItem>
+            <MudSelectItem Value="@((MM.Shared.Enums.Country?)item.Value)">
+                @item.Name
+            </MudSelectItem>
         }
     </MudSelect>
 </div>

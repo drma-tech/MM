@@ -1,7 +1,7 @@
 ﻿using Microsoft.JSInterop;
 using System.Diagnostics.CodeAnalysis;
 
-namespace MM.WEB.Core.Helper.Javascript
+namespace MM.WEB.Core.Javascript
 {
     public abstract class JsModuleBase(IJSRuntime js, string path)
     {

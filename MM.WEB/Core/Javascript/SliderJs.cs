@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace MM.WEB.Core.Helper.Javascript
+namespace MM.WEB.Core.Javascript
 {
     public class SliderJs(IJSRuntime js) : JsModuleBase(js, "./js/slider.js")
     {

@@ -481,7 +481,9 @@
     <DialogContent>
         @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
         {
-            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">@region.Name</MudChip>
+            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">
+                @region.Name
+            </MudChip>
         }
     </DialogContent>
     <DialogActions>
@@ -495,10 +497,14 @@
     <DialogContent>
         @foreach (var region in SumUsers?.Regions.OrderBy(p => p.Name).ToList() ?? [])
         {
-            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">@region.Name</MudChip>
+            <MudChip T="string" Label="true" Color="Color.Primary" Size="Size.Small">
+                @region.Name
+            </MudChip>
             @foreach (var city in region.Cities.Order().ToList() ?? [])
             {
-                <MudChip T="string" Label="true" Color="Color.Secondary" Size="Size.Small">@city</MudChip>
+                <MudChip T="string" Label="true" Color="Color.Secondary" Size="Size.Small">
+                    @city
+                </MudChip>
             }
             <br />
         }

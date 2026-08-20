@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 
-namespace MM.WEB.Core.Helper.Javascript
+namespace MM.WEB.Core.Javascript
 {
     public class UtilsJs(IJSRuntime js) : JsModuleBase(js, "./js/utils.js")
     {

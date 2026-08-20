@@ -70,8 +70,7 @@
         </MudCardContent>
         <MudCardActions>
             <MudToolBar>
-                <MudNumericField T="int" Label="Total" Class="me-2" Variant="Variant.Filled"
-                                 @bind-Value="@_total"></MudNumericField>
+                <MudNumericField T="int" Label="Total" Class="me-2" Variant="Variant.Filled" @bind-Value="@_total"></MudNumericField>
                 <MudTextField T="string" Label="Final Price" Class="me-2" Variant="Variant.Filled" ReadOnly="true"
                               Value="@((GetPrice(AppStateStatic.ActiveProduct) * _total).ToString("C", CultureInfo.GetCultureInfo("en-US")))" />
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" Style="height: 100%;" FullWidth="true" OnClick="@(() => OpenCheckout(AppStateStatic.ActiveProduct, _total))"

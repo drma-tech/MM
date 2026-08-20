@@ -140,14 +140,18 @@
                                                AdornmentColor="Color.Primary" FullWidth="true" Class="me-3">
                                         @foreach (var item in Heights)
                                         {
-                                            <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings().Name</MudSelectItem>
+                                            <MudSelectItem Value="@((Height?)item)">
+                                                @item.GetFieldSettings().Name
+                                            </MudSelectItem>
                                         }
                                     </MudSelect>
                                     <MudSelect Label="@MM.Shared.Translations.Model.FilterModel.MaxHeight" @bind-Value="@Filter!.MaxHeight"
                                                AdornmentColor="Color.Primary" FullWidth="true" Class="me-3">
                                         @foreach (var item in Heights)
                                         {
-                                            <MudSelectItem Value="@((Height?)item)">@item.GetFieldSettings().Name</MudSelectItem>
+                                            <MudSelectItem Value="@((Height?)item)">
+                                                @item.GetFieldSettings().Name
+                                            </MudSelectItem>
                                         }
                                     </MudSelect>
                                 </div>
