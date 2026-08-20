@@ -22,8 +22,6 @@ public class CosmosDB
 public class Azure
 {
     public string? BlobConnectionString { get; set; }
-    public string? CognitiveKey { get; set; }
-    public string? CognitiveEndpoint { get; set; }
 }
 
 public class AWS
