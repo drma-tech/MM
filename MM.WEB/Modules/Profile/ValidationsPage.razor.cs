@@ -11,7 +11,7 @@ namespace MM.WEB.Modules.Profile
         {
             State?.StartLoading?.Invoke(null);
 
-            Validation = await ValidationApi.Get(token);
+            Validation = await ValidationApi.Get([], token);
 
             Validation ??= new ValidationModel(AppStateStatic.UserId);
 

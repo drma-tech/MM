@@ -29,7 +29,7 @@ namespace MM.WEB.Modules.Profile
                 return;
             }
 
-            Validation = await ValidationApi.Get(token);
+            Validation = await ValidationApi.Get([], token);
             PriorPicture = await ValidationApi.GetSafetyGalleryPhoto(token);
         }
 

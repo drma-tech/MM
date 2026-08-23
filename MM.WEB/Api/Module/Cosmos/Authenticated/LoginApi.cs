@@ -7,8 +7,6 @@ public class LoginApi(IHttpClientFactory factory) : ApiCosmos<AuthLogin>(factory
 {
     public async Task<AuthLogin?> Get(CancellationToken cancellationToken)
     {
-        if (!AppStateStatic.IsAuthenticated) return default;
-
         return await GetAsync("login/get", setNewVersion: true, states: [], cancellationToken);
     }
 

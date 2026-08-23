@@ -7,8 +7,6 @@ public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, A
 {
     public async Task<FilterModel?> Get(RenderControlState<FilterModel?>[] states, CancellationToken cancellationToken)
     {
-        if (!AppStateStatic.IsAuthenticated) return default;
-
         return await GetAsync("profile/get-filter", setNewVersion: false, states, cancellationToken);
     }
 

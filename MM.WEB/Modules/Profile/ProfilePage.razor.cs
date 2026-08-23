@@ -1,5 +1,6 @@
 using Bogus;
 using FluentValidation;
+using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MudBlazor;
@@ -13,23 +14,20 @@ namespace MM.WEB.Modules.Profile
         //private Country? CountryEnum;
 
         private ProfileValidation ProfileValidator { get; } = new();
-
-        private RenderControlState<ProfileModel?> ProfileState { get; } = new(null, obj => obj == null);
+        private FilterValidation FilterValidator { get; } = new();
+        private PhotoValidation PhotoValidator { get; } = new();
 
         private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
 
-        private FilterValidation FilterValidator { get; } = new();
         private RenderControlState<FilterModel?> FilterState { get; } = new(null, obj => obj == null);
 
-        private PhotoValidation PhotoValidator { get; } = new();
-
+        private RenderControlState<(AuthPrincipal? pri, ProfileModel? pro, ValidationModel? val)> ProfileSectionState { get; } = new((null, null, null), obj => (obj.pri == null || !obj.pri.PublicProfile) && obj.val == null);
+        private RenderControlState<ProfileModel?> ProfileState { get; } = new(new ProfileModel(null), obj => obj == null);
         private RenderControlState<SettingModel?> SettingState { get; } = new(null, obj => obj == null);
-
-        private ValidationModel? validation;
-
         private RenderControlState<List<string>> SuggestionsState { get; } = new([], lst => lst == null || lst.Empty());
         private RenderControlState<MyLikesModel?> LikesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
         private RenderControlState<MyMatchesModel?> MatchesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
+        private RenderControlState<ValidationModel?> ValidationState { get; } = new(null, obj => obj == null);
 
         private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
         private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
@@ -38,9 +36,9 @@ namespace MM.WEB.Modules.Profile
         private bool FilterValid => FilterState.Instance != null && FilterValidator.Validate(FilterState.Instance).IsValid;
         private bool SettingValid => SettingState.Instance != null;
         private bool GalleryValid => ProfileState.Instance?.Gallery != null && PhotoValidator.Validate(ProfileState.Instance.Gallery).IsValid;
-        private bool ValidationGeral => validation != null && validation.Gallery; //todo: implement the others when available
-        private bool ValidationGallery => validation != null && validation.Gallery;
-        private bool ValidationIdentity => validation != null && validation.Kyc;
+        private bool ValidationGeral => ValidationState.Instance != null && ValidationState.Instance.Gallery; //todo: implement the others when available
+        private bool ValidationGallery => ValidationState.Instance != null && ValidationState.Instance.Gallery;
+        private bool ValidationIdentity => ValidationState.Instance != null && ValidationState.Instance.Kyc;
         //private bool ValidationNetWorth => validation != null && validation.NetWorth;
         //private bool ValidationAnnualIncome => validation != null && validation.AnnualIncome;
 
@@ -102,14 +100,13 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            _ = ProfileApi.Get([ProfileState], token);
+            await ProfileSectionState.StartLoading.Invoke(null);
+            await ProfileApi.Get([ProfileState], token);
+            await ValidationApi.Get([ValidationState], token);
+            await ProfileSectionState.FinishLoading.Invoke((AppStateStatic.Principal, ProfileState.Instance, ValidationState.Instance));
+
             _ = FilterApi.Get([FilterState], token);
             _ = SettingApi.Get([SettingState], token);
-            validation = await ValidationApi.Get(token);
-
-            //remove the loading status
-            await SuggestionsState.StartLoading.Invoke(null);
-            await SuggestionsState.FinishLoading.Invoke([]);
 
             _ = MyLikesApi.Get(setNewVersion: false, [LikesState], token);
             _ = MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);

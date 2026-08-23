@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization.Metadata;
-using static Toolbelt.Blazor.PWA.Updater.PWAUpdater;
 
 namespace MM.WEB.Api.Core;
 
@@ -39,6 +38,16 @@ public abstract class ApiCosmos<T>(IHttpClientFactory factory, ApiType type, str
 
     protected async Task<T?> GetAsync(string endpoint, bool setNewVersion, RenderControlState<T?>[] states, CancellationToken cancellationToken)
     {
+        if (type == ApiType.Authenticated && !AppStateStatic.IsAuthenticated)
+        {
+            foreach (var state in states)
+            {
+                await state.FinishLoading(default);
+            }
+
+            return default;
+        }
+
         return await GetAsync(GetHttp(), endpoint, setNewVersion, states, cancellationToken);
     }
 

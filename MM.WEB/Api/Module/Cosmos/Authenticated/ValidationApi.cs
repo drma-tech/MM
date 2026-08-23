@@ -6,11 +6,9 @@ namespace MM.WEB.Api.Module.Cosmos.Authenticated;
 
 public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>(http, ApiType.Authenticated, "profile-validation", [], ApiContext.Default.ValidationModel)
 {
-    public async Task<ValidationModel?> Get(CancellationToken cancellationToken)
+    public async Task<ValidationModel?> Get(RenderControlState<ValidationModel?>[] states, CancellationToken cancellationToken)
     {
-        if (!AppStateStatic.IsAuthenticated) return default;
-
-        return await GetAsync("profile/get-validation", setNewVersion: false, states: [], cancellationToken);
+        return await GetAsync("profile/get-validation", setNewVersion: false, states, cancellationToken);
     }
 
     public async Task<byte[]> GetSafetyGalleryPhoto(CancellationToken cancellationToken)
