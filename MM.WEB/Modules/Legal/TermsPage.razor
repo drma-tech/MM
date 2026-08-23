@@ -1,0 +1,444 @@
+﻿@page "/{culture}/legal/terms"
+@inherits PageCore<TermsPage>
+
+<HeadComponent Title="@Translations.Module.Legal.TermsUse" Url=@($"/{Culture}/legal/terms") Index="false"></HeadComponent>
+
+<div class="support-container">
+    @if (Language == AppLanguage.pt)
+    {
+        <h1 class="support-title">Termos de Uso</h1>
+        <div class="support-subtitle">
+            Bem-vindo ao <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            Ao acessar ou usar este serviço, você concorda com estes Termos de Uso e nossa Política de Privacidade, que cumprem o Regulamento Geral de Proteção de Dados (GDPR - UE), a Lei Geral de Proteção de Dados (LGPD - Brasil) e a Lei de Privacidade do Consumidor da Califórnia (CCPA/CPRA - EUA).
+        </div>
+        <div class="support-section">
+            <h2>1. Sobre o Serviço</h2>
+            <p><b>@AppInfo.Title</b> é uma plataforma digital de matchmaking operada pela DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), registrada na Estônia. O serviço é global e oferece uma alternativa estruturada ao matchmaking tradicional.</p>
+            <p>O pareamento é realizado por curadoria automatizada usando algoritmos proprietários baseados em dados. Filtros e preferências do usuário influenciam o número e tipo de sugestões disponíveis. A plataforma facilita introduções entre usuários com base na compatibilidade; não há garantias de resultados, matches específicos ou comportamento do usuário, e a plataforma não endossa nenhum usuário.</p>
+            <p>A moderação pode ser aplicada para fazer cumprir as regras e diretrizes da comunidade. A plataforma não supervisiona ou controla interações ou encontros, e não atua como garantidora da segurança ou comportamento dos usuários.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Elegibilidade e Verificação</h2>
+            <p>Este serviço está disponível apenas para indivíduos com 18 anos ou mais, ou a idade mínima legal em sua jurisdição — prevalecendo a maior. Contas de usuários menores de idade serão deletadas sem aviso.</p>
+            <p>A verificação de identidade é obrigatória para todos os usuários antes de iniciar ou receber interações. A verificação é realizada por terceiros certificados (ex.: Didit) usando documentos oficiais e checagem de presença. Os dados coletados são limitados, armazenados com segurança e processados apenas conforme a legislação aplicável pelo período legal ou operacional necessário.</p>
+            <p>Os usuários devem fornecer informações precisas e verdadeiras durante o registro e uso da plataforma. Os dados pessoais são processados conforme nossa <a href="/@Culture/legal/privacy">Política de Privacidade</a>.</p>
+            <p>A Didit retém dados de verificação de identidade por até 6 meses em armazenamento ativo e até 12 meses em arquivo para defesa legal, prevenção de fraudes ou suporte. Após esse período, os dados são excluídos de forma irreversível ou anonimizados. Os usuários podem solicitar exclusão antecipada quando permitido por lei.</p>
+            <p><b>Observação:</b> A verificação de identidade não garante autenticidade, intenções ou segurança do usuário.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Gerenciamento de Conta e Inatividade</h2>
+            <p>Qualquer pessoa pode se registrar gratuitamente e aparecer como possível match. Apenas clientes pagantes podem iniciar interações, e todos os usuários devem concluir a verificação de identidade antes de qualquer interação. A plataforma pode suspender ou deletar contas inativas ou que não cumpram estes Termos. Usuários podem excluir permanentemente suas contas e dados através das ferramentas de privacidade da plataforma.</p>
+        </div>
+        <div class="support-section">
+            <h2>4. Sparks, Planos e Pagamentos</h2>
+            <p>Todas as interações no <b>@AppInfo.Title</b> exigem Sparks — nossa moeda virtual — adquirida via pagamento único através de parceiros de pagamento.</p>
+            <p><b>Compras únicas:</b> Usuários compram a quantidade de tokens desejada. Cancelamento e reembolso são informados no momento da compra e aplicam-se conforme descrito ou exigido por lei.</p>
+            <p>Os Sparks não têm valor monetário, são intransferíveis e não reembolsáveis, salvo quando explicitamente indicado ou exigido por lei. Servem apenas para acessar recursos da plataforma. Tentativas de burlar os controles de Sparks ou regras de pagamento podem resultar em suspensão da conta.</p>
+            <p>Medidas adicionais de segurança de pagamento (ex.: 3D Secure) podem ser aplicadas quando exigido.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. Conduta do Usuário</h2>
+            <p>Publicar, compartilhar ou transmitir conteúdo ofensivo, ilegal, discriminatório, violento, ameaçador, difamatório ou sexualmente explícito é estritamente proibido. Usuários devem tratar uns aos outros com respeito.</p>
+            <p>Todas as interações se limitam aos matches gerados pela plataforma. Moderação automatizada e manual pode ser aplicada para fazer cumprir regras e prevenir abuso, assédio ou conteúdo inapropriado.</p>
+            <p>A plataforma pode suspender ou deletar permanentemente contas envolvidas em fraude, falsificação de identidade, assédio ou outras violações destes Termos sem aviso prévio.</p>
+            <p>É proibido aos usuários oferecer, solicitar ou receber qualquer forma de pagamento, presente ou serviço diretamente de outros usuários.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Moderação de Conteúdo</h2>
+            <p>Relatórios de comportamento inapropriado são inicialmente revisados automaticamente, com moderação manual aplicada em até 48 horas úteis, se necessário. Sanções podem incluir advertências, suspensões ou banimentos permanentes sem reembolso. Violações repetidas ou tentativas de contornar a moderação podem resultar em banimento por IP ou ação legal.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Segurança e Responsabilidade do Usuário</h2>
+            <p><b>@AppInfo.Title</b> fornece ferramentas de denúncia, bloqueio e segurança, mas não garante a identidade, intenções ou ações de usuários dentro ou fora da plataforma. Não realizamos checagens criminais ou verificamos histórico além da verificação de identidade.</p>
+            <p>Todas as interações e decisões ocorrem por conta e risco do usuário. Usuários reconhecem que interagir com novas pessoas envolve riscos inerentes, incluindo danos físicos, fraudes financeiras, tráfico, assédio ou outros atos criminosos, assumindo total responsabilidade.</p>
+            <p>Sugestões de encontros vêm acompanhadas de dicas de segurança. Usuários são fortemente incentivados a se encontrar em locais públicos e informar contatos confiáveis.</p>
+            <p>Existe recurso para registrar data e localização aproximada de um encontro planejado. Estas informações podem ser compartilhadas com amigos ou familiares se o usuário fornecer e-mail e consentir. A plataforma não monitora, supervisiona ou intervém em encontros. Dados podem ser compartilhados com autoridades quando legalmente exigido.</p>
+            <p>Quando permitido por lei, usuários concordam em indenizar e isentar a plataforma e seus operadores de qualquer reivindicação, dano ou consequência decorrente de suas ações dentro ou fora da plataforma.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Propriedade Intelectual</h2>
+            <p>Todo conteúdo, algoritmos, marcas, layouts e tecnologias usados no <b>@AppInfo.Title</b> estão protegidos pela <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">licença MPL-2.0</a> ou licenças de terceiros. Uso ou redistribuição não autorizada é proibido.</p>
+            <p>Serviços de terceiros incluem Stripe (pagamentos), Didit (verificação de identidade), HERE (localização) e infraestrutura em nuvem (Azure, AWS). Cada um segue seus próprios termos e licenças.</p>
+            <p>Dados anônimos e agregados podem ser usados para análise interna e melhoria do serviço.</p>
+            <p>Conteúdo enviado pelo usuário (fotos, biografias, descrições) permanece propriedade do usuário. Ao enviar conteúdo, o usuário concede ao @AppInfo.Title uma licença mundial, isenta de royalties e sublicenciável para uso na plataforma ou fins promocionais institucionais. Essa licença termina com a exclusão da conta ou conteúdo, salvo uso irreversível.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Alterações nos Termos</h2>
+            <p>Estes Termos podem ser atualizados devido a mudanças legais, técnicas ou operacionais. O uso contínuo constitui aceitação dos Termos atualizados. Mudanças significativas que afetem direitos do usuário serão notificadas, e o consentimento solicitado quando exigido por lei.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. Suporte e Contato Legal</h2>
+            <p>Usuários podem acessar ferramentas de suporte ou nos contatar na seção de suporte para assistência, feedback ou relatar problemas.</p>
+            <p>Para consultas legais ou solicitações oficiais, contate <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Conformidade com Privacidade e Leis de Dados</h2>
+            <p>A plataforma cumpre leis de proteção de dados, incluindo:</p>
+            <ul>
+                <li><b>GDPR (UE):</b> Direito de acessar, corrigir, excluir, restringir, se opor ao processamento e solicitar portabilidade de dados.</li>
+                <li><b>LGPD (Brasil):</b> Direitos de confirmar o processamento, corrigir imprecisões, solicitar anonimização ou exclusão e revogar consentimento.</li>
+                <li><b>CCPA/CPRA (Califórnia):</b> Direitos de acessar, excluir, optar por não vender ou compartilhar e não sofrer discriminação por exercer os direitos.</li>
+            </ul>
+            <p>Usuários são responsáveis por cumprir leis locais. Nossas práticas seguem os melhores padrões globais de privacidade e segurança digital. Usuários podem exercer seus direitos pelas ferramentas de privacidade da conta ou contatando <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Solicitações de Autoridades</h2>
+            <p>Podemos preservar e divulgar dados de usuários às autoridades quando exigido por solicitações legais válidas, incluindo ordens judiciais, intimações ou processos legais equivalentes.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Lei Aplicável e Resolução de Disputas</h2>
+            <p>Estes Termos são regidos pela lei da Estônia. Usuários concordam em resolver disputas via arbitragem vinculativa, salvo proibição legal ou investigação criminal. Disputas legais são tratadas em inglês, sob jurisdição exclusiva dos tribunais de Tallinn, salvo disposição da lei local em contrário.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. Licença de Uso da Plataforma</h2>
+            <p>@AppInfo.Title concede uma licença limitada, pessoal, não exclusiva, intransferível e revogável para acessar e usar a plataforma conforme estes Termos. Acesso automatizado, scraping, mineração de dados, bots ou engenharia reversa são proibidos.</p>
+            <p>Contas só podem ser usadas pelo indivíduo registrado. Uso comercial, promoção ou solicitação de outros usuários é proibido.</p>
+        </div>
+        <div class="support-section">
+            <h2>15. Isenção de Responsabilidade e Limitação de Responsabilidade</h2>
+            <p>@AppInfo.Title fornece o serviço “como está” e “conforme disponível”, sem garantias. Não se garante a precisão, completude ou utilidade do conteúdo ou comportamento dos usuários. Algumas jurisdições podem limitar isenções de responsabilidade.</p>
+            <p>Na máxima extensão permitida por lei, não somos responsáveis por danos indiretos, incidentais, consequenciais ou punitivos, incluindo perda de lucros, sofrimento emocional, perda de dados ou lesões decorrentes de interações entre usuários.</p>
+        </div>
+        <div class="support-section">
+            <h2>16. Disposições Legais</h2>
+            <p><b>Força Maior:</b> Não nos responsabilizamos por atrasos ou falhas devido a eventos fora de nosso controle, incluindo desastres naturais, guerra, pandemias, ações governamentais, falhas de infraestrutura ou interrupções de serviços de terceiros.</p>
+            <p><b>Cessão:</b> Podemos ceder direitos e obrigações nestes Termos em caso de fusão, aquisição ou venda de ativos. Usuários não podem transferir direitos sem consentimento escrito.</p>
+            <p><b>Renúncia a Ação Coletiva:</b> Quando aplicável, usuários concordam em resolver disputas individualmente e renunciam a participação em ações coletivas ou arbitragens coletivas.</p>
+        </div>
+        <div class="support-footer">
+            <p>Última atualização: 4 de abril de 2026</p>
+            <p>Ao usar a plataforma, você concorda com estes Termos de Uso e a <a href="/@Culture/legal/privacy">Política de Privacidade</a>.</p>
+        </div>
+    }
+    else if (Language == AppLanguage.es)
+    {
+        <h1 class="support-title">Términos de Uso</h1>
+        <div class="support-subtitle">
+            ¡Bienvenido a <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            Al acceder o usar este servicio, aceptas estos Términos de Uso y nuestra Política de Privacidad, que cumplen con el Reglamento General de Protección de Datos (GDPR - UE), la Ley General de Protección de Datos (LGPD - Brasil) y la Ley de Privacidad del Consumidor de California (CCPA/CPRA - EE.UU.).
+        </div>
+        <div class="support-section">
+            <h2>1. Sobre el Servicio</h2>
+            <p><b>@AppInfo.Title</b> es una plataforma digital de matchmaking operada por DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), registrada en Estonia. El servicio es global y ofrece una alternativa estructurada al matchmaking tradicional.</p>
+            <p>El emparejamiento se realiza mediante curación automatizada usando algoritmos propietarios basados en datos. Los filtros y preferencias del usuario afectan el número y tipo de sugerencias disponibles. La plataforma facilita presentaciones entre usuarios según la compatibilidad; no se garantizan resultados, matches específicos o comportamientos de los usuarios, y la plataforma no respalda a ningún usuario.</p>
+            <p>La moderación puede aplicarse para hacer cumplir las reglas y directrices de la comunidad. La plataforma no supervisa ni controla interacciones o encuentros, y no actúa como garante de la seguridad o conducta de los usuarios.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Elegibilidad y Verificación</h2>
+            <p>Este servicio está disponible solo para individuos de 18 años o más, o la edad mínima legal en su jurisdicción, lo que sea mayor. Las cuentas de usuarios menores de edad serán eliminadas sin aviso.</p>
+            <p>La verificación de identidad es obligatoria para todos los usuarios antes de iniciar o recibir interacciones. La verificación la realizan terceros certificados (por ejemplo, Didit) usando documentos oficiales y verificación de presencia. Los datos recopilados son limitados, almacenados de forma segura y procesados únicamente según la legislación aplicable durante el período legal u operativo necesario.</p>
+            <p>Los usuarios deben proporcionar información precisa y veraz durante el registro y uso de la plataforma. Los datos personales se procesan de acuerdo con nuestra <a href="/@Culture/legal/privacy">Política de Privacidad</a>.</p>
+            <p>Didit retiene los datos de verificación de identidad hasta 6 meses en almacenamiento activo y hasta 12 meses en archivo para defensa legal, prevención de fraude o soporte. Después de este período, los datos se eliminan de forma irreversible o se anonimizan. Los usuarios pueden solicitar eliminación anticipada cuando lo permita la ley.</p>
+            <p><b>Nota:</b> La verificación de identidad no garantiza la autenticidad, intenciones o seguridad del usuario.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Gestión de Cuentas e Inactividad</h2>
+            <p>Cualquiera puede registrarse de forma gratuita y aparecer como posible match. Solo los clientes que pagan pueden iniciar interacciones, y todos los usuarios deben completar la verificación de identidad antes de cualquier interacción. La plataforma puede suspender o eliminar cuentas inactivas o que no cumplan estos Términos. Los usuarios pueden eliminar permanentemente sus cuentas y datos mediante las herramientas de privacidad de la plataforma.</p>
+        </div>
+        <div class="support-section">
+            <h2>4. Sparks, Planes y Pagos</h2>
+            <p>Todas las interacciones en <b>@AppInfo.Title</b> requieren Sparks — nuestra moneda virtual — adquirida mediante pago único a través de socios de pago.</p>
+            <p><b>Compras únicas:</b> Los usuarios compran la cantidad de tokens deseada. Las políticas de cancelación y reembolso se informan en el momento de la compra y se aplican según lo indicado o según la ley.</p>
+            <p>Los Sparks no tienen valor monetario, son intransferibles y no reembolsables, salvo indicación explícita o requerimiento legal. Sirven únicamente para acceder a funciones de la plataforma. Intentos de eludir controles de Sparks o reglas de pago pueden resultar en la suspensión de la cuenta.</p>
+            <p>Se pueden implementar medidas adicionales de seguridad de pago (por ejemplo, 3D Secure) cuando sea necesario.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. Conducta del Usuario</h2>
+            <p>Está estrictamente prohibido publicar, compartir o transmitir contenido ofensivo, ilegal, discriminatorio, violento, amenazante, difamatorio o sexualmente explícito. Los usuarios deben tratarse con respeto.</p>
+            <p>Todas las interacciones se limitan a los matches generados por la plataforma. Se puede aplicar moderación automática y manual para hacer cumplir las reglas y prevenir abusos, acoso o contenido inapropiado.</p>
+            <p>La plataforma puede suspender o eliminar permanentemente cuentas involucradas en fraude, suplantación de identidad, acoso u otras violaciones de estos Términos sin previo aviso.</p>
+            <p>Los usuarios tienen prohibido ofrecer, solicitar o recibir cualquier forma de pago, regalos o servicios directamente de otros usuarios.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Moderación de Contenido</h2>
+            <p>Los informes de comportamiento inapropiado se revisan inicialmente de forma automática, aplicándose moderación manual dentro de 48 horas hábiles si es necesario. Las sanciones pueden incluir advertencias, suspensiones o bloqueos permanentes sin reembolso. Las violaciones repetidas o intentos de eludir la moderación pueden resultar en bloqueos por IP o acciones legales.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Seguridad y Responsabilidad del Usuario</h2>
+            <p><b>@AppInfo.Title</b> proporciona herramientas de reporte, bloqueo y seguridad, pero no puede garantizar la identidad, intenciones o acciones de los usuarios dentro o fuera de la plataforma. No realizamos verificaciones penales ni verificamos antecedentes más allá de la verificación de identidad.</p>
+            <p>Todas las interacciones y decisiones son bajo el propio riesgo del usuario. Los usuarios reconocen que interactuar con nuevas personas implica riesgos inherentes, incluyendo daños físicos, fraude financiero, tráfico, acoso u otros actos delictivos, asumiendo plena responsabilidad.</p>
+            <p>Las sugerencias de encuentros incluyen consejos de seguridad. Se recomienda encarecidamente a los usuarios reunirse en lugares públicos e informar a contactos de confianza.</p>
+            <p>Existe una función para registrar la fecha y ubicación aproximada de un encuentro planificado. Esta información puede compartirse con amigos o familiares si el usuario proporciona su correo electrónico y da su consentimiento. La plataforma no supervisa ni interviene en los encuentros. Los datos pueden compartirse con autoridades cuando sea legalmente requerido.</p>
+            <p>Cuando lo permite la ley, los usuarios aceptan indemnizar y eximir a la plataforma y sus operadores de cualquier reclamación, daño o consecuencia derivada de sus acciones dentro o fuera de la plataforma.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Propiedad Intelectual</h2>
+            <p>Todo el contenido, algoritmos, marcas, diseños y tecnologías usados en <b>@AppInfo.Title</b> están protegidos por la <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">licencia MPL-2.0</a> o licencias de terceros. El uso o redistribución no autorizado está prohibido.</p>
+            <p>Servicios de terceros incluyen Stripe (pagos), Didit (verificación de identidad), HERE (ubicación) e infraestructura en la nube (Azure, AWS). Cada uno sigue sus propios términos y licencias.</p>
+            <p>Los datos anónimos y agregados pueden usarse para análisis internos y mejora del servicio.</p>
+            <p>El contenido enviado por el usuario (fotos, biografías, descripciones) sigue siendo propiedad del usuario. Al subir contenido, el usuario concede a @AppInfo.Title una licencia mundial, libre de regalías y sublicenciable para usar el contenido dentro de la plataforma o para fines promocionales institucionales. Esta licencia finaliza con la eliminación de la cuenta o del contenido, salvo que el uso sea irreversible.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Modificaciones a los Términos</h2>
+            <p>Estos Términos pueden actualizarse por cambios legales, técnicos u operativos. El uso continuo constituye aceptación de los Términos actualizados. Los cambios materiales que afecten derechos del usuario serán notificados y se solicitará consentimiento cuando la ley lo requiera.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. Soporte y Contacto Legal</h2>
+            <p>Los usuarios pueden acceder a herramientas de soporte o contactarnos en la sección de soporte para asistencia, comentarios o reportes.</p>
+            <p>Para consultas legales o solicitudes oficiales, contáctenos en <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Cumplimiento de Privacidad y Leyes de Datos</h2>
+            <p>La plataforma cumple con las principales leyes de protección de datos, incluyendo:</p>
+            <ul>
+                <li><b>GDPR (UE):</b> Derecho de acceso, corrección, eliminación, restricción, oposición al procesamiento y solicitud de portabilidad de datos.</li>
+                <li><b>LGPD (Brasil):</b> Derechos de confirmar el procesamiento, corregir inexactitudes, solicitar anonimización o eliminación y revocar el consentimiento.</li>
+                <li><b>CCPA/CPRA (California):</b> Derechos de acceder, eliminar, optar por no vender o compartir, y no ser discriminado por ejercer los derechos.</li>
+            </ul>
+            <p>Los usuarios son responsables de cumplir las leyes locales. Nuestras prácticas siguen los mejores estándares globales de privacidad y seguridad digital. Los usuarios pueden ejercer sus derechos mediante herramientas de privacidad de la cuenta o contactando <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Solicitudes de Autoridades</h2>
+            <p>Podemos preservar y divulgar datos de usuarios a autoridades cuando sea requerido por solicitudes legales válidas, incluidas órdenes judiciales, citaciones o procesos legales equivalentes.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Ley Aplicable y Resolución de Disputas</h2>
+            <p>Estos Términos se rigen por la ley de Estonia. Los usuarios aceptan resolver disputas mediante arbitraje vinculante, salvo prohibición legal o investigación criminal. Las disputas legales se manejan en inglés bajo la jurisdicción exclusiva de los tribunales de Tallin, salvo disposición legal local en contrario.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. Licencia para Usar la Plataforma</h2>
+            <p>@AppInfo.Title concede una licencia limitada, personal, no exclusiva, intransferible y revocable para acceder y usar la plataforma conforme a estos Términos. Se prohíbe acceso automatizado, scraping, minería de datos, bots o ingeniería inversa.</p>
+            <p>Las cuentas solo pueden ser usadas por el individuo registrado. El uso comercial, promoción o solicitación de otros usuarios está prohibido.</p>
+        </div>
+        <div class="support-section">
+            <h2>15. Descargo de Responsabilidad y Limitación de Responsabilidad</h2>
+            <p>@AppInfo.Title proporciona el servicio “tal cual” y “según disponibilidad”, sin garantías. No se garantiza la precisión, integridad o utilidad del contenido o del comportamiento de los usuarios. Algunas jurisdicciones pueden limitar las exenciones de responsabilidad.</p>
+            <p>En la máxima medida permitida por la ley, no somos responsables por daños indirectos, incidentales, consecuentes o punitivos, incluyendo pérdida de beneficios, estrés emocional, pérdida de datos o lesiones derivadas de interacciones entre usuarios.</p>
+        </div>
+        <div class="support-section">
+            <h2>16. Disposiciones Legales</h2>
+            <p><b>Fuerza Mayor:</b> No somos responsables por retrasos o fallas debido a eventos fuera de nuestro control, incluyendo desastres naturales, guerra, pandemias, acciones gubernamentales, fallas de infraestructura o interrupciones de servicios de terceros.</p>
+            <p><b>Cesión:</b> Podemos ceder derechos y obligaciones bajo estos Términos en caso de fusión, adquisición o venta de activos. Los usuarios no pueden transferir derechos sin consentimiento escrito.</p>
+            <p><b>Renuncia a Acción Colectiva:</b> Cuando sea aplicable, los usuarios acuerdan resolver disputas individualmente y renuncian a participar en acciones colectivas o arbitrajes colectivos.</p>
+        </div>
+        <div class="support-footer">
+            <p>Última actualización: 4 de abril de 2026</p>
+            <p>Al usar la plataforma, aceptas estos Términos de Uso y la <a href="/@Culture/legal/privacy">Política de Privacidad</a>.</p>
+        </div>
+    }
+    else if (Language == AppLanguage.zh)
+    {
+        <h1 class="support-title">使用条款</h1>
+        <div class="support-subtitle">
+            欢迎使用 <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)！<br />
+            访问或使用本服务即表示您同意这些使用条款及我们的隐私政策，这些政策符合《通用数据保护条例》（GDPR - 欧盟）、《巴西通用数据保护法》（LGPD - 巴西）以及《加州消费者隐私法》（CCPA/CPRA - 美国）。
+        </div>
+        <div class="support-section">
+            <h2>1. 关于服务</h2>
+            <p><b>@AppInfo.Title</b> 是由 DRMA Tech（Delivering Reliable Modern Apps Tech OÜ）运营的数字匹配平台，注册地为爱沙尼亚。该服务面向全球用户，提供传统配对的结构化替代方案。</p>
+            <p>匹配通过专有数据驱动算法的自动策划实现。用户的过滤器和偏好会影响可用建议的数量和类型。平台根据兼容性促进用户之间的介绍；不保证特定结果、匹配或用户行为，平台也不为任何用户担保。</p>
+            <p>可能会应用内容审核以执行平台规则和社区指南。平台不监督或控制互动或线下见面，也不为用户安全或行为担保。</p>
+        </div>
+        <div class="support-section">
+            <h2>2. 资格与身份验证</h2>
+            <p>本服务仅向18岁及以上用户或其司法辖区内法定最低年龄（以较高者为准）开放。未成年用户的账户将被删除且不另行通知。</p>
+            <p>所有用户在开始或接受互动前必须进行身份验证。验证由认证第三方（如 Didit）使用官方文件和活体检测执行。收集的数据有限、安全存储，仅根据适用数据保护法律处理，保留期为法律或运营所需的时间。</p>
+            <p>用户在注册和使用平台时必须提供准确真实的信息。个人数据根据我们的 <a href="/@Culture/legal/privacy">隐私政策</a> 处理。</p>
+            <p>Didit 在活动存储中保留身份验证数据最长6个月，在归档中最长12个月，用于法律辩护、防止欺诈或支持目的。超过该期限后，数据将被不可逆删除或匿名化。用户可在法律允许范围内申请提前删除。</p>
+            <p><b>注意：</b>身份验证不保证用户真实性、意图或安全性。</p>
+        </div>
+        <div class="support-section">
+            <h2>3. 账户管理与不活跃处理</h2>
+            <p>任何人都可以免费注册并显示为潜在匹配对象。仅付费用户可发起互动，所有用户必须在互动前完成身份验证。平台可暂停或删除不活跃或不遵守条款的账户。用户可通过平台隐私工具永久删除账户及数据。</p>
+        </div>
+        <div class="support-section">
+            <h2>4. Sparks、套餐与支付</h2>
+            <p>在 <b>@AppInfo.Title</b> 的所有互动均需使用 Sparks —— 我们的虚拟货币 —— 通过支付合作伙伴一次性购买。</p>
+            <p><b>一次性购买：</b>用户购买所选数量的 Sparks。取消和退款条款在购买时说明，仅按规定或法律要求执行。</p>
+            <p>Sparks 无货币价值，不可转让，除非明确说明或法律要求，否则不可退款。Sparks 仅用于访问平台功能。试图绕过 Sparks 控制或支付规则可能导致账户被暂停。</p>
+            <p>必要时可实施额外支付安全措施（如 3D Secure）。</p>
+        </div>
+        <div class="support-section">
+            <h2>5. 用户行为</h2>
+            <p>严禁发布、分享或传播冒犯性、非法、歧视性、暴力、威胁性、诽谤性或性露骨内容。用户应相互尊重。</p>
+            <p>所有互动仅限于平台生成的匹配。可应用自动或人工审核以执行规则，防止滥用、骚扰或不当内容。</p>
+            <p>平台可暂停或永久删除参与欺诈、冒充、骚扰或违反条款的账户，且不另行通知。</p>
+            <p>用户不得向其他用户提供、请求或接受任何形式的支付、礼物或服务。</p>
+        </div>
+        <div class="support-section">
+            <h2>6. 内容审核</h2>
+            <p>不当行为报告初步通过自动审核处理，如必要，48小时内进行人工审核。处罚可包括警告、暂停或永久封禁，且不退款。重复违规或尝试绕过审核可能导致 IP 封禁或法律行动。</p>
+        </div>
+        <div class="support-section">
+            <h2>7. 安全与用户责任</h2>
+            <p><b>@AppInfo.Title</b> 提供举报、屏蔽和安全工具，但不能保证用户在平台内外的身份、意图或行为。我们不进行犯罪背景检查，也不独立验证用户历史，除身份验证外。</p>
+            <p>所有互动及决策风险由用户自行承担。用户承认，与新用户互动存在固有风险，包括人身伤害、金融欺诈、人口贩卖、骚扰或其他犯罪行为，并承担全部责任。</p>
+            <p>见面建议附有安全提示。强烈建议用户在公共场所会面，并通知可信联系人。</p>
+            <p>平台提供功能，可记录计划会面的日期和大致位置。如用户提供邮箱并同意，可与朋友或家人分享此信息。平台不监督、监控或干预会面。如法律要求，数据可分享给相关机构。</p>
+            <p>在法律允许范围内，用户同意对平台及运营方因其在平台内外的行为产生的任何索赔、损害或后果进行赔偿并免责。</p>
+        </div>
+        <div class="support-section">
+            <h2>8. 知识产权</h2>
+            <p>所有内容、算法、品牌、布局及技术在 <b>@AppInfo.Title</b> 下受 <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL-2.0 许可</a> 或第三方许可保护。未经授权的使用或再分发均被禁止。</p>
+            <p>第三方服务包括 Stripe（支付）、Didit（身份验证）、HERE（定位）、云基础设施（Azure, AWS）。各自遵循自己的条款与许可。</p>
+            <p>匿名和汇总数据可用于内部分析和服务改进。</p>
+            <p>用户上传的内容（照片、简介、描述）仍归用户所有。上传内容即授予 @AppInfo.Title 全球范围内、免版税、可再许可的许可，用于平台内或机构宣传用途。账户或内容删除时，该许可终止，除非使用不可逆。</p>
+        </div>
+        <div class="support-section">
+            <h2>9. 条款修改</h2>
+            <p>因法律、技术或运营变更，本条款可能更新。继续使用表示接受更新条款。如有重大变更影响用户权利，将通知并在法律要求时获取同意。</p>
+        </div>
+        <div class="support-section">
+            <h2>10. 支持与法律联系方式</h2>
+            <p>用户可通过支持部分访问支持工具或联系我们获取帮助、反馈或报告问题。</p>
+            <p>法律咨询或正式请求，请联系 <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>。</p>
+        </div>
+        <div class="support-section">
+            <h2>11. 隐私及数据法律合规</h2>
+            <p>平台遵守主要数据保护法律，包括：</p>
+            <ul>
+                <li><b>GDPR（欧盟）：</b> 访问、更正、删除、限制、反对处理及数据可携带权利。</li>
+                <li><b>LGPD（巴西）：</b> 确认数据处理、纠正不准确、请求匿名或删除及撤销同意权利。</li>
+                <li><b>CCPA/CPRA（加州）：</b> 访问、删除、选择不出售或共享及行使权利不受歧视的权利。</li>
+            </ul>
+            <p>用户需遵守当地法律。我们的做法遵循全球隐私及数字安全最佳标准。用户可通过账户隐私工具或联系 <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> 行使权利。</p>
+        </div>
+        <div class="support-section">
+            <h2>12. 执法请求</h2>
+            <p>在有效法律请求下，包括法院命令、传票或同等法律程序，我们可能保存并向执法机构披露用户数据。</p>
+        </div>
+        <div class="support-section">
+            <h2>13. 适用法律与争议解决</h2>
+            <p>本条款受爱沙尼亚法律管辖。用户同意通过有约束力的仲裁解决争议，除非法律禁止或涉及刑事调查。法律争议以英语处理，由塔林法院专属管辖，除非当地法律另有规定。</p>
+        </div>
+        <div class="support-section">
+            <h2>14. 平台使用许可</h2>
+            <p>@AppInfo.Title 授予有限、个人、非独占、不可转让且可撤销的许可，按本条款访问和使用平台。禁止自动访问、抓取、数据挖掘、机器人或逆向工程。</p>
+            <p>账户仅可由注册用户使用。禁止商业用途、推广或向其他用户招揽。</p>
+        </div>
+        <div class="support-section">
+            <h2>15. 免责声明与责任限制</h2>
+            <p>@AppInfo.Title 按“原样”提供服务，不保证内容或用户行为的准确性、完整性或有效性。某些司法管辖区可能限制责任免责声明。</p>
+            <p>在法律允许的最大范围内，我们不对用户互动导致的间接、附带、结果性或惩罚性损害负责，包括利润损失、精神痛苦、数据丢失或人身伤害。</p>
+        </div>
+        <div class="support-section">
+            <h2>16. 法律条款</h2>
+            <p><b>不可抗力：</b> 对于超出控制范围的事件导致的延迟或失败不承担责任，包括自然灾害、战争、疫情、政府行为、基础设施故障或第三方服务中断。</p>
+            <p><b>权利转让：</b> 在合并、收购或资产出售情况下，我们可转让本条款下的权利与义务。未经书面同意，用户不得转让权利。</p>
+            <p><b>集体诉讼放弃：</b> 在可执行范围内，用户同意单独解决争议，并放弃参与集体诉讼或集体仲裁。</p>
+        </div>
+        <div class="support-footer">
+            <p>最后更新：2026年4月4日</p>
+            <p>使用本平台即表示您同意本使用条款及 <a href="/@Culture/legal/privacy">隐私政策</a>。</p>
+        </div>
+    }
+    else
+    {
+        <h1 class="support-title">Terms of Use</h1>
+        <div class="support-subtitle">
+            Welcome to <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank">@AppInfo.WebSite</a>)!<br />
+            By accessing or using this service, you agree to these Terms of Use and our Privacy Policy, which comply with the General Data Protection Regulation (GDPR - EU), the Lei Geral de Proteção de Dados (LGPD - Brazil), and the California Consumer Privacy Act (CCPA/CPRA - USA).
+        </div>
+        <div class="support-section">
+            <h2>1. About the Service</h2>
+            <p><b>@AppInfo.Title</b> is a digital matchmaking platform operated by DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), registered in Estonia. The service is global and offers a structured alternative to traditional matchmaking.</p>
+            <p>Matching is performed through automated curation using proprietary, data-driven algorithms. Filters and user preferences affect the number and type of suggestions available. The platform facilitates introductions between users based on compatibility; no specific outcomes, matches, or user behavior are guaranteed, and the platform does not endorse any user.</p>
+            <p>Moderation may be applied to enforce platform rules and community guidelines. The platform does not supervise or control interactions or meetings, and does not act as a guarantor for user safety or behavior.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Eligibility and Verification</h2>
+            <p>This service is available only to individuals aged 18 or older, or the legal minimum age in their jurisdiction—whichever is higher. Accounts of underage users will be deleted without notice.</p>
+            <p>Identity verification is mandatory for all users before initiating or receiving interactions. Verification is performed by certified third parties (e.g., Didit) using official documents and liveness checks. Collected data is limited, stored securely, and processed only under applicable data protection laws for the period legally or operationally required.</p>
+            <p>Users must provide accurate and truthful information during registration and platform use. Personal data is processed according to our <a href="/@Culture/legal/privacy">Privacy Policy</a>.</p>
+            <p>Didit retains identity verification data for up to 6 months in active storage and up to 12 months in archive for legal defense, fraud prevention, or support purposes. After this period, data is irreversibly deleted or anonymized. Users may request earlier deletion where permitted by law.</p>
+            <p><b>Note:</b> Identity verification does not guarantee user authenticity, intentions, or safety.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Account Management and Inactivity</h2>
+            <p>Anyone may register for free and appear as a potential match. Only paying clients can initiate interactions, and all users must complete identity verification before any interaction. The platform may suspend or delete inactive accounts or those failing to comply with these Terms. Users can permanently delete their accounts and data through the platform’s privacy tools.</p>
+        </div>
+        <div class="support-section">
+            <h2>4. Sparks, Plans, and Payments</h2>
+            <p>All interactions on <b>@AppInfo.Title</b> require Sparks — our virtual currency — purchased via one-time payments through our payment partners.</p>
+            <p><b>One-time purchases:</b> Users buy a chosen token amount. Cancellation and refund terms are disclosed at the time of purchase and apply only as stated or as required by law.</p>
+            <p>Sparks have no monetary value, are non-transferable, and are non-refundable unless explicitly stated or required by law. They are solely a means to access platform features. Attempts to bypass Sparks controls or payment rules may result in account suspension.</p>
+            <p>Additional payment security measures (e.g., 3D Secure) may be implemented where required.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. User Conduct</h2>
+            <p>Publishing, sharing, or transmitting offensive, illegal, discriminatory, violent, threatening, defamatory, or sexually explicit content is strictly prohibited. Users must treat each other with respect.</p>
+            <p>All interactions are limited to matches generated by the platform. Automated and manual moderation may be applied to enforce rules and prevent abuse, harassment, or inappropriate content.</p>
+            <p>The platform may suspend or permanently delete accounts involved in fraud, impersonation, harassment, or other violations of these Terms without prior notice.</p>
+            <p>Users are prohibited from offering, requesting, or receiving any form of payment, gifts, or services directly from other users.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Content Moderation</h2>
+            <p>Reports of inappropriate behavior are initially reviewed automatically, with manual moderation applied within 48 business hours if necessary. Sanctions may include warnings, suspensions, or permanent bans without refund. Repeated violations or attempts to bypass moderation may result in IP-level bans or legal action.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Security and User Responsibility</h2>
+            <p><b>@AppInfo.Title</b> provides reporting, blocking, and safety tools but cannot guarantee the identity, intentions, or actions of users on or off the platform. We do not conduct criminal background checks or independently verify user history beyond identity verification.</p>
+            <p>All interactions and decisions are at the user’s sole risk. Users acknowledge that interacting with new people involves inherent risks, including physical harm, financial fraud, trafficking, harassment, or other criminal acts, and assume full responsibility for such risks.</p>
+            <p>Meeting suggestions are accompanied by safety tips. Users are strongly encouraged to meet in public places and notify trusted contacts.</p>
+            <p>A feature allows users to register the date and approximate location of a planned meeting. This information may also be shared with friends or family if the user provides their email and consents. The platform does not monitor, supervise, or intervene in meetings. Data may be shared with authorities if legally required.</p>
+            <p>Where legally permitted, users agree to indemnify and hold harmless the platform and its operators against any claims, damages, or consequences arising from their actions on or off the platform.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Intellectual Property</h2>
+            <p>All content, algorithms, branding, layouts, and technologies used in <b>@AppInfo.Title</b> are protected under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL-2.0 license</a> or third-party licenses. Unauthorized use or redistribution is prohibited.</p>
+            <p>Third-party services include Stripe (payments), Didit (identity verification), HERE (location), and cloud infrastructure (Azure, AWS). Each is governed by its own terms and licenses.</p>
+            <p>Anonymous, aggregated data may be used for internal analytics and service improvement.</p>
+            <p>User-submitted content (photos, bios, descriptions) remains the property of the user. By uploading content, the user grants @AppInfo.Title a worldwide, royalty-free, sublicensable license to use content within the platform or for institutional promotional purposes. This license ends upon deletion of the account or content unless use is irreversible.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Modifications to the Terms</h2>
+            <p>These Terms may be updated due to legal, technical, or operational changes. Continued use constitutes acceptance of the updated Terms. Material changes affecting user rights will be notified, and consent obtained when required by law.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. Support and Legal Contact</h2>
+            <p>Users can access support tools or contact us via the support section for assistance, feedback, or reporting issues.</p>
+            <p>For legal inquiries or official requests, please contact us at <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Privacy and Data Law Compliance</h2>
+            <p>The platform complies with major data protection laws including:</p>
+            <ul>
+                <li><b>GDPR (EU):</b> Right to access, correct, delete, restrict, object to processing, and request data portability.</li>
+                <li><b>LGPD (Brazil):</b> Rights to confirm data processing, correct inaccuracies, request anonymization or deletion, and revoke consent.</li>
+                <li><b>CCPA/CPRA (California):</b> Rights to access, delete, opt-out of sale or sharing, and avoid discrimination for exercising rights.</li>
+            </ul>
+            <p>Users are responsible for complying with local laws. Our practices follow global best standards for privacy and digital safety. Users may exercise their rights through account privacy tools or by contacting <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Law Enforcement Requests</h2>
+            <p>We may preserve and disclose user data to law enforcement authorities when required by valid legal requests, including court orders, subpoenas, or equivalent legal processes.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Governing Law and Dispute Resolution</h2>
+            <p>These Terms are governed by Estonian law. Users agree to resolve disputes through binding arbitration unless prohibited by law or criminal investigation. Legal disputes are handled in English under the exclusive jurisdiction of Tallinn courts, unless local law provides otherwise.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. License to Use the Platform</h2>
+            <p>@AppInfo.Title grants a limited, personal, non-exclusive, non-transferable, revocable license to access and use the platform per these Terms. Automated access, scraping, data mining, bots, or reverse engineering are prohibited.</p>
+            <p>Accounts may only be used by the registered individual. Commercial use, promotion, or solicitation of other users is forbidden.</p>
+        </div>
+        <div class="support-section">
+            <h2>15. Disclaimer and Limitation of Liability</h2>
+            <p>@AppInfo.Title provides the service “as is” and “as available,” without warranties. Accuracy, completeness, or usefulness of content or user behavior is not guaranteed. Some jurisdictions may limit liability disclaimers.</p>
+            <p>To the fullest extent permitted by law, we are not liable for indirect, incidental, consequential, or punitive damages, including loss of profits, emotional distress, data loss, or personal injury resulting from interactions between users.</p>
+        </div>
+        <div class="support-section">
+            <h2>16. Legal Provisions</h2>
+            <p><b>Force Majeure:</b> Not liable for delays or failures due to events beyond control, including natural disasters, war, pandemics, government actions, infrastructure failures, or third-party service disruptions.</p>
+            <p><b>Assignment:</b> We may assign rights and obligations under these Terms in case of merger, acquisition, or asset sale. Users may not transfer rights without written consent.</p>
+            <p><b>Class Action Waiver:</b> Where enforceable, users agree to resolve disputes individually and waive participation in class actions or class arbitrations.</p>
+        </div>
+        <div class="support-footer">
+            <p>Last updated: April 4, 2026</p>
+            <p>By using the platform, you agree to this Terms of Use and the <a href="/@Culture/legal/privacy">Privacy Policy</a>.</p>
+        </div>
+    }
+</div>
+
+@code {
+    public AppLanguage Language => AppStateStatic.ConvertAppLanguage(Culture, AppLanguage.en);
+
+    // País/Região Exigência de Tradução   Base Legal Principal
+    // China   Explícita e obrigatória PIPL, CSL
+    // União Europeia  Implícita e obrigatória(prática)   GDPR
+    // Turquia Explícita e obrigatória KVKK
+    // Rússia Explícita e obrigatória Lei Federal No. 152-FZ
+    // Japão   Implícita e esperada APPI
+    // Coreia do Sul Implícita e esperada    PIPA
+    // Brasil  Implícita e obrigatória(prática)   LGPD
+}

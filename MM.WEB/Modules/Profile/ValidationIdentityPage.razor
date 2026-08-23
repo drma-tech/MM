@@ -1,0 +1,19 @@
+﻿@page "/{culture}/profile/validation/identity"
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize]
+@inherits PageCore<ValidationIdentityPage>
+
+@inject ValidationApi ValidationApi
+
+<HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile/validation/identity") Index="false"></HeadComponent>
+
+<MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("my")">
+    @Translations.Notification.ModuleUnderDevelopment
+</MudAlert>
+
+<MudAlert Variant="Variant.Filled" Severity="Severity.Warning" Dense="true" Icon="@IconsFA.Solid.Icon("spinner").Animation(IconAnimation.Spin).Font">
+    Redirection in progress... Please wait.
+</MudAlert>
+
+<FloatingButton Template="Template.Back"></FloatingButton>

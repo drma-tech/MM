@@ -1,37 +1,30 @@
 ﻿using MM.Shared.Models.Dashboard;
+using MM.WEB.Api.Core;
 
 namespace MM.WEB.Core;
 
-public struct Endpoint
-{
-    public static string SumUsers => "public/cache/sum-users";
-    public static string LastUsers => "public/cache/last-users";
-
-    public static string LastRegionUsers(string mode, string region) => $"public/cache/last-region-users/{mode}/{region}";
-}
-
 public class DashboardApi(IHttpClientFactory http) : ApiCosmos<SumUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.SumUsersCache)
 {
-    public async Task<SumUsersCache?> GetSumUsers(RenderControlState<SumUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<SumUsersCache?> GetSumUsers(RenderControlState<SumUsersCache?>[] states, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.SumUsers, setNewVersion: false, actions, cancellationToken);
+        return await GetAsync("public/cache/sum-users", setNewVersion: false, states, cancellationToken);
     }
 }
 
 public class LastUsersApi(IHttpClientFactory http) : ApiCosmos<LastUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.LastUsersCache)
 {
-    public async Task<LastUsersCache?> GetLastUsers(RenderControlState<LastUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<LastUsersCache?> GetLastUsers(RenderControlState<LastUsersCache?> state, CancellationToken cancellationToken)
     {
-        return await GetAsync(Endpoint.LastUsers, setNewVersion: false, actions, cancellationToken);
+        return await GetAsync("public/cache/last-users", setNewVersion: false, [state], cancellationToken);
     }
 }
 
 public class LastRegionUsersApi(IHttpClientFactory http) : ApiCosmos<LastRegionUsersCache>(http, ApiType.Anonymous, key: null, [], ApiContext.Default.LastRegionUsersCache)
 {
-    public async Task<LastRegionUsersCache?> LastRegionUsers(string mode, string? region, RenderControlState<LastRegionUsersCache>? actions, CancellationToken cancellationToken)
+    public async Task<LastRegionUsersCache?> LastRegionUsers(string mode, string? region, RenderControlState<LastRegionUsersCache?> state, CancellationToken cancellationToken)
     {
         if (region == null) return null;
 
-        return await GetAsync(Endpoint.LastRegionUsers(mode, region), setNewVersion: false, actions, cancellationToken);
+        return await GetAsync($"public/cache/last-region-users/{mode}/{region}", setNewVersion: false, [state], cancellationToken);
     }
 }

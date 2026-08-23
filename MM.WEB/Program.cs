@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using MM.WEB.Api;
+using MM.WEB.Api.Core;
+using MM.WEB.Api.Module.Cosmos.Admin;
+using MM.WEB.Api.Module.Cosmos.Anonymous;
+using MM.WEB.Api.Module.Cosmos.Authenticated;
 using MM.WEB.Core.Auth;
-using MM.WEB.Modules.Auth.Core;
-using MM.WEB.Modules.Profile.Core;
-using MM.WEB.Modules.Subscription.Core;
 using MudBlazor.Services;
 using Polly;
 using Polly.Extensions.Http;
@@ -139,7 +140,7 @@ static void ConfigurePrerendering()
 static void ConfigureApi(IServiceCollection collection)
 {
     collection.AddScoped<PrincipalApi>();
-    collection.AddScoped<PrincipalImportApi>();
+    collection.AddScoped<PrincipalAdminApi>();
     collection.AddScoped<LoginApi>();
     collection.AddScoped<PublicLoginApi>();
     collection.AddScoped<ProfileApi>();
@@ -155,9 +156,8 @@ static void ConfigureApi(IServiceCollection collection)
     collection.AddScoped<LastRegionUsersApi>();
     collection.AddScoped<ValidationApi>();
 
-    collection.AddScoped<PaymentConfigurationApi>();
-    collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<PaymentPublicApi>();
+    collection.AddScoped<PaymentAuthApi>();
     collection.AddScoped<IpInfoApi>();
 }
 

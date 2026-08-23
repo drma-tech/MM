@@ -2,9 +2,8 @@
 using MM.Shared.Models.Profile;
 using MM.WEB.Modules.Auth;
 using MM.WEB.Modules.Help;
-using MM.WEB.Modules.Profile.Components;
-using MM.WEB.Modules.Subscription.Components;
-using MM.WEB.Shared;
+using MM.WEB.Modules.Profile;
+using MM.WEB.Modules.Subscription;
 using MudBlazor;
 using static MM.Shared.Core.Helper.ImageHelper;
 
@@ -35,7 +34,7 @@ public static class PopupHelper
     public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
         ProfileModel? fakeView = null, bool onlyCompatibility = false)
     {
-        var parameters = new DialogParameters<PopupProfile>
+        var parameters = new DialogParameters<PopupProfilePopup>
         {
             { x => x.Origin, origin },
             { x => x.UserId, userId },
@@ -47,7 +46,7 @@ public static class PopupHelper
             //{ x => x.Matched, await LoadMatches(true) }
         };
 
-        await service.ShowAsync<PopupProfile>(fakeView?.NickName, parameters, Options(MaxWidth.Large));
+        await service.ShowAsync<PopupProfilePopup>(fakeView?.NickName, parameters, Options(MaxWidth.Large));
     }
 
     public static async Task SettingsPopup(this IDialogService service)
@@ -64,17 +63,17 @@ public static class PopupHelper
 
     public static async Task OnboardingPopup(this IDialogService service, string culture)
     {
-        var parameters = new DialogParameters<Onboarding>
+        var parameters = new DialogParameters<OnboardingPopup>
         {
             { x => x.Culture, culture },
         };
 
-        await service.ShowAsync<Onboarding>(Translations.Module.Help.WelcomeTo.CustomFormat(AppInfo.Title), parameters, Options(MaxWidth.Medium));
+        await service.ShowAsync<OnboardingPopup>(Translations.Module.Help.WelcomeTo.CustomFormat(AppInfo.Title), parameters, Options(MaxWidth.Medium));
     }
 
     public static async Task AskReviewPopup(this IDialogService service)
     {
-        await service.ShowAsync<AskReview>(Translations.Module.Help.WriteReviewTitle.CustomFormat(AppInfo.Title), Options(MaxWidth.Small, allowClose: false, showHeader: false));
+        await service.ShowAsync<AskReviewPopup>(Translations.Module.Help.WriteReviewTitle.CustomFormat(AppInfo.Title), Options(MaxWidth.Small, allowClose: false, showHeader: false));
     }
 
     public static DialogOptions Options(MaxWidth width, bool allowClose = true, bool showHeader = true)

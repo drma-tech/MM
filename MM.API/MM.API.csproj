@@ -23,9 +23,9 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.9" />
+		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.10" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.1" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.173">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.177">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

@@ -2,13 +2,11 @@
 @attribute [Authorize(Roles = "administrator")]
 
 @using MM.Shared.Models.Profile
-@using MM.WEB.Modules.Profile.Core
+@using MM.WEB.Api.Module.Cosmos.Admin
 @using Microsoft.AspNetCore.Authorization
-@using MM.WEB.Modules.Auth.Core
 
 @inherits PageCore<AdminPage>
-@inject PrincipalImportApi PrincipalImportApi
-@inject ProfileApi ProfileApi
+@inject ProfileAdminApi ProfileAdminApi
 @inject PrincipalApi PrincipalApi
 
 <h3>AdminPage</h3>
@@ -50,7 +48,7 @@
 
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
     {
-        Profiles = await ProfileApi.GetAll(null, token);
+        Profiles = await ProfileAdminApi.GetAll([], token);
     }
 
     private async Task MakePrivate(ProfileManage item)

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MM.WEB.Core.Api
+namespace MM.WEB.Core.Context
 {
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(bool?))]

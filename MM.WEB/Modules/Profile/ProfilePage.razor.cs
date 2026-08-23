@@ -16,27 +16,27 @@ namespace MM.WEB.Modules.Profile
         private ProfileModel? profile;
 
         private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-        private RenderControlState<ProfileModel> ProfileState { get; } = new(obj => obj == null);
+        private RenderControlState<ProfileModel?> ProfileState { get; } = new(null, obj => obj == null);
 
         private FilterValidation FilterValidator { get; } = new();
         private FilterModel? filter;
-        private RenderControlState<FilterModel> FilterState { get; } = new(obj => obj == null);
+        private RenderControlState<FilterModel?> FilterState { get; } = new(null, obj => obj == null);
 
         private PhotoValidation PhotoValidator { get; } = new();
 
         private SettingModel? setting;
-        private RenderControlState<SettingModel> SettingState { get; } = new(obj => obj == null);
+        private RenderControlState<SettingModel?> SettingState { get; } = new(null, obj => obj == null);
 
         private ValidationModel? validation;
 
         private List<string> Suggestions { get; } = [];
-        private RenderControlState<List<string>> SuggestionsState { get; } = new(lst => lst == null || lst.Empty());
+        private RenderControlState<List<string>> SuggestionsState { get; } = new([], lst => lst == null || lst.Empty());
 
         private MyLikesModel? MyLikes { get; set; }
-        private RenderControlState<MyLikesModel> LikesState { get; } = new(obj => obj == null || obj.Items.Empty());
+        private RenderControlState<MyLikesModel?> LikesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
 
         private MyMatchesModel? MyMatches { get; set; }
-        private RenderControlState<MyMatchesModel> MatchesState { get; } = new(obj => obj == null || obj.Items.Empty());
+        private RenderControlState<MyMatchesModel?> MatchesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
 
         private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
         private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
@@ -109,17 +109,17 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            profile = await ProfileApi.Get(ProfileState, token);
-            filter = await FilterApi.Get(FilterState, token);
-            setting = await SettingApi.Get(SettingState, token);
+            profile = await ProfileApi.Get([ProfileState], token);
+            filter = await FilterApi.Get([FilterState], token);
+            setting = await SettingApi.Get([SettingState], token);
             validation = await ValidationApi.Get(token);
 
             //remove the loading status
             await SuggestionsState.StartLoading.Invoke(null);
-            await SuggestionsState.FinishLoading.Invoke(null);
+            await SuggestionsState.FinishLoading.Invoke([]);
 
-            MyLikes = await MyLikesApi.Get(setNewVersion: false, LikesState, token);
-            MyMatches = await MyMatchesApi.Get(setNewVersion: false, MatchesState, token);
+            MyLikes = await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
+            MyMatches = await MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
         }
 
         private static Color GetButtonColor(bool valid)

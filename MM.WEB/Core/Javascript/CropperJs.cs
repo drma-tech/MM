@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using MM.WEB.Modules.Profile;
 
 namespace MM.WEB.Core.Javascript
 {
@@ -8,6 +9,6 @@ namespace MM.WEB.Core.Javascript
 
         public Task<string> GetCroppedImage(int width, int height, CancellationToken cancellationToken) => Invoke<string>("crop.getCroppedImage", cancellationToken, width, height);
 
-        public Task<Modules.Profile.Components.SelectPicturePopup.ImageDimensions> GetImageSize(string imageUrl, CancellationToken cancellationToken) => Invoke<Modules.Profile.Components.SelectPicturePopup.ImageDimensions>("crop.getImageSize", cancellationToken, imageUrl);
+        public Task<SelectPicturePopup.ImageDimensions> GetImageSize(string imageUrl, CancellationToken cancellationToken) => Invoke<SelectPicturePopup.ImageDimensions>("crop.getImageSize", cancellationToken, imageUrl);
     }
 }

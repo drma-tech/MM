@@ -15,11 +15,11 @@ namespace MM.WEB.Modules
 
         public SumUsers? SumUsers { get; set; }
 
-        private RenderControlState<LastUsersCache> LastUsersState { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+        private RenderControlState<LastUsersCache?> LastUsersState { get; } = new(null, obj => obj?.Data == null || obj.Data.Items.Empty());
 
         protected override async Task LoadStaticDataAsync()
         {
-            var cache = await DashboardApi.GetSumUsers(actions: null, Cts.Token);
+            var cache = await DashboardApi.GetSumUsers(states: [], Cts.Token);
             SumUsers = cache?.Data;
 
             var cache2 = await LastUsersApi.GetLastUsers(LastUsersState, Cts.Token);

@@ -10,7 +10,7 @@ namespace MM.WEB.Modules
 
         private Platform? CurrentPlatform;
 
-        private RenderControlState<LastRegionUsersCache> LastUsersState { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
+        private RenderControlState<LastRegionUsersCache?> LastUsersState { get; } = new(null, obj => obj?.Data == null || obj.Data.Items.Empty());
         public LastRegionUsers? LastUsers { get; set; }
         private Country? CountryEnum;
 

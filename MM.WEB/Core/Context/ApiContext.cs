@@ -5,7 +5,7 @@ using MM.Shared.Models.Subscription;
 using MM.Shared.Requests;
 using System.Text.Json.Serialization;
 
-namespace MM.WEB.Core.Api
+namespace MM.WEB.Core.Context
 {
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(PaymentConfigurations))]
@@ -26,6 +26,7 @@ namespace MM.WEB.Core.Api
     [JsonSerializable(typeof(SumUsersCache))]
     [JsonSerializable(typeof(LastUsersCache))]
     [JsonSerializable(typeof(LastRegionUsersCache))]
+    [JsonSerializable(typeof(ProfileManage))]
     internal sealed partial class ApiContext : JsonSerializerContext
     {
     }

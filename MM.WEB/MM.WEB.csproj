@@ -14,10 +14,10 @@
 	<ItemGroup>
 		<Content Remove="Modules\Explore\Chat.razor" />
 		<Content Remove="Modules\Explore\Index.razor" />
-		<Content Remove="Modules\Profile\Components\PhotoFace.razor" />
-		<Content Remove="Modules\Profile\Interactions.razor" />
+		<Content Remove="Modules\Profile\InteractionsPage.razor" />
+		<Content Remove="Modules\Profile\PhotoFaceComponent.razor" />
 		<Content Remove="Modules\Profile\PhotoValidation.razor" />
-		<Content Remove="Modules\Profile\ProfileChatList.razor" />
+		<Content Remove="Modules\Profile\ProfileChatListPage.razor" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
@@ -30,7 +30,7 @@
 		<PackageReference Include="Humanizer.Core.es" Version="3.0.10" />
 		<PackageReference Include="Humanizer.Core.pt" Version="3.0.10" />
 		<PackageReference Include="KristofferStrube.Blazor.MediaCaptureStreams" Version="0.4.1" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.173">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.177">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

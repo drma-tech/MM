@@ -403,7 +403,7 @@ export const interop = {
 
         if (status.state === "denied") {
             notification.showError(
-                "Location access was blocked. Please enable it to continue."
+                "Location access has been blocked. Please enable it in your browser, app, or operating system to continue."
             );
             return;
         }
@@ -432,7 +432,7 @@ export const interop = {
 
                 if (code === err.PERMISSION_DENIED) {
                     notification.showError(
-                        "Location access was blocked. Please enable it to continue."
+                        "Location access has been blocked. Please enable it in your browser, app, or operating system to continue."
                     );
                 } else if (code === err.POSITION_UNAVAILABLE) {
                     notification.showError(

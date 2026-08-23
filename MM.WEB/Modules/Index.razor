@@ -1,12 +1,10 @@
 ﻿@page "/"
 @page "/{culture}"
 
-@using MM.WEB.Modules.Subscription.Core
 @inherits PageCore<Index>
 
 @inject DashboardApi DashboardApi
 @inject LastUsersApi LastUsersApi
-@inject PaymentConfigurationApi ConfigurationApi
 @inject IpInfoApi IpInfoApi
 
 <HeadComponent Title="@Translations.Title.AppSubtitle" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
