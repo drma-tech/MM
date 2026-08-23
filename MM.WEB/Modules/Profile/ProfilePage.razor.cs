@@ -100,13 +100,13 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
+            await FilterApi.Get([FilterState], token);
+            await SettingApi.Get([SettingState], token);
+
             await ProfileSectionState.StartLoading.Invoke(null);
             await ProfileApi.Get([ProfileState], token);
             await ValidationApi.Get([ValidationState], token);
             await ProfileSectionState.FinishLoading.Invoke((AppStateStatic.Principal, ProfileState.Instance, ValidationState.Instance));
-
-            await FilterApi.Get([FilterState], token);
-            await SettingApi.Get([SettingState], token);
 
             _ = MyLikesApi.Get(setNewVersion: false, [LikesState], token);
             _ = MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
