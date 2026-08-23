@@ -102,17 +102,17 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            await ProfileApi.Get([ProfileState], token);
-            await FilterApi.Get([FilterState], token);
-            await SettingApi.Get([SettingState], token);
+            _ = ProfileApi.Get([ProfileState], token);
+            _ = FilterApi.Get([FilterState], token);
+            _ = SettingApi.Get([SettingState], token);
             validation = await ValidationApi.Get(token);
 
             //remove the loading status
             await SuggestionsState.StartLoading.Invoke(null);
             await SuggestionsState.FinishLoading.Invoke([]);
 
-            await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
-            await MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
+            _ = MyLikesApi.Get(setNewVersion: false, [LikesState], token);
+            _ = MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
         }
 
         private static Color GetButtonColor(bool valid)
