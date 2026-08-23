@@ -13,38 +13,31 @@ namespace MM.WEB.Modules.Profile
         //private Country? CountryEnum;
 
         private ProfileValidation ProfileValidator { get; } = new();
-        private ProfileModel? profile;
 
-        private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
         private RenderControlState<ProfileModel?> ProfileState { get; } = new(null, obj => obj == null);
 
+        private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
+
         private FilterValidation FilterValidator { get; } = new();
-        private FilterModel? filter;
         private RenderControlState<FilterModel?> FilterState { get; } = new(null, obj => obj == null);
 
         private PhotoValidation PhotoValidator { get; } = new();
 
-        private SettingModel? setting;
         private RenderControlState<SettingModel?> SettingState { get; } = new(null, obj => obj == null);
 
         private ValidationModel? validation;
 
-        private List<string> Suggestions { get; } = [];
         private RenderControlState<List<string>> SuggestionsState { get; } = new([], lst => lst == null || lst.Empty());
-
-        private MyLikesModel? MyLikes { get; set; }
         private RenderControlState<MyLikesModel?> LikesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
-
-        private MyMatchesModel? MyMatches { get; set; }
         private RenderControlState<MyMatchesModel?> MatchesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
 
         private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
         private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
 
-        private bool ProfileValid => profile != null && ProfileValidator.Validate(profile, options => options.IncludeAllRuleSets()).IsValid;
-        private bool FilterValid => filter != null && FilterValidator.Validate(filter).IsValid;
-        private bool SettingValid => setting != null;
-        private bool GalleryValid => profile?.Gallery != null && PhotoValidator.Validate(profile.Gallery).IsValid;
+        private bool ProfileValid => ProfileState.Instance != null && ProfileValidator.Validate(ProfileState.Instance, options => options.IncludeAllRuleSets()).IsValid;
+        private bool FilterValid => FilterState.Instance != null && FilterValidator.Validate(FilterState.Instance).IsValid;
+        private bool SettingValid => SettingState.Instance != null;
+        private bool GalleryValid => ProfileState.Instance?.Gallery != null && PhotoValidator.Validate(ProfileState.Instance.Gallery).IsValid;
         private bool ValidationGeral => validation != null && validation.Gallery; //todo: implement the others when available
         private bool ValidationGallery => validation != null && validation.Gallery;
         private bool ValidationIdentity => validation != null && validation.Kyc;
@@ -55,11 +48,11 @@ namespace MM.WEB.Modules.Profile
         {
             base.OnInitialized();
 
-            ProfileApi.DataChanged += model =>
-            {
-                profile = model;
-                StateHasChanged();
-            };
+            //ProfileApi.DataChanged += model =>
+            //{
+            //    profile = model;
+            //    StateHasChanged();
+            //};
 
             SuggestionsState.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
         }
@@ -109,17 +102,17 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
-            profile = await ProfileApi.Get([ProfileState], token);
-            filter = await FilterApi.Get([FilterState], token);
-            setting = await SettingApi.Get([SettingState], token);
+            await ProfileApi.Get([ProfileState], token);
+            await FilterApi.Get([FilterState], token);
+            await SettingApi.Get([SettingState], token);
             validation = await ValidationApi.Get(token);
 
             //remove the loading status
             await SuggestionsState.StartLoading.Invoke(null);
             await SuggestionsState.FinishLoading.Invoke([]);
 
-            MyLikes = await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
-            MyMatches = await MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
+            await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
+            await MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
         }
 
         private static Color GetButtonColor(bool valid)
@@ -167,13 +160,13 @@ namespace MM.WEB.Modules.Profile
 
         private async Task SimulateMatches()
         {
-            if (profile == null)
+            if (ProfileState.Instance == null)
             {
                 await ShowWarning("You need to complete your profile first. (Step 1)");
                 return;
             }
 
-            if (filter == null)
+            if (FilterState.Instance == null)
             {
                 await ShowWarning("You need to define your filters first. (Step 2)");
                 return;
@@ -181,7 +174,7 @@ namespace MM.WEB.Modules.Profile
 
             if (await DialogService.ShowMessageBoxAsync(Translations.Notification.Confirmation, Translations.Module.Profile.GenerateSimulation, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
             {
-                MyMatches = new MyMatchesModel(AppStateStatic.UserId);
+                var MyMatches = new MyMatchesModel(AppStateStatic.UserId);
                 await MatchesState.StartLoading.Invoke(null);
 
                 fakeProfiles = [.. new Faker<ProfileModel>()
