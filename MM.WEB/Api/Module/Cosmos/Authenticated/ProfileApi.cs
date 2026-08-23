@@ -7,6 +7,8 @@ public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http,
 {
     public async Task<ProfileModel?> Get(RenderControlState<ProfileModel?>[] states, CancellationToken cancellationToken)
     {
+        if (!AppStateStatic.IsAuthenticated) return default;
+
         return await GetAsync("profile/get-data", setNewVersion: false, states, cancellationToken);
     }
 

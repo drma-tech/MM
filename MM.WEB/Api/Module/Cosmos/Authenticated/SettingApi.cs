@@ -7,6 +7,8 @@ public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http,
 {
     public async Task<SettingModel?> Get(RenderControlState<SettingModel?>[] states, CancellationToken cancellationToken)
     {
+        if (!AppStateStatic.IsAuthenticated) return default;
+
         return await GetAsync("profile/get-setting", setNewVersion: false, states, cancellationToken);
     }
 

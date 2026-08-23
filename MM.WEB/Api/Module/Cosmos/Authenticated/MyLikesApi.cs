@@ -7,6 +7,8 @@ public class MyLikesApi(IHttpClientFactory http) : ApiCosmos<MyLikesModel>(http,
 {
     public async Task<MyLikesModel?> Get(bool setNewVersion, RenderControlState<MyLikesModel?>[] states, CancellationToken cancellationToken)
     {
+        if (!AppStateStatic.IsAuthenticated) return default;
+
         return await GetAsync("profile/get-mylikes", setNewVersion, states, cancellationToken);
     }
 }

@@ -7,6 +7,8 @@ public class MyMatchesApi(IHttpClientFactory http) : ApiCosmos<MyMatchesModel>(h
 {
     public async Task<MyMatchesModel?> Get(bool setNewVersion, RenderControlState<MyMatchesModel?>[] states, CancellationToken cancellationToken)
     {
+        if (!AppStateStatic.IsAuthenticated) return default;
+
         return await GetAsync("profile/get-mymatches", setNewVersion, states, cancellationToken);
     }
 }

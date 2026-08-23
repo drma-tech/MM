@@ -8,6 +8,8 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
 {
     public async Task<ValidationModel?> Get(CancellationToken cancellationToken)
     {
+        if (!AppStateStatic.IsAuthenticated) return default;
+
         return await GetAsync("profile/get-validation", setNewVersion: false, states: [], cancellationToken);
     }
 
