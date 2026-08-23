@@ -71,7 +71,7 @@ else
 
 <MudGrid Spacing="@CssHelper.SpaceSmall" Class="@CssHelper.Build().Small("mb")">
     <MudItem xs="12" sm="6" md="4">
-        <RenderControl T="(AuthPrincipal pri, ProfileModel pro, ValidationModel val)" State="ProfileSectionState" Context="obj" LoadingHeight="500px">
+        <RenderControl State="ProfileSectionState" Context="obj" LoadingHeight="500px">
             <EmptyFragment>
                 <MudPaper Class="pa-3" Outlined="true">
                     <MudToolBar WrapContent="true" Dense="true" Gutters="false" Style="min-height: auto;">
@@ -84,7 +84,7 @@ else
                         <ChildContent>
                             <MudStep Title="@Translations.Module.Profile.StepProfile" SecondaryText="@Translations.Module.Profile.StepProfileDesc" Completed="ProfileValid">
                                 <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                                           Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
+                                           Style="width: 100%;" Disabled="@(obj.pri == null || obj.pri.PublicProfile)">
                                     @Translations.Button.Profile
                                     <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
                                         @obj.pro.GetOverallCompletionPercentage().ToString("P0")
@@ -102,14 +102,14 @@ else
                             </MudStep>
                             <MudStep Title="@Translations.Module.Profile.StepSettings" SecondaryText="@Translations.Module.Profile.StepSettingsDesc" Completed="SettingValid">
                                 <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                                           Style="width: 100%;" Disabled="obj.pro == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
+                                           Style="width: 100%;" Disabled="obj.pro == null || obj.pri == null || obj.pri.PublicProfile">
                                     @Translations.Button.Settings
                                 </MudButton>
                             </MudStep>
                             <MudStep Title="@Translations.Module.Profile.StepGallery" SecondaryText="@Translations.Module.Profile.StepGalleryDesc" Completed="GalleryValid">
                                 <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
                                            Style="width: 100%;"
-                                           Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
+                                           Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || obj.pri == null || obj.pri.PublicProfile">
                                     @Translations.Button.Gallery
                                 </MudButton>
                             </MudStep>
@@ -122,8 +122,8 @@ else
                         </ChildContent>
                         <ActionContent></ActionContent>
                         <CompletedContent>
-                            <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                            FixedContent="true" Disabled="AppStateStatic.Principal == null">
+                            <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(obj.pri?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                            FixedContent="true" Disabled="obj.pri == null">
                                 <MudToggleItem Value="false" Text="@Translations.Module.Profile.Private" />
                                 <MudToggleItem Value="true" Text="@Translations.Module.Profile.Public" />
                             </MudToggleGroup>
@@ -165,8 +165,8 @@ else
                             </MudBadge>
                         </MudItem>
                         <MudItem xs="6">
-                            <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                            FixedContent="true" Disabled="AppStateStatic.Principal == null" Style="height: 100%;">
+                            <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(obj.pri?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                            FixedContent="true" Disabled="obj.pri == null" Style="height: 100%;">
                                 <MudToggleItem Value="false" Class="vertical-button">
                                     <MudIcon Icon="@IconsFA.Solid.Icon("eye-slash").Font"></MudIcon>
                                     @Translations.Module.Profile.Private
@@ -195,7 +195,7 @@ else
                     </MudItem> *@
                         <MudItem xs="6">
                             <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                                       Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
+                                       Style="width: 100%;" Disabled="@(obj.pri == null || obj.pri.PublicProfile)">
                                 @Translations.Button.Profile
                             </MudButton>
                         </MudItem>
@@ -207,13 +207,13 @@ else
                         </MudItem>
                         <MudItem xs="6">
                             <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                                       Style="width: 100%;" Disabled="obj.pro == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
+                                       Style="width: 100%;" Disabled="obj.pro == null || obj.pri == null || obj.pri.PublicProfile">
                                 @Translations.Button.Settings
                             </MudButton>
                         </MudItem>
                         <MudItem xs="6">
                             <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
-                                       Style="width: 100%;" Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
+                                       Style="width: 100%;" Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || obj.pri == null || obj.pri.PublicProfile">
                                 @Translations.Button.Gallery
                             </MudButton>
                         </MudItem>
@@ -238,7 +238,9 @@ else
                 </MudTooltip>
             </ActionsFragment>
             <BodyFragment>
-                <RenderControl State="SuggestionsState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser" LoadingHeight="130px" Context="suggestions">
+                <RenderControl State="SuggestionsState" Context="suggestions" LoadingHeight="130px"
+                               PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated"
+                               PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser">
                     <Slider List="suggestions" Context="item">
                         <FeatureUnavailable></FeatureUnavailable>
                     </Slider>

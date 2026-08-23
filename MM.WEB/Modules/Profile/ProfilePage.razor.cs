@@ -105,8 +105,8 @@ namespace MM.WEB.Modules.Profile
             await ValidationApi.Get([ValidationState], token);
             await ProfileSectionState.FinishLoading.Invoke((AppStateStatic.Principal, ProfileState.Instance, ValidationState.Instance));
 
-            _ = FilterApi.Get([FilterState], token);
-            _ = SettingApi.Get([SettingState], token);
+            await FilterApi.Get([FilterState], token);
+            await SettingApi.Get([SettingState], token);
 
             _ = MyLikesApi.Get(setNewVersion: false, [LikesState], token);
             _ = MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
