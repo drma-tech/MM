@@ -1,0 +1,35 @@
+﻿@inherits ComponentCore<ProfileSuggestionsComponent>
+
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("thumbs-up").Font" Title="@Translations.Module.Profile.Suggestions">
+    <ActionsFragment>
+        <MudTooltip Text="Generate new suggestion list">
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="GenerateSuggestions" Disabled="!AppStateStatic.IsAuthenticated">
+                @Translations.Button.Generate
+            </MudButton>
+        </MudTooltip>
+    </ActionsFragment>
+    <BodyFragment>
+        <RenderControl State="SuggestionsState" Context="suggestions" LoadingHeight="130px"
+                       PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated"
+                       PremiumFeature="true" IsPremium="AppStateStatic.IsPremiumUser">
+            <Slider List="suggestions" Context="item">
+                <FeatureUnavailable></FeatureUnavailable>
+            </Slider>
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>
+
+@code {
+    private RenderControlState<List<string>> SuggestionsState { get; } = new([], lst => lst == null || lst.Empty());
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        SuggestionsState.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
+    }
+
+    private async Task GenerateSuggestions()
+    {
+        await ShowWarning(Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2));
+    }
+}

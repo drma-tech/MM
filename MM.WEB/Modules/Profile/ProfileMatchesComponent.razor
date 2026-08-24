@@ -1,0 +1,34 @@
+﻿@inherits ComponentParameterCore<ProfileMatchesComponent>
+@inject MyMatchesApi MyMatchesApi
+
+@using FluentValidation
+@using MM.Shared.Models.Profile
+
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@Translations.Module.Profile.Matches" ShowActions="MatchesState.Instance == null || MatchesState.Instance.Items.Empty()">
+    <ActionsFragment>
+        @if (MatchesState.Instance == null || MatchesState.Instance.Items.Empty())
+        {
+            <MudTooltip Text="Simulate matches to learn about our compatibility system">
+                <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="SimulateMatches" Disabled="!AppStateStatic.IsAuthenticated">
+                    @Translations.Button.Simulate
+                </MudButton>
+            </MudTooltip>
+        }
+    </ActionsFragment>
+    <BodyFragment>
+        <RenderControl State="MatchesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px" Context="matches">
+            <Slider List="matches?.Items ?? new HashSet<PersonModel>()" Context="item">
+                <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
+                    <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
+                        @item.UserName
+                    </MudChip>
+                    <MudIconButton Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Secondary" Variant="Variant.Filled"
+                                   Style="position: absolute; bottom: 10px; right: 10px; z-index: 1;" Size="Size.Small"
+                                   OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))"></MudIconButton>
+                    <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
+                              Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                </div>
+            </Slider>
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>

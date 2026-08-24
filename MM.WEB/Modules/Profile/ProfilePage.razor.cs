@@ -1,9 +1,5 @@
-using Bogus;
-using FluentValidation;
-using MM.Shared.Models.Auth;
 using MM.Shared.Models.Profile;
-using MM.Shared.Models.Profile.Core;
-using MudBlazor;
+using MM.WEB.Api.Module.Cosmos.Authenticated;
 
 namespace MM.WEB.Modules.Profile
 {
@@ -13,47 +9,12 @@ namespace MM.WEB.Modules.Profile
         //public LastRegionUsers? LastUsers { get; set; }
         //private Country? CountryEnum;
 
-        private ProfileValidation ProfileValidator { get; } = new();
-        private FilterValidation FilterValidator { get; } = new();
-        private PhotoValidation PhotoValidator { get; } = new();
-
-        private HashSet<ProfileModel> fakeProfiles { get; set; } = [];
-
-        private RenderControlState<FilterModel?> FilterState { get; } = new(null, obj => obj == null);
-
-        private RenderControlState<(AuthPrincipal? pri, ProfileModel? pro, ValidationModel? val)> ProfileSectionState { get; } = new((null, null, null), obj => (obj.pri == null || !obj.pri.PublicProfile) && obj.val == null);
         private RenderControlState<ProfileModel?> ProfileState { get; } = new(new ProfileModel(null), obj => obj == null);
+        private RenderControlState<FilterModel?> FilterState { get; } = new(null, obj => obj == null);
         private RenderControlState<SettingModel?> SettingState { get; } = new(null, obj => obj == null);
-        private RenderControlState<List<string>> SuggestionsState { get; } = new([], lst => lst == null || lst.Empty());
-        private RenderControlState<MyLikesModel?> LikesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
-        private RenderControlState<MyMatchesModel?> MatchesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
-        private RenderControlState<ValidationModel?> ValidationState { get; } = new(null, obj => obj == null);
 
-        private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
-        private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
-
-        private bool ProfileValid => ProfileState.Instance != null && ProfileValidator.Validate(ProfileState.Instance, options => options.IncludeAllRuleSets()).IsValid;
-        private bool FilterValid => FilterState.Instance != null && FilterValidator.Validate(FilterState.Instance).IsValid;
-        private bool SettingValid => SettingState.Instance != null;
-        private bool GalleryValid => ProfileState.Instance?.Gallery != null && PhotoValidator.Validate(ProfileState.Instance.Gallery).IsValid;
-        private bool ValidationGeral => ValidationState.Instance != null && ValidationState.Instance.Gallery; //todo: implement the others when available
-        private bool ValidationGallery => ValidationState.Instance != null && ValidationState.Instance.Gallery;
-        private bool ValidationIdentity => ValidationState.Instance != null && ValidationState.Instance.Kyc;
         //private bool ValidationNetWorth => validation != null && validation.NetWorth;
         //private bool ValidationAnnualIncome => validation != null && validation.AnnualIncome;
-
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-
-            //ProfileApi.DataChanged += model =>
-            //{
-            //    profile = model;
-            //    StateHasChanged();
-            //};
-
-            SuggestionsState.CustomPremiumDescription = Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2);
-        }
 
         // protected override async Task OnAfterRenderAsync(bool firstRender)
         // {
@@ -100,151 +61,9 @@ namespace MM.WEB.Modules.Profile
 
         protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
         {
+            await ProfileApi.Get([ProfileState], token);
             await FilterApi.Get([FilterState], token);
             await SettingApi.Get([SettingState], token);
-
-            await ProfileSectionState.StartLoading.Invoke(null);
-            await ProfileApi.Get([ProfileState], token);
-            await ValidationApi.Get([ValidationState], token);
-            await ProfileSectionState.FinishLoading.Invoke((AppStateStatic.Principal, ProfileState.Instance, ValidationState.Instance));
-
-            _ = MyLikesApi.Get(setNewVersion: false, [LikesState], token);
-            _ = MyMatchesApi.Get(setNewVersion: false, [MatchesState], token);
-        }
-
-        private static Color GetButtonColor(bool valid)
-        {
-            return valid ? Color.Success : Color.Warning;
-        }
-
-        private static string? GetButtonIcon(bool valid)
-        {
-            return valid ? IconsFA.Solid.Icon("check").Font : IconsFA.Solid.Icon("circle-question").Font;
-        }
-
-        private async Task IsPublicChanged(bool value)
-        {
-            try
-            {
-                if (value)
-                {
-                    if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationGeral)
-                    {
-                        await ShowWarning(Translations.Module.Profile.CompleteAllSteps);
-                    }
-                    else
-                    {
-                        await PrincipalApi.Public(Cts.Token);
-                        await ShowSuccess(Translations.Module.Profile.ProfilePublicMode);
-                    }
-                }
-                else
-                {
-                    await PrincipalApi.Private(Cts.Token);
-                    await ShowInfo(Translations.Module.Profile.ProfilePrivateMode);
-                }
-            }
-            catch (Exception ex)
-            {
-                await ProcessException(ex);
-            }
-        }
-
-        private async Task GenerateSuggestions()
-        {
-            await ShowWarning(Translations.Module.Profile.FeatureNotAvailable.CustomFormat(2));
-        }
-
-        private async Task SimulateMatches()
-        {
-            if (ProfileState.Instance == null)
-            {
-                await ShowWarning("You need to complete your profile first. (Step 1)");
-                return;
-            }
-
-            if (FilterState.Instance == null)
-            {
-                await ShowWarning("You need to define your filters first. (Step 2)");
-                return;
-            }
-
-            if (await DialogService.ShowMessageBoxAsync(Translations.Notification.Confirmation, Translations.Module.Profile.GenerateSimulation, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
-            {
-                var MyMatches = new MyMatchesModel(AppStateStatic.UserId);
-                await MatchesState.StartLoading.Invoke(null);
-
-                fakeProfiles = [.. new Faker<ProfileModel>()
-                    .CustomInstantiator(f => new ProfileModel(f.Random.Guid().ToString()))
-                    .RuleFor(u => u.Gallery, f => new ProfileGalleryModel { FaceId = $"https://api.dicebear.com/9.x/avataaars/svg?size=300&seed=example={f.Random.Guid()}" })
-                    //BASIC
-                    .RuleFor(x => x.NickName, f => f.Name.FirstName())
-                    .RuleFor(x => x.Description, f => f.Lorem.Text())
-                    .RuleFor(x => x.Nationality, f => f.PickRandom<Country>())
-                    .RuleFor(x => x.Country, f => f.Address.Country())
-                    .RuleFor(x => x.State, f => f.Address.County())
-                    .RuleFor(x => x.City, f => f.Address.City())
-                    .RuleFor(x => x.Languages, f => f.Random.EnumValues<Language>(f.Random.Int(1, 3)).ToHashSet())
-                    .RuleFor(x => x.MaritalStatus, f => f.PickRandom<MaritalStatus>())
-                    .RuleFor(x => x.BiologicalSex, f => f.PickRandom<BiologicalSex>())
-                    .RuleFor(x => x.GenderIdentities, f => f.Random.EnumValues<GenderIdentity>(f.Random.Int(1, 2)).ToHashSet())
-                    .RuleFor(x => x.SexualOrientations, f => f.Random.EnumValues<SexualOrientation>(f.Random.Int(1, 2)).ToHashSet())
-                    //BIO
-                    .RuleFor(x => x.Ethnicity, f => f.PickRandom<Ethnicity>())
-                    .RuleFor(x => x.BodyType, f => f.PickRandom<BodyType>())
-                    .RuleFor(x => x.BirthDate, f => f.Date.Between(DateTime.Now.AddYears(-80), DateTime.Now.AddYears(-19)))
-                    .RuleFor(x => x.Age, f => f.Random.Int(18, 80))
-                    .RuleFor(x => x.Height, f => f.PickRandom<Height>())
-                    .RuleFor(x => x.Neurodiversity, f => f.PickRandom<Neurodiversity>())
-                    .RuleFor(x => x.Disabilities, f => f.Random.EnumValues<Disability>(f.Random.Int(0, 1)).ToHashSet())
-                    //LIFESTYLE
-                    .RuleFor(x => x.Drink, f => f.PickRandom<Drink>())
-                    .RuleFor(x => x.Smoke, f => f.PickRandom<Smoke>())
-                    .RuleFor(x => x.Diet, f => f.PickRandom<Diet>())
-                    .RuleFor(x => x.Religion, f => f.PickRandom<Religion>())
-                    .RuleFor(x => x.FamilyInvolvement, f => f.PickRandom<FamilyInvolvement>())
-                    .RuleFor(x => x.HaveChildren, f => f.PickRandom<HaveChildren>())
-                    .RuleFor(x => x.HavePets, f => f.PickRandom<HavePets>())
-                    .RuleFor(x => x.EducationLevel, f => f.PickRandom<EducationLevel>())
-                    .RuleFor(x => x.CareerCluster, f => f.PickRandom<CareerCluster>())
-                    .RuleFor(x => x.LivingSituation, f => f.PickRandom<LivingSituation>())
-                    .RuleFor(x => x.TravelFrequency, f => f.PickRandom<TravelFrequency>())
-                    .RuleFor(x => x.NetWorth, f => f.PickRandom<NetWorth>())
-                    .RuleFor(x => x.AnnualIncome, f => f.PickRandom<AnnualIncome>())
-                    //PERSONALITY
-                    .RuleFor(x => x.MoneyPersonality, f => f.PickRandom<MoneyPersonality>())
-                    .RuleFor(x => x.SharedSpendingStyle, f => f.PickRandom<SharedSpendingStyle>())
-                    .RuleFor(x => x.RelationshipPersonality, f => f.PickRandom<RelationshipPersonality>())
-                    .RuleFor(x => x.MBTI, f => f.PickRandom<MyersBriggsTypeIndicator>())
-                    .RuleFor(x => x.LoveLanguage, f => f.PickRandom<LoveLanguage>())
-                    .RuleFor(x => x.SexPersonality, f => f.PickRandom<SexPersonality>())
-                    .RuleFor(x => x.SexPersonalityPreference, f => f.Random.EnumValues<SexPersonality>(f.Random.Int(1, 3)).ToHashSet())
-                    //INTEREST
-                    .RuleFor(x => x.Food, f => f.Random.EnumValues<Food>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.Vacation, f => f.Random.EnumValues<Vacation>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.Sports, f => f.Random.EnumValues<Sports>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.LeisureActivities, f => f.Random.EnumValues<LeisureActivities>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.MusicGenre, f => f.Random.EnumValues<MusicGenre>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.MovieGenre, f => f.Random.EnumValues<MovieGenre>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.TVGenre, f => f.Random.EnumValues<TVGenre>(f.Random.Int(0, 3)).ToHashSet())
-                    .RuleFor(x => x.ReadingGenre, f => f.Random.EnumValues<ReadingGenre>(f.Random.Int(0, 3)).ToHashSet())
-                    //RELATIONSHIP
-                    .RuleFor(x => x.SharedFinances, f => f.PickRandom<SharedFinances>())
-                    .RuleFor(x => x.ConflictResolutionStyle, f => f.PickRandom<ConflictResolutionStyle>())
-                    .RuleFor(x => x.HouseholdManagement, f => f.PickRandom<HouseholdManagement>())
-                    .RuleFor(x => x.TimeTogetherPreference, f => f.PickRandom<TimeTogetherPreference>())
-                    .RuleFor(x => x.OppositeSexFriendships, f => f.PickRandom<OppositeSexFriendships>())
-                    //GOAL
-                    .RuleFor(x => x.RelationshipIntentions, f => f.Random.EnumValues<RelationshipIntention>(f.Random.Int(1, 2)).ToHashSet())
-                    .RuleFor(x => x.WantChildren, f => f.PickRandom<WantChildren>())
-                    .RuleFor(x => x.Relocation, f => f.PickRandom<Relocation>())
-                    .RuleFor(x => x.IdealPlaceToLive, f => f.PickRandom<IdealPlaceToLive>())
-                    .GenerateLazy(8)];
-
-                MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
-
-                await MatchesState.FinishLoading.Invoke(MyMatches);
-            }
         }
 
         private async Task Login()

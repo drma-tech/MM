@@ -1,0 +1,30 @@
+﻿@inherits ComponentCore<ProfileLikesComponent>
+@inject MyLikesApi MyLikesApi
+
+@using MM.Shared.Models.Profile
+
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Likes">
+    <BodyFragment>
+        <RenderControl State="LikesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px" Context="likes">
+            <Slider List="likes?.Items ?? new HashSet<PersonModel>()" Context="item">
+                <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative; cursor: pointer;")"
+                     @onclick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, item.UserId))">
+                    <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
+                        @item.UserName
+                    </MudChip>
+                    <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
+                              Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                </div>
+            </Slider>
+        </RenderControl>
+    </BodyFragment>
+</PageSectionComponent>
+
+@code {
+    private RenderControlState<MyLikesModel?> LikesState { get; } = new(null, obj => obj == null || obj.Items.Empty());
+
+    protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
+    {
+        await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
+    }
+}
