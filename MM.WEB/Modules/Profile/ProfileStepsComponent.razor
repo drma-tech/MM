@@ -20,16 +20,16 @@
                 <ChildContent>
                     <MudStep Title="@Translations.Module.Profile.StepProfile" SecondaryText="@Translations.Module.Profile.StepProfileDesc" Completed="ProfileValid">
                         <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                                   Style="width: 100%;" Disabled="@(obj.pri == null || obj.pri.PublicProfile)">
+                                   Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                             @Translations.Button.Profile
                             <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
-                                @obj.pro.GetOverallCompletionPercentage().ToString("P0")
+                                @Profile.GetOverallCompletionPercentage().ToString("P0")
                             </MudChip>
                         </MudButton>
                     </MudStep>
                     <MudStep Title="@Translations.Module.Profile.StepFilter" SecondaryText="@Translations.Module.Profile.StepFilterDesc" Completed="FilterValid">
                         <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/filter")
-                                   Style="width: 100%;" Disabled="obj.pro == null">
+                                   Style="width: 100%;" Disabled="Profile == null">
                             @Translations.Button.Filters
                             <MudChip T="string" Label="true" Size="Size.Small" Style="height: auto;" Class="ms-2" Color="Color.Info">
                                 @FilterValidation.GetTotalFilters(Filter, null).ToString("N0")
@@ -38,28 +38,28 @@
                     </MudStep>
                     <MudStep Title="@Translations.Module.Profile.StepSettings" SecondaryText="@Translations.Module.Profile.StepSettingsDesc" Completed="SettingValid">
                         <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                                   Style="width: 100%;" Disabled="obj.pro == null || obj.pri == null || obj.pri.PublicProfile">
+                                   Style="width: 100%;" Disabled="Profile == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                             @Translations.Button.Settings
                         </MudButton>
                     </MudStep>
                     <MudStep Title="@Translations.Module.Profile.StepGallery" SecondaryText="@Translations.Module.Profile.StepGalleryDesc" Completed="GalleryValid">
                         <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
                                    Style="width: 100%;"
-                                   Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || obj.pri == null || obj.pri.PublicProfile">
+                                   Disabled="Profile == null || Profile.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                             @Translations.Button.Gallery
                         </MudButton>
                     </MudStep>
                     <MudStep Title="@Translations.Module.Profile.StepValidation" SecondaryText="@Translations.Module.Profile.StepValidationDesc" Completed="ValidationGeral">
                         <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/validation")
-                                   Style="width: 100%;" Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate">
+                                   Style="width: 100%;" Disabled="Profile == null || Profile.Gallery?.Type == GalleryType.BlindDate">
                             @Translations.Button.Validations
                         </MudButton>
                     </MudStep>
                 </ChildContent>
                 <ActionContent></ActionContent>
                 <CompletedContent>
-                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(obj.pri?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                    FixedContent="true" Disabled="obj.pri == null">
+                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                    FixedContent="true" Disabled="AppStateStatic.Principal == null">
                         <MudToggleItem Value="false" Text="@Translations.Module.Profile.Private" />
                         <MudToggleItem Value="true" Text="@Translations.Module.Profile.Public" />
                     </MudToggleGroup>
@@ -70,19 +70,19 @@
     <ChildContent>
         <MudPaper Class="@CssHelper.Build().Small("pa")" Outlined="true" Style="text-align: center;">
             <MudAvatar Class="mb-2" Style="width: 50%; height: auto;">
-                <MudImage Src="@(obj.pro?.GetPhoto(ImageHelper.PhotoType.Face, true) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
+                <MudImage Src="@(Profile?.GetPhoto(ImageHelper.PhotoType.Face, true) ?? ImageHelper.GetFacePhoto)" FallbackSrc="@ImageHelper.GetFacePhoto" Fluid="true" />
             </MudAvatar>
             <div class="mb-2" style="text-align: center;">
                 <MudChip T="string" Color="Color.Primary" Label="true">
-                    @(obj.pro?.NickName ?? "NickName")
+                    @(Profile?.NickName ?? "NickName")
                 </MudChip>
-                <MudTooltip Text="@obj.pro?.Location">
+                <MudTooltip Text="@Profile?.Location">
                     <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
-                        @(obj.pro?.GetLocation(LocationType.City) ?? "City")
+                        @(Profile?.GetLocation(LocationType.City) ?? "City")
                     </MudChip>
                 </MudTooltip>
                 <MudText Typo="Typo.body1" Align="Align.Justify">
-                    @obj.pro?.Description
+                    @Profile?.Description
                 </MudText>
             </div>
             <MudGrid Spacing="@CssHelper.SpaceSmall">
@@ -101,8 +101,8 @@
                     </MudBadge>
                 </MudItem>
                 <MudItem xs="6">
-                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(obj.pri?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
-                                    FixedContent="true" Disabled="obj.pri == null" Style="height: 100%;">
+                    <MudToggleGroup T="bool" SelectionMode="SelectionMode.SingleSelection" Value="@(AppStateStatic.Principal?.PublicProfile ?? false)" ValueChanged="(bool value) => IsPublicChanged(value)"
+                                    FixedContent="true" Disabled="AppStateStatic.Principal == null" Style="height: 100%;">
                         <MudToggleItem Value="false" Class="vertical-button">
                             <MudIcon Icon="@IconsFA.Solid.Icon("eye-slash").Font"></MudIcon>
                             @Translations.Module.Profile.Private
@@ -131,31 +131,31 @@
                     </MudItem> *@
                 <MudItem xs="6">
                     <MudButton Color="@GetButtonColor(ProfileValid)" StartIcon="@GetButtonIcon(ProfileValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/data")
-                               Style="width: 100%;" Disabled="@(obj.pri == null || obj.pri.PublicProfile)">
+                               Style="width: 100%;" Disabled="@(AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile)">
                         @Translations.Button.Profile
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(FilterValid)" StartIcon="@GetButtonIcon(FilterValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/filter")
-                               Style="width: 100%;" Disabled="obj.pro == null">
+                               Style="width: 100%;" Disabled="Profile == null">
                         @Translations.Button.Filters
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(SettingValid)" StartIcon="@GetButtonIcon(SettingValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/setting")
-                               Style="width: 100%;" Disabled="obj.pro == null || obj.pri == null || obj.pri.PublicProfile">
+                               Style="width: 100%;" Disabled="Profile == null || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                         @Translations.Button.Settings
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(GalleryValid)" StartIcon="@GetButtonIcon(GalleryValid)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/gallery")
-                               Style="width: 100%;" Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate || obj.pri == null || obj.pri.PublicProfile">
+                               Style="width: 100%;" Disabled="Profile == null || Profile.Gallery?.Type == GalleryType.BlindDate || AppStateStatic.Principal == null || AppStateStatic.Principal.PublicProfile">
                         @Translations.Button.Gallery
                     </MudButton>
                 </MudItem>
                 <MudItem xs="6">
                     <MudButton Color="GetButtonColor(ValidationGeral)" StartIcon="@GetButtonIcon(ValidationGeral)" Variant="Variant.Filled" Href=@($"/{Culture}/profile/validation")
-                               Style="width: 100%;" Disabled="obj.pro == null || obj.pro.Gallery?.Type == GalleryType.BlindDate">
+                               Style="width: 100%;" Disabled="Profile == null || Profile.Gallery?.Type == GalleryType.BlindDate">
                         @Translations.Button.Validations
                     </MudButton>
                 </MudItem>
@@ -169,7 +169,7 @@
     [Parameter] public FilterModel? Filter { get; set; }
     [Parameter] public SettingModel? Setting { get; set; }
 
-    private RenderControlState<(AuthPrincipal? pri, ProfileModel? pro, ValidationModel? val)> State { get; } = new((null, null, null), obj => (obj.pri == null || !obj.pri.PublicProfile) && obj.val == null);
+    private RenderControlState<ValidationModel?> State { get; } = new(null, obj => (AppStateStatic.Principal == null || !AppStateStatic.Principal.PublicProfile) && obj == null);
     private RenderControlState<ValidationModel?> ValidationState { get; } = new(null, obj => obj == null);
 
     private ProfileValidation ProfileValidator { get; } = new();
@@ -181,10 +181,10 @@
     private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
     private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
 
-    private bool ProfileValid => State.Instance.pro != null && ProfileValidator.Validate(State.Instance.pro, options => options.IncludeAllRuleSets()).IsValid;
+    private bool ProfileValid => Profile != null && ProfileValidator.Validate(Profile, options => options.IncludeAllRuleSets()).IsValid;
     private bool FilterValid => Filter != null && FilterValidator.Validate(Filter).IsValid;
     private bool SettingValid => Setting != null;
-    private bool GalleryValid => State.Instance.pro?.Gallery != null && PhotoValidator.Validate(State.Instance.pro.Gallery).IsValid;
+    private bool GalleryValid => Profile?.Gallery != null && PhotoValidator.Validate(Profile.Gallery).IsValid;
     private bool ValidationGeral => ValidationState.Instance != null && ValidationState.Instance.Gallery; //todo: implement the others when available
     private bool ValidationGallery => ValidationState.Instance != null && ValidationState.Instance.Gallery;
     private bool ValidationIdentity => ValidationState.Instance != null && ValidationState.Instance.Kyc;
@@ -202,7 +202,7 @@
     {
         await State.StartLoading.Invoke(null);
         var validation = await ValidationApi.Get([ValidationState], Cts.Token);
-        await State.FinishLoading.Invoke((AppStateStatic.Principal, Profile, validation));
+        await State.FinishLoading.Invoke(validation);
     }
 
     private static Color GetButtonColor(bool valid)
