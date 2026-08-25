@@ -4,7 +4,8 @@
 
 @inject LastRegionUsersApi LastRegionUsersApi
 
-<HeadComponent Title="@(Translations.Title.Matchmaker.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
+<HeadComponent Title="@(Translations.Title.Matchmaker.CustomFormat(CountryEnum?.GetFieldSettings().Name))" FixedTitle="true"
+               Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
                Url=@($"/{Culture}/matchmaking/{Region}") Index="true" FixedAlternateLanguage="@Culture"></HeadComponent>
 
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@(Translations.Title.Matchmaker.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
