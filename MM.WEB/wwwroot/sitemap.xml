@@ -331,6 +331,72 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/compare" />
 	</url>
 	<url>
+		<loc>https://modern-matchmaker.com/en/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/en/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/en/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/en/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/en/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/en/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
+	</url>
+	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/af</loc>
 		<lastmod>2026-08-25</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/af" />
@@ -1829,6 +1895,336 @@
 		<lastmod>2026-08-25</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tw" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/basic</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/basic" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/basic" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/bio</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/bio" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/bio" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/lifestyle</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/lifestyle" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/lifestyle" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/personality</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/personality" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/personality" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/relationship</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/relationship" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/relationship" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/pt/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/tips/goal</loc>
+		<lastmod>2026-08-25</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/tips/goal" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/tips/goal" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/matchmaking/br</loc>
