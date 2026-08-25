@@ -25,29 +25,18 @@ public static class ProfileHelper
 
     public static ProfileValidation Validator { get; set; } = new();
 
-    public enum Tabs
+    public static readonly IReadOnlyDictionary<Category, int> TotalRules = new Dictionary<Category, int>
     {
-        BASIC,
-        BIO,
-        LIFESTYLE,
-        PERSONALITY,
-        INTEREST,
-        RELATIONSHIP,
-        GOAL,
-    }
-
-    public static readonly IReadOnlyDictionary<Tabs, int> TotalRules = new Dictionary<Tabs, int>
-    {
-        { Tabs.BASIC, 9 },
-        { Tabs.BIO, 4 },
-        { Tabs.LIFESTYLE, 11 },
-        { Tabs.PERSONALITY, 7 },
-        { Tabs.INTEREST, 3 },
-        { Tabs.RELATIONSHIP, 5 },
-        { Tabs.GOAL, 4 },
+        { Category.BASIC, 9 },
+        { Category.BIO, 4 },
+        { Category.LIFESTYLE, 11 },
+        { Category.PERSONALITY, 7 },
+        { Category.INTEREST, 3 },
+        { Category.RELATIONSHIP, 5 },
+        { Category.GOAL, 4 },
     };
 
-    public static bool IsValid(this ProfileModel? profile, Tabs tab)
+    public static bool IsValid(this ProfileModel? profile, Category tab)
     {
         if (profile == null) return false;
 
@@ -56,11 +45,11 @@ public static class ProfileHelper
         return Validator.Validate(profile, o => o.IncludeRuleSets(ruleSet)).IsValid;
     }
 
-    public static (int total, int failed) GetCompletion(this ProfileModel? profile, Tabs tab)
+    public static (int total, int failed) GetCompletion(this ProfileModel? profile, Category tab)
     {
         if (profile == null) return (0, 0);
 
-        if (tab == Tabs.INTEREST)
+        if (tab == Category.INTEREST)
         {
             var filled = 0;
 
@@ -94,7 +83,7 @@ public static class ProfileHelper
         return (totalRules, failedRules);
     }
 
-    public static double GetCompletionPercentage(this ProfileModel? profile, Tabs tab)
+    public static double GetCompletionPercentage(this ProfileModel? profile, Category tab)
     {
         var (total, failed) = profile.GetCompletion(tab);
 
@@ -107,7 +96,7 @@ public static class ProfileHelper
     {
         if (profile == null) return 0;
 
-        var tabs = Enum.GetValues<Tabs>();
+        var tabs = Enum.GetValues<Category>();
 
         int totalAll = 0;
         int completedAll = 0;

@@ -32,11 +32,11 @@
 <RenderControl T="FilterModel" State="State" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">
     <MudForm @ref="_form" FieldChanged="OnFieldChanged">
         <MudExpansionPanels Elevation="2">
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BASIC)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.BASIC)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Basic</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.BASIC)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.BASIC)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -90,11 +90,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.BIO)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.BIO)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Bio</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.BIO)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.BIO)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -168,11 +168,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.LIFESTYLE)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.LIFESTYLE)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Lifestyle</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.LIFESTYLE)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.LIFESTYLE)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -262,11 +262,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.PERSONALITY)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.PERSONALITY)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Personality</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.PERSONALITY)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.PERSONALITY)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -308,11 +308,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.INTEREST)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.INTEREST)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Interest</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.INTEREST)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.INTEREST)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -372,11 +372,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.RELATIONSHIP)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.RELATIONSHIP)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Relationship</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.RELATIONSHIP)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.RELATIONSHIP)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -418,11 +418,11 @@
                     </MudStack>
                 </ChildContent>
             </MudExpansionPanel>
-            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Tabs.GOAL)" HeaderClass="mud-primary-text">
+            <MudExpansionPanel ExpandedChanged="(bool value) => VisibleChanged(value, Category.GOAL)" HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
                         <MudText Color="Color.Primary" Typo="Typo.button">@Section.Goals</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Tabs.GOAL)</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@FilterValidation.GetTotalFilters(context, Category.GOAL)</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>

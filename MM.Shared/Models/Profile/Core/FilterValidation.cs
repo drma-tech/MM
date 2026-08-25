@@ -276,12 +276,12 @@ public class FilterValidation : AbstractValidator<FilterModel>
         return GetTotalFilters(model, tab: null) <= 8;
     }
 
-    public static int GetTotalFilters(FilterModel? model, Tabs? tab)
+    public static int GetTotalFilters(FilterModel? model, Category? tab)
     {
         if (model == null) return 0;
         var total = 0;
 
-        if (tab == Tabs.BASIC || tab == null)
+        if (tab == Category.BASIC || tab == null)
         {
             total++; //Region
             if (model.Nationality.Count > 0) total++;
@@ -291,7 +291,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.GenderIdentities.Count > 0) total++;
             if (model.SexualOrientations.Count > 0) total++;
         }
-        if (tab == Tabs.BIO || tab == null)
+        if (tab == Category.BIO || tab == null)
         {
             if (model.Ethnicity.Count > 0) total++;
             if (model.BodyType.Count > 0) total++;
@@ -300,7 +300,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.Neurodiversity.Count > 0) total++;
             if (model.Disabilities.Count > 0) total++;
         }
-        if (tab == Tabs.LIFESTYLE || tab == null)
+        if (tab == Category.LIFESTYLE || tab == null)
         {
             if (model.Drink.Count > 0) total++;
             if (model.Smoke.Count > 0) total++;
@@ -316,7 +316,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.TravelFrequency.Count > 0) total++;
             if (model.AnnualIncome.Count > 0) total++;
         }
-        if (tab == Tabs.PERSONALITY || tab == null)
+        if (tab == Category.PERSONALITY || tab == null)
         {
             if (model.MoneyPersonality == true) total++;
             if (model.SharedSpendingStyle == true) total++;
@@ -325,7 +325,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.LoveLanguage == true) total++;
             if (model.SexPersonality == true) total++;
         }
-        if (tab == Tabs.INTEREST || tab == null)
+        if (tab == Category.INTEREST || tab == null)
         {
             if (model.Food.Count > 0) total++;
             if (model.Vacation.Count > 0) total++;
@@ -336,7 +336,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.TVGenre.Count > 0) total++;
             if (model.ReadingGenre.Count > 0) total++;
         }
-        if (tab == Tabs.RELATIONSHIP || tab == null)
+        if (tab == Category.RELATIONSHIP || tab == null)
         {
             if (model.SharedFinances.Count > 0) total++;
             if (model.ConflictResolutionStyle.Count > 0) total++;
@@ -344,7 +344,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             if (model.TimeTogetherPreference.Count > 0) total++;
             if (model.OppositeSexFriendships.Count > 0) total++;
         }
-        if (tab == Tabs.GOAL || tab == null)
+        if (tab == Category.GOAL || tab == null)
         {
             if (model.RelationshipIntentions.Count > 0) total++;
             if (model.Relocation.HasValue) total++;

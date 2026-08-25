@@ -149,7 +149,7 @@ public partial class ProfileDataPage : PageCore<ProfileDataPage>
 
             var validator = new ProfileValidation();
 
-            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(nameof(ProfileHelper.Tabs.BASIC)), Cts.Token);
+            var result = await validator.ValidateAsync(Profile, options => options.IncludeRuleSets(nameof(Category.BASIC)), Cts.Token);
 
             if (result.IsValid)
             {

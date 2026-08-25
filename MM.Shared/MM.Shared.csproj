@@ -34,6 +34,11 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>CareerCluster.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Translations\Enum\Category.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Category.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Translations\Enum\ConflictResolutionStyle.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
@@ -315,6 +320,10 @@
 		<EmbeddedResource Update="Translations\Enum\BodyType.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>BodyType.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Translations\Enum\Category.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Category.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Translations\Enum\ConflictResolutionStyle.es.resx">
 			<Generator></Generator>

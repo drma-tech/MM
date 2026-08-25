@@ -36,7 +36,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.BASIC))
+                        @if (profile.IsValid(Category.BASIC))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -45,7 +45,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Basic</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.BASIC).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.BASIC).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -114,7 +114,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.BIO))
+                        @if (profile.IsValid(Category.BIO))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -123,7 +123,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Bio</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.BIO).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.BIO).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -184,7 +184,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.LIFESTYLE))
+                        @if (profile.IsValid(Category.LIFESTYLE))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -193,7 +193,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Lifestyle</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.LIFESTYLE).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.LIFESTYLE).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -288,7 +288,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.PERSONALITY))
+                        @if (profile.IsValid(Category.PERSONALITY))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -297,7 +297,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Personality</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.PERSONALITY).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.PERSONALITY).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -351,7 +351,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.INTEREST))
+                        @if (profile.IsValid(Category.INTEREST))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -360,7 +360,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Interest</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.INTEREST).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.INTEREST).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -426,7 +426,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.RELATIONSHIP))
+                        @if (profile.IsValid(Category.RELATIONSHIP))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -435,7 +435,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Relationship</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.RELATIONSHIP).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.RELATIONSHIP).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>
@@ -475,7 +475,7 @@
             <MudExpansionPanel HeaderClass="mud-primary-text">
                 <TitleContent>
                     <div class="d-flex">
-                        @if (profile.IsValid(Tabs.GOAL))
+                        @if (profile.IsValid(Category.GOAL))
                         {
                             <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" class="me-3"></MudIcon>
                         }
@@ -484,7 +484,7 @@
                             <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" class="me-3"></MudIcon>
                         }
                         <MudText Color="Color.Primary" Typo="Typo.button" class="me-3">@Section.Goals</MudText>
-                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Tabs.GOAL).ToString("P0")</MudChip>
+                        <MudChip T="string" Size="Size.Small" Label="true" Style="height: auto;">@profile.GetCompletionPercentage(Category.GOAL).ToString("P0")</MudChip>
                     </div>
                 </TitleContent>
                 <ChildContent>

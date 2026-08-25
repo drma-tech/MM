@@ -1,0 +1,28 @@
+﻿@page "/{culture}/tips/{category}"
+
+@inherits PageCore<TipsDetailsPage>
+
+<HeadComponent Title="@CategoryEnum.GetFieldSettings().Name" FixedTitle="true" Description="@CategoryEnum.GetFieldSettings().Description" Url=@($"/{Culture}/tips/{Category}") Index="false"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@CategoryEnum.GetFieldSettings().Name" Description="@CategoryEnum.GetFieldSettings().Description"></PageSectionComponent>
+
+<MudGrid Spacing="@CssHelper.SpaceMedium">
+    @foreach (var item in Fields)
+    {
+        <MudItem xs="12" lg="6">
+            <PageSectionComponent Title="@item.Name" Color="Color.Primary" Description="@item.Description">
+                <BodyFragment>
+                    <MudList T="string" Dense="true">
+                        @foreach (var item in GetTips(item.Tips))
+                        {
+                            <MudListItem Icon="@Icons.Material.Filled.Check" Style="text-align: justify;">
+                                <span class="me-2" style="font-weight: bold; color: var(--mud-palette-secondary);">@item.Key</span><span>@item.Value</span>
+                            </MudListItem>
+                        }
+                    </MudList>
+                </BodyFragment>
+            </PageSectionComponent>
+        </MudItem>
+    }
+</MudGrid>
+
+<FloatingButton Template="Template.Back"></FloatingButton>

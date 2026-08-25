@@ -13,7 +13,7 @@ namespace MM.WEB.Modules.Profile
         public RenderControlState<FilterModel?> State { get; set; } = new(null, obj => obj == null);
         private MudDialog? MudDialog { get; set; }
 
-        private Tabs? Tab { get; set; }
+        private Category? Tab { get; set; }
 
         private MudForm? _form;
         private bool IsDirty { get; set; }
@@ -30,7 +30,7 @@ namespace MM.WEB.Modules.Profile
             Heights = EnumHelper.GetValues<Height>();
         }
 
-        private void VisibleChanged(bool value, Tabs? tab)
+        private void VisibleChanged(bool value, Category? tab)
         {
             if (value)
                 Tab = tab;
