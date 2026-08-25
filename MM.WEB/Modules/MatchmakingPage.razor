@@ -1,14 +1,27 @@
-﻿@page "/{culture}/last-users/{region}"
+﻿@page "/{culture}/matchmaking/{region}"
 
-@inherits PageCore<LastUsersPage>
+@inherits PageCore<MatchmakingPage>
 
 @inject LastRegionUsersApi LastRegionUsersApi
 
-<HeadComponent Title="@(Translations.Title.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
-               Url=@($"/{Culture}/last-users/{Region}") Index="true" FixedAlternateLanguage="@Culture"></HeadComponent>
+<HeadComponent Title="@(Translations.Title.Matchmaker.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
+               Url=@($"/{Culture}/matchmaking/{Region}") Index="true" FixedAlternateLanguage="@Culture"></HeadComponent>
 
-<PageSectionComponent Title="@(Translations.Title.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
-                      CustomBodyClass="mb-12">
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@(Translations.Title.Matchmaker.CustomFormat(CountryEnum?.GetFieldSettings().Name))"
+                      Description="@(Translations.Description.LastUsers.CustomFormat(CountryEnum?.GetFieldSettings().Name))" CustomBodyClass="mb-12"></PageSectionComponent>
+
+<PageSectionComponent Title="@Translations.Module.Landing.PopularLocations" Color="Color.Secondary">
+    <BodyFragment>
+        @foreach (var item in LastUsers?.Items.Select(p => p.State).Where(p => p.NotEmpty()).Distinct() ?? [])
+        {
+            <MudChip T="string" Label="true" Color="Color.Primary" Size="AppStateStatic.Size">
+                @item
+            </MudChip>
+        }
+    </BodyFragment>
+</PageSectionComponent>
+
+<PageSectionComponent Title="@Translations.Module.Landing.RecentlyJoined" Color="Color.Secondary">
     <BodyFragment>
         <RenderControl State="LastUsersState" LoadingHeight="130px">
             <MudGrid Spacing="@CssHelper.SpaceSmall" Class="mb-2">
@@ -37,7 +50,7 @@
     </BodyFragment>
 </PageSectionComponent>
 
-<PageSectionComponent Title="@Translations.Module.Landing.LearnMoreAboutMM">
+<PageSectionComponent Title="@Translations.Module.Landing.LearnMoreAboutMM" Color="Color.Secondary">
     <BodyFragment>
         <MudGrid Spacing="@CssHelper.SpaceSmall">
             <MudItem xs="12" sm="6" md="4" lg="3">
@@ -68,7 +81,7 @@
     </BodyFragment>
 </PageSectionComponent>
 
-<PageSectionComponent Title="@Translations.Module.Landing.AvailableYourDevices">
+<PageSectionComponent Title="@Translations.Module.Landing.AvailableYourDevices" Color="Color.Secondary">
     <BodyFragment>
         <MudGrid Spacing="@CssHelper.SpaceSmall">
             @foreach (var store in AppInfo.Stores)
@@ -91,3 +104,18 @@
         </MudGrid>
     </BodyFragment>
 </PageSectionComponent>
+
+@if (!AppStateStatic.IsAuthenticated)
+{
+    <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
+        <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
+            @Translations.Module.Profile.HeroCall
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
+            @Translations.Module.Profile.HeroButton
+        </MudButton>
+        <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
+            @Translations.Module.Profile.HeroNote
+        </MudText>
+    </MudPaper>
+}

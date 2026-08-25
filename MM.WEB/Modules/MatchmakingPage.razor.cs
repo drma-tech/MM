@@ -4,7 +4,7 @@ using MM.Shared.Models.Dashboard;
 
 namespace MM.WEB.Modules
 {
-    public partial class LastUsersPage
+    public partial class MatchmakingPage
     {
         [Parameter] public string? Region { get; set; }
 
@@ -38,6 +38,11 @@ namespace MM.WEB.Modules
             CurrentPlatform = await AppStateStatic.GetPlatform(JsRuntime, Cts.Token);
 
             return true;
+        }
+
+        private async Task Login()
+        {
+            Navigation.NavigateTo($"/{Culture}/auth/login");
         }
     }
 }

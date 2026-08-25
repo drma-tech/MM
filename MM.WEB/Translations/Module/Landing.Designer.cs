@@ -475,6 +475,15 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Popular locations.
+        /// </summary>
+        public static string PopularLocations {
+            get {
+                return ResourceManager.GetString("PopularLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recently Joined.
         /// </summary>
         public static string RecentlyJoined {

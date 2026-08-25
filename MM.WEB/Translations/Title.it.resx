@@ -135,11 +135,11 @@
   <data name="HowItWorks" xml:space="preserve">
     <value>Come funziona</value>
   </data>
-  <data name="LastUsers" xml:space="preserve">
-    <value>Trova il tuo partner per la vita nel tuo Paese ({0})</value>
-  </data>
   <data name="Main" xml:space="preserve">
     <value>Principale</value>
+  </data>
+  <data name="Matchmaker" xml:space="preserve">
+    <value>Matchmaking, incontri e single nel tuo Paese ({0})</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profilo</value>

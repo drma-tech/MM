@@ -255,6 +255,9 @@
   <data name="Phase4Title" xml:space="preserve">
     <value>Phase 4 (30 000 à 40 000 utilisateurs)</value>
   </data>
+  <data name="PopularLocations" xml:space="preserve">
+    <value>Lieux populaires</value>
+  </data>
   <data name="RecentlyJoined" xml:space="preserve">
     <value>Récemment rejoint</value>
   </data>
