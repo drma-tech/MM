@@ -2,7 +2,7 @@
 
 @inherits PageCore<TipsDetailsPage>
 
-<HeadComponent Title="@CategoryEnum.GetFieldSettings().Name" FixedTitle="true" Description="@CategoryEnum.GetFieldSettings().Description" Url=@($"/{Culture}/tips/{Category}") Index="false"></HeadComponent>
+<HeadComponent Title="@CategoryEnum.GetFieldSettings().Name" FixedTitle="true" Description="@CategoryEnum.GetFieldSettings().Description" Url=@($"/{Culture}/tips/{Category}") Index="true"></HeadComponent>
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@CategoryEnum.GetFieldSettings().Name" Description="@CategoryEnum.GetFieldSettings().Description"></PageSectionComponent>
 
 <MudGrid Spacing="@CssHelper.SpaceMedium">
