@@ -11,20 +11,6 @@ public class PrincipalFunction(CosmosMainRepository repo)
     //    return await req.CreateResponse(data, TtlCache.OneDay, cancellationToken);
     //}
 
-    //[Function("PrincipalSyncAll")]
-    //public async Task PrincipalSyncAll(
-    //   [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/sync")] HttpRequestData req, CancellationToken cancellationToken)
-    //{
-    //    var data = await repo.ListAll<AuthPrincipal>(DocumentType.Principal, cancellationToken);
-
-    //    foreach (var item in data)
-    //    {
-    //        item._tsCreated ??= item._ts;
-
-    //        await repo.UpsertItemAsync(item, cancellationToken);
-    //    }
-    //}
-
     //[Function("PrincipalPrivateModeUser")]
     //public async Task<AuthPrincipal?> PrincipalPrivateModeUser(
     //    [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private/{userId}")] HttpRequestData req, string userId, CancellationToken cancellationToken)

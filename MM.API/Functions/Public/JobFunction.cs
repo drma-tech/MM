@@ -37,13 +37,13 @@ public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repo
 
         foreach (var job in jobs)
         {
-            var userId = job.Id.Split(":")[1];
+            var userId = job.Identity.RawId;
 
-            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
+            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal not found");
 
-            if (!principal!.PublicProfile && job.Email.NotEmpty())
+            if (!principal.PublicProfile && job.Email.NotEmpty())
             {
-                await zepto.SendGoPublicEmail(job.Email, userId, cancellationToken);
+                await zepto.SendGoPublicEmail(job.Email, userId!, cancellationToken);
             }
 
             await repoJob.DeleteItemAsync<GoPublicModel>(new JobIdentity(JobType.GoPublic, job.Id));

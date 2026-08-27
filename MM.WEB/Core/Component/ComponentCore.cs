@@ -23,6 +23,8 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
 
     /// <summary>
     /// To load static data that does not change and does not depend on parameters.
+    /// 
+    /// Note: Omitting the await (_ = task) can cause static page generation to fail.
     /// </summary>
     /// <returns></returns>
     protected virtual Task LoadStaticDataAsync()
@@ -133,7 +135,7 @@ public abstract class ComponentCore<T> : ComponentBase, IDisposable where T : cl
 
         if (result == true)
         {
-            await JsRuntime.Window().InvokeVoidAsync("open", url, "_blank");
+            await JsRuntime.Window().InvokeVoidAsync("open", $"{url}?utm_source={AppInfo.Domain}.com", "_blank");
         }
     }
 
