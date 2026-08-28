@@ -48,7 +48,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
         var latitude = req.GetQueryParameters()["latitude"];
         var longitude = req.GetQueryParameters()["longitude"];
 
-        var client = factory.CreateClient();
+        using var client = factory.CreateClient();
         return await client.Get<HereJson>($"https://browse.search.hereapi.com/v1/browse?at={latitude},{longitude}&lang=en-US&limit=1&apiKey={HereApiKey}", cancellationToken);
     }
 

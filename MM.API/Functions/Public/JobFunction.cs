@@ -39,9 +39,10 @@ public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repo
         {
             var userId = job.Identity.RawId;
 
-            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal not found");
+            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
-            if (!principal.PublicProfile && job.Email.NotEmpty())
+            //principal may no longer exist.
+            if (principal != null && !principal.PublicProfile && job.Email.NotEmpty())
             {
                 await zepto.SendGoPublicEmail(job.Email, userId!, cancellationToken);
             }
