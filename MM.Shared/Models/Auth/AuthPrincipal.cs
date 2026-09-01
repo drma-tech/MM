@@ -12,7 +12,6 @@ public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.
     public bool PublicProfile { get; set; }
     public int Sparks { get; set; }
 
-    public string[] AuthProviders { get; set; } = [];
     public ISet<AuthPurchase> AuthPurchases { get; set; } = new HashSet<AuthPurchase>();
     public ISet<Event> Events { get; set; } = new HashSet<Event>();
 

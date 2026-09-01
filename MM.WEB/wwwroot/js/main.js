@@ -64,6 +64,11 @@ const supabaseConfig = {
     supabaseKey: "sb_publishable_5QUdGWH9m1rHAWYehPoivQ_TrEnJeIO",
 };
 
+const clerkConfig = {
+    devPk: "pk_test_cGlja2VkLXJlZGZpc2gtMjMxOS5jbGVyay5hY2NvdW50cy5kZXYk",
+    prdPk: "pk_live_Y2xlcmsuc3RyZWFtaW5nZGlzY292ZXJ5LmNvbSQ",
+};
+
 const baseApiUrl = isLocalhost ? "http://localhost:7091" : "";
 
 window.appConfig = {
@@ -77,5 +82,6 @@ window.appConfig = {
     isPrintScreen,
     servicesConfig,
     supabaseConfig,
+    clerkConfig,
     baseApiUrl
 };

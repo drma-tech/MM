@@ -45,12 +45,12 @@ namespace MM.WEB.Layout
                 };
 
                 // 1 = capture the claims
-                BufferedEvent.Register(nameof(SupabaseAuthChanged), async (string? token) =>
+                BufferedEvent.Register(nameof(ClerkAuthChanged), async (string? token) =>
                 {
                     try
                     {
-                        var provider = (SupabaseAuthStateProvider)AuthStateProvider;
-                        provider.OnSupabaseAuthChanged(token);
+                        var provider = (CompositeAuthStateProvider)AuthStateProvider;
+                        provider.OnClerkAuthChanged(token);
                     }
                     catch (Exception ex)
                     {
@@ -105,7 +105,7 @@ namespace MM.WEB.Layout
             if (!authenticated) AppStateStatic.IsPremiumUser = false;
 
             //principal to be used for all the app
-            AppStateStatic.Principal = await PrincipalApi.Get(setNewVersion: true, Cts.Token);
+            AppStateStatic.Principal = await PrincipalApi.Get(setNewVersion: false, Cts.Token);
 
             AppStateStatic.IsPremiumUser = AppStateStatic.Principal?.Sparks > 0;
 
@@ -138,7 +138,7 @@ namespace MM.WEB.Layout
 
         private async Task RegisterLogin()
         {
-            var minInterval = TimeSpan.FromHours(1);
+            var minInterval = TimeSpan.FromHours(12);
             var now = DateTimeOffset.UtcNow;
 
             if (AppStateStatic.LastAccess != null && now - AppStateStatic.LastAccess < minInterval)
@@ -152,14 +152,6 @@ namespace MM.WEB.Layout
             await LoginApi.Add(platform, country, CancellationToken.None);
 
             AppStateStatic.LastAccess = now;
-
-            if (AppStateStatic.Principal == null) throw new NotificationException("principal model not available");
-
-            if (AppStateStatic.Principal.AuthProviders.Empty() || !AppStateStatic.Principal.AuthProviders.Contains(AppStateStatic.User!.FindFirst("idp")!.Value)) //if its a new auth provider
-            {
-                AppStateStatic.Principal.AuthProviders = [.. AppStateStatic.Principal.AuthProviders.Union([AppStateStatic.User!.FindFirst("idp")!.Value], StringComparer.OrdinalIgnoreCase)];
-                await PrincipalApi.Update(AppStateStatic.Principal, CancellationToken.None);
-            }
         }
 
         private async Task ApplyDarkMode(CancellationToken cancellationToken)
@@ -195,6 +187,11 @@ namespace MM.WEB.Layout
             }
         }
 
+        /// <summary>
+        /// asks for a review after the third visit, every 24 hours
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         private async Task AskUSerForReview(CancellationToken cancellationToken)
         {
             var accesses = await JsRuntime.Utils().GetStorage("session-accesses", JavascriptContext.Default.HashSetDateTime, cancellationToken) ?? [];
@@ -223,6 +220,11 @@ namespace MM.WEB.Layout
             }
         }
 
+        /// <summary>
+        /// log all app access locally (in the browser) with a 2-hour delay
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         private async Task RegisterSessionAccesses(CancellationToken cancellationToken)
         {
             var accesses = await JsRuntime.Utils().GetStorage("session-accesses", JavascriptContext.Default.HashSetDateTime, cancellationToken) ?? [];
@@ -295,9 +297,9 @@ namespace MM.WEB.Layout
         }
 
         [JSInvokable]
-        public static void SupabaseAuthChanged(string? token)
+        public static void ClerkAuthChanged(string? token)
         {
-            _ = BufferedEvent.Invoke(nameof(SupabaseAuthChanged), token);
+            _ = BufferedEvent.Invoke(nameof(ClerkAuthChanged), token);
         }
 
         [JSInvokable]

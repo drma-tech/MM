@@ -12,7 +12,7 @@ namespace MM.WEB.Api.Module.Cosmos.Admin
 
         public async Task Migrate(string? oldId, string? newId, CancellationToken cancellationToken)
         {
-            await PutAsync($"principal/migrate/{oldId}/{newId}", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
+            await PostAsync($"principal/migrate/{oldId}/{newId}", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
         }
     }
 }

@@ -6,7 +6,7 @@ using MM.Shared.Models.Job;
 
 namespace MM.API.Functions.Public;
 
-public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repoJob)
+public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repoJob, IHttpClientFactory factory)
 {
     //[Function("GoPublicTransfer")]
     //public async Task GoPublicTransfer([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic-transfer")] HttpRequestData req, CancellationToken cancellationToken)
@@ -33,7 +33,7 @@ public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repo
     public async Task GoPublic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var jobs = await repoJob.Query<GoPublicModel>(JobType.GoPublic, job => job.RunAt <= DateTimeOffset.UtcNow, transform: null, cancellationToken);
-        var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
+        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
 
         foreach (var job in jobs)
         {

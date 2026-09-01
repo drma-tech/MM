@@ -14,10 +14,10 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
 {
     [Function("StorageUploadPhoto")]
     public async Task<ProfileModel> StorageUploadPhoto(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "storage/upload-photo")]
         HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var request = await req.GetBody<PhotoRequest>(cancellationToken);
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
@@ -89,10 +89,10 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
 
     [Function("StorageDeletePhoto")]
     public async Task<ProfileModel> StorageDeletePhoto(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/delete-photo/{photoType}")]
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "storage/delete-photo/{photoType}")]
         HttpRequestData req, PhotoType photoType, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");
 
@@ -117,9 +117,9 @@ public class StorageFunction(CosmosMainRepository repoGen, CosmosSafetyRepositor
 
     [Function("StorageUploadPhotoValidation")]
     public async Task<ValidationModel> UploadPhotoValidation(
-       [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "storage/upload-photo-validation")] HttpRequestData req, CancellationToken cancellationToken)
+       [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "storage/upload-photo-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var request = await req.GetBody<PhotoValidationRequest>(cancellationToken);
 
         var profile = await repo.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("Profile not found");

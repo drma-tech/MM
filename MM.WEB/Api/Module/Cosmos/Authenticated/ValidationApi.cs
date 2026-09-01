@@ -23,6 +23,6 @@ public class ValidationApi(IHttpClientFactory http) : ApiCosmos<ValidationModel>
 
     public async Task<ValidationModel?> UploadPhotoValidation(PhotoValidationRequest request, CancellationToken cancellationToken)
     {
-        return await PutAsync("storage/upload-photo-validation", request, ApiContext.Default.PhotoValidationRequest, states: [], cancellationToken);
+        return await PostAsync("storage/upload-photo-validation", request, ApiContext.Default.PhotoValidationRequest, states: [], cancellationToken);
     }
 }

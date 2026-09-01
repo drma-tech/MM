@@ -93,7 +93,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileGetData(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
         return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
@@ -103,7 +103,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileGetFilter(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -113,7 +113,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileGetSetting(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -123,7 +123,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileValidation(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-validation")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
@@ -171,9 +171,9 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
 
     [Function("ProfileUpdateData")]
     public async Task<ProfileModel> ProfileUpdateData(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/update-data")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<ProfileModel>(cancellationToken);
         var principal = await _repoGen.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new NotificationException("user not found");
 
@@ -191,7 +191,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
 
     [Function("ProfileUpdateFilter")]
     public async Task<FilterModel> ProfileUpdateFilter(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/update-filter")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var body = await req.GetBody<FilterModel>(cancellationToken);
 
@@ -206,7 +206,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
 
     [Function("ProfileUpdateSetting")]
     public async Task<SettingModel> ProfileUpdateSetting(
-        [HttpTrigger(AuthorizationLevel.Function, Method.Put, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Function, Method.Post, Route = "profile/update-setting")] HttpRequestData req, CancellationToken cancellationToken)
     {
         var body = await req.GetBody<SettingModel>(cancellationToken);
 
@@ -219,7 +219,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileGetMyLikes(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mylikes")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var obj = await _repoGen.ReadItemAsync<MyLikesModel>(new MainIdentity(MainType.Likes, userId), cancellationToken);
 
@@ -230,7 +230,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
     public async Task<HttpResponseData?> ProfileGetMyMatches(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-mymatches")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var obj = await _repoGen.ReadItemAsync<MyMatchesModel>(new MainIdentity(MainType.Matches, userId), cancellationToken);
 

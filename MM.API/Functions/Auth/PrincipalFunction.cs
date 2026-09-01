@@ -1,11 +1,9 @@
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.Logging;
 using MM.API.Core.Auth;
 using MM.Shared.Core.Types;
 using MM.Shared.Models.Auth;
-using MM.Shared.Models.Blocked;
 using MM.Shared.Models.Job;
 using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
@@ -22,11 +20,11 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
     public async Task<HttpResponseData?> PrincipalGet(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "principal/get")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var model = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
-        return await req.CreateResponse(model, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneHour, cancellationToken);
     }
 
     [Function("PrincipalAdd")]
@@ -35,32 +33,14 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
     {
         //note: its called once per user (first access)
 
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var body = await req.GetBody<AuthPrincipal>(cancellationToken);
         var platform = req.GetQueryParameters()["platform"];
         var country = req.GetQueryParameters()["country"];
 
         await req.ValidateUser(body.UserId, cancellationToken);
 
-        //check if user ip is blocked for insert
         var ip = req.GetUserIP(includePort: false) ?? throw new UnhandledException("Failed to retrieve IP");
-        var blockedIp = await repoCache.ReadItemAsync<DataBlockedCache>(new CacheIdentity($"block-{ip}"), cancellationToken);
-        if (blockedIp?.Data != null)
-        {
-            blockedIp.Data.Quantity++;
-            await repoCache.UpsertItemAsync(blockedIp);
-
-            if (blockedIp.Data?.Quantity > 2)
-            {
-                //todo: create a mechanism to increase block time if user persist on this action (first = block one hour, second = block 24 hours)
-                req.LogWarning($"PrincipalAdd blocked IP {ip}");
-                throw new NotificationException("You've reached the limit for creating profiles. Please try again later.");
-            }
-        }
-        else
-        {
-            _ = repoCache.CreateItemAsync(new DataBlockedCache($"block-{ip}", new DataBlocked()));
-        }
 
         foreach (var item in body.Events.Where(w => w.Ip.Empty()))
         {
@@ -81,12 +61,11 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         await repoJob.UpsertItemAsync(job30);
 
-        var zepto = new ZeptoMailClient(ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
+        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
         if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
 
         var principal = new AuthPrincipal(userId)
         {
-            AuthProviders = body.AuthProviders,
             DisplayName = body.DisplayName,
             Email = body.Email,
             Events = body.Events,
@@ -108,27 +87,11 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         return principal;
     }
 
-    [Function("PrincipalUpdate")]
-    public async Task<AuthPrincipal?> PrincipalUpdate(
-       [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/update")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        var userId = await req.GetUserIdAsync(cancellationToken);
-        var body = await req.GetBody<AuthPrincipal>(cancellationToken);
-
-        await req.ValidateUser(body.UserId, cancellationToken);
-
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
-
-        principal!.AuthProviders = body.AuthProviders;
-
-        return await repo.UpsertItemAsync(principal);
-    }
-
     [Function("PrincipalEvent")]
     public async Task<AuthPrincipal> PrincipalEvent(
        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/event")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
         var ip = req.GetUserIP(includePort: true);
 
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("Client null");
@@ -145,7 +108,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
     public async Task PrincipalRemove(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Delete, Route = "principal/remove")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var myPrincipal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
         if (myPrincipal != null)
@@ -218,9 +181,9 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
     [Function("PrincipalPublicMode")]
     public async Task<AuthPrincipal?> PrincipalPublicMode(
-     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
+     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
         var ProfileValidator = new ProfileValidation();
@@ -262,9 +225,9 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
     [Function("PrincipalPrivateMode")]
     public async Task<AuthPrincipal?> PrincipalPrivateMode(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Put, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var userId = await req.GetUserIdAsync(cancellationToken);
+        var userId = await req.GetUserIdAsync();
 
         var profile = await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
         await repoOff.UpsertItemAsync(profile);

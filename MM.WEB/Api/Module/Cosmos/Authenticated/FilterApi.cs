@@ -12,6 +12,6 @@ public class FilterApi(IHttpClientFactory http) : ApiCosmos<FilterModel>(http, A
 
     public async Task<FilterModel?> Update(FilterModel? obj, CancellationToken cancellationToken)
     {
-        return await PutAsync("profile/update-filter", obj, ApiContext.Default.FilterModel, states: [], cancellationToken);
+        return await PostAsync("profile/update-filter", obj, ApiContext.Default.FilterModel, states: [], cancellationToken);
     }
 }

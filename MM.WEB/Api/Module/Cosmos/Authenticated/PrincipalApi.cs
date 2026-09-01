@@ -17,13 +17,6 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>
         return await PostAsync($"principal/add?platform={platform}&country={country}", obj, states: [], cancellationToken);
     }
 
-    public async Task<AuthPrincipal?> Update(AuthPrincipal? obj, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(obj);
-
-        return await PutAsync("principal/update", obj, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
-    }
-
     public async Task<AuthPrincipal?> Event(string app, string msg, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(msg);
@@ -38,17 +31,17 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>
 
     public async Task<AuthPrincipal?> Public(CancellationToken cancellationToken)
     {
-        return await PutAsync("principal/public", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
+        return await PostAsync("principal/public", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
     }
 
     public async Task<AuthPrincipal?> Private(CancellationToken cancellationToken)
     {
-        return await PutAsync("principal/private", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
+        return await PostAsync("principal/private", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
     }
 
     public async Task<AuthPrincipal?> PrivateManage(string userId, CancellationToken cancellationToken)
     {
-        return await PutAsync($"principal/private/{userId}", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
+        return await PostAsync($"principal/private/{userId}", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
     }
 
     public async Task<AuthPrincipal?> StripeCustomer(CancellationToken cancellationToken)

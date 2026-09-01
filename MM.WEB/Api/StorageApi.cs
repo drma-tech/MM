@@ -10,12 +10,12 @@ public class StorageApi(IHttpClientFactory factory) : ApiCosmos<ProfileModel>(fa
     public async Task<ProfileModel?> UploadPhoto(PhotoRequest request, CancellationToken cancellationToken)
     {
         SetNewVersion();
-        return await PutAsync("storage/upload-photo", request, ApiContext.Default.PhotoRequest, states: [], cancellationToken);
+        return await PostAsync("storage/upload-photo", request, ApiContext.Default.PhotoRequest, states: [], cancellationToken);
     }
 
     public async Task<ProfileModel?> DeletePhotoGallery(PhotoType photoType, CancellationToken cancellationToken)
     {
         SetNewVersion();
-        return await PutAsync($"storage/delete-photo/{(int)photoType}", null, ApiContext.Default.ProfileModel, states: [], cancellationToken);
+        return await PostAsync($"storage/delete-photo/{(int)photoType}", null, ApiContext.Default.ProfileModel, states: [], cancellationToken);
     }
 }

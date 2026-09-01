@@ -24,13 +24,6 @@ public static class PopupHelper
         await service.ShowAsync<SelectPicturePopup>("Picture", parameters, Options(MaxWidth.Medium));
     }
 
-    public static async Task AccountPopup(this IDialogService service)
-    {
-        var parameters = new DialogParameters<AccountPopup> { };
-
-        await service.ShowAsync<AccountPopup>(Translations.Module.Auth.MyAccount, parameters, Options(MaxWidth.Small));
-    }
-
     public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
         ProfileModel? fakeView = null, bool onlyCompatibility = false)
     {
