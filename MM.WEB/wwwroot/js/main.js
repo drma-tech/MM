@@ -66,7 +66,7 @@ const supabaseConfig = {
 
 const clerkConfig = {
     devPk: "pk_test_cGlja2VkLXJlZGZpc2gtMjMxOS5jbGVyay5hY2NvdW50cy5kZXYk",
-    prdPk: "pk_live_Y2xlcmsuc3RyZWFtaW5nZGlzY292ZXJ5LmNvbSQ",
+    prdPk: "pk_live_Y2xlcmsubW9kZXJuLW1hdGNobWFrZXIuY29tJA",
 };
 
 const baseApiUrl = isLocalhost ? "http://localhost:7091" : "";

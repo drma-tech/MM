@@ -4,6 +4,7 @@ using Microsoft.Azure.Functions.Worker.Middleware;
 using MM.API.Core.Auth;
 using System.Diagnostics;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace MM.API.Core;
 
@@ -19,6 +20,14 @@ internal sealed class ApiMiddleware : IFunctionsWorkerMiddleware
             if (req is null)
             {
                 await next(context);
+                return;
+            }
+
+            if (ApiStartup.Configurations.IsMaintenanceMode)
+            {
+                var culture = req.GetUserCulture();
+                var msg = Shared.Translations.Validation.Validations.ResourceManager.GetString(nameof(Shared.Translations.Validation.Validations.MaintenanceMode), culture);
+                await context.SetHttpResponseStatusCode(HttpStatusCode.ServiceUnavailable, msg!);
                 return;
             }
 

@@ -123,6 +123,9 @@
   <data name="DomainDeactivated" xml:space="preserve">
     <value>This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the 'www'.</value>
   </data>
+  <data name="MaintenanceMode" xml:space="preserve">
+    <value>We are currently undergoing maintenance. Please try again in a few minutes.</value>
+  </data>
   <data name="OlderToRegister" xml:space="preserve">
     <value>You must be 18 or older to register</value>
   </data>

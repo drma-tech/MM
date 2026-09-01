@@ -11,6 +11,7 @@ public class Configurations
     public Didit? Didit { get; set; }
     public ClerkAuth? ClerkAuth { get; set; }
     public ZeptoMail? ZeptoMail { get; set; }
+    public bool IsMaintenanceMode { get; set; }
 }
 
 public class CosmosDB

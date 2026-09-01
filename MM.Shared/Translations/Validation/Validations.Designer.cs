@@ -79,6 +79,15 @@ namespace MM.Shared.Translations.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We are currently undergoing maintenance. Please try again in a few minutes..
+        /// </summary>
+        public static string MaintenanceMode {
+            get {
+                return ResourceManager.GetString("MaintenanceMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must be 18 or older to register.
         /// </summary>
         public static string OlderToRegister {
