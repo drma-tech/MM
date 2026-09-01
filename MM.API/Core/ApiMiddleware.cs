@@ -4,7 +4,6 @@ using Microsoft.Azure.Functions.Worker.Middleware;
 using MM.API.Core.Auth;
 using System.Diagnostics;
 using System.Net;
-using System.Text.RegularExpressions;
 
 namespace MM.API.Core;
 
