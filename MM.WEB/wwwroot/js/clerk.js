@@ -56,7 +56,7 @@ function loadClerkScript() {
 
         script.crossOrigin = "anonymous";
         script.type = "text/javascript";
-        script.src = "https://central-kiwi-3030.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js";
+        script.src = "https://picked-redfish-2319.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js";
 
         script.dataset.clerkPublishableKey = publishableKey;
 
