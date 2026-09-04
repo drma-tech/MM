@@ -198,17 +198,23 @@
   <data name="Identification" xml:space="preserve">
     <value>Identification</value>
   </data>
+  <data name="Interest" xml:space="preserve">
+    <value>Intérêt</value>
+  </data>
+  <data name="InterestDesc" xml:space="preserve">
+    <value>Les personnes qui ont exprimé leur intérêt à vous connaître.</value>
+  </data>
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Je fais confiance au système de compatibilité de la plateforme et ne sélectionnerai que ce qui n'est pas négociable pour moi.</value>
   </data>
   <data name="LatestUsersRegion" xml:space="preserve">
     <value>Derniers utilisateurs enregistrés dans votre région ({0})</value>
   </data>
-  <data name="Likes" xml:space="preserve">
-    <value>Goûts</value>
-  </data>
   <data name="Matches" xml:space="preserve">
     <value>Rencontres</value>
+  </data>
+  <data name="MatchesDesc" xml:space="preserve">
+    <value>Vos relations, où vous pouvez discuter, apprendre à vous connaître et franchir la prochaine étape ensemble.</value>
   </data>
   <data name="Maximum3Items" xml:space="preserve">
     <value>Choisissez un maximum de 3 éléments pour chaque champ</value>
@@ -302,6 +308,9 @@
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Suggestions</value>
+  </data>
+  <data name="SuggestionsDesc" xml:space="preserve">
+    <value>Nos principales recommandations pour les personnes qui pourraient vous convenir, en fonction de vos préférences et de votre compatibilité.</value>
   </data>
   <data name="TermTopic1" xml:space="preserve">
     <value>Soyez honnête dans les réponses données sur ce formulaire. Toutes les informations contenues dans ce document sont susceptibles de dénonciations et peuvent être évaluées ;</value>

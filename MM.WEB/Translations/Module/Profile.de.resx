@@ -198,17 +198,23 @@
   <data name="Identification" xml:space="preserve">
     <value>Identifikation</value>
   </data>
+  <data name="Interest" xml:space="preserve">
+    <value>Interesse</value>
+  </data>
+  <data name="InterestDesc" xml:space="preserve">
+    <value>Menschen, die Interesse bekundet haben, Sie kennenzulernen.</value>
+  </data>
   <data name="ITrustPlataform" xml:space="preserve">
     <value>Ich vertraue dem Kompatibilitätssystem der Plattform und wähle nur das aus, was für mich nicht verhandelbar ist.</value>
   </data>
   <data name="LatestUsersRegion" xml:space="preserve">
     <value>Neueste in Ihrer Region registrierte Benutzer ({0})</value>
   </data>
-  <data name="Likes" xml:space="preserve">
-    <value>Gefällt mir</value>
-  </data>
   <data name="Matches" xml:space="preserve">
     <value>Matches</value>
+  </data>
+  <data name="MatchesDesc" xml:space="preserve">
+    <value>Ihre Kontakte, bei denen Sie chatten, sich kennenlernen und gemeinsam den nächsten Schritt gehen können.</value>
   </data>
   <data name="Maximum3Items" xml:space="preserve">
     <value>Wählen Sie für jedes Feld maximal 3 Elemente aus</value>
@@ -302,6 +308,9 @@
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Vorschläge</value>
+  </data>
+  <data name="SuggestionsDesc" xml:space="preserve">
+    <value>Unsere Top-Empfehlungen für Personen, die basierend auf Ihren Vorlieben und Ihrer Kompatibilität gut zu Ihnen passen könnten.</value>
   </data>
   <data name="TermTopic1" xml:space="preserve">
     <value>Seien Sie bei den Antworten auf diesem Formular ehrlich. Alle hierin enthaltenen Informationen sind anfechtbar und können ausgewertet werden;</value>

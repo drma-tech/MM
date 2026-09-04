@@ -3,7 +3,7 @@
 
 @using MM.Shared.Models.Profile
 
-<PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Likes">
+<PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Interest" Description="@Translations.Module.Profile.InterestDesc">
     <BodyFragment>
         <RenderControl State="LikesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px" Context="likes">
             <Slider List="likes?.Items ?? new HashSet<PersonModel>()" Context="item">

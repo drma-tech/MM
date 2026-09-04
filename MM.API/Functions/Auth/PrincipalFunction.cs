@@ -1,3 +1,4 @@
+using Clerk.BackendAPI;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
@@ -177,6 +178,10 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
                 await http.SendAsync(userRequest, cancellationToken);
             }
         }
+
+        var sdk = new ClerkBackendApi(bearerAuth: ApiStartup.Configurations.ClerkAuth!.SecretKey);
+
+        await sdk.Users.DeleteAsync(userId);
     }
 
     [Function("PrincipalPublicMode")]

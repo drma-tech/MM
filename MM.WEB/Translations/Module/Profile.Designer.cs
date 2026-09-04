@@ -304,6 +304,24 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interest.
+        /// </summary>
+        public static string Interest {
+            get {
+                return ResourceManager.GetString("Interest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People who have expressed interest in getting to know you..
+        /// </summary>
+        public static string InterestDesc {
+            get {
+                return ResourceManager.GetString("InterestDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I trust the platform&apos;s compatibility system and will only select what is non-negotiable for me..
         /// </summary>
         public static string ITrustPlataform {
@@ -322,20 +340,20 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Likes.
-        /// </summary>
-        public static string Likes {
-            get {
-                return ResourceManager.GetString("Likes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Matches.
         /// </summary>
         public static string Matches {
             get {
                 return ResourceManager.GetString("Matches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your connections, where you can chat, get to know each other, and take the next step together..
+        /// </summary>
+        public static string MatchesDesc {
+            get {
+                return ResourceManager.GetString("MatchesDesc", resourceCulture);
             }
         }
         
@@ -615,6 +633,15 @@ namespace MM.WEB.Translations.Module {
         public static string Suggestions {
             get {
                 return ResourceManager.GetString("Suggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our top recommendations for people who may be a great match for you, based on your preferences and compatibility..
+        /// </summary>
+        public static string SuggestionsDesc {
+            get {
+                return ResourceManager.GetString("SuggestionsDesc", resourceCulture);
             }
         }
         
