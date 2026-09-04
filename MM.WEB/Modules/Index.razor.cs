@@ -72,7 +72,7 @@ namespace MM.WEB.Modules
 
         private async Task Login()
         {
-            Navigation.NavigateTo($"/{Culture}/auth/login?returnUrl={Uri.EscapeDataString(Navigation.Uri.Split('#')[0])}");
+            await JsRuntime.Clerk().SignInAsync(Cts.Token);
         }
 
         private async Task DialogCountriesCloseClick()

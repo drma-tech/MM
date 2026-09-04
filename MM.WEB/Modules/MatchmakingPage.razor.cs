@@ -42,7 +42,7 @@ namespace MM.WEB.Modules
 
         private async Task Login()
         {
-            Navigation.NavigateTo($"/{Culture}/auth/login");
+            await JsRuntime.Clerk().SignInAsync(Cts.Token);
         }
     }
 }
