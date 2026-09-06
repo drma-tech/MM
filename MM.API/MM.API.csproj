@@ -23,10 +23,10 @@
 		<Compile Remove="Functions\SignalRFunction.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.11" />
+		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.12" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.2" />
 		<PackageReference Include="Clerk.BackendAPI" Version="3.0.0" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.203">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.218">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
