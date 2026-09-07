@@ -13,12 +13,14 @@
 
 <PageSectionComponent Title="@Translations.Module.Landing.PopularLocations" Color="Color.Secondary">
     <BodyFragment>
-        @foreach (var item in LastUsers?.Items.Select(p => p.State).Where(p => p.NotEmpty()).Distinct() ?? [])
-        {
-            <MudChip T="string" Label="true" Color="Color.Primary" Size="AppStateStatic.Size">
-                @item
-            </MudChip>
-        }
+        <RenderControl State="LastUsersState" LoadingHeight="130px">
+            @foreach (var item in LastUsers?.Items.Select(p => p.State).Where(p => p.NotEmpty()).Distinct() ?? [])
+            {
+                <MudChip T="string" Label="true" Color="Color.Primary" Size="AppStateStatic.Size">
+                    @item
+                </MudChip>
+            }
+        </RenderControl>
     </BodyFragment>
 </PageSectionComponent>
 

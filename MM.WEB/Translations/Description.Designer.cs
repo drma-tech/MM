@@ -106,6 +106,15 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your personal space to view your profile, discover suggestions, and keep track of your connections..
+        /// </summary>
+        internal static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modern Matchmaker is for people seeking meaningful, long-term relationships without the limits of dating apps or the high cost of traditional matchmaking..
         /// </summary>
         internal static string WhoIsItFor {

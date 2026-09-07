@@ -10,7 +10,9 @@
 @inject LastRegionUsersApi LastRegionUsersApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@Translations.Title.Profile" Url=@($"/{Culture}/profile") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Title.Profile" Description="@Translations.Description.Profile" Url=@($"/{Culture}/profile") Index="true"></HeadComponent>
+
+<PageSectionComponent IsPageHeader="true" Title="@Translations.Title.Profile" Description="@Translations.Description.Profile"></PageSectionComponent>
 
 @if (!AppStateStatic.IsAuthenticated)
 {

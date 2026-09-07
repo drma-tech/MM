@@ -132,6 +132,9 @@
   <data name="LastUsers" xml:space="preserve">
     <value>Encuentra a tu pareja ideal en tu país ({0}) con Modern Matchmaker. Descubre miembros compatibles mediante un sistema de emparejamiento inteligente.</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Tu espacio personal para ver tu perfil, descubrir sugerencias y hacer un seguimiento de tus conexiones.</value>
+  </data>
   <data name="WhoIsItFor" xml:space="preserve">
     <value>Modern Matchmaker es para personas que buscan relaciones significativas y duraderas sin los límites de las aplicaciones de citas o el alto costo del emparejamiento tradicional.</value>
   </data>

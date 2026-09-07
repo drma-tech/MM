@@ -7,7 +7,7 @@
 @inject LastUsersApi LastUsersApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@Translations.Title.AppSubtitle" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="@Translations.Title.AppSubtitle" FixedTitle="true" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
@@ -126,7 +126,7 @@
                         <MudChip T="string" Color="Color.Secondary" Label="true" Style="padding: 0.2rem; position: absolute; bottom: 0; left: 0; height: auto; z-index: 1;" Size="Size.Small">
                             @item.Created.Humanize()
                         </MudChip>
-                        <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
+                        <MudImage Src="images/no-face-photo.webp" Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;" Alt="User Avatar (No Photo)"></MudImage>
                     </div>
                 </Slider>
             </RenderControl>
@@ -410,7 +410,7 @@
 
     <PageSectionComponent Title="@Translations.Module.Landing.CompatibilitySystem" Description="@Translations.Module.Landing.CompatibilitySystemDesc" CustomBodyClass="mb-12">
         <BodyFragment>
-            <MudImage Src="screenshots/match_desktop.webp" Fluid="true"></MudImage>
+            <MudImage Src="screenshots/match_desktop.webp" Fluid="true" Alt="@Translations.Module.Landing.CompatibilitySystem"></MudImage>
         </BodyFragment>
     </PageSectionComponent>
 
@@ -418,7 +418,7 @@
         <MudItem xs="12" md="4">
             <MudCard>
                 <MudCardHeader Class="pa-3">
-                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                    <MudText Typo="Typo.h2" Color="Color.Primary" Style="font-size: 1.25rem;">
                         @Translations.Title.HowItWorks
                     </MudText>
                 </MudCardHeader>
@@ -437,7 +437,7 @@
         <MudItem xs="12" md="4">
             <MudCard>
                 <MudCardHeader Class="pa-3">
-                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                    <MudText Typo="Typo.h2" Color="Color.Primary" Style="font-size: 1.25rem;">
                         @Translations.Title.WhoIsItFor
                     </MudText>
                 </MudCardHeader>
@@ -456,7 +456,7 @@
         <MudItem xs="12" md="4">
             <MudCard>
                 <MudCardHeader Class="pa-3">
-                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                    <MudText Typo="Typo.h2" Color="Color.Primary" Style="font-size: 1.25rem;">
                         @Translations.Title.Compare
                     </MudText>
                 </MudCardHeader>

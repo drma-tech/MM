@@ -132,6 +132,9 @@
   <data name="LastUsers" xml:space="preserve">
     <value>Finden Sie Ihren Lebenspartner in Ihrem Land ({0}) mit Modern Matchmaker. Entdecken Sie passende Mitglieder durch intelligentes Matching.</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Dein persönlicher Bereich, um dein Profil anzusehen, Vorschläge zu entdecken und den Überblick über deine Kontakte zu behalten.</value>
+  </data>
   <data name="WhoIsItFor" xml:space="preserve">
     <value>Modern Matchmaker richtet sich an Menschen, die sinnvolle, langfristige Beziehungen suchen, ohne die Einschränkungen von Dating-Apps oder die hohen Kosten traditioneller Partnervermittlung.</value>
   </data>
