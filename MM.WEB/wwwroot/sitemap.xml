@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://modern-matchmaker.com/en</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -12,8 +12,19 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en" />
 	</url>
 	<url>
+		<loc>https://modern-matchmaker.com/en/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
 		<loc>https://modern-matchmaker.com/en/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -24,7 +35,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -35,7 +46,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -46,7 +57,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -57,7 +68,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -68,7 +79,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -79,7 +90,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -90,7 +101,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -101,7 +112,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es" />
@@ -111,8 +122,63 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en" />
 	</url>
 	<url>
+		<loc>https://modern-matchmaker.com/pt/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/es/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/fr/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/it/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
+		<loc>https://modern-matchmaker.com/de/profile</loc>
+		<lastmod>2026-09-07</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/profile" />
+		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/profile" />
+		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/profile" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/profile" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/profile" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/profile" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/profile" />
+	</url>
+	<url>
 		<loc>https://modern-matchmaker.com/pt/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -123,7 +189,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -134,7 +200,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -145,7 +211,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -156,7 +222,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/help</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/help" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/help" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/help" />
@@ -167,7 +233,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -178,7 +244,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -189,7 +255,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -200,7 +266,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -211,7 +277,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/how-it-works</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/how-it-works" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/how-it-works" />
@@ -222,7 +288,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -233,7 +299,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -244,7 +310,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -255,7 +321,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -266,7 +332,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/who-its-for</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/who-its-for" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/who-its-for" />
@@ -277,7 +343,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -288,7 +354,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -299,7 +365,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -310,7 +376,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -321,7 +387,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/compare</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/compare" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/compare" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/compare" />
@@ -332,7 +398,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -343,7 +409,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -354,7 +420,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -365,7 +431,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -376,7 +442,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -387,7 +453,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -398,1507 +464,1507 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/af</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/af" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/af" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/al</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/al" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/al" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/dz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/dz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/dz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/as</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/as" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/as" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ad</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ad" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ad" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ao</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ao" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ao" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ag</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ag" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ag" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/az</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/az" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/az" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ar</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ar" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ar" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/au</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/au" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/au" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/at</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/at" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/at" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bs</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bs" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bs" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bd</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bd" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bd" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/am</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/am" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/am" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bb</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bb" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bb" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/be</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/be" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/be" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bo</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bo" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bo" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ba</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ba" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ba" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/br</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/br" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/br" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/io</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/io" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/io" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sb</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sb" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sb" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/vg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/vg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/vg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bi</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bi" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bi" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/by</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/by" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/by" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ca</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ca" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ca" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ky</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ky" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ky" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/td</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/td" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/td" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cx</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cx" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cx" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/co</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/co" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/co" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/km</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/km" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/km" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/yt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/yt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/yt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cd</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cd" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cd" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ck</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ck" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ck" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/hr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/hr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/hr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cy</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cy" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cy" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bj</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bj" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bj" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/dk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/dk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/dk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/dm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/dm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/dm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/do</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/do" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/do" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ec</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ec" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ec" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gq</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gq" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gq" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/et</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/et" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/et" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/er</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/er" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/er" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ee</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ee" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ee" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fo</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fo" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fo" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gs</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gs" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gs" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fj</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fj" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fj" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fi</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fi" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fi" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ax</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ax" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ax" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/dj</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/dj" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/dj" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ga</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ga" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ga" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ge</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ge" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ge" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ps</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ps" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ps" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/de</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/de" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/de" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gi</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gi" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gi" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ki</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ki" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ki" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gd</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gd" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gd" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gp</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gp" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gp" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gy</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gy" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gy" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ht</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ht" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ht" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/hm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/hm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/hm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/va</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/va" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/va" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/hn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/hn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/hn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/hk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/hk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/hk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/hu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/hu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/hu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/is</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/is" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/is" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/in</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/in" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/in" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/id</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/id" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/id" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ir</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ir" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ir" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/iq</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/iq" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/iq" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ie</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ie" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ie" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/il</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/il" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/il" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/it</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/it" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/it" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ci</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ci" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ci" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/jm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/jm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/jm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/jp</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/jp" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/jp" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/jo</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/jo" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/jo" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ke</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ke" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ke" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kp</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kp" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kp" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/la</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/la" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/la" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lb</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lb" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lb" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ls</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ls" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ls" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ly</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ly" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ly" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/li</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/li" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/li" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mo</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mo" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mo" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/my</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/my" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/my" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ml</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ml" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ml" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mq</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mq" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mq" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mx</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mx" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mx" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/md</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/md" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/md" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/me</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/me" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/me" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ms</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ms" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ms" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ma</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ma" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ma" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/om</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/om" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/om" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/na</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/na" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/na" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/np</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/np" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/np" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/aw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/aw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/aw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sx</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sx" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sx" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bq</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bq" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bq" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/vu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/vu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/vu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ni</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ni" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ni" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ne</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ne" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ne" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ng</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ng" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ng" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nu</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nu" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nu" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/nf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/nf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/nf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/no</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/no" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/no" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mp</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mp" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mp" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/um</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/um" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/um" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/fm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/fm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/fm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pa</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pa" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pa" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/py</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/py" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/py" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pe</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pe" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pe" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ph</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ph" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ph" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/qa</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/qa" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/qa" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/re</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/re" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/re" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ro</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ro" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ro" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ru</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ru" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ru" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/rw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/rw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/rw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/kn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/kn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/kn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ai</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ai" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ai" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/lc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/lc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/lc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/pm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/pm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/pm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/vc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/vc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/vc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/st</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/st" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/st" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/cq</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/cq" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/cq" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sa</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sa" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sa" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/rs</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/rs" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/rs" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sl</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sl" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sl" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/vn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/vn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/vn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/si</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/si" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/si" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/so</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/so" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/so" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/za</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/za" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/za" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/zw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/zw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/zw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/es</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/es" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/es" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ss</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ss" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ss" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sd</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sd" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sd" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/eh</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/eh" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/eh" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sj</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sj" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sj" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/se</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/se" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/se" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ch</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ch" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ch" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/sy</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/sy" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/sy" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tj</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tj" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tj" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/th</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/th" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/th" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/to</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/to" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/to" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ae</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ae" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ae" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tn</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tn" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tn" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tc</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tc" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tc" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tv</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tv" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tv" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ug</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ug" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ug" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ua</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ua" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ua" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/mk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/mk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/mk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/eg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/eg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/eg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gb</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gb" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gb" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/gg</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/gg" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/gg" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/je</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/je" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/je" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/im</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/im" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/im" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/us</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/us" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/us" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/vi</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/vi" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/vi" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/bf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/bf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/bf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/uy</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/uy" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/uy" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/uz</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/uz" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/uz" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ve</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ve" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ve" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/wf</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/wf" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/wf" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ws</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ws" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ws" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/ye</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/ye" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/ye" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/zm</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/zm" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/zm" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/xk</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/xk" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/xk" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/en/matchmaking/tw</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/matchmaking/tw" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/en/matchmaking/tw" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -1909,7 +1975,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -1920,7 +1986,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -1931,7 +1997,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -1942,7 +2008,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/basic</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/basic" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/basic" />
@@ -1953,7 +2019,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -1964,7 +2030,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -1975,7 +2041,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -1986,7 +2052,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -1997,7 +2063,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/bio</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/bio" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/bio" />
@@ -2008,7 +2074,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -2019,7 +2085,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -2030,7 +2096,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -2041,7 +2107,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -2052,7 +2118,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/lifestyle</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/lifestyle" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/lifestyle" />
@@ -2063,7 +2129,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -2074,7 +2140,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -2085,7 +2151,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -2096,7 +2162,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -2107,7 +2173,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/personality</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/personality" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/personality" />
@@ -2118,7 +2184,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -2129,7 +2195,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -2140,7 +2206,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -2151,7 +2217,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -2162,7 +2228,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/relationship</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/relationship" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/relationship" />
@@ -2173,7 +2239,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -2184,7 +2250,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -2195,7 +2261,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -2206,7 +2272,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -2217,7 +2283,7 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/tips/goal</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="en" href="https://modern-matchmaker.com/en/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/tips/goal" />
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/tips/goal" />
@@ -2228,91 +2294,91 @@
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/matchmaking/br</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/matchmaking/br" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/pt/matchmaking/br" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/pt/matchmaking/pt</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="pt" href="https://modern-matchmaker.com/pt/matchmaking/pt" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/pt/matchmaking/pt" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/matchmaking/ar</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/matchmaking/ar" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/es/matchmaking/ar" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/matchmaking/co</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/matchmaking/co" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/es/matchmaking/co" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/matchmaking/mx</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/matchmaking/mx" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/es/matchmaking/mx" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/es/matchmaking/es</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="es" href="https://modern-matchmaker.com/es/matchmaking/es" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/es/matchmaking/es" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/matchmaking/be</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/matchmaking/be" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/fr/matchmaking/be" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/matchmaking/ca</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/matchmaking/ca" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/fr/matchmaking/ca" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/matchmaking/fr</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/matchmaking/fr" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/fr/matchmaking/fr" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/fr/matchmaking/ch</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="fr" href="https://modern-matchmaker.com/fr/matchmaking/ch" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/fr/matchmaking/ch" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/matchmaking/it</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/matchmaking/it" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/it/matchmaking/it" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/it/matchmaking/ch</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="it" href="https://modern-matchmaker.com/it/matchmaking/ch" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/it/matchmaking/ch" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/matchmaking/at</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/matchmaking/at" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/de/matchmaking/at" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/matchmaking/de</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/matchmaking/de" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/de/matchmaking/de" />
 	</url>
 	<url>
 		<loc>https://modern-matchmaker.com/de/matchmaking/ch</loc>
-		<lastmod>2026-08-25</lastmod>
+		<lastmod>2026-09-07</lastmod>
 		<xhtml:link rel="alternate" hreflang="de" href="https://modern-matchmaker.com/de/matchmaking/ch" />
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://modern-matchmaker.com/de/matchmaking/ch" />
 	</url>
