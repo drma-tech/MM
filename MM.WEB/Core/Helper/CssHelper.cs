@@ -1,4 +1,6 @@
-﻿namespace MM.WEB.Core.Helper
+using System.Globalization;
+
+namespace MM.WEB.Core.Helper
 {
     public sealed class CssHelper
     {
@@ -12,19 +14,19 @@
 
         public CssHelper Small(string prefix)
         {
-            _classes.Add($"{prefix}-{SpaceSmall}");
+            _classes.Add(string.Create(CultureInfo.InvariantCulture, $"{prefix}-{SpaceSmall}"));
             return this;
         }
 
         public CssHelper Medium(string prefix)
         {
-            _classes.Add($"{prefix}-{SpaceMedium}");
+            _classes.Add(string.Create(CultureInfo.InvariantCulture, $"{prefix}-{SpaceMedium}"));
             return this;
         }
 
         public CssHelper Large(string prefix)
         {
-            _classes.Add($"{prefix}-{SpaceLarge}");
+            _classes.Add(string.Create(CultureInfo.InvariantCulture, $"{prefix}-{SpaceLarge}"));
             return this;
         }
 
