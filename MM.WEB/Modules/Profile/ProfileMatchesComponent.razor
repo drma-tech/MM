@@ -25,7 +25,8 @@
                     </MudChip>
                     <MudIconButton Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Secondary" Variant="Variant.Filled"
                                    Style="position: absolute; bottom: 10px; right: 10px; z-index: 1;" Size="Size.Small"
-                                   OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))"></MudIconButton>
+                                   OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, item.UserId, fakeProfiles.SingleOrDefault(s => s.Id == item.UserId)))">
+                    </MudIconButton>
                     <MudImage Src="@item.GetUserPhoto()" FallbackSrc="images/no-face-photo.webp" Alt="@item.UserName"
                               Fluid="true" ObjectFit="ObjectFit.Contain" Style="vertical-align: bottom;"></MudImage>
                 </div>
