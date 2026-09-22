@@ -12,7 +12,7 @@ public static class AppStateStatic
     public static bool IsAuthenticated { get; set; }
     public static bool IsPremiumUser { get; set; }
     public static bool IsBeta { get; set; }
-    public static AccountProduct ActiveProduct { get; } = AccountProduct.Phase1;
+    public static AccountProduct ActiveProduct { get; set; } = AccountProduct.Phase1;
     public static ClaimsPrincipal? User { get; set; }
     public static AuthPrincipal? Principal { get; set; }
     public static string? UserId { get; set; }
@@ -30,7 +30,7 @@ public static class AppStateStatic
 
     private static string? LastSnackbarMessage { get; set; }
     private static DateTime LastSnackbarAt { get; set; } = DateTime.MinValue;
-    private static readonly TimeSpan SnackbarDelay = TimeSpan.FromSeconds(10);
+    private static readonly TimeSpan SnackbarDelay = TimeSpan.FromSeconds(15);
 
     public static bool IsLocalhost(this NavigationManager navigation)
     {
