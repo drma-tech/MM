@@ -26,7 +26,7 @@
 		<PackageReference Include="AWSSDK.Rekognition" Version="4.0.100.14" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.2" />
 		<PackageReference Include="Clerk.BackendAPI" Version="3.0.0" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.271">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.290">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

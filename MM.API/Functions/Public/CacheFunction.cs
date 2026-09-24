@@ -17,29 +17,27 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
     {
         var cacheKey = "dashboard";
 
-        var doc = await cache.Get<SumUsersCache>(cacheKey, cancellationToken);
-
-        if (doc == null)
+        var doc = await KeyedAsyncLock.GetOrCreateAsync(
+        cacheKey,
+        async cancellationToken => await cache.Get<SumUsersCache>(cacheKey, cancellationToken),
+        async cancellationToken => await cacheRepo.ReadItemAsync<SumUsersCache>(new CacheIdentity(cacheKey), cancellationToken),
+        async cancellationToken =>
         {
-            doc = await cacheRepo.ReadItemAsync<SumUsersCache>(new CacheIdentity(cacheKey), cancellationToken);
+            var obj = new SumUsers();
 
-            if (doc == null)
-            {
-                var obj = new SumUsers();
+            var offProfiles = await repoOff.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
+            var onProfiles = await repoOn.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
+            var profiles = offProfiles.Union(onProfiles);
+            var oneWeekAgo = DateTime.UtcNow.AddDays(-7);
 
-                var offProfiles = await repoOff.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
-                var onProfiles = await repoOn.Query<ProfileModel>(predicate: null, transform: null, cancellationToken);
-                var profiles = offProfiles.Union(onProfiles);
-                var oneWeekAgo = DateTime.UtcNow.AddDays(-7);
+            var principals = await repo.Query<AuthPrincipal>(MainType.Principal, predicate: null, transform: null, cancellationToken);
 
-                var principals = await repo.Query<AuthPrincipal>(MainType.Principal, predicate: null, transform: null, cancellationToken);
+            obj.Countries = profiles.Select(s => s.Country).Distinct(StringComparer.OrdinalIgnoreCase).Count();
+            obj.Cities = profiles.Select(s => s.Location).Distinct(StringComparer.OrdinalIgnoreCase).Count();
+            obj.TotalUsers = principals.Count;
+            obj.RecentlyJoined = principals.Count(w => w.DateTimeCreated > oneWeekAgo);
 
-                obj.Countries = profiles.Select(s => s.Country).Distinct(StringComparer.OrdinalIgnoreCase).Count();
-                obj.Cities = profiles.Select(s => s.Location).Distinct(StringComparer.OrdinalIgnoreCase).Count();
-                obj.TotalUsers = principals.Count;
-                obj.RecentlyJoined = principals.Count(w => w.DateTimeCreated > oneWeekAgo);
-
-                obj.Regions = [.. profiles
+            obj.Regions = [.. profiles
                     .GroupBy(g => g.Country, StringComparer.OrdinalIgnoreCase)
                     .Select(s => new SumUsersRegion
                     {
@@ -47,11 +45,10 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
                         //Cities = s.Select(s => s.City!).Distinct().ToList()
                     })];
 
-                doc = await cacheRepo.CreateItemAsync(new SumUsersCache(cacheKey, obj));
-            }
-
-            await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
-        }
+            return await cacheRepo.CreateItemAsync(new SumUsersCache(cacheKey, obj));
+        },
+        async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.HalfDay, cancellationToken),
+        cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
     }
@@ -62,34 +59,31 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
     {
         var cacheKey = "last-users";
 
-        var doc = await cache.Get<LastUsersCache>(cacheKey, cancellationToken);
-
-        if (doc == null)
+        var doc = await KeyedAsyncLock.GetOrCreateAsync(
+        cacheKey,
+        async cancellationToken => await cache.Get<LastUsersCache>(cacheKey, cancellationToken),
+        async cancellationToken => await cacheRepo.ReadItemAsync<LastUsersCache>(new CacheIdentity(cacheKey), cancellationToken),
+        async cancellationToken =>
         {
-            doc = await cacheRepo.ReadItemAsync<LastUsersCache>(new CacheIdentity(cacheKey), cancellationToken);
+            var obj = new LastUsers();
 
-            if (doc == null)
+            var logins = await repo.Query<AuthLogin>(MainType.Login,
+                predicate: null,
+                p => p.OrderByDescending(x => x.TimestampCreated).Take(20),
+                cancellationToken);
+
+            foreach (var login in logins)
             {
-                var obj = new LastUsers();
+                var loginCountry = login.Accesses.LastOrDefault()?.Country;
+                var enumCountry = loginCountry.NotEmpty() ? EnumHelper.ParseToEnum<Shared.Enums.Country>(loginCountry) : (Country?)null;
 
-                var logins = await repo.Query<AuthLogin>(MainType.Login,
-                    predicate: null,
-                    p => p.OrderByDescending(x => x.TimestampCreated).Take(20),
-                    cancellationToken);
-
-                foreach (var login in logins)
-                {
-                    var loginCountry = login.Accesses.LastOrDefault()?.Country;
-                    var enumCountry = loginCountry.NotEmpty() ? EnumHelper.ParseToEnum<Shared.Enums.Country>(loginCountry) : (Country?)null;
-
-                    obj.Items.Add(new LastUsersItem { Created = login.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
-                }
-
-                doc = await cacheRepo.CreateItemAsync(new LastUsersCache(cacheKey, obj));
+                obj.Items.Add(new LastUsersItem { Created = login.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.HalfDay, cancellationToken);
-        }
+            return await cacheRepo.CreateItemAsync(new LastUsersCache(cacheKey, obj));
+        },
+        async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.HalfDay, cancellationToken),
+        cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
     }
@@ -99,40 +93,38 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/last-region-users/{mode}/{country}")] HttpRequestData req, string mode, string country, CancellationToken cancellationToken)
     {
         var cacheKey = $"last-region-users-{mode}-{country.ToLowerInvariant()}";
-        var doc = await cache.Get<LastRegionUsersCache>(cacheKey, cancellationToken);
 
-        if (doc == null)
+        var doc = await KeyedAsyncLock.GetOrCreateAsync(
+        cacheKey,
+        async cancellationToken => await cache.Get<LastRegionUsersCache>(cacheKey, cancellationToken),
+        async cancellationToken => await cacheRepo.ReadItemAsync<LastRegionUsersCache>(new CacheIdentity(cacheKey), cancellationToken),
+        async cancellationToken =>
         {
-            doc = await cacheRepo.ReadItemAsync<LastRegionUsersCache>(new CacheIdentity(cacheKey), cancellationToken);
+            var obj = new LastRegionUsers();
 
-            if (doc == null)
+            var logins = await repo.Query<AuthLogin>(MainType.Login,
+                p => p.Accesses.Any(x => x.Country == country),
+                p => p.OrderByDescending(x => x.TimestampCreated).Take(string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase) ? 20 : 40),
+                cancellationToken);
+
+            foreach (var login in logins)
             {
-                var obj = new LastRegionUsers();
-
-                var logins = await repo.Query<AuthLogin>(MainType.Login,
-                    p => p.Accesses.Any(x => x.Country == country),
-                    p => p.OrderByDescending(x => x.TimestampCreated).Take(string.Equals(mode, "compact", StringComparison.OrdinalIgnoreCase) ? 20 : 40),
-                    cancellationToken);
-
-                foreach (var login in logins)
+                if (string.Equals(login.Accesses.LastOrDefault()?.Country, country, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (string.Equals(login.Accesses.LastOrDefault()?.Country, country, StringComparison.OrdinalIgnoreCase))
-                    {
-                        var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
+                    var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
 
-                        profile ??= await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
+                    profile ??= await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(login.UserId), cancellationToken);
 
-                        if (string.Equals(profile?.NickName, "drma-tech", StringComparison.OrdinalIgnoreCase)) continue;
+                    if (string.Equals(profile?.NickName, "drma-tech", StringComparison.OrdinalIgnoreCase)) continue;
 
-                        obj.Items.Add(new LastRegionUsersItem { Id = login.UserId, Nickname = profile?.NickName, State = profile?.State });
-                    }
+                    obj.Items.Add(new LastRegionUsersItem { Id = login.UserId, Nickname = profile?.NickName, State = profile?.State });
                 }
-
-                doc = await cacheRepo.CreateItemAsync(new LastRegionUsersCache(cacheKey, obj));
             }
 
-            await SaveCache(doc, cacheKey, TtlCache.OneWeek, cancellationToken);
-        }
+            return await cacheRepo.CreateItemAsync(new LastRegionUsersCache(cacheKey, obj));
+        },
+        async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.OneWeek, cancellationToken),
+        cancellationToken);
 
         return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
     }
