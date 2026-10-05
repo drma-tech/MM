@@ -464,7 +464,7 @@ export const interop = {
     },
 };
 
-if (!window.appConfig.isBot) {
+if (window.appConfig?.isBot === false) {
     environment.detectPlatform();
     environment.validateBrowserAndPlatform();
 }
