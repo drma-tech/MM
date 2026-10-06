@@ -121,7 +121,7 @@
     <value>Choose up to a maximum of {0} {1}</value>
   </data>
   <data name="DomainDeactivated" xml:space="preserve">
-    <value>This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the 'www'.</value>
+    <value>Please update your app via the store (Windows, Android, Apple, etc.). If you are using a browser, please access the site without the "www".</value>
   </data>
   <data name="MaintenanceMode" xml:space="preserve">
     <value>We are currently undergoing maintenance. Please try again in a few minutes.</value>

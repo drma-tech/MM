@@ -70,7 +70,7 @@ namespace MM.Shared.Translations.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This domain has been deactivated. If you are accessing via an app (Windows, Android, Apple, etc.), please update it. If using a browser, please access the site without the &apos;www&apos;..
+        ///   Looks up a localized string similar to Please update your app via the store (Windows, Android, Apple, etc.). If you are using a browser, please access the site without the &quot;www&quot;..
         /// </summary>
         public static string DomainDeactivated {
             get {
