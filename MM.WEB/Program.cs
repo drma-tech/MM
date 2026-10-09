@@ -18,6 +18,7 @@ using System.Globalization;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+var userDomain = new Uri(builder.HostEnvironment.BaseAddress).Host;
 
 builder.UseSentry(options =>
 {
@@ -34,6 +35,7 @@ builder.UseSentry(options =>
         evt.Release = $"mm-blazor@{AppStateStatic.Version ?? error}";
 
         evt.SetTag("custom.version", AppStateStatic.Version ?? error);
+        evt.SetTag("custom.domain", userDomain);
         evt.SetTag("custom.platform", AppStateStatic.GetSavedPlatform()?.ToString() ?? error);
         evt.SetTag("custom.isAuthenticated", AppStateStatic.IsAuthenticated.ToString() ?? error);
 
