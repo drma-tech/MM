@@ -11,8 +11,8 @@
 		<Compile Remove="Enums\EventType.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="12.1.1" />
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.296">
+		<PackageReference Include="FluentValidation" Version="12.2.0" />
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.297">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
