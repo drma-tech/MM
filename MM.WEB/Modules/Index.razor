@@ -12,7 +12,7 @@
 <PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
 <MudContainer>
-    @if (!AppStateStatic.IsAuthenticated)
+    @if (!AppStateStatic.IsAuthenticated && !Printscreen)
     {
         <MudPaper Elevation="2" Class="pa-4 my-12 mud-theme-primary" Style="text-align: center;">
             <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">

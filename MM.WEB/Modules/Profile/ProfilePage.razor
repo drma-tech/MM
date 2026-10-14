@@ -14,31 +14,34 @@
 
 <PageSectionComponent IsPageHeader="true" Title="@Translations.Title.Profile" Description="@Translations.Description.Profile"></PageSectionComponent>
 
-@if (!AppStateStatic.IsAuthenticated)
+@if (!Printscreen)
 {
-    <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
-        <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
-            @Translations.Module.Profile.HeroCall
-        </MudText>
-        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
-            @Translations.Module.Profile.HeroButton
-        </MudButton>
-        <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
-            @Translations.Module.Profile.HeroNote
-        </MudText>
-    </MudPaper>
-}
-else
-{
-    <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center; padding-bottom: 12px !important;">
-        <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
-            <CustomHeader>
-                <MudAlert Variant="Variant.Outlined" Severity="MudBlazor.Severity.Warning" Dense="true" Class="mb-3" Style="text-align: center;">
-                    @Translations.Module.Profile.HelpUsUnlock
-                </MudAlert>
-            </CustomHeader>
-        </AskReviewComponent>
-    </MudPaper>
+    if (!AppStateStatic.IsAuthenticated)
+    {
+        <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb").Raw("mud-theme-primary")" Outlined="true" Style="text-align: center;">
+            <MudText Typo="Typo.h4" Align="Align.Center" Class="my-3">
+                @Translations.Module.Profile.HeroCall
+            </MudText>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Login" Class="my-4">
+                @Translations.Module.Profile.HeroButton
+            </MudButton>
+            <MudText Typo="Typo.body1" Align="Align.Center" Class="my-3 d-block">
+                @Translations.Module.Profile.HeroNote
+            </MudText>
+        </MudPaper>
+    }
+    else
+    {
+        <MudPaper Class="@CssHelper.Build().Medium("pa").Large("mb")" Outlined="true" Style="text-align: center; padding-bottom: 12px !important;">
+            <AskReviewComponent ShowOtherApps="false" ActionColor="Color.Default">
+                <CustomHeader>
+                    <MudAlert Variant="Variant.Outlined" Severity="MudBlazor.Severity.Warning" Dense="true" Class="mb-3" Style="text-align: center;">
+                        @Translations.Module.Profile.HelpUsUnlock
+                    </MudAlert>
+                </CustomHeader>
+            </AskReviewComponent>
+        </MudPaper>
+    }
 }
 
 @* <PageSectionComponent Title="@Translations.Module.Profile.LatestUsersRegion.CustomFormat(CountryEnum?.GetFieldSettings()?.Name ?? "Unknown")" CustomBodyClass="mb-12">

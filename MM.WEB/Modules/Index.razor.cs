@@ -6,9 +6,8 @@ namespace MM.WEB.Modules
 {
     public partial class Index
     {
-        [Parameter]
-        [SupplyParameterFromQuery(Name = "language")]
-        public string? Language { get; set; }
+        [Parameter][SupplyParameterFromQuery(Name = "language")] public string? Language { get; set; }
+        [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
 
         private MudDialog? DialogCountries { get; set; }
         private MudDialog? DialogCities { get; set; }

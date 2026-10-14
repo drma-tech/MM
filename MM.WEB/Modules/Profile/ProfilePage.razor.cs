@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components;
 using MM.Shared.Models.Profile;
 using MM.WEB.Api.Module.Cosmos.Authenticated;
 
@@ -5,6 +6,8 @@ namespace MM.WEB.Modules.Profile
 {
     public partial class ProfilePage
     {
+        [Parameter][SupplyParameterFromQuery(Name = "printscreen")] public bool Printscreen { get; set; } = false;
+
         //private RenderControlState<LastRegionUsersCache> LastUsersActions { get; } = new(obj => obj?.Data == null || obj.Data.Items.Empty());
         //public LastRegionUsers? LastUsers { get; set; }
         //private Country? CountryEnum;
