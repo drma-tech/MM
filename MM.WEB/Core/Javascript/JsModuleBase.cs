@@ -14,7 +14,7 @@ namespace MM.WEB.Core.Javascript
             }
             catch (OperationCanceledException)
             {
-                //ignore
+                // ignore
             }
         }
 

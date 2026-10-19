@@ -8,6 +8,7 @@ global using MM.WEB.Api.Module.Cosmos;
 global using MM.WEB.Api.Module.External;
 global using MM.WEB.Core;
 global using MM.WEB.Core.Context;
+global using MM.WEB.Core.Extensions;
 global using MM.WEB.Core.Helper;
 global using MM.WEB.Core.Javascript;
 global using MM.WEB.Shared;
