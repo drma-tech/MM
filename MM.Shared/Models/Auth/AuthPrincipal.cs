@@ -1,4 +1,4 @@
-﻿using MM.Shared.Core.Types;
+using MM.Shared.Core.Types;
 using System.ComponentModel.DataAnnotations;
 
 namespace MM.Shared.Models.Auth;

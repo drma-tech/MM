@@ -111,6 +111,77 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
     {
         var userId = await req.GetUserIdAsync();
 
+        await PrincipalHelper.DeleteUser(repo, repoOff, repoOn, repoTrash, repoSafety, factory, storageHelper, userId, deleteClerk: true, cancellationToken);
+    }
+
+    [Function("PrincipalPublicMode")]
+    public async Task<AuthPrincipal?> PrincipalPublicMode(
+     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var userId = await req.GetUserIdAsync();
+
+        var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
+        var ProfileValidator = new ProfileValidation();
+        var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
+
+        if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
+        {
+            throw new NotificationException(
+                "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
+            );
+        }
+
+        var filter = await repo.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken) ?? throw new NotificationException("filter not found");
+        var FilterValidator = new FilterValidation();
+        var FilterValid = filter != null && (await FilterValidator.ValidateAsync(filter, cancellationToken)).IsValid;
+
+        var setting = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken) ?? throw new NotificationException("setting not found");
+        var SettingValid = setting != null;
+
+        var PhotoValidator = new PhotoValidation();
+        var GalleryValid = profile.Gallery != null && (await PhotoValidator.ValidateAsync(profile.Gallery, cancellationToken)).IsValid;
+
+        var validation = await repo.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken) ?? throw new NotificationException("validation not found");
+        var ValidationsValid = validation != null && validation.Gallery;
+
+        if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
+        {
+            throw new NotificationException("Please complete all steps before making your profile public.");
+        }
+
+        await repoOn.UpsertItemAsync(profile);
+        await repoOff.DeleteItemAsync<ProfileModel>(new ProfileIdentity(profile.Id));
+
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
+        principal.PublicProfile = true;
+
+        return await repo.UpsertItemAsync(principal);
+    }
+
+    [Function("PrincipalPrivateMode")]
+    public async Task<AuthPrincipal?> PrincipalPrivateMode(
+        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
+    {
+        var userId = await req.GetUserIdAsync();
+
+        var profile = await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
+        await repoOff.UpsertItemAsync(profile);
+        await repoOn.DeleteItemAsync<ProfileModel>(new ProfileIdentity(userId));
+
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
+        principal.PublicProfile = false;
+
+        return await repo.UpsertItemAsync(principal);
+    }
+}
+
+public static class PrincipalHelper
+{
+    public static async Task DeleteUser(CosmosMainRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, CosmosSafetyRepository repoSafety,
+        IHttpClientFactory factory, StorageHelper storageHelper, string? userId, bool deleteClerk, CancellationToken cancellationToken)
+    {
+        if (userId.Empty()) throw new UnhandledException("UserId is empty");
+
         var myPrincipal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
         if (myPrincipal != null)
         {
@@ -179,68 +250,10 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
             }
         }
 
-        var sdk = new ClerkBackendApi(bearerAuth: ApiStartup.Configurations.ClerkAuth!.SecretKey);
-
-        await sdk.Users.DeleteAsync(userId);
-    }
-
-    [Function("PrincipalPublicMode")]
-    public async Task<AuthPrincipal?> PrincipalPublicMode(
-     [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/public")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        var userId = await req.GetUserIdAsync();
-
-        var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
-        var ProfileValidator = new ProfileValidation();
-        var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
-
-        if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
+        if (deleteClerk)
         {
-            throw new NotificationException(
-                "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
-            );
+            var sdk = new ClerkBackendApi(bearerAuth: ApiStartup.Configurations.ClerkAuth!.SecretKey);
+            await sdk.Users.DeleteAsync(userId);
         }
-
-        var filter = await repo.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken) ?? throw new NotificationException("filter not found");
-        var FilterValidator = new FilterValidation();
-        var FilterValid = filter != null && (await FilterValidator.ValidateAsync(filter, cancellationToken)).IsValid;
-
-        var setting = await repo.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken) ?? throw new NotificationException("setting not found");
-        var SettingValid = setting != null;
-
-        var PhotoValidator = new PhotoValidation();
-        var GalleryValid = profile.Gallery != null && (await PhotoValidator.ValidateAsync(profile.Gallery, cancellationToken)).IsValid;
-
-        var validation = await repo.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken) ?? throw new NotificationException("validation not found");
-        var ValidationsValid = validation != null && validation.Gallery;
-
-        if (!ProfileValid || !FilterValid || !SettingValid || !GalleryValid || !ValidationsValid)
-        {
-            throw new NotificationException("Please complete all steps before making your profile public.");
-        }
-
-        await repoOn.UpsertItemAsync(profile);
-        await repoOff.DeleteItemAsync<ProfileModel>(new ProfileIdentity(profile.Id));
-
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
-        principal.PublicProfile = true;
-
-        return await repo.UpsertItemAsync(principal);
-    }
-
-    [Function("PrincipalPrivateMode")]
-    public async Task<AuthPrincipal?> PrincipalPrivateMode(
-        [HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "principal/private")] HttpRequestData req, CancellationToken cancellationToken)
-    {
-        var userId = await req.GetUserIdAsync();
-
-        var profile = await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
-        await repoOff.UpsertItemAsync(profile);
-        await repoOn.DeleteItemAsync<ProfileModel>(new ProfileIdentity(userId));
-
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
-        principal.PublicProfile = false;
-
-        return await repo.UpsertItemAsync(principal);
     }
 }

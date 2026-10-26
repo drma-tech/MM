@@ -1,4 +1,4 @@
-﻿namespace MM.Shared.Core.Models;
+namespace MM.Shared.Core.Models;
 
 using Json = System.Text.Json.Serialization;
 
