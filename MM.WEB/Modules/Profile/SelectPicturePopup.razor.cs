@@ -49,7 +49,7 @@ namespace MM.WEB.Modules.Profile
                 imageLoaded = true;
                 StateHasChanged();
 
-                await JsRuntime.Window().InvokeVoidAsync("eval", $"document.getElementById('cropImage').src = '{imageUrl}'");
+                await JsRuntime.Window().InvokeVoidAsync("eval", Cts.Token, $"document.getElementById('cropImage').src = '{imageUrl}'");
                 await JsRuntime.Cropper().InitCropper("cropImage", 1, Cts.Token);
             }
             catch (Exception ex)

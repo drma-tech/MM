@@ -139,7 +139,7 @@ public static class AppStateStatic
             }
             else
             {
-                var code = await js.Window().InvokeAsync<string>("eval", "navigator.language");
+                var code = await js.Window().InvokeAsync<string>("eval", cancellationToken, "navigator.language");
                 code = code[..2].ToLowerInvariant();
 
                 _appLanguage = ConvertAppLanguage(code, AppLanguage.en);
