@@ -6,22 +6,28 @@
 
 **Meaningful connections start with compatibility.**
 
-Modern Matchmaker is a relationship platform designed to help people find partners whose values, personalities, lifestyles, interests, and relationship goals align with their own.
+Modern Matchmaker is a relationship platform being developed to help people find partners whose values, personalities, lifestyles, interests, and relationship goals align with their own.
 
-Instead of relying primarily on swipe-based discovery, the platform uses detailed profiles, personal preferences, and a structured compatibility algorithm to generate relevant match suggestions. The goal is to prioritize compatibility and relationship intent over the volume of profiles.
+Rather than prioritizing swipe-based discovery, the product is being built around detailed profiles, personal preferences, and structured compatibility-based matchmaking. Its features are being introduced progressively as the community grows.
 
 Website: [modern-matchmaker.com](https://modern-matchmaker.com/en)
 
-## Core Features
+## Current Availability
 
-- **Detailed Profiles:** Build a more complete picture through profile sections covering basic information, biography, lifestyle, personality, interests, relationship preferences, and goals.
-- **Compatibility Matching:** Compare profile information and personal preferences to calculate compatibility scores. Compatibility can be different in each direction because each person's preferences are taken into account.
-- **Personalized Match Suggestions:** Explore suggested profiles ranked by compatibility.
-- **Search and Filters:** Refine potential matches using profile preferences and filtering options.
-- **Likes and Matches:** Keep track of profile interactions and mutual interest.
-- **Profile Verification and Safety:** Identity and photo verification workflows, reporting tools, and image moderation help support a safer community.
-- **Location-Based Discovery:** Explore people by region and location.
-- **Date Safety Tools:** Optional tools support sharing date details with trusted friends or family.
+The platform is currently in **Phase 1 (0–10,000 users)**. Account registration is currently the main available product functionality, with the initial focus on building the matchmaking pool.
+
+The compatibility experience and additional matchmaking capabilities are still being developed and will be introduced progressively according to the product roadmap.
+
+## Product Roadmap
+
+The public roadmap is organized into user milestones:
+
+- **Phase 1 (0–10k users):** Build the initial matchmaking pool and introduce the compatibility system.
+- **Phase 2 (10k–20k users):** Allow users to apply as matchmaking clients.
+- **Phase 3 (20k–30k users):** Introduce Spotlight, allowing users to boost their profiles.
+- **Phase 4 (30k–40k users):** Additional features to be announced.
+
+See the [Roadmap](ROADMAP.md) for more details.
 
 ## Technology Stack
 
