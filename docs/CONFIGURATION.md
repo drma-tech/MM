@@ -19,13 +19,7 @@ In the Development environment, `MM.API/Program.cs` adds these configuration pro
 
 User Secrets are added after the JSON file, so matching keys supplied through User Secrets take precedence.
 
-The project uses this User Secrets ID:
-
-```text
-34ce4f7a-ae5c-4644-b219-86df6469e377
-```
-
-User Secrets are stored outside the repository in the current user's profile. The underlying file is named `secrets.json`; it is managed through the .NET CLI rather than committed to the project.
+The project has a `UserSecretsId` configured in its project file. This identifier is used by .NET Secret Manager to associate local secrets with the project. It is not an application credential. The actual secret values are stored outside the repository in each developer's local user profile.
 
 ## Local Development
 
