@@ -60,13 +60,12 @@ namespace MM.WEB.Modules
 
         private Color GetPhaseColor(int phase)
         {
-            var value = GetPhaseValue(phase);
-
-            if (value == 1) return Color.Success;
-
-            if (value == 0) return Color.Default;
-
-            return Color.Primary;
+            return GetPhaseValue(phase) switch
+            {
+                1 => Color.Success,
+                0 => Color.Default,
+                _ => Color.Primary,
+            };
         }
 
         private async Task Login()

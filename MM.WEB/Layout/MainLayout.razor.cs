@@ -175,7 +175,7 @@ namespace MM.WEB.Layout
                 var system = await _mudThemeProvider.GetSystemDarkModeAsync();
                 darkMode = system;
 
-                await JsRuntime.Utils().SetStorage("dark-mode", darkMode ?? false, JavascriptContext.Default.Boolean, cancellationToken);
+                await JsRuntime.Utils().SetStorage("dark-mode", system, JavascriptContext.Default.Boolean, cancellationToken);
             }
 
             if (Printscreen)
