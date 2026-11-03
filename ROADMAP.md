@@ -1,6 +1,41 @@
 # Modern Matchmaker Roadmap
 
-This document describes areas of the product that may guide future development. It is not a delivery commitment, and priorities may change based on product feedback, technical requirements, and available resources.
+Modern Matchmaker is being released in phases based on the size of its matchmaking community. Features are introduced progressively as the platform reaches each user milestone.
+
+This roadmap reflects the public product roadmap. It is not a fixed delivery schedule. Features may be released earlier when development is completed ahead of schedule.
+
+## Current Status
+
+**Phase 1: 0–10,000 users**
+
+The platform is currently focused on account registration and building its initial matchmaking pool. Registration is currently the main available product functionality. The compatibility experience and other matchmaking capabilities are still being developed and are not yet available.
+
+Phase 1 goals:
+- Build the initial matchmaking pool through user registrations.
+- Introduce the compatibility system as part of the Phase 1 experience.
+
+Sparks reference price: US$1 per unit.
+
+## Upcoming Phases
+
+### Phase 2: 10,000–20,000 users
+
+- Allow users to apply as matchmaking clients.
+- Expand the matchmaking experience beyond the initial pool and compatibility features.
+
+Sparks reference price: US$2 per unit.
+
+### Phase 3: 20,000–30,000 users
+
+- Introduce Spotlight, allowing users to boost their profiles on the platform.
+
+Sparks reference price: US$3 per unit.
+
+### Phase 4: 30,000–40,000 users
+
+- Additional features to be announced as the platform and community evolve.
+
+Sparks reference price: US$4 per unit.
 
 ## Product Principles
 
@@ -9,32 +44,9 @@ This document describes areas of the product that may guide future development. 
 - Support informed decisions through transparent profile information.
 - Maintain trust and safety throughout the user experience.
 
-## Potential Areas for Future Development
-
-### Compatibility and Matchmaking
-
-- Continue refining compatibility calculations and matching relevance.
-- Improve how users understand compatibility results and contributing profile factors.
-- Review profile completion and preference flows to improve the quality of matching data.
-
-### Discovery and User Experience
-
-- Improve match discovery, filtering, and profile exploration.
-- Make it easier to understand why a profile is suggested.
-- Continue improving the experience across devices and screen sizes.
-
-### Trust and Safety
-
-- Continue improving identity and photo verification workflows.
-- Strengthen reporting, moderation, and account safety processes.
-- Improve the tools that help users feel safer when arranging in-person dates.
-
-### Platform and Reliability
-
-- Improve application performance, observability, and operational reliability.
-- Continue improving integrations and background processing.
-- Maintain the platform as the application and its user base grow.
-
 ## Notes
 
-The areas above are directions for consideration, not promises of specific features or release dates.
+- Phase thresholds are based on the number of registered users.
+- Features are planned to become available progressively as the corresponding phases are reached.
+- The roadmap may evolve based on user feedback, development progress, and product priorities.
+- The feature descriptions for later phases are directional and may be refined before implementation.
