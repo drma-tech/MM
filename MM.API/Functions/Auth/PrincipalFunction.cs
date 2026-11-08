@@ -25,7 +25,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         var model = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
-        return await req.CreateResponse(model, TtlCache.OneHour, cancellationToken);
+        return await req.CreateResponse(model, TtlCache.OneHour, isPublic: false, cancellationToken);
     }
 
     [Function("PrincipalAdd")]
@@ -35,6 +35,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         //note: its called once per user (first access)
 
         var userId = await req.GetUserIdAsync();
+        var email = await req.GetUserEmailAsync();
         var body = await req.GetBody<AuthPrincipal>(cancellationToken);
         var platform = req.GetQueryParameters()["platform"];
         var country = req.GetQueryParameters()["country"];
@@ -62,13 +63,13 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         await repoJob.UpsertItemAsync(job30);
 
-        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
-        if (body.Email.NotEmpty()) _ = zepto.SendWelcomeEmail(body.Email, userId, cancellationToken);
+        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.ApiKey!);
+        if (email.NotEmpty()) _ = zepto.SendWelcomeTemplate(userId, email, body.DisplayName, cancellationToken);
 
         var principal = new AuthPrincipal(userId)
         {
             DisplayName = body.DisplayName,
-            Email = body.Email,
+            Email = email,
             Events = body.Events,
         };
 

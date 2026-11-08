@@ -32,22 +32,22 @@ public class JobFunction(CosmosMainRepository repoMain, CosmosJobRepository repo
     [Function("GoPublic")]
     public async Task GoPublic([HttpTrigger(AuthorizationLevel.Anonymous, Method.Post, Route = "job/gopublic")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var jobs = await repoJob.Query<GoPublicModel>(JobType.GoPublic, job => job.RunAt <= DateTimeOffset.UtcNow, transform: null, cancellationToken);
-        var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
+        //var jobs = await repoJob.Query<GoPublicModel>(JobType.GoPublic, job => job.RunAt <= DateTimeOffset.UtcNow, transform: null, cancellationToken);
+        //var zepto = new ZeptoMailClient(factory, ApiStartup.Configurations.ZeptoMail!.JobApiKey!);
 
-        foreach (var job in jobs)
-        {
-            var userId = job.Identity.RawId;
+        //foreach (var job in jobs)
+        //{
+        //    var userId = job.Identity.RawId;
 
-            var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
+        //    var principal = await repoMain.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
 
-            //principal may no longer exist.
-            if (principal != null && !principal.PublicProfile && job.Email.NotEmpty())
-            {
-                await zepto.SendGoPublicEmail(job.Email, userId!, cancellationToken);
-            }
+        //    //principal may no longer exist.
+        //    if (principal != null && !principal.PublicProfile && job.Email.NotEmpty())
+        //    {
+        //        await zepto.SendGoPublicEmail(job.Email, userId!, cancellationToken);
+        //    }
 
-            await repoJob.DeleteItemAsync<GoPublicModel>(new JobIdentity(JobType.GoPublic, job.Id));
-        }
+        //    await repoJob.DeleteItemAsync<GoPublicModel>(new JobIdentity(JobType.GoPublic, job.Id));
+        //}
     }
 }

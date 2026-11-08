@@ -19,7 +19,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
 
         var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
 
-        return await req.CreateResponse(stream, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(stream, TtlCache.OneDay, isPublic: true, cancellationToken);
     }
 
     [Function("Country")]
@@ -34,15 +34,15 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
             try
             {
                 var result = await client.GetStringAsync($"https://ipinfo.io/{ip}/country", cancellationToken);
-                return await req.CreateResponse(result.Trim().ToLowerInvariant(), TtlCache.OneMinute, cancellationToken);
+                return await req.CreateResponse(result.Trim().ToLowerInvariant(), TtlCache.OneMinute, isPublic: false, cancellationToken);
             }
             catch (Exception)
             {
-                return await req.CreateResponse((string?)null, TtlCache.OneMinute, cancellationToken);
+                return await req.CreateResponse((string?)null, TtlCache.OneMinute, isPublic: false, cancellationToken);
             }
         }
 
-        return await req.CreateResponse((string?)null, TtlCache.OneMinute, cancellationToken);
+        return await req.CreateResponse((string?)null, TtlCache.OneMinute, isPublic: false, cancellationToken);
     }
 
     public string? HereApiKey { get; set; } = config.GetValue<string>("Here:ApiKey");

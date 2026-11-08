@@ -50,7 +50,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.HalfDay, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.HalfDay, isPublic: true, cancellationToken);
     }
 
     [Function("LastUsers")]
@@ -85,7 +85,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.HalfDay, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.HalfDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.HalfDay, isPublic: true, cancellationToken);
     }
 
     [Function("LastRegionUsers")]
@@ -126,7 +126,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
         async (value, cancellationToken) => await SaveCache(value, cacheKey, TtlCache.OneWeek, cancellationToken),
         cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneWeek, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneWeek, isPublic: true, cancellationToken);
     }
 
     private async Task SaveCache<TData>(CacheDocumentData<TData>? doc, string cacheKey, TtlCache ttl, CancellationToken cancellationToken) where TData : class, new()

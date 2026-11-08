@@ -55,7 +55,7 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
 
         var interaction = await repoGen.GetInteractionModel(userId, id, cancellationToken);
 
-        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
+        return await req.CreateResponse(interaction, TtlCache.OneHour, isPublic: false, cancellationToken);
     }
 
     [Function("InteractionLike")]
@@ -91,7 +91,7 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
 
         await repoGen.UpsertItemAsync(partnerLikes);
 
-        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
+        return await req.CreateResponse(interaction, TtlCache.OneHour, isPublic: false, cancellationToken);
     }
 
     [Function("InteractionDislike")]
@@ -102,6 +102,6 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
 
         var interaction = await repoGen.SetInteractionNew(userId, id, EventType.Dislike, origin, cancellationToken);
 
-        return await req.CreateResponse(interaction, TtlCache.OneHour, cancellationToken);
+        return await req.CreateResponse(interaction, TtlCache.OneHour, isPublic: false, cancellationToken);
     }
 }

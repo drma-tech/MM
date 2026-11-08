@@ -96,7 +96,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         var userId = await req.GetUserIdAsync();
         var profile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken);
 
-        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(profile, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("ProfileGetFilter")]
@@ -106,7 +106,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("ProfileGetSetting")]
@@ -116,7 +116,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<SettingModel>(new MainIdentity(MainType.Setting, userId), cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("ProfileValidation")]
@@ -126,7 +126,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         var userId = await req.GetUserIdAsync();
         var doc = await _repoGen.ReadItemAsync<ValidationModel>(new MainIdentity(MainType.Validation, userId), cancellationToken);
 
-        return await req.CreateResponse(doc, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(doc, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("ProfileGetView")]
@@ -154,7 +154,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         //else if (profile.DtLastLogin >= DateTime.UtcNow.AddMonths(-1)) profile.ActivityStatus = ActivityStatus.Month;
         //else profile.ActivityStatus = ActivityStatus.Disabled;
 
-        return await req.CreateResponse(profile, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(profile, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     //[Function("ProfileListSearch")]
@@ -223,7 +223,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
 
         var obj = await _repoGen.ReadItemAsync<MyLikesModel>(new MainIdentity(MainType.Likes, userId), cancellationToken);
 
-        return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(obj, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 
     [Function("ProfileGetMyMatches")]
@@ -234,6 +234,6 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
 
         var obj = await _repoGen.ReadItemAsync<MyMatchesModel>(new MainIdentity(MainType.Matches, userId), cancellationToken);
 
-        return await req.CreateResponse(obj, TtlCache.OneDay, cancellationToken);
+        return await req.CreateResponse(obj, TtlCache.OneDay, isPublic: false, cancellationToken);
     }
 }
