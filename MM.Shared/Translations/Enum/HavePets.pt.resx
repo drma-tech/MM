@@ -127,7 +127,7 @@
     <value>Cachorro(s)</value>
   </data>
   <data name="DogCat" xml:space="preserve">
-    <value>Cão(es) e Gato(s)</value>
+    <value>Cachorro(s) e gato(s)</value>
   </data>
   <data name="DogCat_Description" xml:space="preserve">
     <value>Eu tenho cachorro(s) e gato(s).</value>

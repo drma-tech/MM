@@ -124,7 +124,7 @@
     <value>Tengo gato(s) (por ejemplo, persa, siamés, Maine Coon).</value>
   </data>
   <data name="Dog" xml:space="preserve">
-    <value>Perros)</value>
+    <value>Perro(s)</value>
   </data>
   <data name="DogCat" xml:space="preserve">
     <value>Perro(s) y Gato(s)</value>

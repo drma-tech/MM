@@ -160,7 +160,7 @@
     <value>Vegano</value>
   </data>
   <data name="Vegetarian_Description" xml:space="preserve">
-    <value>La dieta vegetariana consiste en carne animal, pero incluye otros productos animales, como productos lácteos, como leche, queso, yogur, e incluso a veces puede incluir huevos o no.</value>
+    <value>La dieta vegetariana no incluye carne animal, pero sí otros productos de origen animal, como leche, queso y yogur. También puede incluir huevos, según las preferencias de cada persona.</value>
   </data>
   <data name="Vegetarian_Name" xml:space="preserve">
     <value>Vegetariano</value>

@@ -104,7 +104,7 @@
     <value>Uma tradição espiritual com foco no desenvolvimento espiritual pessoal e na obtenção da iluminação por meio de práticas como meditação e vida ética. Ela ensina as Quatro Nobres Verdades e o Caminho Óctuplo.</value>
   </data>
   <data name="Christianity" xml:space="preserve">
-    <value>Cristandade</value>
+    <value>Cristianismo</value>
   </data>
   <data name="Christianity_Description" xml:space="preserve">
     <value>Uma religião monoteísta baseada na vida e nos ensinamentos de Jesus Cristo. Ela enfatiza a fé em um Deus e a importância do amor, perdão e salvação por meio de Jesus.</value>
@@ -131,7 +131,7 @@
     <value>Não religioso / Ateu</value>
   </data>
   <data name="NonReligious_Description" xml:space="preserve">
-    <value>Indivíduos que não se identificam com nenhuma religião ou acreditam em uma divindade. Esta categoria inclui ateus, agnósticos e aqueles que têm visões seculares.</value>
+    <value>Pessoas que não se identificam com nenhuma religião ou que não acreditam em uma divindade. Esta categoria inclui ateus, agnósticos e pessoas com visões seculares.</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Outro</value>

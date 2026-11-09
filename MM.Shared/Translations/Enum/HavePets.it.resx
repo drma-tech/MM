@@ -142,13 +142,13 @@
     <value>Ho animali domestici esotici (ad esempio serpenti, lucertole, furetti, pesci o tarantole).</value>
   </data>
   <data name="IDontHave" xml:space="preserve">
-    <value>Non ce l'ho</value>
+    <value>Non ho animali domestici</value>
   </data>
   <data name="IDontHave_Description" xml:space="preserve">
     <value>Al momento non possiedo animali domestici.</value>
   </data>
   <data name="IDontWant" xml:space="preserve">
-    <value>Non voglio</value>
+    <value>Non desidero animali domestici</value>
   </data>
   <data name="IDontWant_Description" xml:space="preserve">
     <value>Non ho animali domestici e preferisco non averne.</value>

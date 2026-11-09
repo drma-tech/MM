@@ -142,13 +142,13 @@
     <value>Ich habe exotische Haustiere (z. B. Schlangen, Eidechsen, Frettchen, Fische oder Vogelspinnen).</value>
   </data>
   <data name="IDontHave" xml:space="preserve">
-    <value>Das habe ich nicht</value>
+    <value>Ich habe keine Haustiere</value>
   </data>
   <data name="IDontHave_Description" xml:space="preserve">
     <value>Ich besitze derzeit keine Haustiere.</value>
   </data>
   <data name="IDontWant" xml:space="preserve">
-    <value>Ich will nicht</value>
+    <value>Ich möchte keine Haustiere</value>
   </data>
   <data name="IDontWant_Description" xml:space="preserve">
     <value>Ich habe keine Haustiere und möchte auch keine haben.</value>

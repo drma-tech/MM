@@ -175,7 +175,7 @@
     <value>Terror e Suspense</value>
   </data>
   <data name="HorrorThriller_Description" xml:space="preserve">
-    <value>Filmes de tensão projetados para provocar medo ou suspense (por exemplo, terror psicológico, suspense sobrenatural, terror de terror)</value>
+    <value>Filmes de tensão criados para provocar medo ou suspense (por exemplo, terror psicológico, suspense sobrenatural e filmes de horror).</value>
   </data>
   <data name="MusicalDance" xml:space="preserve">
     <value>Musical e dança</value>
@@ -187,7 +187,7 @@
     <value>Mistério e Crime</value>
   </data>
   <data name="MysteryCrime_Description" xml:space="preserve">
-    <value>Filmes focados em resolver quebra-cabeças, geralmente envolvendo crimes ou investigações (por exemplo, histórias de detetive, histórias de detetive, assaltos)</value>
+    <value>Filmes focados na resolução de enigmas, geralmente envolvendo crimes ou investigações (por exemplo, histórias policiais, mistérios de investigação e assaltos).</value>
   </data>
   <data name="Romance" xml:space="preserve">
     <value>Romance</value>

@@ -110,7 +110,7 @@
     <value>Programas centrados en la cocina, la repostería y la cultura alimentaria (por ejemplo, concursos de cocina, documentales gastronómicos)</value>
   </data>
   <data name="DocumentaryReality" xml:space="preserve">
-    <value>Documental y Reality</value>
+    <value>Documentales y reality shows</value>
   </data>
   <data name="DocumentaryReality_Description" xml:space="preserve">
     <value>Historias y situaciones de la vida real, ya sean informativas o entretenidas (por ejemplo, documentales sobre la naturaleza, reality shows)</value>
@@ -122,7 +122,7 @@
     <value>Programas centrados en temas de aprendizaje y ciencia, a menudo informativos (por ejemplo, programas científicos, programas instructivos)</value>
   </data>
   <data name="GameShowsCompetitions" xml:space="preserve">
-    <value>Concursos y concursos</value>
+    <value>Concursos y competencias</value>
   </data>
   <data name="GameShowsCompetitions_Description" xml:space="preserve">
     <value>Programas en los que los concursantes compiten por premios o reconocimiento (por ejemplo, programas de trivia, concursos de talentos)</value>
@@ -164,7 +164,7 @@
     <value>Programas centrados en eventos deportivos, comentarios y actividades al aire libre (por ejemplo, deportes en vivo, deportes extremos)</value>
   </data>
   <data name="TalkShowsInterviews" xml:space="preserve">
-    <value>Programas de entrevistas y entrevistas</value>
+    <value>Programas de entrevistas</value>
   </data>
   <data name="TalkShowsInterviews_Description" xml:space="preserve">
     <value>Programas en los que los presentadores conversan con los invitados sobre diversos temas (por ejemplo, entrevistas con celebridades, paneles de debate)</value>
