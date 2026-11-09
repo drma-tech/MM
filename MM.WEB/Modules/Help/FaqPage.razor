@@ -1,8 +1,94 @@
-﻿@page "/{culture}/help/faq"
+@page "/{culture}/help/faq"
 @inherits PageCore<FaqPage>
 
-<HeadComponent Title="FAQ" Url=@($"/{Culture}/help/faq") Description="@($"Find answers to common questions about {AppInfo.Title}, including accounts, matching, safety, subscriptions, and using the platform.")" Index="true"></HeadComponent>
-<PageSectionComponent IsPageHeader="true" Title="FAQ" Description="@($"Find answers to common questions about {AppInfo.Title}, including accounts, matching, safety, subscriptions, and using the platform.")"></PageSectionComponent>
+<HeadComponent Title="FAQ" Url=@($"/{Culture}/help/faq") Description="@($"Find answers to common questions about {AppInfo.Title}, including getting started, compatibility, accounts, safety, privacy, and payments.")" Index="true"></HeadComponent>
+<PageSectionComponent IsPageHeader="true" Title="FAQ" Description="@($"Find answers to common questions about {AppInfo.Title}, including getting started, compatibility, accounts, safety, privacy, and payments.")"></PageSectionComponent>
+
+<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
+    <MudExpansionPanel Disabled="true" HideIcon="true">
+        <TitleContent>
+            <div class="d-flex">
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Info" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Getting Started & Availability</MudText>
+            </div>
+        </TitleContent>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="What is Modern Matchmaker?" HeaderClass="mud-secondary-text">
+        Modern Matchmaker is a relationship platform being built around detailed profiles, personal preferences, and compatibility-based matchmaking. It is designed to help people discover potential partners whose values, personalities, lifestyles, interests, and relationship goals may align with their own.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="How do I get started?" HeaderClass="mud-secondary-text">
+        Create an account and provide accurate information when completing the profile steps currently available. Keeping your information up to date will help the platform provide more relevant features as they become available.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Why can't I see matches or interact with other users yet?" HeaderClass="mud-secondary-text">
+        The platform is being introduced progressively. Account registration is currently the main available functionality while we build the initial community and continue developing the compatibility experience. Matchmaking and additional features will be introduced as the platform progresses.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Who can use Modern Matchmaker?" HeaderClass="mud-secondary-text">
+        Modern Matchmaker is intended for adults aged 18 or older. If the law where you live requires a higher minimum age, that higher age applies.
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
+    <MudExpansionPanel Disabled="true" HideIcon="true">
+        <TitleContent>
+            <div class="d-flex">
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.FavoriteBorder" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Matching & Compatibility</MudText>
+            </div>
+        </TitleContent>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="How will compatibility be assessed?" HeaderClass="mud-secondary-text">
+        The compatibility experience is being developed around information and preferences provided by users. The planned approach considers areas such as values, personality, lifestyle, interests, and relationship goals. Recommendations can help identify potential compatibility, but they cannot predict whether two people will connect or how a relationship will develop.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Do I need to complete every profile field?" HeaderClass="mud-secondary-text">
+        Complete the information requested in the profile steps available to you. Some information may be optional. Providing relevant and accurate details can help make future compatibility results more useful.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Can compatibility results guarantee a successful relationship?" HeaderClass="mud-secondary-text">
+        No. Compatibility results are intended to help you discover potential partners. They are based on the information available to the platform and cannot account for every aspect of a person, guarantee mutual interest, or predict the outcome of a relationship.
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
+    <MudExpansionPanel Disabled="true" HideIcon="true">
+        <TitleContent>
+            <div class="d-flex">
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.AccountCircle" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Profiles, Accounts & Verification</MudText>
+            </div>
+        </TitleContent>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Why is identity verification required?" HeaderClass="mud-secondary-text">
+        Identity verification helps reduce fake accounts and support trust within the community. Verification is required before users can start or receive interactions. It may be performed by Didit and can involve an identity document and a liveness check. Verification confirms only the checks performed. It is not a criminal background check and does not guarantee a person's intentions, conduct, or safety.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="What happens if I provide false information?" HeaderClass="mud-secondary-text">
+        You are responsible for keeping your account and profile information accurate. Accounts that contain false or misleading information, impersonate others, or violate our Terms of Use may be restricted, suspended, or removed.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Who can see my profile information?" HeaderClass="mud-secondary-text">
+        Profile visibility depends on the features available and the applicable visibility settings. Information you provide may also affect profile details or compatibility results shown to other users. Avoid adding information to profile fields that you do not want other users to see.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Can I update my information?" HeaderClass="mud-secondary-text">
+        You can update or remove information through the account features made available to you. Some information may be needed for specific platform features, and changing or removing it may affect those features.
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
+    <MudExpansionPanel Disabled="true" HideIcon="true">
+        <TitleContent>
+            <div class="d-flex">
+                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Security" class="@CssHelper.Build().Small("mr")"></MudIcon>
+                <MudText Color="Color.Primary">Safety & Community</MudText>
+            </div>
+        </TitleContent>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="What should I do if I encounter suspicious or inappropriate behavior?" HeaderClass="mud-secondary-text">
+        Use the reporting or blocking controls when they are available in the platform. Reports may be assessed using automated tools and human moderation. Depending on the circumstances, we may take action under our Terms of Use, but we cannot guarantee a particular outcome or response time.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does identity verification mean that every user is safe?" HeaderClass="mud-secondary-text">
+        No. Verification does not establish a user's intentions or guarantee their behavior. We do not conduct criminal background checks. Use caution when communicating with people, protect your personal information, and follow sensible precautions before meeting anyone in person.
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Does the platform monitor in-person meetings?" HeaderClass="mud-secondary-text">
+        No. Any meeting-safety features offered by the platform are optional tools, not emergency services or active monitoring. The platform does not track or intervene in meetings. If you are in immediate danger, contact local emergency services.
+    </MudExpansionPanel>
+</MudExpansionPanels>
 
 <MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
     <MudExpansionPanel Disabled="true" HideIcon="true">
@@ -13,74 +99,23 @@
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="What data does the platform collect?" HeaderClass="mud-secondary-text">
-        We collect profile responses, preferences, interactions, photos, and some technical data (e.g., IP, country). Some fields (like ethnicity, orientation, or religion) are considered sensitive and are collected only with your explicit consent.
+    <MudExpansionPanel Text="What information does Modern Matchmaker collect?" HeaderClass="mud-secondary-text">
+        Depending on how you use the platform, we may process account details, profile information, preferences, photos, verification information, interactions, technical and diagnostic data, and support communications. Some profile fields may contain sensitive information, such as ethnicity, religion, or sexual orientation. Please review our Privacy Policy for details about the information we process and why.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How is my data used?" HeaderClass="mud-secondary-text">
-        Your data is used to improve match relevance, personalize the experience, and ensure platform security. Aggregated, anonymized data may help refine our compatibility algorithms.
+    <MudExpansionPanel Text="How is my information used?" HeaderClass="mud-secondary-text">
+        We use information to operate accounts and profiles, provide compatibility features, verify identity and age, protect the platform, process purchases, provide support, and improve the service. Profile information may influence the details or compatibility results shown to other users, depending on the features and visibility settings.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I download or delete my data?" HeaderClass="mud-secondary-text">
-        Yes. You can request a full data export or account deletion at any time through your account settings.
+    <MudExpansionPanel Text="Can I download my account information?" HeaderClass="mud-secondary-text">
+        The Help Center provides an option to download certain account information in JSON format. This should not be treated as a complete copy of every item of information processed by the platform. For privacy requests, contact support.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Who can see my profile?" HeaderClass="mud-secondary-text">
-        Your visibility depends on your settings. Sensitive data is only shown to others if you've completed those fields and chosen to share.
+    <MudExpansionPanel Text="How can I request account deletion?" HeaderClass="mud-secondary-text">
+        You can request account deletion through the Account section of the Help Center or by contacting support@modern-matchmaker.com. We may retain limited information when necessary for legal compliance, security, fraud prevention, disputes, or other purposes permitted by law. Backup copies may remain until they are overwritten in the ordinary backup cycle.
     </MudExpansionPanel>
-</MudExpansionPanels>
-
-<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
-    <MudExpansionPanel Disabled="true" HideIcon="true">
-        <TitleContent>
-            <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.HeartBroken" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Matching & Compatibility</MudText>
-            </div>
-        </TitleContent>
+    <MudExpansionPanel Text="Does deleting my account cancel my subscription?" HeaderClass="mud-secondary-text">
+        No. Account deletion and subscription cancellation are separate. Cancel directly with the provider or platform through which you purchased the subscription, such as Stripe or Apple, to prevent future renewal charges.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How does matchmaking work?" HeaderClass="mud-secondary-text">
-        We use scientific models, user preferences, and personality data to suggest the most compatible profiles for you.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="Are all profile fields required?" HeaderClass="mud-secondary-text">
-        Most fields are required to improve match accuracy. A few (like disabilities or income) are optional and can be skipped.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I hide certain profile information?" HeaderClass="mud-secondary-text">
-        Yes. You can control what’s shown on your public profile through visibility settings.
-    </MudExpansionPanel>
-</MudExpansionPanels>
-
-<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
-    <MudExpansionPanel Disabled="true" HideIcon="true">
-        <TitleContent>
-            <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.SupervisedUserCircle" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Account & Identity</MudText>
-            </div>
-        </TitleContent>
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="Why do I need to verify my identity?" HeaderClass="mud-secondary-text">
-        Verification increases trust and helps prevent fake profiles. We partner with Veriff for secure document checks.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="What happens if I provide false information?" HeaderClass="mud-secondary-text">
-        Accounts with false or misleading information may be suspended or permanently removed.
-    </MudExpansionPanel>
-</MudExpansionPanels>
-
-<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
-    <MudExpansionPanel Disabled="true" HideIcon="true">
-        <TitleContent>
-            <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Apps" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Using the Platform</MudText>
-            </div>
-        </TitleContent>
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="How do I get started?" HeaderClass="mud-secondary-text">
-        Complete the onboarding questionnaire, verify your account, and start browsing compatible profiles right away.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I change my answers later?" HeaderClass="mud-secondary-text">
-        Yes, you can update most profile fields anytime in your account settings.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="What if I move to another country?" HeaderClass="mud-secondary-text">
-        Your approximate location can be updated anytime to improve local match suggestions.
+    <MudExpansionPanel Text="How is my information protected?" HeaderClass="mud-secondary-text">
+        We use technical and organizational measures designed to protect personal information, including access controls and protections for data transmitted between your device and our services. No method of transmission or storage can be guaranteed to be completely secure. See our Privacy Policy for more information.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -89,35 +124,21 @@
         <TitleContent>
             <div class="d-flex">
                 <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.CreditCard" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Billing & Payments</MudText>
+                <MudText Color="Color.Primary">Sparks, Subscriptions & Payments</MudText>
             </div>
         </TitleContent>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Is the platform free to use?" HeaderClass="mud-secondary-text">
-        Basic access is free. Some premium features may require a subscription.
+    <MudExpansionPanel Text="Is Modern Matchmaker free to use?" HeaderClass="mud-secondary-text">
+        Some platform features may be available for free, while additional features or interactions may require Sparks, a paid subscription, or another purchase. Any applicable price and conditions are shown before you confirm a purchase.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="How is payment processed?" HeaderClass="mud-secondary-text">
-        Payments are securely handled by our partner Paddle. We do not store full payment details.
+    <MudExpansionPanel Text="What are Sparks?" HeaderClass="mud-secondary-text">
+        Sparks are virtual credits used for designated features within Modern Matchmaker. They have no cash value, cannot be transferred to another user, and cannot be redeemed for money. Refunds are available only where stated at purchase or required by law.
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Can I cancel my subscription?" HeaderClass="mud-secondary-text">
-        Yes, you can manage or cancel your subscription through the billing section.
+    <MudExpansionPanel Text="How are payments processed?" HeaderClass="mud-secondary-text">
+        Depending on the purchase option and platform, payments may be processed by Stripe or Apple. Payment credentials are handled by the relevant provider. We receive the transaction details needed to validate purchases and manage subscriptions, and we do not intentionally store full payment card numbers or security codes.
     </MudExpansionPanel>
-</MudExpansionPanels>
-
-<MudExpansionPanels Outlined="true" Elevation="0" Class="@CssHelper.Build().Medium("mb")">
-    <MudExpansionPanel Disabled="true" HideIcon="true">
-        <TitleContent>
-            <div class="d-flex">
-                <MudIcon Color="Color.Primary" Icon="@Icons.Material.Filled.Shield" class="@CssHelper.Build().Small("mr")"></MudIcon>
-                <MudText Color="Color.Primary">Safety & Reporting</MudText>
-            </div>
-        </TitleContent>
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="What should I do if I encounter suspicious behavior?" HeaderClass="mud-secondary-text">
-        Report the profile through the app. All reports are reviewed by our moderation team.
-    </MudExpansionPanel>
-    <MudExpansionPanel Text="How is my information protected?" HeaderClass="mud-secondary-text">
-        Your data is stored on secure servers (Azure), encrypted, and monitored to prevent unauthorized access.
+    <MudExpansionPanel Text="How do I cancel my subscription?" HeaderClass="mud-secondary-text">
+        Cancel through the provider or platform you used to subscribe. For example, subscriptions purchased through Apple must be managed through your Apple account, while other purchases should be managed through the relevant checkout or billing service. Deleting your Modern Matchmaker account does not cancel a subscription.
     </MudExpansionPanel>
 </MudExpansionPanels>
 
@@ -131,9 +152,9 @@
         </TitleContent>
     </MudExpansionPanel>
     <MudExpansionPanel Text="How do I contact support?" HeaderClass="mud-secondary-text">
-        Use the in-app feedback section or email us at support@modern-matchmaker.com.
+        Use the in-app feedback section or email us at <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.
     </MudExpansionPanel>
     <MudExpansionPanel Text="What languages are supported?" HeaderClass="mud-secondary-text">
-        Currently: English, Portuguese, and Spanish. More may be added in the future.
+        Modern Matchmaker currently supports English, Portuguese, Spanish, Chinese, French, Italian, and German.
     </MudExpansionPanel>
 </MudExpansionPanels>
