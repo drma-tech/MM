@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/legal/privacy"
 @inherits PageCore<PrivacyPage>
 
-<HeadComponent Title="@Translations.Module.Legal.PrivacyPolicy" Url=@($"/{Culture}/legal/privacy") Index="false"></HeadComponent>
+<HeadComponent Title="@Translations.Module.Legal.PrivacyPolicy" Url=@($"/{Culture}/legal/privacy") Index="true"></HeadComponent>
 
 <div class="support-container">
     @if (Language == AppLanguage.pt)
@@ -157,7 +157,8 @@
                 <li><b>Clerk:</b> registro y autenticación de cuentas.</li>
                 <li><b>Microsoft Azure:</b> infraestructura en la nube, alojamiento de la aplicación, servicios de bases de datos mediante Azure Cosmos DB y almacenamiento de archivos mediante Azure Blob Storage.</li>
                 <li><b>Didit:</b> verificación de identidad y edad.</li>
-                <li><b>AWS Rekognition:</b> análisis de imágenes, incluidos controles relacionados con rostros y análisis de seguridad del contenido.</li>                <li><b>HERE:</b> conversión de las coordenadas de ubicación del dispositivo en datos de ubicación del perfil cuando utiliza la detección de ubicación.</li>
+                <li><b>AWS Rekognition:</b> análisis de imágenes, incluidos controles relacionados con rostros y análisis de seguridad del contenido.</li>
+                <li><b>HERE:</b> conversión de las coordenadas de ubicación del dispositivo en datos de ubicación del perfil cuando utiliza la detección de ubicación.</li>
                 <li><b>Stripe y Apple:</b> procesamiento de pagos y gestión de suscripciones, según el método de compra disponible.</li>
                 <li><b>Sentry:</b> supervisión de la aplicación, informes de errores y diagnósticos técnicos.</li>
                 <li><b>Microsoft Clarity y Google Analytics:</b> análisis e información sobre el uso del servicio.</li>
