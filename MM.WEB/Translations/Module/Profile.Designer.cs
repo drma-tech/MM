@@ -286,7 +286,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note: Not a dating app. A curated matchmaking experience focused on real compatibility..
+        ///   Looks up a localized string similar to More than dating. A matchmaking experience built around compatibility, shared values, and meaningful relationships..
         /// </summary>
         public static string HeroNote {
             get {

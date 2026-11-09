@@ -120,26 +120,27 @@
   <data name="Approach01" xml:space="preserve">
     <value>Système de compatibilité</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Approach01Desc" xml:space="preserve">
-    <value>Nous suggérons des correspondances en utilisant notre système de compatibilité qui évalue les valeurs, le style de vie et les objectifs relationnels.</value>
+    <value>Notre système de compatibilité prend en compte la personnalité, les valeurs, le style de vie, les intérêts et les objectifs relationnels pour identifier les correspondances potentielles en fonction de ce qui compte le plus pour vous.</value>
   </data>
   <data name="Approach02" xml:space="preserve">
     <value>Connexions intentionnelles</value>
   </data>
   <data name="Approach02Desc" xml:space="preserve">
-    <value>Notre plateforme est conçue pour soutenir des relations sérieuses en se concentrant sur des présentations significatives plutôt que sur une navigation informelle.</value>
+    <value>Conçu pour les personnes recherchant des relations significatives et à long terme, en mettant l'accent sur la compatibilité plutôt que sur un balayage sans fin.</value>
   </data>
   <data name="Approach03" xml:space="preserve">
     <value>Profils vérifiés</value>
   </data>
   <data name="Approach03Desc" xml:space="preserve">
-    <value>Une vérification d'identité et de photo est requise avant l'interaction pour garantir l'authenticité et la confiance.</value>
+    <value>Une vérification d'identité et de photo est requise avant que les utilisateurs puissent interagir, ce qui contribue à réduire les faux profils et à améliorer la confiance au sein de la communauté.</value>
   </data>
   <data name="Approach04" xml:space="preserve">
     <value>Confidentialité et sécurité</value>
   </data>
   <data name="Approach04Desc" xml:space="preserve">
-    <value>Notre plateforme protège vos données et fournit un environnement sécurisé à tous les utilisateurs, vous donnant confiance lors de votre connexion.</value>
+    <value>Votre vie privée est importante. Nous fournissons des outils pour gérer la visibilité de votre profil et contrôler vos informations personnelles, avec des politiques claires expliquant comment vos données sont traitées.</value>
   </data>
   <data name="Approach05" xml:space="preserve">
     <value>Devise des étincelles</value>
@@ -169,7 +170,7 @@
     <value>Système de compatibilité</value>
   </data>
   <data name="CompatibilitySystemDesc" xml:space="preserve">
-    <value>Nous avons développé le système de compatibilité le plus avancé et le plus scientifiquement étayé pour créer des relations significatives et durables.</value>
+    <value>Notre système de compatibilité évalue les valeurs, la personnalité, le style de vie, les intérêts et les objectifs relationnels pour aider à identifier les liens significatifs et la compatibilité potentielle entre les personnes.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Pays</value>
@@ -202,10 +203,10 @@
     <value>Nos numéros</value>
   </data>
   <data name="OurNumbersMsg1" xml:space="preserve">
-    <value>Ensemble, nous construisons quelque chose d'incroyable !</value>
+    <value>Une communauté en pleine croissance avec un objectif commun : trouver des relations significatives.</value>
   </data>
   <data name="OurNumbersMsg2" xml:space="preserve">
-    <value>Nos chiffres augmentent chaque jour. Rejoignez notre communauté et trouvez votre partenaire idéal.</value>
+    <value>Chaque nouveau membre nous rapproche de notre prochaine étape. Rejoignez-nous tôt et faites partie de la communauté qui façonne l’avenir du matchmaking.</value>
   </data>
   <data name="OurRoadmap" xml:space="preserve">
     <value>Notre feuille de route</value>
@@ -214,7 +215,7 @@
     <value>Nouvelles fonctionnalités débloquées à mesure que notre communauté s'agrandit !</value>
   </data>
   <data name="OurRoadmapMsg2" xml:space="preserve">
-    <value>Nous évoluons constamment ! Les fonctionnalités peuvent être publiées plus tôt si le développement est terminé plus tôt que prévu. Nous apprécions vos commentaires et vos suggestions peuvent aider à façonner l’avenir de notre plateforme !</value>
+    <value>Chaque étape débloque de nouvelles fonctionnalités et améliorations à mesure que notre communauté grandit. Nous construisons Modern Matchmaker étape par étape, chaque phase élargissant ce que les membres peuvent faire sur la plateforme.</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
     <value>Rejoignez notre pool de mise en relation</value>

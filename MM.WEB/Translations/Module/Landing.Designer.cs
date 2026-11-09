@@ -70,7 +70,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We suggest matches using our compatibility system that evaluates values, lifestyle, and relationship goals..
+        ///   Looks up a localized string similar to Our compatibility system considers personality, values, lifestyle, interests, and relationship goals to identify potential matches based on what matters most to you..
         /// </summary>
         public static string Approach01Desc {
             get {
@@ -88,7 +88,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our platform is designed to support serious relationships by focusing on meaningful introductions rather than casual browsing..
+        ///   Looks up a localized string similar to Designed for people seeking meaningful, long-term relationships, with an emphasis on compatibility rather than endless swiping..
         /// </summary>
         public static string Approach02Desc {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Identity and photo verification are required before interaction to help ensure authenticity and trust..
+        ///   Looks up a localized string similar to Identity and photo verification are required before users can interact, helping reduce fake profiles and improve trust within the community..
         /// </summary>
         public static string Approach03Desc {
             get {
@@ -124,7 +124,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our platform protects your data and provides a secure environment for all users, giving you confidence while connecting..
+        ///   Looks up a localized string similar to Your privacy matters. We provide tools to manage your profile visibility and control your personal information, with clear policies explaining how your data is handled..
         /// </summary>
         public static string Approach04Desc {
             get {
@@ -214,7 +214,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We have developed the most advanced and scientifically backed compatibility system to create meaningful, long-lasting relationships..
+        ///   Looks up a localized string similar to Our compatibility system evaluates values, personality, lifestyle, interests, and relationship goals to help identify meaningful connections and potential compatibility between people..
         /// </summary>
         public static string CompatibilitySystemDesc {
             get {
@@ -313,7 +313,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Together we are building something amazing!.
+        ///   Looks up a localized string similar to A growing community with a shared goal: finding meaningful relationships..
         /// </summary>
         public static string OurNumbersMsg1 {
             get {
@@ -322,7 +322,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our numbers are growing every day. Join our community and find your perfect match..
+        ///   Looks up a localized string similar to Every new member brings us closer to our next milestone. Join early and be part of the community shaping the future of matchmaking..
         /// </summary>
         public static string OurNumbersMsg2 {
             get {
@@ -349,7 +349,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We are constantly evolving! Features may be released early if development is completed ahead of schedule. We appreciate your feedback, and your suggestions can help shape the future of our platform!.
+        ///   Looks up a localized string similar to Each milestone unlocks new features and improvements as our community grows. We&apos;re building Modern Matchmaker step by step, with each phase expanding what members can do on the platform..
         /// </summary>
         public static string OurRoadmapMsg2 {
             get {

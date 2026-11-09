@@ -192,8 +192,9 @@
   <data name="HeroCall" xml:space="preserve">
     <value>Comienza tu viaje para encontrar tu pareja ideal</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="HeroNote" xml:space="preserve">
-    <value>No es una app de citas. Una experiencia de matchmaking cuidadosamente seleccionada, enfocada en compatibilidad real.</value>
+    <value>Más que citas. Una experiencia de emparejamiento basada en la compatibilidad, valores compartidos y relaciones significativas.</value>
   </data>
   <data name="Identification" xml:space="preserve">
     <value>Identificación</value>

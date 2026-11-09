@@ -121,25 +121,25 @@
     <value>Compatibility System</value>
   </data>
   <data name="Approach01Desc" xml:space="preserve">
-    <value>We suggest matches using our compatibility system that evaluates values, lifestyle, and relationship goals.</value>
+    <value>Our compatibility system considers personality, values, lifestyle, interests, and relationship goals to identify potential matches based on what matters most to you.</value>
   </data>
   <data name="Approach02" xml:space="preserve">
     <value>Intentional Connections</value>
   </data>
   <data name="Approach02Desc" xml:space="preserve">
-    <value>Our platform is designed to support serious relationships by focusing on meaningful introductions rather than casual browsing.</value>
+    <value>Designed for people seeking meaningful, long-term relationships, with an emphasis on compatibility rather than endless swiping.</value>
   </data>
   <data name="Approach03" xml:space="preserve">
     <value>Verified Profiles</value>
   </data>
   <data name="Approach03Desc" xml:space="preserve">
-    <value>Identity and photo verification are required before interaction to help ensure authenticity and trust.</value>
+    <value>Identity and photo verification are required before users can interact, helping reduce fake profiles and improve trust within the community.</value>
   </data>
   <data name="Approach04" xml:space="preserve">
     <value>Privacy and Security</value>
   </data>
   <data name="Approach04Desc" xml:space="preserve">
-    <value>Our platform protects your data and provides a secure environment for all users, giving you confidence while connecting.</value>
+    <value>Your privacy matters. We provide tools to manage your profile visibility and control your personal information, with clear policies explaining how your data is handled.</value>
   </data>
   <data name="Approach05" xml:space="preserve">
     <value>Sparks Currency</value>
@@ -169,7 +169,7 @@
     <value>Compatibility System</value>
   </data>
   <data name="CompatibilitySystemDesc" xml:space="preserve">
-    <value>We have developed the most advanced and scientifically backed compatibility system to create meaningful, long-lasting relationships.</value>
+    <value>Our compatibility system evaluates values, personality, lifestyle, interests, and relationship goals to help identify meaningful connections and potential compatibility between people.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
@@ -202,10 +202,10 @@
     <value>Our Numbers</value>
   </data>
   <data name="OurNumbersMsg1" xml:space="preserve">
-    <value>Together we are building something amazing!</value>
+    <value>A growing community with a shared goal: finding meaningful relationships.</value>
   </data>
   <data name="OurNumbersMsg2" xml:space="preserve">
-    <value>Our numbers are growing every day. Join our community and find your perfect match.</value>
+    <value>Every new member brings us closer to our next milestone. Join early and be part of the community shaping the future of matchmaking.</value>
   </data>
   <data name="OurRoadmap" xml:space="preserve">
     <value>Our Roadmap</value>
@@ -214,7 +214,7 @@
     <value>New Features Unlocked as Our Community Expands!</value>
   </data>
   <data name="OurRoadmapMsg2" xml:space="preserve">
-    <value>We are constantly evolving! Features may be released early if development is completed ahead of schedule. We appreciate your feedback, and your suggestions can help shape the future of our platform!</value>
+    <value>Each milestone unlocks new features and improvements as our community grows. We're building Modern Matchmaker step by step, with each phase expanding what members can do on the platform.</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
     <value>Join our matchmaking pool</value>
