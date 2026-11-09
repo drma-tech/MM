@@ -20,8 +20,15 @@ namespace MM.WEB.Modules.Profile
 
         private async Task SelectPicture(PhotoType photoType)
         {
-            await DialogService.SelectPicturePopup(photoType,
-                new EventCallbackFactory().Create(this, async ((PhotoType, byte[]) result) => await CroppedPictureChanged(result.Item1, result.Item2)));
+            try
+            {
+                await DialogService.SelectPicturePopup(photoType,
+                    new EventCallbackFactory().Create(this, async ((PhotoType, byte[]) result) => await CroppedPictureChanged(result.Item1, result.Item2)));
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         private async Task DeletePhotoGallery(PhotoType type)

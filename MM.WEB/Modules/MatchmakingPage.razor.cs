@@ -40,9 +40,28 @@ namespace MM.WEB.Modules
             return true;
         }
 
+        private async Task OpenProfile(string userId)
+        {
+            try
+            {
+                await DialogService.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, userId, null, true);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
+        }
+
         private async Task Login()
         {
-            await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            try
+            {
+                await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
     }
 }

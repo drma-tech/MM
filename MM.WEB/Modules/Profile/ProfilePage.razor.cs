@@ -71,7 +71,14 @@ namespace MM.WEB.Modules.Profile
 
         private async Task Login()
         {
-            await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            try
+            {
+                await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         // private string GetSuggestionTitle()

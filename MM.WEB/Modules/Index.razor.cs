@@ -70,7 +70,14 @@ namespace MM.WEB.Modules
 
         private async Task Login()
         {
-            await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            try
+            {
+                await JsRuntime.Clerk().SignInAsync(Cts.Token);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
         }
 
         private async Task DialogCountriesCloseClick()

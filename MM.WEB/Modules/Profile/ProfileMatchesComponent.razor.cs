@@ -28,6 +28,18 @@ namespace MM.WEB.Modules.Profile
 
         private async Task SimulateMatches()
         {
+            try
+            {
+                await SimulateMatchesCore();
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
+            }
+        }
+
+        private async Task SimulateMatchesCore()
+        {
             if (Profile == null)
             {
                 await ShowWarning("You need to complete your profile first. (Step 1)");
@@ -115,6 +127,19 @@ namespace MM.WEB.Modules.Profile
                 MyMatches.Items = fakeProfiles.Select(s => new PersonModel { UserId = s.Id, UserName = s.NickName, UserPhoto = s.Gallery?.FaceId, Fake = true }).ToHashSet();
 
                 await MatchesState.FinishLoading.Invoke(MyMatches);
+            }
+        }
+
+        private async Task OpenProfile(string userId)
+        {
+            try
+            {
+                var fakeProfile = fakeProfiles.SingleOrDefault(profile => profile.Id == userId);
+                await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, userId, fakeProfile);
+            }
+            catch (Exception ex)
+            {
+                await ProcessException(ex);
             }
         }
     }

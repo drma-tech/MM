@@ -120,31 +120,37 @@ public partial class ProfileDataPage : PageCore<ProfileDataPage>
 
     private async Task UpdateLocation(ProfileModel profile, GeoLocation? gps)
     {
-        if (gps != null)
+        try
         {
-            var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, Cts.Token);
-            if (here != null && here.items.Count != 0)
+            if (gps != null)
             {
-                var address = here.items.First().address;
-                profile.Country = address?.GetCountry();
-                profile.State = address?.GetState();
-                profile.City = address?.GetCity();
-            }
+                var here = await MapApi.GetLocationHere(gps.Latitude, gps.Longitude, Cts.Token);
+                if (here != null && here.items.Count != 0)
+                {
+                    var address = here.items.First().address;
+                    profile.Country = address?.GetCountry();
+                    profile.State = address?.GetState();
+                    profile.City = address?.GetCity();
+                }
 
-            if (gps.Accuracy > 1000) await ShowInfo(Translations.Module.Profile.GpsNotAccurate);
+                if (gps.Accuracy > 1000) await ShowInfo(Translations.Module.Profile.GpsNotAccurate);
+            }
+            else
+            {
+                await ShowWarning(Translations.Module.Profile.UnableDetectGps);
+            }
         }
-        else
+        catch (Exception ex)
         {
-            await ShowWarning(Translations.Module.Profile.UnableDetectGps);
+            await ProcessException(ex);
         }
     }
 
     private async Task SaveHandle()
     {
-        if (Profile == null) throw new InvalidOperationException("profile is null");
-
         try
         {
+            if (Profile == null) throw new InvalidOperationException("Profile is null");
             Profile.SanitizeOpenTextFields();
 
             var validator = new ProfileValidation();

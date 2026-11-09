@@ -70,10 +70,9 @@ namespace MM.WEB.Modules.Profile
 
         private async Task SaveHandle()
         {
-            if (Filter == null) throw new InvalidOperationException("profile is null");
-
             try
             {
+                if (Filter == null) throw new InvalidOperationException("Filter is null");
                 var validator = new FilterValidation();
 
                 var result = await validator.ValidateAsync(Filter, Cts.Token);

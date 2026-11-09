@@ -31,7 +31,7 @@
                 @foreach (var item in LastUsers?.Items ?? [])
                 {
                     <MudItem xs="6" sm="4" md="3" lg="2">
-                        <MudLink OnClick="@(async () => await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, item.Id, null, true))"
+                        <MudLink OnClick="@(() => OpenProfile(item.Id))"
                                  style="display: flex; gap: 8px;" Disabled="@item.Nickname.Empty()">
                             <MudAvatar Size="Size.Large" Style="width: 66px; height: 66px;">
                                 <MudImage Src="images/no-face-photo.webp" Alt="@(item.Nickname ?? Translations.Module.Landing.NoProfile)" FallbackSrc="images/no-face-photo.webp" Style="width: 66px;">
