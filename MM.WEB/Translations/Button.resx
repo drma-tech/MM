@@ -139,7 +139,7 @@
     <value>Confirm</value>
   </data>
   <data name="ContinueWebsite" xml:space="preserve">
-    <value>Continue to Website</value>
+    <value>Continue to website</value>
   </data>
   <data name="Dating" xml:space="preserve">
     <value>Dating</value>
@@ -235,7 +235,7 @@
     <value>Share</value>
   </data>
   <data name="ShowCache" xml:space="preserve">
-    <value>Show Cache</value>
+    <value>Show cache</value>
   </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Show pending items</value>

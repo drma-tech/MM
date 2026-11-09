@@ -96,7 +96,7 @@ namespace MM.WEB.Modules.Subscription
                 Providers.Add(PaymentProvider.Apple);
             }
 
-            Provider = Providers[0]; //todo: when implemented, select native provider by default
+            Provider = Providers[0];
 
             return true;
         }

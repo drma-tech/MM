@@ -136,7 +136,7 @@
     <value>Comment ça marche</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>Principal</value>
+    <value>Accueil</value>
   </data>
   <data name="Matchmaker" xml:space="preserve">
     <value>Matchmaking, rencontres et célibataires dans votre pays ({0})</value>

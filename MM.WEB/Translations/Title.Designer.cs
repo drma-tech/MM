@@ -115,7 +115,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Main {
             get {

@@ -79,11 +79,20 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * Prices are displayed in US dollars. Your payment provider may convert and/or adjust the amount based on your location and local taxes..
+        ///   Looks up a localized string similar to * Prices are displayed in US dollars. Your payment provider may convert the amount and apply any applicable local taxes..
         /// </summary>
         public static string PricesDisplayedDollars {
             get {
                 return ResourceManager.GetString("PricesDisplayedDollars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        public static string Product {
+            get {
+                return ResourceManager.GetString("Product", resourceCulture);
             }
         }
         

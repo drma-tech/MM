@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdBlockerDetected" xml:space="preserve">
-    <value>AdBlocker detectado. Por favor, considere colocar nosso aplicativo na lista de permissões para nos apoiar. Obrigado!</value>
+    <value>Bloqueador de anúncios detectado. Considere adicionar nosso aplicativo à lista de permissões para nos apoiar. Obrigado!</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
     <value>Explore nossos outros aplicativos incríveis:</value>
@@ -130,10 +130,10 @@
     <value>Aviso de site externo</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">
-    <value>Aguarde novidades...</value>
+    <value>Fique atento às novidades.</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
-    <value>Em desenvolvimento</value>
+    <value>Este recurso está em desenvolvimento.</value>
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
     <value>Este módulo ainda está em desenvolvimento. Se você deseja relatar um bug, entre em contato conosco através do botão de feedback.</value>

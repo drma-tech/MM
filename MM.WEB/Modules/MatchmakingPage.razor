@@ -16,7 +16,7 @@
         <RenderControl State="LastUsersState" LoadingHeight="130px">
             @foreach (var item in LastUsers?.Items.Select(p => p.State).Where(p => p.NotEmpty()).Distinct() ?? [])
             {
-                <MudChip T="string" Label="true" Color="Color.Primary" Size="AppStateStatic.Size">
+                <MudChip T="string" Label="true" Color="Color.Primary">
                     @item
                 </MudChip>
             }

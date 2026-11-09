@@ -124,7 +124,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue to Website.
+        ///   Looks up a localized string similar to Continue to website.
         /// </summary>
         public static string ContinueWebsite {
             get {
@@ -412,7 +412,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show Cache.
+        ///   Looks up a localized string similar to Show cache.
         /// </summary>
         public static string ShowCache {
             get {

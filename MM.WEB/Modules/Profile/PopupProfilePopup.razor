@@ -32,11 +32,11 @@
                             @{
                                 var totPercAff = affinities.GetPercentAffinity();
                             }
-                            <MudChip T="string" Color="GetColor(totPercAff)" Label="true" Class="poster-chip" Style="top: 5px; left: 5px; z-index: 2;" Size="AppStateStatic.Size">
+                            <MudChip T="string" Color="GetColor(totPercAff)" Label="true" Class="poster-chip" Style="top: 5px; left: 5px; z-index: 2;">
                                 @(totPercAff + "%")
                             </MudChip>
                             <MudChip T="string" Color="Color.Dark" Label="true" Class="poster-chip" Style="top: 5px; right: 5px; z-index: 2;"
-                                     Icon="@Icons.Material.Filled.PhotoCamera" Size="AppStateStatic.Size">
+                                     Icon="@Icons.Material.Filled.PhotoCamera">
                                 @imageDataUriGallery.Count()
                             </MudChip>
                             <MudCarousel Class="mud-width-full" Style="height: 500px;" AutoCycle="true" ShowBullets="false" TData="string" ArrowsColor="Color.Primary">
@@ -56,11 +56,11 @@
                                 </ChildContent>
                             </MudCarousel>
                             <div class="mb-2" style="text-align: center;">
-                                <MudChip T="string" Color="Color.Primary" Label="true" Size="AppStateStatic.Size">
+                                <MudChip T="string" Color="Color.Primary" Label="true">
                                     @(View?.NickName ?? "NickName")
                                 </MudChip>
                                 <MudTooltip Text="@View?.Location">
-                                    <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment" Size="AppStateStatic.Size">
+                                    <MudChip T="string" Color="Color.Secondary" Label="true" Icon="@Icons.Material.Filled.Apartment">
                                         @(View?.GetLocation(LocationType.City) ?? "City")
                                     </MudChip>
                                 </MudTooltip>

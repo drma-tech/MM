@@ -124,7 +124,10 @@
     <value>Payment provider</value>
   </data>
   <data name="PricesDisplayedDollars" xml:space="preserve">
-    <value>* Prices are displayed in US dollars. Your payment provider may convert and/or adjust the amount based on your location and local taxes.</value>
+    <value>* Prices are displayed in US dollars. Your payment provider may convert the amount and apply any applicable local taxes.</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
   </data>
   <data name="RegistrationSuccessful" xml:space="preserve">
     <value>Registration successful!</value>

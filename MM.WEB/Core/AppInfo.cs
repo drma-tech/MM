@@ -26,16 +26,16 @@ namespace MM.WEB.Core
             new(Platform.ios, "App Store", $"https://apps.apple.com/us/app/{AppleId}", "/logo/app-store.png" ),
             new(Platform.huawei, "Huawei AppGallery", $"https://appgallery.huawei.com/app/{HuaweiId}", "/logo/huawei.png" ),
             new(Platform.xiaomi, "Xiaomi GetApps", $"https://global.app.mi.com/details?id={XiaomiId}", "/logo/xiaomi.png" ),
-            //new(Platform.amazon, "Amazon Appstore", $"https://www.amazon.com/gp/product/{AmazonId}", "/logo/amazon.png" )
+            //new(Platform.amazon, "Amazon Appstore", $"https://www.amazon.com/gp/product/{AmazonId}", "/logo/amazon.png" ),
         ];
 
         public static readonly ProductLink[] Products =
         [
-            new("Streaming Discovery", Translations.Product.streamingdiscovery, "https://streamingdiscovery.com", "/logo/streamingdiscovery.png", live: true ),
-            //new("Modern Matchmaker", Translations.Product.modern_matchmaker, "https://modern-matchmaker.com", "/logo/modern-matchmaker.png", live: true ),
-            new("My Next Spot", Translations.Product.next_spot, "https://my-next-spot.com", "/logo/next-spot.png", live: true ),
-            new("Web Standards", Translations.Product.webstandards, "https://web-standards.com", "/logo/webstandards.png", live: false ),
-            //new("Shared Home", Translations.Product.shared_home, "https://shared-home.com", "/logo/shared-home.png", live: true ),
+            new("Streaming Discovery", Translations.Product.streamingdiscovery, Translations.Product.streamingdiscovery_desc, "https://streamingdiscovery.com", "/logo/streamingdiscovery.png", live: true ),
+            //new("Modern Matchmaker", Translations.Product.modern_matchmaker, Translations.Product.modern_matchmaker_desc, "https://modern-matchmaker.com", "/logo/modern-matchmaker.png", live: true ),
+            new("My Next Spot", Translations.Product.next_spot, Translations.Product.next_spot_desc, "https://my-next-spot.com", "/logo/next-spot.png", live: true ),
+            new("Web Standards", Translations.Product.webstandards, Translations.Product.webstandards_desc, "https://web-standards.com", "/logo/webstandards.png", live: false ),
+            //new("Shared Home", Translations.Product.shared_home, Translations.Product.shared_home_desc, "https://shared-home.com", "/logo/shared-home.png", live: true ),
        ];
     }
 }

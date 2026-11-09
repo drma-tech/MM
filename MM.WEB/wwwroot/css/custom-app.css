@@ -157,13 +157,6 @@ body .pwa-updater[b-pwa-updater] {
     font-size: 0.8rem !important;
 }
 
-@media (max-width: 599.95px), (max-height: 599.95px) {
-    .custom-title-list {
-        line-height: normal;
-        font-size: 0.7rem !important;
-    }
-}
-
 .custom-h3-features {
     font-size: 1.25rem !important;
     line-height: 1.5 !important;
@@ -204,7 +197,7 @@ body .pwa-updater[b-pwa-updater] {
 
 @media (max-width: 599.95px), (max-height: 599.95px) {
     .carousel-caption {
-        font-size: 0.7rem !important;
+        font-size: 0.8rem !important;
     }
 }
 

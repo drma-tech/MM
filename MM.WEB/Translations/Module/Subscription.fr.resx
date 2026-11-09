@@ -126,6 +126,9 @@
   <data name="PricesDisplayedDollars" xml:space="preserve">
     <value>* Les prix sont affichés en dollars américains. Votre fournisseur de paiement peut convertir et/ou ajuster le montant en fonction de votre emplacement et des taxes locales.</value>
   </data>
+  <data name="Product" xml:space="preserve">
+    <value>Produit</value>
+  </data>
   <data name="RegistrationSuccessful" xml:space="preserve">
     <value>Inscription réussie !</value>
   </data>

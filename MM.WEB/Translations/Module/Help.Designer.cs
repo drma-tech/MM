@@ -61,7 +61,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Language.
+        ///   Looks up a localized string similar to App language.
         /// </summary>
         public static string AppLanguage {
             get {
@@ -79,7 +79,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Theme.
+        ///   Looks up a localized string similar to App theme.
         /// </summary>
         public static string AppTheme {
             get {
@@ -88,7 +88,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark Mode.
+        ///   Looks up a localized string similar to Dark mode.
         /// </summary>
         public static string DarkMode {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light Mode.
+        ///   Looks up a localized string similar to Light mode.
         /// </summary>
         public static string LightMode {
             get {

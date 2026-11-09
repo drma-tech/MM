@@ -178,8 +178,8 @@
 
     private string Culture => Navigation.GetCulture();
 
-    private static string imageSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
-    private static string titleFontSize => AppStateStatic.Size == Size.Small ? "20px" : "24px";
+    private static string imageSize => AppStateStatic.IsMobile ? "20px" : "24px";
+    private static string titleFontSize => AppStateStatic.IsMobile ? "20px" : "24px";
 
     private bool ProfileValid => Profile != null && ProfileValidator.Validate(Profile, options => options.IncludeAllRuleSets()).IsValid;
     private bool FilterValid => Filter != null && FilterValidator.Validate(Filter).IsValid;

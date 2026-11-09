@@ -20,7 +20,7 @@
         <RenderControl State="MatchesState" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated" LoadingHeight="130px" Context="matches">
             <Slider List="matches?.Items ?? new HashSet<PersonModel>()" Context="item">
                 <div style="@($"width: {(AppStateStatic.IsMobile ? "110" : "130")}px; position: relative;")">
-                    <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;" Size="AppStateStatic.Size">
+                    <MudChip T="string" Color="Color.Info" Label="true" Style="padding: 0.2rem; position: absolute; top: 0; left: 0; height: auto; z-index: 1;">
                         @item.UserName
                     </MudChip>
                     <MudIconButton Icon="@Icons.Material.Filled.RemoveRedEye" Color="Color.Secondary" Variant="Variant.Filled"
