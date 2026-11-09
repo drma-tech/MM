@@ -44,7 +44,13 @@ namespace MM.WEB.Modules.Help
             {
                 if (AppStateStatic.Principal == null) return;
 
+                // TODO: Remove this active-subscription check. The deletion request must be accepted independently of subscription cancellation.
                 // TODO: Audit the full deletion lifecycle, including all first-party stores, authentication, third-party processors, billing records, logs, support data, and backups. Retain only records supported by a documented legal basis and retention period.
+                if (AppStateStatic.Principal.Sparks > 0)
+                {
+                    await DialogService.ShowMessageBoxAsync("You still have sparks.", "Please request a refund or spend your sparks before deleting your profile.");
+                    return;
+                }
 
                 if (await DialogService.ShowMessageBoxAsync(AppInfo.Title, Translations.Module.Auth.SureDeleteAccount, Translations.Button.Ok, Translations.Button.Cancel) ?? false)
                 {
