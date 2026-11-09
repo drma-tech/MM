@@ -157,8 +157,7 @@
                 <li><b>Clerk:</b> registro y autenticación de cuentas.</li>
                 <li><b>Microsoft Azure:</b> infraestructura en la nube, alojamiento de la aplicación, servicios de bases de datos mediante Azure Cosmos DB y almacenamiento de archivos mediante Azure Blob Storage.</li>
                 <li><b>Didit:</b> verificación de identidad y edad.</li>
-                <li><b>AWS Rekognition:</b> análisis de imágenes, incluidos controles relacionados con rostros y análisis de seguridad del contenido.</li>
-                <li><b>HERE:</b> conversión de las coordenadas de ubicación del dispositivo en datos de ubicación del perfil cuando utiliza la detección de ubicación.</li>
+                <li><b>AWS Rekognition:</b> análisis de imágenes, incluidos controles relacionados con rostros y análisis de seguridad del contenido.</li>                <li><b>HERE:</b> conversión de las coordenadas de ubicación del dispositivo en datos de ubicación del perfil cuando utiliza la detección de ubicación.</li>
                 <li><b>Stripe y Apple:</b> procesamiento de pagos y gestión de suscripciones, según el método de compra disponible.</li>
                 <li><b>Sentry:</b> supervisión de la aplicación, informes de errores y diagnósticos técnicos.</li>
                 <li><b>Microsoft Clarity y Google Analytics:</b> análisis e información sobre el uso del servicio.</li>
@@ -317,12 +316,332 @@
         </div>
         <div class="support-section">
             <h2>14. 联系我们</h2>
-            <p>如有隐私相关问题或请求，请通过 <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> 联系我们。法律通知可发送至 <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>。</p>
-            <p>Modern Matchmaker 由 DRMA Tech（Delivering Reliable Modern Apps Tech OÜ）运营。</p>
+            <p>如有隐私相关问题或请求，请通过 <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> 联系我们。法律通知可发送至 <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>。</p>            <p>Modern Matchmaker 由 DRMA Tech（Delivering Reliable Modern Apps Tech OÜ）运营。</p>
         </div>
         <div class="support-footer">
             <p>最后更新：2026 年 11 月 9 日</p>
             <p>有关规范您使用本平台的规则，请阅读我们的<a href=@($"/{Culture}/legal/terms")>使用条款</a>。</p>
+        </div>
+    }
+    else if (Language == AppLanguage.fr)
+    {
+        <h1 class="support-title">Politique de confidentialité</h1>
+        <div class="support-subtitle">
+            Cette politique de confidentialité explique comment DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), la société qui exploite <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank" rel="noopener">@AppInfo.WebSite</a>), collecte, utilise, stocke et partage des informations lorsque vous utilisez Modern Matchmaker et ses services associés.
+        </div>
+        <div class="support-section">
+            <h2>1. Informations que nous collectons</h2>
+            <p><b>Informations du compte.</b> Nous utilisons Clerk pour gérer l'inscription et l'authentification. Cela peut inclure votre adresse e-mail, votre identifiant de compte, votre nom et les données d'authentification. Nous enregistrons également certaines informations d'accès, telles que les dates de connexion, la plateforme, le pays et l'adresse IP, afin de protéger les comptes et de prévenir les abus.</p>
+            <p><b>Informations de profil et de compatibilité.</b> Si vous créez un profil, nous traitons les informations que vous choisissez de fournir, notamment votre âge ou date de naissance, votre localisation, votre nationalité, vos langues, vos intentions relationnelles, votre mode de vie, vos centres d'intérêt, votre personnalité, vos projets familiaux et vos préférences concernant un partenaire potentiel. Selon les champs renseignés, ces informations peuvent également être sensibles, comme l'origine ethnique, la religion, le sexe biologique, l'identité de genre, l'orientation sexuelle, le handicap ou la neurodiversité, ainsi que des informations relatives à la santé, aux finances et aux préférences intimes.</p>
+            <p><b>Photos et vérification d'identité.</b> Nous traitons les photos de profil et, le cas échéant, les images ou autres informations transmises pour vérifier l'identité et l'âge. Didit effectue la vérification d'identité. AWS Rekognition peut analyser les images pour détecter et comparer les visages et effectuer des contrôles de sécurité du contenu.</p>
+            <p><b>Informations de localisation.</b> Vous pouvez indiquer votre pays, votre région et votre ville dans votre profil. Si vous choisissez d'utiliser la détection de localisation, votre appareil peut fournir des coordonnées GPS afin que HERE détermine des informations telles que votre ville, votre région et votre pays. Nous stockons la localisation déduite pour le profil, et non un historique de vos déplacements GPS précis.</p>
+            <p><b>Informations d'utilisation, techniques et de communication.</b> Nous et nos prestataires pouvons traiter des informations sur votre appareil et votre navigateur, la version de l'application, le pays approximatif, vos interactions avec le service, les données de diagnostic ainsi que les messages ou commentaires envoyés au support ou via UserJot.</p>
+            <p><b>Informations de paiement.</b> Si vous effectuez un achat, nous traitons les détails de l'abonnement ou de la transaction, tels que le prestataire de paiement, le produit, le statut et les références de transaction. Les prestataires de paiement traitent les données de paiement que vous fournissez dans leurs propres environnements de paiement ou plateformes.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Informations sensibles et vos choix</h2>
+            <p>Certains champs du profil peuvent révéler des informations sensibles ou spécialement protégées par les lois applicables en matière de confidentialité. Avant la création du profil, nous vous demandons d'accepter le traitement de certaines informations sensibles, notamment l'origine ethnique, la religion et l'orientation sexuelle, à des fins de compatibilité. Vous choisissez les informations à fournir et pouvez les modifier ou les supprimer à l'aide des fonctionnalités disponibles dans votre compte.</p>
+            <p>Les informations du profil servent à évaluer la compatibilité entre les personnes. Selon les fonctionnalités du service et les paramètres de visibilité de votre profil, les informations fournies peuvent influencer les détails du profil ou les résultats de compatibilité affichés aux autres utilisateurs. Évitez d'inclure dans les champs publics des informations que vous ne souhaitez pas partager.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Comment nous utilisons les informations</h2>
+            <p>Nous utilisons les informations lorsque cela est nécessaire pour :</p>
+            <ul>
+                <li>Créer et gérer les comptes et les profils des utilisateurs.</li>
+                <li>Fournir des fonctionnalités de mise en relation et de compatibilité fondées sur les informations et préférences des profils.</li>
+                <li>Vérifier l'identité et l'âge et contribuer à protéger la communauté.</li>
+                <li>Examiner les photos et les contenus signalés, détecter les fraudes et enquêter sur les utilisations abusives ou les violations de nos conditions d'utilisation.</li>
+                <li>Traiter les achats, gérer les abonnements et fournir une assistance aux utilisateurs.</li>
+                <li>Exploiter, sécuriser, dépanner et améliorer la plateforme.</li>
+                <li>Comprendre l'utilisation du service, recueillir des commentaires et communiquer des informations importantes concernant le compte ou le service.</li>
+                <li>Respecter les obligations légales et établir, exercer ou défendre des droits en justice.</li>
+            </ul>
+        </div>
+        <div class="support-section">
+            <h2>4. Bases juridiques du traitement</h2>
+            <p>Lorsque la loi l'exige, nous nous appuyons sur une base juridique applicable à chaque finalité de traitement. Selon les circonstances, il peut s'agir de votre consentement, de l'exécution d'un contrat ou de mesures prises à votre demande avant la conclusion d'un contrat, de nos intérêts légitimes à exploiter et protéger le service, ou du respect d'une obligation légale.</p>
+            <p>Lorsque le traitement repose sur votre consentement, vous pouvez le retirer à tout moment. Ce retrait n'affecte pas les traitements effectués auparavant et certaines fonctionnalités peuvent devenir indisponibles si elles dépendent des informations ou de l'autorisation concernées.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. Prestataires de services et partage des informations</h2>
+            <p>Nous ne vendons pas de données personnelles contre rémunération. Nous partageons des informations avec des prestataires lorsque cela est raisonnablement nécessaire pour exploiter Modern Matchmaker, fournir une fonctionnalité que vous demandez, traiter une transaction, protéger les utilisateurs ou respecter des obligations légales. Selon le service et la fonctionnalité utilisés, ces prestataires peuvent inclure :</p>
+            <ul>
+                <li><b>Clerk :</b> inscription et authentification des comptes.</li>
+                <li><b>Microsoft Azure :</b> infrastructure cloud, hébergement de l'application, services de base de données via Azure Cosmos DB et stockage de fichiers via Azure Blob Storage.</li>
+                <li><b>Didit :</b> vérification de l'identité et de l'âge.</li>
+                <li><b>AWS Rekognition :</b> analyse d'images, notamment les contrôles liés aux visages et l'analyse de sécurité du contenu.</li>
+                <li><b>HERE :</b> conversion des coordonnées de localisation de l'appareil en informations de localisation du profil lorsque vous utilisez la détection de localisation.</li>
+                <li><b>Stripe et Apple :</b> traitement des paiements et gestion des abonnements, selon le mode d'achat disponible.</li>
+                <li><b>Sentry :</b> surveillance de l'application, signalement des erreurs et diagnostics techniques.</li>
+                <li><b>Microsoft Clarity et Google Analytics :</b> analyses et informations sur l'utilisation du service.</li>
+                <li><b>Google AdSense :</b> diffusion et mesure des publicités lorsque la publicité est activée.</li>
+                <li><b>UserJot :</b> commentaires, suggestions et communication sur le produit.</li>
+                <li><b>ZeptoMail :</b> envoi des e-mails liés au compte et au service.</li>
+            </ul>
+            <p>Ces prestataires peuvent traiter les informations pour notre compte ou selon leurs propres conditions de confidentialité, en fonction de leur rôle. Selon certaines lois, certaines divulgations à des fournisseurs d'analyses ou de publicité peuvent être considérées comme un « partage » à des fins de publicité comportementale intercontextuelle, même sans échange d'argent. Le cas échéant, vous pouvez demander à vous opposer à ce partage en écrivant à <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
+            <p>Nous pouvons également divulguer des informations lorsque la loi l'exige, en réponse à des demandes légales valides, pour protéger les utilisateurs ou le service, ou dans le cadre d'une fusion, d'une acquisition, d'un financement ou de la vente de tout ou partie de notre entreprise, sous réserve des exigences applicables en matière de confidentialité.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Cookies, stockage local, analyses et publicité</h2>
+            <p>Modern Matchmaker et ses prestataires peuvent utiliser des cookies, le stockage local et des technologies similaires pour assurer les fonctionnalités essentielles, mémoriser les préférences, comprendre l'utilisation du service, diagnostiquer les problèmes et diffuser ou mesurer des publicités.</p>
+            <p>Selon la version et les fonctionnalités utilisées, ces technologies peuvent être associées à des services tels que Microsoft Clarity, Google Analytics, Google AdSense, Clerk et Sentry. Ces fournisseurs peuvent collecter des informations sur votre appareil, votre navigateur et vos interactions avec le service conformément à leurs propres conditions et avis de confidentialité.</p>
+            <p>Vous pouvez gérer ou supprimer les cookies et certaines données locales dans les paramètres de votre navigateur ou de votre appareil. Le blocage de ces technologies peut affecter certaines fonctionnalités, et les paramètres du navigateur ne contrôlent pas nécessairement toutes les technologies utilisées par des tiers. Lorsque la loi exige un consentement ou une possibilité d'opposition, vous pouvez exercer ce choix au moyen des contrôles disponibles ou en nous contactant.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Photos et vérification d'identité</h2>
+            <p>Les photos de profil et les images de vérification peuvent être stockées dans Microsoft Azure Blob Storage et consultées aux fins pour lesquelles elles ont été fournies. AWS Rekognition peut traiter les images pour détecter ou comparer des visages et identifier les contenus susceptibles de ne pas respecter nos exigences de sécurité.</p>
+            <p>Lorsque vous effectuez une vérification d'identité, Didit traite les informations et les documents requis par son processus de vérification. Nous recevons les résultats de la vérification et certaines informations associées limitées, nécessaires pour enregistrer le résultat et protéger le service. Pour les sessions approuvées, notre système envoie à Didit une demande de suppression de la session de vérification. Didit peut néanmoins conserver des informations lorsque ses propres obligations ou politiques légales l'exigent.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Paiements et abonnements</h2>
+            <p>Les achats peuvent être traités par Stripe ou Apple, selon l'option d'achat et la plateforme disponibles. Le prestataire concerné collecte et traite les informations de paiement conformément à sa propre politique de confidentialité. Nous recevons les détails de transaction et d'abonnement nécessaires pour valider les achats, gérer les accès, fournir une assistance et conserver les registres de transaction. Nous ne stockons pas intentionnellement les numéros complets de cartes de paiement ni les codes de sécurité.</p>
+            <p>La suppression du compte et l'annulation de l'abonnement sont deux démarches distinctes. La suppression de votre compte Modern Matchmaker n'annule pas automatiquement un abonnement et n'interrompt pas les futurs prélèvements. Annulez votre abonnement directement auprès du prestataire ou de la plateforme utilisée lors de l'achat.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Conservation des données et suppression du compte</h2>
+            <p>Nous conservons les informations personnelles aussi longtemps que nécessaire aux finalités décrites dans cette politique, notamment pour fournir le service, maintenir les comptes et les profils, protéger les utilisateurs, résoudre les litiges et respecter les obligations légales.</p>
+            <p>Vous pouvez demander la suppression de votre compte ou de vos informations personnelles en écrivant à <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Après vérification de votre demande, nous supprimerons ou anonymiserons les informations que nous ne sommes pas tenus ou autorisés à conserver. Certains éléments peuvent être conservés pendant une période limitée lorsque cela est nécessaire pour respecter la loi, prévenir la fraude, assurer la sécurité ou établir ou défendre des droits en justice. Les copies de sauvegarde peuvent subsister jusqu'à leur remplacement dans le cycle normal de sauvegarde. Les informations détenues indépendamment par des prestataires tiers sont soumises à leurs propres politiques et obligations de conservation.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. Vos droits en matière de confidentialité</h2>
+            <p>Selon votre lieu de résidence et la législation applicable, vous pouvez avoir le droit de demander l'accès à vos informations personnelles, leur rectification ou leur suppression ; d'obtenir des informations sur leur utilisation ou leur partage ; de demander leur portabilité ou la limitation du traitement ; de vous opposer à certains traitements ; de retirer votre consentement ; ou d'introduire une réclamation auprès d'une autorité de protection des données. Certains droits sont soumis à des exceptions légales et ne s'appliquent pas dans toutes les situations.</p>
+            <p>Pour exercer vos droits, contactez <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Nous pouvons devoir vérifier votre identité avant de traiter votre demande. Vous n'avez pas à fournir plus d'informations que ce qui est raisonnablement nécessaire à cette vérification et à notre réponse.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Conditions d'âge et confidentialité des enfants</h2>
+            <p>Modern Matchmaker est exclusivement destiné aux adultes âgés de 18 ans ou plus. La vérification d'identité est obligatoire avant que les utilisateurs puissent interagir sur la plateforme. Nous n'autorisons pas sciemment les enfants à créer un compte ou à utiliser le service. Si vous pensez qu'un enfant nous a communiqué des informations personnelles, contactez-nous afin que nous puissions examiner la situation et prendre les mesures appropriées.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Sécurité et transferts internationaux</h2>
+            <p>Nous mettons en œuvre des mesures techniques et organisationnelles destinées à protéger les informations personnelles contre tout accès non autorisé, perte, utilisation abusive ou divulgation. Ces mesures comprennent des contrôles d'accès et des protections pour les données transmises entre votre appareil et nos services. Aucune méthode de transmission ou de stockage ne peut être garantie comme totalement sûre.</p>
+            <p>DRMA Tech est établie en Estonie. Notre infrastructure et nos prestataires peuvent traiter des informations aux États-Unis, dans l'Espace économique européen et dans d'autres pays, selon le prestataire et le service concernés. Lorsque la loi l'exige, les transferts internationaux reposent sur une base juridique appropriée et des garanties conformes à la législation applicable en matière de protection des données.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Modifications de cette politique de confidentialité</h2>
+            <p>Nous pouvons mettre à jour cette politique de confidentialité pour tenir compte des évolutions de Modern Matchmaker, de nos prestataires ou de la législation applicable. La version la plus récente sera publiée sur cette page avec sa date de mise à jour. Lorsque cela est nécessaire, nous fournirons un avis supplémentaire ou demanderons votre consentement pour les modifications importantes.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. Nous contacter</h2>
+            <p>Pour toute question ou demande relative à la confidentialité, contactez-nous à <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Les notifications légales peuvent être envoyées à <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+            <p>Modern Matchmaker est exploité par DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).</p>
+        </div>
+        <div class="support-footer">
+            <p>Dernière mise à jour : 9 novembre 2026</p>
+            <p>Pour connaître les règles régissant l'utilisation de la plateforme, veuillez consulter nos <a href=@($"/{Culture}/legal/terms")>Conditions d'utilisation</a>.</p>
+        </div>
+    }
+    else if (Language == AppLanguage.it)
+    {
+        <h1 class="support-title">Informativa sulla privacy</h1>
+        <div class="support-subtitle">
+            La presente Informativa sulla privacy spiega come DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), la società che gestisce <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank" rel="noopener">@AppInfo.WebSite</a>), raccoglie, utilizza, conserva e condivide le informazioni quando utilizzi Modern Matchmaker e i relativi servizi.
+        </div>
+        <div class="support-section">
+            <h2>1. Informazioni che raccogliamo</h2>
+            <p><b>Informazioni sull'account.</b> Utilizziamo Clerk per gestire la registrazione e l'autenticazione. Ciò può includere il tuo indirizzo e-mail, l'identificativo dell'account, il nome e i registri di autenticazione. Registriamo inoltre alcune informazioni di accesso, come date di login, piattaforma, paese e indirizzo IP, per proteggere gli account e prevenire gli abusi.</p>
+            <p><b>Informazioni sul profilo e sulla compatibilità.</b> Se crei un profilo, trattiamo le informazioni che scegli di fornire, tra cui età o data di nascita, posizione, nazionalità, lingue, intenzioni relazionali, stile di vita, interessi, personalità, progetti familiari e preferenze su un potenziale partner. A seconda dei campi compilati, queste informazioni possono includere anche dati sensibili come etnia, religione, sesso biologico, identità di genere, orientamento sessuale, disabilità o neurodiversità, oltre a informazioni relative a salute, finanze e preferenze intime.</p>
+            <p><b>Foto e verifica dell'identità.</b> Trattiamo le foto del profilo e, ove applicabile, immagini o altre informazioni inviate per verificare identità ed età. Didit effettua la verifica dell'identità. AWS Rekognition può analizzare le immagini per rilevare e confrontare volti e svolgere controlli sulla sicurezza dei contenuti.</p>
+            <p><b>Informazioni sulla posizione.</b> Puoi indicare paese, stato e città nel tuo profilo. Se scegli di utilizzare il rilevamento della posizione, il tuo dispositivo può fornire coordinate GPS affinché HERE determini informazioni come città, stato e paese. Conserviamo la posizione derivata per il profilo, non una cronologia dei tuoi spostamenti GPS precisi.</p>
+            <p><b>Informazioni sull'utilizzo, tecniche e comunicazioni.</b> Noi e i nostri fornitori possiamo trattare informazioni sul dispositivo e sul browser, versione dell'app, paese approssimativo, interazioni con il servizio, dati diagnostici e messaggi o feedback inviati all'assistenza o tramite UserJot.</p>
+            <p><b>Informazioni sui pagamenti.</b> Se effettui un acquisto, trattiamo i dettagli dell'abbonamento o della transazione, come fornitore di pagamento, prodotto, stato e riferimenti della transazione. I fornitori di pagamento gestiscono le credenziali inserite nei propri ambienti di pagamento o sulle proprie piattaforme.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Informazioni sensibili e le tue scelte</h2>
+            <p>Alcuni campi del profilo possono rivelare informazioni sensibili o particolarmente tutelate dalle leggi applicabili in materia di privacy. Prima della creazione del profilo, chiediamo il tuo consenso al trattamento di determinate informazioni sensibili, tra cui etnia, religione e orientamento sessuale, per finalità di compatibilità. Scegli tu quali dettagli fornire e puoi aggiornarli o rimuoverli utilizzando le funzionalità disponibili nell'account.</p>
+            <p>Le informazioni del profilo vengono utilizzate per aiutare a valutare la compatibilità tra le persone. In base alle funzionalità del servizio e alle impostazioni di visibilità del profilo, le informazioni fornite possono influire sui dettagli del profilo o sui risultati di compatibilità mostrati agli altri utenti. Evita di inserire nei campi pubblici informazioni che non desideri condividere.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Come utilizziamo le informazioni</h2>
+            <p>Utilizziamo le informazioni nella misura necessaria per:</p>
+            <ul>
+                <li>Creare e gestire account e profili degli utenti.</li>
+                <li>Fornire funzionalità di matchmaking e compatibilità basate sulle informazioni e sulle preferenze del profilo.</li>
+                <li>Verificare identità ed età e contribuire a proteggere la community.</li>
+                <li>Esaminare foto e contenuti segnalati, rilevare frodi e indagare su usi impropri o violazioni dei nostri Termini di utilizzo.</li>
+                <li>Elaborare acquisti, gestire abbonamenti e fornire assistenza agli utenti.</li>
+                <li>Gestire, proteggere, risolvere problemi e migliorare la piattaforma.</li>
+                <li>Comprendere l'utilizzo del servizio, raccogliere feedback e comunicare informazioni importanti sull'account o sul servizio.</li>
+                <li>Adempiere agli obblighi di legge e accertare, esercitare o difendere diritti in sede giudiziaria.</li>
+            </ul>
+        </div>
+        <div class="support-section">
+            <h2>4. Basi giuridiche del trattamento</h2>
+            <p>Quando richiesto dalla legge, ci basiamo su un'adeguata base giuridica per ciascuna finalità del trattamento. A seconda delle circostanze, questa può includere il tuo consenso, l'esecuzione di un contratto o misure richieste prima della conclusione di un contratto, i nostri legittimi interessi nella gestione e nella protezione del servizio oppure l'adempimento di un obbligo legale.</p>
+            <p>Quando il trattamento si basa sul consenso, puoi revocarlo in qualsiasi momento. La revoca non pregiudica il trattamento effettuato prima della revoca e alcune funzionalità potrebbero non essere più disponibili se dipendono dalle informazioni o dall'autorizzazione in questione.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. Fornitori di servizi e condivisione delle informazioni</h2>
+            <p>Non vendiamo informazioni personali in cambio di denaro. Condividiamo informazioni con i fornitori di servizi quando è ragionevolmente necessario per gestire Modern Matchmaker, fornire una funzionalità richiesta, elaborare una transazione, proteggere gli utenti o rispettare obblighi di legge. A seconda del servizio e della funzionalità utilizzati, i fornitori possono includere:</p>
+            <ul>
+                <li><b>Clerk:</b> registrazione e autenticazione degli account.</li>
+                <li><b>Microsoft Azure:</b> infrastruttura cloud, hosting dell'applicazione, servizi di database tramite Azure Cosmos DB e archiviazione di file tramite Azure Blob Storage.</li>
+                <li><b>Didit:</b> verifica dell'identità e dell'età.</li>
+                <li><b>AWS Rekognition:</b> analisi delle immagini, inclusi controlli relativi ai volti e analisi della sicurezza dei contenuti.</li>
+                <li><b>HERE:</b> conversione delle coordinate di posizione del dispositivo in informazioni sulla posizione del profilo quando utilizzi il rilevamento della posizione.</li>
+                <li><b>Stripe e Apple:</b> elaborazione dei pagamenti e gestione degli abbonamenti, in base al metodo di acquisto disponibile.</li>
+                <li><b>Sentry:</b> monitoraggio dell'applicazione, segnalazione degli errori e diagnostica tecnica.</li>
+                <li><b>Microsoft Clarity e Google Analytics:</b> analisi e informazioni sulle modalità di utilizzo del servizio.</li>
+                <li><b>Google AdSense:</b> pubblicazione e misurazione degli annunci, quando la pubblicità è attiva.</li>
+                <li><b>UserJot:</b> feedback, suggerimenti e comunicazioni sul prodotto.</li>
+                <li><b>ZeptoMail:</b> invio di e-mail relative all'account e al servizio.</li>
+            </ul>
+            <p>Questi fornitori possono trattare le informazioni per nostro conto o secondo le proprie condizioni sulla privacy, in base al loro ruolo. In base ad alcune leggi sulla privacy, determinate comunicazioni a fornitori di analisi o pubblicità possono essere considerate una «condivisione» per la pubblicità comportamentale tra contesti diversi, anche in assenza di pagamenti. Ove applicabile, puoi richiedere di opporti a tale condivisione scrivendo a <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>.</p>
+            <p>Possiamo inoltre divulgare informazioni quando richiesto dalla legge, in risposta a richieste legali valide, per proteggere gli utenti o il servizio oppure in relazione a fusioni, acquisizioni, finanziamenti o vendite di tutta o parte della nostra attività, nel rispetto dei requisiti applicabili in materia di privacy.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Cookie, archiviazione locale, analisi e pubblicità</h2>
+            <p>Modern Matchmaker e i suoi fornitori possono utilizzare cookie, archiviazione locale e tecnologie simili per fornire funzionalità essenziali, ricordare le preferenze, comprendere l'utilizzo del servizio, diagnosticare problemi e mostrare o misurare annunci pubblicitari.</p>
+            <p>A seconda della versione e delle funzionalità utilizzate, queste tecnologie possono essere associate a servizi come Microsoft Clarity, Google Analytics, Google AdSense, Clerk e Sentry. Tali fornitori possono raccogliere informazioni sul dispositivo, sul browser e sulle interazioni con il servizio in conformità ai propri termini e alle proprie informative sulla privacy.</p>
+            <p>Puoi gestire o eliminare i cookie e alcuni dati locali tramite le impostazioni del browser o del dispositivo. Il blocco di queste tecnologie può influire sulle funzionalità e le impostazioni del browser potrebbero non controllare tutte le tecnologie utilizzate da terze parti. Quando la legge richiede il consenso o la possibilità di opposizione, puoi esercitare tale scelta tramite i controlli disponibili o contattandoci.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Foto e verifica dell'identità</h2>
+            <p>Le foto del profilo e le immagini di verifica possono essere archiviate tramite Microsoft Azure Blob Storage e consultate per le finalità per cui sono state fornite. AWS Rekognition può trattare le immagini per rilevare o confrontare volti e individuare contenuti che potrebbero violare i nostri requisiti di sicurezza.</p>
+            <p>Quando completi la verifica dell'identità, Didit tratta le informazioni e i documenti richiesti dal proprio flusso di verifica. Riceviamo i risultati della verifica e informazioni correlate limitate, necessarie per registrare l'esito e proteggere il servizio. Per le sessioni approvate, il nostro sistema invia a Didit una richiesta di eliminazione della sessione di verifica. Didit può comunque conservare informazioni quando ciò è richiesto dai propri obblighi o dalle proprie politiche legali.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Pagamenti e abbonamenti</h2>
+            <p>Gli acquisti possono essere elaborati da Stripe o Apple, a seconda dell'opzione di acquisto e della piattaforma disponibili. Il fornitore pertinente raccoglie e tratta le informazioni di pagamento secondo la propria informativa sulla privacy. Riceviamo i dettagli della transazione e dell'abbonamento necessari per convalidare gli acquisti, gestire l'accesso, fornire assistenza e conservare i registri delle transazioni. Non memorizziamo intenzionalmente numeri completi delle carte di pagamento o codici di sicurezza.</p>
+            <p>L'eliminazione dell'account e la cancellazione dell'abbonamento sono procedure separate. Eliminare il tuo account Modern Matchmaker non annulla automaticamente un abbonamento né interrompe gli addebiti futuri. Cancella l'abbonamento direttamente tramite il fornitore o la piattaforma utilizzati per l'acquisto.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Conservazione dei dati ed eliminazione dell'account</h2>
+            <p>Conserviamo le informazioni personali per il tempo necessario alle finalità descritte nella presente Informativa, tra cui fornire il servizio, mantenere account e profili, proteggere gli utenti, risolvere controversie e adempiere agli obblighi di legge.</p>
+            <p>Puoi richiedere l'eliminazione dell'account o delle informazioni personali scrivendo a <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Dopo aver verificato la richiesta, elimineremo o renderemo anonime le informazioni che non siamo tenuti o autorizzati a conservare. Alcuni dati possono essere conservati per un periodo limitato quando necessario per rispettare la legge, prevenire frodi, garantire la sicurezza o accertare o difendere diritti. Le copie di backup possono rimanere fino alla loro sovrascrittura nel normale ciclo di backup. Le informazioni conservate autonomamente da fornitori terzi sono soggette alle loro politiche e ai loro obblighi di conservazione.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. I tuoi diritti in materia di privacy</h2>
+            <p>A seconda della tua posizione e della legge applicabile, potresti avere il diritto di richiedere l'accesso, la rettifica o la cancellazione delle tue informazioni personali; ottenere informazioni su come vengono utilizzate o condivise; richiedere la portabilità o la limitazione del trattamento; opporti a determinati trattamenti; revocare il consenso; o presentare un reclamo a un'autorità per la protezione dei dati. Alcuni diritti sono soggetti a eccezioni di legge e potrebbero non applicarsi in ogni circostanza.</p>
+            <p>Per presentare una richiesta relativa alla privacy, contatta <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Potremmo dover verificare la tua identità prima di elaborare la richiesta. Non è necessario fornire più informazioni di quelle ragionevolmente necessarie per la verifica e la risposta.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Requisiti di età e privacy dei minori</h2>
+            <p>Modern Matchmaker è destinato esclusivamente ad adulti di almeno 18 anni. La verifica dell'identità è obbligatoria prima che gli utenti possano interagire tramite la piattaforma. Non consentiamo consapevolmente ai minori di creare account o utilizzare il servizio. Se ritieni che un minore ci abbia fornito informazioni personali, contattaci affinché possiamo esaminare la situazione e adottare le misure appropriate.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Sicurezza e trasferimenti internazionali</h2>
+            <p>Adottiamo misure tecniche e organizzative volte a proteggere le informazioni personali da accessi non autorizzati, perdita, uso improprio o divulgazione. Tali misure includono controlli di accesso e protezioni per i dati trasmessi tra il tuo dispositivo e i nostri servizi. Nessun metodo di trasmissione o archiviazione può essere garantito come completamente sicuro.</p>
+            <p>DRMA Tech ha sede in Estonia. La nostra infrastruttura e i nostri fornitori possono trattare informazioni negli Stati Uniti, nello Spazio economico europeo e in altri paesi, a seconda del fornitore e del servizio interessati. Ove richiesto, i trasferimenti internazionali avvengono sulla base di un fondamento giuridico appropriato e di garanzie conformi alla normativa applicabile in materia di protezione dei dati.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Modifiche alla presente Informativa sulla privacy</h2>
+            <p>Possiamo aggiornare la presente Informativa sulla privacy per riflettere modifiche a Modern Matchmaker, ai nostri fornitori di servizi o alle leggi applicabili. La versione più recente sarà pubblicata su questa pagina con la relativa data di aggiornamento. Ove richiesto, forniremo un'ulteriore comunicazione o chiederemo il consenso per modifiche sostanziali.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. Contattaci</h2>
+            <p>Per domande o richieste relative alla privacy, contattaci all'indirizzo <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Le comunicazioni legali possono essere inviate a <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a>.</p>
+            <p>Modern Matchmaker è gestito da DRMA Tech (Delivering Reliable Modern Apps Tech OÜ).</p>
+        </div>
+        <div class="support-footer">
+            <p>Ultimo aggiornamento: 9 novembre 2026</p>
+            <p>Per informazioni sulle regole che disciplinano l'utilizzo della piattaforma, leggi i nostri <a href=@($"/{Culture}/legal/terms")>Termini di utilizzo</a>.</p>
+        </div>
+    }
+    else if (Language == AppLanguage.de)
+    {
+        <h1 class="support-title">Datenschutzerklärung</h1>
+        <div class="support-subtitle">
+            Diese Datenschutzerklärung erläutert, wie DRMA Tech (Delivering Reliable Modern Apps Tech OÜ), das Unternehmen hinter <b>@AppInfo.Title</b> (<a href="@AppInfo.WebSite" target="_blank" rel="noopener">@AppInfo.WebSite</a>), Informationen erhebt, verwendet, speichert und weitergibt, wenn Sie Modern Matchmaker und die zugehörigen Dienste nutzen.
+        </div>
+        <div class="support-section">
+            <h2>1. Informationen, die wir erheben</h2>
+            <p><b>Kontoinformationen.</b> Wir verwenden Clerk zur Verwaltung der Registrierung und Authentifizierung. Dazu können Ihre E-Mail-Adresse, Konto-ID, Ihr Name und Authentifizierungsdaten gehören. Außerdem erfassen wir bestimmte Zugriffsinformationen wie Anmeldedaten, Plattform, Land und IP-Adresse, um Konten zu schützen und Missbrauch zu verhindern.</p>
+            <p><b>Profil- und Kompatibilitätsinformationen.</b> Wenn Sie ein Profil erstellen, verarbeiten wir die von Ihnen bereitgestellten Informationen. Dazu können Alter oder Geburtsdatum, Standort, Nationalität, Sprachen, Beziehungsabsichten, Lebensstil, Interessen, Persönlichkeit, Familienplanung und Präferenzen hinsichtlich eines potenziellen Partners gehören. Je nach den ausgefüllten Feldern können dazu auch sensible Informationen wie ethnische Herkunft, Religion, biologisches Geschlecht, Geschlechtsidentität, sexuelle Orientierung, Behinderung oder Neurodiversität sowie Angaben zu Gesundheit, Finanzen und intimen Präferenzen zählen.</p>
+            <p><b>Fotos und Identitätsprüfung.</b> Wir verarbeiten Profilfotos und gegebenenfalls Bilder oder andere Informationen, die zur Überprüfung von Identität und Alter übermittelt werden. Didit führt die Identitätsprüfung durch. AWS Rekognition kann Bilder zur Gesichtserkennung, zum Gesichtsvergleich und zur Prüfung der Inhaltssicherheit analysieren.</p>
+            <p><b>Standortinformationen.</b> Sie können Ihr Land, Bundesland und Ihre Stadt in Ihrem Profil angeben. Wenn Sie die Standorterkennung nutzen möchten, kann Ihr Gerät GPS-Koordinaten bereitstellen, damit HERE Angaben wie Stadt, Bundesland und Land ermitteln kann. Wir speichern den für das Profil abgeleiteten Standort, jedoch keinen Verlauf Ihrer präzisen GPS-Bewegungen.</p>
+            <p><b>Nutzungs-, technische und Kommunikationsinformationen.</b> Wir und unsere Dienstleister können Geräte- und Browserinformationen, App-Version, ungefähres Land, Interaktionen mit dem Dienst, Diagnosedaten sowie Nachrichten oder Feedback verarbeiten, die Sie an den Support oder über UserJot senden.</p>
+            <p><b>Zahlungsinformationen.</b> Wenn Sie einen Kauf tätigen, verarbeiten wir Abonnement- oder Transaktionsdetails wie Zahlungsanbieter, Produkt, Status und Transaktionsreferenzen. Zahlungsanbieter verarbeiten die von Ihnen eingegebenen Zahlungsdaten in ihren eigenen Zahlungsumgebungen oder auf ihren Plattformen.</p>
+        </div>
+        <div class="support-section">
+            <h2>2. Sensible Informationen und Ihre Wahlmöglichkeiten</h2>
+            <p>Einige Profilfelder können sensible oder nach geltendem Datenschutzrecht besonders geschützte Informationen offenlegen. Vor der Erstellung eines Profils bitten wir Sie um Ihre Zustimmung zur Verarbeitung bestimmter sensibler Informationen, darunter ethnische Herkunft, Religion und sexuelle Orientierung, zum Zweck der Kompatibilität. Sie entscheiden, welche Angaben Sie machen, und können diese über die verfügbaren Kontofunktionen aktualisieren oder entfernen.</p>
+            <p>Profilinformationen helfen dabei, die Kompatibilität zwischen Personen einzuschätzen. Abhängig von den Funktionen des Dienstes und Ihren Einstellungen zur Profilsichtbarkeit können die bereitgestellten Informationen die Profildetails oder die anderen Nutzern angezeigten Kompatibilitätsergebnisse beeinflussen. Vermeiden Sie öffentliche Profilangaben, die Sie nicht mit anderen Nutzern teilen möchten.</p>
+        </div>
+        <div class="support-section">
+            <h2>3. Wie wir Informationen verwenden</h2>
+            <p>Wir verwenden Informationen, soweit dies erforderlich ist, um:</p>
+            <ul>
+                <li>Benutzerkonten und Profile zu erstellen und zu verwalten.</li>
+                <li>Matchmaking- und Kompatibilitätsfunktionen auf Grundlage von Profilinformationen und Präferenzen bereitzustellen.</li>
+                <li>Identität und Alter zu überprüfen und zum Schutz der Community beizutragen.</li>
+                <li>Fotos und gemeldete Inhalte zu prüfen, Betrug zu erkennen und Missbrauch oder Verstöße gegen unsere Nutzungsbedingungen zu untersuchen.</li>
+                <li>Käufe abzuwickeln, Abonnements zu verwalten und Kundensupport bereitzustellen.</li>
+                <li>Die Plattform zu betreiben, zu sichern, Fehler zu beheben und zu verbessern.</li>
+                <li>Die Nutzung des Dienstes zu verstehen, Feedback einzuholen und wichtige Konto- oder Dienstinformationen mitzuteilen.</li>
+                <li>Gesetzliche Verpflichtungen zu erfüllen sowie Rechtsansprüche geltend zu machen, auszuüben oder abzuwehren.</li>
+            </ul>
+        </div>
+        <div class="support-section">
+            <h2>4. Rechtsgrundlagen der Verarbeitung</h2>
+            <p>Soweit gesetzlich erforderlich, stützen wir jeden Verarbeitungszweck auf eine geeignete Rechtsgrundlage. Je nach Umständen kann dies Ihre Einwilligung, die Erfüllung eines Vertrags oder vorvertragliche Maßnahmen auf Ihre Anfrage, unsere berechtigten Interessen am Betrieb und Schutz des Dienstes oder die Erfüllung einer rechtlichen Verpflichtung umfassen.</p>
+            <p>Beruht eine Verarbeitung auf Ihrer Einwilligung, können Sie diese jederzeit widerrufen. Der Widerruf berührt nicht die Rechtmäßigkeit der zuvor erfolgten Verarbeitung. Einige Funktionen stehen möglicherweise nicht mehr zur Verfügung, wenn sie von den betreffenden Informationen oder Berechtigungen abhängen.</p>
+        </div>
+        <div class="support-section">
+            <h2>5. Dienstleister und Weitergabe von Informationen</h2>
+            <p>Wir verkaufen personenbezogene Informationen nicht gegen Entgelt. Wir geben Informationen an Dienstleister weiter, wenn dies in angemessenem Umfang erforderlich ist, um Modern Matchmaker zu betreiben, eine von Ihnen angeforderte Funktion bereitzustellen, eine Transaktion abzuwickeln, Nutzer zu schützen oder gesetzliche Anforderungen zu erfüllen. Je nach Dienst und genutzter Funktion können dazu gehören:</p>
+            <ul>
+                <li><b>Clerk:</b> Kontoregistrierung und Authentifizierung.</li>
+                <li><b>Microsoft Azure:</b> Cloud-Infrastruktur, Anwendungshosting, Datenbankdienste über Azure Cosmos DB und Dateispeicherung über Azure Blob Storage.</li>
+                <li><b>Didit:</b> Identitäts- und Altersprüfung.</li>
+                <li><b>AWS Rekognition:</b> Bildanalyse, einschließlich gesichtsbezogener Prüfungen und Analyse der Inhaltssicherheit.</li>
+                <li><b>HERE:</b> Umwandlung der Standortkoordinaten Ihres Geräts in Profilstandortangaben, wenn Sie die Standorterkennung verwenden.</li>
+                <li><b>Stripe und Apple:</b> Zahlungsabwicklung und Abonnementverwaltung, abhängig von der verfügbaren Kaufmethode.</li>
+                <li><b>Sentry:</b> Anwendungsüberwachung, Fehlermeldungen und technische Diagnosen.</li>
+                <li><b>Microsoft Clarity und Google Analytics:</b> Analysen und Informationen darüber, wie der Dienst genutzt wird.</li>
+                <li><b>Google AdSense:</b> Auslieferung und Messung von Werbung, sofern Werbung aktiviert ist.</li>
+                <li><b>UserJot:</b> Feedback, Vorschläge und Produktkommunikation.</li>
+                <li><b>ZeptoMail:</b> Versand von konto- und dienstbezogenen E-Mails.</li>
+            </ul>
+            <p>Diese Anbieter können Informationen je nach ihrer Rolle in unserem Auftrag oder gemäß ihren eigenen Datenschutzbedingungen verarbeiten. Nach bestimmten Datenschutzgesetzen können einige Offenlegungen an Analyse- oder Werbeanbieter als „Weitergabe“ für kontextübergreifende verhaltensbezogene Werbung gelten, auch wenn kein Geld gezahlt wird. Soweit anwendbar, können Sie dieser Art der Weitergabe widersprechen, indem Sie uns unter <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> kontaktieren.</p>
+            <p>Wir können Informationen außerdem offenlegen, wenn dies gesetzlich vorgeschrieben ist, als Reaktion auf gültige rechtliche Anfragen, zum Schutz der Nutzer oder des Dienstes oder im Zusammenhang mit einer Fusion, Übernahme, Finanzierung oder dem Verkauf unseres gesamten Unternehmens oder von Unternehmensteilen, jeweils unter Beachtung der geltenden Datenschutzanforderungen.</p>
+        </div>
+        <div class="support-section">
+            <h2>6. Cookies, lokaler Speicher, Analysen und Werbung</h2>
+            <p>Modern Matchmaker und seine Anbieter können Cookies, lokalen Speicher und ähnliche Technologien verwenden, um wesentliche Funktionen bereitzustellen, Einstellungen zu speichern, die Nutzung des Dienstes zu verstehen, Probleme zu diagnostizieren und Werbung auszuliefern oder zu messen.</p>
+            <p>Je nach Version und genutzten Funktionen können diese Technologien mit Diensten wie Microsoft Clarity, Google Analytics, Google AdSense, Clerk und Sentry verbunden sein. Diese Anbieter können Informationen über Ihr Gerät, Ihren Browser und Ihre Interaktionen mit dem Dienst gemäß ihren eigenen Bedingungen und Datenschutzhinweisen erheben.</p>
+            <p>Sie können Cookies und bestimmte lokale Daten über die Einstellungen Ihres Browsers oder Geräts verwalten oder löschen. Das Blockieren dieser Technologien kann die Funktionalität beeinträchtigen. Browsereinstellungen kontrollieren möglicherweise nicht alle von Drittanbietern verwendeten Technologien. Wenn das geltende Recht eine Einwilligung oder Widerspruchsmöglichkeit verlangt, können Sie diese Wahl über die verfügbaren Einstellungen oder durch Kontaktaufnahme mit uns ausüben.</p>
+        </div>
+        <div class="support-section">
+            <h2>7. Fotos und Identitätsprüfung</h2>
+            <p>Profil- und Verifizierungsbilder können mit Microsoft Azure Blob Storage gespeichert und für die Zwecke abgerufen werden, für die sie bereitgestellt wurden. AWS Rekognition kann Bilder verarbeiten, um Gesichter zu erkennen oder zu vergleichen und Inhalte zu identifizieren, die möglicherweise gegen unsere Sicherheitsanforderungen verstoßen.</p>
+            <p>Wenn Sie die Identitätsprüfung abschließen, verarbeitet Didit die Informationen und Dokumente, die für den jeweiligen Prüfablauf erforderlich sind. Wir erhalten die Prüfergebnisse und begrenzte zugehörige Informationen, die erforderlich sind, um das Ergebnis zu dokumentieren und den Dienst zu schützen. Bei genehmigten Sitzungen sendet unser System Didit eine Aufforderung zur Löschung der Verifizierungssitzung. Didit kann Informationen dennoch aufbewahren, wenn dies aufgrund eigener rechtlicher Verpflichtungen oder Richtlinien erforderlich ist.</p>
+        </div>
+        <div class="support-section">
+            <h2>8. Zahlungen und Abonnements</h2>
+            <p>Käufe können je nach verfügbarer Kaufoption und Plattform über Stripe oder Apple abgewickelt werden. Der jeweilige Anbieter erhebt und verarbeitet Zahlungsinformationen gemäß seiner eigenen Datenschutzerklärung. Wir erhalten die Transaktions- und Abonnementdetails, die erforderlich sind, um Käufe zu bestätigen, den Zugriff zu verwalten, Support zu leisten und Transaktionsaufzeichnungen zu führen. Wir speichern wissentlich keine vollständigen Zahlungskartennummern oder Sicherheitscodes.</p>
+            <p>Die Kontolöschung und die Kündigung eines Abonnements sind getrennte Vorgänge. Wenn Sie Ihr Modern Matchmaker-Konto löschen, wird ein Abonnement nicht automatisch gekündigt und zukünftige Abbuchungen werden nicht automatisch gestoppt. Kündigen Sie Ihr Abonnement direkt bei dem Anbieter oder über die Plattform, über die Sie es erworben haben.</p>
+        </div>
+        <div class="support-section">
+            <h2>9. Datenspeicherung und Kontolöschung</h2>
+            <p>Wir speichern personenbezogene Informationen so lange, wie es für die in dieser Erklärung beschriebenen Zwecke erforderlich ist, einschließlich der Bereitstellung des Dienstes, der Verwaltung von Konten und Profilen, des Schutzes der Nutzer, der Beilegung von Streitigkeiten und der Erfüllung gesetzlicher Verpflichtungen.</p>
+            <p>Sie können die Löschung Ihres Kontos oder personenbezogener Informationen unter <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a> beantragen. Nach Überprüfung Ihrer Anfrage löschen oder anonymisieren wir Informationen, zu deren Aufbewahrung wir nicht verpflichtet oder anderweitig berechtigt sind. Bestimmte Aufzeichnungen können für einen begrenzten Zeitraum aufbewahrt werden, wenn dies zur Einhaltung gesetzlicher Vorgaben, zur Betrugsprävention, zur Sicherheit oder zur Geltendmachung oder Abwehr von Rechtsansprüchen erforderlich ist. Sicherungskopien können bis zu ihrer Überschreibung im regulären Sicherungszyklus bestehen bleiben. Informationen, die unabhängige Drittanbieter aufbewahren, unterliegen deren eigenen Aufbewahrungsrichtlinien und Verpflichtungen.</p>
+        </div>
+        <div class="support-section">
+            <h2>10. Ihre Datenschutzrechte</h2>
+            <p>Abhängig von Ihrem Standort und dem geltenden Recht haben Sie möglicherweise das Recht, Auskunft über Ihre personenbezogenen Informationen sowie deren Berichtigung oder Löschung zu verlangen; Informationen über deren Verwendung oder Weitergabe anzufordern; die Datenübertragbarkeit oder Einschränkung der Verarbeitung zu verlangen; bestimmten Verarbeitungen zu widersprechen; eine Einwilligung zu widerrufen; oder Beschwerde bei einer Datenschutzaufsichtsbehörde einzulegen. Einige Rechte unterliegen gesetzlichen Ausnahmen und gelten möglicherweise nicht in jedem Fall.</p>
+            <p>Für eine Datenschutzanfrage kontaktieren Sie bitte <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Vor der Bearbeitung einer Anfrage müssen wir möglicherweise Ihre Identität überprüfen. Sie müssen dafür nicht mehr Informationen bereitstellen, als für die angemessene Überprüfung und Beantwortung erforderlich sind.</p>
+        </div>
+        <div class="support-section">
+            <h2>11. Altersanforderungen und Datenschutz von Kindern</h2>
+            <p>Modern Matchmaker richtet sich ausschließlich an Erwachsene ab 18 Jahren. Bevor Nutzer über die Plattform miteinander interagieren können, ist eine Identitätsprüfung erforderlich. Wir gestatten Kindern wissentlich weder die Erstellung eines Kontos noch die Nutzung des Dienstes. Wenn Sie glauben, dass ein Kind uns personenbezogene Informationen übermittelt hat, kontaktieren Sie uns bitte, damit wir den Sachverhalt prüfen und geeignete Maßnahmen ergreifen können.</p>
+        </div>
+        <div class="support-section">
+            <h2>12. Sicherheit und internationale Übermittlungen</h2>
+            <p>Wir setzen technische und organisatorische Maßnahmen ein, die personenbezogene Informationen vor unbefugtem Zugriff, Verlust, Missbrauch oder Offenlegung schützen sollen. Dazu gehören Zugriffskontrollen und Schutzmaßnahmen für Daten, die zwischen Ihrem Gerät und unseren Diensten übertragen werden. Keine Übertragungs- oder Speichermethode kann vollständige Sicherheit garantieren.</p>
+            <p>DRMA Tech hat ihren Sitz in Estland. Unsere Infrastruktur und Dienstleister können Informationen je nach Anbieter und Dienst in den Vereinigten Staaten, im Europäischen Wirtschaftsraum und in anderen Ländern verarbeiten. Soweit erforderlich, erfolgen internationale Übermittlungen auf Grundlage einer geeigneten Rechtsgrundlage und unter Anwendung angemessener Garantien gemäß dem geltenden Datenschutzrecht.</p>
+        </div>
+        <div class="support-section">
+            <h2>13. Änderungen dieser Datenschutzerklärung</h2>
+            <p>Wir können diese Datenschutzerklärung aktualisieren, um Änderungen an Modern Matchmaker, unseren Dienstleistern oder geltenden Gesetzen zu berücksichtigen. Die aktuelle Version wird mit dem jeweiligen Aktualisierungsdatum auf dieser Seite veröffentlicht. Soweit erforderlich, informieren wir Sie zusätzlich oder bitten bei wesentlichen Änderungen um Ihre Einwilligung.</p>
+        </div>
+        <div class="support-section">
+            <h2>14. Kontakt</h2>
+            <p>Bei Fragen oder Anliegen zum Datenschutz kontaktieren Sie uns unter <a href="mailto:support@modern-matchmaker.com">support@modern-matchmaker.com</a>. Rechtliche Mitteilungen können an <a href="mailto:legal@modern-matchmaker.com">legal@modern-matchmaker.com</a> gesendet werden.</p>
+            <p>Modern Matchmaker wird von DRMA Tech (Delivering Reliable Modern Apps Tech OÜ) betrieben.</p>
+        </div>
+        <div class="support-footer">
+            <p>Zuletzt aktualisiert: 9. November 2026</p>
+            <p>Informationen zu den Regeln für die Nutzung der Plattform finden Sie in unseren <a href=@($"/{Culture}/legal/terms")>Nutzungsbedingungen</a>.</p>
         </div>
     }
     else
