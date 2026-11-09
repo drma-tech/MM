@@ -4,7 +4,7 @@
 <HeadComponent Title="@Translations.Module.Legal.ChildPolicy" Url=@($"/{Culture}/legal/child-safety") Index="false"></HeadComponent>
 
 <div class="support-container">
-    if (Language == AppLanguage.pt)
+    @if (Language == AppLanguage.pt)
     {
         <h1 class="support-title">Política de Segurança Infantil</h1>
         <div class="support-subtitle">
