@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FemaleDescription" xml:space="preserve">
-    <value>La persona che è nata con l'organo sessuale femminile o che lo ha modificato chirurgicamente</value>
+    <value>Persona con caratteristiche sessuali tipicamente femminili. Questo si riferisce al sesso biologico, non all'identità di genere.</value>
   </data>
   <data name="FemaleName" xml:space="preserve">
     <value>Femmina</value>
   </data>
   <data name="MaleDescription" xml:space="preserve">
-    <value>La persona che è nata con l'organo sessuale maschile o che è stato modificato chirurgicamente</value>
+    <value>Persona con caratteristiche sessuali tipicamente maschili. Questo si riferisce al sesso biologico, non all'identità di genere.</value>
   </data>
   <data name="MaleName" xml:space="preserve">
     <value>Maschio</value>
   </data>
   <data name="OtherDescription" xml:space="preserve">
-    <value>Intersessuale è un termine generale utilizzato per una varietà di situazioni in cui una persona nasce con un'anatomia riproduttiva o sessuale che non si adatta alle scatole di "femmina" o "maschio".</value>
+    <value>Persona nata con caratteristiche sessuali che non rientrano nelle definizioni tipiche di femminile o maschile. Questa condizione è comunemente definita intersessualità.</value>
   </data>
   <data name="OtherName" xml:space="preserve">
     <value>Altro (intersessuale)</value>

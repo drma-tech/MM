@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FemaleDescription" xml:space="preserve">
-    <value>The person who was born with the female sex organ or had it surgically changed</value>
+    <value>A person whose sex characteristics are typically female. This refers to biological sex, not gender identity.</value>
   </data>
   <data name="FemaleName" xml:space="preserve">
     <value>Female</value>
   </data>
   <data name="MaleDescription" xml:space="preserve">
-    <value>The person who was born with the male sex organ or had it surgically changed</value>
+    <value>A person whose sex characteristics are typically male. This refers to biological sex, not gender identity.</value>
   </data>
   <data name="MaleName" xml:space="preserve">
     <value>Male</value>
   </data>
   <data name="OtherDescription" xml:space="preserve">
-    <value>Intersex is a general term used for a variety of situations in which a person is born with reproductive or sexual anatomy that doesn’t fit the boxes of “female” or “male”.</value>
+    <value>A person born with sex characteristics that do not fit typical definitions of male or female. This is commonly described as intersex.</value>
   </data>
   <data name="OtherName" xml:space="preserve">
     <value>Other (intersex)</value>

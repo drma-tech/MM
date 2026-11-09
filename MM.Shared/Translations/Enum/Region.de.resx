@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="City" xml:space="preserve">
-    <value>Die ganze Stadt</value>
+    <value>Überall in der Stadt</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Alle Länder</value>
+    <value>Überall im Land</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>Der ganze Staat</value>
+    <value>Überall im Bundesland</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>Jeder Ort auf der Welt</value>
+    <value>Überall auf der Welt</value>
   </data>
 </root>

@@ -101,36 +101,36 @@
     <value>Annual Income</value>
   </data>
   <data name="AnnualIncomeDesc" xml:space="preserve">
-    <value>A specialized and independent platform will be used</value>
+    <value>An independent third-party service will be used for verification.</value>
   </data>
   <data name="AnnualIncomeWhy" xml:space="preserve">
-    <value>It's necessary if you want to use this field as a filter.</value>
+    <value>Verification is required if you want to use this field as a filter.</value>
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Gallery</value>
   </data>
   <data name="GalleryDesc" xml:space="preserve">
-    <value>A photo of you will be taken to compare with your gallery</value>
+    <value>A photo of you will be taken and compared with the photos in your gallery.</value>
   </data>
   <data name="GalleryWhy" xml:space="preserve">
-    <value>It is necessary before you publish your profile.</value>
+    <value>This verification is required before you can publish your profile.</value>
   </data>
   <data name="Identity" xml:space="preserve">
     <value>Identity</value>
   </data>
   <data name="IdentityDesc" xml:space="preserve">
-    <value>A specialized and independent platform will be used</value>
+    <value>An independent third-party service will be used for verification.</value>
   </data>
   <data name="IdentityWhy" xml:space="preserve">
-    <value>It is necessary before any interaction with another user.</value>
+    <value>This verification is required before you can interact with other users.</value>
   </data>
   <data name="NetWorth" xml:space="preserve">
     <value>Net Worth</value>
   </data>
   <data name="NetWorthDesc" xml:space="preserve">
-    <value>A specialized and independent platform will be used</value>
+    <value>An independent third-party service will be used for verification.</value>
   </data>
   <data name="NetWorthWhy" xml:space="preserve">
-    <value>It's necessary if you want to use this field as a filter.</value>
+    <value>Verification is required if you want to use this field as a filter.</value>
   </data>
 </root>

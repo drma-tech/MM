@@ -98,21 +98,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundariesNeeded" xml:space="preserve">
-    <value>Se necesitan límites</value>
+    <value>Con límites claros</value>
   </data>
   <data name="BoundariesNeeded_Description" xml:space="preserve">
-    <value>Se siente cómodo con las amistades, pero prefiere límites claros.</value>
+    <value>Me parecen bien estas amistades siempre que acordemos límites claros.</value>
   </data>
   <data name="Comfortable" xml:space="preserve">
-    <value>Cómodo</value>
+    <value>Sin inconvenientes</value>
   </data>
   <data name="Comfortable_Description" xml:space="preserve">
-    <value>Abierto a amistades con el sexo opuesto sin preocupaciones.</value>
+    <value>Me parece bien que mi pareja tenga amistades cercanas con personas de cualquier género.</value>
   </data>
   <data name="Uncomfortable" xml:space="preserve">
     <value>Incómodo</value>
   </data>
   <data name="Uncomfortable_Description" xml:space="preserve">
-    <value>Se siente incómodo teniendo amistades cercanas con el sexo opuesto.</value>
+    <value>Me incomoda que mi pareja tenga amistades cercanas con personas de otros géneros.</value>
   </data>
 </root>

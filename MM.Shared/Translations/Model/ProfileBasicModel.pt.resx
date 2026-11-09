@@ -140,13 +140,13 @@ Além disso, não é permitido compartilhar ou promover perfis de redes sociais,
     <value>A identidade de gênero molda a forma como uma pessoa se entende e deseja ser vista no relacionamento. Conhecer a identidade do seu parceiro ajuda você a se conectar de forma mais autêntica e a evitar invalidar a experiência dele – especialmente em relacionamentos onde a diversidade de gênero está presente.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
-    <value>Opção mais comum selecionada automaticamente (aplicável para a maioria das pessoas)</value>
+    <value>A opção mais comum é selecionada por padrão.</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Identidade de Gênero</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
-    <value>Escolhido automaticamente de acordo com os idiomas vigentes no pais (caso disponível)</value>
+    <value>Selecionado automaticamente com base nos idiomas associados ao seu país, quando disponíveis.</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Idiomas</value>
@@ -200,7 +200,7 @@ Além disso, não é permitido compartilhar ou promover perfis de redes sociais,
     <value>A orientação sexual reflete por quem uma pessoa se sente atraída romântica e sexualmente, o que é fundamental para a compatibilidade do relacionamento. Conhecer e respeitar a orientação um do outro ajuda a definir expectativas claras em torno da atração, intimidade e estrutura de relacionamento – especialmente em dinâmicas diversas ou não tradicionais.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
-    <value>Opção mais comum selecionada automaticamente (aplicável para a maioria das pessoas)</value>
+    <value>A opção mais comum é selecionada por padrão.</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Orientação Sexual</value>

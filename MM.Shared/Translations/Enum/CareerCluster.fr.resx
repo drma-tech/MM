@@ -253,10 +253,10 @@
     <value>Commercialisation</value>
   </data>
   <data name="NoCareer_Description" xml:space="preserve">
-    <value>Au début de leur carrière, stagiaire, étudiant juste ou même ne travaillant pas en ce moment.</value>
+    <value>Je débute ma carrière, je suis actuellement des études ou un stage, ou je ne travaille pas pour le moment.</value>
   </data>
   <data name="NoCareer_Name" xml:space="preserve">
-    <value>Pas de carrière consolidée</value>
+    <value>Pas encore de carrière établie</value>
   </data>
   <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
     <value>Entretien des installations et des équipements mobiles ; Gestion de la santé, de la sécurité et de l'environnement ; Services de planification et de gestion logistiques ; Ventes et services ; Opérations de transport ; Planification, gestion et réglementation des infrastructures de transport/systèmes ; Opérations d'entreposage et de centre de distribution ;</value>

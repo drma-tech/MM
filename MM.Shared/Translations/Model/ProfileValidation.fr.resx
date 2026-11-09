@@ -121,36 +121,36 @@
     <value>Revenu annuel</value>
   </data>
   <data name="AnnualIncomeDesc" xml:space="preserve">
-    <value>Une plateforme spécialisée et indépendante sera utilisée</value>
+    <value>La vérification sera effectuée par un service tiers indépendant.</value>
   </data>
   <data name="AnnualIncomeWhy" xml:space="preserve">
-    <value>C'est nécessaire si vous souhaitez utiliser ce champ comme filtre.</value>
+    <value>Cette vérification est nécessaire si vous souhaitez utiliser ce champ comme filtre.</value>
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Galerie</value>
   </data>
   <data name="GalleryDesc" xml:space="preserve">
-    <value>Une photo de vous sera prise pour comparer avec votre galerie</value>
+    <value>Une photo de vous sera prise et comparée aux photos de votre galerie.</value>
   </data>
   <data name="GalleryWhy" xml:space="preserve">
-    <value>C’est nécessaire avant de publier votre profil.</value>
+    <value>Cette vérification est nécessaire avant de pouvoir publier votre profil.</value>
   </data>
   <data name="Identity" xml:space="preserve">
     <value>Identité</value>
   </data>
   <data name="IdentityDesc" xml:space="preserve">
-    <value>Une plateforme spécialisée et indépendante sera utilisée</value>
+    <value>La vérification sera effectuée par un service tiers indépendant.</value>
   </data>
   <data name="IdentityWhy" xml:space="preserve">
-    <value>Il est nécessaire avant toute interaction avec un autre utilisateur.</value>
+    <value>Cette vérification est nécessaire avant de pouvoir interagir avec d’autres utilisateurs.</value>
   </data>
   <data name="NetWorth" xml:space="preserve">
     <value>Valeur nette</value>
   </data>
   <data name="NetWorthDesc" xml:space="preserve">
-    <value>Une plateforme spécialisée et indépendante sera utilisée</value>
+    <value>La vérification sera effectuée par un service tiers indépendant.</value>
   </data>
   <data name="NetWorthWhy" xml:space="preserve">
-    <value>C'est nécessaire si vous souhaitez utiliser ce champ comme filtre.</value>
+    <value>Cette vérification est nécessaire si vous souhaitez utiliser ce champ comme filtre.</value>
   </data>
 </root>

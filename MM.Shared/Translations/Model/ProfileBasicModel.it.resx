@@ -140,13 +140,13 @@ Inoltre, non è consentito condividere o promuovere profili social, prodotti, se
     <value>L’identità di genere modella il modo in cui una persona comprende se stessa e vuole essere vista nella relazione. Conoscere l'identità del tuo partner ti aiuta a connetterti in modo più autentico ed evitare di invalidare la sua esperienza, specialmente nelle relazioni in cui è presente la diversità di genere.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
-    <value>Opzione più comune selezionata automaticamente (applicabile alla maggior parte delle persone)</value>
+    <value>L'opzione più comune è selezionata per impostazione predefinita.</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Identità di genere</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
-    <value>Scelto automaticamente in base alle lingue in vigore nel Paese (se disponibili)</value>
+    <value>Selezionato automaticamente in base alle lingue associate al tuo Paese, quando disponibili.</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Lingue</value>
@@ -200,7 +200,7 @@ Inoltre, non è consentito condividere o promuovere profili social, prodotti, se
     <value>L'orientamento sessuale riflette da chi una persona è attratta romanticamente e sessualmente, il che è fondamentale per la compatibilità relazionale. Conoscere e rispettare l’orientamento reciproco aiuta a stabilire aspettative chiare sull’attrazione, sull’intimità e sulla struttura della relazione, specialmente in dinamiche diverse o non tradizionali.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
-    <value>Opzione più comune selezionata automaticamente (applicabile alla maggior parte delle persone)</value>
+    <value>L'opzione più comune è selezionata per impostazione predefinita.</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Orientamento sessuale</value>

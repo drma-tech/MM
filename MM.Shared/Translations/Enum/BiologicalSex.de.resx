@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FemaleDescription" xml:space="preserve">
-    <value>Die Person, die mit dem weiblichen Geschlechtsorgan geboren wurde oder bei der es operativ verändert wurde</value>
+    <value>Eine Person mit typischerweise weiblichen Geschlechtsmerkmalen. Dies bezieht sich auf das biologische Geschlecht, nicht auf die Geschlechtsidentität.</value>
   </data>
   <data name="FemaleName" xml:space="preserve">
     <value>Weiblich</value>
   </data>
   <data name="MaleDescription" xml:space="preserve">
-    <value>Die Person, die mit dem männlichen Geschlechtsorgan geboren wurde oder bei der es operativ verändert wurde</value>
+    <value>Eine Person mit typischerweise männlichen Geschlechtsmerkmalen. Dies bezieht sich auf das biologische Geschlecht, nicht auf die Geschlechtsidentität.</value>
   </data>
   <data name="MaleName" xml:space="preserve">
     <value>Männlich</value>
   </data>
   <data name="OtherDescription" xml:space="preserve">
-    <value>Intersex ist ein allgemeiner Begriff, der für eine Vielzahl von Situationen verwendet wird, in denen eine Person mit einer reproduktiven oder sexuellen Anatomie geboren wird, die nicht in die Kategorien „weiblich“ oder „männlich“ passt.</value>
+    <value>Eine Person, deren Geschlechtsmerkmale bei der Geburt nicht den typischen Definitionen von weiblich oder männlich entsprechen. Dies wird häufig als intergeschlechtlich bezeichnet.</value>
   </data>
   <data name="OtherName" xml:space="preserve">
     <value>Sonstiges (intersexuell)</value>

@@ -253,10 +253,10 @@
     <value>Marketing</value>
   </data>
   <data name="NoCareer_Description" xml:space="preserve">
-    <value>Am Anfang ihrer Karriere, Praktikant, Student oder gerade nicht berufstätig.</value>
+    <value>Ich stehe noch am Anfang meiner beruflichen Laufbahn, studiere oder mache ein Praktikum oder arbeite derzeit nicht.</value>
   </data>
   <data name="NoCareer_Name" xml:space="preserve">
-    <value>Keine konsolidierte Karriere</value>
+    <value>Noch keine etablierte Karriere</value>
   </data>
   <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
     <value>Wartung von Anlagen und mobilen Geräten; Gesundheits-, Sicherheits- und Umweltmanagement; Logistikplanungs- und Managementdienstleistungen; Vertrieb und Dienstleistungen; Transportbetrieb; Planung, Verwaltung und Regulierung der Transport-/Systeminfrastruktur; Betrieb von Lager- und Vertriebszentren;</value>

@@ -140,13 +140,13 @@ Additionally, sharing or promoting social media profiles, products, services, or
     <value>Gender identity shapes how a person understands themselves and wants to be seen in the relationship. Knowing your partner's identity helps you connect more authentically and avoid invalidating their experience—especially in relationships where gender diversity is present.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
-    <value>Most common option selected automatically (applicable to most people)</value>
+    <value>The most common option is selected by default.</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Gender Identity</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
-    <value>Automatically chosen according to the languages in force in the country (if available)</value>
+    <value>Automatically selected based on the languages associated with your country, when available.</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Languages</value>
@@ -200,7 +200,7 @@ Additionally, sharing or promoting social media profiles, products, services, or
     <value>Sexual orientation reflects who a person is romantically and sexually attracted to, which is fundamental for relationship compatibility. Knowing and respecting each other’s orientation helps set clear expectations around attraction, intimacy, and relationship structure—especially in diverse or nontraditional dynamics.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
-    <value>Most common option selected automatically (applicable to most people)</value>
+    <value>The most common option is selected by default.</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Sexual Orientation</value>

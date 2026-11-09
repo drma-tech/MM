@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FemaleDescription" xml:space="preserve">
-    <value>La personne qui est née avec l’organe sexuel féminin ou qui a subi une modification chirurgicale</value>
+    <value>Personne présentant des caractéristiques sexuelles généralement féminines. Cela fait référence au sexe biologique, et non à l’identité de genre.</value>
   </data>
   <data name="FemaleName" xml:space="preserve">
     <value>Femelle</value>
   </data>
   <data name="MaleDescription" xml:space="preserve">
-    <value>La personne qui est née avec l’organe sexuel masculin ou qui a subi une modification chirurgicale</value>
+    <value>Personne présentant des caractéristiques sexuelles généralement masculines. Cela fait référence au sexe biologique, et non à l’identité de genre.</value>
   </data>
   <data name="MaleName" xml:space="preserve">
     <value>Mâle</value>
   </data>
   <data name="OtherDescription" xml:space="preserve">
-    <value>Intersexué est un terme général utilisé pour désigner diverses situations dans lesquelles une personne naît avec une anatomie reproductive ou sexuelle qui ne rentre pas dans les cases « femme » ou « homme ».</value>
+    <value>Personne née avec des caractéristiques sexuelles qui ne correspondent pas aux définitions typiques du féminin ou du masculin. On parle généralement d’intersexuation.</value>
   </data>
   <data name="OtherName" xml:space="preserve">
     <value>Autre (intersexe)</value>

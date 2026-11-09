@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FemaleDescription" xml:space="preserve">
-    <value>A pessoa que nasceu com o órgão sexual feminino ou o mudou cirurgicamente</value>
+    <value>Pessoa com características sexuais tipicamente femininas. Isso se refere ao sexo biológico, não à identidade de gênero.</value>
   </data>
   <data name="FemaleName" xml:space="preserve">
     <value>Feminino</value>
   </data>
   <data name="MaleDescription" xml:space="preserve">
-    <value>A pessoa que nasceu com o órgão sexual masculino ou o mudou cirurgicamente</value>
+    <value>Pessoa com características sexuais tipicamente masculinas. Isso se refere ao sexo biológico, não à identidade de gênero.</value>
   </data>
   <data name="MaleName" xml:space="preserve">
     <value>Masculino</value>
   </data>
   <data name="OtherDescription" xml:space="preserve">
-    <value>Intersexo é um termo geral usado para uma variedade de situações em que uma pessoa nasce com anatomia reprodutiva ou sexual que não se encaixa nas caixas de “feminino” ou “masculino”.</value>
+    <value>Pessoa que nasceu com características sexuais que não se enquadram nas definições típicas de feminino ou masculino. Isso é comumente descrito como intersexualidade.</value>
   </data>
   <data name="OtherName" xml:space="preserve">
     <value>Outro (intersexo)</value>

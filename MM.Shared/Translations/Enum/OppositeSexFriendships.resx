@@ -98,21 +98,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundariesNeeded" xml:space="preserve">
-    <value>Boundaries Needed</value>
+    <value>Comfortable with Boundaries</value>
   </data>
   <data name="BoundariesNeeded_Description" xml:space="preserve">
-    <value>Comfortable with friendships, but prefers clear boundaries.</value>
+    <value>I am comfortable with these friendships as long as we agree on clear boundaries.</value>
   </data>
   <data name="Comfortable" xml:space="preserve">
     <value>Comfortable</value>
   </data>
   <data name="Comfortable_Description" xml:space="preserve">
-    <value>Open to friendships with the opposite sex without concerns.</value>
+    <value>I am comfortable with my partner having close friends of any gender.</value>
   </data>
   <data name="Uncomfortable" xml:space="preserve">
     <value>Uncomfortable</value>
   </data>
   <data name="Uncomfortable_Description" xml:space="preserve">
-    <value>Feels uneasy about close friendships with the opposite sex.</value>
+    <value>I feel uncomfortable with my partner having close friendships with people of other genders.</value>
   </data>
 </root>

@@ -121,36 +121,36 @@
     <value>Reddito annuo</value>
   </data>
   <data name="AnnualIncomeDesc" xml:space="preserve">
-    <value>Verrà utilizzata una piattaforma specializzata e indipendente</value>
+    <value>La verifica sarà effettuata tramite un servizio indipendente di terze parti.</value>
   </data>
   <data name="AnnualIncomeWhy" xml:space="preserve">
-    <value>È necessario se vuoi utilizzare questo campo come filtro.</value>
+    <value>La verifica è necessaria se desideri utilizzare questo campo come filtro.</value>
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Galleria</value>
   </data>
   <data name="GalleryDesc" xml:space="preserve">
-    <value>Verrà scattata una tua foto per confrontarla con la tua galleria</value>
+    <value>Verrà scattata una tua foto e confrontata con quelle presenti nella tua galleria.</value>
   </data>
   <data name="GalleryWhy" xml:space="preserve">
-    <value>È necessario prima di pubblicare il tuo profilo.</value>
+    <value>Questa verifica è necessaria prima di poter pubblicare il tuo profilo.</value>
   </data>
   <data name="Identity" xml:space="preserve">
     <value>Identità</value>
   </data>
   <data name="IdentityDesc" xml:space="preserve">
-    <value>Verrà utilizzata una piattaforma specializzata e indipendente</value>
+    <value>La verifica sarà effettuata tramite un servizio indipendente di terze parti.</value>
   </data>
   <data name="IdentityWhy" xml:space="preserve">
-    <value>È necessario prima di qualsiasi interazione con un altro utente.</value>
+    <value>Questa verifica è necessaria prima di poter interagire con altri utenti.</value>
   </data>
   <data name="NetWorth" xml:space="preserve">
     <value>Patrimonio netto</value>
   </data>
   <data name="NetWorthDesc" xml:space="preserve">
-    <value>Verrà utilizzata una piattaforma specializzata e indipendente</value>
+    <value>La verifica sarà effettuata tramite un servizio indipendente di terze parti.</value>
   </data>
   <data name="NetWorthWhy" xml:space="preserve">
-    <value>È necessario se vuoi utilizzare questo campo come filtro.</value>
+    <value>La verifica è necessaria se desideri utilizzare questo campo come filtro.</value>
   </data>
 </root>

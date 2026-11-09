@@ -140,13 +140,13 @@ Par ailleurs, il est interdit de partager ou de promouvoir des profils de résea
     <value>L'identité de genre façonne la façon dont une personne se comprend et veut être vue dans la relation. Connaître l'identité de votre partenaire vous aide à vous connecter de manière plus authentique et à éviter d'invalider son expérience, en particulier dans les relations où la diversité des genres est présente.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
-    <value>Option la plus courante sélectionnée automatiquement (applicable à la plupart des personnes)</value>
+    <value>L’option la plus courante est sélectionnée par défaut.</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Identité de genre</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
-    <value>Choisi automatiquement selon les langues en vigueur dans le pays (si disponible)</value>
+    <value>Sélectionné automatiquement en fonction des langues associées à votre pays, lorsqu’elles sont disponibles.</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Langues</value>
@@ -200,7 +200,7 @@ Par ailleurs, il est interdit de partager ou de promouvoir des profils de résea
     <value>L’orientation sexuelle reflète l’attirance romantique et sexuelle d’une personne, ce qui est fondamental pour la compatibilité relationnelle. Connaître et respecter l’orientation de chacun permet de définir des attentes claires en matière d’attraction, d’intimité et de structure relationnelle, en particulier dans les dynamiques diverses ou non traditionnelles.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
-    <value>Option la plus courante sélectionnée automatiquement (applicable à la plupart des personnes)</value>
+    <value>L’option la plus courante est sélectionnée par défaut.</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Orientation sexuelle</value>

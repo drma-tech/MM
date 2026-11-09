@@ -148,19 +148,19 @@
     <value>Genderfluid</value>
   </data>
   <data name="GenderNonconforming_Description" xml:space="preserve">
-    <value>Ein Überbegriff für Menschen, deren Geschlechtsausdruck oder -identität nicht mit den gesellschaftlichen Erwartungen aufgrund ihres bei der Geburt zugewiesenen Geschlechts übereinstimmt.</value>
+    <value>Ein Sammelbegriff für Menschen, deren Geschlechtsausdruck oder Verhalten nicht traditionellen Geschlechtererwartungen entspricht. Daraus lässt sich nicht unbedingt eine bestimmte Geschlechtsidentität ableiten.</value>
   </data>
   <data name="GenderNonconforming_Name" xml:space="preserve">
     <value>Geschlechtswidrig</value>
   </data>
   <data name="Genderqueer_Description" xml:space="preserve">
-    <value>Ein Begriff, der von Menschen verwendet wird, die traditionelle Geschlechterkategorien ablehnen. Überschneidet sich oft mit „nicht-binär“ und kann sich auf jeden beziehen, der kein Cisgender ist.</value>
+    <value>Ein Begriff für Menschen, deren Geschlechtsidentität nicht in herkömmliche Kategorien passt. Er kann sich mit nicht-binär überschneiden, die Begriffe sind jedoch nicht austauschbar.</value>
   </data>
   <data name="Genderqueer_Name" xml:space="preserve">
     <value>Genderqueer</value>
   </data>
   <data name="Intersex_Description" xml:space="preserve">
-    <value>Eine Person, die mit körperlichen Geschlechtsmerkmalen (wie Chromosomen oder Genitalien) geboren wurde, die nicht den typischen Definitionen männlicher oder weiblicher Körper entsprechen. Oft wird bei der Geburt durch medizinische Eingriffe ein Geschlecht zugewiesen.</value>
+    <value>Ein Begriff für Menschen, die mit Geschlechtsmerkmalen geboren wurden, die nicht den typischen Definitionen von männlich oder weiblich entsprechen. Er beschreibt Variationen der Geschlechtsmerkmale, keine Geschlechtsidentität.</value>
   </data>
   <data name="Intersex_Name" xml:space="preserve">
     <value>Intersexuell</value>
@@ -172,7 +172,7 @@
     <value>Nicht-binär</value>
   </data>
   <data name="Omnigender_Description" xml:space="preserve">
-    <value>Eine Person, die sich mit vielen oder allen Geschlechtern identifiziert. „Pangender“ ist heute der gebräuchlichere Begriff.</value>
+    <value>Eine Person, die sich mit vielen oder allen Geschlechtern identifiziert. Auch der Begriff Pangender wird verwendet.</value>
   </data>
   <data name="Omnigender_Name" xml:space="preserve">
     <value>Omnigender / Pangender</value>
@@ -190,7 +190,7 @@
     <value>Transgender (Trans)</value>
   </data>
   <data name="TwoSpirit_Description" xml:space="preserve">
-    <value>Ein Begriff, der in einigen indigenen nordamerikanischen Kulturen verwendet wird, um eine Person zu beschreiben, die sowohl männliche als auch weibliche Qualitäten verkörpert und oft als eine besondere spirituelle Rolle innerhalb ihrer Gemeinschaften angesehen wird.</value>
+    <value>Ein Begriff, den einige indigene Völker Nordamerikas für bestimmte geschlechtliche, kulturelle und spirituelle Identitäten verwenden. Seine Bedeutung unterscheidet sich je nach Gemeinschaft und sollte nicht als allgemeine Bezeichnung verwendet werden.</value>
   </data>
   <data name="TwoSpirit_Name" xml:space="preserve">
     <value>Zwei-Geist</value>

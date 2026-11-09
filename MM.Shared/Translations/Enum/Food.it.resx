@@ -148,7 +148,7 @@
     <value>Piatti tradizionali e moderni provenienti da vari paesi europei, che enfatizzano ingredienti freschi e stili di cucina unici (ad esempio, Pasta (Italia), Ratatouille (Francia), Paella (Spagna), Sauerbraten (Germania), Borscht (Ucraina), Fish and Chips (Regno Unito)).</value>
   </data>
   <data name="FastFoodComfort" xml:space="preserve">
-    <value>Cibo veloce e conforto</value>
+    <value>Fast food e comfort food</value>
   </data>
   <data name="FastFoodComfort_Description" xml:space="preserve">
     <value>Pasti veloci che in genere sono facili da preparare e soddisfano il desiderio (ad es. Pollo fritto (Stati Uniti), Pizza (Italia), Fish and Chips (Regno Unito), Nachos (Messico), Doner Kebab (Turchia), Cheeseburger (Stati Uniti)).</value>
@@ -160,7 +160,7 @@
     <value>Piatti innovativi che fondono ingredienti e tecniche di cottura di culture diverse (ad esempio, Tacos coreani (Stati Uniti), Sushi Burritos (Stati Uniti), Indian Pizza (India), Thai Curry Pizza (Stati Uniti), Mediterranean Burrito (Globale), Banh Mi Burger (Vietnam)).</value>
   </data>
   <data name="GrilledBarbecue" xml:space="preserve">
-    <value>Alla griglia e al barbecue</value>
+    <value>Cibi alla griglia e barbecue</value>
   </data>
   <data name="GrilledBarbecue_Description" xml:space="preserve">
     <value>Piatti cucinati su fiamma libera o griglia, celebrati per il loro sapore affumicato (ad esempio, costolette al barbecue (Stati Uniti), pollo tandoori (India), pesce alla griglia (globale), satay (Indonesia), verdure grigliate (mediterraneo), carne alla griglia (Corea)).</value>

@@ -101,36 +101,36 @@
     <value>Renda Anual</value>
   </data>
   <data name="AnnualIncomeDesc" xml:space="preserve">
-    <value>Será utilizada uma plataforma especializada e independente</value>
+    <value>A verificação será realizada por um serviço independente de terceiros.</value>
   </data>
   <data name="AnnualIncomeWhy" xml:space="preserve">
-    <value>É necessário se você quiser usar este campo como filtro.</value>
+    <value>A verificação é necessária se você quiser usar este campo como filtro.</value>
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Galeria</value>
   </data>
   <data name="GalleryDesc" xml:space="preserve">
-    <value>Uma foto sua será tirada para comparar com sua galeria</value>
+    <value>Uma foto sua será tirada e comparada com as fotos da sua galeria.</value>
   </data>
   <data name="GalleryWhy" xml:space="preserve">
-    <value>É necessário antes de publicar seu perfil.</value>
+    <value>Esta verificação é necessária antes que você possa publicar seu perfil.</value>
   </data>
   <data name="Identity" xml:space="preserve">
     <value>Identidade</value>
   </data>
   <data name="IdentityDesc" xml:space="preserve">
-    <value>Será utilizada uma plataforma especializada e independente</value>
+    <value>A verificação será realizada por um serviço independente de terceiros.</value>
   </data>
   <data name="IdentityWhy" xml:space="preserve">
-    <value>É necessário antes de qualquer interação com outro usuário.</value>
+    <value>Esta verificação é necessária antes que você possa interagir com outros usuários.</value>
   </data>
   <data name="NetWorth" xml:space="preserve">
     <value>Patrimônio líquido</value>
   </data>
   <data name="NetWorthDesc" xml:space="preserve">
-    <value>Será utilizada uma plataforma especializada e independente</value>
+    <value>A verificação será realizada por um serviço independente de terceiros.</value>
   </data>
   <data name="NetWorthWhy" xml:space="preserve">
-    <value>É necessário se você quiser usar este campo como filtro.</value>
+    <value>A verificação é necessária se você quiser usar este campo como filtro.</value>
   </data>
 </root>

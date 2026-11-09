@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="No_Description" xml:space="preserve">
-    <value>Não consome nenhum tipo de bebida alcoólica</value>
+    <value>Não consome bebidas alcoólicas.</value>
   </data>
   <data name="No_Name" xml:space="preserve">
     <value>Não</value>
   </data>
   <data name="YesHeavy_Description" xml:space="preserve">
-    <value>É a pessoa que bebe pelo menos duas vezes por semana</value>
+    <value>Consome bebidas alcoólicas pelo menos duas vezes por semana.</value>
   </data>
   <data name="YesHeavy_Name" xml:space="preserve">
     <value>Sim (com frequência)</value>
   </data>
   <data name="YesLight_Description" xml:space="preserve">
-    <value>É a pessoa que bebe raramente e/ou apenas em ocasiões sociais, não excedendo duas vezes por mês</value>
+    <value>Consome bebidas alcoólicas raramente ou apenas em ocasiões sociais, no máximo duas vezes por mês.</value>
   </data>
   <data name="YesLight_Name" xml:space="preserve">
     <value>Sim (socialmente)</value>
   </data>
   <data name="YesModerate_Description" xml:space="preserve">
-    <value>É a pessoa que bebe aproximadamente uma vez por semana, até seis vezes por mês</value>
+    <value>Consome bebidas alcoólicas aproximadamente uma vez por semana, até seis vezes por mês.</value>
   </data>
   <data name="YesModerate_Name" xml:space="preserve">
     <value>Sim (moderadamente)</value>

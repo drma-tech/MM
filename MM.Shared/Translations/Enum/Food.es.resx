@@ -148,7 +148,7 @@
     <value>Platos tradicionales y modernos de varios países europeos, con énfasis en ingredientes frescos y estilos de cocina únicos (por ejemplo, Pasta (Italia), Ratatouille (Francia), Paella (España), Sauerbraten (Alemania), Borscht (Ucrania), Fish and Chips (Reino Unido)).</value>
   </data>
   <data name="FastFoodComfort" xml:space="preserve">
-    <value>Comida rápida y reconfortante</value>
+    <value>Comida rápida y comida reconfortante</value>
   </data>
   <data name="FastFoodComfort_Description" xml:space="preserve">
     <value>Comidas rápidas que suelen ser fáciles de preparar y satisfacen los antojos (por ejemplo, pollo frito (Estados Unidos), pizza (Italia), pescado y patatas fritas (Reino Unido), nachos (México), doner kebab (Turquía), hamburguesa con queso (Estados Unidos)).</value>
@@ -160,7 +160,7 @@
     <value>Platos innovadores que combinan ingredientes y técnicas de cocina de diferentes culturas (por ejemplo, tacos coreanos (Estados Unidos), burritos de sushi (Estados Unidos), pizza india (India), pizza de curry tailandesa (Estados Unidos), burrito mediterráneo (global), hamburguesa Banh Mi (Vietnam)).</value>
   </data>
   <data name="GrilledBarbecue" xml:space="preserve">
-    <value>Parrilla y barbacoa</value>
+    <value>Comida a la parrilla y barbacoa</value>
   </data>
   <data name="GrilledBarbecue_Description" xml:space="preserve">
     <value>Platos que se cocinan sobre una llama abierta o a la parrilla, famosos por sus sabores ahumados (por ejemplo, costillas a la barbacoa (Estados Unidos), pollo tandoori (India), pescado a la parrilla (mundial), satay (Indonesia), verduras a la parrilla (mediterráneo), carne a la parrilla con carbón (Corea)).</value>

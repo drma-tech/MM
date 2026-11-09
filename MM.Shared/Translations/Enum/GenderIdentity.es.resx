@@ -148,19 +148,19 @@
     <value>Gênero fluido</value>
   </data>
   <data name="GenderNonconforming_Description" xml:space="preserve">
-    <value>Un término general para personas cuya expresión o identidad de género no se alinee con las expectativas sociales basadas en su sexo asignado al nacer.</value>
+    <value>Término general para personas cuya expresión o comportamiento de género no se ajusta a las expectativas tradicionales. No indica necesariamente una identidad de género específica.</value>
   </data>
   <data name="GenderNonconforming_Name" xml:space="preserve">
     <value>No conformado</value>
   </data>
   <data name="Genderqueer_Description" xml:space="preserve">
-    <value>Un término utilizado por las personas que rechazan las categorías de género tradicionales. A menudo se superpone con "no binary" y puede referirse a cualquier persona que no sea cisgénero.</value>
+    <value>Término para personas cuya identidad de género no encaja en las categorías convencionales. Puede solaparse con el término no binario, pero no son términos intercambiables.</value>
   </data>
   <data name="Genderqueer_Name" xml:space="preserve">
     <value>Género</value>
   </data>
   <data name="Intersex_Description" xml:space="preserve">
-    <value>Una persona nacida con características del sexo físico (como cromosomas o genitales) que no se ajustan a las definiciones típicas de cuerpos masculinos o femeninos. A menudo asignaba un género al nacer a través de la intervención médica.</value>
+    <value>Término para personas que nacen con características sexuales que no encajan en las definiciones típicas de masculino o femenino. Describe variaciones de las características sexuales, no una identidad de género.</value>
   </data>
   <data name="Intersex_Name" xml:space="preserve">
     <value>Intersexual</value>
@@ -172,7 +172,7 @@
     <value>No binario</value>
   </data>
   <data name="Omnigender_Description" xml:space="preserve">
-    <value>Una persona que se identifica con muchos o todos los géneros. "Pangender" es el término más utilizado hoy en día.</value>
+    <value>Persona que se identifica con muchos géneros o con todos ellos. También se utiliza el término pangénero.</value>
   </data>
   <data name="Omnigender_Name" xml:space="preserve">
     <value>Omnigénero / Pangender</value>
@@ -190,7 +190,7 @@
     <value>Transgénero (trans)</value>
   </data>
   <data name="TwoSpirit_Description" xml:space="preserve">
-    <value>Un término utilizado en algunas culturas indígenas de América del Norte para describir a una persona que encarna las cualidades masculinas y femeninas, a menudo vista como un papel espiritual distinto dentro de sus comunidades.</value>
+    <value>Término utilizado por algunos pueblos indígenas de Norteamérica para referirse a identidades específicas de género, culturales y espirituales. Su significado varía según la comunidad y no debe tratarse como una etiqueta genérica.</value>
   </data>
   <data name="TwoSpirit_Name" xml:space="preserve">
     <value>De dos espíritus</value>

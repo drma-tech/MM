@@ -121,36 +121,36 @@
     <value>Jahreseinkommen</value>
   </data>
   <data name="AnnualIncomeDesc" xml:space="preserve">
-    <value>Es wird eine spezialisierte und unabhängige Plattform genutzt</value>
+    <value>Zur Überprüfung wird ein unabhängiger Drittanbieterdienst verwendet.</value>
   </data>
   <data name="AnnualIncomeWhy" xml:space="preserve">
-    <value>Dies ist erforderlich, wenn Sie dieses Feld als Filter verwenden möchten.</value>
+    <value>Die Überprüfung ist erforderlich, wenn du dieses Feld als Filter verwenden möchtest.</value>
   </data>
   <data name="Gallery" xml:space="preserve">
     <value>Galerie</value>
   </data>
   <data name="GalleryDesc" xml:space="preserve">
-    <value>Es wird ein Foto von Ihnen gemacht, um es mit Ihrer Galerie zu vergleichen</value>
+    <value>Es wird ein Foto von dir aufgenommen und mit den Fotos in deiner Galerie verglichen.</value>
   </data>
   <data name="GalleryWhy" xml:space="preserve">
-    <value>Dies ist notwendig, bevor Sie Ihr Profil veröffentlichen.</value>
+    <value>Diese Überprüfung ist erforderlich, bevor du dein Profil veröffentlichen kannst.</value>
   </data>
   <data name="Identity" xml:space="preserve">
     <value>Identität</value>
   </data>
   <data name="IdentityDesc" xml:space="preserve">
-    <value>Es wird eine spezialisierte und unabhängige Plattform genutzt</value>
+    <value>Zur Überprüfung wird ein unabhängiger Drittanbieterdienst verwendet.</value>
   </data>
   <data name="IdentityWhy" xml:space="preserve">
-    <value>Dies ist vor jeder Interaktion mit einem anderen Benutzer erforderlich.</value>
+    <value>Diese Überprüfung ist erforderlich, bevor du mit anderen Nutzern interagieren kannst.</value>
   </data>
   <data name="NetWorth" xml:space="preserve">
     <value>Vermögen</value>
   </data>
   <data name="NetWorthDesc" xml:space="preserve">
-    <value>Es wird eine spezialisierte und unabhängige Plattform genutzt</value>
+    <value>Zur Überprüfung wird ein unabhängiger Drittanbieterdienst verwendet.</value>
   </data>
   <data name="NetWorthWhy" xml:space="preserve">
-    <value>Dies ist erforderlich, wenn Sie dieses Feld als Filter verwenden möchten.</value>
+    <value>Die Überprüfung ist erforderlich, wenn du dieses Feld als Filter verwenden möchtest.</value>
   </data>
 </root>

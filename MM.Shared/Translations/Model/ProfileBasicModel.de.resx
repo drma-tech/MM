@@ -140,13 +140,13 @@ Zudem ist es nicht gestattet, Social-Media-Profile, Produkte, Dienstleistungen o
     <value>Die Geschlechtsidentität prägt, wie eine Person sich selbst versteht und in der Beziehung gesehen werden möchte. Wenn Sie die Identität Ihres Partners kennen, können Sie eine authentischere Verbindung herstellen und vermeiden, seine Erfahrungen zu entkräften – insbesondere in Beziehungen, in denen Geschlechtervielfalt vorhanden ist.</value>
   </data>
   <data name="GenderIdentity_Description" xml:space="preserve">
-    <value>Die häufigste Option wird automatisch ausgewählt (gilt für die meisten Menschen)</value>
+    <value>Die häufigste Option ist standardmäßig ausgewählt.</value>
   </data>
   <data name="GenderIdentity_Name" xml:space="preserve">
     <value>Geschlechtsidentität</value>
   </data>
   <data name="Languages_Description" xml:space="preserve">
-    <value>Wird automatisch entsprechend den im Land geltenden Sprachen ausgewählt (falls verfügbar)</value>
+    <value>Wird, sofern verfügbar, automatisch anhand der deinem Land zugeordneten Sprachen ausgewählt.</value>
   </data>
   <data name="Languages_Name" xml:space="preserve">
     <value>Sprachen</value>
@@ -200,7 +200,7 @@ Zudem ist es nicht gestattet, Social-Media-Profile, Produkte, Dienstleistungen o
     <value>Die sexuelle Orientierung spiegelt wider, zu wem sich eine Person romantisch und sexuell hingezogen fühlt, was für die Vereinbarkeit einer Beziehung von grundlegender Bedeutung ist. Die Orientierung des anderen zu kennen und zu respektieren hilft dabei, klare Erwartungen in Bezug auf Anziehung, Intimität und Beziehungsstruktur zu setzen – insbesondere in heterogenen oder nicht-traditionellen Dynamiken.</value>
   </data>
   <data name="SexualOrientation_Description" xml:space="preserve">
-    <value>Die häufigste Option wird automatisch ausgewählt (gilt für die meisten Menschen)</value>
+    <value>Die häufigste Option ist standardmäßig ausgewählt.</value>
   </data>
   <data name="SexualOrientation_Name" xml:space="preserve">
     <value>Sexuelle Orientierung</value>

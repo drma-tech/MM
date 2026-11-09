@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundariesNeeded" xml:space="preserve">
-    <value>Limites nécessaires</value>
+    <value>Avec des limites claires</value>
   </data>
   <data name="BoundariesNeeded_Description" xml:space="preserve">
-    <value>À l'aise avec les amitiés, mais préfère les limites claires.</value>
+    <value>Ces amitiés me conviennent tant que nous convenons de limites claires.</value>
   </data>
   <data name="Comfortable" xml:space="preserve">
-    <value>Confortable</value>
+    <value>À l’aise</value>
   </data>
   <data name="Comfortable_Description" xml:space="preserve">
-    <value>Ouvert aux amitiés avec le sexe opposé sans soucis.</value>
+    <value>Cela ne me dérange pas que mon partenaire ait des amitiés proches avec des personnes de tous genres.</value>
   </data>
   <data name="Uncomfortable" xml:space="preserve">
-    <value>Inconfortable</value>
+    <value>Mal à l’aise</value>
   </data>
   <data name="Uncomfortable_Description" xml:space="preserve">
-    <value>Se sent mal à l’aise face aux amitiés étroites avec le sexe opposé.</value>
+    <value>Je suis mal à l’aise lorsque mon partenaire entretient des amitiés proches avec des personnes d’autres genres.</value>
   </data>
 </root>

@@ -253,10 +253,10 @@
     <value>Marketing</value>
   </data>
   <data name="NoCareer_Description" xml:space="preserve">
-    <value>Al comienzo de su carrera, pasante, solo estudiando o incluso no trabajando en este momento.</value>
+    <value>Estoy empezando mi carrera profesional, actualmente estudio o hago prácticas, o no estoy trabajando en este momento.</value>
   </data>
   <data name="NoCareer_Name" xml:space="preserve">
-    <value>Sin carrera consolidada</value>
+    <value>Sin una trayectoria profesional establecida</value>
   </data>
   <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
     <value>mantenimiento de instalaciones y equipos móviles; Gestión de Salud, Seguridad y Medio Ambiente; Servicios de Planificación y Gestión Logística; Ventas y Servicios; Operaciones de transporte; Planificación, gestión y reglamentación de la infraestructura de transporte/sistemas; Operaciones de Almacenamiento y Centros de Distribución;</value>

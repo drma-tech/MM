@@ -121,7 +121,7 @@
     <value>Para aqueles cuja linguagem de amor são os atos de serviço, as ações falam mais alto que as palavras. Eles se sentem cuidados quando o parceiro ajuda com tarefas ou faz algo atencioso, como preparar uma refeição, consertar algo ou fazer recados. Isso demonstra dedicação e disposição para aliviar a carga.</value>
   </data>
   <data name="ActsOfServices_Name" xml:space="preserve">
-    <value>Gestos de Serviço</value>
+    <value>Atos de serviço</value>
   </data>
   <data name="PhysicalTouch_Description" xml:space="preserve">
     <value>Para pessoas cuja principal linguagem de amor é o toque físico, a proximidade e a segurança vêm por meio do contato físico. Elas se sentem mais amadas ao dar as mãos, abraçar, beijar ou fazer outros toques suaves. Não se trata de demonstrações públicas de afeto, mas sim de uma conexão física que tranquiliza e cria laços.</value>
@@ -133,7 +133,7 @@
     <value>Essa linguagem do amor se concentra na atenção integral. Quem prefere tempo de qualidade quer que o parceiro esteja totalmente presente — sem celulares, sem distrações —, apenas focado em compartilhar momentos juntos. Trata-se de se sentir priorizado e verdadeiramente conectado durante esse tempo.</value>
   </data>
   <data name="QualityTime_Name" xml:space="preserve">
-    <value>Qualidade de Tempo</value>
+    <value>Tempo de qualidade</value>
   </data>
   <data name="ReceivingGifts_Description" xml:space="preserve">
     <value>Pessoas que se identificam com essa linguagem do amor se sentem amadas quando recebem símbolos tangíveis de afeto. Não se trata de materialismo, mas da consideração por trás do presente. Um presente pequeno e significativo — como um lanche favorito depois de um dia difícil — pode fazê-las se sentirem profundamente apreciadas.</value>

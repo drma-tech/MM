@@ -148,7 +148,7 @@
     <value>Plats traditionnels et modernes de divers pays européens, mettant l'accent sur des ingrédients frais et des styles de cuisine uniques (par exemple, Pasta (Italie), Ratatouille (France), Paella (Espagne), Sauerbraten (Allemagne), Bortsch (Ukraine), Fish and Chips (Royaume-Uni)).</value>
   </data>
   <data name="FastFoodComfort" xml:space="preserve">
-    <value>Restauration rapide et réconfort</value>
+    <value>Restauration rapide et plats réconfortants</value>
   </data>
   <data name="FastFoodComfort_Description" xml:space="preserve">
     <value>Des repas rapides qui sont généralement faciles à préparer et qui satisfont les fringales (par exemple, Fried Chicken (États-Unis), Pizza (Italie), Fish and Chips (Royaume-Uni), Nachos (Mexique), Doner Kebab (Turquie), Cheeseburger (États-Unis)).</value>
@@ -160,7 +160,7 @@
     <value>Plats innovants qui mélangent des ingrédients et des techniques de cuisson de différentes cultures (par exemple, tacos coréens (États-Unis), Sushi Burritos (États-Unis), pizza indienne (Inde), pizza au curry thaïlandais (États-Unis), burrito méditerranéen (mondial), Banh Mi Burger (Vietnam)).</value>
   </data>
   <data name="GrilledBarbecue" xml:space="preserve">
-    <value>Grillades et barbecues</value>
+    <value>Grillades et barbecue</value>
   </data>
   <data name="GrilledBarbecue_Description" xml:space="preserve">
     <value>Plats cuits sur une flamme nue ou sur un grill, célèbres pour leurs saveurs fumées (par exemple, côtes levées au barbecue (États-Unis), poulet tandoori (Inde), poisson grillé (mondial), satay (Indonésie), légumes grillés (méditerranéen), viande grillée au charbon de bois (Corée)).</value>

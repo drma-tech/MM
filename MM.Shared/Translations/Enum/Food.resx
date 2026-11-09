@@ -128,7 +128,7 @@
     <value>Traditional and modern dishes from various European countries, emphasizing fresh ingredients and unique cooking styles (e.g., Pasta (Italy), Ratatouille (France), Paella (Spain), Sauerbraten (Germany), Borscht (Ukraine), Fish and Chips (United Kingdom)).</value>
   </data>
   <data name="FastFoodComfort" xml:space="preserve">
-    <value>Fast Food &amp; Comfort</value>
+    <value>Fast Food &amp; Comfort Food</value>
   </data>
   <data name="FastFoodComfort_Description" xml:space="preserve">
     <value>Quick meals that are typically easy to prepare and satisfy cravings (e.g., Fried Chicken (United States), Pizza (Italy), Fish and Chips (United Kingdom), Nachos (Mexico), Doner Kebab (Turkey), Cheeseburger (United States)).</value>
@@ -140,7 +140,7 @@
     <value>Innovative dishes that blend ingredients and cooking techniques from different cultures (e.g., Korean Tacos (United States), Sushi Burritos (United States), Indian Pizza (India), Thai Curry Pizza (United States), Mediterranean Burrito (Global), Banh Mi Burger (Vietnam)).</value>
   </data>
   <data name="GrilledBarbecue" xml:space="preserve">
-    <value>Grilled &amp; Barbecue</value>
+    <value>Grilled Food &amp; Barbecue</value>
   </data>
   <data name="GrilledBarbecue_Description" xml:space="preserve">
     <value>Dishes that are cooked over an open flame or grill, celebrated for their smoky flavors (e.g., BBQ Ribs (United States), Tandoori Chicken (India), Grilled Fish (Global), Satay (Indonesia), Grilled Vegetables (Mediterranean), Charcoal-Grilled Meat (Korea)).</value>

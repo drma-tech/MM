@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BoundariesNeeded" xml:space="preserve">
-    <value>Grenzen erforderlich</value>
+    <value>Mit klaren Grenzen</value>
   </data>
   <data name="BoundariesNeeded_Description" xml:space="preserve">
-    <value>Fühlt sich mit Freundschaften wohl, bevorzugt aber klare Grenzen.</value>
+    <value>Diese Freundschaften sind für mich in Ordnung, solange wir klare Grenzen vereinbaren.</value>
   </data>
   <data name="Comfortable" xml:space="preserve">
-    <value>Komfortabel</value>
+    <value>Unbedenklich</value>
   </data>
   <data name="Comfortable_Description" xml:space="preserve">
-    <value>Offen für Freundschaften mit dem anderen Geschlecht ohne Bedenken.</value>
+    <value>Es ist für mich in Ordnung, wenn mein Partner enge Freundschaften mit Menschen jeden Geschlechts hat.</value>
   </data>
   <data name="Uncomfortable" xml:space="preserve">
-    <value>Unbequem</value>
+    <value>Unwohl</value>
   </data>
   <data name="Uncomfortable_Description" xml:space="preserve">
-    <value>Fühlt sich unwohl bei engen Freundschaften mit dem anderen Geschlecht.</value>
+    <value>Es ist mir unangenehm, wenn mein Partner enge Freundschaften mit Menschen anderen Geschlechts hat.</value>
   </data>
 </root>

@@ -253,10 +253,10 @@
     <value>Marketing</value>
   </data>
   <data name="NoCareer_Description" xml:space="preserve">
-    <value>Em início de carreira, estagiário, apenas estudando ou até mesmo não trabalhando no momento.</value>
+    <value>Estou no início da minha carreira, atualmente estudando ou fazendo estágio, ou não estou trabalhando no momento.</value>
   </data>
   <data name="NoCareer_Name" xml:space="preserve">
-    <value>Sem carreira consolidada</value>
+    <value>Sem carreira estabelecida</value>
   </data>
   <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
     <value>Manutenção de Instalações e Equipamentos Móveis; Gestão de Saúde, Segurança e Meio Ambiente; Serviços de Planejamento e Gestão Logística; Vendas e Serviços; Operações de Transporte; Planejamento, Gestão e Regulamentação da Infraestrutura de Transporte/Sistemas; Operações de Armazenagem e Centro de Distribuição;</value>

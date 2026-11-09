@@ -253,10 +253,10 @@
     <value>Marketing</value>
   </data>
   <data name="NoCareer_Description" xml:space="preserve">
-    <value>At the beginning of their career, intern, just studying or even not working at the moment.</value>
+    <value>I am just starting my career, currently studying or interning, or not working at the moment.</value>
   </data>
   <data name="NoCareer_Name" xml:space="preserve">
-    <value>No consolidated career</value>
+    <value>No Established Career</value>
   </data>
   <data name="TransportationDistributionLogistics_Description" xml:space="preserve">
     <value>Facility and Mobile Equipment Maintenance; Health, Safety, and Environmental Management; Logistics Planning and Management Services; Sales and Services; Transportation Operations; Transportation/Systems Infrastructure Planning, Management, and Regulations; Warehousing and Distribution Center Operations;</value>
