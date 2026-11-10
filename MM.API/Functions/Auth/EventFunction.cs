@@ -20,7 +20,7 @@ public static class EventHelper
 
     public static async Task<InteractionModel> SetInteractionNew(this CosmosMainRepository repo, string? trigguerUserId, string? passiveUserId, EventType type, Origin origin, CancellationToken cancellationToken)
     {
-        if (string.Equals(trigguerUserId, passiveUserId, StringComparison.OrdinalIgnoreCase)) throw new NotificationException("cannot interact with yourself");
+        if (string.Equals(trigguerUserId, passiveUserId, StringComparison.OrdinalIgnoreCase)) throw new NotificationException("You can't interact with yourself.");
 
         var interaction = await repo.GetInteractionModel(trigguerUserId, passiveUserId, cancellationToken);
 
@@ -29,7 +29,7 @@ public static class EventHelper
         if (type == EventType.Like)
         {
             if (interaction.Status != InteractionStatus.Explorer)
-                throw new NotificationException("cannot like this user");
+                throw new NotificationException("You can't like this user.");
 
             if (interaction.EventsUserA.Any(a => a.Type == EventType.Like) &&
                 interaction.EventsUserB.Any(a => a.Type == EventType.Like))
@@ -38,7 +38,7 @@ public static class EventHelper
         else if (type == EventType.Dislike)
         {
             if (interaction.Status != InteractionStatus.Explorer)
-                throw new NotificationException("cannot dislike this user");
+                throw new NotificationException("You can't dislike this user.");
         }
 
         return await repo.UpsertItemAsync(interaction);
