@@ -24,7 +24,7 @@ namespace MM.WEB.Modules.Profile
         {
             if (AppStateStatic.Principal == null)
             {
-                await ShowWarning("Invalid operation");
+                await ShowWarning("Your account information is unavailable. Please try again.");
                 Navigation.NavigateTo($"/{Culture}/profile");
                 return;
             }
@@ -73,7 +73,7 @@ namespace MM.WEB.Modules.Profile
                 Validation = await ValidationApi.UploadPhotoValidation(new MM.Shared.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, Cts.Token);
                 await AppStateStatic.ProcessingFinished.PublishAsync();
 
-                await ShowSuccess("Photo validated successfully!");
+                await ShowSuccess("Your photo was verified successfully.");
                 await JsRuntime.Window().HistoryBack();
             }
             catch (Exception ex)
@@ -154,7 +154,7 @@ namespace MM.WEB.Modules.Profile
 
             if (videoStreamTrack is null)
             {
-                await ShowError("No video track found for the selected device.");
+                await ShowError("No camera feed was found for the selected device. Choose another camera and try again.");
                 return;
             }
 
