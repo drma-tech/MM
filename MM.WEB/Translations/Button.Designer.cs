@@ -250,7 +250,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string Login {
             get {
