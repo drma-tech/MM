@@ -44,7 +44,7 @@ export const apple = {
     getReceiptData() {
         if (window.appConfig?.isMobileApp !== true) {
             notification.showError("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.");
-            Sentry.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
+            Sentry?.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
             return;
         }
 
@@ -64,7 +64,7 @@ export const google = {
         try {
             if (window.appConfig?.isMobileApp !== true) {
                 notification.showError("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.");
-                Sentry.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
+                Sentry?.captureMessage("It looks like you're accessing accessing this from a browser, but this feature is only available in the app. Please open the app to continue.", "error");
                 return;
             }
 
@@ -100,7 +100,7 @@ export const stripe = {
 
                 if (!token) {
                     notification.showError("Failed to retrieve authentication token.");
-                    Sentry.captureMessage("Failed to retrieve authentication token.", "error");
+                    Sentry?.captureMessage("Failed to retrieve authentication token.", "error");
                     return;
                 }
 
@@ -121,7 +121,7 @@ export const stripe = {
             if (!response.ok) {
                 const error = await response.text();
                 notification.showError(error);
-                Sentry.captureMessage(error, "error");
+                Sentry?.captureMessage(error, "error");
                 return;
             }
 
