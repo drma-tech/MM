@@ -6,7 +6,7 @@ public static class SmartLookingCore
 {
     public static FilterModel PopulateFields(ProfileModel? profile, FilterModel? filter)
     {
-        if (profile == null) throw new NotificationException("Profile needs to be filled out first");
+        if (profile == null) throw new NotificationException("Complete your profile before using Smart Looking.");
         filter ??= new FilterModel(AppStateStatic.UserId);
 
         //BASIC
