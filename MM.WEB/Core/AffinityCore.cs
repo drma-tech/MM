@@ -8,9 +8,9 @@ public static class AffinityCore
 {
     public static IReadOnlyCollection<AffinityVM> GetAffinity(ProfileModel? profile, FilterModel? filter, ProfileModel? view)
     {
-        if (profile == null) throw new NotificationException("You need to register your profile first");
-        if (filter == null) throw new NotificationException("You need to register your filters first");
-        if (view == null) throw new NotificationException("Unable to identify this user's profile");
+        if (profile == null) throw new NotificationException("Complete your profile before checking compatibility.");
+        if (filter == null) throw new NotificationException("Set your matching filters before checking compatibility.");
+        if (view == null) throw new NotificationException("We couldn't identify this profile. Please try again.");
 
         var obj = new List<AffinityVM>
         {
