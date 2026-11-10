@@ -6,14 +6,14 @@ namespace MM.WEB.Modules.Profile
         {
             if (AppStateStatic.Principal == null)
             {
-                await ShowWarning("Invalid operation");
+                await ShowWarning("Your account information is unavailable. Please try again.");
                 Navigation.NavigateTo($"/{Culture}/profile");
                 return;
             }
 
             if (!AppStateStatic.Principal.HasSparks(1))
             {
-                await ShowWarning("You need at least 1 spark to validate your identity");
+                await ShowWarning("You need at least 1 Spark to verify your identity.");
                 return;
             }
 
