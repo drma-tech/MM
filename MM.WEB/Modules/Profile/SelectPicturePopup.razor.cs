@@ -42,7 +42,7 @@ namespace MM.WEB.Modules.Profile
 
                 if (dimensions?.Width < 300 || dimensions?.Height < 300)
                 {
-                    await ShowWarning("The image must be at least 300x300 pixels.");
+                    await ShowWarning("The image must be at least 300 × 300 pixels.");
                     return;
                 }
 
