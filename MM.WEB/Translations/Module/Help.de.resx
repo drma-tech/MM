@@ -121,7 +121,7 @@
     <value>App-Sprache</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Übersetzt die App-Oberfläche. Für einige Sprachen kann es zu Teilübersetzungen kommen.</value>
+    <value>Ändert die Sprache der App-Oberfläche. Einige Inhalte sind möglicherweise nicht vollständig übersetzt.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
     <value>App-Theme</value>
@@ -151,13 +151,13 @@
     <value>Gestalten Sie die Zukunft des Matchmakings</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Phase 1: Wir bilden den Matchmaking-Pool – die Grundlage unseres Systems.|Phase 2: Matchmaking wird für Kunden geöffnet, sobald wir 100.000 Benutzer erreicht haben.</value>
+    <value>Phase 1: Wir bauen den Matchmaking-Pool auf, die Grundlage unseres Systems.|Phase 2: Sobald wir 100.000 Nutzer erreicht haben, wird das Matchmaking für Kunden geöffnet.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
     <value>Wie es funktioniert</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Treten Sie unserem Matchmaking-Pool bei und gestalten Sie mit, wie echte Kompatibilität entdeckt wird.</value>
+    <value>Werden Sie Teil unseres Matchmaking-Pools und gestalten Sie die Zukunft der kompatibilitätsbasierten Partnervermittlung mit.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
     <value>Für Singles</value>
@@ -172,7 +172,7 @@
     <value>Willkommen bei {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Bewerten Sie die App und teilen Sie sie mit Ihren Freunden!</value>
+    <value>Hinterlassen Sie eine Bewertung und erzählen Sie Ihren Freunden von uns!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Helfen Sie {0} zu wachsen!</value>

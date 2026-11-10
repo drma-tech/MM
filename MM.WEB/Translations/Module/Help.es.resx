@@ -121,7 +121,7 @@
     <value>Idioma de la aplicación</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Traduce la interfaz de la aplicación. Es posible que se apliquen traducciones parciales en algunos idiomas.</value>
+    <value>Cambia el idioma de la interfaz de la aplicación. Es posible que algunos contenidos no estén traducidos por completo.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
     <value>Tema de la aplicación</value>
@@ -151,13 +151,13 @@
     <value>Construye el futuro del emparejamiento</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Fase 1: estamos formando el grupo de emparejamiento, la base de nuestro sistema.|Fase 2: el emparejamiento se abre para los clientes a medida que llegamos a los 100.000 usuarios.</value>
+    <value>Fase 1: Estamos creando la base de usuarios para el matchmaking, el fundamento de nuestro sistema.|Fase 2: El matchmaking estará disponible para clientes cuando alcancemos los 100.000 usuarios.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
     <value>Como funciona</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Únase a nuestro grupo de emparejamiento y participe en la configuración de cómo se descubre la compatibilidad real.</value>
+    <value>Únete a nuestra comunidad de matchmaking y ayúdanos a dar forma al futuro de la búsqueda de pareja basada en la compatibilidad.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
     <value>para solteros</value>
@@ -172,7 +172,7 @@
     <value>Bienvenido a {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>¡Califica la aplicación y compártela con tus amigos!</value>
+    <value>¡Deja una reseña y cuéntales a tus amigos sobre nosotros!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>¡Ayuda a {0} a crecer!</value>

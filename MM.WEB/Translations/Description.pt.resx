@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>O futuro de encontrar um parceiro para a vida está aqui. Mais inteligente e acessível do que a combinação tradicional, com compatibilidade precisa e sem deslizar interminavelmente.</value>
+    <value>O futuro de encontrar um parceiro para a vida chegou. Uma alternativa mais inteligente e acessível ao matchmaking tradicional, com sugestões baseadas em compatibilidade e sem a rolagem interminável de perfis.</value>
   </data>
   <data name="Compare" xml:space="preserve">
-    <value>Compare aplicativos de namoro, serviços tradicionais de matchmaking e Modern Matchmaker. Entenda as diferenças em compatibilidade, custo, personalização e resultados.</value>
+    <value>Compare aplicativos de namoro, serviços tradicionais de matchmaking e o Modern Matchmaker para entender as diferenças em compatibilidade, custo, personalização e resultados.</value>
   </data>
   <data name="HelpCenter" xml:space="preserve">
-    <value>Obtenha guias detalhados, dicas para solução de problemas, perguntas frequentes e entre em contato com o suporte de {0}. Resolva problemas e descubra recursos facilmente.</value>
+    <value>Encontre guias detalhados, dicas para solucionar problemas, perguntas frequentes e suporte para {0}. Obtenha ajuda para resolver problemas e aproveitar melhor os recursos.</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>Saiba como o Modern Matchmaker avalia a compatibilidade, sugere combinações significativas e oferece uma alternativa mais inteligente ao namoro e matchmaking tradicional.</value>
+    <value>Descubra como o Modern Matchmaker avalia a compatibilidade, recomenda pessoas compatíveis e oferece uma alternativa aos aplicativos de namoro e aos serviços tradicionais de matchmaking.</value>
   </data>
   <data name="LastUsers" xml:space="preserve">
-    <value>Encontre o seu parceiro de vida no seu país ({0}) com o Modern Matchmaker. Descubra membros compatíveis por meio de um sistema de combinação inteligente.</value>
+    <value>Encontre um parceiro para a vida no seu país ({0}) com o Modern Matchmaker. Descubra pessoas compatíveis por meio de um sistema inteligente de matchmaking.</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Seu espaço pessoal para visualizar seu perfil, descobrir sugestões e acompanhar suas conexões.</value>
+    <value>Seu espaço pessoal para gerenciar seu perfil, explorar recomendações e acompanhar suas conexões.</value>
   </data>
   <data name="WhoIsItFor" xml:space="preserve">
-    <value>Modern Matchmaker é para pessoas que buscam relacionamentos significativos e de longo prazo, sem os limites dos aplicativos de namoro ou o alto custo da combinação tradicional.</value>
+    <value>O Modern Matchmaker foi desenvolvido para pessoas que buscam relacionamentos significativos e duradouros e querem uma alternativa aos aplicativos de namoro e aos serviços tradicionais e caros de matchmaking.</value>
   </data>
 </root>

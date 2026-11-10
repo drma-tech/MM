@@ -127,7 +127,7 @@
     <value>Cancelar</value>
   </data>
   <data name="Chat" xml:space="preserve">
-    <value>Bater papo</value>
+    <value>Chat</value>
   </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Limpar cache</value>
@@ -142,13 +142,13 @@
     <value>Continuar para o site</value>
   </data>
   <data name="Dating" xml:space="preserve">
-    <value>Encontro</value>
+    <value>Namoro</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Excluir</value>
   </data>
   <data name="Dislike" xml:space="preserve">
-    <value>Não gosto</value>
+    <value>Não gostei</value>
   </data>
   <data name="Done" xml:space="preserve">
     <value>Feito</value>
@@ -178,10 +178,10 @@
     <value>Saiba mais</value>
   </data>
   <data name="Like" xml:space="preserve">
-    <value>Gostar</value>
+    <value>Curtir</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Conecte-se</value>
+    <value>Entrar</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Sair</value>
@@ -199,7 +199,7 @@
     <value>Perfil</value>
   </data>
   <data name="Recent" xml:space="preserve">
-    <value>Recente</value>
+    <value>Recentes</value>
   </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relação</value>
@@ -253,7 +253,7 @@
     <value>Atualizar</value>
   </data>
   <data name="UsePriorValidation" xml:space="preserve">
-    <value>Use validação prévia</value>
+    <value>Usar validação anterior</value>
   </data>
   <data name="Validations" xml:space="preserve">
     <value>Validações</value>

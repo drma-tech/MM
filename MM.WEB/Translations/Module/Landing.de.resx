@@ -134,7 +134,7 @@
     <value>Verifizierte Profile</value>
   </data>
   <data name="Approach03Desc" xml:space="preserve">
-    <value>Bevor Benutzer interagieren können, sind Identitäts- und Fotoverifizierung erforderlich. Dies trägt dazu bei, Fake-Profile zu reduzieren und das Vertrauen innerhalb der Community zu stärken.</value>
+    <value>Bevor Mitglieder miteinander interagieren können, müssen ihre Identität und Fotos verifiziert werden. Das hilft, gefälschte Profile zu reduzieren und Vertrauen in der Community aufzubauen.</value>
   </data>
   <data name="Approach04" xml:space="preserve">
     <value>Datenschutz und Sicherheit</value>
@@ -146,13 +146,13 @@
     <value>Sparks-Währung</value>
   </data>
   <data name="Approach05Desc" xml:space="preserve">
-    <value>Sparks sind unsere virtuelle Währung, mit der wir auf Premium-Aktionen und -Funktionen auf der gesamten Plattform zugreifen können.</value>
+    <value>Sparks sind die virtuelle Währung der Plattform und ermöglichen den Zugriff auf Premium-Aktionen und -Funktionen.</value>
   </data>
   <data name="Approach06" xml:space="preserve">
-    <value>Zukünftige Funktionen im Voraus</value>
+    <value>Weitere Funktionen folgen</value>
   </data>
   <data name="Approach06Desc" xml:space="preserve">
-    <value>Wenn die Plattform wächst, werden neue Matchmaking-Funktionen und Verbesserungen freigeschaltet, um mehr Möglichkeiten zur Verbindung zu bieten.</value>
+    <value>Mit unserer wachsenden Community führen wir neue Funktionen und Verbesserungen für die Partnervermittlung ein, damit Mitglieder auf mehr Arten miteinander in Kontakt treten können.</value>
   </data>
   <data name="AvailableYourDevices" xml:space="preserve">
     <value>Auf all Ihren Geräten verfügbar</value>
@@ -161,10 +161,10 @@
     <value>Städte</value>
   </data>
   <data name="CompareCall" xml:space="preserve">
-    <value>Vergleichen Sie uns mit typischen Dating-Apps und sehen Sie, was unseren Ansatz unterscheidet. Entdecken Sie die Hauptmerkmale, die uns auszeichnen, und schaffen Sie sinnvollere Verbindungen.</value>
+    <value>Vergleichen Sie Modern Matchmaker mit herkömmlichen Dating-Apps und entdecken Sie, was uns unterscheidet. Lernen Sie die Funktionen kennen, die sinnvollere Kontakte fördern.</value>
   </data>
   <data name="CompareCall2" xml:space="preserve">
-    <value>Überzeugen Sie sich selbst vom Unterschied und entdecken Sie Übereinstimmungen, die auf echter Kompatibilität basieren.</value>
+    <value>Überzeugen Sie sich selbst vom Unterschied. Entdecken Sie potenzielle Kontakte auf Basis der Kompatibilität.</value>
   </data>
   <data name="CompatibilitySystem" xml:space="preserve">
     <value>Kompatibilitätssystem</value>
@@ -179,22 +179,22 @@
     <value>Länder, in denen sich Benutzer bisher registriert haben</value>
   </data>
   <data name="HowItWorksCall" xml:space="preserve">
-    <value>Erfahren Sie, wie wir Sie mit Menschen zusammenbringen, die zu Ihrem Lebensstil, Ihren Werten und Zielen passen. Erfahren Sie mehr über den schrittweisen Prozess und wie Sparks Ihnen dabei hilft, sich sinnvoll zu engagieren.</value>
+    <value>Erfahren Sie, wie wir Sie mit Menschen zusammenbringen, die Ihre Werte, Ihren Lebensstil und Ihre Beziehungsziele teilen. Entdecken Sie die einzelnen Schritte und erfahren Sie, wie Sie mit Sparks sinnvoll Kontakte knüpfen können.</value>
   </data>
   <data name="HowItWorksCall2" xml:space="preserve">
-    <value>Nachdem Sie nun wissen, wie es funktioniert, machen Sie den ersten Schritt, um Ihren Seelenverwandten zu finden.</value>
+    <value>Jetzt, da Sie wissen, wie es funktioniert, machen Sie den ersten Schritt zu einem passenden Partner.</value>
   </data>
   <data name="LastUsers" xml:space="preserve">
-    <value>Letzte Benutzer</value>
+    <value>Neue Mitglieder</value>
   </data>
   <data name="LastUsersSubtitle" xml:space="preserve">
-    <value>Benutzer, die sich kürzlich auf der Plattform registriert haben</value>
+    <value>Personen, die kürzlich der Plattform beigetreten sind</value>
   </data>
   <data name="LearnMoreAboutMM" xml:space="preserve">
     <value>Erfahren Sie mehr über Modern Matchmaker</value>
   </data>
   <data name="NoProfile" xml:space="preserve">
-    <value>Kein Profil</value>
+    <value>Kein Profil verfügbar</value>
   </data>
   <data name="OurApproach" xml:space="preserve">
     <value>Unser Ansatz</value>
@@ -203,19 +203,19 @@
     <value>Unsere Zahlen</value>
   </data>
   <data name="OurNumbersMsg1" xml:space="preserve">
-    <value>Eine wachsende Gemeinschaft mit einem gemeinsamen Ziel: sinnvolle Beziehungen zu finden.</value>
+    <value>Eine wachsende Community von Menschen, die sich eine erfüllende Beziehung wünschen.</value>
   </data>
   <data name="OurNumbersMsg2" xml:space="preserve">
-    <value>Jedes neue Mitglied bringt uns unserem nächsten Meilenstein näher. Werden Sie frühzeitig Mitglied und werden Sie Teil der Community, die die Zukunft des Matchmakings gestaltet.</value>
+    <value>Jedes neue Mitglied bringt uns unserem nächsten Meilenstein näher. Werden Sie früh Teil unserer Community und gestalten Sie die Zukunft der Partnervermittlung mit.</value>
   </data>
   <data name="OurRoadmap" xml:space="preserve">
     <value>Unsere Roadmap</value>
   </data>
   <data name="OurRoadmapMsg1" xml:space="preserve">
-    <value>Neue Funktionen werden freigeschaltet, wenn unsere Community wächst!</value>
+    <value>Mit unserer wachsenden Community kommen neue Funktionen hinzu!</value>
   </data>
   <data name="OurRoadmapMsg2" xml:space="preserve">
-    <value>Jeder Meilenstein schaltet neue Funktionen und Verbesserungen frei, während unsere Community wächst. Wir bauen Modern Matchmaker Schritt für Schritt auf und erweitern mit jeder Phase die Möglichkeiten der Mitglieder auf der Plattform.</value>
+    <value>Jeder Meilenstein bringt neue Funktionen und Verbesserungen. Wir entwickeln Modern Matchmaker Schritt für Schritt weiter und erweitern mit unserer Community die Möglichkeiten für unsere Mitglieder.</value>
   </data>
   <data name="Phase1Opt1" xml:space="preserve">
     <value>Treten Sie unserem Matchmaking-Pool bei</value>
@@ -224,25 +224,25 @@
     <value>Entdecken Sie unser Kompatibilitätssystem</value>
   </data>
   <data name="Phase1Opt3" xml:space="preserve">
-    <value>Sparks: 1 US-Dollar pro Einheit</value>
+    <value>Sparks: 1 US-Dollar pro Spark</value>
   </data>
   <data name="Phase1Title" xml:space="preserve">
     <value>Phase 1 (0–10.000 Benutzer)</value>
   </data>
   <data name="Phase2Opt1" xml:space="preserve">
-    <value>Benutzer können sich als Matchmaking-Kunden bewerben</value>
+    <value>Bewerben Sie sich als Kunde unserer Partnervermittlung</value>
   </data>
   <data name="Phase2Opt3" xml:space="preserve">
-    <value>Sparks: 2 US-Dollar pro Einheit</value>
+    <value>Sparks: 2 US-Dollar pro Spark</value>
   </data>
   <data name="Phase2Title" xml:space="preserve">
     <value>Phase 2 (10.000–20.000 Benutzer)</value>
   </data>
   <data name="Phase3Opt1" xml:space="preserve">
-    <value>Spotlight – Steigern Sie Ihr Profil auf der Plattform.</value>
+    <value>Spotlight: Heben Sie Ihr Profil auf der Plattform hervor.</value>
   </data>
   <data name="Phase3Opt2" xml:space="preserve">
-    <value>Sparks: 3 US-Dollar pro Einheit</value>
+    <value>Sparks: 3 US-Dollar pro Spark</value>
   </data>
   <data name="Phase3Title" xml:space="preserve">
     <value>Phase 3 (20.000–30.000 Benutzer)</value>
@@ -251,7 +251,7 @@
     <value>Neue Funktionen werden noch bekannt gegeben</value>
   </data>
   <data name="Phase4Opt2" xml:space="preserve">
-    <value>Sparks: 4 US-Dollar pro Einheit</value>
+    <value>Sparks: 4 US-Dollar pro Spark</value>
   </data>
   <data name="Phase4Title" xml:space="preserve">
     <value>Phase 4 (30.000–40.000 Benutzer)</value>
@@ -266,9 +266,9 @@
     <value>Gesamtzahl der Benutzer</value>
   </data>
   <data name="WhoIsItForCall" xml:space="preserve">
-    <value>Finden Sie heraus, ob Modern Matchmaker das Richtige für Sie und Ihre Beziehungsziele ist. Verstehen Sie, wer am meisten von unserem bewussten Ansatz für ernsthaftes Dating profitiert.</value>
+    <value>Finden Sie heraus, ob Modern Matchmaker zu Ihnen und Ihren Beziehungszielen passt. Erfahren Sie, für wen unser bewusster Ansatz bei der Partnersuche besonders geeignet ist.</value>
   </data>
   <data name="WhoIsItForCall2" xml:space="preserve">
-    <value>Da Sie nun wissen, dass diese Plattform genau das Richtige für Sie ist, machen Sie den ersten Schritt, um Ihren Seelenverwandten zu finden.</value>
+    <value>Wenn dieser Ansatz zu Ihnen passt, machen Sie den ersten Schritt zu einem passenden Partner.</value>
   </data>
 </root>

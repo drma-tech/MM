@@ -121,7 +121,7 @@
     <value>Langue de l'application</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Traduit l'interface de l'application. Des traductions partielles peuvent s'appliquer pour certaines langues.</value>
+    <value>Modifie la langue de l’interface de l’application. Certains contenus peuvent ne pas être entièrement traduits.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
     <value>Thème de l'application</value>
@@ -151,13 +151,13 @@
     <value>Construisez l’avenir du matchmaking</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Phase 1 : nous formons le pool de mise en relation – la base de notre système.|Phase 2 : la mise en relation s'ouvre aux clients à mesure que nous atteignons 100 000 utilisateurs.</value>
+    <value>Phase 1 : Nous constituons le groupe de personnes intéressées, la base de notre système.|Phase 2 : Le service de mise en relation sera ouvert aux clients lorsque nous atteindrons 100 000 utilisateurs.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
     <value>Comment ça marche</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Rejoignez notre pool de mise en relation et participez à la découverte d'une véritable compatibilité.</value>
+    <value>Rejoignez notre communauté et contribuez à façonner l’avenir de la mise en relation fondée sur la compatibilité.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
     <value>Pour les célibataires</value>
@@ -172,7 +172,7 @@
     <value>Bienvenue à {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Notez l'application et partagez-la avec vos amis !</value>
+    <value>Laissez un avis et parlez de nous à vos amis !</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Aidez {0} à grandir !</value>

@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Aggiungere</value>
+    <value>Aggiungi</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Indietro</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancellare</value>
+    <value>Annulla</value>
   </data>
   <data name="Chat" xml:space="preserve">
-    <value>Chiacchierata</value>
+    <value>Chat</value>
   </data>
   <data name="ClearCache" xml:space="preserve">
     <value>Cancella cache</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Vicino</value>
+    <value>Chiudi</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confermare</value>
@@ -142,13 +142,13 @@
     <value>Continua al sito web</value>
   </data>
   <data name="Dating" xml:space="preserve">
-    <value>Datazione</value>
+    <value>Incontri</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Eliminare</value>
   </data>
   <data name="Dislike" xml:space="preserve">
-    <value>Antipatia</value>
+    <value>Non mi piace</value>
   </data>
   <data name="Done" xml:space="preserve">
     <value>Fatto</value>
@@ -163,7 +163,7 @@
     <value>Galleria</value>
   </data>
   <data name="Generate" xml:space="preserve">
-    <value>Generare</value>
+    <value>Genera</value>
   </data>
   <data name="IAgree" xml:space="preserve">
     <value>Sono d'accordo</value>
@@ -178,7 +178,7 @@
     <value>Saperne di più</value>
   </data>
   <data name="Like" xml:space="preserve">
-    <value>Come</value>
+    <value>Mi piace</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -187,7 +187,7 @@
     <value>Esci</value>
   </data>
   <data name="Next" xml:space="preserve">
-    <value>Prossimo</value>
+    <value>Avanti</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
@@ -199,7 +199,7 @@
     <value>Profilo</value>
   </data>
   <data name="Recent" xml:space="preserve">
-    <value>Recente</value>
+    <value>Recenti</value>
   </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relazione</value>
@@ -211,7 +211,7 @@
     <value>Rimuovi la pubblicità</value>
   </data>
   <data name="Report" xml:space="preserve">
-    <value>Rapporto</value>
+    <value>Segnala</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
@@ -226,13 +226,13 @@
     <value>Seleziona la tua foto</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Inviare</value>
+    <value>Invia</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>
   </data>
   <data name="Share" xml:space="preserve">
-    <value>Condividere</value>
+    <value>Condividi</value>
   </data>
   <data name="ShowCache" xml:space="preserve">
     <value>Mostra cache</value>
@@ -247,13 +247,13 @@
     <value>Avvia una nuova convalida</value>
   </data>
   <data name="TakeShot" xml:space="preserve">
-    <value>Scatta</value>
+    <value>Scatta una foto</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Aggiornamento</value>
+    <value>Aggiorna</value>
   </data>
   <data name="UsePriorValidation" xml:space="preserve">
-    <value>Utilizzare la convalida preventiva</value>
+    <value>Usa la convalida precedente</value>
   </data>
   <data name="Validations" xml:space="preserve">
     <value>Convalide</value>

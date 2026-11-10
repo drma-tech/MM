@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppSubtitle" xml:space="preserve">
-    <value>Finden Sie über Matchmaking einen kompatiblen Partner</value>
+    <value>Finden Sie durch Partnervermittlung einen passenden Partner</value>
   </data>
   <data name="Compare" xml:space="preserve">
     <value>Vergleichen</value>
@@ -139,12 +139,12 @@
     <value>Startseite</value>
   </data>
   <data name="Matchmaker" xml:space="preserve">
-    <value>Partnervermittlung, Dating und Singles in Ihrem Land ({0})</value>
+    <value>Partnervermittlung und Dating für Singles in {0}</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
   </data>
   <data name="WhoIsItFor" xml:space="preserve">
-    <value>Für wen ist es</value>
+    <value>Für wen ist es geeignet?</value>
   </data>
 </root>

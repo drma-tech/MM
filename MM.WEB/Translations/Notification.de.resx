@@ -121,7 +121,7 @@
     <value>Adblocker erkannt. Bitte fügen Sie unsere App zur Ausnahmeliste hinzu, um uns zu unterstützen. Vielen Dank!</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Entdecken Sie unsere anderen tollen Apps:</value>
+    <value>Entdecken Sie auch unsere anderen Apps:</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Bestätigung</value>
@@ -136,7 +136,7 @@
     <value>Diese Funktion befindet sich in Entwicklung.</value>
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
-    <value>Dieses Modul befindet sich noch in der Entwicklung. Wenn Sie einen Fehler melden möchten, kontaktieren Sie uns bitte über den Feedback-Button.</value>
+    <value>Dieser Bereich befindet sich noch in Entwicklung. Wenn Sie einen Fehler melden möchten, kontaktieren Sie uns bitte über die Feedback-Schaltfläche.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nein</value>
@@ -163,10 +163,10 @@
     <value>Laden...</value>
   </data>
   <data name="RenderControlNoData" xml:space="preserve">
-    <value>Daten nicht verfügbar</value>
+    <value>Keine Daten zum Anzeigen</value>
   </data>
   <data name="SpamLike" xml:space="preserve">
-    <value>Die Beschreibung enthält verdächtige oder Spam-ähnliche Inhalte.</value>
+    <value>Die Beschreibung enthält möglicherweise Spam oder andere verdächtige Inhalte.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>

@@ -121,7 +121,7 @@
     <value>È stato rilevato un blocco degli annunci. Aggiungi la nostra app alla lista dei consentiti per supportarci. Grazie!</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Esplora le nostre altre fantastiche app:</value>
+    <value>Scopri anche le nostre altre app:</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Conferma</value>
@@ -136,7 +136,7 @@
     <value>Questa funzionalità è in fase di sviluppo.</value>
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
-    <value>Questo modulo è ancora in fase di sviluppo. Se desideri segnalare un bug, contattaci tramite il pulsante feedback.</value>
+    <value>Questa sezione è ancora in fase di sviluppo. Per segnalare un problema, contattaci tramite il pulsante di feedback.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -163,10 +163,10 @@
     <value>Caricamento...</value>
   </data>
   <data name="RenderControlNoData" xml:space="preserve">
-    <value>Dati non disponibili</value>
+    <value>Nessun dato da visualizzare</value>
   </data>
   <data name="SpamLike" xml:space="preserve">
-    <value>La descrizione contiene contenuti sospetti o simili a spam.</value>
+    <value>La descrizione contiene contenuti che potrebbero essere spam o comunque sospetti.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Versione</value>

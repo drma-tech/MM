@@ -121,31 +121,31 @@
     <value>Proveedores de autenticación</value>
   </data>
   <data name="BasicRequired" xml:space="preserve">
-    <value>La sección básica es obligatoria por ahora. Las demás secciones se pueden completar más adelante.</value>
+    <value>Por ahora, la sección Básica es obligatoria. Puedes completar las demás secciones más adelante.</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>Sólo se publicará tu edad. (Usamos el calendario gregoriano)</value>
+    <value>Solo se mostrará públicamente tu edad. (Usamos el calendario gregoriano).</value>
   </data>
   <data name="BodyPhoto" xml:space="preserve">
-    <value>Foto del cuerpo</value>
+    <value>Foto de cuerpo entero</value>
   </data>
   <data name="Compatibility" xml:space="preserve">
     <value>Compatibilidad</value>
   </data>
   <data name="CompatibilityDeveloping" xml:space="preserve">
-    <value>Nuestro sistema de compatibilidad aún está en desarrollo. Si tiene alguna sugerencia o comentario, envíenos un ticket de soporte o un correo electrónico.</value>
+    <value>Nuestro sistema de compatibilidad todavía está en desarrollo. Si tienes sugerencias o comentarios, envíanos un ticket de soporte o un correo electrónico.</value>
   </data>
   <data name="CompatibilityHigh" xml:space="preserve">
-    <value>Felicidades, ustedes dos están hechos el uno para el otro. Esta relación tiene un futuro brillante por delante.</value>
+    <value>Parece que son muy compatibles y que su relación tiene un gran potencial.</value>
   </data>
   <data name="CompatibilityLow" xml:space="preserve">
-    <value>Lamentablemente, no tienen mucho en común. Les deseamos mucha suerte a ambos, ya que no será una tarea fácil.</value>
+    <value>Puede que tengan menos cosas en común, por lo que construir una relación podría requerir más esfuerzo. Les deseamos lo mejor a ambos.</value>
   </data>
   <data name="CompatibilityMedium" xml:space="preserve">
-    <value>No son una pareja perfecta, pero eso no significa que la relación vaya a fracasar. Revisen nuestro informe con atención y resuelvan juntos estas diferencias.</value>
+    <value>Quizá no sean una pareja perfecta, pero las diferencias no significan que una relación vaya a fracasar. Revisen el informe y piensen cómo pueden afrontar esas diferencias juntos.</value>
   </data>
   <data name="CompleteAllSteps" xml:space="preserve">
-    <value>Para hacer público tu perfil, primero completa todos los pasos</value>
+    <value>Completa todos los pasos antes de hacer público tu perfil.</value>
   </data>
   <data name="CompleteYourProfile" xml:space="preserve">
     <value>Completa tu perfil</value>
@@ -166,10 +166,10 @@
     <value>Esta función solo está disponible en la fase {0}</value>
   </data>
   <data name="GalleryTerm1" xml:space="preserve">
-    <value>La foto tomada por tu cámara se mantendrá privada (no será accesible dentro de la plataforma) para verificación futura, si es necesario.</value>
+    <value>Las fotos tomadas con tu cámara seguirán siendo privadas y no estarán disponibles en la plataforma. Podrán utilizarse para futuras verificaciones si fuera necesario.</value>
   </data>
   <data name="GalleryTerm2" xml:space="preserve">
-    <value>Los datos resultantes de esta validación (atributos de tu rostro) no se conservarán en nuestros servidores y sólo existirán durante el proceso de detección.</value>
+    <value>Los datos generados durante esta verificación, incluidos los rasgos faciales, no se almacenarán en nuestros servidores. Solo se utilizarán durante el proceso de detección.</value>
   </data>
   <data name="GalleryValidation" xml:space="preserve">
     <value>Validación de la galería</value>
@@ -178,13 +178,13 @@
     <value>Compatibilidad general</value>
   </data>
   <data name="GenerateSimulation" xml:space="preserve">
-    <value>¿Quieres generar una simulación de conexiones? Esto es solo para demostrar cómo funciona nuestro sistema de compatibilidad.</value>
+    <value>¿Quieres generar una pareja de ejemplo? Esto solo sirve para demostrar cómo funciona nuestro sistema de compatibilidad.</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
-    <value>La posición del GPS no es precisa y puede dar como resultado una ubicación incorrecta. Si la ciudad no es la correcta, inténtelo de nuevo más tarde o pruebe en otro dispositivo o navegador.</value>
+    <value>Es posible que tu ubicación GPS no sea precisa. Si la ciudad seleccionada no es correcta, inténtalo más tarde o utiliza otro dispositivo o navegador.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
-    <value>Ayúdanos a crecer dejando una reseña en la tienda de aplicaciones. Cada nuevo usuario nos acerca a desbloquear la siguiente fase y todas las funciones que estamos creando para usted.</value>
+    <value>Ayúdanos a crecer dejando una reseña en la tienda de aplicaciones. Cada nuevo miembro nos acerca a la siguiente fase y a las funciones que estamos desarrollando para ti.</value>
   </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Crear una cuenta gratuita</value>
@@ -206,46 +206,46 @@
     <value>Personas que han expresado interés en conocerte.</value>
   </data>
   <data name="ITrustPlataform" xml:space="preserve">
-    <value>Confío en el sistema de compatibilidad de la plataforma y solo seleccionaré lo que para mí no es negociable.</value>
+    <value>Confío en el sistema de compatibilidad de la plataforma y solo seleccionaré las preferencias que sean imprescindibles para mí.</value>
   </data>
   <data name="LatestUsersRegion" xml:space="preserve">
-    <value>Últimos usuarios registrados en su región ({0})</value>
+    <value>Miembros que se han unido recientemente en tu región ({0})</value>
   </data>
   <data name="Matches" xml:space="preserve">
     <value>Citas</value>
   </data>
   <data name="MatchesDesc" xml:space="preserve">
-    <value>Tus conexiones, donde podéis charlar, conoceros y dar el siguiente paso juntos.</value>
+    <value>Personas con las que has conectado. Chatea, conócelas y decide si quieres dar el siguiente paso juntos.</value>
   </data>
   <data name="Maximum3Items" xml:space="preserve">
-    <value>Elija un máximo de 3 elementos para cada campo</value>
+    <value>Selecciona hasta 3 elementos por campo.</value>
   </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>No respondido</value>
   </data>
   <data name="NoUsersYetOff" xml:space="preserve">
-    <value>Nadie de tu región se ha unido todavía. Crea tu perfil y sé el primero.</value>
+    <value>Todavía no se ha unido nadie de tu región. Crea tu perfil y sé la primera persona.</value>
   </data>
   <data name="NoUsersYetOn" xml:space="preserve">
-    <value>Aún no hay perfiles disponibles en su región. Deje una reseña en la tienda de aplicaciones para ayudar a más personas a descubrir la aplicación.</value>
+    <value>Todavía no hay perfiles disponibles en tu región. Deja una reseña en la tienda de aplicaciones para ayudar a otras personas a descubrir la app.</value>
   </data>
   <data name="OptionalSection" xml:space="preserve">
-    <value>Otro (sección opcional)</value>
+    <value>Otros (opcional)</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>El perfil de tu pareja aún no está disponible</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
-    <value>Este proceso evoluciona constantemente. Si desea informar un error o una mejora, abra un ticket con nuestro equipo de soporte.</value>
+    <value>Este proceso mejora continuamente. Si quieres informar de un error o sugerir una mejora, envía un ticket de soporte.</value>
   </data>
   <data name="PopulateFilterTitle" xml:space="preserve">
     <value>Campos rellenados automáticamente</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
-    <value>Aquí puede definir su tipo de perfil ideal, para que podamos calcular correctamente su índice de compatibilidad</value>
+    <value>Utiliza estas preferencias para definir el perfil de tu pareja ideal y ayudarnos a calcular tu puntuación de compatibilidad.</value>
   </data>
   <data name="PreferHelpTopic2" xml:space="preserve">
-    <value>Cuanto más específico seas en los filtros, menos opciones de perfil tendrás disponibles</value>
+    <value>Cuanto más específicas sean tus preferencias, menos posibles parejas verás.</value>
   </data>
   <data name="Private" xml:space="preserve">
     <value>Privado</value>
@@ -266,13 +266,13 @@
     <value>Perfil no disponible</value>
   </data>
   <data name="ProfileNotFound" xml:space="preserve">
-    <value>Perfil no encontrado o aún no registrado correctamente.</value>
+    <value>No se ha encontrado este perfil o todavía no se ha configurado.</value>
   </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
-    <value>Tu perfil ahora está en modo privado y no será visto ni compartido con nadie</value>
+    <value>Tu perfil ahora es privado y no será visible ni se compartirá con otros miembros.</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
-    <value>Su perfil ahora es público y puede estar disponible para nuestros clientes</value>
+    <value>Tu perfil ahora es público y podrá mostrarse a otros miembros.</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Público</value>
@@ -293,7 +293,7 @@
     <value>Crear perfil</value>
   </data>
   <data name="StepProfileDesc" xml:space="preserve">
-    <value>Complete sus datos: básico, bio, estilo de vida, personalidad, intereses, relaciones y objetivos.</value>
+    <value>Completa tu perfil: Información básica, Biografía, Estilo de vida, Personalidad, Intereses, Preferencias de relación y Objetivos.</value>
   </data>
   <data name="StepSettings" xml:space="preserve">
     <value>Ajustar la configuración</value>
@@ -305,28 +305,28 @@
     <value>Validación de perfil</value>
   </data>
   <data name="StepValidationDesc" xml:space="preserve">
-    <value>El sistema verificará su información antes de que su perfil se haga público.</value>
+    <value>Verificaremos tu información antes de hacer público tu perfil.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Sugerencias</value>
   </data>
   <data name="SuggestionsDesc" xml:space="preserve">
-    <value>Nuestras principales recomendaciones para personas que pueden ser una gran opción para usted, según sus preferencias y compatibilidad.</value>
+    <value>Nuestras principales recomendaciones de personas que podrían ser compatibles contigo, según tus preferencias y compatibilidad.</value>
   </data>
   <data name="TermTopic1" xml:space="preserve">
-    <value>Sea honesto en las respuestas dadas en este formulario. Toda la información contenida en este documento está abierta a denuncias y puede ser evaluada;</value>
+    <value>Responde este formulario con sinceridad. Toda la información proporcionada puede ser denunciada y revisada.</value>
   </data>
   <data name="TermTopic2" xml:space="preserve">
-    <value>Para conocer cómo serán tratados sus datos, le pedimos que lea nuestra</value>
+    <value>Para saber cómo trataremos tus datos, lee nuestra</value>
   </data>
   <data name="Tips" xml:space="preserve">
     <value>Consejos</value>
   </data>
   <data name="UnableDetectGps" xml:space="preserve">
-    <value>No hemos podido detectar un sistema GPS en su dispositivo. Inténtalo de nuevo o libera el acceso al GPS de tu dispositivo.</value>
+    <value>No hemos podido detectar el GPS en tu dispositivo. Inténtalo de nuevo y permite el acceso a tu ubicación.</value>
   </data>
   <data name="Undefined" xml:space="preserve">
-    <value>Indefinido</value>
+    <value>No especificado</value>
   </data>
   <data name="WhyImportant" xml:space="preserve">
     <value>¿Por qué es importante?</value>
@@ -335,7 +335,7 @@
     <value>Años</value>
   </data>
   <data name="YouHaveSelected" xml:space="preserve">
-    <value>Has seleccionado más de {0} opciones</value>
+    <value>Has seleccionado más de {0} opciones.</value>
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Su ubicación actual:</value>
@@ -344,6 +344,6 @@
     <value>El perfil de tu pareja</value>
   </data>
   <data name="YourProfile" xml:space="preserve">
-    <value>Tu perfil (o preferencias)</value>
+    <value>Tu perfil o tus preferencias</value>
   </data>
 </root>

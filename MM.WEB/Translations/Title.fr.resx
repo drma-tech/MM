@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppSubtitle" xml:space="preserve">
-    <value>Trouvez un partenaire compatible via Matchmaking</value>
+    <value>Trouvez un partenaire compatible grâce à la mise en relation</value>
   </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
   <data name="Compare2" xml:space="preserve">
-    <value>Applications de rencontres vs Modern Matchmaker</value>
+    <value>Applications de rencontre vs. Modern Matchmaker</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
@@ -139,12 +139,12 @@
     <value>Accueil</value>
   </data>
   <data name="Matchmaker" xml:space="preserve">
-    <value>Matchmaking, rencontres et célibataires dans votre pays ({0})</value>
+    <value>Mise en relation et rencontres pour célibataires en {0}</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
   </data>
   <data name="WhoIsItFor" xml:space="preserve">
-    <value>À qui s'adresse-t-il</value>
+    <value>À qui s’adresse-t-il ?</value>
   </data>
 </root>

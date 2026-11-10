@@ -121,7 +121,7 @@
     <value>Ajouter</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Dos</value>
+    <value>Retour</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
@@ -142,13 +142,13 @@
     <value>Continuer vers le site Web</value>
   </data>
   <data name="Dating" xml:space="preserve">
-    <value>Datation</value>
+    <value>Rencontres</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
   <data name="Dislike" xml:space="preserve">
-    <value>Aversion</value>
+    <value>Je n’aime pas</value>
   </data>
   <data name="Done" xml:space="preserve">
     <value>Fait</value>
@@ -178,7 +178,7 @@
     <value>Apprendre encore plus</value>
   </data>
   <data name="Like" xml:space="preserve">
-    <value>Comme</value>
+    <value>J’aime</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Se connecter</value>
@@ -199,7 +199,7 @@
     <value>Profil</value>
   </data>
   <data name="Recent" xml:space="preserve">
-    <value>Récent</value>
+    <value>Récents</value>
   </data>
   <data name="Relationship" xml:space="preserve">
     <value>Relation</value>
@@ -211,7 +211,7 @@
     <value>Supprimer la publicité</value>
   </data>
   <data name="Report" xml:space="preserve">
-    <value>Rapport</value>
+    <value>Signaler</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Réinitialiser</value>
@@ -220,7 +220,7 @@
     <value>Récupérer la position GPS</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Sauvegarder</value>
+    <value>Enregistrer</value>
   </data>
   <data name="SelectPhoto" xml:space="preserve">
     <value>Sélectionnez votre photo</value>
@@ -250,10 +250,10 @@
     <value>Prendre une photo</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Mise à jour</value>
+    <value>Mettre à jour</value>
   </data>
   <data name="UsePriorValidation" xml:space="preserve">
-    <value>Utiliser la validation préalable</value>
+    <value>Utiliser la validation précédente</value>
   </data>
   <data name="Validations" xml:space="preserve">
     <value>Validations</value>

@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppSubtitle" xml:space="preserve">
-    <value>Trova un partner compatibile tramite Matchmaking</value>
+    <value>Trova un partner compatibile grazie al matchmaking</value>
   </data>
   <data name="Compare" xml:space="preserve">
-    <value>Confrontare</value>
+    <value>Confronta</value>
   </data>
   <data name="Compare2" xml:space="preserve">
-    <value>App di incontri vs Modern Matchmaker</value>
+    <value>App di incontri vs. Modern Matchmaker</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>Domande frequenti</value>
@@ -139,12 +139,12 @@
     <value>Pagina iniziale</value>
   </data>
   <data name="Matchmaker" xml:space="preserve">
-    <value>Matchmaking, incontri e single nel tuo Paese ({0})</value>
+    <value>Matchmaking e incontri per single in {0}</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profilo</value>
   </data>
   <data name="WhoIsItFor" xml:space="preserve">
-    <value>Per chi è</value>
+    <value>A chi si rivolge?</value>
   </data>
 </root>
