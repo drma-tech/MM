@@ -59,7 +59,7 @@ namespace MM.WEB.Modules.Shared.Field
             }
             catch (Exception)
             {
-                await ShowError("An error occurred while processing the date");
+                await ShowError("We couldn't process the selected date. Please check it and try again.");
             }
         }
 
