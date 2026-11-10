@@ -218,13 +218,13 @@ export const environment = {
         }
     },
     getBrowserName() {
-        return window.browser?.getBrowserName() ?? "no bowser loaded";
+        return window.browser?.getBrowserName() ?? "No browser information available";
     },
     getBrowserVersion() {
-        return window.browser?.getBrowserVersion() ?? "no bowser loaded";
+        return window.browser?.getBrowserVersion() ?? "No browser information available";
     },
     getOperatingSystem() {
-        return window.browser?.getOSName() ?? "no bowser loaded";
+        return window.browser?.getOSName() ?? "No browser information available";
     },
     inspectAdElement(el) {
         // If the div is completely hidden, it's AdBlock.

@@ -190,7 +190,7 @@
     <value>Suivant</value>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>D'ACCORD</value>
+    <value>OK</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>En attente</value>

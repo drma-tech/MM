@@ -70,15 +70,6 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check out our other apps:.
-        /// </summary>
-        public static string CheckOurApps {
-            get {
-                return ResourceManager.GetString("CheckOurApps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Confirmation.
         /// </summary>
         public static string Confirmation {

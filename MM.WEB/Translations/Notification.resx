@@ -120,9 +120,6 @@
   <data name="AdBlockerDetected" xml:space="preserve">
     <value>Ad blocker detected. Please consider adding our app to your allowlist to support us. Thank you!</value>
   </data>
-  <data name="CheckOurApps" xml:space="preserve">
-    <value>Check out our other apps:</value>
-  </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>

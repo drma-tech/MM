@@ -120,9 +120,6 @@
   <data name="AdBlockerDetected" xml:space="preserve">
     <value>Un bloqueur de publicités a été détecté. Ajoutez notre application à votre liste d'autorisation pour nous soutenir. Merci !</value>
   </data>
-  <data name="CheckOurApps" xml:space="preserve">
-    <value>Découvrez également nos autres applications :</value>
-  </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>

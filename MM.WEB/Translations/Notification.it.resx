@@ -120,9 +120,6 @@
   <data name="AdBlockerDetected" xml:space="preserve">
     <value>È stato rilevato un blocco degli annunci. Aggiungi la nostra app alla lista dei consentiti per supportarci. Grazie!</value>
   </data>
-  <data name="CheckOurApps" xml:space="preserve">
-    <value>Scopri anche le nostre altre app:</value>
-  </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Conferma</value>
   </data>

@@ -120,9 +120,6 @@
   <data name="AdBlockerDetected" xml:space="preserve">
     <value>Adblocker erkannt. Bitte fügen Sie unsere App zur Ausnahmeliste hinzu, um uns zu unterstützen. Vielen Dank!</value>
   </data>
-  <data name="CheckOurApps" xml:space="preserve">
-    <value>Entdecken Sie auch unsere anderen Apps:</value>
-  </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Bestätigung</value>
   </data>
