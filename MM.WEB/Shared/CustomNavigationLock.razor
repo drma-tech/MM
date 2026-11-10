@@ -14,7 +14,7 @@
 
         if (IsDirty)
         {
-            var confirmed = await Dialogs.ShowMessageBoxAsync(AppInfo.Title, CustomMessage ?? "You may lose unsaved changes. Do you want to continue?", Translations.Button.Ok, Translations.Button.Cancel) ?? false;
+            var confirmed = await Dialogs.ShowMessageBoxAsync(AppInfo.Title, CustomMessage ?? "You have unsaved changes. If you leave this page, they may be lost. Do you want to continue?", Translations.Button.Ok, Translations.Button.Cancel) ?? false;
 
             if (!confirmed)
             {
