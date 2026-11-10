@@ -61,7 +61,7 @@ namespace MM.Shared.Translations.Validation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose up to a maximum of {0} {1}.
+        ///   Looks up a localized string similar to Choose up to {0} {1}..
         /// </summary>
         public static string ChooseMaximumOptions {
             get {
