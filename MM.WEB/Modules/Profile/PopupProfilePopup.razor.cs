@@ -45,7 +45,7 @@ namespace MM.WEB.Modules.Profile
 
                 if (string.Equals(IdUserView, UserId, StringComparison.Ordinal))
                 {
-                    await State.ShowError.Invoke("Something wrong happened.");
+                    await State.ShowError.Invoke("Something went wrong while loading this profile.");
                     return;
                 }
 
@@ -113,7 +113,7 @@ namespace MM.WEB.Modules.Profile
 
                 if (interaction?.Status == InteractionStatus.Match)
                 {
-                    await ShowSuccess("Match");
+                    await ShowSuccess("It's a match!");
                     Matched?.Invoke();
                 }
             }
