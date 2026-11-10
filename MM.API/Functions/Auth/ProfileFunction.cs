@@ -180,7 +180,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         await req.ValidateUser(body.Identity.RawId, cancellationToken);
         body.SanitizeOpenTextFields();
 
-        if (principal.PublicProfile) throw new NotificationException("Changes not allowed in public mode");
+        if (principal.PublicProfile) throw new NotificationException("You can't edit your profile while it's public.");
 
         var validator = new ProfileValidation();
         var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
