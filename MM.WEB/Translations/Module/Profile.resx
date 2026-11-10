@@ -127,13 +127,13 @@
     <value>Only your age will be shown publicly. (We use the Gregorian calendar.)</value>
   </data>
   <data name="BodyPhoto" xml:space="preserve">
-    <value>Body Photo</value>
+    <value>Full-body photo</value>
   </data>
   <data name="Compatibility" xml:space="preserve">
     <value>Compatibility</value>
   </data>
   <data name="CompatibilityDeveloping" xml:space="preserve">
-    <value>Our compatibility system is still developing. If you have any suggestions or feedback, please submit a support ticket or email us.</value>
+    <value>Our compatibility system is still being developed. If you have suggestions or feedback, please submit a support ticket or email us.</value>
   </data>
   <data name="CompatibilityHigh" xml:space="preserve">
     <value>You seem highly compatible, and your relationship has strong potential.</value>
@@ -169,7 +169,7 @@
     <value>Photos captured by your camera will remain private and won’t be accessible on the platform. They may be used for future verification if needed.</value>
   </data>
   <data name="GalleryTerm2" xml:space="preserve">
-    <value>The data generated during this validation, including facial attributes, will not be stored on our servers. It will exist only while detection is in progress.</value>
+    <value>The data generated during this validation, including facial attributes, will not be stored on our servers. It will be used only during the detection process.</value>
   </data>
   <data name="GalleryValidation" xml:space="preserve">
     <value>Gallery Validation</value>
@@ -181,7 +181,7 @@
     <value>Would you like to generate a sample match? This is only a demonstration of how our compatibility system works.</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
-    <value>Your GPS location may be inaccurate, which could result in an incorrect location. If the selected city is wrong, try again later or use another device or browser.</value>
+    <value>Your GPS location may be inaccurate. If the selected city is incorrect, try again later or use a different device or browser.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
     <value>Help us grow by leaving a review in the app store. Every new member brings us closer to the next phase and the features we’re building for you.</value>
@@ -253,10 +253,10 @@
     <value>To ensure a positive environment, we take harassment and bias seriously. If you encounter this type of behavior, please report the profile immediately.</value>
   </data>
   <data name="ProfileDataBioTip2" xml:space="preserve">
-    <value>If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support.</value>
+    <value>If you’re unsure how to respond to someone or recognize potentially harmful intentions, consider reaching out to friends or family for support.</value>
   </data>
   <data name="ProfileDataPersonTip1" xml:space="preserve">
-    <value>For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions.</value>
+    <value>If you want a deeper understanding of your personality, consider taking assessments on specialized websites. Some questions may be easy to answer based on their descriptions alone.</value>
   </data>
   <data name="ProfileFilterWarning" xml:space="preserve">
     <value>Select only what really matters. You can choose up to 8 filters to keep matches relevant.</value>
@@ -265,10 +265,10 @@
     <value>Profile not available</value>
   </data>
   <data name="ProfileNotFound" xml:space="preserve">
-    <value>Profile not found or not yet registered properly.</value>
+    <value>This profile couldn’t be found or hasn’t been set up yet.</value>
   </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
-    <value>Your profile is now private and won’t be visible or shared with other members.</value>
+    <value>Your profile is now private and won’t be visible to or shared with other members.</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
     <value>Your profile is now public and may be shown to other members.</value>
@@ -316,7 +316,7 @@
     <value>Please answer this form honestly. All information provided may be reported and reviewed.</value>
   </data>
   <data name="TermTopic2" xml:space="preserve">
-    <value>To be aware of how your data will be treated, we ask you to read our</value>
+    <value>To understand how your data will be handled, please read our</value>
   </data>
   <data name="Tips" xml:space="preserve">
     <value>Tips</value>
