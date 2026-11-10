@@ -161,7 +161,7 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
         RuleSet("INTEREST", () =>
         {
             RuleFor(x => x).Must(value => AtLeastThreeInterests(value))
-                .WithMessage("Fill in at least 3 interests");
+                .WithMessage("Please select at least 3 interests.");
 
             RuleFor(x => x.Food)
                 .Must(value => value == null || value.Count <= 3)
