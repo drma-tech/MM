@@ -88,21 +88,21 @@ public class FilterValidation : AbstractValidator<FilterModel>
         RuleFor(x => x.MinimalAge)
             .Must((value, MinimalAge) => MinimalAge <= value.MaxAge)
             .When(x => x.MinimalAge.HasValue)
-            .WithMessage("Minimum age must be less than maximum age");
+            .WithMessage("Minimum age cannot be greater than maximum age.");
 
         RuleFor(x => x.MaxAge)
             .Must((value, MaxAge) => MaxAge >= value.MinimalAge)
             .When(x => x.MaxAge.HasValue)
-            .WithMessage("Maximum age must be greater than minimum age");
+            .WithMessage("Maximum age cannot be lower than minimum age.");
 
         RuleFor(x => x.MinimalHeight)
             .Must((value, MinimalHeight) => MinimalHeight <= value.MaxHeight)
-            .WithMessage("Minimum height must be less than maximum height")
+            .WithMessage("Minimum height cannot be greater than maximum height.")
             .When(x => x.MinimalHeight.HasValue && x.MaxHeight.HasValue);
 
         RuleFor(x => x.MaxHeight)
             .Must((value, MaxHeight) => MaxHeight >= value.MinimalHeight)
-            .WithMessage("Maximum height must be greater than minimum height")
+            .WithMessage("Maximum height cannot be lower than minimum height.")
             .When(x => x.MinimalHeight.HasValue && x.MaxHeight.HasValue);
 
         RuleFor(x => x.Disabilities)
@@ -268,7 +268,7 @@ public class FilterValidation : AbstractValidator<FilterModel>
             .WithName("Ideal Place to Live");
 
         RuleFor(x => x).Must(LimitFilters)
-              .WithMessage("Choose up to 8 filters");
+              .WithMessage("Choose up to 8 filters.");
     }
 
     private static bool LimitFilters(FilterModel model)
