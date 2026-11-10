@@ -175,7 +175,7 @@
     <value>I do not agree</value>
   </data>
   <data name="LearnMore" xml:space="preserve">
-    <value>Learn More</value>
+    <value>Learn more</value>
   </data>
   <data name="Like" xml:space="preserve">
     <value>Like</value>
@@ -208,7 +208,7 @@
     <value>Remove</value>
   </data>
   <data name="RemoveAdvertising" xml:space="preserve">
-    <value>Remove Advertising</value>
+    <value>Remove ads</value>
   </data>
   <data name="Report" xml:space="preserve">
     <value>Report</value>
@@ -217,13 +217,13 @@
     <value>Reset</value>
   </data>
   <data name="RetrieveGPSPosition" xml:space="preserve">
-    <value>Retrieve GPS position</value>
+    <value>Get GPS location</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="SelectPhoto" xml:space="preserve">
-    <value>Select your photo</value>
+    <value>Select a photo</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
@@ -235,7 +235,7 @@
     <value>Share</value>
   </data>
   <data name="ShowCache" xml:space="preserve">
-    <value>Show cache</value>
+    <value>View cache</value>
   </data>
   <data name="ShowPendingItems" xml:space="preserve">
     <value>Show pending items</value>
@@ -244,16 +244,16 @@
     <value>Simulate</value>
   </data>
   <data name="StartNewValidation" xml:space="preserve">
-    <value>Start new validation</value>
+    <value>Start a new validation</value>
   </data>
   <data name="TakeShot" xml:space="preserve">
-    <value>Take Shot</value>
+    <value>Take photo</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="UsePriorValidation" xml:space="preserve">
-    <value>Use prior validation</value>
+    <value>Use previous validation</value>
   </data>
   <data name="Validations" xml:space="preserve">
     <value>Validations</value>

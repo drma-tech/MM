@@ -130,21 +130,21 @@
     <value>Explore countries and cities, learn interesting facts, and create your profile to find destinations that match your lifestyle, whether for a trip or a new home.</value>
   </data>
   <data name="shared-home" xml:space="preserve">
-    <value>Room rentals, shared homes and community</value>
+    <value>Room Rentals, Shared Housing, and Community</value>
   </data>
   <data name="shared-home-desc" xml:space="preserve">
-    <value>Find rooms for rent and shared apartments. Discover affordable housing and join welcoming communities to feel at home anywhere.</value>
+    <value>Find rooms for rent and shared apartments. Discover affordable housing and welcoming communities where you can feel at home.</value>
   </data>
   <data name="streamingdiscovery" xml:space="preserve">
-    <value>Discover Movies and Series on Streaming Platforms</value>
+    <value>Discover Movies and TV Shows on Streaming Platforms</value>
   </data>
   <data name="streamingdiscovery-desc" xml:space="preserve">
-    <value>Track your streaming platforms, manage your watch progress, and discover what to watch next with curated lists, award winners, and critic picks.</value>
+    <value>Track your streaming services, keep track of what you've watched, and discover what to watch next with curated lists, award winners, and critics' picks.</value>
   </data>
   <data name="webstandards" xml:space="preserve">
     <value>Web Standards Generator for Websites and PWAs</value>
   </data>
   <data name="webstandards-desc" xml:space="preserve">
-    <value>A toolkit that helps developers set up essential web standards like sitemaps, manifests, icons, SEO tags, and security files for modern websites and PWAs.</value>
+    <value>A toolkit that helps developers configure essential web standards, including sitemaps, manifests, icons, SEO tags, and security files, for modern websites and PWAs.</value>
   </data>
 </root>

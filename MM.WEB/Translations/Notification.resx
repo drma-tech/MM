@@ -121,7 +121,7 @@
     <value>Ad blocker detected. Please consider adding our app to your allowlist to support us. Thank you!</value>
   </data>
   <data name="CheckOurApps" xml:space="preserve">
-    <value>Explore our other amazing apps:</value>
+    <value>Check out our other apps:</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
@@ -133,10 +133,10 @@
     <value>Stay tuned for updates.</value>
   </data>
   <data name="FeatureUnavailableMessage" xml:space="preserve">
-    <value>This feature is under development.</value>
+    <value>This feature is currently under development.</value>
   </data>
   <data name="ModuleUnderDevelopment" xml:space="preserve">
-    <value>This module is still under development. If you wish to report a bug, please contact us via the feedback button.</value>
+    <value>This section is still under development. To report a bug, please contact us using the feedback button.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -163,10 +163,10 @@
     <value>Loading...</value>
   </data>
   <data name="RenderControlNoData" xml:space="preserve">
-    <value>No data available</value>
+    <value>No data to display</value>
   </data>
   <data name="SpamLike" xml:space="preserve">
-    <value>Description contains suspicious or spam-like content.</value>
+    <value>The description contains content that may be spam or otherwise suspicious.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>

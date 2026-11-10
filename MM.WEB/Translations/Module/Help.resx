@@ -121,7 +121,7 @@
     <value>App language</value>
   </data>
   <data name="AppLanguageDesc" xml:space="preserve">
-    <value>Translates the app interface. Partial translations may apply for some languages.</value>
+    <value>Changes the language of the app interface. Some content may not be fully translated.</value>
   </data>
   <data name="AppTheme" xml:space="preserve">
     <value>App theme</value>
@@ -151,13 +151,13 @@
     <value>Build the future of matchmaking</value>
   </data>
   <data name="Step2Subtitle" xml:space="preserve">
-    <value>Phase 1: we’re forming the matchmaking pool — the foundation of our system.|Phase 2: matchmaking opens for clients as we reach 100k users.</value>
+    <value>Phase 1: We’re building the matchmaking pool, the foundation of our system.|Phase 2: Matchmaking opens to clients once we reach 100,000 users.</value>
   </data>
   <data name="Step2Title" xml:space="preserve">
     <value>How it works</value>
   </data>
   <data name="Step3Subtitle" xml:space="preserve">
-    <value>Join our matchmaking pool and take part in shaping how real compatibility is discovered.</value>
+    <value>Join our matchmaking pool and help shape the future of compatibility-based matchmaking.</value>
   </data>
   <data name="Step3Title" xml:space="preserve">
     <value>For singles</value>
@@ -172,7 +172,7 @@
     <value>Welcome to {0}</value>
   </data>
   <data name="WriteReviewSubtitle" xml:space="preserve">
-    <value>Rate the app and share it with your friends!</value>
+    <value>Leave a review and tell your friends about us!</value>
   </data>
   <data name="WriteReviewTitle" xml:space="preserve">
     <value>Help {0} grow!</value>

@@ -121,10 +121,10 @@
     <value>Auth Providers</value>
   </data>
   <data name="BasicRequired" xml:space="preserve">
-    <value>The basic section is mandatory for now. The other sections can be filled in later.</value>
+    <value>The Basic section is required for now. You can complete the other sections later.</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>Only your age will be published. (We use the Gregorian calendar)</value>
+    <value>Only your age will be shown publicly. (We use the Gregorian calendar.)</value>
   </data>
   <data name="BodyPhoto" xml:space="preserve">
     <value>Body Photo</value>
@@ -136,16 +136,16 @@
     <value>Our compatibility system is still developing. If you have any suggestions or feedback, please submit a support ticket or email us.</value>
   </data>
   <data name="CompatibilityHigh" xml:space="preserve">
-    <value>Congratulations, you two are made for each other. This relationship has a bright future ahead of it.</value>
+    <value>You seem highly compatible, and your relationship has strong potential.</value>
   </data>
   <data name="CompatibilityLow" xml:space="preserve">
-    <value>Unfortunately, you don't have much in common. We wish you both the best of luck, as it won't be an easy task.</value>
+    <value>You may have less in common, so building a relationship could take more effort. We wish you both the best.</value>
   </data>
   <data name="CompatibilityMedium" xml:space="preserve">
-    <value>You are not a perfect couple, but that doesn't mean that the relationship will fail. Review our report carefully and work through these differences together.</value>
+    <value>You may not be a perfect match, but differences don’t mean a relationship can’t work. Review the report and consider how you can navigate these differences together.</value>
   </data>
   <data name="CompleteAllSteps" xml:space="preserve">
-    <value>To make your profile public, first complete all the steps</value>
+    <value>Complete all steps before making your profile public.</value>
   </data>
   <data name="CompleteYourProfile" xml:space="preserve">
     <value>Complete your profile</value>
@@ -166,10 +166,10 @@
     <value>This feature is only available in phase {0}</value>
   </data>
   <data name="GalleryTerm1" xml:space="preserve">
-    <value>The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary.</value>
+    <value>Photos captured by your camera will remain private and won’t be accessible on the platform. They may be used for future verification if needed.</value>
   </data>
   <data name="GalleryTerm2" xml:space="preserve">
-    <value>The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process.</value>
+    <value>The data generated during this validation, including facial attributes, will not be stored on our servers. It will exist only while detection is in progress.</value>
   </data>
   <data name="GalleryValidation" xml:space="preserve">
     <value>Gallery Validation</value>
@@ -178,13 +178,13 @@
     <value>General Compatibility</value>
   </data>
   <data name="GenerateSimulation" xml:space="preserve">
-    <value>Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works.</value>
+    <value>Would you like to generate a sample match? This is only a demonstration of how our compatibility system works.</value>
   </data>
   <data name="GpsNotAccurate" xml:space="preserve">
-    <value>The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser.</value>
+    <value>Your GPS location may be inaccurate, which could result in an incorrect location. If the selected city is wrong, try again later or use another device or browser.</value>
   </data>
   <data name="HelpUsUnlock" xml:space="preserve">
-    <value>Help us grow by leaving a review in the app store. Every new user brings us closer to unlocking the next phase and all the features we're building for you.</value>
+    <value>Help us grow by leaving a review in the app store. Every new member brings us closer to the next phase and the features we’re building for you.</value>
   </data>
   <data name="HeroButton" xml:space="preserve">
     <value>Create Free Account</value>
@@ -205,46 +205,46 @@
     <value>People who have expressed interest in getting to know you.</value>
   </data>
   <data name="ITrustPlataform" xml:space="preserve">
-    <value>I trust the platform's compatibility system and will only select what is non-negotiable for me.</value>
+    <value>I trust the platform’s compatibility system and will select only the preferences that are non-negotiable for me.</value>
   </data>
   <data name="LatestUsersRegion" xml:space="preserve">
-    <value>Latest users registered in your region ({0})</value>
+    <value>Members who recently joined in your region ({0})</value>
   </data>
   <data name="Matches" xml:space="preserve">
     <value>Matches</value>
   </data>
   <data name="MatchesDesc" xml:space="preserve">
-    <value>Your connections, where you can chat, get to know each other, and take the next step together.</value>
+    <value>People you’ve matched with. Chat, get to know each other, and decide whether to take the next step together.</value>
   </data>
   <data name="Maximum3Items" xml:space="preserve">
-    <value>Choose a maximum of 3 items for each field</value>
+    <value>Select up to 3 items for each field.</value>
   </data>
   <data name="NotAnswered" xml:space="preserve">
     <value>Not answered</value>
   </data>
   <data name="NoUsersYetOff" xml:space="preserve">
-    <value>No one has joined from your region yet. Create your profile and be the first.</value>
+    <value>No one from your region has joined yet. Create your profile and be the first.</value>
   </data>
   <data name="NoUsersYetOn" xml:space="preserve">
-    <value>No profiles are available in your region yet. Leave a review in the app store to help more people discover the app.</value>
+    <value>There are no profiles available in your region yet. Leave a review in the app store to help others discover the app.</value>
   </data>
   <data name="OptionalSection" xml:space="preserve">
-    <value>Other (optional section)</value>
+    <value>Other (optional)</value>
   </data>
   <data name="PartnerProfileNotAvailable" xml:space="preserve">
     <value>Your partner's profile is not yet available</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
-    <value>This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team.</value>
+    <value>This process is continually improving. To report an error or suggest an improvement, please open a support ticket.</value>
   </data>
   <data name="PopulateFilterTitle" xml:space="preserve">
     <value>Fields automatically populated</value>
   </data>
   <data name="PreferHelpTopic1" xml:space="preserve">
-    <value>Here you can define your ideal profile type, so that we can properly calculate your compatibility index</value>
+    <value>Use these preferences to define your ideal partner profile and help us calculate your compatibility score.</value>
   </data>
   <data name="PreferHelpTopic2" xml:space="preserve">
-    <value>The more specific you are in the filters, the less profile options you will have available</value>
+    <value>The more specific your preferences are, the fewer potential matches you’ll see.</value>
   </data>
   <data name="Private" xml:space="preserve">
     <value>Private</value>
@@ -268,10 +268,10 @@
     <value>Profile not found or not yet registered properly.</value>
   </data>
   <data name="ProfilePrivateMode" xml:space="preserve">
-    <value>Your profile is now in private mode and will not be seen or shared with anyone</value>
+    <value>Your profile is now private and won’t be visible or shared with other members.</value>
   </data>
   <data name="ProfilePublicMode" xml:space="preserve">
-    <value>Your profile is now public and can be made available to our customers</value>
+    <value>Your profile is now public and may be shown to other members.</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Public</value>
@@ -292,7 +292,7 @@
     <value>Create Profile</value>
   </data>
   <data name="StepProfileDesc" xml:space="preserve">
-    <value>Fill in your details: Basic, Bio, Lifestyle, Personality, Interests, Relationship, and Goals.</value>
+    <value>Complete your profile: Basic Information, Bio, Lifestyle, Personality, Interests, Relationship Preferences, and Goals.</value>
   </data>
   <data name="StepSettings" xml:space="preserve">
     <value>Adjust Settings</value>
@@ -304,16 +304,16 @@
     <value>Profile Validation</value>
   </data>
   <data name="StepValidationDesc" xml:space="preserve">
-    <value>The system will verify your information before your profile goes public.</value>
+    <value>We’ll verify your information before making your profile public.</value>
   </data>
   <data name="Suggestions" xml:space="preserve">
     <value>Suggestions</value>
   </data>
   <data name="SuggestionsDesc" xml:space="preserve">
-    <value>Our top recommendations for people who may be a great match for you, based on your preferences and compatibility.</value>
+    <value>Our top recommendations for people who may be a good match, based on your preferences and compatibility.</value>
   </data>
   <data name="TermTopic1" xml:space="preserve">
-    <value>Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;</value>
+    <value>Please answer this form honestly. All information provided may be reported and reviewed.</value>
   </data>
   <data name="TermTopic2" xml:space="preserve">
     <value>To be aware of how your data will be treated, we ask you to read our</value>
@@ -322,10 +322,10 @@
     <value>Tips</value>
   </data>
   <data name="UnableDetectGps" xml:space="preserve">
-    <value>We were unable to detect a GPS system on your device. Please try again or release access to your device's GPS.</value>
+    <value>We couldn’t detect GPS on your device. Please try again and allow access to your device’s location.</value>
   </data>
   <data name="Undefined" xml:space="preserve">
-    <value>Undefined</value>
+    <value>Not specified</value>
   </data>
   <data name="WhyImportant" xml:space="preserve">
     <value>Why is it important?</value>
@@ -334,7 +334,7 @@
     <value>Years</value>
   </data>
   <data name="YouHaveSelected" xml:space="preserve">
-    <value>You have selected more than {0} options</value>
+    <value>You have selected more than {0} options.</value>
   </data>
   <data name="YourCurrentLocation" xml:space="preserve">
     <value>Your current location:</value>
@@ -343,6 +343,6 @@
     <value>Your partner's profile</value>
   </data>
   <data name="YourProfile" xml:space="preserve">
-    <value>Your profile (or preferences)</value>
+    <value>Your profile or preferences</value>
   </data>
 </root>
