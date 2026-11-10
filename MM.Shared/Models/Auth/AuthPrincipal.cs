@@ -25,7 +25,7 @@ public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.
         var purchase = AuthPurchases.SingleOrDefault(s => string.Equals(s.PurchaseId, id, StringComparison.Ordinal));
         if (purchase != null) return purchase;
 
-        purchase = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException($"No purchases found. id={id}");
+        purchase = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException("No purchase was found.");
         purchase.PurchaseId = id;
         return purchase;
     }
@@ -49,7 +49,7 @@ public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.
 
     public void ConsumesSparks(int qtd)
     {
-        if (Sparks < qtd) throw new NotificationException("There are not enough sparks for this operation");
+        if (Sparks < qtd) throw new NotificationException("You don't have enough Sparks to complete this action.");
         Sparks -= qtd;
     }
 
