@@ -24,13 +24,13 @@
                     @if (AppStateStatic.ActiveProduct == AccountProduct.Phase1)
                     {
                         <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" NoIcon="true">
-                            We’re in pre-launch. Buy Sparks now at the lowest price and use them when we go live.
+                            We're in pre-launch. Purchase Sparks at the current price and use them when the platform launches.
                         </MudAlert>
                     }
                     else
                     {
                         <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" NoIcon="true">
-                            Get Sparks at the current price. The price increases in the next phase as more users join.
+                            Purchase Sparks at the current price. Prices will increase in the next phase as more users join.
                         </MudAlert>
                     }
                 </MudItem>
@@ -50,7 +50,7 @@
                 if (Platform == MM.Shared.Enums.Platform.windows)
                 {
                     <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                        The Microsoft subscription option isn’t available yet. Stay tuned for updates!
+                        The Microsoft subscription option isn't available yet. Check back for updates!
                     </MudAlert>
                 }
                 else
@@ -65,7 +65,7 @@
                 if (Platform == MM.Shared.Enums.Platform.ios)
                 {
                     <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("mb")">
-                        Apple subscription is still in testing. If you run into any issues, please reach out via feedback or email. We’re happy to help.
+                        Apple subscriptions are still being tested. If you experience any issues, send us feedback or email support. We're happy to help.
                     </MudAlert>
 
                     <SubscriptionPlansComponent Provider="Provider" Client="Client"></SubscriptionPlansComponent>
@@ -82,7 +82,7 @@
                 if (Platform == MM.Shared.Enums.Platform.play)
                 {
                     <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true">
-                        The Google subscription option isn’t available yet. Stay tuned for updates!
+                        The Google subscription option isn't available yet. Check back for updates!
                     </MudAlert>
                 }
                 else
