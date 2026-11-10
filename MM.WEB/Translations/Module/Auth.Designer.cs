@@ -88,7 +88,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, there&apos;s nothing at this address..
+        ///   Looks up a localized string similar to We couldn&apos;t find anything at this address..
         /// </summary>
         internal static string NothingThisAddress {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have read and agree to the {0} and {1}.
+        ///   Looks up a localized string similar to I have read and agree to the {0} and {1}..
         /// </summary>
         internal static string Terms1 {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I understand that in the first phase some features of the platform are limited or disabled..
+        ///   Looks up a localized string similar to I understand that some platform features are limited or unavailable during the first phase..
         /// </summary>
         internal static string Terms2 {
             get {
@@ -124,7 +124,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unauthenticated user.
+        ///   Looks up a localized string similar to Not signed in.
         /// </summary>
         internal static string UnauthenticatedUser {
             get {
@@ -133,7 +133,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You need to be logged in to access this content..
+        ///   Looks up a localized string similar to You must be signed in to access this content..
         /// </summary>
         internal static string YouMustLogged {
             get {

@@ -61,7 +61,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner through Matchmaking.
+        ///   Looks up a localized string similar to Find a compatible partner through matchmaking.
         /// </summary>
         public static string AppSubtitle {
             get {
@@ -79,7 +79,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dating Apps vs Modern Matchmaker.
+        ///   Looks up a localized string similar to Dating Apps vs. Modern Matchmaker.
         /// </summary>
         public static string Compare2 {
             get {
@@ -124,7 +124,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Matchmaking, Dating &amp; Singles in Your Country ({0}).
+        ///   Looks up a localized string similar to Matchmaking and Dating for Singles in {0}.
         /// </summary>
         public static string Matchmaker {
             get {
@@ -142,7 +142,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Who Is It For.
+        ///   Looks up a localized string similar to Who It&apos;s For.
         /// </summary>
         public static string WhoIsItFor {
             get {

@@ -232,7 +232,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn More.
+        ///   Looks up a localized string similar to Learn more.
         /// </summary>
         public static string LearnMore {
             get {
@@ -331,7 +331,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Advertising.
+        ///   Looks up a localized string similar to Remove ads.
         /// </summary>
         public static string RemoveAdvertising {
             get {
@@ -358,7 +358,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve GPS position.
+        ///   Looks up a localized string similar to Get GPS location.
         /// </summary>
         public static string RetrieveGPSPosition {
             get {
@@ -376,7 +376,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select your photo.
+        ///   Looks up a localized string similar to Select a photo.
         /// </summary>
         public static string SelectPhoto {
             get {
@@ -412,7 +412,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show cache.
+        ///   Looks up a localized string similar to View cache.
         /// </summary>
         public static string ShowCache {
             get {
@@ -439,7 +439,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start new validation.
+        ///   Looks up a localized string similar to Start a new validation.
         /// </summary>
         public static string StartNewValidation {
             get {
@@ -448,7 +448,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Take Shot.
+        ///   Looks up a localized string similar to Take photo.
         /// </summary>
         public static string TakeShot {
             get {
@@ -466,7 +466,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use prior validation.
+        ///   Looks up a localized string similar to Use previous validation.
         /// </summary>
         public static string UsePriorValidation {
             get {

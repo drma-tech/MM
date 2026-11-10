@@ -70,7 +70,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The basic section is mandatory for now. The other sections can be filled in later..
+        ///   Looks up a localized string similar to The Basic section is required for now. You can complete the other sections later..
         /// </summary>
         public static string BasicRequired {
             get {
@@ -79,7 +79,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only your age will be published. (We use the Gregorian calendar).
+        ///   Looks up a localized string similar to Only your age will be shown publicly. (We use the Gregorian calendar.).
         /// </summary>
         public static string BirthdateTip {
             get {
@@ -88,7 +88,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body Photo.
+        ///   Looks up a localized string similar to Full-body photo.
         /// </summary>
         public static string BodyPhoto {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our compatibility system is still developing. If you have any suggestions or feedback, please submit a support ticket or email us..
+        ///   Looks up a localized string similar to Our compatibility system is still being developed. If you have suggestions or feedback, please submit a support ticket or email us..
         /// </summary>
         public static string CompatibilityDeveloping {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations, you two are made for each other. This relationship has a bright future ahead of it..
+        ///   Looks up a localized string similar to You seem highly compatible, and your relationship has strong potential..
         /// </summary>
         public static string CompatibilityHigh {
             get {
@@ -124,7 +124,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unfortunately, you don&apos;t have much in common. We wish you both the best of luck, as it won&apos;t be an easy task..
+        ///   Looks up a localized string similar to You may have less in common, so building a relationship could take more effort. We wish you both the best..
         /// </summary>
         public static string CompatibilityLow {
             get {
@@ -133,7 +133,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are not a perfect couple, but that doesn&apos;t mean that the relationship will fail. Review our report carefully and work through these differences together..
+        ///   Looks up a localized string similar to You may not be a perfect match, but differences don’t mean a relationship can’t work. Review the report and consider how you can navigate these differences together..
         /// </summary>
         public static string CompatibilityMedium {
             get {
@@ -142,7 +142,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To make your profile public, first complete all the steps.
+        ///   Looks up a localized string similar to Complete all steps before making your profile public..
         /// </summary>
         public static string CompleteAllSteps {
             get {
@@ -205,7 +205,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The photo taken by your camera will be kept private (it will not be accessible within the platform) for future verification, if necessary..
+        ///   Looks up a localized string similar to Photos captured by your camera will remain private and won’t be accessible on the platform. They may be used for future verification if needed..
         /// </summary>
         public static string GalleryTerm1 {
             get {
@@ -214,7 +214,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data resulting from this validation (attributes of your face) will not be kept on our servers and will only exist during the detection process..
+        ///   Looks up a localized string similar to The data generated during this validation, including facial attributes, will not be stored on our servers. It will be used only during the detection process..
         /// </summary>
         public static string GalleryTerm2 {
             get {
@@ -241,7 +241,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to generate a match simulation? This is just to demonstrate how our compatibility system works..
+        ///   Looks up a localized string similar to Would you like to generate a sample match? This is only a demonstration of how our compatibility system works..
         /// </summary>
         public static string GenerateSimulation {
             get {
@@ -250,7 +250,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The GPS position is not accurate and may result in an incorrect location. If your city is wrong, please try again later or test on another device or browser..
+        ///   Looks up a localized string similar to Your GPS location may be inaccurate. If the selected city is incorrect, try again later or use a different device or browser..
         /// </summary>
         public static string GpsNotAccurate {
             get {
@@ -259,7 +259,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help us grow by leaving a review in the app store. Every new user brings us closer to unlocking the next phase and all the features we&apos;re building for you..
+        ///   Looks up a localized string similar to Help us grow by leaving a review in the app store. Every new member brings us closer to the next phase and the features we’re building for you..
         /// </summary>
         public static string HelpUsUnlock {
             get {
@@ -322,7 +322,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I trust the platform&apos;s compatibility system and will only select what is non-negotiable for me..
+        ///   Looks up a localized string similar to I trust the platform’s compatibility system and will select only the preferences that are non-negotiable for me..
         /// </summary>
         public static string ITrustPlataform {
             get {
@@ -331,7 +331,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latest users registered in your region ({0}).
+        ///   Looks up a localized string similar to Members who recently joined in your region ({0}).
         /// </summary>
         public static string LatestUsersRegion {
             get {
@@ -349,7 +349,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your connections, where you can chat, get to know each other, and take the next step together..
+        ///   Looks up a localized string similar to People you’ve matched with. Chat, get to know each other, and decide whether to take the next step together..
         /// </summary>
         public static string MatchesDesc {
             get {
@@ -358,7 +358,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose a maximum of 3 items for each field.
+        ///   Looks up a localized string similar to Select up to 3 items for each field..
         /// </summary>
         public static string Maximum3Items {
             get {
@@ -376,7 +376,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No one has joined from your region yet. Create your profile and be the first..
+        ///   Looks up a localized string similar to No one from your region has joined yet. Create your profile and be the first..
         /// </summary>
         public static string NoUsersYetOff {
             get {
@@ -385,7 +385,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No profiles are available in your region yet. Leave a review in the app store to help more people discover the app..
+        ///   Looks up a localized string similar to There are no profiles available in your region yet. Leave a review in the app store to help others discover the app..
         /// </summary>
         public static string NoUsersYetOn {
             get {
@@ -394,7 +394,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other (optional section).
+        ///   Looks up a localized string similar to Other (optional).
         /// </summary>
         public static string OptionalSection {
             get {
@@ -412,7 +412,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This process is constantly evolving. If you would like to report an error or improvement, please open a ticket with our support team..
+        ///   Looks up a localized string similar to This process is continually improving. To report an error or suggest an improvement, please open a support ticket..
         /// </summary>
         public static string PopulateFilterDescription {
             get {
@@ -430,7 +430,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here you can define your ideal profile type, so that we can properly calculate your compatibility index.
+        ///   Looks up a localized string similar to Use these preferences to define your ideal partner profile and help us calculate your compatibility score..
         /// </summary>
         public static string PreferHelpTopic1 {
             get {
@@ -439,7 +439,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The more specific you are in the filters, the less profile options you will have available.
+        ///   Looks up a localized string similar to The more specific your preferences are, the fewer potential matches you’ll see..
         /// </summary>
         public static string PreferHelpTopic2 {
             get {
@@ -466,7 +466,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you find it challenging to interact or recognize harmful intentions, consider reaching out to friends or family for support..
+        ///   Looks up a localized string similar to If you’re unsure how to respond to someone or recognize potentially harmful intentions, consider reaching out to friends or family for support..
         /// </summary>
         public static string ProfileDataBioTip2 {
             get {
@@ -475,7 +475,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For more complex personalities, explore tests on specialized sites. Some can be answered just by reading the item descriptions..
+        ///   Looks up a localized string similar to If you want a deeper understanding of your personality, consider taking assessments on specialized websites. Some questions may be easy to answer based on their descriptions alone..
         /// </summary>
         public static string ProfileDataPersonTip1 {
             get {
@@ -502,7 +502,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile not found or not yet registered properly..
+        ///   Looks up a localized string similar to This profile couldn’t be found or hasn’t been set up yet..
         /// </summary>
         public static string ProfileNotFound {
             get {
@@ -511,7 +511,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your profile is now in private mode and will not be seen or shared with anyone.
+        ///   Looks up a localized string similar to Your profile is now private and won’t be visible to or shared with other members..
         /// </summary>
         public static string ProfilePrivateMode {
             get {
@@ -520,7 +520,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your profile is now public and can be made available to our customers.
+        ///   Looks up a localized string similar to Your profile is now public and may be shown to other members..
         /// </summary>
         public static string ProfilePublicMode {
             get {
@@ -583,7 +583,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fill in your details: Basic, Bio, Lifestyle, Personality, Interests, Relationship, and Goals..
+        ///   Looks up a localized string similar to Complete your profile: Basic Information, Bio, Lifestyle, Personality, Interests, Relationship Preferences, and Goals..
         /// </summary>
         public static string StepProfileDesc {
             get {
@@ -619,7 +619,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The system will verify your information before your profile goes public..
+        ///   Looks up a localized string similar to We’ll verify your information before making your profile public..
         /// </summary>
         public static string StepValidationDesc {
             get {
@@ -637,7 +637,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our top recommendations for people who may be a great match for you, based on your preferences and compatibility..
+        ///   Looks up a localized string similar to Our top recommendations for people who may be a good match, based on your preferences and compatibility..
         /// </summary>
         public static string SuggestionsDesc {
             get {
@@ -646,7 +646,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Be honest in the answers given on this form. All information contained herein is open to denouncements and may be evaluated;.
+        ///   Looks up a localized string similar to Please answer this form honestly. All information provided may be reported and reviewed..
         /// </summary>
         public static string TermTopic1 {
             get {
@@ -655,7 +655,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To be aware of how your data will be treated, we ask you to read our.
+        ///   Looks up a localized string similar to To understand how your data will be handled, please read our.
         /// </summary>
         public static string TermTopic2 {
             get {
@@ -673,7 +673,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We were unable to detect a GPS system on your device. Please try again or release access to your device&apos;s GPS..
+        ///   Looks up a localized string similar to We couldn’t detect GPS on your device. Please try again and allow access to your device’s location..
         /// </summary>
         public static string UnableDetectGps {
             get {
@@ -682,7 +682,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Undefined.
+        ///   Looks up a localized string similar to Not specified.
         /// </summary>
         public static string Undefined {
             get {
@@ -709,7 +709,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have selected more than {0} options.
+        ///   Looks up a localized string similar to You have selected more than {0} options..
         /// </summary>
         public static string YouHaveSelected {
             get {
@@ -736,7 +736,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your profile (or preferences).
+        ///   Looks up a localized string similar to Your profile or preferences.
         /// </summary>
         public static string YourProfile {
             get {

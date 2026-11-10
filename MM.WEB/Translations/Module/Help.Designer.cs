@@ -70,7 +70,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translates the app interface. Partial translations may apply for some languages..
+        ///   Looks up a localized string similar to Changes the language of the app interface. Some content may not be fully translated..
         /// </summary>
         public static string AppLanguageDesc {
             get {
@@ -160,7 +160,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phase 1: we’re forming the matchmaking pool — the foundation of our system.|Phase 2: matchmaking opens for clients as we reach 100k users..
+        ///   Looks up a localized string similar to Phase 1: We’re building the matchmaking pool, the foundation of our system.|Phase 2: Matchmaking opens to clients once we reach 100,000 users..
         /// </summary>
         public static string Step2Subtitle {
             get {
@@ -178,7 +178,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join our matchmaking pool and take part in shaping how real compatibility is discovered..
+        ///   Looks up a localized string similar to Join our matchmaking pool and help shape the future of compatibility-based matchmaking..
         /// </summary>
         public static string Step3Subtitle {
             get {
@@ -223,7 +223,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rate the app and share it with your friends!.
+        ///   Looks up a localized string similar to Leave a review and tell your friends about us!.
         /// </summary>
         public static string WriteReviewSubtitle {
             get {

@@ -106,7 +106,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Identity and photo verification are required before users can interact, helping reduce fake profiles and improve trust within the community..
+        ///   Looks up a localized string similar to Identity and photo verification are required before members can interact, helping reduce fake profiles and build trust within the community..
         /// </summary>
         public static string Approach03Desc {
             get {
@@ -142,7 +142,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sparks are our virtual currency used to access premium actions and features across the platform..
+        ///   Looks up a localized string similar to Sparks are the platform’s virtual currency, used to access premium actions and features..
         /// </summary>
         public static string Approach05Desc {
             get {
@@ -151,7 +151,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Future Features Ahead.
+        ///   Looks up a localized string similar to More Features to Come.
         /// </summary>
         public static string Approach06 {
             get {
@@ -160,7 +160,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to As the platform grows, new matchmaking features and enhancements will be unlocked for more ways to connect..
+        ///   Looks up a localized string similar to As our community grows, we’ll introduce new matchmaking features and improvements to create more ways for members to connect..
         /// </summary>
         public static string Approach06Desc {
             get {
@@ -187,7 +187,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compare us with typical dating apps and see what makes our approach different. Explore the key features that set us apart and create more meaningful connections..
+        ///   Looks up a localized string similar to Compare Modern Matchmaker with traditional dating apps to see what sets us apart. Explore the features designed to foster more meaningful connections..
         /// </summary>
         public static string CompareCall {
             get {
@@ -196,7 +196,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See the difference for yourself and discover matches based on real compatibility..
+        ///   Looks up a localized string similar to See the difference for yourself. Discover potential matches based on compatibility..
         /// </summary>
         public static string CompareCall2 {
             get {
@@ -241,7 +241,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to See how we match you with people who fit your lifestyle, values, and goals. Learn about the step-by-step process and how Sparks help you engage meaningfully..
+        ///   Looks up a localized string similar to Discover how we match you with people who share your values, lifestyle, and relationship goals. Follow each step and learn how Sparks let you connect in meaningful ways..
         /// </summary>
         public static string HowItWorksCall {
             get {
@@ -250,7 +250,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now that you know how it works, take the first step towards finding your soulmate..
+        ///   Looks up a localized string similar to Now that you know how it works, take the first step toward finding a compatible partner..
         /// </summary>
         public static string HowItWorksCall2 {
             get {
@@ -259,7 +259,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last Users.
+        ///   Looks up a localized string similar to Recent Members.
         /// </summary>
         public static string LastUsers {
             get {
@@ -268,7 +268,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Users who recently registered on the platform.
+        ///   Looks up a localized string similar to People who have recently joined the platform.
         /// </summary>
         public static string LastUsersSubtitle {
             get {
@@ -286,7 +286,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No profile.
+        ///   Looks up a localized string similar to No profile available.
         /// </summary>
         public static string NoProfile {
             get {
@@ -313,7 +313,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A growing community with a shared goal: finding meaningful relationships..
+        ///   Looks up a localized string similar to A growing community of people seeking meaningful relationships..
         /// </summary>
         public static string OurNumbersMsg1 {
             get {
@@ -322,7 +322,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Every new member brings us closer to our next milestone. Join early and be part of the community shaping the future of matchmaking..
+        ///   Looks up a localized string similar to Every new member brings us closer to our next milestone. Join early and help shape the future of matchmaking..
         /// </summary>
         public static string OurNumbersMsg2 {
             get {
@@ -340,7 +340,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Features Unlocked as Our Community Expands!.
+        ///   Looks up a localized string similar to New features unlocked as our community grows!.
         /// </summary>
         public static string OurRoadmapMsg1 {
             get {
@@ -349,7 +349,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Each milestone unlocks new features and improvements as our community grows. We&apos;re building Modern Matchmaker step by step, with each phase expanding what members can do on the platform..
+        ///   Looks up a localized string similar to Each milestone brings new features and improvements. We’re building Modern Matchmaker step by step, expanding what members can do as our community grows..
         /// </summary>
         public static string OurRoadmapMsg2 {
             get {
@@ -358,7 +358,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join our matchmaking pool.
+        ///   Looks up a localized string similar to Join the matchmaking pool.
         /// </summary>
         public static string Phase1Opt1 {
             get {
@@ -376,7 +376,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sparks: US$1 per unit.
+        ///   Looks up a localized string similar to Sparks: US$1 per Spark.
         /// </summary>
         public static string Phase1Opt3 {
             get {
@@ -394,7 +394,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Users can apply as matchmaking clients.
+        ///   Looks up a localized string similar to Apply to become a matchmaking client.
         /// </summary>
         public static string Phase2Opt1 {
             get {
@@ -403,7 +403,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sparks: US$2 per unit.
+        ///   Looks up a localized string similar to Sparks: US$2 per Spark.
         /// </summary>
         public static string Phase2Opt3 {
             get {
@@ -421,7 +421,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spotlight - Boost your profile on the platform..
+        ///   Looks up a localized string similar to Spotlight: Boost your profile on the platform..
         /// </summary>
         public static string Phase3Opt1 {
             get {
@@ -430,7 +430,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sparks: US$3 per unit.
+        ///   Looks up a localized string similar to Sparks: US$3 per Spark.
         /// </summary>
         public static string Phase3Opt2 {
             get {
@@ -457,7 +457,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sparks: US$4 per unit.
+        ///   Looks up a localized string similar to Sparks: US$4 per Spark.
         /// </summary>
         public static string Phase4Opt2 {
             get {
@@ -502,7 +502,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover if Modern Matchmaker is right for you and your relationship goals. Understand who benefits most from our intentional approach to serious dating..
+        ///   Looks up a localized string similar to Find out whether Modern Matchmaker is right for you and your relationship goals. Discover who benefits most from our intentional approach to dating..
         /// </summary>
         public static string WhoIsItForCall {
             get {
@@ -511,7 +511,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now that you know this platform was made for you, take the first step towards finding your soulmate..
+        ///   Looks up a localized string similar to If this sounds like the right approach for you, take the first step toward finding a compatible partner..
         /// </summary>
         public static string WhoIsItForCall2 {
             get {

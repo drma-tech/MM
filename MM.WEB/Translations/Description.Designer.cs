@@ -61,7 +61,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding a life partner is here. Smarter and more affordable than traditional matchmaking, with precise compatibility and no endless swiping..
+        ///   Looks up a localized string similar to The future of finding a life partner is here. A smarter, more affordable alternative to traditional matchmaking, with compatibility-based matches and no endless swiping..
         /// </summary>
         internal static string AppDescription {
             get {
@@ -70,7 +70,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compare dating apps, traditional matchmaking services, and Modern Matchmaker. Understand the differences in compatibility, cost, personalization, and results..
+        ///   Looks up a localized string similar to Compare dating apps, traditional matchmaking services, and Modern Matchmaker to see how they differ in compatibility, cost, personalization, and results..
         /// </summary>
         internal static string Compare {
             get {
@@ -79,7 +79,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get detailed guides, troubleshooting tips, FAQs, and contact support for {0}. Solve issues and discover features easily..
+        ///   Looks up a localized string similar to Find detailed guides, troubleshooting tips, FAQs, and support for {0}. Get help resolving issues and making the most of its features..
         /// </summary>
         internal static string HelpCenter {
             get {
@@ -88,7 +88,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn how Modern Matchmaker evaluates compatibility, suggests meaningful matches, and offers a smarter alternative to traditional dating and matchmaking..
+        ///   Looks up a localized string similar to Discover how Modern Matchmaker assesses compatibility, recommends meaningful matches, and offers an alternative to traditional dating and matchmaking..
         /// </summary>
         internal static string HowItWorks {
             get {
@@ -97,7 +97,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find your life partner in your country ({0}) with Modern Matchmaker. Discover compatible members through intelligent matching..
+        ///   Looks up a localized string similar to Find a life partner in your country ({0}) with Modern Matchmaker. Discover compatible people through intelligent matching..
         /// </summary>
         internal static string LastUsers {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your personal space to view your profile, discover suggestions, and keep track of your connections..
+        ///   Looks up a localized string similar to Your personal space to manage your profile, explore recommendations, and keep track of your connections..
         /// </summary>
         internal static string Profile {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modern Matchmaker is for people seeking meaningful, long-term relationships without the limits of dating apps or the high cost of traditional matchmaking..
+        ///   Looks up a localized string similar to Modern Matchmaker is designed for people seeking meaningful, long-term relationships who want an alternative to dating apps and expensive traditional matchmaking services..
         /// </summary>
         internal static string WhoIsItFor {
             get {

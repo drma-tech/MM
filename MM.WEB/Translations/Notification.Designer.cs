@@ -70,7 +70,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore our other amazing apps:.
+        ///   Looks up a localized string similar to Check out our other apps:.
         /// </summary>
         public static string CheckOurApps {
             get {
@@ -106,7 +106,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This feature is under development..
+        ///   Looks up a localized string similar to This feature is currently under development..
         /// </summary>
         public static string FeatureUnavailableMessage {
             get {
@@ -115,7 +115,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This module is still under development. If you wish to report a bug, please contact us via the feedback button..
+        ///   Looks up a localized string similar to This section is still under development. To report a bug, please contact us using the feedback button..
         /// </summary>
         public static string ModuleUnderDevelopment {
             get {
@@ -196,7 +196,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No data available.
+        ///   Looks up a localized string similar to No data to display.
         /// </summary>
         public static string RenderControlNoData {
             get {
@@ -205,7 +205,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description contains suspicious or spam-like content..
+        ///   Looks up a localized string similar to The description contains content that may be spam or otherwise suspicious..
         /// </summary>
         public static string SpamLike {
             get {
