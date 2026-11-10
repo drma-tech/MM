@@ -42,13 +42,13 @@ namespace MM.WEB.Modules.Profile
         {
             if (Profile == null)
             {
-                await ShowWarning("You need to complete your profile first. (Step 1)");
+                await ShowWarning("Complete your profile before viewing matches (Step 1).");
                 return;
             }
 
             if (Filter == null)
             {
-                await ShowWarning("You need to define your filters first. (Step 2)");
+                await ShowWarning("Set your matching filters before viewing matches (Step 2).");
                 return;
             }
 
