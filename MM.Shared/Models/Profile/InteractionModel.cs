@@ -34,7 +34,7 @@ public class InteractionModel(string? id) : MainDocument(new MainIdentity(MainTy
 
     public void AddEventUser(string? triggerUserId, EventType type, Origin origin)
     {
-        if (Id.Empty()) throw new NotificationException("must initialize the interaction first");
+        if (Id.Empty()) throw new NotificationException("The interaction must be initialized before adding an event.");
 
         var ids = Id.Split(":")[1];
         var arrIds = ids.Split('-');
