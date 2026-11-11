@@ -1,15 +1,15 @@
 ﻿@page "/"
 @page "/{culture}"
 
-@inherits PageCore<Index>
+@inherits PageCore<IndexPage>
 
 @inject DashboardApi DashboardApi
 @inject LastUsersApi LastUsersApi
 @inject IpInfoApi IpInfoApi
 
-<HeadComponent Title="@Translations.Title.AppSubtitle" FixedTitle="true" Description="@Translations.Description.AppDescription" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
+<HeadComponent Title="@AppInfo.GetCurrentProduct().Title" FixedTitle="true" Description="@AppInfo.GetCurrentProduct().Description" Url=@($"/{Culture}") Index="@Culture.NotEmpty()" Shared="true"></HeadComponent>
 
-<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@Translations.Title.AppSubtitle" CustomBodyClass="mb-12"></PageSectionComponent>
+<PageSectionComponent IsPageHeader="true" Image="icon/icon-71.png" Title="@AppInfo.Title" Subtitle="@AppInfo.GetCurrentProduct().SubTitle" CustomBodyClass="mb-12"></PageSectionComponent>
 
 <MudContainer>
     @if (!AppStateStatic.IsAuthenticated && !Printscreen)

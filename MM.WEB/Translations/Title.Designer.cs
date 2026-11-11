@@ -61,15 +61,6 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner through matchmaking.
-        /// </summary>
-        public static string AppSubtitle {
-            get {
-                return ResourceManager.GetString("AppSubtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Compare.
         /// </summary>
         public static string Compare {

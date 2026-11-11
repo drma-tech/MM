@@ -61,15 +61,6 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding a life partner is here. A smarter, more affordable alternative to traditional matchmaking, with compatibility-based matches and no endless swiping..
-        /// </summary>
-        internal static string AppDescription {
-            get {
-                return ResourceManager.GetString("AppDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Compare dating apps, traditional matchmaking services, and Modern Matchmaker to see how they differ in compatibility, cost, personalization, and results..
         /// </summary>
         internal static string Compare {

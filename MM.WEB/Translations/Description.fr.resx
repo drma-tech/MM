@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDescription" xml:space="preserve">
-    <value>L'avenir de la recherche d'un partenaire pour la vie est arrivé. Une alternative plus intelligente et abordable aux agences matrimoniales traditionnelles, avec des suggestions fondées sur la compatibilité et sans défilement interminable de profils.</value>
-  </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparez les applications de rencontre, les services traditionnels de mise en relation et Modern Matchmaker pour découvrir leurs différences en matière de compatibilité, de coût, de personnalisation et de résultats.</value>
   </data>
