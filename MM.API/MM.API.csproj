@@ -54,6 +54,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" />
 		<PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
 		<Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
 	</ItemGroup>
