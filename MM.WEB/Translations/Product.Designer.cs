@@ -61,7 +61,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find a compatible partner with smart matchmaking.
+        ///   Looks up a localized string similar to Find a Compatible Partner Through Modern Matchmaking.
         /// </summary>
         public static string modern_matchmaker {
             get {
@@ -70,7 +70,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The future of finding a life partner is here. A smarter, more affordable alternative to traditional matchmaking, with compatibility-based matches and no endless swiping..
+        ///   Looks up a localized string similar to Discover a modern matchmaking platform for serious relationships. Find compatible singles through shared values, personality, lifestyle, and relationship goals..
         /// </summary>
         public static string modern_matchmaker_desc {
             get {
