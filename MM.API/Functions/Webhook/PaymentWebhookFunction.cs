@@ -1,3 +1,5 @@
+using Clerk.BackendAPI;
+using Clerk.BackendAPI.Models.Operations;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
@@ -52,6 +54,7 @@ public class PaymentWebhookFunction(CosmosMainRepository repo)
         client.Events.Add(new Event("Apple (Webhooks)", $"SubscriptionId = {originalTransactionId}, Type = {notification.NotificationType}, Subtype = {notification.Subtype}", ip));
 
         await repo.UpsertItemAsync(client);
+        await SyncClerkAccountDeletionAsync(client.UserId ?? throw new UnhandledException("Apple subscription user id is missing"), client.GetActivePurchase() is not null);
     }
 
     [Function("PostStripeWebhook")]
@@ -100,6 +103,7 @@ public class PaymentWebhookFunction(CosmosMainRepository repo)
             }
 
             await repo.UpsertItemAsync(principal);
+            await SyncClerkAccountDeletionAsync(userId, principal.GetActivePurchase() is not null);
         }
         else if (string.Equals(stripeEvent.Type, "customer.deleted", StringComparison.OrdinalIgnoreCase))
         {
@@ -135,5 +139,19 @@ public class PaymentWebhookFunction(CosmosMainRepository repo)
         }
 
         return await req.CreateResponse(HttpStatusCode.OK, "webhook received", cancellationToken);
+    }
+
+    private static async Task SyncClerkAccountDeletionAsync(string userId, bool isPremium)
+    {
+        var secretKey = ApiStartup.Configurations.ClerkAuth?.SecretKey ?? throw new InvalidOperationException("Clerk SecretKey is not configured");
+
+        var clerk = new ClerkBackendApi(bearerAuth: secretKey);
+
+        await clerk.Users.UpdateAsync(
+            userId: userId,
+            requestBody: new UpdateUserRequestBody
+            {
+                DeleteSelfEnabled = !isPremium,
+            });
     }
 }

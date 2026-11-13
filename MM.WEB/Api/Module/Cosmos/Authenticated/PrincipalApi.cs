@@ -29,6 +29,11 @@ public class PrincipalApi(IHttpClientFactory factory) : ApiCosmos<AuthPrincipal>
         await DeleteAsync("principal/remove", cancellationToken);
     }
 
+    public async Task RemoveClerk(CancellationToken cancellationToken)
+    {
+        await DeleteAsync("principal/remove/clerk", cancellationToken);
+    }
+
     public async Task<AuthPrincipal?> Public(CancellationToken cancellationToken)
     {
         return await PostAsync("principal/public", null, ApiContext.Default.AuthPrincipal, states: [], cancellationToken);
