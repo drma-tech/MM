@@ -3,12 +3,13 @@ using MM.Shared.Translations.Model;
 using MM.Shared.Translations.Validation;
 using System.Globalization;
 using System.Text;
-using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.Shared.Models.Profile.Core;
 
 public class FilterValidation : AbstractValidator<FilterModel>
 {
+    public const int MaximumFilters = 8;
+
     private static readonly CompositeFormat ChooseMaximumOptions = CompositeFormat.Parse(Validations.ChooseMaximumOptions);
 
     public FilterValidation()
@@ -268,12 +269,12 @@ public class FilterValidation : AbstractValidator<FilterModel>
             .WithName("Ideal Place to Live");
 
         RuleFor(x => x).Must(LimitFilters)
-              .WithMessage("Choose up to 8 filters.");
+              .WithMessage($"Choose up to {MaximumFilters} filters.");
     }
 
     private static bool LimitFilters(FilterModel model)
     {
-        return GetTotalFilters(model, tab: null) <= 8;
+        return GetTotalFilters(model, tab: null) <= MaximumFilters;
     }
 
     public static int GetTotalFilters(FilterModel? model, Category? tab)

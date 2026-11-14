@@ -15,7 +15,6 @@
 @using Smoke = MM.Shared.Enums.Smoke
 @using TravelFrequency = MM.Shared.Enums.TravelFrequency
 @using WantChildren = MM.Shared.Enums.WantChildren
-@using static MM.Shared.Core.Helper.ProfileHelper
 @inherits PageCore<ProfileFilterPage>
 
 @inject ProfileApi ProfileApi
@@ -26,7 +25,7 @@
 <CustomNavigationLock IsDirty="IsDirty"></CustomNavigationLock>
 
 <MudAlert Severity="MudBlazor.Severity.Warning" Variant="Variant.Outlined" Dense="true" Class="@CssHelper.Build().Small("my")">
-    @Translations.Module.Profile.ProfileFilterWarning.CustomFormat(8)
+    @Translations.Module.Profile.ProfileFilterWarning.CustomFormat(FilterValidation.MaximumFilters)
 </MudAlert>
 
 <RenderControl T="FilterModel" State="State" PrivateFeature="true" IsAuthenticated="AppStateStatic.IsAuthenticated">

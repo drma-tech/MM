@@ -2,7 +2,6 @@ using MM.Shared.Models.Profile;
 using MM.Shared.Models.Profile.Core;
 using MudBlazor;
 using MudBlazor.Utilities;
-using static MM.Shared.Core.Helper.ProfileHelper;
 
 namespace MM.WEB.Modules.Profile
 {
@@ -21,6 +20,11 @@ namespace MM.WEB.Modules.Profile
         private void OnFieldChanged(FormFieldChangedEventArgs args)
         {
             IsDirty = true;
+
+            if (FilterValidation.GetTotalFilters(Filter, null) > FilterValidation.MaximumFilters)
+            {
+                ShowWarning(Translations.Module.Profile.ProfileFilterWarning.CustomFormat(FilterValidation.MaximumFilters)).FireAndForget();
+            }
         }
 
         public Height[] Heights { get; set; } = [];
