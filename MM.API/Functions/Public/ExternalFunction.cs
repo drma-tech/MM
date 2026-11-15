@@ -12,7 +12,7 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
     public async Task<HttpResponseData> External(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/external")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var url = req.GetQueryParameters()["url"]?.ConvertFromBase64ToString() ?? throw new UnhandledException("url null");
+        var url = req.GetQueryParameter("url")?.ConvertFromBase64ToString();
 
         var allowedDomains = new[] { "" };
 
@@ -60,8 +60,8 @@ public class ExternalFunction(IHttpClientFactory factory, IConfiguration config)
     public async Task<HereJson?> GetLocationHere(
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "location/here")] HttpRequestData req, CancellationToken cancellationToken)
     {
-        var latitude = req.GetQueryParameters()["latitude"];
-        var longitude = req.GetQueryParameters()["longitude"];
+        var latitude = req.GetQueryParameter("latitude");
+        var longitude = req.GetQueryParameter("longitude");
 
         using var client = factory.CreateClient();
         return await client.Get<HereJson>($"https://browse.search.hereapi.com/v1/browse?at={latitude},{longitude}&lang=en-US&limit=1&apiKey={HereApiKey}", cancellationToken);

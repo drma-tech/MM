@@ -39,8 +39,8 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
     {
         var userId = await req.GetUserIdAsync();
         var ip = req.GetUserIP(includePort: true);
-        var url = req.GetQueryParameters()["url"] ?? throw new NotificationException("callback url not available");
-        var email = req.GetQueryParameters()["email"];
+        var url = req.GetQueryParameter("url");
+        var email = req.GetQueryParameter("email", required: false);
 
         //var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
         //using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken) ?? throw new NotificationException("validation photo not available");

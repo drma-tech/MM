@@ -122,7 +122,7 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
     {
         var userId = await req.GetUserIdAsync();
         var ip = req.GetUserIP(includePort: true);
-        var url = req.GetQueryParameters()["url"];
+        var url = req.GetQueryParameter("url");
 
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
