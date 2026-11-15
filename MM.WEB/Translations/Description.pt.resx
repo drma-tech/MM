@@ -124,7 +124,7 @@
     <value>Encontre guias detalhados, dicas para solucionar problemas, perguntas frequentes e suporte para {0}. Obtenha ajuda para resolver problemas e aproveitar melhor os recursos.</value>
   </data>
   <data name="HowItWorks" xml:space="preserve">
-    <value>Descubra como o Modern Matchmaker avalia a compatibilidade, recomenda pessoas compatíveis e oferece uma alternativa aos aplicativos de namoro e aos serviços tradicionais de matchmaking.</value>
+    <value>Saiba como o Modern Matchmaker considera seus valores, personalidade, estilo de vida, preferências e objetivos de relacionamento para ajudar você a conhecer pessoas mais compatíveis.</value>
   </data>
   <data name="LastUsers" xml:space="preserve">
     <value>Encontre um parceiro para a vida no seu país ({0}) com o Modern Matchmaker. Descubra pessoas compatíveis por meio de um sistema inteligente de matchmaking.</value>
@@ -133,6 +133,6 @@
     <value>Seu espaço pessoal para gerenciar seu perfil, explorar recomendações e acompanhar suas conexões.</value>
   </data>
   <data name="WhoIsItFor" xml:space="preserve">
-    <value>O Modern Matchmaker foi desenvolvido para pessoas que buscam relacionamentos significativos e duradouros e querem uma alternativa aos aplicativos de namoro e aos serviços tradicionais e caros de matchmaking.</value>
+    <value>O Modern Matchmaker foi criado para quem busca relacionamentos significativos e duradouros e deseja uma alternativa aos aplicativos de namoro e aos serviços tradicionais e caros de matchmaking.</value>
   </data>
 </root>
