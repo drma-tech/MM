@@ -79,7 +79,7 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discover how Modern Matchmaker assesses compatibility, recommends meaningful matches, and offers an alternative to traditional dating and matchmaking..
+        ///   Looks up a localized string similar to Learn how Modern Matchmaker uses your values, personality, lifestyle, preferences, and relationship goals to help you discover more compatible people..
         /// </summary>
         internal static string HowItWorks {
             get {

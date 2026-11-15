@@ -250,7 +250,7 @@ namespace MM.WEB.Translations.Module {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now that you know how it works, take the first step toward finding a compatible partner..
+        ///   Looks up a localized string similar to Ready to approach dating with more intention? Create your profile and take the first step toward more compatible connections..
         /// </summary>
         public static string HowItWorksCall2 {
             get {
