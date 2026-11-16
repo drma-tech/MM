@@ -42,17 +42,15 @@ public class PaymentWebhookFunction(CosmosMainRepository repo, IHostEnvironment 
         var client = results.LastOrDefault() ?? throw new UnhandledException($"client null - originalTransactionId:{originalTransactionId}");
         var sub = client.GetPurchase(originalTransactionId, PaymentProvider.Apple);
 
+        //TODO: review this, as we dont deal with subscriptions anymore (sparks need a specific value)
         switch (notification.NotificationType.ToUpperInvariant())
         {
             case "SUBSCRIBED":
             case "DID_RENEW":
             case "DID_RECOVER":
             case "OFFER_REDEEMED":
-                if (sub.ProcessedTransactionIds.Add(transaction.TransactionId))
-                {
-                    sub.Sparks = 10;
-                    client.Sparks += 10;
-                }
+                sub.Sparks = 10;
+                client.Sparks += 10;
                 break;
 
             case "EXPIRED":

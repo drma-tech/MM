@@ -67,8 +67,6 @@ public class AuthPurchase : EqualityBase<AuthPurchase>
     public string? SessionId { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
     public int Sparks { get; set; }
-    public HashSet<string> ProcessedTransactionIds { get; set; } = new(StringComparer.Ordinal);
-
     public PaymentProvider? Provider { get; set; }
     public AccountProduct? Product { get; set; }
 
