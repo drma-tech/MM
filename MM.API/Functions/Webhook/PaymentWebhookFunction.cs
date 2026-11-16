@@ -42,13 +42,25 @@ public class PaymentWebhookFunction(CosmosMainRepository repo, IHostEnvironment 
         var client = results.LastOrDefault() ?? throw new UnhandledException($"client null - originalTransactionId:{originalTransactionId}");
         var sub = client.GetPurchase(originalTransactionId, PaymentProvider.Apple);
 
-        if (string.Equals(notification.NotificationType, "REFUND", StringComparison.OrdinalIgnoreCase) || string.Equals(notification.NotificationType, "REVOKE", StringComparison.OrdinalIgnoreCase))
+        switch (notification.NotificationType.ToUpperInvariant())
         {
-            sub.Sparks = 0; //disable immediately
-        }
-        else
-        {
-            sub.Sparks = 10;
+            case "SUBSCRIBED":
+            case "DID_RENEW":
+            case "DID_RECOVER":
+            case "OFFER_REDEEMED":
+                if (sub.ProcessedTransactionIds.Add(transaction.TransactionId))
+                {
+                    sub.Sparks = 10;
+                    client.Sparks += 10;
+                }
+                break;
+
+            case "EXPIRED":
+            case "GRACE_PERIOD_EXPIRED":
+            case "REFUND":
+            case "REVOKE":
+                sub.Sparks = 0;
+                break;
         }
 
         client.UpdatePurchase(sub);
