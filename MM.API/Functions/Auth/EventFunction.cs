@@ -63,7 +63,7 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
         HttpRequestData req, Origin origin, string id, CancellationToken cancellationToken)
     {
         var userId = await req.GetUserIdAsync();
-        var userProfile = await ProfileHelper.GetProfile(repoOff, repoOn, userId, cancellationToken) ??
+        var userProfile = await ProfileHelper.GetProfile(null, repoOn, userId, cancellationToken) ??
                           throw new NotificationException("user not found");
 
         //add like to partner
@@ -77,7 +77,7 @@ public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffReposit
 
         if (interaction.Status == InteractionStatus.Match)
         {
-            var partnerProfile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken) ??
+            var partnerProfile = await ProfileHelper.GetProfile(null, repoOn, id, cancellationToken) ??
                                  throw new NotificationException("user not found");
 
             var userLikes = await repoGen.GetMyLikes(userId, cancellationToken);

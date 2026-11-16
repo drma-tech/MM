@@ -92,6 +92,9 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
     public async Task<HttpResponseData?> LastRegionUsers(
         [HttpTrigger(AuthorizationLevel.Anonymous, Method.Get, Route = "public/cache/last-region-users/{mode}/{country}")] HttpRequestData req, string mode, string country, CancellationToken cancellationToken)
     {
+        mode.ValidateParameter("mode", allowedValues: ["full"]);
+        country.ValidateParameter("country", allowedValues: [.. EnumHelper.GetValues<Country>().Select(c => c.ToString())]);
+
         var cacheKey = $"last-region-users-{mode}-{country.ToLowerInvariant()}";
 
         var doc = await KeyedAsyncLock.GetOrCreateAsync(

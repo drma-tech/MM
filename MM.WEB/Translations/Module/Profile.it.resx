@@ -192,7 +192,6 @@
   <data name="HeroCall" xml:space="preserve">
     <value>Inizia il tuo viaggio alla ricerca del tuo partner ideale</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="HeroNote" xml:space="preserve">
     <value>Più che appuntamenti. Un'esperienza di matchmaking costruita attorno alla compatibilità, ai valori condivisi e alle relazioni significative.</value>
   </data>
@@ -231,9 +230,6 @@
   </data>
   <data name="OptionalSection" xml:space="preserve">
     <value>Altro (facoltativo)</value>
-  </data>
-  <data name="PartnerProfileNotAvailable" xml:space="preserve">
-    <value>Il profilo del tuo partner non è ancora disponibile</value>
   </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
     <value>Questo processo viene migliorato continuamente. Per segnalare un errore o suggerire un miglioramento, invia un ticket al nostro team di assistenza.</value>

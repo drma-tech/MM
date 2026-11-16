@@ -11,12 +11,11 @@ namespace MM.API.Functions.Auth;
 
 public static class ProfileHelper
 {
-    public static async Task<ProfileModel?> GetProfile(CosmosProfileOffRepository repoOff,
-        CosmosProfileOnRepository repoOn, string? userId, CancellationToken cancellationToken)
+    public static async Task<ProfileModel?> GetProfile(CosmosProfileOffRepository? repoOff, CosmosProfileOnRepository repoOn, string? userId, CancellationToken cancellationToken)
     {
         //todo: on second phase, exchange to ON by default
 
-        var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken);
+        var profile = repoOff != null ? await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) : null;
 
         profile ??= await repoOn.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken);
 
@@ -134,7 +133,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         [HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "profile/get-view/{id}")] HttpRequestData req, string id, CancellationToken cancellationToken)
     {
         //var userId = await req.GetUserIdAsync(cancellationToken);
-        var profile = await ProfileHelper.GetProfile(repoOff, repoOn, id, cancellationToken);
+        var profile = await ProfileHelper.GetProfile(null, repoOn, id, cancellationToken);
 
         if (profile == null) return null;
 
@@ -142,6 +141,10 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         profile.BirthDate = null;
 
         profile.Gallery = null; //todo: temporary
+
+        //todo: only show this after matching
+        profile.NetWorth = null;
+        profile.AnnualIncome = null;
 
         //var userSettings = await _repoGen.Get<SettingModel>(DocumentType.Setting, userId, cancellationToken);
 
@@ -186,6 +189,7 @@ public class ProfileFunction(CosmosMainRepository repoGen, CosmosProfileOffRepos
         var result = await validator.ValidateAsync(body, options => options.IncludeRuleSets("BASIC"), cancellation: cancellationToken);
         if (!result.IsValid) throw new NotificationException(result.Errors[0].ErrorMessage);
 
+        //todo: it cannot save the whole body. need to validate everything and save only what the screens sends.
         return await repoOff.UpsertItemAsync(body);
     }
 

@@ -134,12 +134,13 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         var ProfileValidator = new ProfileValidation();
         var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
 
-        if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
-        {
-            throw new NotificationException(
-                "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
-            );
-        }
+        //todo: if you are in a open relacionship, you can make your profile public. check how to solve this.
+        //if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
+        //{
+        //    throw new NotificationException(
+        //        "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
+        //    );
+        //}
 
         var filter = await repo.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken) ?? throw new NotificationException("filter not found");
         var FilterValidator = new FilterValidation();

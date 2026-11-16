@@ -98,6 +98,8 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         var userId = await req.GetUserIdAsync();
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
+        if (!principal.StripeCustomerId.Empty()) throw new UnhandledException("Stripe customer already exists");
+
         var customer = await new Stripe.CustomerService().CreateAsync(new Stripe.CustomerCreateOptions
         {
             Name = principal.DisplayName,
@@ -127,6 +129,11 @@ public class PaymentFunction(CosmosMainRepository repo, IHttpClientFactory facto
         var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
         if (principal.StripeCustomerId.Empty()) throw new UnhandledException("Stripe customer not available");
+
+        if (!string.Equals(priceId, ApiStartup.Configurations.Stripe!.Phase1!.Price, StringComparison.OrdinalIgnoreCase))
+        {
+            throw new UnhandledException("Invalid price id");
+        }
 
         var options = new SessionCreateOptions
         {

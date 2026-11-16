@@ -231,9 +231,6 @@
   <data name="OptionalSection" xml:space="preserve">
     <value>Other (optional)</value>
   </data>
-  <data name="PartnerProfileNotAvailable" xml:space="preserve">
-    <value>Your partner's profile is not yet available</value>
-  </data>
   <data name="PopulateFilterDescription" xml:space="preserve">
     <value>This process is continually improving. To report an error or suggest an improvement, please open a support ticket.</value>
   </data>

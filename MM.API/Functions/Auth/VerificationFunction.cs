@@ -42,6 +42,13 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var url = req.GetQueryParameter("url");
         var email = req.GetQueryParameter("email", required: false);
 
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+
+        if (!principal.HasSparks(1))
+        {
+            throw new NotificationException("You need at least 1 Spark to verify your identity.");
+        }
+
         //var safety = await repoSafety.Get<SafetyModel>(userId, cancellationToken);
         //using var faceStream = await storageHelper.GetSafetyPhoto(SafetyType.Gallery, safety?.GalleryPhotoId, cancellationToken) ?? throw new NotificationException("validation photo not available");
         //var image64 = await faceStream.ConvertFromStreamToBase64Async();
@@ -65,8 +72,6 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
 
         var data = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
         var verificationUrl = data.GetProperty("url").GetString() ?? throw new UnhandledException("url missing");
-
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
 
         principal.Events.Add(new Event("Didit", $"Session created with URL = {verificationUrl}", ip));
 

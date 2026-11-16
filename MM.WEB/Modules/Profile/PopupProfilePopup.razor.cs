@@ -64,7 +64,7 @@ namespace MM.WEB.Modules.Profile
 
                 if (View == null)
                 {
-                    await State.ShowError.Invoke(Translations.Module.Profile.PartnerProfileNotAvailable);
+                    await State.ShowError.Invoke(Translations.Module.Profile.ProfileNotAvailable);
                     return;
                 }
 
