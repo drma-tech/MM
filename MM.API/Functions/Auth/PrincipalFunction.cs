@@ -42,7 +42,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
 
         await req.ValidateUser(body.UserId, cancellationToken);
 
-        var ip = req.GetUserIP(includePort: false) ?? throw new UnhandledException("Failed to retrieve IP");
+        var ip = req.GetUserIP(includePort: false) ?? throw new InvestigationException("Failed to retrieve IP");
 
         foreach (var item in body.Events.Where(w => w.Ip.Empty()))
         {
@@ -96,12 +96,17 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         var userId = await req.GetUserIdAsync();
         var ip = req.GetUserIP(includePort: true);
 
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("Client null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("Client null");
 
         var app = req.GetQueryParameter("app", required: false);
         var msg = req.GetQueryParameter("msg", required: false);
 
         principal.Events.Add(new Event(app, msg, ip));
+
+        if (principal.Events.Count > 10)
+        {
+            SentrySdk.CaptureMessage("Too many events for principal. Investigation needed.");
+        }
 
         return await repo.UpsertItemAsync(principal);
     }
@@ -163,7 +168,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         await repoOn.UpsertItemAsync(profile);
         await repoOff.DeleteItemAsync<ProfileModel>(new ProfileIdentity(profile.Id));
 
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("AuthPrincipal is null");
         principal.PublicProfile = true;
 
         return await repo.UpsertItemAsync(principal);
@@ -179,7 +184,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         await repoOff.UpsertItemAsync(profile);
         await repoOn.DeleteItemAsync<ProfileModel>(new ProfileIdentity(userId));
 
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("AuthPrincipal is null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("AuthPrincipal is null");
         principal.PublicProfile = false;
 
         return await repo.UpsertItemAsync(principal);
@@ -191,7 +196,7 @@ public static class PrincipalHelper
     public static async Task DeleteUser(CosmosMainRepository repo, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, CosmosSafetyRepository repoSafety,
         IHttpClientFactory factory, StorageHelper storageHelper, string? userId, bool deleteClerk, CancellationToken cancellationToken)
     {
-        if (userId.Empty()) throw new UnhandledException("UserId is empty");
+        if (userId.Empty()) throw new InvestigationException("UserId is empty");
 
         var myPrincipal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
         if (myPrincipal != null)

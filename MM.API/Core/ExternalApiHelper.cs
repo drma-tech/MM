@@ -18,7 +18,7 @@ public static class ExternalApiHelper
     {
         var response = await http.GetAsync(requestUri, cancellationToken);
 
-        if (!response.IsSuccessStatusCode) throw new UnhandledException(response.ReasonPhrase);
+        if (!response.IsSuccessStatusCode) throw new InvestigationException(response.ReasonPhrase);
 
         return await response.Content.ReadFromJsonAsync<T>(cancellationToken);
     }

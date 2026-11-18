@@ -37,7 +37,7 @@ public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.
 
     public void UpdatePurchase(AuthPurchase purchase, bool validateId = true)
     {
-        if (validateId && purchase.PurchaseId.Empty()) throw new UnhandledException("purchase id is null");
+        if (validateId && purchase.PurchaseId.Empty()) throw new InvestigationException("purchase id is null");
 
         var sub = AuthPurchases.SingleOrDefault(sub => string.Equals(sub.PurchaseId, purchase.PurchaseId, StringComparison.OrdinalIgnoreCase)) ?? throw new NotificationException("Subscription not found.");
 

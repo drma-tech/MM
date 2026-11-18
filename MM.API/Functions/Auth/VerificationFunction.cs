@@ -42,7 +42,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var url = req.GetQueryParameter("url");
         var email = req.GetQueryParameter("email", required: false);
 
-        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new UnhandledException("principal null");
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken) ?? throw new InvestigationException("principal null");
 
         if (!principal.HasSparks(1))
         {
@@ -71,7 +71,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         response.EnsureSuccessStatusCode();
 
         var data = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
-        var verificationUrl = data.GetProperty("url").GetString() ?? throw new UnhandledException("url missing");
+        var verificationUrl = data.GetProperty("url").GetString() ?? throw new InvestigationException("url missing");
 
         principal.Events.Add(new Event("Didit", $"Session created with URL = {verificationUrl}", ip));
 
@@ -104,8 +104,8 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
             return unauthorized;
         }
 
-        var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new UnhandledException("invalid payload");
-        var userId = payload.vendor_data ?? throw new UnhandledException("vendor_data missing");
+        var payload = JsonSerializer.Deserialize<DiditResponse>(bodyRaw, JsonSerializerOptions) ?? throw new InvestigationException("invalid payload");
+        var userId = payload.vendor_data ?? throw new InvestigationException("vendor_data missing");
 
         if (string.Equals(payload.status, "Not Started", StringComparison.OrdinalIgnoreCase)) return response;
         if (string.Equals(payload.status, "In Progress", StringComparison.OrdinalIgnoreCase)) return response;
@@ -116,8 +116,8 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
 
         await Task.WhenAll(principalTask, validationTask);
 
-        var principal = await principalTask ?? throw new UnhandledException("principal null");
-        var validation = await validationTask ?? throw new UnhandledException("validation null");
+        var principal = await principalTask ?? throw new InvestigationException("principal null");
+        var validation = await validationTask ?? throw new InvestigationException("validation null");
 
         principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
 
@@ -143,10 +143,10 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var user = payload.decision?.id_verifications?.LastOrDefault();
         SafetyModel? safety = null;
 
-        if (user == null) throw new UnhandledException("user not found");
-        if (user.nationality == null) throw new UnhandledException("nationality not found");
-        if (user.date_of_birth == null) throw new UnhandledException("date_of_birth not found");
-        if (user.full_name == null) throw new UnhandledException("full_name not found");
+        if (user == null) throw new InvestigationException("user not found");
+        if (user.nationality == null) throw new InvestigationException("nationality not found");
+        if (user.date_of_birth == null) throw new InvestigationException("date_of_birth not found");
+        if (user.full_name == null) throw new InvestigationException("full_name not found");
 
         safety = await repoSafety.ReadItemAsync<SafetyModel>(new SafetyIdentity(userId), cancellationToken);
         safety ??= new SafetyModel(userId);
