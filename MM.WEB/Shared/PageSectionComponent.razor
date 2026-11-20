@@ -135,13 +135,13 @@
                             <MudSpacer />
                             <MudTooltip Text="Official Website">
                                 @if (LinkClick.HasDelegate)
-                            {
-                                <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Link" OnClick="@(() => LinkClick.InvokeAsync())" Size="Size.Medium" />
-                            }
-                            else
-                            {
-                                <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Link" Href="@Link" Target="_blank" Rel="noopener" Size="Size.Medium" />
-                            }
+                                {
+                                    <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Link" OnClick="@(() => LinkClick.InvokeAsync())" Size="Size.Medium" />
+                                }
+                                else
+                                {
+                                    <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Link" Href="@Link" Target="_blank" Rel="noopener" Size="Size.Medium" />
+                                }
                             </MudTooltip>
                         }
                     </MudToolBar>
