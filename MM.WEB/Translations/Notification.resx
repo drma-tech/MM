@@ -123,7 +123,10 @@
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>
-  <data name="ExternalWebsiteNotice" xml:space="preserve">
+  <data name="ExternalWebsiteMessage" xml:space="preserve">
+    <value>You are leaving {0} and opening an external website:</value>
+  </data>
+  <data name="ExternalWebsiteTitle" xml:space="preserve">
     <value>External Website Notice</value>
   </data>
   <data name="FeatureUnavailableDescription" xml:space="preserve">

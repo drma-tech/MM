@@ -79,11 +79,20 @@ namespace MM.WEB.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are leaving {0} and opening an external website:.
+        /// </summary>
+        public static string ExternalWebsiteMessage {
+            get {
+                return ResourceManager.GetString("ExternalWebsiteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to External Website Notice.
         /// </summary>
-        public static string ExternalWebsiteNotice {
+        public static string ExternalWebsiteTitle {
             get {
-                return ResourceManager.GetString("ExternalWebsiteNotice", resourceCulture);
+                return ResourceManager.GetString("ExternalWebsiteTitle", resourceCulture);
             }
         }
         
