@@ -308,7 +308,7 @@
                         <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.MoneyPersonality_Name" Description="@ProfilePersonalityModel.MoneyPersonality_Description" TValue="MoneyPersonality?" TEnum="MoneyPersonality" @bind-SelectedValue="@profile.MoneyPersonality"
-                                             CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://moneytype.hermoney.com/">
+                                             CssIcon="@IconsFA.Solid.Icon("wallet").Font" HelpLink="https://moneytype.hermoney.com/" HelpLinkClick="@(url => OpenExternalWebsite(url))">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
@@ -318,24 +318,24 @@
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.RelationshipPersonality_Name" Description="@ProfilePersonalityModel.RelationshipPersonality_Description" TValue="RelationshipPersonality?" TEnum="RelationshipPersonality" @bind-SelectedValue="@profile.RelationshipPersonality"
-                                             CssIcon="@IconsFA.Solid.Icon("people-pulling").Font" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/">
+                                             CssIcon="@IconsFA.Solid.Icon("people-pulling").Font" HelpLink="https://theanatomyoflove.com/relationship-quizzes/helen-fishers-personality-test/" HelpLinkClick="@(url => OpenExternalWebsite(url))">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.MBTI_Name" Description="@ProfilePersonalityModel.MBTI_Description" TValue="MyersBriggsTypeIndicator?" TEnum="MyersBriggsTypeIndicator" @bind-SelectedValue="@profile.MBTI"
-                                             CssIcon="@IconsFA.Solid.Icon("user-tag").Font" HelpLink="https://www.16personalities.com/" ShowGroup="true">
+                                             CssIcon="@IconsFA.Solid.Icon("user-tag").Font" HelpLink="https://www.16personalities.com/" HelpLinkClick="@(url => OpenExternalWebsite(url))" ShowGroup="true">
                                 </FieldSelect>
                             </MudItem>
                         </MudGrid>
                         <MudGrid Spacing="@CssHelper.SpaceSmall">
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.LoveLanguage_Name" Description="@ProfilePersonalityModel.LoveLanguage_Description" TValue="LoveLanguage?" TEnum="LoveLanguage" @bind-SelectedValue="@profile.LoveLanguage"
-                                             CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language">
+                                             CssIcon="@IconsFA.Solid.Icon("hand-holding-heart").Font" HelpLink="https://5lovelanguages.com/quizzes/love-language" HelpLinkClick="@(url => OpenExternalWebsite(url))">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">
                                 <FieldSelect Name="@ProfilePersonalityModel.SexPersonality_Name" Description="@ProfilePersonalityModel.SexPersonality_Description" TValue="SexPersonality?" TEnum="SexPersonality" @bind-SelectedValue="@profile.SexPersonality"
-                                             CssIcon="@IconsFA.Solid.Icon("heart").Font" HelpLink="https://vmtherapy.com/sex-personality-type">
+                                             CssIcon="@IconsFA.Solid.Icon("heart").Font" HelpLink="https://vmtherapy.com/sex-personality-type" HelpLinkClick="@(url => OpenExternalWebsite(url))">
                                 </FieldSelect>
                             </MudItem>
                             <MudItem xs="12">

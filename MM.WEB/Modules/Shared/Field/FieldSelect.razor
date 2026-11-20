@@ -118,9 +118,18 @@
     @if (!string.IsNullOrEmpty(HelpLink))
     {
         <MudText Typo="Typo.caption" Style="margin-left: calc(1.5rem + 14px)">
-            <MudLink href="@HelpLink" target="_blank" rel="nofollow" Typo="Typo.caption" Color="Color.Tertiary">
+            @if (HelpLinkClick.HasDelegate)
+            {
+                <MudLink OnClick="@(() => HelpLinkClick.InvokeAsync(HelpLink))" Typo="Typo.caption" Color="Color.Tertiary">
+                    @(new Uri(HelpLink).Host)
+                </MudLink>
+            }
+            else
+            {
+                <MudLink href="@HelpLink" target="_blank" rel="nofollow" Typo="Typo.caption" Color="Color.Tertiary">
                 @(new Uri(HelpLink).Host)
             </MudLink>
+            }
         </MudText>
     }
     @if (!string.IsNullOrEmpty(CustomInfo))
