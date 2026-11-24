@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Translations.Model;
+using MM.Common.Translations.Model;
 
 namespace MM.WEB.Modules
 {
@@ -18,9 +18,11 @@ namespace MM.WEB.Modules
             public string? Tips { get; set; }
         }
 
+#pragma warning disable MA0051 // Method is too long
         protected override async Task LoadStaticDataAsync()
+#pragma warning restore MA0051 // Method is too long
         {
-            if (CategoryEnum == MM.Shared.Enums.Category.BASIC)
+            if (CategoryEnum == MM.Common.Enums.Category.BASIC)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfileBasicModel.Location_Name, Description = ProfileBasicModel.Location_Why, Tips = ProfileBasicModel.Location_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileBasicModel.Languages_Name, Description = ProfileBasicModel.Languages_Why, Tips = ProfileBasicModel.Languages_Tips });
@@ -29,7 +31,7 @@ namespace MM.WEB.Modules
                 Fields.Add(new EnumFieldObject { Name = ProfileBasicModel.GenderIdentity_Name, Description = ProfileBasicModel.GenderIdentities_Why, Tips = ProfileBasicModel.GenderIdentities_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileBasicModel.SexualOrientation_Name, Description = ProfileBasicModel.SexualOrientations_Why, Tips = ProfileBasicModel.SexualOrientations_Tips });
             }
-            else if (CategoryEnum == MM.Shared.Enums.Category.BIO)
+            else if (CategoryEnum == MM.Common.Enums.Category.BIO)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfileBioModel.Ethnicity_Name, Description = ProfileBioModel.Ethnicity_Why, Tips = ProfileBioModel.Ethnicity_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileBioModel.BodyType_Name, Description = ProfileBioModel.BodyType_Why, Tips = ProfileBioModel.BodyType_Tips });
@@ -38,7 +40,7 @@ namespace MM.WEB.Modules
                 Fields.Add(new EnumFieldObject { Name = ProfileBioModel.Neurodiversity_Name, Description = ProfileBioModel.Neurodiversity_Why, Tips = ProfileBioModel.Neurodiversity_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileBioModel.Disabilities_Name, Description = ProfileBioModel.Disabilities_Why, Tips = ProfileBioModel.Disabilities_Tips });
             }
-            else if (CategoryEnum == MM.Shared.Enums.Category.LIFESTYLE)
+            else if (CategoryEnum == MM.Common.Enums.Category.LIFESTYLE)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfileLifestyleModel.Drink_Name, Description = ProfileLifestyleModel.Drink_Why, Tips = ProfileLifestyleModel.Drink_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileLifestyleModel.Smoke_Name, Description = ProfileLifestyleModel.Smoke_Why, Tips = ProfileLifestyleModel.Smoke_Tips });
@@ -54,7 +56,7 @@ namespace MM.WEB.Modules
                 Fields.Add(new EnumFieldObject { Name = ProfileLifestyleModel.NetWorth_Name, Description = ProfileLifestyleModel.NetWorth_Why, Tips = ProfileLifestyleModel.NetWorth_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileLifestyleModel.AnnualIncome_Name, Description = ProfileLifestyleModel.AnnualIncome_Why, Tips = ProfileLifestyleModel.AnnualIncome_Tips });
             }
-            else if (CategoryEnum == MM.Shared.Enums.Category.PERSONALITY)
+            else if (CategoryEnum == MM.Common.Enums.Category.PERSONALITY)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfilePersonalityModel.MoneyPersonality_Name, Description = ProfilePersonalityModel.MoneyPersonality_Why, Tips = ProfilePersonalityModel.MoneyPersonality_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfilePersonalityModel.SharedSpendingStyle_Name, Description = ProfilePersonalityModel.SharedSpendingStyle_Why, Tips = ProfilePersonalityModel.SharedSpendingStyle_Tips });
@@ -63,7 +65,7 @@ namespace MM.WEB.Modules
                 Fields.Add(new EnumFieldObject { Name = ProfilePersonalityModel.LoveLanguage_Name, Description = ProfilePersonalityModel.LoveLanguage_Why, Tips = ProfilePersonalityModel.LoveLanguage_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfilePersonalityModel.SexPersonality_Name, Description = ProfilePersonalityModel.SexPersonality_Why, Tips = ProfilePersonalityModel.SexPersonality_Tips });
             }
-            else if (CategoryEnum == MM.Shared.Enums.Category.RELATIONSHIP)
+            else if (CategoryEnum == MM.Common.Enums.Category.RELATIONSHIP)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfileRelationshipModel.SharedFinances, Description = ProfileRelationshipModel.SharedFinances_Why, Tips = ProfileRelationshipModel.SharedFinances_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileRelationshipModel.ConflictResolutionStyle, Description = ProfileRelationshipModel.ConflictResolutionStyle_Why, Tips = ProfileRelationshipModel.ConflictResolutionStyle_Tips });
@@ -71,7 +73,7 @@ namespace MM.WEB.Modules
                 Fields.Add(new EnumFieldObject { Name = ProfileRelationshipModel.TimeTogetherPreference, Description = ProfileRelationshipModel.TimeTogetherPreference_Why, Tips = ProfileRelationshipModel.TimeTogetherPreference_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileRelationshipModel.OppositeSexFriendships, Description = ProfileRelationshipModel.OppositeSexFriendships_Why, Tips = ProfileRelationshipModel.OppositeSexFriendships_Tips });
             }
-            else if (CategoryEnum == MM.Shared.Enums.Category.GOAL)
+            else if (CategoryEnum == MM.Common.Enums.Category.GOAL)
             {
                 Fields.Add(new EnumFieldObject { Name = ProfileGoalModel.RelationshipIntentions, Description = ProfileGoalModel.RelationshipIntentions_Why, Tips = ProfileGoalModel.RelationshipIntentions_Tips });
                 Fields.Add(new EnumFieldObject { Name = ProfileGoalModel.Relocation, Description = ProfileGoalModel.Relocation_Why, Tips = ProfileGoalModel.Relocation_Tips });

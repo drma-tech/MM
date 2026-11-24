@@ -1,28 +1,28 @@
 ﻿@page "/{culture}/profile/data"
 @attribute [Authorize]
 
-@using BiologicalSex = MM.Shared.Enums.BiologicalSex
-@using CareerCluster = MM.Shared.Enums.CareerCluster
-@using Diet = MM.Shared.Enums.Diet
-@using Disability = MM.Shared.Enums.Disability
-@using Drink = MM.Shared.Enums.Drink
+@using BiologicalSex = MM.Common.Enums.BiologicalSex
+@using CareerCluster = MM.Common.Enums.CareerCluster
+@using Diet = MM.Common.Enums.Diet
+@using Disability = MM.Common.Enums.Disability
+@using Drink = MM.Common.Enums.Drink
 @using FluentValidation
-@using HaveChildren = MM.Shared.Enums.HaveChildren
-@using Height = MM.Shared.Enums.Height
-@using LoveLanguage = MM.Shared.Enums.LoveLanguage
-@using MM.Shared.Models.Profile
-@using MM.Shared.Translations.Model
+@using HaveChildren = MM.Common.Enums.HaveChildren
+@using Height = MM.Common.Enums.Height
+@using LoveLanguage = MM.Common.Enums.LoveLanguage
+@using MM.Common.Models.Profile
+@using MM.Common.Translations.Model
 @using Microsoft.AspNetCore.Authorization
-@using MoneyPersonality = MM.Shared.Enums.MoneyPersonality
-@using MyersBriggsTypeIndicator = MM.Shared.Enums.MyersBriggsTypeIndicator
-@using Neurodiversity = MM.Shared.Enums.Neurodiversity
-@using RelationshipPersonality = MM.Shared.Enums.RelationshipPersonality
-@using SexPersonality = MM.Shared.Enums.SexPersonality
-@using SharedSpendingStyle = MM.Shared.Enums.SharedSpendingStyle
-@using Smoke = MM.Shared.Enums.Smoke
-@using TravelFrequency = MM.Shared.Enums.TravelFrequency
-@using WantChildren = MM.Shared.Enums.WantChildren
-@using static MM.Shared.Core.Helper.ProfileHelper
+@using MoneyPersonality = MM.Common.Enums.MoneyPersonality
+@using MyersBriggsTypeIndicator = MM.Common.Enums.MyersBriggsTypeIndicator
+@using Neurodiversity = MM.Common.Enums.Neurodiversity
+@using RelationshipPersonality = MM.Common.Enums.RelationshipPersonality
+@using SexPersonality = MM.Common.Enums.SexPersonality
+@using SharedSpendingStyle = MM.Common.Enums.SharedSpendingStyle
+@using Smoke = MM.Common.Enums.Smoke
+@using TravelFrequency = MM.Common.Enums.TravelFrequency
+@using WantChildren = MM.Common.Enums.WantChildren
+@using static MM.Common.Core.Helper.ProfileHelper
 
 @inherits PageCore<ProfileDataPage>
 

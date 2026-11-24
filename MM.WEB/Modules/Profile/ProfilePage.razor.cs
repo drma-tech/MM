@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
-using MM.WEB.Api.Module.Cosmos.Authenticated;
+using MM.Common.Models.Profile;
+using MM.WEB.Api.Modules.Cosmos.Authenticated;
 
 namespace MM.WEB.Modules.Profile
 {

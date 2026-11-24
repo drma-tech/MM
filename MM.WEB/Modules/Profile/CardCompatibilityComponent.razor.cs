@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
+using MM.Common.Models.Profile;
 using MM.WEB.Core.Models;
 using MudBlazor;
 

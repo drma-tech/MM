@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
-using MM.WEB.Modules.Auth;
+using MM.Common.Models.Profile;
 using MM.WEB.Modules.Help;
 using MM.WEB.Modules.Profile;
 using MM.WEB.Modules.Subscription;
 using MudBlazor;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Core.Helper;
 
@@ -24,7 +23,7 @@ public static class PopupHelper
         await service.ShowAsync<SelectPicturePopup>("Picture", parameters, Options(MaxWidth.Medium));
     }
 
-    public static async Task OpenPopupProfile(this IDialogService service, MM.Shared.Enums.Origin origin, string? userId, string? idUserView,
+    public static async Task OpenPopupProfile(this IDialogService service, Common.Enums.Origin origin, string? userId, string? idUserView,
         ProfileModel? fakeView = null, bool onlyCompatibility = false)
     {
         var parameters = new DialogParameters<PopupProfilePopup>

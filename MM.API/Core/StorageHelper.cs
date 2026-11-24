@@ -1,7 +1,7 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Extensions.Configuration;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.API.Core;
 

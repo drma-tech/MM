@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Dashboard;
+using MM.Common.Models.Dashboard;
 using MudBlazor;
 
 namespace MM.WEB.Modules

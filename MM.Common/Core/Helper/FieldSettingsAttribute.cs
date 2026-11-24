@@ -1,0 +1,13 @@
+﻿namespace MM.Common.Core.Helper;
+
+[AttributeUsage(AttributeTargets.Field)]
+public class FieldSettingsAttribute(string name) : Attribute
+{
+    public string Name { get; set; } = name;
+    public string? Group { get; set; }
+    public string? Placeholder { get; set; }
+    public string? Description { get; set; }
+    public string? WhyImportant { get; set; }
+    public string? Tips { get; set; }
+    public Type? ResourceType { get; set; }
+}

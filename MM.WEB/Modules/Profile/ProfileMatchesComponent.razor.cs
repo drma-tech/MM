@@ -1,7 +1,7 @@
 using Bogus;
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
-using MM.WEB.Api.Module.Cosmos.Authenticated;
+using MM.Common.Models.Profile;
+using MM.WEB.Api.Modules.Cosmos.Authenticated;
 
 namespace MM.WEB.Modules.Profile
 {
@@ -38,7 +38,9 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
+#pragma warning disable MA0051 // Method is too long
         private async Task SimulateMatchesCore()
+#pragma warning restore MA0051 // Method is too long
         {
             if (Profile == null)
             {
@@ -130,12 +132,12 @@ namespace MM.WEB.Modules.Profile
             }
         }
 
-        private async Task OpenProfile(string userId)
+        private async Task OpenProfile(string? userId)
         {
             try
             {
-                var fakeProfile = fakeProfiles.SingleOrDefault(profile => profile.Id == userId);
-                await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Match, AppStateStatic.UserId, userId, fakeProfile);
+                var fakeProfile = fakeProfiles.SingleOrDefault(profile => string.Equals(profile.Id, userId, StringComparison.OrdinalIgnoreCase));
+                await DialogService.OpenPopupProfile(Origin.Match, AppStateStatic.UserId, userId, fakeProfile);
             }
             catch (Exception ex)
             {

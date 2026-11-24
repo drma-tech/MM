@@ -1,8 +1,8 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Auth;
-using MM.Shared.Models.Job;
+using MM.Common.Core.Types;
+using MM.Common.Models.Auth;
+using MM.Common.Models.Job;
 
 namespace MM.API.Functions.Public;
 

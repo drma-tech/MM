@@ -1,7 +1,7 @@
-﻿using MM.Shared.Models.Profile;
-using MM.Shared.Requests;
+﻿using MM.Common.Models.Profile;
+using MM.Common.Requests;
 using MM.WEB.Api.Core;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Api;
 

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
-using MM.Shared.Requests;
+using MM.Common.Models.Profile;
+using MM.Common.Requests;
 using MudBlazor;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Modules.Profile
 {

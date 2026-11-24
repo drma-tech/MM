@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.WEB.Modules.Profile
 {

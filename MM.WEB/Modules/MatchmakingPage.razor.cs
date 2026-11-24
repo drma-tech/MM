@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using MM.Shared.Models.Dashboard;
+using MM.Common.Models.Dashboard;
 
 namespace MM.WEB.Modules
 {
@@ -40,11 +40,11 @@ namespace MM.WEB.Modules
             return true;
         }
 
-        private async Task OpenProfile(string userId)
+        private async Task OpenProfile(string? userId)
         {
             try
             {
-                await DialogService.OpenPopupProfile(MM.Shared.Enums.Origin.Highlight, AppStateStatic.UserId, userId, null, true);
+                await DialogService.OpenPopupProfile(Origin.Highlight, AppStateStatic.UserId, userId, null, true);
             }
             catch (Exception ex)
             {

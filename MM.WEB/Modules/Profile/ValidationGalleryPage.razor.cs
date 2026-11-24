@@ -2,7 +2,7 @@ using KristofferStrube.Blazor.MediaCaptureStreams;
 using KristofferStrube.Blazor.WebIDL.Exceptions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using MM.Shared.Models.Profile;
+using MM.Common.Models.Profile;
 using MudBlazor;
 
 namespace MM.WEB.Modules.Profile
@@ -70,7 +70,7 @@ namespace MM.WEB.Modules.Profile
             {
                 await AppStateStatic.ProcessingStarted.PublishAsync();
                 var email = AppStateStatic.User?.Claims.SingleOrDefault(c => string.Equals(c.Type, "email", StringComparison.Ordinal))?.Value;
-                Validation = await ValidationApi.UploadPhotoValidation(new MM.Shared.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, Cts.Token);
+                Validation = await ValidationApi.UploadPhotoValidation(new MM.Common.Requests.PhotoValidationRequest { Stream = picture ?? Picture, Email = email }, Cts.Token);
                 await AppStateStatic.ProcessingFinished.PublishAsync();
 
                 await ShowSuccess("Your photo was verified successfully.");

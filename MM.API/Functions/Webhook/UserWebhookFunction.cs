@@ -44,12 +44,9 @@ public class UserWebhookFunction(CosmosMainRepository repo, CosmosProfileOffRepo
 
         var obj = JsonSerializer.Deserialize<ClerkWebhook>(json);
 
-        if (string.Equals(obj?.type, "user.deleted", StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(obj?.type, "user.deleted", StringComparison.OrdinalIgnoreCase) && obj?.data?.deleted == true)
         {
-            if (obj?.data?.deleted == true)
-            {
-                await PrincipalHelper.DeleteUser(repo, repoOff, repoOn, repoTrash, repoSafety, factory, storageHelper, obj.data.id, deleteClerk: false, cancellationToken);
-            }
+            await PrincipalHelper.DeleteUser(repo, repoOff, repoOn, repoTrash, repoSafety, factory, storageHelper, obj.data.id, deleteClerk: false, cancellationToken);
         }
 
         return await req.CreateResponse(HttpStatusCode.OK, "webhook received", cancellationToken);

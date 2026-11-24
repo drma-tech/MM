@@ -1,8 +1,8 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Profile;
+using MM.Common.Core.Types;
+using MM.Common.Models.Profile;
 
 namespace MM.API.Functions.Auth;
 
@@ -45,7 +45,7 @@ public static class EventHelper
     }
 }
 
-public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn)
+public class EventFunction(CosmosMainRepository repoGen, CosmosProfileOnRepository repoOn)
 {
     [Function("InteractionGet")]
     public async Task<HttpResponseData?> InteractionGet([HttpTrigger(AuthorizationLevel.Function, Method.Get, Route = "interaction/get/{id}")]

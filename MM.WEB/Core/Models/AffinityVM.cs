@@ -1,4 +1,4 @@
-﻿using MM.WEB.Core.Enum;
+﻿using MM.WEB.Core.Enums;
 
 namespace MM.WEB.Core.Models;
 

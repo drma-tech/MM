@@ -1,6 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.Shared.Models.Subscription;
+using MM.Common.Models.Subscription;
 using Stripe.Checkout;
 using System.Net;
 

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Auth;
-using MM.Shared.Models.Dashboard;
-using MM.Shared.Models.Subscription;
+using MM.Common.Models.Auth;
+using MM.Common.Models.Dashboard;
+using MM.Common.Models.Subscription;
 
 namespace MM.WEB.Modules.Subscription
 {

@@ -1,4 +1,4 @@
-﻿using MM.Shared.Models.Profile;
+﻿using MM.Common.Models.Profile;
 
 namespace MM.WEB.Core;
 

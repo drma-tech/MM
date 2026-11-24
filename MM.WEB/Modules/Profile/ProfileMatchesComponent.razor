@@ -2,7 +2,7 @@
 @inject MyMatchesApi MyMatchesApi
 
 @using FluentValidation
-@using MM.Shared.Models.Profile
+@using MM.Common.Models.Profile
 
 <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-check").Font" Title="@Translations.Module.Profile.Matches" Description="@Translations.Module.Profile.MatchesDesc"
                       ShowActions="MatchesState.Instance == null || MatchesState.Instance.Items.Empty()">

@@ -2,19 +2,18 @@ using Clerk.BackendAPI;
 using FluentValidation;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using MM.API.Core.Auth;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Auth;
-using MM.Shared.Models.Job;
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Profile.Core;
-using MM.Shared.Models.Safety;
+using MM.Common.Core.Types;
+using MM.Common.Models.Auth;
+using MM.Common.Models.Job;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Profile.Core;
+using MM.Common.Models.Safety;
 using System.Text;
 using System.Text.Json;
 
 namespace MM.API.Functions.Auth;
 
-public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository repoCache, CosmosSafetyRepository repoSafety, StorageHelper storageHelper,
+public class PrincipalFunction(CosmosMainRepository repo, CosmosSafetyRepository repoSafety, StorageHelper storageHelper,
     CosmosProfileOffRepository repoOff, CosmosProfileOnRepository repoOn, CosmosTrashRepository repoTrash, CosmosJobRepository repoJob, IHttpClientFactory factory)
 {
     [Function("PrincipalGet")]
@@ -101,7 +100,7 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         var app = req.GetQueryParameter("app", required: false);
         var msg = req.GetQueryParameter("msg", required: false);
 
-        principal.Events.Add(new Event(app, msg, ip));
+        principal.Events.Add(new EventItem(app, msg, ip));
 
         if (principal.Events.Count > 10)
         {
@@ -138,14 +137,6 @@ public class PrincipalFunction(CosmosMainRepository repo, CosmosCacheRepository 
         var profile = await repoOff.ReadItemAsync<ProfileModel>(new ProfileIdentity(userId), cancellationToken) ?? throw new NotificationException("profile not found");
         var ProfileValidator = new ProfileValidation();
         var ProfileValid = (await ProfileValidator.ValidateAsync(profile, options => options.IncludeAllRuleSets(), cancellationToken)).IsValid;
-
-        //todo: if you are in a open relacionship, you can make your profile public. check how to solve this.
-        //if (profile.MaritalStatus == MaritalStatus.Married || profile.MaritalStatus == MaritalStatus.CommonLawCohabiting)
-        //{
-        //    throw new NotificationException(
-        //        "You cannot make your profile public while in a committed relationship. Once your status changes, you can activate it."
-        //    );
-        //}
 
         var filter = await repo.ReadItemAsync<FilterModel>(new MainIdentity(MainType.Filter, userId), cancellationToken) ?? throw new NotificationException("filter not found");
         var FilterValidator = new FilterValidation();
@@ -198,10 +189,17 @@ public static class PrincipalHelper
     {
         if (userId.Empty()) throw new InvestigationException("UserId is empty");
 
-        var myPrincipal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
-        if (myPrincipal != null)
+        var principal = await repo.ReadItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId), cancellationToken);
+
+        if (principal != null && principal.StripeCustomerId.NotEmpty())
         {
-            await repoTrash.UpsertItemAsync(myPrincipal);
+            var service = new Stripe.CustomerService();
+            await service.DeleteAsync(principal.StripeCustomerId, cancellationToken: cancellationToken);
+        }
+
+        if (principal != null)
+        {
+            await repoTrash.UpsertItemAsync(principal);
             await repo.DeleteItemAsync<AuthPrincipal>(new MainIdentity(MainType.Principal, userId));
         }
 
@@ -270,8 +268,6 @@ public static class PrincipalHelper
         {
             await DeleteClerkUser(userId);
         }
-
-        //todo: delete stripe customer if exists
     }
 
     public static async Task DeleteClerkUser(string userId)

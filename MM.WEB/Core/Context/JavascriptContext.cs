@@ -7,7 +7,7 @@ namespace MM.WEB.Core.Context
     [JsonSerializable(typeof(string))]
     [JsonSerializable(typeof(Platform?))]
     [JsonSerializable(typeof(AppLanguage?))]
-    [JsonSerializable(typeof(MM.Shared.Enums.Region?))]
+    [JsonSerializable(typeof(MM.Common.Enums.Region?))]
     [JsonSerializable(typeof(AuthProvider))]
     [JsonSerializable(typeof(HashSet<DateTime>))]
     internal sealed partial class JavascriptContext : JsonSerializerContext

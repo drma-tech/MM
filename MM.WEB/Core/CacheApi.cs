@@ -1,4 +1,4 @@
-﻿using MM.Shared.Models.Dashboard;
+﻿using MM.Common.Models.Dashboard;
 using MM.WEB.Api.Core;
 
 namespace MM.WEB.Core;

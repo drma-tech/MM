@@ -1,7 +1,7 @@
 ﻿@page "/{culture}/profile/setting"
 
 @attribute [Authorize]
-@using MM.Shared.Models.Profile
+@using MM.Common.Models.Profile
 @using MM.WEB.Api
 @using Microsoft.AspNetCore.Authorization
 @inherits PageCore<ProfileSettingPage>
@@ -16,7 +16,7 @@
     <MudStack Row="true" Spacing="4" Breakpoint="Breakpoint.Xs">
         <MudGrid Spacing="@CssHelper.SpaceSmall">
             <MudItem xs="12">
-                <FieldSwitch Name="@MM.Shared.Translations.Model.ProfileSetting.BlindDate" Value="@context.BlindDate" ValueChanged="@((vl) => context.BlindDate = vl)" CssIcon="@IconsFA.Solid.Icon("eye-low-vision").Font"></FieldSwitch>
+                <FieldSwitch Name="@MM.Common.Translations.Model.ProfileSetting.BlindDate" Value="@context.BlindDate" ValueChanged="@((vl) => context.BlindDate = vl)" CssIcon="@IconsFA.Solid.Icon("eye-low-vision").Font"></FieldSwitch>
             </MudItem>
         </MudGrid>
     </MudStack>

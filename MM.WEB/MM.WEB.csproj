@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
@@ -48,7 +49,7 @@
 		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.2.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
+		<ProjectReference Include="..\MM.Common\MM.Common.csproj" />
 		<TrimmerRootAssembly Include="MM.WEB" />
 		<TrimmerRootAssembly Include="MM.Shared" />
 		<TrimmerRootAssembly Include="KristofferStrube.Blazor.MediaCaptureStreams" />

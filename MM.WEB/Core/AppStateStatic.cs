@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using MM.Shared.Models.Auth;
+using MM.Common.Models.Auth;
 using MudBlazor;
 using System.Security.Claims;
 

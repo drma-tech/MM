@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Profile.Core;
-using MM.WEB.Api.Module.Cosmos.Authenticated;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Profile.Core;
+using MM.WEB.Api.Modules.Cosmos.Authenticated;
 using MM.WEB.Core.Component;
 using MudBlazor;
 using MudBlazor.Utilities;
@@ -39,7 +39,9 @@ public partial class ProfileDataPage : PageCore<ProfileDataPage>
         }, Cts.Token);
     }
 
+#pragma warning disable MA0051 // Method is too long
     protected override async Task LoadAuthenticatedDataAsync(CancellationToken token)
+#pragma warning restore MA0051 // Method is too long
     {
         State.StartLoading?.Invoke(null);
 

@@ -2,11 +2,11 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.AI;
 using MM.API.Core.Auth;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Safety;
-using MM.Shared.Requests;
-using static MM.Shared.Core.Helper.ImageHelper;
+using MM.Common.Core.Types;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Safety;
+using MM.Common.Requests;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions.Auth;
 

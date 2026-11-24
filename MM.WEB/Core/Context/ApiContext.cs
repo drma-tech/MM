@@ -1,8 +1,8 @@
-﻿using MM.Shared.Models.Auth;
-using MM.Shared.Models.Dashboard;
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Subscription;
-using MM.Shared.Requests;
+﻿using MM.Common.Models.Auth;
+using MM.Common.Models.Dashboard;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Subscription;
+using MM.Common.Requests;
 using System.Text.Json.Serialization;
 
 namespace MM.WEB.Core.Context

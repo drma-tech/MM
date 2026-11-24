@@ -5,6 +5,7 @@
 		<OutputType>Exe</OutputType>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<RootNamespace>MM.API</RootNamespace>
 		<UserSecretsId>34ce4f7a-ae5c-4644-b219-86df6469e377</UserSecretsId>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
@@ -43,7 +44,7 @@
 		<PackageReference Include="Svix" Version="2.11.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\MM.Shared\MM.Shared.csproj" />
+		<ProjectReference Include="..\MM.Common\MM.Common.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="host.json">
@@ -55,7 +56,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
 		<Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
 	</ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿@inherits ComponentCore<ProfileLikesComponent>
 @inject MyLikesApi MyLikesApi
 
-@using MM.Shared.Models.Profile
+@using MM.Common.Models.Profile
 
 <PageSectionComponent Icon="@IconsFA.Solid.Icon("heart-circle-exclamation").Font" Title="@Translations.Module.Profile.Interest" Description="@Translations.Module.Profile.InterestDesc">
     <BodyFragment>
@@ -28,11 +28,11 @@
         await MyLikesApi.Get(setNewVersion: false, [LikesState], token);
     }
 
-    private async Task OpenProfile(string userId)
+    private async Task OpenProfile(string? userId)
     {
         try
         {
-            await DialogService!.OpenPopupProfile(MM.Shared.Enums.Origin.Like, AppStateStatic.UserId, userId);
+            await DialogService!.OpenPopupProfile(MM.Common.Enums.Origin.Like, AppStateStatic.UserId, userId);
         }
         catch (Exception ex)
         {

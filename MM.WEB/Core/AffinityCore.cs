@@ -1,5 +1,5 @@
-﻿using MM.Shared.Models.Profile;
-using MM.WEB.Core.Enum;
+﻿using MM.Common.Models.Profile;
+using MM.WEB.Core.Enums;
 using MM.WEB.Core.Models;
 
 namespace MM.WEB.Core;

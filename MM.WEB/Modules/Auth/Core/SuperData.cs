@@ -1,5 +1,5 @@
-﻿using MM.Shared.Models.Auth;
-using MM.Shared.Models.Profile;
+﻿using MM.Common.Models.Auth;
+using MM.Common.Models.Profile;
 
 namespace MM.WEB.Modules.Auth.Core
 {

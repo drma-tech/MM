@@ -1,0 +1,17 @@
+﻿using MM.Common.Models.Profile;
+using MM.WEB.Api.Core;
+
+namespace MM.WEB.Api.Modules.Cosmos.Authenticated;
+
+public class SettingApi(IHttpClientFactory http) : ApiCosmos<SettingModel>(http, ApiType.Authenticated, "profile-setting", [], ApiContext.Default.SettingModel)
+{
+    public async Task<SettingModel?> Get(RenderControlState<SettingModel?>[] states, CancellationToken cancellationToken)
+    {
+        return await GetAsync("profile/get-setting", setNewVersion: false, states, cancellationToken);
+    }
+
+    public async Task<SettingModel?> Update(SettingModel? obj, CancellationToken cancellationToken)
+    {
+        return await PostAsync("profile/update-setting", obj, ApiContext.Default.SettingModel, states: [], cancellationToken);
+    }
+}

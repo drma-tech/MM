@@ -1,5 +1,5 @@
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Profile.Core;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Profile.Core;
 using MudBlazor;
 using MudBlazor.Utilities;
 

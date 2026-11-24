@@ -5,7 +5,7 @@ namespace MM.WEB.Modules.Help
 {
     public partial class HelpCenterPage
     {
-        private MM.Shared.Enums.Platform? CurrentPlatform;
+        private Platform? CurrentPlatform;
         private bool DarkMode;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

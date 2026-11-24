@@ -1,8 +1,6 @@
 ﻿@page "/{culture}/help"
 @inherits PageCore<HelpCenterPage>
 
-@using MM.WEB.Modules.Auth.Core
-
 @inject PrincipalApi PrincipalApi
 @inject LoginApi LoginApi
 
@@ -175,9 +173,9 @@
         <MudGrid Spacing="@CssHelper.SpaceSmall">
             @foreach (var store in AppInfo.Stores)
             {
-                if (CurrentPlatform == MM.Shared.Enums.Platform.ios)
+                if (CurrentPlatform == MM.Common.Enums.Platform.ios)
                 {
-                    if (store.Platform == MM.Shared.Enums.Platform.play)
+                    if (store.Platform == MM.Common.Enums.Platform.play)
                     {
                         continue;
                     }

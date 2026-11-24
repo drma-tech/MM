@@ -1,7 +1,9 @@
 ﻿global using MM.API.Core;
 global using MM.API.Repository;
-global using MM.Shared.Core;
-global using MM.Shared.Core.Helper;
-global using MM.Shared.Core.Models;
-global using MM.Shared.Enums;
-global using MM.Shared.Models;
+global using MM.API.Core.Auth;
+
+global using MM.Common.Core;
+global using MM.Common.Core.Helper;
+global using MM.Common.Core.Models;
+global using MM.Common.Enums;
+global using MM.Common.Models;

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using MM.Shared.Models.Profile;
+using MM.Common.Models.Profile;
 using MM.WEB.Core.Models;
 using MudBlazor;
 
@@ -15,7 +15,7 @@ namespace MM.WEB.Modules.Profile
         [Parameter] public Action? Disliked { get; set; }
         [Parameter] public Action? Matched { get; set; }
 
-        [Parameter] public MM.Shared.Enums.Origin Origin { get; set; }
+        [Parameter] public MM.Common.Enums.Origin Origin { get; set; }
 
         [Parameter] public string? IdUserView { get; set; }
         [Parameter] public bool Fake { get; set; }

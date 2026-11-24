@@ -14,7 +14,9 @@ public static class DataHelper
     /// </summary>
     /// <param name="country"></param>
     /// <returns></returns>
+#pragma warning disable MA0051 // Method is too long
     public static Language[] GetLanguages(this Country? country)
+#pragma warning restore MA0051 // Method is too long
     {
         if (country == null) return [];
 

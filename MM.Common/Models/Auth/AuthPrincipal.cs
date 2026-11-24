@@ -1,0 +1,84 @@
+using MM.Common.Core.Types;
+using System.ComponentModel.DataAnnotations;
+
+namespace MM.Common.Models.Auth;
+
+public class AuthPrincipal(string? id) : MainDocument(new MainIdentity(MainType.Principal, id))
+{
+    public string? UserId { get; set; } = id;
+    public string? DisplayName { get; set; }
+    [DataType(DataType.EmailAddress)] public string? Email { get; set; }
+    public string? StripeCustomerId { get; set; }
+    public bool PublicProfile { get; set; }
+    public int Sparks { get; set; }
+
+    public ISet<AuthPurchase> AuthPurchases { get; set; } = new HashSet<AuthPurchase>();
+    public ISet<EventItem> Events { get; set; } = new HashSet<EventItem>();
+
+    public AuthPurchase? GetActivePurchase()
+    {
+        return AuthPurchases.LastOrDefault(p => p.Sparks > 0);
+    }
+
+    public AuthPurchase GetPurchase(string? id, PaymentProvider provider)
+    {
+        var purchase = AuthPurchases.SingleOrDefault(s => string.Equals(s.PurchaseId, id, StringComparison.Ordinal));
+        if (purchase != null) return purchase;
+
+        purchase = AuthPurchases.OrderBy(p => p.CreatedAt).LastOrDefault(p => p.Provider == provider) ?? throw new NotificationException("No purchase was found.");
+        purchase.PurchaseId = id;
+        return purchase;
+    }
+
+    public void AddPurchase(AuthPurchase purchase)
+    {
+        AuthPurchases.Add(purchase);
+    }
+
+    public void UpdatePurchase(AuthPurchase purchase, bool validateId = true)
+    {
+        if (validateId && purchase.PurchaseId.Empty()) throw new InvestigationException("purchase id is null");
+
+        var sub = AuthPurchases.SingleOrDefault(sub => string.Equals(sub.PurchaseId, purchase.PurchaseId, StringComparison.OrdinalIgnoreCase)) ?? throw new NotificationException("Subscription not found.");
+
+        sub.SessionId = purchase.SessionId;
+        sub.Provider = purchase.Provider;
+        sub.Product = purchase.Product;
+        sub.Sparks = purchase.Sparks;
+    }
+
+    public void ConsumesSparks(int qtd)
+    {
+        if (Sparks < qtd) throw new NotificationException("You don't have enough Sparks to complete this action.");
+        Sparks -= qtd;
+    }
+
+    public bool HasSparks(int qtd)
+    {
+        return Sparks >= qtd;
+    }
+
+    protected override object?[] EqualityValues => [Id];
+}
+
+public class AuthPurchase : EqualityBase<AuthPurchase>
+{
+    public string? PurchaseId { get; set; }
+    public string? SessionId { get; set; }
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public int Sparks { get; set; }
+    public PaymentProvider? Provider { get; set; }
+    public AccountProduct? Product { get; set; }
+
+    protected override object?[] EqualityValues => [PurchaseId, SessionId];
+}
+
+public class EventItem(string? origin, string? description, string? ip) : EqualityBase<EventItem>
+{
+    public string? Origin { get; set; } = origin;
+    public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
+    public string? Description { get; set; } = description;
+    public string? Ip { get; set; } = ip;
+
+    protected override object?[] EqualityValues => [Origin, Date];
+}

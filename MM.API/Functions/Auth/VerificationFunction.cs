@@ -2,14 +2,14 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using MM.API.Core.Auth;
 using MM.API.Core.Models;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Auth;
-using MM.Shared.Models.Profile;
-using MM.Shared.Models.Safety;
+using MM.Common.Core.Types;
+using MM.Common.Models.Auth;
+using MM.Common.Models.Profile;
+using MM.Common.Models.Safety;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using static MM.Shared.Core.Helper.ImageHelper;
+using static MM.Common.Core.Helper.ImageHelper;
 
 namespace MM.API.Functions.Auth;
 
@@ -67,13 +67,12 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         client.DefaultRequestHeaders.Add("x-api-key", ApiStartup.Configurations.Didit?.ApiKey);
 
         var response = await client.PostAsJsonAsync("https://verification.didit.me/v3/session/", sessionRequest, cancellationToken);
-        //var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
         response.EnsureSuccessStatusCode();
 
         var data = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
         var verificationUrl = data.GetProperty("url").GetString() ?? throw new InvestigationException("url missing");
 
-        principal.Events.Add(new Event("Didit", $"Session created with URL = {verificationUrl}", ip));
+        principal.Events.Add(new EventItem("Didit", $"Session created with URL = {verificationUrl}", ip));
 
         await repo.UpsertItemAsync(principal);
 
@@ -119,7 +118,7 @@ public class VerificationFunction(CosmosMainRepository repo, CosmosSafetyReposit
         var principal = await principalTask ?? throw new InvestigationException("principal null");
         var validation = await validationTask ?? throw new InvestigationException("validation null");
 
-        principal.Events.Add(new Event("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
+        principal.Events.Add(new EventItem("Didit (Webhooks)", $"Status = {payload.status} for SessionId = {payload.session_id}", ip));
 
         if (string.Equals(payload.status, "Approved", StringComparison.OrdinalIgnoreCase))
         {

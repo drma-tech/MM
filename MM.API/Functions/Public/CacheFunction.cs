@@ -1,10 +1,10 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Caching.Distributed;
-using MM.Shared.Core.Types;
-using MM.Shared.Models.Auth;
-using MM.Shared.Models.Dashboard;
-using MM.Shared.Models.Profile;
+using MM.Common.Core.Types;
+using MM.Common.Models.Auth;
+using MM.Common.Models.Dashboard;
+using MM.Common.Models.Profile;
 using System.Text.Json;
 
 namespace MM.API.Functions.Public;
@@ -75,7 +75,7 @@ public class CacheFunction(CosmosCacheRepository cacheRepo, CosmosMainRepository
             foreach (var login in logins)
             {
                 var loginCountry = login.Accesses.LastOrDefault()?.Country;
-                var enumCountry = loginCountry.NotEmpty() ? EnumHelper.ParseToEnum<Shared.Enums.Country>(loginCountry) : (Country?)null;
+                var enumCountry = loginCountry.NotEmpty() ? EnumHelper.ParseToEnum<Common.Enums.Country>(loginCountry) : (Country?)null;
 
                 obj.Items.Add(new LastUsersItem { Created = login.DateTimeCreated ?? DateTime.Now, Country = enumCountry });
             }

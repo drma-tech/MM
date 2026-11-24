@@ -1,8 +1,8 @@
 ﻿@page "/{culture}/admin"
 @attribute [Authorize(Roles = "administrator")]
 
-@using MM.Shared.Models.Profile
-@using MM.WEB.Api.Module.Cosmos.Admin
+@using MM.Common.Models.Profile
+@using MM.WEB.Api.Modules.Cosmos.Admin
 @using Microsoft.AspNetCore.Authorization
 
 @inherits PageCore<AdminPage>

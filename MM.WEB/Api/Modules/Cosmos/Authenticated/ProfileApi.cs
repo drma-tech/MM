@@ -1,0 +1,27 @@
+﻿using MM.Common.Models.Profile;
+using MM.WEB.Api.Core;
+
+namespace MM.WEB.Api.Modules.Cosmos.Authenticated;
+
+public class ProfileApi(IHttpClientFactory http) : ApiCosmos<ProfileModel>(http, ApiType.Authenticated, "profile", [], ApiContext.Default.ProfileModel)
+{
+    public async Task<ProfileModel?> Get(RenderControlState<ProfileModel?>[] states, CancellationToken cancellationToken)
+    {
+        return await GetAsync("profile/get-data", setNewVersion: false, states, cancellationToken);
+    }
+
+    public async Task<ProfileModel?> GetView(string? IdUserView, RenderControlState<ProfileModel?>[] states, CancellationToken cancellationToken)
+    {
+        return await GetAsync($"profile/get-view/{IdUserView}", setNewVersion: false, states, cancellationToken);
+    }
+
+    //public async Task<HashSet<ProfileSearch>> Profile_ListSearch()
+    //{
+    //    return await GetListAsync<ProfileSearch>(ProfileEndpoint.ListSearch, false);
+    //}
+
+    public async Task<ProfileModel?> Update(ProfileModel obj, CancellationToken cancellationToken)
+    {
+        return await PostAsync("profile/update-data", obj, ApiContext.Default.ProfileModel, states: [], cancellationToken);
+    }
+}
