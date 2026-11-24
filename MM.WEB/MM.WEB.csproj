@@ -51,7 +51,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\MM.Common\MM.Common.csproj" />
 		<TrimmerRootAssembly Include="MM.WEB" />
-		<TrimmerRootAssembly Include="MM.Shared" />
+		<TrimmerRootAssembly Include="MM.Common" />
 		<TrimmerRootAssembly Include="KristofferStrube.Blazor.MediaCaptureStreams" />
 	</ItemGroup>
 	<ItemGroup>
