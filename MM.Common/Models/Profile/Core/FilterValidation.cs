@@ -112,7 +112,9 @@ public class FilterValidation : AbstractValidator<FilterModel>
             .WithName("Disabilities");
     }
 
+#pragma warning disable MA0051 // Method is too long
     private void LifestyleRules()
+#pragma warning restore MA0051 // Method is too long
     {
         RuleFor(x => x.Drink)
              .Must(value => value.Count <= 3)
@@ -277,7 +279,11 @@ public class FilterValidation : AbstractValidator<FilterModel>
         return GetTotalFilters(model, tab: null) <= MaximumFilters;
     }
 
+#pragma warning disable MA0051 // Method is too long
+#pragma warning disable S3776
     public static int GetTotalFilters(FilterModel? model, Category? tab)
+#pragma warning restore S3776
+#pragma warning restore MA0051 // Method is too long
     {
         if (model == null) return 0;
         var total = 0;

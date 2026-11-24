@@ -126,6 +126,9 @@
   <data name="BiologicalSex_Why" xml:space="preserve">
     <value>Das biologische Geschlecht beeinflusst die körperliche Verträglichkeit, gesundheitliche Aspekte und manchmal auch die soziale oder kulturelle Dynamik in Beziehungen. Dieses Wissen hilft Partnern, potenzielle biologische Faktoren zu verstehen, die für Intimität, Fortpflanzung und persönliche Identität relevant sind.</value>
   </data>
+  <data name="Continent" xml:space="preserve">
+    <value>Kontinent</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Beschreibung</value>
   </data>

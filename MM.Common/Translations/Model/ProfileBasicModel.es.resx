@@ -126,6 +126,9 @@
   <data name="BiologicalSex_Why" xml:space="preserve">
     <value>El sexo biológico influye en la compatibilidad física, las consideraciones de salud y, a veces, la dinámica social o cultural en las relaciones. Saber esto ayuda a la pareja a comprender los posibles factores biológicos relevantes para la intimidad, la reproducción y la identidad personal.</value>
   </data>
+  <data name="Continent" xml:space="preserve">
+    <value>Continente</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Descripción</value>
   </data>

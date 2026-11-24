@@ -126,6 +126,9 @@
   <data name="BiologicalSex_Why" xml:space="preserve">
     <value>Le sexe biologique influence la compatibilité physique, les considérations de santé et parfois la dynamique sociale ou culturelle des relations. Sachant cela aide les partenaires à comprendre les facteurs biologiques potentiels liés à l'intimité, à la reproduction et à l'identité personnelle.</value>
   </data>
+  <data name="Continent" xml:space="preserve">
+    <value>Continent</value>
+  </data>
   <data name="Description_Name" xml:space="preserve">
     <value>Description</value>
   </data>

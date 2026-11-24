@@ -106,7 +106,7 @@ namespace MM.Common.Translations.Enum {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accounts of real historical events, biographies, and personal memoirs (e.g., historical accounts, biographies, autobiographies)..
+        ///   Looks up a localized string similar to Accounts of real historical events, biographies, and personal memoirs (e.g., historical accounts, biographies, autobiographies).
         /// </summary>
         public static string HistoryBiographical_Description {
             get {

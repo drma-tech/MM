@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChooseMaximumOptions" xml:space="preserve">
-    <value>Choose up to {0} {1}.</value>
+    <value>Choose up to {0} {1}</value>
   </data>
   <data name="DomainDeactivated" xml:space="preserve">
     <value>Please update the app from your platform's app store (Microsoft Store, Google Play, or the App Store). If you're using a browser, open the website without the "www" prefix.</value>

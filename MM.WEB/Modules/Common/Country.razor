@@ -2,7 +2,7 @@
 
 <div class="d-flex @CssClass" style="align-items: center; @Style">
     <MudIcon Icon="@CssIcon" Class="me-3"></MudIcon>
-    <MudSelect Label="Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
+    <MudSelect Label="@MM.Common.Translations.Model.ProfileBasicModel.Continent" @bind-Value="@Continent" Class="me-3" AdornmentColor="Color.Primary"
                Disabled="@Disabled" Required="@Required" FullWidth="true">
         @foreach (var group in Countries.Select(s => s.Group).Order().Distinct())
         {

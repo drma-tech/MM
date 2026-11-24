@@ -124,7 +124,7 @@
     <value>Por ahora, la sección Básica es obligatoria. Puedes completar las demás secciones más adelante.</value>
   </data>
   <data name="BirthdateTip" xml:space="preserve">
-    <value>Solo se mostrará públicamente tu edad. (Usamos el calendario gregoriano).</value>
+    <value>Solo se mostrará públicamente tu edad. (Usamos el calendario gregoriano)</value>
   </data>
   <data name="BodyPhoto" xml:space="preserve">
     <value>Foto de cuerpo entero</value>

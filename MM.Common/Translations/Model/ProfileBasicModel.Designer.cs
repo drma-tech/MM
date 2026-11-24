@@ -88,6 +88,15 @@ namespace MM.Common.Translations.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continent.
+        /// </summary>
+        public static string Continent {
+            get {
+                return ResourceManager.GetString("Continent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description_Name {

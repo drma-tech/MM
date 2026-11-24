@@ -10,7 +10,9 @@ public class ProfileValidation : AbstractValidator<ProfileModel>
 {
     private static readonly CompositeFormat ChooseMaximumOptions = CompositeFormat.Parse(Validations.ChooseMaximumOptions);
 
+#pragma warning disable MA0051 // Method is too long
     public ProfileValidation()
+#pragma warning restore MA0051 // Method is too long
     {
         RuleSet("BASIC", () =>
         {
