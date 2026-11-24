@@ -17,15 +17,7 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -121,7 +113,7 @@
     <value>Abkhaziano</value>
   </data>
   <data name="Afar" xml:space="preserve">
-    <value>Lontano</value>
+    <value>Afar</value>
   </data>
   <data name="Afrikaans" xml:space="preserve">
     <value>afrikaans</value>
@@ -214,7 +206,7 @@
     <value>Ciuvascio</value>
   </data>
   <data name="Cornish" xml:space="preserve">
-    <value>Cornovaglia</value>
+    <value>cornico</value>
   </data>
   <data name="Corsican" xml:space="preserve">
     <value>Corso</value>
@@ -250,7 +242,7 @@
     <value>Estone</value>
   </data>
   <data name="Ewe" xml:space="preserve">
-    <value>Pecora</value>
+    <value>Ewe</value>
   </data>
   <data name="Faroese" xml:space="preserve">
     <value>Faroese</value>
@@ -316,7 +308,7 @@
     <value>islandese</value>
   </data>
   <data name="Ido" xml:space="preserve">
-    <value>Io faccio</value>
+    <value>Ido</value>
   </data>
   <data name="Igbo" xml:space="preserve">
     <value>Igbo</value>
@@ -328,7 +320,7 @@
     <value>Interlingua</value>
   </data>
   <data name="Interlingue" xml:space="preserve">
-    <value>Interlingua</value>
+    <value>Interlingue</value>
   </data>
   <data name="Inuktitut" xml:space="preserve">
     <value>Inuktitut</value>
@@ -358,10 +350,10 @@
     <value>Kanuri</value>
   </data>
   <data name="Kashmiri" xml:space="preserve">
-    <value>Kashmir</value>
+    <value>kashmiro</value>
   </data>
   <data name="Kazakh" xml:space="preserve">
-    <value>Kazakistan</value>
+    <value>kazako</value>
   </data>
   <data name="Kikuyu" xml:space="preserve">
     <value>Kikuyu</value>
@@ -376,7 +368,7 @@
     <value>Komi</value>
   </data>
   <data name="Kongo" xml:space="preserve">
-    <value>Congo</value>
+    <value>kongo</value>
   </data>
   <data name="Korean" xml:space="preserve">
     <value>coreano</value>
@@ -388,7 +380,7 @@
     <value>curdo</value>
   </data>
   <data name="Lao" xml:space="preserve">
-    <value>Laotiano</value>
+    <value>lao</value>
   </data>
   <data name="Latin" xml:space="preserve">
     <value>latino</value>
@@ -616,7 +608,7 @@
     <value>turkmeno</value>
   </data>
   <data name="Twi" xml:space="preserve">
-    <value>Due</value>
+    <value>Twi</value>
   </data>
   <data name="Uighur" xml:space="preserve">
     <value>Uiguro</value>

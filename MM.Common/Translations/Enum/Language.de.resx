@@ -17,15 +17,7 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -121,7 +113,7 @@
     <value>Abchasisch</value>
   </data>
   <data name="Afar" xml:space="preserve">
-    <value>In der Ferne</value>
+    <value>Afar</value>
   </data>
   <data name="Afrikaans" xml:space="preserve">
     <value>Afrikaans</value>
@@ -232,7 +224,7 @@
     <value>dänisch</value>
   </data>
   <data name="Divehi" xml:space="preserve">
-    <value>Tauchgang</value>
+    <value>Dhivehi</value>
   </data>
   <data name="Dutch" xml:space="preserve">
     <value>Niederländisch</value>
@@ -250,7 +242,7 @@
     <value>estnisch</value>
   </data>
   <data name="Ewe" xml:space="preserve">
-    <value>Mutterschaf</value>
+    <value>Ewe</value>
   </data>
   <data name="Faroese" xml:space="preserve">
     <value>Färöisch</value>
@@ -316,7 +308,7 @@
     <value>isländisch</value>
   </data>
   <data name="Ido" xml:space="preserve">
-    <value>Ich tue</value>
+    <value>Ido</value>
   </data>
   <data name="Igbo" xml:space="preserve">
     <value>Igbo</value>
@@ -328,7 +320,7 @@
     <value>Interlingua</value>
   </data>
   <data name="Interlingue" xml:space="preserve">
-    <value>Zwischensprache</value>
+    <value>Interlingue</value>
   </data>
   <data name="Inuktitut" xml:space="preserve">
     <value>Inuktitut</value>
@@ -493,7 +485,7 @@
     <value>persisch</value>
   </data>
   <data name="Polish" xml:space="preserve">
-    <value>Polieren</value>
+    <value>Polnisch</value>
   </data>
   <data name="Portuguese" xml:space="preserve">
     <value>Portugiesisch</value>
@@ -517,7 +509,7 @@
     <value>Russisch</value>
   </data>
   <data name="Samoan" xml:space="preserve">
-    <value>Samoaner</value>
+    <value>Samoan</value>
   </data>
   <data name="Sango" xml:space="preserve">
     <value>Sango</value>

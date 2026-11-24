@@ -17,15 +17,7 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -121,7 +113,7 @@
     <value>Abcásio</value>
   </data>
   <data name="Afar" xml:space="preserve">
-    <value>Longe</value>
+    <value>Afar</value>
   </data>
   <data name="Afrikaans" xml:space="preserve">
     <value>afrikaans</value>
@@ -214,10 +206,10 @@
     <value>chuvache</value>
   </data>
   <data name="Cornish" xml:space="preserve">
-    <value>Cornualha</value>
+    <value>córnico</value>
   </data>
   <data name="Corsican" xml:space="preserve">
-    <value>Córsega</value>
+    <value>corso</value>
   </data>
   <data name="Cree" xml:space="preserve">
     <value>Cree</value>
@@ -250,7 +242,7 @@
     <value>estoniano</value>
   </data>
   <data name="Ewe" xml:space="preserve">
-    <value>Ovelha</value>
+    <value>Ewe</value>
   </data>
   <data name="Faroese" xml:space="preserve">
     <value>Feroês</value>
@@ -316,7 +308,7 @@
     <value>islandês</value>
   </data>
   <data name="Ido" xml:space="preserve">
-    <value>Eu faço</value>
+    <value>Ido</value>
   </data>
   <data name="Igbo" xml:space="preserve">
     <value>Ibo</value>
@@ -358,7 +350,7 @@
     <value>Kanuri</value>
   </data>
   <data name="Kashmiri" xml:space="preserve">
-    <value>Caxemira</value>
+    <value>caxemir</value>
   </data>
   <data name="Kazakh" xml:space="preserve">
     <value>Cazaque</value>
@@ -370,13 +362,13 @@
     <value>Kinyarwanda</value>
   </data>
   <data name="Kirghiz" xml:space="preserve">
-    <value>Quirguistão</value>
+    <value>quirguiz</value>
   </data>
   <data name="Komi" xml:space="preserve">
     <value>Komi</value>
   </data>
   <data name="Kongo" xml:space="preserve">
-    <value>Congo</value>
+    <value>quicongo</value>
   </data>
   <data name="Korean" xml:space="preserve">
     <value>coreano</value>
@@ -388,7 +380,7 @@
     <value>curdo</value>
   </data>
   <data name="Lao" xml:space="preserve">
-    <value>Laos</value>
+    <value>laociano</value>
   </data>
   <data name="Latin" xml:space="preserve">
     <value>Latim</value>
@@ -481,7 +473,7 @@
     <value>Oromo</value>
   </data>
   <data name="Ossetian" xml:space="preserve">
-    <value>Ossétia</value>
+    <value>osseta</value>
   </data>
   <data name="Pali" xml:space="preserve">
     <value>páli</value>
@@ -526,7 +518,7 @@
     <value>sânscrito</value>
   </data>
   <data name="Sardinian" xml:space="preserve">
-    <value>Sardenha</value>
+    <value>sardo</value>
   </data>
   <data name="Serbian" xml:space="preserve">
     <value>sérvio</value>
@@ -631,7 +623,7 @@
     <value>Usbeque</value>
   </data>
   <data name="Venda" xml:space="preserve">
-    <value>Venda</value>
+    <value>venda</value>
   </data>
   <data name="Vietnamese" xml:space="preserve">
     <value>vietnamita</value>

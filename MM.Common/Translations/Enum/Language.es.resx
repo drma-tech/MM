@@ -17,15 +17,7 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -121,7 +113,7 @@
     <value>abjasio</value>
   </data>
   <data name="Afar" xml:space="preserve">
-    <value>Lejos</value>
+    <value>Afar</value>
   </data>
   <data name="Afrikaans" xml:space="preserve">
     <value>africaans</value>
@@ -214,7 +206,7 @@
     <value>chuvasio</value>
   </data>
   <data name="Cornish" xml:space="preserve">
-    <value>de Cornualles</value>
+    <value>córnico</value>
   </data>
   <data name="Corsican" xml:space="preserve">
     <value>corso</value>
@@ -316,7 +308,7 @@
     <value>islandés</value>
   </data>
   <data name="Ido" xml:space="preserve">
-    <value>Sí</value>
+    <value>Ido</value>
   </data>
   <data name="Igbo" xml:space="preserve">
     <value>igbo</value>
@@ -358,7 +350,7 @@
     <value>kanuri</value>
   </data>
   <data name="Kashmiri" xml:space="preserve">
-    <value>Cachemira</value>
+    <value>cachemir</value>
   </data>
   <data name="Kazakh" xml:space="preserve">
     <value>kazajo</value>
@@ -376,7 +368,7 @@
     <value>komi</value>
   </data>
   <data name="Kongo" xml:space="preserve">
-    <value>Congo</value>
+    <value>kongo</value>
   </data>
   <data name="Korean" xml:space="preserve">
     <value>coreano</value>
@@ -631,7 +623,7 @@
     <value>uzbeko</value>
   </data>
   <data name="Venda" xml:space="preserve">
-    <value>venta</value>
+    <value>venda</value>
   </data>
   <data name="Vietnamese" xml:space="preserve">
     <value>vietnamita</value>
@@ -646,7 +638,7 @@
     <value>galés</value>
   </data>
   <data name="WesternFrisian" xml:space="preserve">
-    <value>Frisia occidental</value>
+    <value>frisón occidental</value>
   </data>
   <data name="Wolof" xml:space="preserve">
     <value>wólof</value>
