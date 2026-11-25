@@ -1,4 +1,4 @@
-﻿namespace MM.Common.Models.Subscription;
+namespace MM.Common.Models.Subscription;
 
 public class PaymentConfigurations
 {
